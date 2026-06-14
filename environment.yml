@@ -1,0 +1,20 @@
+# Mamba/conda environment for the Zany Test Prep (SAT) Flutter project.
+#
+# This environment holds the JDK and Python tooling needed to build the
+# Android APK and to generate/validate offline content. The Flutter and
+# Android SDKs are NOT conda packages; they are installed into a repo-local
+# `.tooling/` directory by `scripts/setup_env.sh` (see that script + README).
+#
+# Create/update with:
+#   mamba env update -f environment.yml --prune
+# Activate with:
+#   mamba activate zany-test-prep
+name: zany-test-prep
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - openjdk=17          # required by Gradle / Android toolchain
+  - pyyaml              # content generation + validation
+  - jsonschema          # schema validation of content files
+  - pip
