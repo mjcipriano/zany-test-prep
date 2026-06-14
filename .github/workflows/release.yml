@@ -1,0 +1,109 @@
+# Release workflow.
+# Triggered manually (workflow_dispatch) or by pushing a tag like v1.0.0.
+# Produces a release APK (and, best-effort, an app bundle). When run from a
+# version tag it also creates a GitHub Release with the APK attached.
+name: Release
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+# Needed for softprops/action-gh-release@v2 to create releases / upload assets.
+permissions:
+  contents: write
+
+jobs:
+  build-release:
+    name: Build & Publish Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.35.5"
+          channel: stable
+          cache: true
+
+      - name: Install Dart/Flutter dependencies
+        run: flutter pub get
+
+      # -------------------------------------------------------------------------
+      # OPTIONAL RELEASE SIGNING (disabled by default).
+      #
+      # By default the release build is signed with Flutter's debug key, so this
+      # workflow always works without any committed keys or configured secrets.
+      # No keystore is committed to the repo.
+      #
+      # To produce a Play Store-signable build later, add these GitHub repository
+      # secrets (Settings -> Secrets and variables -> Actions):
+      #   KEYSTORE_BASE64 - base64-encoded upload/release keystore (.jks)
+      #   KEY_ALIAS       - the key alias inside the keystore
+      #   KEY_PASSWORD    - password for the key
+      #   STORE_PASSWORD  - password for the keystore
+      #
+      # Then uncomment the step below and wire the keystore into
+      # android/app/build.gradle via a signingConfig that reads from
+      # android/key.properties. Example:
+      #
+      # - name: Decode keystore and write signing config
+      #   env:
+      #     KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+      #     KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+      #     KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+      #     STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
+      #   run: |
+      #     echo "$KEYSTORE_BASE64" | base64 --decode > android/app/upload-keystore.jks
+      #     cat > android/key.properties <<EOF
+      #     storeFile=upload-keystore.jks
+      #     storePassword=$STORE_PASSWORD
+      #     keyAlias=$KEY_ALIAS
+      #     keyPassword=$KEY_PASSWORD
+      #     EOF
+      # -------------------------------------------------------------------------
+
+      - name: Build release APK
+        run: flutter build apk --release
+
+      # App bundle is a nice-to-have for Play Store uploads. Made non-blocking
+      # with "|| true" so a failure here never fails the release.
+      - name: Build release app bundle (non-blocking)
+        run: flutter build appbundle --release || true
+
+      - name: Upload release APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-release-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
+          if-no-files-found: error
+          retention-days: 30
+
+      # The .aab may not exist if the bundle build was skipped/failed; ignore it
+      # if missing so the workflow still succeeds.
+      - name: Upload release app bundle artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-release-aab
+          path: build/app/outputs/bundle/release/app-release.aab
+          if-no-files-found: ignore
+          retention-days: 30
+
+      # Only create a GitHub Release when triggered by a version tag push.
+      - name: Create GitHub Release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          files: |
+            build/app/outputs/flutter-apk/app-release.apk
+            build/app/outputs/bundle/release/app-release.aab

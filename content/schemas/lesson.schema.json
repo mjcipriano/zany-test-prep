@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://zanybot.ai/schemas/lesson.schema.json",
+  "title": "Exam Lesson",
+  "description": "Exam-agnostic lesson. A short Duolingo-style challenge with a teaching card and 8-25 questions.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "lesson_id", "exam_id", "exam_name", "domain", "section", "skill",
+    "title", "order", "difficulty", "estimated_minutes", "teaching_card",
+    "question_ids", "prerequisite_lesson_ids", "unlock_xp", "tags", "version"
+  ],
+  "properties": {
+    "lesson_id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "exam_id": { "type": "string", "minLength": 1 },
+    "exam_name": { "type": "string", "minLength": 1 },
+    "domain": { "type": "string", "minLength": 1 },
+    "section": { "type": "string", "minLength": 1 },
+    "skill": { "type": "string", "minLength": 1 },
+    "title": { "type": "string", "minLength": 3 },
+    "subtitle": { "type": "string" },
+    "order": { "type": "integer", "minimum": 0 },
+    "difficulty": { "enum": ["easy", "medium", "hard"] },
+    "estimated_minutes": { "type": "integer", "minimum": 3, "maximum": 30 },
+    "teaching_card": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "body", "key_points"],
+      "properties": {
+        "title": { "type": "string", "minLength": 3 },
+        "body": { "type": "string", "minLength": 30 },
+        "key_points": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 3 },
+          "minItems": 2
+        },
+        "worked_example": { "type": "string" }
+      }
+    },
+    "question_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 8,
+      "maxItems": 25
+    },
+    "prerequisite_lesson_ids": { "type": "array", "items": { "type": "string" } },
+    "unlock_xp": { "type": "integer", "minimum": 0 },
+    "tags": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" }
+  }
+}
