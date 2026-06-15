@@ -64,7 +64,19 @@ class _LessonPlayerState extends ConsumerState<LessonPlayer> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    // Re-evaluate the Check button as the user types a grid-in answer.
+    _textController.addListener(_onTextChanged);
+  }
+
+  void _onTextChanged() {
+    if (!_answered && _q.type.isStudentProduced) setState(() {});
+  }
+
+  @override
   void dispose() {
+    _textController.removeListener(_onTextChanged);
     _textController.dispose();
     super.dispose();
   }
