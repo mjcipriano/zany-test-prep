@@ -7,6 +7,7 @@ import '../../app/app_controller.dart';
 import '../../domain/models/question.dart';
 import '../../domain/services/unlock_engine.dart';
 import '../lessons/lesson_player.dart';
+import 'sampling.dart';
 
 /// Endless-style practice: a session of random questions, one after another.
 /// Two modes:
@@ -56,10 +57,8 @@ class PracticeScreen extends ConsumerWidget {
       );
     }
 
-    // A fresh random selection each time the screen is opened.
-    final rng = Random();
-    pool.shuffle(rng);
-    final questions = pool.take(count).toList();
+    // A fresh, domain-balanced selection each time the screen is opened.
+    final questions = balancedSample(pool, count, Random());
 
     return LessonPlayer(
       title: mode == 'all' ? 'Challenge Mode' : 'Quick Practice',

@@ -775,3 +775,11 @@ def pool_synthesis(rng: random.Random):
                                      "selects and combines the notes to do that."),
                         tags=["expression", "synthesis"], est=70))
     return items
+
+
+# Extend the authored pools with additional original items (kept in a separate
+# module so it can be generated/expanded independently).
+from .pools_extra import TRANS2, CONCISION2, SYNTH2  # noqa: E402
+_TRANS_ITEMS.extend(TRANS2)
+_CONCISION.extend(CONCISION2)
+_SYNTHESIS.extend(SYNTH2)

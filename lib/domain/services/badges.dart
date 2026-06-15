@@ -858,6 +858,49 @@ class Badges {
       test: (p, b) =>
           _completedLessons(p, 'math') >= 1 && _completedLessons(p, 'rw') >= 1,
     ),
+    // ---- Survival mode: longest streak of correct answers ----
+    BadgeDef(
+      id: 'survival_5',
+      title: 'Survivor',
+      description: 'Answer 5 in a row in Survival mode.',
+      emoji: '🎯',
+      test: (p, b) => p.game.survivalBest >= 5,
+    ),
+    BadgeDef(
+      id: 'survival_10',
+      title: 'Steady Hand',
+      description: 'Answer 10 in a row in Survival mode.',
+      emoji: '🔟',
+      test: (p, b) => p.game.survivalBest >= 10,
+    ),
+    BadgeDef(
+      id: 'survival_20',
+      title: 'Unshakable',
+      description: 'Answer 20 in a row in Survival mode.',
+      emoji: '🛡️',
+      test: (p, b) => p.game.survivalBest >= 20,
+    ),
+    BadgeDef(
+      id: 'survival_35',
+      title: 'Iron Streak',
+      description: 'Answer 35 in a row in Survival mode.',
+      emoji: '⚔️',
+      test: (p, b) => p.game.survivalBest >= 35,
+    ),
+    BadgeDef(
+      id: 'survival_50',
+      title: 'Untouchable',
+      description: 'Answer 50 in a row in Survival mode.',
+      emoji: '🐉',
+      test: (p, b) => p.game.survivalBest >= 50,
+    ),
+    BadgeDef(
+      id: 'survival_100',
+      title: 'Centurion',
+      description: 'Answer 100 in a row in Survival mode.',
+      emoji: '💯',
+      test: (p, b) => p.game.survivalBest >= 100,
+    ),
   ];
 
   static BadgeDef? byId(String id) {

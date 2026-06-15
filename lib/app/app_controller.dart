@@ -8,6 +8,7 @@ import '../domain/models/content_bundle.dart';
 import '../domain/models/lesson.dart';
 import '../domain/models/profile.dart';
 import '../domain/models/progress.dart';
+import '../domain/services/badges.dart';
 import '../domain/services/game_service.dart';
 
 /// Immutable snapshot of the app session handed to the UI.
@@ -37,6 +38,21 @@ class AppData {
     onboarded: onboarded ?? this.onboarded,
     revision: revision + 1,
   );
+}
+
+/// Outcome of a Survival run.
+class SurvivalResult {
+  const SurvivalResult({
+    required this.streak,
+    required this.best,
+    required this.isRecord,
+    required this.newBadges,
+  });
+
+  final int streak;
+  final int best;
+  final bool isRecord;
+  final List<BadgeDef> newBadges;
 }
 
 /// Provides the content repository (overridable in tests).
@@ -123,6 +139,39 @@ class AppController extends AsyncNotifier<AppData> {
     await _repo.saveProgress(data.progress);
     state = AsyncData(data.bump());
     return outcome;
+  }
+
+  /// Applies a finished Survival run: per-question XP/mastery/review plus the
+  /// best-streak record. [streak] is the number answered correctly before a miss.
+  Future<SurvivalResult> completeSurvival({
+    required List<AnswerResult> results,
+    required int streak,
+  }) async {
+    final data = _data;
+    if (results.isNotEmpty) {
+      _game.applyPracticeResult(
+        progress: data.progress,
+        profile: data.profile!,
+        results: results,
+        bundle: data.bundle,
+      );
+    }
+    final g = data.progress.game;
+    final isRecord = streak > g.survivalBest;
+    if (isRecord) g.survivalBest = streak;
+    // Re-evaluate badges now that survivalBest is updated (catches survival badges).
+    final newBadges = Badges.evaluateAndGrant(
+      data.progress,
+      data.bundle,
+    ).map(Badges.byId).whereType<BadgeDef>().toList();
+    await _repo.saveProgress(data.progress);
+    state = AsyncData(data.bump());
+    return SurvivalResult(
+      streak: streak,
+      best: g.survivalBest,
+      isRecord: isRecord,
+      newBadges: newBadges,
+    );
   }
 
   Future<void> updateProfile(UserProfile profile) async {

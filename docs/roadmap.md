@@ -13,10 +13,12 @@
   voiceover yet.
 - **Single-file persistence.** State is JSON in `shared_preferences`. This is robust at
   the current scale (hundreds of entries) but is not a query-able database.
-- **Content breadth.** 81 curated lessons plus a ~14k-question practice bank
-  (~15.5k total) cover the SAT broadly; reading-comprehension items are authored and
-  fewer than the parametric math/grammar items, so very heavy reading-only practice
-  will cycle sooner than math.
+- **Content breadth.** 117 curated lessons plus a large practice bank (~20.9k total
+  questions; ~11.4k math, ~9.4k reading/writing) covering the Digital SAT R&W and Math
+  domains, with easy/medium/hard tiers per skill. Passage-based reading comprehension
+  is authored (~32 passages); the high-volume R&W bank is the combinatorial Writing
+  types (grammar, transitions, evidence, etc.), so very heavy passage-reading-only
+  practice will cycle sooner than math or grammar.
 - **Android-first.** iOS/web/desktop targets are scaffolded and the code is
   cross-platform, but only Android is built/tested in CI.
 

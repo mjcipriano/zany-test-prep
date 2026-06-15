@@ -18,7 +18,7 @@ from pathlib import Path
 import yaml
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from content_gen import math_gen, rw_gen, passages  # noqa: E402
+from content_gen import math_gen, rw_gen, passages, math_extra, rw_extra  # noqa: E402
 from content_gen.teaching import TEACHING  # noqa: E402
 from content_gen.util import item_signature  # noqa: E402
 
@@ -63,7 +63,7 @@ def load_skill_index():
 STD3 = [("easy", 20), ("medium", 20), ("hard", 20)]   # generators with wide spaces
 SMALL3 = [("easy", 8), ("medium", 8), ("hard", 8)]    # smaller-space math skills
 CONV3 = [("easy", 24), ("medium", 24), ("hard", 24)]  # combinatorial conventions
-READ2 = [("easy", 8), ("hard", 8)]                    # 16 authored items -> 2 tiers
+READ3 = [("easy", 8), ("medium", 8), ("hard", 8)]     # 32 authored items -> 3 tiers
 
 MATH_SKILLS = [
     ("linear_equations", "math", math_gen.linear_equations, STD3),
@@ -82,25 +82,36 @@ MATH_SKILLS = [
     ("circles", "math", math_gen.circles, SMALL3),
     ("right_triangles", "math", math_gen.right_triangles, SMALL3),
     ("trigonometry", "math", math_gen.trigonometry, SMALL3),
+    ("word_problems", "math", math_extra.word_problems, STD3),
+    ("absolute_value", "math", math_extra.absolute_value, STD3),
+    ("exponential", "math", math_extra.exponential_growth, STD3),
+    ("two_way_tables", "math", math_extra.two_way_tables, STD3),
+    ("scatterplots", "math", math_extra.line_of_best_fit, STD3),
 ]
 
 RW_SKILLS = [
-    ("main_idea", "reading", "main_idea", READ2),
-    ("inferences", "reading", "inference", READ2),
-    ("command_of_evidence", "reading", "evidence", READ2),
-    ("text_structure_purpose", "reading", "structure", READ2),
-    ("words_in_context", "reading", "wic", READ2),
-    ("cross_text_connections", "cross_text", None, READ2),
+    ("main_idea", "reading", "main_idea", READ3),
+    ("inferences", "reading", "inference", READ3),
+    ("command_of_evidence", "reading", "evidence", READ3),
+    ("text_structure_purpose", "reading", "structure", READ3),
+    ("words_in_context", "reading", "wic", READ3),
+    ("cross_text_connections", "cross_text", None, READ3),
+    ("quantitative_evidence", "rw_combinatorial", rw_extra.gen_quantitative_evidence, CONV3),
     ("sentence_boundaries", "rw_combinatorial", rw_gen.gen_boundaries, CONV3),
     ("subject_verb_agreement", "rw_combinatorial", rw_gen.gen_sva, CONV3),
     ("punctuation", "rw_combinatorial", rw_gen.gen_punctuation, CONV3),
     ("pronouns", "rw_combinatorial", rw_gen.gen_pronouns, CONV3),
     ("modifiers", "rw_combinatorial", rw_gen.gen_modifiers,
      [("easy", 8), ("medium", 8), ("hard", 8)]),
+    ("verb_tense", "rw_combinatorial", rw_extra.gen_verb_tense, CONV3),
+    ("parallel_structure", "rw_combinatorial", rw_extra.gen_parallelism, CONV3),
+    ("pronoun_antecedent", "rw_combinatorial", rw_extra.gen_pronoun_antecedent, CONV3),
     ("transitions", "rw_pool", "transitions",
-     [("easy", 16), ("medium", 14), ("hard", 14)]),
-    ("concision", "rw_pool", "concision", [("easy", 20), ("hard", 20)]),
-    ("rhetorical_synthesis", "rw_pool", "synthesis", [("medium", 12)]),
+     [("easy", 16), ("medium", 16), ("hard", 16)]),
+    ("concision", "rw_pool", "concision",
+     [("easy", 16), ("medium", 16), ("hard", 16)]),
+    ("rhetorical_synthesis", "rw_pool", "synthesis",
+     [("easy", 11), ("medium", 11), ("hard", 11)]),
 ]
 
 DIFF_LABEL = {"easy": "Easy", "medium": "Medium", "hard": "Hard"}
@@ -111,7 +122,7 @@ DOMAIN_SLUG = {"reading_writing": "rw", "math": "math"}
 # lessons. These are not listed in any lesson; the practice modes draw from them
 # for near-endless variety. Best-effort: generation stops when a skill's space is
 # exhausted. Authored pools/reading are not banked. Small-space math is skipped.
-BANK_PER_TIER = {"math": 400, "rw_combinatorial": 250}
+BANK_PER_TIER = {"math": 200, "rw_combinatorial": 800}
 NO_BANK_SKILLS = {"circles", "right_triangles", "trigonometry"}
 
 SKILL_TITLES = {
@@ -133,6 +144,12 @@ SKILL_TITLES = {
     "punctuation": "Punctuation & Possessives", "pronouns": "Pronouns",
     "modifiers": "Modifier Placement", "transitions": "Transitions",
     "concision": "Concision", "rhetorical_synthesis": "Rhetorical Synthesis",
+    "verb_tense": "Verb Tense & Form", "parallel_structure": "Parallel Structure",
+    "pronoun_antecedent": "Pronoun-Antecedent Agreement",
+    "quantitative_evidence": "Quantitative Evidence",
+    "word_problems": "Linear Word Problems", "absolute_value": "Absolute Value",
+    "exponential": "Exponential Growth", "two_way_tables": "Two-Way Tables",
+    "scatterplots": "Scatterplots & Best Fit",
 }
 def build():
     rng = random.Random(SEED)

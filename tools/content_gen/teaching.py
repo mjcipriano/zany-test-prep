@@ -284,6 +284,93 @@ TEACHING = {
                        "Prefer the shortest clear, grammatical option.",
                        "Don't delete meaning — only redundancy."],
     },
+    "verb_tense": {
+        "title": "Verb Tense and Form",
+        "body": ("Match the verb to the time the sentence describes. Clues like "
+                 "'last year' signal past, 'every day' or 'currently' signal present, "
+                 "and 'next year' or 'will' signal future. Keep tenses consistent."),
+        "key_points": ["Let time markers set the tense.",
+                       "Past: -ed; present: base/-s; future: will + base.",
+                       "An -ing form alone can't be the main verb."],
+        "worked_example": "Last year, the team traveled (not travels) abroad.",
+    },
+    "parallel_structure": {
+        "title": "Parallel Structure",
+        "body": ("Items joined in a list or by 'and'/'or' should share the same "
+                 "grammatical form. If two items are -ing forms, the third must be too."),
+        "key_points": ["Match the form of items in a series.",
+                       "-ing with -ing; nouns with nouns; to-verb with to-verb.",
+                       "Mismatched forms break parallelism."],
+        "worked_example": "She likes hiking, biking, and swimming (not 'to swim').",
+    },
+    "pronoun_antecedent": {
+        "title": "Pronoun-Antecedent Agreement",
+        "body": ("A pronoun must agree in number with the noun it refers to (its "
+                 "antecedent). A singular antecedent takes a singular pronoun; a "
+                 "plural antecedent takes a plural one."),
+        "key_points": ["Singular antecedent -> its, his, her.",
+                       "Plural antecedent -> their.",
+                       "'it's' = 'it is'; 'they're' = 'they are' (not possessive)."],
+        "worked_example": "The company released its (not their) report.",
+    },
+    "quantitative_evidence": {
+        "title": "Quantitative Command of Evidence",
+        "body": ("Some questions give a claim and a small table or graph. Pick the "
+                 "choice whose data accurately supports the claim — read the actual "
+                 "values and trend, and avoid options that misread the table."),
+        "key_points": ["Read the headers and units first.",
+                       "Match the data to the exact claim.",
+                       "Reject choices that distort or invent values."],
+    },
+    "word_problems": {
+        "title": "Linear Word Problems",
+        "body": ("Translate the words into an equation. A 'flat fee plus a rate' is "
+                 "total = fee + rate × amount. Subtract the fixed part, then divide by "
+                 "the rate to find the unknown."),
+        "key_points": ["Identify the fixed amount and the per-unit rate.",
+                       "total = fixed + rate × quantity.",
+                       "Undo the fixed part first, then divide."],
+        "worked_example": "$20 + $15·h = $80 -> 15h = 60 -> h = 4.",
+    },
+    "absolute_value": {
+        "title": "Absolute-Value Equations",
+        "body": ("|expression| = c means the expression equals c OR −c, giving two "
+                 "solutions. Solve both linear cases. The two solutions are symmetric "
+                 "around the value that makes the inside zero."),
+        "key_points": ["Split into two cases: = c and = −c.",
+                       "|x − a| = c -> x = a + c or x = a − c.",
+                       "The two solutions sum to 2a."],
+        "worked_example": "|x − 5| = 3 -> x = 8 or x = 2.",
+    },
+    "exponential": {
+        "title": "Exponential Growth",
+        "body": ("In exponential growth a quantity is multiplied by the same factor "
+                 "each period: value = start × factor^periods. This grows far faster "
+                 "than adding the same amount each time (linear growth)."),
+        "key_points": ["Multiply, don't add, each period.",
+                       "value = start × factor^time.",
+                       "Doubling = ×2 each period."],
+        "worked_example": "5 cells doubling for 3 hours: 5×2³ = 40.",
+    },
+    "two_way_tables": {
+        "title": "Two-Way Tables",
+        "body": ("A two-way table sorts data by two categories. Probabilities come "
+                 "from the right total: use a row or column total for that group, and "
+                 "the grand total for the whole sample."),
+        "key_points": ["Find the correct row/column total.",
+                       "Probability = favorable ÷ appropriate total.",
+                       "Use the grand total for a whole-sample probability."],
+    },
+    "scatterplots": {
+        "title": "Scatterplots & Line of Best Fit",
+        "body": ("A line of best fit, y = mx + b, models a scatterplot. The slope m is "
+                 "the predicted change in y for each 1-unit increase in x; b is the "
+                 "predicted y when x = 0. Plug in x to predict y."),
+        "key_points": ["Slope m = change in y per unit x.",
+                       "Intercept b = predicted y at x = 0.",
+                       "Predict by substituting x into y = mx + b."],
+        "worked_example": "y = 3x + 4 at x = 5: y = 19.",
+    },
     "rhetorical_synthesis": {
         "title": "Rhetorical Synthesis",
         "body": ("You're given notes and a specific goal (introduce, emphasize, compare). "

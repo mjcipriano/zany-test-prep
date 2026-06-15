@@ -120,6 +120,14 @@ class HomeScreen extends ConsumerWidget {
               ),
             ],
           ),
+          Gap.s,
+          _QuickAction(
+            icon: Icons.bolt_rounded,
+            label: progress.game.survivalBest > 0
+                ? 'Survival  ·  best ${progress.game.survivalBest}'
+                : 'Survival',
+            onTap: () => context.push('/survival'),
+          ),
           Gap.l,
           _DomainPath(
             title: 'Reading & Writing',

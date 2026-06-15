@@ -1452,3 +1452,9 @@ def build_cross_text(rng: random.Random):
                             explanation=expl, tags=["reading", "cross-text"],
                             est=90, stimulus=stim))
     return items
+
+
+# Additional original passages (kept separate for independent expansion).
+from .passages_extra import PASSAGES2, PAIRED2  # noqa: E402
+PASSAGES.extend(PASSAGES2)
+PAIRED.extend(PAIRED2)

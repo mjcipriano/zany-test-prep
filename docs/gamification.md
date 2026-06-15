@@ -69,8 +69,14 @@ fresh random set; XP/mastery/review apply, but no lesson is marked complete):
 
 - **Quick Practice** — random questions from any section the learner has unlocked.
 - **Challenge** — random questions from any section, including not-yet-unlocked ones.
+- **Survival** — answer as many as you can in a row; the run ends on the first miss,
+  and your longest correct streak (`game.survivalBest`) is recorded with its own
+  achievement tier.
 
-Both run through the same lesson player via the practice (`completeReview`) path.
+Challenge and Survival draw from the whole bank and use **domain-balanced sampling**
+(`lib/features/practice/sampling.dart`) so sessions stay ~50/50 Math vs Reading &
+Writing. Quick Practice and Challenge run through the lesson player via the practice
+(`completeReview`) path; Survival has its own end-on-miss flow (`completeSurvival`).
 
 ## Review queue (`ReviewEngine`)
 

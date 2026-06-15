@@ -134,6 +134,7 @@ class GameState {
     this.lastActiveDay,
     this.dailyXp = 0,
     this.dailyDay,
+    this.survivalBest = 0,
     Set<String>? earnedBadges,
   }) : earnedBadges = earnedBadges ?? <String>{};
 
@@ -143,6 +144,7 @@ class GameState {
   String? lastActiveDay;
   int dailyXp;
   String? dailyDay;
+  int survivalBest; // longest correct streak in Survival mode
   Set<String> earnedBadges;
 
   Map<String, dynamic> toJson() => {
@@ -152,6 +154,7 @@ class GameState {
     'lastActiveDay': lastActiveDay,
     'dailyXp': dailyXp,
     'dailyDay': dailyDay,
+    'survivalBest': survivalBest,
     'earnedBadges': earnedBadges.toList(),
   };
 
@@ -162,6 +165,7 @@ class GameState {
     lastActiveDay: j['lastActiveDay'] as String?,
     dailyXp: j['dailyXp'] as int? ?? 0,
     dailyDay: j['dailyDay'] as String?,
+    survivalBest: j['survivalBest'] as int? ?? 0,
     earnedBadges: (j['earnedBadges'] as List? ?? const [])
         .map((e) => e.toString())
         .toSet(),
