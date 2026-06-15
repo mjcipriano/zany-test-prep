@@ -19,14 +19,14 @@ class Exam {
   final List<String> domains;
 
   factory Exam.fromJson(Map<String, dynamic> json) => Exam(
-        id: json['exam_id'] as String,
-        name: json['exam_name'] as String,
-        displayName: json['display_name'] as String? ?? json['exam_name'] as String,
-        enabled: json['enabled'] as bool? ?? true,
-        contentVersion: json['content_version'] as String? ?? '1.0.0',
-        description: (json['description'] as String? ?? '').trim(),
-        domains: (json['domains'] as List? ?? const [])
-            .map((e) => e.toString())
-            .toList(),
-      );
+    id: json['exam_id'] as String,
+    name: json['exam_name'] as String,
+    displayName: json['display_name'] as String? ?? json['exam_name'] as String,
+    enabled: json['enabled'] as bool? ?? true,
+    contentVersion: json['content_version'] as String? ?? '1.0.0',
+    description: (json['description'] as String? ?? '').trim(),
+    domains: (json['domains'] as List? ?? const [])
+        .map((e) => e.toString())
+        .toList(),
+  );
 }

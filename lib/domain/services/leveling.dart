@@ -7,7 +7,11 @@ class XpEngine {
   const XpEngine();
 
   /// XP for a single answer. Harder questions are worth more.
-  int xpForAnswer({required bool correct, required Difficulty difficulty, bool isReview = false}) {
+  int xpForAnswer({
+    required bool correct,
+    required Difficulty difficulty,
+    bool isReview = false,
+  }) {
     if (!correct) return 0;
     final base = 5 * difficulty.weight; // easy 5, medium 10, hard 15
     if (isReview) return (base * 0.6).round();
@@ -29,7 +33,11 @@ class XpEngine {
     assert(results.length == difficulties.length);
     var xp = 0;
     for (var i = 0; i < results.length; i++) {
-      xp += xpForAnswer(correct: results[i], difficulty: difficulties[i], isReview: isReview);
+      xp += xpForAnswer(
+        correct: results[i],
+        difficulty: difficulties[i],
+        isReview: isReview,
+      );
     }
     if (results.isNotEmpty) {
       xp += lessonCompletionBonus;

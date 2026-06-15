@@ -12,7 +12,7 @@ Future<String> _rootBundleReader(String path) => rootBundle.loadString(path);
 /// Loads offline content bundles from assets/content/.
 class ContentRepository {
   ContentRepository({AssetReader? reader})
-      : _reader = reader ?? _rootBundleReader;
+    : _reader = reader ?? _rootBundleReader;
 
   final AssetReader _reader;
   final Map<String, ContentBundle> _cache = {};

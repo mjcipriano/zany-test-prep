@@ -10,23 +10,26 @@ import 'package:zany_test_prep/domain/services/mastery_engine.dart';
 import 'package:zany_test_prep/domain/services/review_engine.dart';
 import 'package:zany_test_prep/domain/services/unlock_engine.dart';
 
-Question _q(String id, {Difficulty d = Difficulty.medium, String skill = 's1'}) =>
-    Question(
-      id: id,
-      examId: 'sat',
-      domain: 'math',
-      section: 'algebra',
-      skill: skill,
-      lessonId: 'l1',
-      difficulty: d,
-      type: QuestionType.multipleChoice,
-      estimatedTimeSeconds: 60,
-      prompt: 'p',
-      explanation: 'e',
-      tags: const ['t'],
-      choices: const [Choice(id: 'A', text: '1', rationale: 'r')],
-      correctChoice: 'A',
-    );
+Question _q(
+  String id, {
+  Difficulty d = Difficulty.medium,
+  String skill = 's1',
+}) => Question(
+  id: id,
+  examId: 'sat',
+  domain: 'math',
+  section: 'algebra',
+  skill: skill,
+  lessonId: 'l1',
+  difficulty: d,
+  type: QuestionType.multipleChoice,
+  estimatedTimeSeconds: 60,
+  prompt: 'p',
+  explanation: 'e',
+  tags: const ['t'],
+  choices: const [Choice(id: 'A', text: '1', rationale: 'r')],
+  correctChoice: 'A',
+);
 
 Lesson _lesson(String id, {List<String> prereq = const [], int unlockXp = 0}) =>
     Lesson(
@@ -39,8 +42,11 @@ Lesson _lesson(String id, {List<String> prereq = const [], int unlockXp = 0}) =>
       order: 0,
       difficulty: Difficulty.easy,
       estimatedMinutes: 5,
-      teachingCard:
-          const TeachingCard(title: 't', body: 'b', keyPoints: ['a', 'b']),
+      teachingCard: const TeachingCard(
+        title: 't',
+        body: 'b',
+        keyPoints: ['a', 'b'],
+      ),
       questionIds: const ['q1'],
       prerequisiteLessonIds: prereq,
       unlockXp: unlockXp,
@@ -51,20 +57,43 @@ void main() {
   group('MasteryEngine', () {
     const m = MasteryEngine();
     test('correct answers raise mastery, harder more', () {
-      expect(m.update(current: 0, correct: true, difficulty: Difficulty.easy), 4);
-      expect(m.update(current: 0, correct: true, difficulty: Difficulty.hard), 12);
+      expect(
+        m.update(current: 0, correct: true, difficulty: Difficulty.easy),
+        4,
+      );
+      expect(
+        m.update(current: 0, correct: true, difficulty: Difficulty.hard),
+        12,
+      );
     });
     test('wrong answers lower mastery but less than a correct raises', () {
-      expect(m.update(current: 50, correct: false, difficulty: Difficulty.hard), 44);
+      expect(
+        m.update(current: 50, correct: false, difficulty: Difficulty.hard),
+        44,
+      );
     });
     test('mastery is clamped to 0..100', () {
-      expect(m.update(current: 99, correct: true, difficulty: Difficulty.hard), 100);
-      expect(m.update(current: 1, correct: false, difficulty: Difficulty.hard), 0);
+      expect(
+        m.update(current: 99, correct: true, difficulty: Difficulty.hard),
+        100,
+      );
+      expect(
+        m.update(current: 1, correct: false, difficulty: Difficulty.hard),
+        0,
+      );
     });
     test('review correct gains less than a fresh correct', () {
-      final fresh = m.update(current: 0, correct: true, difficulty: Difficulty.hard);
+      final fresh = m.update(
+        current: 0,
+        correct: true,
+        difficulty: Difficulty.hard,
+      );
       final review = m.update(
-          current: 0, correct: true, difficulty: Difficulty.hard, isReview: true);
+        current: 0,
+        correct: true,
+        difficulty: Difficulty.hard,
+        isReview: true,
+      );
       expect(review, lessThan(fresh));
     });
   });
@@ -90,8 +119,16 @@ void main() {
     });
     test('due questions are ordered by priority', () {
       final p = AppProgress();
-      r.onAnswered(progress: p, question: _q('easy', d: Difficulty.easy), correct: false);
-      r.onAnswered(progress: p, question: _q('hard', d: Difficulty.hard), correct: false);
+      r.onAnswered(
+        progress: p,
+        question: _q('easy', d: Difficulty.easy),
+        correct: false,
+      );
+      r.onAnswered(
+        progress: p,
+        question: _q('hard', d: Difficulty.hard),
+        correct: false,
+      );
       final due = r.dueQuestionIds(p);
       expect(due.first, 'hard'); // higher difficulty -> higher initial priority
     });
@@ -110,7 +147,10 @@ void main() {
         domains: ['math'],
       ),
       skillMap: SkillMap(domains: const []),
-      lessons: [_lesson('l1'), _lesson('l2', prereq: ['l1'])],
+      lessons: [
+        _lesson('l1'),
+        _lesson('l2', prereq: ['l1']),
+      ],
       questions: [_q('q1')],
     );
 
@@ -118,7 +158,10 @@ void main() {
       expect(u.isUnlocked(_lesson('l1'), AppProgress()), isTrue);
     });
     test('lesson with an incomplete prerequisite is locked', () {
-      expect(u.isUnlocked(_lesson('l2', prereq: ['l1']), AppProgress()), isFalse);
+      expect(
+        u.isUnlocked(_lesson('l2', prereq: ['l1']), AppProgress()),
+        isFalse,
+      );
     });
     test('completing the prerequisite unlocks the next lesson', () {
       final p = AppProgress();

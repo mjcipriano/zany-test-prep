@@ -23,8 +23,9 @@ class UnlockEngine {
   Lesson? suggestNext(ContentBundle bundle, AppProgress progress) {
     final ordered = [...bundle.lessons]
       ..sort((a, b) {
-        final d = (a.domain == 'reading_writing' ? 0 : 1)
-            .compareTo(b.domain == 'reading_writing' ? 0 : 1);
+        final d = (a.domain == 'reading_writing' ? 0 : 1).compareTo(
+          b.domain == 'reading_writing' ? 0 : 1,
+        );
         return d != 0 ? d : a.order.compareTo(b.order);
       });
     for (final l in ordered) {

@@ -23,11 +23,13 @@ class ReviewEngine {
         final item = queue[idx];
         item.priority = (item.priority + 1).clamp(1, maxPriority);
       } else {
-        queue.add(ReviewItem(
-          questionId: question.id,
-          skillId: question.skill,
-          priority: 3 + question.difficulty.weight - 1, // 3..5 by difficulty
-        ));
+        queue.add(
+          ReviewItem(
+            questionId: question.id,
+            skillId: question.skill,
+            priority: 3 + question.difficulty.weight - 1, // 3..5 by difficulty
+          ),
+        );
       }
     } else if (idx >= 0) {
       final item = queue[idx];

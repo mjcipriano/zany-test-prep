@@ -14,8 +14,14 @@ void main() {
       expect(xp.xpForAnswer(correct: false, difficulty: Difficulty.hard), 0);
     });
     test('review answers earn reduced xp', () {
-      expect(xp.xpForAnswer(correct: true, difficulty: Difficulty.medium, isReview: true),
-          6); // 10 * 0.6
+      expect(
+        xp.xpForAnswer(
+          correct: true,
+          difficulty: Difficulty.medium,
+          isReview: true,
+        ),
+        6,
+      ); // 10 * 0.6
     });
     test('lesson xp includes completion and perfect bonuses', () {
       final perfect = xp.xpForLesson(

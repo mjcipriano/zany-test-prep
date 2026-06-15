@@ -83,10 +83,26 @@ class GameService {
     return 0;
   }
 
+  /// Apply a finished practice set with no associated lesson (e.g. review mode).
+  LessonOutcome applyPracticeResult({
+    required AppProgress progress,
+    required UserProfile profile,
+    required List<AnswerResult> results,
+    required ContentBundle bundle,
+    DateTime? now,
+  }) => applyLessonResult(
+    progress: progress,
+    profile: profile,
+    lesson: null,
+    results: results,
+    bundle: bundle,
+    now: now,
+  );
+
   LessonOutcome applyLessonResult({
     required AppProgress progress,
     required UserProfile profile,
-    required Lesson lesson,
+    required Lesson? lesson,
     required List<AnswerResult> results,
     required ContentBundle bundle,
     DateTime? now,
@@ -101,7 +117,10 @@ class GameService {
     var gained = 0;
     for (final r in results) {
       gained += xp.xpForAnswer(
-          correct: r.correct, difficulty: r.question.difficulty, isReview: r.isReview);
+        correct: r.correct,
+        difficulty: r.question.difficulty,
+        isReview: r.isReview,
+      );
     }
     if (total > 0) {
       gained += xp.lessonCompletionBonus;
@@ -134,20 +153,24 @@ class GameService {
     g.dailyXp += gained;
     final goalAfter = g.dailyXp >= profile.dailyGoalXp;
 
-    // --- Lesson progress ---
-    final lp = progress.lessonProgress(lesson.id);
-    lp.completed = true;
-    lp.timesCompleted += 1;
-    lp.total = total;
-    if (correctCount > lp.bestCorrect) lp.bestCorrect = correctCount;
-    if (stars > lp.stars) lp.stars = stars;
-    lp.lastCompletedDay = todayKey;
+    // --- Lesson progress (skipped for review/practice with no lesson) ---
+    if (lesson != null) {
+      final lp = progress.lessonProgress(lesson.id);
+      lp.completed = true;
+      lp.timesCompleted += 1;
+      lp.total = total;
+      if (correctCount > lp.bestCorrect) lp.bestCorrect = correctCount;
+      if (stars > lp.stars) lp.stars = stars;
+      lp.lastCompletedDay = todayKey;
+    }
 
     // --- Per-question stats, mastery, review ---
     for (final r in results) {
       final q = r.question;
-      final stat = progress.questionStats
-          .putIfAbsent(q.id, () => QuestionStat(questionId: q.id));
+      final stat = progress.questionStats.putIfAbsent(
+        q.id,
+        () => QuestionStat(questionId: q.id),
+      );
       stat.attempts += 1;
       if (r.correct) stat.correct += 1;
       stat.lastCorrect = r.correct;
@@ -162,13 +185,19 @@ class GameService {
       );
 
       review.onAnswered(
-          progress: progress, question: q, correct: r.correct, now: today);
+        progress: progress,
+        question: q,
+        correct: r.correct,
+        now: today,
+      );
     }
 
     // --- Badges ---
     final newBadgeIds = Badges.evaluateAndGrant(progress, bundle);
-    final newBadges =
-        newBadgeIds.map((id) => Badges.byId(id)).whereType<BadgeDef>().toList();
+    final newBadges = newBadgeIds
+        .map((id) => Badges.byId(id))
+        .whereType<BadgeDef>()
+        .toList();
 
     return LessonOutcome(
       xpGained: gained,

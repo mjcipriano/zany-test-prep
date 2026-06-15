@@ -40,10 +40,10 @@ class Choice {
   final String rationale;
 
   factory Choice.fromJson(Map<String, dynamic> json) => Choice(
-        id: json['id'] as String,
-        text: json['text'] as String,
-        rationale: json['rationale'] as String? ?? '',
-      );
+    id: json['id'] as String,
+    text: json['text'] as String,
+    rationale: json['rationale'] as String? ?? '',
+  );
 }
 
 /// Optional supporting material shown above the question (passage or table).
@@ -67,31 +67,34 @@ class Stimulus {
   bool get isTable => type == 'table';
 
   factory Stimulus.fromJson(Map<String, dynamic> json) => Stimulus(
-        type: json['type'] as String,
-        title: json['title'] as String?,
-        text: json['text'] as String?,
-        textB: json['text_b'] as String?,
-        table: json['table'] == null
-            ? null
-            : StimulusTable.fromJson(json['table'] as Map<String, dynamic>),
-      );
+    type: json['type'] as String,
+    title: json['title'] as String?,
+    text: json['text'] as String?,
+    textB: json['text_b'] as String?,
+    table: json['table'] == null
+        ? null
+        : StimulusTable.fromJson(json['table'] as Map<String, dynamic>),
+  );
 }
 
 class StimulusTable {
-  const StimulusTable({this.caption, required this.headers, required this.rows});
+  const StimulusTable({
+    this.caption,
+    required this.headers,
+    required this.rows,
+  });
 
   final String? caption;
   final List<String> headers;
   final List<List<String>> rows;
 
   factory StimulusTable.fromJson(Map<String, dynamic> json) => StimulusTable(
-        caption: json['caption'] as String?,
-        headers:
-            (json['headers'] as List).map((e) => e.toString()).toList(),
-        rows: (json['rows'] as List)
-            .map((r) => (r as List).map((e) => e.toString()).toList())
-            .toList(),
-      );
+    caption: json['caption'] as String?,
+    headers: (json['headers'] as List).map((e) => e.toString()).toList(),
+    rows: (json['rows'] as List)
+        .map((r) => (r as List).map((e) => e.toString()).toList())
+        .toList(),
+  );
 }
 
 /// A numeric/string answer for student-produced (grid-in) questions.
@@ -112,12 +115,11 @@ class ProducedAnswer {
   bool get isNumeric => type == 'numeric';
 
   factory ProducedAnswer.fromJson(Map<String, dynamic> json) => ProducedAnswer(
-        type: json['type'] as String,
-        value: json['value'] as num?,
-        accepted:
-            (json['accepted'] as List).map((e) => e.toString()).toList(),
-        tolerance: (json['tolerance'] as num?)?.toDouble() ?? 0,
-      );
+    type: json['type'] as String,
+    value: json['value'] as num?,
+    accepted: (json['accepted'] as List).map((e) => e.toString()).toList(),
+    tolerance: (json['tolerance'] as num?)?.toDouble() ?? 0,
+  );
 }
 
 /// An exam question. Exam-agnostic: SAT now, ACT/AP later.
@@ -163,33 +165,34 @@ class Question {
   final String? answerVerification;
 
   factory Question.fromJson(Map<String, dynamic> json) => Question(
-        id: json['question_id'] as String,
-        examId: json['exam_id'] as String,
-        domain: json['domain'] as String,
-        section: json['section'] as String,
-        skill: json['skill'] as String,
-        subskill: json['subskill'] as String?,
-        lessonId: json['lesson_id'] as String,
-        difficulty: Difficulty.parse(json['difficulty'] as String?),
-        type: QuestionType.parse(json['question_type'] as String),
-        estimatedTimeSeconds: json['estimated_time_seconds'] as int,
-        prompt: json['prompt'] as String,
-        explanation: json['explanation'] as String,
-        tags: (json['tags'] as List?)?.map((e) => e.toString()).toList() ??
-            const [],
-        stimulus: json['stimulus'] == null
-            ? null
-            : Stimulus.fromJson(json['stimulus'] as Map<String, dynamic>),
-        choices: (json['choices'] as List?)
-                ?.map((e) => Choice.fromJson(e as Map<String, dynamic>))
-                .toList() ??
-            const [],
-        correctChoice: json['correct_choice'] as String?,
-        answer: json['answer'] == null
-            ? null
-            : ProducedAnswer.fromJson(json['answer'] as Map<String, dynamic>),
-        answerVerification: json['answer_verification'] as String?,
-      );
+    id: json['question_id'] as String,
+    examId: json['exam_id'] as String,
+    domain: json['domain'] as String,
+    section: json['section'] as String,
+    skill: json['skill'] as String,
+    subskill: json['subskill'] as String?,
+    lessonId: json['lesson_id'] as String,
+    difficulty: Difficulty.parse(json['difficulty'] as String?),
+    type: QuestionType.parse(json['question_type'] as String),
+    estimatedTimeSeconds: json['estimated_time_seconds'] as int,
+    prompt: json['prompt'] as String,
+    explanation: json['explanation'] as String,
+    tags:
+        (json['tags'] as List?)?.map((e) => e.toString()).toList() ?? const [],
+    stimulus: json['stimulus'] == null
+        ? null
+        : Stimulus.fromJson(json['stimulus'] as Map<String, dynamic>),
+    choices:
+        (json['choices'] as List?)
+            ?.map((e) => Choice.fromJson(e as Map<String, dynamic>))
+            .toList() ??
+        const [],
+    correctChoice: json['correct_choice'] as String?,
+    answer: json['answer'] == null
+        ? null
+        : ProducedAnswer.fromJson(json['answer'] as Map<String, dynamic>),
+    answerVerification: json['answer_verification'] as String?,
+  );
 
   Choice? get correct {
     for (final c in choices) {

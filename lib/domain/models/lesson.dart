@@ -15,12 +15,11 @@ class TeachingCard {
   final String? workedExample;
 
   factory TeachingCard.fromJson(Map<String, dynamic> json) => TeachingCard(
-        title: json['title'] as String,
-        body: json['body'] as String,
-        keyPoints:
-            (json['key_points'] as List).map((e) => e.toString()).toList(),
-        workedExample: json['worked_example'] as String?,
-      );
+    title: json['title'] as String,
+    body: json['body'] as String,
+    keyPoints: (json['key_points'] as List).map((e) => e.toString()).toList(),
+    workedExample: json['worked_example'] as String?,
+  );
 }
 
 /// A Duolingo-style lesson: a teaching card plus 8-25 questions.
@@ -60,26 +59,26 @@ class Lesson {
   bool get isMath => domain == 'math';
 
   factory Lesson.fromJson(Map<String, dynamic> json) => Lesson(
-        id: json['lesson_id'] as String,
-        examId: json['exam_id'] as String,
-        domain: json['domain'] as String,
-        section: json['section'] as String,
-        skill: json['skill'] as String,
-        title: json['title'] as String,
-        order: json['order'] as int,
-        difficulty: Difficulty.parse(json['difficulty'] as String?),
-        estimatedMinutes: json['estimated_minutes'] as int,
-        teachingCard:
-            TeachingCard.fromJson(json['teaching_card'] as Map<String, dynamic>),
-        questionIds:
-            (json['question_ids'] as List).map((e) => e.toString()).toList(),
-        prerequisiteLessonIds:
-            (json['prerequisite_lesson_ids'] as List? ?? const [])
-                .map((e) => e.toString())
-                .toList(),
-        unlockXp: json['unlock_xp'] as int? ?? 0,
-        tags: (json['tags'] as List? ?? const [])
+    id: json['lesson_id'] as String,
+    examId: json['exam_id'] as String,
+    domain: json['domain'] as String,
+    section: json['section'] as String,
+    skill: json['skill'] as String,
+    title: json['title'] as String,
+    order: json['order'] as int,
+    difficulty: Difficulty.parse(json['difficulty'] as String?),
+    estimatedMinutes: json['estimated_minutes'] as int,
+    teachingCard: TeachingCard.fromJson(
+      json['teaching_card'] as Map<String, dynamic>,
+    ),
+    questionIds: (json['question_ids'] as List)
+        .map((e) => e.toString())
+        .toList(),
+    prerequisiteLessonIds:
+        (json['prerequisite_lesson_ids'] as List? ?? const [])
             .map((e) => e.toString())
             .toList(),
-      );
+    unlockXp: json['unlock_xp'] as int? ?? 0,
+    tags: (json['tags'] as List? ?? const []).map((e) => e.toString()).toList(),
+  );
 }

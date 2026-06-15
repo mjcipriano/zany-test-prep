@@ -11,7 +11,11 @@ void main() {
 
   test('first activity starts streak at 1', () {
     final r = engine.registerActivity(
-        lastActiveDay: null, currentStreak: 0, longestStreak: 0, today: mon);
+      lastActiveDay: null,
+      currentStreak: 0,
+      longestStreak: 0,
+      today: mon,
+    );
     expect(r.currentStreak, 1);
     expect(r.longestStreak, 1);
     expect(r.extended, isTrue);
@@ -20,7 +24,11 @@ void main() {
 
   test('consecutive day extends streak', () {
     final r = engine.registerActivity(
-        lastActiveDay: dayKey(mon), currentStreak: 1, longestStreak: 1, today: tue);
+      lastActiveDay: dayKey(mon),
+      currentStreak: 1,
+      longestStreak: 1,
+      today: tue,
+    );
     expect(r.currentStreak, 2);
     expect(r.longestStreak, 2);
     expect(r.extended, isTrue);
@@ -29,7 +37,11 @@ void main() {
 
   test('same day does not change streak', () {
     final r = engine.registerActivity(
-        lastActiveDay: dayKey(tue), currentStreak: 2, longestStreak: 5, today: tue);
+      lastActiveDay: dayKey(tue),
+      currentStreak: 2,
+      longestStreak: 5,
+      today: tue,
+    );
     expect(r.currentStreak, 2);
     expect(r.longestStreak, 5);
     expect(r.extended, isFalse);
@@ -37,7 +49,11 @@ void main() {
 
   test('missing a day resets the streak to 1', () {
     final r = engine.registerActivity(
-        lastActiveDay: dayKey(wed), currentStreak: 4, longestStreak: 4, today: fri);
+      lastActiveDay: dayKey(wed),
+      currentStreak: 4,
+      longestStreak: 4,
+      today: fri,
+    );
     expect(r.currentStreak, 1);
     expect(r.reset, isTrue);
     expect(r.longestStreak, 4); // longest preserved
@@ -45,12 +61,20 @@ void main() {
 
   test('displayedStreak shows 0 after a fully missed day', () {
     expect(
-        engine.displayedStreak(
-            lastActiveDay: dayKey(wed), currentStreak: 4, today: fri),
-        0);
+      engine.displayedStreak(
+        lastActiveDay: dayKey(wed),
+        currentStreak: 4,
+        today: fri,
+      ),
+      0,
+    );
     expect(
-        engine.displayedStreak(
-            lastActiveDay: dayKey(tue), currentStreak: 4, today: wed),
-        4);
+      engine.displayedStreak(
+        lastActiveDay: dayKey(tue),
+        currentStreak: 4,
+        today: wed,
+      ),
+      4,
+    );
   });
 }

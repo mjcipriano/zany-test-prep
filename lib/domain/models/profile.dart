@@ -35,8 +35,9 @@ class UserProfile {
     return UserProfile(
       examId: examId ?? this.examId,
       dailyGoalMinutes: dailyGoalMinutes ?? this.dailyGoalMinutes,
-      targetTestDate:
-          clearTargetDate ? null : (targetTestDate ?? this.targetTestDate),
+      targetTestDate: clearTargetDate
+          ? null
+          : (targetTestDate ?? this.targetTestDate),
       soundOn: soundOn ?? this.soundOn,
       hapticsOn: hapticsOn ?? this.hapticsOn,
       themeMode: themeMode ?? this.themeMode,
@@ -45,32 +46,33 @@ class UserProfile {
   }
 
   Map<String, dynamic> toJson() => {
-        'examId': examId,
-        'dailyGoalMinutes': dailyGoalMinutes,
-        'targetTestDate': targetTestDate?.toIso8601String(),
-        'soundOn': soundOn,
-        'hapticsOn': hapticsOn,
-        'themeMode': themeMode.name,
-        'createdAt': createdAt.toIso8601String(),
-      };
+    'examId': examId,
+    'dailyGoalMinutes': dailyGoalMinutes,
+    'targetTestDate': targetTestDate?.toIso8601String(),
+    'soundOn': soundOn,
+    'hapticsOn': hapticsOn,
+    'themeMode': themeMode.name,
+    'createdAt': createdAt.toIso8601String(),
+  };
 
   factory UserProfile.fromJson(Map<String, dynamic> json) => UserProfile(
-        examId: json['examId'] as String? ?? 'sat',
-        dailyGoalMinutes: json['dailyGoalMinutes'] as int? ?? 10,
-        targetTestDate: json['targetTestDate'] == null
-            ? null
-            : DateTime.tryParse(json['targetTestDate'] as String),
-        soundOn: json['soundOn'] as bool? ?? true,
-        hapticsOn: json['hapticsOn'] as bool? ?? true,
-        themeMode: ThemeMode.values.firstWhere(
-          (m) => m.name == json['themeMode'],
-          orElse: () => ThemeMode.system,
-        ),
-        createdAt: DateTime.tryParse(json['createdAt'] as String? ?? '') ??
-            DateTime.now(),
-      );
+    examId: json['examId'] as String? ?? 'sat',
+    dailyGoalMinutes: json['dailyGoalMinutes'] as int? ?? 10,
+    targetTestDate: json['targetTestDate'] == null
+        ? null
+        : DateTime.tryParse(json['targetTestDate'] as String),
+    soundOn: json['soundOn'] as bool? ?? true,
+    hapticsOn: json['hapticsOn'] as bool? ?? true,
+    themeMode: ThemeMode.values.firstWhere(
+      (m) => m.name == json['themeMode'],
+      orElse: () => ThemeMode.system,
+    ),
+    createdAt:
+        DateTime.tryParse(json['createdAt'] as String? ?? '') ?? DateTime.now(),
+  );
 
-  static UserProfile initial(String examId, int dailyGoalMinutes) => UserProfile(
+  static UserProfile initial(String examId, int dailyGoalMinutes) =>
+      UserProfile(
         examId: examId,
         dailyGoalMinutes: dailyGoalMinutes,
         createdAt: DateTime.now(),
