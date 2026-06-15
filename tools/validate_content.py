@@ -145,6 +145,11 @@ def validate_exam(exam_id, rep: Report):
 
     # --- per-question semantic checks ---
     by_domain = {"math": 0, "reading_writing": 0}
+    # Track correct-answer position and "correct is longest option" to catch the
+    # tells where the right answer always sits in slot A or is the longest choice.
+    pos_counts = {}   # domain -> {A,B,C,D: n}
+    mc_counts = {}    # domain -> total MC items
+    longest_counts = {}  # domain -> n where correct is the longest option
     for qid, q in questions.items():
         where = f"question {qid}"
         if not ID_RE.match(qid):
@@ -158,6 +163,19 @@ def validate_exam(exam_id, rep: Report):
         if not q.get("version"):
             rep.err(f"{where}: missing version")
         by_domain[q["domain"]] = by_domain.get(q["domain"], 0) + 1
+
+        # position + length-tell tracking (multiple-choice style only)
+        if q["question_type"] != "student_produced" and q.get("choices"):
+            dom = q["domain"]
+            cc = q.get("correct_choice")
+            pos_counts.setdefault(dom, {})
+            pos_counts[dom][cc] = pos_counts[dom].get(cc, 0) + 1
+            mc_counts[dom] = mc_counts.get(dom, 0) + 1
+            cur = next((c for c in q["choices"] if c["id"] == cc), None)
+            if cur:
+                longest = max(len(c["text"]) for c in q["choices"])
+                if len(cur["text"]) == longest:
+                    longest_counts[dom] = longest_counts.get(dom, 0) + 1
 
         # placeholder scan
         choice_texts = [c["text"] for c in q.get("choices", [])]
@@ -242,6 +260,29 @@ def validate_exam(exam_id, rep: Report):
         rep.err(f"need >= 500 reading/writing questions, found {by_domain.get('reading_writing',0)}")
     if by_domain.get("math", 0) < 500:
         rep.err(f"need >= 500 math questions, found {by_domain.get('math',0)}")
+
+    # --- answer-position and length-tell balance ---
+    # A well-shuffled bank spreads the correct answer roughly evenly across
+    # positions and does not let it stand out as the longest option.
+    for dom, total in mc_counts.items():
+        if total < 40:
+            continue
+        share = {k: v / total for k, v in pos_counts.get(dom, {}).items()}
+        top = max(share.values()) if share else 0
+        rep.stats[f"{dom}_correct_positions"] = {
+            k: round(v, 2) for k, v in sorted(share.items())}
+        if top > 0.40:
+            rep.err(f"{dom}: correct answer is in one position {top*100:.0f}% of the "
+                    "time (>40%); shuffle option order")
+        elif top > 0.32:
+            rep.warn(f"{dom}: correct-answer positions are uneven (top {top*100:.0f}%)")
+        longest_rate = longest_counts.get(dom, 0) / total
+        rep.stats[f"{dom}_correct_is_longest"] = round(longest_rate, 2)
+        # Numeric math answers are often the largest value, so only flag text-heavy
+        # reading/writing where a long correct option is a real tell.
+        if dom == "reading_writing" and longest_rate > 0.45:
+            rep.warn(f"{dom}: correct answer is the longest option {longest_rate*100:.0f}% "
+                     "of the time; balance distractor lengths")
 
 
 def _parse_numeric(s):
