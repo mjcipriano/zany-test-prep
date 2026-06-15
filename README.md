@@ -16,12 +16,16 @@ offline after install**. No backend, no login, no network.
 
 ## Screenshots
 
-_Screenshots placeholder — add device captures of onboarding, the home learning
-path, a lesson, and the completion celebration here._
-
-| Onboarding | Home / Path | Lesson | Completion |
+| Onboarding | Home / Path | Teaching card | Question |
 | --- | --- | --- | --- |
-| _todo_ | _todo_ | _todo_ | _todo_ |
+| ![Onboarding](docs/screenshots/01_onboarding.png) | ![Home](docs/screenshots/02_home.png) | ![Teaching](docs/screenshots/03_teaching.png) | ![Question](docs/screenshots/04_question.png) |
+
+| Instant feedback | Lesson complete | Settings | Achievements |
+| --- | --- | --- | --- |
+| ![Feedback](docs/screenshots/05_feedback.png) | ![Summary](docs/screenshots/06_summary.png) | ![Settings](docs/screenshots/07_settings.png) | ![Achievements](docs/screenshots/08_achievements.png) |
+
+> Screenshots are generated headlessly from the real app via
+> `flutter test --tags screenshots` (see `test/screenshots/`).
 
 ## Quick start
 

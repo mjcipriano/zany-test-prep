@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:zany_test_prep/app/app.dart';
+import 'package:zany_test_prep/core/sound_service.dart';
 
 /// On-device integration test: launch -> onboard -> complete a lesson -> XP
 /// updates. Run with: flutter test integration_test
@@ -24,7 +25,12 @@ void main() {
       tester.view.resetDevicePixelRatio();
     });
 
-    await tester.pumpWidget(const ProviderScope(child: ZanyTestPrepApp()));
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [soundServiceProvider.overrideWithValue(NoopSoundService())],
+        child: const ZanyTestPrepApp(),
+      ),
+    );
     await tester.pumpAndSettle();
 
     // Onboarding.
