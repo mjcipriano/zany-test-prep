@@ -100,6 +100,26 @@ class HomeScreen extends ConsumerWidget {
               ),
             ],
           ),
+          Gap.s,
+          Row(
+            children: [
+              Expanded(
+                child: _QuickAction(
+                  icon: Icons.shuffle_rounded,
+                  label: 'Quick Practice',
+                  onTap: () => context.push('/practice/unlocked'),
+                ),
+              ),
+              Gap.s,
+              Expanded(
+                child: _QuickAction(
+                  icon: Icons.whatshot_rounded,
+                  label: 'Challenge',
+                  onTap: () => context.push('/practice/all'),
+                ),
+              ),
+            ],
+          ),
           Gap.l,
           _DomainPath(
             title: 'Reading & Writing',

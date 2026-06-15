@@ -150,7 +150,7 @@ void main() {
     await _shoot(tester, '02_home');
 
     // 3. Lesson teaching card.
-    await tester.tap(find.text('Main Idea').first);
+    await tester.tap(find.textContaining('Main Idea').first);
     await tester.pumpAndSettle();
     await _shoot(tester, '03_teaching');
 

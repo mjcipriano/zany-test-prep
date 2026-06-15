@@ -50,12 +50,27 @@ Per-skill, 0–100:
 By accuracy: **3** for 100%, **2** for ≥80%, **1** for ≥60%, else **0**. A lesson is
 marked complete once finished regardless of stars; the best star count is kept.
 
-## Unlocks (`UnlockEngine`)
+## Unlocks & progression (`UnlockEngine`)
+
+Each **skill is an independent track**: the learner picks any subject area and works
+through its difficulty tiers (**easy → medium → hard**). Within a skill, a tier
+requires the previous tier of the *same* skill; the first tier of every skill is open
+from the start. So unlocking one section is never required to start another —
+e.g., you can begin Quadratics and Transitions without finishing Linear Equations.
 
 A lesson is unlocked when every `prerequisiteLessonIds` lesson is completed **and**
-`totalXp ≥ unlockXp`. The default SAT path chains each lesson to the previous one in
-its domain, so the path opens up as you progress. `suggestNext` powers the home
-screen's "Continue" card.
+`totalXp ≥ unlockXp` (prerequisites only ever reference the same skill).
+`suggestNext` powers the home screen's "Continue" card.
+
+## Practice modes
+
+Two endless-style modes draw random questions one after another (each session is a
+fresh random set; XP/mastery/review apply, but no lesson is marked complete):
+
+- **Quick Practice** — random questions from any section the learner has unlocked.
+- **Challenge** — random questions from any section, including not-yet-unlocked ones.
+
+Both run through the same lesson player via the practice (`completeReview`) path.
 
 ## Review queue (`ReviewEngine`)
 
@@ -66,9 +81,12 @@ screen's "Continue" card.
 
 ## Badges (`Badges`)
 
-Pure predicates over progress: first lesson, 5 lessons, 3- and 7-day streaks, 100 and
-500 XP, level 5, a perfect (3-crown) lesson, 5 math lessons, 5 reading/writing
-lessons. `evaluateAndGrant` awards any newly satisfied badges after each lesson.
+Over **100** achievements — pure predicates over progress, organized in tiers: total
+XP, longest streak, level reached, lessons completed (overall, math, and
+reading/writing), 3-crown lessons, skills mastered (≥80) and proficient (≥50), total
+questions answered, total correct, distinct skills practiced, plus one-offs (big
+single-day XP, clearing the review queue, etc.). `evaluateAndGrant` awards any newly
+satisfied badges after each lesson or practice session.
 
 ## Audio & haptic feedback
 

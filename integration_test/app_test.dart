@@ -44,7 +44,7 @@ void main() {
     expect(find.text('READING & WRITING'), findsOneWidget);
 
     // Open and complete the first lesson.
-    await tester.tap(find.text('Main Idea').first);
+    await tester.tap(find.textContaining('Main Idea').first);
     await tester.pumpAndSettle();
     await tester.tap(find.text('Start'));
     await tester.pumpAndSettle();
