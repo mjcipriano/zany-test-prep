@@ -53,4 +53,39 @@ void main() {
       }
     }
   });
+
+  test(
+    'skills form independent difficulty tracks (per-skill prerequisites)',
+    () async {
+      final repo = ContentRepository(
+        reader: (path) => File(path).readAsString(),
+      );
+      final bundle = await repo.loadBundle('sat');
+      final byId = {for (final l in bundle.lessons) l.id: l};
+
+      // Many skills each have a first lesson with no prerequisites, so the learner
+      // can start any subject area without finishing another first.
+      final openers = bundle.lessons
+          .where((l) => l.prerequisiteLessonIds.isEmpty)
+          .toList();
+      final openerSkills = openers.map((l) => l.skill).toSet();
+      expect(
+        openerSkills.length,
+        greaterThanOrEqualTo(20),
+        reason: 'most skills should be independently startable',
+      );
+
+      // Every prerequisite is a lesson of the SAME skill (independent tracks).
+      for (final l in bundle.lessons) {
+        for (final pre in l.prerequisiteLessonIds) {
+          expect(byId[pre], isNotNull);
+          expect(
+            byId[pre]!.skill,
+            l.skill,
+            reason: '${l.id} should only depend on its own skill',
+          );
+        }
+      }
+    },
+  );
 }

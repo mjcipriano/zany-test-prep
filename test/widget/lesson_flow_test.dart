@@ -19,7 +19,7 @@ void main() {
       await _onboard(tester);
 
       // Open the first lesson from the home path.
-      await tester.tap(find.text('Main Idea').first);
+      await tester.tap(find.textContaining('Main Idea').first);
       await tester.pumpAndSettle();
 
       // Teaching card -> Start.

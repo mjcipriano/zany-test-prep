@@ -46,80 +46,64 @@ def load_skill_index():
     return idx
 
 
-def difficulties_for(n: int, base: str):
-    """Build a difficulty ramp for a lesson of n questions."""
-    if base == "easy":
-        pattern = ["easy"] * 6 + ["medium"] * 3 + ["easy"]
-    elif base == "medium":
-        pattern = ["easy"] * 2 + ["medium"] * 5 + ["hard"] * 3
-    else:  # hard
-        pattern = ["medium"] * 3 + ["hard"] * 7
-    return [pattern[i % len(pattern)] for i in range(n)]
-
-
 # ---- Lesson plan -----------------------------------------------------------
-# Each entry: (skill, level, base_difficulty, n_questions, kind, source)
-#   kind "math"            -> source is a math_gen function
-#   kind "rw_combinatorial"-> source is an rw_gen single-item function
-#   kind "rw_pool"         -> source is a key into POOLS
+# Each skill is an INDEPENDENT track: the learner can pick any subject area and
+# progress through its difficulty tiers (easy -> medium -> hard). Within a skill,
+# each tier requires the previous tier of the SAME skill; the first tier of every
+# skill is open from the start, so unlocking one section is never required to
+# start another.
+#
+# Each SKILLS entry: (skill, kind, source, tiers)
+#   tiers = [(difficulty, n_questions), ...] in unlock order
+#   kind "math"            -> source is a math_gen function (uses difficulty)
+#   kind "rw_combinatorial"-> source is an rw_gen single-item function (uses difficulty)
+#   kind "rw_pool"         -> source is a key into POOLS (drawn in order)
 #   kind "reading"         -> source is a reading skill key for passages.build_reading
 #   kind "cross_text"      -> source is None
-MATH_PLAN = [
-    ("linear_equations", 1, "easy", 20, "math", math_gen.linear_equations),
-    ("linear_equations", 2, "medium", 20, "math", math_gen.linear_equations),
-    ("linear_inequalities", 1, "easy", 20, "math", math_gen.linear_inequalities),
-    ("systems_of_equations", 1, "medium", 20, "math", math_gen.systems_of_equations),
-    ("systems_of_equations", 2, "hard", 20, "math", math_gen.systems_of_equations),
-    ("functions", 1, "easy", 20, "math", math_gen.functions),
-    ("functions", 2, "hard", 20, "math", math_gen.functions),
-    ("quadratics", 1, "medium", 20, "math", math_gen.quadratics),
-    ("quadratics", 2, "hard", 20, "math", math_gen.quadratics),
-    ("exponents_radicals", 1, "easy", 20, "math", math_gen.exponents_radicals),
-    ("exponents_radicals", 2, "medium", 20, "math", math_gen.exponents_radicals),
-    ("polynomials", 1, "medium", 20, "math", math_gen.polynomials),
-    ("ratios_percentages_units", 1, "easy", 20, "math", math_gen.ratios_percentages_units),
-    ("ratios_percentages_units", 2, "medium", 20, "math", math_gen.ratios_percentages_units),
-    ("proportions", 1, "easy", 20, "math", math_gen.proportions),
-    ("data_analysis", 1, "easy", 20, "math", math_gen.data_analysis),
-    ("data_analysis", 2, "medium", 20, "math", math_gen.data_analysis),
-    ("statistics", 1, "easy", 20, "math", math_gen.statistics),
-    ("statistics", 2, "medium", 20, "math", math_gen.statistics),
-    ("probability", 1, "medium", 20, "math", math_gen.probability),
-    ("area_volume", 1, "easy", 20, "math", math_gen.area_volume),
-    ("area_volume", 2, "hard", 20, "math", math_gen.area_volume),
-    ("circles", 1, "medium", 20, "math", math_gen.circles),
-    ("right_triangles", 1, "medium", 20, "math", math_gen.right_triangles),
-    ("trigonometry", 1, "hard", 20, "math", math_gen.trigonometry),
+STD3 = [("easy", 20), ("medium", 20), ("hard", 20)]   # generators with wide spaces
+SMALL3 = [("easy", 8), ("medium", 8), ("hard", 8)]    # smaller-space math skills
+CONV3 = [("easy", 24), ("medium", 24), ("hard", 24)]  # combinatorial conventions
+READ2 = [("easy", 8), ("hard", 8)]                    # 16 authored items -> 2 tiers
+
+MATH_SKILLS = [
+    ("linear_equations", "math", math_gen.linear_equations, STD3),
+    ("linear_inequalities", "math", math_gen.linear_inequalities, STD3),
+    ("systems_of_equations", "math", math_gen.systems_of_equations, STD3),
+    ("functions", "math", math_gen.functions, STD3),
+    ("quadratics", "math", math_gen.quadratics, STD3),
+    ("exponents_radicals", "math", math_gen.exponents_radicals, STD3),
+    ("polynomials", "math", math_gen.polynomials, STD3),
+    ("ratios_percentages_units", "math", math_gen.ratios_percentages_units, STD3),
+    ("proportions", "math", math_gen.proportions, STD3),
+    ("data_analysis", "math", math_gen.data_analysis, STD3),
+    ("statistics", "math", math_gen.statistics, STD3),
+    ("probability", "math", math_gen.probability, STD3),
+    ("area_volume", "math", math_gen.area_volume, STD3),
+    ("circles", "math", math_gen.circles, SMALL3),
+    ("right_triangles", "math", math_gen.right_triangles, SMALL3),
+    ("trigonometry", "math", math_gen.trigonometry, SMALL3),
 ]
 
-RW_PLAN = [
-    ("main_idea", 1, "easy", 16, "reading", "main_idea"),
-    ("inferences", 1, "medium", 16, "reading", "inference"),
-    ("command_of_evidence", 1, "medium", 16, "reading", "evidence"),
-    ("text_structure_purpose", 1, "medium", 16, "reading", "structure"),
-    ("words_in_context", 1, "easy", 16, "reading", "wic"),
-    ("cross_text_connections", 1, "hard", 16, "cross_text", None),
-    ("sentence_boundaries", 1, "easy", 25, "rw_combinatorial", rw_gen.gen_boundaries),
-    ("sentence_boundaries", 2, "medium", 25, "rw_combinatorial", rw_gen.gen_boundaries),
-    ("sentence_boundaries", 3, "medium", 25, "rw_combinatorial", rw_gen.gen_boundaries),
-    ("sentence_boundaries", 4, "hard", 25, "rw_combinatorial", rw_gen.gen_boundaries),
-    ("subject_verb_agreement", 1, "easy", 25, "rw_combinatorial", rw_gen.gen_sva),
-    ("subject_verb_agreement", 2, "medium", 25, "rw_combinatorial", rw_gen.gen_sva),
-    ("subject_verb_agreement", 3, "medium", 25, "rw_combinatorial", rw_gen.gen_sva),
-    ("subject_verb_agreement", 4, "hard", 25, "rw_combinatorial", rw_gen.gen_sva),
-    ("punctuation", 1, "easy", 25, "rw_combinatorial", rw_gen.gen_punctuation),
-    ("punctuation", 2, "medium", 25, "rw_combinatorial", rw_gen.gen_punctuation),
-    ("punctuation", 3, "hard", 25, "rw_combinatorial", rw_gen.gen_punctuation),
-    ("pronouns", 1, "medium", 25, "rw_combinatorial", rw_gen.gen_pronouns),
-    ("pronouns", 2, "hard", 25, "rw_combinatorial", rw_gen.gen_pronouns),
-    ("modifiers", 1, "medium", 16, "rw_combinatorial", rw_gen.gen_modifiers),
-    ("transitions", 1, "easy", 15, "rw_pool", "transitions"),
-    ("transitions", 2, "medium", 15, "rw_pool", "transitions"),
-    ("concision", 1, "easy", 12, "rw_pool", "concision"),
-    ("concision", 2, "medium", 12, "rw_pool", "concision"),
-    ("rhetorical_synthesis", 1, "medium", 12, "rw_pool", "synthesis"),
+RW_SKILLS = [
+    ("main_idea", "reading", "main_idea", READ2),
+    ("inferences", "reading", "inference", READ2),
+    ("command_of_evidence", "reading", "evidence", READ2),
+    ("text_structure_purpose", "reading", "structure", READ2),
+    ("words_in_context", "reading", "wic", READ2),
+    ("cross_text_connections", "cross_text", None, READ2),
+    ("sentence_boundaries", "rw_combinatorial", rw_gen.gen_boundaries, CONV3),
+    ("subject_verb_agreement", "rw_combinatorial", rw_gen.gen_sva, CONV3),
+    ("punctuation", "rw_combinatorial", rw_gen.gen_punctuation, CONV3),
+    ("pronouns", "rw_combinatorial", rw_gen.gen_pronouns, CONV3),
+    ("modifiers", "rw_combinatorial", rw_gen.gen_modifiers,
+     [("easy", 8), ("medium", 8), ("hard", 8)]),
+    ("transitions", "rw_pool", "transitions",
+     [("easy", 16), ("medium", 14), ("hard", 14)]),
+    ("concision", "rw_pool", "concision", [("easy", 20), ("hard", 20)]),
+    ("rhetorical_synthesis", "rw_pool", "synthesis", [("medium", 12)]),
 ]
-# skill -> nice section name mapping comes from skills.yaml section ids.
+
+DIFF_LABEL = {"easy": "Easy", "medium": "Medium", "hard": "Hard"}
 
 DOMAIN_SLUG = {"reading_writing": "rw", "math": "math"}
 
@@ -143,9 +127,6 @@ SKILL_TITLES = {
     "modifiers": "Modifier Placement", "transitions": "Transitions",
     "concision": "Concision", "rhetorical_synthesis": "Rhetorical Synthesis",
 }
-LEVEL_SUFFIX = {1: "", 2: " II", 3: " III"}
-
-
 def build():
     rng = random.Random(SEED)
     skill_index = load_skill_index()
@@ -186,60 +167,53 @@ def build():
             del q["subskill"]
         return q
 
-    def process_plan(plan, domain_id):
-        order = 0
-        prev_lesson_id = None
-        for skill, level, base, n, kind, source in plan:
-            domain, section = skill_index[skill]
-            lesson_id = f"sat-{DOMAIN_SLUG[domain]}-{slug(skill)}-{level}"
-            title = SKILL_TITLES[skill] + LEVEL_SUFFIX.get(level, f" {level}")
-            tcard = dict(TEACHING[skill])
-            if level > 1:
-                tcard = dict(tcard)
-                tcard["title"] = tcard["title"] + f" (Level {level})"
-            lesson = {
-                "lesson_id": lesson_id, "exam_id": EXAM_ID, "exam_name": EXAM_NAME,
-                "domain": domain, "section": section, "skill": skill,
-                "title": title, "order": order, "difficulty": base,
-                "teaching_card": tcard,
-                "question_ids": [], "prerequisite_lesson_ids":
-                    [prev_lesson_id] if prev_lesson_id else [],
-                "unlock_xp": 0, "tags": [domain, skill], "version": VERSION,
-            }
-            qs = []
-            difficulties = difficulties_for(n, base)
-            for i in range(n):
-                qid = f"{lesson_id}-q{i + 1:02d}"
-                diff = difficulties[i]
-                if kind == "math":
-                    body = _unique_generated(source, rng, diff, seen_keys)
-                elif kind == "rw_combinatorial":
-                    body = _unique_combinatorial(source, rng, seen_keys)
-                    diff = base
-                elif kind == "rw_pool":
-                    body = pools[source][pool_cursor[source]]
-                    pool_cursor[source] += 1
-                    diff = base
-                elif kind == "reading":
-                    body = reading_sources[source].pop()
-                    diff = base
-                elif kind == "cross_text":
-                    body = cross_text_items.pop()
-                    diff = base
-                else:
-                    raise ValueError(kind)
-                q = finalize_question(body, lesson, qid, diff)
-                qs.append(q)
-                lesson["question_ids"].append(qid)
-            est_seconds = sum(q["estimated_time_seconds"] for q in qs)
-            lesson["estimated_minutes"] = max(3, min(30, round(est_seconds / 60)))
-            lessons.append(lesson)
-            questions_by_lesson[lesson_id] = qs
-            prev_lesson_id = lesson_id
-            order += 1
+    order_counter = [0]
 
-    process_plan(MATH_PLAN, "math")
-    process_plan(RW_PLAN, "reading_writing")
+    def process_skills(skill_specs):
+        for skill, kind, source, tiers in skill_specs:
+            domain, section = skill_index[skill]
+            prev_lesson_id = None  # per-skill chain; resets for each skill
+            for diff, n in tiers:
+                lesson_id = f"sat-{DOMAIN_SLUG[domain]}-{slug(skill)}-{diff}"
+                tcard = dict(TEACHING[skill])
+                tcard["title"] = f"{tcard['title']} ({DIFF_LABEL[diff]})"
+                lesson = {
+                    "lesson_id": lesson_id, "exam_id": EXAM_ID, "exam_name": EXAM_NAME,
+                    "domain": domain, "section": section, "skill": skill,
+                    "title": f"{SKILL_TITLES[skill]} · {DIFF_LABEL[diff]}",
+                    "order": order_counter[0], "difficulty": diff,
+                    "teaching_card": tcard,
+                    "question_ids": [],
+                    "prerequisite_lesson_ids": [prev_lesson_id] if prev_lesson_id else [],
+                    "unlock_xp": 0, "tags": [domain, skill, diff], "version": VERSION,
+                }
+                qs = []
+                for i in range(n):
+                    qid = f"{lesson_id}-q{i + 1:02d}"
+                    if kind == "math":
+                        body = _unique_generated(source, rng, diff, seen_keys)
+                    elif kind == "rw_combinatorial":
+                        body = _unique_combinatorial(source, rng, diff, seen_keys)
+                    elif kind == "rw_pool":
+                        body = pools[source][pool_cursor[source]]
+                        pool_cursor[source] += 1
+                    elif kind == "reading":
+                        body = reading_sources[source].pop()
+                    elif kind == "cross_text":
+                        body = cross_text_items.pop()
+                    else:
+                        raise ValueError(kind)
+                    qs.append(finalize_question(body, lesson, qid, diff))
+                    lesson["question_ids"].append(qid)
+                est_seconds = sum(q["estimated_time_seconds"] for q in qs)
+                lesson["estimated_minutes"] = max(3, min(30, round(est_seconds / 60)))
+                lessons.append(lesson)
+                questions_by_lesson[lesson_id] = qs
+                prev_lesson_id = lesson_id
+                order_counter[0] += 1
+
+    process_skills(MATH_SKILLS)
+    process_skills(RW_SKILLS)
     return lessons, questions_by_lesson
 
 
@@ -253,9 +227,9 @@ def _unique_generated(fn, rng, difficulty, seen):
     raise RuntimeError(f"could not produce a unique item from {fn.__name__}")
 
 
-def _unique_combinatorial(fn, rng, seen):
-    for _ in range(800):
-        body = fn(rng)
+def _unique_combinatorial(fn, rng, difficulty, seen):
+    for _ in range(1200):
+        body = fn(rng, difficulty)
         k = item_signature(body)
         if k not in seen:
             seen.add(k)

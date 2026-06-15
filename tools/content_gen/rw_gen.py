@@ -59,7 +59,7 @@ _IND_B = [
 ]
 
 
-def gen_boundaries(rng: random.Random):
+def gen_boundaries(rng: random.Random, difficulty: str = "medium"):
     a = rng.choice(_IND_A)
     b = rng.choice(_IND_B)
     b_cap = b[0].upper() + b[1:]
@@ -116,7 +116,7 @@ _VERBS = [
 ]
 
 
-def gen_sva(rng: random.Random):
+def gen_sva(rng: random.Random, difficulty: str = "medium"):
     subj, plural = rng.choice(_SUBJECTS)
     sing, plur, ing, inf, tail = rng.choice(_VERBS)
     correct_word = plur if plural else sing
@@ -132,7 +132,18 @@ def gen_sva(rng: random.Random):
         (inf, "An infinitive cannot serve as the main verb here."),
     ]
     options, ci, rats = shuffle_with_correct(rng, correct, distractors)
-    prompt = (f"{subj} ___ {tail}.\n\n"
+    # Harder items insert a longer phrase between the subject and the verb to
+    # make the true subject easier to lose track of.
+    intervening = {
+        "easy": "",
+        "medium": ", " + rng.choice([
+            "according to the report", "in most years", "as a rule"]) + ",",
+        "hard": ", " + rng.choice([
+            "along with several related items noted earlier",
+            "unlike the examples discussed in the previous section",
+            "despite what the introduction seemed to promise"]) + ",",
+    }.get(difficulty, "")
+    prompt = (f"{subj}{intervening} ___ {tail}.\n\n"
               "Which choice completes the sentence so that it conforms to the "
               "conventions of standard English?")
     return mc(prompt, options, ci, rats, subskill="subject_verb_agreement",
@@ -167,8 +178,15 @@ _POSS_TAILS = [
 ]
 
 
-def gen_punctuation(rng: random.Random):
-    use_plural = rng.random() < 0.5
+def gen_punctuation(rng: random.Random, difficulty: str = "medium"):
+    # Plural possessives (apostrophe after the -s) are the classic harder case;
+    # singular possessives are easier. Mix at medium.
+    if difficulty == "easy":
+        use_plural = False
+    elif difficulty == "hard":
+        use_plural = True
+    else:
+        use_plural = rng.random() < 0.5
     if use_plural:
         base, possessive = rng.choice(_PLUR_NOUNS)
         plain = base
@@ -216,8 +234,14 @@ def gen_punctuation(rng: random.Random):
 # --------------------------------------------------------------------------- #
 # Combinatorial: pronouns (case)
 # --------------------------------------------------------------------------- #
-def gen_pronouns(rng: random.Random):
-    kind = rng.choice(["object_compound", "subject_compound", "who_whom"])
+def gen_pronouns(rng: random.Random, difficulty: str = "medium"):
+    # Compound subject/object case is the easier case; who vs. whom is harder.
+    if difficulty == "easy":
+        kind = rng.choice(["object_compound", "subject_compound"])
+    elif difficulty == "hard":
+        kind = "who_whom"
+    else:
+        kind = rng.choice(["object_compound", "subject_compound", "who_whom"])
     if kind == "object_compound":
         n = rng.choice(NAMES)
         verb = rng.choice(["thanked", "invited", "called", "emailed", "joined"])
@@ -244,17 +268,37 @@ def gen_pronouns(rng: random.Random):
                   "Which choice conforms to the conventions of standard English?")
         sub = "pronouns"
     else:
-        thing = rng.choice(["the scientist", "the author", "the candidate",
-                            "the musician", "the engineer"])
-        correct = ("who", "Correct. The pronoun is the subject of the verb that "
-                   "follows, so 'who' is required.")
-        distractors = [
-            ("whom", "'whom' is for objects; here the pronoun is the subject of the verb."),
-            ("which", "'which' refers to things, not people."),
-            ("whose", "'whose' is possessive and does not fit as the subject here.")]
-        prompt = (f"The award went to {thing} ___ designed the experiment.\n\n"
-                  "Which choice conforms to the conventions of standard English?")
+        person = rng.choice([
+            "the scientist", "the author", "the candidate", "the musician",
+            "the engineer", "the teacher", "the architect", "the journalist",
+            "the volunteer", "the researcher", "the coach", "the director"])
         sub = "pronouns"
+        if rng.random() < 0.5:
+            # subject use of 'who'
+            act = rng.choice([
+                "designed the experiment", "wrote the report", "led the project",
+                "won the award", "solved the puzzle", "organized the event"])
+            correct = ("who", "Correct. The pronoun is the subject of the verb that "
+                       "follows, so 'who' is required.")
+            distractors = [
+                ("whom", "'whom' is for objects; here the pronoun is the subject of the verb."),
+                ("which", "'which' refers to things, not people."),
+                ("whose", "'whose' is possessive and does not fit as the subject here.")]
+            prompt = (f"The prize went to {person} ___ {act}.\n\n"
+                      "Which choice conforms to the conventions of standard English?")
+        else:
+            # object use of 'whom'
+            act = rng.choice([
+                "the committee selected", "the judges praised", "the editor hired",
+                "the students admired", "the panel interviewed", "everyone trusted"])
+            correct = ("whom", "Correct. The pronoun is the object of the following "
+                       "verb, so 'whom' is required.")
+            distractors = [
+                ("who", "'who' is subjective; here the pronoun is the object of the verb."),
+                ("which", "'which' refers to things, not people."),
+                ("whose", "'whose' is possessive and does not fit as the object here.")]
+            prompt = (f"She is the one {person.split()[1]} ___ {act}.\n\n"
+                      "Which choice conforms to the conventions of standard English?")
     options, ci, rats = shuffle_with_correct(rng, correct, distractors)
     return mc(prompt, options, ci, rats, subskill=sub, qtype="grammar_editing",
               explanation=("Choose pronoun case by the pronoun's job: subjective for "
@@ -293,6 +337,14 @@ _MODIFIERS = [
      "the museum", "the discovery"),
     ("Eager to begin,", "the students", "the lesson", "the bell", "the classroom"),
     ("Damaged by the flood,", "the records", "the clerk", "the basement", "the city"),
+    ("Covered in fresh snow,", "the field", "the children", "the morning", "the village"),
+    ("Sealed for a hundred years,", "the letter", "the historian", "the attic", "the family"),
+    ("Startled by the noise,", "the deer", "the hikers", "the forest", "the silence"),
+    ("Printed in bold letters,", "the headline", "the editor", "the readers", "the page"),
+    ("Exhausted after the climb,", "the team", "the summit", "the gear", "the weather"),
+    ("Polished to a shine,", "the trophy", "the winner", "the shelf", "the ceremony"),
+    ("Lost in thought,", "the writer", "the deadline", "the office", "the afternoon"),
+    ("Wrapped in fog,", "the harbor", "the sailors", "the ships", "the dawn"),
 ]
 _MOD_PRED = {
     "Walking through the old town,": "admired the architecture",
@@ -311,10 +363,18 @@ _MOD_PRED = {
     "Buried in the garden for centuries,": "gleamed when finally unearthed",
     "Eager to begin,": "raced into the room",
     "Damaged by the flood,": "had to be carefully restored",
+    "Covered in fresh snow,": "looked completely transformed",
+    "Sealed for a hundred years,": "revealed a forgotten secret",
+    "Startled by the noise,": "bolted into the trees",
+    "Printed in bold letters,": "caught every reader's eye",
+    "Exhausted after the climb,": "rested at the summit",
+    "Polished to a shine,": "gleamed under the lights",
+    "Lost in thought,": "barely noticed the time",
+    "Wrapped in fog,": "was almost invisible at dawn",
 }
 
 
-def gen_modifiers(rng: random.Random):
+def gen_modifiers(rng: random.Random, difficulty: str = "medium"):
     mod, right, w1, w2, w3 = rng.choice(_MODIFIERS)
     pred = _MOD_PRED[mod]
     correct = (f"{mod} {right} {pred}.",
@@ -380,6 +440,20 @@ _TRANS_ITEMS = [
     ("Critics praised the film's visuals.", "they found the plot thin.", "contrast"),
     ("The plant needs very little water.", "it can survive weeks of neglect.", "emphasis"),
     ("The report identified several risks.", "it proposed concrete solutions for each.", "addition"),
+    ("The bakery doubled its staff.", "lines at the counter grew even longer.", "contrast"),
+    ("The coral bleached during the heat wave.", "many colonies failed to recover.", "cause"),
+    ("The app was simple to use.", "it offered surprisingly powerful features.", "addition"),
+    ("The river rose above its banks.", "nearby roads were closed for days.", "cause"),
+    ("The theory explained the early results.", "it failed to predict the later ones.", "contrast"),
+    ("The orchard was planted in spring.", "the first apples appeared by autumn.", "sequence"),
+    ("The lecture was dense and technical.", "the audience followed it closely.", "contrast"),
+    ("The vaccine reached remote villages.", "infection rates there dropped sharply.", "cause"),
+    ("The museum is free to enter.", "it relies entirely on donations.", "cause"),
+    ("The hikers underestimated the trail.", "they reached the peak hours late.", "cause"),
+    ("The author writes for adults.", "her latest book delights children too.", "contrast"),
+    ("The factory cut its water use.", "it also lowered its electricity bills.", "addition"),
+    ("The plan looked promising on paper.", "it collapsed at the first real test.", "contrast"),
+    ("The choir warmed up backstage.", "they walked out to perform.", "sequence"),
 ]
 
 
@@ -486,6 +560,54 @@ _CONCISION = [
     ("the species adapts quickly", "the species adapts and adjusts quickly and fast",
      "the species, when threatened, adapts quickly",
      "quick adaptation is something the species does rapidly"),
+    ("the museum reopened in May", "the museum reopened once again in the month of May",
+     "the museum, after being closed, reopened in May",
+     "May was the month in which the museum reopened to visitors"),
+    ("the bridge is closed for repairs", "the bridge is closed and shut for repairs and fixes",
+     "the bridge, which spans the river, is closed for repairs",
+     "for repairs, the bridge is currently in a closed condition"),
+    ("the survey reached many readers", "the survey reached and got to many different readers",
+     "the survey, once distributed, reached many readers",
+     "many readers are the ones whom the survey reached"),
+    ("the engine runs on solar power", "the engine runs and operates on solar power from the sun",
+     "the engine, which is modern, runs on solar power",
+     "solar power is the source on which the engine runs"),
+    ("the team practiced every morning", "the team practiced each and every single morning",
+     "the team, eager to improve, practiced every morning",
+     "every morning was when the team did its practicing"),
+    ("the report was finished on time", "the report was finished and completed on time punctually",
+     "the report, after much work, was finished on time",
+     "on time is when the report ended up being finished"),
+    ("the trail reopened to hikers", "the trail reopened and was opened again to hikers",
+     "the trail, now cleared, reopened to hikers",
+     "hikers are the people to whom the trail reopened"),
+    ("the bakery lowered its prices", "the bakery lowered and reduced its prices to be cheaper",
+     "the bakery, hoping for sales, lowered its prices",
+     "its prices were lowered by the bakery to draw customers"),
+    ("the lake froze in December", "the lake froze solid and icy in the month of December",
+     "the lake, which is shallow, froze in December",
+     "December was the time during which the lake froze"),
+    ("the author thanked her editor", "the author thanked and expressed gratitude to her editor",
+     "the author, in her speech, thanked her editor",
+     "her editor was the person whom the author thanked"),
+    ("the school added new courses", "the school added and introduced brand-new courses",
+     "the school, responding to demand, added new courses",
+     "new courses are what the school decided to add"),
+    ("the garden needs little water", "the garden needs only a little bit of minimal water",
+     "the garden, full of cacti, needs little water",
+     "little water is all that the garden actually needs"),
+    ("the festival drew large crowds", "the festival drew and attracted large, sizable crowds",
+     "the festival, held downtown, drew large crowds",
+     "large crowds were drawn to the festival that weekend"),
+    ("the printer jammed again", "the printer jammed and got stuck yet again once more",
+     "the printer, an old model, jammed again",
+     "again is when the printer experienced another jam"),
+    ("the coach praised the rookie", "the coach praised and complimented the new rookie player",
+     "the coach, pleased with the win, praised the rookie",
+     "the rookie was the one whom the coach chose to praise"),
+    ("the road curves near the cliff", "the road curves and bends sharply near the steep cliff",
+     "the road, which is narrow, curves near the cliff",
+     "near the cliff is the place where the road curves"),
 ]
 
 
