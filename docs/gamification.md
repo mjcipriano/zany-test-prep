@@ -78,12 +78,30 @@ Challenge and Survival draw from the whole bank and use **domain-balanced sampli
 Writing. Quick Practice and Challenge run through the lesson player via the practice
 (`completeReview`) path; Survival has its own end-on-miss flow (`completeSurvival`).
 
-## Review queue (`ReviewEngine`)
+## Spaced-repetition review (`ReviewEngine`)
 
-- A missed question is added with priority `3 + difficulty.weight − 1` (3–5).
-- A correct **review** answer lowers its priority by 1; at 0 it leaves the queue.
-- Missing it again raises priority (capped at 5).
-- The Review screen plays the highest-priority items first.
+An SM-2-style scheduler:
+- A missed question enters the queue **due immediately** (interval 1 day).
+- Each correct **review** answer grows the interval (1 → 3 → ~7 → ~16 …) via an ease
+  factor and pushes the next due date out; a miss resets the interval and lowers ease.
+  An item **graduates** out once its interval passes ~30 days.
+- The home "Review" badge and the Review screen use only items **due now**, most-overdue
+  first (priority breaks ties).
+
+## Diagnostic & dashboard
+
+- **Diagnostic** (one question per skill, no feedback) seeds per-skill mastery and shows
+  where to focus; offered as a one-time card to new learners.
+- **Progress dashboard** visualizes local data: estimated SAT score (from accuracy),
+  totals, a daily-XP bar chart, a streak calendar heatmap, accuracy by domain, and the
+  weakest skills. Daily history is logged via `AppProgress.recordDay`.
+
+## Timed practice test
+
+A Digital-SAT-shaped simulation: two timed Reading & Writing modules then two Math
+modules, with flag/navigate within a module and an estimated section + total score (raw
+correct mapped to a 200–800 scale per section). Answers feed XP, mastery, and the review
+queue at the end.
 
 ## Badges (`Badges`)
 

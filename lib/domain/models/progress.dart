@@ -103,18 +103,27 @@ class ReviewItem {
     required this.skillId,
     this.priority = 3,
     this.lastReviewedDay,
+    this.intervalDays = 0,
+    this.ease = 2.3,
+    this.dueDay,
   });
 
   final String questionId;
   final String skillId;
   int priority; // higher = needs review sooner
   String? lastReviewedDay;
+  int intervalDays; // SM-2 interval; days until next review
+  double ease; // SM-2 ease factor (>= 1.3)
+  String? dueDay; // yyyy-MM-dd this item is next due
 
   Map<String, dynamic> toJson() => {
     'questionId': questionId,
     'skillId': skillId,
     'priority': priority,
     'lastReviewedDay': lastReviewedDay,
+    'intervalDays': intervalDays,
+    'ease': ease,
+    'dueDay': dueDay,
   };
 
   factory ReviewItem.fromJson(Map<String, dynamic> j) => ReviewItem(
@@ -122,6 +131,9 @@ class ReviewItem {
     skillId: j['skillId'] as String,
     priority: j['priority'] as int? ?? 3,
     lastReviewedDay: j['lastReviewedDay'] as String?,
+    intervalDays: j['intervalDays'] as int? ?? 0,
+    ease: (j['ease'] as num?)?.toDouble() ?? 2.3,
+    dueDay: j['dueDay'] as String?,
   );
 }
 
@@ -135,6 +147,7 @@ class GameState {
     this.dailyXp = 0,
     this.dailyDay,
     this.survivalBest = 0,
+    this.diagnosticDone = false,
     Set<String>? earnedBadges,
   }) : earnedBadges = earnedBadges ?? <String>{};
 
@@ -145,6 +158,7 @@ class GameState {
   int dailyXp;
   String? dailyDay;
   int survivalBest; // longest correct streak in Survival mode
+  bool diagnosticDone;
   Set<String> earnedBadges;
 
   Map<String, dynamic> toJson() => {
@@ -155,6 +169,7 @@ class GameState {
     'dailyXp': dailyXp,
     'dailyDay': dailyDay,
     'survivalBest': survivalBest,
+    'diagnosticDone': diagnosticDone,
     'earnedBadges': earnedBadges.toList(),
   };
 
@@ -166,9 +181,39 @@ class GameState {
     dailyXp: j['dailyXp'] as int? ?? 0,
     dailyDay: j['dailyDay'] as String?,
     survivalBest: j['survivalBest'] as int? ?? 0,
+    diagnosticDone: j['diagnosticDone'] as bool? ?? false,
     earnedBadges: (j['earnedBadges'] as List? ?? const [])
         .map((e) => e.toString())
         .toSet(),
+  );
+}
+
+/// Per-day activity, used by the progress dashboard.
+class DailyStat {
+  DailyStat({
+    required this.day,
+    this.xp = 0,
+    this.answered = 0,
+    this.correct = 0,
+  });
+
+  final String day; // yyyy-MM-dd
+  int xp;
+  int answered;
+  int correct;
+
+  Map<String, dynamic> toJson() => {
+    'day': day,
+    'xp': xp,
+    'answered': answered,
+    'correct': correct,
+  };
+
+  factory DailyStat.fromJson(Map<String, dynamic> j) => DailyStat(
+    day: j['day'] as String,
+    xp: j['xp'] as int? ?? 0,
+    answered: j['answered'] as int? ?? 0,
+    correct: j['correct'] as int? ?? 0,
   );
 }
 
@@ -180,17 +225,28 @@ class AppProgress {
     Map<String, QuestionStat>? questionStats,
     Map<String, SkillMastery>? skillMastery,
     List<ReviewItem>? reviewQueue,
+    Map<String, DailyStat>? history,
   }) : game = game ?? GameState(),
        lessons = lessons ?? {},
        questionStats = questionStats ?? {},
        skillMastery = skillMastery ?? {},
-       reviewQueue = reviewQueue ?? [];
+       reviewQueue = reviewQueue ?? [],
+       history = history ?? {};
 
   final GameState game;
   final Map<String, LessonProgress> lessons;
   final Map<String, QuestionStat> questionStats;
   final Map<String, SkillMastery> skillMastery;
   final List<ReviewItem> reviewQueue;
+  final Map<String, DailyStat> history;
+
+  /// Records a day's activity into the rolling history (used by the dashboard).
+  void recordDay(String day, {int xp = 0, int answered = 0, int correct = 0}) {
+    final d = history.putIfAbsent(day, () => DailyStat(day: day));
+    d.xp += xp;
+    d.answered += answered;
+    d.correct += correct;
+  }
 
   LessonProgress lessonProgress(String lessonId) =>
       lessons.putIfAbsent(lessonId, () => LessonProgress(lessonId: lessonId));
@@ -207,6 +263,7 @@ class AppProgress {
     'questionStats': questionStats.map((k, v) => MapEntry(k, v.toJson())),
     'skillMastery': skillMastery.map((k, v) => MapEntry(k, v.toJson())),
     'reviewQueue': reviewQueue.map((e) => e.toJson()).toList(),
+    'history': history.map((k, v) => MapEntry(k, v.toJson())),
   };
 
   factory AppProgress.fromJson(Map<String, dynamic> j) => AppProgress(
@@ -234,5 +291,11 @@ class AppProgress {
     reviewQueue: ((j['reviewQueue'] as List?) ?? const [])
         .map((e) => ReviewItem.fromJson((e as Map).cast<String, dynamic>()))
         .toList(),
+    history: ((j['history'] as Map?) ?? const {}).map(
+      (k, v) => MapEntry(
+        k as String,
+        DailyStat.fromJson((v as Map).cast<String, dynamic>()),
+      ),
+    ),
   );
 }

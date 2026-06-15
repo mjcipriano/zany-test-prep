@@ -3,15 +3,18 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../features/achievements/achievements_screen.dart';
+import '../features/diagnostic/diagnostic_screen.dart';
 import '../features/home/home_screen.dart';
 import '../features/lessons/lesson_screen.dart';
 import '../features/onboarding/onboarding_screen.dart';
 import '../features/practice/practice_screen.dart';
 import '../features/practice/survival_screen.dart';
+import '../features/progress/dashboard_screen.dart';
 import '../features/progress/skills_screen.dart';
 import '../features/review/review_screen.dart';
 import '../features/settings/about_screen.dart';
 import '../features/settings/settings_screen.dart';
+import '../features/test/timed_test_screen.dart';
 import 'app_controller.dart';
 
 /// The app router. Redirects to onboarding until a local profile exists.
@@ -60,8 +63,20 @@ final routerProvider = Provider<GoRouter>((ref) {
         builder: (context, state) => const SurvivalScreen(),
       ),
       GoRoute(
+        path: '/test',
+        builder: (context, state) => const TimedTestScreen(),
+      ),
+      GoRoute(
         path: '/skills',
         builder: (context, state) => const SkillsScreen(),
+      ),
+      GoRoute(
+        path: '/dashboard',
+        builder: (context, state) => const DashboardScreen(),
+      ),
+      GoRoute(
+        path: '/diagnostic',
+        builder: (context, state) => const DiagnosticScreen(),
       ),
       GoRoute(
         path: '/achievements',

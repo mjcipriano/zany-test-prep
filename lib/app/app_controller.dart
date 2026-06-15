@@ -174,6 +174,25 @@ class AppController extends AsyncNotifier<AppData> {
     );
   }
 
+  /// Seeds per-skill mastery from a diagnostic and marks it done.
+  Future<void> applyDiagnostic({required List<AnswerResult> results}) async {
+    final data = _data;
+    for (final r in results) {
+      data.progress.mastery(r.question.skill).mastery = r.correct ? 60 : 25;
+    }
+    data.progress.game.diagnosticDone = true;
+    await _repo.saveProgress(data.progress);
+    state = AsyncData(data.bump());
+  }
+
+  /// Marks the diagnostic as dismissed without taking it.
+  Future<void> skipDiagnostic() async {
+    final data = _data;
+    data.progress.game.diagnosticDone = true;
+    await _repo.saveProgress(data.progress);
+    state = AsyncData(data.bump());
+  }
+
   Future<void> updateProfile(UserProfile profile) async {
     await _repo.saveProfile(profile);
     state = AsyncData(_data.bump(profile: profile));

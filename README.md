@@ -20,9 +20,9 @@ offline after install**. No backend, no login, no network.
 | --- | --- | --- | --- |
 | ![Onboarding](docs/screenshots/01_onboarding.png) | ![Home](docs/screenshots/02_home.png) | ![Teaching](docs/screenshots/03_teaching.png) | ![Question](docs/screenshots/04_question.png) |
 
-| Instant feedback | Lesson complete | Settings | Achievements |
+| Instant feedback | Lesson complete | Achievements | Progress dashboard |
 | --- | --- | --- | --- |
-| ![Feedback](docs/screenshots/05_feedback.png) | ![Summary](docs/screenshots/06_summary.png) | ![Settings](docs/screenshots/07_settings.png) | ![Achievements](docs/screenshots/08_achievements.png) |
+| ![Feedback](docs/screenshots/05_feedback.png) | ![Summary](docs/screenshots/06_summary.png) | ![Achievements](docs/screenshots/08_achievements.png) | ![Dashboard](docs/screenshots/09_dashboard.png) |
 
 > Screenshots are generated headlessly from the real app via
 > `flutter test --tags screenshots` (see `test/screenshots/`).
