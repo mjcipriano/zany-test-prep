@@ -160,10 +160,10 @@ def build():
     for k in pools:
         rng.shuffle(pools[k])
     pool_cursor = {k: 0 for k in pools}
-    reading_sources = {key: passages.build_reading(key)
+    reading_sources = {key: passages.build_reading(key, rng)
                        for key in ("main_idea", "inference", "evidence",
                                    "structure", "wic")}
-    cross_text_items = passages.build_cross_text()
+    cross_text_items = passages.build_cross_text(rng)
 
     lessons = []
     questions_by_lesson = {}
