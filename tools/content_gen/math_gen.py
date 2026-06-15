@@ -59,9 +59,9 @@ def _names():
 # --------------------------------------------------------------------------- #
 def linear_equations(rng: random.Random, difficulty: str):
     if difficulty == "easy":
-        a = rng.randint(2, 9)
-        x = rng.randint(2, 12)
-        b = rng.randint(1, 20)
+        a = rng.randint(2, 12)
+        x = rng.randint(2, 20)
+        b = rng.randint(1, 40)
         c = a * x + b
         prompt = f"If {a}x + {b} = {c}, what is the value of x?"
         explanation = (f"Subtract {b} from both sides: {a}x = {c - b}. "
@@ -79,10 +79,10 @@ def linear_equations(rng: random.Random, difficulty: str):
             tags=["algebra", "linear"], verify=f"{a}*{x}+{b}={c}",
             correct_note=f"Correct: {a}·{x}+{b}={c}.")
     if difficulty == "medium":
-        a = rng.randint(3, 9)
+        a = rng.randint(3, 14)
         c = rng.randint(1, a - 1)  # ensure a != c
-        x = rng.randint(2, 10)
-        b = rng.randint(1, 12)
+        x = rng.randint(2, 16)
+        b = rng.randint(1, 25)
         # a x + b = c x + d  -> d = (a-c)x + b - ... solve forward
         d = (a - c) * x + b
         prompt = f"If {a}x + {b} = {c}x + {d}, what is the value of x?"
@@ -96,10 +96,10 @@ def linear_equations(rng: random.Random, difficulty: str):
             subskill="one_variable", explanation=explanation,
             tags=["algebra", "linear"], verify=f"x={x}")
     # hard: solve for slope/value in two-variable linear context
-    m = rng.randint(2, 6)
-    b = rng.randint(-6, 6)
-    x1 = rng.randint(1, 6)
-    x2 = x1 + rng.randint(2, 5)
+    m = rng.randint(2, 9)
+    b = rng.randint(-12, 12)
+    x1 = rng.randint(1, 9)
+    x2 = x1 + rng.randint(2, 8)
     y1 = m * x1 + b
     y2 = m * x2 + b
     prompt = (f"A line passes through the points ({x1}, {y1}) and ({x2}, {y2}). "
@@ -116,9 +116,9 @@ def linear_equations(rng: random.Random, difficulty: str):
 
 
 def linear_inequalities(rng: random.Random, difficulty: str):
-    a = rng.randint(2, 8)
-    x = rng.randint(2, 9)
-    b = rng.randint(1, 15)
+    a = rng.randint(2, 12)
+    x = rng.randint(2, 16)
+    b = rng.randint(1, 30)
     c = a * x + b
     # a x + b <= c  -> x <= x ; we want the greatest integer value of x
     prompt = (f"What is the greatest integer value of x that satisfies "
@@ -135,10 +135,10 @@ def linear_inequalities(rng: random.Random, difficulty: str):
 
 
 def systems_of_equations(rng: random.Random, difficulty: str):
-    x = rng.randint(1, 8)
-    y = rng.randint(1, 8)
-    a1, b1 = rng.randint(1, 4), rng.randint(1, 4)
-    a2, b2 = rng.randint(1, 4), rng.randint(1, 4)
+    x = rng.randint(1, 12)
+    y = rng.randint(1, 12)
+    a1, b1 = rng.randint(1, 6), rng.randint(1, 6)
+    a2, b2 = rng.randint(1, 6), rng.randint(1, 6)
     # avoid parallel
     while a1 * b2 - a2 * b1 == 0:
         a2 = rng.randint(1, 5)
@@ -171,10 +171,10 @@ def systems_of_equations(rng: random.Random, difficulty: str):
 # --------------------------------------------------------------------------- #
 def functions(rng: random.Random, difficulty: str):
     if difficulty == "hard":
-        a = rng.randint(1, 3)
-        b = rng.randint(-4, 4)
-        c = rng.randint(-6, 6)
-        k = rng.randint(-3, 4)
+        a = rng.randint(1, 6)
+        b = rng.randint(-9, 9)
+        c = rng.randint(-12, 12)
+        k = rng.randint(-5, 6)
         val = a * k * k + b * k + c
         prompt = (f"The function f is defined by f(x) = {a}x² + {b}x + {c}. "
                   f"What is the value of f({k})?")
@@ -187,9 +187,9 @@ def functions(rng: random.Random, difficulty: str):
              (val + a, "Arithmetic slip in squaring; recompute (k)².")],
             subskill="evaluate", explanation=explanation,
             tags=["functions", "quadratic"], est=80, verify=f"f({k})={val}")
-    a = rng.randint(2, 6)
-    b = rng.randint(-8, 8)
-    k = rng.randint(-4, 6)
+    a = rng.randint(2, 12)
+    b = rng.randint(-15, 15)
+    k = rng.randint(-8, 10)
     val = a * k + b
     prompt = (f"The function f is defined by f(x) = {a}x + {b}. "
               f"What is the value of f({k})?")
@@ -208,8 +208,8 @@ def functions(rng: random.Random, difficulty: str):
 
 
 def quadratics(rng: random.Random, difficulty: str):
-    r1 = rng.randint(-8, -1)
-    r2 = rng.randint(1, 8)
+    r1 = rng.randint(-14, -1)
+    r2 = rng.randint(1, 14)
     b = -(r1 + r2)
     c = r1 * r2
     bsign = "+" if b >= 0 else "−"
@@ -246,9 +246,9 @@ def quadratics(rng: random.Random, difficulty: str):
 
 
 def exponents_radicals(rng: random.Random, difficulty: str):
-    base = rng.randint(2, 7)
-    m = rng.randint(2, 6)
-    n = rng.randint(2, 5)
+    base = rng.randint(2, 9)
+    m = rng.randint(2, 8)
+    n = rng.randint(2, 6)
     while m + n == m * n:   # avoid m=n=2, where add/multiply distractors collide
         n = rng.randint(2, 5)
     val = base ** (m + n)
@@ -266,10 +266,10 @@ def exponents_radicals(rng: random.Random, difficulty: str):
 
 
 def polynomials(rng: random.Random, difficulty: str):
-    a = rng.randint(1, 5)
-    b = rng.randint(1, 6)
-    c = rng.randint(1, 5)
-    d = rng.randint(1, 6)
+    a = rng.randint(1, 9)
+    b = rng.randint(1, 12)
+    c = rng.randint(1, 9)
+    d = rng.randint(1, 12)
     # (a x + b)(c x + d): coefficient of x is a*d + b*c
     coeff = a * d + b * c
     prompt = (f"In the expansion of ({a}x + {b})({c}x + {d}), "
@@ -321,9 +321,9 @@ def ratios_percentages_units(rng: random.Random, difficulty: str):
 
 
 def proportions(rng: random.Random, difficulty: str):
-    rate_n = rng.randint(2, 9)
-    rate_d = rng.randint(2, 6)
-    mult = rng.randint(3, 8)
+    rate_n = rng.randint(2, 15)
+    rate_d = rng.randint(2, 9)
+    mult = rng.randint(3, 12)
     given = rate_d * mult
     val = rate_n * mult
     unit = rng.choice([("miles", "hours"), ("pages", "minutes"), ("dollars", "items")])
@@ -411,9 +411,9 @@ def statistics(rng: random.Random, difficulty: str):
 
 
 def probability(rng: random.Random, difficulty: str):
-    red = rng.randint(2, 8)
-    blue = rng.randint(2, 8)
-    green = rng.randint(1, 6)
+    red = rng.randint(2, 14)
+    blue = rng.randint(2, 14)
+    green = rng.randint(1, 10)
     total = red + blue + green
     pick = rng.choice([("red", red), ("blue", blue), ("green", green)])
     val = Fraction(pick[1], total)

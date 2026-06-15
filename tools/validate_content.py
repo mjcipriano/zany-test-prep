@@ -126,12 +126,14 @@ def validate_exam(exam_id, rep: Report):
                            tc["title"], tc["body"], *tc["key_points"])
 
     # Load + schema-validate questions.
-    for rel in manifest["questions"]:
+    bank_ids = set()
+    for rel in manifest["questions"] + manifest.get("bank", []):
         path = sat / rel
         items = load_json(path)
         if not isinstance(items, list):
             rep.err(f"question file not a list: {path.name}")
             continue
+        is_bank = rel in manifest.get("bank", [])
         for q in items:
             for e in q_validator.iter_errors(q):
                 rep.err(f"question {q.get('question_id','?')}: schema: {e.message}")
@@ -139,9 +141,12 @@ def validate_exam(exam_id, rep: Report):
             if qid in questions:
                 rep.err(f"duplicate question_id: {qid}")
             questions[qid] = q
+            if is_bank:
+                bank_ids.add(qid)
 
     rep.stats["lessons"] = len(lessons)
     rep.stats["questions"] = len(questions)
+    rep.stats["bank_questions"] = len(bank_ids)
 
     # --- per-question semantic checks ---
     by_domain = {"math": 0, "reading_writing": 0}

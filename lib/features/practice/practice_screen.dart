@@ -30,15 +30,15 @@ class PracticeScreen extends ConsumerWidget {
     if (mode == 'all') {
       pool = [...bundle.questions];
     } else {
+      // All questions (lesson + practice bank) whose owning lesson is unlocked.
       const unlock = UnlockEngine();
-      final seen = <String>{};
-      pool = [];
-      for (final lesson in bundle.lessons) {
-        if (!unlock.isUnlocked(lesson, data.progress)) continue;
-        for (final q in bundle.questionsFor(lesson)) {
-          if (seen.add(q.id)) pool.add(q);
-        }
-      }
+      final unlockedLessons = <String, bool>{};
+      bool lessonUnlocked(String lessonId) =>
+          unlockedLessons.putIfAbsent(lessonId, () {
+            final l = bundle.lesson(lessonId);
+            return l != null && unlock.isUnlocked(l, data.progress);
+          });
+      pool = bundle.questions.where((q) => lessonUnlocked(q.lessonId)).toList();
     }
 
     if (pool.isEmpty) {
