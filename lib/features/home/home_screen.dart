@@ -9,6 +9,7 @@ import '../../domain/models/content_bundle.dart';
 import '../../domain/models/lesson.dart';
 import '../../domain/models/progress.dart';
 import '../../domain/services/leveling.dart';
+import '../../domain/services/review_engine.dart';
 import '../../domain/services/streak_engine.dart';
 import '../../domain/services/unlock_engine.dart';
 
@@ -39,7 +40,8 @@ class HomeScreen extends ConsumerWidget {
         ? progress.game.dailyXp
         : 0;
     final suggested = unlock.suggestNext(bundle, progress);
-    final reviewCount = progress.reviewQueue.length;
+    const review = ReviewEngine();
+    final reviewCount = review.dueCount(progress);
 
     return Scaffold(
       appBar: AppBar(
@@ -48,6 +50,11 @@ class HomeScreen extends ConsumerWidget {
           style: TextStyle(fontWeight: FontWeight.w800),
         ),
         actions: [
+          IconButton(
+            tooltip: 'Progress',
+            onPressed: () => context.push('/dashboard'),
+            icon: const Icon(Icons.bar_chart_rounded),
+          ),
           IconButton(
             tooltip: 'Achievements',
             onPressed: () => context.push('/achievements'),
@@ -73,6 +80,56 @@ class HomeScreen extends ConsumerWidget {
             goalXp: goalXp,
           ),
           Gap.m,
+          if (!progress.game.diagnosticDone)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 8),
+              child: AppCard(
+                color: Theme.of(context).colorScheme.tertiaryContainer,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Row(
+                      children: [
+                        Icon(Icons.explore_rounded),
+                        Gap.s,
+                        Expanded(
+                          child: Text(
+                            'Personalize your plan',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w800,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Gap.xs,
+                    const Text(
+                      'Take a 2-minute diagnostic so we can find your strengths '
+                      'and what to study first.',
+                    ),
+                    Gap.s,
+                    Row(
+                      children: [
+                        Expanded(
+                          child: FilledButton(
+                            onPressed: () => context.push('/diagnostic'),
+                            child: const Text('Take it'),
+                          ),
+                        ),
+                        Gap.s,
+                        TextButton(
+                          onPressed: () => ref
+                              .read(appControllerProvider.notifier)
+                              .skipDiagnostic(),
+                          child: const Text('Skip'),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
           if (suggested != null)
             _ContinueCard(
               lesson: suggested,
@@ -121,12 +178,26 @@ class HomeScreen extends ConsumerWidget {
             ],
           ),
           Gap.s,
-          _QuickAction(
-            icon: Icons.bolt_rounded,
-            label: progress.game.survivalBest > 0
-                ? 'Survival  ·  best ${progress.game.survivalBest}'
-                : 'Survival',
-            onTap: () => context.push('/survival'),
+          Row(
+            children: [
+              Expanded(
+                child: _QuickAction(
+                  icon: Icons.bolt_rounded,
+                  label: progress.game.survivalBest > 0
+                      ? 'Survival · ${progress.game.survivalBest}'
+                      : 'Survival',
+                  onTap: () => context.push('/survival'),
+                ),
+              ),
+              Gap.s,
+              Expanded(
+                child: _QuickAction(
+                  icon: Icons.timer_rounded,
+                  label: 'Practice Test',
+                  onTap: () => context.push('/test'),
+                ),
+              ),
+            ],
           ),
           Gap.l,
           _DomainPath(

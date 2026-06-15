@@ -100,24 +100,35 @@ void main() {
 
   group('ReviewEngine', () {
     const r = ReviewEngine();
-    test('a missed question enters the queue', () {
+    test('a missed question enters the queue, due immediately', () {
       final p = AppProgress();
       r.onAnswered(progress: p, question: _q('q1'), correct: false);
       expect(p.reviewQueue.length, 1);
       expect(p.reviewQueue.first.questionId, 'q1');
+      expect(r.dueCount(p), 1); // reviewable right away
     });
-    test('correct review answers reduce priority and eventually clear it', () {
+    test('a correct review pushes the next due date into the future', () {
       final p = AppProgress();
-      final q = _q('q1', d: Difficulty.easy); // initial priority 3
-      r.onAnswered(progress: p, question: q, correct: false);
-      final startPriority = p.reviewQueue.first.priority;
-      // Answer correctly repeatedly.
-      for (var i = 0; i < startPriority; i++) {
-        r.onAnswered(progress: p, question: q, correct: true);
+      final q = _q('q1', d: Difficulty.easy);
+      final now = DateTime(2026, 6, 1);
+      r.onAnswered(progress: p, question: q, correct: false, now: now);
+      r.onAnswered(progress: p, question: q, correct: true, now: now);
+      // Interval grew, so it is no longer due today.
+      expect(r.isDue(p.reviewQueue.first, now: now), isFalse);
+      expect(p.reviewQueue.first.intervalDays, greaterThan(1));
+    });
+    test('repeated correct reviews eventually graduate the item out', () {
+      final p = AppProgress();
+      final q = _q('q1', d: Difficulty.easy);
+      var now = DateTime(2026, 6, 1);
+      r.onAnswered(progress: p, question: q, correct: false, now: now);
+      for (var i = 0; i < 8 && p.reviewQueue.isNotEmpty; i++) {
+        now = now.add(const Duration(days: 60)); // always due again
+        r.onAnswered(progress: p, question: q, correct: true, now: now);
       }
       expect(p.reviewQueue, isEmpty);
     });
-    test('due questions are ordered by priority', () {
+    test('due questions are ordered by urgency (priority on ties)', () {
       final p = AppProgress();
       r.onAnswered(
         progress: p,

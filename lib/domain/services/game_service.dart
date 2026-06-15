@@ -164,6 +164,14 @@ class GameService {
       lp.lastCompletedDay = todayKey;
     }
 
+    // --- Daily history (for the progress dashboard) ---
+    progress.recordDay(
+      todayKey,
+      xp: gained,
+      answered: total,
+      correct: correctCount,
+    );
+
     // --- Per-question stats, mastery, review ---
     for (final r in results) {
       final q = r.question;

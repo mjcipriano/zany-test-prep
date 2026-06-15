@@ -200,5 +200,12 @@ void main() {
     await tester.tap(find.byIcon(Icons.emoji_events_rounded));
     await tester.pumpAndSettle();
     await _shoot(tester, '08_achievements');
+    await tester.pageBack();
+    await tester.pumpAndSettle();
+
+    // 9. Progress dashboard.
+    await tester.tap(find.byIcon(Icons.bar_chart_rounded));
+    await tester.pumpAndSettle();
+    await _shoot(tester, '09_dashboard');
   });
 }
