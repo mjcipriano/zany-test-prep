@@ -56,8 +56,9 @@ class _LessonPlayerState extends ConsumerState<LessonPlayer> {
   Question get _q => widget.questions[_index];
 
   bool get _canCheck {
-    if (_q.type.isStudentProduced)
+    if (_q.type.isStudentProduced) {
       return _textController.text.trim().isNotEmpty;
+    }
     return _selectedChoiceId != null;
   }
 
