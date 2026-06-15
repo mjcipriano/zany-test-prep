@@ -54,6 +54,31 @@ void main() {
     }
   });
 
+  test('a large practice bank exists beyond the curated lessons', () async {
+    final repo = ContentRepository(reader: (path) => File(path).readAsString());
+    final bundle = await repo.loadBundle('sat');
+
+    // The bank makes the question base large enough for long-term practice.
+    expect(bundle.questions.length, greaterThanOrEqualTo(5000));
+
+    // Many questions are NOT bound into any lesson's question list (bank items),
+    // yet every question's lesson_id still resolves to a real lesson.
+    final inLessons = <String>{
+      for (final l in bundle.lessons) ...l.questionIds,
+    };
+    final bankCount = bundle.questions
+        .where((q) => !inLessons.contains(q.id))
+        .length;
+    expect(bankCount, greaterThanOrEqualTo(3000));
+    for (final q in bundle.questions) {
+      expect(
+        bundle.lesson(q.lessonId),
+        isNotNull,
+        reason: 'question ${q.id} references a missing lesson',
+      );
+    }
+  });
+
   test(
     'skills form independent difficulty tracks (per-skill prerequisites)',
     () async {

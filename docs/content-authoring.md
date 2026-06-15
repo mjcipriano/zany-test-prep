@@ -37,8 +37,20 @@ content changes, and re-run `flutter test` (it parses the real bundle).
   inference, structure/purpose, words-in-context, and command-of-evidence questions,
   plus paired passages for cross-text questions.
 
-To grow the bank, add generators/items there and bump per-lesson counts in the
-`MATH_PLAN` / `RW_PLAN` tables in `generate_content.py`, then regenerate.
+To grow the content, edit the skill-centric `MATH_SKILLS` / `RW_SKILLS` tables in
+`generate_content.py` (each skill is an independent easy→medium→hard track) and the
+generators/pools, then regenerate.
+
+### Practice bank
+
+Beyond the ~81 curated lessons, the generator also emits a large **practice bank**
+(`content/exams/sat/questions/bank/`, ~14k questions) that is not bound into any
+lesson. The two practice modes draw from it for near-endless variety (enough for a
+year of daily practice without repeating exact items). Bank size per skill is
+controlled by `BANK_PER_TIER` in `generate_content.py` and is best-effort: math
+skills (computed answers) and combinatorial conventions produce thousands of unique
+items, while small-space math (circles/trig/right-triangles) and authored
+reading/pools are not banked. Widen a generator's numeric ranges to grow its share.
 
 ## Adding content by hand or with an AI agent
 

@@ -107,6 +107,13 @@ DIFF_LABEL = {"easy": "Easy", "medium": "Medium", "hard": "Hard"}
 
 DOMAIN_SLUG = {"reading_writing": "rw", "math": "math"}
 
+# Extra "practice bank" questions per (skill, difficulty) beyond the curated
+# lessons. These are not listed in any lesson; the practice modes draw from them
+# for near-endless variety. Best-effort: generation stops when a skill's space is
+# exhausted. Authored pools/reading are not banked. Small-space math is skipped.
+BANK_PER_TIER = {"math": 400, "rw_combinatorial": 250}
+NO_BANK_SKILLS = {"circles", "right_triangles", "trigonometry"}
+
 SKILL_TITLES = {
     "linear_equations": "Linear Equations", "linear_inequalities": "Linear Inequalities",
     "systems_of_equations": "Systems of Equations", "functions": "Functions",
@@ -214,7 +221,40 @@ def build():
 
     process_skills(MATH_SKILLS)
     process_skills(RW_SKILLS)
-    return lessons, questions_by_lesson
+
+    # ---- Practice bank (best-effort, not tied to lesson question lists) ----
+    bank_files = {}  # file_stem -> (domain, [questions])
+
+    def build_bank(skill_specs):
+        for skill, kind, source, tiers in skill_specs:
+            if kind not in BANK_PER_TIER or skill in NO_BANK_SKILLS:
+                continue
+            domain, section = skill_index[skill]
+            stub = {"skill": skill}
+            for diff, _n in tiers:
+                lesson_id = f"sat-{DOMAIN_SLUG[domain]}-{slug(skill)}-{diff}"
+                stub_lesson = {"skill": skill, "lesson_id": lesson_id}
+                target = BANK_PER_TIER[kind]
+                qs = []
+                fails = 0
+                idx = 1
+                while len(qs) < target and fails < 600:
+                    body = source(rng, diff)
+                    k = item_signature(body)
+                    if k in seen_keys:
+                        fails += 1
+                        continue
+                    seen_keys.add(k)
+                    fails = 0
+                    qid = f"{lesson_id}-b{idx:04d}"
+                    idx += 1
+                    qs.append(finalize_question(body, stub_lesson, qid, diff))
+                if qs:
+                    bank_files[f"{lesson_id}-bank"] = (domain, qs)
+
+    build_bank(MATH_SKILLS)
+    build_bank(RW_SKILLS)
+    return lessons, questions_by_lesson, bank_files
 
 
 def _unique_generated(fn, rng, difficulty, seen):
@@ -237,15 +277,17 @@ def _unique_combinatorial(fn, rng, difficulty, seen):
     raise RuntimeError(f"could not produce a unique item from {fn.__name__}")
 
 
-def write_all(lessons, questions_by_lesson):
+def write_all(lessons, questions_by_lesson, bank_files):
     # Clean previous output dirs.
-    for sub in ["lessons/rw", "lessons/math", "questions/rw", "questions/math"]:
+    for sub in ["lessons/rw", "lessons/math", "questions/rw", "questions/math",
+                "questions/bank/rw", "questions/bank/math"]:
         d = SAT / sub
         d.mkdir(parents=True, exist_ok=True)
         for f in d.glob("*.json"):
             f.unlink()
 
-    manifest = {"exam_id": EXAM_ID, "version": VERSION, "lessons": [], "questions": []}
+    manifest = {"exam_id": EXAM_ID, "version": VERSION, "lessons": [],
+                "questions": [], "bank": []}
     for lesson in lessons:
         dom = DOMAIN_SLUG[lesson["domain"]]
         lpath = SAT / "lessons" / dom / f"{lesson['lesson_id']}.json"
@@ -255,17 +297,26 @@ def write_all(lessons, questions_by_lesson):
         qpath = SAT / "questions" / dom / f"{lesson['lesson_id']}.json"
         qpath.write_text(json.dumps(qs, indent=2, ensure_ascii=False) + "\n")
         manifest["questions"].append(str(qpath.relative_to(SAT)))
+    for stem, (domain, qs) in sorted(bank_files.items()):
+        dom = DOMAIN_SLUG[domain]
+        bpath = SAT / "questions" / "bank" / dom / f"{stem}.json"
+        bpath.write_text(json.dumps(qs, indent=2, ensure_ascii=False) + "\n")
+        manifest["bank"].append(str(bpath.relative_to(SAT)))
     (SAT / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
 
 
 def main():
-    lessons, qbl = build()
-    write_all(lessons, qbl)
-    total_q = sum(len(v) for v in qbl.values())
-    math_q = sum(len(v) for k, v in qbl.items() if "-math-" in k)
+    lessons, qbl, bank = build()
+    write_all(lessons, qbl, bank)
+    lesson_q = sum(len(v) for v in qbl.values())
+    bank_q = sum(len(v) for _, v in bank.values())
+    total_q = lesson_q + bank_q
+    math_q = (sum(len(v) for k, v in qbl.items() if "-math-" in k)
+              + sum(len(v) for k, (_, v) in bank.items() if "-math-" in k))
     rw_q = total_q - math_q
     print(f"Lessons: {len(lessons)}")
-    print(f"Questions: {total_q}  (math {math_q}, reading/writing {rw_q})")
+    print(f"Lesson questions: {lesson_q}  Bank questions: {bank_q}")
+    print(f"Total questions: {total_q}  (math {math_q}, reading/writing {rw_q})")
     print(f"Written under {SAT.relative_to(ROOT)}/")
 
 

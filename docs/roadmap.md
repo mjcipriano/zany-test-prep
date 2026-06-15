@@ -13,8 +13,10 @@
   voiceover yet.
 - **Single-file persistence.** State is JSON in `shared_preferences`. This is robust at
   the current scale (hundreds of entries) but is not a query-able database.
-- **Content breadth.** 50 lessons / ~1,000 questions cover the SAT broadly but not
-  exhaustively; some skills have more depth than others.
+- **Content breadth.** 81 curated lessons plus a ~14k-question practice bank
+  (~15.5k total) cover the SAT broadly; reading-comprehension items are authored and
+  fewer than the parametric math/grammar items, so very heavy reading-only practice
+  will cycle sooner than math.
 - **Android-first.** iOS/web/desktop targets are scaffolded and the code is
   cross-platform, but only Android is built/tested in CI.
 

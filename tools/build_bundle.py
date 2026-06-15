@@ -28,7 +28,7 @@ def build_exam(exam_id: str) -> dict:
 
     lessons = [json.loads((sat / rel).read_text()) for rel in manifest["lessons"]]
     questions = []
-    for rel in manifest["questions"]:
+    for rel in manifest["questions"] + manifest.get("bank", []):
         questions.extend(json.loads((sat / rel).read_text()))
 
     lessons.sort(key=lambda l: (0 if l["domain"] == "reading_writing" else 1, l["order"]))
