@@ -1,0 +1,74 @@
+# Gamification model
+
+All logic is in `lib/domain/services/` as small, pure, unit-tested engines. The
+`GameService` ties them together when a lesson or review finishes
+(`applyLessonResult` / `applyPracticeResult`).
+
+## XP (`XpEngine`)
+
+- Correct answer: `5 × difficulty.weight` → **easy 5, medium 10, hard 15**.
+- Wrong answer: **0**.
+- Review answers earn 60% (rounded) of the normal value.
+- Lesson completion bonus: **+20**. Perfect (all correct) lesson: **+15** more.
+
+## Levels (`LevelEngine`)
+
+Cumulative thresholds with a growing increment: the XP needed to go from level *L*
+to *L+1* is `100 + (L−1)×25`.
+
+- Level 2 at 100 XP, level 3 at 225, level 4 at 375, …
+- `levelForXp`, `xpIntoLevel`, `xpForNextLevel`, and `progressToNext` drive the
+  home-screen level bar.
+
+## Streaks (`StreakEngine`)
+
+Day-based (`yyyy-MM-dd`):
+
+- First activity → streak 1.
+- Activity the next calendar day → streak + 1.
+- Same day again → no change.
+- A fully missed day → streak resets to 1 on the next activity.
+- `longestStreak` is preserved. `displayedStreak` shows 0 on the home screen once a
+  day has been fully missed (the streak is "at risk"/broken).
+
+## Daily goal
+
+The goal is expressed in XP: `dailyGoalMinutes × 5` (so 5/10/15 min → 25/50/75 XP).
+`GameService` resets the daily counter when the day rolls over and reports
+`dailyGoalMet` / `dailyGoalJustMet` for celebration.
+
+## Mastery (`MasteryEngine`)
+
+Per-skill, 0–100:
+
+- Correct: `+4 × weight` (easy 4, medium 8, hard 12); review correct ×0.75.
+- Wrong: `−2 × weight` (gentler than a correct raises, so progress is sticky).
+- Clamped to 0–100. Labels: New / Developing (≥20) / Proficient (≥50) / Mastered (≥80).
+
+## Lesson crowns (stars)
+
+By accuracy: **3** for 100%, **2** for ≥80%, **1** for ≥60%, else **0**. A lesson is
+marked complete once finished regardless of stars; the best star count is kept.
+
+## Unlocks (`UnlockEngine`)
+
+A lesson is unlocked when every `prerequisiteLessonIds` lesson is completed **and**
+`totalXp ≥ unlockXp`. The default SAT path chains each lesson to the previous one in
+its domain, so the path opens up as you progress. `suggestNext` powers the home
+screen's "Continue" card.
+
+## Review queue (`ReviewEngine`)
+
+- A missed question is added with priority `3 + difficulty.weight − 1` (3–5).
+- A correct **review** answer lowers its priority by 1; at 0 it leaves the queue.
+- Missing it again raises priority (capped at 5).
+- The Review screen plays the highest-priority items first.
+
+## Badges (`Badges`)
+
+Pure predicates over progress: first lesson, 5 lessons, 3- and 7-day streaks, 100 and
+500 XP, level 5, a perfect (3-crown) lesson, 5 math lessons, 5 reading/writing
+lessons. `evaluateAndGrant` awards any newly satisfied badges after each lesson.
+
+Tests: `test/unit/leveling_test.dart`, `streak_test.dart`,
+`mastery_review_unlock_test.dart`, `game_service_test.dart`.
