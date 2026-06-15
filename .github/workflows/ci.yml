@@ -77,7 +77,7 @@ jobs:
             || (echo "::error::assets/content bundle is stale; run python tools/build_bundle.py and commit" && exit 1)
 
       - name: Run Flutter tests
-        run: flutter test
+        run: flutter test --exclude-tags screenshots
 
       # On failure, capture any logs that exist so they can be inspected without
       # re-running the job. if-no-files-found is set to "ignore" so a missing

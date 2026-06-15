@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zany_test_prep/app/app.dart';
 import 'package:zany_test_prep/app/app_controller.dart';
+import 'package:zany_test_prep/core/sound_service.dart';
 import 'package:zany_test_prep/data/local/key_value_store.dart';
 import 'package:zany_test_prep/data/repositories/content_repository.dart';
 
@@ -38,6 +39,7 @@ Future<MemoryStore> pumpApp(WidgetTester tester, {MemoryStore? store}) async {
       overrides: [
         contentRepositoryProvider.overrideWithValue(_testContentRepository()),
         keyValueStoreProvider.overrideWith((ref) async => memory),
+        soundServiceProvider.overrideWithValue(NoopSoundService()),
       ],
       child: const ZanyTestPrepApp(),
     ),

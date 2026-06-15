@@ -15,6 +15,7 @@ lib/
 │   ├── app.dart             # root MaterialApp.router + theme wiring
 │   ├── app_controller.dart  # AppController (AsyncNotifier) + providers
 │   └── router.dart          # GoRouter config + onboarding redirect
+├── core/                    # cross-cutting services (e.g. SoundService)
 ├── domain/                  # pure business logic (no Flutter UI, no I/O)
 │   ├── models/              # exam-agnostic data models
 │   └── services/            # game engines (pure, deterministic, unit-tested)

@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../app/app_controller.dart';
+import '../../core/sound_service.dart';
 import '../../design/theme.dart';
 import '../../design/widgets.dart';
 import '../../domain/models/lesson.dart';
@@ -74,7 +75,23 @@ class _LessonPlayerState extends ConsumerState<LessonPlayer> {
       correct ? HapticFeedback.lightImpact() : HapticFeedback.heavyImpact();
     }
     if (profile?.soundOn ?? true) {
-      SystemSound.play(SystemSoundType.click);
+      ref
+          .read(soundServiceProvider)
+          .play(correct ? Sfx.correct : Sfx.incorrect);
+    }
+  }
+
+  void _uiSound(Sfx sfx) {
+    final profile = ref.read(appControllerProvider).valueOrNull?.profile;
+    if (profile?.soundOn ?? true) ref.read(soundServiceProvider).play(sfx);
+  }
+
+  void _summaryEffects(LessonOutcome outcome) {
+    final profile = ref.read(appControllerProvider).valueOrNull?.profile;
+    if (profile?.hapticsOn ?? true) HapticFeedback.mediumImpact();
+    if (profile?.soundOn ?? true) {
+      final sound = ref.read(soundServiceProvider);
+      sound.play(outcome.leveledUp ? Sfx.levelUp : Sfx.lessonComplete);
     }
   }
 
@@ -101,6 +118,7 @@ class _LessonPlayerState extends ConsumerState<LessonPlayer> {
 
   Future<void> _next() async {
     if (_index < widget.questions.length - 1) {
+      _uiSound(Sfx.advance);
       setState(() {
         _index++;
         _answered = false;
@@ -111,6 +129,7 @@ class _LessonPlayerState extends ConsumerState<LessonPlayer> {
     } else {
       setState(() => _submitting = true);
       final outcome = await widget.onComplete(_results);
+      _summaryEffects(outcome);
       setState(() {
         _outcome = outcome;
         _phase = _Phase.summary;
@@ -216,7 +235,10 @@ class _LessonPlayerState extends ConsumerState<LessonPlayer> {
             answered: _answered,
             selectedChoiceId: _selectedChoiceId,
             textController: _textController,
-            onSelectChoice: (id) => setState(() => _selectedChoiceId = id),
+            onSelectChoice: (id) {
+              _uiSound(Sfx.select);
+              setState(() => _selectedChoiceId = id);
+            },
           ),
         ),
         _BottomBar(

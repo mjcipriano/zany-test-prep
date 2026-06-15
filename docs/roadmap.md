@@ -8,8 +8,9 @@
 - **Lesson resume is coarse.** Leaving a lesson mid-way discards in-lesson progress
   (with a confirm dialog); completed-lesson state is always saved. Per-question resume
   is not implemented.
-- **No audio assets.** "Sound" uses the system click only (keeps the app fully offline
-  and small); there is no custom sound design yet.
+- **Audio is a small SFX set.** The app ships original melodic cues + Kenney CC0
+  clicks (`assets/audio/`, gated by the Sound setting); there is no music or
+  voiceover yet.
 - **Single-file persistence.** State is JSON in `shared_preferences`. This is robust at
   the current scale (hundreds of entries) but is not a query-able database.
 - **Content breadth.** 50 lessons / ~1,000 questions cover the SAT broadly but not
