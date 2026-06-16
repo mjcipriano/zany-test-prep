@@ -44,9 +44,24 @@ git tag v1.0.0
 git push origin v1.0.0
 ```
 
-`release.yml` builds the release APK and creates a GitHub Release `v1.0.0` with the
-APK attached and generated changelog. Or trigger `release.yml` manually via
-*Actions → Internal release → Run workflow*.
+`release.yml` then builds the **stable-signed** release APK (using the signing
+secrets, see below) and creates a GitHub Release with a single tag-named asset,
+`zany-test-prep-v1.0.0.apk`, plus a generated changelog.
+
+**Let CI do the release build — don't also upload one by hand.** Pushing the tag
+already triggers the workflow; a second manual `gh release create`/upload would add
+a duplicate (and possibly differently-signed) asset to the same release.
+
+The signing secrets are configured on the repo (`KEYSTORE_BASE64`, `KEY_ALIAS`,
+`KEY_PASSWORD`, `STORE_PASSWORD`), so CI signs with the same stable key as local
+builds. To rotate or re-add them, base64 the keystore and set the secrets:
+
+```bash
+base64 -w0 android/app/zany-release.jks | gh secret set KEYSTORE_BASE64
+gh secret set KEY_ALIAS --body zany
+gh secret set STORE_PASSWORD   # paste when prompted
+gh secret set KEY_PASSWORD     # paste when prompted
+```
 
 ## Release signing (stable key) — why updates install in place
 
