@@ -24,6 +24,25 @@ offline after install**. No backend, no login, no network.
 | --- | --- | --- | --- |
 | ![Feedback](docs/screenshots/05_feedback.png) | ![Summary](docs/screenshots/06_summary.png) | ![Achievements](docs/screenshots/08_achievements.png) | ![Dashboard](docs/screenshots/09_dashboard.png) |
 
+| Rewards hub | Chest reward | Store | Customize |
+| --- | --- | --- | --- |
+| ![Rewards](docs/screenshots/10_rewards.png) | ![Chest](docs/screenshots/13_chest_reward.png) | ![Store](docs/screenshots/11_store.png) | ![Items](docs/screenshots/14_avatar_items.png) |
+
+### Avatar customization
+
+Meet the daily goal to earn chests, spend XP in the store, then dress up a
+customizable avatar. Worn items snap to the right spot and side slots hold pets
+and floating props. Here's one avatar built up layer by layer, plus a couple of
+other looks:
+
+| Starter | + Headwear | + Eyewear | + Scarf & badge |
+| --- | --- | --- | --- |
+| ![Starter](docs/screenshots/avatars/01_base.png) | ![Headwear](docs/screenshots/avatars/02_headwear.png) | ![Eyewear](docs/screenshots/avatars/03_eyewear.png) | ![Scarf & badge](docs/screenshots/avatars/04_badge_scarf.png) |
+
+| Full look + pet | Another avatar | Two side slots |
+| --- | --- | --- |
+| ![Full look](docs/screenshots/avatars/05_full_look.png) | ![Luna](docs/screenshots/avatars/06_luna.png) | ![Sage](docs/screenshots/avatars/07_sage.png) |
+
 > Screenshots are generated headlessly from the real app via
 > `flutter test --tags screenshots` (see `test/screenshots/`).
 

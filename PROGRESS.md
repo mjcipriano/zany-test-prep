@@ -55,10 +55,15 @@ Added on the `feature/rewards-system` branch. Full design in
   to bridge missed days.
 - **XP boost:** `xpBoostDay` + `xpBoostMultiplier`, applied by `GameService`.
 - **Avatar pack:** **full pack** vendored from `mjcipriano/zany-test-prep-avatars`
-  v1.0.0 via `tools/sync_avatars.py --full` into `assets/avatar/` — 110 avatars, 272
-  items, 30 pets (412 assets, ~52 MB), all bundled in the APK. Catalog
-  (`assets/avatar/manifest/avatar_catalog.json`) is the source of truth; re-run the
-  script (`--tag <ver> --full`) for a new pack release. Nothing hardcodes asset lists.
+  **v2.1.0** via `tools/sync_avatars.py --full` into `assets/avatar/` — 412 assets
+  (~51 MB), all bundled. Catalog is the source of truth; re-run the script
+  (`--tag <ver> --full`) for a new release. Sync now downloads via raw.githubusercontent
+  (catalog > 1 MB). Nothing hardcodes asset lists; jacket overlays filtered out.
+- **Avatar compositing (`target_box_v1`):** trimmed sprites positioned by normalized
+  placement target boxes (`placementRect` in `avatar_view.dart`); worn items snap to
+  body regions sized-to-fit, side pets/props fill 4 side slots with a **move** control
+  (`cycleSideSlot`) to toggle slots. Pixel/overlap tests in `test/render/overlap_test.dart`;
+  README has an avatar upgrade showcase (`test/screenshots/avatar_showcase_test.dart`).
 - **Released:** **v1.7.0** (rewards system + full avatar pack), **v1.7.1** (animated
   chest opening + in-row button layout fix), **v1.7.2** (About version accuracy +
   test cheat code + update-safe persistence), **v1.7.3** (stable release signing so

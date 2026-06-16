@@ -30,8 +30,8 @@ CatalogAsset _asset(
   allowedSlots: slots,
   zIndex: z,
   scale: scale,
-  anchorX: 256,
-  anchorY: 256,
+  target: TargetBox.full,
+  targetsBySlot: const {},
   defaultUnlocked: starter,
 );
 
@@ -408,6 +408,41 @@ void main() {
       expect(svc.equip(g, c, 'item_headwear'), isTrue);
       expect(svc.equip(g, c, 'item_headwear'), isTrue); // already on, no dup
       expect(g.equipped.values.where((v) => v == 'item_headwear').length, 1);
+    });
+
+    test('cycleSideSlot moves a pet to the next free side slot, wrapping', () {
+      final c = richCatalog();
+      final g = ownedAll(c);
+      svc.equip(g, c, 'pet_a'); // -> side_left_1
+      expect(svc.equippedSlotOf(g, 'pet_a'), 'side_left_1');
+      // No other side asset equipped, so it cycles through all four and wraps.
+      expect(svc.cycleSideSlot(g, c, 'pet_a'), isTrue);
+      expect(svc.equippedSlotOf(g, 'pet_a'), 'side_left_2');
+      svc.cycleSideSlot(g, c, 'pet_a');
+      expect(svc.equippedSlotOf(g, 'pet_a'), 'side_right_1');
+      svc.cycleSideSlot(g, c, 'pet_a');
+      expect(svc.equippedSlotOf(g, 'pet_a'), 'side_right_2');
+      svc.cycleSideSlot(g, c, 'pet_a');
+      expect(svc.equippedSlotOf(g, 'pet_a'), 'side_left_1'); // wrapped
+    });
+
+    test('cycleSideSlot skips slots taken by other side assets', () {
+      final c = richCatalog();
+      final g = ownedAll(c);
+      svc.equip(g, c, 'pet_a'); // side_left_1
+      svc.equip(g, c, 'pet_b'); // side_left_2
+      // pet_a should skip side_left_2 (taken by pet_b) -> side_right_1.
+      expect(svc.cycleSideSlot(g, c, 'pet_a'), isTrue);
+      expect(svc.equippedSlotOf(g, 'pet_a'), 'side_right_1');
+      expect(svc.equippedSlotOf(g, 'pet_b'), 'side_left_2'); // unchanged
+    });
+
+    test('cycleSideSlot is a no-op for worn items / unequipped assets', () {
+      final c = richCatalog();
+      final g = ownedAll(c);
+      svc.equip(g, c, 'item_headwear');
+      expect(svc.cycleSideSlot(g, c, 'item_headwear'), isFalse); // not side
+      expect(svc.cycleSideSlot(g, c, 'pet_a'), isFalse); // not equipped
     });
 
     test('equippedLayers carries the slot so side assets can be placed', () {

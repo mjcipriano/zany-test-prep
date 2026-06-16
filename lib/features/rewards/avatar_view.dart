@@ -23,27 +23,31 @@ class AssetImage512 extends StatelessWidget {
   }
 }
 
+/// Computes where a layer's trimmed sprite should be drawn within a [size]×[size]
+/// frame, per the pack's `target_box_v1` contract: pick the per-slot target
+/// (falling back to the asset's default), center it at `cx,cy`, and bound it to
+/// `w,h` (× optional `scale`). The image itself is fit with `contain`.
+/// Pure + exported so render tests can assert exact placement.
+Rect placementRect(CatalogAsset asset, String? slot, double size) {
+  final t = asset.targetForSlot(slot);
+  final w = t.w * size * asset.scale;
+  final h = t.h * size * asset.scale;
+  return Rect.fromLTWH(t.cx * size - w / 2, t.cy * size - h / 2, w, h);
+}
+
 /// Composes the equipped loadout (avatar + items/pets) into a single preview.
 ///
-/// Each PNG is a 512×512 canvas with its art centered, so layers are *positioned*
-/// rather than naively stacked: the avatar fills the frame; worn items are placed
-/// so their centered art lands on the asset's [anchor] (scaled by `scale`); side
-/// pets/props go into one of the four fixed side positions for their slot.
+/// PNGs are tightly trimmed sprites, so each layer is *placed* into its target
+/// box (see [placementRect]): the avatar fills the frame; worn items land on the
+/// right body region sized to fit; side pets/props go into the side slot they're
+/// equipped in. Layers are drawn back-to-front by z-index (negative z, e.g. a
+/// background frame, sits behind the avatar).
 class AvatarPreview extends StatelessWidget {
   const AvatarPreview({super.key, required this.layers, this.size = 180});
 
   /// Layers already sorted back-to-front (see RewardsService.equippedLayers).
   final List<EquippedLayer> layers;
   final double size;
-
-  // Fixed positions (fraction of the frame) for the four side slots, matching
-  // the pack's integration reference.
-  static const Map<String, Offset> _sideSlots = {
-    'side_left_1': Offset(0.22, 0.48),
-    'side_left_2': Offset(0.24, 0.74),
-    'side_right_1': Offset(0.78, 0.48),
-    'side_right_2': Offset(0.76, 0.74),
-  };
 
   @override
   Widget build(BuildContext context) {
@@ -65,19 +69,14 @@ class AvatarPreview extends StatelessWidget {
 
   Widget _positioned(EquippedLayer layer) {
     final a = layer.asset;
-    // The avatar (and any unexpected base layer) fills the whole frame.
+    // The avatar (and any base layer) fills the whole frame.
     if (a.isAvatar) return Positioned.fill(child: AssetImage512(a));
-
-    // Where the layer's (centered) art should land, as a fraction of the frame.
-    final Offset center = a.isSide
-        ? (_sideSlots[layer.slot] ?? Offset(a.anchorX / 512, a.anchorY / 512))
-        : Offset(a.anchorX / 512, a.anchorY / 512);
-    final dim = size * a.scale;
+    final r = placementRect(a, layer.slot, size);
     return Positioned(
-      left: center.dx * size - dim / 2,
-      top: center.dy * size - dim / 2,
-      width: dim,
-      height: dim,
+      left: r.left,
+      top: r.top,
+      width: r.width,
+      height: r.height,
       child: AssetImage512(a),
     );
   }

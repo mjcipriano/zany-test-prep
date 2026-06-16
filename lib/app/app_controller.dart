@@ -340,6 +340,15 @@ class AppController extends AsyncNotifier<AppData> {
     state = AsyncData(data.bump());
   }
 
+  /// Moves an equipped side asset to its next available side slot.
+  Future<void> cycleSideSlot(String assetId) async {
+    final data = _data;
+    if (_rewards.cycleSideSlot(data.progress.game, data.catalog, assetId)) {
+      await _repo.saveProgress(data.progress);
+      state = AsyncData(data.bump());
+    }
+  }
+
   // --- Backup / restore (export & import) ---
 
   /// Serializes all local state into a portable, version-stamped backup string.

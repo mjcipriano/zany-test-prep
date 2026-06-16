@@ -164,4 +164,36 @@ class RewardsService {
   /// Removes [assetId] from whatever slot(s) it occupies.
   void unequipAsset(GameState g, String assetId) =>
       g.equipped.removeWhere((slot, id) => id == assetId);
+
+  /// The slot [assetId] is currently equipped in, or null.
+  String? equippedSlotOf(GameState g, String assetId) {
+    for (final e in g.equipped.entries) {
+      if (e.value == assetId) return e.key;
+    }
+    return null;
+  }
+
+  /// Moves an equipped side asset (pet/floating prop) to the next available one
+  /// of its allowed slots, wrapping around — the "toggle through open slots"
+  /// control. Skips slots occupied by *other* assets. Returns false if it can't
+  /// move (not a side asset, not equipped, or no other free slot).
+  bool cycleSideSlot(GameState g, AvatarCatalog catalog, String assetId) {
+    final a = catalog[assetId];
+    if (a == null || !a.isSide) return false;
+    final current = equippedSlotOf(g, assetId);
+    if (current == null) return false;
+    final slots = a.allowedSlots;
+    final start = slots.indexOf(current);
+    for (var i = 1; i <= slots.length; i++) {
+      final cand = slots[(start + i) % slots.length];
+      if (cand == current) break;
+      final occupant = g.equipped[cand];
+      if (occupant == null || occupant == assetId) {
+        g.equipped.remove(current);
+        g.equipped[cand] = assetId;
+        return true;
+      }
+    }
+    return false;
+  }
 }

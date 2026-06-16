@@ -137,15 +137,28 @@ items/pets; the preview stacks layers by `zIndex`. Reached from the **Rewards** 
 ### Avatar content pack
 
 Avatar/item/pet content comes from the external dataset repo
-`mjcipriano/zany-test-prep-avatars` (release **v1.0.0**), vendored under
+`mjcipriano/zany-test-prep-avatars` (release **v2.1.0**), vendored under
 `assets/avatar/` by `tools/sync_avatars.py`. The JSON catalog
 (`assets/avatar/manifest/avatar_catalog.json`) is the single source of truth and
 lists all 412 assets. The **full pack is bundled** (110 avatars, 272 items, 30 pets;
-~52 MB) so everything works offline. The UI still falls back to a rarity-tinted tile
-if any art is missing. To pull a newer pack release, re-run the script
+~51 MB) so everything works offline. To pull a newer pack release, re-run the script
 (`tools/sync_avatars.py --tag <ver> --full`) — nothing hardcodes asset lists, so the
-store/customizer expand automatically. (`--full` is the default-extending flag; omit
-it for a starters-only sync.)
+store/customizer expand automatically. (Jacket/top overlays are filtered out via
+`kExcludedItemCategories` because they don't fit the varied avatar torsos.)
+
+**Compositing (`target_box_v1`).** Item/pet PNGs are tightly-trimmed sprites; each
+carries a normalized **placement target** (`cx,cy,w,h` as fractions of the 512
+frame). `AvatarPreview` (`placementRect`) draws the avatar full-frame, then places
+each worn item centered on its target box sized to fit (BoxFit.contain), and each
+side pet/prop into the side slot it's equipped in (side assets provide per-slot
+targets via `targets_by_slot`). Layers render back-to-front by `z_index` (negative z
+— e.g. a background frame — sits behind the avatar). Render/pixel tests live in
+`test/render/overlap_test.dart`.
+
+**Side slots.** Pets and floating props share four side slots
+(`side_left_1/2`, `side_right_1/2`). Equipping fills the first free one; the
+customizer's **move** control (`RewardsService.cycleSideSlot`) toggles an equipped
+side asset through the remaining open slots so several can be arranged.
 
 > **Stubbed for later:** the chest drop-table balancing and additional reward/item
 > types ("other item types we will go over later") are intentionally minimal pending

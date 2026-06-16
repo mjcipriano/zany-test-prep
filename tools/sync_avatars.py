@@ -26,32 +26,31 @@ art never requires a pubspec edit.
 from __future__ import annotations
 
 import argparse
-import base64
 import collections
 import json
 import os
-import subprocess
 import sys
+import urllib.request
 
 REPO = "mjcipriano/zany-test-prep-avatars"
 CATALOG_PATH = "assets/avatar/manifest/avatar_catalog.json"
 ASSET_ROOT = os.path.join(os.path.dirname(__file__), "..")
 
 
-def gh_api(path: str) -> bytes:
-    """Fetch a repo file's raw bytes via the GitHub contents API."""
-    result = subprocess.run(
-        ["gh", "api", f"repos/{REPO}/contents/{path}", "--jq", ".content"],
-        capture_output=True,
-        text=True,
-    )
-    if result.returncode != 0:
-        raise RuntimeError(f"gh api failed for {path}: {result.stderr.strip()}")
-    return base64.b64decode(result.stdout)
+RAW_BASE = "https://raw.githubusercontent.com"
 
 
 def fetch(path_in_repo: str, ref: str) -> bytes:
-    return gh_api(f"{path_in_repo}?ref={ref}")
+    """Fetch a repo file's raw bytes from raw.githubusercontent.com.
+
+    Uses raw (not the contents API) so it works for files over 1 MB — the
+    catalog exceeds that as of schema 2.1.0 — and needs no auth for a public repo.
+    """
+    url = f"{RAW_BASE}/{REPO}/{ref}/{path_in_repo}"
+    with urllib.request.urlopen(url) as resp:  # noqa: S310 (trusted host)
+        if resp.status != 200:
+            raise RuntimeError(f"HTTP {resp.status} for {url}")
+        return resp.read()
 
 
 def write(rel_path: str, data: bytes) -> None:
@@ -63,7 +62,7 @@ def write(rel_path: str, data: bytes) -> None:
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("--tag", default="v1.0.0", help="release tag/ref to pull")
+    ap.add_argument("--tag", default="v2.1.0", help="release tag/ref to pull")
     group = ap.add_mutually_exclusive_group()
     group.add_argument("--full", action="store_true", help="vendor all images")
     group.add_argument(

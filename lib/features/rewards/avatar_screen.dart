@@ -103,7 +103,7 @@ class AvatarScreen extends ConsumerWidget {
             ...ownedItems.map(
               (item) => _ItemRow(
                 item: item,
-                equipped: rewards.isEquipped(g, item.id),
+                equippedSlot: rewards.equippedSlotOf(g, item.id),
               ),
             ),
         ],
@@ -143,14 +143,30 @@ class _PickTile extends StatelessWidget {
   }
 }
 
+/// Human-readable label for a side slot (the four floating positions).
+String _slotLabel(String slot) => switch (slot) {
+  'side_left_1' => 'Left · top',
+  'side_left_2' => 'Left · bottom',
+  'side_right_1' => 'Right · top',
+  'side_right_2' => 'Right · bottom',
+  _ => slot.replaceAll('_', ' '),
+};
+
 class _ItemRow extends ConsumerWidget {
-  const _ItemRow({required this.item, required this.equipped});
+  const _ItemRow({required this.item, required this.equippedSlot});
   final CatalogAsset item;
-  final bool equipped;
+  final String? equippedSlot;
+
+  bool get _equipped => equippedSlot != null;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final controller = ref.read(appControllerProvider.notifier);
+    // For an equipped side asset, show its current position; otherwise the
+    // category (e.g. "headwear", "floating props").
+    final subtitle = _equipped && item.isSide
+        ? _slotLabel(equippedSlot!)
+        : item.category.replaceAll('_', ' ');
     return Padding(
       padding: const EdgeInsets.only(bottom: 8),
       child: AppCard(
@@ -173,26 +189,30 @@ class _ItemRow extends ConsumerWidget {
                     item.name,
                     style: const TextStyle(fontWeight: FontWeight.w700),
                   ),
-                  Text(
-                    item.primarySlot?.replaceAll('_', ' ') ?? '',
-                    style: Theme.of(context).textTheme.bodySmall,
-                  ),
+                  Text(subtitle, style: Theme.of(context).textTheme.bodySmall),
                 ],
               ),
             ),
-            if (equipped)
+            // Side assets get a "move" control to cycle through the 4 slots.
+            if (_equipped && item.isSide)
+              IconButton(
+                tooltip: 'Move to next slot',
+                onPressed: () => controller.cycleSideSlot(item.id),
+                icon: const Icon(Icons.open_with_rounded),
+              ),
+            if (_equipped)
               OutlinedButton(
                 // Bounded width: the themed default is full-width, invalid as a
                 // non-flex child of a Row.
                 style: OutlinedButton.styleFrom(
-                  minimumSize: const Size(96, 40),
+                  minimumSize: const Size(88, 40),
                 ),
                 onPressed: () => controller.unequipAsset(item.id),
                 child: const Text('Remove'),
               )
             else
               FilledButton.tonal(
-                style: FilledButton.styleFrom(minimumSize: const Size(96, 40)),
+                style: FilledButton.styleFrom(minimumSize: const Size(88, 40)),
                 onPressed: () => controller.equipItem(item.id),
                 child: const Text('Equip'),
               ),

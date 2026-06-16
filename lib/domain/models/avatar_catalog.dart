@@ -4,16 +4,38 @@
 ///
 /// Nothing here hardcodes individual avatars/items — the catalog is the single
 /// source of truth, so pulling a newer pack release expands the store and
-/// customizer automatically. Each PNG is a 512×512 canvas with its art *centered*
-/// (not pre-positioned), so the preview must place each layer using its [anchor]
-/// + [scale]; side assets (pets/floating props) go in fixed side slots. See the
-/// AvatarPreview widget.
+/// customizer automatically. Item/pet PNGs are tightly trimmed sprites; each
+/// carries a [TargetBox] placement (the pack's `target_box_v1` contract) telling
+/// the preview where to center it and how big it may be. Side assets also provide
+/// per-slot targets. See the AvatarPreview widget / `placementRect`.
 library;
 
 /// Item categories we deliberately exclude from the app: top/jacket overlays
 /// ("blazers") don't line up with the varied avatar torsos, so they're filtered
 /// out of the store, customizer, and chest drops.
 const Set<String> kExcludedItemCategories = {'jacket_overlay'};
+
+/// A normalized placement box (fractions of the 512 composition frame): where a
+/// trimmed sprite's center goes ([cx],[cy]) and the max box it may occupy
+/// ([w],[h], fit with contain). This is the pack's `target_box_v1` contract.
+class TargetBox {
+  const TargetBox(this.cx, this.cy, this.w, this.h);
+
+  final double cx;
+  final double cy;
+  final double w;
+  final double h;
+
+  /// Full-frame fallback (used for avatars / assets without placement data).
+  static const TargetBox full = TargetBox(0.5, 0.5, 1.0, 1.0);
+
+  factory TargetBox.fromJson(Map<String, dynamic> j) => TargetBox(
+    (j['cx'] as num?)?.toDouble() ?? 0.5,
+    (j['cy'] as num?)?.toDouble() ?? 0.5,
+    (j['w'] as num?)?.toDouble() ?? 1.0,
+    (j['h'] as num?)?.toDouble() ?? 1.0,
+  );
+}
 
 /// One entry in the catalog: an avatar, a wearable item, or a side pet/prop.
 class CatalogAsset {
@@ -30,8 +52,8 @@ class CatalogAsset {
     required this.allowedSlots,
     required this.zIndex,
     required this.scale,
-    required this.anchorX,
-    required this.anchorY,
+    required this.target,
+    required this.targetsBySlot,
     required this.defaultUnlocked,
   });
 
@@ -46,9 +68,10 @@ class CatalogAsset {
   final String previewAssetPath;
   final List<String> allowedSlots;
   final int zIndex;
-  final double scale;
-  final double anchorX; // attach point in 512-px canvas space
-  final double anchorY;
+  final double scale; // optional multiplier on the target box (default 1.0)
+  final TargetBox target; // default placement target
+  final Map<String, TargetBox>
+  targetsBySlot; // per-slot overrides (side assets)
   final bool defaultUnlocked;
 
   bool get isAvatar => type == 'avatar';
@@ -63,8 +86,27 @@ class CatalogAsset {
   /// pets, the interchangeable side slots — we use the first as canonical).
   String? get primarySlot => allowedSlots.isEmpty ? null : allowedSlots.first;
 
+  /// The placement box to use when equipped in [slot] (per-slot override for
+  /// side assets, otherwise the default [target]).
+  TargetBox targetForSlot(String? slot) =>
+      (slot != null ? targetsBySlot[slot] : null) ?? target;
+
   factory CatalogAsset.fromJson(Map<String, dynamic> j) {
-    final anchor = (j['anchor'] as Map?)?.cast<String, dynamic>() ?? const {};
+    final placement =
+        (j['placement'] as Map?)?.cast<String, dynamic>() ?? const {};
+    final target = placement['target'] is Map
+        ? TargetBox.fromJson(
+            (placement['target'] as Map).cast<String, dynamic>(),
+          )
+        : TargetBox.full;
+    final rawBySlot =
+        (placement['targets_by_slot'] as Map?)?.cast<String, dynamic>() ??
+        const {};
+    final targetsBySlot = <String, TargetBox>{
+      for (final e in rawBySlot.entries)
+        if (e.value is Map)
+          e.key: TargetBox.fromJson((e.value as Map).cast<String, dynamic>()),
+    };
     return CatalogAsset(
       id: j['id'] as String,
       name: j['name'] as String,
@@ -80,8 +122,8 @@ class CatalogAsset {
           .toList(),
       zIndex: (j['z_index'] as num?)?.toInt() ?? 0,
       scale: (j['scale'] as num?)?.toDouble() ?? 1.0,
-      anchorX: (anchor['x'] as num?)?.toDouble() ?? 256,
-      anchorY: (anchor['y'] as num?)?.toDouble() ?? 256,
+      target: target,
+      targetsBySlot: targetsBySlot,
       defaultUnlocked: j['default_unlocked'] as bool? ?? false,
     );
   }
