@@ -138,10 +138,12 @@ Avatar/item/pet content comes from the external dataset repo
 `mjcipriano/zany-test-prep-avatars` (release **v1.0.0**), vendored under
 `assets/avatar/` by `tools/sync_avatars.py`. The JSON catalog
 (`assets/avatar/manifest/avatar_catalog.json`) is the single source of truth and
-lists all 412 assets; only the 10 starter avatar PNGs are bundled by default to keep
-the APK small (the UI falls back to a rarity-tinted tile for art that isn't synced).
-To pull a newer release or all art, re-run the script (`--tag`, `--full`) — nothing
-hardcodes asset lists, so the store/customizer expand automatically.
+lists all 412 assets. The **full pack is bundled** (110 avatars, 272 items, 30 pets;
+~52 MB) so everything works offline. The UI still falls back to a rarity-tinted tile
+if any art is missing. To pull a newer pack release, re-run the script
+(`tools/sync_avatars.py --tag <ver> --full`) — nothing hardcodes asset lists, so the
+store/customizer expand automatically. (`--full` is the default-extending flag; omit
+it for a starters-only sync.)
 
 > **Stubbed for later:** the chest drop-table balancing and additional reward/item
 > types ("other item types we will go over later") are intentionally minimal pending

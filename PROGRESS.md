@@ -54,11 +54,13 @@ Added on the `feature/rewards-system` branch. Full design in
 - **Streak freezes:** banked, max `kMaxStreakFreezes` (3); `StreakEngine` spends them
   to bridge missed days.
 - **XP boost:** `xpBoostDay` + `xpBoostMultiplier`, applied by `GameService`.
-- **Avatar pack:** vendored from `mjcipriano/zany-test-prep-avatars` v1.0.0 via
-  `tools/sync_avatars.py` into `assets/avatar/`. Catalog
-  (`assets/avatar/manifest/avatar_catalog.json`) lists all 412 assets; only 10 starter
-  PNGs bundled (UI falls back to rarity tiles). Re-run the script (`--tag`/`--full`)
-  to extend — nothing hardcodes asset lists.
+- **Avatar pack:** **full pack** vendored from `mjcipriano/zany-test-prep-avatars`
+  v1.0.0 via `tools/sync_avatars.py --full` into `assets/avatar/` — 110 avatars, 272
+  items, 30 pets (412 assets, ~52 MB), all bundled in the APK. Catalog
+  (`assets/avatar/manifest/avatar_catalog.json`) is the source of truth; re-run the
+  script (`--tag <ver> --full`) for a new pack release. Nothing hardcodes asset lists.
+- **Released:** **v1.7.0** (rewards system + full avatar pack), APK ~104 MB attached
+  to the GitHub Release.
 - **UI:** `/rewards` hub, `/store` (spend XP), `/avatar` (pick avatar + equip,
   z-ordered preview). Entry from the stats page card + a home-screen gift button.
 - **Domain logic:** `RewardsService` (open chest / purchase / equip / select).
