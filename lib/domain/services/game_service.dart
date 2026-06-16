@@ -41,6 +41,9 @@ class LessonOutcome {
     required this.dailyGoalMet,
     required this.dailyGoalJustMet,
     required this.newBadges,
+    this.chestEarned = false,
+    this.freezesUsed = 0,
+    this.xpBoosted = false,
   });
 
   final int xpGained;
@@ -56,6 +59,9 @@ class LessonOutcome {
   final bool dailyGoalMet;
   final bool dailyGoalJustMet;
   final List<BadgeDef> newBadges;
+  final bool chestEarned; // daily goal hit -> a chest is waiting to open
+  final int freezesUsed; // streak freezes spent to survive missed days
+  final bool xpBoosted; // an XP boost multiplied today's earnings
 
   double get accuracy => total == 0 ? 0 : correct / total;
 }
@@ -108,6 +114,7 @@ class GameService {
     DateTime? now,
   }) {
     final today = now ?? DateTime.now();
+    final todayKey = dayKey(today);
     final correctCount = results.where((r) => r.correct).length;
     final total = results.length;
     final accuracy = total == 0 ? 0.0 : correctCount / total;
@@ -128,23 +135,29 @@ class GameService {
     }
 
     final g = progress.game;
+
+    // --- XP boost (active for a single granted day) ---
+    final xpBoosted = gained > 0 && g.boostActiveOn(todayKey);
+    if (xpBoosted) gained = (gained * g.xpBoostMultiplier).round();
+
     final oldLevel = level.levelForXp(g.totalXp);
     g.totalXp += gained;
     final newLevel = level.levelForXp(g.totalXp);
 
-    // --- Streak ---
+    // --- Streak (banked freezes can bridge missed days) ---
     final sr = streak.registerActivity(
       lastActiveDay: g.lastActiveDay,
       currentStreak: g.currentStreak,
       longestStreak: g.longestStreak,
       today: today,
+      streakFreezes: g.streakFreezes,
     );
     g.currentStreak = sr.currentStreak;
     g.longestStreak = sr.longestStreak;
     g.lastActiveDay = sr.lastActiveDay;
+    g.streakFreezes -= sr.freezesUsed;
 
     // --- Daily goal ---
-    final todayKey = dayKey(today);
     if (g.dailyDay != todayKey) {
       g.dailyDay = todayKey;
       g.dailyXp = 0;
@@ -152,6 +165,9 @@ class GameService {
     final goalBefore = g.dailyXp >= profile.dailyGoalXp;
     g.dailyXp += gained;
     final goalAfter = g.dailyXp >= profile.dailyGoalXp;
+    // Meeting the daily goal grants exactly one chest, the first time per day.
+    final chestEarned = goalAfter && !goalBefore;
+    if (chestEarned) g.unopenedChests += 1;
 
     // --- Lesson progress (skipped for review/practice with no lesson) ---
     if (lesson != null) {
@@ -219,8 +235,11 @@ class GameService {
       streakExtended: sr.extended,
       streakReset: sr.reset,
       dailyGoalMet: goalAfter,
-      dailyGoalJustMet: goalAfter && !goalBefore,
+      dailyGoalJustMet: chestEarned,
       newBadges: newBadges,
+      chestEarned: chestEarned,
+      freezesUsed: sr.freezesUsed,
+      xpBoosted: xpBoosted,
     );
   }
 

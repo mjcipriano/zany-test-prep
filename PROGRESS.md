@@ -41,6 +41,33 @@ Work on short-lived feature branches off `master`, then merge into `master` your
   splash). Future: lazy-load or on-device generation if startup/memory becomes a
   concern (see docs/roadmap.md).
 
+## Rewards system (in progress — foundation built, deeper types stubbed)
+
+Added on the `feature/rewards-system` branch. Full design in
+[docs/gamification.md](docs/gamification.md#rewards-economy-chests-store-avatar).
+
+- **XP economy split:** `GameState.spentXp` added; `availableXp = totalXp − spentXp`.
+  `totalXp` stays lifetime-gained (levels/badges/dashboard unchanged).
+- **Chests:** one per daily-goal day (`GameService` on `dailyGoalJustMet` →
+  `unopenedChests`). `RewardEngine` rolls a weighted drop (XP / streak freeze /
+  next-day XP boost / avatar / item). `Reward` is a sealed type for easy extension.
+- **Streak freezes:** banked, max `kMaxStreakFreezes` (3); `StreakEngine` spends them
+  to bridge missed days.
+- **XP boost:** `xpBoostDay` + `xpBoostMultiplier`, applied by `GameService`.
+- **Avatar pack:** vendored from `mjcipriano/zany-test-prep-avatars` v1.0.0 via
+  `tools/sync_avatars.py` into `assets/avatar/`. Catalog
+  (`assets/avatar/manifest/avatar_catalog.json`) lists all 412 assets; only 10 starter
+  PNGs bundled (UI falls back to rarity tiles). Re-run the script (`--tag`/`--full`)
+  to extend — nothing hardcodes asset lists.
+- **UI:** `/rewards` hub, `/store` (spend XP), `/avatar` (pick avatar + equip,
+  z-ordered preview). Entry from the stats page card + a home-screen gift button.
+- **Domain logic:** `RewardsService` (open chest / purchase / equip / select).
+  Providers + `AppData.catalog` + controller methods in `lib/app/app_controller.dart`.
+- **Tests:** `test/unit/rewards_test.dart` (engine/economy/freeze/service) +
+  game_service chest/boost tests. Full suite **79 passing**, analyze clean.
+- **Stubbed for later (per user):** chest drop-table balancing and additional
+  reward/item types pending further details.
+
 ## Status checklist — ALL CORE ITEMS COMPLETE
 
 - [x] Toolchain: mamba env, Flutter 3.35.5, Android SDK 35 — `flutter doctor` green for Android

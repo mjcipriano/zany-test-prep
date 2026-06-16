@@ -7,6 +7,7 @@ import 'package:zany_test_prep/app/app.dart';
 import 'package:zany_test_prep/app/app_controller.dart';
 import 'package:zany_test_prep/core/sound_service.dart';
 import 'package:zany_test_prep/data/local/key_value_store.dart';
+import 'package:zany_test_prep/data/repositories/avatar_repository.dart';
 import 'package:zany_test_prep/data/repositories/content_repository.dart';
 
 // Preloaded once from disk (cwd == repo root during tests). Returned to the app
@@ -21,6 +22,13 @@ ContentRepository _testContentRepository() => ContentRepository(
   reader: (path) async =>
       path.endsWith('exams.json') ? _examsJson : _bundleJson,
 );
+
+final String _avatarCatalogJson = File(
+  'assets/avatar/manifest/avatar_catalog.json',
+).readAsStringSync();
+
+AvatarRepository _testAvatarRepository() =>
+    AvatarRepository(reader: (path) async => _avatarCatalogJson);
 
 /// Pumps the full app with test overrides. Reuse [store] across pumps to
 /// simulate an app restart with persisted state.
@@ -38,6 +46,7 @@ Future<MemoryStore> pumpApp(WidgetTester tester, {MemoryStore? store}) async {
     ProviderScope(
       overrides: [
         contentRepositoryProvider.overrideWithValue(_testContentRepository()),
+        avatarRepositoryProvider.overrideWithValue(_testAvatarRepository()),
         keyValueStoreProvider.overrideWith((ref) async => memory),
         soundServiceProvider.overrideWithValue(NoopSoundService()),
       ],
