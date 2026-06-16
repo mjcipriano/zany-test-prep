@@ -8,6 +8,7 @@ import '../data/repositories/avatar_repository.dart';
 import '../data/repositories/content_repository.dart';
 import '../data/repositories/progress_repository.dart';
 import '../domain/models/avatar_catalog.dart';
+import '../domain/models/backup.dart';
 import '../domain/models/content_bundle.dart';
 import '../domain/models/lesson.dart';
 import '../domain/models/profile.dart';
@@ -329,6 +330,45 @@ class AppController extends AsyncNotifier<AppData> {
     _rewards.unequip(data.progress.game, slot);
     await _repo.saveProgress(data.progress);
     state = AsyncData(data.bump());
+  }
+
+  /// Removes [assetId] from wherever it's equipped.
+  Future<void> unequipAsset(String assetId) async {
+    final data = _data;
+    _rewards.unequipAsset(data.progress.game, assetId);
+    await _repo.saveProgress(data.progress);
+    state = AsyncData(data.bump());
+  }
+
+  // --- Backup / restore (export & import) ---
+
+  /// Serializes all local state into a portable, version-stamped backup string.
+  String exportBackup() => _repo.exportBackup();
+
+  /// Validates a backup string without applying it (for a confirm screen).
+  BackupParse parseBackup(String raw) => decodeBackup(raw);
+
+  /// Replaces all local state with [data] and reloads the session. Reloads the
+  /// content bundle if the backup is for a different exam.
+  Future<void> importBackup(BackupData data) async {
+    final data0 = _data;
+    await _repo.writeBackup(data);
+    final profile = _repo.loadProfile();
+    final progress = _repo.loadProgress();
+    final examId = profile?.examId ?? data0.bundle.exam.id;
+    final bundle = examId == data0.bundle.exam.id
+        ? data0.bundle
+        : await ref.read(contentRepositoryProvider).loadBundle(examId);
+    state = AsyncData(
+      AppData(
+        bundle: bundle,
+        profile: profile,
+        progress: progress,
+        onboarded: _repo.isOnboarded,
+        catalog: data0.catalog,
+        revision: data0.revision + 1,
+      ),
+    );
   }
 
   /// Debug/testing cheat: grants [amount] XP to the lifetime + spendable total

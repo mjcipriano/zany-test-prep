@@ -103,7 +103,7 @@ class AvatarScreen extends ConsumerWidget {
             ...ownedItems.map(
               (item) => _ItemRow(
                 item: item,
-                equipped: g.equipped[item.primarySlot] == item.id,
+                equipped: rewards.isEquipped(g, item.id),
               ),
             ),
         ],
@@ -182,11 +182,17 @@ class _ItemRow extends ConsumerWidget {
             ),
             if (equipped)
               OutlinedButton(
-                onPressed: () => controller.unequipSlot(item.primarySlot!),
+                // Bounded width: the themed default is full-width, invalid as a
+                // non-flex child of a Row.
+                style: OutlinedButton.styleFrom(
+                  minimumSize: const Size(96, 40),
+                ),
+                onPressed: () => controller.unequipAsset(item.id),
                 child: const Text('Remove'),
               )
             else
               FilledButton.tonal(
+                style: FilledButton.styleFrom(minimumSize: const Size(96, 40)),
                 onPressed: () => controller.equipItem(item.id),
                 child: const Text('Equip'),
               ),

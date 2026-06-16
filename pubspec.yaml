@@ -4,7 +4,7 @@ publish_to: 'none'
 
 # versionName is the part before '+', versionCode the part after.
 # Keep versionName in sync with kAppVersion (lib/features/settings/about_screen.dart).
-version: 1.7.3+10
+version: 1.7.4+11
 
 environment:
   sdk: ^3.9.2
@@ -25,6 +25,12 @@ dependencies:
   # Plays short, bundled UI sound effects (offline). Behind a SoundService so it
   # is a no-op in tests.
   audioplayers: ^6.1.0
+  # Cross-platform export/import of a progress backup file. share_plus opens the
+  # system share sheet for export; file_picker reads a chosen backup for import.
+  # Both are offline (no network) and behind a thin service for testability.
+  share_plus: ^10.1.4
+  file_picker: ^8.1.6
+  path_provider: ^2.1.5
 
 dev_dependencies:
   flutter_test:

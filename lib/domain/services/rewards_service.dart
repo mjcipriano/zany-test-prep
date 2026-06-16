@@ -124,16 +124,31 @@ class RewardsService {
     return true;
   }
 
-  /// Equips an owned item/pet into its slot. Returns false if not owned.
+  /// Whether [assetId] is currently equipped in any slot.
+  bool isEquipped(GameState g, String assetId) =>
+      g.equipped.containsValue(assetId);
+
+  /// Equips an owned item/pet. Worn items occupy their single slot (replacing
+  /// whatever was there); pets/props with several allowed side slots fill the
+  /// first empty one so multiple can be worn at once. Returns false if not owned.
   bool equip(GameState g, AvatarCatalog catalog, String assetId) {
     final a = catalog[assetId];
     if (a == null || a.isAvatar || !isOwned(g, a)) return false;
-    final slot = a.primarySlot;
-    if (slot == null) return false;
+    if (a.allowedSlots.isEmpty) return false;
+    if (isEquipped(g, assetId)) return true; // already on
+    // Prefer an empty allowed slot; otherwise reuse the first (replace).
+    final slot = a.allowedSlots.firstWhere(
+      (s) => !g.equipped.containsKey(s),
+      orElse: () => a.allowedSlots.first,
+    );
     g.equipped[slot] = assetId;
     return true;
   }
 
   /// Removes whatever occupies [slot].
   void unequip(GameState g, String slot) => g.equipped.remove(slot);
+
+  /// Removes [assetId] from whatever slot(s) it occupies.
+  void unequipAsset(GameState g, String assetId) =>
+      g.equipped.removeWhere((slot, id) => id == assetId);
 }

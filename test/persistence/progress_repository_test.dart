@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zany_test_prep/data/local/key_value_store.dart';
 import 'package:zany_test_prep/data/repositories/progress_repository.dart';
+import 'package:zany_test_prep/domain/models/backup.dart';
 import 'package:zany_test_prep/domain/models/profile.dart';
 import 'package:zany_test_prep/domain/models/progress.dart';
 
@@ -56,6 +57,39 @@ void main() {
     expect(repo.isOnboarded, isFalse);
     expect(repo.loadProfile(), isNull);
     expect(repo.loadProgress().game.totalXp, 0);
+  });
+
+  test('export then import moves all state to a fresh device/store', () async {
+    // Device A: build up some state and export it.
+    final storeA = MemoryStore();
+    final repoA = ProgressRepository(storeA);
+    await repoA.saveProfile(UserProfile.initial('sat', 15));
+    await repoA.setOnboarded(true);
+    final progress = AppProgress();
+    progress.game.totalXp = 900;
+    progress.game.currentStreak = 5;
+    progress.game.ownedAssetIds.add('hat');
+    progress.lessonProgress('l1').completed = true;
+    await repoA.saveProgress(progress);
+    final backup = repoA.exportBackup();
+
+    // Device B: fresh store, import the backup.
+    final storeB = MemoryStore();
+    final repoB = ProgressRepository(storeB);
+    expect(repoB.isOnboarded, isFalse);
+    final parsed = decodeBackup(backup);
+    expect(parsed.ok, isTrue);
+    await repoB.writeBackup(parsed.data!);
+
+    // Re-read on B as if freshly launched.
+    final freshB = ProgressRepository(storeB);
+    expect(freshB.isOnboarded, isTrue);
+    expect(freshB.loadProfile()!.dailyGoalMinutes, 15);
+    final p = freshB.loadProgress();
+    expect(p.game.totalXp, 900);
+    expect(p.game.currentStreak, 5);
+    expect(p.game.ownedAssetIds, contains('hat'));
+    expect(p.isLessonCompleted('l1'), isTrue);
   });
 
   group('update resilience (no crash, valid settings preserved)', () {

@@ -2,12 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../app/app_controller.dart';
+import '../../core/app_info.dart';
 import '../../design/theme.dart';
 import '../../design/widgets.dart';
-
-/// App version shown on the About screen. Keep in sync with `version:` in
-/// pubspec.yaml when cutting a release (see docs/release.md).
-const String kAppVersion = '1.7.3';
 
 /// XP granted by the hidden cheat (tap the content version 10× quickly).
 const int _cheatXp = 10000;

@@ -76,6 +76,25 @@ Coverage: `test/persistence/progress_repository_test.dart` → the *update resil
 group (corrupt JSON, wrong types, partial corruption, unknown future fields, missing
 rewards fields).
 
+## Export / import (cross-device, cross-version)
+
+**Settings → Backup & restore** exports all local state to a portable JSON backup
+and imports it on another device or after a reinstall.
+
+- The format is a versioned envelope (`lib/domain/models/backup.dart`): `format`
+  magic string, `formatVersion`, `appVersion`, schema versions, `exportedAt`, plus
+  the `profile` + `progress` + `onboarded` payload.
+- **Cross-version aware:** import validates the magic string, warns (but still
+  proceeds) if the backup came from a newer format/app version, and parses the
+  payload through the same defensive `fromJson`s — so unknown/mistyped fields
+  degrade gracefully instead of failing the import. A confirm screen summarizes the
+  snapshot (XP, streak, lessons, unlocks) before it **replaces** current data.
+- **Cross-platform:** export shares a `.json` file (share sheet) or copies to the
+  clipboard; import reads a file (`file_picker`) or pastes from the clipboard.
+- Pure codec (`encodeBackup`/`decodeBackup`) is unit-tested in
+  `test/unit/backup_test.dart`; the device-to-device round trip is covered in
+  `progress_repository_test.dart`.
+
 ## Reset
 
 **Settings → Reset progress** calls `ProgressRepository.resetAll()`, which removes all

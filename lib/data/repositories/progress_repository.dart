@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import '../../domain/models/backup.dart';
 import '../../domain/models/profile.dart';
 import '../../domain/models/progress.dart';
 import '../local/key_value_store.dart';
@@ -62,6 +63,26 @@ class ProgressRepository {
 
   Future<void> setOnboarded(bool value) =>
       _store.setString(_onboardedKey, value ? 'true' : 'false');
+
+  /// Serializes all local state into a portable backup string.
+  String exportBackup() => encodeBackup(
+    BackupData(
+      profile: loadProfile(),
+      progress: loadProgress(),
+      onboarded: isOnboarded,
+    ),
+  );
+
+  /// Overwrites all local state from a parsed backup.
+  Future<void> writeBackup(BackupData data) async {
+    if (data.profile != null) {
+      await saveProfile(data.profile!);
+    } else {
+      await _store.remove(_profileKey);
+    }
+    await saveProgress(data.progress);
+    await setOnboarded(data.onboarded);
+  }
 
   /// Wipes all stored progress and profile (Reset Progress in settings).
   Future<void> resetAll() async {

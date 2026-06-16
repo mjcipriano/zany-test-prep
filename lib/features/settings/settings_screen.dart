@@ -137,6 +137,18 @@ class SettingsScreen extends ConsumerWidget {
             ),
           ),
           Gap.m,
+          const SectionLabel('Data'),
+          AppCard(
+            child: ListTile(
+              contentPadding: EdgeInsets.zero,
+              leading: const Icon(Icons.import_export_rounded),
+              title: const Text('Backup & restore'),
+              subtitle: const Text('Move progress between devices'),
+              trailing: const Icon(Icons.chevron_right_rounded),
+              onTap: () => context.push('/backup'),
+            ),
+          ),
+          Gap.m,
           const SectionLabel('About'),
           AppCard(
             child: Column(

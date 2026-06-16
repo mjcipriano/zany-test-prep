@@ -61,7 +61,17 @@ Added on the `feature/rewards-system` branch. Full design in
   script (`--tag <ver> --full`) for a new pack release. Nothing hardcodes asset lists.
 - **Released:** **v1.7.0** (rewards system + full avatar pack), **v1.7.1** (animated
   chest opening + in-row button layout fix), **v1.7.2** (About version accuracy +
-  test cheat code + update-safe persistence). APK ~104 MB attached to each Release.
+  test cheat code + update-safe persistence), **v1.7.3** (stable release signing so
+  updates install in place — keystore in GitHub secrets + local backup),
+  **v1.7.4** (export/import backup + owned-items equip fix). APK ~104 MB per Release.
+- **Backup/restore:** Settings → Backup & restore. Versioned JSON envelope
+  (`lib/domain/models/backup.dart`), cross-device + cross-version aware (warns on
+  version drift, defensive parse). Export via share-sheet/clipboard, import via
+  file/clipboard. CI signs releases with the stable key from repo secrets.
+- **Owned items:** equipping works across every category; fixed a layout crash where
+  in-Row themed (full-width) buttons threw "infinite width" once items were owned.
+  `RewardsService.equip` fills the first free allowed slot (pets use multiple side
+  slots); `isEquipped`/`unequipAsset` track by asset id.
 - **About page:** shows app version (`kAppVersion`, keep in sync with pubspec
   `version:`) + content version (from the bundle). Hidden **cheat**: tap the content
   version 10× quickly → +10,000 XP (`AppController.grantCheatXp`), for testing.

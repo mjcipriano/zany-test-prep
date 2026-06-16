@@ -17,6 +17,7 @@ import '../features/rewards/chest_reveal_screen.dart';
 import '../features/rewards/rewards_screen.dart';
 import '../features/rewards/store_screen.dart';
 import '../features/settings/about_screen.dart';
+import '../features/settings/backup_screen.dart';
 import '../features/settings/settings_screen.dart';
 import '../features/test/timed_test_screen.dart';
 import 'app_controller.dart';
@@ -104,6 +105,10 @@ final routerProvider = Provider<GoRouter>((ref) {
         builder: (context, state) => const SettingsScreen(),
       ),
       GoRoute(path: '/about', builder: (context, state) => const AboutScreen()),
+      GoRoute(
+        path: '/backup',
+        builder: (context, state) => const BackupScreen(),
+      ),
     ],
   );
 });

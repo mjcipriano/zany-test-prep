@@ -264,4 +264,115 @@ void main() {
       expect(r.currentStreak, 6);
     });
   });
+
+  group('owned items: equip across every category', () {
+    const svc = RewardsService();
+
+    // One worn item per slot category (z-index ascending), plus two side pets.
+    final wornSlots = <String, int>{
+      'background_frame': 5,
+      'back_or_aura': 10,
+      'neck_accessory': 20,
+      'face_accessory': 30,
+      'eyewear': 35,
+      'ear_accessory': 38,
+      'headwear': 45,
+      'chest_badge': 50,
+      'jacket_or_top_overlay': 55,
+    };
+
+    AvatarCatalog richCatalog() => AvatarCatalog(
+      packId: 'test',
+      styleVersion: 'v1',
+      assets: [
+        _asset('av', type: 'avatar', xp: 0, starter: true, z: 0, slots: const ['avatar']),
+        for (final e in wornSlots.entries)
+          _asset('item_${e.key}', z: e.value, slots: [e.key]),
+        _asset('item_headwear_2', z: 45, slots: const ['headwear']),
+        _asset('pet_a', type: 'pet', z: 60, slots: const [
+          'side_left_1', 'side_left_2', 'side_right_1', 'side_right_2',
+        ]),
+        _asset('pet_b', type: 'pet', z: 61, slots: const [
+          'side_left_1', 'side_left_2', 'side_right_1', 'side_right_2',
+        ]),
+      ],
+    );
+
+    GameState ownedAll(AvatarCatalog c) => GameState(
+      ownedAssetIds: c.assets.where((a) => !a.isAvatar).map((a) => a.id).toSet(),
+    );
+
+    test('each worn category equips into its own slot and stacks', () {
+      final c = richCatalog();
+      final g = ownedAll(c);
+      for (final slot in wornSlots.keys) {
+        expect(svc.equip(g, c, 'item_$slot'), isTrue, reason: slot);
+        expect(svc.isEquipped(g, 'item_$slot'), isTrue, reason: slot);
+        expect(g.equipped[slot], 'item_$slot', reason: slot);
+      }
+      // All worn slots coexist (distinct slots don't overwrite each other).
+      expect(g.equipped.length, wornSlots.length);
+      // Preview = avatar + every equipped item, ordered back-to-front by z.
+      final layers = svc.equippedLayers(g, c);
+      expect(layers.length, wornSlots.length + 1);
+      for (var i = 1; i < layers.length; i++) {
+        expect(layers[i].zIndex >= layers[i - 1].zIndex, isTrue);
+      }
+      expect(layers.first.id, 'av'); // avatar at the back (z 0)
+    });
+
+    test('equipping a second item in a slot replaces the first', () {
+      final c = richCatalog();
+      final g = ownedAll(c);
+      svc.equip(g, c, 'item_headwear');
+      expect(g.equipped['headwear'], 'item_headwear');
+      svc.equip(g, c, 'item_headwear_2');
+      expect(g.equipped['headwear'], 'item_headwear_2');
+      expect(svc.isEquipped(g, 'item_headwear'), isFalse);
+      expect(g.equipped.values.where((v) => v.startsWith('item_headwear')).length, 1);
+    });
+
+    test('multiple pets fill separate side slots', () {
+      final c = richCatalog();
+      final g = ownedAll(c);
+      expect(svc.equip(g, c, 'pet_a'), isTrue);
+      expect(svc.equip(g, c, 'pet_b'), isTrue);
+      expect(svc.isEquipped(g, 'pet_a'), isTrue);
+      expect(svc.isEquipped(g, 'pet_b'), isTrue);
+      expect(g.equipped['side_left_1'], 'pet_a');
+      expect(g.equipped['side_left_2'], 'pet_b'); // first empty allowed slot
+    });
+
+    test('unequipAsset removes from whatever slot it occupies', () {
+      final c = richCatalog();
+      final g = ownedAll(c);
+      svc.equip(g, c, 'pet_a');
+      svc.equip(g, c, 'pet_b');
+      svc.unequipAsset(g, 'pet_a');
+      expect(svc.isEquipped(g, 'pet_a'), isFalse);
+      expect(svc.isEquipped(g, 'pet_b'), isTrue);
+      expect(g.equipped.containsKey('side_left_1'), isFalse);
+    });
+
+    test('cannot equip an unowned item; re-equipping is idempotent', () {
+      final c = richCatalog();
+      final g = GameState(); // owns nothing
+      expect(svc.equip(g, c, 'item_headwear'), isFalse);
+      g.ownedAssetIds.add('item_headwear');
+      expect(svc.equip(g, c, 'item_headwear'), isTrue);
+      expect(svc.equip(g, c, 'item_headwear'), isTrue); // already on, no dup
+      expect(g.equipped.values.where((v) => v == 'item_headwear').length, 1);
+    });
+
+    test('owned/equipped state survives a JSON round-trip', () {
+      final c = richCatalog();
+      final g = ownedAll(c);
+      svc.equip(g, c, 'item_headwear');
+      svc.equip(g, c, 'pet_a');
+      final back = GameState.fromJson(g.toJson());
+      expect(back.ownedAssetIds, containsAll(['item_headwear', 'pet_a']));
+      expect(svc.isEquipped(back, 'item_headwear'), isTrue);
+      expect(svc.isEquipped(back, 'pet_a'), isTrue);
+    });
+  });
 }

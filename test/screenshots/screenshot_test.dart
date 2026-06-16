@@ -262,4 +262,69 @@ void main() {
     await tester.pumpAndSettle();
     await _shoot(tester, '13_chest_reward');
   });
+
+  testWidgets('owned items customizer screenshots', skip: !fontsAvailable, (
+    tester,
+  ) async {
+    const owned = {
+      'item_001_classic_cap', // headwear
+      'item_041_round_glasses', // eyewear
+      'item_071_simple_mask', // face_accessory
+      'pet_fox_study_cap_001', // side pet
+    };
+    const paths = [
+      'assets/avatar/avatars/starter/avatar_basic_001_nova_learner.png',
+      'assets/avatar/items/headwear/item_001_classic_cap.png',
+      'assets/avatar/items/eyewear/item_041_round_glasses.png',
+      'assets/avatar/items/face_accessory/item_071_simple_mask.png',
+      'assets/avatar/pets/common/pet_fox_study_cap_001.png',
+    ];
+
+    final store = MemoryStore();
+    store.setString('onboarded.v1', 'true');
+    store.setString(
+      'profile.v1',
+      jsonEncode(UserProfile.initial('sat', 10).toJson()),
+    );
+    final progress = AppProgress();
+    progress.game.totalXp = 5000;
+    progress.game.ownedAssetIds.addAll(owned);
+    store.setString('progress.v1', jsonEncode(progress.toJson()));
+
+    await _pump(tester, store);
+    // Warm the image cache so the avatar art renders in the capture.
+    await tester.runAsync(() async {
+      final ctx = _boundaryKey.currentContext!;
+      for (final p in paths) {
+        await precacheImage(AssetImage(p), ctx);
+      }
+    });
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.byIcon(Icons.card_giftcard_rounded));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Customize'));
+    await tester.pumpAndSettle();
+
+    // Scroll the owned-items rows into view (the regression area) and capture.
+    final scrollable = find.byType(Scrollable).first;
+    await tester.scrollUntilVisible(
+      find.text('Classic Cap'),
+      300,
+      scrollable: scrollable,
+    );
+    await tester.pumpAndSettle();
+    await _shoot(tester, '14_avatar_items');
+
+    // Equip everything (rows are in view), then scroll back up to the preview.
+    for (var i = 0; i < 4; i++) {
+      final equip = find.text('Equip');
+      if (equip.evaluate().isEmpty) break;
+      await tester.tap(equip.first);
+      await tester.pumpAndSettle();
+    }
+    await tester.drag(scrollable, const Offset(0, 1200));
+    await tester.pumpAndSettle();
+    await _shoot(tester, '15_avatar_equipped');
+  });
 }
