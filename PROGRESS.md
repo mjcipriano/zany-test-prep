@@ -59,8 +59,17 @@ Added on the `feature/rewards-system` branch. Full design in
   items, 30 pets (412 assets, ~52 MB), all bundled in the APK. Catalog
   (`assets/avatar/manifest/avatar_catalog.json`) is the source of truth; re-run the
   script (`--tag <ver> --full`) for a new pack release. Nothing hardcodes asset lists.
-- **Released:** **v1.7.0** (rewards system + full avatar pack), APK ~104 MB attached
-  to the GitHub Release.
+- **Released:** **v1.7.0** (rewards system + full avatar pack), **v1.7.1** (animated
+  chest opening + in-row button layout fix), **v1.7.2** (About version accuracy +
+  test cheat code + update-safe persistence). APK ~104 MB attached to each Release.
+- **About page:** shows app version (`kAppVersion`, keep in sync with pubspec
+  `version:`) + content version (from the bundle). Hidden **cheat**: tap the content
+  version 10× quickly → +10,000 XP (`AppController.grantCheatXp`), for testing.
+- **Update safety:** all persistence `fromJson` are defensive via
+  `lib/domain/models/safe_json.dart` (missing/wrong-typed fields default; corrupt
+  entries skipped; repository wraps loads in try/catch). Valid settings/progress
+  survive updates; the app never crashes on invalid stored data. Strategy documented
+  in docs/persistence.md; covered by the *update resilience* tests.
 - **UI:** `/rewards` hub, `/store` (spend XP), `/avatar` (pick avatar + equip,
   z-ordered preview). Entry from the stats page card + a home-screen gift button.
 - **Domain logic:** `RewardsService` (open chest / purchase / equip / select).

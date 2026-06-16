@@ -16,16 +16,42 @@ class ProgressRepository {
 
   bool get isOnboarded => _store.getString(_onboardedKey) == 'true';
 
+  /// Loads the profile, or null if absent. Returns null (rather than throwing)
+  /// if the stored JSON is unreadable, so a corrupt profile leads to a fresh
+  /// onboarding instead of a crash on launch.
   UserProfile? loadProfile() {
-    final raw = _store.getString(_profileKey);
-    if (raw == null) return null;
-    return UserProfile.fromJson(jsonDecode(raw) as Map<String, dynamic>);
+    final map = _decodeMap(_profileKey);
+    if (map == null) return null;
+    try {
+      return UserProfile.fromJson(map);
+    } catch (_) {
+      return null;
+    }
   }
 
+  /// Loads progress, falling back to empty progress if the stored JSON is
+  /// unreadable. Field-level parsing is already defensive (see the models), so
+  /// this top-level guard only triggers for wholesale corruption.
   AppProgress loadProgress() {
-    final raw = _store.getString(_progressKey);
-    if (raw == null) return AppProgress();
-    return AppProgress.fromJson(jsonDecode(raw) as Map<String, dynamic>);
+    final map = _decodeMap(_progressKey);
+    if (map == null) return AppProgress();
+    try {
+      return AppProgress.fromJson(map);
+    } catch (_) {
+      return AppProgress();
+    }
+  }
+
+  /// Decodes a stored JSON object, returning null for missing or invalid data.
+  Map<String, dynamic>? _decodeMap(String key) {
+    final raw = _store.getString(key);
+    if (raw == null) return null;
+    try {
+      final decoded = jsonDecode(raw);
+      return decoded is Map ? decoded.cast<String, dynamic>() : null;
+    } catch (_) {
+      return null;
+    }
   }
 
   Future<void> saveProfile(UserProfile profile) =>

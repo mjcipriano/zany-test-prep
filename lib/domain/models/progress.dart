@@ -2,7 +2,18 @@
 ///
 /// Dates that matter only at day granularity (streaks, daily goal, review) are
 /// stored as 'yyyy-MM-dd' strings to avoid timezone/precision pitfalls.
+///
+/// Every `fromJson` here is **defensive** (see [safe_json.dart]): missing or
+/// wrongly-typed fields fall back to sane defaults instead of throwing, so the
+/// app survives schema changes across updates without losing the rest of a
+/// user's progress.
 library;
+
+import 'safe_json.dart';
+
+/// Bumped only when the persisted progress shape needs a real migration.
+/// Stored in [AppProgress.toJson] so future versions can detect old documents.
+const int kProgressSchemaVersion = 1;
 
 String dayKey(DateTime d) =>
     '${d.year.toString().padLeft(4, '0')}-${d.month.toString().padLeft(2, '0')}-${d.day.toString().padLeft(2, '0')}';
@@ -38,13 +49,13 @@ class LessonProgress {
   };
 
   factory LessonProgress.fromJson(Map<String, dynamic> j) => LessonProgress(
-    lessonId: j['lessonId'] as String,
-    completed: j['completed'] as bool? ?? false,
-    bestCorrect: j['bestCorrect'] as int? ?? 0,
-    total: j['total'] as int? ?? 0,
-    stars: j['stars'] as int? ?? 0,
-    timesCompleted: j['timesCompleted'] as int? ?? 0,
-    lastCompletedDay: j['lastCompletedDay'] as String?,
+    lessonId: asString(j['lessonId']),
+    completed: asBool(j['completed']),
+    bestCorrect: asInt(j['bestCorrect']),
+    total: asInt(j['total']),
+    stars: asInt(j['stars']),
+    timesCompleted: asInt(j['timesCompleted']),
+    lastCompletedDay: asStringOrNull(j['lastCompletedDay']),
   );
 }
 
@@ -73,11 +84,11 @@ class QuestionStat {
   };
 
   factory QuestionStat.fromJson(Map<String, dynamic> j) => QuestionStat(
-    questionId: j['questionId'] as String,
-    attempts: j['attempts'] as int? ?? 0,
-    correct: j['correct'] as int? ?? 0,
-    lastCorrect: j['lastCorrect'] as bool? ?? false,
-    totalResponseMs: j['totalResponseMs'] as int? ?? 0,
+    questionId: asString(j['questionId']),
+    attempts: asInt(j['attempts']),
+    correct: asInt(j['correct']),
+    lastCorrect: asBool(j['lastCorrect']),
+    totalResponseMs: asInt(j['totalResponseMs']),
   );
 }
 
@@ -91,8 +102,8 @@ class SkillMastery {
   Map<String, dynamic> toJson() => {'skillId': skillId, 'mastery': mastery};
 
   factory SkillMastery.fromJson(Map<String, dynamic> j) => SkillMastery(
-    skillId: j['skillId'] as String,
-    mastery: (j['mastery'] as num?)?.toDouble() ?? 0,
+    skillId: asString(j['skillId']),
+    mastery: asDouble(j['mastery']),
   );
 }
 
@@ -127,13 +138,13 @@ class ReviewItem {
   };
 
   factory ReviewItem.fromJson(Map<String, dynamic> j) => ReviewItem(
-    questionId: j['questionId'] as String,
-    skillId: j['skillId'] as String,
-    priority: j['priority'] as int? ?? 3,
-    lastReviewedDay: j['lastReviewedDay'] as String?,
-    intervalDays: j['intervalDays'] as int? ?? 0,
-    ease: (j['ease'] as num?)?.toDouble() ?? 2.3,
-    dueDay: j['dueDay'] as String?,
+    questionId: asString(j['questionId']),
+    skillId: asString(j['skillId']),
+    priority: asInt(j['priority'], 3),
+    lastReviewedDay: asStringOrNull(j['lastReviewedDay']),
+    intervalDays: asInt(j['intervalDays']),
+    ease: asDouble(j['ease'], 2.3),
+    dueDay: asStringOrNull(j['dueDay']),
   );
 }
 
@@ -217,29 +228,25 @@ class GameState {
   };
 
   factory GameState.fromJson(Map<String, dynamic> j) => GameState(
-    totalXp: j['totalXp'] as int? ?? 0,
-    spentXp: j['spentXp'] as int? ?? 0,
-    currentStreak: j['currentStreak'] as int? ?? 0,
-    longestStreak: j['longestStreak'] as int? ?? 0,
-    lastActiveDay: j['lastActiveDay'] as String?,
-    dailyXp: j['dailyXp'] as int? ?? 0,
-    dailyDay: j['dailyDay'] as String?,
-    survivalBest: j['survivalBest'] as int? ?? 0,
-    diagnosticDone: j['diagnosticDone'] as bool? ?? false,
-    earnedBadges: (j['earnedBadges'] as List? ?? const [])
-        .map((e) => e.toString())
-        .toSet(),
-    streakFreezes: j['streakFreezes'] as int? ?? 0,
-    unopenedChests: j['unopenedChests'] as int? ?? 0,
-    xpBoostDay: j['xpBoostDay'] as String?,
-    xpBoostMultiplier: (j['xpBoostMultiplier'] as num?)?.toDouble() ?? 1.0,
-    selectedAvatarId: j['selectedAvatarId'] as String?,
-    ownedAssetIds: (j['ownedAssetIds'] as List? ?? const [])
-        .map((e) => e.toString())
-        .toSet(),
-    equipped: ((j['equipped'] as Map?) ?? const {}).map(
-      (k, v) => MapEntry(k.toString(), v.toString()),
-    ),
+    totalXp: asInt(j['totalXp']),
+    spentXp: asInt(j['spentXp']),
+    currentStreak: asInt(j['currentStreak']),
+    longestStreak: asInt(j['longestStreak']),
+    lastActiveDay: asStringOrNull(j['lastActiveDay']),
+    dailyXp: asInt(j['dailyXp']),
+    dailyDay: asStringOrNull(j['dailyDay']),
+    survivalBest: asInt(j['survivalBest']),
+    diagnosticDone: asBool(j['diagnosticDone']),
+    earnedBadges: asStringList(j['earnedBadges']).toSet(),
+    streakFreezes: asInt(j['streakFreezes']),
+    unopenedChests: asInt(j['unopenedChests']),
+    xpBoostDay: asStringOrNull(j['xpBoostDay']),
+    xpBoostMultiplier: asDouble(j['xpBoostMultiplier'], 1.0),
+    selectedAvatarId: asStringOrNull(j['selectedAvatarId']),
+    ownedAssetIds: asStringList(j['ownedAssetIds']).toSet(),
+    equipped: asMap(
+      j['equipped'],
+    ).map((k, v) => MapEntry(k.toString(), v.toString())),
   );
 }
 
@@ -265,10 +272,10 @@ class DailyStat {
   };
 
   factory DailyStat.fromJson(Map<String, dynamic> j) => DailyStat(
-    day: j['day'] as String,
-    xp: j['xp'] as int? ?? 0,
-    answered: j['answered'] as int? ?? 0,
-    correct: j['correct'] as int? ?? 0,
+    day: asString(j['day']),
+    xp: asInt(j['xp']),
+    answered: asInt(j['answered']),
+    correct: asInt(j['correct']),
   );
 }
 
@@ -313,6 +320,7 @@ class AppProgress {
       lessons[lessonId]?.completed ?? false;
 
   Map<String, dynamic> toJson() => {
+    'schema': kProgressSchemaVersion,
     'game': game.toJson(),
     'lessons': lessons.map((k, v) => MapEntry(k, v.toJson())),
     'questionStats': questionStats.map((k, v) => MapEntry(k, v.toJson())),
@@ -321,36 +329,44 @@ class AppProgress {
     'history': history.map((k, v) => MapEntry(k, v.toJson())),
   };
 
-  factory AppProgress.fromJson(Map<String, dynamic> j) => AppProgress(
-    game: GameState.fromJson(
-      (j['game'] as Map?)?.cast<String, dynamic>() ?? const {},
-    ),
-    lessons: ((j['lessons'] as Map?) ?? const {}).map(
-      (k, v) => MapEntry(
-        k as String,
-        LessonProgress.fromJson((v as Map).cast<String, dynamic>()),
-      ),
-    ),
-    questionStats: ((j['questionStats'] as Map?) ?? const {}).map(
-      (k, v) => MapEntry(
-        k as String,
-        QuestionStat.fromJson((v as Map).cast<String, dynamic>()),
-      ),
-    ),
-    skillMastery: ((j['skillMastery'] as Map?) ?? const {}).map(
-      (k, v) => MapEntry(
-        k as String,
-        SkillMastery.fromJson((v as Map).cast<String, dynamic>()),
-      ),
-    ),
-    reviewQueue: ((j['reviewQueue'] as List?) ?? const [])
-        .map((e) => ReviewItem.fromJson((e as Map).cast<String, dynamic>()))
-        .toList(),
-    history: ((j['history'] as Map?) ?? const {}).map(
-      (k, v) => MapEntry(
-        k as String,
-        DailyStat.fromJson((v as Map).cast<String, dynamic>()),
-      ),
-    ),
-  );
+  /// Parses persisted progress, tolerating missing/garbled fields and entries.
+  /// Individual bad collection entries are skipped rather than aborting the load.
+  factory AppProgress.fromJson(Map<String, dynamic> j) {
+    Map<String, T> parseMap<T>(
+      Object? raw,
+      T Function(Map<String, dynamic>) f,
+    ) {
+      final out = <String, T>{};
+      asMap(raw).forEach((k, v) {
+        if (v is Map) {
+          try {
+            out[k] = f(v.cast<String, dynamic>());
+          } catch (_) {
+            /* skip a single corrupt entry */
+          }
+        }
+      });
+      return out;
+    }
+
+    final reviewQueue = <ReviewItem>[];
+    for (final e in asList(j['reviewQueue'])) {
+      if (e is Map) {
+        try {
+          reviewQueue.add(ReviewItem.fromJson(e.cast<String, dynamic>()));
+        } catch (_) {
+          /* skip */
+        }
+      }
+    }
+
+    return AppProgress(
+      game: GameState.fromJson(asMap(j['game'])),
+      lessons: parseMap(j['lessons'], LessonProgress.fromJson),
+      questionStats: parseMap(j['questionStats'], QuestionStat.fromJson),
+      skillMastery: parseMap(j['skillMastery'], SkillMastery.fromJson),
+      reviewQueue: reviewQueue,
+      history: parseMap(j['history'], DailyStat.fromJson),
+    );
+  }
 }

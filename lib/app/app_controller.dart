@@ -330,6 +330,17 @@ class AppController extends AsyncNotifier<AppData> {
     await _repo.saveProgress(data.progress);
     state = AsyncData(data.bump());
   }
+
+  /// Debug/testing cheat: grants [amount] XP to the lifetime + spendable total
+  /// (also logged to today's history) so the rewards economy is easy to exercise
+  /// without grinding. Triggered by the hidden tap gesture on the About screen.
+  Future<void> grantCheatXp(int amount) async {
+    final data = _data;
+    data.progress.game.totalXp += amount;
+    data.progress.recordDay(dayKey(DateTime.now()), xp: amount);
+    await _repo.saveProgress(data.progress);
+    state = AsyncData(data.bump());
+  }
 }
 
 final appControllerProvider = AsyncNotifierProvider<AppController, AppData>(

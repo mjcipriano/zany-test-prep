@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'safe_json.dart';
+
+/// Bumped only when the persisted profile shape needs a real migration.
+const int kProfileSchemaVersion = 1;
+
 /// The locally stored user profile. No login, no backend.
 class UserProfile {
   const UserProfile({
@@ -48,6 +53,7 @@ class UserProfile {
   }
 
   Map<String, dynamic> toJson() => {
+    'schema': kProfileSchemaVersion,
     'examId': examId,
     'dailyGoalMinutes': dailyGoalMinutes,
     'targetTestDate': targetTestDate?.toIso8601String(),
@@ -57,21 +63,25 @@ class UserProfile {
     'createdAt': createdAt.toIso8601String(),
   };
 
-  factory UserProfile.fromJson(Map<String, dynamic> json) => UserProfile(
-    examId: json['examId'] as String? ?? 'sat',
-    dailyGoalMinutes: json['dailyGoalMinutes'] as int? ?? 10,
-    targetTestDate: json['targetTestDate'] == null
-        ? null
-        : DateTime.tryParse(json['targetTestDate'] as String),
-    soundOn: json['soundOn'] as bool? ?? true,
-    hapticsOn: json['hapticsOn'] as bool? ?? true,
-    themeMode: ThemeMode.values.firstWhere(
-      (m) => m.name == json['themeMode'],
-      orElse: () => ThemeMode.system,
-    ),
-    createdAt:
-        DateTime.tryParse(json['createdAt'] as String? ?? '') ?? DateTime.now(),
-  );
+  /// Defensive parse: every field tolerates a missing or wrong-typed value and
+  /// falls back to a valid default, so a profile written by any version loads
+  /// without crashing. [dailyGoalMinutes] is also clamped to a sane range.
+  factory UserProfile.fromJson(Map<String, dynamic> json) {
+    final minutes = asInt(json['dailyGoalMinutes'], 10);
+    return UserProfile(
+      examId: asString(json['examId'], 'sat'),
+      dailyGoalMinutes: minutes < 1 ? 10 : (minutes > 120 ? 120 : minutes),
+      targetTestDate: DateTime.tryParse(asString(json['targetTestDate'])),
+      soundOn: asBool(json['soundOn'], true),
+      hapticsOn: asBool(json['hapticsOn'], true),
+      themeMode: ThemeMode.values.firstWhere(
+        (m) => m.name == asStringOrNull(json['themeMode']),
+        orElse: () => ThemeMode.system,
+      ),
+      createdAt:
+          DateTime.tryParse(asString(json['createdAt'])) ?? DateTime.now(),
+    );
+  }
 
   static UserProfile initial(String examId, int dailyGoalMinutes) =>
       UserProfile(

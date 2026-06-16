@@ -5,13 +5,46 @@ import '../../app/app_controller.dart';
 import '../../design/theme.dart';
 import '../../design/widgets.dart';
 
-const String kAppVersion = '1.0.0';
+/// App version shown on the About screen. Keep in sync with `version:` in
+/// pubspec.yaml when cutting a release (see docs/release.md).
+const String kAppVersion = '1.7.2';
 
-class AboutScreen extends ConsumerWidget {
+/// XP granted by the hidden cheat (tap the content version 10× quickly).
+const int _cheatXp = 10000;
+const int _cheatTaps = 10;
+
+class AboutScreen extends ConsumerStatefulWidget {
   const AboutScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<AboutScreen> createState() => _AboutScreenState();
+}
+
+class _AboutScreenState extends ConsumerState<AboutScreen> {
+  int _taps = 0;
+  DateTime? _lastTap;
+
+  Future<void> _onVersionTap() async {
+    final now = DateTime.now();
+    // Reset the counter if taps slow down (must be a quick succession).
+    if (_lastTap == null ||
+        now.difference(_lastTap!) > const Duration(milliseconds: 800)) {
+      _taps = 0;
+    }
+    _lastTap = now;
+    _taps++;
+    if (_taps >= _cheatTaps) {
+      _taps = 0;
+      await ref.read(appControllerProvider.notifier).grantCheatXp(_cheatXp);
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('🎉 Cheat unlocked: +$_cheatXp XP!')),
+      );
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final data = ref.watch(appControllerProvider).valueOrNull;
     final scheme = Theme.of(context).colorScheme;
     return Scaffold(
@@ -32,9 +65,17 @@ class AboutScreen extends ConsumerWidget {
                 ),
                 const Text('Version $kAppVersion'),
                 if (data != null)
-                  Text(
-                    'Content ${data.bundle.exam.contentVersion}',
-                    style: Theme.of(context).textTheme.bodySmall,
+                  // Hidden cheat: 10 quick taps on the content version grants XP.
+                  GestureDetector(
+                    behavior: HitTestBehavior.opaque,
+                    onTap: _onVersionTap,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 4),
+                      child: Text(
+                        'Content ${data.bundle.exam.contentVersion}',
+                        style: Theme.of(context).textTheme.bodySmall,
+                      ),
+                    ),
                   ),
               ],
             ),

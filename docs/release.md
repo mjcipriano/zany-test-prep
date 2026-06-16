@@ -33,6 +33,12 @@ Workflows live in `.github/workflows/`:
 
 ## Cutting a private release
 
+Before tagging, bump the version in **two places that must stay in sync**:
+
+- `version:` in `pubspec.yaml` (the `+N` build/versionCode must only increase).
+- `kAppVersion` in `lib/features/settings/about_screen.dart` (shown on the About
+  screen). The content version on About is read from the bundle automatically.
+
 ```bash
 git tag v1.0.0
 git push origin v1.0.0

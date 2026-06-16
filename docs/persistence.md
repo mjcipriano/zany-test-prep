@@ -43,6 +43,39 @@ to avoid timezone/precision bugs.
 finishing a lesson or review, editing a setting, completing onboarding. Each save
 serializes the whole document — small at this scale (hundreds of entries).
 
+## Surviving app updates (no data loss, no crash-on-load)
+
+Updating the app must never wipe XP/streaks/mastery/settings or crash because the
+stored data was written by an older (or newer) build. The strategy:
+
+1. **Stable keys, no destructive bumps.** The `*.v1` keys are not changed casually.
+   shared_preferences persists across app updates as long as the package id and
+   signing key are unchanged, so install-over-install keeps the data. (Android also
+   requires the `versionCode` in `pubspec.yaml` to only ever increase.)
+
+2. **Additive schema.** New fields are *added* with safe defaults; existing fields
+   keep their meaning. Reading a document re-serializes the full known shape, so a
+   user's existing valid settings are preserved. A `"schema"` integer
+   (`kProgressSchemaVersion` / `kProfileSchemaVersion`) is written for future
+   migrations, but field-level tolerance handles ordinary additions without one.
+
+3. **Defensive parsing — any valid setting is kept, invalid ones never crash.**
+   Every `fromJson` uses the coercion helpers in
+   `lib/domain/models/safe_json.dart`: a missing or wrong-typed field falls back to
+   its default instead of throwing (e.g. `"1500"`/`1500.0` → `1500`, `"true"` →
+   `true`, a null list → empty). A single corrupt collection entry is skipped rather
+   than aborting the whole load. As a last resort, `ProgressRepository` wraps decode
+   + parse in try/catch: unreadable progress → fresh `AppProgress`, unreadable
+   profile → re-onboard. The app therefore boots cleanly no matter what is on disk.
+
+4. **Old saves are forward-compatible.** A pre-rewards `game` blob (no `spentXp`,
+   `streakFreezes`, chests, owned assets…) loads with those fields defaulted, so
+   updating into the rewards release keeps all prior XP and streaks intact.
+
+Coverage: `test/persistence/progress_repository_test.dart` → the *update resilience*
+group (corrupt JSON, wrong types, partial corruption, unknown future fields, missing
+rewards fields).
+
 ## Reset
 
 **Settings → Reset progress** calls `ProgressRepository.resetAll()`, which removes all
