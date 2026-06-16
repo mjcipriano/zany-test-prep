@@ -22,9 +22,13 @@ void main() {
       await tester.tap(find.textContaining('Main Idea').first);
       await tester.pumpAndSettle();
 
-      // Teaching card -> Start.
+      // Multi-screen mini-lesson: page through to the Start button.
+      expect(find.text('Key points'), findsWidgets);
+      for (var i = 0; i < 6 && find.text('Next').evaluate().isNotEmpty; i++) {
+        await tester.tap(find.text('Next'));
+        await tester.pumpAndSettle();
+      }
       expect(find.text('Start'), findsOneWidget);
-      expect(find.text('Key points'), findsOneWidget);
       await tester.tap(find.text('Start'));
       await tester.pumpAndSettle();
 

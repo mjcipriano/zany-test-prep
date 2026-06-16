@@ -17,6 +17,13 @@ Future<void> onboard(WidgetTester tester) async {
 /// Plays a lesson to completion by answering every question (correctly when it
 /// can, otherwise just submitting) until the summary appears.
 Future<void> completeOpenLesson(WidgetTester tester) async {
+  // Page through the multi-screen mini-lesson (Next…Next) to the Start button.
+  for (var guard = 0; guard < 6; guard++) {
+    if (find.text('Start').evaluate().isNotEmpty) break;
+    if (find.text('Next').evaluate().isEmpty) break;
+    await tester.tap(find.text('Next'));
+    await tester.pumpAndSettle();
+  }
   await tester.tap(find.text('Start'));
   await tester.pumpAndSettle();
 

@@ -164,7 +164,11 @@ void main() {
     await tester.pumpAndSettle();
     await _shoot(tester, '03_teaching');
 
-    // 4. A question.
+    // 4. A question. (Page through the multi-screen mini-lesson to Start.)
+    for (var i = 0; i < 6 && find.text('Next').evaluate().isNotEmpty; i++) {
+      await tester.tap(find.text('Next'));
+      await tester.pumpAndSettle();
+    }
     await tester.tap(find.text('Start'));
     await tester.pumpAndSettle();
     await _shoot(tester, '04_question');

@@ -173,6 +173,47 @@ TEACHING = {
         "key_points": ["Ask: what is the passage mostly about?",
                        "Avoid choices that are true but too narrow.",
                        "Reject choices that go beyond the passage."],
+        "screens": [
+            {
+                "title": "What is a main idea?",
+                "body": ("The main idea is the one point the whole passage is built to "
+                         "make — the umbrella that every sentence sits under. It is not "
+                         "the topic (a word or two) and not any single detail; it is the "
+                         "claim the details add up to."),
+                "key_points": ["Topic = what it's about; main idea = the point made about it.",
+                               "Every sentence should support the main idea."],
+            },
+            {
+                "title": "How to find it",
+                "body": ("Read for the point, not the trivia. In your own words, sum up "
+                         "what each part is doing, then ask: what do they all add up to? "
+                         "The first or last sentence often states or hints at it."),
+                "key_points": ["Summarize the passage in one short sentence first.",
+                               "Then match that summary to the closest choice.",
+                               "A turn like 'but' or 'however' often signals the point."],
+            },
+            {
+                "title": "Dodge the traps",
+                "body": ("Wrong answers are usually true-but-too-narrow (one detail), "
+                         "too-broad or outside the passage (adds claims it never makes), "
+                         "or a distortion that flips or exaggerates the text. The best "
+                         "answer covers the whole passage and nothing more."),
+                "key_points": ["Too narrow: a real detail, but not the overall point.",
+                               "Too broad / outside: ideas the passage never states.",
+                               "Distortion: close, but changes or overstates the meaning."],
+            },
+            {
+                "title": "Try the moves",
+                "body": ("A passage explains that an octopus changes color with muscles "
+                         "that widen pigment sacs — yet it is colorblind and cannot see "
+                         "its own colors. One-sentence summary: it changes color by a "
+                         "mechanism it can't perceive. The choice matching that whole idea "
+                         "wins; 'octopuses talk with color' (never stated) and 'it changes "
+                         "color slowly' (it's under a second) are traps."),
+                "worked_example": ("Summarize first -> 'changes color it can't see,' then "
+                                   "pick the choice that says exactly that, not one detail."),
+            },
+        ],
     },
     "inferences": {
         "title": "Making Inferences",

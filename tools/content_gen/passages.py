@@ -1432,11 +1432,26 @@ def _reading_q(passage, skill, qtype, est, rng):
               explanation=expl, tags=["reading", skill_tag], est=est, stimulus=stim)
 
 
+def _passage_complexity(p) -> float:
+    """A rough reading-difficulty proxy from prose density: longer passages with
+    longer sentences and words read harder. Used to order tiers so easy -> hard
+    actually trends harder instead of following authoring order."""
+    text = p["text"]
+    words = text.split()
+    sents = [s for s in text.replace("!", ".").replace("?", ".").split(".") if s.strip()]
+    avg_word = sum(len(w) for w in words) / max(1, len(words))
+    avg_sent = sum(len(s.split()) for s in sents) / max(1, len(sents))
+    return len(text) + 12 * avg_sent + 40 * avg_word
+
+
 def build_reading(skill: str, rng: random.Random):
-    """Return one question body per passage for the given reading skill key."""
+    """Return one question body per passage for the given reading skill key,
+    ordered hardest-first. The generator pops from the end per tier (easy first),
+    so the simplest passages land in the easy tier and the densest in hard."""
     qtype = "passage_reading"
     est = 80 if skill in ("evidence", "structure") else 70
-    return [_reading_q(p, skill, qtype, est, rng) for p in PASSAGES]
+    ordered = sorted(PASSAGES, key=_passage_complexity, reverse=True)
+    return [_reading_q(p, skill, qtype, est, rng) for p in ordered]
 
 
 def build_cross_text(rng: random.Random):

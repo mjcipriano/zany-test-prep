@@ -58,7 +58,12 @@ A "section" = one skill across its easy/medium/hard tiers.
 Order = top to bottom. Mark `[x]` when a section meets the Definition of Done.
 
 ### Reading & Writing
-- [ ] main_idea
+- [x] main_idea — 4-screen mini-lesson; reading tiers now ordered by passage
+  complexity (easy→hard ramps); distractors already balanced (no wording/position
+  tell). NOTE: the complexity-ordering change improves the difficulty ramp for
+  *all* passage-pool reading skills (inferences, command_of_evidence,
+  text_structure_purpose, words_in_context), but those still need their own
+  mini-lessons + a deeper per-tier distractor pass.
 - [ ] inferences
 - [ ] command_of_evidence
 - [ ] quantitative_evidence  ⚠ wording tell
