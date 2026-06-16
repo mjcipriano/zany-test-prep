@@ -145,4 +145,68 @@ void main() {
     expect(second.dailyGoalMet, isTrue);
     expect(second.dailyGoalJustMet, isTrue);
   });
+
+  test('meeting the daily goal grants exactly one chest for the day', () {
+    final progress = AppProgress();
+    final profile = UserProfile.initial('sat', 5); // goal = 100 XP
+    List<AnswerResult> perfect() => [
+      AnswerResult(question: _q('q1', Difficulty.easy), correct: true),
+      AnswerResult(question: _q('q2', Difficulty.medium), correct: true),
+    ];
+    final day = DateTime(2026, 6, 1);
+    final first = service.applyLessonResult(
+      progress: progress,
+      profile: profile,
+      lesson: _lesson,
+      results: perfect(),
+      bundle: _bundle(),
+      now: day,
+    );
+    expect(first.chestEarned, isFalse);
+    expect(progress.game.unopenedChests, 0);
+    final second = service.applyLessonResult(
+      progress: progress,
+      profile: profile,
+      lesson: _lesson,
+      results: perfect(),
+      bundle: _bundle(),
+      now: day,
+    );
+    expect(second.chestEarned, isTrue);
+    expect(progress.game.unopenedChests, 1);
+    // A third lesson the same day does not grant another chest.
+    final third = service.applyLessonResult(
+      progress: progress,
+      profile: profile,
+      lesson: _lesson,
+      results: perfect(),
+      bundle: _bundle(),
+      now: day,
+    );
+    expect(third.chestEarned, isFalse);
+    expect(progress.game.unopenedChests, 1);
+  });
+
+  test('an active XP boost multiplies the day\'s earnings', () {
+    final progress = AppProgress();
+    final profile = UserProfile.initial('sat', 10);
+    final day = DateTime(2026, 6, 1);
+    progress.game.xpBoostMultiplier = 2.0;
+    progress.game.xpBoostDay = dayKey(day);
+    final out = service.applyLessonResult(
+      progress: progress,
+      profile: profile,
+      lesson: _lesson,
+      results: [
+        AnswerResult(question: _q('q1', Difficulty.easy), correct: true),
+        AnswerResult(question: _q('q2', Difficulty.medium), correct: true),
+      ],
+      bundle: _bundle(),
+      now: day,
+    );
+    // Base perfect lesson = 50 XP; boosted 2x = 100.
+    expect(out.xpBoosted, isTrue);
+    expect(out.xpGained, 100);
+    expect(progress.game.totalXp, 100);
+  });
 }

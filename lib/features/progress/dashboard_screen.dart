@@ -8,6 +8,7 @@ import '../../design/widgets.dart';
 import '../../domain/models/content_bundle.dart';
 import '../../domain/models/progress.dart';
 import '../../domain/services/leveling.dart';
+import '../rewards/avatar_view.dart';
 
 /// A progress dashboard: totals, an estimated SAT score, daily XP, a streak
 /// calendar, and accuracy by domain and skill — all from local data.
@@ -28,6 +29,11 @@ class DashboardScreen extends ConsumerWidget {
       body: ListView(
         padding: kPagePadding,
         children: [
+          _RewardsEntryCard(
+            availableXp: data.progress.game.availableXp,
+            chests: data.progress.game.unopenedChests,
+          ),
+          Gap.m,
           // Estimated score — only once there's enough data in each section.
           if (s.scoreReady)
             AppCard(
@@ -502,6 +508,61 @@ class _Heatmap extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+}
+
+/// Entry point into the rewards hub (chests, store, avatar) from the stats page.
+class _RewardsEntryCard extends ConsumerWidget {
+  const _RewardsEntryCard({required this.availableXp, required this.chests});
+  final int availableXp;
+  final int chests;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final data = ref.watch(appControllerProvider).valueOrNull!;
+    final rewards = ref.read(rewardsServiceProvider);
+    final layers = rewards.equippedLayers(data.progress.game, data.catalog);
+    final scheme = Theme.of(context).colorScheme;
+
+    return AppCard(
+      color: scheme.primaryContainer,
+      onTap: () => context.push('/rewards'),
+      child: Row(
+        children: [
+          AvatarPreview(layers: layers, size: 64),
+          Gap.m,
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Rewards & avatar',
+                  style: TextStyle(fontWeight: FontWeight.w800, fontSize: 16),
+                ),
+                Gap.xs,
+                Text(
+                  chests > 0
+                      ? '$chests chest${chests == 1 ? '' : 's'} ready  •  $availableXp XP to spend'
+                      : '$availableXp XP to spend in the store',
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
+              ],
+            ),
+          ),
+          if (chests > 0)
+            Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: AppTheme.xpGold.withValues(alpha: 0.22),
+                shape: BoxShape.circle,
+              ),
+              child: const Text('🎁', style: TextStyle(fontSize: 18)),
+            )
+          else
+            const Icon(Icons.chevron_right_rounded),
+        ],
+      ),
     );
   }
 }

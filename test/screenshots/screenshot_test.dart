@@ -13,6 +13,7 @@ import 'package:zany_test_prep/app/app.dart';
 import 'package:zany_test_prep/app/app_controller.dart';
 import 'package:zany_test_prep/core/sound_service.dart';
 import 'package:zany_test_prep/data/local/key_value_store.dart';
+import 'package:zany_test_prep/data/repositories/avatar_repository.dart';
 import 'package:zany_test_prep/data/repositories/content_repository.dart';
 
 // Generates real PNG screenshots into docs/screenshots/ by rendering the app
@@ -29,6 +30,9 @@ final _boundaryKey = GlobalKey();
 final String _examsJson = File('assets/content/exams.json').readAsStringSync();
 final String _bundleJson = File(
   'assets/content/sat.bundle.json',
+).readAsStringSync();
+final String _avatarCatalogJson = File(
+  'assets/avatar/manifest/avatar_catalog.json',
 ).readAsStringSync();
 
 Future<void> _loadFont(String family, List<String> files) async {
@@ -60,6 +64,9 @@ Future<void> _pump(WidgetTester tester, MemoryStore store) async {
               reader: (path) async =>
                   path.endsWith('exams.json') ? _examsJson : _bundleJson,
             ),
+          ),
+          avatarRepositoryProvider.overrideWithValue(
+            AvatarRepository(reader: (path) async => _avatarCatalogJson),
           ),
           keyValueStoreProvider.overrideWith((ref) async => store),
           soundServiceProvider.overrideWithValue(NoopSoundService()),
@@ -207,5 +214,17 @@ void main() {
     await tester.tap(find.byIcon(Icons.bar_chart_rounded));
     await tester.pumpAndSettle();
     await _shoot(tester, '09_dashboard');
+    await tester.pageBack();
+    await tester.pumpAndSettle();
+
+    // 10. Rewards hub (chests, XP wallet, avatar).
+    await tester.tap(find.byIcon(Icons.card_giftcard_rounded));
+    await tester.pumpAndSettle();
+    await _shoot(tester, '10_rewards');
+
+    // 11. Store.
+    await tester.tap(find.text('Store'));
+    await tester.pumpAndSettle();
+    await _shoot(tester, '11_store');
   });
 }

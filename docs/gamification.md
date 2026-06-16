@@ -104,6 +104,49 @@ modules, with flag/navigate within a module and an estimated section + total sco
 correct mapped to a 200–800 scale per section). Answers feed XP, mastery, and the review
 queue at the end.
 
+## Rewards economy (chests, store, avatar)
+
+A two-sided XP economy sits on top of the lifetime total:
+
+- `GameState.totalXp` stays **lifetime-gained** (levels, badges, dashboard read it).
+- `GameState.spentXp` tracks XP burned in the store; `availableXp = totalXp − spentXp`
+  is the spendable balance. XP rewards add to `totalXp` only, so spending never
+  shrinks the lifetime number.
+
+**Chests** — meeting the daily goal grants exactly one chest for that day
+(`GameService` sets `unopenedChests++` on `dailyGoalJustMet`). Opening a chest
+(`RewardsService.openChest` → `RewardEngine`) rolls a weighted drop: spendable XP,
+a streak freeze, a next-day XP boost, or an unowned avatar/item/pet. The drop table
+(`RewardEngine._weights`) is a tunable first pass; `Reward` is a sealed type so new
+reward kinds force every switch to be updated.
+
+**Streak freezes** — banked, capped at `kMaxStreakFreezes` (3). On return after a
+gap, `StreakEngine` spends one freeze per missed day to keep the streak alive when
+enough are banked (otherwise it resets and keeps them for a smaller future miss).
+
+**XP boost** — a chest can queue an `xpBoostMultiplier` for the next calendar day
+(`xpBoostDay`); `GameService` multiplies that day's earnings while it's active.
+
+**Store** (`/store`) — spend `availableXp` on avatars, items, pets, or extra streak
+freezes. **Customizer** (`/avatar`) — pick an owned avatar and equip owned
+items/pets; the preview stacks layers by `zIndex`. Reached from the **Rewards** hub
+(`/rewards`), linked off the stats page and a home-screen gift button.
+
+### Avatar content pack
+
+Avatar/item/pet content comes from the external dataset repo
+`mjcipriano/zany-test-prep-avatars` (release **v1.0.0**), vendored under
+`assets/avatar/` by `tools/sync_avatars.py`. The JSON catalog
+(`assets/avatar/manifest/avatar_catalog.json`) is the single source of truth and
+lists all 412 assets; only the 10 starter avatar PNGs are bundled by default to keep
+the APK small (the UI falls back to a rarity-tinted tile for art that isn't synced).
+To pull a newer release or all art, re-run the script (`--tag`, `--full`) — nothing
+hardcodes asset lists, so the store/customizer expand automatically.
+
+> **Stubbed for later:** the chest drop-table balancing and additional reward/item
+> types ("other item types we will go over later") are intentionally minimal pending
+> further product details.
+
 ## Badges (`Badges`)
 
 Over **100** achievements — pure predicates over progress, organized in tiers: total

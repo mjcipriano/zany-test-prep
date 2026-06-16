@@ -51,6 +51,15 @@ class HomeScreen extends ConsumerWidget {
         ),
         actions: [
           IconButton(
+            tooltip: 'Rewards',
+            onPressed: () => context.push('/rewards'),
+            icon: Badge(
+              isLabelVisible: progress.game.unopenedChests > 0,
+              label: Text('${progress.game.unopenedChests}'),
+              child: const Icon(Icons.card_giftcard_rounded),
+            ),
+          ),
+          IconButton(
             tooltip: 'Progress',
             onPressed: () => context.push('/dashboard'),
             icon: const Icon(Icons.bar_chart_rounded),

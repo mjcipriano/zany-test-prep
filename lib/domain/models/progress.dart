@@ -137,10 +137,19 @@ class ReviewItem {
   );
 }
 
-/// XP / streak / daily-goal / badge state.
+/// Max streak freezes a player can bank at once.
+const int kMaxStreakFreezes = 3;
+
+/// XP / streak / daily-goal / badge state, plus the rewards economy.
+///
+/// XP has two halves: [totalXp] is **lifetime gained** and only ever grows
+/// (levels, badges, and the dashboard read it), while [spentXp] tracks XP burned
+/// in the store. [availableXp] is what's left to spend. This lets the player
+/// unlock avatars/items without ever losing their lifetime total.
 class GameState {
   GameState({
     this.totalXp = 0,
+    this.spentXp = 0,
     this.currentStreak = 0,
     this.longestStreak = 0,
     this.lastActiveDay,
@@ -149,9 +158,19 @@ class GameState {
     this.survivalBest = 0,
     this.diagnosticDone = false,
     Set<String>? earnedBadges,
-  }) : earnedBadges = earnedBadges ?? <String>{};
+    this.streakFreezes = 0,
+    this.unopenedChests = 0,
+    this.xpBoostDay,
+    this.xpBoostMultiplier = 1.0,
+    this.selectedAvatarId,
+    Set<String>? ownedAssetIds,
+    Map<String, String>? equipped,
+  }) : earnedBadges = earnedBadges ?? <String>{},
+       ownedAssetIds = ownedAssetIds ?? <String>{},
+       equipped = equipped ?? <String, String>{};
 
-  int totalXp;
+  int totalXp; // lifetime XP gained (never decreases)
+  int spentXp; // lifetime XP spent in the store
   int currentStreak;
   int longestStreak;
   String? lastActiveDay;
@@ -161,8 +180,25 @@ class GameState {
   bool diagnosticDone;
   Set<String> earnedBadges;
 
+  // --- Rewards economy ---
+  int streakFreezes; // banked freezes, capped at [kMaxStreakFreezes]
+  int unopenedChests; // chests earned (one per daily-goal day) awaiting opening
+  String? xpBoostDay; // yyyy-MM-dd the XP boost is active for
+  double xpBoostMultiplier; // multiplier applied on [xpBoostDay] (1.0 = none)
+  String? selectedAvatarId; // null => first starter avatar
+  Set<String> ownedAssetIds; // unlocked avatar/item/pet catalog ids
+  Map<String, String> equipped; // slot id -> equipped asset id
+
+  /// XP still available to spend in the store.
+  int get availableXp => totalXp - spentXp;
+
+  /// Whether an XP boost is active for [day].
+  bool boostActiveOn(String day) =>
+      xpBoostMultiplier > 1.0 && xpBoostDay == day;
+
   Map<String, dynamic> toJson() => {
     'totalXp': totalXp,
+    'spentXp': spentXp,
     'currentStreak': currentStreak,
     'longestStreak': longestStreak,
     'lastActiveDay': lastActiveDay,
@@ -171,10 +207,18 @@ class GameState {
     'survivalBest': survivalBest,
     'diagnosticDone': diagnosticDone,
     'earnedBadges': earnedBadges.toList(),
+    'streakFreezes': streakFreezes,
+    'unopenedChests': unopenedChests,
+    'xpBoostDay': xpBoostDay,
+    'xpBoostMultiplier': xpBoostMultiplier,
+    'selectedAvatarId': selectedAvatarId,
+    'ownedAssetIds': ownedAssetIds.toList(),
+    'equipped': equipped,
   };
 
   factory GameState.fromJson(Map<String, dynamic> j) => GameState(
     totalXp: j['totalXp'] as int? ?? 0,
+    spentXp: j['spentXp'] as int? ?? 0,
     currentStreak: j['currentStreak'] as int? ?? 0,
     longestStreak: j['longestStreak'] as int? ?? 0,
     lastActiveDay: j['lastActiveDay'] as String?,
@@ -185,6 +229,17 @@ class GameState {
     earnedBadges: (j['earnedBadges'] as List? ?? const [])
         .map((e) => e.toString())
         .toSet(),
+    streakFreezes: j['streakFreezes'] as int? ?? 0,
+    unopenedChests: j['unopenedChests'] as int? ?? 0,
+    xpBoostDay: j['xpBoostDay'] as String?,
+    xpBoostMultiplier: (j['xpBoostMultiplier'] as num?)?.toDouble() ?? 1.0,
+    selectedAvatarId: j['selectedAvatarId'] as String?,
+    ownedAssetIds: (j['ownedAssetIds'] as List? ?? const [])
+        .map((e) => e.toString())
+        .toSet(),
+    equipped: ((j['equipped'] as Map?) ?? const {}).map(
+      (k, v) => MapEntry(k.toString(), v.toString()),
+    ),
   );
 }
 

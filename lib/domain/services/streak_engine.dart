@@ -8,6 +8,7 @@ class StreakResult {
     required this.lastActiveDay,
     required this.extended,
     required this.reset,
+    this.freezesUsed = 0,
   });
 
   final int currentStreak;
@@ -15,6 +16,7 @@ class StreakResult {
   final String lastActiveDay;
   final bool extended; // streak grew today
   final bool reset; // streak broke and restarted at 1
+  final int freezesUsed; // streak freezes consumed to survive missed days
 }
 
 /// Pure day-based streak logic. Works on 'yyyy-MM-dd' keys.
@@ -32,11 +34,18 @@ class StreakEngine {
   }
 
   /// Apply activity occurring on [today] to the prior streak state.
+  ///
+  /// [streakFreezes] are banked freezes available to absorb missed days: if the
+  /// player returns after a gap, one freeze is spent per missed day (when enough
+  /// are banked) to keep the streak alive instead of resetting. Freezes are only
+  /// spent when they fully cover the gap; otherwise they're kept for a future,
+  /// smaller miss and the streak resets.
   StreakResult registerActivity({
     required String? lastActiveDay,
     required int currentStreak,
     required int longestStreak,
     required DateTime today,
+    int streakFreezes = 0,
   }) {
     final todayKey = dayKey(today);
     if (lastActiveDay == null) {
@@ -69,7 +78,20 @@ class StreakEngine {
         reset: false,
       );
     }
-    // gap > 1 (or negative/clock change): streak broke; restart at 1.
+    // gap > 1: one or more full days were missed. Spend freezes to bridge them.
+    final missedDays = gap - 1;
+    if (missedDays > 0 && streakFreezes >= missedDays) {
+      final next = currentStreak + 1; // today's activity still extends it
+      return StreakResult(
+        currentStreak: next,
+        longestStreak: next > longestStreak ? next : longestStreak,
+        lastActiveDay: todayKey,
+        extended: true,
+        reset: false,
+        freezesUsed: missedDays,
+      );
+    }
+    // Not enough freezes (or a negative/clock change): streak broke; restart at 1.
     return StreakResult(
       currentStreak: 1,
       longestStreak: longestStreak < 1 ? 1 : longestStreak,
