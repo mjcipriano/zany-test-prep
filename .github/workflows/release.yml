@@ -39,38 +39,33 @@ jobs:
         run: flutter pub get
 
       # -------------------------------------------------------------------------
-      # OPTIONAL RELEASE SIGNING (disabled by default).
+      # RELEASE SIGNING (stable key).
       #
-      # By default the release build is signed with Flutter's debug key, so this
-      # workflow always works without any committed keys or configured secrets.
-      # No keystore is committed to the repo.
+      # When the KEYSTORE_BASE64 secret is set, decode the stable release keystore
+      # and write android/key.properties so CI signs with the SAME key as local
+      # releases — letting users update in place. Without the secret the build
+      # falls back to debug signing (handled in android/app/build.gradle.kts), so
+      # the workflow still runs for contributors/forks.
       #
-      # To produce a Play Store-signable build later, add these GitHub repository
-      # secrets (Settings -> Secrets and variables -> Actions):
-      #   KEYSTORE_BASE64 - base64-encoded upload/release keystore (.jks)
-      #   KEY_ALIAS       - the key alias inside the keystore
-      #   KEY_PASSWORD    - password for the key
-      #   STORE_PASSWORD  - password for the keystore
-      #
-      # Then uncomment the step below and wire the keystore into
-      # android/app/build.gradle via a signingConfig that reads from
-      # android/key.properties. Example:
-      #
-      # - name: Decode keystore and write signing config
-      #   env:
-      #     KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
-      #     KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
-      #     KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
-      #     STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
-      #   run: |
-      #     echo "$KEYSTORE_BASE64" | base64 --decode > android/app/upload-keystore.jks
-      #     cat > android/key.properties <<EOF
-      #     storeFile=upload-keystore.jks
-      #     storePassword=$STORE_PASSWORD
-      #     keyAlias=$KEY_ALIAS
-      #     keyPassword=$KEY_PASSWORD
-      #     EOF
+      # Required repo secrets (Settings -> Secrets and variables -> Actions):
+      #   KEYSTORE_BASE64 - base64 of android/app/zany-release.jks
+      #   KEY_ALIAS, KEY_PASSWORD, STORE_PASSWORD
       # -------------------------------------------------------------------------
+      - name: Decode keystore and write signing config
+        if: ${{ secrets.KEYSTORE_BASE64 != '' }}
+        env:
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+          STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
+        run: |
+          echo "$KEYSTORE_BASE64" | base64 --decode > android/app/zany-release.jks
+          cat > android/key.properties <<EOF
+          storeFile=zany-release.jks
+          storePassword=$STORE_PASSWORD
+          keyAlias=$KEY_ALIAS
+          keyPassword=$KEY_PASSWORD
+          EOF
 
       - name: Build release APK
         run: flutter build apk --release
