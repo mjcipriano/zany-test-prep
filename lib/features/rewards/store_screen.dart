@@ -220,14 +220,29 @@ class _StreakFreezeCard extends ConsumerWidget {
     final maxed = g.streakFreezes >= kMaxStreakFreezes;
     final affordable = g.availableXp >= RewardsService.streakFreezeCost;
 
+    const freezeBlue = Color(0xFF4FA3D1);
     return AppCard(
-      color: const Color(0xFF4FA3D1).withValues(alpha: 0.14),
+      color: freezeBlue.withValues(alpha: 0.14),
       child: Row(
         children: [
-          const Icon(Icons.ac_unit_rounded, color: Color(0xFF4FA3D1), size: 32),
+          Container(
+            width: 52,
+            height: 52,
+            decoration: const BoxDecoration(
+              color: freezeBlue,
+              shape: BoxShape.circle,
+            ),
+            alignment: Alignment.center,
+            child: const Icon(
+              Icons.ac_unit_rounded,
+              color: Colors.white,
+              size: 28,
+            ),
+          ),
           Gap.m,
           Expanded(
             child: Column(
+              mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(
@@ -235,18 +250,25 @@ class _StreakFreezeCard extends ConsumerWidget {
                   style: TextStyle(fontWeight: FontWeight.w800, fontSize: 16),
                 ),
                 Text(
-                  'Banked ${g.streakFreezes}/$kMaxStreakFreezes  •  protects your streak',
+                  maxed
+                      ? 'Banked ${g.streakFreezes}/$kMaxStreakFreezes — full'
+                      : 'Banked ${g.streakFreezes}/$kMaxStreakFreezes · protects your streak',
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
               ],
             ),
           ),
+          Gap.s,
           FilledButton(
+            // Bounded width: the themed default is full-width, which is invalid
+            // as a non-flex child of a Row.
+            style: FilledButton.styleFrom(minimumSize: const Size(64, 44)),
             onPressed: (maxed || !affordable) ? null : () => _buy(context, ref),
             child: const Row(
               mainAxisSize: MainAxisSize.min,
               children: [
                 Icon(Icons.bolt_rounded, size: 16),
+                SizedBox(width: 2),
                 Text('${RewardsService.streakFreezeCost}'),
               ],
             ),

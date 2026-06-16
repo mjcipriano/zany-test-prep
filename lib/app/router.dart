@@ -13,6 +13,7 @@ import '../features/progress/dashboard_screen.dart';
 import '../features/progress/skills_screen.dart';
 import '../features/review/review_screen.dart';
 import '../features/rewards/avatar_screen.dart';
+import '../features/rewards/chest_reveal_screen.dart';
 import '../features/rewards/rewards_screen.dart';
 import '../features/rewards/store_screen.dart';
 import '../features/settings/about_screen.dart';
@@ -84,6 +85,10 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/rewards',
         builder: (context, state) => const RewardsScreen(),
+      ),
+      GoRoute(
+        path: '/chest',
+        builder: (context, state) => const ChestRevealScreen(),
       ),
       GoRoute(path: '/store', builder: (context, state) => const StoreScreen()),
       GoRoute(

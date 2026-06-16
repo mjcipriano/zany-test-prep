@@ -118,7 +118,9 @@ A two-sided XP economy sits on top of the lifetime total:
 (`RewardsService.openChest` → `RewardEngine`) rolls a weighted drop: spendable XP,
 a streak freeze, a next-day XP boost, or an unowned avatar/item/pet. The drop table
 (`RewardEngine._weights`) is a tunable first pass; `Reward` is a sealed type so new
-reward kinds force every switch to be updated.
+reward kinds force every switch to be updated. Opening happens on the animated
+`/chest` screen (`ChestRevealScreen`): the chest shakes, bursts with sparkles, and
+the reward springs in; "Open another" appears while chests remain.
 
 **Streak freezes** — banked, capped at `kMaxStreakFreezes` (3). On return after a
 gap, `StreakEngine` spends one freeze per missed day to keep the streak alive when

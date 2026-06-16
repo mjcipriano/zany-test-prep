@@ -1,6 +1,7 @@
 @Tags(['screenshots'])
 library;
 
+import 'dart:convert';
 import 'dart:io';
 import 'dart:ui' as ui;
 
@@ -15,6 +16,8 @@ import 'package:zany_test_prep/core/sound_service.dart';
 import 'package:zany_test_prep/data/local/key_value_store.dart';
 import 'package:zany_test_prep/data/repositories/avatar_repository.dart';
 import 'package:zany_test_prep/data/repositories/content_repository.dart';
+import 'package:zany_test_prep/domain/models/profile.dart';
+import 'package:zany_test_prep/domain/models/progress.dart';
 
 // Generates real PNG screenshots into docs/screenshots/ by rendering the app
 // headlessly with the actual Roboto + Material Icons fonts loaded.
@@ -226,5 +229,37 @@ void main() {
     await tester.tap(find.text('Store'));
     await tester.pumpAndSettle();
     await _shoot(tester, '11_store');
+
+    // 12. Store — Items tab (shows the streak-freeze card).
+    await tester.tap(find.text('Items'));
+    await tester.pumpAndSettle();
+    await _shoot(tester, '12_store_items');
+  });
+
+  testWidgets('chest reveal screenshot', skip: !fontsAvailable, (tester) async {
+    // Seed an onboarded user who already has a chest, so we can capture the
+    // animated reveal.
+    final store = MemoryStore();
+    store.setString('onboarded.v1', 'true');
+    store.setString(
+      'profile.v1',
+      jsonEncode(UserProfile.initial('sat', 10).toJson()),
+    );
+    final progress = AppProgress();
+    progress.game.unopenedChests = 1;
+    progress.game.totalXp = 500;
+    store.setString('progress.v1', jsonEncode(progress.toJson()));
+
+    await _pump(tester, store);
+    await tester.tap(find.byIcon(Icons.card_giftcard_rounded));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Open'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Open chest'));
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 50));
+    await tester.pump(const Duration(seconds: 2));
+    await tester.pumpAndSettle();
+    await _shoot(tester, '13_chest_reward');
   });
 }

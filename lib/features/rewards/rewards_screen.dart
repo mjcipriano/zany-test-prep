@@ -3,11 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../app/app_controller.dart';
-import '../../core/sound_service.dart';
 import '../../design/theme.dart';
 import '../../design/widgets.dart';
 import '../../domain/models/progress.dart';
-import '../../domain/models/reward.dart';
 import 'avatar_view.dart';
 
 /// The rewards hub: XP balance, chests to open, streak freezes, XP boost, and
@@ -158,15 +156,16 @@ class RewardsScreen extends ConsumerWidget {
   }
 }
 
-class _ChestCard extends ConsumerWidget {
+class _ChestCard extends StatelessWidget {
   const _ChestCard({required this.chests});
   final int chests;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final has = chests > 0;
     return AppCard(
       color: has ? AppTheme.xpGold.withValues(alpha: 0.16) : null,
+      onTap: has ? () => context.push('/chest') : null,
       child: Row(
         children: [
           Opacity(
@@ -198,56 +197,16 @@ class _ChestCard extends ConsumerWidget {
           ),
           if (has)
             FilledButton(
-              onPressed: () => _openOne(context, ref),
+              // Bounded width: the themed default is full-width, which is
+              // invalid as a non-flex child of a Row.
+              style: FilledButton.styleFrom(minimumSize: const Size(64, 44)),
+              onPressed: () => context.push('/chest'),
               child: const Text('Open'),
             ),
         ],
       ),
     );
   }
-
-  Future<void> _openOne(BuildContext context, WidgetRef ref) async {
-    final reward = await ref.read(appControllerProvider.notifier).openChest();
-    if (reward == null || !context.mounted) return;
-    ref.read(soundServiceProvider).play(Sfx.levelUp);
-    await showRewardDialog(context, reward);
-  }
-}
-
-/// Shows a single reward reveal.
-Future<void> showRewardDialog(BuildContext context, Reward reward) {
-  final emoji = switch (reward.kind) {
-    RewardKind.xp => '⚡',
-    RewardKind.streakFreeze => '❄️',
-    RewardKind.xpBoost => '🚀',
-    RewardKind.avatar => '🧑‍🚀',
-    RewardKind.item => '✨',
-  };
-  return showDialog<void>(
-    context: context,
-    builder: (context) => AlertDialog(
-      content: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(emoji, style: const TextStyle(fontSize: 56)),
-          Gap.m,
-          Text(
-            reward.title,
-            textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w900),
-          ),
-          Gap.s,
-          Text(reward.description, textAlign: TextAlign.center),
-        ],
-      ),
-      actions: [
-        FilledButton(
-          onPressed: () => Navigator.of(context).pop(),
-          child: const Text('Nice!'),
-        ),
-      ],
-    ),
-  );
 }
 
 class _MiniStat extends StatelessWidget {
