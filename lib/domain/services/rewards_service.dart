@@ -5,6 +5,15 @@ import '../models/progress.dart';
 import '../models/reward.dart';
 import 'reward_engine.dart';
 
+/// One renderable layer of the avatar preview: an asset plus the slot it's
+/// equipped in (null for the base avatar). The slot tells the renderer which of
+/// the four side positions a pet/prop occupies.
+class EquippedLayer {
+  const EquippedLayer(this.slot, this.asset);
+  final String? slot;
+  final CatalogAsset asset;
+}
+
 /// Pure rewards/economy operations over [GameState] + the avatar [AvatarCatalog].
 ///
 /// Everything here mutates the passed-in [GameState] in place (matching the rest
@@ -29,14 +38,18 @@ class RewardsService {
     return catalog.defaultAvatar;
   }
 
-  /// Catalog assets to render for the current loadout, ordered back-to-front.
-  List<CatalogAsset> equippedLayers(GameState g, AvatarCatalog catalog) {
-    final layers = <CatalogAsset>[selectedAvatar(g, catalog)];
-    for (final id in g.equipped.values) {
+  /// Layers to render for the current loadout, ordered back-to-front by z-index.
+  /// The base avatar comes first (slot null); each equipped asset carries its
+  /// slot so side pets/props can be placed in the right side position.
+  List<EquippedLayer> equippedLayers(GameState g, AvatarCatalog catalog) {
+    final layers = <EquippedLayer>[
+      EquippedLayer(null, selectedAvatar(g, catalog)),
+    ];
+    g.equipped.forEach((slot, id) {
       final a = catalog[id];
-      if (a != null) layers.add(a);
-    }
-    layers.sort((a, b) => a.zIndex.compareTo(b.zIndex));
+      if (a != null) layers.add(EquippedLayer(slot, a));
+    });
+    layers.sort((a, b) => a.asset.zIndex.compareTo(b.asset.zIndex));
     return layers;
   }
 

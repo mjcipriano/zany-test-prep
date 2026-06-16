@@ -11,22 +11,27 @@ import 'package:zany_test_prep/domain/services/streak_engine.dart';
 CatalogAsset _asset(
   String id, {
   String type = 'item',
+  String slotType = 'worn',
   int xp = 100,
   bool starter = false,
   int z = 10,
+  double scale = 1.0,
   List<String> slots = const ['headwear'],
 }) => CatalogAsset(
   id: id,
   name: id,
   type: type,
   category: 'test',
+  slotType: type == 'avatar' ? 'base' : slotType,
   rarity: 'common',
   xpCost: xp,
   assetPath: 'p/$id.png',
   previewAssetPath: 'p/$id.png',
   allowedSlots: slots,
   zIndex: z,
-  scale: 1.0,
+  scale: scale,
+  anchorX: 256,
+  anchorY: 256,
   defaultUnlocked: starter,
 );
 
@@ -50,7 +55,14 @@ AvatarCatalog _catalog() => AvatarCatalog(
       slots: const ['avatar'],
     ),
     _asset('hat', type: 'item', xp: 100, z: 45, slots: const ['headwear']),
-    _asset('pet', type: 'pet', xp: 200, z: 60, slots: const ['side_left_1']),
+    _asset(
+      'pet',
+      type: 'pet',
+      slotType: 'side',
+      xp: 200,
+      z: 60,
+      slots: const ['side_left_1'],
+    ),
   ],
 );
 
@@ -214,7 +226,10 @@ void main() {
       svc.purchase(g, catalog['hat']!);
       expect(svc.selectAvatar(g, catalog, 'av_premium'), isTrue);
       expect(svc.equip(g, catalog, 'hat'), isTrue);
-      final layers = svc.equippedLayers(g, catalog).map((a) => a.id).toList();
+      final layers = svc
+          .equippedLayers(g, catalog)
+          .map((l) => l.asset.id)
+          .toList();
       expect(layers, ['av_premium', 'hat']); // avatar (z0) under hat (z45)
       // Can't select an unowned avatar.
       final g2 = GameState();
@@ -285,21 +300,49 @@ void main() {
       packId: 'test',
       styleVersion: 'v1',
       assets: [
-        _asset('av', type: 'avatar', xp: 0, starter: true, z: 0, slots: const ['avatar']),
+        _asset(
+          'av',
+          type: 'avatar',
+          xp: 0,
+          starter: true,
+          z: 0,
+          slots: const ['avatar'],
+        ),
         for (final e in wornSlots.entries)
           _asset('item_${e.key}', z: e.value, slots: [e.key]),
         _asset('item_headwear_2', z: 45, slots: const ['headwear']),
-        _asset('pet_a', type: 'pet', z: 60, slots: const [
-          'side_left_1', 'side_left_2', 'side_right_1', 'side_right_2',
-        ]),
-        _asset('pet_b', type: 'pet', z: 61, slots: const [
-          'side_left_1', 'side_left_2', 'side_right_1', 'side_right_2',
-        ]),
+        _asset(
+          'pet_a',
+          type: 'pet',
+          slotType: 'side',
+          z: 60,
+          slots: const [
+            'side_left_1',
+            'side_left_2',
+            'side_right_1',
+            'side_right_2',
+          ],
+        ),
+        _asset(
+          'pet_b',
+          type: 'pet',
+          slotType: 'side',
+          z: 61,
+          slots: const [
+            'side_left_1',
+            'side_left_2',
+            'side_right_1',
+            'side_right_2',
+          ],
+        ),
       ],
     );
 
     GameState ownedAll(AvatarCatalog c) => GameState(
-      ownedAssetIds: c.assets.where((a) => !a.isAvatar).map((a) => a.id).toSet(),
+      ownedAssetIds: c.assets
+          .where((a) => !a.isAvatar)
+          .map((a) => a.id)
+          .toSet(),
     );
 
     test('each worn category equips into its own slot and stacks', () {
@@ -316,9 +359,9 @@ void main() {
       final layers = svc.equippedLayers(g, c);
       expect(layers.length, wornSlots.length + 1);
       for (var i = 1; i < layers.length; i++) {
-        expect(layers[i].zIndex >= layers[i - 1].zIndex, isTrue);
+        expect(layers[i].asset.zIndex >= layers[i - 1].asset.zIndex, isTrue);
       }
-      expect(layers.first.id, 'av'); // avatar at the back (z 0)
+      expect(layers.first.asset.id, 'av'); // avatar at the back (z 0)
     });
 
     test('equipping a second item in a slot replaces the first', () {
@@ -329,7 +372,10 @@ void main() {
       svc.equip(g, c, 'item_headwear_2');
       expect(g.equipped['headwear'], 'item_headwear_2');
       expect(svc.isEquipped(g, 'item_headwear'), isFalse);
-      expect(g.equipped.values.where((v) => v.startsWith('item_headwear')).length, 1);
+      expect(
+        g.equipped.values.where((v) => v.startsWith('item_headwear')).length,
+        1,
+      );
     });
 
     test('multiple pets fill separate side slots', () {
@@ -362,6 +408,20 @@ void main() {
       expect(svc.equip(g, c, 'item_headwear'), isTrue);
       expect(svc.equip(g, c, 'item_headwear'), isTrue); // already on, no dup
       expect(g.equipped.values.where((v) => v == 'item_headwear').length, 1);
+    });
+
+    test('equippedLayers carries the slot so side assets can be placed', () {
+      final c = richCatalog();
+      final g = ownedAll(c);
+      svc.equip(g, c, 'item_headwear'); // worn
+      svc.equip(g, c, 'pet_a'); // side -> side_left_1
+      final layers = svc.equippedLayers(g, c);
+      final hat = layers.firstWhere((l) => l.asset.id == 'item_headwear');
+      final pet = layers.firstWhere((l) => l.asset.id == 'pet_a');
+      expect(hat.slot, 'headwear');
+      expect(pet.slot, 'side_left_1');
+      expect(pet.asset.isSide, isTrue);
+      expect(hat.asset.isSide, isFalse);
     });
 
     test('owned/equipped state survives a JSON round-trip', () {

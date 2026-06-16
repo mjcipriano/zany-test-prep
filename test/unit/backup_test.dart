@@ -64,10 +64,9 @@ void main() {
     });
 
     test('a newer backup format still imports, with a warning', () {
-      final env =
-          jsonDecode(encodeBackup(_sample())) as Map<String, dynamic>
-            ..['formatVersion'] = 999
-            ..['someFutureField'] = {'x': 1};
+      final env = jsonDecode(encodeBackup(_sample())) as Map<String, dynamic>
+        ..['formatVersion'] = 999
+        ..['someFutureField'] = {'x': 1};
       final r = decodeBackup(jsonEncode(env));
       expect(r.ok, isTrue); // forward-compatible
       expect(r.warnings.any((w) => w.contains('newer version')), isTrue);
@@ -75,8 +74,9 @@ void main() {
     });
 
     test('a different app version produces an informational warning', () {
-      final env = jsonDecode(encodeBackup(_sample(), appVersion: '0.9.0'))
-          as Map<String, dynamic>;
+      final env =
+          jsonDecode(encodeBackup(_sample(), appVersion: '0.9.0'))
+              as Map<String, dynamic>;
       final r = decodeBackup(jsonEncode(env));
       expect(r.ok, isTrue);
       expect(r.warnings.any((w) => w.contains('0.9.0')), isTrue);
