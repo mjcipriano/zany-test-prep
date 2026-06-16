@@ -1,11 +1,12 @@
 import 'difficulty.dart';
 
-/// A short concept explanation shown before a lesson's questions.
-class TeachingCard {
-  const TeachingCard({
+/// One screen of a mini-lesson: a heading, explanatory body, optional bullet
+/// take-aways, and an optional worked example.
+class TeachingScreen {
+  const TeachingScreen({
     required this.title,
     required this.body,
-    required this.keyPoints,
+    this.keyPoints = const [],
     this.workedExample,
   });
 
@@ -14,11 +15,55 @@ class TeachingCard {
   final List<String> keyPoints;
   final String? workedExample;
 
+  factory TeachingScreen.fromJson(Map<String, dynamic> json) => TeachingScreen(
+    title: json['title'] as String,
+    body: json['body'] as String,
+    keyPoints: ((json['key_points'] as List?) ?? const [])
+        .map((e) => e.toString())
+        .toList(),
+    workedExample: json['worked_example'] as String?,
+  );
+}
+
+/// The concept explanation shown before a lesson's questions. Renders as a
+/// 2-5 screen mini-lesson ([screens]); when a lesson only provides the legacy
+/// single card, [screens] is a one-element list built from it, so old content
+/// keeps working.
+class TeachingCard {
+  const TeachingCard({
+    required this.title,
+    required this.body,
+    required this.keyPoints,
+    this.workedExample,
+    List<TeachingScreen>? screens,
+  }) : _screens = screens;
+
+  final String title;
+  final String body;
+  final List<String> keyPoints;
+  final String? workedExample;
+  final List<TeachingScreen>? _screens;
+
+  /// The screens to page through (always at least one).
+  List<TeachingScreen> get screens =>
+      _screens ??
+      [
+        TeachingScreen(
+          title: title,
+          body: body,
+          keyPoints: keyPoints,
+          workedExample: workedExample,
+        ),
+      ];
+
   factory TeachingCard.fromJson(Map<String, dynamic> json) => TeachingCard(
     title: json['title'] as String,
     body: json['body'] as String,
     keyPoints: (json['key_points'] as List).map((e) => e.toString()).toList(),
     workedExample: json['worked_example'] as String?,
+    screens: (json['screens'] as List?)
+        ?.map((e) => TeachingScreen.fromJson((e as Map).cast<String, dynamic>()))
+        .toList(),
   );
 }
 

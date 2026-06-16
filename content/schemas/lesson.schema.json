@@ -34,7 +34,27 @@
           "items": { "type": "string", "minLength": 3 },
           "minItems": 2
         },
-        "worked_example": { "type": "string" }
+        "worked_example": { "type": "string" },
+        "screens": {
+          "description": "Optional multi-screen mini-lesson (2-5 screens) shown before questions. If omitted, the title/body/key_points/worked_example render as a single screen.",
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["title", "body"],
+            "properties": {
+              "title": { "type": "string", "minLength": 3 },
+              "body": { "type": "string", "minLength": 20 },
+              "key_points": {
+                "type": "array",
+                "items": { "type": "string", "minLength": 3 }
+              },
+              "worked_example": { "type": "string" }
+            }
+          }
+        }
       }
     },
     "question_ids": {

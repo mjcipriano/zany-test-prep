@@ -277,7 +277,9 @@ class _LessonPlayerState extends ConsumerState<LessonPlayer> {
   }
 }
 
-class _TeachingView extends StatelessWidget {
+/// A paged mini-lesson (2-5 screens) shown before a lesson's questions, ending
+/// in a "Start" button. Single-screen teaching cards page as one screen.
+class _TeachingView extends StatefulWidget {
   const _TeachingView({
     required this.title,
     required this.card,
@@ -291,92 +293,178 @@ class _TeachingView extends StatelessWidget {
   final VoidCallback onClose;
 
   @override
+  State<_TeachingView> createState() => _TeachingViewState();
+}
+
+class _TeachingViewState extends State<_TeachingView> {
+  final _controller = PageController();
+  int _page = 0;
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
+    final screens = widget.card.screens;
+    final isLast = _page >= screens.length - 1;
     return Column(
       children: [
-        Align(
-          alignment: Alignment.centerLeft,
-          child: IconButton(
-            icon: const Icon(Icons.close_rounded),
-            onPressed: onClose,
-          ),
-        ),
-        Expanded(
-          child: ListView(
-            padding: kPagePadding,
-            children: [
-              Text(
-                title,
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+        Row(
+          children: [
+            IconButton(
+              icon: const Icon(Icons.close_rounded),
+              onPressed: widget.onClose,
+            ),
+            Expanded(
+              child: Text(
+                widget.title,
+                style: Theme.of(context).textTheme.titleSmall?.copyWith(
                   color: scheme.primary,
                   fontWeight: FontWeight.w800,
                 ),
               ),
-              Gap.s,
-              Text(
-                card.title,
-                style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                  fontWeight: FontWeight.w800,
+            ),
+            if (screens.length > 1)
+              Padding(
+                padding: const EdgeInsets.only(right: 16),
+                child: Text(
+                  '${_page + 1}/${screens.length}',
+                  style: Theme.of(context).textTheme.bodySmall,
                 ),
               ),
-              Gap.m,
-              Text(
-                card.body,
-                style: const TextStyle(fontSize: 16, height: 1.5),
-              ),
-              Gap.l,
-              AppCard(
-                color: scheme.primaryContainer,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      'Key points',
-                      style: TextStyle(fontWeight: FontWeight.w800),
-                    ),
-                    Gap.s,
-                    ...card.keyPoints.map(
-                      (k) => Padding(
-                        padding: const EdgeInsets.only(bottom: 6),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text('•  '),
-                            Expanded(child: Text(k)),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              if (card.workedExample != null) ...[
-                Gap.m,
-                AppCard(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        'Example',
-                        style: TextStyle(fontWeight: FontWeight.w800),
-                      ),
-                      Gap.s,
-                      Text(
-                        card.workedExample!,
-                        style: const TextStyle(fontSize: 15.5, height: 1.4),
-                      ),
-                    ],
+          ],
+        ),
+        Expanded(
+          child: PageView.builder(
+            controller: _controller,
+            itemCount: screens.length,
+            onPageChanged: (i) => setState(() => _page = i),
+            itemBuilder: (context, i) => _ScreenView(screen: screens[i]),
+          ),
+        ),
+        if (screens.length > 1)
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              for (var i = 0; i < screens.length; i++)
+                AnimatedContainer(
+                  duration: const Duration(milliseconds: 200),
+                  margin: const EdgeInsets.symmetric(horizontal: 3),
+                  width: i == _page ? 18 : 7,
+                  height: 7,
+                  decoration: BoxDecoration(
+                    color: i == _page
+                        ? scheme.primary
+                        : scheme.surfaceContainerHighest,
+                    borderRadius: BorderRadius.circular(4),
                   ),
                 ),
-              ],
+            ],
+          ),
+        Padding(
+          padding: kPagePadding,
+          child: Row(
+            children: [
+              if (_page > 0)
+                Expanded(
+                  child: OutlinedButton(
+                    onPressed: () => _controller.previousPage(
+                      duration: const Duration(milliseconds: 250),
+                      curve: Curves.easeOut,
+                    ),
+                    child: const Text('Back'),
+                  ),
+                ),
+              if (_page > 0) Gap.m,
+              Expanded(
+                flex: 2,
+                child: FilledButton(
+                  onPressed: isLast
+                      ? widget.onStart
+                      : () => _controller.nextPage(
+                          duration: const Duration(milliseconds: 250),
+                          curve: Curves.easeOut,
+                        ),
+                  child: Text(isLast ? 'Start' : 'Next'),
+                ),
+              ),
             ],
           ),
         ),
-        Padding(
-          padding: kPagePadding,
-          child: FilledButton(onPressed: onStart, child: const Text('Start')),
+      ],
+    );
+  }
+}
+
+class _ScreenView extends StatelessWidget {
+  const _ScreenView({required this.screen});
+  final TeachingScreen screen;
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    return ListView(
+      padding: kPagePadding,
+      children: [
+        Text(
+          screen.title,
+          style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+            fontWeight: FontWeight.w800,
+          ),
         ),
+        Gap.m,
+        Text(screen.body, style: const TextStyle(fontSize: 16, height: 1.5)),
+        if (screen.keyPoints.isNotEmpty) ...[
+          Gap.l,
+          AppCard(
+            color: scheme.primaryContainer,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Key points',
+                  style: TextStyle(fontWeight: FontWeight.w800),
+                ),
+                Gap.s,
+                ...screen.keyPoints.map(
+                  (k) => Padding(
+                    padding: const EdgeInsets.only(bottom: 6),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text('•  '),
+                        Expanded(child: Text(k)),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+        if (screen.workedExample != null) ...[
+          Gap.m,
+          AppCard(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Example',
+                  style: TextStyle(fontWeight: FontWeight.w800),
+                ),
+                Gap.s,
+                Text(
+                  screen.workedExample!,
+                  style: const TextStyle(fontSize: 15.5, height: 1.4),
+                ),
+              ],
+            ),
+          ),
+        ],
       ],
     );
   }

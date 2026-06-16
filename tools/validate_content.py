@@ -155,6 +155,9 @@ def validate_exam(exam_id, rep: Report):
     pos_counts = {}   # domain -> {A,B,C,D: n}
     mc_counts = {}    # domain -> total MC items
     longest_counts = {}  # domain -> n where correct is the longest option
+    # Per-(skill, difficulty) first-word tracking, to catch "all correct answers
+    # start with the same word, distractors with another" tells.
+    group_words = {}  # (skill, diff) -> {"correct": [w...], "distractor": [w...]}
     for qid, q in questions.items():
         where = f"question {qid}"
         if not ID_RE.match(qid):
@@ -181,6 +184,11 @@ def validate_exam(exam_id, rep: Report):
                 longest = max(len(c["text"]) for c in q["choices"])
                 if len(cur["text"]) == longest:
                     longest_counts[dom] = longest_counts.get(dom, 0) + 1
+            gk = (q["skill"], q["difficulty"])
+            g = group_words.setdefault(gk, {"correct": [], "distractor": []})
+            for c in q["choices"]:
+                bucket = "correct" if c["id"] == cc else "distractor"
+                g[bucket].append(_first_word(c["text"]))
 
         # placeholder scan
         choice_texts = [c["text"] for c in q.get("choices", [])]
@@ -288,6 +296,35 @@ def validate_exam(exam_id, rep: Report):
         if dom == "reading_writing" and longest_rate > 0.45:
             rep.warn(f"{dom}: correct answer is the longest option {longest_rate*100:.0f}% "
                      "of the time; balance distractor lengths")
+
+    # --- per-section answer-wording pattern (first word) ---
+    # Flag groups where the correct answer disproportionately starts with one
+    # word that the distractors rarely use — a guessable tell.
+    from collections import Counter
+    wording_flags = 0
+    for (skill, diff), g in sorted(group_words.items()):
+        n = len(g["correct"])
+        if n < 6:
+            continue
+        word, cnt = Counter(g["correct"]).most_common(1)[0]
+        if not word:
+            continue
+        c_share = cnt / n
+        d = g["distractor"]
+        d_share = (d.count(word) / len(d)) if d else 0
+        if c_share >= 0.6 and d_share < 0.25:
+            wording_flags += 1
+            rep.warn(
+                f"{skill}/{diff}: {c_share*100:.0f}% of correct answers start with "
+                f"'{word}' but only {d_share*100:.0f}% of distractors do — "
+                "vary answer wording")
+    rep.stats["answer_wording_flags"] = wording_flags
+
+
+def _first_word(text: str) -> str:
+    """Lowercased first alphanumeric token of a choice (for pattern detection)."""
+    m = re.search(r"[A-Za-z0-9]+", text or "")
+    return m.group(0).lower() if m else ""
 
 
 def _parse_numeric(s):
