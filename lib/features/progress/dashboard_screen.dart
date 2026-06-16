@@ -28,37 +28,72 @@ class DashboardScreen extends ConsumerWidget {
       body: ListView(
         padding: kPagePadding,
         children: [
-          // Estimated score.
-          AppCard(
-            color: scheme.primaryContainer,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  'Estimated SAT score',
-                  style: TextStyle(fontWeight: FontWeight.w700),
-                ),
-                Gap.xs,
-                Text(
-                  '${s.predictedTotal}',
-                  style: const TextStyle(
-                    fontSize: 40,
-                    fontWeight: FontWeight.w900,
+          // Estimated score — only once there's enough data in each section.
+          if (s.scoreReady)
+            AppCard(
+              color: scheme.primaryContainer,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Estimated SAT score',
+                    style: TextStyle(fontWeight: FontWeight.w700),
                   ),
-                ),
-                Text(
-                  'Reading & Writing ${s.predictedRW}  •  Math ${s.predictedMath}',
-                  style: TextStyle(color: scheme.onPrimaryContainer),
-                ),
-                Gap.xs,
-                Text(
-                  'A rough estimate from your accuracy so far — practice more to '
-                  'sharpen it.',
-                  style: Theme.of(context).textTheme.bodySmall,
-                ),
-              ],
+                  Gap.xs,
+                  Text(
+                    '${s.predictedTotal}',
+                    style: const TextStyle(
+                      fontSize: 40,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                  Text(
+                    'Reading & Writing ${s.predictedRW}  •  Math ${s.predictedMath}',
+                    style: TextStyle(color: scheme.onPrimaryContainer),
+                  ),
+                  Gap.xs,
+                  Text(
+                    'A rough estimate from your accuracy so far — keep practicing '
+                    'to sharpen it.',
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
+                ],
+              ),
+            )
+          else
+            AppCard(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Icon(Icons.lock_clock_rounded, color: scheme.primary),
+                      Gap.s,
+                      const Expanded(
+                        child: Text(
+                          'Estimated SAT score',
+                          style: TextStyle(fontWeight: FontWeight.w700),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Gap.s,
+                  Text(
+                    'Answer at least ${_Stats.minForEstimate} questions in each '
+                    'section to unlock a reliable score estimate.',
+                    style: Theme.of(context).textTheme.bodyMedium,
+                  ),
+                  Gap.m,
+                  _unlockBar(
+                    'Reading & Writing',
+                    s.rwAttempts,
+                    AppTheme.seed,
+                    context,
+                  ),
+                  _unlockBar('Math', s.mathAttempts, AppTheme.correct, context),
+                ],
+              ),
             ),
-          ),
           Gap.m,
           // Totals grid.
           Row(
@@ -225,6 +260,32 @@ class DashboardScreen extends ConsumerWidget {
       ],
     ),
   );
+
+  Widget _unlockBar(String name, int attempts, Color color, BuildContext c) {
+    final target = _Stats.minForEstimate;
+    final done = attempts.clamp(0, target);
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Expanded(
+                child: Text(
+                  name,
+                  style: const TextStyle(fontWeight: FontWeight.w600),
+                ),
+              ),
+              Text('$done / $target', style: Theme.of(c).textTheme.bodySmall),
+            ],
+          ),
+          Gap.xs,
+          ProgressBar(value: done / target, color: color, height: 10),
+        ],
+      ),
+    );
+  }
 }
 
 class _StatTile extends StatelessWidget {
@@ -264,6 +325,10 @@ class _SkillAcc {
 }
 
 class _Stats {
+  /// Minimum answered questions *per domain* before we show a score estimate.
+  /// Below this the accuracy is too noisy to map to a meaningful 200-800 score.
+  static const int minForEstimate = 20;
+
   _Stats({
     required this.level,
     required this.totalXp,
@@ -291,6 +356,9 @@ class _Stats {
   final List<_SkillAcc> weakestSkills;
 
   int get predictedTotal => predictedRW + predictedMath;
+
+  bool get scoreReady =>
+      rwAttempts >= minForEstimate && mathAttempts >= minForEstimate;
 
   static int _score(double acc, int attempts) =>
       attempts == 0 ? 250 : (200 + acc * 600).round();

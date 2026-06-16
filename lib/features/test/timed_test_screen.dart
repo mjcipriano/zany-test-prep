@@ -254,77 +254,92 @@ class _TimedTestScreenState extends ConsumerState<TimedTestScreen> {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(20, 4, 20, 0),
-            child: Row(
-              children: [
-                Text(
-                  'Question ${_q + 1} of ${_qs.length}',
-                  style: const TextStyle(fontWeight: FontWeight.w700),
-                ),
-                const Spacer(),
-                IconButton(
-                  tooltip: 'Flag',
-                  icon: Icon(
-                    _flagged.contains(_question.id)
-                        ? Icons.flag_rounded
-                        : Icons.flag_outlined,
+      body: SafeArea(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(20, 4, 20, 0),
+              child: Row(
+                children: [
+                  Text(
+                    'Question ${_q + 1} of ${_qs.length}',
+                    style: const TextStyle(fontWeight: FontWeight.w700),
                   ),
-                  color: _flagged.contains(_question.id)
-                      ? AppTheme.streak
-                      : null,
-                  onPressed: () => setState(() {
-                    final id = _question.id;
-                    _flagged.contains(id)
-                        ? _flagged.remove(id)
-                        : _flagged.add(id);
-                  }),
-                ),
-                TextButton.icon(
-                  onPressed: _openNavigator,
-                  icon: const Icon(Icons.grid_view_rounded, size: 18),
-                  label: const Text('Review'),
-                ),
-              ],
+                  const Spacer(),
+                  IconButton(
+                    tooltip: 'Flag',
+                    icon: Icon(
+                      _flagged.contains(_question.id)
+                          ? Icons.flag_rounded
+                          : Icons.flag_outlined,
+                    ),
+                    color: _flagged.contains(_question.id)
+                        ? AppTheme.streak
+                        : null,
+                    onPressed: () => setState(() {
+                      final id = _question.id;
+                      _flagged.contains(id)
+                          ? _flagged.remove(id)
+                          : _flagged.add(id);
+                    }),
+                  ),
+                  TextButton.icon(
+                    onPressed: _openNavigator,
+                    icon: const Icon(Icons.grid_view_rounded, size: 18),
+                    label: const Text('Review'),
+                  ),
+                ],
+              ),
             ),
-          ),
-          Expanded(
-            child: QuestionView(
-              question: _question,
-              answered: false,
-              selectedChoiceId: _question.type.isStudentProduced
-                  ? null
-                  : _answers[_question.id],
-              textController: _text,
-              onSelectChoice: (id) => setState(() => _record(id)),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16),
-            child: Row(
-              children: [
-                OutlinedButton(
-                  onPressed: _q > 0 ? () => _go(-1) : null,
-                  child: const Text('Back'),
+            Expanded(
+              // Swipe left/right to move between questions (in addition to the
+              // Back/Next buttons below).
+              child: GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onHorizontalDragEnd: (d) {
+                  final v = d.primaryVelocity ?? 0;
+                  if (v < -250) {
+                    _go(1);
+                  } else if (v > 250) {
+                    _go(-1);
+                  }
+                },
+                child: QuestionView(
+                  question: _question,
+                  answered: false,
+                  selectedChoiceId: _question.type.isStudentProduced
+                      ? null
+                      : _answers[_question.id],
+                  textController: _text,
+                  onSelectChoice: (id) => setState(() => _record(id)),
                 ),
-                Gap.s,
-                Expanded(
-                  child: _q < _qs.length - 1
-                      ? FilledButton(
-                          onPressed: () => _go(1),
-                          child: Text(answered ? 'Next' : 'Skip'),
-                        )
-                      : FilledButton(
-                          onPressed: _confirmSubmit,
-                          child: const Text('Submit section'),
-                        ),
-                ),
-              ],
+              ),
             ),
-          ),
-        ],
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Row(
+                children: [
+                  OutlinedButton(
+                    onPressed: _q > 0 ? () => _go(-1) : null,
+                    child: const Text('Back'),
+                  ),
+                  Gap.s,
+                  Expanded(
+                    child: _q < _qs.length - 1
+                        ? FilledButton(
+                            onPressed: () => _go(1),
+                            child: Text(answered ? 'Next' : 'Skip'),
+                          )
+                        : FilledButton(
+                            onPressed: _confirmSubmit,
+                            child: const Text('Submit section'),
+                          ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

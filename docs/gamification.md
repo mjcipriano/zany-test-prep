@@ -33,7 +33,8 @@ Day-based (`yyyy-MM-dd`):
 
 ## Daily goal
 
-The goal is expressed in XP: `dailyGoalMinutes × 5` (so 5/10/15 min → 25/50/75 XP).
+The goal is expressed in XP: `dailyGoalMinutes × 20` (so 5/10/15 min → 100/200/300 XP),
+calibrated to roughly 20 XP per minute of focused practice.
 `GameService` resets the daily counter when the day rolls over and reports
 `dailyGoalMet` / `dailyGoalJustMet` for celebration.
 

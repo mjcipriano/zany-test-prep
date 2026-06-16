@@ -115,21 +115,34 @@ void main() {
     expect(progress.reviewQueue.first.questionId, 'q2');
   });
 
-  test('daily goal is detected when reached', () {
+  test('daily goal is detected once enough XP is earned in a day', () {
     final progress = AppProgress();
-    final profile = UserProfile.initial('sat', 5); // goal = 25 xp
-    final out = service.applyLessonResult(
+    final profile = UserProfile.initial('sat', 5); // goal = 100 XP
+    List<AnswerResult> perfect() => [
+      AnswerResult(question: _q('q1', Difficulty.easy), correct: true),
+      AnswerResult(question: _q('q2', Difficulty.medium), correct: true),
+    ];
+    final day = DateTime(2026, 6, 1);
+    // One perfect lesson = 50 XP — below the 100 XP goal.
+    final first = service.applyLessonResult(
       progress: progress,
       profile: profile,
       lesson: _lesson,
-      results: [
-        AnswerResult(question: _q('q1', Difficulty.easy), correct: true),
-        AnswerResult(question: _q('q2', Difficulty.medium), correct: true),
-      ],
+      results: perfect(),
       bundle: _bundle(),
-      now: DateTime(2026, 6, 1),
+      now: day,
     );
-    expect(out.dailyGoalMet, isTrue);
-    expect(out.dailyGoalJustMet, isTrue);
+    expect(first.dailyGoalMet, isFalse);
+    // A second lesson the same day pushes daily XP to 100 — goal reached.
+    final second = service.applyLessonResult(
+      progress: progress,
+      profile: profile,
+      lesson: _lesson,
+      results: perfect(),
+      bundle: _bundle(),
+      now: day,
+    );
+    expect(second.dailyGoalMet, isTrue);
+    expect(second.dailyGoalJustMet, isTrue);
   });
 }

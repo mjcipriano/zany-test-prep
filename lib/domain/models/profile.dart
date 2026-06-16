@@ -20,8 +20,10 @@ class UserProfile {
   final ThemeMode themeMode;
   final DateTime createdAt;
 
-  /// Daily goal expressed as XP (about 5 XP per minute of focused practice).
-  int get dailyGoalXp => dailyGoalMinutes * 5;
+  /// Daily goal expressed as XP. Calibrated to roughly 20 XP per minute of
+  /// focused practice (a short lesson is ~150-200 XP), so 5/10/15-minute goals
+  /// are 100/200/300 XP — a meaningful session rather than a single question.
+  int get dailyGoalXp => dailyGoalMinutes * 20;
 
   UserProfile copyWith({
     String? examId,

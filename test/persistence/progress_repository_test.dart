@@ -15,7 +15,7 @@ void main() {
     expect(loaded, isNotNull);
     expect(loaded!.examId, 'sat');
     expect(loaded.dailyGoalMinutes, 15);
-    expect(loaded.dailyGoalXp, 75);
+    expect(loaded.dailyGoalXp, 300);
   });
 
   test('progress (xp, streak, lessons, mastery, review) round-trips', () async {

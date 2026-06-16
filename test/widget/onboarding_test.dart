@@ -42,7 +42,7 @@ void main() {
     await tester.tap(find.text('Start learning'));
     await tester.pumpAndSettle();
 
-    // 15 min goal -> 75 XP daily goal shown on home.
-    expect(find.textContaining('/ 75 XP'), findsOneWidget);
+    // 15 min goal -> 300 XP daily goal shown on home.
+    expect(find.textContaining('/ 300 XP'), findsOneWidget);
   });
 }
