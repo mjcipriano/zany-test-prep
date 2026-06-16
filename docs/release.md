@@ -48,6 +48,34 @@ git push origin v1.0.0
 APK attached and generated changelog. Or trigger `release.yml` manually via
 *Actions → Internal release → Run workflow*.
 
+## Release signing (stable key) — why updates install in place
+
+Android refuses to update an installed app when the new APK is signed with a
+**different key** ("App not installed as package conflicts with an existing
+package"). The old default here signed releases with the **debug** key, which is
+generated per-machine, so APKs from different builds/CI had different signatures and
+could not update over each other.
+
+Now `android/app/build.gradle.kts` signs release builds with a **stable keystore**:
+
+- `android/app/zany-release.jks` — the release key (**git-ignored**, lives on the
+  build machine only). Backed up at `~/zany-keystore-backup/`.
+- `android/key.properties` — alias + passwords (**git-ignored**).
+
+`build.gradle.kts` loads `key.properties` when present and falls back to debug
+signing when absent. **Always release from a machine that has this keystore**, or
+every release would change the signature and force users to reinstall.
+
+> ⚠️ One-time transition: the first stable-signed release (v1.7.3) has a *different*
+> signature than the older debug-signed installs, so users must uninstall once to
+> move onto the stable key. Every update after that installs in place and keeps all
+> data. **Do not lose the keystore** — without it you cannot ship updatable builds.
+
+Key fingerprint (SHA-256): `1D:9D:03:EB:A0:CA:CD:A8:31:A2:DE:E5:7E:21:57:0A:0B:77:81:B5:61:2F:31:F5:C9:4E:B6:D4:F2:9F:D2:05`
+
+To build/release on another machine or in CI, copy `zany-release.jks` +
+`key.properties` there (e.g. via CI secrets — see below), don't commit them.
+
 ## Optional: signing for Play Store later
 
 `release.yml` contains a commented-out signing section. To enable real signing, add
