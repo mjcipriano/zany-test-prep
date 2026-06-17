@@ -80,7 +80,10 @@ Order = top to bottom. Mark `[x]` when a section meets the Definition of Done.
   ordering with subtler secondary-meaning words in hard; no answer tells; prompts
   vary by word. FUTURE: add completion-style ("most logical/precise word for the
   blank") items as a coverage expansion — current items are meaning-in-context.
-- [ ] text_structure_purpose
+- [x] text_structure_purpose — 4-screen mini-lesson (two flavors: overall
+  structure vs. purpose/function → label parts & name the pattern → answer with a
+  function verb → dodge traps + worked example); ramp via complexity ordering
+  (hard uses subtler sentence-function items); no answer tells; prompts vary.
 - [ ] cross_text_connections
 - [ ] transitions
 - [ ] rhetorical_synthesis

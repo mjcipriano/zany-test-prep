@@ -326,6 +326,45 @@ TEACHING = {
         "key_points": ["Identify the organizing pattern.",
                        "Ask what a sentence accomplishes in context.",
                        "Match purpose to the passage's overall aim."],
+        "screens": [
+            {
+                "title": "Two flavors",
+                "body": ("These questions come in two shapes. 'Overall structure' asks how "
+                         "the whole passage is organized. 'Purpose / function' asks what a "
+                         "specific part (often the first or last sentence) is doing. Both "
+                         "are about the job of the writing, not just what it says."),
+                "key_points": ["Structure = the shape of the whole passage.",
+                               "Purpose = the job of one part within it."],
+            },
+            {
+                "title": "Reading for structure",
+                "body": ("Sum up each chunk in a few words — 'sets up a puzzle,' 'gives "
+                         "the mechanism,' 'adds a twist' — then name the pattern they form. "
+                         "Common patterns: contrast, cause and effect, problem then "
+                         "solution, claim then support, and general then specific."),
+                "key_points": ["Label each part's job, then connect the labels.",
+                               "Know the usual patterns so you can name the shape."],
+            },
+            {
+                "title": "Reading for purpose",
+                "body": ("For a part, ask: what does this sentence DO here? Verbs help — "
+                         "it might introduce, illustrate, qualify, counter, transition, or "
+                         "conclude. The right answer names that job AND fits the passage's "
+                         "overall aim, not just the local content."),
+                "key_points": ["Answer with a function verb (introduce, qualify, conclude).",
+                               "The function must fit the whole passage's aim."],
+            },
+            {
+                "title": "Dodge traps & try it",
+                "body": ("Traps describe a different part, state true content but the wrong "
+                         "function, or name a structure the passage never uses. Example: "
+                         "the octopus passage 'introduces a surprising trait, explains its "
+                         "mechanism, then notes a deeper puzzle.' 'Lists steps a diver "
+                         "should follow' names a structure that isn't there."),
+                "worked_example": ("Label the parts (surprise → mechanism → puzzle), then "
+                                   "pick the choice that names that shape — not absent steps."),
+            },
+        ],
     },
     "words_in_context": {
         "title": "Words in Context",
