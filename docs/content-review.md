@@ -67,7 +67,9 @@ Order = top to bottom. Mark `[x]` when a section meets the Definition of Done.
 - [x] inferences — 4-screen mini-lesson (what an inference is → find evidence &
   predict → dodge traps → worked example); difficulty ramp via complexity
   ordering; no answer tells; prompts vary per passage.
-- [ ] command_of_evidence
+- [x] command_of_evidence — 4-screen mini-lesson (what it asks → restate the claim
+  & test choices → dodge off-claim/too-general/backfire traps → worked example);
+  difficulty ramp via complexity ordering; no answer tells; prompts vary.
 - [ ] quantitative_evidence  ⚠ wording tell
 - [ ] words_in_context
 - [ ] text_structure_purpose

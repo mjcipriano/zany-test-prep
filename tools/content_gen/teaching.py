@@ -275,6 +275,48 @@ TEACHING = {
         "key_points": ["Match the evidence to the exact claim.",
                        "Specific, on-point details beat general ones.",
                        "Beware details that are true but off-topic."],
+        "screens": [
+            {
+                "title": "What it asks",
+                "body": ("Command-of-evidence questions hand you a claim and ask which "
+                         "detail best backs it up. Your job isn't to pick the most "
+                         "interesting fact — it's to pick the one that actually proves "
+                         "that specific claim. (The SAT also has a data version that asks "
+                         "you to read a graph or table; the skill is the same.)"),
+                "key_points": ["You're matching evidence to one exact claim.",
+                               "'Best supports' means most directly proves it."],
+            },
+            {
+                "title": "How to do it",
+                "body": ("First, nail down the claim in your own words — what exactly must "
+                         "the detail show? Then test each choice: does it directly make "
+                         "that claim more true? The winner connects straight to the claim, "
+                         "not just to the general topic."),
+                "key_points": ["Restate the claim before reading the choices.",
+                               "Ask of each choice: does this prove *that* claim?",
+                               "Specific and on-point beats broad and related."],
+            },
+            {
+                "title": "Dodge the traps",
+                "body": ("Wrong choices are usually on-topic but off-claim (true, related, "
+                         "but proves something else), too general to pin anything down, or "
+                         "actually point the other way and weaken the claim. Relevance to "
+                         "the topic is not the same as support for the claim."),
+                "key_points": ["Off-claim: about the topic, but not the claim.",
+                               "Too general: doesn't lock in the specific point.",
+                               "Backfire: the detail undercuts the claim."],
+            },
+            {
+                "title": "Try the moves",
+                "body": ("Claim: the octopus cannot perceive its own display. The detail "
+                         "'the octopus is colorblind, so it cannot see the very hues it "
+                         "produces' proves it directly. 'Muscles widen sacs of pigment' is "
+                         "true and on-topic, but it supports *how* the color appears, not "
+                         "that the animal can't perceive it — an off-claim trap."),
+                "worked_example": ("Restate the claim ('can't see its own colors'), then "
+                                   "pick the detail that proves exactly that."),
+            },
+        ],
     },
     "text_structure_purpose": {
         "title": "Text Structure and Purpose",
