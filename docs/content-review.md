@@ -93,9 +93,17 @@ Order = top to bottom. Mark `[x]` when a section meets the Definition of Done.
   hard uses the most confusable near-misses; varied prompts; also adds a large
   practice bank. 4-screen mini-lesson (relationship first → families → traps →
   worked example). No answer tells.
-- [ ] rhetorical_synthesis
-- [ ] concision
-- [ ] sentence_boundaries
+- [x] rhetorical_synthesis — authored pool now ordered easy→hard by prose density
+  (tiers ramp; global pool shuffle removed); 4-screen mini-lesson (goal is
+  everything → choose by goal → accurate-but-off-goal traps → worked example);
+  no answer tells.
+- [x] concision — authored pool ordered easy→hard by length/subtlety (tiers ramp);
+  4-screen mini-lesson (say it once → spot padding → don't overcut → worked
+  example); no answer tells.
+- [x] sentence_boundaries — added a real difficulty ramp to gen_boundaries: easy
+  = period between two independents, medium = semicolon (with splice/run-on/
+  semicolon+and distractors), hard = dependent-clause comma joins with
+  fragment/semicolon traps; 4-screen mini-lesson. No answer tells.
 - [ ] subject_verb_agreement
 - [ ] punctuation
 - [ ] pronouns

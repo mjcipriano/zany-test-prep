@@ -156,13 +156,13 @@ def build():
     skill_index = load_skill_index()
     seen_keys = set()
 
-    # Pre-build pools and reading sources.
+    # Pre-build pools and reading sources. Pools are returned pre-ordered easy ->
+    # hard by complexity (see the builders), so the in-order tier draw ramps in
+    # difficulty; we deliberately do NOT shuffle them.
     pools = {
         "concision": rw_gen.pool_concision(rng),
         "synthesis": rw_gen.pool_synthesis(rng),
     }
-    for k in pools:
-        rng.shuffle(pools[k])
     pool_cursor = {k: 0 for k in pools}
     reading_sources = {key: passages.build_reading(key, rng)
                        for key in ("main_idea", "inference", "evidence",

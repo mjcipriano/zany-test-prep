@@ -59,25 +59,68 @@ _IND_B = [
 ]
 
 
+_DEP_SUBORDINATORS = ["Although", "Because", "While", "When", "Since", "After"]
+
+
 def gen_boundaries(rng: random.Random, difficulty: str = "medium"):
     a = rng.choice(_IND_A)
     b = rng.choice(_IND_B)
     b_cap = b[0].upper() + b[1:]
-    correct = (f"{a}. {b_cap}", "Correct. Two independent clauses can stand as two "
-               "separate sentences joined by a period.")
-    distractors = [
-        (f"{a}, {b}", "Comma splice: a comma alone cannot join two independent clauses."),
-        (f"{a} {b}", "Run-on (fused sentence): the two clauses need punctuation between them."),
-        (f"{a}; and {b}", "A semicolon should not be paired with a coordinating conjunction like 'and'."),
-    ]
-    options, ci, rats = shuffle_with_correct(rng, correct, distractors)
     prompt = ("Which choice most effectively joins the two ideas while following "
               "the conventions of standard English?")
+
+    if difficulty == "hard":
+        # Dependent + independent: the trap is treating the dependent clause as a
+        # full sentence (fragment) or joining with a semicolon as if both were
+        # independent. Exactly one option (the comma) is correct.
+        sub = rng.choice(_DEP_SUBORDINATORS)
+        dep = f"{sub} {a[0].lower() + a[1:]}"
+        correct = (f"{dep}, {b}.",
+                   "Correct. A dependent (subordinate) clause is joined to the main "
+                   "clause with a comma.")
+        distractors = [
+            (f"{dep}. {b_cap}.",
+             "The first part is a dependent clause; ending it with a period leaves a "
+             "sentence fragment."),
+            (f"{dep}; {b}.",
+             "A semicolon joins two independent clauses, but the first part here is "
+             "dependent, not independent."),
+            (f"{dep} {b}.",
+             "Run-on: a dependent clause still needs a comma before the main clause."),
+        ]
+        explanation = ("The opening is a dependent clause, so it attaches to the main "
+                       "clause with a comma — a period makes a fragment and a semicolon "
+                       "wrongly treats it as independent.")
+    elif difficulty == "medium":
+        # Two independent clauses; the single correct join is a semicolon. (No bare
+        # period option, since that would also be correct.)
+        correct = (f"{a}; {b}.",
+                   "Correct. A semicolon links two closely related independent clauses.")
+        distractors = [
+            (f"{a}, {b}.",
+             "Comma splice: a comma alone cannot join two independent clauses."),
+            (f"{a} {b}.",
+             "Run-on (fused sentence): the clauses need punctuation between them."),
+            (f"{a}; and {b}.",
+             "Don't pair a semicolon with a coordinating conjunction like 'and'."),
+        ]
+        explanation = ("Both clauses are independent, so a semicolon joins them; a comma "
+                       "makes a splice and omitting punctuation makes a run-on.")
+    else:  # easy — two independent clauses, correct join is a period
+        correct = (f"{a}. {b_cap}",
+                   "Correct. Two independent clauses can stand as two separate "
+                   "sentences joined by a period.")
+        distractors = [
+            (f"{a}, {b}", "Comma splice: a comma alone cannot join two independent clauses."),
+            (f"{a} {b}", "Run-on (fused sentence): the two clauses need punctuation between them."),
+            (f"{a}; and {b}", "Don't pair a semicolon with a coordinating conjunction like 'and'."),
+        ]
+        explanation = ("Each clause is independent (it could stand alone), so separate "
+                       "them with a period — not a comma (splice) or nothing (run-on).")
+
+    options, ci, rats = shuffle_with_correct(rng, correct, distractors)
     return mc(prompt, options, ci, rats, subskill="clause_joining",
-              qtype="grammar_editing",
-              explanation=("Each clause is independent (it could stand alone), so they "
-                           "must be separated by a period or semicolon — not a comma "
-                           "(splice) or nothing (run-on)."),
+              qtype="grammar_editing", explanation=explanation,
               tags=["conventions", "boundaries"], est=45)
 
 
@@ -689,7 +732,13 @@ _CONCISION = [
 
 def pool_concision(rng: random.Random):
     items = []
-    for concise, *wordy in _CONCISION:
+    # Order easy -> hard: longer ideas with longer (subtler) wordy options read
+    # harder, so the in-order tier draw ramps in difficulty.
+    ordered = sorted(
+        _CONCISION,
+        key=lambda it: len(it[0]) + max(len(w) for w in it[1:]),
+    )
+    for concise, *wordy in ordered:
         correct = (concise[0].upper() + concise[1:] + ".",
                    "Correct. This version states the idea without redundancy or padding.")
         distractors = [(w[0].upper() + w[1:] + ".",
@@ -835,7 +884,12 @@ _SYNTHESIS = [
 
 def pool_synthesis(rng: random.Random):
     items = []
-    for topic, notes, goal, correct_s, wrongs in _SYNTHESIS:
+    # Order easy -> hard by prose density so the tiers (drawn in order) ramp.
+    ordered = sorted(
+        _SYNTHESIS,
+        key=lambda it: len(it[3]) + sum(len(n) for n in it[1]),
+    )
+    for topic, notes, goal, correct_s, wrongs in ordered:
         note_block = "\n".join(f"• {n}" for n in notes)
         correct = (correct_s, f"Correct. This sentence uses the notes to {goal}.")
         distractors = [(w, f"This is accurate but does not {goal} as the prompt asks.")

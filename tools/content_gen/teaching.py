@@ -480,6 +480,47 @@ TEACHING = {
         "key_points": ["A comma alone can't join two independent clauses.",
                        "Use a period or semicolon between independent clauses.",
                        "A comma + FANBOYS conjunction also works."],
+        "screens": [
+            {
+                "title": "Independent vs. dependent",
+                "body": ("An independent clause could be its own sentence ('Attendance "
+                         "doubled'). A dependent clause cannot — it starts with a word like "
+                         "because, although, when, or since ('Although attendance "
+                         "doubled'). Knowing which is which decides the punctuation."),
+                "key_points": ["Independent = a complete sentence on its own.",
+                               "Dependent = starts with because/although/when/since/while."],
+            },
+            {
+                "title": "Joining two independent clauses",
+                "body": ("Two independent clauses need a real boundary between them: a "
+                         "period (two sentences), a semicolon, or a comma PLUS a FANBOYS "
+                         "word (and, but, or, so…). A comma by itself is a comma splice; "
+                         "nothing at all is a run-on."),
+                "key_points": ["Period, semicolon, or comma + FANBOYS — pick one.",
+                               "Comma alone = splice; no punctuation = run-on.",
+                               "Don't use a semicolon AND 'and' together."],
+            },
+            {
+                "title": "When one clause is dependent",
+                "body": ("If the sentence opens with a dependent clause, attach it to the "
+                         "main clause with a comma: 'Although attendance doubled, the venue "
+                         "stayed calm.' A period there leaves a fragment, and a semicolon "
+                         "wrongly treats the dependent clause as independent."),
+                "key_points": ["Dependent + main clause = join with a comma.",
+                               "A period after a dependent clause = fragment.",
+                               "Don't semicolon a dependent clause."],
+            },
+            {
+                "title": "Try the moves",
+                "body": ("Two independent clauses: 'The bakery sells out by noon' + "
+                         "'regular customers arrive early.' A semicolon joins them; a comma "
+                         "alone would splice. But 'Because the bakery sells out by noon, "
+                         "regular customers arrive early' needs a comma — the 'because' "
+                         "part can't stand alone."),
+                "worked_example": ("Two independent -> period/semicolon. Starts with "
+                                   "'Because…' -> comma (not a period or semicolon)."),
+            },
+        ],
     },
     "subject_verb_agreement": {
         "title": "Subject-Verb Agreement",
@@ -577,6 +618,46 @@ TEACHING = {
         "key_points": ["Cut words that repeat an idea.",
                        "Prefer the shortest clear, grammatical option.",
                        "Don't delete meaning — only redundancy."],
+        "screens": [
+            {
+                "title": "Say it once",
+                "body": ("Concision questions ask for the clearest version with no "
+                         "repeated ideas and no filler. The goal is to keep the full "
+                         "meaning while cutting words that don't add anything. Shorter "
+                         "usually wins — as long as nothing important is lost."),
+                "key_points": ["Keep all the meaning; cut only the dead weight.",
+                               "Among correct options, the shortest is usually best."],
+            },
+            {
+                "title": "Spot the padding",
+                "body": ("Watch for two things: redundancy (saying the same idea twice — "
+                         "'free gift,' 'postponed until later') and filler phrases ('due "
+                         "to the fact that' = 'because,' 'in order to' = 'to'). If removing "
+                         "words changes nothing about the meaning, remove them."),
+                "key_points": ["Redundancy: two words for one idea.",
+                               "Filler: long phrases that mean a short word.",
+                               "Test: does cutting it change the meaning? If no, cut."],
+            },
+            {
+                "title": "Don't overcut",
+                "body": ("Concise isn't the same as shortest-at-any-cost. The right answer "
+                         "still has to be grammatical and keep the actual information. A "
+                         "choice that drops a needed detail or breaks the sentence is wrong "
+                         "even if it's the fewest words."),
+                "key_points": ["The shortest option can be wrong if it loses meaning.",
+                               "Stay grammatical — don't create a fragment."],
+            },
+            {
+                "title": "Try the moves",
+                "body": ("'Due to the fact that of scheduling, the meeting was postponed "
+                         "until a later time' is padded twice over. 'The meeting was "
+                         "postponed' keeps the whole meaning with none of the filler — "
+                         "'postponed' already means 'put off until later.'"),
+                "worked_example": ("Cut 'due to the fact that' and 'until a later time' "
+                                   "(redundant with 'postponed') -> 'The meeting was "
+                                   "postponed.'"),
+            },
+        ],
     },
     "verb_tense": {
         "title": "Verb Tense and Form",
@@ -714,5 +795,46 @@ TEACHING = {
         "key_points": ["Read the goal carefully before the choices.",
                        "Choose the option that serves that goal.",
                        "Accurate but off-goal choices are traps."],
+        "screens": [
+            {
+                "title": "The goal is everything",
+                "body": ("You get a few bullet-point notes and one specific goal — to "
+                         "introduce a topic, emphasize a contrast, compare two things, and "
+                         "so on. Your job is to pick the sentence that accomplishes THAT "
+                         "goal using the notes. The goal, not the topic, decides the "
+                         "answer."),
+                "key_points": ["Read and underline the goal first.",
+                               "Every choice may be true; only one meets the goal."],
+            },
+            {
+                "title": "How to choose",
+                "body": ("Put the goal in plain words ('I need to highlight the "
+                         "difference'). Then check each choice: does it actually do that "
+                         "job with the relevant notes? The right answer pulls in the notes "
+                         "that serve the goal and leaves out the rest."),
+                "key_points": ["Restate the goal as a task.",
+                               "Keep the notes that serve it; ignore the others.",
+                               "Match the choice's job to the goal's job."],
+            },
+            {
+                "title": "Dodge the traps",
+                "body": ("Wrong choices are usually true and on-topic but do the wrong "
+                         "job — they describe when the goal was to compare, or state one "
+                         "fact when the goal was to generalize. A choice can use the notes "
+                         "accurately and still miss the goal."),
+                "key_points": ["Accurate but off-goal is the #1 trap.",
+                               "Wrong job = wrong answer, even if it's true.",
+                               "Don't reward the choice that simply says the most."],
+            },
+            {
+                "title": "Try the moves",
+                "body": ("Goal: emphasize that a method is fast. Notes include its cost, "
+                         "its accuracy, and that it runs in seconds. The right sentence "
+                         "leads with the speed ('The method returns results in seconds'); "
+                         "a choice about its cost is accurate but does the wrong job."),
+                "worked_example": ("Goal = stress speed -> pick the sentence built around "
+                                   "'in seconds', not the (true) one about cost."),
+            },
+        ],
     },
 }
