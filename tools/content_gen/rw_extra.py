@@ -208,102 +208,125 @@ _QE_TOPICS = [
 ]
 
 
+_QE_PATTERNS = ["up", "down", "steady", "peak", "dip", "mixed"]
+# Distractor patterns that are CLEARLY false for each true pattern (so the keyed
+# answer is the only defensible one). 'mixed' is excluded where the true shape
+# could also be loosely read as "moved both ways" (peak/dip), and vice-versa.
+_QE_WRONGS = {
+    # Monotonic data: don't offer peak/dip (their extreme sits at an endpoint, so
+    # "peaked then declined" reads as half-true) — keep clearly-false alternatives.
+    "up": ["down", "steady", "mixed"],
+    "down": ["up", "steady", "mixed"],
+    "steady": ["up", "down", "peak", "dip", "mixed"],
+    "peak": ["up", "down", "steady", "dip"],
+    "dip": ["up", "down", "steady", "peak"],
+    "mixed": ["up", "down", "steady"],
+}
+
+
 def gen_quantitative_evidence(rng: random.Random, difficulty: str = "medium"):
-    metric, place, unit, verb = rng.choice(_QE_TOPICS)
-    rising = verb in ("rose", "increased", "grew", "climbed")
-    # Difficulty ramp: more rows, bigger numbers, and uneven year-to-year steps
-    # (so "rose by the same amount each year" becomes a tempting wrong answer).
+    metric, place, unit, _verb = rng.choice(_QE_TOPICS)
     n = {"easy": 4, "medium": 5, "hard": 6}.get(difficulty, 5)
     years = [2018 + rng.randint(0, 2) + i for i in range(n)]
-    if difficulty == "easy":
-        start = rng.randint(20, 60)
-        steps = [rng.choice([3, 4, 5, 6, 8])] * (n - 1)  # constant step
-    elif difficulty == "medium":
-        start = rng.randint(40, 120)
-        steps = [rng.choice([4, 6, 8, 10]) for _ in range(n - 1)]  # uneven
-    else:
-        start = rng.randint(120, 400)
-        steps = [rng.choice([7, 9, 11, 15, 20]) for _ in range(n - 1)]  # uneven
-    asc = [start]
-    for s in steps:
-        asc.append(asc[-1] + s)
-    vals = asc if rising else asc[::-1]
+    # Pick the TRUE shape of the data, so the correct answer's *type* rotates
+    # (it isn't always "rose/fell each year"). Harder tiers favour subtler shapes.
+    pattern = rng.choice(_QE_PATTERNS if difficulty != "easy"
+                         else ["up", "down", "steady", "peak", "dip"])
+    lo = {"easy": 20, "medium": 45, "hard": 120}[difficulty]
+    base = rng.randint(lo, lo * 2)
+    step = (lambda: rng.choice([3, 4, 5, 6])) if difficulty == "easy" else \
+        (lambda: rng.choice([6, 8, 10, 12]) if difficulty == "medium"
+         else rng.choice([10, 14, 18, 22]))
+
+    if pattern == "up":
+        vals = [base]
+        for _ in range(n - 1):
+            vals.append(vals[-1] + step())
+    elif pattern == "down":
+        vals = [base + step() * (n - 1) * 2]
+        for _ in range(n - 1):
+            vals.append(vals[-1] - step())
+    elif pattern == "steady":
+        vals = [base] * n                       # flat, so only "steady" is true
+    elif pattern in ("peak", "dip"):
+        p = rng.randint(1, n - 2)               # interior extreme
+        vals = [base]
+        for i in range(1, n):
+            d = step() * (1 if i <= p else -1)
+            if pattern == "dip":
+                d = -d
+            vals.append(vals[-1] + d)
+        m = min(vals)
+        if m <= 0:
+            vals = [v - m + base for v in vals]
+    else:  # mixed: alternating up/down -> several direction changes, no trend
+        vals = [base]
+        sign = 1
+        for _ in range(n - 1):
+            vals.append(max(base // 2, vals[-1] + sign * step()))
+            sign = -sign
     rows = [[str(y), str(v)] for y, v in zip(years, vals)]
     first, last = vals[0], vals[-1]
-    direction = "up" if rising else "down"
-    opp = "down" if rising else "up"
-    dir_verb = rng.choice(
-        ["rose", "increased", "climbed"] if rising else ["fell", "declined", "dropped"]
-    )
-    avg_step = round(abs(last - first) / (n - 1))
-    max_step = max(steps)
-    big = max_step + rng.choice([10, 15, 20])
-    midi = n // 2
-    mid_year, mid_val = years[midi], vals[midi]
+    maxv, minv = max(vals), min(vals)
+    max_year = years[vals.index(maxv)]
+    min_year = years[vals.index(minv)]
 
-    claim = (f"A researcher claims that {metric.lower()} in {place} {verb} "
-             f"steadily from {years[0]} to {years[-1]}.")
+    # Each statement template describes one possible shape, using THIS table's
+    # numbers so every option is concrete and plausible.
+    def text(pat):
+        if pat == "up":
+            return rng.choice([
+                f"The value increased each year, from {first} to {last} {unit}.",
+                f"From {years[0]} to {years[-1]}, the value rose every year to "
+                f"{last} {unit}."])
+        if pat == "down":
+            return rng.choice([
+                f"The value decreased each year, from {first} to {last} {unit}.",
+                f"From {years[0]} to {years[-1]}, the value fell every year to "
+                f"{last} {unit}."])
+        if pat == "steady":
+            return f"The value stayed about constant, near {base} {unit}, across the period."
+        if pat == "peak":
+            return f"The value rose to a peak of {maxv} {unit} in {max_year}, then declined."
+        if pat == "dip":
+            return f"The value fell to a low of {minv} {unit} in {min_year}, then rose."
+        return ("The value moved up in some years and down in others, with no single "
+                "overall trend.")
 
-    # Correct statement: vary the opener so the right answer isn't guessable by
-    # its first word (a real tell when every key started with the same word).
-    correct_text = rng.choice([
-        f"From {years[0]} to {years[-1]}, the value {dir_verb} every year, going "
-        f"from {first} to {last} {unit}.",
-        f"The value {dir_verb} each year, moving from {first} to {last} {unit} "
-        f"over the period.",
-        f"Year over year the figure {dir_verb}, reaching {last} {unit} by "
-        f"{years[-1]} from {first} {unit}.",
-        f"Across all {n} years shown, the value {dir_verb} from {first} to "
-        f"{last} {unit}.",
-    ])
-    correct = (correct_text, "Correct. This matches the steady, one-direction "
-               "trend the claim describes across every year shown.")
-
-    pool = {
-        "steady": (
-            f"The value held steady near {first} {unit} for most of the span "
-            f"before a single change late in {years[-1]}.",
-            "The table shows the value changing every year, not holding steady."),
-        "peaked": (
-            f"It peaked in {mid_year} at {mid_val} {unit} and then reversed "
-            f"course for the rest of the period.",
-            "The largest value is at an endpoint, not the middle year."),
-        "mixed": (
-            f"In some years the value moved {opp} and in others {direction}, "
-            f"rather than in a single direction.",
-            "Every year moves the same direction, so this misreads the table."),
-        "constant": (
-            f"The value changed by the same amount every year, a constant "
-            f"{avg_step} {unit} per year.",
-            f"The year-to-year changes vary, so the change was not a constant "
-            f"{avg_step} {unit}."),
-        "subset": (
-            f"Almost all of the change happened between {years[0]} and "
-            f"{years[1]}, with little movement afterward.",
-            "The value changes in every year shown, not just the first span."),
-        "bigjump": (
-            f"The value {dir_verb} by more than {big} {unit} in a single year.",
-            f"The largest one-year change was only {max_step} {unit}."),
+    claim_by_pattern = {
+        "up": f"{metric} in {place} rose steadily over the period",
+        "down": f"{metric} in {place} fell steadily over the period",
+        "steady": f"{metric} in {place} stayed roughly constant over the period",
+        "peak": f"{metric} in {place} rose and then fell over the period",
+        "dip": f"{metric} in {place} fell and then rose over the period",
+        "mixed": f"{metric} in {place} fluctuated with no consistent trend",
     }
-    if difficulty == "easy":
-        keys = ["steady", "peaked", "mixed"]
-    elif difficulty == "medium":
-        keys = ["constant", "peaked", "mixed"]
-    else:
-        keys = ["constant", "subset", "bigjump"]
-    distractors = [pool[k] for k in keys]
+    claim = (f"A researcher claims that {claim_by_pattern[pattern].lower()}, "
+             f"from {years[0]} to {years[-1]}.")
 
+    correct = (text(pattern),
+               "Correct. This statement matches the table's actual year-by-year values.")
+    wrong_keys = rng.sample(_QE_WRONGS[pattern], 3)
+    distractors = [
+        (text(k),
+         "The table's values don't show this; read the actual figures year by year.")
+        for k in wrong_keys
+    ]
     prompt = (f"{claim}\n\n" + rng.choice([
-        "Which choice best uses data from the table to support the "
-        "researcher's claim?",
+        "Which choice best uses data from the table to support the researcher's claim?",
         "Which statement is best supported by the data in the table?",
         "Which finding from the table most directly supports the claim?",
     ]))
+    shape_phrase = {
+        "up": "rises every year", "down": "falls every year",
+        "steady": "stays about constant", "peak": "rises then falls",
+        "dip": "falls then rises", "mixed": "moves up and down with no clear trend",
+    }[pattern]
     options, ci, rats = shuffle_with_correct(rng, correct, distractors)
     return mc(prompt, options, ci, rats, subskill="quantitative_evidence",
               qtype="data_interpretation", explanation=(
-                  "The supporting statement must reflect the table's actual, "
-                  "consistent trend across all the years shown."),
+                  f"Read the table year by year: the value {shape_phrase}. The correct "
+                  "statement is the one that matches those actual figures."),
               tags=["reading", "evidence", "quantitative"], est=80,
               stimulus={"type": "table", "table": {
                   "caption": f"{metric} in {place} ({unit})",
