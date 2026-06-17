@@ -49,9 +49,10 @@ A "section" = one skill across its easy/medium/hard tiers.
 
 ## Known answer-wording offenders (from the validator, fix during their section)
 
-- `pronoun_antecedent` easy/medium/hard — correct answers nearly all start with
-  "its"/"their". (still open)
-- ~~`quantitative_evidence`~~ — fixed (section done; openers now vary).
+- ~~`pronoun_antecedent`~~ — fixed (plurality randomized; correct spreads its/their).
+- ~~`pronouns`~~ — fixed (added 'whose' case; correct spreads who/whom/whose).
+- ~~`quantitative_evidence`~~ — fixed (openers now vary).
+- **All `answer_wording_flags` are now 0.**
 
 ## Sections
 
@@ -104,18 +105,34 @@ Order = top to bottom. Mark `[x]` when a section meets the Definition of Done.
   = period between two independents, medium = semicolon (with splice/run-on/
   semicolon+and distractors), hard = dependent-clause comma joins with
   fragment/semicolon traps; 4-screen mini-lesson. No answer tells.
-- [ ] subject_verb_agreement
-- [ ] punctuation
-- [ ] pronouns
-- [ ] modifiers
-- [ ] verb_tense
-- [ ] parallel_structure
-- [ ] pronoun_antecedent  ⚠ wording tell
+- [x] subject_verb_agreement — 3-screen mini-lesson (match verb to subject →
+  ignore intervening 'of …' phrases / each-every-neither → worked example);
+  generator already ramps via difficulty (intervening phrases); no tells.
+- [x] punctuation — 3-screen mini-lesson (possessive vs plural → its/it's & commas
+  → worked example); generator ramps via difficulty; no tells.
+- [x] pronouns — 3-screen mini-lesson (case follows job → drop-the-name & he/him
+  tests → worked example). Fixed the who/whom answer tell by adding a third
+  relative case (possessive 'whose'), spreading the correct word across
+  who/whom/whose; ramp via difficulty (easy compounds → hard relatives).
+- [x] modifiers — 3-screen mini-lesson (right neighbor → spot the absurdity →
+  worked example); generator ramps via difficulty; no tells.
+- [x] verb_tense — 3-screen mini-lesson (match the time → -ing/perfect forms →
+  worked example); generator ramps via difficulty; no tells.
+- [x] parallel_structure — 3-screen mini-lesson (same form in a series → paired
+  connectors → worked example); generator ramps via difficulty; no tells.
+- [x] pronoun_antecedent — fixed the its/their tell: plurality randomized every
+  tier (correct spreads its/their); difficulty now adds an opposite-number bait
+  phrase (short→long) for the ramp. 3-screen mini-lesson. No tells.
 
 ### Math
-- [ ] linear_equations
-- [ ] linear_inequalities
-- [ ] systems_of_equations
+- [x] linear_equations — 4-screen mini-lesson (undo to isolate → clear
+  parentheses/fractions/both-sides → check & signs → worked example); generator
+  ramps via difficulty; numeric answers (length tell allowed).
+- [x] linear_inequalities — 3-screen mini-lesson (solve like an equation → flip on
+  a negative + endpoints → worked example); generator ramps via difficulty.
+  FUTURE: a number-line figure could help graph-region items (needs figure infra).
+- [x] systems_of_equations — 4-screen mini-lesson (two eqns/two unknowns →
+  substitution → elimination → worked example); generator ramps via difficulty.
 - [ ] word_problems
 - [ ] absolute_value
 - [ ] functions

@@ -140,15 +140,35 @@ _PA_TAILS = [
     "published ___ research findings",
     "expanded ___ original plan",
 ]
+# Intervening phrases whose noun is the OPPOSITE number from the antecedent, used
+# to bait the wrong pronoun on harder items. Keyed by the bait noun's number.
+_PA_BAIT_SHORT = {
+    "plural": ["of the two founders", "with the regional offices",
+               "near the rival teams"],
+    "singular": ["on the national team", "from the central office",
+                 "in the league"],
+}
+_PA_BAIT_LONG = {
+    "plural": ["along with several partner organizations that joined last year",
+               "together with the dozens of branches it had opened abroad"],
+    "singular": ["which had grown out of a single research lab downtown",
+                 "as part of the larger national federation it belonged to"],
+}
 
 
 def gen_pronoun_antecedent(rng: random.Random, difficulty: str = "medium"):
+    # Plurality is randomized at EVERY tier so the correct pronoun spreads evenly
+    # between 'its' and 'their' (no answer-wording tell). Difficulty instead adds
+    # an intervening phrase whose noun is the wrong number, baiting the error.
     plural = rng.random() < 0.5
-    if difficulty == "easy":
-        plural = False
-    elif difficulty == "hard":
-        plural = True
     ante = rng.choice(_PA_PLUR if plural else _PA_SING)
+    bait_number = "singular" if plural else "plural"  # opposite-number bait noun
+    if difficulty == "easy":
+        mid = ""
+    elif difficulty == "medium":
+        mid = " " + rng.choice(_PA_BAIT_SHORT[bait_number])
+    else:
+        mid = ", " + rng.choice(_PA_BAIT_LONG[bait_number]) + ","
     tail = rng.choice(_PA_TAILS)
     correct_word = "their" if plural else "its"
     wrong_num = "its" if plural else "their"
@@ -163,7 +183,7 @@ def gen_pronoun_antecedent(rng: random.Random, difficulty: str = "medium"):
         ("they're", "'they're' means 'they are' and is not a possessive pronoun."),
     ]
     options, ci, rats = shuffle_with_correct(rng, correct, distractors)
-    prompt = (f"{ante} {tail}.\n\n"
+    prompt = (f"{ante}{mid} {tail}.\n\n"
               "Which choice completes the text so that it conforms to the "
               "conventions of standard English?")
     return mc(prompt, options, ci, rats, subskill="pronoun_antecedent",

@@ -316,7 +316,10 @@ def gen_pronouns(rng: random.Random, difficulty: str = "medium"):
             "the engineer", "the teacher", "the architect", "the journalist",
             "the volunteer", "the researcher", "the coach", "the director"])
         sub = "pronouns"
-        if rng.random() < 0.5:
+        # Three relative-pronoun cases (who / whom / whose) chosen ~evenly so the
+        # correct answer's first word doesn't pattern.
+        roll = rng.random()
+        if roll < 0.34:
             # subject use of 'who'
             act = rng.choice([
                 "designed the experiment", "wrote the report", "led the project",
@@ -329,7 +332,7 @@ def gen_pronouns(rng: random.Random, difficulty: str = "medium"):
                 ("whose", "'whose' is possessive and does not fit as the subject here.")]
             prompt = (f"The prize went to {person} ___ {act}.\n\n"
                       "Which choice conforms to the conventions of standard English?")
-        else:
+        elif roll < 0.67:
             # object use of 'whom'
             act = rng.choice([
                 "the committee selected", "the judges praised", "the editor hired",
@@ -341,6 +344,20 @@ def gen_pronouns(rng: random.Random, difficulty: str = "medium"):
                 ("which", "'which' refers to things, not people."),
                 ("whose", "'whose' is possessive and does not fit as the object here.")]
             prompt = (f"She is the one {person.split()[1]} ___ {act}.\n\n"
+                      "Which choice conforms to the conventions of standard English?")
+        else:
+            # possessive use of 'whose'
+            thing = rng.choice([
+                "first novel became a bestseller", "research changed the field",
+                "design won the competition", "voice carried across the hall",
+                "idea launched the company", "photographs toured the country"])
+            correct = ("whose", "Correct. The pronoun shows possession of the noun that "
+                       "follows, so 'whose' is required.")
+            distractors = [
+                ("who's", "'who's' means 'who is'; possession needs 'whose'."),
+                ("who", "'who' is subjective and cannot show possession here."),
+                ("whom", "'whom' is objective and cannot show possession here.")]
+            prompt = (f"The prize went to {person} ___ {thing}.\n\n"
                       "Which choice conforms to the conventions of standard English?")
     options, ci, rats = shuffle_with_correct(rng, correct, distractors)
     return mc(prompt, options, ci, rats, subskill=sub, qtype="grammar_editing",

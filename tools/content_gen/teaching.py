@@ -838,3 +838,217 @@ TEACHING = {
         ],
     },
 }
+
+
+# Multi-screen mini-lessons authored separately and merged into TEACHING below,
+# so each teaching card can open with a 2-5 screen "how to solve" intro.
+TEACHING_SCREENS = {
+    "subject_verb_agreement": [
+        {"title": "Match the verb to the subject",
+         "body": ("A verb agrees with its subject in number: a singular subject takes a "
+                  "singular verb, a plural subject a plural verb. The trick is finding the "
+                  "real subject — it's often not the noun closest to the verb."),
+         "key_points": ["Singular subject -> singular verb; plural -> plural.",
+                        "Find the true subject before choosing the verb."]},
+        {"title": "Ignore what's in between",
+         "body": ("Phrases between the subject and verb — especially 'of …' phrases — are "
+                  "there to bait you. Mentally cross them out: 'The box of old tools (is/"
+                  "are)' -> 'The box … is.' Also know that 'each,' 'every,' and 'neither' "
+                  "are singular even though they feel plural."),
+         "key_points": ["Cross out 'of the …' phrases, then check.",
+                        "each / every / neither / one = singular."]},
+        {"title": "Try the moves",
+         "body": ("'The collection of rare coins (was/were) donated.' The subject is "
+                  "'collection' (singular), not 'coins,' so the verb is 'was.' The plural "
+                  "'coins' right before the verb is the trap."),
+         "worked_example": "The list of winners WAS posted (subject = list, not winners)."},
+    ],
+    "punctuation": [
+        {"title": "Possessive vs. plural",
+         "body": ("An apostrophe shows possession, not a plural. Singular owner: add 's "
+                  "(the dog's leash). Plural owner already ending in -s: add just an "
+                  "apostrophe (the dogs' leashes). A plain -s with no apostrophe just makes "
+                  "a plural."),
+         "key_points": ["Singular owner: 's.  Plural owner ending in -s: s'.",
+                        "No apostrophe = plural, not possessive."]},
+        {"title": "its / it's and commas",
+         "body": ("'It's' always means 'it is' or 'it has'; the possessive 'its' has no "
+                  "apostrophe. For commas, don't split a subject from its verb, and use a "
+                  "pair of commas around nonessential information you could lift out."),
+         "key_points": ["it's = it is; its = belonging to it.",
+                        "Nonessential info gets a comma on both sides."]},
+        {"title": "Try the moves",
+         "body": ("'The teams' uniforms' = uniforms of several teams. 'The team's "
+                  "uniform' = one team. And 'The dog wagged its tail' takes no apostrophe — "
+                  "'it's tail' would read 'it is tail.'"),
+         "worked_example": "Workers' tools (plural owners) vs. a worker's tools (one)."},
+    ],
+    "pronouns": [
+        {"title": "Case follows the job",
+         "body": ("Use subject pronouns (I, he, she, they, who) for subjects and object "
+                  "pronouns (me, him, her, them, whom) for objects. The pronoun's role in "
+                  "the sentence — not how it sounds — decides the case."),
+         "key_points": ["Subjects: I/he/she/they/who.",
+                        "Objects: me/him/her/them/whom."]},
+        {"title": "Two quick tests",
+         "body": ("In a compound ('Maya and I/me'), drop the other person and listen: "
+                  "'…thanked me,' not '…thanked I.' For who vs. whom, answer with he/him: "
+                  "if 'he' fits, use 'who'; if 'him' fits, use 'whom' (both end in m)."),
+         "key_points": ["Compound: remove the other name and check.",
+                        "he = who; him = whom."]},
+        {"title": "Try the moves",
+         "body": ("'The coach emailed Noah and (I/me).' Drop 'Noah and': 'emailed me.' "
+                  "'The athlete (who/whom) the judges praised' — the judges praised HIM, "
+                  "so it's 'whom.'"),
+         "worked_example": "He won -> 'who won'; judges praised him -> 'whom they praised.'"},
+    ],
+    "modifiers": [
+        {"title": "Modifiers need the right neighbor",
+         "body": ("An opening descriptive phrase attaches to the noun that comes right "
+                  "after the comma. If that noun can't logically do the action, the "
+                  "modifier 'dangles' and the sentence says something absurd."),
+         "key_points": ["The noun after the comma must fit the opening phrase.",
+                        "Wrong noun = a dangling/misplaced modifier."]},
+        {"title": "Spot the absurdity",
+         "body": ("Read the opening phrase, then ask 'who or what is doing this?' The "
+                  "answer must be the first word after the comma. 'Walking to school, the "
+                  "rain soaked us' wrongly says the rain was walking."),
+         "key_points": ["Name the doer, then check it's right after the comma.",
+                        "Fix by putting the right noun first (or rewriting)."]},
+        {"title": "Try the moves",
+         "body": ("'Having studied all night, the exam felt easy' — the exam didn't study. "
+                  "The right subject is the student: 'Having studied all night, she found "
+                  "the exam easy.'"),
+         "worked_example": "Opening phrase about a person -> a person must follow the comma."},
+    ],
+    "verb_tense": [
+        {"title": "Match the time",
+         "body": ("Pick the tense the sentence's time clues call for: 'last year,' "
+                  "'in 1990' -> past; 'today,' 'currently' -> present; 'next year,' 'will' "
+                  "-> future. Don't switch times without a reason."),
+         "key_points": ["Time words set the tense.",
+                        "Keep tense consistent unless the meaning changes."]},
+        {"title": "Forms that trip people up",
+         "body": ("An -ing word by itself can't be the main verb ('The team winning' is "
+                  "not a sentence). Use perfect tenses for one action before another: "
+                  "'had finished' (before a past point), 'has finished' (up to now)."),
+         "key_points": ["-ing alone isn't a complete verb.",
+                        "had + verb = earlier past; has/have + verb = up to now."]},
+        {"title": "Try the moves",
+         "body": ("'Last spring the crew (plants/planted) trees.' 'Last spring' is past, "
+                  "so 'planted.' 'By the time we arrived, the show (started/had started)' "
+                  "needs 'had started' — it happened first."),
+         "worked_example": "Last year -> 'traveled' (past), not 'travels.'"},
+    ],
+    "parallel_structure": [
+        {"title": "Same form in a series",
+         "body": ("When items are joined in a list or by and/or, they must share the same "
+                  "grammatical form: all -ing, all nouns, or all to-verbs. A mismatch "
+                  "stands out as the error."),
+         "key_points": ["-ing with -ing, noun with noun, to-verb with to-verb.",
+                        "Find the item whose form doesn't match the others."]},
+        {"title": "Also for paired connectors",
+         "body": ("Parallelism applies to paired structures too — 'not only … but also,' "
+                  "'either … or,' 'both … and.' The words after each half should line up in "
+                  "form."),
+         "key_points": ["Make the parts after 'either/or' and 'not only/but also' match.",
+                        "Comparisons ('more X than Y') should be parallel too."]},
+        {"title": "Try the moves",
+         "body": ("'She likes hiking, biking, and to swim' breaks the pattern — two -ing "
+                  "words then a to-verb. Make the third match: 'hiking, biking, and "
+                  "swimming.'"),
+         "worked_example": "to read, to write, and to edit (all to-verbs), not '…editing.'"},
+    ],
+    "pronoun_antecedent": [
+        {"title": "Agree in number",
+         "body": ("A pronoun must match the noun it stands for (its antecedent) in number. "
+                  "A singular antecedent takes a singular pronoun (its, his, her); a plural "
+                  "antecedent takes a plural one (their)."),
+         "key_points": ["Singular antecedent -> its/his/her.",
+                        "Plural antecedent -> their."]},
+        {"title": "Find the real antecedent",
+         "body": ("Look past phrases that come between the noun and the pronoun. 'The "
+                  "company, along with its partners,' is still singular — 'company,' not "
+                  "'partners,' is the antecedent. Collective nouns (team, committee) are "
+                  "usually singular."),
+         "key_points": ["Ignore 'along with …,' 'of the …' phrases.",
+                        "team / committee / company = singular."]},
+        {"title": "Try the moves",
+         "body": ("'The committee, along with the regional offices, released ___ report.' "
+                  "The antecedent is 'committee' (singular), so 'its' — the plural "
+                  "'offices' is bait. Note: 'it's' means 'it is,' never possession."),
+         "worked_example": "The players released THEIR statement; the team released ITS."},
+    ],
+    "linear_equations": [
+        {"title": "Undo to isolate",
+         "body": ("A linear equation keeps the variable to the first power. Solve by "
+                  "undoing operations in reverse order, doing the same thing to both sides: "
+                  "move constants first (add/subtract), then remove the coefficient "
+                  "(divide)."),
+         "key_points": ["Whatever you do to one side, do to the other.",
+                        "Constants first, then divide by the coefficient."]},
+        {"title": "Clear the clutter",
+         "body": ("If there are parentheses, distribute first. If there are fractions, "
+                  "multiply every term by the common denominator. If the variable appears "
+                  "on both sides, collect the variable terms on one side and the numbers on "
+                  "the other."),
+         "key_points": ["Distribute, then combine like terms.",
+                        "Get all variable terms on one side."]},
+        {"title": "Check and watch signs",
+         "body": ("Most mistakes are sign errors when moving terms across the equals sign — "
+                  "the term flips sign. Plug your answer back in to confirm both sides "
+                  "match."),
+         "key_points": ["Moving a term across '=' flips its sign.",
+                        "Substitute your answer back to verify."]},
+        {"title": "Try the moves",
+         "body": ("Solve 3(x + 2) = 18. Distribute: 3x + 6 = 18. Subtract 6: 3x = 12. "
+                  "Divide by 3: x = 4. Check: 3(4 + 2) = 18. ✓"),
+         "worked_example": "3x + 5 = 20 -> 3x = 15 -> x = 5."},
+    ],
+    "linear_inequalities": [
+        {"title": "Solve like an equation…",
+         "body": ("Isolate the variable exactly as you would in an equation — add, "
+                  "subtract, multiply, and divide both sides. The answer is a range of "
+                  "values, not a single number."),
+         "key_points": ["Same isolating steps as equations.",
+                        "The solution is a range (many values)."]},
+        {"title": "…but flip on a negative",
+         "body": ("The one special rule: if you multiply or divide both sides by a "
+                  "negative number, reverse the inequality sign. ≤ and ≥ include the "
+                  "endpoint; < and > do not."),
+         "key_points": ["Multiply/divide by a negative -> flip the sign.",
+                        "≤ / ≥ include the endpoint; < / > exclude it."]},
+        {"title": "Try the moves",
+         "body": ("Solve -2x + 1 < 9. Subtract 1: -2x < 8. Divide by -2 AND flip: x > -4. "
+                  "On a number line that's an open circle at -4 shading to the right."),
+         "worked_example": "2x + 3 ≤ 11 -> 2x ≤ 8 -> x ≤ 4 (no flip; positive divide)."},
+    ],
+    "systems_of_equations": [
+        {"title": "Two equations, two unknowns",
+         "body": ("A system asks for the values that make BOTH equations true at once — "
+                  "the point where the two lines cross. Two main methods: substitution and "
+                  "elimination."),
+         "key_points": ["A solution satisfies both equations.",
+                        "Pick substitution or elimination."]},
+        {"title": "Substitution",
+         "body": ("Solve one equation for one variable, then plug that expression into the "
+                  "other equation. Best when a variable already has a coefficient of 1 "
+                  "(easy to isolate)."),
+         "key_points": ["Isolate a variable, then substitute into the other equation.",
+                        "Solve for one variable, then back-substitute for the other."]},
+        {"title": "Elimination",
+         "body": ("Line the equations up and add or subtract them to cancel one variable. "
+                  "If needed, multiply an equation so one variable's coefficients match. "
+                  "Best when adding the equations cancels a variable cleanly."),
+         "key_points": ["Add/subtract to cancel a variable.",
+                        "Scale an equation first so coefficients line up."]},
+        {"title": "Try the moves",
+         "body": ("x + y = 7 and x − y = 1. Add them: 2x = 8, so x = 4. Back-substitute: "
+                  "4 + y = 7, so y = 3. Solution: (4, 3)."),
+         "worked_example": "Add the equations to cancel y -> 2x = 8 -> x = 4, y = 3."},
+    ],
+}
+
+for _skill, _screens in TEACHING_SCREENS.items():
+    if _skill in TEACHING:
+        TEACHING[_skill]["screens"] = _screens
