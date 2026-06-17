@@ -1047,6 +1047,154 @@ TEACHING_SCREENS = {
                   "4 + y = 7, so y = 3. Solution: (4, 3)."),
          "worked_example": "Add the equations to cancel y -> 2x = 8 -> x = 4, y = 3."},
     ],
+    "functions": [
+        {"title": "f(x) is a rule",
+         "body": ("f(x) is a machine: put an input in for x, get an output. To evaluate "
+                  "f at a number, substitute that number everywhere x appears and "
+                  "simplify, minding order of operations."),
+         "key_points": ["f(k): replace every x with k.",
+                        "Square and handle negatives before multiplying."]},
+        {"title": "Going backward",
+         "body": ("Sometimes you're given the output and asked for the input: 'if "
+                  "f(x) = N, find x.' Set the rule equal to N and solve the equation — "
+                  "undo the constant, then the coefficient."),
+         "key_points": ["f(x) = N -> set the rule equal to N and solve.",
+                        "Solving for x is one step beyond plugging in."]},
+        {"title": "Quadratic care",
+         "body": ("With f(x) = ax² + bx + c, square the input first (a negative input "
+                  "squared is positive), then multiply and add. The most common slip is "
+                  "forgetting to square or mishandling a negative."),
+         "key_points": ["Square the whole input, including its sign.",
+                        "(−k)² is positive."]},
+        {"title": "Try the moves",
+         "body": ("If f(x) = 2x + 1, then f(3) = 2·3 + 1 = 7. Backward: if f(x) = 7, then "
+                  "2x + 1 = 7 -> x = 3. If f(x) = x² − 4 and x = −3, f(−3) = 9 − 4 = 5."),
+         "worked_example": "f(3) for 2x+1 = 7; solve 2x+1=7 -> x=3; (−3)² − 4 = 5."},
+    ],
+    "quadratics": [
+        {"title": "Roots from factors",
+         "body": ("Many quadratics factor into (x − r₁)(x − r₂) = 0. Setting each factor "
+                  "to zero gives the solutions (roots) r₁ and r₂. Watch the signs: a "
+                  "factor (x − 5) has root +5."),
+         "key_points": ["Set each factor equal to zero.",
+                        "Factor (x − r) has root r (sign flips)."]},
+        {"title": "Sum and product shortcuts",
+         "body": ("For x² + bx + c, the roots add to −b and multiply to c (for a leading "
+                  "1). More generally, sum = −b/a and product = c/a — handy when you only "
+                  "need the sum or product, not each root."),
+         "key_points": ["Sum of roots = −b/a.",
+                        "Product of roots = c/a."]},
+        {"title": "How many real roots?",
+         "body": ("The discriminant b² − 4ac tells you the number of real solutions "
+                  "without solving: positive -> two, zero -> one (a repeated root), "
+                  "negative -> none. Compute it carefully, signs included."),
+         "key_points": ["b²−4ac > 0: two real roots.",
+                        "= 0: one; < 0: none."]},
+        {"title": "Try the moves",
+         "body": ("x² − 5x + 6 = 0 factors as (x − 2)(x − 3) = 0, so x = 2 or 3 (sum 5, "
+                  "product 6). For x² + x + 4 = 0, the discriminant 1 − 16 = −15 < 0, so "
+                  "there are no real solutions."),
+         "worked_example": "(x−2)(x−3)=0 -> x=2,3.  D = 1−16 = −15 < 0 -> no real roots."},
+    ],
+    "exponents_radicals": [
+        {"title": "The three core rules",
+         "body": ("Same base: multiplying ADDS exponents (xᵃ·xᵇ = xᵃ⁺ᵇ), dividing "
+                  "SUBTRACTS them (xᵃ ÷ xᵇ = xᵃ⁻ᵇ), and a power of a power MULTIPLIES "
+                  "them ((xᵃ)ᵇ = xᵃᵇ). The base never changes."),
+         "key_points": ["Multiply -> add exponents; divide -> subtract.",
+                        "Power of a power -> multiply exponents."]},
+        {"title": "Negative and zero",
+         "body": ("A zero exponent is 1 (x⁰ = 1). A negative exponent means a reciprocal: "
+                  "x⁻ⁿ = 1/xⁿ. So when subtracting exponents gives a negative, the answer "
+                  "is a fraction."),
+         "key_points": ["x⁰ = 1.",
+                        "x⁻ⁿ = 1/xⁿ (a negative exponent flips it)."]},
+        {"title": "Roots are fractional powers",
+         "body": ("A radical is a fractional exponent: √x = x^(1/2), and ⁿ√(xᵏ) = "
+                  "x^(k/n). Rewriting roots as powers lets you use the same exponent "
+                  "rules to simplify."),
+         "key_points": ["√x = x^(1/2); cube root = x^(1/3).",
+                        "Convert roots to powers, then apply the rules."]},
+        {"title": "Try the moves",
+         "body": ("(2³)² ÷ 2⁸ = 2⁶ ÷ 2⁸ = 2⁻² = 1/2² = 1/4. Apply power-of-a-power, then "
+                  "subtract for the division, then read the negative exponent as a "
+                  "reciprocal."),
+         "worked_example": "(2³)² ÷ 2⁸ = 2⁶⁻⁸ = 2⁻² = 1/4."},
+    ],
+    "polynomials": [
+        {"title": "Multiply with FOIL",
+         "body": ("To expand (ax + b)(cx + d), multiply every pair: First, Outer, Inner, "
+                  "Last. The x² term is ac, the x term is (ad + bc), and the constant is "
+                  "bd. Combine the two middle (x) terms."),
+         "key_points": ["x² coeff = a·c; constant = b·d.",
+                        "x coeff = a·d + b·c (add the two middle terms)."]},
+        {"title": "Mind the signs",
+         "body": ("Negative terms flip signs as you multiply. (x − 5)(x + 2) gives a "
+                  "constant of −10 and a middle term of −3x. Track each sign rather than "
+                  "rushing."),
+         "key_points": ["A negative times a positive is negative.",
+                        "Recombine middle terms with their signs."]},
+        {"title": "Factoring is FOIL in reverse",
+         "body": ("To factor x² + bx + c, find two numbers that multiply to c and add to "
+                  "b; those give the factors (x + p)(x + q). A factor (x − r) means r is a "
+                  "root that makes the trinomial zero."),
+         "key_points": ["Find two numbers: product c, sum b.",
+                        "Factor (x − r) <-> root r."]},
+        {"title": "Try the moves",
+         "body": ("(x − 4)(x + 3) = x² − x − 12 (x² term 1, middle −x, constant −12). "
+                  "Reverse: x² − x − 12 factors back to (x − 4)(x + 3), so (x − 4) is a "
+                  "factor."),
+         "worked_example": "(x−4)(x+3) = x² − x − 12; so (x−4) is a factor of it."},
+    ],
+    "word_problems": [
+        {"title": "Translate, then solve",
+         "body": ("Turn the words into an equation. 'Flat fee plus a rate' is "
+                  "total = fee + rate·n. 'Sum' means add; 'is/equals' is the = sign; "
+                  "'more than' and 'times' tell you how the quantities relate."),
+         "key_points": ["Name the unknown, then write an equation.",
+                        "Translate keywords: sum (+), times (×), is (=)."]},
+        {"title": "Undo step by step",
+         "body": ("Solve by reversing what was done to the unknown. For total = fee + "
+                  "rate·n, subtract the fee first, then divide by the rate. Do the inverse "
+                  "operations in reverse order."),
+         "key_points": ["Subtract constants first, then divide by the rate.",
+                        "Inverse operations, in reverse order."]},
+        {"title": "Two related unknowns",
+         "body": ("When two quantities are linked ('one is 12 more than the other,' 'the "
+                  "larger is 3 times the smaller'), write both in terms of one variable, "
+                  "then use the total. e.g., n + 3n = total."),
+         "key_points": ["Express both quantities with one variable.",
+                        "Then substitute into the sum/total."]},
+        {"title": "Try the moves",
+         "body": ("A fee of $20 plus $15/hour totals $95: 20 + 15h = 95 -> 15h = 75 -> "
+                  "h = 5. Sum of two numbers is 40 and one is 6 more: larger = "
+                  "(40 + 6)/2 = 23."),
+         "worked_example": "20 + 15h = 95 -> h = 5.  larger = (sum+diff)/2 = (40+6)/2 = 23."},
+    ],
+    "absolute_value": [
+        {"title": "Two cases",
+         "body": ("|expression| = c means the inside equals c OR equals −c, because both "
+                  "are distance c from zero. So an absolute-value equation usually has two "
+                  "solutions — solve both linear cases."),
+         "key_points": ["|A| = c -> A = c or A = −c.",
+                        "Expect two solutions, one on each side."]},
+        {"title": "With a coefficient",
+         "body": ("If there's a coefficient, like |kx − b| = c, still split into the two "
+                  "cases (kx − b = c and kx − b = −c), then solve each for x by "
+                  "isolating and dividing by k."),
+         "key_points": ["Split first, then solve each case for x.",
+                        "Divide by the coefficient at the end."]},
+        {"title": "Absolute-value inequalities",
+         "body": ("|x − a| ≤ c means x is within c of a, i.e., a − c ≤ x ≤ a + c — a whole "
+                  "range. To count integers in an inclusive range, do high − low + 1 "
+                  "(here, 2c + 1)."),
+         "key_points": ["|x − a| ≤ c -> a − c ≤ x ≤ a + c.",
+                        "Integer count of an inclusive range = high − low + 1."]},
+        {"title": "Try the moves",
+         "body": ("|x − 3| = 5 -> x − 3 = 5 or −5 -> x = 8 or −2. And |x − 3| ≤ 5 means "
+                  "−2 ≤ x ≤ 8, which contains 8 − (−2) + 1 = 11 integers."),
+         "worked_example": "|x−3|=5 -> x=8 or −2.  |x−3|≤5 -> 11 integers (−2…8)."},
+    ],
 }
 
 for _skill, _screens in TEACHING_SCREENS.items():

@@ -11,31 +11,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "Based on the table, how many tickets were sold in all four days combined?",
+    "prompt": "Based on the table, how many tickets were sold on the busiest day?",
     "choices": [
       {
         "id": "A",
-        "text": "148",
-        "rationale": "This double-counts the smallest day."
+        "text": "35",
+        "rationale": "This is the second-largest value."
       },
       {
         "id": "B",
-        "text": "96",
-        "rationale": "This omits the smallest day."
+        "text": "30",
+        "rationale": "This is the average, not the maximum."
       },
       {
         "id": "C",
-        "text": "122",
-        "rationale": "Correct."
+        "text": "22",
+        "rationale": "This is the least busy day."
       },
       {
         "id": "D",
-        "text": "34",
-        "rationale": "This is only the largest single day."
+        "text": "37",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Add the four values: 34 + 32 + 30 + 26 = 122.",
+    "correct_choice": "D",
+    "explanation": "The largest value in the table is 37 (on Fri).",
     "estimated_time_seconds": 80,
     "tags": [
       "data",
@@ -50,101 +50,29 @@
           "Tickets sold"
         ],
         "rows": [
-          [
-            "Tue",
-            "34"
-          ],
           [
             "Mon",
-            "32"
+            "35"
           ],
           [
-            "Wed",
-            "30"
+            "Tue",
+            "27"
           ],
-          [
-            "Thu",
-            "26"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "val=122"
-  },
-  {
-    "question_id": "sat-math-data-analysis-easy-q02",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "data_analysis",
-    "lesson_id": "sat-math-data-analysis-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "tables",
-    "prompt": "Based on the table, how many tickets were sold in all four days combined?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "127",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "37",
-        "rationale": "This is only the largest single day."
-      },
-      {
-        "id": "C",
-        "text": "155",
-        "rationale": "This double-counts the smallest day."
-      },
-      {
-        "id": "D",
-        "text": "99",
-        "rationale": "This omits the smallest day."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "Add the four values: 37 + 28 + 31 + 31 = 127.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "data",
-      "table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Daily ticket sales",
-        "headers": [
-          "Day",
-          "Tickets sold"
-        ],
-        "rows": [
           [
             "Fri",
             "37"
           ],
           [
-            "Wed",
-            "28"
-          ],
-          [
-            "Tue",
-            "31"
-          ],
-          [
             "Thu",
-            "31"
+            "22"
           ]
         ]
       }
     },
-    "answer_verification": "val=127"
+    "answer_verification": "val=37"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-q03",
+    "question_id": "sat-math-data-analysis-easy-q02",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -159,27 +87,99 @@
     "choices": [
       {
         "id": "A",
-        "text": "17",
-        "rationale": "This is the least busy day."
-      },
-      {
-        "id": "B",
-        "text": "30",
+        "text": "22",
         "rationale": "This is the average, not the maximum."
       },
       {
+        "id": "B",
+        "text": "13",
+        "rationale": "This is the least busy day."
+      },
+      {
         "id": "C",
-        "text": "34",
-        "rationale": "This is the second-largest value."
+        "text": "31",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "40",
-        "rationale": "Correct."
+        "text": "26",
+        "rationale": "This is the second-largest value."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "The largest value in the table is 40 (on Mon).",
+    "correct_choice": "C",
+    "explanation": "The largest value in the table is 31 (on Fri).",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "data",
+      "table"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Daily ticket sales",
+        "headers": [
+          "Day",
+          "Tickets sold"
+        ],
+        "rows": [
+          [
+            "Thu",
+            "20"
+          ],
+          [
+            "Tue",
+            "26"
+          ],
+          [
+            "Fri",
+            "31"
+          ],
+          [
+            "Wed",
+            "13"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "val=31"
+  },
+  {
+    "question_id": "sat-math-data-analysis-easy-q03",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "data_analysis",
+    "lesson_id": "sat-math-data-analysis-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "tables",
+    "prompt": "Based on the table, what is the difference between the greatest and least number of tickets sold in a single day?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "9",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "11",
+        "rationale": "Recheck the subtraction."
+      },
+      {
+        "id": "C",
+        "text": "131",
+        "rationale": "This is the total, not the difference."
+      },
+      {
+        "id": "D",
+        "text": "38",
+        "rationale": "This is only the greatest value."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "The greatest is 38 and the least is 29; the difference is 9.",
     "estimated_time_seconds": 80,
     "tags": [
       "data",
@@ -196,24 +196,24 @@
         "rows": [
           [
             "Tue",
-            "32"
+            "30"
+          ],
+          [
+            "Fri",
+            "29"
+          ],
+          [
+            "Wed",
+            "38"
           ],
           [
             "Thu",
             "34"
-          ],
-          [
-            "Mon",
-            "40"
-          ],
-          [
-            "Wed",
-            "17"
           ]
         ]
       }
     },
-    "answer_verification": "val=40"
+    "answer_verification": "val=9"
   },
   {
     "question_id": "sat-math-data-analysis-easy-q04",
@@ -231,27 +231,27 @@
     "choices": [
       {
         "id": "A",
-        "text": "20",
-        "rationale": "This is the average, not the maximum."
+        "text": "37",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "11",
-        "rationale": "This is the least busy day."
+        "text": "39",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
       },
       {
         "id": "C",
-        "text": "24",
-        "rationale": "This is the second-largest value."
+        "text": "23",
+        "rationale": "This is the average, not the maximum."
       },
       {
         "id": "D",
-        "text": "32",
-        "rationale": "Correct."
+        "text": "14",
+        "rationale": "This is the least busy day."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "The largest value in the table is 32 (on Thu).",
+    "correct_choice": "A",
+    "explanation": "The largest value in the table is 37 (on Mon).",
     "estimated_time_seconds": 80,
     "tags": [
       "data",
@@ -267,25 +267,25 @@
         ],
         "rows": [
           [
-            "Tue",
-            "11"
-          ],
-          [
             "Thu",
-            "32"
-          ],
-          [
-            "Mon",
             "14"
           ],
           [
-            "Wed",
-            "24"
+            "Tue",
+            "23"
+          ],
+          [
+            "Fri",
+            "21"
+          ],
+          [
+            "Mon",
+            "37"
           ]
         ]
       }
     },
-    "answer_verification": "val=32"
+    "answer_verification": "val=37"
   },
   {
     "question_id": "sat-math-data-analysis-easy-q05",
@@ -303,27 +303,27 @@
     "choices": [
       {
         "id": "A",
-        "text": "38",
-        "rationale": "This is the second-largest value."
+        "text": "26",
+        "rationale": "This is the average, not the maximum."
       },
       {
         "id": "B",
-        "text": "31",
+        "text": "16",
         "rationale": "This is the least busy day."
       },
       {
         "id": "C",
-        "text": "39",
-        "rationale": "Correct."
+        "text": "32",
+        "rationale": "This is the second-largest value."
       },
       {
         "id": "D",
-        "text": "35",
-        "rationale": "This is the average, not the maximum."
+        "text": "34",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "The largest value in the table is 39 (on Thu).",
+    "correct_choice": "D",
+    "explanation": "The largest value in the table is 34 (on Wed).",
     "estimated_time_seconds": 80,
     "tags": [
       "data",
@@ -339,25 +339,25 @@
         ],
         "rows": [
           [
-            "Mon",
-            "35"
+            "Tue",
+            "16"
           ],
           [
-            "Thu",
-            "39"
+            "Mon",
+            "32"
+          ],
+          [
+            "Wed",
+            "34"
           ],
           [
             "Fri",
-            "38"
-          ],
-          [
-            "Tue",
-            "31"
+            "22"
           ]
         ]
       }
     },
-    "answer_verification": "val=39"
+    "answer_verification": "val=34"
   },
   {
     "question_id": "sat-math-data-analysis-easy-q06",
@@ -371,31 +371,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "Based on the table, what is the difference between the greatest and least number of tickets sold in a single day?",
+    "prompt": "Based on the table, how many tickets were sold in all four days combined?",
     "choices": [
       {
         "id": "A",
-        "text": "26",
-        "rationale": "Recheck the subtraction."
+        "text": "152",
+        "rationale": "This double-counts the smallest day."
       },
       {
         "id": "B",
-        "text": "34",
-        "rationale": "This is only the greatest value."
+        "text": "98",
+        "rationale": "This omits the smallest day."
       },
       {
         "id": "C",
-        "text": "107",
-        "rationale": "This is the total, not the difference."
+        "text": "35",
+        "rationale": "This is only the largest single day."
       },
       {
         "id": "D",
-        "text": "24",
+        "text": "125",
         "rationale": "Correct."
       }
     ],
     "correct_choice": "D",
-    "explanation": "The greatest is 34 and the least is 10; the difference is 24.",
+    "explanation": "Add the four values: 34 + 29 + 27 + 35 = 125.",
     "estimated_time_seconds": 80,
     "tags": [
       "data",
@@ -411,25 +411,25 @@
         ],
         "rows": [
           [
+            "Tue",
+            "34"
+          ],
+          [
             "Mon",
             "29"
           ],
           [
-            "Thu",
-            "34"
-          ],
-          [
             "Wed",
-            "34"
+            "27"
           ],
           [
-            "Fri",
-            "10"
+            "Thu",
+            "35"
           ]
         ]
       }
     },
-    "answer_verification": "val=24"
+    "answer_verification": "val=125"
   },
   {
     "question_id": "sat-math-data-analysis-easy-q07",
@@ -447,27 +447,27 @@
     "choices": [
       {
         "id": "A",
-        "text": "30",
+        "text": "40",
         "rationale": "This is only the largest single day."
       },
       {
         "id": "B",
-        "text": "98",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "119",
+        "text": "125",
         "rationale": "This double-counts the smallest day."
       },
       {
+        "id": "C",
+        "text": "108",
+        "rationale": "Correct."
+      },
+      {
         "id": "D",
-        "text": "77",
+        "text": "91",
         "rationale": "This omits the smallest day."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Add the four values: 23 + 24 + 21 + 30 = 98.",
+    "correct_choice": "C",
+    "explanation": "Add the four values: 33 + 18 + 17 + 40 = 108.",
     "estimated_time_seconds": 80,
     "tags": [
       "data",
@@ -482,173 +482,29 @@
           "Tickets sold"
         ],
         "rows": [
-          [
-            "Wed",
-            "23"
-          ],
           [
             "Mon",
-            "24"
-          ],
-          [
-            "Fri",
-            "21"
-          ],
-          [
-            "Thu",
-            "30"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "val=98"
-  },
-  {
-    "question_id": "sat-math-data-analysis-easy-q08",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "data_analysis",
-    "lesson_id": "sat-math-data-analysis-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "tables",
-    "prompt": "Based on the table, how many tickets were sold on the busiest day?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "26",
-        "rationale": "This is the least busy day."
-      },
-      {
-        "id": "B",
-        "text": "33",
-        "rationale": "This is the second-largest value."
-      },
-      {
-        "id": "C",
-        "text": "40",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "31",
-        "rationale": "This is the average, not the maximum."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "The largest value in the table is 40 (on Wed).",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "data",
-      "table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Daily ticket sales",
-        "headers": [
-          "Day",
-          "Tickets sold"
-        ],
-        "rows": [
-          [
-            "Tue",
             "33"
           ],
           [
-            "Thu",
-            "26"
-          ],
-          [
-            "Wed",
-            "40"
-          ],
-          [
-            "Mon",
-            "26"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "val=40"
-  },
-  {
-    "question_id": "sat-math-data-analysis-easy-q09",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "data_analysis",
-    "lesson_id": "sat-math-data-analysis-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "tables",
-    "prompt": "Based on the table, how many tickets were sold on the busiest day?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "23",
-        "rationale": "This is the average, not the maximum."
-      },
-      {
-        "id": "B",
-        "text": "33",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "34",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "D",
-        "text": "18",
-        "rationale": "This is the least busy day."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "The largest value in the table is 33 (on Fri).",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "data",
-      "table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Daily ticket sales",
-        "headers": [
-          "Day",
-          "Tickets sold"
-        ],
-        "rows": [
-          [
-            "Wed",
-            "23"
-          ],
-          [
-            "Mon",
-            "19"
-          ],
-          [
-            "Tue",
+            "Fri",
             "18"
           ],
           [
-            "Fri",
-            "33"
+            "Wed",
+            "17"
+          ],
+          [
+            "Thu",
+            "40"
           ]
         ]
       }
     },
-    "answer_verification": "val=33"
+    "answer_verification": "val=108"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-q10",
+    "question_id": "sat-math-data-analysis-easy-q08",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -663,27 +519,27 @@
     "choices": [
       {
         "id": "A",
-        "text": "143",
+        "text": "59",
         "rationale": "This is the total, not the difference."
       },
       {
         "id": "B",
-        "text": "10",
-        "rationale": "Recheck the subtraction."
-      },
-      {
-        "id": "C",
-        "text": "40",
+        "text": "21",
         "rationale": "This is only the greatest value."
       },
       {
+        "id": "C",
+        "text": "12",
+        "rationale": "Recheck the subtraction."
+      },
+      {
         "id": "D",
-        "text": "8",
+        "text": "10",
         "rationale": "Correct."
       }
     ],
     "correct_choice": "D",
-    "explanation": "The greatest is 40 and the least is 32; the difference is 8.",
+    "explanation": "The greatest is 21 and the least is 11; the difference is 10.",
     "estimated_time_seconds": 80,
     "tags": [
       "data",
@@ -699,28 +555,100 @@
         ],
         "rows": [
           [
-            "Tue",
-            "33"
+            "Thu",
+            "21"
           ],
           [
             "Mon",
-            "32"
-          ],
-          [
-            "Fri",
-            "40"
+            "11"
           ],
           [
             "Wed",
-            "38"
+            "11"
+          ],
+          [
+            "Fri",
+            "16"
           ]
         ]
       }
     },
-    "answer_verification": "val=8"
+    "answer_verification": "val=10"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-q11",
+    "question_id": "sat-math-data-analysis-easy-q09",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "data_analysis",
+    "lesson_id": "sat-math-data-analysis-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "tables",
+    "prompt": "Based on the table, how many tickets were sold in all four days combined?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "82",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "94",
+        "rationale": "This double-counts the smallest day."
+      },
+      {
+        "id": "C",
+        "text": "26",
+        "rationale": "This is only the largest single day."
+      },
+      {
+        "id": "D",
+        "text": "70",
+        "rationale": "This omits the smallest day."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Add the four values: 19 + 25 + 26 + 12 = 82.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "data",
+      "table"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Daily ticket sales",
+        "headers": [
+          "Day",
+          "Tickets sold"
+        ],
+        "rows": [
+          [
+            "Wed",
+            "19"
+          ],
+          [
+            "Tue",
+            "25"
+          ],
+          [
+            "Fri",
+            "26"
+          ],
+          [
+            "Mon",
+            "12"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "val=82"
+  },
+  {
+    "question_id": "sat-math-data-analysis-easy-q10",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -736,26 +664,26 @@
       {
         "id": "A",
         "text": "16",
-        "rationale": "This is the second-largest value."
+        "rationale": "This is the least busy day."
       },
       {
         "id": "B",
-        "text": "17",
-        "rationale": "This is the average, not the maximum."
-      },
-      {
-        "id": "C",
-        "text": "28",
+        "text": "38",
         "rationale": "Correct."
       },
       {
+        "id": "C",
+        "text": "27",
+        "rationale": "This is the average, not the maximum."
+      },
+      {
         "id": "D",
-        "text": "10",
-        "rationale": "This is the least busy day."
+        "text": "36",
+        "rationale": "This is the second-largest value."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "The largest value in the table is 28 (on Tue).",
+    "correct_choice": "B",
+    "explanation": "The largest value in the table is 38 (on Thu).",
     "estimated_time_seconds": 80,
     "tags": [
       "data",
@@ -771,28 +699,28 @@
         ],
         "rows": [
           [
-            "Tue",
-            "28"
-          ],
-          [
-            "Wed",
-            "10"
-          ],
-          [
-            "Fri",
-            "15"
+            "Thu",
+            "38"
           ],
           [
             "Mon",
+            "21"
+          ],
+          [
+            "Tue",
+            "36"
+          ],
+          [
+            "Fri",
             "16"
           ]
         ]
       }
     },
-    "answer_verification": "val=28"
+    "answer_verification": "val=38"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-q12",
+    "question_id": "sat-math-data-analysis-easy-q11",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -807,27 +735,27 @@
     "choices": [
       {
         "id": "A",
-        "text": "106",
-        "rationale": "This omits the smallest day."
-      },
-      {
-        "id": "B",
-        "text": "132",
-        "rationale": "This double-counts the smallest day."
-      },
-      {
-        "id": "C",
-        "text": "119",
+        "text": "93",
         "rationale": "Correct."
       },
       {
-        "id": "D",
-        "text": "38",
+        "id": "B",
+        "text": "35",
         "rationale": "This is only the largest single day."
+      },
+      {
+        "id": "C",
+        "text": "82",
+        "rationale": "This omits the smallest day."
+      },
+      {
+        "id": "D",
+        "text": "104",
+        "rationale": "This double-counts the smallest day."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Add the four values: 35 + 33 + 38 + 13 = 119.",
+    "correct_choice": "A",
+    "explanation": "Add the four values: 25 + 11 + 35 + 22 = 93.",
     "estimated_time_seconds": 80,
     "tags": [
       "data",
@@ -843,25 +771,97 @@
         ],
         "rows": [
           [
+            "Mon",
+            "25"
+          ],
+          [
             "Tue",
+            "11"
+          ],
+          [
+            "Wed",
             "35"
           ],
           [
             "Thu",
-            "33"
-          ],
-          [
-            "Fri",
-            "38"
-          ],
-          [
-            "Mon",
-            "13"
+            "22"
           ]
         ]
       }
     },
-    "answer_verification": "val=119"
+    "answer_verification": "val=93"
+  },
+  {
+    "question_id": "sat-math-data-analysis-easy-q12",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "data_analysis",
+    "lesson_id": "sat-math-data-analysis-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "tables",
+    "prompt": "Based on the table, how many tickets were sold on the busiest day?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "24",
+        "rationale": "This is the average, not the maximum."
+      },
+      {
+        "id": "B",
+        "text": "29",
+        "rationale": "This is the second-largest value."
+      },
+      {
+        "id": "C",
+        "text": "32",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "16",
+        "rationale": "This is the least busy day."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "The largest value in the table is 32 (on Wed).",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "data",
+      "table"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Daily ticket sales",
+        "headers": [
+          "Day",
+          "Tickets sold"
+        ],
+        "rows": [
+          [
+            "Wed",
+            "32"
+          ],
+          [
+            "Fri",
+            "20"
+          ],
+          [
+            "Tue",
+            "16"
+          ],
+          [
+            "Mon",
+            "29"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "val=32"
   },
   {
     "question_id": "sat-math-data-analysis-easy-q13",
@@ -875,31 +875,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "Based on the table, what is the difference between the greatest and least number of tickets sold in a single day?",
+    "prompt": "Based on the table, how many tickets were sold on the busiest day?",
     "choices": [
       {
         "id": "A",
-        "text": "18",
-        "rationale": "Correct."
+        "text": "16",
+        "rationale": "This is the least busy day."
       },
       {
         "id": "B",
-        "text": "40",
-        "rationale": "This is only the greatest value."
+        "text": "36",
+        "rationale": "This is the second-largest value."
       },
       {
         "id": "C",
-        "text": "129",
-        "rationale": "This is the total, not the difference."
+        "text": "38",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "20",
-        "rationale": "Recheck the subtraction."
+        "text": "30",
+        "rationale": "This is the average, not the maximum."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "The greatest is 40 and the least is 22; the difference is 18.",
+    "correct_choice": "C",
+    "explanation": "The largest value in the table is 38 (on Wed).",
     "estimated_time_seconds": 80,
     "tags": [
       "data",
@@ -916,24 +916,24 @@
         "rows": [
           [
             "Fri",
-            "22"
-          ],
-          [
-            "Thu",
             "31"
           ],
           [
             "Tue",
-            "40"
+            "36"
+          ],
+          [
+            "Wed",
+            "38"
           ],
           [
             "Mon",
-            "36"
+            "16"
           ]
         ]
       }
     },
-    "answer_verification": "val=18"
+    "answer_verification": "val=38"
   },
   {
     "question_id": "sat-math-data-analysis-easy-q14",
@@ -947,31 +947,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "Based on the table, how many tickets were sold on the busiest day?",
+    "prompt": "Based on the table, how many tickets were sold in all four days combined?",
     "choices": [
       {
         "id": "A",
-        "text": "22",
-        "rationale": "This is the average, not the maximum."
+        "text": "26",
+        "rationale": "This is only the largest single day."
       },
       {
         "id": "B",
-        "text": "31",
+        "text": "84",
         "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "26",
-        "rationale": "This is the second-largest value."
+        "text": "102",
+        "rationale": "This double-counts the smallest day."
       },
       {
         "id": "D",
-        "text": "13",
-        "rationale": "This is the least busy day."
+        "text": "66",
+        "rationale": "This omits the smallest day."
       }
     ],
     "correct_choice": "B",
-    "explanation": "The largest value in the table is 31 (on Wed).",
+    "explanation": "Add the four values: 18 + 20 + 26 + 20 = 84.",
     "estimated_time_seconds": 80,
     "tags": [
       "data",
@@ -987,25 +987,25 @@
         ],
         "rows": [
           [
+            "Wed",
+            "18"
+          ],
+          [
+            "Fri",
+            "20"
+          ],
+          [
             "Tue",
             "26"
           ],
           [
-            "Wed",
-            "31"
-          ],
-          [
-            "Fri",
-            "13"
-          ],
-          [
             "Thu",
-            "19"
+            "20"
           ]
         ]
       }
     },
-    "answer_verification": "val=31"
+    "answer_verification": "val=84"
   },
   {
     "question_id": "sat-math-data-analysis-easy-q15",
@@ -1019,31 +1019,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "Based on the table, how many tickets were sold on the busiest day?",
+    "prompt": "Based on the table, how many tickets were sold in all four days combined?",
     "choices": [
       {
         "id": "A",
-        "text": "22",
-        "rationale": "This is the average, not the maximum."
+        "text": "60",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "17",
-        "rationale": "This is the least busy day."
+        "text": "49",
+        "rationale": "This omits the smallest day."
       },
       {
         "id": "C",
-        "text": "24",
-        "rationale": "This is the second-largest value."
+        "text": "71",
+        "rationale": "This double-counts the smallest day."
       },
       {
         "id": "D",
-        "text": "29",
-        "rationale": "Correct."
+        "text": "19",
+        "rationale": "This is only the largest single day."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "The largest value in the table is 29 (on Tue).",
+    "correct_choice": "A",
+    "explanation": "Add the four values: 19 + 11 + 16 + 14 = 60.",
     "estimated_time_seconds": 80,
     "tags": [
       "data",
@@ -1059,25 +1059,25 @@
         ],
         "rows": [
           [
-            "Tue",
-            "29"
-          ],
-          [
-            "Wed",
+            "Mon",
             "19"
           ],
           [
-            "Thu",
-            "24"
+            "Tue",
+            "11"
           ],
           [
-            "Mon",
-            "17"
+            "Thu",
+            "16"
+          ],
+          [
+            "Wed",
+            "14"
           ]
         ]
       }
     },
-    "answer_verification": "val=29"
+    "answer_verification": "val=60"
   },
   {
     "question_id": "sat-math-data-analysis-easy-q16",
@@ -1095,27 +1095,27 @@
     "choices": [
       {
         "id": "A",
-        "text": "38",
+        "text": "32",
         "rationale": "This is only the greatest value."
       },
       {
         "id": "B",
-        "text": "121",
-        "rationale": "This is the total, not the difference."
-      },
-      {
-        "id": "C",
-        "text": "21",
+        "text": "13",
         "rationale": "Correct."
       },
       {
-        "id": "D",
-        "text": "23",
+        "id": "C",
+        "text": "15",
         "rationale": "Recheck the subtraction."
+      },
+      {
+        "id": "D",
+        "text": "101",
+        "rationale": "This is the total, not the difference."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "The greatest is 38 and the least is 17; the difference is 21.",
+    "correct_choice": "B",
+    "explanation": "The greatest is 32 and the least is 19; the difference is 13.",
     "estimated_time_seconds": 80,
     "tags": [
       "data",
@@ -1132,24 +1132,24 @@
         "rows": [
           [
             "Wed",
-            "37"
-          ],
-          [
-            "Fri",
-            "17"
-          ],
-          [
-            "Thu",
-            "29"
+            "23"
           ],
           [
             "Tue",
-            "38"
+            "32"
+          ],
+          [
+            "Fri",
+            "27"
+          ],
+          [
+            "Mon",
+            "19"
           ]
         ]
       }
     },
-    "answer_verification": "val=21"
+    "answer_verification": "val=13"
   },
   {
     "question_id": "sat-math-data-analysis-easy-q17",
@@ -1163,31 +1163,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "Based on the table, how many tickets were sold in all four days combined?",
+    "prompt": "Based on the table, how many tickets were sold on the busiest day?",
     "choices": [
       {
         "id": "A",
-        "text": "103",
-        "rationale": "This omits the smallest day."
-      },
-      {
-        "id": "B",
-        "text": "121",
+        "text": "35",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "22",
+        "rationale": "This is the average, not the maximum."
+      },
+      {
         "id": "C",
-        "text": "139",
-        "rationale": "This double-counts the smallest day."
+        "text": "30",
+        "rationale": "This is the second-largest value."
       },
       {
         "id": "D",
-        "text": "40",
-        "rationale": "This is only the largest single day."
+        "text": "11",
+        "rationale": "This is the least busy day."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Add the four values: 37 + 18 + 40 + 26 = 121.",
+    "correct_choice": "A",
+    "explanation": "The largest value in the table is 35 (on Fri).",
     "estimated_time_seconds": 80,
     "tags": [
       "data",
@@ -1203,25 +1203,25 @@
         ],
         "rows": [
           [
-            "Fri",
-            "37"
-          ],
-          [
-            "Thu",
-            "18"
-          ],
-          [
             "Mon",
-            "40"
+            "30"
+          ],
+          [
+            "Wed",
+            "11"
+          ],
+          [
+            "Fri",
+            "35"
           ],
           [
             "Tue",
-            "26"
+            "14"
           ]
         ]
       }
     },
-    "answer_verification": "val=121"
+    "answer_verification": "val=35"
   },
   {
     "question_id": "sat-math-data-analysis-easy-q18",
@@ -1239,27 +1239,27 @@
     "choices": [
       {
         "id": "A",
-        "text": "36",
-        "rationale": "This is only the greatest value."
-      },
-      {
-        "id": "B",
-        "text": "25",
+        "text": "26",
         "rationale": "Recheck the subtraction."
       },
       {
-        "id": "C",
-        "text": "23",
+        "id": "B",
+        "text": "24",
         "rationale": "Correct."
       },
       {
-        "id": "D",
-        "text": "93",
+        "id": "C",
+        "text": "114",
         "rationale": "This is the total, not the difference."
+      },
+      {
+        "id": "D",
+        "text": "36",
+        "rationale": "This is only the greatest value."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "The greatest is 36 and the least is 13; the difference is 23.",
+    "correct_choice": "B",
+    "explanation": "The greatest is 36 and the least is 12; the difference is 24.",
     "estimated_time_seconds": 80,
     "tags": [
       "data",
@@ -1275,28 +1275,100 @@
         ],
         "rows": [
           [
-            "Mon",
-            "13"
-          ],
-          [
-            "Fri",
-            "36"
-          ],
-          [
-            "Wed",
-            "18"
+            "Tue",
+            "31"
           ],
           [
             "Thu",
-            "26"
+            "36"
+          ],
+          [
+            "Mon",
+            "12"
+          ],
+          [
+            "Wed",
+            "35"
           ]
         ]
       }
     },
-    "answer_verification": "val=23"
+    "answer_verification": "val=24"
   },
   {
     "question_id": "sat-math-data-analysis-easy-q19",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "data_analysis",
+    "lesson_id": "sat-math-data-analysis-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "tables",
+    "prompt": "Based on the table, how many tickets were sold on the busiest day?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "29",
+        "rationale": "This is the second-largest value."
+      },
+      {
+        "id": "B",
+        "text": "30",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "24",
+        "rationale": "This is the average, not the maximum."
+      },
+      {
+        "id": "D",
+        "text": "11",
+        "rationale": "This is the least busy day."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "The largest value in the table is 30 (on Thu).",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "data",
+      "table"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Daily ticket sales",
+        "headers": [
+          "Day",
+          "Tickets sold"
+        ],
+        "rows": [
+          [
+            "Thu",
+            "30"
+          ],
+          [
+            "Fri",
+            "26"
+          ],
+          [
+            "Tue",
+            "29"
+          ],
+          [
+            "Wed",
+            "11"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "val=30"
+  },
+  {
+    "question_id": "sat-math-data-analysis-easy-q20",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1311,27 +1383,27 @@
     "choices": [
       {
         "id": "A",
-        "text": "84",
-        "rationale": "This is the total, not the difference."
-      },
-      {
-        "id": "B",
-        "text": "20",
+        "text": "26",
         "rationale": "Recheck the subtraction."
       },
       {
+        "id": "B",
+        "text": "120",
+        "rationale": "This is the total, not the difference."
+      },
+      {
         "id": "C",
-        "text": "29",
-        "rationale": "This is only the greatest value."
+        "text": "24",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "18",
-        "rationale": "Correct."
+        "text": "39",
+        "rationale": "This is only the greatest value."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "The greatest is 29 and the least is 11; the difference is 18.",
+    "correct_choice": "C",
+    "explanation": "The greatest is 39 and the least is 15; the difference is 24.",
     "estimated_time_seconds": 80,
     "tags": [
       "data",
@@ -1346,97 +1418,25 @@
           "Tickets sold"
         ],
         "rows": [
-          [
-            "Tue",
-            "18"
-          ],
-          [
-            "Wed",
-            "11"
-          ],
           [
             "Mon",
-            "29"
+            "31"
           ],
-          [
-            "Thu",
-            "26"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "val=18"
-  },
-  {
-    "question_id": "sat-math-data-analysis-easy-q20",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "data_analysis",
-    "lesson_id": "sat-math-data-analysis-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "tables",
-    "prompt": "Based on the table, how many tickets were sold in all four days combined?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "100",
-        "rationale": "This double-counts the smallest day."
-      },
-      {
-        "id": "B",
-        "text": "34",
-        "rationale": "This is only the largest single day."
-      },
-      {
-        "id": "C",
-        "text": "78",
-        "rationale": "This omits the smallest day."
-      },
-      {
-        "id": "D",
-        "text": "89",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Add the four values: 11 + 16 + 28 + 34 = 89.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "data",
-      "table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Daily ticket sales",
-        "headers": [
-          "Day",
-          "Tickets sold"
-        ],
-        "rows": [
           [
             "Fri",
-            "11"
-          ],
-          [
-            "Tue",
-            "16"
+            "15"
           ],
           [
             "Thu",
-            "28"
+            "39"
           ],
           [
-            "Mon",
-            "34"
+            "Tue",
+            "35"
           ]
         ]
       }
     },
-    "answer_verification": "val=89"
+    "answer_verification": "val=24"
   }
 ]

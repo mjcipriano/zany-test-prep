@@ -13,6 +13,40 @@ from .util import num_str, spr
 
 
 def word_problems(rng: random.Random, difficulty: str):
+    if difficulty == "medium":
+        # Sum-and-difference of two numbers (two-step setup).
+        big = rng.randint(15, 60)
+        diff = rng.randint(3, 20)
+        small = big - diff
+        s = big + small
+        prompt = (f"The sum of two numbers is {s}, and one number is {diff} more "
+                  f"than the other. What is the larger number?")
+        explanation = f"Larger = (sum + difference) ÷ 2 = ({s} + {diff}) ÷ 2 = {big}."
+        return _numeric_mc(
+            rng, prompt, big,
+            [(small, "This is the smaller number, not the larger."),
+             (s // 2, "Splitting the sum evenly ignores the difference."),
+             (big + 1, "Off by one; recompute (sum + difference) ÷ 2.")],
+            subskill="linear_word_problem", explanation=explanation, est=90,
+            tags=["algebra", "word-problem"], verify=f"{big}+{small}={s}")
+    if difficulty == "hard":
+        # One number is a multiple of the other; given their sum (two-step).
+        mult = rng.randint(2, 5)
+        small = rng.randint(6, 25)
+        big = mult * small
+        s = big + small
+        prompt = (f"Two numbers have a sum of {s}. The larger number is {mult} times "
+                  f"the smaller. What is the larger number?")
+        explanation = (f"Let the smaller be n: n + {mult}n = {s}, so {mult + 1}n = {s} "
+                       f"and n = {small}. The larger is {mult}·{small} = {big}.")
+        return _numeric_mc(
+            rng, prompt, big,
+            [(small, "This is the smaller number, not the larger."),
+             (s // (mult + 1), "This is the smaller number; multiply it by the ratio."),
+             (s // mult, "Divide the sum by (ratio + 1), not by the ratio.")],
+            subskill="linear_word_problem", explanation=explanation, est=95,
+            tags=["algebra", "word-problem"], verify=f"{big}+{small}={s}")
+    # Easy: flat fee + per-unit rate, solve for the number of units.
     worker, unit = rng.choice([
         ("plumber", "hour"), ("tutor", "hour"), ("rental company", "day"),
         ("painter", "hour"), ("caterer", "guest"), ("printer", "page")])
@@ -133,6 +167,41 @@ def line_of_best_fit(rng: random.Random, difficulty: str):
 
 
 def absolute_value(rng: random.Random, difficulty: str):
+    if difficulty == "medium":
+        # Coefficient on x: |k·x − b| = c. Built from a center m and gap g so the
+        # solutions m ± g are clean integers: b = k·m, c = k·g.
+        k = rng.randint(2, 5)
+        m = rng.randint(2, 12)
+        g = rng.randint(1, 8)
+        b, c = k * m, k * g
+        greatest, least = m + g, m - g
+        ask_greatest = rng.random() < 0.5
+        val, which = (greatest, "greatest") if ask_greatest else (least, "least")
+        prompt = f"If |{k}x − {b}| = {c}, what is the {which} possible value of x?"
+        expl = (f"|{k}x − {b}| = {c} gives {k}x − {b} = {c} or {k}x − {b} = −{c}. "
+                f"Solving, x = {greatest} or x = {least}; the {which} is {val}.")
+        ds = [(least if ask_greatest else greatest,
+               f"This is the {'least' if ask_greatest else 'greatest'} solution."),
+              (val + 1, "Off by one; re-solve both linear cases."),
+              (m, "This is the center (b ÷ k); add or subtract c ÷ k to get x.")]
+        return _numeric_mc(rng, prompt, val, ds, subskill="absolute_value",
+                           explanation=expl, est=90, tags=["algebra", "absolute-value"],
+                           verify=f"|{k}x-{b}|={c}")
+    if difficulty == "hard":
+        # Inequality: count integer solutions of |x − a| ≤ c  ->  2c + 1.
+        a = rng.randint(-5, 15)
+        c = rng.randint(2, 9)
+        val = 2 * c + 1
+        lo, hi = a - c, a + c
+        prompt = (f"How many integer values of x satisfy |x − {a}| ≤ {c}?")
+        expl = (f"|x − {a}| ≤ {c} means {lo} ≤ x ≤ {hi}. That range contains "
+                f"{hi} − {lo} + 1 = {val} integers.")
+        ds = [(2 * c, "Count both endpoints: the range is inclusive, so add 1."),
+              (c, "This counts only one side of the center, not the full range."),
+              (2 * c + 2, "Recount: an inclusive range a−c to a+c has 2c + 1 integers.")]
+        return _numeric_mc(rng, prompt, val, ds, subskill="absolute_value",
+                           explanation=expl, est=95, tags=["algebra", "absolute-value"],
+                           verify=f"|x-{a}|<={c}")
     a = rng.randint(1, 20)
     c = rng.randint(1, 20)
     mode = rng.choice(["greatest", "sum", "least"])

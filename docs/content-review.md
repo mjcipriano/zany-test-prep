@@ -133,12 +133,27 @@ Order = top to bottom. Mark `[x]` when a section meets the Definition of Done.
   FUTURE: a number-line figure could help graph-region items (needs figure infra).
 - [x] systems_of_equations — 4-screen mini-lesson (two eqns/two unknowns →
   substitution → elimination → worked example); generator ramps via difficulty.
-- [ ] word_problems
-- [ ] absolute_value
-- [ ] functions
-- [ ] quadratics
-- [ ] exponents_radicals
-- [ ] polynomials
+- [x] word_problems — added real difficulty tiers (easy: flat-fee one-step;
+  medium: sum-and-difference two-step; hard: ratio relation + sum two-step);
+  4-screen mini-lesson (translate → undo step by step → two related unknowns →
+  worked example). No tells.
+- [x] absolute_value — graded tiers (easy: |x−a|=c; medium: |kx−b|=c with a
+  coefficient; hard: inequality |x−a|≤c, count integer solutions); 4-screen
+  mini-lesson (two cases → with a coefficient → inequalities → worked example).
+- [x] functions — easy linear eval, NEW medium "solve f(x)=N", hard quadratic
+  eval (fixed the `+ -7` sign formatting); 4-screen mini-lesson (f(x) is a rule →
+  going backward → quadratic care → worked example).
+- [x] quadratics — was difficulty-blind (always small factorable roots); now easy
+  small roots sum/product, medium larger roots identify-a-root, hard discriminant
+  "how many real solutions"; fixed the `− 1x` formatting wart (_quad_str);
+  4-screen mini-lesson (roots from factors → sum/product → discriminant → example).
+- [x] exponents_radicals — was always the product rule; now easy product, medium
+  quotient OR power-of-a-power, hard multi-rule with a negative-exponent
+  (reciprocal) result; robust distinct distractors; 4-screen mini-lesson
+  (three rules → negative/zero → roots as fractional powers → example).
+- [x] polynomials — was always "coefficient of x"; now easy that, medium any
+  coefficient with negatives, hard factoring (choose the binomial factor);
+  4-screen mini-lesson (FOIL → signs → factoring in reverse → example).
 - [ ] exponential
 - [ ] ratios_percentages_units
 - [ ] proportions

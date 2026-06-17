@@ -176,7 +176,9 @@ def functions(rng: random.Random, difficulty: str):
         c = rng.randint(-12, 12)
         k = rng.randint(-5, 6)
         val = a * k * k + b * k + c
-        prompt = (f"The function f is defined by f(x) = {a}x² + {b}x + {c}. "
+        fx = (f"{a}x² {'+' if b >= 0 else '−'} {abs(b)}x "
+              f"{'+' if c >= 0 else '−'} {abs(c)}")
+        prompt = (f"The function f is defined by f(x) = {fx}. "
                   f"What is the value of f({k})?")
         explanation = (f"f({k}) = {a}·({k})² + {b}·({k}) + {c} "
                        f"= {a*k*k} + {b*k} + {c} = {val}.")
@@ -187,6 +189,23 @@ def functions(rng: random.Random, difficulty: str):
              (val + a, "Arithmetic slip in squaring; recompute (k)².")],
             subskill="evaluate", explanation=explanation,
             tags=["functions", "quadratic"], est=80, verify=f"f({k})={val}")
+    if difficulty == "medium":
+        # Solve f(x) = N for x (one step beyond plugging in a value).
+        a = rng.randint(2, 9)
+        x = rng.randint(-7, 9)
+        b = rng.randint(-12, 12)
+        n = a * x + b
+        prompt = (f"The function f is defined by f(x) = {a}x {'+' if b >= 0 else '−'} "
+                  f"{abs(b)}. If f(x) = {n}, what is the value of x?")
+        explanation = (f"Set {a}x {'+' if b >= 0 else '−'} {abs(b)} = {n}: "
+                       f"{a}x = {n - b}, so x = {x}.")
+        return _numeric_mc(
+            rng, prompt, x,
+            [(n - b, "This is a·x (before dividing by the coefficient a)."),
+             (n + b, "Subtract b before dividing, don't add it."),
+             (x + 1, "Off by one; recheck the division.")],
+            subskill="interpret", explanation=explanation,
+            tags=["functions", "solve"], est=80, verify=f"f({x})={n}")
     a = rng.randint(2, 12)
     b = rng.randint(-15, 15)
     k = rng.randint(-8, 10)
@@ -207,17 +226,56 @@ def functions(rng: random.Random, difficulty: str):
         tags=["functions", "linear"], verify=f"f({k})={val}")
 
 
+def _quad_str(b, c, a=1):
+    """Format a·x² + b·x + c = 0, omitting unit coefficients and zero terms."""
+    s = f"{a}x²" if a != 1 else "x²"
+    if b != 0:
+        term = "x" if abs(b) == 1 else f"{abs(b)}x"
+        s += f" {'+' if b > 0 else '−'} {term}"
+    if c != 0:
+        s += f" {'+' if c > 0 else '−'} {abs(c)}"
+    return s + " = 0"
+
+
 def quadratics(rng: random.Random, difficulty: str):
-    r1 = rng.randint(-14, -1)
-    r2 = rng.randint(1, 14)
+    # Hard tier: discriminant reasoning (how many real solutions) instead of
+    # reading roots off a pre-factored quadratic.
+    if difficulty == "hard":
+        cat = rng.choice([0, 1, 2])  # target number of real solutions
+        a = rng.randint(1, 3)
+        if cat == 1:                    # perfect square -> discriminant 0
+            t = rng.randint(1, 6)
+            b, c = 2 * a * t, a * t * t
+        elif cat == 2:                  # two real roots -> negative c
+            b, c = rng.randint(-8, 8), -rng.randint(1, 9)
+        else:                           # no real roots -> small b, positive c
+            b, c = rng.randint(-4, 4), rng.randint(5, 9)
+        eq = _quad_str(b, c, a)
+        disc = b * b - 4 * a * c
+        others = [n for n in (0, 1, 2) if n != cat]
+        ds = [(others[0], "Recompute the discriminant b²−4ac and use its sign."),
+              (others[1], "The sign of b²−4ac decides the number of real roots."),
+              (3, "A quadratic can have at most two real solutions.")]
+        sign = ("positive (two roots)" if disc > 0 else
+                "zero (one root)" if disc == 0 else "negative (no real roots)")
+        return _numeric_mc(
+            rng, f"How many distinct real solutions does {eq} have?", cat, ds,
+            subskill="roots",
+            explanation=(f"The discriminant is b²−4ac = {b}²−4·{a}·{c} = {disc}, "
+                         f"which is {sign}."),
+            tags=["quadratics", "discriminant"], est=90, verify=f"D={disc}")
+
+    # Easy: small roots, sum/product. Medium: larger roots, identify a root.
+    span = 9 if difficulty == "easy" else 14
+    r1 = rng.randint(-span, -1)
+    r2 = rng.randint(1, span)
     b = -(r1 + r2)
     c = r1 * r2
-    bsign = "+" if b >= 0 else "−"
-    csign = "+" if c >= 0 else "−"
-    mode = rng.choice(["sum", "product", "greater_root"])
-    eq = f"x² {bsign} {abs(b)}x {csign} {abs(c)} = 0"
+    eq = _quad_str(b, c)
     base = (f"The expression factors as (x − {r1})(x − {r2}) = 0, so the "
             f"solutions are x = {r1} and x = {r2}.")
+    mode = (rng.choice(["sum", "product"]) if difficulty == "easy"
+            else rng.choice(["greater_root", "lesser_root", "product"]))
     if mode == "sum":
         val = r1 + r2
         prompt = f"What is the sum of the solutions to {eq}?"
@@ -232,6 +290,13 @@ def quadratics(rng: random.Random, difficulty: str):
         ds = [(r1 + r2, "This is the sum of the roots, not the product."),
               (-val, "Watch the signs when multiplying the roots."),
               (abs(r1) * abs(r2) + 1, "Recheck the multiplication of the roots.")]
+    elif mode == "lesser_root":
+        val = min(r1, r2)
+        prompt = f"What is the lesser of the two solutions to {eq}?"
+        explanation = base + f" The lesser solution is {val}."
+        ds = [(max(r1, r2), "This is the greater solution."),
+              (-val, "Check the sign of the solution."),
+              (r1 + r2, "This is the sum of the roots, not a single root.")]
     else:
         val = max(r1, r2)
         prompt = f"What is the greater of the two solutions to {eq}?"
@@ -245,44 +310,161 @@ def quadratics(rng: random.Random, difficulty: str):
         tags=["quadratics", "factoring"], est=85, verify=f"roots {r1},{r2}")
 
 
+def _pow_distractors(rng, base, exp, specs):
+    """Build 3 distinct power-string distractors (≠ base^exp), topping up with
+    nearby exponents so string-answer items always have enough options."""
+    correct = f"{base}^{exp}"
+    seen = {correct}
+    out = []
+    for s, rat in specs:
+        if s not in seen:
+            seen.add(s)
+            out.append((s, rat))
+    k = 1
+    while len(out) < 3:
+        for cand in (exp + k, exp - k):
+            s = f"{base}^{cand}"
+            if s not in seen:
+                seen.add(s)
+                out.append((s, "Recompute the exponent step by step."))
+                if len(out) == 3:
+                    break
+        k += 1
+    return out[:3]
+
+
 def exponents_radicals(rng: random.Random, difficulty: str):
     base = rng.randint(2, 9)
-    m = rng.randint(2, 8)
-    n = rng.randint(2, 6)
-    while m + n == m * n:   # avoid m=n=2, where add/multiply distractors collide
-        n = rng.randint(2, 5)
-    val = base ** (m + n)
-    prompt = f"Which of the following is equal to {base}^{m} · {base}^{n}?"
-    correct = f"{base}^{m + n}"
+    if difficulty == "easy":
+        # Product rule: add the exponents.
+        m, n = rng.randint(2, 8), rng.randint(2, 6)
+        while m + n == m * n:           # avoid add/multiply distractor collision
+            n = rng.randint(2, 5)
+        exp = m + n
+        prompt = f"Which of the following is equal to {base}^{m} · {base}^{n}?"
+        ds = _pow_distractors(rng, base, exp, [
+            (f"{base}^{m * n}", "When multiplying powers you add the exponents, not multiply them."),
+            (f"{base * base}^{m + n}", "The base does not change when multiplying powers."),
+            (f"{base}^{abs(m - n)}", "Subtracting exponents applies to division, not multiplication.")])
+        expl = (f"Multiplying powers with the same base adds exponents: "
+                f"{base}^{m}·{base}^{n} = {base}^{exp}.")
+    elif difficulty == "medium":
+        if rng.random() < 0.5:
+            # Quotient rule: subtract the exponents.
+            m, n = rng.randint(6, 12), rng.randint(2, 5)
+            exp = m - n
+            prompt = f"Which of the following is equal to {base}^{m} ÷ {base}^{n}?"
+            ds = _pow_distractors(rng, base, exp, [
+                (f"{base}^{m + n}", "Dividing powers subtracts exponents; it doesn't add them."),
+                (f"{base}^{m * n}", "Don't multiply the exponents when dividing."),
+                (f"1^{m - n}", "The base stays the same; only the exponents subtract.")])
+            expl = (f"Dividing powers with the same base subtracts exponents: "
+                    f"{base}^{m} ÷ {base}^{n} = {base}^{exp}.")
+        else:
+            # Power of a power: multiply the exponents (avoid m=n=2 collisions).
+            m, n = rng.randint(2, 6), rng.randint(2, 4)
+            while m + n == m * n:
+                m = rng.randint(3, 6)
+            exp = m * n
+            prompt = f"Which of the following is equal to ({base}^{m})^{n}?"
+            ds = _pow_distractors(rng, base, exp, [
+                (f"{base}^{m + n}", "A power of a power multiplies the exponents, not adds them."),
+                (f"{base * n}^{m}", "The base is unchanged by an outer exponent.")])
+            expl = (f"A power raised to a power multiplies exponents: "
+                    f"({base}^{m})^{n} = {base}^{exp}.")
+    else:
+        # Hard: combine rules, with a negative exponent (reciprocal) in the result.
+        m, n = rng.randint(2, 5), rng.randint(2, 4)
+        while m + n == m * n:
+            m = rng.randint(3, 5)
+        p = m * n + rng.randint(1, 6)     # guarantees exp < 0
+        exp = m * n - p
+        prompt = f"Which of the following is equal to ({base}^{m})^{n} ÷ {base}^{p}?"
+        ds = _pow_distractors(rng, base, exp, [
+            (f"{base}^{m * n + p}", "Dividing subtracts the exponent; it doesn't add it."),
+            (f"{base}^{m + n - p}", "A power of a power multiplies (m·n), it doesn't add."),
+            (f"{base}^{abs(exp)}", "Watch the sign: m·n − p is negative here.")])
+        expl = (f"Work in order: ({base}^{m})^{n} = {base}^{m * n}, then ÷ {base}^{p} "
+                f"subtracts to {base}^{exp}. A negative exponent is a reciprocal: "
+                f"{base}^{exp} = 1/{base}^{abs(exp)}.")
     return _numeric_mc(
-        rng, prompt, correct,
-        [(f"{base}^{m * n}", "When multiplying powers you add exponents, not multiply them."),
-         (f"{base * base}^{m + n}", "The base does not change when multiplying powers."),
-         (f"{base}^{abs(m - n)}", "Subtracting exponents applies to division, not multiplication.")],
-        subskill="exponent_rules",
-        explanation=(f"When multiplying powers with the same base, add the exponents: "
-                     f"{base}^{m}·{base}^{n} = {base}^({m}+{n}) = {base}^{m+n}."),
-        tags=["exponents"], fmt=str, verify=f"{base}^{m+n}={val}")
+        rng, prompt, f"{base}^{exp}", ds, subskill="exponent_rules",
+        explanation=expl, tags=["exponents"], fmt=str, est=85,
+        verify=f"{base}^{exp}")
+
+
+def _binom_str(coef, const):
+    """Format (x + k) or (m x − k) style binomials for factor choices."""
+    lead = "x" if coef == 1 else f"{coef}x"
+    return f"({lead} {'+' if const >= 0 else '−'} {abs(const)})"
 
 
 def polynomials(rng: random.Random, difficulty: str):
-    a = rng.randint(1, 9)
-    b = rng.randint(1, 12)
-    c = rng.randint(1, 9)
-    d = rng.randint(1, 12)
-    # (a x + b)(c x + d): coefficient of x is a*d + b*c
-    coeff = a * d + b * c
-    prompt = (f"In the expansion of ({a}x + {b})({c}x + {d}), "
-              f"what is the coefficient of x?")
-    explanation = (f"Using FOIL, the x-terms are {a}x·{d} and {b}·{c}x, giving "
-                   f"({a}·{d} + {b}·{c})x = {coeff}x.")
+    # Hard: factor a quadratic trinomial (choose the correct binomial factor).
+    if difficulty == "hard":
+        r1 = rng.randint(-9, -1)
+        r2 = rng.randint(1, 9)
+        b = -(r1 + r2)          # x² + b x + c  with c = r1*r2
+        c = r1 * r2
+        tri = _quad_str(b, c).replace(" = 0", "")
+        correct = _binom_str(1, -r1)        # (x − r1)
+        true_roots = {r1, r2}
+        # Fake roots: distinct from both real roots, each giving a wrong factor.
+        fakes = []
+        for w in (-r1, -r2, r1 + 1, r2 + 1, r1 - 1, r2 - 1, r1 + 2, r2 + 2):
+            if w not in true_roots and w not in fakes:
+                fakes.append(w)
+            if len(fakes) == 3:
+                break
+        ds = [(_binom_str(1, -w),
+               "Expanding this doesn't reproduce the trinomial; its root isn't a "
+               "solution.") for w in fakes]
+        return _numeric_mc(
+            rng, f"Which of the following is a factor of {tri}?", correct, ds,
+            subskill="factoring",
+            explanation=(f"{tri} factors as (x − {r1})(x − {r2}); the roots are "
+                         f"{r1} and {r2}, so (x − {r1}) is a factor."),
+            tags=["polynomials", "factoring"], fmt=str, est=90,
+            verify=f"roots {r1},{r2}")
+
+    # Easy/medium: expand (a x + b)(c x + d) and read a coefficient. Medium
+    # allows negative terms and asks for any of the three coefficients.
+    if difficulty == "easy":
+        a, c = rng.randint(1, 6), rng.randint(1, 6)
+        b, d = rng.randint(1, 9), rng.randint(1, 9)
+        target = "x"
+    else:
+        a, c = rng.randint(1, 7), rng.randint(1, 7)
+        b = rng.choice([-1, 1]) * rng.randint(2, 9)
+        d = rng.choice([-1, 1]) * rng.randint(2, 9)
+        target = rng.choice(["x", "x2", "const"])
+    expr = _binom_str(a, b) + _binom_str(c, d)
+    x2, x1, const = a * c, a * d + b * c, b * d
+    if target == "x2":
+        val = x2
+        prompt = f"In the expansion of {expr}, what is the coefficient of x²?"
+        expl = f"The x² term is {a}x·{c}x = {x2}x²."
+        ds = [(x1, "This is the coefficient of x, not x²."),
+              (const, "This is the constant term, not the x² coefficient."),
+              (a + c, "Multiply the leading coefficients; don't add them.")]
+    elif target == "const":
+        val = const
+        prompt = f"In the expansion of {expr}, what is the constant term?"
+        expl = f"The constant term is {b}·{d} = {const}."
+        ds = [(x1, "This is the coefficient of x, not the constant."),
+              (x2, "This is the coefficient of x², not the constant."),
+              (b + d, "Multiply the constants; don't add them.")]
+    else:
+        val = x1
+        prompt = f"In the expansion of {expr}, what is the coefficient of x?"
+        expl = (f"Using FOIL, the x-terms are {a}x·{d} and {b}·{c}x, giving "
+                f"({a}·{d} + {b}·{c}) = {x1}.")
+        ds = [(x2, "This is the coefficient of x², not x."),
+              (const, "This is the constant term, not the x coefficient."),
+              (a * d, "This includes only one of the two x-terms.")]
     return _numeric_mc(
-        rng, prompt, coeff,
-        [(a * c, "This is the coefficient of x², not x."),
-         (b * d, "This is the constant term, not the x coefficient."),
-         (a * d, "This includes only one of the two x-terms.")],
-        subskill="operations", explanation=explanation,
-        tags=["polynomials", "foil"], est=80, verify=f"coeff={coeff}")
+        rng, prompt, val, ds, subskill="operations", explanation=expl,
+        tags=["polynomials", "foil"], est=80, verify=f"x2={x2},x={x1},c={const}")
 
 
 # --------------------------------------------------------------------------- #
