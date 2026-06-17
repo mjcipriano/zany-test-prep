@@ -64,7 +64,9 @@ Order = top to bottom. Mark `[x]` when a section meets the Definition of Done.
   *all* passage-pool reading skills (inferences, command_of_evidence,
   text_structure_purpose, words_in_context), but those still need their own
   mini-lessons + a deeper per-tier distractor pass.
-- [ ] inferences
+- [x] inferences — 4-screen mini-lesson (what an inference is → find evidence &
+  predict → dodge traps → worked example); difficulty ramp via complexity
+  ordering; no answer tells; prompts vary per passage.
 - [ ] command_of_evidence
 - [ ] quantitative_evidence  ⚠ wording tell
 - [ ] words_in_context
