@@ -50,8 +50,8 @@ A "section" = one skill across its easy/medium/hard tiers.
 ## Known answer-wording offenders (from the validator, fix during their section)
 
 - `pronoun_antecedent` easy/medium/hard — correct answers nearly all start with
-  "its"/"their".
-- `quantitative_evidence` easy/medium/hard — correct answers all start with "each".
+  "its"/"their". (still open)
+- ~~`quantitative_evidence`~~ — fixed (section done; openers now vary).
 
 ## Sections
 
@@ -70,7 +70,11 @@ Order = top to bottom. Mark `[x]` when a section meets the Definition of Done.
 - [x] command_of_evidence — 4-screen mini-lesson (what it asks → restate the claim
   & test choices → dodge off-claim/too-general/backfire traps → worked example);
   difficulty ramp via complexity ordering; no answer tells; prompts vary.
-- [ ] quantitative_evidence  ⚠ wording tell
+- [x] quantitative_evidence — fixed the "each" wording tell (correct-answer
+  openers now vary: The/Year/Across/From); real difficulty ramp (4/5/6 rows,
+  bigger numbers, uneven year-to-year steps); subtler distractors in medium/hard
+  (constant-step, single-span, exaggerated-jump); varied prompts; 4-screen
+  mini-lesson. Uses a data table (SAT-authentic; no extra figure needed).
 - [ ] words_in_context
 - [ ] text_structure_purpose
 - [ ] cross_text_connections

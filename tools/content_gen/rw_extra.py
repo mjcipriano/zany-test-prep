@@ -191,42 +191,95 @@ _QE_TOPICS = [
 def gen_quantitative_evidence(rng: random.Random, difficulty: str = "medium"):
     metric, place, unit, verb = rng.choice(_QE_TOPICS)
     rising = verb in ("rose", "increased", "grew", "climbed")
-    years = [2018 + rng.randint(0, 2) + i for i in range(4)]
-    start = rng.randint(20, 60)
-    step = rng.choice([3, 4, 5, 6, 8])
-    vals = [start + step * i for i in range(4)]
-    if not rising:
-        vals = vals[::-1]
+    # Difficulty ramp: more rows, bigger numbers, and uneven year-to-year steps
+    # (so "rose by the same amount each year" becomes a tempting wrong answer).
+    n = {"easy": 4, "medium": 5, "hard": 6}.get(difficulty, 5)
+    years = [2018 + rng.randint(0, 2) + i for i in range(n)]
+    if difficulty == "easy":
+        start = rng.randint(20, 60)
+        steps = [rng.choice([3, 4, 5, 6, 8])] * (n - 1)  # constant step
+    elif difficulty == "medium":
+        start = rng.randint(40, 120)
+        steps = [rng.choice([4, 6, 8, 10]) for _ in range(n - 1)]  # uneven
+    else:
+        start = rng.randint(120, 400)
+        steps = [rng.choice([7, 9, 11, 15, 20]) for _ in range(n - 1)]  # uneven
+    asc = [start]
+    for s in steps:
+        asc.append(asc[-1] + s)
+    vals = asc if rising else asc[::-1]
     rows = [[str(y), str(v)] for y, v in zip(years, vals)]
-    claim = (f"A researcher claims that {metric.lower()} in {place} {verb} "
-             f"steadily from {years[0]} to {years[-1]}.")
     first, last = vals[0], vals[-1]
-    mid = vals[1]
     direction = "up" if rising else "down"
     opp = "down" if rising else "up"
-    # Length-balanced options (all four are full, similar-length statements).
-    if rising:
-        correct_text = (f"Each year the value went {direction}, climbing from "
-                        f"{first} to {last} {unit} across the period.")
+    dir_verb = rng.choice(
+        ["rose", "increased", "climbed"] if rising else ["fell", "declined", "dropped"]
+    )
+    avg_step = round(abs(last - first) / (n - 1))
+    max_step = max(steps)
+    big = max_step + rng.choice([10, 15, 20])
+    midi = n // 2
+    mid_year, mid_val = years[midi], vals[midi]
+
+    claim = (f"A researcher claims that {metric.lower()} in {place} {verb} "
+             f"steadily from {years[0]} to {years[-1]}.")
+
+    # Correct statement: vary the opener so the right answer isn't guessable by
+    # its first word (a real tell when every key started with the same word).
+    correct_text = rng.choice([
+        f"From {years[0]} to {years[-1]}, the value {dir_verb} every year, going "
+        f"from {first} to {last} {unit}.",
+        f"The value {dir_verb} each year, moving from {first} to {last} {unit} "
+        f"over the period.",
+        f"Year over year the figure {dir_verb}, reaching {last} {unit} by "
+        f"{years[-1]} from {first} {unit}.",
+        f"Across all {n} years shown, the value {dir_verb} from {first} to "
+        f"{last} {unit}.",
+    ])
+    correct = (correct_text, "Correct. This matches the steady, one-direction "
+               "trend the claim describes across every year shown.")
+
+    pool = {
+        "steady": (
+            f"The value held steady near {first} {unit} for most of the span "
+            f"before a single change late in {years[-1]}.",
+            "The table shows the value changing every year, not holding steady."),
+        "peaked": (
+            f"It peaked in {mid_year} at {mid_val} {unit} and then reversed "
+            f"course for the rest of the period.",
+            "The largest value is at an endpoint, not the middle year."),
+        "mixed": (
+            f"In some years the value moved {opp} and in others {direction}, "
+            f"rather than in a single direction.",
+            "Every year moves the same direction, so this misreads the table."),
+        "constant": (
+            f"The value changed by the same amount every year, a constant "
+            f"{avg_step} {unit} per year.",
+            f"The year-to-year changes vary, so the change was not a constant "
+            f"{avg_step} {unit}."),
+        "subset": (
+            f"Almost all of the change happened between {years[0]} and "
+            f"{years[1]}, with little movement afterward.",
+            "The value changes in every year shown, not just the first span."),
+        "bigjump": (
+            f"The value {dir_verb} by more than {big} {unit} in a single year.",
+            f"The largest one-year change was only {max_step} {unit}."),
+    }
+    if difficulty == "easy":
+        keys = ["steady", "peaked", "mixed"]
+    elif difficulty == "medium":
+        keys = ["constant", "peaked", "mixed"]
     else:
-        correct_text = (f"Each year the value went {direction}, dropping from "
-                        f"{first} to {last} {unit} across the period.")
-    correct = (correct_text, "Correct. This matches the steady, one-direction trend "
-               "the claim describes across all the years shown.")
-    distractors = [
-        (f"The value held steady near {first} {unit} for most years before a "
-         f"late change in {years[-1]}.",
-         "The table shows the value changing every year, not holding steady."),
-        (f"The value peaked in {years[1]} at {mid} {unit} and then reversed "
-         f"course for the rest of the period.",
-         "The extreme value is at an endpoint, not the second year shown."),
-        (f"The value drifted {opp} in some years and {direction} in others "
-         f"rather than moving in one direction.",
-         "Every year moves the same direction, so this misreads the table."),
-    ]
+        keys = ["constant", "subset", "bigjump"]
+    distractors = [pool[k] for k in keys]
+
+    prompt = (f"{claim}\n\n" + rng.choice([
+        "Which choice best uses data from the table to support the "
+        "researcher's claim?",
+        "Which statement is best supported by the data in the table?",
+        "Which finding from the table most directly supports the claim?",
+    ]))
     options, ci, rats = shuffle_with_correct(rng, correct, distractors)
-    prompt = (f"{claim}\n\nWhich choice best uses data from the table to support "
-              "the researcher's claim?")
     return mc(prompt, options, ci, rats, subskill="quantitative_evidence",
               qtype="data_interpretation", explanation=(
                   "The supporting statement must reflect the table's actual, "
