@@ -197,45 +197,70 @@ def two_way_tables(rng: random.Random, difficulty: str):
 
 
 def line_of_best_fit(rng: random.Random, difficulty: str):
-    m = rng.randint(2, 12)
-    b = rng.randint(-12, 25)
-    mode = rng.choice(["predict", "slope"])
-    if mode == "slope":
-        if abs(b) == m:        # keep the intercept distractor distinct from the slope
-            b = m + 5
-        bsign = "+" if b >= 0 else "−"
-        prompt = (f"A line of best fit for a scatterplot is modeled by "
-                  f"y = {m}x {bsign} {abs(b)}. Which statement best interprets the "
-                  f"slope of this model?")
-        correct = f"For each increase of 1 in x, y increases by about {m}."
+    m = rng.randint(2, 9)
+    b = rng.randint(-8, 20)
+    if abs(b) == m:               # keep intercept- and slope-based options distinct
+        b += 5
+    bsign = "+" if b >= 0 else "−"
+    # Scatter of points around the line, for the figure.
+    xs = sorted(rng.sample(range(1, 13), 6))
+    pts = [[x, m * x + b + rng.randint(-3, 3)] for x in xs]
+    fig = {"type": "figure", "figure": {
+        "kind": "scatter", "caption": "Scatterplot with line of best fit",
+        "points": pts, "line": {"m": m, "b": b}, "xlabel": "x"}}
+
+    # Medium: predict y from the model at a given x.
+    if difficulty == "medium":
+        k = rng.randint(2, 14)
+        y = m * k + b
+        prompt = (f"The line of best fit for the scatterplot is y = {m}x {bsign} "
+                  f"{abs(b)}. Based on this model, what value of y is predicted when "
+                  f"x = {k}?")
+        explanation = f"Substitute x = {k}: y = {m}·{k} {bsign} {abs(b)} = {y}."
+        return _numeric_mc(
+            rng, prompt, y,
+            [(m * k, "You left off the y-intercept term."),
+             (m + k + b, "Add the product m·x, not m + x."),
+             (m * k - b if b >= 0 else m * k + b, "Check the sign of the intercept term.")],
+            subskill="line_of_best_fit", explanation=explanation,
+            qtype="data_interpretation", est=85, tags=["data", "scatterplot"],
+            verify=f"y={y}", stimulus=fig)
+    # Hard: interpret the y-intercept.
+    if difficulty == "hard":
+        prompt = (f"The line of best fit for the scatterplot is y = {m}x {bsign} "
+                  f"{abs(b)}. Which statement best interprets the y-intercept of this "
+                  f"model?")
+        correct = f"When x is 0, the predicted value of y is about {b}."
         return _numeric_mc(
             rng, prompt, correct,
-            [(f"For each increase of 1 in x, y increases by about {abs(b)}.",
-              "That is the y-intercept's value, not the slope."),
-             (f"When x is 0, y is about {m}.",
-              "That describes the intercept, not the slope; the slope is the rate."),
-             (f"For each increase of 1 in y, x increases by about {m}.",
-              "This reverses the roles of x and y.")],
+            [(f"For each increase of 1 in x, y increases by about {b}.",
+              "That describes the slope's role, not the intercept."),
+             (f"When x is 0, the predicted value of y is about {m}.",
+              "The intercept is the constant term, not the slope."),
+             (f"When y is 0, the predicted value of x is about {b}.",
+              "The y-intercept is the value of y when x = 0, not the reverse.")],
             subskill="line_of_best_fit", explanation=(
-                f"In y = {m}x {bsign} {abs(b)}, the slope {m} is the predicted change "
-                "in y per unit increase in x."),
-            qtype="data_interpretation", fmt=str, est=80,
-            tags=["data", "scatterplot"], verify=f"slope={m}")
-    k = rng.randint(2, 18)
-    y = m * k + b
-    bsign = "+" if b >= 0 else "−"
-    prompt = (f"The line of best fit for a set of data is y = {m}x {bsign} {abs(b)}. "
-              f"Based on this model, what value of y is predicted when x = {k}?")
-    explanation = f"Substitute x = {k}: y = {m}·{k} {bsign} {abs(b)} = {y}."
+                f"In y = {m}x {bsign} {abs(b)}, the y-intercept {b} is the predicted "
+                f"y when x = 0."),
+            qtype="data_interpretation", fmt=str, est=90,
+            tags=["data", "scatterplot"], verify=f"intercept={b}", stimulus=fig)
+    # Easy: interpret the slope.
+    prompt = (f"The line of best fit for the scatterplot is y = {m}x {bsign} "
+              f"{abs(b)}. Which statement best interprets the slope of this model?")
+    correct = f"For each increase of 1 in x, y increases by about {m}."
     return _numeric_mc(
-        rng, prompt, y,
-        [(m * k, "You left off the y-intercept term."),
-         (m + k + b, "Add the product m·x, not m + x."),
-         (m * k - b if b >= 0 else m * k + b,
-          "Check the sign of the intercept term.")],
-        subskill="line_of_best_fit", explanation=explanation,
-        qtype="data_interpretation", est=80, tags=["data", "scatterplot"],
-        verify=f"y={y}")
+        rng, prompt, correct,
+        [(f"For each increase of 1 in x, y increases by about {abs(b)}.",
+          "That is the y-intercept's value, not the slope."),
+         (f"When x is 0, y is about {m}.",
+          "That describes the intercept, not the slope; the slope is the rate."),
+         (f"For each increase of 1 in y, x increases by about {m}.",
+          "This reverses the roles of x and y.")],
+        subskill="line_of_best_fit", explanation=(
+            f"In y = {m}x {bsign} {abs(b)}, the slope {m} is the predicted change in "
+            "y per unit increase in x."),
+        qtype="data_interpretation", fmt=str, est=80,
+        tags=["data", "scatterplot"], verify=f"slope={m}", stimulus=fig)
 
 
 def absolute_value(rng: random.Random, difficulty: str):

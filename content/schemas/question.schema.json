@@ -38,7 +38,7 @@
       "additionalProperties": false,
       "required": ["type"],
       "properties": {
-        "type": { "enum": ["passage", "table", "paired_passages"] },
+        "type": { "enum": ["passage", "table", "paired_passages", "figure"] },
         "title": { "type": "string" },
         "text": { "type": "string" },
         "text_b": { "type": "string" },
@@ -54,6 +54,15 @@
               "minItems": 1,
               "items": { "type": "array", "items": { "type": "string" } }
             }
+          }
+        },
+        "figure": {
+          "description": "Declarative diagram (kind + params) rendered by the app's FigurePainter. Kinds: right_triangle, rect, circle, box, cylinder, scatter.",
+          "type": "object",
+          "required": ["kind"],
+          "properties": {
+            "kind": { "type": "string" },
+            "caption": { "type": "string" }
           }
         }
       }

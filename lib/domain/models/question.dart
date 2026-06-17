@@ -54,17 +54,22 @@ class Stimulus {
     this.text,
     this.textB,
     this.table,
+    this.figure,
   });
 
-  /// 'passage', 'table', or 'paired_passages'.
+  /// 'passage', 'table', 'paired_passages', or 'figure'.
   final String type;
   final String? title;
   final String? text;
   final String? textB;
   final StimulusTable? table;
 
+  /// Declarative diagram spec (kind + params) for `type == 'figure'`.
+  final Map<String, dynamic>? figure;
+
   bool get isPaired => type == 'paired_passages';
   bool get isTable => type == 'table';
+  bool get isFigure => type == 'figure';
 
   factory Stimulus.fromJson(Map<String, dynamic> json) => Stimulus(
     type: json['type'] as String,
@@ -74,6 +79,7 @@ class Stimulus {
     table: json['table'] == null
         ? null
         : StimulusTable.fromJson(json['table'] as Map<String, dynamic>),
+    figure: (json['figure'] as Map?)?.cast<String, dynamic>(),
   );
 }
 

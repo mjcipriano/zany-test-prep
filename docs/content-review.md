@@ -42,10 +42,12 @@ A "section" = one skill across its easy/medium/hard tiers.
   renders as one screen. Authoring lives in `tools/content_gen/teaching.py`.
 - [x] **Answer-wording validator** — `tools/validate_content.py` flags per-section
   first-word tells (`answer_wording_flags`) in addition to position/length tells.
-- [ ] **Figure / image support** — add a `figure` stimulus (schema + `Stimulus`
-  model + a CustomPainter/SVG renderer) so geometry/scatterplot items can show a
-  diagram. Implement when the first figure-needing section is reached
-  (right_triangles / circles / area_volume / scatterplots / data_analysis).
+- [x] **Figure / image support** — `figure` stimulus in the schema + `Stimulus.figure`
+  model + a `FigureView`/`_FigurePainter` (lib/features/lessons/figure_view.dart)
+  rendering kinds: right_triangle, rect, circle (with sector), box, cylinder,
+  scatter. Wired into the question stimulus view; smoke-tested in
+  test/widget/figure_view_test.dart. Generators emit figure stimuli for the
+  geometry + scatterplot skills.
 
 ## Known answer-wording offenders (from the validator, fix during their section)
 
@@ -171,11 +173,21 @@ Order = top to bottom. Mark `[x]` when a section meets the Definition of Done.
   single-cell → hard conditional 'given a column'); table now includes row/column
   totals; 4-screen mini-lesson (rows/cols/totals → three kinds of probability →
   'given' changes the denominator → worked example). No tells.
-- [ ] scatterplots  (figure)
-- [ ] right_triangles  (figure)
-- [ ] area_volume  (figure)
-- [ ] circles  (figure)
-- [ ] trigonometry  (figure)
+- [x] scatterplots — figure (scatter points + best-fit line); graded tiers
+  (easy interpret slope → medium predict y → hard interpret intercept);
+  4-screen mini-lesson.
+- [x] right_triangles — figure (labeled right triangle); graded tiers (easy find
+  hypotenuse → medium find a leg → hard special right triangles 45-45-90 /
+  30-60-90 with radical answers); 4-screen mini-lesson.
+- [x] area_volume — figures (rect / right-triangle / box / cylinder); graded tiers
+  (easy rectangle area → medium triangle area → hard volume of box or cylinder);
+  4-screen mini-lesson.
+- [x] circles — figure (circle, with sector for hard); graded tiers (easy
+  diameter/circumference → medium area → hard arc length / sector area);
+  4-screen mini-lesson.
+- [x] trigonometry — figure (right triangle with angle θ); graded tiers (easy
+  identify ratio → medium find a side from a ratio → hard find cos given sin);
+  4-screen mini-lesson.
 
 ## Resume prompt
 

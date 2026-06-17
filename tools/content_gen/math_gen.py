@@ -333,6 +333,27 @@ def _pow_distractors(rng, base, exp, specs):
     return out[:3]
 
 
+def _pi_distractors(correct_coef, specs):
+    """3 distinct '<coef>π' distractors (≠ correct), topping up with nearby
+    coefficients so π-string answers always have enough distinct options."""
+    seen = {correct_coef}
+    out = []
+    for coef, rat in specs:
+        if coef not in seen and coef > 0:
+            seen.add(coef)
+            out.append((f"{coef}π", rat))
+    k = 1
+    while len(out) < 3:
+        for c in (correct_coef + k, correct_coef - k):
+            if c > 0 and c not in seen:
+                seen.add(c)
+                out.append((f"{c}π", "Recheck the formula and recompute."))
+                if len(out) == 3:
+                    break
+        k += 1
+    return out[:3]
+
+
 def exponents_radicals(rng: random.Random, difficulty: str):
     base = rng.randint(2, 9)
     if difficulty == "easy":
@@ -805,87 +826,171 @@ def probability(rng: random.Random, difficulty: str):
 # Geometry and Trigonometry
 # --------------------------------------------------------------------------- #
 def area_volume(rng: random.Random, difficulty: str):
+    # Hard: volume of a rectangular box or a cylinder (with a diagram).
     if difficulty == "hard":
-        l = rng.randint(2, 9)
-        w = rng.randint(2, 9)
-        h = rng.randint(2, 9)
-        val = l * w * h
-        prompt = (f"A rectangular box has length {l}, width {w}, and height {h}. "
-                  f"What is its volume?")
-        explanation = f"Volume = length × width × height = {l}×{w}×{h} = {val}."
-        if rng.random() < 0.4:  # grid-in variant
-            return spr(prompt, val, subskill="volume", explanation=explanation,
-                       tags=["geometry", "volume", "grid-in"], est=75,
-                       verify=f"V={val}")
-        ds = [(2 * (l * w + l * h + w * h), "This is the surface area, not the volume."),
-              (l + w + h, "This adds the dimensions instead of multiplying."),
-              (l * w, "This is only the area of the base.")]
+        if rng.random() < 0.5:
+            l, w, h = rng.randint(2, 9), rng.randint(2, 9), rng.randint(2, 9)
+            val = l * w * h
+            prompt = (f"The rectangular box shown has length {l}, width {w}, and "
+                      f"height {h}. What is its volume?")
+            explanation = f"Volume = length × width × height = {l}×{w}×{h} = {val}."
+            fig = {"type": "figure", "figure": {"kind": "box", "caption": "Rectangular box",
+                   "labels": {"l": str(l), "w": str(w), "h": str(h)}}}
+            ds = [(2 * (l * w + l * h + w * h), "This is the surface area, not the volume."),
+                  (l + w + h, "This adds the dimensions instead of multiplying."),
+                  (l * w, "This is only the area of the base.")]
+            return _numeric_mc(rng, prompt, val, ds, subskill="volume",
+                               explanation=explanation, tags=["geometry", "volume"],
+                               est=85, verify=f"V={val}", stimulus=fig)
+        r, h = rng.randint(2, 7), rng.randint(3, 10)
+        val = f"{r * r * h}π"
+        prompt = (f"The cylinder shown has radius {r} and height {h}. What is its "
+                  f"volume, in terms of π?")
+        explanation = f"Volume = πr²h = π·{r}²·{h} = {r * r * h}π."
+        fig = {"type": "figure", "figure": {"kind": "cylinder", "caption": "Cylinder",
+               "labels": {"r": str(r), "h": str(h)}}}
+        ds = _pi_distractors(r * r * h, [
+            (2 * r * h, "This uses r instead of r²; volume is πr²h."),
+            (r * r, "This is the base area; multiply by the height too."),
+            (r * h, "Volume is πr²h, not πrh.")])
         return _numeric_mc(rng, prompt, val, ds, subskill="volume",
                            explanation=explanation, tags=["geometry", "volume"],
-                           est=80, verify=f"V={val}")
+                           fmt=str, est=90, verify=val, stimulus=fig)
     b = rng.randint(3, 12)
     h = rng.randint(3, 12)
-    shape = rng.choice(["rectangle", "triangle"])
-    if shape == "rectangle":
+    # Easy: rectangle area. Medium: triangle area (½ base × height).
+    if difficulty == "easy":
         val = b * h
-        prompt = f"A rectangle has a base of {b} and a height of {h}. What is its area?"
+        prompt = f"The rectangle shown has a base of {b} and a height of {h}. What is its area?"
         explanation = f"Area of a rectangle = base × height = {b}×{h} = {val}."
+        fig = {"type": "figure", "figure": {"kind": "rect", "caption": "Rectangle",
+               "labels": {"w": str(b), "h": str(h)}}}
         ds = [(2 * (b + h), "This is the perimeter, not the area."),
               (b * h // 2, "Halving applies to triangles, not rectangles."),
               (b + h, "This adds the sides instead of multiplying.")]
     else:
         val = Fraction(b * h, 2)
-        prompt = f"A triangle has a base of {b} and a height of {h}. What is its area?"
+        prompt = f"The right triangle shown has a base of {b} and a height of {h}. What is its area?"
         explanation = f"Area of a triangle = ½ × base × height = ½×{b}×{h} = {num_str(val)}."
+        fig = {"type": "figure", "figure": {"kind": "right_triangle", "caption": "Triangle",
+               "labels": {"a": str(b), "b": str(h)}}}
         ds = [(b * h, "You forgot the factor of ½."),
               (b + h, "This adds the dimensions instead of using the area formula."),
               (Fraction(b + h, 2), "Average of the sides is not the area.")]
     return _numeric_mc(rng, prompt, val, ds, subskill="area",
                        explanation=explanation, tags=["geometry", "area"],
-                       est=70, verify=f"area={num_str(val)}")
+                       est=70, verify=f"area={num_str(val)}", stimulus=fig)
 
 
 def circles(rng: random.Random, difficulty: str):
-    # Exclude r=2 (area 4π == circumference 4π) and r=4 (circ distractors collide).
     r = rng.choice([3, 5, 6, 7, 8, 9, 10, 11, 12])
-    mode = rng.choice(["area", "circumference", "diameter"])
-    if mode == "area":
-        val = f"{r*r}π"
-        prompt = f"A circle has radius {r}. What is its area, in terms of π?"
-        explanation = f"Area = πr² = π·{r}² = {r*r}π."
-        ds = [(f"{2*r}π", "This is the circumference, not the area."),
+
+    def fig(rr):
+        return {"type": "figure", "figure": {
+            "kind": "circle", "caption": "Circle", "labels": {"r": str(rr)}}}
+
+    # Hard: arc length or sector area for a central angle (a fraction of the whole).
+    if difficulty == "hard":
+        k = rng.choice([2, 3, 4, 6])      # angle is 1/k of the full circle
+        m = rng.choice([1, 2, 3])
+        r = k * m                          # keeps the coefficient an integer
+        theta = 360 // k
+        figure = {"type": "figure", "figure": {"kind": "circle", "caption": "Circle",
+                  "sector": theta, "labels": {"r": str(r), "angle": f"{theta}°"}}}
+        if rng.random() < 0.5:
+            val = f"{2 * m}π"              # arc = (θ/360)·2πr = 2πr/k
+            prompt = (f"In the circle shown, radius {r}, a {theta}° arc is highlighted. "
+                      f"What is the length of that arc, in terms of π?")
+            explanation = (f"Arc = (θ/360)·2πr = ({theta}/360)·2π·{r} = {2 * m}π.")
+            ds = _pi_distractors(2 * m, [
+                (2 * r, "This is the whole circumference, not the arc."),
+                (k * m * m, "That's the sector area, not the arc length."),
+                (m, "Use 2πr for the full circumference before taking the fraction.")])
+        else:
+            val = f"{k * m * m}π"          # sector = (θ/360)·πr² = πr²/k
+            prompt = (f"In the circle shown, radius {r}, a {theta}° sector is highlighted. "
+                      f"What is the area of that sector, in terms of π?")
+            explanation = (f"Sector area = (θ/360)·πr² = ({theta}/360)·π·{r}² = {k * m * m}π.")
+            ds = _pi_distractors(k * m * m, [
+                (r * r, "This is the whole circle's area, not the sector."),
+                (2 * m, "That's the arc length, not the sector area."),
+                (k * m, "Use πr² (not πr) before taking the fraction.")])
+        return _numeric_mc(rng, prompt, val, ds, subskill="arc_sector",
+                           explanation=explanation, tags=["geometry", "circle"],
+                           fmt=str, est=95, verify=val, stimulus=figure)
+    # Medium: area in terms of π.
+    if difficulty == "medium":
+        val = f"{r * r}π"
+        prompt = f"The circle shown has radius {r}. What is its area, in terms of π?"
+        explanation = f"Area = πr² = π·{r}² = {r * r}π."
+        ds = [(f"{2 * r}π", "This is the circumference, not the area."),
               (f"{r}π", "Area uses r², not r."),
-              (f"{r*r*r}π", "Area uses r², not r³.")]
-    elif mode == "circumference":
-        val = f"{2*r}π"
-        prompt = f"A circle has radius {r}. What is its circumference, in terms of π?"
-        explanation = f"Circumference = 2πr = 2π·{r} = {2*r}π."
-        ds = [(f"{r*r}π", "This is the area, not the circumference."),
-              (f"{r}π", "Circumference is 2πr, so include the factor of 2."),
-              (f"{4*r}π", "Recheck the formula 2πr.")]
-    else:
+              (f"{r * r * r}π", "Area uses r², not r³.")]
+        return _numeric_mc(rng, prompt, val, ds, subskill="circumference_area",
+                           explanation=explanation, tags=["geometry", "circle"],
+                           fmt=str, est=80, verify=val, stimulus=fig(r))
+    # Easy: diameter or circumference.
+    if rng.random() < 0.5:
         val = 2 * r
-        prompt = (f"A circle has radius {r}. What is its diameter?")
-        explanation = f"Diameter = 2 × radius = 2 × {r} = {2*r}."
+        prompt = "The circle shown has radius {0}. What is its diameter?".format(r)
+        explanation = f"Diameter = 2 × radius = 2 × {r} = {2 * r}."
         return _numeric_mc(rng, prompt, val,
                            [(r, "This is the radius, not the diameter."),
                             (r * r, "This squares the radius; diameter is 2r."),
                             (4 * r, "Diameter is 2r, not 4r.")],
                            subskill="circumference_area", explanation=explanation,
-                           tags=["geometry", "circle"], est=60, verify=f"d={2*r}")
+                           tags=["geometry", "circle"], est=60, verify=f"d={2 * r}",
+                           stimulus=fig(r))
+    val = f"{2 * r}π"
+    prompt = f"The circle shown has radius {r}. What is its circumference, in terms of π?"
+    explanation = f"Circumference = 2πr = 2π·{r} = {2 * r}π."
+    ds = [(f"{r * r}π", "This is the area, not the circumference."),
+          (f"{r}π", "Circumference is 2πr, so include the factor of 2."),
+          (f"{4 * r}π", "Recheck the formula 2πr.")]
     return _numeric_mc(rng, prompt, val, ds, subskill="circumference_area",
                        explanation=explanation, tags=["geometry", "circle"],
-                       fmt=str, est=75, verify=f"{val}")
+                       fmt=str, est=70, verify=val, stimulus=fig(r))
 
 
 def right_triangles(rng: random.Random, difficulty: str):
+    # Hard: special right triangles (45-45-90, 30-60-90) with radical answers.
+    if difficulty == "hard":
+        n = rng.randint(3, 9)   # n>2 keeps the '2n' and 'n²' distractors distinct
+        if rng.random() < 0.5:
+            val = f"{n}√2"
+            prompt = (f"The right triangle shown is a 45°-45°-90° triangle with legs "
+                      f"of length {n}. What is the length of the hypotenuse?")
+            explanation = (f"In a 45-45-90 triangle the hypotenuse is leg·√2, so it is "
+                           f"{n}√2.")
+            ds = [(f"{2 * n}", "That would be 2·leg; a 45-45-90 hypotenuse is leg·√2."),
+                  (f"{n}√3", "√3 is for a 30-60-90 triangle, not 45-45-90."),
+                  (f"{n * n}", "Don't square the leg; multiply by √2.")]
+            fig = {"type": "figure", "figure": {"kind": "right_triangle",
+                   "caption": "45°-45°-90° triangle", "angle": "45°",
+                   "labels": {"a": str(n), "b": str(n), "c": "?"}}}
+        else:
+            val = f"{n}√3"
+            prompt = (f"The right triangle shown is a 30°-60°-90° triangle. The shorter "
+                      f"leg (opposite the 30° angle) has length {n}. What is the length "
+                      f"of the longer leg?")
+            explanation = (f"In a 30-60-90 triangle the longer leg is (short leg)·√3, so "
+                           f"it is {n}√3.")
+            ds = [(f"{2 * n}", "That is the hypotenuse (2·short leg), not the longer leg."),
+                  (f"{n}√2", "√2 is for a 45-45-90 triangle, not 30-60-90."),
+                  (f"{3 * n}", "The factor is √3, not 3.")]
+            fig = {"type": "figure", "figure": {"kind": "right_triangle",
+                   "caption": "30°-60°-90° triangle", "angle": "30°",
+                   "labels": {"a": "?", "b": str(n), "c": str(2 * n)}}}
+        return _numeric_mc(rng, prompt, val, ds, subskill="special_triangles",
+                           explanation=explanation, fmt=str, est=95,
+                           tags=["geometry", "right-triangle"], verify=val,
+                           stimulus=fig)
     triples = [(3, 4, 5), (6, 8, 10), (5, 12, 13), (8, 15, 17), (9, 12, 15),
                (7, 24, 25), (20, 21, 29), (9, 40, 41), (12, 16, 20), (10, 24, 26),
                (15, 20, 25), (12, 35, 37), (16, 30, 34), (18, 24, 30)]
     a, b, c = rng.choice(triples)
-    find = rng.choice(["hyp", "leg"])
-    if find == "hyp":
-        prompt = (f"A right triangle has legs of length {a} and {b}. "
+    if difficulty == "easy":
+        prompt = (f"The right triangle shown has legs of length {a} and {b}. "
                   f"What is the length of the hypotenuse?")
         val = c
         explanation = (f"By the Pythagorean theorem, c² = {a}² + {b}² "
@@ -893,24 +998,71 @@ def right_triangles(rng: random.Random, difficulty: str):
         ds = [(a + b, "You added the legs instead of using a²+b²=c²."),
               (c - 1, "Off by one; recompute the square root."),
               (a * b, "This multiplies the legs; use the Pythagorean theorem.")]
-    else:
-        prompt = (f"A right triangle has one leg of length {a} and a hypotenuse "
-                  f"of length {c}. What is the length of the other leg?")
+        fig = {"type": "figure", "figure": {"kind": "right_triangle",
+               "caption": "Right triangle", "labels": {"a": str(a), "b": str(b), "c": "?"}}}
+    else:  # medium: find the missing leg
+        prompt = (f"The right triangle shown has one leg of length {a} and a "
+                  f"hypotenuse of length {c}. What is the length of the other leg?")
         val = b
         explanation = (f"By the Pythagorean theorem, leg = √(c² − a²) "
                        f"= √({c*c} − {a*a}) = √{c*c-a*a} = {b}.")
         ds = [(c - a, "Subtracting the lengths is not the Pythagorean theorem."),
               (b + 1, "Off by one; recompute c² − a²."),
               (c + a, "Add/subtract under the square root, not outside it.")]
+        fig = {"type": "figure", "figure": {"kind": "right_triangle",
+               "caption": "Right triangle", "labels": {"a": str(a), "b": "?", "c": str(c)}}}
     return _numeric_mc(rng, prompt, val, ds, subskill="pythagorean",
                        explanation=explanation, tags=["geometry", "right-triangle"],
-                       est=85, verify=f"sides {a},{b},{c}")
+                       est=85, verify=f"sides {a},{b},{c}", stimulus=fig)
 
 
 def trigonometry(rng: random.Random, difficulty: str):
     triples = [(3, 4, 5), (6, 8, 10), (5, 12, 13), (8, 15, 17), (7, 24, 25),
                (20, 21, 29), (9, 40, 41), (12, 16, 20), (10, 24, 26), (15, 20, 25)]
-    a, b, c = rng.choice(triples)  # a opposite angle θ, b adjacent, c hyp
+    a, b, c = rng.choice(triples)  # a opposite θ, b adjacent, c hyp
+    fig = {"type": "figure", "figure": {"kind": "right_triangle",
+           "caption": "Right triangle", "angle": "θ",
+           "labels": {"a": str(a), "b": str(b), "c": str(c)}}}
+
+    # Medium: use a ratio to find a missing side length.
+    if difficulty == "medium":
+        scale = rng.randint(2, 6)
+        ratio = rng.choice(["sin", "cos"])
+        if ratio == "sin":
+            val = a * scale
+            prompt = (f"In a right triangle, sin θ = {a}/{c}. If the hypotenuse has "
+                      f"length {c * scale}, what is the length of the side opposite θ?")
+            explanation = (f"sin θ = opposite/hypotenuse, so opposite = sin θ × "
+                           f"hypotenuse = {a}/{c} × {c * scale} = {val}.")
+            ds = [(b * scale, "That is the adjacent side (from cos θ), not the opposite."),
+                  (c * scale, "That is the hypotenuse, not the opposite side."),
+                  (a, "Scale up by the hypotenuse; don't use the ratio's numerator alone.")]
+        else:
+            val = b * scale
+            prompt = (f"In a right triangle, cos θ = {b}/{c}. If the hypotenuse has "
+                      f"length {c * scale}, what is the length of the side adjacent to θ?")
+            explanation = (f"cos θ = adjacent/hypotenuse, so adjacent = cos θ × "
+                           f"hypotenuse = {b}/{c} × {c * scale} = {val}.")
+            ds = [(a * scale, "That is the opposite side (from sin θ), not the adjacent."),
+                  (c * scale, "That is the hypotenuse, not the adjacent side."),
+                  (b, "Scale up by the hypotenuse; don't use the ratio's numerator alone.")]
+        return _numeric_mc(rng, prompt, val, ds, subskill="sohcahtoa",
+                           explanation=explanation, tags=["trigonometry"], est=90,
+                           verify=f"side={val}", stimulus=fig)
+    # Hard: given one ratio, find another (uses the third side).
+    if difficulty == "hard":
+        val = f"{b}/{c}"
+        prompt = (f"In a right triangle, sin θ = {a}/{c}. What is cos θ?")
+        explanation = (f"With opposite {a} and hypotenuse {c}, the adjacent side is "
+                       f"{b} (since {a}²+{b}²={c}²). So cos θ = adjacent/hypotenuse = "
+                       f"{b}/{c}.")
+        ds = [(f"{a}/{c}", "That is sin θ again, not cos θ."),
+              (f"{a}/{b}", "That is tan θ (opposite/adjacent)."),
+              (f"{c}/{b}", "This inverts the cosine ratio.")]
+        return _numeric_mc(rng, prompt, val, ds, subskill="sohcahtoa",
+                           explanation=explanation, tags=["trigonometry"], fmt=str,
+                           est=95, verify=f"cos={val}", stimulus=fig)
+    # Easy: identify a ratio from the three labeled sides.
     ratio = rng.choice(["sin", "cos", "tan"])
     if ratio == "sin":
         val = f"{a}/{c}"
@@ -930,9 +1082,9 @@ def trigonometry(rng: random.Random, difficulty: str):
         ds = [(f"{a}/{c}", "That ratio is sine (opposite/hypotenuse)."),
               (f"{b}/{c}", "That ratio is cosine (adjacent/hypotenuse)."),
               (f"{b}/{a}", "This inverts the tangent ratio.")]
-    prompt = (f"In a right triangle, the side opposite angle θ has length {a}, the "
-              f"side adjacent to θ has length {b}, and the hypotenuse has length {c}. "
-              f"What is {ratio} θ?")
+    prompt = (f"In the right triangle shown, the side opposite angle θ has length "
+              f"{a}, the side adjacent to θ has length {b}, and the hypotenuse has "
+              f"length {c}. What is {ratio} θ?")
     return _numeric_mc(rng, prompt, val, ds, subskill="sohcahtoa",
                        explanation=expl, tags=["trigonometry"], fmt=str,
-                       est=85, verify=f"{ratio}={val}")
+                       est=85, verify=f"{ratio}={val}", stimulus=fig)

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../design/theme.dart';
 import '../../design/widgets.dart';
 import '../../domain/models/question.dart';
+import 'figure_view.dart';
 
 /// Renders a single question and its input. Stateless: the player owns state.
 class QuestionView extends StatelessWidget {
@@ -185,6 +186,9 @@ class _StimulusView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (stimulus.isFigure && stimulus.figure != null) {
+      return FigureView(figure: stimulus.figure!);
+    }
     if (stimulus.isTable && stimulus.table != null) {
       final t = stimulus.table!;
       return AppCard(

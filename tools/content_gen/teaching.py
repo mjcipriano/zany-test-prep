@@ -1366,6 +1366,128 @@ TEACHING_SCREENS = {
                   "Weekday) = 12/30 = 2/5 — note the different denominator."),
          "worked_example": "P(Cats)=20/50.  P(Cats | Weekday)=12/30 (column total, not 50)."},
     ],
+    "area_volume": [
+        {"title": "Area formulas",
+         "body": ("Area measures the flat space inside a shape. Rectangle = base × "
+                  "height. Triangle = ½ × base × height (it's half a rectangle). Circle = "
+                  "πr². Match the formula to the shape in the figure."),
+         "key_points": ["Rectangle: base × height.",
+                        "Triangle: ½ × base × height.  Circle: πr²."]},
+        {"title": "Volume formulas",
+         "body": ("Volume measures the space inside a solid. Rectangular box = length × "
+                  "width × height. Cylinder = πr²h (base area × height). Volume always "
+                  "multiplies three lengths, so the units are cubic."),
+         "key_points": ["Box: l × w × h.",
+                        "Cylinder: πr²h (base × height)."]},
+        {"title": "Don't mix them up",
+         "body": ("Common traps: using perimeter instead of area, forgetting the ½ for a "
+                  "triangle, using r instead of r² for circles, or stopping at the base "
+                  "area instead of multiplying by the height for volume."),
+         "key_points": ["Perimeter ≠ area; surface area ≠ volume.",
+                        "Circles use r², not r; finish volume with × height."]},
+        {"title": "Try the moves",
+         "body": ("A triangle with base 6 and height 8 has area ½·6·8 = 24. A cylinder "
+                  "with radius 3 and height 5 has volume π·3²·5 = 45π."),
+         "worked_example": "Triangle ½·6·8 = 24.  Cylinder π·3²·5 = 45π."},
+    ],
+    "circles": [
+        {"title": "Radius, diameter, and π",
+         "body": ("The radius r reaches from the center to the edge; the diameter is 2r. "
+                  "Most circle formulas are written 'in terms of π' — leave π in the "
+                  "answer rather than approximating."),
+         "key_points": ["Diameter = 2 × radius.",
+                        "Answers are often left in terms of π."]},
+        {"title": "Circumference and area",
+         "body": ("Circumference (the distance around) = 2πr. Area (the space inside) = "
+                  "πr². The key difference: circumference uses r, area uses r². Mixing "
+                  "these is the most common mistake."),
+         "key_points": ["Circumference = 2πr.",
+                        "Area = πr² (square the radius)."]},
+        {"title": "Arcs and sectors",
+         "body": ("An arc or a sector is a fraction of the whole circle — the fraction is "
+                  "(central angle)/360. Arc length = (θ/360)·2πr; sector area = "
+                  "(θ/360)·πr². Take the fraction of the full circumference or area."),
+         "key_points": ["Fraction of the circle = θ/360.",
+                        "Arc = fraction × 2πr; sector area = fraction × πr²."]},
+        {"title": "Try the moves",
+         "body": ("Radius 6: circumference 2π·6 = 12π, area π·6² = 36π. A 90° sector is "
+                  "¼ of the circle, so its area is ¼·36π = 9π."),
+         "worked_example": "C=12π, A=36π;  90° sector = ¼·36π = 9π."},
+    ],
+    "right_triangles": [
+        {"title": "The Pythagorean theorem",
+         "body": ("In a right triangle, the legs a and b and the hypotenuse c (the side "
+                  "opposite the right angle) satisfy a² + b² = c². The hypotenuse is "
+                  "always the longest side."),
+         "key_points": ["a² + b² = c² (c is the hypotenuse).",
+                        "The hypotenuse is opposite the right angle and is longest."]},
+        {"title": "Finding a side",
+         "body": ("To find the hypotenuse, add the squares of the legs and take the "
+                  "square root. To find a leg, subtract: leg = √(c² − a²). Don't just add "
+                  "or subtract the side lengths themselves."),
+         "key_points": ["Hypotenuse = √(a² + b²).",
+                        "Missing leg = √(c² − a²)."]},
+        {"title": "Special right triangles",
+         "body": ("Two come up a lot. 45-45-90: the legs are equal and the hypotenuse is "
+                  "leg·√2. 30-60-90: sides are in the ratio 1 : √3 : 2 (short leg, longer "
+                  "leg, hypotenuse). Memorizing these saves time."),
+         "key_points": ["45-45-90: hypotenuse = leg·√2.",
+                        "30-60-90: sides are x, x√3, 2x."]},
+        {"title": "Try the moves",
+         "body": ("Legs 3 and 4: hypotenuse √(9+16) = √25 = 5. A 45-45-90 triangle with "
+                  "legs 5 has hypotenuse 5√2. A 30-60-90 with short leg 6 has longer leg "
+                  "6√3 and hypotenuse 12."),
+         "worked_example": "√(3²+4²)=5;  45-45-90 leg 5 -> 5√2;  30-60-90 short 6 -> 6√3."},
+    ],
+    "trigonometry": [
+        {"title": "SOH-CAH-TOA",
+         "body": ("For an acute angle θ in a right triangle: sin θ = opposite/hypotenuse, "
+                  "cos θ = adjacent/hypotenuse, tan θ = opposite/adjacent. 'Opposite' and "
+                  "'adjacent' are relative to the angle θ you're looking at."),
+         "key_points": ["sin = opp/hyp, cos = adj/hyp, tan = opp/adj.",
+                        "Opposite/adjacent depend on which angle is θ."]},
+        {"title": "Identify the sides",
+         "body": ("The hypotenuse is always opposite the right angle. The opposite side is "
+                  "across from θ; the adjacent side touches θ (and isn't the hypotenuse). "
+                  "Label them before writing a ratio."),
+         "key_points": ["Hypotenuse: opposite the right angle.",
+                        "Opposite: across from θ; adjacent: next to θ."]},
+        {"title": "Use a ratio to find a side",
+         "body": ("If you know a ratio and one side, multiply: opposite = sin θ × "
+                  "hypotenuse, adjacent = cos θ × hypotenuse. You can also find a second "
+                  "ratio from the first using the third side (Pythagorean theorem)."),
+         "key_points": ["opposite = sin θ × hyp; adjacent = cos θ × hyp.",
+                        "Get the third side, then any other ratio."]},
+        {"title": "Try the moves",
+         "body": ("With opposite 3, adjacent 4, hypotenuse 5: sin θ = 3/5, cos θ = 4/5, "
+                  "tan θ = 3/4. If sin θ = 3/5 and the hypotenuse is 20, the opposite "
+                  "side is 3/5 × 20 = 12."),
+         "worked_example": "sin θ=3/5, cos θ=4/5;  opposite = 3/5 × 20 = 12."},
+    ],
+    "scatterplots": [
+        {"title": "The line of best fit",
+         "body": ("A scatterplot shows paired data; the line of best fit is the straight "
+                  "line that comes closest to the points. It's written y = mx + b, and "
+                  "you use it to describe the trend and to predict."),
+         "key_points": ["Best-fit line summarizes the trend.",
+                        "It has the form y = mx + b."]},
+        {"title": "Slope and intercept",
+         "body": ("The slope m is the predicted change in y for each increase of 1 in x "
+                  "(the rate). The y-intercept b is the predicted y when x = 0. Read the "
+                  "question to see which one it's asking you to interpret."),
+         "key_points": ["Slope m = change in y per +1 in x.",
+                        "Intercept b = predicted y when x = 0."]},
+        {"title": "Predict with the model",
+         "body": ("To predict, substitute the x-value into y = mx + b and compute. Don't "
+                  "forget the +b term, and watch its sign. Predictions are estimates, not "
+                  "exact data points."),
+         "key_points": ["Predict: plug x into y = mx + b.",
+                        "Include the intercept; mind its sign."]},
+        {"title": "Try the moves",
+         "body": ("For y = 3x + 5: the slope 3 means y rises about 3 for each +1 in x; the "
+                  "intercept 5 is the predicted y at x = 0. At x = 4, y ≈ 3·4 + 5 = 17."),
+         "worked_example": "y=3x+5: slope 3, intercept 5;  at x=4, y=17."},
+    ],
 }
 
 for _skill, _screens in TEACHING_SCREENS.items():
