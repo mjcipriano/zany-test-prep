@@ -526,6 +526,48 @@ TEACHING = {
         "key_points": ["Identify the relationship between the two ideas.",
                        "However/yet = contrast; therefore = result.",
                        "Moreover = addition; for example = illustration."],
+        "screens": [
+            {
+                "title": "Relationship first, word second",
+                "body": ("A transition names how the second idea relates to the first. "
+                         "Cover the choices and decide the link yourself: does idea 2 push "
+                         "back on idea 1, result from it, add to it, illustrate it, or come "
+                         "next in time? Pick the relationship before any word."),
+                "key_points": ["Read both ideas; name the relationship in your head.",
+                               "Only then look for a transition that matches it."],
+            },
+            {
+                "title": "Know the families",
+                "body": ("Group transitions by job: Contrast — however, but, yet, on the "
+                         "other hand. Cause/result — therefore, thus, as a result. Addition "
+                         "— moreover, furthermore, also. Example — for instance, for "
+                         "example. Sequence — first, then, later. Emphasis — indeed, in "
+                         "fact."),
+                "key_points": ["Contrast / cause / addition / example / sequence / emphasis.",
+                               "Memorize a couple of words per family."],
+            },
+            {
+                "title": "Dodge the traps",
+                "body": ("The wrong choices are usually transitions from a *different* "
+                         "family that sound smooth but signal the wrong link — the SAT "
+                         "leans on the near-misses (addition vs. emphasis, cause vs. "
+                         "sequence). 'However' and 'therefore' are opposites; don't let a "
+                         "sentence's flow fool you into the wrong relationship."),
+                "key_points": ["A smooth-sounding word can still be the wrong relationship.",
+                               "Watch close pairs: addition vs. emphasis, cause vs. sequence.",
+                               "Plug your choice back in and check the logic."],
+            },
+            {
+                "title": "Try the moves",
+                "body": ("'The new policy promised faster service. ____, wait times "
+                         "actually grew longer.' Idea 2 contradicts idea 1, so the link is "
+                         "contrast: 'However.' 'Therefore' (result) and 'For example' "
+                         "(illustration) signal the wrong relationship even though the "
+                         "sentence still reads smoothly."),
+                "worked_example": ("Promise vs. opposite outcome = contrast -> 'However', "
+                                   "not 'Therefore' (result) or 'For example'."),
+            },
+        ],
     },
     "concision": {
         "title": "Concision",

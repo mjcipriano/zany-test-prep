@@ -457,6 +457,82 @@ _TRANS_ITEMS = [
 ]
 
 
+# Relations most easily confused with each other — used to make hard distractors
+# tempting (near-misses) and easy distractors obviously wrong (far relations).
+_TRANS_CONFUSABLE = {
+    "contrast": ["emphasis", "addition"],
+    "cause": ["sequence", "emphasis"],
+    "addition": ["emphasis", "example"],
+    "example": ["addition", "emphasis"],
+    "sequence": ["cause", "addition"],
+    "emphasis": ["addition", "contrast"],
+}
+
+_TRANS_REL_NAMES = {
+    "contrast": "a contrast", "cause": "a cause-and-effect relationship",
+    "addition": "an additional, similar idea", "example": "an example",
+    "sequence": "a sequence of events", "emphasis": "emphasis",
+}
+
+
+def gen_transition(rng: random.Random, difficulty: str = "medium"):
+    """One transition item, graded by difficulty via distractor closeness:
+    easy draws wrong answers from clearly different relations, hard from the most
+    confusable ones. Combinatorial (deduped) so easy/medium/hard truly differ."""
+    s1, s2, rel = rng.choice(_TRANS_ITEMS)
+    others = [r for r in _TRANS_BANK if r != rel]
+    near = [r for r in _TRANS_CONFUSABLE.get(rel, []) if r in _TRANS_BANK]
+    far = [r for r in others if r not in near]
+    rng.shuffle(near)
+    rng.shuffle(far)
+    if difficulty == "hard":
+        rel_order = near + far          # tempting near-misses first
+    elif difficulty == "easy":
+        rel_order = far + near          # clearly-wrong relations first
+    else:
+        rel_order = others[:]
+        rng.shuffle(rel_order)
+
+    correct_word = rng.choice(_TRANS_BANK[rel])
+    used = {correct_word.lower()}
+    distractors = []
+    for r in rel_order:
+        if len(distractors) == 3:
+            break
+        choices = [w for w in _TRANS_BANK[r] if w.lower() not in used]
+        if not choices:
+            continue
+        w = rng.choice(choices)
+        used.add(w.lower())
+        distractors.append((w, f"This signals {_TRANS_REL_NAMES[r]}, but the "
+                               f"sentences need {_TRANS_REL_NAMES[rel]}."))
+    if len(distractors) < 3:  # top up if a relation had no spare word (rare)
+        spare = [(w, r) for r in others for w in _TRANS_BANK[r]
+                 if w.lower() not in used]
+        rng.shuffle(spare)
+        for w, r in spare:
+            if len(distractors) == 3:
+                break
+            used.add(w.lower())
+            distractors.append((w, f"This signals {_TRANS_REL_NAMES[r]}, but the "
+                                   f"sentences need {_TRANS_REL_NAMES[rel]}."))
+
+    correct = (correct_word, "Correct. The link between the ideas is "
+               f"{_TRANS_REL_NAMES[rel]}.")
+    options, ci, rats = shuffle_with_correct(rng, correct, distractors)
+    prompt = (f"{s1} ___, {s2}\n\n" + rng.choice([
+        "Which transition best fits the relationship between the two ideas?",
+        "Which choice completes the text with the most logical transition?",
+        "Which transition most logically connects the two sentences?",
+    ]))
+    return mc(prompt, options, ci, rats, subskill="logical_transitions",
+              qtype="multiple_choice",
+              explanation=(f"The second idea expresses {_TRANS_REL_NAMES[rel]} "
+                           f"relative to the first, so a {rel}-signaling transition "
+                           "is needed."),
+              tags=["expression", "transitions"], est=50)
+
+
 def pool_transitions(rng: random.Random):
     items = []
     rel_names = {"contrast": "a contrast", "cause": "a cause-and-effect relationship",

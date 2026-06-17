@@ -88,7 +88,11 @@ Order = top to bottom. Mark `[x]` when a section meets the Definition of Done.
   paired-passage tiers now ramp (was authoring order); 4-screen mini-lesson (two
   texts/one topic → name the relationship → predict the response → dodge traps);
   no answer tells; two prompt types (relationship / how would author 2 respond).
-- [ ] transitions
+- [x] transitions — converted from a flat pool (no ramp) to a difficulty-graded
+  combinatorial generator (`gen_transition`): easy uses far-relation distractors,
+  hard uses the most confusable near-misses; varied prompts; also adds a large
+  practice bank. 4-screen mini-lesson (relationship first → families → traps →
+  worked example). No answer tells.
 - [ ] rhetorical_synthesis
 - [ ] concision
 - [ ] sentence_boundaries

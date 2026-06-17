@@ -106,7 +106,7 @@ RW_SKILLS = [
     ("verb_tense", "rw_combinatorial", rw_extra.gen_verb_tense, CONV3),
     ("parallel_structure", "rw_combinatorial", rw_extra.gen_parallelism, CONV3),
     ("pronoun_antecedent", "rw_combinatorial", rw_extra.gen_pronoun_antecedent, CONV3),
-    ("transitions", "rw_pool", "transitions",
+    ("transitions", "rw_combinatorial", rw_gen.gen_transition,
      [("easy", 16), ("medium", 16), ("hard", 16)]),
     ("concision", "rw_pool", "concision",
      [("easy", 16), ("medium", 16), ("hard", 16)]),
@@ -158,7 +158,6 @@ def build():
 
     # Pre-build pools and reading sources.
     pools = {
-        "transitions": rw_gen.pool_transitions(rng),
         "concision": rw_gen.pool_concision(rng),
         "synthesis": rw_gen.pool_synthesis(rng),
     }
