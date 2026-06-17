@@ -167,7 +167,10 @@ Order = top to bottom. Mark `[x]` when a section meets the Definition of Done.
   missing value from the mean); 4-screen mini-lesson.
 - [x] probability — graded tiers (easy single-draw → medium complement / 'A or B'
   → hard two draws without replacement); 4-screen mini-lesson.
-- [ ] two_way_tables
+- [x] two_way_tables — graded tiers (easy marginal row probability → medium joint
+  single-cell → hard conditional 'given a column'); table now includes row/column
+  totals; 4-screen mini-lesson (rows/cols/totals → three kinds of probability →
+  'given' changes the denominator → worked example). No tells.
 - [ ] scatterplots  (figure)
 - [ ] right_triangles  (figure)
 - [ ] area_volume  (figure)

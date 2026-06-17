@@ -1341,6 +1341,31 @@ TEACHING_SCREENS = {
                   "reds without replacement: 3/8 × 2/7 = 6/56 = 3/28."),
          "worked_example": "P(red)=3/8;  two reds = 3/8 × 2/7 = 3/28."},
     ],
+    "two_way_tables": [
+        {"title": "Rows, columns, totals",
+         "body": ("A two-way table sorts data by two categories at once. Each cell is a "
+                  "count; the row totals, column totals, and grand total sit on the "
+                  "edges. The whole question is choosing the right total to divide by."),
+         "key_points": ["Cells are counts; the margins are the totals.",
+                        "Pick the total that matches what's being asked."]},
+        {"title": "Three kinds of probability",
+         "body": ("Marginal: a whole row or column ÷ grand total. Joint: a single cell ÷ "
+                  "grand total ('both A and B'). Conditional: a cell ÷ that row's or "
+                  "column's total ('given A, the chance of B')."),
+         "key_points": ["Marginal & joint divide by the grand total.",
+                        "Conditional divides by the row/column you're given."]},
+        {"title": "'Given' changes the denominator",
+         "body": ("The word 'given' (or 'of the …') means you only look within that group, "
+                  "so divide by that group's total, not the grand total. This is the most "
+                  "common place to slip."),
+         "key_points": ["'Given X' -> denominator is X's total.",
+                        "No 'given' -> denominator is the grand total."]},
+        {"title": "Try the moves",
+         "body": ("Suppose 20 of 50 responses are in the Cats row, and within the Weekday "
+                  "column (total 30) 12 are Cats. P(Cats) = 20/50 = 2/5. P(Cats given "
+                  "Weekday) = 12/30 = 2/5 — note the different denominator."),
+         "worked_example": "P(Cats)=20/50.  P(Cats | Weekday)=12/30 (column total, not 50)."},
+    ],
 }
 
 for _skill, _screens in TEACHING_SCREENS.items():

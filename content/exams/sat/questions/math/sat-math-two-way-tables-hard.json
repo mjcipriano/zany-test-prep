@@ -11,32 +11,32 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. If one response is chosen at random, what is the probability that it is in the “Coffee” row?",
+    "prompt": "The table shows survey responses. Given that a response is “Morning”, what is the probability that it is also “Coffee”?",
     "choices": [
       {
         "id": "A",
-        "text": "45/31",
-        "rationale": "Divide by the grand total, not by the other row."
+        "text": "22/45",
+        "rationale": "Condition on the column, not the row."
       },
       {
         "id": "B",
         "text": "11/38",
-        "rationale": "This uses only one cell (22), not the whole row."
+        "rationale": "Condition on the column total, not the grand total."
       },
       {
         "id": "C",
-        "text": "31/76",
-        "rationale": "This is the probability of the other row."
+        "text": "9/20",
+        "rationale": "This is the probability of the other row in the column."
       },
       {
         "id": "D",
-        "text": "45/76",
+        "text": "11/20",
         "rationale": "Correct."
       }
     ],
     "correct_choice": "D",
-    "explanation": "The “Coffee” row totals 22 + 23 = 45 out of 76 responses, so the probability is 45/76 = 45/76.",
-    "estimated_time_seconds": 85,
+    "explanation": "Restrict to the “Morning” column (total 22 + 18 = 40); of those, 22 are “Coffee”, so the probability is 22/40 = 11/20.",
+    "estimated_time_seconds": 90,
     "tags": [
       "data",
       "probability",
@@ -49,23 +49,32 @@
         "headers": [
           "",
           "Morning",
-          "Evening"
+          "Evening",
+          "Total"
         ],
         "rows": [
           [
             "Coffee",
             "22",
-            "23"
+            "23",
+            "45"
           ],
           [
             "Tea",
             "18",
-            "13"
+            "13",
+            "31"
+          ],
+          [
+            "Total",
+            "40",
+            "36",
+            "76"
           ]
         ]
       }
     },
-    "answer_verification": "P=45/76"
+    "answer_verification": "P=11/20"
   },
   {
     "question_id": "sat-math-two-way-tables-hard-q02",
@@ -79,32 +88,32 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. If one response is chosen at random, what is the probability that it is in the “Fiction” row?",
+    "prompt": "The table shows survey responses. Given that a response is “Weekday”, what is the probability that it is also “Fiction”?",
     "choices": [
       {
         "id": "A",
         "text": "13/92",
-        "rationale": "This uses only one cell (13), not the whole row."
+        "rationale": "Condition on the column total, not the grand total."
       },
       {
         "id": "B",
-        "text": "11/23",
-        "rationale": "This is the probability of the other row."
+        "text": "33/46",
+        "rationale": "This is the probability of the other row in the column."
       },
       {
         "id": "C",
-        "text": "12/11",
-        "rationale": "Divide by the grand total, not by the other row."
+        "text": "13/48",
+        "rationale": "Condition on the column, not the row."
       },
       {
         "id": "D",
-        "text": "12/23",
+        "text": "13/46",
         "rationale": "Correct."
       }
     ],
     "correct_choice": "D",
-    "explanation": "The “Fiction” row totals 13 + 35 = 48 out of 92 responses, so the probability is 48/92 = 12/23.",
-    "estimated_time_seconds": 85,
+    "explanation": "Restrict to the “Weekday” column (total 13 + 33 = 46); of those, 13 are “Fiction”, so the probability is 13/46 = 13/46.",
+    "estimated_time_seconds": 90,
     "tags": [
       "data",
       "probability",
@@ -117,23 +126,32 @@
         "headers": [
           "",
           "Weekday",
-          "Weekend"
+          "Weekend",
+          "Total"
         ],
         "rows": [
           [
             "Fiction",
             "13",
-            "35"
+            "35",
+            "48"
           ],
           [
             "Nonfiction",
             "33",
-            "11"
+            "11",
+            "44"
+          ],
+          [
+            "Total",
+            "46",
+            "46",
+            "92"
           ]
         ]
       }
     },
-    "answer_verification": "P=12/23"
+    "answer_verification": "P=13/46"
   },
   {
     "question_id": "sat-math-two-way-tables-hard-q03",
@@ -147,32 +165,32 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. If one response is chosen at random, what is the probability that it is in the “Cats” row?",
+    "prompt": "The table shows survey responses. Given that a response is “Morning”, what is the probability that it is also “Cats”?",
     "choices": [
       {
         "id": "A",
         "text": "25/76",
-        "rationale": "This uses only one cell (25), not the whole row."
+        "rationale": "Condition on the column total, not the grand total."
       },
       {
         "id": "B",
-        "text": "29/9",
-        "rationale": "Divide by the grand total, not by the other row."
+        "text": "25/58",
+        "rationale": "Condition on the column, not the row."
       },
       {
         "id": "C",
-        "text": "9/38",
-        "rationale": "This is the probability of the other row."
+        "text": "8/33",
+        "rationale": "This is the probability of the other row in the column."
       },
       {
         "id": "D",
-        "text": "29/38",
+        "text": "25/33",
         "rationale": "Correct."
       }
     ],
     "correct_choice": "D",
-    "explanation": "The “Cats” row totals 25 + 33 = 58 out of 76 responses, so the probability is 58/76 = 29/38.",
-    "estimated_time_seconds": 85,
+    "explanation": "Restrict to the “Morning” column (total 25 + 8 = 33); of those, 25 are “Cats”, so the probability is 25/33 = 25/33.",
+    "estimated_time_seconds": 90,
     "tags": [
       "data",
       "probability",
@@ -185,23 +203,32 @@
         "headers": [
           "",
           "Morning",
-          "Evening"
+          "Evening",
+          "Total"
         ],
         "rows": [
           [
             "Cats",
             "25",
-            "33"
+            "33",
+            "58"
           ],
           [
             "Dogs",
             "8",
-            "10"
+            "10",
+            "18"
+          ],
+          [
+            "Total",
+            "33",
+            "43",
+            "76"
           ]
         ]
       }
     },
-    "answer_verification": "P=29/38"
+    "answer_verification": "P=25/33"
   },
   {
     "question_id": "sat-math-two-way-tables-hard-q04",
@@ -215,32 +242,32 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. If one response is chosen at random, what is the probability that it is in the “Cats” row?",
+    "prompt": "The table shows survey responses. Given that a response is “Weekday”, what is the probability that it is also “Cats”?",
     "choices": [
       {
         "id": "A",
-        "text": "34/69",
-        "rationale": "This is the probability of the other row."
+        "text": "2/3",
+        "rationale": "This is the probability of the other row in the column."
       },
       {
         "id": "B",
-        "text": "35/69",
+        "text": "1/3",
         "rationale": "Correct."
       },
       {
         "id": "C",
         "text": "4/23",
-        "rationale": "This uses only one cell (12), not the whole row."
+        "rationale": "Condition on the column total, not the grand total."
       },
       {
         "id": "D",
-        "text": "35/34",
-        "rationale": "Divide by the grand total, not by the other row."
+        "text": "12/35",
+        "rationale": "Condition on the column, not the row."
       }
     ],
     "correct_choice": "B",
-    "explanation": "The “Cats” row totals 12 + 23 = 35 out of 69 responses, so the probability is 35/69 = 35/69.",
-    "estimated_time_seconds": 85,
+    "explanation": "Restrict to the “Weekday” column (total 12 + 24 = 36); of those, 12 are “Cats”, so the probability is 12/36 = 1/3.",
+    "estimated_time_seconds": 90,
     "tags": [
       "data",
       "probability",
@@ -253,23 +280,32 @@
         "headers": [
           "",
           "Weekday",
-          "Weekend"
+          "Weekend",
+          "Total"
         ],
         "rows": [
           [
             "Cats",
             "12",
-            "23"
+            "23",
+            "35"
           ],
           [
             "Dogs",
             "24",
-            "10"
+            "10",
+            "34"
+          ],
+          [
+            "Total",
+            "36",
+            "33",
+            "69"
           ]
         ]
       }
     },
-    "answer_verification": "P=35/69"
+    "answer_verification": "P=1/3"
   },
   {
     "question_id": "sat-math-two-way-tables-hard-q05",
@@ -283,32 +319,32 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. If one response is chosen at random, what is the probability that it is in the “Fiction” row?",
+    "prompt": "The table shows survey responses. Given that a response is “Weekday”, what is the probability that it is also “Fiction”?",
     "choices": [
       {
         "id": "A",
-        "text": "57/88",
+        "text": "25/49",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "31/88",
-        "rationale": "This is the probability of the other row."
+        "text": "24/49",
+        "rationale": "This is the probability of the other row in the column."
       },
       {
         "id": "C",
         "text": "25/88",
-        "rationale": "This uses only one cell (25), not the whole row."
+        "rationale": "Condition on the column total, not the grand total."
       },
       {
         "id": "D",
-        "text": "57/31",
-        "rationale": "Divide by the grand total, not by the other row."
+        "text": "25/57",
+        "rationale": "Condition on the column, not the row."
       }
     ],
     "correct_choice": "A",
-    "explanation": "The “Fiction” row totals 25 + 32 = 57 out of 88 responses, so the probability is 57/88 = 57/88.",
-    "estimated_time_seconds": 85,
+    "explanation": "Restrict to the “Weekday” column (total 25 + 24 = 49); of those, 25 are “Fiction”, so the probability is 25/49 = 25/49.",
+    "estimated_time_seconds": 90,
     "tags": [
       "data",
       "probability",
@@ -321,23 +357,32 @@
         "headers": [
           "",
           "Weekday",
-          "Weekend"
+          "Weekend",
+          "Total"
         ],
         "rows": [
           [
             "Fiction",
             "25",
-            "32"
+            "32",
+            "57"
           ],
           [
             "Nonfiction",
             "24",
-            "7"
+            "7",
+            "31"
+          ],
+          [
+            "Total",
+            "49",
+            "39",
+            "88"
           ]
         ]
       }
     },
-    "answer_verification": "P=57/88"
+    "answer_verification": "P=25/49"
   },
   {
     "question_id": "sat-math-two-way-tables-hard-q06",
@@ -351,32 +396,32 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. If one response is chosen at random, what is the probability that it is in the “Cats” row?",
+    "prompt": "The table shows survey responses. Given that a response is “Adults”, what is the probability that it is also “Cats”?",
     "choices": [
       {
         "id": "A",
         "text": "13/109",
-        "rationale": "This uses only one cell (13), not the whole row."
+        "rationale": "Condition on the column total, not the grand total."
       },
       {
         "id": "B",
-        "text": "45/109",
+        "text": "13/44",
         "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "64/109",
-        "rationale": "This is the probability of the other row."
+        "text": "31/44",
+        "rationale": "This is the probability of the other row in the column."
       },
       {
         "id": "D",
-        "text": "45/64",
-        "rationale": "Divide by the grand total, not by the other row."
+        "text": "13/45",
+        "rationale": "Condition on the column, not the row."
       }
     ],
     "correct_choice": "B",
-    "explanation": "The “Cats” row totals 13 + 32 = 45 out of 109 responses, so the probability is 45/109 = 45/109.",
-    "estimated_time_seconds": 85,
+    "explanation": "Restrict to the “Adults” column (total 13 + 31 = 44); of those, 13 are “Cats”, so the probability is 13/44 = 13/44.",
+    "estimated_time_seconds": 90,
     "tags": [
       "data",
       "probability",
@@ -389,23 +434,32 @@
         "headers": [
           "",
           "Adults",
-          "Students"
+          "Students",
+          "Total"
         ],
         "rows": [
           [
             "Cats",
             "13",
-            "32"
+            "32",
+            "45"
           ],
           [
             "Dogs",
             "31",
-            "33"
+            "33",
+            "64"
+          ],
+          [
+            "Total",
+            "44",
+            "65",
+            "109"
           ]
         ]
       }
     },
-    "answer_verification": "P=45/109"
+    "answer_verification": "P=13/44"
   },
   {
     "question_id": "sat-math-two-way-tables-hard-q07",
@@ -419,32 +473,32 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. If one response is chosen at random, what is the probability that it is in the “Bus” row?",
+    "prompt": "The table shows survey responses. Given that a response is “Morning”, what is the probability that it is also “Bus”?",
     "choices": [
       {
         "id": "A",
-        "text": "28/79",
-        "rationale": "This is the probability of the other row."
+        "text": "4/19",
+        "rationale": "This is the probability of the other row in the column."
       },
       {
         "id": "B",
-        "text": "51/79",
+        "text": "15/19",
         "rationale": "Correct."
       },
       {
         "id": "C",
         "text": "30/79",
-        "rationale": "This uses only one cell (30), not the whole row."
+        "rationale": "Condition on the column total, not the grand total."
       },
       {
         "id": "D",
-        "text": "51/28",
-        "rationale": "Divide by the grand total, not by the other row."
+        "text": "10/17",
+        "rationale": "Condition on the column, not the row."
       }
     ],
     "correct_choice": "B",
-    "explanation": "The “Bus” row totals 30 + 21 = 51 out of 79 responses, so the probability is 51/79 = 51/79.",
-    "estimated_time_seconds": 85,
+    "explanation": "Restrict to the “Morning” column (total 30 + 8 = 38); of those, 30 are “Bus”, so the probability is 30/38 = 15/19.",
+    "estimated_time_seconds": 90,
     "tags": [
       "data",
       "probability",
@@ -457,23 +511,32 @@
         "headers": [
           "",
           "Morning",
-          "Evening"
+          "Evening",
+          "Total"
         ],
         "rows": [
           [
             "Bus",
             "30",
-            "21"
+            "21",
+            "51"
           ],
           [
             "Bike",
             "8",
-            "20"
+            "20",
+            "28"
+          ],
+          [
+            "Total",
+            "38",
+            "41",
+            "79"
           ]
         ]
       }
     },
-    "answer_verification": "P=51/79"
+    "answer_verification": "P=15/19"
   },
   {
     "question_id": "sat-math-two-way-tables-hard-q08",
@@ -487,32 +550,32 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. If one response is chosen at random, what is the probability that it is in the “Bus” row?",
+    "prompt": "The table shows survey responses. Given that a response is “Adults”, what is the probability that it is also “Bus”?",
     "choices": [
       {
         "id": "A",
-        "text": "57/28",
-        "rationale": "Divide by the grand total, not by the other row."
+        "text": "29/57",
+        "rationale": "Condition on the column, not the row."
       },
       {
         "id": "B",
-        "text": "57/85",
+        "text": "29/52",
         "rationale": "Correct."
       },
       {
         "id": "C",
         "text": "29/85",
-        "rationale": "This uses only one cell (29), not the whole row."
+        "rationale": "Condition on the column total, not the grand total."
       },
       {
         "id": "D",
-        "text": "28/85",
-        "rationale": "This is the probability of the other row."
+        "text": "23/52",
+        "rationale": "This is the probability of the other row in the column."
       }
     ],
     "correct_choice": "B",
-    "explanation": "The “Bus” row totals 29 + 28 = 57 out of 85 responses, so the probability is 57/85 = 57/85.",
-    "estimated_time_seconds": 85,
+    "explanation": "Restrict to the “Adults” column (total 29 + 23 = 52); of those, 29 are “Bus”, so the probability is 29/52 = 29/52.",
+    "estimated_time_seconds": 90,
     "tags": [
       "data",
       "probability",
@@ -525,23 +588,32 @@
         "headers": [
           "",
           "Adults",
-          "Students"
+          "Students",
+          "Total"
         ],
         "rows": [
           [
             "Bus",
             "29",
-            "28"
+            "28",
+            "57"
           ],
           [
             "Bike",
             "23",
-            "5"
+            "5",
+            "28"
+          ],
+          [
+            "Total",
+            "52",
+            "33",
+            "85"
           ]
         ]
       }
     },
-    "answer_verification": "P=57/85"
+    "answer_verification": "P=29/52"
   },
   {
     "question_id": "sat-math-two-way-tables-hard-q09",
@@ -555,32 +627,32 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. If one response is chosen at random, what is the probability that it is in the “Cats” row?",
+    "prompt": "The table shows survey responses. Given that a response is “Adults”, what is the probability that it is also “Cats”?",
     "choices": [
       {
         "id": "A",
-        "text": "45/68",
+        "text": "9/14",
         "rationale": "Correct."
       },
       {
         "id": "B",
         "text": "27/68",
-        "rationale": "This uses only one cell (27), not the whole row."
+        "rationale": "Condition on the column total, not the grand total."
       },
       {
         "id": "C",
-        "text": "45/23",
-        "rationale": "Divide by the grand total, not by the other row."
+        "text": "3/5",
+        "rationale": "Condition on the column, not the row."
       },
       {
         "id": "D",
-        "text": "23/68",
-        "rationale": "This is the probability of the other row."
+        "text": "5/14",
+        "rationale": "This is the probability of the other row in the column."
       }
     ],
     "correct_choice": "A",
-    "explanation": "The “Cats” row totals 27 + 18 = 45 out of 68 responses, so the probability is 45/68 = 45/68.",
-    "estimated_time_seconds": 85,
+    "explanation": "Restrict to the “Adults” column (total 27 + 15 = 42); of those, 27 are “Cats”, so the probability is 27/42 = 9/14.",
+    "estimated_time_seconds": 90,
     "tags": [
       "data",
       "probability",
@@ -593,23 +665,32 @@
         "headers": [
           "",
           "Adults",
-          "Students"
+          "Students",
+          "Total"
         ],
         "rows": [
           [
             "Cats",
             "27",
-            "18"
+            "18",
+            "45"
           ],
           [
             "Dogs",
             "15",
-            "8"
+            "8",
+            "23"
+          ],
+          [
+            "Total",
+            "42",
+            "26",
+            "68"
           ]
         ]
       }
     },
-    "answer_verification": "P=45/68"
+    "answer_verification": "P=9/14"
   },
   {
     "question_id": "sat-math-two-way-tables-hard-q10",
@@ -623,32 +704,32 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. If one response is chosen at random, what is the probability that it is in the “Bus” row?",
+    "prompt": "The table shows survey responses. Given that a response is “Adults”, what is the probability that it is also “Bus”?",
     "choices": [
       {
         "id": "A",
-        "text": "7/11",
+        "text": "29/44",
         "rationale": "Correct."
       },
       {
         "id": "B",
         "text": "29/66",
-        "rationale": "This uses only one cell (29), not the whole row."
+        "rationale": "Condition on the column total, not the grand total."
       },
       {
         "id": "C",
-        "text": "7/4",
-        "rationale": "Divide by the grand total, not by the other row."
+        "text": "29/42",
+        "rationale": "Condition on the column, not the row."
       },
       {
         "id": "D",
-        "text": "4/11",
-        "rationale": "This is the probability of the other row."
+        "text": "15/44",
+        "rationale": "This is the probability of the other row in the column."
       }
     ],
     "correct_choice": "A",
-    "explanation": "The “Bus” row totals 29 + 13 = 42 out of 66 responses, so the probability is 42/66 = 7/11.",
-    "estimated_time_seconds": 85,
+    "explanation": "Restrict to the “Adults” column (total 29 + 15 = 44); of those, 29 are “Bus”, so the probability is 29/44 = 29/44.",
+    "estimated_time_seconds": 90,
     "tags": [
       "data",
       "probability",
@@ -661,23 +742,32 @@
         "headers": [
           "",
           "Adults",
-          "Students"
+          "Students",
+          "Total"
         ],
         "rows": [
           [
             "Bus",
             "29",
-            "13"
+            "13",
+            "42"
           ],
           [
             "Bike",
             "15",
-            "9"
+            "9",
+            "24"
+          ],
+          [
+            "Total",
+            "44",
+            "22",
+            "66"
           ]
         ]
       }
     },
-    "answer_verification": "P=7/11"
+    "answer_verification": "P=29/44"
   },
   {
     "question_id": "sat-math-two-way-tables-hard-q11",
@@ -691,32 +781,32 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. If one response is chosen at random, what is the probability that it is in the “Bus” row?",
+    "prompt": "The table shows survey responses. Given that a response is “Weekday”, what is the probability that it is also “Bus”?",
     "choices": [
       {
         "id": "A",
         "text": "1/5",
-        "rationale": "This uses only one cell (13), not the whole row."
+        "rationale": "Condition on the column total, not the grand total."
       },
       {
         "id": "B",
-        "text": "14/65",
-        "rationale": "This is the probability of the other row."
+        "text": "5/18",
+        "rationale": "This is the probability of the other row in the column."
       },
       {
         "id": "C",
-        "text": "51/65",
+        "text": "13/18",
         "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "51/14",
-        "rationale": "Divide by the grand total, not by the other row."
+        "text": "13/51",
+        "rationale": "Condition on the column, not the row."
       }
     ],
     "correct_choice": "C",
-    "explanation": "The “Bus” row totals 13 + 38 = 51 out of 65 responses, so the probability is 51/65 = 51/65.",
-    "estimated_time_seconds": 85,
+    "explanation": "Restrict to the “Weekday” column (total 13 + 5 = 18); of those, 13 are “Bus”, so the probability is 13/18 = 13/18.",
+    "estimated_time_seconds": 90,
     "tags": [
       "data",
       "probability",
@@ -729,23 +819,32 @@
         "headers": [
           "",
           "Weekday",
-          "Weekend"
+          "Weekend",
+          "Total"
         ],
         "rows": [
           [
             "Bus",
             "13",
-            "38"
+            "38",
+            "51"
           ],
           [
             "Bike",
             "5",
-            "9"
+            "9",
+            "14"
+          ],
+          [
+            "Total",
+            "18",
+            "47",
+            "65"
           ]
         ]
       }
     },
-    "answer_verification": "P=51/65"
+    "answer_verification": "P=13/18"
   },
   {
     "question_id": "sat-math-two-way-tables-hard-q12",
@@ -759,32 +858,32 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. If one response is chosen at random, what is the probability that it is in the “Coffee” row?",
+    "prompt": "The table shows survey responses. Given that a response is “Adults”, what is the probability that it is also “Coffee”?",
     "choices": [
       {
         "id": "A",
-        "text": "63/41",
-        "rationale": "Divide by the grand total, not by the other row."
+        "text": "13/21",
+        "rationale": "Condition on the column, not the row."
       },
       {
         "id": "B",
-        "text": "41/104",
-        "rationale": "This is the probability of the other row."
+        "text": "6/19",
+        "rationale": "This is the probability of the other row in the column."
       },
       {
         "id": "C",
-        "text": "63/104",
+        "text": "13/19",
         "rationale": "Correct."
       },
       {
         "id": "D",
         "text": "3/8",
-        "rationale": "This uses only one cell (39), not the whole row."
+        "rationale": "Condition on the column total, not the grand total."
       }
     ],
     "correct_choice": "C",
-    "explanation": "The “Coffee” row totals 39 + 24 = 63 out of 104 responses, so the probability is 63/104 = 63/104.",
-    "estimated_time_seconds": 85,
+    "explanation": "Restrict to the “Adults” column (total 39 + 18 = 57); of those, 39 are “Coffee”, so the probability is 39/57 = 13/19.",
+    "estimated_time_seconds": 90,
     "tags": [
       "data",
       "probability",
@@ -797,23 +896,32 @@
         "headers": [
           "",
           "Adults",
-          "Students"
+          "Students",
+          "Total"
         ],
         "rows": [
           [
             "Coffee",
             "39",
-            "24"
+            "24",
+            "63"
           ],
           [
             "Tea",
             "18",
-            "23"
+            "23",
+            "41"
+          ],
+          [
+            "Total",
+            "57",
+            "47",
+            "104"
           ]
         ]
       }
     },
-    "answer_verification": "P=63/104"
+    "answer_verification": "P=13/19"
   },
   {
     "question_id": "sat-math-two-way-tables-hard-q13",
@@ -827,32 +935,32 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. If one response is chosen at random, what is the probability that it is in the “Cats” row?",
+    "prompt": "The table shows survey responses. Given that a response is “Morning”, what is the probability that it is also “Cats”?",
     "choices": [
       {
         "id": "A",
         "text": "7/32",
-        "rationale": "This uses only one cell (21), not the whole row."
+        "rationale": "Condition on the column total, not the grand total."
       },
       {
         "id": "B",
-        "text": "59/96",
+        "text": "21/52",
         "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "59/37",
-        "rationale": "Divide by the grand total, not by the other row."
+        "text": "21/59",
+        "rationale": "Condition on the column, not the row."
       },
       {
         "id": "D",
-        "text": "37/96",
-        "rationale": "This is the probability of the other row."
+        "text": "31/52",
+        "rationale": "This is the probability of the other row in the column."
       }
     ],
     "correct_choice": "B",
-    "explanation": "The “Cats” row totals 21 + 38 = 59 out of 96 responses, so the probability is 59/96 = 59/96.",
-    "estimated_time_seconds": 85,
+    "explanation": "Restrict to the “Morning” column (total 21 + 31 = 52); of those, 21 are “Cats”, so the probability is 21/52 = 21/52.",
+    "estimated_time_seconds": 90,
     "tags": [
       "data",
       "probability",
@@ -865,23 +973,32 @@
         "headers": [
           "",
           "Morning",
-          "Evening"
+          "Evening",
+          "Total"
         ],
         "rows": [
           [
             "Cats",
             "21",
-            "38"
+            "38",
+            "59"
           ],
           [
             "Dogs",
             "31",
-            "6"
+            "6",
+            "37"
+          ],
+          [
+            "Total",
+            "52",
+            "44",
+            "96"
           ]
         ]
       }
     },
-    "answer_verification": "P=59/96"
+    "answer_verification": "P=21/52"
   },
   {
     "question_id": "sat-math-two-way-tables-hard-q14",
@@ -895,32 +1012,32 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. If one response is chosen at random, what is the probability that it is in the “Bus” row?",
+    "prompt": "The table shows survey responses. Given that a response is “Weekday”, what is the probability that it is also “Bus”?",
     "choices": [
       {
         "id": "A",
         "text": "27/88",
-        "rationale": "This uses only one cell (27), not the whole row."
+        "rationale": "Condition on the column total, not the grand total."
       },
       {
         "id": "B",
-        "text": "9/22",
-        "rationale": "This is the probability of the other row."
+        "text": "23/50",
+        "rationale": "This is the probability of the other row in the column."
       },
       {
         "id": "C",
-        "text": "13/22",
+        "text": "27/50",
         "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "13/9",
-        "rationale": "Divide by the grand total, not by the other row."
+        "text": "27/52",
+        "rationale": "Condition on the column, not the row."
       }
     ],
     "correct_choice": "C",
-    "explanation": "The “Bus” row totals 27 + 25 = 52 out of 88 responses, so the probability is 52/88 = 13/22.",
-    "estimated_time_seconds": 85,
+    "explanation": "Restrict to the “Weekday” column (total 27 + 23 = 50); of those, 27 are “Bus”, so the probability is 27/50 = 27/50.",
+    "estimated_time_seconds": 90,
     "tags": [
       "data",
       "probability",
@@ -933,23 +1050,32 @@
         "headers": [
           "",
           "Weekday",
-          "Weekend"
+          "Weekend",
+          "Total"
         ],
         "rows": [
           [
             "Bus",
             "27",
-            "25"
+            "25",
+            "52"
           ],
           [
             "Bike",
             "23",
-            "13"
+            "13",
+            "36"
+          ],
+          [
+            "Total",
+            "50",
+            "38",
+            "88"
           ]
         ]
       }
     },
-    "answer_verification": "P=13/22"
+    "answer_verification": "P=27/50"
   },
   {
     "question_id": "sat-math-two-way-tables-hard-q15",
@@ -963,32 +1089,32 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. If one response is chosen at random, what is the probability that it is in the “Bus” row?",
+    "prompt": "The table shows survey responses. Given that a response is “Morning”, what is the probability that it is also “Bus”?",
     "choices": [
       {
         "id": "A",
-        "text": "35/57",
+        "text": "22/29",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "22/57",
-        "rationale": "This uses only one cell (22), not the whole row."
+        "text": "22/35",
+        "rationale": "Condition on the column, not the row."
       },
       {
         "id": "C",
-        "text": "35/22",
-        "rationale": "Divide by the grand total, not by the other row."
+        "text": "22/57",
+        "rationale": "Condition on the column total, not the grand total."
       },
       {
         "id": "D",
-        "text": "206/57",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "7/29",
+        "rationale": "This is the probability of the other row in the column."
       }
     ],
     "correct_choice": "A",
-    "explanation": "The “Bus” row totals 22 + 13 = 35 out of 57 responses, so the probability is 35/57 = 35/57.",
-    "estimated_time_seconds": 85,
+    "explanation": "Restrict to the “Morning” column (total 22 + 7 = 29); of those, 22 are “Bus”, so the probability is 22/29 = 22/29.",
+    "estimated_time_seconds": 90,
     "tags": [
       "data",
       "probability",
@@ -1001,23 +1127,32 @@
         "headers": [
           "",
           "Morning",
-          "Evening"
+          "Evening",
+          "Total"
         ],
         "rows": [
           [
             "Bus",
             "22",
-            "13"
+            "13",
+            "35"
           ],
           [
             "Bike",
             "7",
-            "15"
+            "15",
+            "22"
+          ],
+          [
+            "Total",
+            "29",
+            "28",
+            "57"
           ]
         ]
       }
     },
-    "answer_verification": "P=35/57"
+    "answer_verification": "P=22/29"
   },
   {
     "question_id": "sat-math-two-way-tables-hard-q16",
@@ -1031,32 +1166,32 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. If one response is chosen at random, what is the probability that it is in the “Cats” row?",
+    "prompt": "The table shows survey responses. Given that a response is “Adults”, what is the probability that it is also “Cats”?",
     "choices": [
       {
         "id": "A",
-        "text": "27/59",
-        "rationale": "Correct."
+        "text": "20/59",
+        "rationale": "Condition on the column total, not the grand total."
       },
       {
         "id": "B",
-        "text": "32/59",
-        "rationale": "This is the probability of the other row."
+        "text": "20/27",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "27/32",
-        "rationale": "Divide by the grand total, not by the other row."
+        "text": "7/27",
+        "rationale": "This is the probability of the other row in the column."
       },
       {
         "id": "D",
-        "text": "20/59",
-        "rationale": "This uses only one cell (20), not the whole row."
+        "text": "-34/27",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "The “Cats” row totals 20 + 7 = 27 out of 59 responses, so the probability is 27/59 = 27/59.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "B",
+    "explanation": "Restrict to the “Adults” column (total 20 + 7 = 27); of those, 20 are “Cats”, so the probability is 20/27 = 20/27.",
+    "estimated_time_seconds": 90,
     "tags": [
       "data",
       "probability",
@@ -1069,23 +1204,32 @@
         "headers": [
           "",
           "Adults",
-          "Students"
+          "Students",
+          "Total"
         ],
         "rows": [
           [
             "Cats",
             "20",
-            "7"
+            "7",
+            "27"
           ],
           [
             "Dogs",
             "7",
-            "25"
+            "25",
+            "32"
+          ],
+          [
+            "Total",
+            "27",
+            "32",
+            "59"
           ]
         ]
       }
     },
-    "answer_verification": "P=27/59"
+    "answer_verification": "P=20/27"
   },
   {
     "question_id": "sat-math-two-way-tables-hard-q17",
@@ -1099,32 +1243,32 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. If one response is chosen at random, what is the probability that it is in the “Cats” row?",
+    "prompt": "The table shows survey responses. Given that a response is “Morning”, what is the probability that it is also “Cats”?",
     "choices": [
       {
         "id": "A",
-        "text": "17/33",
-        "rationale": "This is the probability of the other row."
+        "text": "40/69",
+        "rationale": "Condition on the column, not the row."
       },
       {
         "id": "B",
-        "text": "16/33",
-        "rationale": "Correct."
+        "text": "4/13",
+        "rationale": "Condition on the column total, not the grand total."
       },
       {
         "id": "C",
-        "text": "2/11",
-        "rationale": "This uses only one cell (24), not the whole row."
+        "text": "40/79",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "16/17",
-        "rationale": "Divide by the grand total, not by the other row."
+        "text": "39/79",
+        "rationale": "This is the probability of the other row in the column."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "The “Cats” row totals 24 + 40 = 64 out of 132 responses, so the probability is 64/132 = 16/33.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "C",
+    "explanation": "Restrict to the “Morning” column (total 40 + 39 = 79); of those, 40 are “Cats”, so the probability is 40/79 = 40/79.",
+    "estimated_time_seconds": 90,
     "tags": [
       "data",
       "probability",
@@ -1136,24 +1280,33 @@
         "caption": "Survey responses",
         "headers": [
           "",
-          "Weekday",
-          "Weekend"
+          "Morning",
+          "Evening",
+          "Total"
         ],
         "rows": [
           [
             "Cats",
-            "24",
-            "40"
+            "40",
+            "29",
+            "69"
           ],
           [
             "Dogs",
-            "29",
-            "39"
+            "39",
+            "22",
+            "61"
+          ],
+          [
+            "Total",
+            "79",
+            "51",
+            "130"
           ]
         ]
       }
     },
-    "answer_verification": "P=16/33"
+    "answer_verification": "P=40/79"
   },
   {
     "question_id": "sat-math-two-way-tables-hard-q18",
@@ -1167,32 +1320,32 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. If one response is chosen at random, what is the probability that it is in the “Coffee” row?",
+    "prompt": "The table shows survey responses. Given that a response is “Weekday”, what is the probability that it is also “Coffee”?",
     "choices": [
       {
         "id": "A",
-        "text": "35/96",
-        "rationale": "This uses only one cell (35), not the whole row."
+        "text": "17/25",
+        "rationale": "Condition on the column, not the row."
       },
       {
         "id": "B",
-        "text": "23/48",
-        "rationale": "Correct."
+        "text": "21/55",
+        "rationale": "This is the probability of the other row in the column."
       },
       {
         "id": "C",
-        "text": "25/48",
-        "rationale": "This is the probability of the other row."
+        "text": "34/55",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "23/25",
-        "rationale": "Divide by the grand total, not by the other row."
+        "text": "34/111",
+        "rationale": "Condition on the column total, not the grand total."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "The “Coffee” row totals 35 + 11 = 46 out of 96 responses, so the probability is 46/96 = 23/48.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "C",
+    "explanation": "Restrict to the “Weekday” column (total 34 + 21 = 55); of those, 34 are “Coffee”, so the probability is 34/55 = 34/55.",
+    "estimated_time_seconds": 90,
     "tags": [
       "data",
       "probability",
@@ -1204,24 +1357,33 @@
         "caption": "Survey responses",
         "headers": [
           "",
-          "Adults",
-          "Students"
+          "Weekday",
+          "Weekend",
+          "Total"
         ],
         "rows": [
           [
             "Coffee",
-            "35",
-            "11"
+            "34",
+            "16",
+            "50"
           ],
           [
             "Tea",
-            "34",
-            "16"
+            "21",
+            "40",
+            "61"
+          ],
+          [
+            "Total",
+            "55",
+            "56",
+            "111"
           ]
         ]
       }
     },
-    "answer_verification": "P=23/48"
+    "answer_verification": "P=34/55"
   },
   {
     "question_id": "sat-math-two-way-tables-hard-q19",
@@ -1235,32 +1397,32 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. If one response is chosen at random, what is the probability that it is in the “Cats” row?",
+    "prompt": "The table shows survey responses. Given that a response is “Morning”, what is the probability that it is also “Bus”?",
     "choices": [
       {
         "id": "A",
-        "text": "21/128",
-        "rationale": "This uses only one cell (21), not the whole row."
+        "text": "13/34",
+        "rationale": "Condition on the column total, not the grand total."
       },
       {
         "id": "B",
-        "text": "9/16",
-        "rationale": "This is the probability of the other row."
+        "text": "13/24",
+        "rationale": "Condition on the column, not the row."
       },
       {
         "id": "C",
-        "text": "7/16",
-        "rationale": "Correct."
+        "text": "25/64",
+        "rationale": "This is the probability of the other row in the column."
       },
       {
         "id": "D",
-        "text": "7/9",
-        "rationale": "Divide by the grand total, not by the other row."
+        "text": "39/64",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "The “Cats” row totals 21 + 35 = 56 out of 128 responses, so the probability is 56/128 = 7/16.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "D",
+    "explanation": "Restrict to the “Morning” column (total 39 + 25 = 64); of those, 39 are “Bus”, so the probability is 39/64 = 39/64.",
+    "estimated_time_seconds": 90,
     "tags": [
       "data",
       "probability",
@@ -1273,23 +1435,32 @@
         "headers": [
           "",
           "Morning",
-          "Evening"
+          "Evening",
+          "Total"
         ],
         "rows": [
           [
-            "Cats",
-            "21",
-            "35"
+            "Bus",
+            "39",
+            "33",
+            "72"
           ],
           [
-            "Dogs",
-            "39",
-            "33"
+            "Bike",
+            "25",
+            "5",
+            "30"
+          ],
+          [
+            "Total",
+            "64",
+            "38",
+            "102"
           ]
         ]
       }
     },
-    "answer_verification": "P=7/16"
+    "answer_verification": "P=39/64"
   },
   {
     "question_id": "sat-math-two-way-tables-hard-q20",
@@ -1303,32 +1474,32 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. If one response is chosen at random, what is the probability that it is in the “Fiction” row?",
+    "prompt": "The table shows survey responses. Given that a response is “Morning”, what is the probability that it is also “Fiction”?",
     "choices": [
       {
         "id": "A",
-        "text": "37/96",
-        "rationale": "Correct."
+        "text": "29/54",
+        "rationale": "This is the probability of the other row in the column."
       },
       {
         "id": "B",
-        "text": "59/96",
-        "rationale": "This is the probability of the other row."
+        "text": "5/19",
+        "rationale": "Condition on the column total, not the grand total."
       },
       {
         "id": "C",
-        "text": "37/59",
-        "rationale": "Divide by the grand total, not by the other row."
+        "text": "25/39",
+        "rationale": "Condition on the column, not the row."
       },
       {
         "id": "D",
-        "text": "19/96",
-        "rationale": "This uses only one cell (19), not the whole row."
+        "text": "25/54",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "The “Fiction” row totals 19 + 18 = 37 out of 96 responses, so the probability is 37/96 = 37/96.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "D",
+    "explanation": "Restrict to the “Morning” column (total 25 + 29 = 54); of those, 25 are “Fiction”, so the probability is 25/54 = 25/54.",
+    "estimated_time_seconds": 90,
     "tags": [
       "data",
       "probability",
@@ -1340,23 +1511,32 @@
         "caption": "Survey responses",
         "headers": [
           "",
-          "Adults",
-          "Students"
+          "Morning",
+          "Evening",
+          "Total"
         ],
         "rows": [
           [
             "Fiction",
-            "19",
-            "18"
+            "25",
+            "14",
+            "39"
           ],
           [
             "Nonfiction",
-            "34",
-            "25"
+            "29",
+            "27",
+            "56"
+          ],
+          [
+            "Total",
+            "54",
+            "41",
+            "95"
           ]
         ]
       }
     },
-    "answer_verification": "P=37/96"
+    "answer_verification": "P=25/54"
   }
 ]

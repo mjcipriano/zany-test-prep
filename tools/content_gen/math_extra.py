@@ -147,26 +147,53 @@ def two_way_tables(rng: random.Random, difficulty: str):
     c = rng.randint(5, 40)
     d = rng.randint(5, 40)
     total = a + b + c + d
-    rows = [[rcat[0], str(a), str(b)], [rcat[1], str(c), str(d)]]
-    headers = ["", ccat[0], ccat[1]]
-    row_total = a + b
-    val = Fraction(row_total, total)
-    prompt = (f"The table shows survey responses. If one response is chosen at "
-              f"random, what is the probability that it is in the “{rcat[0]}” row?")
-    explanation = (f"The “{rcat[0]}” row totals {a} + {b} = {row_total} out of "
-                   f"{total} responses, so the probability is "
-                   f"{row_total}/{total} = {num_str(val)}.")
+    # Include row/column totals so marginal and conditional reads are well-defined.
+    rows = [[rcat[0], str(a), str(b), str(a + b)],
+            [rcat[1], str(c), str(d), str(c + d)],
+            ["Total", str(a + c), str(b + d), str(total)]]
+    headers = ["", ccat[0], ccat[1], "Total"]
+    table = {"type": "table", "table": {
+        "caption": "Survey responses", "headers": headers, "rows": rows}}
+
+    if difficulty == "hard":
+        # Conditional probability: given a column, probability of a row.
+        col_total = a + c
+        val = Fraction(a, col_total)
+        prompt = (f"The table shows survey responses. Given that a response is "
+                  f"“{ccat[0]}”, what is the probability that it is also “{rcat[0]}”?")
+        explanation = (f"Restrict to the “{ccat[0]}” column (total {a} + {c} = "
+                       f"{col_total}); of those, {a} are “{rcat[0]}”, so the "
+                       f"probability is {a}/{col_total} = {num_str(val)}.")
+        ds = [(Fraction(a, total), "Condition on the column total, not the grand total."),
+              (Fraction(a, a + b), "Condition on the column, not the row."),
+              (Fraction(c, col_total), "This is the probability of the other row in the column.")]
+    elif difficulty == "medium":
+        # Joint probability of a single cell out of the grand total.
+        val = Fraction(a, total)
+        prompt = (f"The table shows survey responses. If one response is chosen at "
+                  f"random, what is the probability that it is both “{rcat[0]}” and "
+                  f"“{ccat[0]}”?")
+        explanation = (f"That single cell holds {a} of the {total} responses, so the "
+                       f"probability is {a}/{total} = {num_str(val)}.")
+        ds = [(Fraction(a, a + b), "This conditions on the row instead of using the grand total."),
+              (Fraction(a, a + c), "This conditions on the column instead of the grand total."),
+              (Fraction(a + b, total), "This is the whole row, not the single cell.")]
+    else:
+        # Marginal probability of a row.
+        row_total = a + b
+        val = Fraction(row_total, total)
+        prompt = (f"The table shows survey responses. If one response is chosen at "
+                  f"random, what is the probability that it is in the “{rcat[0]}” row?")
+        explanation = (f"The “{rcat[0]}” row totals {a} + {b} = {row_total} out of "
+                       f"{total} responses, so the probability is "
+                       f"{row_total}/{total} = {num_str(val)}.")
+        ds = [(Fraction(a, total), f"This uses only one cell ({a}), not the whole row."),
+              (Fraction(c + d, total), "This is the probability of the other row."),
+              (Fraction(row_total, c + d), "Divide by the grand total, not the other row.")]
     return _numeric_mc(
-        rng, prompt, val,
-        [(Fraction(a, total), f"This uses only one cell ({a}), not the whole row."),
-         (Fraction(row_total, c + d) if (c + d) else Fraction(row_total, total),
-          "Divide by the grand total, not by the other row."),
-         (Fraction(c + d, total), "This is the probability of the other row.")],
-        subskill="two_way_tables", explanation=explanation,
-        qtype="data_interpretation", est=85, tags=["data", "probability", "table"],
-        verify=f"P={num_str(val)}",
-        stimulus={"type": "table", "table": {
-            "caption": "Survey responses", "headers": headers, "rows": rows}})
+        rng, prompt, val, ds, subskill="two_way_tables", explanation=explanation,
+        qtype="data_interpretation", est=90, tags=["data", "probability", "table"],
+        verify=f"P={num_str(val)}", stimulus=table)
 
 
 def line_of_best_fit(rng: random.Random, difficulty: str):
