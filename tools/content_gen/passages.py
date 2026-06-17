@@ -1454,10 +1454,18 @@ def build_reading(skill: str, rng: random.Random):
     return [_reading_q(p, skill, qtype, est, rng) for p in ordered]
 
 
+def _pair_complexity(pair) -> float:
+    """Combined prose density of both texts in a pair (see _passage_complexity)."""
+    return (_passage_complexity({"text": pair["text_a"]})
+            + _passage_complexity({"text": pair["text_b"]}))
+
+
 def build_cross_text(rng: random.Random):
-    """Return all cross-text question bodies from paired passages."""
+    """Return all cross-text question bodies from paired passages, ordered
+    hardest-first so the generator's end-popping puts the simplest pairs in the
+    easy tier and the densest in hard (matching build_reading)."""
     items = []
-    for pair in PAIRED:
+    for pair in sorted(PAIRED, key=_pair_complexity, reverse=True):
         stim = {"type": "paired_passages", "title": "Paired passages",
                 "text": pair["text_a"], "text_b": pair["text_b"]}
         for prompt, options, ci, rats, expl in pair["questions"]:

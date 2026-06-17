@@ -427,6 +427,49 @@ TEACHING = {
         "key_points": ["Summarize each text's main claim first.",
                        "Determine the relationship between the claims.",
                        "Anticipate how one author would respond to the other."],
+        "screens": [
+            {
+                "title": "Two texts, one topic",
+                "body": ("Cross-text questions give two short passages on the same subject "
+                         "and ask how they relate. The two common asks are: 'What is the "
+                         "relationship between the texts?' and 'How would the author of "
+                         "Text 2 respond to Text 1?' Everything rides on each author's "
+                         "actual position."),
+                "key_points": ["First job: state each author's claim in your own words.",
+                               "Then judge how the two claims relate."],
+            },
+            {
+                "title": "Name the relationship",
+                "body": ("Decide how Text 2 stands toward Text 1: agree, disagree, "
+                         "partly agree (qualify), add a cause or example, or shift the "
+                         "focus. Watch the tone — 'however,' 'yet,' and 'admittedly' are "
+                         "signposts. Be precise: 'disagrees' and 'qualifies' are different "
+                         "answers."),
+                "key_points": ["Options: agree / disagree / qualify / extend / reframe.",
+                               "Transition and tone words reveal the stance."],
+            },
+            {
+                "title": "Predict the response",
+                "body": ("For 'how would Author 2 respond,' don't invent a new opinion — "
+                         "use only what Text 2 already says, applied to Text 1's specific "
+                         "claim. Find the line in Text 2 that bears on that claim and "
+                         "paraphrase it. The answer must be something Text 2's author "
+                         "truly holds."),
+                "key_points": ["Respond using Text 2's stated views only.",
+                               "Aim the response at Text 1's exact claim."],
+            },
+            {
+                "title": "Dodge traps & try it",
+                "body": ("Traps overstate the conflict (says 'flatly rejects' when Text 2 "
+                         "only qualifies), swap which author thinks what, or bring in a "
+                         "view neither text holds. If Text 1 calls homework essential and "
+                         "Text 2 says it helps only in small amounts, Author 2 would "
+                         "'partly agree but warn against overuse' — not 'completely "
+                         "reject homework.'"),
+                "worked_example": ("State both claims, label the link (qualifies, not "
+                                   "rejects), then pick the precise relationship."),
+            },
+        ],
     },
     "sentence_boundaries": {
         "title": "Sentence Boundaries",

@@ -84,7 +84,10 @@ Order = top to bottom. Mark `[x]` when a section meets the Definition of Done.
   structure vs. purpose/function → label parts & name the pattern → answer with a
   function verb → dodge traps + worked example); ramp via complexity ordering
   (hard uses subtler sentence-function items); no answer tells; prompts vary.
-- [ ] cross_text_connections
+- [x] cross_text_connections — applied complexity ordering to build_cross_text so
+  paired-passage tiers now ramp (was authoring order); 4-screen mini-lesson (two
+  texts/one topic → name the relationship → predict the response → dodge traps);
+  no answer tells; two prompt types (relationship / how would author 2 respond).
 - [ ] transitions
 - [ ] rhetorical_synthesis
 - [ ] concision
