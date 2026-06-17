@@ -75,7 +75,11 @@ Order = top to bottom. Mark `[x]` when a section meets the Definition of Done.
   bigger numbers, uneven year-to-year steps); subtler distractors in medium/hard
   (constant-step, single-span, exaggerated-jump); varied prompts; 4-screen
   mini-lesson. Uses a data table (SAT-authentic; no extra figure needed).
-- [ ] words_in_context
+- [x] words_in_context — 4-screen mini-lesson (covers both WiC flavors → predict
+  then match → dodge traps → worked example); difficulty ramp via complexity
+  ordering with subtler secondary-meaning words in hard; no answer tells; prompts
+  vary by word. FUTURE: add completion-style ("most logical/precise word for the
+  blank") items as a coverage expansion — current items are meaning-in-context.
 - [ ] text_structure_purpose
 - [ ] cross_text_connections
 - [ ] transitions

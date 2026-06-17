@@ -335,6 +335,50 @@ TEACHING = {
         "key_points": ["Read the whole sentence, not just the word.",
                        "Predict a meaning before reading choices.",
                        "Watch for secondary meanings of familiar words."],
+        "screens": [
+            {
+                "title": "What it asks",
+                "body": ("Two close cousins show up here. One gives a word and asks what "
+                         "it 'most nearly means' as used in the passage. The other gives a "
+                         "blank and asks for the most logical, precise word to fill it. "
+                         "Both are decided by the sentence around the word — not by the "
+                         "word's dictionary-first meaning."),
+                "key_points": ["'Most nearly means' = the meaning that fits *here*.",
+                               "Completion = the word the context calls for."],
+            },
+            {
+                "title": "Predict, then match",
+                "body": ("Cover the word or blank and read the sentence for clues — "
+                         "especially contrast words (but, however) and the overall tone. "
+                         "Say your own plain word that fits, then pick the choice closest "
+                         "to it. Deciding before you read the options keeps the traps from "
+                         "steering you."),
+                "key_points": ["Use clues in the sentence to predict a word.",
+                               "Pick the choice nearest your prediction.",
+                               "Let contrast words flip the meaning you expect."],
+            },
+            {
+                "title": "Dodge the traps",
+                "body": ("The most common meaning of a familiar word is often the trap — "
+                         "the answer wants a secondary sense. Also watch for words that are "
+                         "loose synonyms in general but wrong for this sentence, words with "
+                         "the wrong tone (too strong or too negative), and words that don't "
+                         "fit the grammar."),
+                "key_points": ["The everyday meaning is often a decoy.",
+                               "'Synonym in general' isn't 'fits this sentence'.",
+                               "Match tone/connotation, not just rough meaning."],
+            },
+            {
+                "title": "Try the moves",
+                "body": ("'In less than a second it can flush deep red.' Predict a word: "
+                         "fill or flood with color. The match is 'become suffused with "
+                         "color.' 'Rinse clean with water' is flush's everyday meaning — "
+                         "the classic trap — and 'grow red with embarrassment' adds a "
+                         "feeling the sentence never gives."),
+                "worked_example": ("Predict 'fill with color' for 'flush' -> choose "
+                                   "'become suffused with color', not the everyday 'rinse'."),
+            },
+        ],
     },
     "cross_text_connections": {
         "title": "Cross-Text Connections",
