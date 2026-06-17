@@ -1195,6 +1195,152 @@ TEACHING_SCREENS = {
                   "−2 ≤ x ≤ 8, which contains 8 − (−2) + 1 = 11 integers."),
          "worked_example": "|x−3|=5 -> x=8 or −2.  |x−3|≤5 -> 11 integers (−2…8)."},
     ],
+    "exponential": [
+        {"title": "Multiply, don't add",
+         "body": ("Exponential change multiplies by the same factor each period; linear "
+                  "change adds the same amount. 'Doubles every hour' or 'loses half each "
+                  "day' is exponential — the step gets bigger (or smaller) over time."),
+         "key_points": ["Exponential = repeated multiplication by a factor.",
+                        "Linear = repeated addition of a fixed amount."]},
+        {"title": "The model",
+         "body": ("After t periods, amount = start × (factor)^t. Growth uses a factor > 1 "
+                  "(×2, ×3); decay uses a factor < 1 (×½, ×⅓). The starting amount is "
+                  "multiplied, and the factor is what's raised to the power t."),
+         "key_points": ["amount = start · (factor)^t.",
+                        "Growth factor > 1; decay factor < 1."]},
+        {"title": "Compute carefully",
+         "body": ("To find a value, raise the factor to the number of periods, then "
+                  "multiply by the start. For decay, dividing by r each period is the same "
+                  "as multiplying by 1/r. Don't multiply the factor by the time."),
+         "key_points": ["Do start × factor^t, not start × factor × t.",
+                        "Dividing by r per period = ×(1/r)^t."]},
+        {"title": "Try the moves",
+         "body": ("5 bacteria triple every hour: after 3 hours, 5 × 3³ = 5 × 27 = 135. A "
+                  "model for 'n₀ doubles every hour' after t hours is n₀·2^t — not n₀·2·t "
+                  "(that's linear)."),
+         "worked_example": "5 × 3³ = 135.  Model: n₀ doubling -> n₀·2^t."},
+    ],
+    "ratios_percentages_units": [
+        {"title": "Percent means 'per 100'",
+         "body": ("P% of N is (P/100)·N. To go the other way, 'what percent is A of B?' is "
+                  "(A/B)·100. Convert the percent to a decimal or fraction and multiply — "
+                  "don't forget the ÷100."),
+         "key_points": ["P% of N = P/100 × N.",
+                        "A is (A/B)·100 percent of B."]},
+        {"title": "Percent change",
+         "body": ("Percent change = (new − old)/old × 100. The denominator is always the "
+                  "ORIGINAL value, not the new one. A drop uses the same formula; the "
+                  "result is a decrease."),
+         "key_points": ["Change% = (new − old)/old × 100.",
+                        "Always divide by the original amount."]},
+        {"title": "Working backward",
+         "body": ("A P% increase multiplies the original by (1 + P/100); a P% decrease by "
+                  "(1 − P/100). Given the result, divide by that factor to recover the "
+                  "original — don't just apply the percent to the new value."),
+         "key_points": ["new = original × (1 ± P/100).",
+                        "Recover the original by dividing by the factor."]},
+        {"title": "Try the moves",
+         "body": ("20% of 150 = 0.20 × 150 = 30. From 40 to 50 is (50−40)/40 × 100 = 25%. "
+                  "If a price after a 25% increase is 100, the original was 100 ÷ 1.25 = 80."),
+         "worked_example": "0.2×150=30;  (50−40)/40=25%;  100 ÷ 1.25 = 80."},
+    ],
+    "proportions": [
+        {"title": "Set up the ratio",
+         "body": ("A proportion sets two equal ratios: a/b = x/c. Keep the same units in "
+                  "the same positions (miles over hours on both sides), then cross-multiply "
+                  "and solve for the unknown."),
+         "key_points": ["Match units across the equal ratios.",
+                        "Cross-multiply: a·c = b·x."]},
+        {"title": "Unit rate first",
+         "body": ("Often it's quickest to find the unit rate (the amount for ONE) by "
+                  "dividing, then multiply by however many you need. '5 cost $15' -> $3 "
+                  "each -> 8 cost $24."),
+         "key_points": ["Unit rate = total ÷ quantity.",
+                        "Then multiply the unit rate by the new quantity."]},
+        {"title": "Direct vs. inverse",
+         "body": ("Direct: more of one means more of the other (more hours, more miles). "
+                  "Inverse: more of one means LESS of the other (more workers, less time). "
+                  "For inverse, the product stays constant: w₁·h₁ = w₂·h₂."),
+         "key_points": ["Direct -> same direction; ratio is constant.",
+                        "Inverse -> opposite direction; the product is constant."]},
+        {"title": "Try the moves",
+         "body": ("3 machines in 2 hours -> 12 in x hours? Direct: 3/2 = 12/x -> x = 8. "
+                  "But 4 workers take 6 hours, so 3 workers (inverse) take 4·6 ÷ 3 = 8 "
+                  "hours — fewer workers, more time."),
+         "worked_example": "Direct: 3/2 = 12/x -> x=8.  Inverse: 4·6 ÷ 3 = 8 hours."},
+    ],
+    "data_analysis": [
+        {"title": "Read the table first",
+         "body": ("Start with the caption, the column headers, and the units. Make sure "
+                  "you know what each number represents before you compute anything — the "
+                  "wrong column is the classic trap."),
+         "key_points": ["Caption + headers + units, every time.",
+                        "Confirm which column the question asks about."]},
+        {"title": "Common computations",
+         "body": ("Total = add the column. Mean = total ÷ count. Range = greatest − least. "
+                  "'How many more' = subtract. Match the operation to the wording before "
+                  "you start."),
+         "key_points": ["Total / mean / range / difference — pick the right one.",
+                        "Mean divides by the number of entries."]},
+        {"title": "Two-step questions",
+         "body": ("Harder items combine steps: compute the mean, then compare a value to "
+                  "it; or add two categories and compare to a third. Do one step at a time "
+                  "and keep your intermediate numbers."),
+         "key_points": ["Compute the mean, then compare to it.",
+                        "Track intermediate results; don't rush to an answer."]},
+        {"title": "Try the moves",
+         "body": ("Days sold 10, 20, 30, 20: total 80, mean 80 ÷ 4 = 20. The busiest day "
+                  "(30) is 30 − 20 = 10 above the mean."),
+         "worked_example": "mean = 80 ÷ 4 = 20;  busiest 30 is 10 above the mean."},
+    ],
+    "statistics": [
+        {"title": "Center: mean, median, mode",
+         "body": ("Mean is the average (sum ÷ count). Median is the middle value when the "
+                  "data is sorted (average the two middle ones if the count is even). Mode "
+                  "is the most frequent value."),
+         "key_points": ["Mean = sum ÷ count.",
+                        "Median = middle of the sorted list; mode = most frequent."]},
+        {"title": "Spread: range",
+         "body": ("Range measures how spread out the data is: greatest − least. It's a "
+                  "quick measure of spread and is easy to confuse with the other "
+                  "statistics, so read the question word carefully."),
+         "key_points": ["Range = greatest − least.",
+                        "Don't mix up range with mean or median."]},
+        {"title": "Work backward from the mean",
+         "body": ("If you know the mean and the count, you know the TOTAL (mean × count). "
+                  "That lets you find a missing value: total minus the values you do know "
+                  "gives the one you don't."),
+         "key_points": ["Total = mean × count.",
+                        "Missing value = total − (sum of the known values)."]},
+        {"title": "Try the moves",
+         "body": ("Mean of 4, 6, 8, 10, 12 is 40 ÷ 5 = 8; median is 8; range is 12 − 4 = 8. "
+                  "If five numbers average 10 and four are 8, 9, 11, 12 (sum 40), the fifth "
+                  "is 50 − 40 = 10."),
+         "worked_example": "mean=40÷5=8.  Missing: 10·5 − 40 = 10."},
+    ],
+    "probability": [
+        {"title": "Favorable over total",
+         "body": ("The probability of an event is (favorable outcomes) ÷ (total outcomes). "
+                  "For one marble from a bag, it's (that colour) ÷ (all marbles). Keep the "
+                  "TOTAL in the denominator."),
+         "key_points": ["P = favorable ÷ total.",
+                        "The denominator is the total number of outcomes."]},
+        {"title": "Complement and 'or'",
+         "body": ("P(not A) = 1 − P(A) = (everything else) ÷ total. For mutually exclusive "
+                  "outcomes, P(A or B) adds the favorable counts: (A + B) ÷ total."),
+         "key_points": ["P(not A) = 1 − P(A).",
+                        "P(A or B) = (count A + count B) ÷ total (no overlap)."]},
+        {"title": "Without replacement",
+         "body": ("If you don't put the first item back, the second draw has one fewer of "
+                  "that item AND one fewer total. P(both A) = (A/total)·((A−1)/(total−1)). "
+                  "Both numbers drop by one."),
+         "key_points": ["Second draw: subtract 1 from favorable AND from total.",
+                        "Multiply the two draw probabilities."]},
+        {"title": "Try the moves",
+         "body": ("Bag of 3 red, 5 blue (8 total): P(red) = 3/8; P(not red) = 5/8. Two "
+                  "reds without replacement: 3/8 × 2/7 = 6/56 = 3/28."),
+         "worked_example": "P(red)=3/8;  two reds = 3/8 × 2/7 = 3/28."},
+    ],
 }
 
 for _skill, _screens in TEACHING_SCREENS.items():

@@ -471,8 +471,8 @@ def polynomials(rng: random.Random, difficulty: str):
 # Problem-Solving and Data Analysis
 # --------------------------------------------------------------------------- #
 def ratios_percentages_units(rng: random.Random, difficulty: str):
-    mode = rng.choice(["percent_of", "percent_change"])
-    if mode == "percent_of":
+    # Easy: "what is P% of N".
+    if difficulty == "easy":
         whole = rng.randint(20, 80) * 5
         pct = rng.choice([10, 15, 20, 25, 30, 40, 60, 75])
         val = whole * pct // 100
@@ -485,24 +485,84 @@ def ratios_percentages_units(rng: random.Random, difficulty: str):
              (whole - val, "This is the remaining amount, not the part asked for.")],
             subskill="percent_change", explanation=explanation,
             tags=["percent"], verify=f"{pct}% of {whole}={val}")
-    old = rng.randint(20, 60)
+    # Medium: percent increase or decrease (compute the percent).
+    if difficulty == "medium":
+        old = rng.randint(20, 60)
+        pct = rng.choice([10, 20, 25, 50])
+        up = rng.random() < 0.5
+        new = old + old * pct // 100 if up else old - old * pct // 100
+        word = "increase" if up else "decrease"
+        prompt = (f"A quantity changes from {old} to {new}. "
+                  f"What is the percent {word}?")
+        explanation = (f"Percent {word} = |new − old|/old × 100 = "
+                       f"|{new} − {old}|/{old} × 100 = {pct}%.")
+        return _numeric_mc(
+            rng, prompt, pct,
+            [(abs(new - old), "This is the raw change, not the percent change."),
+             (abs(new - old) * 100 // new, "Divide by the original value, not the new value."),
+             (pct + 5, "Recheck the division; the percent is off.")],
+            subskill="percent_change", explanation=explanation,
+            tags=["percent", "change"], fmt=lambda v: f"{v}%", est=80,
+            verify=f"{word}={pct}%")
+    # Hard: reverse percent — recover the original before a known % change.
     pct = rng.choice([10, 20, 25, 50])
-    new = old + old * pct // 100
-    prompt = (f"A quantity increases from {old} to {new}. "
-              f"What is the percent increase?")
-    explanation = (f"Percent increase = (new − old)/old × 100 = "
-                   f"({new} − {old})/{old} × 100 = {pct}%.")
+    original = rng.randint(4, 24) * 20      # keeps the result an integer
+    up = rng.random() < 0.5
+    new = original + original * pct // 100 if up else original - original * pct // 100
+    word = "increase" if up else "decrease"
+    prompt = (f"After a {pct}% {word}, a quantity is {new}. "
+              f"What was the original value?")
+    factor = f"(1 {'+' if up else '−'} {pct}/100)"
+    explanation = (f"new = original × {factor}, so original = {new} ÷ {factor} = "
+                   f"{original}.")
     return _numeric_mc(
-        rng, prompt, pct,
-        [(new - old, "This is the raw increase, not the percent increase."),
-         ((new - old) * 100 // new, "Divide by the original value, not the new value."),
-         (pct + 5, "Recheck the division; the percent is off.")],
+        rng, prompt, original,
+        [(new + new * pct // 100 if up else new - new * pct // 100,
+          f"This applies the {word} to the new value instead of reversing it."),
+         (new, "This is the value after the change, not the original.")],
         subskill="percent_change", explanation=explanation,
-        tags=["percent", "change"], fmt=lambda v: f"{v}%", est=80,
-        verify=f"increase={pct}%")
+        tags=["percent", "reverse"], est=90, verify=f"orig={original}")
 
 
 def proportions(rng: random.Random, difficulty: str):
+    # Hard: inverse proportion (more workers -> less time).
+    if difficulty == "hard":
+        w1 = rng.randint(2, 6)
+        w2 = rng.choice([w for w in range(2, 9) if w != w1])
+        per_worker = rng.randint(2, 8)          # keeps the answer an integer
+        h1 = per_worker * w2
+        val = per_worker * w1                   # = w1*h1 / w2
+        prompt = (f"It takes {w1} workers {h1} hours to finish a job. Working at the "
+                  f"same rate, how many hours would it take {w2} workers?")
+        explanation = (f"Total work = {w1}×{h1} = {w1 * h1} worker-hours. With {w2} "
+                       f"workers: {w1 * h1} ÷ {w2} = {val} hours.")
+        return _numeric_mc(
+            rng, prompt, val,
+            [(h1 * w2 // w1, "More workers means less time; this scales the wrong way."),
+             (h1, "This ignores the change in the number of workers."),
+             (w1 * h1, "This is the total worker-hours, not the time for {0} workers.".format(w2))],
+            subskill="scaling", explanation=explanation,
+            tags=["proportion", "inverse"], est=95, verify=f"t={val}")
+    # Medium: find the unit rate first, then scale to a non-multiple amount.
+    if difficulty == "medium":
+        per = rng.randint(2, 9)                  # cost/output per single unit
+        n1 = rng.randint(2, 6)
+        n2 = rng.choice([k for k in range(7, 20) if k != n1])
+        c1 = per * n1
+        val = per * n2
+        thing, money = rng.choice([("notebooks", "$"), ("tickets", "$"), ("bags", "$")])
+        prompt = (f"{n1} {thing} cost {money}{c1}. At the same rate, how much do "
+                  f"{n2} {thing} cost?")
+        explanation = (f"Unit rate = {money}{c1} ÷ {n1} = {money}{per} each, so "
+                       f"{n2} × {money}{per} = {money}{val}.")
+        return _numeric_mc(
+            rng, prompt, val,
+            [(c1 * n2, "You forgot to divide by the first quantity to get the unit rate."),
+             (c1 + (n2 - n1), "This adds the extra count instead of scaling by the rate."),
+             (per * (n2 - n1), "This prices only the additional items, not all of them.")],
+            subskill="scaling", explanation=explanation,
+            tags=["proportion", "unit-rate"], est=85, verify=f"cost={val}")
+    # Easy: direct proportion at a clean multiple of the given rate.
     rate_n = rng.randint(2, 15)
     rate_d = rng.randint(2, 9)
     mult = rng.randint(3, 12)
@@ -523,11 +583,44 @@ def proportions(rng: random.Random, difficulty: str):
 
 
 def data_analysis(rng: random.Random, difficulty: str):
-    cats = rng.sample(["Mon", "Tue", "Wed", "Thu", "Fri"], 4)
+    n = 4 if difficulty == "easy" else 5
+    cats = rng.sample(["Mon", "Tue", "Wed", "Thu", "Fri"], n)
     vals = [rng.randint(10, 40) for _ in cats]
+    if difficulty != "easy":
+        vals[-1] += (n - sum(vals) % n) % n      # make the mean an integer
     headers = ["Day", "Tickets sold"]
     rows = [[c, str(v)] for c, v in zip(cats, vals)]
     total = sum(vals)
+    table = {"type": "table", "table": {"caption": "Daily ticket sales",
+                                        "headers": headers, "rows": rows}}
+    if difficulty == "medium":
+        mean = total // n
+        prompt = "Based on the table, what is the mean number of tickets sold per day?"
+        return _numeric_mc(
+            rng, prompt, mean,
+            [(max(vals), "This is the busiest day, not the average."),
+             (max(vals) - min(vals), "This is the range, not the mean."),
+             (total, "This is the total; divide by the number of days.")],
+            subskill="tables", explanation=(
+                f"Mean = total ÷ days = {total} ÷ {n} = {mean}."),
+            qtype="data_interpretation", tags=["data", "table"], est=85,
+            stimulus=table, verify=f"mean={mean}")
+    if difficulty == "hard":
+        mean = total // n
+        val = max(vals) - mean
+        busy = cats[vals.index(max(vals))]
+        prompt = ("Based on the table, how many more tickets than the daily mean "
+                  "were sold on the busiest day?")
+        return _numeric_mc(
+            rng, prompt, val,
+            [(max(vals), "This is the busiest day's total, not its excess over the mean."),
+             (mean, "This is the mean itself, not the amount above it."),
+             (max(vals) - min(vals), "This compares to the least day, not the mean.")],
+            subskill="tables", explanation=(
+                f"Mean = {total} ÷ {n} = {mean}. The busiest day ({busy}) sold "
+                f"{max(vals)}, which is {max(vals)} − {mean} = {val} above the mean."),
+            qtype="data_interpretation", tags=["data", "table"], est=95,
+            stimulus=table, verify=f"excess={val}")
     qmode = rng.choice(["total", "max", "diff"])
     if qmode == "total":
         prompt = "Based on the table, how many tickets were sold in all four days combined?"
@@ -563,6 +656,52 @@ def data_analysis(rng: random.Random, difficulty: str):
 
 def statistics(rng: random.Random, difficulty: str):
     n = 5
+    # Hard: find a missing value given the mean (work backwards from the total).
+    if difficulty == "hard":
+        target_mean = rng.randint(8, 16)
+        four = [rng.randint(2, 20) for _ in range(4)]
+        missing = target_mean * n - sum(four)
+        while not (1 <= missing <= 30):          # keep it a sensible value
+            four = [rng.randint(2, 20) for _ in range(4)]
+            missing = target_mean * n - sum(four)
+        shown = ", ".join(map(str, four))
+        prompt = (f"The mean of 5 numbers is {target_mean}. Four of the numbers are "
+                  f"{shown}. What is the fifth number?")
+        explanation = (f"The five numbers total {target_mean}×5 = {target_mean * n}. "
+                       f"The four shown total {sum(four)}, so the fifth is "
+                       f"{target_mean * n} − {sum(four)} = {missing}.")
+        return _numeric_mc(
+            rng, prompt, missing,
+            [(target_mean, "This is the mean itself, not the missing value."),
+             (sum(four), "This is the sum of the four shown numbers."),
+             (target_mean * n, "This is the total of all five; subtract the four shown.")],
+            subskill="mean_median_mode", explanation=explanation,
+            tags=["statistics", "mean"], est=95, verify=f"missing={missing}")
+    # Medium: range or mode.
+    if difficulty == "medium":
+        if rng.random() < 0.5:
+            data = sorted(rng.randint(2, 30) for _ in range(6))
+            val = max(data) - min(data)
+            prompt = (f"What is the range of the data set {', '.join(map(str, data))}?")
+            explanation = (f"Range = greatest − least = {max(data)} − {min(data)} = {val}.")
+            ds = [(max(data), "This is the greatest value, not the range."),
+                  (sum(data) // len(data), "This is the mean, not the range."),
+                  (data[len(data) // 2], "This is a middle value, not the range.")]
+            return _numeric_mc(rng, prompt, val, ds, subskill="spread",
+                               explanation=explanation, tags=["statistics", "range"],
+                               est=80, verify=f"range={val}")
+        # mode: build a set with one clear most-frequent value
+        m = rng.randint(3, 15)
+        data = [m, m, m] + rng.sample([x for x in range(2, 20) if x != m], 3)
+        rng.shuffle(data)
+        prompt = (f"What is the mode of the data set {', '.join(map(str, data))}?")
+        explanation = f"The value {m} appears most often (three times), so it is the mode."
+        ds = [(max(data), "This is the greatest value, not the most frequent."),
+              (sum(data) // len(data), "This is the mean, not the mode."),
+              (min(data), "This is the least value, not the most frequent.")]
+        return _numeric_mc(rng, prompt, m, ds, subskill="mean_median_mode",
+                           explanation=explanation, tags=["statistics", "mode"],
+                           est=80, verify=f"mode={m}")
     data = sorted(rng.randint(2, 20) for _ in range(n))
     mode = rng.choice(["mean", "median"])
     if mode == "mean":
@@ -597,11 +736,60 @@ def probability(rng: random.Random, difficulty: str):
     blue = rng.randint(2, 14)
     green = rng.randint(1, 10)
     total = red + blue + green
+    counts = {"red": red, "blue": blue, "green": green}
+    bag = (f"A bag contains {red} red, {blue} blue, and {green} green marbles. ")
+
+    # Hard: two draws without replacement, both the same colour.
+    if difficulty == "hard":
+        color = rng.choice(["red", "blue"])
+        k = counts[color]
+        val = Fraction(k * (k - 1), total * (total - 1))
+        prompt = (bag + f"If two marbles are drawn at random without replacement, "
+                  f"what is the probability that both are {color}?")
+        explanation = (f"P(both {color}) = {k}/{total} × {k - 1}/{total - 1} = "
+                       f"{num_str(val)}.")
+        return _numeric_mc(
+            rng, prompt, val,
+            [(Fraction(k, total) * Fraction(k, total),
+              "Without replacement the second draw has one fewer marble of that colour and one fewer total."),
+             (Fraction(k, total),
+              "This is the probability for a single draw, not two."),
+             (Fraction(k * (k - 1), total * total),
+              "Reduce the total by one on the second draw as well.")],
+            subskill="simple_probability", explanation=explanation,
+            tags=["probability", "without-replacement"], est=95,
+            verify=f"P={num_str(val)}")
+    # Medium: complement, or the union of two colours.
+    if difficulty == "medium":
+        if rng.random() < 0.5:
+            color = rng.choice(["red", "blue", "green"])
+            k = counts[color]
+            val = Fraction(total - k, total)
+            prompt = (bag + f"If one marble is drawn at random, what is the "
+                      f"probability that it is NOT {color}?")
+            explanation = (f"P(not {color}) = ({total} − {k})/{total} = {num_str(val)}.")
+            ds = [(Fraction(k, total), f"This is the probability of drawing {color}."),
+                  (Fraction(total - k, k), "Keep the total in the denominator."),
+                  (Fraction(k, total - k), "Compare favourable to total, not to the rest.")]
+        else:
+            c1, c2 = rng.sample(["red", "blue", "green"], 2)
+            k = counts[c1] + counts[c2]
+            val = Fraction(k, total)
+            prompt = (bag + f"If one marble is drawn at random, what is the "
+                      f"probability that it is {c1} or {c2}?")
+            explanation = (f"P({c1} or {c2}) = ({counts[c1]} + {counts[c2]})/{total} "
+                           f"= {num_str(val)}.")
+            ds = [(Fraction(counts[c1], total), f"This counts only the {c1} marbles."),
+                  (Fraction(total - k, total), "This is the probability of the third colour."),
+                  (Fraction(k, total - k), "Use the total in the denominator.")]
+        return _numeric_mc(rng, prompt, val, ds, subskill="simple_probability",
+                           explanation=explanation, tags=["probability"], est=85,
+                           verify=f"P={num_str(val)}")
+    # Easy: single draw, one colour.
     pick = rng.choice([("red", red), ("blue", blue), ("green", green)])
     val = Fraction(pick[1], total)
-    prompt = (f"A bag contains {red} red, {blue} blue, and {green} green marbles. "
-              f"If one marble is drawn at random, what is the probability it is "
-              f"{pick[0]}?")
+    prompt = (bag + f"If one marble is drawn at random, what is the probability it "
+              f"is {pick[0]}?")
     explanation = (f"There are {pick[1]} {pick[0]} marbles out of {total} total, so "
                    f"the probability is {pick[1]}/{total} = {num_str(val)}.")
     return _numeric_mc(

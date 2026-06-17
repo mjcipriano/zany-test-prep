@@ -72,14 +72,59 @@ def word_problems(rng: random.Random, difficulty: str):
 
 
 def exponential_growth(rng: random.Random, difficulty: str):
-    n0 = rng.choice([2, 3, 4, 5, 6, 8, 10, 12, 15, 20, 25, 50])
-    r = rng.choice([2, 3]) if difficulty != "hard" else rng.choice([2, 3, 4])
-    word = {2: "doubles", 3: "triples", 4: "quadruples"}[r]
-    h = rng.randint(2, 5)
-    val = n0 * r ** h
     thing, per = rng.choice([
         ("bacteria in a culture", "hour"), ("users of an app", "month"),
         ("cells in a sample", "hour"), ("shares of a rumor", "day")])
+    # Hard: choose the EXPRESSION that models the situation (conceptual).
+    if difficulty == "hard":
+        n0 = rng.choice([5, 10, 20, 50, 100, 200])
+        grow = rng.random() < 0.5
+        r = rng.choice([2, 3]) if grow else rng.choice([2, 4])
+        if grow:
+            verb = {2: "doubles", 3: "triples"}[r] + f" every {per}"
+            correct = f"{n0}·{r}^t"
+            third = f"{n0}^t·{r}"
+        else:
+            verb = f"is divided by {r} every {per}"
+            correct = f"{n0}·(1/{r})^t"
+            third = f"{n0}/({r}·t)"
+        prompt = (f"A population of {n0} {thing} {verb}. Which expression gives the "
+                  f"population after t {per}s?")
+        ds = [(f"{n0}·{r}·t", "This models linear change (a fixed amount each period), "
+               "not repeated multiplication."),
+              (f"{n0}+{r}·t", "This adds a constant each period instead of multiplying."),
+              (third, "The repeating growth factor is the base raised to t, applied to "
+               "the starting amount.")]
+        return _numeric_mc(
+            rng, prompt, correct, ds, subskill="exponential",
+            explanation=(f"Each {per} multiplies the amount by the factor, so after t "
+                         f"{per}s the population is {correct}."),
+            tags=["advanced-math", "exponential", "model"], fmt=str, est=90,
+            verify=f"model {correct}")
+    # Medium: exponential DECAY — value after h periods (clean integer division).
+    if difficulty == "medium":
+        r = rng.choice([2, 3])
+        h = rng.randint(2, 4)
+        final = rng.randint(2, 20)
+        n0 = final * r ** h
+        word = {2: "halves", 3: "is cut to one-third"}[r]
+        val = final
+        prompt = (f"A population of {n0} {thing} {word} every {per}. "
+                  f"How many will there be after {h} {per}s?")
+        explanation = (f"Divide by {r} each {per}: {n0} ÷ {r}^{h} = {val}.")
+        return _numeric_mc(
+            rng, prompt, val,
+            [(n0 // (r * h), "This divides once by r×time instead of repeatedly."),
+             (n0 - r * h, "This subtracts instead of repeatedly dividing."),
+             (val * r, "This stops one period too early.")],
+            subskill="exponential", explanation=explanation, est=85,
+            tags=["advanced-math", "exponential", "decay"], verify=f"{n0}/{r}^{h}={val}")
+    # Easy: exponential growth — value after h periods.
+    n0 = rng.choice([2, 3, 4, 5, 6, 8, 10, 12, 15, 20, 25])
+    r = rng.choice([2, 3])
+    word = {2: "doubles", 3: "triples"}[r]
+    h = rng.randint(2, 5)
+    val = n0 * r ** h
     prompt = (f"A population of {n0} {thing} {word} every {per}. "
               f"How many will there be after {h} {per}s?")
     explanation = (f"Multiply by {r} each {per}: {n0} × {r}^{h} = {val}.")

@@ -154,12 +154,19 @@ Order = top to bottom. Mark `[x]` when a section meets the Definition of Done.
 - [x] polynomials — was always "coefficient of x"; now easy that, medium any
   coefficient with negatives, hard factoring (choose the binomial factor);
   4-screen mini-lesson (FOIL → signs → factoring in reverse → example).
-- [ ] exponential
-- [ ] ratios_percentages_units
-- [ ] proportions
-- [ ] data_analysis  (figure?)
-- [ ] statistics
-- [ ] probability
+- [x] exponential — graded tiers (easy growth value → medium decay value → hard
+  choose the modeling expression); 4-screen mini-lesson. No tells.
+- [x] ratios_percentages_units — graded tiers (easy %-of → medium %-increase/
+  decrease → hard reverse-percent recover-the-original); 4-screen mini-lesson.
+- [x] proportions — graded tiers (easy direct multiple → medium unit-rate two-step
+  → hard inverse proportion); 4-screen mini-lesson.
+- [x] data_analysis — graded tiers (easy read total/max/diff → medium mean →
+  hard busiest-above-the-mean two-step); 4-screen mini-lesson. Uses a data table
+  (SAT-authentic; bar-graph figure a future nicety, not required).
+- [x] statistics — graded tiers (easy mean/median → medium range/mode → hard
+  missing value from the mean); 4-screen mini-lesson.
+- [x] probability — graded tiers (easy single-draw → medium complement / 'A or B'
+  → hard two draws without replacement); 4-screen mini-lesson.
 - [ ] two_way_tables
 - [ ] scatterplots  (figure)
 - [ ] right_triangles  (figure)
