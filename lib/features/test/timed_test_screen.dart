@@ -69,6 +69,7 @@ class _TimedTestScreenState extends ConsumerState<TimedTestScreen> {
   final _text = TextEditingController();
   int _remaining = 0;
   Timer? _timer;
+  bool _ending = false; // the current module is being closed/scored
 
   @override
   void dispose() {
@@ -96,6 +97,7 @@ class _TimedTestScreenState extends ConsumerState<TimedTestScreen> {
 
   void _startModule(int i) {
     _timer?.cancel();
+    _ending = false;
     setState(() {
       _moduleIndex = i;
       _q = 0;
@@ -136,6 +138,10 @@ class _TimedTestScreenState extends ConsumerState<TimedTestScreen> {
   }
 
   void _endModule() {
+    // The timer can fire while the submit dialog is open; whichever path gets
+    // here first wins, so a section is never scored twice.
+    if (_ending || _phase != _Phase.module) return;
+    _ending = true;
     _timer?.cancel();
     if (_question.type.isStudentProduced && _text.text.trim().isNotEmpty) {
       _record(_text.text.trim());

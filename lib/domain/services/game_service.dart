@@ -174,6 +174,9 @@ class GameService {
       final lp = progress.lessonProgress(lesson.id);
       lp.completed = true;
       lp.timesCompleted += 1;
+      // A content update can change a lesson's length; a best score from a
+      // different length is not comparable, so it starts over.
+      if (lp.total != total) lp.bestCorrect = 0;
       lp.total = total;
       if (correctCount > lp.bestCorrect) lp.bestCorrect = correctCount;
       if (stars > lp.stars) lp.stars = stars;
@@ -200,7 +203,7 @@ class GameService {
       stat.lastCorrect = r.correct;
       stat.totalResponseMs += r.responseMs;
 
-      final m = progress.mastery(q.skill);
+      final m = progress.mastery(masteryKeyFor(q));
       m.mastery = mastery.update(
         current: m.mastery,
         correct: r.correct,

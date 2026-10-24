@@ -9,6 +9,7 @@
 /// user's progress.
 library;
 
+import 'question.dart';
 import 'safe_json.dart';
 
 /// Bumped only when the persisted progress shape needs a real migration.
@@ -17,6 +18,41 @@ const int kProgressSchemaVersion = 1;
 
 String dayKey(DateTime d) =>
     '${d.year.toString().padLeft(4, '0')}-${d.month.toString().padLeft(2, '0')}-${d.day.toString().padLeft(2, '0')}';
+
+/// Parses a 'yyyy-MM-dd' key as a UTC midnight, so day arithmetic is immune to
+/// daylight-saving transitions (a local-time 23-hour day would otherwise count
+/// as 0 days).
+DateTime _utcDay(String key) {
+  final d = DateTime.parse(key);
+  return DateTime.utc(d.year, d.month, d.day);
+}
+
+/// Whole days from [fromKey] to [toKey] (negative if [toKey] is earlier).
+int daysBetweenDayKeys(String fromKey, String toKey) =>
+    _utcDay(toKey).difference(_utcDay(fromKey)).inDays;
+
+/// The day key [n] days after [key].
+String addDaysToDayKey(String key, int n) =>
+    dayKey(_utcDay(key).add(Duration(days: n)));
+
+/// The exam whose skills are stored under bare skill ids (legacy progress).
+const String kLegacyMasteryExam = 'sat';
+
+/// Key under which a skill's mastery and review items are stored. Skill ids
+/// are shared between exams (e.g. `linear_equations` exists on both the SAT
+/// and the ACT), so mastery is scoped per exam: SAT keeps the bare id for
+/// backward compatibility with existing progress; other exams use
+/// `<exam>:<skill>`.
+String masteryKey(String examId, String skillId) =>
+    examId == kLegacyMasteryExam ? skillId : '$examId:$skillId';
+
+String masteryKeyFor(Question q) => masteryKey(q.examId, q.skill);
+
+/// The bare skill id behind a mastery key.
+String skillIdOfMasteryKey(String key) {
+  final i = key.indexOf(':');
+  return i < 0 ? key : key.substring(i + 1);
+}
 
 /// Per-lesson outcome and best score.
 class LessonProgress {
@@ -168,6 +204,7 @@ class GameState {
     this.dailyDay,
     this.survivalBest = 0,
     this.diagnosticDone = false,
+    Set<String>? diagnosticDoneExams,
     Set<String>? earnedBadges,
     this.streakFreezes = 0,
     this.unopenedChests = 0,
@@ -177,6 +214,7 @@ class GameState {
     Set<String>? ownedAssetIds,
     Map<String, String>? equipped,
   }) : earnedBadges = earnedBadges ?? <String>{},
+       diagnosticDoneExams = diagnosticDoneExams ?? <String>{},
        ownedAssetIds = ownedAssetIds ?? <String>{},
        equipped = equipped ?? <String, String>{};
 
@@ -188,8 +226,19 @@ class GameState {
   int dailyXp;
   String? dailyDay;
   int survivalBest; // longest correct streak in Survival mode
-  bool diagnosticDone;
+  bool diagnosticDone; // legacy flag: the SAT diagnostic was taken/skipped
+  Set<String> diagnosticDoneExams; // exams whose diagnostic was taken/skipped
   Set<String> earnedBadges;
+
+  /// Whether the placement diagnostic was taken (or dismissed) for [examId].
+  bool diagnosticDoneFor(String examId) =>
+      diagnosticDoneExams.contains(examId) ||
+      (examId == kLegacyMasteryExam && diagnosticDone);
+
+  void markDiagnosticDone(String examId) {
+    diagnosticDoneExams.add(examId);
+    if (examId == kLegacyMasteryExam) diagnosticDone = true;
+  }
 
   // --- Rewards economy ---
   int streakFreezes; // banked freezes, capped at [kMaxStreakFreezes]
@@ -217,6 +266,7 @@ class GameState {
     'dailyDay': dailyDay,
     'survivalBest': survivalBest,
     'diagnosticDone': diagnosticDone,
+    'diagnosticDoneExams': diagnosticDoneExams.toList(),
     'earnedBadges': earnedBadges.toList(),
     'streakFreezes': streakFreezes,
     'unopenedChests': unopenedChests,
@@ -237,6 +287,7 @@ class GameState {
     dailyDay: asStringOrNull(j['dailyDay']),
     survivalBest: asInt(j['survivalBest']),
     diagnosticDone: asBool(j['diagnosticDone']),
+    diagnosticDoneExams: asStringList(j['diagnosticDoneExams']).toSet(),
     earnedBadges: asStringList(j['earnedBadges']).toSet(),
     streakFreezes: asInt(j['streakFreezes']),
     unopenedChests: asInt(j['unopenedChests']),

@@ -106,10 +106,12 @@ class _SurvivalScreenState extends ConsumerState<SurvivalScreen> {
   }
 
   Future<void> _finish() async {
+    if (_submitting) return; // ignore a second tap while the run is saving
     setState(() => _submitting = true);
     final result = await ref
         .read(appControllerProvider.notifier)
         .completeSurvival(results: _results, streak: _streak);
+    if (!mounted) return;
     if (result.isRecord || result.newBadges.isNotEmpty) {
       final profile = ref.read(appControllerProvider).valueOrNull?.profile;
       if (profile?.soundOn ?? true) {

@@ -31,7 +31,7 @@ class AvatarScreen extends ConsumerWidget {
       ...catalog.items.where((a) => rewards.isOwned(g, a)),
       ...catalog.pets.where((a) => rewards.isOwned(g, a)),
     ];
-    final selectedId = rewards.selectedAvatar(g, catalog).id;
+    final selectedId = rewards.selectedAvatar(g, catalog)?.id;
 
     return Scaffold(
       appBar: AppBar(

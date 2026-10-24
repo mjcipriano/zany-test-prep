@@ -1,3 +1,4 @@
+import '../models/content_bundle.dart';
 import '../models/progress.dart';
 import '../models/question.dart';
 
@@ -14,20 +15,9 @@ class ReviewEngine {
   static const double minEase = 1.3;
   static const int graduateInterval = 30; // days; correct beyond this -> remove
 
-  int _daysBetween(String from, String to) {
-    final a = DateTime.parse(from);
-    final b = DateTime.parse(to);
-    return DateTime(
-      b.year,
-      b.month,
-      b.day,
-    ).difference(DateTime(a.year, a.month, a.day)).inDays;
-  }
+  int _daysBetween(String from, String to) => daysBetweenDayKeys(from, to);
 
-  String _addDays(String day, int n) {
-    final d = DateTime.parse(day).add(Duration(days: n));
-    return dayKey(d);
-  }
+  String _addDays(String day, int n) => addDaysToDayKey(day, n);
 
   /// Record an answer to [question]. Mutates [progress.reviewQueue] in place.
   void onAnswered({
@@ -52,7 +42,7 @@ class ReviewEngine {
         queue.add(
           ReviewItem(
             questionId: question.id,
-            skillId: question.skill,
+            skillId: masteryKeyFor(question),
             priority: 3 + question.difficulty.weight - 1, // 3..5 by difficulty
             intervalDays: 1,
             dueDay: today, // available to review immediately after a miss
@@ -82,18 +72,33 @@ class ReviewEngine {
     return _daysBetween(item.dueDay!, dayKey(now ?? DateTime.now())) >= 0;
   }
 
-  /// Number of items due right now.
-  int dueCount(AppProgress progress, {DateTime? now}) =>
-      progress.reviewQueue.where((r) => isDue(r, now: now)).length;
+  /// Items due right now. When [bundle] is given, only items whose question
+  /// exists in that bundle count — so after switching exams the queue (and the
+  /// Home badge) reflect the active exam only.
+  Iterable<ReviewItem> dueItems(
+    AppProgress progress, {
+    DateTime? now,
+    ContentBundle? bundle,
+  }) => progress.reviewQueue.where(
+    (r) =>
+        isDue(r, now: now) &&
+        (bundle == null || bundle.question(r.questionId) != null),
+  );
 
-  /// Question ids due for review, most urgent first (overdue + priority).
+  /// Number of items due right now (for the active [bundle], if given).
+  int dueCount(AppProgress progress, {DateTime? now, ContentBundle? bundle}) =>
+      dueItems(progress, now: now, bundle: bundle).length;
+
+  /// Question ids due for review, most urgent first (overdue + priority),
+  /// limited to [bundle]'s questions when given.
   List<String> dueQuestionIds(
     AppProgress progress, {
     int limit = 12,
     DateTime? now,
+    ContentBundle? bundle,
   }) {
     final today = dayKey(now ?? DateTime.now());
-    final due = progress.reviewQueue.where((r) => isDue(r, now: now)).toList()
+    final due = dueItems(progress, now: now, bundle: bundle).toList()
       ..sort((a, b) {
         final ao = a.dueDay == null ? 9999 : _daysBetween(a.dueDay!, today);
         final bo = b.dueDay == null ? 9999 : _daysBetween(b.dueDay!, today);

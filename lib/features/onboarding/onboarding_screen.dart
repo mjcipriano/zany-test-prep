@@ -43,20 +43,32 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
 
   Future<void> _finish() async {
     setState(() => _submitting = true);
-    await ref
-        .read(appControllerProvider.notifier)
-        .completeOnboarding(
-          examId: _examId,
-          dailyGoalMinutes: _goalMinutes,
-          targetTestDate: _targetDate,
-        );
-    // Router redirects to /home once onboarded flips to true.
+    try {
+      await ref
+          .read(appControllerProvider.notifier)
+          .completeOnboarding(
+            examId: _examId,
+            dailyGoalMinutes: _goalMinutes,
+            targetTestDate: _targetDate,
+          );
+      // Router redirects to /home once onboarded flips to true.
+    } catch (e) {
+      if (!mounted) return;
+      setState(() => _submitting = false);
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Could not load that exam: $e')));
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     final exams =
         ref.watch(appControllerProvider).valueOrNull?.exams ?? const [];
+    // Default to the first shipped exam if the usual default isn't available.
+    if (exams.isNotEmpty && !exams.any((e) => e.id == _examId)) {
+      _examId = exams.first.id;
+    }
     return Scaffold(
       body: SafeArea(
         child: Column(

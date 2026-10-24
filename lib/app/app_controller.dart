@@ -124,7 +124,9 @@ class AppController extends AsyncNotifier<AppData> {
       bundle: bundle,
       profile: profile,
       progress: _repo.loadProgress(),
-      onboarded: _repo.isOnboarded,
+      // A missing/corrupt profile means onboarding again, whatever the flag
+      // says; Home cannot render without a profile.
+      onboarded: _repo.isOnboarded && profile != null,
       catalog: catalog,
       exams: exams,
     );
@@ -252,9 +254,11 @@ class AppController extends AsyncNotifier<AppData> {
   Future<void> applyDiagnostic({required List<AnswerResult> results}) async {
     final data = _data;
     for (final r in results) {
-      data.progress.mastery(r.question.skill).mastery = r.correct ? 60 : 25;
+      data.progress.mastery(masteryKeyFor(r.question)).mastery = r.correct
+          ? 60
+          : 25;
     }
-    data.progress.game.diagnosticDone = true;
+    data.progress.game.markDiagnosticDone(data.bundle.exam.id);
     await _repo.saveProgress(data.progress);
     state = AsyncData(data.bump());
   }
@@ -262,7 +266,7 @@ class AppController extends AsyncNotifier<AppData> {
   /// Marks the diagnostic as dismissed without taking it.
   Future<void> skipDiagnostic() async {
     final data = _data;
-    data.progress.game.diagnosticDone = true;
+    data.progress.game.markDiagnosticDone(data.bundle.exam.id);
     await _repo.saveProgress(data.progress);
     state = AsyncData(data.bump());
   }
@@ -320,6 +324,8 @@ class AppController extends AsyncNotifier<AppData> {
       now: DateTime.now(),
     );
     if (reward == null) return null;
+    // A chest can grant XP, which may cross a level/badge threshold.
+    Badges.evaluateAndGrant(data.progress, data.bundle);
     await _repo.saveProgress(data.progress);
     state = AsyncData(data.bump());
     return reward;
@@ -412,19 +418,35 @@ class AppController extends AsyncNotifier<AppData> {
   /// content bundle if the backup is for a different exam.
   Future<void> importBackup(BackupData data) async {
     final data0 = _data;
-    await _repo.writeBackup(data);
-    final profile = _repo.loadProfile();
-    final progress = _repo.loadProgress();
-    final examId = profile?.examId ?? data0.bundle.exam.id;
-    final bundle = examId == data0.bundle.exam.id
-        ? data0.bundle
-        : await ref.read(contentRepositoryProvider).loadBundle(examId);
+    // Resolve the bundle first so a backup for an exam this build does not
+    // ship cannot leave the store written but the session unchanged.
+    final wantedExam = data.profile?.examId ?? data0.bundle.exam.id;
+    var bundle = data0.bundle;
+    var profile = data.profile;
+    if (wantedExam != data0.bundle.exam.id) {
+      try {
+        bundle = await ref
+            .read(contentRepositoryProvider)
+            .loadBundle(wantedExam);
+      } catch (_) {
+        // Unknown exam: keep the current bundle and point the profile at it.
+        profile = profile?.copyWith(examId: data0.bundle.exam.id);
+      }
+    }
+    await _repo.writeBackup(
+      BackupData(
+        profile: profile,
+        progress: data.progress,
+        onboarded: data.onboarded,
+      ),
+    );
+    final storedProfile = _repo.loadProfile();
     state = AsyncData(
       AppData(
         bundle: bundle,
-        profile: profile,
-        progress: progress,
-        onboarded: _repo.isOnboarded,
+        profile: storedProfile,
+        progress: _repo.loadProgress(),
+        onboarded: _repo.isOnboarded && storedProfile != null,
         catalog: data0.catalog,
         exams: data0.exams,
         revision: data0.revision + 1,

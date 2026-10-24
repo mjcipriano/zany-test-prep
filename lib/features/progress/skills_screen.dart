@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../app/app_controller.dart';
 import '../../design/theme.dart';
 import '../../design/widgets.dart';
+import '../../domain/models/progress.dart';
 import '../../domain/services/mastery_engine.dart';
 
 /// Shows per-skill mastery (0-100) grouped by domain and section.
@@ -17,12 +18,16 @@ class SkillsScreen extends ConsumerWidget {
       return const Scaffold(body: Center(child: CircularProgressIndicator()));
     }
     const masteryEngine = MasteryEngine();
-    final masteryFor = data.progress.skillMastery;
+    final examId = data.bundle.exam.id;
+    final stored = data.progress.skillMastery;
+    // Mastery is scoped per exam (see masteryKey).
+    double masteryOf(String skillId) =>
+        stored[masteryKey(examId, skillId)]?.mastery ?? 0;
     final overall = masteryEngine.overall(
       data.bundle.skillMap.domains
           .expand((d) => d.sections)
           .expand((s) => s.skills)
-          .map((sk) => masteryFor[sk.id]?.mastery ?? 0),
+          .map((sk) => masteryOf(sk.id)),
     );
 
     return Scaffold(
@@ -61,10 +66,8 @@ class SkillsScreen extends ConsumerWidget {
               for (final skill in section.skills)
                 _SkillRow(
                   name: skill.name,
-                  mastery: masteryFor[skill.id]?.mastery ?? 0,
-                  label: masteryEngine.label(
-                    masteryFor[skill.id]?.mastery ?? 0,
-                  ),
+                  mastery: masteryOf(skill.id),
+                  label: masteryEngine.label(masteryOf(skill.id)),
                 ),
             Gap.s,
           ],

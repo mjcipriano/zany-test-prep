@@ -291,7 +291,7 @@ class _MistakeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final q = result.question;
     final answer = q.type.isStudentProduced
-        ? (q.answer?.accepted.first ?? '')
+        ? (q.answer?.accepted.firstOrNull ?? '')
         : (q.correct?.text ?? '');
     return Padding(
       padding: const EdgeInsets.only(bottom: 8),

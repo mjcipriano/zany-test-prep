@@ -48,9 +48,13 @@ class _ChestRevealScreenState extends ConsumerState<ChestRevealScreen>
     super.dispose();
   }
 
+  bool _busy = false; // a chest is being opened (guards double taps)
+
   Future<void> _openChest() async {
-    if (_phase != _Phase.closed) return;
+    if (_phase != _Phase.closed || _busy) return;
+    _busy = true;
     final reward = await ref.read(appControllerProvider.notifier).openChest();
+    _busy = false;
     if (!mounted) return;
     if (reward == null) {
       context.pop();

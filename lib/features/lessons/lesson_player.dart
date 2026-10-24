@@ -129,6 +129,7 @@ class _LessonPlayerState extends ConsumerState<LessonPlayer> {
   }
 
   Future<void> _next() async {
+    if (_submitting) return; // ignore a second tap while the result is saving
     if (_index < widget.questions.length - 1) {
       _uiSound(Sfx.advance);
       setState(() {
@@ -141,6 +142,7 @@ class _LessonPlayerState extends ConsumerState<LessonPlayer> {
     } else {
       setState(() => _submitting = true);
       final outcome = await widget.onComplete(_results);
+      if (!mounted) return;
       _summaryEffects(outcome);
       setState(() {
         _outcome = outcome;
@@ -535,7 +537,7 @@ class _BottomBar extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(bottom: 6),
                   child: Text(
-                    'Answer: ${question.answer?.accepted.first ?? ''}',
+                    'Answer: ${question.answer?.accepted.firstOrNull ?? ''}',
                     style: const TextStyle(fontWeight: FontWeight.w700),
                   ),
                 ),
@@ -548,7 +550,9 @@ class _BottomBar extends StatelessWidget {
               Gap.m,
             ],
             FilledButton(
-              onPressed: answered ? onNext : (canCheck ? onCheck : null),
+              onPressed: submitting
+                  ? null
+                  : (answered ? onNext : (canCheck ? onCheck : null)),
               style: FilledButton.styleFrom(
                 backgroundColor: answered ? color : null,
               ),

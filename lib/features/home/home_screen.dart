@@ -41,7 +41,7 @@ class HomeScreen extends ConsumerWidget {
         : 0;
     final suggested = unlock.suggestNext(bundle, progress);
     const review = ReviewEngine();
-    final reviewCount = review.dueCount(progress);
+    final reviewCount = review.dueCount(progress, bundle: bundle);
 
     return Scaffold(
       appBar: AppBar(
@@ -109,7 +109,7 @@ class HomeScreen extends ConsumerWidget {
             goalXp: goalXp,
           ),
           Gap.m,
-          if (!progress.game.diagnosticDone)
+          if (!progress.game.diagnosticDoneFor(bundle.exam.id))
             Padding(
               padding: const EdgeInsets.only(bottom: 8),
               child: AppCard(

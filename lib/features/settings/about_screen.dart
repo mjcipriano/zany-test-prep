@@ -115,10 +115,11 @@ class _AboutScreenState extends ConsumerState<AboutScreen> {
                 ),
                 Gap.s,
                 Text(
-                  'All practice questions are original, SAT-style content created '
-                  'for this app. They contain no copyrighted College Board '
-                  'material. "SAT" is a trademark of the College Board, which is '
-                  'not affiliated with and does not endorse this app.',
+                  'All practice questions are original, SAT- and ACT-style '
+                  'content created for this app. They contain no copyrighted '
+                  'College Board or ACT, Inc. material. "SAT" is a trademark of '
+                  'the College Board and "ACT" is a trademark of ACT, Inc.; '
+                  'neither is affiliated with nor endorses this app.',
                   style: TextStyle(height: 1.5),
                 ),
               ],

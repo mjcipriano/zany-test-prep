@@ -9,6 +9,7 @@ import '../../domain/models/content_bundle.dart';
 import '../../domain/models/progress.dart';
 import '../../domain/services/leveling.dart';
 import '../../domain/services/scoring.dart';
+import '../../domain/services/streak_engine.dart';
 import '../rewards/avatar_view.dart';
 
 /// A progress dashboard: totals, an estimated SAT score, daily XP, a streak
@@ -424,7 +425,11 @@ class _Stats {
     return _Stats(
       level: level.levelForXp(p.game.totalXp),
       totalXp: p.game.totalXp,
-      streak: p.game.currentStreak,
+      streak: const StreakEngine().displayedStreak(
+        lastActiveDay: p.game.lastActiveDay,
+        currentStreak: p.game.currentStreak,
+        today: DateTime.now(),
+      ),
       survivalBest: p.game.survivalBest,
       questionsAnswered: answered,
       overallAccuracy: answered == 0 ? 0 : correct / answered,

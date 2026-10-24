@@ -14,14 +14,23 @@ import 'package:zany_test_prep/data/repositories/content_repository.dart';
 // via completed futures so bootstrap resolves through microtasks under the
 // test's controlled async — no real event loop / runAsync needed.
 final String _examsJson = File('assets/content/exams.json').readAsStringSync();
-final String _bundleJson = File(
-  'assets/content/sat.bundle.json',
-).readAsStringSync();
+final Map<String, String> _bundleJson = {};
 
-ContentRepository _testContentRepository() => ContentRepository(
-  reader: (path) async =>
-      path.endsWith('exams.json') ? _examsJson : _bundleJson,
+String _bundleFor(String examId) => _bundleJson.putIfAbsent(
+  examId,
+  () => File('assets/content/$examId.bundle.json').readAsStringSync(),
 );
+
+/// Serves the real committed exam index and bundles. [examsJson] overrides
+/// assets/content/exams.json (e.g. to pretend only one exam ships).
+ContentRepository testContentRepository({String? examsJson}) =>
+    ContentRepository(
+      reader: (path) async {
+        if (path.endsWith('exams.json')) return examsJson ?? _examsJson;
+        final name = path.split('/').last; // <exam>.bundle.json
+        return _bundleFor(name.split('.').first);
+      },
+    );
 
 final String _avatarCatalogJson = File(
   'assets/avatar/manifest/avatar_catalog.json',
@@ -30,9 +39,25 @@ final String _avatarCatalogJson = File(
 AvatarRepository _testAvatarRepository() =>
     AvatarRepository(reader: (path) async => _avatarCatalogJson);
 
+/// The provider overrides [pumpApp] uses (real content, in-memory store,
+/// silent audio). Also handy for pumping a single screen or a
+/// [ProviderContainer] in unit tests.
+List<Override> testOverrides(MemoryStore memory, {String? examsJson}) => [
+  contentRepositoryProvider.overrideWithValue(
+    testContentRepository(examsJson: examsJson),
+  ),
+  avatarRepositoryProvider.overrideWithValue(_testAvatarRepository()),
+  keyValueStoreProvider.overrideWith((ref) async => memory),
+  soundServiceProvider.overrideWithValue(NoopSoundService()),
+];
+
 /// Pumps the full app with test overrides. Reuse [store] across pumps to
 /// simulate an app restart with persisted state.
-Future<MemoryStore> pumpApp(WidgetTester tester, {MemoryStore? store}) async {
+Future<MemoryStore> pumpApp(
+  WidgetTester tester, {
+  MemoryStore? store,
+  String? examsJson,
+}) async {
   final memory = store ?? MemoryStore();
   // Tall viewport so long scrollable screens render without manual scrolling.
   tester.view.physicalSize = const Size(1000, 3200);
@@ -44,12 +69,7 @@ Future<MemoryStore> pumpApp(WidgetTester tester, {MemoryStore? store}) async {
 
   await tester.pumpWidget(
     ProviderScope(
-      overrides: [
-        contentRepositoryProvider.overrideWithValue(_testContentRepository()),
-        avatarRepositoryProvider.overrideWithValue(_testAvatarRepository()),
-        keyValueStoreProvider.overrideWith((ref) async => memory),
-        soundServiceProvider.overrideWithValue(NoopSoundService()),
-      ],
+      overrides: testOverrides(memory, examsJson: examsJson),
       child: const ZanyTestPrepApp(),
     ),
   );
@@ -57,4 +77,32 @@ Future<MemoryStore> pumpApp(WidgetTester tester, {MemoryStore? store}) async {
   await tester.pump();
   await tester.pumpAndSettle();
   return memory;
+}
+
+/// Steps through onboarding with the defaults (SAT, 10 min).
+Future<void> onboardDefault(WidgetTester tester) async {
+  for (var i = 0; i < 4; i++) {
+    await tester.tap(find.text('Continue'));
+    await tester.pumpAndSettle();
+  }
+  await tester.tap(find.text('Start learning'));
+  await tester.pumpAndSettle();
+}
+
+/// Steps through onboarding choosing the exam whose picker label is
+/// [examLabel] (e.g. 'ACT').
+Future<void> onboardWithExam(WidgetTester tester, String examLabel) async {
+  await tester.tap(find.text('Continue')); // welcome -> offline
+  await tester.pumpAndSettle();
+  await tester.tap(find.text('Continue')); // offline -> exam
+  await tester.pumpAndSettle();
+  expect(find.text('Choose your exam'), findsOneWidget);
+  await tester.tap(find.text(examLabel));
+  await tester.pumpAndSettle();
+  await tester.tap(find.text('Continue')); // exam -> goal
+  await tester.pumpAndSettle();
+  await tester.tap(find.text('Continue')); // goal -> date
+  await tester.pumpAndSettle();
+  await tester.tap(find.text('Start learning'));
+  await tester.pumpAndSettle();
 }

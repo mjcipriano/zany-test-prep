@@ -31,8 +31,9 @@ class RewardsService {
   bool isOwned(GameState g, CatalogAsset asset) =>
       asset.defaultUnlocked || g.ownedAssetIds.contains(asset.id);
 
-  /// The avatar the player is currently showing (falls back to the default).
-  CatalogAsset selectedAvatar(GameState g, AvatarCatalog catalog) {
+  /// The avatar the player is currently showing (falls back to the default;
+  /// null only when the catalog is empty).
+  CatalogAsset? selectedAvatar(GameState g, AvatarCatalog catalog) {
     final id = g.selectedAvatarId;
     if (id != null && catalog[id] != null) return catalog[id]!;
     return catalog.defaultAvatar;
@@ -42,9 +43,8 @@ class RewardsService {
   /// The base avatar comes first (slot null); each equipped asset carries its
   /// slot so side pets/props can be placed in the right side position.
   List<EquippedLayer> equippedLayers(GameState g, AvatarCatalog catalog) {
-    final layers = <EquippedLayer>[
-      EquippedLayer(null, selectedAvatar(g, catalog)),
-    ];
+    final base = selectedAvatar(g, catalog);
+    final layers = <EquippedLayer>[if (base != null) EquippedLayer(null, base)];
     g.equipped.forEach((slot, id) {
       final a = catalog[id];
       if (a != null) layers.add(EquippedLayer(slot, a));
@@ -96,7 +96,12 @@ class RewardsService {
       case StreakFreezeReward(:final count):
         g.streakFreezes = min(kMaxStreakFreezes, g.streakFreezes + count);
       case XpBoostReward(:final multiplier):
-        g.xpBoostMultiplier = multiplier;
+        // A second boost on the same day never downgrades a bigger one.
+        final sameDay =
+            g.xpBoostDay == dayKey(now.add(const Duration(days: 1)));
+        g.xpBoostMultiplier = sameDay
+            ? max(g.xpBoostMultiplier, multiplier)
+            : multiplier;
         g.xpBoostDay = dayKey(now.add(const Duration(days: 1)));
       case AvatarReward(:final assetId):
         g.ownedAssetIds.add(assetId);

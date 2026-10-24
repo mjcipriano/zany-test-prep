@@ -13,18 +13,33 @@ import 'sampling.dart';
 /// Two modes:
 ///   - 'unlocked': only from sections the learner has already unlocked
 ///   - 'all': from any section, including ones not yet unlocked
-class PracticeScreen extends ConsumerWidget {
+///
+/// The sample is drawn once when the screen opens (not on every rebuild), so
+/// state changes while the session runs never swap the questions underneath
+/// the player.
+class PracticeScreen extends ConsumerStatefulWidget {
   const PracticeScreen({super.key, required this.mode, this.count = 15});
 
   final String mode; // 'unlocked' | 'all'
   final int count;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final data = ref.watch(appControllerProvider).valueOrNull;
-    if (data == null) {
-      return const Scaffold(body: Center(child: CircularProgressIndicator()));
-    }
+  ConsumerState<PracticeScreen> createState() => _PracticeScreenState();
+}
+
+class _PracticeScreenState extends ConsumerState<PracticeScreen> {
+  List<Question>? _questions;
+
+  String get mode => widget.mode;
+
+  @override
+  void initState() {
+    super.initState();
+    final data = ref.read(appControllerProvider).valueOrNull;
+    if (data != null) _questions = _sample(data);
+  }
+
+  List<Question> _sample(AppData data) {
     final bundle = data.bundle;
 
     final List<Question> pool;
@@ -42,7 +57,25 @@ class PracticeScreen extends ConsumerWidget {
       pool = bundle.questions.where((q) => lessonUnlocked(q.lessonId)).toList();
     }
 
-    if (pool.isEmpty) {
+    // A fresh, domain-balanced selection each time the screen is opened.
+    return balancedSample(pool, widget.count, Random());
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final questions = _questions;
+    if (questions == null) {
+      final data = ref.watch(appControllerProvider).valueOrNull;
+      if (data == null) {
+        return const Scaffold(body: Center(child: CircularProgressIndicator()));
+      }
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) setState(() => _questions = _sample(data));
+      });
+      return const Scaffold(body: Center(child: CircularProgressIndicator()));
+    }
+
+    if (questions.isEmpty) {
       return Scaffold(
         appBar: AppBar(title: const Text('Practice')),
         body: const Center(
@@ -56,9 +89,6 @@ class PracticeScreen extends ConsumerWidget {
         ),
       );
     }
-
-    // A fresh, domain-balanced selection each time the screen is opened.
-    final questions = balancedSample(pool, count, Random());
 
     return LessonPlayer(
       title: mode == 'all' ? 'Challenge Mode' : 'Quick Practice',

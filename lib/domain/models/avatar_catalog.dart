@@ -152,9 +152,11 @@ class AvatarCatalog {
 
   CatalogAsset? operator [](String id) => byId[id];
 
-  /// The avatar shown when the player hasn't picked one yet.
-  CatalogAsset get defaultAvatar =>
-      starterAvatars.isNotEmpty ? starterAvatars.first : avatars.first;
+  /// The avatar shown when the player hasn't picked one yet, or null when the
+  /// catalog has no avatars at all (e.g. the asset pack failed to load).
+  CatalogAsset? get defaultAvatar => starterAvatars.isNotEmpty
+      ? starterAvatars.first
+      : (avatars.isNotEmpty ? avatars.first : null);
 
   factory AvatarCatalog.fromJson(Map<String, dynamic> j) => AvatarCatalog(
     packId: j['pack_id'] as String? ?? 'unknown',

@@ -23,15 +23,8 @@ class StreakResult {
 class StreakEngine {
   const StreakEngine();
 
-  int _daysBetween(String fromDay, String toDay) {
-    final a = DateTime.parse(fromDay);
-    final b = DateTime.parse(toDay);
-    return DateTime(
-      b.year,
-      b.month,
-      b.day,
-    ).difference(DateTime(a.year, a.month, a.day)).inDays;
-  }
+  int _daysBetween(String fromDay, String toDay) =>
+      daysBetweenDayKeys(fromDay, toDay);
 
   /// Apply activity occurring on [today] to the prior streak state.
   ///
