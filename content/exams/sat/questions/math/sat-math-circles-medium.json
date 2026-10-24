@@ -11,35 +11,36 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "circumference_area",
-    "prompt": "The circle shown has radius 6. What is its area, in terms of π?",
+    "prompt": "A circular rug has a radius of 7 feet. What is its area, in square feet, in terms of π?",
     "choices": [
       {
         "id": "A",
-        "text": "6π",
-        "rationale": "Area uses r², not r."
+        "text": "14π",
+        "rationale": "This is the circumference, not the area."
       },
       {
         "id": "B",
-        "text": "216π",
+        "text": "343π",
         "rationale": "Area uses r², not r³."
       },
       {
         "id": "C",
-        "text": "12π",
-        "rationale": "This is the circumference, not the area."
+        "text": "49π",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "36π",
-        "rationale": "Correct."
+        "text": "7π",
+        "rationale": "Area uses r², not r."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Area = πr² = π·6² = 36π.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "C",
+    "explanation": "Area = πr² = π·7² = 49π.",
+    "estimated_time_seconds": 75,
     "tags": [
       "geometry",
-      "circle"
+      "circle",
+      "family:ci_basic"
     ],
     "stimulus": {
       "type": "figure",
@@ -47,11 +48,11 @@
         "kind": "circle",
         "caption": "Circle",
         "labels": {
-          "r": "6"
+          "r": "7"
         }
       }
     },
-    "answer_verification": "36π"
+    "answer_verification": "49π"
   },
   {
     "question_id": "sat-math-circles-medium-q02",
@@ -65,47 +66,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "circumference_area",
-    "prompt": "The circle shown has radius 3. What is its area, in terms of π?",
+    "prompt": "A circle has an area of 9π. What is its diameter?",
     "choices": [
       {
         "id": "A",
-        "text": "6π",
-        "rationale": "This is the circumference, not the area."
+        "text": "18",
+        "rationale": "Find r first, then double it."
       },
       {
         "id": "B",
-        "text": "3π",
-        "rationale": "Area uses r², not r."
+        "text": "9",
+        "rationale": "Take the square root of 9."
       },
       {
         "id": "C",
-        "text": "27π",
-        "rationale": "Area uses r², not r³."
+        "text": "6",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "9π",
-        "rationale": "Correct."
+        "text": "3",
+        "rationale": "That is the radius; the diameter is twice it."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Area = πr² = π·3² = 9π.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "C",
+    "explanation": "A = πr² = 9π gives r = 3; the diameter is 2r = 6.",
+    "estimated_time_seconds": 70,
     "tags": [
       "geometry",
-      "circle"
+      "circle",
+      "family:ci_reverse"
     ],
-    "stimulus": {
-      "type": "figure",
-      "figure": {
-        "kind": "circle",
-        "caption": "Circle",
-        "labels": {
-          "r": "3"
-        }
-      }
-    },
-    "answer_verification": "9π"
+    "answer_verification": "val=6"
   },
   {
     "question_id": "sat-math-circles-medium-q03",
@@ -118,36 +110,38 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "circumference_area",
-    "prompt": "The circle shown has radius 10. What is its area, in terms of π?",
+    "subskill": "arc_sector",
+    "prompt": "A circle has radius 27. What is the length of an arc with a central angle of 40°, in terms of π?",
     "choices": [
       {
         "id": "A",
-        "text": "1000π",
-        "rationale": "Area uses r², not r³."
+        "text": "54π",
+        "rationale": "This is the whole circumference, not the arc."
       },
       {
         "id": "B",
-        "text": "20π",
-        "rationale": "This is the circumference, not the area."
+        "text": "6π",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "10π",
-        "rationale": "Area uses r², not r."
+        "text": "3π",
+        "rationale": "Use 2πr (not πr) before taking the fraction."
       },
       {
         "id": "D",
-        "text": "100π",
-        "rationale": "Correct."
+        "text": "81π",
+        "rationale": "That's the sector area, not the arc length."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Area = πr² = π·10² = 100π.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "B",
+    "explanation": "Arc length = (θ/360)·2πr = (40/360)·2π·27 = 6π.",
+    "estimated_time_seconds": 95,
     "tags": [
       "geometry",
-      "circle"
+      "circle",
+      "sector",
+      "family:ci_arc_sector"
     ],
     "stimulus": {
       "type": "figure",
@@ -155,11 +149,13 @@
         "kind": "circle",
         "caption": "Circle",
         "labels": {
-          "r": "10"
-        }
+          "r": "27",
+          "angle": "40°"
+        },
+        "sector": 40
       }
     },
-    "answer_verification": "100π"
+    "answer_verification": "6π"
   },
   {
     "question_id": "sat-math-circles-medium-q04",
@@ -173,47 +169,39 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "circumference_area",
-    "prompt": "The circle shown has radius 8. What is its area, in terms of π?",
+    "prompt": "The equation (x − 7)² + (y + 4)² = 4 represents a circle in the xy-plane. What is the radius of the circle?",
     "choices": [
       {
         "id": "A",
-        "text": "64π",
+        "text": "2",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "512π",
-        "rationale": "Area uses r², not r³."
+        "text": "5",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
       },
       {
         "id": "C",
-        "text": "8π",
-        "rationale": "Area uses r², not r."
+        "text": "4",
+        "rationale": "That is r²; take the square root."
       },
       {
         "id": "D",
-        "text": "16π",
-        "rationale": "This is the circumference, not the area."
+        "text": "7",
+        "rationale": "The center's coordinates don't give the radius."
       }
     ],
     "correct_choice": "A",
-    "explanation": "Area = πr² = π·8² = 64π.",
-    "estimated_time_seconds": 80,
+    "explanation": "The right side is r² = 4, so r = 2.",
+    "estimated_time_seconds": 75,
     "tags": [
       "geometry",
-      "circle"
+      "circle",
+      "equation",
+      "family:ci_equation"
     ],
-    "stimulus": {
-      "type": "figure",
-      "figure": {
-        "kind": "circle",
-        "caption": "Circle",
-        "labels": {
-          "r": "8"
-        }
-      }
-    },
-    "answer_verification": "64π"
+    "answer_verification": "r=2"
   },
   {
     "question_id": "sat-math-circles-medium-q05",
@@ -227,35 +215,36 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "circumference_area",
-    "prompt": "The circle shown has radius 5. What is its area, in terms of π?",
+    "prompt": "The circle shown has radius 28. What is its area, in terms of π?",
     "choices": [
       {
         "id": "A",
-        "text": "10π",
-        "rationale": "This is the circumference, not the area."
-      },
-      {
-        "id": "B",
-        "text": "25π",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "5π",
+        "text": "28π",
         "rationale": "Area uses r², not r."
       },
       {
-        "id": "D",
-        "text": "125π",
+        "id": "B",
+        "text": "21952π",
         "rationale": "Area uses r², not r³."
+      },
+      {
+        "id": "C",
+        "text": "56π",
+        "rationale": "This is the circumference, not the area."
+      },
+      {
+        "id": "D",
+        "text": "784π",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Area = πr² = π·5² = 25π.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "D",
+    "explanation": "Area = πr² = π·28² = 784π.",
+    "estimated_time_seconds": 75,
     "tags": [
       "geometry",
-      "circle"
+      "circle",
+      "family:ci_basic"
     ],
     "stimulus": {
       "type": "figure",
@@ -263,11 +252,11 @@
         "kind": "circle",
         "caption": "Circle",
         "labels": {
-          "r": "5"
+          "r": "28"
         }
       }
     },
-    "answer_verification": "25π"
+    "answer_verification": "784π"
   },
   {
     "question_id": "sat-math-circles-medium-q06",
@@ -281,47 +270,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "circumference_area",
-    "prompt": "The circle shown has radius 12. What is its area, in terms of π?",
+    "prompt": "A circle has an area of 16π. What is its diameter?",
     "choices": [
       {
         "id": "A",
-        "text": "144π",
-        "rationale": "Correct."
+        "text": "16",
+        "rationale": "Take the square root of 16."
       },
       {
         "id": "B",
-        "text": "12π",
-        "rationale": "Area uses r², not r."
+        "text": "4",
+        "rationale": "That is the radius; the diameter is twice it."
       },
       {
         "id": "C",
-        "text": "1728π",
-        "rationale": "Area uses r², not r³."
+        "text": "8",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "24π",
-        "rationale": "This is the circumference, not the area."
+        "text": "32",
+        "rationale": "Find r first, then double it."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Area = πr² = π·12² = 144π.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "C",
+    "explanation": "A = πr² = 16π gives r = 4; the diameter is 2r = 8.",
+    "estimated_time_seconds": 70,
     "tags": [
       "geometry",
-      "circle"
+      "circle",
+      "family:ci_reverse"
     ],
-    "stimulus": {
-      "type": "figure",
-      "figure": {
-        "kind": "circle",
-        "caption": "Circle",
-        "labels": {
-          "r": "12"
-        }
-      }
-    },
-    "answer_verification": "144π"
+    "answer_verification": "val=8"
   },
   {
     "question_id": "sat-math-circles-medium-q07",
@@ -334,36 +314,38 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "circumference_area",
-    "prompt": "The circle shown has radius 11. What is its area, in terms of π?",
+    "subskill": "arc_sector",
+    "prompt": "In the circle shown, the radius is 15 and the central angle of the highlighted arc is 72°. What is the length of the arc, in terms of π?",
     "choices": [
       {
         "id": "A",
-        "text": "1331π",
-        "rationale": "Area uses r², not r³."
+        "text": "45π",
+        "rationale": "That's the sector area, not the arc length."
       },
       {
         "id": "B",
-        "text": "121π",
-        "rationale": "Correct."
+        "text": "3π",
+        "rationale": "Use 2πr (not πr) before taking the fraction."
       },
       {
         "id": "C",
-        "text": "22π",
-        "rationale": "This is the circumference, not the area."
+        "text": "6π",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "11π",
-        "rationale": "Area uses r², not r."
+        "text": "30π",
+        "rationale": "This is the whole circumference, not the arc."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Area = πr² = π·11² = 121π.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "C",
+    "explanation": "Arc length = (θ/360)·2πr = (72/360)·2π·15 = 6π.",
+    "estimated_time_seconds": 95,
     "tags": [
       "geometry",
-      "circle"
+      "circle",
+      "sector",
+      "family:ci_arc_sector"
     ],
     "stimulus": {
       "type": "figure",
@@ -371,11 +353,13 @@
         "kind": "circle",
         "caption": "Circle",
         "labels": {
-          "r": "11"
-        }
+          "r": "15",
+          "angle": "72°"
+        },
+        "sector": 72
       }
     },
-    "answer_verification": "121π"
+    "answer_verification": "6π"
   },
   {
     "question_id": "sat-math-circles-medium-q08",
@@ -389,46 +373,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "circumference_area",
-    "prompt": "The circle shown has radius 7. What is its area, in terms of π?",
+    "prompt": "The equation (x − 7)² + (y + 3)² = 144 represents a circle in the xy-plane. What is the radius of the circle?",
     "choices": [
       {
         "id": "A",
-        "text": "49π",
-        "rationale": "Correct."
+        "text": "144",
+        "rationale": "That is r²; take the square root."
       },
       {
         "id": "B",
-        "text": "7π",
-        "rationale": "Area uses r², not r."
+        "text": "24",
+        "rationale": "That is the diameter."
       },
       {
         "id": "C",
-        "text": "14π",
-        "rationale": "This is the circumference, not the area."
+        "text": "12",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "343π",
-        "rationale": "Area uses r², not r³."
+        "text": "72",
+        "rationale": "Take the square root, don't halve."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Area = πr² = π·7² = 49π.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "C",
+    "explanation": "The right side is r² = 144, so r = 12.",
+    "estimated_time_seconds": 75,
     "tags": [
       "geometry",
-      "circle"
+      "circle",
+      "equation",
+      "family:ci_equation"
     ],
-    "stimulus": {
-      "type": "figure",
-      "figure": {
-        "kind": "circle",
-        "caption": "Circle",
-        "labels": {
-          "r": "7"
-        }
-      }
-    },
-    "answer_verification": "49π"
+    "answer_verification": "r=12"
   }
 ]

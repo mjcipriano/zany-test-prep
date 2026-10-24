@@ -11,37 +11,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "one_variable",
-    "prompt": "If 11x + 12 = 2x + 138, what is the value of x?",
+    "prompt": "What value of x satisfies the equation −8x − 16 = 80?",
     "choices": [
       {
         "id": "A",
-        "text": "14",
-        "rationale": "Correct."
+        "text": "-12",
+        "rationale": "Correct: substituting back makes both sides equal."
       },
       {
         "id": "B",
-        "text": "126",
-        "rationale": "This is 9x, not x; divide by 9."
+        "text": "96",
+        "rationale": "This is −8x; divide by −8."
       },
       {
         "id": "C",
-        "text": "126/13",
-        "rationale": "This divides by a+c instead of a−c."
+        "text": "-8",
+        "rationale": "Subtract the constant; don't add it."
       },
       {
         "id": "D",
-        "text": "15",
-        "rationale": "Off by one; recheck moving terms across the equals sign."
+        "text": "12",
+        "rationale": "Sign error when dividing by the coefficient."
       }
     ],
     "correct_choice": "A",
-    "explanation": "Bring x-terms together: 11x − 2x = 138 − 12, so 9x = 126. Then x = 14.",
+    "explanation": "Isolate the x-term: −8x = 80 − (−16) = 96. Divide by −8: x = −12.",
     "estimated_time_seconds": 70,
     "tags": [
       "algebra",
-      "linear"
+      "linear",
+      "family:le_two_step"
     ],
-    "answer_verification": "x=14"
+    "answer_verification": "-8x - 16 = 80 at x=-12"
   },
   {
     "question_id": "sat-math-linear-equations-medium-q02",
@@ -55,37 +56,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "one_variable",
-    "prompt": "If 6x + 17 = 5x + 19, what is the value of x?",
+    "prompt": "4x − 8 = −x + 32\nWhat value of x makes the equation true?",
     "choices": [
       {
         "id": "A",
-        "text": "2/11",
-        "rationale": "This divides by a+c instead of a−c."
+        "text": "-8",
+        "rationale": "Sign slip when moving terms across the equals sign."
       },
       {
         "id": "B",
-        "text": "5",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "40/3",
+        "rationale": "This divides by a + c instead of a − c."
       },
       {
         "id": "C",
-        "text": "2",
+        "text": "8",
         "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "3",
-        "rationale": "Off by one; recheck moving terms across the equals sign."
+        "text": "40",
+        "rationale": "This is 5x, not x; divide by 5."
       }
     ],
     "correct_choice": "C",
-    "explanation": "Bring x-terms together: 6x − 5x = 19 − 17, so 1x = 2. Then x = 2.",
-    "estimated_time_seconds": 70,
+    "explanation": "Collect the x-terms: 4x − (−1x) = 32 − (−8), so 5x = 40. Divide by 5: x = 8.",
+    "estimated_time_seconds": 80,
     "tags": [
       "algebra",
-      "linear"
+      "linear",
+      "family:le_both_sides"
     ],
-    "answer_verification": "x=2"
+    "answer_verification": "x=8 satisfies 4x - 8 = -x + 32"
   },
   {
     "question_id": "sat-math-linear-equations-medium-q03",
@@ -99,37 +101,39 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "one_variable",
-    "prompt": "If 4x + 18 = 1x + 33, what is the value of x?",
+    "prompt": "6(x + 10) + 3 = 105\nWhat value of x makes the equation true?",
     "choices": [
       {
         "id": "A",
-        "text": "15",
-        "rationale": "This is 3x, not x; divide by 3."
+        "text": "46/3",
+        "rationale": "Multiply 10 by 6 when distributing."
       },
       {
         "id": "B",
-        "text": "3",
-        "rationale": "This divides by a+c instead of a−c."
-      },
-      {
-        "id": "C",
-        "text": "5",
+        "text": "7",
         "rationale": "Correct."
       },
       {
+        "id": "C",
+        "text": "17",
+        "rationale": "This forgets to subtract 6·(10)."
+      },
+      {
         "id": "D",
-        "text": "6",
-        "rationale": "Off by one; recheck moving terms across the equals sign."
+        "text": "-7",
+        "rationale": "Sign slip while distributing a negative."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Bring x-terms together: 4x − 1x = 33 − 18, so 3x = 15. Then x = 5.",
-    "estimated_time_seconds": 70,
+    "correct_choice": "B",
+    "explanation": "Distribute: 6x + 60 + 3 = 105, so 6x = 42 and x = 7.",
+    "estimated_time_seconds": 85,
     "tags": [
       "algebra",
-      "linear"
+      "linear",
+      "distribute",
+      "family:le_distribute"
     ],
-    "answer_verification": "x=5"
+    "answer_verification": "x=7 in 6(x + 10) + 3 = 105"
   },
   {
     "question_id": "sat-math-linear-equations-medium-q04",
@@ -142,38 +146,40 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "one_variable",
-    "prompt": "If 8x + 9 = 4x + 37, what is the value of x?",
+    "subskill": "two_variable",
+    "prompt": "A gift card has a balance of $820, and $34 is spent from it each week. Which equation gives the remaining amount A after t weeks?",
     "choices": [
       {
         "id": "A",
-        "text": "28",
-        "rationale": "This is 4x, not x; divide by 4."
+        "text": "A = 34t − 820",
+        "rationale": "This starts at −820 and increases; the signs are reversed."
       },
       {
         "id": "B",
-        "text": "7",
-        "rationale": "Correct."
+        "text": "A = 820 + 34t",
+        "rationale": "The amount decreases, so the rate term is subtracted."
       },
       {
         "id": "C",
-        "text": "7/3",
-        "rationale": "This divides by a+c instead of a−c."
+        "text": "A = (820 − 34)t",
+        "rationale": "Only 34 is lost per week; the start value isn't multiplied by t."
       },
       {
         "id": "D",
-        "text": "8",
-        "rationale": "Off by one; recheck moving terms across the equals sign."
+        "text": "A = 820 − 34t",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Bring x-terms together: 8x − 4x = 37 − 9, so 4x = 28. Then x = 7.",
-    "estimated_time_seconds": 70,
+    "correct_choice": "D",
+    "explanation": "Start at 820 and subtract 34 for each week: A = 820 − 34t.",
+    "estimated_time_seconds": 85,
     "tags": [
       "algebra",
-      "linear"
+      "linear",
+      "model",
+      "family:le_model_equation"
     ],
-    "answer_verification": "x=7"
+    "answer_verification": "model A = 820 − 34t"
   },
   {
     "question_id": "sat-math-linear-equations-medium-q05",
@@ -186,38 +192,40 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "one_variable",
-    "prompt": "If 6x + 22 = 2x + 74, what is the value of x?",
+    "subskill": "slope_intercept",
+    "prompt": "A caterer's charge P, in dollars, for a party with g guests is P = 6g + 99. Which of the following is the best interpretation of the number 99 in this context?",
     "choices": [
       {
         "id": "A",
-        "text": "13/2",
-        "rationale": "This divides by a+c instead of a−c."
+        "text": "the number of guests",
+        "rationale": "The variable itself is not a fixed number in the equation."
       },
       {
         "id": "B",
-        "text": "13",
-        "rationale": "Correct."
+        "text": "the total charge for the party",
+        "rationale": "The total is the output, not the constant term."
       },
       {
         "id": "C",
-        "text": "52",
-        "rationale": "This is 4x, not x; divide by 4."
+        "text": "the charge per guest",
+        "rationale": "That describes the coefficient of the variable (the rate)."
       },
       {
         "id": "D",
-        "text": "14",
-        "rationale": "Off by one; recheck moving terms across the equals sign."
+        "text": "the base charge regardless of the number of guests",
+        "rationale": "The constant term is the value when the variable is 0."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Bring x-terms together: 6x − 2x = 74 − 22, so 4x = 52. Then x = 13.",
-    "estimated_time_seconds": 70,
+    "correct_choice": "D",
+    "explanation": "When g = 0 the model equals the constant term, so it represents the base charge regardless of the number of guests.",
+    "estimated_time_seconds": 80,
     "tags": [
       "algebra",
-      "linear"
+      "linear",
+      "interpret",
+      "family:le_interpret"
     ],
-    "answer_verification": "x=13"
+    "answer_verification": "intercept=99"
   },
   {
     "question_id": "sat-math-linear-equations-medium-q06",
@@ -230,38 +238,40 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "one_variable",
-    "prompt": "If 10x + 12 = 8x + 36, what is the value of x?",
+    "subskill": "slope_intercept",
+    "prompt": "The line −8x − 6y = 24 is graphed in the xy-plane. What is the x-coordinate of its x-intercept?",
     "choices": [
       {
         "id": "A",
-        "text": "13",
-        "rationale": "Off by one; recheck moving terms across the equals sign."
+        "text": "3",
+        "rationale": "Sign slip in the division."
       },
       {
         "id": "B",
         "text": "24",
-        "rationale": "This is 2x, not x; divide by 2."
+        "rationale": "Divide 24 by the coefficient of x."
       },
       {
         "id": "C",
-        "text": "4/3",
-        "rationale": "This divides by a+c instead of a−c."
+        "text": "-3",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "12",
-        "rationale": "Correct."
+        "text": "-4",
+        "rationale": "That is the y-intercept."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Bring x-terms together: 10x − 8x = 36 − 12, so 2x = 24. Then x = 12.",
-    "estimated_time_seconds": 70,
+    "correct_choice": "C",
+    "explanation": "Set y = 0: −8x = 24, so x = 24/−8 = −3.",
+    "estimated_time_seconds": 90,
     "tags": [
       "algebra",
-      "linear"
+      "linear",
+      "intercept",
+      "family:le_intercepts"
     ],
-    "answer_verification": "x=12"
+    "answer_verification": "x-int=-3"
   },
   {
     "question_id": "sat-math-linear-equations-medium-q07",
@@ -274,38 +284,40 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "one_variable",
-    "prompt": "If 5x + 11 = 1x + 63, what is the value of x?",
+    "subskill": "slope_intercept",
+    "prompt": "Line k contains the points (0, −10) and (2, −24). What is the slope of line k?",
     "choices": [
       {
         "id": "A",
-        "text": "14",
-        "rationale": "Off by one; recheck moving terms across the equals sign."
+        "text": "-7",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "26/3",
-        "rationale": "This divides by a+c instead of a−c."
+        "text": "7",
+        "rationale": "Sign slip; subtract the coordinates in the same order."
       },
       {
         "id": "C",
-        "text": "52",
-        "rationale": "This is 4x, not x; divide by 4."
+        "text": "-14",
+        "rationale": "That is only the change in y; divide by the change in x."
       },
       {
         "id": "D",
-        "text": "13",
-        "rationale": "Correct."
+        "text": "-1/7",
+        "rationale": "This is run over rise; slope is rise over run."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Bring x-terms together: 5x − 1x = 63 − 11, so 4x = 52. Then x = 13.",
-    "estimated_time_seconds": 70,
+    "correct_choice": "A",
+    "explanation": "Slope = (y₂ − y₁)/(x₂ − x₁) = (−24 − (−10))/(2 − (0)) = −14/2 = -7.",
+    "estimated_time_seconds": 80,
     "tags": [
       "algebra",
-      "linear"
+      "linear",
+      "slope",
+      "family:le_slope_points"
     ],
-    "answer_verification": "x=13"
+    "answer_verification": "(-24--10)/(2-0)=-7"
   },
   {
     "question_id": "sat-math-linear-equations-medium-q08",
@@ -318,38 +330,40 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "one_variable",
-    "prompt": "If 3x + 2 = 1x + 22, what is the value of x?",
+    "subskill": "slope_intercept",
+    "prompt": "What is the slope of a line that is parallel to the graph of y = 6x − 11 in the xy-plane?",
     "choices": [
       {
         "id": "A",
-        "text": "5",
-        "rationale": "This divides by a+c instead of a−c."
+        "text": "-7/6",
+        "rationale": "Recheck: parallel lines share the given slope exactly."
       },
       {
         "id": "B",
-        "text": "11",
-        "rationale": "Off by one; recheck moving terms across the equals sign."
+        "text": "-1/6",
+        "rationale": "That is the perpendicular slope (negative reciprocal)."
       },
       {
         "id": "C",
-        "text": "10",
-        "rationale": "Correct."
+        "text": "-6",
+        "rationale": "Parallel lines have the same slope, not the opposite sign."
       },
       {
         "id": "D",
-        "text": "20",
-        "rationale": "This is 2x, not x; divide by 2."
+        "text": "6",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Bring x-terms together: 3x − 1x = 22 − 2, so 2x = 20. Then x = 10.",
-    "estimated_time_seconds": 70,
+    "correct_choice": "D",
+    "explanation": "The given line has slope 6; parallel lines share the same slope, so the answer is 6.",
+    "estimated_time_seconds": 80,
     "tags": [
       "algebra",
-      "linear"
+      "linear",
+      "parallel",
+      "family:le_parallel_perp"
     ],
-    "answer_verification": "x=10"
+    "answer_verification": "given slope 6; parallel -> 6"
   },
   {
     "question_id": "sat-math-linear-equations-medium-q09",
@@ -362,38 +376,40 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "one_variable",
-    "prompt": "If 10x + 10 = 2x + 50, what is the value of x?",
+    "subskill": "two_variable",
+    "prompt": "A line with slope −1 passes through the point (−3, −6) in the xy-plane. Which equation defines the line?",
     "choices": [
       {
         "id": "A",
-        "text": "40",
-        "rationale": "This is 8x, not x; divide by 8."
+        "text": "y = −x − 6",
+        "rationale": "−6 is the y-value at x = −3, not the y-intercept."
       },
       {
         "id": "B",
-        "text": "10/3",
-        "rationale": "This divides by a+c instead of a−c."
+        "text": "y = −x − 9",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "6",
-        "rationale": "Off by one; recheck moving terms across the equals sign."
+        "text": "y = −x + 9",
+        "rationale": "Sign slip when solving for b."
       },
       {
         "id": "D",
-        "text": "5",
-        "rationale": "Correct."
+        "text": "y = −3x − 9",
+        "rationale": "The slope is the given m, not the x-coordinate."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Bring x-terms together: 10x − 2x = 50 − 10, so 8x = 40. Then x = 5.",
-    "estimated_time_seconds": 70,
+    "correct_choice": "B",
+    "explanation": "Use y = mx + b with m = −1: −6 = −1·(−3) + b, so b = −9 and y = −x − 9.",
+    "estimated_time_seconds": 90,
     "tags": [
       "algebra",
-      "linear"
+      "linear",
+      "equation",
+      "family:le_line_equation"
     ],
-    "answer_verification": "x=5"
+    "answer_verification": "y=-1x+(-9) through (-3,-6)"
   },
   {
     "question_id": "sat-math-linear-equations-medium-q10",
@@ -407,37 +423,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "one_variable",
-    "prompt": "If 7x + 13 = 4x + 25, what is the value of x?",
+    "prompt": "If 4x − 15 = −23, what is the value of 12x − 45?",
     "choices": [
       {
         "id": "A",
-        "text": "5",
-        "rationale": "Off by one; recheck moving terms across the equals sign."
+        "text": "-2",
+        "rationale": "That is x itself, not the requested expression."
       },
       {
         "id": "B",
-        "text": "12/11",
-        "rationale": "This divides by a+c instead of a−c."
+        "text": "-23",
+        "rationale": "That is the value of 4x − 15; multiply by 3."
       },
       {
         "id": "C",
-        "text": "12",
-        "rationale": "This is 3x, not x; divide by 3."
+        "text": "-24",
+        "rationale": "The constant term is multiplied too."
       },
       {
         "id": "D",
-        "text": "4",
+        "text": "-69",
         "rationale": "Correct."
       }
     ],
     "correct_choice": "D",
-    "explanation": "Bring x-terms together: 7x − 4x = 25 − 13, so 3x = 12. Then x = 4.",
-    "estimated_time_seconds": 70,
+    "explanation": "12x − 45 is 3 times (4x − 15), so it equals 3·−23 = −69. (You could also solve to get x = −2 and substitute.)",
+    "estimated_time_seconds": 80,
     "tags": [
       "algebra",
-      "linear"
+      "linear",
+      "family:le_expression_value"
     ],
-    "answer_verification": "x=4"
+    "answer_verification": "x=-2; 12x - 45=-69"
   },
   {
     "question_id": "sat-math-linear-equations-medium-q11",
@@ -449,39 +466,26 @@
     "lesson_id": "sat-math-linear-equations-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "student_produced",
     "subskill": "one_variable",
-    "prompt": "If 3x + 4 = 2x + 12, what is the value of x?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "9",
-        "rationale": "Off by one; recheck moving terms across the equals sign."
-      },
-      {
-        "id": "B",
-        "text": "8",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "8/5",
-        "rationale": "This divides by a+c instead of a−c."
-      },
-      {
-        "id": "D",
-        "text": "7",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Bring x-terms together: 3x − 2x = 12 − 4, so 1x = 8. Then x = 8.",
-    "estimated_time_seconds": 70,
+    "prompt": "In the equation 8x − 2 = 6x + 18, what is the value of x?",
+    "answer": {
+      "type": "numeric",
+      "value": 10,
+      "accepted": [
+        "10"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "Collect terms: 2x = 20, so x = 10.",
+    "estimated_time_seconds": 75,
     "tags": [
       "algebra",
-      "linear"
+      "linear",
+      "grid-in",
+      "family:le_gridin"
     ],
-    "answer_verification": "x=8"
+    "answer_verification": "x=10 satisfies 8x - 2 = 6x + 18"
   },
   {
     "question_id": "sat-math-linear-equations-medium-q12",
@@ -495,37 +499,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "one_variable",
-    "prompt": "If 5x + 15 = 1x + 35, what is the value of x?",
+    "prompt": "21 = 6x − 27\nWhat is the solution to the given equation?",
     "choices": [
       {
         "id": "A",
-        "text": "6",
-        "rationale": "Off by one; recheck moving terms across the equals sign."
+        "text": "48",
+        "rationale": "This is 6x; divide by 6."
       },
       {
         "id": "B",
-        "text": "20",
-        "rationale": "This is 4x, not x; divide by 4."
+        "text": "-8",
+        "rationale": "Sign error when dividing by the coefficient."
       },
       {
         "id": "C",
-        "text": "10/3",
-        "rationale": "This divides by a+c instead of a−c."
+        "text": "8",
+        "rationale": "Correct: substituting back makes both sides equal."
       },
       {
         "id": "D",
-        "text": "5",
-        "rationale": "Correct."
+        "text": "-1",
+        "rationale": "Subtract the constant; don't add it."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Bring x-terms together: 5x − 1x = 35 − 15, so 4x = 20. Then x = 5.",
+    "correct_choice": "C",
+    "explanation": "Isolate the x-term: 6x = 21 − (−27) = 48. Divide by 6: x = 8.",
     "estimated_time_seconds": 70,
     "tags": [
       "algebra",
-      "linear"
+      "linear",
+      "family:le_two_step"
     ],
-    "answer_verification": "x=5"
+    "answer_verification": "21 = 6x - 27 at x=8"
   },
   {
     "question_id": "sat-math-linear-equations-medium-q13",
@@ -539,37 +544,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "one_variable",
-    "prompt": "If 8x + 10 = 6x + 22, what is the value of x?",
+    "prompt": "12x − 13 = x − 101\nWhat is the solution to the given equation?",
     "choices": [
       {
         "id": "A",
-        "text": "7",
-        "rationale": "Off by one; recheck moving terms across the equals sign."
+        "text": "8",
+        "rationale": "Sign slip when moving terms across the equals sign."
       },
       {
         "id": "B",
-        "text": "6",
-        "rationale": "Correct."
+        "text": "-88/13",
+        "rationale": "This divides by a + c instead of a − c."
       },
       {
         "id": "C",
-        "text": "12",
-        "rationale": "This is 2x, not x; divide by 2."
+        "text": "-8",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "6/7",
-        "rationale": "This divides by a+c instead of a−c."
+        "text": "-88",
+        "rationale": "This is 11x, not x; divide by 11."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Bring x-terms together: 8x − 6x = 22 − 10, so 2x = 12. Then x = 6.",
-    "estimated_time_seconds": 70,
+    "correct_choice": "C",
+    "explanation": "Collect the x-terms: 12x − (1x) = −101 − (−13), so 11x = −88. Divide by 11: x = -8.",
+    "estimated_time_seconds": 80,
     "tags": [
       "algebra",
-      "linear"
+      "linear",
+      "family:le_both_sides"
     ],
-    "answer_verification": "x=6"
+    "answer_verification": "x=-8 satisfies 12x - 13 = x - 101"
   },
   {
     "question_id": "sat-math-linear-equations-medium-q14",
@@ -583,37 +589,39 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "one_variable",
-    "prompt": "If 7x + 19 = 5x + 43, what is the value of x?",
+    "prompt": "7(x − 9) + 10 = −123\nWhat value of x makes the equation true?",
     "choices": [
       {
         "id": "A",
-        "text": "12",
-        "rationale": "Correct."
+        "text": "-19",
+        "rationale": "This forgets to subtract 7·(−9)."
       },
       {
         "id": "B",
-        "text": "2",
-        "rationale": "This divides by a+c instead of a−c."
+        "text": "-124/7",
+        "rationale": "Multiply −9 by 7 when distributing."
       },
       {
         "id": "C",
-        "text": "24",
-        "rationale": "This is 2x, not x; divide by 2."
+        "text": "10",
+        "rationale": "Sign slip while distributing a negative."
       },
       {
         "id": "D",
-        "text": "13",
-        "rationale": "Off by one; recheck moving terms across the equals sign."
+        "text": "-10",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Bring x-terms together: 7x − 5x = 43 − 19, so 2x = 24. Then x = 12.",
-    "estimated_time_seconds": 70,
+    "correct_choice": "D",
+    "explanation": "Distribute: 7x − 63 + 10 = −123, so 7x = −70 and x = −10.",
+    "estimated_time_seconds": 85,
     "tags": [
       "algebra",
-      "linear"
+      "linear",
+      "distribute",
+      "family:le_distribute"
     ],
-    "answer_verification": "x=12"
+    "answer_verification": "x=-10 in 7(x - 9) + 10 = -123"
   },
   {
     "question_id": "sat-math-linear-equations-medium-q15",
@@ -626,38 +634,40 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "one_variable",
-    "prompt": "If 4x + 17 = 3x + 27, what is the value of x?",
+    "subskill": "two_variable",
+    "prompt": "A water tank holds 630 gallons and drains at a constant 7 gallons per minute. Which equation gives the remaining amount A after t minutes?",
     "choices": [
       {
         "id": "A",
-        "text": "11",
-        "rationale": "Off by one; recheck moving terms across the equals sign."
-      },
-      {
-        "id": "B",
-        "text": "12",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "C",
-        "text": "10",
+        "text": "A = 630 − 7t",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "A = 7t − 630",
+        "rationale": "This starts at −630 and increases; the signs are reversed."
+      },
+      {
+        "id": "C",
+        "text": "A = (630 − 7)t",
+        "rationale": "Only 7 is lost per minute; the start value isn't multiplied by t."
+      },
+      {
         "id": "D",
-        "text": "10/7",
-        "rationale": "This divides by a+c instead of a−c."
+        "text": "A = 630 + 7t",
+        "rationale": "The amount decreases, so the rate term is subtracted."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Bring x-terms together: 4x − 3x = 27 − 17, so 1x = 10. Then x = 10.",
-    "estimated_time_seconds": 70,
+    "correct_choice": "A",
+    "explanation": "Start at 630 and subtract 7 for each minute: A = 630 − 7t.",
+    "estimated_time_seconds": 85,
     "tags": [
       "algebra",
-      "linear"
+      "linear",
+      "model",
+      "family:le_model_equation"
     ],
-    "answer_verification": "x=10"
+    "answer_verification": "model A = 630 − 7t"
   },
   {
     "question_id": "sat-math-linear-equations-medium-q16",
@@ -670,38 +680,40 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "one_variable",
-    "prompt": "If 7x + 4 = 2x + 79, what is the value of x?",
+    "subskill": "slope_intercept",
+    "prompt": "A caterer's charge P, in dollars, for a party with g guests is P = 8g + 42. Which of the following is the best interpretation of the number 8 in this context?",
     "choices": [
       {
         "id": "A",
-        "text": "25/3",
-        "rationale": "This divides by a+c instead of a−c."
+        "text": "the total charge for the party",
+        "rationale": "The total is the output of the equation, not a single constant."
       },
       {
         "id": "B",
-        "text": "16",
-        "rationale": "Off by one; recheck moving terms across the equals sign."
+        "text": "the charge per guest",
+        "rationale": "The coefficient of the variable is the rate of change."
       },
       {
         "id": "C",
-        "text": "15",
-        "rationale": "Correct."
+        "text": "the number of guests",
+        "rationale": "The variable itself is not a fixed number in the equation."
       },
       {
         "id": "D",
-        "text": "75",
-        "rationale": "This is 5x, not x; divide by 5."
+        "text": "the base charge regardless of the number of guests",
+        "rationale": "That describes the constant term (the value when the variable is 0)."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Bring x-terms together: 7x − 2x = 79 − 4, so 5x = 75. Then x = 15.",
-    "estimated_time_seconds": 70,
+    "correct_choice": "B",
+    "explanation": "In a linear model the coefficient of g is the rate of change: the charge per guest.",
+    "estimated_time_seconds": 80,
     "tags": [
       "algebra",
-      "linear"
+      "linear",
+      "interpret",
+      "family:le_interpret"
     ],
-    "answer_verification": "x=15"
+    "answer_verification": "slope=8"
   },
   {
     "question_id": "sat-math-linear-equations-medium-q17",
@@ -714,38 +726,40 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "one_variable",
-    "prompt": "If 14x + 25 = 2x + 157, what is the value of x?",
+    "subskill": "slope_intercept",
+    "prompt": "The line 9x − 8y = 40 is graphed in the xy-plane. What is the y-coordinate of its y-intercept?",
     "choices": [
       {
         "id": "A",
-        "text": "12",
-        "rationale": "Off by one; recheck moving terms across the equals sign."
+        "text": "5",
+        "rationale": "Sign slip in the division."
       },
       {
         "id": "B",
-        "text": "33/4",
-        "rationale": "This divides by a+c instead of a−c."
+        "text": "40/9",
+        "rationale": "That is the x-intercept."
       },
       {
         "id": "C",
-        "text": "132",
-        "rationale": "This is 12x, not x; divide by 12."
+        "text": "-5",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "11",
-        "rationale": "Correct."
+        "text": "40",
+        "rationale": "Divide 40 by the coefficient of y."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Bring x-terms together: 14x − 2x = 157 − 25, so 12x = 132. Then x = 11.",
-    "estimated_time_seconds": 70,
+    "correct_choice": "C",
+    "explanation": "Set x = 0: −8y = 40, so y = 40/−8 = −5.",
+    "estimated_time_seconds": 90,
     "tags": [
       "algebra",
-      "linear"
+      "linear",
+      "intercept",
+      "family:le_intercepts"
     ],
-    "answer_verification": "x=11"
+    "answer_verification": "y-int=-5"
   },
   {
     "question_id": "sat-math-linear-equations-medium-q18",
@@ -758,38 +772,40 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "one_variable",
-    "prompt": "If 3x + 13 = 1x + 29, what is the value of x?",
+    "subskill": "slope_intercept",
+    "prompt": "What is the slope of the line that passes through the points (−6, 33) and (1, −9) in the xy-plane?",
     "choices": [
       {
         "id": "A",
-        "text": "9",
-        "rationale": "Off by one; recheck moving terms across the equals sign."
+        "text": "-42",
+        "rationale": "That is only the change in y; divide by the change in x."
       },
       {
         "id": "B",
-        "text": "4",
-        "rationale": "This divides by a+c instead of a−c."
+        "text": "6",
+        "rationale": "Sign slip; subtract the coordinates in the same order."
       },
       {
         "id": "C",
-        "text": "8",
-        "rationale": "Correct."
+        "text": "-1/6",
+        "rationale": "This is run over rise; slope is rise over run."
       },
       {
         "id": "D",
-        "text": "16",
-        "rationale": "This is 2x, not x; divide by 2."
+        "text": "-6",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Bring x-terms together: 3x − 1x = 29 − 13, so 2x = 16. Then x = 8.",
-    "estimated_time_seconds": 70,
+    "correct_choice": "D",
+    "explanation": "Slope = (y₂ − y₁)/(x₂ − x₁) = (−9 − (33))/(1 − (−6)) = −42/7 = -6.",
+    "estimated_time_seconds": 80,
     "tags": [
       "algebra",
-      "linear"
+      "linear",
+      "slope",
+      "family:le_slope_points"
     ],
-    "answer_verification": "x=8"
+    "answer_verification": "(-9-33)/(1--6)=-6"
   },
   {
     "question_id": "sat-math-linear-equations-medium-q19",
@@ -802,38 +818,40 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "one_variable",
-    "prompt": "If 4x + 2 = 1x + 41, what is the value of x?",
+    "subskill": "slope_intercept",
+    "prompt": "What is the slope of a line that is parallel to the graph of y = 8x − 2 in the xy-plane?",
     "choices": [
       {
         "id": "A",
-        "text": "39/5",
-        "rationale": "This divides by a+c instead of a−c."
+        "text": "-8",
+        "rationale": "Parallel lines have the same slope, not the opposite sign."
       },
       {
         "id": "B",
-        "text": "39",
-        "rationale": "This is 3x, not x; divide by 3."
+        "text": "8",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "14",
-        "rationale": "Off by one; recheck moving terms across the equals sign."
+        "text": "-1/8",
+        "rationale": "That is the perpendicular slope (negative reciprocal)."
       },
       {
         "id": "D",
-        "text": "13",
-        "rationale": "Correct."
+        "text": "-9/8",
+        "rationale": "Recheck: parallel lines share the given slope exactly."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Bring x-terms together: 4x − 1x = 41 − 2, so 3x = 39. Then x = 13.",
-    "estimated_time_seconds": 70,
+    "correct_choice": "B",
+    "explanation": "The given line has slope 8; parallel lines share the same slope, so the answer is 8.",
+    "estimated_time_seconds": 80,
     "tags": [
       "algebra",
-      "linear"
+      "linear",
+      "parallel",
+      "family:le_parallel_perp"
     ],
-    "answer_verification": "x=13"
+    "answer_verification": "given slope 8; parallel -> 8"
   },
   {
     "question_id": "sat-math-linear-equations-medium-q20",
@@ -846,37 +864,39 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "one_variable",
-    "prompt": "If 12x + 5 = 2x + 85, what is the value of x?",
+    "subskill": "two_variable",
+    "prompt": "A line with slope 1 passes through the point (1, −1) in the xy-plane. Which equation defines the line?",
     "choices": [
       {
         "id": "A",
-        "text": "80",
-        "rationale": "This is 10x, not x; divide by 10."
-      },
-      {
-        "id": "B",
-        "text": "9",
-        "rationale": "Off by one; recheck moving terms across the equals sign."
-      },
-      {
-        "id": "C",
-        "text": "8",
+        "text": "y = x − 2",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "y = x − 1",
+        "rationale": "−1 is the y-value at x = 1, not the y-intercept."
+      },
+      {
+        "id": "C",
+        "text": "y = −x − 2",
+        "rationale": "The slope keeps its given sign."
+      },
+      {
         "id": "D",
-        "text": "40/7",
-        "rationale": "This divides by a+c instead of a−c."
+        "text": "y = x + 2",
+        "rationale": "Sign slip when solving for b."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Bring x-terms together: 12x − 2x = 85 − 5, so 10x = 80. Then x = 8.",
-    "estimated_time_seconds": 70,
+    "correct_choice": "A",
+    "explanation": "Use y = mx + b with m = 1: −1 = 1·(1) + b, so b = −2 and y = x − 2.",
+    "estimated_time_seconds": 90,
     "tags": [
       "algebra",
-      "linear"
+      "linear",
+      "equation",
+      "family:le_line_equation"
     ],
-    "answer_verification": "x=8"
+    "answer_verification": "y=1x+(-2) through (1,-1)"
   }
 ]

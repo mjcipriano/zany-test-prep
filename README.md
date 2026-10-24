@@ -1,18 +1,29 @@
 # Zany Test Prep
 
-An **offline-first, Duolingo-style SAT prep app** built in Flutter. Short
+An **offline-first, Duolingo-style SAT & ACT prep app** built in Flutter. Short
 5–15 minute challenge lessons, gamified progression (XP, levels, streaks,
-mastery, badges, crowns), and a full review system — all working **completely
-offline after install**. No backend, no login, no network.
+mastery, badges, crowns), full-length timed practice tests, and a spaced review
+system — all working **completely offline after install**. No backend, no login,
+no network.
 
 - **Platform:** Android-first, architected cross-platform (iOS/web/desktop ready).
-- **Content:** 50 original SAT-style lessons and 1,003 original questions
-  (500 Math, 503 Reading & Writing). No copyrighted College Board material.
+- **Exams:** pick the **SAT** or the **ACT** at onboarding and switch any time in
+  Settings (XP, streaks and rewards carry across; each exam keeps its own path).
+- **Content:** every question is original and generated from a library of
+  **question families** — many distinct forms per skill, mixed within each lesson
+  so nothing feels like one template with new numbers.
+  - SAT: 117 lessons, 24,171 questions
+    (11,952 Math, 12,219 Reading & Writing).
+  - ACT: 147 lessons, 16,617 questions
+    (5,253 English, 10,152 Math, 180 Reading,
+    1,032 Science), with 5-choice Math and NO CHANGE-style English.
+  - No copyrighted College Board or ACT, Inc. material.
 - **Stack:** Flutter (stable, 3.35.5), Material 3, Riverpod, GoRouter,
   `shared_preferences` persistence.
 
-> The data model is **exam-agnostic** (`exam_id`/`domain`/`section`/`skill`/…),
-> so ACT and AP exams can be added later without reworking the app.
+> The data model is **exam-agnostic** (`exam_id`/`domain`/`section`/`skill`/…)
+> and the UI reads domains, test layout and score scales from each exam's
+> descriptor, so AP exams can be added with content alone.
 
 ## Screenshots
 
@@ -28,12 +39,15 @@ offline after install**. No backend, no login, no network.
 | --- | --- | --- | --- |
 | ![Rewards](docs/screenshots/10_rewards.png) | ![Chest](docs/screenshots/13_chest_reward.png) | ![Store](docs/screenshots/11_store.png) | ![Items](docs/screenshots/14_avatar_items.png) |
 
-### Avatar customization
+### Avatar customization & pet companions
 
 Meet the daily goal to earn chests, spend XP in the store, then dress up a
-customizable avatar. Worn items snap to the right spot and side slots hold pets
-and floating props. Here's one avatar built up layer by layer, plus a couple of
-other looks:
+customizable avatar from the vendored art pack (110 avatars, 376 items including
+104 Prism variants, 90 pet lines). Worn items snap to the right body region (hats
+rest on the brow line), and the four side slots hold pets and floating props.
+**Pets level up while equipped** and evolve from Base to Shiny to Radiant forms
+(270 pet sprites in all); evolved stages are earned, never bought. Here's one
+avatar built up layer by layer, plus a couple of other looks:
 
 | Starter | + Headwear | + Eyewear | + Scarf & badge |
 | --- | --- | --- | --- |
@@ -72,14 +86,17 @@ can skip `setup_env.sh`/`activate.sh` and use your own toolchain.
 ## Common commands
 
 ```bash
-# Validate the offline content bank (schema + referential + answer checks)
+# Validate the offline content banks (schema + referential + answer + variety checks)
 python tools/validate_content.py
 
-# Regenerate the canonical content JSON under content/exams/sat/
-python tools/generate_content.py
+# Regenerate the canonical content JSON under content/exams/{sat,act}/
+python tools/generate_content.py            # or --exam act
 
-# Rebuild the app asset bundle (assets/content/sat.bundle.json)
+# Rebuild the app asset bundles (assets/content/*.bundle.json + exams.json)
 python tools/build_bundle.py
+
+# Python tooling + generator tests
+python -m unittest discover -s tools/tests -t .
 
 # Run unit + widget tests
 flutter test
@@ -129,14 +146,16 @@ flutter build apk --debug
 │   └── features/            # UI per feature (onboarding, home, lessons, review, …)
 ├── content/                 # canonical, exam-agnostic content (source of truth)
 │   ├── exams/sat/           # exam.yaml, skills.yaml, lessons/, questions/, manifest.json
+│   ├── exams/act/           # same layout: english / math / reading / science
 │   ├── schemas/             # question.schema.json, lesson.schema.json
 │   ├── prompts/             # reusable AI content-generation prompts
 │   └── validators/          # validator docs
 ├── tools/                   # Python content pipeline
-│   ├── generate_content.py  # regenerate the SAT content bank
-│   ├── validate_content.py  # schema + referential + answer validation (runs in CI)
-│   ├── build_bundle.py      # build assets/content/<exam>.bundle.json
-│   └── content_gen/         # deterministic generators (math, rw, passages, teaching)
+│   ├── generate_content.py  # regenerate every exam's bank (walks exam_plans.py)
+│   ├── validate_content.py  # schema + referential + answer + variety checks (CI)
+│   ├── build_bundle.py      # build assets/content/<exam>.bundle.json + exams.json
+│   ├── content_gen/         # question families: math, writing, passages, science, teaching
+│   └── tests/               # unittest suite for the tooling + every generator family
 ├── assets/content/          # built bundles the app loads at runtime (generated)
 ├── scripts/                 # setup_env.sh, activate.sh
 ├── .github/workflows/       # ci.yml, android-apk.yml, release.yml
@@ -151,7 +170,7 @@ flutter build apk --debug
 | [docs/content.md](docs/content.md) | Content schemas field-by-field, question types, the pipeline |
 | [docs/persistence.md](docs/persistence.md) | Storage keys, JSON shapes, reset behavior, offline guarantees |
 | [docs/gamification.md](docs/gamification.md) | XP, levels, streaks, daily goals, mastery, review, badges, crowns — with formulas |
-| [docs/content-authoring.md](docs/content-authoring.md) | Adding SAT lessons/questions, adding a new exam (ACT/AP), the workflow |
+| [docs/content-authoring.md](docs/content-authoring.md) | Question families, per-exam plans, adding a new exam (AP), the workflow |
 | [docs/release.md](docs/release.md) | GitHub Actions workflows, cutting a private release, signing secrets |
 | [docs/roadmap.md](docs/roadmap.md) | Known limitations and the future roadmap |
 
@@ -163,6 +182,8 @@ network requests. Resetting progress from Settings wipes the local data.
 
 ## Content note
 
-All SAT practice content in this repository is **original, SAT-style** material,
-generated or authored for this project. It contains **no copyrighted College
-Board questions** or official test-prep material.
+All practice content in this repository is **original, SAT- and ACT-style**
+material, generated or authored for this project. It contains **no copyrighted
+College Board or ACT, Inc. questions** or official test-prep material. "SAT" is a
+trademark of the College Board and "ACT" is a trademark of ACT, Inc.; neither is
+affiliated with nor endorses this app.

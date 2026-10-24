@@ -35,6 +35,30 @@ class ContentBundle {
 
   String skillName(String skillId) => skillMap.nameFor(skillId);
 
+  /// Domain ids in the exam's canonical order (skill map order, falling back
+  /// to the exam descriptor's list).
+  List<String> get domainIds => skillMap.domains.isNotEmpty
+      ? skillMap.domains.map((d) => d.id).toList()
+      : exam.domains;
+
+  /// Position of [domain] in [domainIds]; unknown domains sort last.
+  int domainIndex(String domain) {
+    final i = domainIds.indexOf(domain);
+    return i < 0 ? domainIds.length : i;
+  }
+
+  /// Human name for a domain id ("Reading & Writing", "Science", …).
+  String domainName(String domain) {
+    for (final d in skillMap.domains) {
+      if (d.id == domain) return d.name;
+    }
+    return domain
+        .split('_')
+        .where((w) => w.isNotEmpty)
+        .map((w) => w[0].toUpperCase() + w.substring(1))
+        .join(' ');
+  }
+
   factory ContentBundle.fromJson(Map<String, dynamic> json) {
     final lessons = (json['lessons'] as List)
         .map((e) => Lesson.fromJson(e as Map<String, dynamic>))

@@ -8,6 +8,8 @@ import '../../design/widgets.dart';
 import '../../domain/models/content_bundle.dart';
 import '../../domain/models/progress.dart';
 import '../../domain/services/leveling.dart';
+import '../../domain/services/scoring.dart';
+import '../../domain/services/streak_engine.dart';
 import '../rewards/avatar_view.dart';
 
 /// A progress dashboard: totals, an estimated SAT score, daily XP, a streak
@@ -23,6 +25,9 @@ class DashboardScreen extends ConsumerWidget {
     }
     final s = _Stats.from(data.progress, data.bundle);
     final scheme = Theme.of(context).colorScheme;
+    final bundle = data.bundle;
+    final examName = bundle.exam.name;
+    final scoring = ExamScoring(bundle.exam.scoring);
 
     return Scaffold(
       appBar: AppBar(title: const Text('Your progress')),
@@ -41,20 +46,24 @@ class DashboardScreen extends ConsumerWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    'Estimated SAT score',
-                    style: TextStyle(fontWeight: FontWeight.w700),
+                  Text(
+                    'Estimated $examName score',
+                    style: const TextStyle(fontWeight: FontWeight.w700),
                   ),
                   Gap.xs,
                   Text(
-                    '${s.predictedTotal}',
+                    scoring.formatSection(s.predictedComposite(scoring)),
                     style: const TextStyle(
                       fontSize: 40,
                       fontWeight: FontWeight.w900,
                     ),
                   ),
                   Text(
-                    'Reading & Writing ${s.predictedRW}  •  Math ${s.predictedMath}',
+                    [
+                      for (final d in s.domains)
+                        '${bundle.domainName(d.id)} '
+                            '${scoring.formatSection(s.predictedFor(d, scoring))}',
+                    ].join('  •  '),
                     style: TextStyle(color: scheme.onPrimaryContainer),
                   ),
                   Gap.xs,
@@ -75,10 +84,10 @@ class DashboardScreen extends ConsumerWidget {
                     children: [
                       Icon(Icons.lock_clock_rounded, color: scheme.primary),
                       Gap.s,
-                      const Expanded(
+                      Expanded(
                         child: Text(
-                          'Estimated SAT score',
-                          style: TextStyle(fontWeight: FontWeight.w700),
+                          'Estimated $examName score',
+                          style: const TextStyle(fontWeight: FontWeight.w700),
                         ),
                       ),
                     ],
@@ -90,13 +99,13 @@ class DashboardScreen extends ConsumerWidget {
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
                   Gap.m,
-                  _unlockBar(
-                    'Reading & Writing',
-                    s.rwAttempts,
-                    AppTheme.seed,
-                    context,
-                  ),
-                  _unlockBar('Math', s.mathAttempts, AppTheme.correct, context),
+                  for (final d in s.domains)
+                    _unlockBar(
+                      bundle.domainName(d.id),
+                      d.attempts,
+                      AppTheme.domainColor(bundle.domainIndex(d.id)),
+                      context,
+                    ),
                 ],
               ),
             ),
@@ -188,21 +197,15 @@ class DashboardScreen extends ConsumerWidget {
             child: _Heatmap(days: s.heatmap, color: AppTheme.correct),
           ),
           Gap.l,
-          const SectionLabel('Accuracy by domain'),
-          _domainBar(
-            'Reading & Writing',
-            s.rwAccuracy,
-            s.rwAttempts,
-            AppTheme.seed,
-            context,
-          ),
-          _domainBar(
-            'Math',
-            s.mathAccuracy,
-            s.mathAttempts,
-            AppTheme.correct,
-            context,
-          ),
+          const SectionLabel('Accuracy by section'),
+          for (final d in s.domains)
+            _domainBar(
+              bundle.domainName(d.id),
+              d.accuracy,
+              d.attempts,
+              AppTheme.domainColor(bundle.domainIndex(d.id)),
+              context,
+            ),
           if (s.weakestSkills.isNotEmpty) ...[
             Gap.l,
             const SectionLabel('Focus next (weakest skills)'),
@@ -330,11 +333,16 @@ class _SkillAcc {
   final int attempts;
 }
 
-class _Stats {
-  /// Minimum answered questions *per domain* before we show a score estimate.
-  /// Below this the accuracy is too noisy to map to a meaningful 200-800 score.
-  static const int minForEstimate = 20;
+/// Attempt/accuracy totals for one exam domain (section).
+class DomainStats {
+  DomainStats(this.id);
+  final String id;
+  int attempts = 0;
+  int correct = 0;
+  double get accuracy => attempts == 0 ? 0 : correct / attempts;
+}
 
+class _Stats {
   _Stats({
     required this.level,
     required this.totalXp,
@@ -342,36 +350,40 @@ class _Stats {
     required this.survivalBest,
     required this.questionsAnswered,
     required this.overallAccuracy,
-    required this.rwAccuracy,
-    required this.mathAccuracy,
-    required this.rwAttempts,
-    required this.mathAttempts,
-    required this.predictedRW,
-    required this.predictedMath,
+    required this.domains,
     required this.last14,
     required this.heatmap,
     required this.weakestSkills,
   });
 
-  final int level, totalXp, streak, survivalBest, questionsAnswered;
-  final double overallAccuracy, rwAccuracy, mathAccuracy;
-  final int rwAttempts, mathAttempts;
-  final int predictedRW, predictedMath;
+  /// Below this the accuracy is too noisy to map to a meaningful scaled score.
+  static const minForEstimate = 20;
+
+  final int level;
+  final int totalXp;
+  final int streak;
+  final int survivalBest;
+  final int questionsAnswered;
+  final double overallAccuracy;
+  final List<DomainStats> domains; // in the exam's domain order
   final List<int> last14;
   final List<int> heatmap; // xp per day, oldest..today
   final List<_SkillAcc> weakestSkills;
 
-  int get predictedTotal => predictedRW + predictedMath;
-
   bool get scoreReady =>
-      rwAttempts >= minForEstimate && mathAttempts >= minForEstimate;
+      domains.isNotEmpty && domains.every((d) => d.attempts >= minForEstimate);
 
-  static int _score(double acc, int attempts) =>
-      attempts == 0 ? 250 : (200 + acc * 600).round();
+  int predictedFor(DomainStats d, ExamScoring scoring) =>
+      scoring.sectionScore(d.correct, d.attempts);
+
+  int predictedComposite(ExamScoring scoring) => scoring.composite({
+    for (final d in domains) d.id: predictedFor(d, scoring),
+  });
 
   static _Stats from(AppProgress p, ContentBundle bundle) {
     const level = LevelEngine();
-    var answered = 0, correct = 0, rwA = 0, rwC = 0, mA = 0, mC = 0;
+    var answered = 0, correct = 0;
+    final byDomain = {for (final d in bundle.domainIds) d: DomainStats(d)};
     final bySkillCorrect = <String, int>{};
     final bySkillAtt = <String, int>{};
     for (final st in p.questionStats.values) {
@@ -379,13 +391,9 @@ class _Stats {
       if (q == null) continue;
       answered += st.attempts;
       correct += st.correct;
-      if (q.domain == 'math') {
-        mA += st.attempts;
-        mC += st.correct;
-      } else {
-        rwA += st.attempts;
-        rwC += st.correct;
-      }
+      final ds = byDomain.putIfAbsent(q.domain, () => DomainStats(q.domain));
+      ds.attempts += st.attempts;
+      ds.correct += st.correct;
       bySkillAtt[q.skill] = (bySkillAtt[q.skill] ?? 0) + st.attempts;
       bySkillCorrect[q.skill] = (bySkillCorrect[q.skill] ?? 0) + st.correct;
     }
@@ -417,16 +425,15 @@ class _Stats {
     return _Stats(
       level: level.levelForXp(p.game.totalXp),
       totalXp: p.game.totalXp,
-      streak: p.game.currentStreak,
+      streak: const StreakEngine().displayedStreak(
+        lastActiveDay: p.game.lastActiveDay,
+        currentStreak: p.game.currentStreak,
+        today: DateTime.now(),
+      ),
       survivalBest: p.game.survivalBest,
       questionsAnswered: answered,
       overallAccuracy: answered == 0 ? 0 : correct / answered,
-      rwAccuracy: rwA == 0 ? 0 : rwC / rwA,
-      mathAccuracy: mA == 0 ? 0 : mC / mA,
-      rwAttempts: rwA,
-      mathAttempts: mA,
-      predictedRW: _score(rwA == 0 ? 0 : rwC / rwA, rwA),
-      predictedMath: _score(mA == 0 ? 0 : mC / mA, mA),
+      domains: byDomain.values.toList(),
       last14: last14,
       heatmap: heatmap,
       weakestSkills: weak.take(5).toList(),

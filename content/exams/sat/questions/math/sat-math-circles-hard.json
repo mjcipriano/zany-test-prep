@@ -10,50 +10,49 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "arc_sector",
-    "prompt": "In the circle shown, radius 6, a 120° sector is highlighted. What is the area of that sector, in terms of π?",
+    "subskill": "circumference_area",
+    "prompt": "The circle shown has diameter 34. What is its circumference, in terms of π?",
     "choices": [
       {
         "id": "A",
-        "text": "6π",
-        "rationale": "Use πr² (not πr) before taking the fraction."
+        "text": "289π",
+        "rationale": "That is the area coefficient."
       },
       {
         "id": "B",
-        "text": "36π",
-        "rationale": "This is the whole circle's area, not the sector."
+        "text": "68π",
+        "rationale": "Circumference is πd or 2πr, not 2πd."
       },
       {
         "id": "C",
-        "text": "4π",
-        "rationale": "That's the arc length, not the sector area."
+        "text": "17π",
+        "rationale": "Circumference is 2πr, not πr."
       },
       {
         "id": "D",
-        "text": "12π",
+        "text": "34π",
         "rationale": "Correct."
       }
     ],
     "correct_choice": "D",
-    "explanation": "Sector area = (θ/360)·πr² = (120/360)·π·6² = 12π.",
-    "estimated_time_seconds": 95,
+    "explanation": "Circumference = πd = π·34 = 34π (equivalently 2πr with r = 17).",
+    "estimated_time_seconds": 80,
     "tags": [
       "geometry",
-      "circle"
+      "circle",
+      "family:ci_basic"
     ],
     "stimulus": {
       "type": "figure",
       "figure": {
         "kind": "circle",
         "caption": "Circle",
-        "sector": 120,
         "labels": {
-          "r": "6",
-          "angle": "120°"
+          "d": "34"
         }
       }
     },
-    "answer_verification": "12π"
+    "answer_verification": "34π"
   },
   {
     "question_id": "sat-math-circles-hard-q02",
@@ -66,50 +65,39 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "arc_sector",
-    "prompt": "In the circle shown, radius 8, a 90° sector is highlighted. What is the area of that sector, in terms of π?",
+    "subskill": "circumference_area",
+    "prompt": "The circumference of a circle is 24π. What is its area, in terms of π?",
     "choices": [
       {
         "id": "A",
-        "text": "64π",
-        "rationale": "This is the whole circle's area, not the sector."
+        "text": "576π",
+        "rationale": "Use r, not the diameter, in πr²."
       },
       {
         "id": "B",
-        "text": "16π",
-        "rationale": "Correct."
+        "text": "24π",
+        "rationale": "That is the circumference again."
       },
       {
         "id": "C",
-        "text": "4π",
-        "rationale": "That's the arc length, not the sector area."
+        "text": "144π",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "8π",
-        "rationale": "Use πr² (not πr) before taking the fraction."
+        "text": "12π",
+        "rationale": "Area uses r²."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Sector area = (θ/360)·πr² = (90/360)·π·8² = 16π.",
-    "estimated_time_seconds": 95,
+    "correct_choice": "C",
+    "explanation": "2πr = 24π → r = 12; area = π·12² = 144π.",
+    "estimated_time_seconds": 85,
     "tags": [
       "geometry",
-      "circle"
+      "circle",
+      "family:ci_reverse"
     ],
-    "stimulus": {
-      "type": "figure",
-      "figure": {
-        "kind": "circle",
-        "caption": "Circle",
-        "sector": 90,
-        "labels": {
-          "r": "8",
-          "angle": "90°"
-        }
-      }
-    },
-    "answer_verification": "16π"
+    "answer_verification": "144π"
   },
   {
     "question_id": "sat-math-circles-hard-q03",
@@ -123,49 +111,51 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "arc_sector",
-    "prompt": "In the circle shown, radius 4, a 90° sector is highlighted. What is the area of that sector, in terms of π?",
+    "prompt": "In the circle shown, the radius is 36 and the shaded sector has a central angle of 40°. What is the area of the sector, in terms of π?",
     "choices": [
       {
         "id": "A",
-        "text": "2π",
-        "rationale": "That's the arc length, not the sector area."
+        "text": "36π",
+        "rationale": "Use πr² (not πr) before taking the fraction."
       },
       {
         "id": "B",
-        "text": "16π",
+        "text": "1296π",
         "rationale": "This is the whole circle's area, not the sector."
       },
       {
         "id": "C",
-        "text": "5π",
-        "rationale": "Recheck the formula and recompute."
+        "text": "144π",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "4π",
-        "rationale": "Correct."
+        "text": "8π",
+        "rationale": "That's the arc length, not the sector area."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Sector area = (θ/360)·πr² = (90/360)·π·4² = 4π.",
+    "correct_choice": "C",
+    "explanation": "Sector area = (θ/360)·πr² = (40/360)·π·36² = 144π.",
     "estimated_time_seconds": 95,
     "tags": [
       "geometry",
-      "circle"
+      "circle",
+      "sector",
+      "family:ci_arc_sector"
     ],
     "stimulus": {
       "type": "figure",
       "figure": {
         "kind": "circle",
         "caption": "Circle",
-        "sector": 90,
         "labels": {
-          "r": "4",
-          "angle": "90°"
-        }
+          "r": "36",
+          "angle": "40°"
+        },
+        "sector": 40
       }
     },
-    "answer_verification": "4π"
+    "answer_verification": "144π"
   },
   {
     "question_id": "sat-math-circles-hard-q04",
@@ -178,50 +168,40 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "arc_sector",
-    "prompt": "In the circle shown, radius 18, a 60° arc is highlighted. What is the length of that arc, in terms of π?",
+    "subskill": "circumference_area",
+    "prompt": "Which equation represents the circle in the xy-plane with center (8, −9) and radius 9?",
     "choices": [
       {
         "id": "A",
-        "text": "36π",
-        "rationale": "This is the whole circumference, not the arc."
+        "text": "(x + 9)² + (y − 8)² = 81",
+        "rationale": "The x-term uses the x-coordinate of the center."
       },
       {
         "id": "B",
-        "text": "3π",
-        "rationale": "Use 2πr for the full circumference before taking the fraction."
+        "text": "(x − 8)² + (y + 9)² = 9",
+        "rationale": "The right side is r², not r."
       },
       {
         "id": "C",
-        "text": "6π",
+        "text": "(x − 8)² + (y + 9)² = 81",
         "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "54π",
-        "rationale": "That's the sector area, not the arc length."
+        "text": "(x + 8)² + (y − 9)² = 81",
+        "rationale": "The signs inside the parentheses are opposite to the center's coordinates."
       }
     ],
     "correct_choice": "C",
-    "explanation": "Arc = (θ/360)·2πr = (60/360)·2π·18 = 6π.",
-    "estimated_time_seconds": 95,
+    "explanation": "Standard form: (x − h)² + (y − k)² = r² with h = 8, k = −9, r² = 81.",
+    "estimated_time_seconds": 85,
     "tags": [
       "geometry",
-      "circle"
+      "circle",
+      "equation",
+      "family:ci_equation"
     ],
-    "stimulus": {
-      "type": "figure",
-      "figure": {
-        "kind": "circle",
-        "caption": "Circle",
-        "sector": 60,
-        "labels": {
-          "r": "18",
-          "angle": "60°"
-        }
-      }
-    },
-    "answer_verification": "6π"
+    "answer_verification": "(x − 8)² + (y + 9)² = 81"
   },
   {
     "question_id": "sat-math-circles-hard-q05",
@@ -234,50 +214,49 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "arc_sector",
-    "prompt": "In the circle shown, radius 8, a 90° arc is highlighted. What is the length of that arc, in terms of π?",
+    "subskill": "circumference_area",
+    "prompt": "The circle shown has diameter 46. What is its area, in terms of π?",
     "choices": [
       {
         "id": "A",
-        "text": "5π",
-        "rationale": "Recheck the formula and recompute."
+        "text": "46π",
+        "rationale": "That would be πd, which is not a formula for area."
       },
       {
         "id": "B",
-        "text": "4π",
-        "rationale": "Correct."
+        "text": "2116π",
+        "rationale": "Use the radius (23), not the diameter, in πr²."
       },
       {
         "id": "C",
-        "text": "16π",
-        "rationale": "This is the whole circumference, not the arc."
+        "text": "529π",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "2π",
-        "rationale": "Use 2πr for the full circumference before taking the fraction."
+        "text": "23π",
+        "rationale": "Area uses r²."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Arc = (θ/360)·2πr = (90/360)·2π·8 = 4π.",
-    "estimated_time_seconds": 95,
+    "correct_choice": "C",
+    "explanation": "Radius = 46/2 = 23; area = π·23² = 529π.",
+    "estimated_time_seconds": 80,
     "tags": [
       "geometry",
-      "circle"
+      "circle",
+      "family:ci_basic"
     ],
     "stimulus": {
       "type": "figure",
       "figure": {
         "kind": "circle",
         "caption": "Circle",
-        "sector": 90,
         "labels": {
-          "r": "8",
-          "angle": "90°"
+          "d": "46"
         }
       }
     },
-    "answer_verification": "4π"
+    "answer_verification": "529π"
   },
   {
     "question_id": "sat-math-circles-hard-q06",
@@ -290,50 +269,39 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "arc_sector",
-    "prompt": "In the circle shown, radius 12, a 60° sector is highlighted. What is the area of that sector, in terms of π?",
+    "subskill": "circumference_area",
+    "prompt": "A circle has an area of 529π. What is its circumference, in terms of π?",
     "choices": [
       {
         "id": "A",
-        "text": "12π",
-        "rationale": "Use πr² (not πr) before taking the fraction."
+        "text": "529π",
+        "rationale": "That is the area again."
       },
       {
         "id": "B",
-        "text": "144π",
-        "rationale": "This is the whole circle's area, not the sector."
+        "text": "92π",
+        "rationale": "Circumference is 2πr, not 4πr."
       },
       {
         "id": "C",
-        "text": "4π",
-        "rationale": "That's the arc length, not the sector area."
+        "text": "46π",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "24π",
-        "rationale": "Correct."
+        "text": "23π",
+        "rationale": "Circumference is 2πr."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Sector area = (θ/360)·πr² = (60/360)·π·12² = 24π.",
-    "estimated_time_seconds": 95,
+    "correct_choice": "C",
+    "explanation": "πr² = 529π → r = 23; circumference = 2π·23 = 46π.",
+    "estimated_time_seconds": 85,
     "tags": [
       "geometry",
-      "circle"
+      "circle",
+      "family:ci_reverse"
     ],
-    "stimulus": {
-      "type": "figure",
-      "figure": {
-        "kind": "circle",
-        "caption": "Circle",
-        "sector": 60,
-        "labels": {
-          "r": "12",
-          "angle": "60°"
-        }
-      }
-    },
-    "answer_verification": "24π"
+    "answer_verification": "46π"
   },
   {
     "question_id": "sat-math-circles-hard-q07",
@@ -347,49 +315,51 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "arc_sector",
-    "prompt": "In the circle shown, radius 12, a 60° arc is highlighted. What is the length of that arc, in terms of π?",
+    "prompt": "In the circle shown, the radius is 27 and the shaded sector has a central angle of 40°. What is the area of the sector, in terms of π?",
     "choices": [
       {
         "id": "A",
-        "text": "4π",
-        "rationale": "Correct."
+        "text": "729π",
+        "rationale": "This is the whole circle's area, not the sector."
       },
       {
         "id": "B",
-        "text": "2π",
-        "rationale": "Use 2πr for the full circumference before taking the fraction."
+        "text": "81π",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "24π",
-        "rationale": "This is the whole circumference, not the arc."
+        "text": "6π",
+        "rationale": "That's the arc length, not the sector area."
       },
       {
         "id": "D",
-        "text": "5π",
-        "rationale": "Recheck the formula and recompute."
+        "text": "27π",
+        "rationale": "Use πr² (not πr) before taking the fraction."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Arc = (θ/360)·2πr = (60/360)·2π·12 = 4π.",
+    "correct_choice": "B",
+    "explanation": "Sector area = (θ/360)·πr² = (40/360)·π·27² = 81π.",
     "estimated_time_seconds": 95,
     "tags": [
       "geometry",
-      "circle"
+      "circle",
+      "sector",
+      "family:ci_arc_sector"
     ],
     "stimulus": {
       "type": "figure",
       "figure": {
         "kind": "circle",
         "caption": "Circle",
-        "sector": 60,
         "labels": {
-          "r": "12",
-          "angle": "60°"
-        }
+          "r": "27",
+          "angle": "40°"
+        },
+        "sector": 40
       }
     },
-    "answer_verification": "4π"
+    "answer_verification": "81π"
   },
   {
     "question_id": "sat-math-circles-hard-q08",
@@ -401,50 +371,40 @@
     "lesson_id": "sat-math-circles-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "arc_sector",
-    "prompt": "In the circle shown, radius 9, a 120° arc is highlighted. What is the length of that arc, in terms of π?",
+    "question_type": "multi_step_math",
+    "subskill": "circumference_area",
+    "prompt": "The equation x² + y² + 2x − 8y − 47 = 0 represents a circle in the xy-plane. What is the radius of the circle?",
     "choices": [
       {
         "id": "A",
-        "text": "3π",
-        "rationale": "Use 2πr for the full circumference before taking the fraction."
+        "text": "47",
+        "rationale": "The constant term is not the radius; complete the square."
       },
       {
         "id": "B",
-        "text": "6π",
+        "text": "8",
         "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "27π",
-        "rationale": "That's the sector area, not the arc length."
+        "text": "5",
+        "rationale": "Complete the square for both x and y."
       },
       {
         "id": "D",
-        "text": "18π",
-        "rationale": "This is the whole circumference, not the arc."
+        "text": "64",
+        "rationale": "That is r²; take the square root."
       }
     ],
     "correct_choice": "B",
-    "explanation": "Arc = (θ/360)·2πr = (120/360)·2π·9 = 6π.",
-    "estimated_time_seconds": 95,
+    "explanation": "Complete the square: (x + 1)² + (y − 4)² = 1 + 16 − (−47) = 64, so r = 8.",
+    "estimated_time_seconds": 110,
     "tags": [
       "geometry",
-      "circle"
+      "circle",
+      "equation",
+      "family:ci_equation"
     ],
-    "stimulus": {
-      "type": "figure",
-      "figure": {
-        "kind": "circle",
-        "caption": "Circle",
-        "sector": 120,
-        "labels": {
-          "r": "9",
-          "angle": "120°"
-        }
-      }
-    },
-    "answer_verification": "6π"
+    "answer_verification": "r=8"
   }
 ]

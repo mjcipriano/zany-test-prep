@@ -10,37 +10,38 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "data_interpretation",
-    "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. If one response is chosen at random, what is the probability that it is in the “Cats” row?",
+    "subskill": "conditional_probability",
+    "prompt": "The table shows 133 survey responses. If one response is chosen at random, what is the probability that it is in the “Fiction” row?",
     "choices": [
       {
         "id": "A",
-        "text": "28/19",
+        "text": "73/60",
         "rationale": "Divide by the grand total, not the other row."
       },
       {
         "id": "B",
-        "text": "28/47",
-        "rationale": "Correct."
+        "text": "60/133",
+        "rationale": "This uses only one cell (60), not the whole row."
       },
       {
         "id": "C",
-        "text": "19/47",
-        "rationale": "This is the probability of the other row."
+        "text": "73/133",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "25/94",
-        "rationale": "This uses only one cell (25), not the whole row."
+        "text": "72/133",
+        "rationale": "That is the “Adults” column, not the “Fiction” row."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "The “Cats” row totals 25 + 31 = 56 out of 94 responses, so the probability is 56/94 = 28/47.",
+    "correct_choice": "C",
+    "explanation": "The “Fiction” row totals 60 + 13 = 73 of 133: 73/133.",
     "estimated_time_seconds": 90,
     "tags": [
       "data",
       "probability",
-      "table"
+      "table",
+      "family:tw_probability"
     ],
     "stimulus": {
       "type": "table",
@@ -54,27 +55,27 @@
         ],
         "rows": [
           [
-            "Cats",
-            "25",
-            "31",
-            "56"
+            "Fiction",
+            "60",
+            "13",
+            "73"
           ],
           [
-            "Dogs",
-            "7",
-            "31",
-            "38"
+            "Nonfiction",
+            "12",
+            "48",
+            "60"
           ],
           [
             "Total",
-            "32",
-            "62",
-            "94"
+            "72",
+            "61",
+            "133"
           ]
         ]
       }
     },
-    "answer_verification": "P=28/47"
+    "answer_verification": "P=73/133"
   },
   {
     "question_id": "sat-math-two-way-tables-easy-q02",
@@ -87,37 +88,37 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "data_interpretation",
-    "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. If one response is chosen at random, what is the probability that it is in the “Fiction” row?",
+    "subskill": "conditional_probability",
+    "prompt": "According to the table of 98 responses, how many responses in all were “Left-handed”?",
     "choices": [
       {
         "id": "A",
-        "text": "11/18",
-        "rationale": "Divide by the grand total, not the other row."
+        "text": "53",
+        "rationale": "That is the other row."
       },
       {
         "id": "B",
-        "text": "11/29",
-        "rationale": "Correct."
+        "text": "78",
+        "rationale": "That is a column total."
       },
       {
         "id": "C",
-        "text": "10/87",
-        "rationale": "This uses only one cell (10), not the whole row."
+        "text": "40",
+        "rationale": "That is one cell, not the whole row."
       },
       {
         "id": "D",
-        "text": "18/29",
-        "rationale": "This is the probability of the other row."
+        "text": "45",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "The “Fiction” row totals 10 + 23 = 33 out of 87 responses, so the probability is 33/87 = 11/29.",
-    "estimated_time_seconds": 90,
+    "correct_choice": "D",
+    "explanation": "Add across the row: 40 + 5 = 45.",
+    "estimated_time_seconds": 75,
     "tags": [
       "data",
-      "probability",
-      "table"
+      "table",
+      "family:tw_count"
     ],
     "stimulus": {
       "type": "table",
@@ -125,33 +126,33 @@
         "caption": "Survey responses",
         "headers": [
           "",
-          "Adults",
-          "Students",
+          "Weekday",
+          "Weekend",
           "Total"
         ],
         "rows": [
           [
-            "Fiction",
-            "10",
-            "23",
-            "33"
+            "Left-handed",
+            "40",
+            "5",
+            "45"
           ],
           [
-            "Nonfiction",
-            "36",
-            "18",
-            "54"
+            "Right-handed",
+            "38",
+            "15",
+            "53"
           ],
           [
             "Total",
-            "46",
-            "41",
-            "87"
+            "78",
+            "20",
+            "98"
           ]
         ]
       }
     },
-    "answer_verification": "P=11/29"
+    "answer_verification": "val=45"
   },
   {
     "question_id": "sat-math-two-way-tables-easy-q03",
@@ -164,37 +165,37 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "data_interpretation",
-    "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. If one response is chosen at random, what is the probability that it is in the “Cats” row?",
+    "subskill": "conditional_probability",
+    "prompt": "Based on the table of 168 responses, what fraction of the “Fiction” responses were “Urban”?",
     "choices": [
       {
         "id": "A",
-        "text": "61/89",
-        "rationale": "This is the probability of the other row."
+        "text": "13/84",
+        "rationale": "Use the row total as the denominator, not the grand total."
       },
       {
         "id": "B",
-        "text": "28/61",
-        "rationale": "Divide by the grand total, not the other row."
+        "text": "49/75",
+        "rationale": "That is the fraction that were “Rural”."
       },
       {
         "id": "C",
-        "text": "28/89",
-        "rationale": "Correct."
+        "text": "26/69",
+        "rationale": "That is the fraction of the column, not the row."
       },
       {
         "id": "D",
-        "text": "11/89",
-        "rationale": "This uses only one cell (11), not the whole row."
+        "text": "26/75",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "The “Cats” row totals 11 + 17 = 28 out of 89 responses, so the probability is 28/89 = 28/89.",
+    "correct_choice": "D",
+    "explanation": "26 of the 75 “Fiction” responses were “Urban”: 26/75.",
     "estimated_time_seconds": 90,
     "tags": [
       "data",
-      "probability",
-      "table"
+      "table",
+      "family:tw_fraction_percent"
     ],
     "stimulus": {
       "type": "table",
@@ -202,33 +203,33 @@
         "caption": "Survey responses",
         "headers": [
           "",
-          "Adults",
-          "Students",
+          "Urban",
+          "Rural",
           "Total"
         ],
         "rows": [
           [
-            "Cats",
-            "11",
-            "17",
-            "28"
+            "Fiction",
+            "26",
+            "49",
+            "75"
           ],
           [
-            "Dogs",
-            "30",
-            "31",
-            "61"
+            "Nonfiction",
+            "43",
+            "50",
+            "93"
           ],
           [
             "Total",
-            "41",
-            "48",
-            "89"
+            "69",
+            "99",
+            "168"
           ]
         ]
       }
     },
-    "answer_verification": "P=28/89"
+    "answer_verification": "val=26/75"
   },
   {
     "question_id": "sat-math-two-way-tables-easy-q04",
@@ -241,37 +242,101 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "data_interpretation",
-    "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. If one response is chosen at random, what is the probability that it is in the “Cats” row?",
+    "subskill": "conditional_probability",
+    "prompt": "Based on the table of 122 responses, which statement correctly compares the two “Morning”/“Evening” groups?",
     "choices": [
       {
         "id": "A",
-        "text": "6/25",
-        "rationale": "This uses only one cell (30), not the whole row."
+        "text": "A “Evening” response is more likely to be “Fiction” because the “Evening” column has more responses.",
+        "rationale": "Likelihood depends on the proportion within the group, not the group's size."
       },
       {
         "id": "B",
-        "text": "67/58",
-        "rationale": "Divide by the grand total, not the other row."
+        "text": "A “Morning” response is more likely than a “Evening” response to be “Fiction”.",
+        "rationale": "Compare proportions: 14/54 ≈ 0.26 vs 43/68 ≈ 0.63."
       },
       {
         "id": "C",
-        "text": "58/125",
-        "rationale": "This is the probability of the other row."
+        "text": "A “Evening” response is more likely than a “Morning” response to be “Fiction”.",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "67/125",
-        "rationale": "Correct."
+        "text": "The two groups are equally likely to be “Fiction”.",
+        "rationale": "The proportions differ."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "The “Cats” row totals 30 + 37 = 67 out of 125 responses, so the probability is 67/125 = 67/125.",
-    "estimated_time_seconds": 90,
+    "correct_choice": "C",
+    "explanation": "P(Fiction | Morning) = 14/54 ≈ 0.26 and P(Fiction | Evening) = 43/68 ≈ 0.63; the larger is “Evening”.",
+    "estimated_time_seconds": 100,
     "tags": [
       "data",
-      "probability",
-      "table"
+      "table",
+      "compare",
+      "family:tw_compare"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Survey responses",
+        "headers": [
+          "",
+          "Morning",
+          "Evening",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Fiction",
+            "14",
+            "43",
+            "57"
+          ],
+          [
+            "Nonfiction",
+            "40",
+            "25",
+            "65"
+          ],
+          [
+            "Total",
+            "54",
+            "68",
+            "122"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "0.259 vs 0.632"
+  },
+  {
+    "question_id": "sat-math-two-way-tables-easy-q05",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "two_way_tables",
+    "lesson_id": "sat-math-two-way-tables-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "student_produced",
+    "subskill": "conditional_probability",
+    "prompt": "The table shows 127 survey responses. How many responses were “Cats” and “Evening”?",
+    "answer": {
+      "type": "numeric",
+      "value": 22,
+      "accepted": [
+        "22"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "Read the “Cats” row, “Evening” column: 22.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "data",
+      "table",
+      "grid-in",
+      "family:tw_gridin"
     ],
     "stimulus": {
       "type": "table",
@@ -286,103 +351,26 @@
         "rows": [
           [
             "Cats",
-            "30",
-            "37",
-            "67"
-          ],
-          [
-            "Dogs",
-            "37",
-            "21",
-            "58"
-          ],
-          [
-            "Total",
-            "67",
-            "58",
-            "125"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "P=67/125"
-  },
-  {
-    "question_id": "sat-math-two-way-tables-easy-q05",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "two_way_tables",
-    "lesson_id": "sat-math-two-way-tables-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. If one response is chosen at random, what is the probability that it is in the “Cats” row?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "11/31",
-        "rationale": "This is the probability of the other row."
-      },
-      {
-        "id": "B",
-        "text": "20/31",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "3/31",
-        "rationale": "This uses only one cell (6), not the whole row."
-      },
-      {
-        "id": "D",
-        "text": "20/11",
-        "rationale": "Divide by the grand total, not the other row."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "The “Cats” row totals 6 + 34 = 40 out of 62 responses, so the probability is 40/62 = 20/31.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "data",
-      "probability",
-      "table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Survey responses",
-        "headers": [
-          "",
-          "Weekday",
-          "Weekend",
-          "Total"
-        ],
-        "rows": [
-          [
-            "Cats",
-            "6",
-            "34",
-            "40"
-          ],
-          [
-            "Dogs",
-            "9",
             "13",
-            "22"
+            "22",
+            "35"
+          ],
+          [
+            "Dogs",
+            "58",
+            "34",
+            "92"
           ],
           [
             "Total",
-            "15",
-            "47",
-            "62"
+            "71",
+            "56",
+            "127"
           ]
         ]
       }
     },
-    "answer_verification": "P=20/31"
+    "answer_verification": "val=22"
   },
   {
     "question_id": "sat-math-two-way-tables-easy-q06",
@@ -395,37 +383,38 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "data_interpretation",
-    "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. If one response is chosen at random, what is the probability that it is in the “Cats” row?",
+    "subskill": "conditional_probability",
+    "prompt": "The table shows 133 survey responses. If one response is chosen at random, what is the probability that it is in the “Bus” row?",
     "choices": [
       {
         "id": "A",
-        "text": "45/89",
-        "rationale": "This is the probability of the other row."
-      },
-      {
-        "id": "B",
-        "text": "44/89",
+        "text": "61/133",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "1/7",
+        "rationale": "This uses only one cell (19), not the whole row."
+      },
+      {
         "id": "C",
-        "text": "31/89",
-        "rationale": "This uses only one cell (31), not the whole row."
+        "text": "72/133",
+        "rationale": "This is the probability of the other row."
       },
       {
         "id": "D",
-        "text": "44/45",
+        "text": "61/72",
         "rationale": "Divide by the grand total, not the other row."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "The “Cats” row totals 31 + 13 = 44 out of 89 responses, so the probability is 44/89 = 44/89.",
+    "correct_choice": "A",
+    "explanation": "The “Bus” row totals 19 + 42 = 61 of 133: 61/133.",
     "estimated_time_seconds": 90,
     "tags": [
       "data",
       "probability",
-      "table"
+      "table",
+      "family:tw_probability"
     ],
     "stimulus": {
       "type": "table",
@@ -433,33 +422,33 @@
         "caption": "Survey responses",
         "headers": [
           "",
-          "Adults",
-          "Students",
+          "Weekday",
+          "Weekend",
           "Total"
         ],
         "rows": [
           [
-            "Cats",
-            "31",
-            "13",
-            "44"
+            "Bus",
+            "19",
+            "42",
+            "61"
           ],
           [
-            "Dogs",
-            "11",
-            "34",
-            "45"
+            "Bike",
+            "44",
+            "28",
+            "72"
           ],
           [
             "Total",
-            "42",
-            "47",
-            "89"
+            "63",
+            "70",
+            "133"
           ]
         ]
       }
     },
-    "answer_verification": "P=44/89"
+    "answer_verification": "P=61/133"
   },
   {
     "question_id": "sat-math-two-way-tables-easy-q07",
@@ -472,37 +461,410 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "data_interpretation",
-    "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. If one response is chosen at random, what is the probability that it is in the “Cats” row?",
+    "subskill": "conditional_probability",
+    "prompt": "According to the table of 132 responses, how many responses in all were “Coffee”?",
     "choices": [
       {
         "id": "A",
-        "text": "24/85",
+        "text": "63",
+        "rationale": "That is a column total."
+      },
+      {
+        "id": "B",
+        "text": "58",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "74",
+        "rationale": "That is the other row."
+      },
+      {
+        "id": "D",
+        "text": "43",
+        "rationale": "That is one cell, not the whole row."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Add across the row: 43 + 15 = 58.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "data",
+      "table",
+      "family:tw_count"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Survey responses",
+        "headers": [
+          "",
+          "Morning",
+          "Evening",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Coffee",
+            "43",
+            "15",
+            "58"
+          ],
+          [
+            "Tea",
+            "20",
+            "54",
+            "74"
+          ],
+          [
+            "Total",
+            "63",
+            "69",
+            "132"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "val=58"
+  },
+  {
+    "question_id": "sat-math-two-way-tables-easy-q08",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "two_way_tables",
+    "lesson_id": "sat-math-two-way-tables-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "conditional_probability",
+    "prompt": "Based on the table of 126 responses, what fraction of the “Coffee” responses were “Grade 9”?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "5/11",
+        "rationale": "That is the fraction that were “Grade 10”."
+      },
+      {
+        "id": "B",
+        "text": "4/21",
+        "rationale": "Use the row total as the denominator, not the grand total."
+      },
+      {
+        "id": "C",
+        "text": "6/11",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "12/23",
+        "rationale": "That is the fraction of the column, not the row."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "24 of the 44 “Coffee” responses were “Grade 9”: 6/11.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "data",
+      "table",
+      "family:tw_fraction_percent"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Survey responses",
+        "headers": [
+          "",
+          "Grade 9",
+          "Grade 10",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Coffee",
+            "24",
+            "20",
+            "44"
+          ],
+          [
+            "Tea",
+            "22",
+            "60",
+            "82"
+          ],
+          [
+            "Total",
+            "46",
+            "80",
+            "126"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "val=6/11"
+  },
+  {
+    "question_id": "sat-math-two-way-tables-easy-q09",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "two_way_tables",
+    "lesson_id": "sat-math-two-way-tables-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "conditional_probability",
+    "prompt": "Based on the table of 143 responses, which statement correctly compares the two “Weekday”/“Weekend” groups?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The two groups are equally likely to be “Cats”.",
+        "rationale": "The proportions differ."
+      },
+      {
+        "id": "B",
+        "text": "A “Weekend” response is more likely than a “Weekday” response to be “Cats”.",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "A “Weekend” response is more likely to be “Cats” because the “Weekend” column has more responses.",
+        "rationale": "Likelihood depends on the proportion within the group, not the group's size."
+      },
+      {
+        "id": "D",
+        "text": "A “Weekday” response is more likely than a “Weekend” response to be “Cats”.",
+        "rationale": "Compare proportions: 36/80 ≈ 0.45 vs 57/63 ≈ 0.90."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "P(Cats | Weekday) = 36/80 ≈ 0.45 and P(Cats | Weekend) = 57/63 ≈ 0.90; the larger is “Weekend”.",
+    "estimated_time_seconds": 100,
+    "tags": [
+      "data",
+      "table",
+      "compare",
+      "family:tw_compare"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Survey responses",
+        "headers": [
+          "",
+          "Weekday",
+          "Weekend",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Cats",
+            "36",
+            "57",
+            "93"
+          ],
+          [
+            "Dogs",
+            "44",
+            "6",
+            "50"
+          ],
+          [
+            "Total",
+            "80",
+            "63",
+            "143"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "0.450 vs 0.905"
+  },
+  {
+    "question_id": "sat-math-two-way-tables-easy-q10",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "two_way_tables",
+    "lesson_id": "sat-math-two-way-tables-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "student_produced",
+    "subskill": "conditional_probability",
+    "prompt": "The table shows 105 survey responses. How many responses were “Cats” and “Students”?",
+    "answer": {
+      "type": "numeric",
+      "value": 16,
+      "accepted": [
+        "16"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "Read the “Cats” row, “Students” column: 16.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "data",
+      "table",
+      "grid-in",
+      "family:tw_gridin"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Survey responses",
+        "headers": [
+          "",
+          "Adults",
+          "Students",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Cats",
+            "54",
+            "16",
+            "70"
+          ],
+          [
+            "Dogs",
+            "13",
+            "22",
+            "35"
+          ],
+          [
+            "Total",
+            "67",
+            "38",
+            "105"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "val=16"
+  },
+  {
+    "question_id": "sat-math-two-way-tables-easy-q11",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "two_way_tables",
+    "lesson_id": "sat-math-two-way-tables-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "conditional_probability",
+    "prompt": "The table shows 139 survey responses. If one response is chosen at random, what is the probability that it is in the “Fiction” row?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "102/139",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "24/61",
-        "rationale": "Divide by the grand total, not the other row."
-      },
-      {
-        "id": "C",
-        "text": "61/85",
+        "text": "37/139",
         "rationale": "This is the probability of the other row."
       },
       {
+        "id": "C",
+        "text": "102/37",
+        "rationale": "Divide by the grand total, not the other row."
+      },
+      {
         "id": "D",
-        "text": "9/85",
-        "rationale": "This uses only one cell (9), not the whole row."
+        "text": "46/139",
+        "rationale": "This uses only one cell (46), not the whole row."
       }
     ],
     "correct_choice": "A",
-    "explanation": "The “Cats” row totals 9 + 15 = 24 out of 85 responses, so the probability is 24/85 = 24/85.",
+    "explanation": "The “Fiction” row totals 46 + 56 = 102 of 139: 102/139.",
     "estimated_time_seconds": 90,
     "tags": [
       "data",
       "probability",
-      "table"
+      "table",
+      "family:tw_probability"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Survey responses",
+        "headers": [
+          "",
+          "Weekday",
+          "Weekend",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Fiction",
+            "46",
+            "56",
+            "102"
+          ],
+          [
+            "Nonfiction",
+            "23",
+            "14",
+            "37"
+          ],
+          [
+            "Total",
+            "69",
+            "70",
+            "139"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "P=102/139"
+  },
+  {
+    "question_id": "sat-math-two-way-tables-easy-q12",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "two_way_tables",
+    "lesson_id": "sat-math-two-way-tables-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "conditional_probability",
+    "prompt": "According to the table of 195 responses, how many responses came from the “Evening” group?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "97",
+        "rationale": "That is a row total."
+      },
+      {
+        "id": "B",
+        "text": "95",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "100",
+        "rationale": "That is the other column."
+      },
+      {
+        "id": "D",
+        "text": "57",
+        "rationale": "That is one cell, not the whole column."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Add down the column: 38 + 57 = 95.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "data",
+      "table",
+      "family:tw_count"
     ],
     "stimulus": {
       "type": "table",
@@ -517,411 +879,26 @@
         "rows": [
           [
             "Cats",
-            "9",
-            "15",
-            "24"
+            "60",
+            "38",
+            "98"
           ],
           [
             "Dogs",
-            "29",
-            "32",
-            "61"
+            "40",
+            "57",
+            "97"
           ],
           [
             "Total",
-            "38",
-            "47",
-            "85"
+            "100",
+            "95",
+            "195"
           ]
         ]
       }
     },
-    "answer_verification": "P=24/85"
-  },
-  {
-    "question_id": "sat-math-two-way-tables-easy-q08",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "two_way_tables",
-    "lesson_id": "sat-math-two-way-tables-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. If one response is chosen at random, what is the probability that it is in the “Bus” row?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "301/113",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "B",
-        "text": "75/38",
-        "rationale": "Divide by the grand total, not the other row."
-      },
-      {
-        "id": "C",
-        "text": "75/113",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "38/113",
-        "rationale": "This uses only one cell (38), not the whole row."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "The “Bus” row totals 38 + 37 = 75 out of 113 responses, so the probability is 75/113 = 75/113.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "data",
-      "probability",
-      "table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Survey responses",
-        "headers": [
-          "",
-          "Adults",
-          "Students",
-          "Total"
-        ],
-        "rows": [
-          [
-            "Bus",
-            "38",
-            "37",
-            "75"
-          ],
-          [
-            "Bike",
-            "13",
-            "25",
-            "38"
-          ],
-          [
-            "Total",
-            "51",
-            "62",
-            "113"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "P=75/113"
-  },
-  {
-    "question_id": "sat-math-two-way-tables-easy-q09",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "two_way_tables",
-    "lesson_id": "sat-math-two-way-tables-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. If one response is chosen at random, what is the probability that it is in the “Fiction” row?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "42/73",
-        "rationale": "This is the probability of the other row."
-      },
-      {
-        "id": "B",
-        "text": "31/73",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "17/73",
-        "rationale": "This uses only one cell (17), not the whole row."
-      },
-      {
-        "id": "D",
-        "text": "31/42",
-        "rationale": "Divide by the grand total, not the other row."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "The “Fiction” row totals 17 + 14 = 31 out of 73 responses, so the probability is 31/73 = 31/73.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "data",
-      "probability",
-      "table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Survey responses",
-        "headers": [
-          "",
-          "Adults",
-          "Students",
-          "Total"
-        ],
-        "rows": [
-          [
-            "Fiction",
-            "17",
-            "14",
-            "31"
-          ],
-          [
-            "Nonfiction",
-            "14",
-            "28",
-            "42"
-          ],
-          [
-            "Total",
-            "31",
-            "42",
-            "73"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "P=31/73"
-  },
-  {
-    "question_id": "sat-math-two-way-tables-easy-q10",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "two_way_tables",
-    "lesson_id": "sat-math-two-way-tables-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. If one response is chosen at random, what is the probability that it is in the “Bus” row?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "7/19",
-        "rationale": "This is the probability of the other row."
-      },
-      {
-        "id": "B",
-        "text": "12/7",
-        "rationale": "Divide by the grand total, not the other row."
-      },
-      {
-        "id": "C",
-        "text": "29/76",
-        "rationale": "This uses only one cell (29), not the whole row."
-      },
-      {
-        "id": "D",
-        "text": "12/19",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "The “Bus” row totals 29 + 19 = 48 out of 76 responses, so the probability is 48/76 = 12/19.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "data",
-      "probability",
-      "table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Survey responses",
-        "headers": [
-          "",
-          "Weekday",
-          "Weekend",
-          "Total"
-        ],
-        "rows": [
-          [
-            "Bus",
-            "29",
-            "19",
-            "48"
-          ],
-          [
-            "Bike",
-            "8",
-            "20",
-            "28"
-          ],
-          [
-            "Total",
-            "37",
-            "39",
-            "76"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "P=12/19"
-  },
-  {
-    "question_id": "sat-math-two-way-tables-easy-q11",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "two_way_tables",
-    "lesson_id": "sat-math-two-way-tables-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. If one response is chosen at random, what is the probability that it is in the “Bus” row?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "6/71",
-        "rationale": "This uses only one cell (6), not the whole row."
-      },
-      {
-        "id": "B",
-        "text": "54/71",
-        "rationale": "This is the probability of the other row."
-      },
-      {
-        "id": "C",
-        "text": "17/54",
-        "rationale": "Divide by the grand total, not the other row."
-      },
-      {
-        "id": "D",
-        "text": "17/71",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "The “Bus” row totals 6 + 11 = 17 out of 71 responses, so the probability is 17/71 = 17/71.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "data",
-      "probability",
-      "table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Survey responses",
-        "headers": [
-          "",
-          "Adults",
-          "Students",
-          "Total"
-        ],
-        "rows": [
-          [
-            "Bus",
-            "6",
-            "11",
-            "17"
-          ],
-          [
-            "Bike",
-            "24",
-            "30",
-            "54"
-          ],
-          [
-            "Total",
-            "30",
-            "41",
-            "71"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "P=17/71"
-  },
-  {
-    "question_id": "sat-math-two-way-tables-easy-q12",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "two_way_tables",
-    "lesson_id": "sat-math-two-way-tables-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. If one response is chosen at random, what is the probability that it is in the “Coffee” row?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "41/51",
-        "rationale": "Divide by the grand total, not the other row."
-      },
-      {
-        "id": "B",
-        "text": "41/92",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "8/23",
-        "rationale": "This uses only one cell (32), not the whole row."
-      },
-      {
-        "id": "D",
-        "text": "51/92",
-        "rationale": "This is the probability of the other row."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "The “Coffee” row totals 32 + 9 = 41 out of 92 responses, so the probability is 41/92 = 41/92.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "data",
-      "probability",
-      "table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Survey responses",
-        "headers": [
-          "",
-          "Adults",
-          "Students",
-          "Total"
-        ],
-        "rows": [
-          [
-            "Coffee",
-            "32",
-            "9",
-            "41"
-          ],
-          [
-            "Tea",
-            "12",
-            "39",
-            "51"
-          ],
-          [
-            "Total",
-            "44",
-            "48",
-            "92"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "P=41/92"
+    "answer_verification": "val=95"
   },
   {
     "question_id": "sat-math-two-way-tables-easy-q13",
@@ -934,37 +911,37 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "data_interpretation",
-    "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. If one response is chosen at random, what is the probability that it is in the “Fiction” row?",
+    "subskill": "conditional_probability",
+    "prompt": "Based on the table of 139 responses, what fraction of the “Fiction” responses were “Weekday”?",
     "choices": [
       {
         "id": "A",
-        "text": "61/106",
+        "text": "17/23",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "61/45",
-        "rationale": "Divide by the grand total, not the other row."
+        "text": "51/110",
+        "rationale": "That is the fraction of the column, not the row."
       },
       {
         "id": "C",
-        "text": "45/106",
-        "rationale": "This is the probability of the other row."
+        "text": "6/23",
+        "rationale": "That is the fraction that were “Weekend”."
       },
       {
         "id": "D",
-        "text": "14/53",
-        "rationale": "This uses only one cell (28), not the whole row."
+        "text": "51/139",
+        "rationale": "Use the row total as the denominator, not the grand total."
       }
     ],
     "correct_choice": "A",
-    "explanation": "The “Fiction” row totals 28 + 33 = 61 out of 106 responses, so the probability is 61/106 = 61/106.",
+    "explanation": "51 of the 69 “Fiction” responses were “Weekday”: 17/23.",
     "estimated_time_seconds": 90,
     "tags": [
       "data",
-      "probability",
-      "table"
+      "table",
+      "family:tw_fraction_percent"
     ],
     "stimulus": {
       "type": "table",
@@ -979,26 +956,26 @@
         "rows": [
           [
             "Fiction",
-            "28",
-            "33",
-            "61"
+            "51",
+            "18",
+            "69"
           ],
           [
             "Nonfiction",
-            "34",
+            "59",
             "11",
-            "45"
+            "70"
           ],
           [
             "Total",
-            "62",
-            "44",
-            "106"
+            "110",
+            "29",
+            "139"
           ]
         ]
       }
     },
-    "answer_verification": "P=61/106"
+    "answer_verification": "val=17/23"
   },
   {
     "question_id": "sat-math-two-way-tables-easy-q14",
@@ -1011,191 +988,38 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "data_interpretation",
-    "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. If one response is chosen at random, what is the probability that it is in the “Fiction” row?",
+    "subskill": "conditional_probability",
+    "prompt": "Based on the table of 127 responses, which statement correctly compares the two “Morning”/“Evening” groups?",
     "choices": [
       {
         "id": "A",
-        "text": "7/26",
-        "rationale": "This uses only one cell (21), not the whole row."
+        "text": "A “Morning” response is more likely to be “Coffee” because the “Morning” column has more responses.",
+        "rationale": "Likelihood depends on the proportion within the group, not the group's size."
       },
       {
         "id": "B",
-        "text": "17/39",
+        "text": "A “Morning” response is more likely than a “Evening” response to be “Coffee”.",
         "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "17/22",
-        "rationale": "Divide by the grand total, not the other row."
+        "text": "The two groups are equally likely to be “Coffee”.",
+        "rationale": "The proportions differ."
       },
       {
         "id": "D",
-        "text": "22/39",
-        "rationale": "This is the probability of the other row."
+        "text": "A “Evening” response is more likely than a “Morning” response to be “Coffee”.",
+        "rationale": "Compare proportions: 18/66 ≈ 0.27 vs 15/61 ≈ 0.25."
       }
     ],
     "correct_choice": "B",
-    "explanation": "The “Fiction” row totals 21 + 13 = 34 out of 78 responses, so the probability is 34/78 = 17/39.",
-    "estimated_time_seconds": 90,
+    "explanation": "P(Coffee | Morning) = 18/66 ≈ 0.27 and P(Coffee | Evening) = 15/61 ≈ 0.25; the larger is “Morning”.",
+    "estimated_time_seconds": 100,
     "tags": [
       "data",
-      "probability",
-      "table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Survey responses",
-        "headers": [
-          "",
-          "Adults",
-          "Students",
-          "Total"
-        ],
-        "rows": [
-          [
-            "Fiction",
-            "21",
-            "13",
-            "34"
-          ],
-          [
-            "Nonfiction",
-            "14",
-            "30",
-            "44"
-          ],
-          [
-            "Total",
-            "35",
-            "43",
-            "78"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "P=17/39"
-  },
-  {
-    "question_id": "sat-math-two-way-tables-easy-q15",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "two_way_tables",
-    "lesson_id": "sat-math-two-way-tables-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. If one response is chosen at random, what is the probability that it is in the “Bus” row?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "21/31",
-        "rationale": "This is the probability of the other row."
-      },
-      {
-        "id": "B",
-        "text": "10/21",
-        "rationale": "Divide by the grand total, not the other row."
-      },
-      {
-        "id": "C",
-        "text": "25/93",
-        "rationale": "This uses only one cell (25), not the whole row."
-      },
-      {
-        "id": "D",
-        "text": "10/31",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "The “Bus” row totals 25 + 5 = 30 out of 93 responses, so the probability is 30/93 = 10/31.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "data",
-      "probability",
-      "table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Survey responses",
-        "headers": [
-          "",
-          "Adults",
-          "Students",
-          "Total"
-        ],
-        "rows": [
-          [
-            "Bus",
-            "25",
-            "5",
-            "30"
-          ],
-          [
-            "Bike",
-            "33",
-            "30",
-            "63"
-          ],
-          [
-            "Total",
-            "58",
-            "35",
-            "93"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "P=10/31"
-  },
-  {
-    "question_id": "sat-math-two-way-tables-easy-q16",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "two_way_tables",
-    "lesson_id": "sat-math-two-way-tables-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. If one response is chosen at random, what is the probability that it is in the “Fiction” row?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "49/95",
-        "rationale": "This is the probability of the other row."
-      },
-      {
-        "id": "B",
-        "text": "29/95",
-        "rationale": "This uses only one cell (29), not the whole row."
-      },
-      {
-        "id": "C",
-        "text": "46/49",
-        "rationale": "Divide by the grand total, not the other row."
-      },
-      {
-        "id": "D",
-        "text": "46/95",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "The “Fiction” row totals 29 + 17 = 46 out of 95 responses, so the probability is 46/95 = 46/95.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "data",
-      "probability",
-      "table"
+      "table",
+      "compare",
+      "family:tw_compare"
     ],
     "stimulus": {
       "type": "table",
@@ -1209,107 +1033,30 @@
         ],
         "rows": [
           [
-            "Fiction",
-            "29",
-            "17",
-            "46"
-          ],
-          [
-            "Nonfiction",
-            "29",
-            "20",
-            "49"
-          ],
-          [
-            "Total",
-            "58",
-            "37",
-            "95"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "P=46/95"
-  },
-  {
-    "question_id": "sat-math-two-way-tables-easy-q17",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "two_way_tables",
-    "lesson_id": "sat-math-two-way-tables-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. If one response is chosen at random, what is the probability that it is in the “Bus” row?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "13/27",
-        "rationale": "This is the probability of the other row."
-      },
-      {
-        "id": "B",
-        "text": "1/9",
-        "rationale": "This uses only one cell (6), not the whole row."
-      },
-      {
-        "id": "C",
-        "text": "14/27",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "14/13",
-        "rationale": "Divide by the grand total, not the other row."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "The “Bus” row totals 6 + 22 = 28 out of 54 responses, so the probability is 28/54 = 14/27.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "data",
-      "probability",
-      "table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Survey responses",
-        "headers": [
-          "",
-          "Weekday",
-          "Weekend",
-          "Total"
-        ],
-        "rows": [
-          [
-            "Bus",
-            "6",
-            "22",
-            "28"
-          ],
-          [
-            "Bike",
-            "9",
-            "17",
-            "26"
-          ],
-          [
-            "Total",
+            "Coffee",
+            "18",
             "15",
-            "39",
-            "54"
+            "33"
+          ],
+          [
+            "Tea",
+            "48",
+            "46",
+            "94"
+          ],
+          [
+            "Total",
+            "66",
+            "61",
+            "127"
           ]
         ]
       }
     },
-    "answer_verification": "P=14/27"
+    "answer_verification": "0.273 vs 0.246"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-q18",
+    "question_id": "sat-math-two-way-tables-easy-q15",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1318,38 +1065,24 @@
     "lesson_id": "sat-math-two-way-tables-easy",
     "difficulty": "easy",
     "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. If one response is chosen at random, what is the probability that it is in the “Coffee” row?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "1/6",
-        "rationale": "This uses only one cell (22), not the whole row."
-      },
-      {
-        "id": "B",
-        "text": "61/71",
-        "rationale": "Divide by the grand total, not the other row."
-      },
-      {
-        "id": "C",
-        "text": "71/132",
-        "rationale": "This is the probability of the other row."
-      },
-      {
-        "id": "D",
-        "text": "61/132",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "The “Coffee” row totals 22 + 39 = 61 out of 132 responses, so the probability is 61/132 = 61/132.",
-    "estimated_time_seconds": 90,
+    "question_type": "student_produced",
+    "subskill": "conditional_probability",
+    "prompt": "The table shows 166 survey responses. How many responses were “Coffee” and “Students”?",
+    "answer": {
+      "type": "numeric",
+      "value": 41,
+      "accepted": [
+        "41"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "Read the “Coffee” row, “Students” column: 41.",
+    "estimated_time_seconds": 85,
     "tags": [
       "data",
-      "probability",
-      "table"
+      "table",
+      "grid-in",
+      "family:tw_gridin"
     ],
     "stimulus": {
       "type": "table",
@@ -1364,26 +1097,258 @@
         "rows": [
           [
             "Coffee",
-            "22",
-            "39",
-            "61"
+            "24",
+            "41",
+            "65"
           ],
           [
             "Tea",
-            "39",
-            "32",
-            "71"
+            "55",
+            "46",
+            "101"
           ],
           [
             "Total",
-            "61",
-            "71",
-            "132"
+            "79",
+            "87",
+            "166"
           ]
         ]
       }
     },
-    "answer_verification": "P=61/132"
+    "answer_verification": "val=41"
+  },
+  {
+    "question_id": "sat-math-two-way-tables-easy-q16",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "two_way_tables",
+    "lesson_id": "sat-math-two-way-tables-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "conditional_probability",
+    "prompt": "The table shows 154 survey responses. If one response is chosen at random, what is the probability that it is in the “Left-handed” row?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "75/154",
+        "rationale": "This is the probability of the other row."
+      },
+      {
+        "id": "B",
+        "text": "26/77",
+        "rationale": "This uses only one cell (52), not the whole row."
+      },
+      {
+        "id": "C",
+        "text": "79/154",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "79/75",
+        "rationale": "Divide by the grand total, not the other row."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "The “Left-handed” row totals 52 + 27 = 79 of 154: 79/154.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "data",
+      "probability",
+      "table",
+      "family:tw_probability"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Survey responses",
+        "headers": [
+          "",
+          "Weekday",
+          "Weekend",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Left-handed",
+            "52",
+            "27",
+            "79"
+          ],
+          [
+            "Right-handed",
+            "54",
+            "21",
+            "75"
+          ],
+          [
+            "Total",
+            "106",
+            "48",
+            "154"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "P=79/154"
+  },
+  {
+    "question_id": "sat-math-two-way-tables-easy-q17",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "two_way_tables",
+    "lesson_id": "sat-math-two-way-tables-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "conditional_probability",
+    "prompt": "According to the table of 110 responses, how many responses in all were “Soccer”?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "41",
+        "rationale": "That is one cell, not the whole row."
+      },
+      {
+        "id": "B",
+        "text": "59",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "46",
+        "rationale": "That is a column total."
+      },
+      {
+        "id": "D",
+        "text": "51",
+        "rationale": "That is the other row."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Add across the row: 41 + 18 = 59.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "data",
+      "table",
+      "family:tw_count"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Survey responses",
+        "headers": [
+          "",
+          "Grade 9",
+          "Grade 10",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Soccer",
+            "41",
+            "18",
+            "59"
+          ],
+          [
+            "Basketball",
+            "5",
+            "46",
+            "51"
+          ],
+          [
+            "Total",
+            "46",
+            "64",
+            "110"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "val=59"
+  },
+  {
+    "question_id": "sat-math-two-way-tables-easy-q18",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "two_way_tables",
+    "lesson_id": "sat-math-two-way-tables-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "conditional_probability",
+    "prompt": "Based on the table of 146 responses, what fraction of the “Soccer” responses were “Adults”?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "9/16",
+        "rationale": "That is the fraction of the column, not the row."
+      },
+      {
+        "id": "B",
+        "text": "43/88",
+        "rationale": "That is the fraction that were “Students”."
+      },
+      {
+        "id": "C",
+        "text": "45/146",
+        "rationale": "Use the row total as the denominator, not the grand total."
+      },
+      {
+        "id": "D",
+        "text": "45/88",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "45 of the 88 “Soccer” responses were “Adults”: 45/88.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "data",
+      "table",
+      "family:tw_fraction_percent"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Survey responses",
+        "headers": [
+          "",
+          "Adults",
+          "Students",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Soccer",
+            "45",
+            "43",
+            "88"
+          ],
+          [
+            "Basketball",
+            "35",
+            "23",
+            "58"
+          ],
+          [
+            "Total",
+            "80",
+            "66",
+            "146"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "val=45/88"
   },
   {
     "question_id": "sat-math-two-way-tables-easy-q19",
@@ -1396,37 +1361,38 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "data_interpretation",
-    "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. If one response is chosen at random, what is the probability that it is in the “Fiction” row?",
+    "subskill": "conditional_probability",
+    "prompt": "Based on the table of 114 responses, which statement correctly compares the two “Morning”/“Evening” groups?",
     "choices": [
       {
         "id": "A",
-        "text": "47/44",
-        "rationale": "Divide by the grand total, not the other row."
+        "text": "The two groups are equally likely to be “Fiction”.",
+        "rationale": "The proportions differ."
       },
       {
         "id": "B",
-        "text": "37/91",
-        "rationale": "This uses only one cell (37), not the whole row."
+        "text": "A “Evening” response is more likely to be “Fiction” because the “Evening” column has more responses.",
+        "rationale": "Likelihood depends on the proportion within the group, not the group's size."
       },
       {
         "id": "C",
-        "text": "44/91",
-        "rationale": "This is the probability of the other row."
+        "text": "A “Morning” response is more likely than a “Evening” response to be “Fiction”.",
+        "rationale": "Compare proportions: 12/37 ≈ 0.32 vs 46/77 ≈ 0.60."
       },
       {
         "id": "D",
-        "text": "47/91",
+        "text": "A “Evening” response is more likely than a “Morning” response to be “Fiction”.",
         "rationale": "Correct."
       }
     ],
     "correct_choice": "D",
-    "explanation": "The “Fiction” row totals 37 + 10 = 47 out of 91 responses, so the probability is 47/91 = 47/91.",
-    "estimated_time_seconds": 90,
+    "explanation": "P(Fiction | Morning) = 12/37 ≈ 0.32 and P(Fiction | Evening) = 46/77 ≈ 0.60; the larger is “Evening”.",
+    "estimated_time_seconds": 100,
     "tags": [
       "data",
-      "probability",
-      "table"
+      "table",
+      "compare",
+      "family:tw_compare"
     ],
     "stimulus": {
       "type": "table",
@@ -1441,26 +1407,26 @@
         "rows": [
           [
             "Fiction",
-            "37",
-            "10",
-            "47"
+            "12",
+            "46",
+            "58"
           ],
           [
             "Nonfiction",
-            "27",
-            "17",
-            "44"
+            "25",
+            "31",
+            "56"
           ],
           [
             "Total",
-            "64",
-            "27",
-            "91"
+            "37",
+            "77",
+            "114"
           ]
         ]
       }
     },
-    "answer_verification": "P=47/91"
+    "answer_verification": "0.324 vs 0.597"
   },
   {
     "question_id": "sat-math-two-way-tables-easy-q20",
@@ -1472,38 +1438,24 @@
     "lesson_id": "sat-math-two-way-tables-easy",
     "difficulty": "easy",
     "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. If one response is chosen at random, what is the probability that it is in the “Fiction” row?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "11/41",
-        "rationale": "This uses only one cell (22), not the whole row."
-      },
-      {
-        "id": "B",
-        "text": "25/16",
-        "rationale": "Divide by the grand total, not the other row."
-      },
-      {
-        "id": "C",
-        "text": "16/41",
-        "rationale": "This is the probability of the other row."
-      },
-      {
-        "id": "D",
-        "text": "25/41",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "The “Fiction” row totals 22 + 28 = 50 out of 82 responses, so the probability is 50/82 = 25/41.",
-    "estimated_time_seconds": 90,
+    "question_type": "student_produced",
+    "subskill": "conditional_probability",
+    "prompt": "The table shows 111 survey responses. How many responses were “Soccer” and “Evening”?",
+    "answer": {
+      "type": "numeric",
+      "value": 37,
+      "accepted": [
+        "37"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "Read the “Soccer” row, “Evening” column: 37.",
+    "estimated_time_seconds": 85,
     "tags": [
       "data",
-      "probability",
-      "table"
+      "table",
+      "grid-in",
+      "family:tw_gridin"
     ],
     "stimulus": {
       "type": "table",
@@ -1511,32 +1463,32 @@
         "caption": "Survey responses",
         "headers": [
           "",
-          "Adults",
-          "Students",
+          "Morning",
+          "Evening",
           "Total"
         ],
         "rows": [
           [
-            "Fiction",
-            "22",
-            "28",
-            "50"
+            "Soccer",
+            "17",
+            "37",
+            "54"
           ],
           [
-            "Nonfiction",
-            "22",
+            "Basketball",
             "10",
-            "32"
+            "47",
+            "57"
           ],
           [
             "Total",
-            "44",
-            "38",
-            "82"
+            "27",
+            "84",
+            "111"
           ]
         ]
       }
     },
-    "answer_verification": "P=25/41"
+    "answer_verification": "val=37"
   }
 ]

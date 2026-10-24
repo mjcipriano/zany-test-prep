@@ -3,6 +3,7 @@ import 'dart:math';
 import '../models/avatar_catalog.dart';
 import '../models/progress.dart';
 import '../models/reward.dart';
+import 'pet_engine.dart';
 import 'reward_engine.dart';
 
 /// One renderable layer of the avatar preview: an asset plus the slot it's
@@ -31,8 +32,9 @@ class RewardsService {
   bool isOwned(GameState g, CatalogAsset asset) =>
       asset.defaultUnlocked || g.ownedAssetIds.contains(asset.id);
 
-  /// The avatar the player is currently showing (falls back to the default).
-  CatalogAsset selectedAvatar(GameState g, AvatarCatalog catalog) {
+  /// The avatar the player is currently showing (falls back to the default;
+  /// null only when the catalog is empty).
+  CatalogAsset? selectedAvatar(GameState g, AvatarCatalog catalog) {
     final id = g.selectedAvatarId;
     if (id != null && catalog[id] != null) return catalog[id]!;
     return catalog.defaultAvatar;
@@ -42,9 +44,8 @@ class RewardsService {
   /// The base avatar comes first (slot null); each equipped asset carries its
   /// slot so side pets/props can be placed in the right side position.
   List<EquippedLayer> equippedLayers(GameState g, AvatarCatalog catalog) {
-    final layers = <EquippedLayer>[
-      EquippedLayer(null, selectedAvatar(g, catalog)),
-    ];
+    final base = selectedAvatar(g, catalog);
+    final layers = <EquippedLayer>[if (base != null) EquippedLayer(null, base)];
     g.equipped.forEach((slot, id) {
       final a = catalog[id];
       if (a != null) layers.add(EquippedLayer(slot, a));
@@ -77,9 +78,10 @@ class RewardsService {
         .map(cand)
         .toList();
     // Items + pets are both "items" for chest purposes (worn/side cosmetics).
+    // Evolved pet stages are earned by levelling, never dropped.
     final items = [
       ...catalog.items.where((a) => !isOwned(g, a)).map(cand),
-      ...catalog.pets.where((a) => !isOwned(g, a)).map(cand),
+      ...catalog.pets.where((a) => !isOwned(g, a) && a.isPurchasable).map(cand),
     ];
     return ChestPools(
       avatars: avatars,
@@ -96,7 +98,12 @@ class RewardsService {
       case StreakFreezeReward(:final count):
         g.streakFreezes = min(kMaxStreakFreezes, g.streakFreezes + count);
       case XpBoostReward(:final multiplier):
-        g.xpBoostMultiplier = multiplier;
+        // A second boost on the same day never downgrades a bigger one.
+        final sameDay =
+            g.xpBoostDay == dayKey(now.add(const Duration(days: 1)));
+        g.xpBoostMultiplier = sameDay
+            ? max(g.xpBoostMultiplier, multiplier)
+            : multiplier;
         g.xpBoostDay = dayKey(now.add(const Duration(days: 1)));
       case AvatarReward(:final assetId):
         g.ownedAssetIds.add(assetId);
@@ -110,8 +117,10 @@ class RewardsService {
   bool canAfford(GameState g, int cost) => g.availableXp >= cost;
 
   /// Buys a catalog asset with spendable XP. Returns true on success.
+  /// Evolved pet stages cannot be bought (see [evolvePet]).
   bool purchase(GameState g, CatalogAsset asset) {
     if (isOwned(g, asset)) return false;
+    if (asset.isEvolvedStage) return false;
     if (!canAfford(g, asset.xpCost)) return false;
     g.spentXp += asset.xpCost;
     g.ownedAssetIds.add(asset.id);
@@ -164,6 +173,82 @@ class RewardsService {
   /// Removes [assetId] from whatever slot(s) it occupies.
   void unequipAsset(GameState g, String assetId) =>
       g.equipped.removeWhere((slot, id) => id == assetId);
+
+  // --- Pet companions ---
+
+  static const PetEngine petEngine = PetEngine();
+
+  /// Companion XP of a pet's line.
+  int petXpOf(GameState g, CatalogAsset pet) => g.petXp[pet.lineId] ?? 0;
+
+  /// Companion level (1..[PetEngine.maxLevel]) of a pet's line.
+  int petLevel(GameState g, CatalogAsset pet) =>
+      petEngine.levelForXp(petXpOf(g, pet));
+
+  /// The pets currently equipped in side slots.
+  List<CatalogAsset> equippedPets(GameState g, AvatarCatalog catalog) => [
+    for (final id in g.equipped.values)
+      if (catalog[id] case final a? when a.isPet) a,
+  ];
+
+  /// Grants [amount] companion XP to every equipped pet line. Returns the
+  /// lines that levelled up (line id -> new level).
+  Map<String, int> grantPetXp(GameState g, AvatarCatalog catalog, int amount) {
+    final levelUps = <String, int>{};
+    if (amount <= 0) return levelUps;
+    final seen = <String>{};
+    for (final pet in equippedPets(g, catalog)) {
+      if (!seen.add(pet.lineId)) continue;
+      final before = petEngine.levelForXp(g.petXp[pet.lineId] ?? 0);
+      g.petXp[pet.lineId] = (g.petXp[pet.lineId] ?? 0) + amount;
+      final after = petEngine.levelForXp(g.petXp[pet.lineId]!);
+      if (after > before) levelUps[pet.lineId] = after;
+    }
+    return levelUps;
+  }
+
+  /// The highest owned stage of a pet line, or null when none is owned.
+  CatalogAsset? highestOwnedStage(
+    GameState g,
+    AvatarCatalog catalog,
+    String lineId,
+  ) {
+    CatalogAsset? best;
+    for (final stage in catalog.evolutionLine(lineId)) {
+      if (isOwned(g, stage)) best = stage;
+    }
+    return best;
+  }
+
+  /// The stage a pet line could evolve into next (the stage after the highest
+  /// owned one), or null at the final stage / when nothing is owned.
+  CatalogAsset? nextStage(GameState g, AvatarCatalog catalog, String lineId) {
+    final current = highestOwnedStage(g, catalog, lineId);
+    final nextId = current?.evolution?.nextId;
+    return nextId == null ? null : catalog[nextId];
+  }
+
+  /// Whether the line's next stage is unlocked by its current level.
+  bool canEvolve(GameState g, AvatarCatalog catalog, String lineId) {
+    final next = nextStage(g, catalog, lineId);
+    if (next == null) return false;
+    final level = petEngine.levelForXp(g.petXp[lineId] ?? 0);
+    return level >= (next.evolution?.requiresLevel ?? PetEngine.maxLevel);
+  }
+
+  /// Evolves a pet line into its next stage: the new stage becomes owned and
+  /// replaces the old stage wherever it was equipped. Returns the new stage,
+  /// or null when the line cannot evolve yet.
+  CatalogAsset? evolvePet(GameState g, AvatarCatalog catalog, String lineId) {
+    if (!canEvolve(g, catalog, lineId)) return null;
+    final next = nextStage(g, catalog, lineId)!;
+    g.ownedAssetIds.add(next.id);
+    final lineIds = catalog.evolutionLine(lineId).map((p) => p.id).toSet();
+    for (final slot in g.equipped.keys.toList()) {
+      if (lineIds.contains(g.equipped[slot])) g.equipped[slot] = next.id;
+    }
+    return next;
+  }
 
   /// The slot [assetId] is currently equipped in, or null.
   String? equippedSlotOf(GameState g, String assetId) {

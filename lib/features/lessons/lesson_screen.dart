@@ -29,6 +29,12 @@ class LessonScreen extends ConsumerWidget {
       );
     }
     final questions = data.bundle.questionsFor(lesson);
+    if (questions.isEmpty) {
+      return Scaffold(
+        appBar: AppBar(title: Text(lesson.title)),
+        body: const Center(child: Text('This lesson has no questions yet.')),
+      );
+    }
     return LessonPlayer(
       title: data.bundle.skillName(lesson.skill),
       teachingCard: lesson.teachingCard,

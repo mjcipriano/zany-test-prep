@@ -17,23 +17,25 @@ class UnlockEngine {
     return true;
   }
 
-  /// The next lesson to suggest: the first unlocked, not-yet-completed lesson,
-  /// preferring the learner's currently active domain order. Falls back to the
-  /// first incomplete lesson overall.
-  Lesson? suggestNext(ContentBundle bundle, AppProgress progress) {
-    final ordered = [...bundle.lessons]
-      ..sort((a, b) {
-        final d = (a.domain == 'reading_writing' ? 0 : 1).compareTo(
-          b.domain == 'reading_writing' ? 0 : 1,
-        );
+  /// Lessons in path order: by the exam's domain order (as listed in the skill
+  /// map), then by each lesson's `order`.
+  List<Lesson> pathOrder(ContentBundle bundle) =>
+      [...bundle.lessons]..sort((a, b) {
+        final d = bundle
+            .domainIndex(a.domain)
+            .compareTo(bundle.domainIndex(b.domain));
         return d != 0 ? d : a.order.compareTo(b.order);
       });
+
+  /// The next lesson to suggest: the first unlocked, not-yet-completed lesson
+  /// in path order. Once everything is done, the lesson with the fewest crowns.
+  Lesson? suggestNext(ContentBundle bundle, AppProgress progress) {
+    final ordered = pathOrder(bundle);
     for (final l in ordered) {
       if (isUnlocked(l, progress) && !progress.isLessonCompleted(l.id)) {
         return l;
       }
     }
-    // Everything done — suggest the lesson with the lowest stars to improve.
     Lesson? weakest;
     var minStars = 4;
     for (final l in ordered) {

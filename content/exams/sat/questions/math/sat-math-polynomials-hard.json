@@ -10,38 +10,39 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "factoring",
-    "prompt": "Which of the following is a factor of x² + 2x − 48?",
+    "subskill": "operations",
+    "prompt": "Which of the following is equivalent to (6x² − 4x + 4) − (14x² + 16x + 16)?",
     "choices": [
       {
         "id": "A",
-        "text": "(x − 8)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
+        "text": "20x² + 12x + 20",
+        "rationale": "This adds instead of subtracting."
       },
       {
         "id": "B",
-        "text": "(x + 6)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
+        "text": "−8x² + 12x + 20",
+        "rationale": "The minus sign must be distributed to every term, not just the first."
       },
       {
         "id": "C",
-        "text": "(x + 8)",
-        "rationale": "Correct."
+        "text": "8x² + 20x + 12",
+        "rationale": "This subtracts in the wrong order."
       },
       {
         "id": "D",
-        "text": "(x + 7)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
+        "text": "−8x² − 20x − 12",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "x² + 2x − 48 factors as (x − -8)(x − 6); the roots are -8 and 6, so (x − -8) is a factor.",
-    "estimated_time_seconds": 90,
+    "correct_choice": "D",
+    "explanation": "Distribute the minus sign to every term of the second polynomial, then combine: −8x² − 20x − 12.",
+    "estimated_time_seconds": 80,
     "tags": [
       "polynomials",
-      "factoring"
+      "add-subtract",
+      "family:poly_add_sub"
     ],
-    "answer_verification": "roots -8,6"
+    "answer_verification": "result [-8, -20, -12]"
   },
   {
     "question_id": "sat-math-polynomials-hard-q02",
@@ -55,37 +56,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "factoring",
-    "prompt": "Which of the following is a factor of x² − x − 30?",
+    "prompt": "Which of the following is a factor of x² − 3x − 54?",
     "choices": [
       {
         "id": "A",
         "text": "(x + 5)",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "(x − 5)",
         "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
       },
       {
-        "id": "C",
+        "id": "B",
         "text": "(x + 6)",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "(x − 6)",
         "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
       },
       {
         "id": "D",
-        "text": "(x + 4)",
+        "text": "(x + 9)",
         "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "x² − x − 30 factors as (x − -5)(x − 6); the roots are -5 and 6, so (x − -5) is a factor.",
-    "estimated_time_seconds": 90,
+    "correct_choice": "B",
+    "explanation": "x² − 3x − 54 factors as (x − (−6))(x − (9)); the roots are −6 and 9, so (x + 6) is a factor.",
+    "estimated_time_seconds": 85,
     "tags": [
       "polynomials",
-      "factoring"
+      "factoring",
+      "family:poly_factor"
     ],
-    "answer_verification": "roots -5,6"
+    "answer_verification": "factor (x + 6)"
   },
   {
     "question_id": "sat-math-polynomials-hard-q03",
@@ -98,38 +100,39 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "factoring",
-    "prompt": "Which of the following is a factor of x² − 64?",
+    "subskill": "operations",
+    "prompt": "The polynomial p(x) = x³ + x² − 3x + k, where k is a constant, has (x − 5) as a factor. What is the value of k?",
     "choices": [
       {
         "id": "A",
-        "text": "(x − 9)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
+        "text": "85",
+        "rationale": "(x + r) is a factor when p(−r) = 0; here the root is 5."
       },
       {
         "id": "B",
-        "text": "(x + 8)",
-        "rationale": "Correct."
+        "text": "165",
+        "rationale": "Check the sign of the linear term when substituting."
       },
       {
         "id": "C",
-        "text": "(x + 9)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
+        "text": "-135",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "(x + 7)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
+        "text": "135",
+        "rationale": "p(r) = 0 means k is the opposite of the other terms' sum."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "x² − 64 factors as (x − -8)(x − 8); the roots are -8 and 8, so (x − -8) is a factor.",
-    "estimated_time_seconds": 90,
+    "correct_choice": "C",
+    "explanation": "If (x − r) is a factor then p(r) = 0. Substituting x = 5: 125 + 25 − 15 + k = 0, so k = −135.",
+    "estimated_time_seconds": 100,
     "tags": [
       "polynomials",
-      "factoring"
+      "evaluate",
+      "family:poly_evaluate"
     ],
-    "answer_verification": "roots -8,8"
+    "answer_verification": "val=-135"
   },
   {
     "question_id": "sat-math-polynomials-hard-q04",
@@ -142,38 +145,39 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "factoring",
-    "prompt": "Which of the following is a factor of x² + 2x − 24?",
+    "subskill": "operations",
+    "prompt": "When (x² + 2x − 6)(x + 1) is expanded and written in standard form, what is the coefficient of x?",
     "choices": [
       {
         "id": "A",
-        "text": "(x + 6)",
-        "rationale": "Correct."
+        "text": "3",
+        "rationale": "That is a different coefficient of the product."
       },
       {
         "id": "B",
-        "text": "(x − 6)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
+        "text": "-4",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "(x + 4)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
+        "text": "2",
+        "rationale": "Two products contribute to this term; add both."
       },
       {
         "id": "D",
-        "text": "(x + 5)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
+        "text": "-6",
+        "rationale": "That is a different coefficient of the product."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "x² + 2x − 24 factors as (x − -6)(x − 4); the roots are -6 and 4, so (x − -6) is a factor.",
-    "estimated_time_seconds": 90,
+    "correct_choice": "B",
+    "explanation": "Multiply each term: x³ + (2 + 1)x² + (−6 + (2)(1))x + (−6)(1) = x³ + 3x² − 4x − 6; the requested value is −4.",
+    "estimated_time_seconds": 95,
     "tags": [
       "polynomials",
-      "factoring"
+      "expand",
+      "family:poly_product_coeff"
     ],
-    "answer_verification": "roots -6,4"
+    "answer_verification": "[1, 3, -4, -6]"
   },
   {
     "question_id": "sat-math-polynomials-hard-q05",
@@ -186,38 +190,39 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "factoring",
-    "prompt": "Which of the following is a factor of x² − 2x − 24?",
+    "subskill": "operations",
+    "prompt": "In the expansion of (x − 3)(3x + 2), what is the constant term?",
     "choices": [
       {
         "id": "A",
-        "text": "(x + 3)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
+        "text": "-7",
+        "rationale": "This is the coefficient of x, not the constant."
       },
       {
         "id": "B",
-        "text": "(x + 6)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
+        "text": "-6",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "(x − 4)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
+        "text": "3",
+        "rationale": "This is the coefficient of x², not the constant."
       },
       {
         "id": "D",
-        "text": "(x + 4)",
-        "rationale": "Correct."
+        "text": "-1",
+        "rationale": "Multiply the constants; don't add them."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "x² − 2x − 24 factors as (x − -4)(x − 6); the roots are -4 and 6, so (x − -4) is a factor.",
-    "estimated_time_seconds": 90,
+    "correct_choice": "B",
+    "explanation": "The constant term is (−3)·(2) = −6.",
+    "estimated_time_seconds": 80,
     "tags": [
       "polynomials",
-      "factoring"
+      "foil",
+      "family:poly_expand"
     ],
-    "answer_verification": "roots -4,6"
+    "answer_verification": "x2=3,x=-7,c=-6"
   },
   {
     "question_id": "sat-math-polynomials-hard-q06",
@@ -230,129 +235,42 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "factoring",
-    "prompt": "Which of the following is a factor of x² − 6x − 7?",
+    "subskill": "operations",
+    "prompt": "Which of the following is equivalent to (5x² + 7x + 9) − (24x² + 24x + 32)?",
     "choices": [
       {
         "id": "A",
-        "text": "(x + 1)",
-        "rationale": "Correct."
+        "text": "29x² + 31x + 41",
+        "rationale": "This adds instead of subtracting."
       },
       {
         "id": "B",
-        "text": "(x − 1)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
+        "text": "−19x² − 17x − 23",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "(x + 7)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
+        "text": "19x² + 17x + 23",
+        "rationale": "This subtracts in the wrong order."
       },
       {
         "id": "D",
-        "text": "(x + 0)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
+        "text": "−19x² + 31x + 41",
+        "rationale": "The minus sign must be distributed to every term, not just the first."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "x² − 6x − 7 factors as (x − -1)(x − 7); the roots are -1 and 7, so (x − -1) is a factor.",
-    "estimated_time_seconds": 90,
+    "correct_choice": "B",
+    "explanation": "Distribute the minus sign to every term of the second polynomial, then combine: −19x² − 17x − 23.",
+    "estimated_time_seconds": 80,
     "tags": [
       "polynomials",
-      "factoring"
+      "add-subtract",
+      "family:poly_add_sub"
     ],
-    "answer_verification": "roots -1,7"
+    "answer_verification": "result [-19, -17, -23]"
   },
   {
     "question_id": "sat-math-polynomials-hard-q07",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "polynomials",
-    "lesson_id": "sat-math-polynomials-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "factoring",
-    "prompt": "Which of the following is a factor of x² − 6x − 27?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "(x + 2)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
-      },
-      {
-        "id": "B",
-        "text": "(x − 3)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
-      },
-      {
-        "id": "C",
-        "text": "(x + 3)",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "(x + 9)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "x² − 6x − 27 factors as (x − -3)(x − 9); the roots are -3 and 9, so (x − -3) is a factor.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "polynomials",
-      "factoring"
-    ],
-    "answer_verification": "roots -3,9"
-  },
-  {
-    "question_id": "sat-math-polynomials-hard-q08",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "polynomials",
-    "lesson_id": "sat-math-polynomials-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "factoring",
-    "prompt": "Which of the following is a factor of x² + 2x − 15?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "(x + 5)",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "(x − 5)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
-      },
-      {
-        "id": "C",
-        "text": "(x + 4)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
-      },
-      {
-        "id": "D",
-        "text": "(x + 3)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "x² + 2x − 15 factors as (x − -5)(x − 3); the roots are -5 and 3, so (x − -5) is a factor.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "polynomials",
-      "factoring"
-    ],
-    "answer_verification": "roots -5,3"
-  },
-  {
-    "question_id": "sat-math-polynomials-hard-q09",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -367,7 +285,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "(x + 6)",
+        "text": "(x − 3)",
         "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
       },
       {
@@ -377,26 +295,207 @@
       },
       {
         "id": "C",
-        "text": "(x + 2)",
+        "text": "(x + 6)",
         "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
       },
       {
         "id": "D",
-        "text": "(x − 3)",
+        "text": "(x + 2)",
         "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
       }
     ],
     "correct_choice": "B",
-    "explanation": "x² − 3x − 18 factors as (x − -3)(x − 6); the roots are -3 and 6, so (x − -3) is a factor.",
-    "estimated_time_seconds": 90,
+    "explanation": "x² − 3x − 18 factors as (x − (−3))(x − (6)); the roots are −3 and 6, so (x + 3) is a factor.",
+    "estimated_time_seconds": 85,
     "tags": [
       "polynomials",
-      "factoring"
+      "factoring",
+      "family:poly_factor"
     ],
-    "answer_verification": "roots -3,6"
+    "answer_verification": "factor (x + 3)"
+  },
+  {
+    "question_id": "sat-math-polynomials-hard-q08",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "polynomials",
+    "lesson_id": "sat-math-polynomials-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "operations",
+    "prompt": "The polynomial p(x) = 3x³ + 6x² + 3x + k, where k is a constant, has (x + 2) as a factor. What is the value of k?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-3",
+        "rationale": "x³ means the cube of x, not the square."
+      },
+      {
+        "id": "B",
+        "text": "-54",
+        "rationale": "(x + r) is a factor when p(−r) = 0; here the root is −2."
+      },
+      {
+        "id": "C",
+        "text": "6",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "-6",
+        "rationale": "p(r) = 0 means k is the opposite of the other terms' sum."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "If (x − r) is a factor then p(r) = 0. Substituting x = −2: −24 + 24 − 6 + k = 0, so k = 6.",
+    "estimated_time_seconds": 100,
+    "tags": [
+      "polynomials",
+      "evaluate",
+      "family:poly_evaluate"
+    ],
+    "answer_verification": "val=6"
+  },
+  {
+    "question_id": "sat-math-polynomials-hard-q09",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "polynomials",
+    "lesson_id": "sat-math-polynomials-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "operations",
+    "prompt": "When (x² + 4x + 3)(x − 4) is expanded and written in standard form, what is the coefficient of x²?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "1",
+        "rationale": "Two products contribute to this term; add both."
+      },
+      {
+        "id": "B",
+        "text": "-13",
+        "rationale": "That is a different coefficient of the product."
+      },
+      {
+        "id": "C",
+        "text": "-12",
+        "rationale": "That is a different coefficient of the product."
+      },
+      {
+        "id": "D",
+        "text": "0",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Multiply each term: x³ + (4 + −4)x² + (3 + (4)(−4))x + (3)(−4) = x³ − 13x − 12; the requested value is 0.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "polynomials",
+      "expand",
+      "family:poly_product_coeff"
+    ],
+    "answer_verification": "[1, 0, -13, -12]"
   },
   {
     "question_id": "sat-math-polynomials-hard-q10",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "polynomials",
+    "lesson_id": "sat-math-polynomials-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "operations",
+    "prompt": "In the expansion of (4x − 6)(x + 6), what is the constant term?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "4",
+        "rationale": "This is the coefficient of x², not the constant."
+      },
+      {
+        "id": "B",
+        "text": "18",
+        "rationale": "This is the coefficient of x, not the constant."
+      },
+      {
+        "id": "C",
+        "text": "0",
+        "rationale": "Multiply the constants; don't add them."
+      },
+      {
+        "id": "D",
+        "text": "-36",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "The constant term is (−6)·(6) = −36.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "polynomials",
+      "foil",
+      "family:poly_expand"
+    ],
+    "answer_verification": "x2=4,x=18,c=-36"
+  },
+  {
+    "question_id": "sat-math-polynomials-hard-q11",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "polynomials",
+    "lesson_id": "sat-math-polynomials-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "operations",
+    "prompt": "Which of the following is equivalent to (5x² + 4x − 6) − (14x² + 4x − 6)?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "−9x²",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "19x² + 8x − 12",
+        "rationale": "This adds instead of subtracting."
+      },
+      {
+        "id": "C",
+        "text": "9x²",
+        "rationale": "This subtracts in the wrong order."
+      },
+      {
+        "id": "D",
+        "text": "−9x² + 8x − 12",
+        "rationale": "The minus sign must be distributed to every term, not just the first."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Distribute the minus sign to every term of the second polynomial, then combine: −9x².",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "polynomials",
+      "add-subtract",
+      "family:poly_add_sub"
+    ],
+    "answer_verification": "result [-9, 0, 0]"
+  },
+  {
+    "question_id": "sat-math-polynomials-hard-q12",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -411,121 +510,34 @@
     "choices": [
       {
         "id": "A",
+        "text": "(x + 8)",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "(x + 7)",
+        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
+      },
+      {
+        "id": "C",
         "text": "(x − 8)",
         "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
       },
       {
-        "id": "B",
-        "text": "(x + 7)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
-      },
-      {
-        "id": "C",
+        "id": "D",
         "text": "(x + 3)",
         "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
-      },
-      {
-        "id": "D",
-        "text": "(x + 8)",
-        "rationale": "Correct."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "x² + 5x − 24 factors as (x − -8)(x − 3); the roots are -8 and 3, so (x − -8) is a factor.",
-    "estimated_time_seconds": 90,
+    "correct_choice": "A",
+    "explanation": "x² + 5x − 24 factors as (x − (−8))(x − (3)); the roots are −8 and 3, so (x + 8) is a factor.",
+    "estimated_time_seconds": 85,
     "tags": [
       "polynomials",
-      "factoring"
+      "factoring",
+      "family:poly_factor"
     ],
-    "answer_verification": "roots -8,3"
-  },
-  {
-    "question_id": "sat-math-polynomials-hard-q11",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "polynomials",
-    "lesson_id": "sat-math-polynomials-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "factoring",
-    "prompt": "Which of the following is a factor of x² − 25?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "(x + 4)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
-      },
-      {
-        "id": "B",
-        "text": "(x + 6)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
-      },
-      {
-        "id": "C",
-        "text": "(x − 6)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
-      },
-      {
-        "id": "D",
-        "text": "(x + 5)",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "x² − 25 factors as (x − -5)(x − 5); the roots are -5 and 5, so (x − -5) is a factor.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "polynomials",
-      "factoring"
-    ],
-    "answer_verification": "roots -5,5"
-  },
-  {
-    "question_id": "sat-math-polynomials-hard-q12",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "polynomials",
-    "lesson_id": "sat-math-polynomials-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "factoring",
-    "prompt": "Which of the following is a factor of x² + 6x − 7?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "(x − 7)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
-      },
-      {
-        "id": "B",
-        "text": "(x + 6)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
-      },
-      {
-        "id": "C",
-        "text": "(x + 7)",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "(x + 1)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "x² + 6x − 7 factors as (x − -7)(x − 1); the roots are -7 and 1, so (x − -7) is a factor.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "polynomials",
-      "factoring"
-    ],
-    "answer_verification": "roots -7,1"
+    "answer_verification": "factor (x + 8)"
   },
   {
     "question_id": "sat-math-polynomials-hard-q13",
@@ -538,38 +550,39 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "factoring",
-    "prompt": "Which of the following is a factor of x² − 4?",
+    "subskill": "operations",
+    "prompt": "The polynomial p(x) = 2x³ − 2x² + 5x + k, where k is a constant, has (x + 3) as a factor. What is the value of k?",
     "choices": [
       {
         "id": "A",
-        "text": "(x + 2)",
-        "rationale": "Correct."
+        "text": "-57",
+        "rationale": "Check the sign of the linear term when substituting."
       },
       {
         "id": "B",
-        "text": "(x + 1)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
+        "text": "-87",
+        "rationale": "p(r) = 0 means k is the opposite of the other terms' sum."
       },
       {
         "id": "C",
-        "text": "(x + 3)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
+        "text": "-51",
+        "rationale": "(x + r) is a factor when p(−r) = 0; here the root is −3."
       },
       {
         "id": "D",
-        "text": "(x − 3)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
+        "text": "87",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "x² − 4 factors as (x − -2)(x − 2); the roots are -2 and 2, so (x − -2) is a factor.",
-    "estimated_time_seconds": 90,
+    "correct_choice": "D",
+    "explanation": "If (x − r) is a factor then p(r) = 0. Substituting x = −3: −54 − 18 − 15 + k = 0, so k = 87.",
+    "estimated_time_seconds": 100,
     "tags": [
       "polynomials",
-      "factoring"
+      "evaluate",
+      "family:poly_evaluate"
     ],
-    "answer_verification": "roots -2,2"
+    "answer_verification": "val=87"
   },
   {
     "question_id": "sat-math-polynomials-hard-q14",
@@ -582,38 +595,39 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "factoring",
-    "prompt": "Which of the following is a factor of x² − 6x − 16?",
+    "subskill": "operations",
+    "prompt": "When (x² + x − 7)(x + 4) is expanded and written in standard form, what is the coefficient of x?",
     "choices": [
       {
         "id": "A",
-        "text": "(x + 8)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
+        "text": "4",
+        "rationale": "Two products contribute to this term; add both."
       },
       {
         "id": "B",
-        "text": "(x + 1)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
+        "text": "-3",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "(x − 2)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
+        "text": "5",
+        "rationale": "That is a different coefficient of the product."
       },
       {
         "id": "D",
-        "text": "(x + 2)",
-        "rationale": "Correct."
+        "text": "-28",
+        "rationale": "That is a different coefficient of the product."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "x² − 6x − 16 factors as (x − -2)(x − 8); the roots are -2 and 8, so (x − -2) is a factor.",
-    "estimated_time_seconds": 90,
+    "correct_choice": "B",
+    "explanation": "Multiply each term: x³ + (1 + 4)x² + (−7 + (1)(4))x + (−7)(4) = x³ + 5x² − 3x − 28; the requested value is −3.",
+    "estimated_time_seconds": 95,
     "tags": [
       "polynomials",
-      "factoring"
+      "expand",
+      "family:poly_product_coeff"
     ],
-    "answer_verification": "roots -2,8"
+    "answer_verification": "[1, 5, -3, -28]"
   },
   {
     "question_id": "sat-math-polynomials-hard-q15",
@@ -626,38 +640,39 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "factoring",
-    "prompt": "Which of the following is a factor of x² − 9?",
+    "subskill": "operations",
+    "prompt": "If (x − 4)(6x − 7) is written in the form px² + qx + r, what is the value of q?",
     "choices": [
       {
         "id": "A",
-        "text": "(x + 2)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
-      },
-      {
-        "id": "B",
-        "text": "(x + 3)",
+        "text": "-31",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "-7",
+        "rationale": "This includes only one of the two x-terms."
+      },
+      {
         "id": "C",
-        "text": "(x − 4)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
+        "text": "6",
+        "rationale": "This is the coefficient of x², not x."
       },
       {
         "id": "D",
-        "text": "(x + 4)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
+        "text": "28",
+        "rationale": "This is the constant term, not the x coefficient."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "x² − 9 factors as (x − -3)(x − 3); the roots are -3 and 3, so (x − -3) is a factor.",
-    "estimated_time_seconds": 90,
+    "correct_choice": "A",
+    "explanation": "Using FOIL, the x-terms are 1x·(−7) and (−4)·6x, giving (−7) + (−24) = −31.",
+    "estimated_time_seconds": 80,
     "tags": [
       "polynomials",
-      "factoring"
+      "foil",
+      "family:poly_expand"
     ],
-    "answer_verification": "roots -3,3"
+    "answer_verification": "x2=6,x=-31,c=28"
   },
   {
     "question_id": "sat-math-polynomials-hard-q16",
@@ -670,38 +685,39 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "factoring",
-    "prompt": "Which of the following is a factor of x² + 3x − 54?",
+    "subskill": "operations",
+    "prompt": "Which of the following is equivalent to (9x² + 9x − 7) − (18x² + 6x + 15)?",
     "choices": [
       {
         "id": "A",
-        "text": "(x + 9)",
-        "rationale": "Correct."
+        "text": "9x² − 3x + 22",
+        "rationale": "This subtracts in the wrong order."
       },
       {
         "id": "B",
-        "text": "(x + 6)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
+        "text": "−9x² + 3x − 22",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "(x + 8)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
+        "text": "−9x² + 15x + 8",
+        "rationale": "The minus sign must be distributed to every term, not just the first."
       },
       {
         "id": "D",
-        "text": "(x − 9)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
+        "text": "27x² + 15x + 8",
+        "rationale": "This adds instead of subtracting."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "x² + 3x − 54 factors as (x − -9)(x − 6); the roots are -9 and 6, so (x − -9) is a factor.",
-    "estimated_time_seconds": 90,
+    "correct_choice": "B",
+    "explanation": "Distribute the minus sign to every term of the second polynomial, then combine: −9x² + 3x − 22.",
+    "estimated_time_seconds": 80,
     "tags": [
       "polynomials",
-      "factoring"
+      "add-subtract",
+      "family:poly_add_sub"
     ],
-    "answer_verification": "roots -9,6"
+    "answer_verification": "result [-9, 3, -22]"
   },
   {
     "question_id": "sat-math-polynomials-hard-q17",
@@ -715,37 +731,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "factoring",
-    "prompt": "Which of the following is a factor of x² − 8x − 9?",
+    "prompt": "Which of the following is a factor of x² + 3x − 18?",
     "choices": [
       {
         "id": "A",
-        "text": "(x − 1)",
+        "text": "(x + 5)",
         "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
       },
       {
         "id": "B",
-        "text": "(x + 9)",
+        "text": "(x − 6)",
         "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
       },
       {
         "id": "C",
-        "text": "(x + 0)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
+        "text": "(x + 6)",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "(x + 1)",
-        "rationale": "Correct."
+        "text": "(x + 3)",
+        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "x² − 8x − 9 factors as (x − -1)(x − 9); the roots are -1 and 9, so (x − -1) is a factor.",
-    "estimated_time_seconds": 90,
+    "correct_choice": "C",
+    "explanation": "x² + 3x − 18 factors as (x − (−6))(x − (3)); the roots are −6 and 3, so (x + 6) is a factor.",
+    "estimated_time_seconds": 85,
     "tags": [
       "polynomials",
-      "factoring"
+      "factoring",
+      "family:poly_factor"
     ],
-    "answer_verification": "roots -1,9"
+    "answer_verification": "factor (x + 6)"
   },
   {
     "question_id": "sat-math-polynomials-hard-q18",
@@ -758,38 +775,39 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "factoring",
-    "prompt": "Which of the following is a factor of x² − x − 12?",
+    "subskill": "operations",
+    "prompt": "The polynomial p(x) = 2x³ − 4x² + 5x + k, where k is a constant, has (x − 4) as a factor. What is the value of k?",
     "choices": [
       {
         "id": "A",
-        "text": "(x + 2)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
-      },
-      {
-        "id": "B",
-        "text": "(x + 3)",
+        "text": "-84",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "44",
+        "rationale": "Check the sign of the linear term when substituting."
+      },
+      {
         "id": "C",
-        "text": "(x − 3)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
+        "text": "212",
+        "rationale": "(x + r) is a factor when p(−r) = 0; here the root is 4."
       },
       {
         "id": "D",
-        "text": "(x + 4)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
+        "text": "84",
+        "rationale": "p(r) = 0 means k is the opposite of the other terms' sum."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "x² − x − 12 factors as (x − -3)(x − 4); the roots are -3 and 4, so (x − -3) is a factor.",
-    "estimated_time_seconds": 90,
+    "correct_choice": "A",
+    "explanation": "If (x − r) is a factor then p(r) = 0. Substituting x = 4: 128 − 64 + 20 + k = 0, so k = −84.",
+    "estimated_time_seconds": 100,
     "tags": [
       "polynomials",
-      "factoring"
+      "evaluate",
+      "family:poly_evaluate"
     ],
-    "answer_verification": "roots -3,4"
+    "answer_verification": "val=-84"
   },
   {
     "question_id": "sat-math-polynomials-hard-q19",
@@ -802,38 +820,39 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "factoring",
-    "prompt": "Which of the following is a factor of x² + 4x − 45?",
+    "subskill": "operations",
+    "prompt": "When (x² − x − 8)(x − 2) is expanded and written in standard form, what is the coefficient of x?",
     "choices": [
       {
         "id": "A",
-        "text": "(x + 8)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
+        "text": "16",
+        "rationale": "That is a different coefficient of the product."
       },
       {
         "id": "B",
-        "text": "(x + 5)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
+        "text": "2",
+        "rationale": "Two products contribute to this term; add both."
       },
       {
         "id": "C",
-        "text": "(x + 9)",
+        "text": "-6",
         "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "(x − 9)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
+        "text": "-3",
+        "rationale": "That is a different coefficient of the product."
       }
     ],
     "correct_choice": "C",
-    "explanation": "x² + 4x − 45 factors as (x − -9)(x − 5); the roots are -9 and 5, so (x − -9) is a factor.",
-    "estimated_time_seconds": 90,
+    "explanation": "Multiply each term: x³ + (−1 + −2)x² + (−8 + (−1)(−2))x + (−8)(−2) = x³ − 3x² − 6x + 16; the requested value is −6.",
+    "estimated_time_seconds": 95,
     "tags": [
       "polynomials",
-      "factoring"
+      "expand",
+      "family:poly_product_coeff"
     ],
-    "answer_verification": "roots -9,5"
+    "answer_verification": "[1, -3, -6, 16]"
   },
   {
     "question_id": "sat-math-polynomials-hard-q20",
@@ -846,37 +865,38 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "factoring",
-    "prompt": "Which of the following is a factor of x² − 2x − 63?",
+    "subskill": "operations",
+    "prompt": "In the expansion of (5x + 9)(6x + 3), what is the coefficient of x²?",
     "choices": [
       {
         "id": "A",
-        "text": "(x + 6)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
+        "text": "69",
+        "rationale": "This is the coefficient of x, not x²."
       },
       {
         "id": "B",
-        "text": "(x + 9)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
+        "text": "11",
+        "rationale": "Multiply the leading coefficients; don't add them."
       },
       {
         "id": "C",
-        "text": "(x − 7)",
-        "rationale": "Expanding this doesn't reproduce the trinomial; its root isn't a solution."
+        "text": "27",
+        "rationale": "This is the constant term, not the x² coefficient."
       },
       {
         "id": "D",
-        "text": "(x + 7)",
+        "text": "30",
         "rationale": "Correct."
       }
     ],
     "correct_choice": "D",
-    "explanation": "x² − 2x − 63 factors as (x − -7)(x − 9); the roots are -7 and 9, so (x − -7) is a factor.",
-    "estimated_time_seconds": 90,
+    "explanation": "The x² term is 5x·6x = 30x².",
+    "estimated_time_seconds": 80,
     "tags": [
       "polynomials",
-      "factoring"
+      "foil",
+      "family:poly_expand"
     ],
-    "answer_verification": "roots -7,9"
+    "answer_verification": "x2=30,x=69,c=27"
   }
 ]

@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
 
 import '../../domain/models/content_bundle.dart';
+import '../../domain/models/exam.dart';
 
 /// Reads a raw asset string. Injectable so tests can supply content directly.
 typedef AssetReader = Future<String> Function(String path);
@@ -17,12 +18,30 @@ class ContentRepository {
   final AssetReader _reader;
   final Map<String, ContentBundle> _cache = {};
 
-  /// The list of enabled exam ids (from assets/content/exams.json).
-  Future<List<String>> enabledExams() async {
+  /// The enabled exams (from assets/content/exams.json). Tolerates both the
+  /// legacy `{"enabled": ["sat"]}` shape and the richer
+  /// `{"enabled": [...], "exams": [{id, name, display_name, tagline}]}` shape.
+  Future<List<ExamInfo>> enabledExams() async {
     final raw = await _reader('assets/content/exams.json');
     final json = jsonDecode(raw) as Map<String, dynamic>;
-    return (json['enabled'] as List).map((e) => e.toString()).toList();
+    final enabled = (json['enabled'] as List? ?? const [])
+        .map((e) => e.toString())
+        .toSet();
+    final described = (json['exams'] as List? ?? const [])
+        .map(ExamInfo.fromJson)
+        .where((e) => e.id.isNotEmpty && enabled.contains(e.id))
+        .toList();
+    final seen = described.map((e) => e.id).toSet();
+    return [
+      ...described,
+      for (final id in enabled)
+        if (!seen.contains(id)) ExamInfo.fromJson(id),
+    ];
   }
+
+  /// Just the enabled exam ids, in exams.json order.
+  Future<List<String>> enabledExamIds() async =>
+      (await enabledExams()).map((e) => e.id).toList();
 
   /// Loads (and caches) the content bundle for an exam.
   Future<ContentBundle> loadBundle(String examId) async {

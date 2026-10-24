@@ -10,37 +10,38 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "data_interpretation",
-    "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. Given that a response is “Weekday”, what is the probability that it is also “Cats”?",
+    "subskill": "conditional_probability",
+    "prompt": "The table shows 149 survey responses. Given that a response is “Urban”, what is the probability that it is also “Coffee”?",
     "choices": [
       {
         "id": "A",
-        "text": "1/12",
+        "text": "49/149",
         "rationale": "Condition on the column total, not the grand total."
       },
       {
         "id": "B",
-        "text": "5/22",
+        "text": "49/71",
         "rationale": "Condition on the column, not the row."
       },
       {
         "id": "C",
-        "text": "5/38",
+        "text": "49/88",
         "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "33/38",
+        "text": "39/88",
         "rationale": "This is the probability of the other row in the column."
       }
     ],
     "correct_choice": "C",
-    "explanation": "Restrict to the “Weekday” column (total 5 + 33 = 38); of those, 5 are “Cats”, so the probability is 5/38 = 5/38.",
+    "explanation": "Restrict to the “Urban” column (49 + 39 = 88); of those, 49 are “Coffee”: 49/88.",
     "estimated_time_seconds": 90,
     "tags": [
       "data",
       "probability",
-      "table"
+      "table",
+      "family:tw_probability"
     ],
     "stimulus": {
       "type": "table",
@@ -48,33 +49,33 @@
         "caption": "Survey responses",
         "headers": [
           "",
-          "Weekday",
-          "Weekend",
+          "Urban",
+          "Rural",
           "Total"
         ],
         "rows": [
           [
-            "Cats",
-            "5",
-            "17",
-            "22"
+            "Coffee",
+            "49",
+            "22",
+            "71"
           ],
           [
-            "Dogs",
-            "33",
-            "5",
-            "38"
+            "Tea",
+            "39",
+            "39",
+            "78"
           ],
           [
             "Total",
-            "38",
-            "22",
-            "60"
+            "88",
+            "61",
+            "149"
           ]
         ]
       }
     },
-    "answer_verification": "P=5/38"
+    "answer_verification": "P=49/88"
   },
   {
     "question_id": "sat-math-two-way-tables-hard-q02",
@@ -87,37 +88,37 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "data_interpretation",
-    "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. Given that a response is “Weekday”, what is the probability that it is also “Cats”?",
+    "subskill": "conditional_probability",
+    "prompt": "Two values in the table of 92 responses are missing. How many more responses were “Left-handed” than “Right-handed” in the “Rural” column?",
     "choices": [
       {
         "id": "A",
-        "text": "7/44",
-        "rationale": "Condition on the column, not the row."
+        "text": "30",
+        "rationale": "That is the missing cell itself, not the difference."
       },
       {
         "id": "B",
-        "text": "7/92",
-        "rationale": "Condition on the column total, not the grand total."
+        "text": "40",
+        "rationale": "Subtract; don't add."
       },
       {
         "id": "C",
-        "text": "3/4",
-        "rationale": "This is the probability of the other row in the column."
+        "text": "20",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "1/4",
-        "rationale": "Correct."
+        "text": "-20",
+        "rationale": "The comparison is reversed."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Restrict to the “Weekday” column (total 7 + 21 = 28); of those, 7 are “Cats”, so the probability is 7/28 = 1/4.",
-    "estimated_time_seconds": 90,
+    "correct_choice": "C",
+    "explanation": "Missing “Left-handed”/“Rural” = 45 − 15 = 30; missing “Right-handed”/“Urban” = 52 − 15 = 37. Then 30 − 10 = 20.",
+    "estimated_time_seconds": 95,
     "tags": [
       "data",
-      "probability",
-      "table"
+      "table",
+      "family:tw_count"
     ],
     "stimulus": {
       "type": "table",
@@ -125,33 +126,33 @@
         "caption": "Survey responses",
         "headers": [
           "",
-          "Weekday",
-          "Weekend",
+          "Urban",
+          "Rural",
           "Total"
         ],
         "rows": [
           [
-            "Cats",
-            "7",
-            "37",
-            "44"
+            "Left-handed",
+            "15",
+            "?",
+            "45"
           ],
           [
-            "Dogs",
-            "21",
-            "27",
-            "48"
+            "Right-handed",
+            "?",
+            "10",
+            "47"
           ],
           [
             "Total",
-            "28",
-            "64",
+            "52",
+            "40",
             "92"
           ]
         ]
       }
     },
-    "answer_verification": "P=1/4"
+    "answer_verification": "val=20"
   },
   {
     "question_id": "sat-math-two-way-tables-hard-q03",
@@ -164,37 +165,37 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "data_interpretation",
-    "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. Given that a response is “Morning”, what is the probability that it is also “Bus”?",
+    "subskill": "conditional_probability",
+    "prompt": "The table shows a random sample of 115 responses from a population of 1000. Based on the sample, approximately how many people in the whole population would be expected to be “Adults”?",
     "choices": [
       {
         "id": "A",
-        "text": "11/15",
-        "rationale": "Condition on the column, not the row."
+        "text": "36",
+        "rationale": "That is the sample count; scale it to the population."
       },
       {
         "id": "B",
-        "text": "11/21",
-        "rationale": "Correct."
+        "text": "122",
+        "rationale": "Use the whole “Adults” column, not one cell."
       },
       {
         "id": "C",
-        "text": "10/21",
-        "rationale": "This is the probability of the other row in the column."
+        "text": "687",
+        "rationale": "That is the expected count for “Students”."
       },
       {
         "id": "D",
-        "text": "11/36",
-        "rationale": "Condition on the column total, not the grand total."
+        "text": "313",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Restrict to the “Morning” column (total 33 + 30 = 63); of those, 33 are “Bus”, so the probability is 33/63 = 11/21.",
+    "correct_choice": "D",
+    "explanation": "Sample proportion = 36/115; × 1000 ≈ 313.",
     "estimated_time_seconds": 90,
     "tags": [
       "data",
-      "probability",
-      "table"
+      "table",
+      "family:tw_fraction_percent"
     ],
     "stimulus": {
       "type": "table",
@@ -202,33 +203,33 @@
         "caption": "Survey responses",
         "headers": [
           "",
-          "Morning",
-          "Evening",
+          "Adults",
+          "Students",
           "Total"
         ],
         "rows": [
           [
-            "Bus",
-            "33",
-            "12",
-            "45"
+            "Left-handed",
+            "14",
+            "51",
+            "65"
           ],
           [
-            "Bike",
-            "30",
-            "33",
-            "63"
+            "Right-handed",
+            "22",
+            "28",
+            "50"
           ],
           [
             "Total",
-            "63",
-            "45",
-            "108"
+            "36",
+            "79",
+            "115"
           ]
         ]
       }
     },
-    "answer_verification": "P=11/21"
+    "answer_verification": "val=313"
   },
   {
     "question_id": "sat-math-two-way-tables-hard-q04",
@@ -241,37 +242,101 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "data_interpretation",
-    "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. Given that a response is “Adults”, what is the probability that it is also “Cats”?",
+    "subskill": "conditional_probability",
+    "prompt": "Based on the table of 139 responses, which of the following statements must be true?",
     "choices": [
       {
         "id": "A",
-        "text": "18/49",
-        "rationale": "This is the probability of the other row in the column."
+        "text": "The proportion of “Soccer” responses is higher among “Morning” responses than among “Evening” responses.",
+        "rationale": "0.18 vs 0.44: the higher proportion is in “Evening”."
       },
       {
         "id": "B",
-        "text": "31/49",
+        "text": "The proportion of “Soccer” responses is higher among “Evening” responses than among “Morning” responses.",
         "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "31/64",
-        "rationale": "Condition on the column, not the row."
+        "text": "More than half of all responses are “Soccer”.",
+        "rationale": "“Soccer” accounts for 44 of 139 responses."
       },
       {
         "id": "D",
-        "text": "31/115",
-        "rationale": "Condition on the column total, not the grand total."
+        "text": "The “Evening” group has a higher proportion of “Soccer” responses simply because it is the larger group.",
+        "rationale": "Group size doesn't determine the within-group proportion."
       }
     ],
     "correct_choice": "B",
-    "explanation": "Restrict to the “Adults” column (total 31 + 18 = 49); of those, 31 are “Cats”, so the probability is 31/49 = 31/49.",
-    "estimated_time_seconds": 90,
+    "explanation": "Within “Morning”: 12/66 ≈ 0.18; within “Evening”: 32/73 ≈ 0.44. So the proportion is higher among “Evening”.",
+    "estimated_time_seconds": 100,
     "tags": [
       "data",
-      "probability",
-      "table"
+      "table",
+      "compare",
+      "family:tw_compare"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Survey responses",
+        "headers": [
+          "",
+          "Morning",
+          "Evening",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Soccer",
+            "12",
+            "32",
+            "44"
+          ],
+          [
+            "Basketball",
+            "54",
+            "41",
+            "95"
+          ],
+          [
+            "Total",
+            "66",
+            "73",
+            "139"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "0.182 vs 0.438"
+  },
+  {
+    "question_id": "sat-math-two-way-tables-hard-q05",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "two_way_tables",
+    "lesson_id": "sat-math-two-way-tables-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "student_produced",
+    "subskill": "conditional_probability",
+    "prompt": "The table shows 155 survey responses. If a “Students” response is selected at random, what is the probability that it is “Right-handed”?",
+    "answer": {
+      "type": "numeric",
+      "value": 0.6136363636363636,
+      "accepted": [
+        "27/44"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "54/(34 + 54) = 27/44.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "data",
+      "table",
+      "grid-in",
+      "family:tw_gridin"
     ],
     "stimulus": {
       "type": "table",
@@ -285,104 +350,27 @@
         ],
         "rows": [
           [
-            "Cats",
-            "31",
-            "33",
-            "64"
+            "Left-handed",
+            "26",
+            "34",
+            "60"
           ],
           [
-            "Dogs",
-            "18",
-            "33",
-            "51"
+            "Right-handed",
+            "41",
+            "54",
+            "95"
           ],
           [
             "Total",
-            "49",
-            "66",
-            "115"
+            "67",
+            "88",
+            "155"
           ]
         ]
       }
     },
-    "answer_verification": "P=31/49"
-  },
-  {
-    "question_id": "sat-math-two-way-tables-hard-q05",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "two_way_tables",
-    "lesson_id": "sat-math-two-way-tables-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. Given that a response is “Weekday”, what is the probability that it is also “Coffee”?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "3/10",
-        "rationale": "This is the probability of the other row in the column."
-      },
-      {
-        "id": "B",
-        "text": "4/13",
-        "rationale": "Condition on the column total, not the grand total."
-      },
-      {
-        "id": "C",
-        "text": "7/10",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "28/47",
-        "rationale": "Condition on the column, not the row."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "Restrict to the “Weekday” column (total 28 + 12 = 40); of those, 28 are “Coffee”, so the probability is 28/40 = 7/10.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "data",
-      "probability",
-      "table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Survey responses",
-        "headers": [
-          "",
-          "Weekday",
-          "Weekend",
-          "Total"
-        ],
-        "rows": [
-          [
-            "Coffee",
-            "28",
-            "19",
-            "47"
-          ],
-          [
-            "Tea",
-            "12",
-            "32",
-            "44"
-          ],
-          [
-            "Total",
-            "40",
-            "51",
-            "91"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "P=7/10"
+    "answer_verification": "val=27/44"
   },
   {
     "question_id": "sat-math-two-way-tables-hard-q06",
@@ -395,37 +383,38 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "data_interpretation",
-    "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. Given that a response is “Morning”, what is the probability that it is also “Bus”?",
+    "subskill": "conditional_probability",
+    "prompt": "The table shows 62 survey responses. Given that a response is “Morning”, what is the probability that it is also “Soccer”?",
     "choices": [
       {
         "id": "A",
-        "text": "12/17",
+        "text": "19/32",
         "rationale": "Condition on the column, not the row."
       },
       {
         "id": "B",
-        "text": "13/17",
+        "text": "23/42",
         "rationale": "This is the probability of the other row in the column."
       },
       {
         "id": "C",
-        "text": "4/17",
-        "rationale": "Correct."
+        "text": "19/62",
+        "rationale": "Condition on the column total, not the grand total."
       },
       {
         "id": "D",
-        "text": "6/41",
-        "rationale": "Condition on the column total, not the grand total."
+        "text": "19/42",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Restrict to the “Morning” column (total 12 + 39 = 51); of those, 12 are “Bus”, so the probability is 12/51 = 4/17.",
+    "correct_choice": "D",
+    "explanation": "Restrict to the “Morning” column (19 + 23 = 42); of those, 19 are “Soccer”: 19/42.",
     "estimated_time_seconds": 90,
     "tags": [
       "data",
       "probability",
-      "table"
+      "table",
+      "family:tw_probability"
     ],
     "stimulus": {
       "type": "table",
@@ -439,27 +428,27 @@
         ],
         "rows": [
           [
-            "Bus",
-            "12",
-            "5",
-            "17"
+            "Soccer",
+            "19",
+            "13",
+            "32"
           ],
           [
-            "Bike",
-            "39",
-            "26",
-            "65"
+            "Basketball",
+            "23",
+            "7",
+            "30"
           ],
           [
             "Total",
-            "51",
-            "31",
-            "82"
+            "42",
+            "20",
+            "62"
           ]
         ]
       }
     },
-    "answer_verification": "P=4/17"
+    "answer_verification": "P=19/42"
   },
   {
     "question_id": "sat-math-two-way-tables-hard-q07",
@@ -472,37 +461,37 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "data_interpretation",
-    "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. Given that a response is “Morning”, what is the probability that it is also “Cats”?",
+    "subskill": "conditional_probability",
+    "prompt": "Two values in the table of 156 responses are missing. How many more responses were “Fiction” than “Nonfiction” in the “Weekend” column?",
     "choices": [
       {
         "id": "A",
-        "text": "31/44",
-        "rationale": "Condition on the column, not the row."
+        "text": "22",
+        "rationale": "The comparison is reversed."
       },
       {
         "id": "B",
-        "text": "31/40",
-        "rationale": "Correct."
+        "text": "96",
+        "rationale": "Subtract; don't add."
       },
       {
         "id": "C",
-        "text": "31/87",
-        "rationale": "Condition on the column total, not the grand total."
+        "text": "-22",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "9/40",
-        "rationale": "This is the probability of the other row in the column."
+        "text": "37",
+        "rationale": "That is the missing cell itself, not the difference."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Restrict to the “Morning” column (total 31 + 9 = 40); of those, 31 are “Cats”, so the probability is 31/40 = 31/40.",
-    "estimated_time_seconds": 90,
+    "correct_choice": "C",
+    "explanation": "Missing “Fiction”/“Weekend” = 84 − 47 = 37; missing “Nonfiction”/“Weekday” = 60 − 47 = 13. Then 37 − 59 = −22.",
+    "estimated_time_seconds": 95,
     "tags": [
       "data",
-      "probability",
-      "table"
+      "table",
+      "family:tw_count"
     ],
     "stimulus": {
       "type": "table",
@@ -510,33 +499,33 @@
         "caption": "Survey responses",
         "headers": [
           "",
-          "Morning",
-          "Evening",
+          "Weekday",
+          "Weekend",
           "Total"
         ],
         "rows": [
           [
-            "Cats",
-            "31",
-            "13",
-            "44"
+            "Fiction",
+            "47",
+            "?",
+            "84"
           ],
           [
-            "Dogs",
-            "9",
-            "34",
-            "43"
+            "Nonfiction",
+            "?",
+            "59",
+            "72"
           ],
           [
             "Total",
-            "40",
-            "47",
-            "87"
+            "60",
+            "96",
+            "156"
           ]
         ]
       }
     },
-    "answer_verification": "P=31/40"
+    "answer_verification": "val=-22"
   },
   {
     "question_id": "sat-math-two-way-tables-hard-q08",
@@ -549,37 +538,37 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "data_interpretation",
-    "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. Given that a response is “Weekday”, what is the probability that it is also “Bus”?",
+    "subskill": "conditional_probability",
+    "prompt": "The table shows a random sample of 112 responses from a population of 200. Based on the sample, approximately how many people in the whole population would be expected to be “Grade 9”?",
     "choices": [
       {
         "id": "A",
-        "text": "1/3",
+        "text": "62",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "2/19",
-        "rationale": "Condition on the column total, not the grand total."
+        "text": "50",
+        "rationale": "Use the whole “Grade 9” column, not one cell."
       },
       {
         "id": "C",
-        "text": "6/25",
-        "rationale": "Condition on the column, not the row."
+        "text": "138",
+        "rationale": "That is the expected count for “Grade 10”."
       },
       {
         "id": "D",
-        "text": "2/3",
-        "rationale": "This is the probability of the other row in the column."
+        "text": "35",
+        "rationale": "That is the sample count; scale it to the population."
       }
     ],
     "correct_choice": "A",
-    "explanation": "Restrict to the “Weekday” column (total 6 + 12 = 18); of those, 6 are “Bus”, so the probability is 6/18 = 1/3.",
+    "explanation": "Sample proportion = 35/112; × 200 ≈ 62.",
     "estimated_time_seconds": 90,
     "tags": [
       "data",
-      "probability",
-      "table"
+      "table",
+      "family:tw_fraction_percent"
     ],
     "stimulus": {
       "type": "table",
@@ -587,33 +576,33 @@
         "caption": "Survey responses",
         "headers": [
           "",
-          "Weekday",
-          "Weekend",
+          "Grade 9",
+          "Grade 10",
           "Total"
         ],
         "rows": [
           [
-            "Bus",
-            "6",
-            "19",
+            "Fiction",
+            "28",
+            "59",
+            "87"
+          ],
+          [
+            "Nonfiction",
+            "7",
+            "18",
             "25"
           ],
           [
-            "Bike",
-            "12",
-            "20",
-            "32"
-          ],
-          [
             "Total",
-            "18",
-            "39",
-            "57"
+            "35",
+            "77",
+            "112"
           ]
         ]
       }
     },
-    "answer_verification": "P=1/3"
+    "answer_verification": "val=62"
   },
   {
     "question_id": "sat-math-two-way-tables-hard-q09",
@@ -626,114 +615,38 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "data_interpretation",
-    "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. Given that a response is “Adults”, what is the probability that it is also “Coffee”?",
+    "subskill": "conditional_probability",
+    "prompt": "Based on the table of 126 responses, which of the following statements must be true?",
     "choices": [
       {
         "id": "A",
-        "text": "13/38",
-        "rationale": "Condition on the column total, not the grand total."
+        "text": "The “Weekday” group has a higher proportion of “Soccer” responses simply because it is the larger group.",
+        "rationale": "Group size doesn't determine the within-group proportion."
       },
       {
         "id": "B",
-        "text": "13/21",
+        "text": "The proportion of “Soccer” responses is higher among “Weekend” responses than among “Weekday” responses.",
         "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "26/45",
-        "rationale": "Condition on the column, not the row."
+        "text": "The proportion of “Soccer” responses is higher among “Weekday” responses than among “Weekend” responses.",
+        "rationale": "0.55 vs 0.82: the higher proportion is in “Weekend”."
       },
       {
         "id": "D",
-        "text": "8/21",
-        "rationale": "This is the probability of the other row in the column."
+        "text": "Fewer than half of all responses are “Soccer”.",
+        "rationale": "“Soccer” accounts for 77 of 126 responses."
       }
     ],
     "correct_choice": "B",
-    "explanation": "Restrict to the “Adults” column (total 26 + 16 = 42); of those, 26 are “Coffee”, so the probability is 26/42 = 13/21.",
-    "estimated_time_seconds": 90,
+    "explanation": "Within “Weekday”: 54/98 ≈ 0.55; within “Weekend”: 23/28 ≈ 0.82. So the proportion is higher among “Weekend”.",
+    "estimated_time_seconds": 100,
     "tags": [
       "data",
-      "probability",
-      "table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Survey responses",
-        "headers": [
-          "",
-          "Adults",
-          "Students",
-          "Total"
-        ],
-        "rows": [
-          [
-            "Coffee",
-            "26",
-            "19",
-            "45"
-          ],
-          [
-            "Tea",
-            "16",
-            "15",
-            "31"
-          ],
-          [
-            "Total",
-            "42",
-            "34",
-            "76"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "P=13/21"
-  },
-  {
-    "question_id": "sat-math-two-way-tables-hard-q10",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "two_way_tables",
-    "lesson_id": "sat-math-two-way-tables-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. Given that a response is “Weekday”, what is the probability that it is also “Coffee”?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "7/9",
-        "rationale": "Condition on the column, not the row."
-      },
-      {
-        "id": "B",
-        "text": "7/13",
-        "rationale": "Condition on the column total, not the grand total."
-      },
-      {
-        "id": "C",
-        "text": "11/46",
-        "rationale": "This is the probability of the other row in the column."
-      },
-      {
-        "id": "D",
-        "text": "35/46",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Restrict to the “Weekday” column (total 35 + 11 = 46); of those, 35 are “Coffee”, so the probability is 35/46 = 35/46.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "data",
-      "probability",
-      "table"
+      "table",
+      "compare",
+      "family:tw_compare"
     ],
     "stimulus": {
       "type": "table",
@@ -747,27 +660,90 @@
         ],
         "rows": [
           [
-            "Coffee",
-            "35",
-            "10",
-            "45"
+            "Soccer",
+            "54",
+            "23",
+            "77"
           ],
           [
-            "Tea",
-            "11",
-            "9",
-            "20"
+            "Basketball",
+            "44",
+            "5",
+            "49"
           ],
           [
             "Total",
-            "46",
-            "19",
-            "65"
+            "98",
+            "28",
+            "126"
           ]
         ]
       }
     },
-    "answer_verification": "P=35/46"
+    "answer_verification": "0.551 vs 0.821"
+  },
+  {
+    "question_id": "sat-math-two-way-tables-hard-q10",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "two_way_tables",
+    "lesson_id": "sat-math-two-way-tables-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "student_produced",
+    "subskill": "conditional_probability",
+    "prompt": "The table shows 127 survey responses. If a “Students” response is selected at random, what is the probability that it is “Bike”?",
+    "answer": {
+      "type": "numeric",
+      "value": 0.7605633802816901,
+      "accepted": [
+        "54/71"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "54/(17 + 54) = 54/71.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "data",
+      "table",
+      "grid-in",
+      "family:tw_gridin"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Survey responses",
+        "headers": [
+          "",
+          "Adults",
+          "Students",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Bus",
+            "19",
+            "17",
+            "36"
+          ],
+          [
+            "Bike",
+            "37",
+            "54",
+            "91"
+          ],
+          [
+            "Total",
+            "56",
+            "71",
+            "127"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "val=54/71"
   },
   {
     "question_id": "sat-math-two-way-tables-hard-q11",
@@ -780,37 +756,38 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "data_interpretation",
-    "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. Given that a response is “Weekday”, what is the probability that it is also “Bus”?",
+    "subskill": "conditional_probability",
+    "prompt": "The table shows 71 survey responses. Given that a response is “Weekday”, what is the probability that it is also “Coffee”?",
     "choices": [
       {
         "id": "A",
-        "text": "17/55",
+        "text": "1/9",
         "rationale": "This is the probability of the other row in the column."
       },
       {
         "id": "B",
-        "text": "38/55",
-        "rationale": "Correct."
+        "text": "40/49",
+        "rationale": "Condition on the column, not the row."
       },
       {
         "id": "C",
-        "text": "38/87",
+        "text": "40/71",
         "rationale": "Condition on the column total, not the grand total."
       },
       {
         "id": "D",
-        "text": "19/31",
-        "rationale": "Condition on the column, not the row."
+        "text": "8/9",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Restrict to the “Weekday” column (total 38 + 17 = 55); of those, 38 are “Bus”, so the probability is 38/55 = 38/55.",
+    "correct_choice": "D",
+    "explanation": "Restrict to the “Weekday” column (40 + 5 = 45); of those, 40 are “Coffee”: 8/9.",
     "estimated_time_seconds": 90,
     "tags": [
       "data",
       "probability",
-      "table"
+      "table",
+      "family:tw_probability"
     ],
     "stimulus": {
       "type": "table",
@@ -824,27 +801,27 @@
         ],
         "rows": [
           [
-            "Bus",
-            "38",
-            "24",
-            "62"
+            "Coffee",
+            "40",
+            "9",
+            "49"
           ],
           [
-            "Bike",
+            "Tea",
+            "5",
             "17",
-            "8",
-            "25"
+            "22"
           ],
           [
             "Total",
-            "55",
-            "32",
-            "87"
+            "45",
+            "26",
+            "71"
           ]
         ]
       }
     },
-    "answer_verification": "P=38/55"
+    "answer_verification": "P=8/9"
   },
   {
     "question_id": "sat-math-two-way-tables-hard-q12",
@@ -857,37 +834,37 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "data_interpretation",
-    "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. Given that a response is “Adults”, what is the probability that it is also “Fiction”?",
+    "subskill": "conditional_probability",
+    "prompt": "Two values in the table of 101 responses are missing. How many more responses were “Soccer” than “Basketball” in the “Evening” column?",
     "choices": [
       {
         "id": "A",
-        "text": "8/9",
-        "rationale": "Condition on the column, not the row."
-      },
-      {
-        "id": "B",
-        "text": "20/47",
-        "rationale": "Condition on the column total, not the grand total."
-      },
-      {
-        "id": "C",
-        "text": "4/5",
+        "text": "-49",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "49",
+        "rationale": "The comparison is reversed."
+      },
+      {
+        "id": "C",
+        "text": "63",
+        "rationale": "Subtract; don't add."
+      },
+      {
         "id": "D",
-        "text": "1/5",
-        "rationale": "This is the probability of the other row in the column."
+        "text": "7",
+        "rationale": "That is the missing cell itself, not the difference."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Restrict to the “Adults” column (total 40 + 10 = 50); of those, 40 are “Fiction”, so the probability is 40/50 = 4/5.",
-    "estimated_time_seconds": 90,
+    "correct_choice": "A",
+    "explanation": "Missing “Soccer”/“Evening” = 32 − 25 = 7; missing “Basketball”/“Morning” = 38 − 25 = 13. Then 7 − 56 = −49.",
+    "estimated_time_seconds": 95,
     "tags": [
       "data",
-      "probability",
-      "table"
+      "table",
+      "family:tw_count"
     ],
     "stimulus": {
       "type": "table",
@@ -895,33 +872,33 @@
         "caption": "Survey responses",
         "headers": [
           "",
-          "Adults",
-          "Students",
+          "Morning",
+          "Evening",
           "Total"
         ],
         "rows": [
           [
-            "Fiction",
-            "40",
-            "5",
-            "45"
+            "Soccer",
+            "25",
+            "?",
+            "32"
           ],
           [
-            "Nonfiction",
-            "10",
-            "39",
-            "49"
+            "Basketball",
+            "?",
+            "56",
+            "69"
           ],
           [
             "Total",
-            "50",
-            "44",
-            "94"
+            "38",
+            "63",
+            "101"
           ]
         ]
       }
     },
-    "answer_verification": "P=4/5"
+    "answer_verification": "val=-49"
   },
   {
     "question_id": "sat-math-two-way-tables-hard-q13",
@@ -934,37 +911,37 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "data_interpretation",
-    "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. Given that a response is “Morning”, what is the probability that it is also “Fiction”?",
+    "subskill": "conditional_probability",
+    "prompt": "The table shows a random sample of 141 responses from a population of 1500. Based on the sample, approximately how many people in the whole population would be expected to be “Grade 9”?",
     "choices": [
       {
         "id": "A",
-        "text": "5/9",
-        "rationale": "Correct."
+        "text": "457",
+        "rationale": "Use the whole “Grade 9” column, not one cell."
       },
       {
         "id": "B",
-        "text": "2/7",
-        "rationale": "Condition on the column total, not the grand total."
+        "text": "702",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "10/19",
-        "rationale": "Condition on the column, not the row."
+        "text": "798",
+        "rationale": "That is the expected count for “Grade 10”."
       },
       {
         "id": "D",
-        "text": "4/9",
-        "rationale": "This is the probability of the other row in the column."
+        "text": "66",
+        "rationale": "That is the sample count; scale it to the population."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Restrict to the “Morning” column (total 30 + 24 = 54); of those, 30 are “Fiction”, so the probability is 30/54 = 5/9.",
+    "correct_choice": "B",
+    "explanation": "Sample proportion = 66/141; × 1500 ≈ 702.",
     "estimated_time_seconds": 90,
     "tags": [
       "data",
-      "probability",
-      "table"
+      "table",
+      "family:tw_fraction_percent"
     ],
     "stimulus": {
       "type": "table",
@@ -972,33 +949,33 @@
         "caption": "Survey responses",
         "headers": [
           "",
-          "Morning",
-          "Evening",
+          "Grade 9",
+          "Grade 10",
           "Total"
         ],
         "rows": [
           [
-            "Fiction",
-            "30",
-            "27",
-            "57"
+            "Bus",
+            "43",
+            "22",
+            "65"
           ],
           [
-            "Nonfiction",
-            "24",
-            "24",
-            "48"
+            "Bike",
+            "23",
+            "53",
+            "76"
           ],
           [
             "Total",
-            "54",
-            "51",
-            "105"
+            "66",
+            "75",
+            "141"
           ]
         ]
       }
     },
-    "answer_verification": "P=5/9"
+    "answer_verification": "val=702"
   },
   {
     "question_id": "sat-math-two-way-tables-hard-q14",
@@ -1011,37 +988,179 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "data_interpretation",
-    "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. Given that a response is “Adults”, what is the probability that it is also “Coffee”?",
+    "subskill": "conditional_probability",
+    "prompt": "Based on the table of 218 responses, which of the following statements must be true?",
     "choices": [
       {
         "id": "A",
-        "text": "13/34",
-        "rationale": "Correct."
+        "text": "More than half of all responses are “Left-handed”.",
+        "rationale": "“Left-handed” accounts for 105 of 218 responses."
       },
       {
         "id": "B",
-        "text": "13/44",
-        "rationale": "Condition on the column, not the row."
+        "text": "The proportion of “Left-handed” responses is higher among “Weekend” responses than among “Weekday” responses.",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "1/8",
-        "rationale": "Condition on the column total, not the grand total."
+        "text": "The proportion of “Left-handed” responses is higher among “Weekday” responses than among “Weekend” responses.",
+        "rationale": "0.45 vs 0.51: the higher proportion is in “Weekend”."
       },
       {
         "id": "D",
-        "text": "21/34",
-        "rationale": "This is the probability of the other row in the column."
+        "text": "The “Weekend” group has a higher proportion of “Left-handed” responses simply because it is the larger group.",
+        "rationale": "Group size doesn't determine the within-group proportion."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Restrict to the “Adults” column (total 13 + 21 = 34); of those, 13 are “Coffee”, so the probability is 13/34 = 13/34.",
+    "correct_choice": "B",
+    "explanation": "Within “Weekday”: 46/103 ≈ 0.45; within “Weekend”: 59/115 ≈ 0.51. So the proportion is higher among “Weekend”.",
+    "estimated_time_seconds": 100,
+    "tags": [
+      "data",
+      "table",
+      "compare",
+      "family:tw_compare"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Survey responses",
+        "headers": [
+          "",
+          "Weekday",
+          "Weekend",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Left-handed",
+            "46",
+            "59",
+            "105"
+          ],
+          [
+            "Right-handed",
+            "57",
+            "56",
+            "113"
+          ],
+          [
+            "Total",
+            "103",
+            "115",
+            "218"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "0.447 vs 0.513"
+  },
+  {
+    "question_id": "sat-math-two-way-tables-hard-q15",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "two_way_tables",
+    "lesson_id": "sat-math-two-way-tables-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "student_produced",
+    "subskill": "conditional_probability",
+    "prompt": "The table shows 86 survey responses. If a “Rural” response is selected at random, what is the probability that it is “Basketball”?",
+    "answer": {
+      "type": "numeric",
+      "value": 0.3333333333333333,
+      "accepted": [
+        "1/3"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "13/(26 + 13) = 1/3.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "data",
+      "table",
+      "grid-in",
+      "family:tw_gridin"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Survey responses",
+        "headers": [
+          "",
+          "Urban",
+          "Rural",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Soccer",
+            "27",
+            "26",
+            "53"
+          ],
+          [
+            "Basketball",
+            "20",
+            "13",
+            "33"
+          ],
+          [
+            "Total",
+            "47",
+            "39",
+            "86"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "val=1/3"
+  },
+  {
+    "question_id": "sat-math-two-way-tables-hard-q16",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "two_way_tables",
+    "lesson_id": "sat-math-two-way-tables-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "conditional_probability",
+    "prompt": "The table shows 124 survey responses. Given that a response is “Adults”, what is the probability that it is also “Soccer”?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "22/69",
+        "rationale": "This is the probability of the other row in the column."
+      },
+      {
+        "id": "B",
+        "text": "47/124",
+        "rationale": "Condition on the column total, not the grand total."
+      },
+      {
+        "id": "C",
+        "text": "47/86",
+        "rationale": "Condition on the column, not the row."
+      },
+      {
+        "id": "D",
+        "text": "47/69",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Restrict to the “Adults” column (47 + 22 = 69); of those, 47 are “Soccer”: 47/69.",
     "estimated_time_seconds": 90,
     "tags": [
       "data",
       "probability",
-      "table"
+      "table",
+      "family:tw_probability"
     ],
     "stimulus": {
       "type": "table",
@@ -1055,30 +1174,30 @@
         ],
         "rows": [
           [
-            "Coffee",
-            "13",
-            "31",
-            "44"
+            "Soccer",
+            "47",
+            "39",
+            "86"
           ],
           [
-            "Tea",
-            "21",
-            "39",
-            "60"
+            "Basketball",
+            "22",
+            "16",
+            "38"
           ],
           [
             "Total",
-            "34",
-            "70",
-            "104"
+            "69",
+            "55",
+            "124"
           ]
         ]
       }
     },
-    "answer_verification": "P=13/34"
+    "answer_verification": "P=47/69"
   },
   {
-    "question_id": "sat-math-two-way-tables-hard-q15",
+    "question_id": "sat-math-two-way-tables-hard-q17",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1088,37 +1207,37 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "data_interpretation",
-    "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. Given that a response is “Adults”, what is the probability that it is also “Fiction”?",
+    "subskill": "conditional_probability",
+    "prompt": "Two values in the table of 117 responses are missing. How many more responses were “Fiction” than “Nonfiction” in the “Students” column?",
     "choices": [
       {
         "id": "A",
-        "text": "27/136",
-        "rationale": "Condition on the column total, not the grand total."
+        "text": "17",
+        "rationale": "That is the missing cell itself, not the difference."
       },
       {
         "id": "B",
-        "text": "9/22",
-        "rationale": "Correct."
+        "text": "52",
+        "rationale": "Subtract; don't add."
       },
       {
         "id": "C",
-        "text": "13/22",
-        "rationale": "This is the probability of the other row in the column."
+        "text": "-18",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "9/19",
-        "rationale": "Condition on the column, not the row."
+        "text": "18",
+        "rationale": "The comparison is reversed."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Restrict to the “Adults” column (total 27 + 39 = 66); of those, 27 are “Fiction”, so the probability is 27/66 = 9/22.",
-    "estimated_time_seconds": 90,
+    "correct_choice": "C",
+    "explanation": "Missing “Fiction”/“Students” = 28 − 11 = 17; missing “Nonfiction”/“Adults” = 65 − 11 = 54. Then 17 − 35 = −18.",
+    "estimated_time_seconds": 95,
     "tags": [
       "data",
-      "probability",
-      "table"
+      "table",
+      "family:tw_count"
     ],
     "stimulus": {
       "type": "table",
@@ -1133,180 +1252,26 @@
         "rows": [
           [
             "Fiction",
-            "27",
-            "30",
-            "57"
+            "11",
+            "?",
+            "28"
           ],
           [
             "Nonfiction",
-            "39",
-            "40",
-            "79"
+            "?",
+            "35",
+            "89"
           ],
           [
             "Total",
-            "66",
-            "70",
-            "136"
+            "65",
+            "52",
+            "117"
           ]
         ]
       }
     },
-    "answer_verification": "P=9/22"
-  },
-  {
-    "question_id": "sat-math-two-way-tables-hard-q16",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "two_way_tables",
-    "lesson_id": "sat-math-two-way-tables-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. Given that a response is “Adults”, what is the probability that it is also “Cats”?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "19/62",
-        "rationale": "Condition on the column total, not the grand total."
-      },
-      {
-        "id": "B",
-        "text": "19/37",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "19/25",
-        "rationale": "Condition on the column, not the row."
-      },
-      {
-        "id": "D",
-        "text": "18/37",
-        "rationale": "This is the probability of the other row in the column."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Restrict to the “Adults” column (total 19 + 18 = 37); of those, 19 are “Cats”, so the probability is 19/37 = 19/37.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "data",
-      "probability",
-      "table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Survey responses",
-        "headers": [
-          "",
-          "Adults",
-          "Students",
-          "Total"
-        ],
-        "rows": [
-          [
-            "Cats",
-            "19",
-            "6",
-            "25"
-          ],
-          [
-            "Dogs",
-            "18",
-            "19",
-            "37"
-          ],
-          [
-            "Total",
-            "37",
-            "25",
-            "62"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "P=19/37"
-  },
-  {
-    "question_id": "sat-math-two-way-tables-hard-q17",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "two_way_tables",
-    "lesson_id": "sat-math-two-way-tables-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. Given that a response is “Adults”, what is the probability that it is also “Bus”?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "17/57",
-        "rationale": "Condition on the column, not the row."
-      },
-      {
-        "id": "B",
-        "text": "37/54",
-        "rationale": "This is the probability of the other row in the column."
-      },
-      {
-        "id": "C",
-        "text": "17/133",
-        "rationale": "Condition on the column total, not the grand total."
-      },
-      {
-        "id": "D",
-        "text": "17/54",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Restrict to the “Adults” column (total 17 + 37 = 54); of those, 17 are “Bus”, so the probability is 17/54 = 17/54.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "data",
-      "probability",
-      "table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Survey responses",
-        "headers": [
-          "",
-          "Adults",
-          "Students",
-          "Total"
-        ],
-        "rows": [
-          [
-            "Bus",
-            "17",
-            "40",
-            "57"
-          ],
-          [
-            "Bike",
-            "37",
-            "39",
-            "76"
-          ],
-          [
-            "Total",
-            "54",
-            "79",
-            "133"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "P=17/54"
+    "answer_verification": "val=-18"
   },
   {
     "question_id": "sat-math-two-way-tables-hard-q18",
@@ -1319,37 +1284,37 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "data_interpretation",
-    "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. Given that a response is “Morning”, what is the probability that it is also “Coffee”?",
+    "subskill": "conditional_probability",
+    "prompt": "The table shows a random sample of 164 responses from a population of 2000. Based on the sample, approximately how many people in the whole population would be expected to be “Morning”?",
     "choices": [
       {
         "id": "A",
-        "text": "37/92",
-        "rationale": "Condition on the column total, not the grand total."
-      },
-      {
-        "id": "B",
-        "text": "11/48",
-        "rationale": "This is the probability of the other row in the column."
-      },
-      {
-        "id": "C",
-        "text": "37/48",
+        "text": "976",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "1024",
+        "rationale": "That is the expected count for “Evening”."
+      },
+      {
+        "id": "C",
+        "text": "659",
+        "rationale": "Use the whole “Morning” column, not one cell."
+      },
+      {
         "id": "D",
-        "text": "37/65",
-        "rationale": "Condition on the column, not the row."
+        "text": "80",
+        "rationale": "That is the sample count; scale it to the population."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Restrict to the “Morning” column (total 37 + 11 = 48); of those, 37 are “Coffee”, so the probability is 37/48 = 37/48.",
+    "correct_choice": "A",
+    "explanation": "Sample proportion = 80/164; × 2000 ≈ 976.",
     "estimated_time_seconds": 90,
     "tags": [
       "data",
-      "probability",
-      "table"
+      "table",
+      "family:tw_fraction_percent"
     ],
     "stimulus": {
       "type": "table",
@@ -1363,27 +1328,27 @@
         ],
         "rows": [
           [
-            "Coffee",
-            "37",
-            "28",
-            "65"
+            "Soccer",
+            "54",
+            "40",
+            "94"
           ],
           [
-            "Tea",
-            "11",
-            "16",
-            "27"
+            "Basketball",
+            "26",
+            "44",
+            "70"
           ],
           [
             "Total",
-            "48",
-            "44",
-            "92"
+            "80",
+            "84",
+            "164"
           ]
         ]
       }
     },
-    "answer_verification": "P=37/48"
+    "answer_verification": "val=976"
   },
   {
     "question_id": "sat-math-two-way-tables-hard-q19",
@@ -1396,37 +1361,38 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "data_interpretation",
-    "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. Given that a response is “Adults”, what is the probability that it is also “Bus”?",
+    "subskill": "conditional_probability",
+    "prompt": "Based on the table of 128 responses, which of the following statements must be true?",
     "choices": [
       {
         "id": "A",
-        "text": "34/39",
-        "rationale": "This is the probability of the other row in the column."
+        "text": "The proportion of “Coffee” responses is higher among “Rural” responses than among “Urban” responses.",
+        "rationale": "0.49 vs 0.42: the higher proportion is in “Urban”."
       },
       {
         "id": "B",
-        "text": "1/9",
-        "rationale": "Condition on the column, not the row."
+        "text": "The “Urban” group has a higher proportion of “Coffee” responses simply because it is the larger group.",
+        "rationale": "Group size doesn't determine the within-group proportion."
       },
       {
         "id": "C",
-        "text": "5/108",
-        "rationale": "Condition on the column total, not the grand total."
+        "text": "More than half of all responses are “Coffee”.",
+        "rationale": "“Coffee” accounts for 59 of 128 responses."
       },
       {
         "id": "D",
-        "text": "5/39",
+        "text": "The proportion of “Coffee” responses is higher among “Urban” responses than among “Rural” responses.",
         "rationale": "Correct."
       }
     ],
     "correct_choice": "D",
-    "explanation": "Restrict to the “Adults” column (total 5 + 34 = 39); of those, 5 are “Bus”, so the probability is 5/39 = 5/39.",
-    "estimated_time_seconds": 90,
+    "explanation": "Within “Urban”: 35/71 ≈ 0.49; within “Rural”: 24/57 ≈ 0.42. So the proportion is higher among “Urban”.",
+    "estimated_time_seconds": 100,
     "tags": [
       "data",
-      "probability",
-      "table"
+      "table",
+      "compare",
+      "family:tw_compare"
     ],
     "stimulus": {
       "type": "table",
@@ -1434,33 +1400,33 @@
         "caption": "Survey responses",
         "headers": [
           "",
-          "Adults",
-          "Students",
+          "Urban",
+          "Rural",
           "Total"
         ],
         "rows": [
           [
-            "Bus",
-            "5",
-            "40",
-            "45"
+            "Coffee",
+            "35",
+            "24",
+            "59"
           ],
           [
-            "Bike",
-            "34",
-            "29",
-            "63"
+            "Tea",
+            "36",
+            "33",
+            "69"
           ],
           [
             "Total",
-            "39",
-            "69",
-            "108"
+            "71",
+            "57",
+            "128"
           ]
         ]
       }
     },
-    "answer_verification": "P=5/39"
+    "answer_verification": "0.493 vs 0.421"
   },
   {
     "question_id": "sat-math-two-way-tables-hard-q20",
@@ -1472,38 +1438,24 @@
     "lesson_id": "sat-math-two-way-tables-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "two_way_tables",
-    "prompt": "The table shows survey responses. Given that a response is “Morning”, what is the probability that it is also “Cats”?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "39/95",
-        "rationale": "Condition on the column total, not the grand total."
-      },
-      {
-        "id": "B",
-        "text": "39/56",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "39/50",
-        "rationale": "Condition on the column, not the row."
-      },
-      {
-        "id": "D",
-        "text": "17/56",
-        "rationale": "This is the probability of the other row in the column."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Restrict to the “Morning” column (total 39 + 17 = 56); of those, 39 are “Cats”, so the probability is 39/56 = 39/56.",
-    "estimated_time_seconds": 90,
+    "question_type": "student_produced",
+    "subskill": "conditional_probability",
+    "prompt": "The table shows 178 survey responses. If a “Rural” response is selected at random, what is the probability that it is “Dogs”?",
+    "answer": {
+      "type": "numeric",
+      "value": 0.6179775280898876,
+      "accepted": [
+        "55/89"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "55/(34 + 55) = 55/89.",
+    "estimated_time_seconds": 85,
     "tags": [
       "data",
-      "probability",
-      "table"
+      "table",
+      "grid-in",
+      "family:tw_gridin"
     ],
     "stimulus": {
       "type": "table",
@@ -1511,32 +1463,32 @@
         "caption": "Survey responses",
         "headers": [
           "",
-          "Morning",
-          "Evening",
+          "Urban",
+          "Rural",
           "Total"
         ],
         "rows": [
           [
             "Cats",
             "39",
-            "11",
-            "50"
+            "34",
+            "73"
           ],
           [
             "Dogs",
-            "17",
-            "28",
-            "45"
+            "50",
+            "55",
+            "105"
           ],
           [
             "Total",
-            "56",
-            "39",
-            "95"
+            "89",
+            "89",
+            "178"
           ]
         ]
       }
     },
-    "answer_verification": "P=39/56"
+    "answer_verification": "val=55/89"
   }
 ]

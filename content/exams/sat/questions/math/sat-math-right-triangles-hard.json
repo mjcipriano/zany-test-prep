@@ -10,51 +10,39 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "special_triangles",
-    "prompt": "The right triangle shown is a 30°-60°-90° triangle. The shorter leg (opposite the 30° angle) has length 4. What is the length of the longer leg?",
+    "subskill": "pythagorean",
+    "prompt": "A boat travels 30 km due east and then 16 km due north. How far, in km, is the boat from its starting point?",
     "choices": [
       {
         "id": "A",
-        "text": "4√2",
-        "rationale": "√2 is for a 45-45-90 triangle, not 30-60-90."
+        "text": "480",
+        "rationale": "Don't multiply the sides."
       },
       {
         "id": "B",
-        "text": "8",
-        "rationale": "That is the hypotenuse (2·short leg), not the longer leg."
+        "text": "35",
+        "rationale": "Off by one; recheck the squares."
       },
       {
         "id": "C",
-        "text": "12",
-        "rationale": "The factor is √3, not 3."
+        "text": "34",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "4√3",
-        "rationale": "Correct."
+        "text": "46",
+        "rationale": "Use a² + b² = c², not addition/subtraction of lengths."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "In a 30-60-90 triangle the longer leg is (short leg)·√3, so it is 4√3.",
+    "correct_choice": "C",
+    "explanation": "The situation forms a right triangle with legs 30 and 16 and hypotenuse 34: 30² + 16² = 34². The answer is 34.",
     "estimated_time_seconds": 95,
     "tags": [
       "geometry",
-      "right-triangle"
+      "right-triangle",
+      "family:rt_pythagorean"
     ],
-    "stimulus": {
-      "type": "figure",
-      "figure": {
-        "kind": "right_triangle",
-        "caption": "30°-60°-90° triangle",
-        "angle": "30°",
-        "labels": {
-          "a": "?",
-          "b": "4",
-          "c": "8"
-        }
-      }
-    },
-    "answer_verification": "4√3"
+    "answer_verification": "sides 30,16,34"
   },
   {
     "question_id": "sat-math-right-triangles-hard-q02",
@@ -68,50 +56,52 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "special_triangles",
-    "prompt": "The right triangle shown is a 45°-45°-90° triangle with legs of length 5. What is the length of the hypotenuse?",
+    "prompt": "In a 30°-60°-90° triangle the hypotenuse has length 18. What is the length of the longer leg?",
     "choices": [
       {
         "id": "A",
-        "text": "5√2",
+        "text": "9√3",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "5√3",
-        "rationale": "√3 is for a 30-60-90 triangle, not 45-45-90."
+        "text": "9",
+        "rationale": "That is the shorter leg."
       },
       {
         "id": "C",
-        "text": "25",
-        "rationale": "Don't square the leg; multiply by √2."
+        "text": "18√3",
+        "rationale": "Halve the hypotenuse first to get the short leg."
       },
       {
         "id": "D",
-        "text": "10",
-        "rationale": "That would be 2·leg; a 45-45-90 hypotenuse is leg·√2."
+        "text": "9√2",
+        "rationale": "√2 is for 45-45-90 triangles."
       }
     ],
     "correct_choice": "A",
-    "explanation": "In a 45-45-90 triangle the hypotenuse is leg·√2, so it is 5√2.",
+    "explanation": "Short leg = hypotenuse/2 = 9; longer leg = 9√3.",
     "estimated_time_seconds": 95,
     "tags": [
       "geometry",
-      "right-triangle"
+      "right-triangle",
+      "special",
+      "family:rt_special"
     ],
     "stimulus": {
       "type": "figure",
       "figure": {
         "kind": "right_triangle",
-        "caption": "45°-45°-90° triangle",
-        "angle": "45°",
+        "caption": "30°-60°-90° triangle",
         "labels": {
-          "a": "5",
-          "b": "5",
-          "c": "?"
-        }
+          "a": "?",
+          "b": "?",
+          "c": "18"
+        },
+        "angle": "30°"
       }
     },
-    "answer_verification": "5√2"
+    "answer_verification": "9√3"
   },
   {
     "question_id": "sat-math-right-triangles-hard-q03",
@@ -124,51 +114,40 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "special_triangles",
-    "prompt": "The right triangle shown is a 30°-60°-90° triangle. The shorter leg (opposite the 30° angle) has length 8. What is the length of the longer leg?",
+    "subskill": "pythagorean",
+    "prompt": "Which of the following sets of side lengths could form a right triangle?",
     "choices": [
       {
         "id": "A",
-        "text": "16",
-        "rationale": "That is the hypotenuse (2·short leg), not the longer leg."
-      },
-      {
-        "id": "B",
-        "text": "8√2",
-        "rationale": "√2 is for a 45-45-90 triangle, not 30-60-90."
-      },
-      {
-        "id": "C",
-        "text": "8√3",
+        "text": "10, 24, 26",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "10, 25, 26",
+        "rationale": "Check: the squares of the two smaller numbers do not add to the square of the largest."
+      },
+      {
+        "id": "C",
+        "text": "10, 24, 27",
+        "rationale": "Check: the squares of the two smaller numbers do not add to the square of the largest."
+      },
+      {
         "id": "D",
-        "text": "24",
-        "rationale": "The factor is √3, not 3."
+        "text": "11, 24, 26",
+        "rationale": "Check: the squares of the two smaller numbers do not add to the square of the largest."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "In a 30-60-90 triangle the longer leg is (short leg)·√3, so it is 8√3.",
-    "estimated_time_seconds": 95,
+    "correct_choice": "A",
+    "explanation": "10² + 24² = 100 + 576 = 676 = 26², so 10, 24, 26 satisfies the Pythagorean theorem.",
+    "estimated_time_seconds": 85,
     "tags": [
       "geometry",
-      "right-triangle"
+      "right-triangle",
+      "converse",
+      "family:rt_is_right"
     ],
-    "stimulus": {
-      "type": "figure",
-      "figure": {
-        "kind": "right_triangle",
-        "caption": "30°-60°-90° triangle",
-        "angle": "30°",
-        "labels": {
-          "a": "?",
-          "b": "8",
-          "c": "16"
-        }
-      }
-    },
-    "answer_verification": "8√3"
+    "answer_verification": "10,24,26"
   },
   {
     "question_id": "sat-math-right-triangles-hard-q04",
@@ -181,51 +160,51 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "special_triangles",
-    "prompt": "The right triangle shown is a 30°-60°-90° triangle. The shorter leg (opposite the 30° angle) has length 6. What is the length of the longer leg?",
+    "subskill": "pythagorean",
+    "prompt": "The right triangle shown has a hypotenuse of length 34 and one leg of length 16. What is its area?",
     "choices": [
       {
         "id": "A",
-        "text": "18",
-        "rationale": "The factor is √3, not 3."
+        "text": "480",
+        "rationale": "You forgot the ½."
       },
       {
         "id": "B",
-        "text": "12",
-        "rationale": "That is the hypotenuse (2·short leg), not the longer leg."
+        "text": "240",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "6√2",
-        "rationale": "√2 is for a 45-45-90 triangle, not 30-60-90."
+        "text": "272",
+        "rationale": "Use the two legs, not the hypotenuse, for base and height."
       },
       {
         "id": "D",
-        "text": "6√3",
-        "rationale": "Correct."
+        "text": "80",
+        "rationale": "That is the perimeter."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "In a 30-60-90 triangle the longer leg is (short leg)·√3, so it is 6√3.",
+    "correct_choice": "B",
+    "explanation": "Other leg = √(34² − 16²) = 30; area = ½ × 16 × 30 = 240.",
     "estimated_time_seconds": 95,
     "tags": [
       "geometry",
-      "right-triangle"
+      "right-triangle",
+      "family:rt_area_perimeter"
     ],
     "stimulus": {
       "type": "figure",
       "figure": {
         "kind": "right_triangle",
-        "caption": "30°-60°-90° triangle",
-        "angle": "30°",
+        "caption": "Right triangle",
         "labels": {
-          "a": "?",
-          "b": "6",
-          "c": "12"
+          "a": "16",
+          "b": "?",
+          "c": "34"
         }
       }
     },
-    "answer_verification": "6√3"
+    "answer_verification": "sides 16,30,34"
   },
   {
     "question_id": "sat-math-right-triangles-hard-q05",
@@ -238,51 +217,39 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "special_triangles",
-    "prompt": "The right triangle shown is a 45°-45°-90° triangle with legs of length 4. What is the length of the hypotenuse?",
+    "subskill": "pythagorean",
+    "prompt": "A boat travels 18 km due east and then 24 km due north. How far, in km, is the boat from its starting point?",
     "choices": [
       {
         "id": "A",
-        "text": "16",
-        "rationale": "Don't square the leg; multiply by √2."
+        "text": "31",
+        "rationale": "Off by one; recheck the squares."
       },
       {
         "id": "B",
-        "text": "4√2",
-        "rationale": "Correct."
+        "text": "42",
+        "rationale": "Use a² + b² = c², not addition/subtraction of lengths."
       },
       {
         "id": "C",
-        "text": "8",
-        "rationale": "That would be 2·leg; a 45-45-90 hypotenuse is leg·√2."
+        "text": "432",
+        "rationale": "Don't multiply the sides."
       },
       {
         "id": "D",
-        "text": "4√3",
-        "rationale": "√3 is for a 30-60-90 triangle, not 45-45-90."
+        "text": "30",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "In a 45-45-90 triangle the hypotenuse is leg·√2, so it is 4√2.",
+    "correct_choice": "D",
+    "explanation": "The situation forms a right triangle with legs 18 and 24 and hypotenuse 30: 18² + 24² = 30². The answer is 30.",
     "estimated_time_seconds": 95,
     "tags": [
       "geometry",
-      "right-triangle"
+      "right-triangle",
+      "family:rt_pythagorean"
     ],
-    "stimulus": {
-      "type": "figure",
-      "figure": {
-        "kind": "right_triangle",
-        "caption": "45°-45°-90° triangle",
-        "angle": "45°",
-        "labels": {
-          "a": "4",
-          "b": "4",
-          "c": "?"
-        }
-      }
-    },
-    "answer_verification": "4√2"
+    "answer_verification": "sides 18,24,30"
   },
   {
     "question_id": "sat-math-right-triangles-hard-q06",
@@ -296,50 +263,52 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "special_triangles",
-    "prompt": "The right triangle shown is a 30°-60°-90° triangle. The shorter leg (opposite the 30° angle) has length 3. What is the length of the longer leg?",
+    "prompt": "A 45°-45°-90° triangle has a hypotenuse of length 15√2. What is the length of each leg?",
     "choices": [
       {
         "id": "A",
-        "text": "9",
-        "rationale": "The factor is √3, not 3."
+        "text": "30",
+        "rationale": "Divide by √2, not multiply."
       },
       {
         "id": "B",
-        "text": "3√3",
-        "rationale": "Correct."
+        "text": "15/2",
+        "rationale": "Divide by √2, not by 2."
       },
       {
         "id": "C",
-        "text": "3√2",
-        "rationale": "√2 is for a 45-45-90 triangle, not 30-60-90."
+        "text": "15√2",
+        "rationale": "That is the hypotenuse; divide by √2."
       },
       {
         "id": "D",
-        "text": "6",
-        "rationale": "That is the hypotenuse (2·short leg), not the longer leg."
+        "text": "15",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "In a 30-60-90 triangle the longer leg is (short leg)·√3, so it is 3√3.",
+    "correct_choice": "D",
+    "explanation": "Hypotenuse = leg·√2, so leg = 15√2/√2 = 15.",
     "estimated_time_seconds": 95,
     "tags": [
       "geometry",
-      "right-triangle"
+      "right-triangle",
+      "special",
+      "family:rt_special"
     ],
     "stimulus": {
       "type": "figure",
       "figure": {
         "kind": "right_triangle",
-        "caption": "30°-60°-90° triangle",
-        "angle": "30°",
+        "caption": "45°-45°-90° triangle",
         "labels": {
           "a": "?",
-          "b": "3",
-          "c": "6"
-        }
+          "b": "?",
+          "c": "15√2"
+        },
+        "angle": "45°"
       }
     },
-    "answer_verification": "3√3"
+    "answer_verification": "15"
   },
   {
     "question_id": "sat-math-right-triangles-hard-q07",
@@ -352,51 +321,40 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "special_triangles",
-    "prompt": "The right triangle shown is a 30°-60°-90° triangle. The shorter leg (opposite the 30° angle) has length 9. What is the length of the longer leg?",
+    "subskill": "pythagorean",
+    "prompt": "Which of the following sets of side lengths could form a right triangle?",
     "choices": [
       {
         "id": "A",
-        "text": "18",
-        "rationale": "That is the hypotenuse (2·short leg), not the longer leg."
+        "text": "15, 20, 26",
+        "rationale": "Check: the squares of the two smaller numbers do not add to the square of the largest."
       },
       {
         "id": "B",
-        "text": "27",
-        "rationale": "The factor is √3, not 3."
+        "text": "16, 20, 25",
+        "rationale": "Check: the squares of the two smaller numbers do not add to the square of the largest."
       },
       {
         "id": "C",
-        "text": "9√2",
-        "rationale": "√2 is for a 45-45-90 triangle, not 30-60-90."
+        "text": "15, 20, 25",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "9√3",
-        "rationale": "Correct."
+        "text": "15, 21, 25",
+        "rationale": "Check: the squares of the two smaller numbers do not add to the square of the largest."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "In a 30-60-90 triangle the longer leg is (short leg)·√3, so it is 9√3.",
-    "estimated_time_seconds": 95,
+    "correct_choice": "C",
+    "explanation": "15² + 20² = 225 + 400 = 625 = 25², so 15, 20, 25 satisfies the Pythagorean theorem.",
+    "estimated_time_seconds": 85,
     "tags": [
       "geometry",
-      "right-triangle"
+      "right-triangle",
+      "converse",
+      "family:rt_is_right"
     ],
-    "stimulus": {
-      "type": "figure",
-      "figure": {
-        "kind": "right_triangle",
-        "caption": "30°-60°-90° triangle",
-        "angle": "30°",
-        "labels": {
-          "a": "?",
-          "b": "9",
-          "c": "18"
-        }
-      }
-    },
-    "answer_verification": "9√3"
+    "answer_verification": "15,20,25"
   },
   {
     "question_id": "sat-math-right-triangles-hard-q08",
@@ -409,50 +367,50 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "special_triangles",
-    "prompt": "The right triangle shown is a 45°-45°-90° triangle with legs of length 7. What is the length of the hypotenuse?",
+    "subskill": "pythagorean",
+    "prompt": "The right triangle shown has a hypotenuse of length 41 and one leg of length 9. What is its area?",
     "choices": [
       {
         "id": "A",
-        "text": "7√2",
-        "rationale": "Correct."
+        "text": "360",
+        "rationale": "You forgot the ½."
       },
       {
         "id": "B",
-        "text": "14",
-        "rationale": "That would be 2·leg; a 45-45-90 hypotenuse is leg·√2."
+        "text": "180",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "49",
-        "rationale": "Don't square the leg; multiply by √2."
+        "text": "184",
+        "rationale": "Use the two legs, not the hypotenuse, for base and height."
       },
       {
         "id": "D",
-        "text": "7√3",
-        "rationale": "√3 is for a 30-60-90 triangle, not 45-45-90."
+        "text": "90",
+        "rationale": "That is the perimeter."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "In a 45-45-90 triangle the hypotenuse is leg·√2, so it is 7√2.",
+    "correct_choice": "B",
+    "explanation": "Other leg = √(41² − 9²) = 40; area = ½ × 9 × 40 = 180.",
     "estimated_time_seconds": 95,
     "tags": [
       "geometry",
-      "right-triangle"
+      "right-triangle",
+      "family:rt_area_perimeter"
     ],
     "stimulus": {
       "type": "figure",
       "figure": {
         "kind": "right_triangle",
-        "caption": "45°-45°-90° triangle",
-        "angle": "45°",
+        "caption": "Right triangle",
         "labels": {
-          "a": "7",
-          "b": "7",
-          "c": "?"
+          "a": "9",
+          "b": "?",
+          "c": "41"
         }
       }
     },
-    "answer_verification": "7√2"
+    "answer_verification": "sides 9,40,41"
   }
 ]

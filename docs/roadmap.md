@@ -2,9 +2,13 @@
 
 ## Known limitations
 
-- **One exam surfaced.** The data model is exam-agnostic and the bundler builds every
-  exam under `content/exams/`, but only SAT is authored and the UI exam-switcher is
-  not built yet.
+- **Two exams.** SAT and ACT ship; switching exams in Settings keeps XP, streaks and
+  rewards (lesson/question ids are exam-prefixed, so each exam keeps its own path
+  progress; skills with the same id share mastery across exams).
+- **Score estimates are linear.** Section scores (SAT 200–800, ACT 1–36) are mapped
+  from accuracy, not from an official equating table.
+- **ACT Reading uses the shared passage pool.** Passages are shorter than a real ACT
+  reading passage (one question per skill per passage).
 - **Lesson resume is coarse.** Leaving a lesson mid-way discards in-lesson progress
   (with a confirm dialog); completed-lesson state is always saved. Per-question resume
   is not implemented.
@@ -13,12 +17,13 @@
   voiceover yet.
 - **Single-file persistence.** State is JSON in `shared_preferences`. This is robust at
   the current scale (hundreds of entries) but is not a query-able database.
-- **Content breadth.** 117 curated lessons plus a large practice bank (~20.9k total
-  questions; ~11.4k math, ~9.4k reading/writing) covering the Digital SAT R&W and Math
-  domains, with easy/medium/hard tiers per skill. Passage-based reading comprehension
-  is authored (~32 passages); the high-volume R&W bank is the combinatorial Writing
-  types (grammar, transitions, evidence, etc.), so very heavy passage-reading-only
-  practice will cycle sooner than math or grammar.
+- **Content breadth.** SAT: 117 curated lessons + practice bank (24,171 questions);
+  ACT: 147 lessons + bank (16,617 questions). Every generated skill mixes several
+  question families per difficulty. Passage-based reading comprehension is authored
+  (32 passages + 16 paired sets, shared by both exams), so heavy passage-reading-only
+  practice cycles sooner than math, grammar or science; ACT Reading has 180 items.
+- **Reading option lengths.** The authored passage questions skew toward a longer
+  correct option; the validator reports the share so it can be driven down over time.
 - **Android-first.** iOS/web/desktop targets are scaffolded and the code is
   cross-platform, but only Android is built/tested in CI.
 
@@ -26,8 +31,10 @@
 
 **Content**
 - Grow the bank (more lessons per skill, more reading passages, more grid-ins).
-- Add ACT and AP (Biology, Chemistry, Calculus, Statistics) exams using the existing
-  pipeline; build the exam-switcher UI.
+- Add AP (Biology, Chemistry, Calculus, Statistics) exams using the existing
+  per-exam plans.
+- Longer ACT-style reading passages with multiple questions each; more
+  conflicting-viewpoint sets.
 
 **Learning**
 - Adaptive difficulty and smarter "suggested next" using mastery + review signals.

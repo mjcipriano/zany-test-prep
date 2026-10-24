@@ -52,3 +52,19 @@ The validator inspects everything under `content/exams/sat/` against the schemas
 
 If you add a new question, remember to add its `question_id` to the owning lesson's
 `question_ids` (keeping the count between 8 and 25) so referential integrity stays intact.
+
+## Multi-exam + variety checks (v2)
+
+- The validator runs for **every** exam directory under `content/exams/` by default
+  (`--exam <id>` for one). Aggregate minimums are per exam: ≥ 36 lessons, ≥ 1,000
+  questions, ≥ 250 questions per domain.
+- `exam.yaml` is cross-checked against `skills.yaml`: every listed domain and every
+  `timed_test` module domain must exist.
+- A question's `subskill` must be listed under its skill in `skills.yaml` (warning).
+- **Variety:** lessons whose items carry `family:<name>` tags (everything built from
+  generator families) must mix ≥ 3 families and no family may exceed 50% of the
+  lesson. This is what stops a lesson from being one template with new numbers.
+  Authored pools/passages carry no family tag and are covered by the near-duplicate
+  check instead.
+- The "correct answer is the longest option" tell is checked for every non-math domain
+  (SAT Reading & Writing; ACT English, Reading, Science).

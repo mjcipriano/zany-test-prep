@@ -25,19 +25,35 @@ class BadgeDef {
 class Badges {
   static const _level = LevelEngine();
 
-  /// Number of completed lessons, optionally filtered to a domain encoded in
-  /// the lesson id (e.g. 'math' or 'rw' as in sat-math-... / sat-rw-...).
-  static int _completedLessons(AppProgress p, [String? domain]) {
+  /// Number of completed lessons, optionally filtered by domain group:
+  /// `'math'` counts the exam's math domain, `'rw'` counts every verbal
+  /// (non-math) domain — Reading & Writing on the SAT; English, Reading and
+  /// Science on the ACT. The domain comes from the bundle when the lesson is
+  /// known, falling back to the id convention `<exam>-<domain>-…`.
+  static int _completedLessons(
+    AppProgress p, [
+    String? domain,
+    ContentBundle? bundle,
+  ]) {
     var n = 0;
     for (final lp in p.lessons.values) {
       if (!lp.completed) continue;
       if (domain == null) {
         n++;
-      } else {
-        if (lp.lessonId.contains('-$domain-')) n++;
+        continue;
       }
+      final isMath = lessonIsMath(lp.lessonId, bundle);
+      if (domain == 'math' ? isMath : !isMath) n++;
     }
     return n;
+  }
+
+  /// Whether a lesson belongs to a math domain. Uses the bundle when it knows
+  /// the lesson, else the `<exam>-math-…` id convention.
+  static bool lessonIsMath(String lessonId, ContentBundle? bundle) {
+    final lesson = bundle?.lesson(lessonId);
+    if (lesson != null) return lesson.domain == 'math';
+    return lessonId.contains('-math-');
   }
 
   /// Number of lessons earning the full 3 crowns.
@@ -384,42 +400,42 @@ class Badges {
       title: 'First Equation',
       description: 'Complete your first Math lesson.',
       emoji: '🔢',
-      test: (p, b) => _completedLessons(p, 'math') >= 1,
+      test: (p, b) => _completedLessons(p, 'math', b) >= 1,
     ),
     BadgeDef(
       id: 'math_5',
       title: 'Number Cruncher',
       description: 'Complete 5 Math lessons.',
       emoji: '➗',
-      test: (p, b) => _completedLessons(p, 'math') >= 5,
+      test: (p, b) => _completedLessons(p, 'math', b) >= 5,
     ),
     BadgeDef(
       id: 'math_10',
       title: 'Algebra Ace',
       description: 'Complete 10 Math lessons.',
       emoji: '➕',
-      test: (p, b) => _completedLessons(p, 'math') >= 10,
+      test: (p, b) => _completedLessons(p, 'math', b) >= 10,
     ),
     BadgeDef(
       id: 'math_20',
       title: 'Math Whiz',
       description: 'Complete 20 Math lessons.',
       emoji: '🧮',
-      test: (p, b) => _completedLessons(p, 'math') >= 20,
+      test: (p, b) => _completedLessons(p, 'math', b) >= 20,
     ),
     BadgeDef(
       id: 'math_35',
       title: 'Quant Pro',
       description: 'Complete 35 Math lessons.',
       emoji: '📐',
-      test: (p, b) => _completedLessons(p, 'math') >= 35,
+      test: (p, b) => _completedLessons(p, 'math', b) >= 35,
     ),
     BadgeDef(
       id: 'math_50',
       title: 'Math Maestro',
       description: 'Complete 50 Math lessons.',
       emoji: '🧠',
-      test: (p, b) => _completedLessons(p, 'math') >= 50,
+      test: (p, b) => _completedLessons(p, 'math', b) >= 50,
     ),
 
     // -------------------------------------------------------------------
@@ -428,44 +444,44 @@ class Badges {
     BadgeDef(
       id: 'rw_1',
       title: 'First Word',
-      description: 'Complete your first Reading & Writing lesson.',
+      description: 'Complete your first verbal (non-math) lesson.',
       emoji: '📝',
-      test: (p, b) => _completedLessons(p, 'rw') >= 1,
+      test: (p, b) => _completedLessons(p, 'rw', b) >= 1,
     ),
     BadgeDef(
       id: 'rw_5',
       title: 'Wordsmith',
-      description: 'Complete 5 Reading & Writing lessons.',
+      description: 'Complete 5 verbal (non-math) lessons.',
       emoji: '✍️',
-      test: (p, b) => _completedLessons(p, 'rw') >= 5,
+      test: (p, b) => _completedLessons(p, 'rw', b) >= 5,
     ),
     BadgeDef(
       id: 'rw_10',
       title: 'Avid Reader',
-      description: 'Complete 10 Reading & Writing lessons.',
+      description: 'Complete 10 verbal (non-math) lessons.',
       emoji: '📜',
-      test: (p, b) => _completedLessons(p, 'rw') >= 10,
+      test: (p, b) => _completedLessons(p, 'rw', b) >= 10,
     ),
     BadgeDef(
       id: 'rw_20',
       title: 'Grammar Guru',
-      description: 'Complete 20 Reading & Writing lessons.',
+      description: 'Complete 20 verbal (non-math) lessons.',
       emoji: '🖋️',
-      test: (p, b) => _completedLessons(p, 'rw') >= 20,
+      test: (p, b) => _completedLessons(p, 'rw', b) >= 20,
     ),
     BadgeDef(
       id: 'rw_35',
       title: 'Prose Pro',
-      description: 'Complete 35 Reading & Writing lessons.',
+      description: 'Complete 35 verbal (non-math) lessons.',
       emoji: '📃',
-      test: (p, b) => _completedLessons(p, 'rw') >= 35,
+      test: (p, b) => _completedLessons(p, 'rw', b) >= 35,
     ),
     BadgeDef(
       id: 'rw_50',
       title: 'Literary Legend',
-      description: 'Complete 50 Reading & Writing lessons.',
+      description: 'Complete 50 verbal (non-math) lessons.',
       emoji: '🏛️',
-      test: (p, b) => _completedLessons(p, 'rw') >= 50,
+      test: (p, b) => _completedLessons(p, 'rw', b) >= 50,
     ),
 
     // -------------------------------------------------------------------
@@ -853,10 +869,11 @@ class Badges {
     BadgeDef(
       id: 'well_rounded',
       title: 'Both Sides',
-      description: 'Complete both a Math and a Reading & Writing lesson.',
+      description: 'Complete both a Math lesson and a verbal lesson.',
       emoji: '⚖️',
       test: (p, b) =>
-          _completedLessons(p, 'math') >= 1 && _completedLessons(p, 'rw') >= 1,
+          _completedLessons(p, 'math', b) >= 1 &&
+          _completedLessons(p, 'rw', b) >= 1,
     ),
     // ---- Survival mode: longest streak of correct answers ----
     BadgeDef(

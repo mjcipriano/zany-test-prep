@@ -10,38 +10,39 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "scaling",
-    "prompt": "It takes 6 workers 10 hours to finish a job. Working at the same rate, how many hours would it take 2 workers?",
+    "subskill": "direct_proportion",
+    "prompt": "The quantity y is directly proportional to x. When x = 16, y = 4. What is the value of y when x = 72?",
     "choices": [
       {
         "id": "A",
-        "text": "60",
-        "rationale": "This is the total worker-hours, not the time for 2 workers."
+        "text": "18",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "3",
-        "rationale": "More workers means less time; this scales the wrong way."
+        "text": "60",
+        "rationale": "Proportional change is multiplicative, not additive."
       },
       {
         "id": "C",
-        "text": "10",
-        "rationale": "This ignores the change in the number of workers."
+        "text": "1/4",
+        "rationale": "That is the constant of proportionality; multiply it by the new x."
       },
       {
         "id": "D",
-        "text": "30",
-        "rationale": "Correct."
+        "text": "288",
+        "rationale": "Direct proportion: y/x is constant, so y₂ = y₁·(x₂/x₁)."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Total work = 6×10 = 60 worker-hours. With 2 workers: 60 ÷ 2 = 30 hours.",
-    "estimated_time_seconds": 95,
+    "correct_choice": "A",
+    "explanation": "y = kx with k = 4/16 = 1/4; y = 1/4·72 = 18.",
+    "estimated_time_seconds": 90,
     "tags": [
       "proportion",
-      "inverse"
+      "rate",
+      "family:pr_direct"
     ],
-    "answer_verification": "t=30"
+    "answer_verification": "val=18"
   },
   {
     "question_id": "sat-math-proportions-hard-q02",
@@ -54,38 +55,39 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "scaling",
-    "prompt": "It takes 2 workers 20 hours to finish a job. Working at the same rate, how many hours would it take 5 workers?",
+    "subskill": "direct_proportion",
+    "prompt": "If (x + 6)/8 = 10/2, what is the value of x?",
     "choices": [
       {
         "id": "A",
         "text": "40",
-        "rationale": "This is the total worker-hours, not the time for 5 workers."
+        "rationale": "That is x + 6; subtract 6."
       },
       {
         "id": "B",
-        "text": "50",
-        "rationale": "More workers means less time; this scales the wrong way."
+        "text": "33",
+        "rationale": "Arithmetic slip in the division."
       },
       {
         "id": "C",
-        "text": "20",
-        "rationale": "This ignores the change in the number of workers."
+        "text": "46",
+        "rationale": "Move 6 to the other side with the opposite sign."
       },
       {
         "id": "D",
-        "text": "8",
+        "text": "34",
         "rationale": "Correct."
       }
     ],
     "correct_choice": "D",
-    "explanation": "Total work = 2×20 = 40 worker-hours. With 5 workers: 40 ÷ 5 = 8 hours.",
-    "estimated_time_seconds": 95,
+    "explanation": "Cross-multiply: 2(x + 6) = 8·10 = 80, so x + 6 = 40 and x = 34.",
+    "estimated_time_seconds": 85,
     "tags": [
       "proportion",
-      "inverse"
+      "solve",
+      "family:pr_solve"
     ],
-    "answer_verification": "t=8"
+    "answer_verification": "x=34"
   },
   {
     "question_id": "sat-math-proportions-hard-q03",
@@ -99,37 +101,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "scaling",
-    "prompt": "It takes 2 workers 8 hours to finish a job. Working at the same rate, how many hours would it take 4 workers?",
+    "prompt": "A trip takes 6 hours at an average speed of 74 miles per hour. How many hours would the same trip take at an average speed of 37 miles per hour?",
     "choices": [
       {
         "id": "A",
-        "text": "6",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "3",
+        "rationale": "Faster means less time; the proportion is inverted."
       },
       {
         "id": "B",
-        "text": "8",
-        "rationale": "This ignores the change in the number of workers."
+        "text": "43",
+        "rationale": "Inverse proportion is multiplicative."
       },
       {
         "id": "C",
-        "text": "4",
-        "rationale": "Correct."
+        "text": "444",
+        "rationale": "That is the distance, not the time."
       },
       {
         "id": "D",
-        "text": "16",
-        "rationale": "More workers means less time; this scales the wrong way."
+        "text": "12",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Total work = 2×8 = 16 worker-hours. With 4 workers: 16 ÷ 4 = 4 hours.",
+    "correct_choice": "D",
+    "explanation": "Distance = 74×6 = 444 miles; at 37 mph the time is 444/37 = 12 hours.",
     "estimated_time_seconds": 95,
     "tags": [
       "proportion",
-      "inverse"
+      "inverse",
+      "family:pr_inverse"
     ],
-    "answer_verification": "t=4"
+    "answer_verification": "val=12"
   },
   {
     "question_id": "sat-math-proportions-hard-q04",
@@ -143,37 +146,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "scaling",
-    "prompt": "It takes 6 workers 14 hours to finish a job. Working at the same rate, how many hours would it take 2 workers?",
+    "prompt": "A rectangular photo 9 inches wide and 10 inches tall is enlarged so that its width becomes 27 inches. What is the area, in square inches, of the enlarged photo?",
     "choices": [
       {
         "id": "A",
-        "text": "84",
-        "rationale": "This is the total worker-hours, not the time for 2 workers."
+        "text": "90",
+        "rationale": "That is the original area."
       },
       {
         "id": "B",
-        "text": "42",
-        "rationale": "Correct."
+        "text": "270",
+        "rationale": "Both dimensions scale, so area scales by k², not k."
       },
       {
         "id": "C",
-        "text": "14",
-        "rationale": "This ignores the change in the number of workers."
+        "text": "2430",
+        "rationale": "Area scales by k², not k³ (that is for volume)."
       },
       {
         "id": "D",
-        "text": "4",
-        "rationale": "More workers means less time; this scales the wrong way."
+        "text": "810",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Total work = 6×14 = 84 worker-hours. With 2 workers: 84 ÷ 2 = 42 hours.",
+    "correct_choice": "D",
+    "explanation": "Scale factor 3: new dimensions 27 by 30, area 27×30 = 810.",
     "estimated_time_seconds": 95,
     "tags": [
       "proportion",
-      "inverse"
+      "similar",
+      "family:pr_similar"
     ],
-    "answer_verification": "t=42"
+    "answer_verification": "val=810"
   },
   {
     "question_id": "sat-math-proportions-hard-q05",
@@ -185,39 +189,40 @@
     "lesson_id": "sat-math-proportions-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "multi_step_math",
     "subskill": "scaling",
-    "prompt": "It takes 3 workers 28 hours to finish a job. Working at the same rate, how many hours would it take 4 workers?",
+    "prompt": "A 50-liter solution is 20% acid. How many liters of pure acid must be added to make the solution 60% acid?",
     "choices": [
       {
         "id": "A",
-        "text": "84",
-        "rationale": "This is the total worker-hours, not the time for 4 workers."
+        "text": "50",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "37",
-        "rationale": "More workers means less time; this scales the wrong way."
+        "text": "100/3",
+        "rationale": "The denominator should be 100 − 60."
       },
       {
         "id": "C",
-        "text": "28",
-        "rationale": "This ignores the change in the number of workers."
+        "text": "100",
+        "rationale": "That is the new total volume, not the amount added."
       },
       {
         "id": "D",
-        "text": "21",
-        "rationale": "Correct."
+        "text": "20",
+        "rationale": "The added acid also increases the total volume."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Total work = 3×28 = 84 worker-hours. With 4 workers: 84 ÷ 4 = 21 hours.",
-    "estimated_time_seconds": 95,
+    "correct_choice": "A",
+    "explanation": "Acid: 20% of 50 = 10 L. Adding x liters: (10 + x)/(50 + x) = 60/100, so x = 50.",
+    "estimated_time_seconds": 110,
     "tags": [
       "proportion",
-      "inverse"
+      "mixture",
+      "family:pr_recipe"
     ],
-    "answer_verification": "t=21"
+    "answer_verification": "x=50"
   },
   {
     "question_id": "sat-math-proportions-hard-q06",
@@ -229,39 +234,25 @@
     "lesson_id": "sat-math-proportions-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "scaling",
-    "prompt": "It takes 4 workers 40 hours to finish a job. Working at the same rate, how many hours would it take 5 workers?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "160",
-        "rationale": "This is the total worker-hours, not the time for 5 workers."
-      },
-      {
-        "id": "B",
-        "text": "40",
-        "rationale": "This ignores the change in the number of workers."
-      },
-      {
-        "id": "C",
-        "text": "50",
-        "rationale": "More workers means less time; this scales the wrong way."
-      },
-      {
-        "id": "D",
-        "text": "32",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Total work = 4×40 = 160 worker-hours. With 5 workers: 160 ÷ 5 = 32 hours.",
-    "estimated_time_seconds": 95,
+    "question_type": "student_produced",
+    "subskill": "direct_proportion",
+    "prompt": "It takes 6 workers 77 hours to complete a job. At the same rate, how many hours would 11 workers take?",
+    "answer": {
+      "type": "numeric",
+      "value": 42,
+      "accepted": [
+        "42"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "6 × 77 = 462 worker-hours; ÷ 11 = 42.",
+    "estimated_time_seconds": 75,
     "tags": [
       "proportion",
-      "inverse"
+      "grid-in",
+      "family:pr_gridin"
     ],
-    "answer_verification": "t=32"
+    "answer_verification": "val=42"
   },
   {
     "question_id": "sat-math-proportions-hard-q07",
@@ -274,38 +265,39 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "scaling",
-    "prompt": "It takes 3 workers 48 hours to finish a job. Working at the same rate, how many hours would it take 8 workers?",
+    "subskill": "direct_proportion",
+    "prompt": "The quantity y is directly proportional to x. When x = 60, y = 30. What is the value of y when x = 12?",
     "choices": [
       {
         "id": "A",
-        "text": "128",
-        "rationale": "More workers means less time; this scales the wrong way."
-      },
-      {
-        "id": "B",
-        "text": "48",
-        "rationale": "This ignores the change in the number of workers."
-      },
-      {
-        "id": "C",
-        "text": "18",
+        "text": "6",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "1/2",
+        "rationale": "That is the constant of proportionality; multiply it by the new x."
+      },
+      {
+        "id": "C",
+        "text": "24",
+        "rationale": "Direct proportion: y/x is constant, so y₂ = y₁·(x₂/x₁)."
+      },
+      {
         "id": "D",
-        "text": "144",
-        "rationale": "This is the total worker-hours, not the time for 8 workers."
+        "text": "-18",
+        "rationale": "Proportional change is multiplicative, not additive."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Total work = 3×48 = 144 worker-hours. With 8 workers: 144 ÷ 8 = 18 hours.",
-    "estimated_time_seconds": 95,
+    "correct_choice": "A",
+    "explanation": "y = kx with k = 30/60 = 1/2; y = 1/2·12 = 6.",
+    "estimated_time_seconds": 90,
     "tags": [
       "proportion",
-      "inverse"
+      "rate",
+      "family:pr_direct"
     ],
-    "answer_verification": "t=18"
+    "answer_verification": "val=6"
   },
   {
     "question_id": "sat-math-proportions-hard-q08",
@@ -318,38 +310,39 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "scaling",
-    "prompt": "It takes 3 workers 40 hours to finish a job. Working at the same rate, how many hours would it take 5 workers?",
+    "subskill": "direct_proportion",
+    "prompt": "If (x − 1)/7 = 6/6, what is the value of x?",
     "choices": [
       {
         "id": "A",
-        "text": "66",
-        "rationale": "More workers means less time; this scales the wrong way."
+        "text": "5",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
       },
       {
         "id": "B",
-        "text": "40",
-        "rationale": "This ignores the change in the number of workers."
+        "text": "6",
+        "rationale": "Move −1 to the other side with the opposite sign."
       },
       {
         "id": "C",
-        "text": "120",
-        "rationale": "This is the total worker-hours, not the time for 5 workers."
+        "text": "7",
+        "rationale": "That is x + −1; subtract −1."
       },
       {
         "id": "D",
-        "text": "24",
+        "text": "8",
         "rationale": "Correct."
       }
     ],
     "correct_choice": "D",
-    "explanation": "Total work = 3×40 = 120 worker-hours. With 5 workers: 120 ÷ 5 = 24 hours.",
-    "estimated_time_seconds": 95,
+    "explanation": "Cross-multiply: 6(x − 1) = 7·6 = 42, so x − 1 = 7 and x = 8.",
+    "estimated_time_seconds": 85,
     "tags": [
       "proportion",
-      "inverse"
+      "solve",
+      "family:pr_solve"
     ],
-    "answer_verification": "t=24"
+    "answer_verification": "x=8"
   },
   {
     "question_id": "sat-math-proportions-hard-q09",
@@ -363,37 +356,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "scaling",
-    "prompt": "It takes 3 workers 18 hours to finish a job. Working at the same rate, how many hours would it take 6 workers?",
+    "prompt": "A trip takes 2 hours at an average speed of 77 miles per hour. How many hours would the same trip take at an average speed of 22 miles per hour?",
     "choices": [
       {
         "id": "A",
-        "text": "36",
-        "rationale": "More workers means less time; this scales the wrong way."
+        "text": "57",
+        "rationale": "Inverse proportion is multiplicative."
       },
       {
         "id": "B",
-        "text": "18",
-        "rationale": "This ignores the change in the number of workers."
+        "text": "7",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "54",
-        "rationale": "This is the total worker-hours, not the time for 6 workers."
+        "text": "154",
+        "rationale": "That is the distance, not the time."
       },
       {
         "id": "D",
-        "text": "9",
-        "rationale": "Correct."
+        "text": "4/7",
+        "rationale": "Faster means less time; the proportion is inverted."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Total work = 3×18 = 54 worker-hours. With 6 workers: 54 ÷ 6 = 9 hours.",
+    "correct_choice": "B",
+    "explanation": "Distance = 77×2 = 154 miles; at 22 mph the time is 154/22 = 7 hours.",
     "estimated_time_seconds": 95,
     "tags": [
       "proportion",
-      "inverse"
+      "inverse",
+      "family:pr_inverse"
     ],
-    "answer_verification": "t=9"
+    "answer_verification": "val=7"
   },
   {
     "question_id": "sat-math-proportions-hard-q10",
@@ -407,37 +401,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "scaling",
-    "prompt": "It takes 5 workers 12 hours to finish a job. Working at the same rate, how many hours would it take 6 workers?",
+    "prompt": "A rectangular photo 11 inches wide and 8 inches tall is enlarged so that its width becomes 33 inches. What is the area, in square inches, of the enlarged photo?",
     "choices": [
       {
         "id": "A",
-        "text": "12",
-        "rationale": "This ignores the change in the number of workers."
+        "text": "88",
+        "rationale": "That is the original area."
       },
       {
         "id": "B",
-        "text": "60",
-        "rationale": "This is the total worker-hours, not the time for 6 workers."
+        "text": "792",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "14",
-        "rationale": "More workers means less time; this scales the wrong way."
+        "text": "2376",
+        "rationale": "Area scales by k², not k³ (that is for volume)."
       },
       {
         "id": "D",
-        "text": "10",
-        "rationale": "Correct."
+        "text": "264",
+        "rationale": "Both dimensions scale, so area scales by k², not k."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Total work = 5×12 = 60 worker-hours. With 6 workers: 60 ÷ 6 = 10 hours.",
+    "correct_choice": "B",
+    "explanation": "Scale factor 3: new dimensions 33 by 24, area 33×24 = 792.",
     "estimated_time_seconds": 95,
     "tags": [
       "proportion",
-      "inverse"
+      "similar",
+      "family:pr_similar"
     ],
-    "answer_verification": "t=10"
+    "answer_verification": "val=792"
   },
   {
     "question_id": "sat-math-proportions-hard-q11",
@@ -449,39 +444,40 @@
     "lesson_id": "sat-math-proportions-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "multi_step_math",
     "subskill": "scaling",
-    "prompt": "It takes 5 workers 12 hours to finish a job. Working at the same rate, how many hours would it take 3 workers?",
+    "prompt": "A 40-liter solution is 20% acid. How many liters of pure acid must be added to make the solution 50% acid?",
     "choices": [
       {
         "id": "A",
-        "text": "12",
-        "rationale": "This ignores the change in the number of workers."
+        "text": "64",
+        "rationale": "That is the new total volume, not the amount added."
       },
       {
         "id": "B",
-        "text": "20",
-        "rationale": "Correct."
+        "text": "21",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
       },
       {
         "id": "C",
-        "text": "7",
-        "rationale": "More workers means less time; this scales the wrong way."
+        "text": "24",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "60",
-        "rationale": "This is the total worker-hours, not the time for 3 workers."
+        "text": "12",
+        "rationale": "The added acid also increases the total volume."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Total work = 5×12 = 60 worker-hours. With 3 workers: 60 ÷ 3 = 20 hours.",
-    "estimated_time_seconds": 95,
+    "correct_choice": "C",
+    "explanation": "Acid: 20% of 40 = 8 L. Adding x liters: (8 + x)/(40 + x) = 50/100, so x = 24.",
+    "estimated_time_seconds": 110,
     "tags": [
       "proportion",
-      "inverse"
+      "mixture",
+      "family:pr_recipe"
     ],
-    "answer_verification": "t=20"
+    "answer_verification": "x=24"
   },
   {
     "question_id": "sat-math-proportions-hard-q12",
@@ -493,39 +489,25 @@
     "lesson_id": "sat-math-proportions-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "scaling",
-    "prompt": "It takes 5 workers 12 hours to finish a job. Working at the same rate, how many hours would it take 2 workers?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "4",
-        "rationale": "More workers means less time; this scales the wrong way."
-      },
-      {
-        "id": "B",
-        "text": "30",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "12",
-        "rationale": "This ignores the change in the number of workers."
-      },
-      {
-        "id": "D",
-        "text": "60",
-        "rationale": "This is the total worker-hours, not the time for 2 workers."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Total work = 5×12 = 60 worker-hours. With 2 workers: 60 ÷ 2 = 30 hours.",
-    "estimated_time_seconds": 95,
+    "question_type": "student_produced",
+    "subskill": "direct_proportion",
+    "prompt": "It takes 4 workers 24 hours to complete a job. At the same rate, how many hours would 12 workers take?",
+    "answer": {
+      "type": "numeric",
+      "value": 8,
+      "accepted": [
+        "8"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "4 × 24 = 96 worker-hours; ÷ 12 = 8.",
+    "estimated_time_seconds": 75,
     "tags": [
       "proportion",
-      "inverse"
+      "grid-in",
+      "family:pr_gridin"
     ],
-    "answer_verification": "t=30"
+    "answer_verification": "val=8"
   },
   {
     "question_id": "sat-math-proportions-hard-q13",
@@ -538,38 +520,39 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "scaling",
-    "prompt": "It takes 4 workers 12 hours to finish a job. Working at the same rate, how many hours would it take 2 workers?",
+    "subskill": "direct_proportion",
+    "prompt": "The quantity y is directly proportional to x. When x = 16, y = 40. What is the value of y when x = 28?",
     "choices": [
       {
         "id": "A",
-        "text": "48",
-        "rationale": "This is the total worker-hours, not the time for 2 workers."
+        "text": "52",
+        "rationale": "Proportional change is multiplicative, not additive."
       },
       {
         "id": "B",
-        "text": "12",
-        "rationale": "This ignores the change in the number of workers."
+        "text": "70",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "6",
-        "rationale": "More workers means less time; this scales the wrong way."
+        "text": "56/5",
+        "rationale": "Direct proportion: y/x is constant, so y₂ = y₁·(x₂/x₁)."
       },
       {
         "id": "D",
-        "text": "24",
-        "rationale": "Correct."
+        "text": "5/2",
+        "rationale": "That is the constant of proportionality; multiply it by the new x."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Total work = 4×12 = 48 worker-hours. With 2 workers: 48 ÷ 2 = 24 hours.",
-    "estimated_time_seconds": 95,
+    "correct_choice": "B",
+    "explanation": "y = kx with k = 40/16 = 5/2; y = 5/2·28 = 70.",
+    "estimated_time_seconds": 90,
     "tags": [
       "proportion",
-      "inverse"
+      "rate",
+      "family:pr_direct"
     ],
-    "answer_verification": "t=24"
+    "answer_verification": "val=70"
   },
   {
     "question_id": "sat-math-proportions-hard-q14",
@@ -582,38 +565,39 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "scaling",
-    "prompt": "It takes 4 workers 16 hours to finish a job. Working at the same rate, how many hours would it take 8 workers?",
+    "subskill": "direct_proportion",
+    "prompt": "If (x − 1)/8 = 27/9, what is the value of x?",
     "choices": [
       {
         "id": "A",
-        "text": "32",
-        "rationale": "More workers means less time; this scales the wrong way."
+        "text": "26",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
       },
       {
         "id": "B",
-        "text": "8",
-        "rationale": "Correct."
+        "text": "23",
+        "rationale": "Move −1 to the other side with the opposite sign."
       },
       {
         "id": "C",
-        "text": "64",
-        "rationale": "This is the total worker-hours, not the time for 8 workers."
+        "text": "24",
+        "rationale": "That is x + −1; subtract −1."
       },
       {
         "id": "D",
-        "text": "16",
-        "rationale": "This ignores the change in the number of workers."
+        "text": "25",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Total work = 4×16 = 64 worker-hours. With 8 workers: 64 ÷ 8 = 8 hours.",
-    "estimated_time_seconds": 95,
+    "correct_choice": "D",
+    "explanation": "Cross-multiply: 9(x − 1) = 8·27 = 216, so x − 1 = 24 and x = 25.",
+    "estimated_time_seconds": 85,
     "tags": [
       "proportion",
-      "inverse"
+      "solve",
+      "family:pr_solve"
     ],
-    "answer_verification": "t=8"
+    "answer_verification": "x=25"
   },
   {
     "question_id": "sat-math-proportions-hard-q15",
@@ -627,37 +611,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "scaling",
-    "prompt": "It takes 3 workers 42 hours to finish a job. Working at the same rate, how many hours would it take 6 workers?",
+    "prompt": "A trip takes 6 hours at an average speed of 62 miles per hour. How many hours would the same trip take at an average speed of 31 miles per hour?",
     "choices": [
       {
         "id": "A",
-        "text": "21",
-        "rationale": "Correct."
+        "text": "37",
+        "rationale": "Inverse proportion is multiplicative."
       },
       {
         "id": "B",
-        "text": "126",
-        "rationale": "This is the total worker-hours, not the time for 6 workers."
+        "text": "12",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "42",
-        "rationale": "This ignores the change in the number of workers."
+        "text": "3",
+        "rationale": "Faster means less time; the proportion is inverted."
       },
       {
         "id": "D",
-        "text": "84",
-        "rationale": "More workers means less time; this scales the wrong way."
+        "text": "372",
+        "rationale": "That is the distance, not the time."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Total work = 3×42 = 126 worker-hours. With 6 workers: 126 ÷ 6 = 21 hours.",
+    "correct_choice": "B",
+    "explanation": "Distance = 62×6 = 372 miles; at 31 mph the time is 372/31 = 12 hours.",
     "estimated_time_seconds": 95,
     "tags": [
       "proportion",
-      "inverse"
+      "inverse",
+      "family:pr_inverse"
     ],
-    "answer_verification": "t=21"
+    "answer_verification": "val=12"
   },
   {
     "question_id": "sat-math-proportions-hard-q16",
@@ -671,37 +656,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "scaling",
-    "prompt": "It takes 6 workers 49 hours to finish a job. Working at the same rate, how many hours would it take 7 workers?",
+    "prompt": "A rectangular photo 7 inches wide and 3 inches tall is enlarged so that its width becomes 14 inches. What is the area, in square inches, of the enlarged photo?",
     "choices": [
       {
         "id": "A",
-        "text": "57",
-        "rationale": "More workers means less time; this scales the wrong way."
+        "text": "84",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "294",
-        "rationale": "This is the total worker-hours, not the time for 7 workers."
+        "text": "168",
+        "rationale": "Area scales by k², not k³ (that is for volume)."
       },
       {
         "id": "C",
         "text": "42",
-        "rationale": "Correct."
+        "rationale": "Both dimensions scale, so area scales by k², not k."
       },
       {
         "id": "D",
-        "text": "49",
-        "rationale": "This ignores the change in the number of workers."
+        "text": "21",
+        "rationale": "That is the original area."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Total work = 6×49 = 294 worker-hours. With 7 workers: 294 ÷ 7 = 42 hours.",
+    "correct_choice": "A",
+    "explanation": "Scale factor 2: new dimensions 14 by 6, area 14×6 = 84.",
     "estimated_time_seconds": 95,
     "tags": [
       "proportion",
-      "inverse"
+      "similar",
+      "family:pr_similar"
     ],
-    "answer_verification": "t=42"
+    "answer_verification": "val=84"
   },
   {
     "question_id": "sat-math-proportions-hard-q17",
@@ -713,39 +699,40 @@
     "lesson_id": "sat-math-proportions-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "multi_step_math",
     "subskill": "scaling",
-    "prompt": "It takes 4 workers 14 hours to finish a job. Working at the same rate, how many hours would it take 7 workers?",
+    "prompt": "A 70-liter solution is 20% acid. How many liters of pure acid must be added to make the solution 60% acid?",
     "choices": [
       {
         "id": "A",
-        "text": "8",
-        "rationale": "Correct."
+        "text": "140",
+        "rationale": "That is the new total volume, not the amount added."
       },
       {
         "id": "B",
-        "text": "56",
-        "rationale": "This is the total worker-hours, not the time for 7 workers."
+        "text": "140/3",
+        "rationale": "The denominator should be 100 − 60."
       },
       {
         "id": "C",
-        "text": "24",
-        "rationale": "More workers means less time; this scales the wrong way."
+        "text": "70",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "14",
-        "rationale": "This ignores the change in the number of workers."
+        "text": "28",
+        "rationale": "The added acid also increases the total volume."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Total work = 4×14 = 56 worker-hours. With 7 workers: 56 ÷ 7 = 8 hours.",
-    "estimated_time_seconds": 95,
+    "correct_choice": "C",
+    "explanation": "Acid: 20% of 70 = 14 L. Adding x liters: (14 + x)/(70 + x) = 60/100, so x = 70.",
+    "estimated_time_seconds": 110,
     "tags": [
       "proportion",
-      "inverse"
+      "mixture",
+      "family:pr_recipe"
     ],
-    "answer_verification": "t=8"
+    "answer_verification": "x=70"
   },
   {
     "question_id": "sat-math-proportions-hard-q18",
@@ -757,39 +744,25 @@
     "lesson_id": "sat-math-proportions-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "scaling",
-    "prompt": "It takes 4 workers 35 hours to finish a job. Working at the same rate, how many hours would it take 5 workers?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "140",
-        "rationale": "This is the total worker-hours, not the time for 5 workers."
-      },
-      {
-        "id": "B",
-        "text": "28",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "43",
-        "rationale": "More workers means less time; this scales the wrong way."
-      },
-      {
-        "id": "D",
-        "text": "35",
-        "rationale": "This ignores the change in the number of workers."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Total work = 4×35 = 140 worker-hours. With 5 workers: 140 ÷ 5 = 28 hours.",
-    "estimated_time_seconds": 95,
+    "question_type": "student_produced",
+    "subskill": "direct_proportion",
+    "prompt": "It takes 3 workers 64 hours to complete a job. At the same rate, how many hours would 8 workers take?",
+    "answer": {
+      "type": "numeric",
+      "value": 24,
+      "accepted": [
+        "24"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "3 × 64 = 192 worker-hours; ÷ 8 = 24.",
+    "estimated_time_seconds": 75,
     "tags": [
       "proportion",
-      "inverse"
+      "grid-in",
+      "family:pr_gridin"
     ],
-    "answer_verification": "t=28"
+    "answer_verification": "val=24"
   },
   {
     "question_id": "sat-math-proportions-hard-q19",
@@ -802,38 +775,39 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "scaling",
-    "prompt": "It takes 4 workers 6 hours to finish a job. Working at the same rate, how many hours would it take 2 workers?",
+    "subskill": "direct_proportion",
+    "prompt": "The quantity y is directly proportional to x. When x = 8, y = 18. What is the value of y when x = 48?",
     "choices": [
       {
         "id": "A",
-        "text": "24",
-        "rationale": "This is the total worker-hours, not the time for 2 workers."
+        "text": "64/3",
+        "rationale": "Direct proportion: y/x is constant, so y₂ = y₁·(x₂/x₁)."
       },
       {
         "id": "B",
-        "text": "6",
-        "rationale": "This ignores the change in the number of workers."
+        "text": "9/4",
+        "rationale": "That is the constant of proportionality; multiply it by the new x."
       },
       {
         "id": "C",
-        "text": "3",
-        "rationale": "More workers means less time; this scales the wrong way."
+        "text": "58",
+        "rationale": "Proportional change is multiplicative, not additive."
       },
       {
         "id": "D",
-        "text": "12",
+        "text": "108",
         "rationale": "Correct."
       }
     ],
     "correct_choice": "D",
-    "explanation": "Total work = 4×6 = 24 worker-hours. With 2 workers: 24 ÷ 2 = 12 hours.",
-    "estimated_time_seconds": 95,
+    "explanation": "y = kx with k = 18/8 = 9/4; y = 9/4·48 = 108.",
+    "estimated_time_seconds": 90,
     "tags": [
       "proportion",
-      "inverse"
+      "rate",
+      "family:pr_direct"
     ],
-    "answer_verification": "t=12"
+    "answer_verification": "val=108"
   },
   {
     "question_id": "sat-math-proportions-hard-q20",
@@ -846,37 +820,38 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "scaling",
-    "prompt": "It takes 6 workers 8 hours to finish a job. Working at the same rate, how many hours would it take 2 workers?",
+    "subskill": "direct_proportion",
+    "prompt": "If (x − 4)/6 = 12/2, what is the value of x?",
     "choices": [
       {
         "id": "A",
-        "text": "48",
-        "rationale": "This is the total worker-hours, not the time for 2 workers."
+        "text": "36",
+        "rationale": "That is x + −4; subtract −4."
       },
       {
         "id": "B",
-        "text": "24",
-        "rationale": "Correct."
+        "text": "39",
+        "rationale": "Arithmetic slip in the division."
       },
       {
         "id": "C",
-        "text": "8",
-        "rationale": "This ignores the change in the number of workers."
+        "text": "40",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "2",
-        "rationale": "More workers means less time; this scales the wrong way."
+        "text": "32",
+        "rationale": "Move −4 to the other side with the opposite sign."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Total work = 6×8 = 48 worker-hours. With 2 workers: 48 ÷ 2 = 24 hours.",
-    "estimated_time_seconds": 95,
+    "correct_choice": "C",
+    "explanation": "Cross-multiply: 2(x − 4) = 6·12 = 72, so x − 4 = 36 and x = 40.",
+    "estimated_time_seconds": 85,
     "tags": [
       "proportion",
-      "inverse"
+      "solve",
+      "family:pr_solve"
     ],
-    "answer_verification": "t=24"
+    "answer_verification": "x=40"
   }
 ]

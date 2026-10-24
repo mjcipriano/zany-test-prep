@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../app/app_controller.dart';
 import '../../design/theme.dart';
 import '../../design/widgets.dart';
+import '../../domain/models/exam.dart';
 
 /// Multi-step onboarding: welcome -> offline -> exam -> goal -> date -> finish.
 class OnboardingScreen extends ConsumerStatefulWidget {
@@ -16,7 +17,7 @@ class OnboardingScreen extends ConsumerStatefulWidget {
 class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   final _controller = PageController();
   int _page = 0;
-  String _examId = 'sat';
+  String _examId = kDefaultExamId;
   int _goalMinutes = 10;
   DateTime? _targetDate;
   bool _submitting = false;
@@ -42,18 +43,32 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
 
   Future<void> _finish() async {
     setState(() => _submitting = true);
-    await ref
-        .read(appControllerProvider.notifier)
-        .completeOnboarding(
-          examId: _examId,
-          dailyGoalMinutes: _goalMinutes,
-          targetTestDate: _targetDate,
-        );
-    // Router redirects to /home once onboarded flips to true.
+    try {
+      await ref
+          .read(appControllerProvider.notifier)
+          .completeOnboarding(
+            examId: _examId,
+            dailyGoalMinutes: _goalMinutes,
+            targetTestDate: _targetDate,
+          );
+      // Router redirects to /home once onboarded flips to true.
+    } catch (e) {
+      if (!mounted) return;
+      setState(() => _submitting = false);
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Could not load that exam: $e')));
+    }
   }
 
   @override
   Widget build(BuildContext context) {
+    final exams =
+        ref.watch(appControllerProvider).valueOrNull?.exams ?? const [];
+    // Default to the first shipped exam if the usual default isn't available.
+    if (exams.isNotEmpty && !exams.any((e) => e.id == _examId)) {
+      _examId = exams.first.id;
+    }
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -90,6 +105,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                   _Welcome(),
                   _OfflineNote(),
                   _ExamStep(
+                    exams: exams,
                     selected: _examId,
                     onSelect: (id) => setState(() => _examId = id),
                   ),
@@ -134,8 +150,9 @@ class _Welcome extends StatelessWidget {
       icon: Icons.school_rounded,
       title: 'Welcome to Zany Test Prep',
       body:
-          'Short, game-like lessons that make studying for the SAT feel less '
-          'like a chore. Earn XP, build streaks, and master one skill at a time.',
+          'Short, game-like lessons that make studying for the SAT or ACT feel '
+          'less like a chore. Earn XP, build streaks, and master one skill at a '
+          'time.',
       accent: scheme.primary,
     );
   }
@@ -156,7 +173,12 @@ class _OfflineNote extends StatelessWidget {
 }
 
 class _ExamStep extends StatelessWidget {
-  const _ExamStep({required this.selected, required this.onSelect});
+  const _ExamStep({
+    required this.exams,
+    required this.selected,
+    required this.onSelect,
+  });
+  final List<ExamInfo> exams;
   final String selected;
   final ValueChanged<String> onSelect;
 
@@ -166,28 +188,38 @@ class _ExamStep extends StatelessWidget {
       icon: Icons.menu_book_rounded,
       title: 'Choose your exam',
       body:
-          'More exams (ACT, AP) are on the way. For now, let’s focus on the SAT.',
+          'Pick the test you are preparing for. You can switch exams any time '
+          'in Settings, and your XP and streak carry across.',
       accent: Theme.of(context).colorScheme.primary,
       child: Column(
         children: [
-          _ChoiceTile(
-            label: 'SAT',
-            subtitle: 'Digital SAT — Reading, Writing & Math',
-            selected: selected == 'sat',
-            onTap: () => onSelect('sat'),
-          ),
-          Gap.s,
-          _ChoiceTile(
-            label: 'ACT (coming soon)',
-            subtitle: 'Not available yet',
-            selected: false,
-            enabled: false,
-            onTap: () {},
-          ),
+          for (final exam in exams)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 8),
+              child: _ChoiceTile(
+                label: exam.name,
+                subtitle: exam.tagline.isNotEmpty
+                    ? '${exam.displayName} — ${exam.tagline}'
+                    : (exam.displayName != exam.name
+                          ? exam.displayName
+                          : 'Prepare for the ${exam.name}'),
+                selected: selected == exam.id,
+                onTap: () => onSelect(exam.id),
+              ),
+            ),
+          if (exams.isEmpty)
+            const _ChoiceTile(
+              label: 'SAT',
+              subtitle: 'Digital SAT — Reading, Writing & Math',
+              selected: true,
+              onTap: _noop,
+            ),
         ],
       ),
     );
   }
+
+  static void _noop() {}
 }
 
 class _GoalStep extends StatelessWidget {
@@ -327,51 +359,46 @@ class _ChoiceTile extends StatelessWidget {
     required this.subtitle,
     required this.selected,
     required this.onTap,
-    this.enabled = true,
   });
 
   final String label;
   final String subtitle;
   final bool selected;
   final VoidCallback onTap;
-  final bool enabled;
 
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
-    return Opacity(
-      opacity: enabled ? 1 : 0.5,
-      child: AppCard(
-        onTap: enabled ? onTap : null,
-        color: selected ? scheme.primaryContainer : scheme.surfaceContainerHigh,
-        child: Row(
-          children: [
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    label,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w800,
-                      fontSize: 16,
-                    ),
+    return AppCard(
+      onTap: onTap,
+      color: selected ? scheme.primaryContainer : scheme.surfaceContainerHigh,
+      child: Row(
+        children: [
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  label,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w800,
+                    fontSize: 16,
                   ),
-                  Text(
-                    subtitle,
-                    style: TextStyle(color: scheme.onSurfaceVariant),
-                  ),
-                ],
-              ),
+                ),
+                Text(
+                  subtitle,
+                  style: TextStyle(color: scheme.onSurfaceVariant),
+                ),
+              ],
             ),
-            Icon(
-              selected
-                  ? Icons.check_circle_rounded
-                  : Icons.radio_button_unchecked_rounded,
-              color: selected ? scheme.primary : scheme.outline,
-            ),
-          ],
-        ),
+          ),
+          Icon(
+            selected
+                ? Icons.check_circle_rounded
+                : Icons.radio_button_unchecked_rounded,
+            color: selected ? scheme.primary : scheme.outline,
+          ),
+        ],
       ),
     );
   }

@@ -36,8 +36,8 @@ Workflows live in `.github/workflows/`:
 Before tagging, bump the version in **two places that must stay in sync**:
 
 - `version:` in `pubspec.yaml` (the `+N` build/versionCode must only increase).
-- `kAppVersion` in `lib/features/settings/about_screen.dart` (shown on the About
-  screen). The content version on About is read from the bundle automatically.
+- `kAppVersion` in `lib/core/app_info.dart` (shown on the About screen and stamped
+  into backups). The content version on About is read from the bundle automatically.
 
 ```bash
 git tag v1.0.0
@@ -47,6 +47,12 @@ git push origin v1.0.0
 `release.yml` then builds the **stable-signed** release APK (using the signing
 secrets, see below) and creates a GitHub Release with a single tag-named asset,
 `zany-test-prep-v1.0.0.apk`, plus a generated changelog.
+
+**No tag push available?** (e.g. from an environment whose git proxy only allows
+branch pushes.) Run the Release workflow manually from the Actions tab — or
+`gh workflow run release.yml -f version=v1.0.0 --ref master` — with the
+`version` input set. The workflow builds the chosen ref, creates the tag on that
+commit and publishes the Release exactly as a tag push would.
 
 **Let CI do the release build — don't also upload one by hand.** Pushing the tag
 already triggers the workflow; a second manual `gh release create`/upload would add

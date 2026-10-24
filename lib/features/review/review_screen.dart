@@ -7,21 +7,55 @@ import '../../domain/services/review_engine.dart';
 import '../lessons/lesson_player.dart';
 
 /// Plays the spaced-review queue: the most-needed missed questions first.
-class ReviewScreen extends ConsumerWidget {
+///
+/// The session's question list is computed once when the screen opens. It
+/// must not be recomputed on rebuild: completing the session updates the
+/// review queue (answered items are rescheduled), and a rebuild that swapped
+/// the player for the "nothing to review" state would unmount the player
+/// before its summary could show.
+class ReviewScreen extends ConsumerStatefulWidget {
   const ReviewScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final data = ref.watch(appControllerProvider).valueOrNull;
-    if (data == null) {
-      return const Scaffold(body: Center(child: CircularProgressIndicator()));
-    }
+  ConsumerState<ReviewScreen> createState() => _ReviewScreenState();
+}
+
+class _ReviewScreenState extends ConsumerState<ReviewScreen> {
+  List<Question>? _questions;
+
+  @override
+  void initState() {
+    super.initState();
+    final data = ref.read(appControllerProvider).valueOrNull;
+    if (data != null) _questions = _pick(data);
+  }
+
+  static List<Question> _pick(AppData data) {
     const review = ReviewEngine();
-    final ids = review.dueQuestionIds(data.progress, limit: 12);
-    final questions = <Question>[
+    final ids = review.dueQuestionIds(
+      data.progress,
+      limit: 12,
+      bundle: data.bundle,
+    );
+    return [
       for (final id in ids)
         if (data.bundle.question(id) != null) data.bundle.question(id)!,
     ];
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final questions = _questions;
+    if (questions == null) {
+      final data = ref.watch(appControllerProvider).valueOrNull;
+      if (data == null) {
+        return const Scaffold(body: Center(child: CircularProgressIndicator()));
+      }
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) setState(() => _questions = _pick(data));
+      });
+      return const Scaffold(body: Center(child: CircularProgressIndicator()));
+    }
 
     if (questions.isEmpty) {
       return Scaffold(

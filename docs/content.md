@@ -1,24 +1,22 @@
 # Content model & pipeline
 
-All practice content is **original, SAT-style** material with **no copyrighted
-College Board questions**. Content is exam-agnostic by design, so ACT and AP can
-reuse the exact same shapes later.
+All practice content is **original, SAT- and ACT-style** material with **no
+copyrighted College Board or ACT, Inc. questions**. Content is exam-agnostic by
+design: the SAT and ACT share the same schemas, and AP can reuse them later.
 
 ## Where content lives
 
 ```text
 content/
 ├── exams/
-│   └── sat/
-│       ├── exam.yaml          # exam descriptor (id, name, domains, enabled, version)
-│       ├── skills.yaml        # skill map: domains → sections → skills → subskills
-│       ├── lessons/
-│       │   ├── math/          # one JSON object per lesson
-│       │   └── rw/
-│       ├── questions/
-│       │   ├── math/          # one JSON file per lesson = an array of questions
-│       │   └── rw/
-│       └── manifest.json      # lists every lesson + question file for the builder
+│   ├── sat/
+│   │   ├── exam.yaml          # exam descriptor (id, names, domains, timed_test, scoring)
+│   │   ├── skills.yaml        # skill map: domains → sections → skills → subskills
+│   │   ├── lessons/{rw,math}/ # one JSON object per lesson
+│   │   ├── questions/{rw,math}/        # one JSON file per lesson = an array of questions
+│   │   ├── questions/bank/{rw,math}/   # practice-bank items (not bound to a lesson)
+│   │   └── manifest.json      # lists every lesson + question file for the builder
+│   └── act/                   # same layout; domains english/math/reading/science
 ├── schemas/
 │   ├── question.schema.json   # JSON Schema (draft-07) for a question
 │   └── lesson.schema.json     # JSON Schema (draft-07) for a lesson
@@ -26,12 +24,12 @@ content/
 └── validators/README.md       # what the validator checks
 ```
 
-The canonical content under `content/exams/sat/` is the **source of truth**. The
-app never loads it directly; instead `tools/build_bundle.py` compiles it into
-`assets/content/sat.bundle.json`, which the app loads at runtime.
+The canonical content under `content/exams/<exam>/` is the **source of truth**. The
+app never loads it directly; instead `tools/build_bundle.py` compiles each exam into
+`assets/content/<exam>.bundle.json` and writes `assets/content/exams.json` (the list
+of shipped exams with display names), which the app loads at runtime.
 
-Current SAT bank: **50 lessons** and **1,003 questions** (500 Math, 503 Reading
-& Writing).
+See the README for the current lesson/question counts per exam.
 
 ## The exam descriptor — `exam.yaml`
 
@@ -39,13 +37,30 @@ Current SAT bank: **50 lessons** and **1,003 questions** (500 Math, 503 Reading
 exam_id: sat
 exam_name: "SAT"
 display_name: "Digital SAT"
+tagline: "Reading, Writing & Math"   # shown in the exam picker
 enabled: true            # only enabled exams are surfaced in the UI / bundle list
 content_version: "1.0.0"
 domains: [reading_writing, math]
 difficulties: [easy, medium, hard]
 question_types: [multiple_choice, student_produced, passage_reading,
                  grammar_editing, data_interpretation, multi_step_math]
+# Full-length practice test layout (app: Practice Test).
+timed_test:
+  intro: "This mirrors the Digital SAT: ..."
+  modules:
+    - { name: "Reading & Writing — Module 1", domain: reading_writing, count: 27, minutes: 32 }
+    # ...
+# Score scale: sat_1600 (200-800 per section, summed), act_36 (1-36 per
+# section, composite = rounded mean of composite_domains) or percent.
+scoring:
+  type: sat_1600
+  composite_label: "Estimated total score"
 ```
+
+The ACT descriptor uses four domains (`english`, `math`, `reading`, `science`), one
+timed module per section (50/45/36/40 questions in 35/50/40/40 minutes) and
+`scoring: {type: act_36, composite_domains: [english, math, reading]}` — Science is
+scored but, as on the enhanced ACT, not part of the composite.
 
 ## The skill map — `skills.yaml`
 
@@ -101,7 +116,7 @@ Defined in `content/schemas/question.schema.json` (draft-07,
 | `prompt` | string | The question text (min length 5). |
 | `explanation` | string | Why the answer is correct (min length 10). |
 | `version` | string | Semver, e.g. `"1.0.0"`. |
-| `tags` | string[] | At least one tag. |
+| `tags` | string[] | At least one tag. Generated items also carry `family:<name>` (the question form that produced them; used by the validator's variety check) and, for ACT English, `act-no-change`. |
 
 ### Optional fields
 
@@ -109,7 +124,7 @@ Defined in `content/schemas/question.schema.json` (draft-07,
 | --- | --- | --- |
 | `subskill` | string | Should exist in `skills.yaml` when present. |
 | `stimulus` | object | Passage or table shown above the prompt (see below). |
-| `choices` | object[] | 2–6 answer choices (required for MC-style types). |
+| `choices` | object[] | 2–6 answer choices (required for MC-style types). SAT items use 4 (`A`–`D`); ACT Math items use 5 (`A`–`E`). |
 | `correct_choice` | string | The id (`A`–`F`) of the correct choice (required for MC-style types). |
 | `answer` | object | Numeric/string answer (required for `student_produced`). |
 | `answer_verification` | string | A machine-checkable note, e.g. `"4*11+9=53"`. |
@@ -254,15 +269,17 @@ Three Python tools live under `tools/`. Run them inside the activated env
 
 ### 1. Generate — `tools/generate_content.py`
 
-Regenerates the entire SAT bank into `content/exams/sat/` from deterministic
-generators in `tools/content_gen/` (`math_gen.py`, `rw_gen.py`, `passages.py`,
-`teaching.py`, `util.py`). It uses a fixed seed (`SEED = 20240614`) so output is
-**reproducible**. Math answers are computed; RW conventions are rule-based;
-reading items draw from an authored original-passage pool. It also writes
-`manifest.json` listing every lesson and question file.
+Regenerates every exam's bank into `content/exams/<exam>/` by walking the exam's
+plan (`tools/content_gen/exam_plans.py`) over the question **families** registered
+by the generator modules in `tools/content_gen/` (see
+[content-authoring.md](content-authoring.md) for the family contract). Each plan
+has a fixed seed so output is **reproducible**. Math and science answers are
+computed; conventions are rule-based; reading items draw from an authored
+original-passage pool. It also writes each exam's `manifest.json`.
 
 ```bash
-python tools/generate_content.py
+python tools/generate_content.py              # all exams
+python tools/generate_content.py --exam act   # one exam
 ```
 
 > You usually only run this when changing the generators themselves. Hand-authored
@@ -285,16 +302,21 @@ checks (see `content/validators/README.md` for the full list):
 - `version` present and valid for questions, lessons, and the exam.
 
 ```bash
-python tools/validate_content.py
-python tools/validate_content.py --exam sat   # explicit exam
+python tools/validate_content.py              # every exam
+python tools/validate_content.py --exam act   # one exam
 ```
+
+It also enforces per-lesson **variety** (≥ 3 question families per generated lesson,
+none above 50%) and cross-checks `exam.yaml`'s domains and timed-test modules against
+`skills.yaml`.
 
 ### 3. Bundle — `tools/build_bundle.py`
 
 Reads the manifest + lessons + questions + `exam.yaml` + `skills.yaml` and writes
 a single minified JSON bundle per exam to `assets/content/<exam>.bundle.json`,
-plus `assets/content/exams.json` listing enabled exams. Lessons are sorted
-(Reading & Writing first, then Math, by `order`) so the app's path is stable.
+plus `assets/content/exams.json` describing the enabled exams (`id`, `name`,
+`display_name`, `tagline`). Lessons are sorted by the exam's domain order (as
+listed in `skills.yaml`), then by `order`, so the app's path is stable.
 
 ```bash
 python tools/build_bundle.py
@@ -323,6 +345,9 @@ verification).
 | `verify_math_questions.md` | Check math answer correctness. |
 | `verify_rw_questions.md` | Check grammar/reading question correctness. |
 | `convert_to_schema.md` | Convert drafted content into schema-exact JSON/YAML. |
+| `generate_act_math_questions.md` | ACT Math (5 choices, no grid-ins, ACT skill map). |
+| `generate_act_english_questions.md` | ACT English in the bracketed-portion / NO CHANGE format. |
+| `generate_act_science_questions.md` | ACT Science (data, research summaries, conflicting viewpoints). |
 
 See [content-authoring.md](content-authoring.md) for the end-to-end authoring
 workflow.

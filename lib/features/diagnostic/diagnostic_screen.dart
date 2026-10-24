@@ -12,6 +12,7 @@ import '../../domain/models/question.dart';
 import '../../domain/services/answer_checker.dart';
 import '../../domain/services/game_service.dart';
 import '../lessons/question_view.dart';
+import '../practice/sampling.dart';
 
 /// A short placement quiz: one question per skill, no feedback. Seeds per-skill
 /// mastery and shows the learner where to focus.
@@ -56,22 +57,11 @@ class _DiagnosticScreenState extends ConsumerState<DiagnosticScreen> {
       }
     }
     final picks = bySkill.values.toList()..shuffle(Random());
-    picks.sort(
-      (a, b) => a.domain.compareTo(b.domain),
-    ); // group, then interleave
-    final math = picks.where((q) => q.domain == 'math').toList();
-    final rw = picks.where((q) => q.domain != 'math').toList();
-    final out = <Question>[];
-    for (
-      var i = 0;
-      out.length < 16 && (i < math.length || i < rw.length);
-      i++
-    ) {
-      if (i < rw.length) out.add(rw[i]);
-      if (i < math.length) out.add(math[i]);
-    }
-    return out;
+    return interleaveByDomain(picks, bundle.domainIds, kDiagnosticLength);
   }
+
+  /// Number of questions in the placement quiz.
+  static const kDiagnosticLength = 16;
 
   Question get _question => _questions[_index];
 

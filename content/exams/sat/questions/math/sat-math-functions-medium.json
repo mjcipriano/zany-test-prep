@@ -10,38 +10,39 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = 3x + 7. If f(x) = 10, what is the value of x?",
+    "subskill": "evaluate",
+    "prompt": "If f(x) = x² − 2x + 8, what is f(3)?",
     "choices": [
       {
         "id": "A",
-        "text": "2",
-        "rationale": "Off by one; recheck the division."
+        "text": "11",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "3",
-        "rationale": "This is a·x (before dividing by the coefficient a)."
+        "text": "23",
+        "rationale": "Watch the sign on the middle term."
       },
       {
         "id": "C",
-        "text": "17",
-        "rationale": "Subtract b before dividing, don't add it."
+        "text": "-7",
+        "rationale": "(−k)² is positive; don't carry the sign through the square."
       },
       {
         "id": "D",
-        "text": "1",
-        "rationale": "Correct."
+        "text": "5",
+        "rationale": "This squares only the coefficient, not x."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Set 3x + 7 = 10: 3x = 3, so x = 1.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "A",
+    "explanation": "f(3) = 1·(3)² − 2·(3) + 8 = 9 − 6 + 8 = 11.",
+    "estimated_time_seconds": 85,
     "tags": [
       "functions",
-      "solve"
+      "evaluate",
+      "family:fn_evaluate"
     ],
-    "answer_verification": "f(1)=10"
+    "answer_verification": "f(3)=11"
   },
   {
     "question_id": "sat-math-functions-medium-q02",
@@ -55,37 +56,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = 7x − 7. If f(x) = -14, what is the value of x?",
+    "prompt": "What is the zero of the function f(x) = 2x + 12?",
     "choices": [
       {
         "id": "A",
-        "text": "-7",
-        "rationale": "This is a·x (before dividing by the coefficient a)."
+        "text": "12",
+        "rationale": "That is f(0), the y-intercept, not the zero."
       },
       {
         "id": "B",
-        "text": "-21",
-        "rationale": "Subtract b before dividing, don't add it."
+        "text": "-6",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "0",
-        "rationale": "Off by one; recheck the division."
+        "text": "6",
+        "rationale": "Sign slip when moving the constant."
       },
       {
         "id": "D",
-        "text": "-1",
-        "rationale": "Correct."
+        "text": "2",
+        "rationale": "The zero is −b/a, not the coefficient."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Set 7x − 7 = -14: 7x = -7, so x = -1.",
+    "correct_choice": "B",
+    "explanation": "Set 2x + 12 = 0: 2x = −12, so x = −6.",
     "estimated_time_seconds": 80,
     "tags": [
       "functions",
-      "solve"
+      "solve",
+      "family:fn_solve_input"
     ],
-    "answer_verification": "f(-1)=-14"
+    "answer_verification": "x=-6"
   },
   {
     "question_id": "sat-math-functions-medium-q03",
@@ -97,39 +99,72 @@
     "lesson_id": "sat-math-functions-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = 2x − 5. If f(x) = -11, what is the value of x?",
+    "question_type": "data_interpretation",
+    "subskill": "evaluate",
+    "prompt": "The table gives values of the linear function f. What is the value of f(7)?",
     "choices": [
       {
         "id": "A",
-        "text": "-2",
-        "rationale": "Off by one; recheck the division."
+        "text": "25",
+        "rationale": "Off by one step of the pattern."
       },
       {
         "id": "B",
-        "text": "-3",
+        "text": "23",
         "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "-6",
-        "rationale": "This is a·x (before dividing by the coefficient a)."
+        "text": "14",
+        "rationale": "Include the constant term b."
       },
       {
         "id": "D",
-        "text": "-16",
-        "rationale": "Subtract b before dividing, don't add it."
+        "text": "18",
+        "rationale": "Multiply the slope by k; don't add."
       }
     ],
     "correct_choice": "B",
-    "explanation": "Set 2x − 5 = -11: 2x = -6, so x = -3.",
-    "estimated_time_seconds": 80,
+    "explanation": "The outputs change by 2 for each increase of 1 in x, so f(x) = 2x + 9 and f(7) = 23.",
+    "estimated_time_seconds": 85,
     "tags": [
       "functions",
-      "solve"
+      "table",
+      "family:fn_table"
     ],
-    "answer_verification": "f(-3)=-11"
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Values of f",
+        "headers": [
+          "x",
+          "f(x)"
+        ],
+        "rows": [
+          [
+            "-4",
+            "1"
+          ],
+          [
+            "-2",
+            "5"
+          ],
+          [
+            "1",
+            "11"
+          ],
+          [
+            "2",
+            "13"
+          ],
+          [
+            "9",
+            "27"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "val=23"
   },
   {
     "question_id": "sat-math-functions-medium-q04",
@@ -141,39 +176,40 @@
     "lesson_id": "sat-math-functions-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = 6x − 3. If f(x) = 39, what is the value of x?",
+    "question_type": "multi_step_math",
+    "subskill": "evaluate",
+    "prompt": "The functions f and g are defined by f(x) = 4x − 4 and g(x) = 3x + 4. What is the value of f(g(−3))?",
     "choices": [
       {
         "id": "A",
-        "text": "42",
-        "rationale": "This is a·x (before dividing by the coefficient a)."
+        "text": "-44",
+        "rationale": "This computes g(f(k)); evaluate g first."
       },
       {
         "id": "B",
-        "text": "8",
-        "rationale": "Off by one; recheck the division."
+        "text": "80",
+        "rationale": "Composition is not multiplication."
       },
       {
         "id": "C",
-        "text": "7",
-        "rationale": "Correct."
+        "text": "-5",
+        "rationale": "That is g(k); now apply f."
       },
       {
         "id": "D",
-        "text": "36",
-        "rationale": "Subtract b before dividing, don't add it."
+        "text": "-24",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Set 6x − 3 = 39: 6x = 42, so x = 7.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "D",
+    "explanation": "First g(−3) = 3(−3) + 4 = −5. Then f(−5) = 4·(−5) − 4 = −24.",
+    "estimated_time_seconds": 95,
     "tags": [
       "functions",
-      "solve"
+      "composition",
+      "family:fn_compose_transform"
     ],
-    "answer_verification": "f(7)=39"
+    "answer_verification": "val=-24"
   },
   {
     "question_id": "sat-math-functions-medium-q05",
@@ -187,37 +223,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = 8x + 11. If f(x) = 19, what is the value of x?",
+    "prompt": "The function C(n) = 14n + 85 gives the cost, in dollars, of printing n posters. Which of the following is the best interpretation of C(0) = 85?",
     "choices": [
       {
         "id": "A",
-        "text": "1",
+        "text": "the cost before any posters are printed",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "2",
-        "rationale": "Off by one; recheck the division."
+        "text": "the cost of printing one poster",
+        "rationale": "That would be an input (a time or count) set equal to the output, which reverses the roles."
       },
       {
         "id": "C",
-        "text": "8",
-        "rationale": "This is a·x (before dividing by the coefficient a)."
+        "text": "the total change in the output of the function over the first 85 units of input",
+        "rationale": "The constant term is a starting value, not a change over an interval."
       },
       {
         "id": "D",
-        "text": "30",
-        "rationale": "Subtract b before dividing, don't add it."
+        "text": "the number of posters that cost $85",
+        "rationale": "That describes the coefficient of the variable, the rate of change."
       }
     ],
     "correct_choice": "A",
-    "explanation": "Set 8x + 11 = 19: 8x = 8, so x = 1.",
-    "estimated_time_seconds": 80,
+    "explanation": "C(0) is the output when the input is 0, so 85 is the cost before any posters are printed.",
+    "estimated_time_seconds": 85,
     "tags": [
       "functions",
-      "solve"
+      "interpret",
+      "family:fn_interpret"
     ],
-    "answer_verification": "f(1)=19"
+    "answer_verification": "interpret C(0)"
   },
   {
     "question_id": "sat-math-functions-medium-q06",
@@ -231,37 +268,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = 2x − 9. If f(x) = -7, what is the value of x?",
+    "prompt": "The function f is defined by f(x) = (x + 8)/(x − 9). For what value of x is f(x) undefined?",
     "choices": [
       {
         "id": "A",
-        "text": "1",
-        "rationale": "Correct."
+        "text": "8",
+        "rationale": "The numerator's constant doesn't make f undefined."
       },
       {
         "id": "B",
-        "text": "-16",
-        "rationale": "Subtract b before dividing, don't add it."
+        "text": "-9",
+        "rationale": "Solve x + b = 0, so x = −b."
       },
       {
         "id": "C",
-        "text": "2",
-        "rationale": "This is a·x (before dividing by the coefficient a)."
+        "text": "-8",
+        "rationale": "That makes the numerator 0, so f(x) = 0 there; the function is defined."
       },
       {
         "id": "D",
-        "text": "-2",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "9",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Set 2x − 9 = -7: 2x = 2, so x = 1.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "D",
+    "explanation": "A fraction is undefined when its denominator is 0: x − 9 = 0 gives x = 9.",
+    "estimated_time_seconds": 75,
     "tags": [
       "functions",
-      "solve"
+      "rational",
+      "family:fn_undefined"
     ],
-    "answer_verification": "f(1)=-7"
+    "answer_verification": "x=9"
   },
   {
     "question_id": "sat-math-functions-medium-q07",
@@ -273,39 +311,25 @@
     "lesson_id": "sat-math-functions-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = 8x + 8. If f(x) = -40, what is the value of x?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-5",
-        "rationale": "Off by one; recheck the division."
-      },
-      {
-        "id": "B",
-        "text": "-48",
-        "rationale": "This is a·x (before dividing by the coefficient a)."
-      },
-      {
-        "id": "C",
-        "text": "-6",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "-32",
-        "rationale": "Subtract b before dividing, don't add it."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "Set 8x + 8 = -40: 8x = -48, so x = -6.",
-    "estimated_time_seconds": 80,
+    "question_type": "student_produced",
+    "subskill": "evaluate",
+    "prompt": "If f(x) = 9x + 3 and f(x) = 93, what is the value of x?",
+    "answer": {
+      "type": "numeric",
+      "value": 10,
+      "accepted": [
+        "10"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "9x = 90, so x = 10.",
+    "estimated_time_seconds": 75,
     "tags": [
       "functions",
-      "solve"
+      "grid-in",
+      "family:fn_gridin"
     ],
-    "answer_verification": "f(-6)=-40"
+    "answer_verification": "val=10"
   },
   {
     "question_id": "sat-math-functions-medium-q08",
@@ -318,38 +342,39 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = 8x + 10. If f(x) = 18, what is the value of x?",
+    "subskill": "evaluate",
+    "prompt": "For the function f defined by f(x) = 5x² + 2x − 4, what is f(−5)?",
     "choices": [
       {
         "id": "A",
-        "text": "8",
-        "rationale": "This is a·x (before dividing by the coefficient a)."
-      },
-      {
-        "id": "B",
-        "text": "2",
-        "rationale": "Off by one; recheck the division."
-      },
-      {
-        "id": "C",
-        "text": "1",
+        "text": "111",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "-139",
+        "rationale": "(−k)² is positive; don't carry the sign through the square."
+      },
+      {
+        "id": "C",
+        "text": "131",
+        "rationale": "Watch the sign on the middle term."
+      },
+      {
         "id": "D",
-        "text": "28",
-        "rationale": "Subtract b before dividing, don't add it."
+        "text": "-39",
+        "rationale": "This squares only the coefficient, not x."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Set 8x + 10 = 18: 8x = 8, so x = 1.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "A",
+    "explanation": "f(−5) = 5·(−5)² + 2·(−5) − 4 = 125 − 10 − 4 = 111.",
+    "estimated_time_seconds": 85,
     "tags": [
       "functions",
-      "solve"
+      "evaluate",
+      "family:fn_evaluate"
     ],
-    "answer_verification": "f(1)=18"
+    "answer_verification": "f(-5)=111"
   },
   {
     "question_id": "sat-math-functions-medium-q09",
@@ -363,37 +388,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = 4x + 11. If f(x) = 15, what is the value of x?",
+    "prompt": "The function f is defined by f(x) = 2x − 12. For what value of x is f(x) = 0?",
     "choices": [
       {
         "id": "A",
-        "text": "26",
-        "rationale": "Subtract b before dividing, don't add it."
+        "text": "6",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "4",
-        "rationale": "This is a·x (before dividing by the coefficient a)."
+        "text": "-6",
+        "rationale": "Sign slip when moving the constant."
       },
       {
         "id": "C",
-        "text": "2",
-        "rationale": "Off by one; recheck the division."
+        "text": "-12",
+        "rationale": "That is f(0), the y-intercept, not the zero."
       },
       {
         "id": "D",
-        "text": "1",
-        "rationale": "Correct."
+        "text": "2",
+        "rationale": "The zero is −b/a, not the coefficient."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Set 4x + 11 = 15: 4x = 4, so x = 1.",
+    "correct_choice": "A",
+    "explanation": "Set 2x − 12 = 0: 2x = 12, so x = 6.",
     "estimated_time_seconds": 80,
     "tags": [
       "functions",
-      "solve"
+      "solve",
+      "family:fn_solve_input"
     ],
-    "answer_verification": "f(1)=15"
+    "answer_verification": "x=6"
   },
   {
     "question_id": "sat-math-functions-medium-q10",
@@ -405,39 +431,72 @@
     "lesson_id": "sat-math-functions-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = 8x + 1. If f(x) = -31, what is the value of x?",
+    "question_type": "data_interpretation",
+    "subskill": "evaluate",
+    "prompt": "The table gives values of the linear function f. What is the value of f(8)?",
     "choices": [
       {
         "id": "A",
-        "text": "-30",
-        "rationale": "Subtract b before dividing, don't add it."
+        "text": "32",
+        "rationale": "Include the constant term b."
       },
       {
         "id": "B",
-        "text": "-3",
-        "rationale": "Off by one; recheck the division."
+        "text": "31",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "-32",
-        "rationale": "This is a·x (before dividing by the coefficient a)."
+        "text": "35",
+        "rationale": "Off by one step of the pattern."
       },
       {
         "id": "D",
-        "text": "-4",
-        "rationale": "Correct."
+        "text": "11",
+        "rationale": "Multiply the slope by k; don't add."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Set 8x + 1 = -31: 8x = -32, so x = -4.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "B",
+    "explanation": "The outputs change by 4 for each increase of 1 in x, so f(x) = 4x − 1 and f(8) = 31.",
+    "estimated_time_seconds": 85,
     "tags": [
       "functions",
-      "solve"
+      "table",
+      "family:fn_table"
     ],
-    "answer_verification": "f(-4)=-31"
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Values of f",
+        "headers": [
+          "x",
+          "f(x)"
+        ],
+        "rows": [
+          [
+            "-2",
+            "-9"
+          ],
+          [
+            "-1",
+            "-5"
+          ],
+          [
+            "1",
+            "3"
+          ],
+          [
+            "4",
+            "15"
+          ],
+          [
+            "7",
+            "27"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "val=31"
   },
   {
     "question_id": "sat-math-functions-medium-q11",
@@ -449,39 +508,40 @@
     "lesson_id": "sat-math-functions-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = 9x − 9. If f(x) = 45, what is the value of x?",
+    "question_type": "multi_step_math",
+    "subskill": "evaluate",
+    "prompt": "The functions f and g are defined by f(x) = 3x − 2 and g(x) = 3x − 6. What is the value of f(g(2))?",
     "choices": [
       {
         "id": "A",
-        "text": "54",
-        "rationale": "This is a·x (before dividing by the coefficient a)."
-      },
-      {
-        "id": "B",
-        "text": "6",
+        "text": "-2",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "0",
+        "rationale": "Composition is not multiplication."
+      },
+      {
         "id": "C",
-        "text": "36",
-        "rationale": "Subtract b before dividing, don't add it."
+        "text": "4",
+        "rationale": "Composition is not addition."
       },
       {
         "id": "D",
-        "text": "7",
-        "rationale": "Off by one; recheck the division."
+        "text": "6",
+        "rationale": "This computes g(f(k)); evaluate g first."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Set 9x − 9 = 45: 9x = 54, so x = 6.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "A",
+    "explanation": "First g(2) = 3(2) − 6 = 0. Then f(0) = 3·(0) − 2 = −2.",
+    "estimated_time_seconds": 95,
     "tags": [
       "functions",
-      "solve"
+      "composition",
+      "family:fn_compose_transform"
     ],
-    "answer_verification": "f(6)=45"
+    "answer_verification": "val=-2"
   },
   {
     "question_id": "sat-math-functions-medium-q12",
@@ -495,37 +555,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = 4x − 12. If f(x) = 20, what is the value of x?",
+    "prompt": "The function h(t) = 237 + 15t gives the height, in centimeters, of a plant t weeks after it was planted. Which of the following is the best interpretation of h(0) = 237?",
     "choices": [
       {
         "id": "A",
-        "text": "3",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "the number of weeks until it reaches 237 cm",
+        "rationale": "That would be an input (a time or count) set equal to the output, which reverses the roles."
       },
       {
         "id": "B",
-        "text": "9",
-        "rationale": "Off by one; recheck the division."
+        "text": "the growth, in centimeters, each week",
+        "rationale": "That describes the coefficient of the variable, the rate of change."
       },
       {
         "id": "C",
-        "text": "8",
+        "text": "the height of the plant when it was planted",
         "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "32",
-        "rationale": "This is a·x (before dividing by the coefficient a)."
+        "text": "the total change in the output of the function over the first 237 units of input",
+        "rationale": "The constant term is a starting value, not a change over an interval."
       }
     ],
     "correct_choice": "C",
-    "explanation": "Set 4x − 12 = 20: 4x = 32, so x = 8.",
-    "estimated_time_seconds": 80,
+    "explanation": "h(0) is the output when the input is 0, so 237 is the height of the plant when it was planted.",
+    "estimated_time_seconds": 85,
     "tags": [
       "functions",
-      "solve"
+      "interpret",
+      "family:fn_interpret"
     ],
-    "answer_verification": "f(8)=20"
+    "answer_verification": "interpret h(0)"
   },
   {
     "question_id": "sat-math-functions-medium-q13",
@@ -539,37 +600,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = 7x − 4. If f(x) = -25, what is the value of x?",
+    "prompt": "The function f is defined by f(x) = (x + 6)/(x + 2). For what value of x is f(x) = 0?",
     "choices": [
       {
         "id": "A",
-        "text": "-2",
-        "rationale": "Off by one; recheck the division."
-      },
-      {
-        "id": "B",
-        "text": "-29",
-        "rationale": "Subtract b before dividing, don't add it."
-      },
-      {
-        "id": "C",
-        "text": "-3",
+        "text": "-6",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "-2",
+        "rationale": "That makes the denominator 0, so f is undefined there."
+      },
+      {
+        "id": "C",
+        "text": "2",
+        "rationale": "The denominator's constant isn't the zero of f."
+      },
+      {
         "id": "D",
-        "text": "-21",
-        "rationale": "This is a·x (before dividing by the coefficient a)."
+        "text": "6",
+        "rationale": "Solve x + a = 0, so x = −a."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Set 7x − 4 = -25: 7x = -21, so x = -3.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "A",
+    "explanation": "A fraction is 0 when its numerator is 0 (and the denominator isn't): x + 6 = 0 gives x = −6.",
+    "estimated_time_seconds": 75,
     "tags": [
       "functions",
-      "solve"
+      "rational",
+      "family:fn_undefined"
     ],
-    "answer_verification": "f(-3)=-25"
+    "answer_verification": "x=-6"
   },
   {
     "question_id": "sat-math-functions-medium-q14",
@@ -581,39 +643,25 @@
     "lesson_id": "sat-math-functions-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = 6x + 8. If f(x) = -4, what is the value of x?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-12",
-        "rationale": "This is a·x (before dividing by the coefficient a)."
-      },
-      {
-        "id": "B",
-        "text": "4",
-        "rationale": "Subtract b before dividing, don't add it."
-      },
-      {
-        "id": "C",
-        "text": "-1",
-        "rationale": "Off by one; recheck the division."
-      },
-      {
-        "id": "D",
-        "text": "-2",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Set 6x + 8 = -4: 6x = -12, so x = -2.",
-    "estimated_time_seconds": 80,
+    "question_type": "student_produced",
+    "subskill": "evaluate",
+    "prompt": "If f(x) = 7x + 2 and f(x) = 58, what is the value of x?",
+    "answer": {
+      "type": "numeric",
+      "value": 8,
+      "accepted": [
+        "8"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "7x = 56, so x = 8.",
+    "estimated_time_seconds": 75,
     "tags": [
       "functions",
-      "solve"
+      "grid-in",
+      "family:fn_gridin"
     ],
-    "answer_verification": "f(-2)=-4"
+    "answer_verification": "val=8"
   },
   {
     "question_id": "sat-math-functions-medium-q15",
@@ -626,38 +674,39 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = 9x − 9. If f(x) = -63, what is the value of x?",
+    "subskill": "evaluate",
+    "prompt": "For the function f defined by f(x) = 4x² − 5, what is f(−1)?",
     "choices": [
       {
         "id": "A",
-        "text": "-5",
-        "rationale": "Off by one; recheck the division."
+        "text": "3",
+        "rationale": "Arithmetic slip in squaring; recompute (k)²."
       },
       {
         "id": "B",
-        "text": "-6",
-        "rationale": "Correct."
+        "text": "-9",
+        "rationale": "This squares only the coefficient, not x."
       },
       {
         "id": "C",
-        "text": "-72",
-        "rationale": "Subtract b before dividing, don't add it."
+        "text": "9",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
       },
       {
         "id": "D",
-        "text": "-54",
-        "rationale": "This is a·x (before dividing by the coefficient a)."
+        "text": "-1",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Set 9x − 9 = -63: 9x = -54, so x = -6.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "D",
+    "explanation": "f(−1) = 4·(−1)² + 0·(−1) − 5 = 4 + 0 − 5 = −1.",
+    "estimated_time_seconds": 85,
     "tags": [
       "functions",
-      "solve"
+      "evaluate",
+      "family:fn_evaluate"
     ],
-    "answer_verification": "f(-6)=-63"
+    "answer_verification": "f(-1)=-1"
   },
   {
     "question_id": "sat-math-functions-medium-q16",
@@ -671,12 +720,12 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = 3x − 7. If f(x) = 20, what is the value of x?",
+    "prompt": "What is the zero of the function f(x) = 9x − 81?",
     "choices": [
       {
         "id": "A",
-        "text": "10",
-        "rationale": "Off by one; recheck the division."
+        "text": "-9",
+        "rationale": "Sign slip when moving the constant."
       },
       {
         "id": "B",
@@ -685,23 +734,24 @@
       },
       {
         "id": "C",
-        "text": "27",
-        "rationale": "This is a·x (before dividing by the coefficient a)."
+        "text": "1/9",
+        "rationale": "This inverts the division."
       },
       {
         "id": "D",
-        "text": "13",
-        "rationale": "Subtract b before dividing, don't add it."
+        "text": "-81",
+        "rationale": "That is f(0), the y-intercept, not the zero."
       }
     ],
     "correct_choice": "B",
-    "explanation": "Set 3x − 7 = 20: 3x = 27, so x = 9.",
+    "explanation": "Set 9x − 81 = 0: 9x = 81, so x = 9.",
     "estimated_time_seconds": 80,
     "tags": [
       "functions",
-      "solve"
+      "solve",
+      "family:fn_solve_input"
     ],
-    "answer_verification": "f(9)=20"
+    "answer_verification": "x=9"
   },
   {
     "question_id": "sat-math-functions-medium-q17",
@@ -713,39 +763,72 @@
     "lesson_id": "sat-math-functions-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = 9x − 9. If f(x) = -72, what is the value of x?",
+    "question_type": "data_interpretation",
+    "subskill": "evaluate",
+    "prompt": "The table gives values of the linear function f. What is the value of f(8)?",
     "choices": [
       {
         "id": "A",
-        "text": "-81",
-        "rationale": "Subtract b before dividing, don't add it."
+        "text": "-8",
+        "rationale": "Include the constant term b."
       },
       {
         "id": "B",
-        "text": "-7",
-        "rationale": "Correct."
+        "text": "2",
+        "rationale": "Off by one step of the pattern."
       },
       {
         "id": "C",
-        "text": "-6",
-        "rationale": "Off by one; recheck the division."
+        "text": "18",
+        "rationale": "Multiply the slope by k; don't add."
       },
       {
         "id": "D",
-        "text": "-63",
-        "rationale": "This is a·x (before dividing by the coefficient a)."
+        "text": "3",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Set 9x − 9 = -72: 9x = -63, so x = -7.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "D",
+    "explanation": "The outputs change by −1 for each increase of 1 in x, so f(x) = −x + 11 and f(8) = 3.",
+    "estimated_time_seconds": 85,
     "tags": [
       "functions",
-      "solve"
+      "table",
+      "family:fn_table"
     ],
-    "answer_verification": "f(-7)=-72"
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Values of f",
+        "headers": [
+          "x",
+          "f(x)"
+        ],
+        "rows": [
+          [
+            "-2",
+            "13"
+          ],
+          [
+            "-1",
+            "12"
+          ],
+          [
+            "0",
+            "11"
+          ],
+          [
+            "2",
+            "9"
+          ],
+          [
+            "6",
+            "5"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "val=3"
   },
   {
     "question_id": "sat-math-functions-medium-q18",
@@ -757,39 +840,40 @@
     "lesson_id": "sat-math-functions-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = 3x − 5. If f(x) = -5, what is the value of x?",
+    "question_type": "multi_step_math",
+    "subskill": "evaluate",
+    "prompt": "The functions f and g are defined by f(x) = 6x + 6 and g(x) = 3x − 3. What is the value of f(g(0))?",
     "choices": [
       {
         "id": "A",
-        "text": "0",
+        "text": "-12",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "1",
-        "rationale": "Off by one; recheck the division."
+        "text": "-18",
+        "rationale": "Composition is not multiplication."
       },
       {
         "id": "C",
-        "text": "-10",
-        "rationale": "Subtract b before dividing, don't add it."
+        "text": "-3",
+        "rationale": "That is g(k); now apply f."
       },
       {
         "id": "D",
-        "text": "-1",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "15",
+        "rationale": "This computes g(f(k)); evaluate g first."
       }
     ],
     "correct_choice": "A",
-    "explanation": "Set 3x − 5 = -5: 3x = 0, so x = 0.",
-    "estimated_time_seconds": 80,
+    "explanation": "First g(0) = 3(0) − 3 = −3. Then f(−3) = 6·(−3) + 6 = −12.",
+    "estimated_time_seconds": 95,
     "tags": [
       "functions",
-      "solve"
+      "composition",
+      "family:fn_compose_transform"
     ],
-    "answer_verification": "f(0)=-5"
+    "answer_verification": "val=-12"
   },
   {
     "question_id": "sat-math-functions-medium-q19",
@@ -803,37 +887,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = 5x − 9. If f(x) = -24, what is the value of x?",
+    "prompt": "The function p(t) = 60 − 20t gives the amount of water, in gallons, remaining in a tank t minutes after a valve opens. Which of the following is the best interpretation of p(0) = 60?",
     "choices": [
       {
         "id": "A",
-        "text": "-15",
-        "rationale": "This is a·x (before dividing by the coefficient a)."
+        "text": "the number of minutes until the tank is empty",
+        "rationale": "That would be an input (a time or count) set equal to the output, which reverses the roles."
       },
       {
         "id": "B",
-        "text": "-2",
-        "rationale": "Off by one; recheck the division."
+        "text": "the total change in the output of the function over the first 60 units of input",
+        "rationale": "The constant term is a starting value, not a change over an interval."
       },
       {
         "id": "C",
-        "text": "-33",
-        "rationale": "Subtract b before dividing, don't add it."
+        "text": "the number of gallons drained each minute",
+        "rationale": "That describes the coefficient of the variable, the rate of change."
       },
       {
         "id": "D",
-        "text": "-3",
+        "text": "the amount of water in the tank when the valve opens",
         "rationale": "Correct."
       }
     ],
     "correct_choice": "D",
-    "explanation": "Set 5x − 9 = -24: 5x = -15, so x = -3.",
-    "estimated_time_seconds": 80,
+    "explanation": "p(0) is the output when the input is 0, so 60 is the amount of water in the tank when the valve opens.",
+    "estimated_time_seconds": 85,
     "tags": [
       "functions",
-      "solve"
+      "interpret",
+      "family:fn_interpret"
     ],
-    "answer_verification": "f(-3)=-24"
+    "answer_verification": "interpret p(0)"
   },
   {
     "question_id": "sat-math-functions-medium-q20",
@@ -847,36 +932,37 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = 4x − 2. If f(x) = -2, what is the value of x?",
+    "prompt": "The function f is defined by f(x) = (x + 6)/(x + 7). For what value of x is f(x) undefined?",
     "choices": [
       {
         "id": "A",
-        "text": "0",
-        "rationale": "Correct."
+        "text": "-6",
+        "rationale": "That makes the numerator 0, so f(x) = 0 there; the function is defined."
       },
       {
         "id": "B",
-        "text": "-4",
-        "rationale": "Subtract b before dividing, don't add it."
+        "text": "6",
+        "rationale": "The numerator's constant doesn't make f undefined."
       },
       {
         "id": "C",
-        "text": "4",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "-7",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "1",
-        "rationale": "Off by one; recheck the division."
+        "text": "7",
+        "rationale": "Solve x + b = 0, so x = −b."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Set 4x − 2 = -2: 4x = 0, so x = 0.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "C",
+    "explanation": "A fraction is undefined when its denominator is 0: x + 7 = 0 gives x = −7.",
+    "estimated_time_seconds": 75,
     "tags": [
       "functions",
-      "solve"
+      "rational",
+      "family:fn_undefined"
     ],
-    "answer_verification": "f(0)=-2"
+    "answer_verification": "x=-7"
   }
 ]

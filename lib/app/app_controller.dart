@@ -10,6 +10,7 @@ import '../data/repositories/progress_repository.dart';
 import '../domain/models/avatar_catalog.dart';
 import '../domain/models/backup.dart';
 import '../domain/models/content_bundle.dart';
+import '../domain/models/exam.dart';
 import '../domain/models/lesson.dart';
 import '../domain/models/profile.dart';
 import '../domain/models/progress.dart';
@@ -26,6 +27,7 @@ class AppData {
     required this.progress,
     required this.onboarded,
     required this.catalog,
+    this.exams = const [],
     this.revision = 0,
   });
 
@@ -34,18 +36,23 @@ class AppData {
   final AppProgress progress;
   final bool onboarded;
   final AvatarCatalog catalog;
+
+  /// Every exam the app ships content for (SAT, ACT, …), for the exam picker.
+  final List<ExamInfo> exams;
   final int revision;
 
   AppData bump({
     UserProfile? profile,
     bool? onboarded,
     AppProgress? progress,
+    ContentBundle? bundle,
   }) => AppData(
-    bundle: bundle,
+    bundle: bundle ?? this.bundle,
     profile: profile ?? this.profile,
     progress: progress ?? this.progress,
     onboarded: onboarded ?? this.onboarded,
     catalog: catalog,
+    exams: exams,
     revision: revision + 1,
   );
 }
@@ -64,6 +71,9 @@ class SurvivalResult {
   final bool isRecord;
   final List<BadgeDef> newBadges;
 }
+
+/// The exam loaded when no profile exists yet (first launch).
+const String kDefaultExamId = 'sat';
 
 /// Provides the content repository (overridable in tests).
 final contentRepositoryProvider = Provider<ContentRepository>(
@@ -102,33 +112,75 @@ class AppController extends AsyncNotifier<AppData> {
     final avatars = ref.read(avatarRepositoryProvider);
 
     final profile = _repo.loadProfile();
-    final examId = profile?.examId ?? 'sat';
+    final exams = await _loadExams(content);
+    // Fall back to the first shipped exam if the stored exam no longer exists.
+    final wanted = profile?.examId ?? kDefaultExamId;
+    final examId = exams.any((e) => e.id == wanted)
+        ? wanted
+        : (exams.isEmpty ? wanted : exams.first.id);
     final bundle = await content.loadBundle(examId);
     final catalog = await avatars.loadCatalog();
     return AppData(
       bundle: bundle,
       profile: profile,
       progress: _repo.loadProgress(),
-      onboarded: _repo.isOnboarded,
+      // A missing/corrupt profile means onboarding again, whatever the flag
+      // says; Home cannot render without a profile.
+      onboarded: _repo.isOnboarded && profile != null,
       catalog: catalog,
+      exams: exams,
     );
   }
 
   AppData get _data => state.requireValue;
 
-  /// Creates the local profile at the end of onboarding.
+  /// Reads exams.json; a missing/corrupt file degrades to the default exam so
+  /// the app still boots.
+  Future<List<ExamInfo>> _loadExams(ContentRepository content) async {
+    try {
+      final exams = await content.enabledExams();
+      if (exams.isNotEmpty) return exams;
+    } catch (_) {
+      // fall through
+    }
+    return const [
+      ExamInfo(id: kDefaultExamId, name: 'SAT', displayName: 'Digital SAT'),
+    ];
+  }
+
+  /// Switches the active exam (e.g. SAT -> ACT): loads that exam's bundle and
+  /// updates the profile. Progress is kept — lesson/question ids are
+  /// exam-prefixed, so each exam's path keeps its own completion state while
+  /// XP, streaks, and rewards carry across.
+  Future<void> switchExam(String examId) async {
+    final data = _data;
+    if (data.bundle.exam.id == examId) return;
+    final bundle = await ref.read(contentRepositoryProvider).loadBundle(examId);
+    final profile = data.profile?.copyWith(examId: examId);
+    if (profile != null) await _repo.saveProfile(profile);
+    state = AsyncData(data.bump(bundle: bundle, profile: profile));
+  }
+
+  /// Creates the local profile at the end of onboarding and loads the chosen
+  /// exam's content if it differs from the bundle loaded at boot.
   Future<void> completeOnboarding({
     required String examId,
     required int dailyGoalMinutes,
     DateTime? targetTestDate,
   }) async {
+    final data = _data;
     final profile = UserProfile.initial(
       examId,
       dailyGoalMinutes,
     ).copyWith(targetTestDate: targetTestDate);
+    final bundle = data.bundle.exam.id == examId
+        ? data.bundle
+        : await ref.read(contentRepositoryProvider).loadBundle(examId);
     await _repo.saveProfile(profile);
     await _repo.setOnboarded(true);
-    state = AsyncData(_data.bump(profile: profile, onboarded: true));
+    state = AsyncData(
+      data.bump(profile: profile, onboarded: true, bundle: bundle),
+    );
   }
 
   /// Applies a finished lesson attempt; persists and returns the outcome.
@@ -143,6 +195,7 @@ class AppController extends AsyncNotifier<AppData> {
       lesson: lesson,
       results: results,
       bundle: data.bundle,
+      catalog: data.catalog,
     );
     await _repo.saveProgress(data.progress);
     state = AsyncData(data.bump());
@@ -159,6 +212,7 @@ class AppController extends AsyncNotifier<AppData> {
       profile: data.profile!,
       results: results,
       bundle: data.bundle,
+      catalog: data.catalog,
     );
     await _repo.saveProgress(data.progress);
     state = AsyncData(data.bump());
@@ -178,6 +232,7 @@ class AppController extends AsyncNotifier<AppData> {
         profile: data.profile!,
         results: results,
         bundle: data.bundle,
+        catalog: data.catalog,
       );
     }
     final g = data.progress.game;
@@ -202,9 +257,11 @@ class AppController extends AsyncNotifier<AppData> {
   Future<void> applyDiagnostic({required List<AnswerResult> results}) async {
     final data = _data;
     for (final r in results) {
-      data.progress.mastery(r.question.skill).mastery = r.correct ? 60 : 25;
+      data.progress.mastery(masteryKeyFor(r.question)).mastery = r.correct
+          ? 60
+          : 25;
     }
-    data.progress.game.diagnosticDone = true;
+    data.progress.game.markDiagnosticDone(data.bundle.exam.id);
     await _repo.saveProgress(data.progress);
     state = AsyncData(data.bump());
   }
@@ -212,7 +269,7 @@ class AppController extends AsyncNotifier<AppData> {
   /// Marks the diagnostic as dismissed without taking it.
   Future<void> skipDiagnostic() async {
     final data = _data;
-    data.progress.game.diagnosticDone = true;
+    data.progress.game.markDiagnosticDone(data.bundle.exam.id);
     await _repo.saveProgress(data.progress);
     state = AsyncData(data.bump());
   }
@@ -251,6 +308,7 @@ class AppController extends AsyncNotifier<AppData> {
         progress: AppProgress(),
         onboarded: false,
         catalog: _data.catalog,
+        exams: _data.exams,
         revision: _data.revision + 1,
       ),
     );
@@ -269,6 +327,8 @@ class AppController extends AsyncNotifier<AppData> {
       now: DateTime.now(),
     );
     if (reward == null) return null;
+    // A chest can grant XP, which may cross a level/badge threshold.
+    Badges.evaluateAndGrant(data.progress, data.bundle);
     await _repo.saveProgress(data.progress);
     state = AsyncData(data.bump());
     return reward;
@@ -340,6 +400,17 @@ class AppController extends AsyncNotifier<AppData> {
     state = AsyncData(data.bump());
   }
 
+  /// Evolves a pet line into its next stage once its level allows. Returns the
+  /// new stage, or null when it cannot evolve yet.
+  Future<CatalogAsset?> evolvePet(String lineId) async {
+    final data = _data;
+    final next = _rewards.evolvePet(data.progress.game, data.catalog, lineId);
+    if (next == null) return null;
+    await _repo.saveProgress(data.progress);
+    state = AsyncData(data.bump());
+    return next;
+  }
+
   /// Moves an equipped side asset to its next available side slot.
   Future<void> cycleSideSlot(String assetId) async {
     final data = _data;
@@ -361,20 +432,37 @@ class AppController extends AsyncNotifier<AppData> {
   /// content bundle if the backup is for a different exam.
   Future<void> importBackup(BackupData data) async {
     final data0 = _data;
-    await _repo.writeBackup(data);
-    final profile = _repo.loadProfile();
-    final progress = _repo.loadProgress();
-    final examId = profile?.examId ?? data0.bundle.exam.id;
-    final bundle = examId == data0.bundle.exam.id
-        ? data0.bundle
-        : await ref.read(contentRepositoryProvider).loadBundle(examId);
+    // Resolve the bundle first so a backup for an exam this build does not
+    // ship cannot leave the store written but the session unchanged.
+    final wantedExam = data.profile?.examId ?? data0.bundle.exam.id;
+    var bundle = data0.bundle;
+    var profile = data.profile;
+    if (wantedExam != data0.bundle.exam.id) {
+      try {
+        bundle = await ref
+            .read(contentRepositoryProvider)
+            .loadBundle(wantedExam);
+      } catch (_) {
+        // Unknown exam: keep the current bundle and point the profile at it.
+        profile = profile?.copyWith(examId: data0.bundle.exam.id);
+      }
+    }
+    await _repo.writeBackup(
+      BackupData(
+        profile: profile,
+        progress: data.progress,
+        onboarded: data.onboarded,
+      ),
+    );
+    final storedProfile = _repo.loadProfile();
     state = AsyncData(
       AppData(
         bundle: bundle,
-        profile: profile,
-        progress: progress,
-        onboarded: _repo.isOnboarded,
+        profile: storedProfile,
+        progress: _repo.loadProgress(),
+        onboarded: _repo.isOnboarded && storedProfile != null,
         catalog: data0.catalog,
+        exams: data0.exams,
         revision: data0.revision + 1,
       ),
     );

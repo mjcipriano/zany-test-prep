@@ -75,7 +75,8 @@ class RewardsScreen extends ConsumerWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        rewards.selectedAvatar(g, data.catalog).name,
+                        rewards.selectedAvatar(g, data.catalog)?.name ??
+                            'No avatar',
                         style: const TextStyle(
                           fontWeight: FontWeight.w800,
                           fontSize: 18,

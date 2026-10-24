@@ -11,37 +11,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "evaluate",
-    "prompt": "The function f is defined by f(x) = 5x² − 5x + 5. What is the value of f(-4)?",
+    "prompt": "For the function f defined by f(x) = 3x² + 7x − 4, what is f(−5)?",
     "choices": [
       {
         "id": "A",
-        "text": "65",
-        "rationale": "Watch the sign on the middle term."
-      },
-      {
-        "id": "B",
-        "text": "105",
+        "text": "36",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "-54",
+        "rationale": "This squares only the coefficient, not x."
+      },
+      {
         "id": "C",
-        "text": "110",
-        "rationale": "Arithmetic slip in squaring; recompute (k)²."
+        "text": "106",
+        "rationale": "Watch the sign on the middle term."
       },
       {
         "id": "D",
-        "text": "5",
-        "rationale": "This squares only the coefficient, not x."
+        "text": "-114",
+        "rationale": "(−k)² is positive; don't carry the sign through the square."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "f(-4) = 5·(-4)² + -5·(-4) + 5 = 80 + 20 + 5 = 105.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "A",
+    "explanation": "f(−5) = 3·(−5)² + 7·(−5) − 4 = 75 − 35 − 4 = 36.",
+    "estimated_time_seconds": 85,
     "tags": [
       "functions",
-      "quadratic"
+      "evaluate",
+      "family:fn_evaluate"
     ],
-    "answer_verification": "f(-4)=105"
+    "answer_verification": "f(-5)=36"
   },
   {
     "question_id": "sat-math-functions-hard-q02",
@@ -54,38 +55,39 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "evaluate",
-    "prompt": "The function f is defined by f(x) = 5x² + 5x + 3. What is the value of f(0)?",
+    "subskill": "interpret",
+    "prompt": "The function f is defined by f(x) = x² + 9x + 11. What is the greatest value of x for which f(x) = 3?",
     "choices": [
       {
         "id": "A",
-        "text": "3",
-        "rationale": "Correct."
+        "text": "-8",
+        "rationale": "That is the lesser solution."
       },
       {
         "id": "B",
-        "text": "8",
-        "rationale": "Arithmetic slip in squaring; recompute (k)²."
+        "text": "-9",
+        "rationale": "That is the sum of the solutions, not one of them."
       },
       {
         "id": "C",
-        "text": "7",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "-1",
+        "rationale": "Correct."
       },
       {
         "id": "D",
         "text": "1",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "rationale": "Sign slip when reading the roots from the factors."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "f(0) = 5·(0)² + 5·(0) + 3 = 0 + 0 + 3 = 3.",
+    "correct_choice": "C",
+    "explanation": "Set x² + 9x + 11 = 3: x² + 9x + 8 = 0, which factors as (x − (−1))(x − (−8)) = 0. The greater solution is −1.",
     "estimated_time_seconds": 80,
     "tags": [
       "functions",
-      "quadratic"
+      "solve",
+      "family:fn_solve_input"
     ],
-    "answer_verification": "f(0)=3"
+    "answer_verification": "x=-1"
   },
   {
     "question_id": "sat-math-functions-hard-q03",
@@ -97,39 +99,72 @@
     "lesson_id": "sat-math-functions-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "evaluate",
-    "prompt": "The function f is defined by f(x) = 1x² + 7x + 5. What is the value of f(3)?",
+    "question_type": "data_interpretation",
+    "subskill": "interpret",
+    "prompt": "The table gives values of the linear function f. Which equation defines f?",
     "choices": [
       {
         "id": "A",
-        "text": "29",
-        "rationale": "This squares only the coefficient, not x."
+        "text": "f(x) = 10x + 2",
+        "rationale": "The slope and intercept are swapped."
       },
       {
         "id": "B",
-        "text": "-7",
-        "rationale": "Watch the sign on the middle term."
+        "text": "f(x) = 2x − 10",
+        "rationale": "Sign slip solving for the constant."
       },
       {
         "id": "C",
-        "text": "36",
-        "rationale": "Arithmetic slip in squaring; recompute (k)²."
+        "text": "f(x) = 2x + 10",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "35",
-        "rationale": "Correct."
+        "text": "f(x) = −2x + 10",
+        "rationale": "The outputs increase as x increases, so the slope's sign is wrong."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "f(3) = 1·(3)² + 7·(3) + 5 = 9 + 21 + 5 = 35.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "C",
+    "explanation": "Between consecutive rows, f changes by 2 per unit of x, so the slope is 2; using one row gives b = 10.",
+    "estimated_time_seconds": 90,
     "tags": [
       "functions",
-      "quadratic"
+      "table",
+      "family:fn_table"
     ],
-    "answer_verification": "f(3)=35"
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Values of f",
+        "headers": [
+          "x",
+          "f(x)"
+        ],
+        "rows": [
+          [
+            "-3",
+            "4"
+          ],
+          [
+            "-1",
+            "8"
+          ],
+          [
+            "0",
+            "10"
+          ],
+          [
+            "6",
+            "22"
+          ],
+          [
+            "8",
+            "26"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "f(x)=2x+(10)"
   },
   {
     "question_id": "sat-math-functions-hard-q04",
@@ -141,39 +176,40 @@
     "lesson_id": "sat-math-functions-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "multi_step_math",
     "subskill": "evaluate",
-    "prompt": "The function f is defined by f(x) = 2x² − 5x − 6. What is the value of f(1)?",
+    "prompt": "The function f is defined by f(x) = 5x² + 5, and the function g is defined by g(x) = f(x + 3) + 5. What is the value of g(−1)?",
     "choices": [
       {
         "id": "A",
-        "text": "-9",
-        "rationale": "Correct."
+        "text": "15",
+        "rationale": "Apply the horizontal shift before squaring."
       },
       {
         "id": "B",
-        "text": "1",
-        "rationale": "Watch the sign on the middle term."
+        "text": "90",
+        "rationale": "Inside the parentheses the shift is x − h; check its sign."
       },
       {
         "id": "C",
-        "text": "-12",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "30",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "-7",
-        "rationale": "Arithmetic slip in squaring; recompute (k)²."
+        "text": "25",
+        "rationale": "Don't forget to add the vertical shift."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "f(1) = 2·(1)² + -5·(1) + -6 = 2 + -5 + -6 = -9.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "C",
+    "explanation": "g(−1) = f(−1 + 3) + 5 = f(2) + 5 = 5·(2)² + 5 + 5 = 30.",
+    "estimated_time_seconds": 95,
     "tags": [
       "functions",
-      "quadratic"
+      "transformation",
+      "family:fn_compose_transform"
     ],
-    "answer_verification": "f(1)=-9"
+    "answer_verification": "val=30"
   },
   {
     "question_id": "sat-math-functions-hard-q05",
@@ -186,38 +222,39 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "evaluate",
-    "prompt": "The function f is defined by f(x) = 4x² + 1x + 1. What is the value of f(-3)?",
+    "subskill": "interpret",
+    "prompt": "The function h(t) = 369 + 3t gives the height, in centimeters, of a plant t weeks after it was planted. Which statement best describes the meaning of the number 3 in this model?",
     "choices": [
       {
         "id": "A",
-        "text": "40",
-        "rationale": "Watch the sign on the middle term."
+        "text": "the input 0 at which the output of the function is equal to 3",
+        "rationale": "The number multiplies the variable; it is a rate, not an input."
       },
       {
         "id": "B",
-        "text": "38",
-        "rationale": "Arithmetic slip in squaring; recompute (k)²."
-      },
-      {
-        "id": "C",
-        "text": "34",
+        "text": "the growth, in centimeters, each week",
         "rationale": "Correct."
       },
       {
+        "id": "C",
+        "text": "the height of the plant when it was planted",
+        "rationale": "That describes the constant term, the value at input 0."
+      },
+      {
         "id": "D",
-        "text": "-14",
-        "rationale": "This squares only the coefficient, not x."
+        "text": "the value of the function when the input 0 is equal to 3",
+        "rationale": "3 is a coefficient, not an input."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "f(-3) = 4·(-3)² + 1·(-3) + 1 = 36 + -3 + 1 = 34.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "B",
+    "explanation": "In a linear model the coefficient of 0 is the rate of change: the growth, in centimeters, each week.",
+    "estimated_time_seconds": 85,
     "tags": [
       "functions",
-      "quadratic"
+      "interpret",
+      "family:fn_interpret"
     ],
-    "answer_verification": "f(-3)=34"
+    "answer_verification": "interpret h(0)"
   },
   {
     "question_id": "sat-math-functions-hard-q06",
@@ -229,39 +266,25 @@
     "lesson_id": "sat-math-functions-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "student_produced",
     "subskill": "evaluate",
-    "prompt": "The function f is defined by f(x) = 5x² + 2x + 8. What is the value of f(5)?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "123",
-        "rationale": "Watch the sign on the middle term."
-      },
-      {
-        "id": "B",
-        "text": "43",
-        "rationale": "This squares only the coefficient, not x."
-      },
-      {
-        "id": "C",
-        "text": "148",
-        "rationale": "Arithmetic slip in squaring; recompute (k)²."
-      },
-      {
-        "id": "D",
-        "text": "143",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "f(5) = 5·(5)² + 2·(5) + 8 = 125 + 10 + 8 = 143.",
-    "estimated_time_seconds": 80,
+    "prompt": "If f(x) = 4x² + x + 7, what is the value of f(−2)?",
+    "answer": {
+      "type": "numeric",
+      "value": 21,
+      "accepted": [
+        "21"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "f(−2) = 4·(−2)² + 1·(−2) + 7 = 21.",
+    "estimated_time_seconds": 75,
     "tags": [
       "functions",
-      "quadratic"
+      "grid-in",
+      "family:fn_gridin"
     ],
-    "answer_verification": "f(5)=143"
+    "answer_verification": "val=21"
   },
   {
     "question_id": "sat-math-functions-hard-q07",
@@ -275,37 +298,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "evaluate",
-    "prompt": "The function f is defined by f(x) = 1x² + 9x − 10. What is the value of f(2)?",
+    "prompt": "The function f is defined by f(x) = 3x² + 8x − 4. What is the value of f(−3)?",
     "choices": [
       {
         "id": "A",
-        "text": "-24",
-        "rationale": "Watch the sign on the middle term."
+        "text": "-55",
+        "rationale": "(−k)² is positive; don't carry the sign through the square."
       },
       {
         "id": "B",
-        "text": "13",
-        "rationale": "Arithmetic slip in squaring; recompute (k)²."
+        "text": "47",
+        "rationale": "Watch the sign on the middle term."
       },
       {
         "id": "C",
-        "text": "10",
+        "text": "-37",
         "rationale": "This squares only the coefficient, not x."
       },
       {
         "id": "D",
-        "text": "12",
+        "text": "-1",
         "rationale": "Correct."
       }
     ],
     "correct_choice": "D",
-    "explanation": "f(2) = 1·(2)² + 9·(2) + -10 = 4 + 18 + -10 = 12.",
-    "estimated_time_seconds": 80,
+    "explanation": "f(−3) = 3·(−3)² + 8·(−3) − 4 = 27 − 24 − 4 = −1.",
+    "estimated_time_seconds": 85,
     "tags": [
       "functions",
-      "quadratic"
+      "evaluate",
+      "family:fn_evaluate"
     ],
-    "answer_verification": "f(2)=12"
+    "answer_verification": "f(-3)=-1"
   },
   {
     "question_id": "sat-math-functions-hard-q08",
@@ -318,38 +342,39 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "evaluate",
-    "prompt": "The function f is defined by f(x) = 1x² − 1x + 2. What is the value of f(2)?",
+    "subskill": "interpret",
+    "prompt": "The function f is defined by f(x) = x² + 16x + 62. What is the greatest value of x for which f(x) = −2?",
     "choices": [
       {
         "id": "A",
-        "text": "5",
-        "rationale": "Arithmetic slip in squaring; recompute (k)²."
-      },
-      {
-        "id": "B",
-        "text": "2",
-        "rationale": "This squares only the coefficient, not x."
-      },
-      {
-        "id": "C",
-        "text": "4",
+        "text": "-8",
         "rationale": "Correct."
       },
       {
-        "id": "D",
+        "id": "B",
         "text": "8",
-        "rationale": "Watch the sign on the middle term."
+        "rationale": "Sign slip when reading the roots from the factors."
+      },
+      {
+        "id": "C",
+        "text": "-2",
+        "rationale": "That is the output value, not the input."
+      },
+      {
+        "id": "D",
+        "text": "-16",
+        "rationale": "That is the sum of the solutions, not one of them."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "f(2) = 1·(2)² + -1·(2) + 2 = 4 + -2 + 2 = 4.",
+    "correct_choice": "A",
+    "explanation": "Set x² + 16x + 62 = −2: x² + 16x + 64 = 0, which factors as (x − (−8))(x − (−8)) = 0. The greater solution is −8.",
     "estimated_time_seconds": 80,
     "tags": [
       "functions",
-      "quadratic"
+      "solve",
+      "family:fn_solve_input"
     ],
-    "answer_verification": "f(2)=4"
+    "answer_verification": "x=-8"
   },
   {
     "question_id": "sat-math-functions-hard-q09",
@@ -361,39 +386,72 @@
     "lesson_id": "sat-math-functions-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "evaluate",
-    "prompt": "The function f is defined by f(x) = 3x² + 2x + 11. What is the value of f(5)?",
+    "question_type": "data_interpretation",
+    "subskill": "interpret",
+    "prompt": "The table gives values of the linear function f. Which equation defines f?",
     "choices": [
       {
         "id": "A",
-        "text": "76",
-        "rationale": "Watch the sign on the middle term."
+        "text": "f(x) = −4x + 7",
+        "rationale": "Sign slip solving for the constant."
       },
       {
         "id": "B",
-        "text": "36",
-        "rationale": "This squares only the coefficient, not x."
-      },
-      {
-        "id": "C",
-        "text": "96",
+        "text": "f(x) = −4x − 7",
         "rationale": "Correct."
       },
       {
+        "id": "C",
+        "text": "f(x) = 4x − 7",
+        "rationale": "The outputs decrease as x increases, so the slope's sign is wrong."
+      },
+      {
         "id": "D",
-        "text": "99",
-        "rationale": "Arithmetic slip in squaring; recompute (k)²."
+        "text": "f(x) = −7x − 4",
+        "rationale": "The slope and intercept are swapped."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "f(5) = 3·(5)² + 2·(5) + 11 = 75 + 10 + 11 = 96.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "B",
+    "explanation": "Between consecutive rows, f changes by −4 per unit of x, so the slope is −4; using one row gives b = −7.",
+    "estimated_time_seconds": 90,
     "tags": [
       "functions",
-      "quadratic"
+      "table",
+      "family:fn_table"
     ],
-    "answer_verification": "f(5)=96"
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Values of f",
+        "headers": [
+          "x",
+          "f(x)"
+        ],
+        "rows": [
+          [
+            "0",
+            "-7"
+          ],
+          [
+            "1",
+            "-11"
+          ],
+          [
+            "2",
+            "-15"
+          ],
+          [
+            "7",
+            "-35"
+          ],
+          [
+            "9",
+            "-43"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "f(x)=-4x+(-7)"
   },
   {
     "question_id": "sat-math-functions-hard-q10",
@@ -405,39 +463,40 @@
     "lesson_id": "sat-math-functions-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "multi_step_math",
     "subskill": "evaluate",
-    "prompt": "The function f is defined by f(x) = 6x² + 4x − 7. What is the value of f(-5)?",
+    "prompt": "The function f is defined by f(x) = 6x² − 6, and the function g is defined by g(x) = f(x + 5) − 5. What is the value of g(1)?",
     "choices": [
       {
         "id": "A",
-        "text": "129",
-        "rationale": "Arithmetic slip in squaring; recompute (k)²."
+        "text": "-5",
+        "rationale": "Apply the horizontal shift before squaring."
       },
       {
         "id": "B",
-        "text": "163",
-        "rationale": "Watch the sign on the middle term."
+        "text": "85",
+        "rationale": "Inside the parentheses the shift is x − h; check its sign."
       },
       {
         "id": "C",
-        "text": "123",
+        "text": "205",
         "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "-57",
-        "rationale": "This squares only the coefficient, not x."
+        "text": "210",
+        "rationale": "Don't forget to add the vertical shift."
       }
     ],
     "correct_choice": "C",
-    "explanation": "f(-5) = 6·(-5)² + 4·(-5) + -7 = 150 + -20 + -7 = 123.",
-    "estimated_time_seconds": 80,
+    "explanation": "g(1) = f(1 + 5) − 5 = f(6) − 5 = 6·(6)² − 6 − 5 = 205.",
+    "estimated_time_seconds": 95,
     "tags": [
       "functions",
-      "quadratic"
+      "transformation",
+      "family:fn_compose_transform"
     ],
-    "answer_verification": "f(-5)=123"
+    "answer_verification": "val=205"
   },
   {
     "question_id": "sat-math-functions-hard-q11",
@@ -450,38 +509,39 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "evaluate",
-    "prompt": "The function f is defined by f(x) = 3x² + 9x − 5. What is the value of f(0)?",
+    "subskill": "interpret",
+    "prompt": "The function h(t) = 115 + 6t gives the height, in centimeters, of a plant t weeks after it was planted. Which statement best describes the meaning of the number 6 in this model?",
     "choices": [
       {
         "id": "A",
-        "text": "-1",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "the value of the function when the input 0 is equal to 6",
+        "rationale": "6 is a coefficient, not an input."
       },
       {
         "id": "B",
-        "text": "-5",
-        "rationale": "Correct."
+        "text": "the height of the plant when it was planted",
+        "rationale": "That describes the constant term, the value at input 0."
       },
       {
         "id": "C",
-        "text": "-10",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "the input 0 at which the output of the function is equal to 6",
+        "rationale": "The number multiplies the variable; it is a rate, not an input."
       },
       {
         "id": "D",
-        "text": "-2",
-        "rationale": "Arithmetic slip in squaring; recompute (k)²."
+        "text": "the growth, in centimeters, each week",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "f(0) = 3·(0)² + 9·(0) + -5 = 0 + 0 + -5 = -5.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "D",
+    "explanation": "In a linear model the coefficient of 0 is the rate of change: the growth, in centimeters, each week.",
+    "estimated_time_seconds": 85,
     "tags": [
       "functions",
-      "quadratic"
+      "interpret",
+      "family:fn_interpret"
     ],
-    "answer_verification": "f(0)=-5"
+    "answer_verification": "interpret h(0)"
   },
   {
     "question_id": "sat-math-functions-hard-q12",
@@ -493,39 +553,25 @@
     "lesson_id": "sat-math-functions-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "student_produced",
     "subskill": "evaluate",
-    "prompt": "The function f is defined by f(x) = 3x² − 6x + 11. What is the value of f(-3)?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "59",
-        "rationale": "Arithmetic slip in squaring; recompute (k)²."
-      },
-      {
-        "id": "B",
-        "text": "20",
-        "rationale": "This squares only the coefficient, not x."
-      },
-      {
-        "id": "C",
-        "text": "60",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "D",
-        "text": "56",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "f(-3) = 3·(-3)² + -6·(-3) + 11 = 27 + 18 + 11 = 56.",
-    "estimated_time_seconds": 80,
+    "prompt": "If f(x) = 2x² − 3x − 1, what is the value of f(3)?",
+    "answer": {
+      "type": "numeric",
+      "value": 8,
+      "accepted": [
+        "8"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "f(3) = 2·(3)² − 3·(3) − 1 = 8.",
+    "estimated_time_seconds": 75,
     "tags": [
       "functions",
-      "quadratic"
+      "grid-in",
+      "family:fn_gridin"
     ],
-    "answer_verification": "f(-3)=56"
+    "answer_verification": "val=8"
   },
   {
     "question_id": "sat-math-functions-hard-q13",
@@ -539,37 +585,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "evaluate",
-    "prompt": "The function f is defined by f(x) = 2x² + 2x − 1. What is the value of f(-5)?",
+    "prompt": "If f(x) = −3x² + 2x + 9, what is f(4)?",
     "choices": [
       {
         "id": "A",
-        "text": "59",
-        "rationale": "Watch the sign on the middle term."
+        "text": "65",
+        "rationale": "(−k)² is positive; don't carry the sign through the square."
       },
       {
         "id": "B",
-        "text": "-21",
-        "rationale": "This squares only the coefficient, not x."
+        "text": "-31",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "41",
-        "rationale": "Arithmetic slip in squaring; recompute (k)²."
+        "text": "5",
+        "rationale": "This squares only the coefficient, not x."
       },
       {
         "id": "D",
-        "text": "39",
-        "rationale": "Correct."
+        "text": "-47",
+        "rationale": "Watch the sign on the middle term."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "f(-5) = 2·(-5)² + 2·(-5) + -1 = 50 + -10 + -1 = 39.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "B",
+    "explanation": "f(4) = −3·(4)² + 2·(4) + 9 = −48 + 8 + 9 = −31.",
+    "estimated_time_seconds": 85,
     "tags": [
       "functions",
-      "quadratic"
+      "evaluate",
+      "family:fn_evaluate"
     ],
-    "answer_verification": "f(-5)=39"
+    "answer_verification": "f(4)=-31"
   },
   {
     "question_id": "sat-math-functions-hard-q14",
@@ -582,38 +629,39 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "evaluate",
-    "prompt": "The function f is defined by f(x) = 4x² − 4x − 1. What is the value of f(-5)?",
+    "subskill": "interpret",
+    "prompt": "The function f is defined by f(x) = x² − 7x + 18. What is the greatest value of x for which f(x) = 6?",
     "choices": [
       {
         "id": "A",
-        "text": "79",
-        "rationale": "Watch the sign on the middle term."
+        "text": "7",
+        "rationale": "That is the sum of the solutions, not one of them."
       },
       {
         "id": "B",
-        "text": "-1",
-        "rationale": "This squares only the coefficient, not x."
+        "text": "3",
+        "rationale": "That is the lesser solution."
       },
       {
         "id": "C",
-        "text": "119",
-        "rationale": "Correct."
+        "text": "-4",
+        "rationale": "Sign slip when reading the roots from the factors."
       },
       {
         "id": "D",
-        "text": "123",
-        "rationale": "Arithmetic slip in squaring; recompute (k)²."
+        "text": "4",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "f(-5) = 4·(-5)² + -4·(-5) + -1 = 100 + 20 + -1 = 119.",
+    "correct_choice": "D",
+    "explanation": "Set x² − 7x + 18 = 6: x² − 7x + 12 = 0, which factors as (x − (4))(x − (3)) = 0. The greater solution is 4.",
     "estimated_time_seconds": 80,
     "tags": [
       "functions",
-      "quadratic"
+      "solve",
+      "family:fn_solve_input"
     ],
-    "answer_verification": "f(-5)=119"
+    "answer_verification": "x=4"
   },
   {
     "question_id": "sat-math-functions-hard-q15",
@@ -625,39 +673,72 @@
     "lesson_id": "sat-math-functions-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "evaluate",
-    "prompt": "The function f is defined by f(x) = 4x² + 9x − 3. What is the value of f(-1)?",
+    "question_type": "data_interpretation",
+    "subskill": "interpret",
+    "prompt": "The table gives values of the linear function f. Which equation defines f?",
     "choices": [
       {
         "id": "A",
-        "text": "-4",
-        "rationale": "Arithmetic slip in squaring; recompute (k)²."
+        "text": "f(x) = 7x − 3",
+        "rationale": "The slope and intercept are swapped."
       },
       {
         "id": "B",
-        "text": "-16",
-        "rationale": "This squares only the coefficient, not x."
+        "text": "f(x) = 3x + 7",
+        "rationale": "The outputs decrease as x increases, so the slope's sign is wrong."
       },
       {
         "id": "C",
-        "text": "-8",
+        "text": "f(x) = −3x + 7",
         "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "10",
-        "rationale": "Watch the sign on the middle term."
+        "text": "f(x) = −3x − 7",
+        "rationale": "Sign slip solving for the constant."
       }
     ],
     "correct_choice": "C",
-    "explanation": "f(-1) = 4·(-1)² + 9·(-1) + -3 = 4 + -9 + -3 = -8.",
-    "estimated_time_seconds": 80,
+    "explanation": "Between consecutive rows, f changes by −3 per unit of x, so the slope is −3; using one row gives b = 7.",
+    "estimated_time_seconds": 90,
     "tags": [
       "functions",
-      "quadratic"
+      "table",
+      "family:fn_table"
     ],
-    "answer_verification": "f(-1)=-8"
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Values of f",
+        "headers": [
+          "x",
+          "f(x)"
+        ],
+        "rows": [
+          [
+            "-4",
+            "19"
+          ],
+          [
+            "-1",
+            "10"
+          ],
+          [
+            "2",
+            "1"
+          ],
+          [
+            "3",
+            "-2"
+          ],
+          [
+            "6",
+            "-11"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "f(x)=-3x+(7)"
   },
   {
     "question_id": "sat-math-functions-hard-q16",
@@ -669,39 +750,40 @@
     "lesson_id": "sat-math-functions-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "multi_step_math",
     "subskill": "evaluate",
-    "prompt": "The function f is defined by f(x) = 6x² − 5x + 12. What is the value of f(-2)?",
+    "prompt": "The function f is defined by f(x) = 2x² − 1, and the function g is defined by g(x) = f(x + 1) + 3. What is the value of g(5)?",
     "choices": [
       {
         "id": "A",
-        "text": "10",
-        "rationale": "This squares only the coefficient, not x."
+        "text": "34",
+        "rationale": "Inside the parentheses the shift is x − h; check its sign."
       },
       {
         "id": "B",
-        "text": "26",
-        "rationale": "Watch the sign on the middle term."
+        "text": "71",
+        "rationale": "Don't forget to add the vertical shift."
       },
       {
         "id": "C",
-        "text": "52",
-        "rationale": "Arithmetic slip in squaring; recompute (k)²."
+        "text": "74",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "46",
-        "rationale": "Correct."
+        "text": "52",
+        "rationale": "Apply the horizontal shift before squaring."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "f(-2) = 6·(-2)² + -5·(-2) + 12 = 24 + 10 + 12 = 46.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "C",
+    "explanation": "g(5) = f(5 + 1) + 3 = f(6) + 3 = 2·(6)² − 1 + 3 = 74.",
+    "estimated_time_seconds": 95,
     "tags": [
       "functions",
-      "quadratic"
+      "transformation",
+      "family:fn_compose_transform"
     ],
-    "answer_verification": "f(-2)=46"
+    "answer_verification": "val=74"
   },
   {
     "question_id": "sat-math-functions-hard-q17",
@@ -714,38 +796,39 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "evaluate",
-    "prompt": "The function f is defined by f(x) = 2x² + 0x + 0. What is the value of f(-4)?",
+    "subskill": "interpret",
+    "prompt": "The function C(n) = 19n + 75 gives the cost, in dollars, of printing n posters. Which statement best describes the meaning of the number 19 in this model?",
     "choices": [
       {
         "id": "A",
-        "text": "32",
-        "rationale": "Correct."
+        "text": "the value of the function when the input 0 is equal to 19",
+        "rationale": "19 is a coefficient, not an input."
       },
       {
         "id": "B",
-        "text": "35",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "the cost before any posters are printed",
+        "rationale": "That describes the constant term, the value at input 0."
       },
       {
         "id": "C",
-        "text": "-8",
-        "rationale": "This squares only the coefficient, not x."
+        "text": "the input 0 at which the output of the function is equal to 19",
+        "rationale": "The number multiplies the variable; it is a rate, not an input."
       },
       {
         "id": "D",
-        "text": "34",
-        "rationale": "Arithmetic slip in squaring; recompute (k)²."
+        "text": "the number of posters that cost $75",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "f(-4) = 2·(-4)² + 0·(-4) + 0 = 32 + 0 + 0 = 32.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "D",
+    "explanation": "In a linear model the coefficient of 0 is the rate of change: the number of posters that cost $75.",
+    "estimated_time_seconds": 85,
     "tags": [
       "functions",
-      "quadratic"
+      "interpret",
+      "family:fn_interpret"
     ],
-    "answer_verification": "f(-4)=32"
+    "answer_verification": "interpret C(0)"
   },
   {
     "question_id": "sat-math-functions-hard-q18",
@@ -757,39 +840,25 @@
     "lesson_id": "sat-math-functions-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "student_produced",
     "subskill": "evaluate",
-    "prompt": "The function f is defined by f(x) = 1x² − 9x − 6. What is the value of f(-5)?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "64",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "34",
-        "rationale": "This squares only the coefficient, not x."
-      },
-      {
-        "id": "C",
-        "text": "65",
-        "rationale": "Arithmetic slip in squaring; recompute (k)²."
-      },
-      {
-        "id": "D",
-        "text": "-26",
-        "rationale": "Watch the sign on the middle term."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "f(-5) = 1·(-5)² + -9·(-5) + -6 = 25 + 45 + -6 = 64.",
-    "estimated_time_seconds": 80,
+    "prompt": "If f(x) = 3x² − 2x − 8, what is the value of f(−5)?",
+    "answer": {
+      "type": "numeric",
+      "value": 77,
+      "accepted": [
+        "77"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "f(−5) = 3·(−5)² − 2·(−5) − 8 = 77.",
+    "estimated_time_seconds": 75,
     "tags": [
       "functions",
-      "quadratic"
+      "grid-in",
+      "family:fn_gridin"
     ],
-    "answer_verification": "f(-5)=64"
+    "answer_verification": "val=77"
   },
   {
     "question_id": "sat-math-functions-hard-q19",
@@ -803,37 +872,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "evaluate",
-    "prompt": "The function f is defined by f(x) = 6x² + 9x + 4. What is the value of f(2)?",
+    "prompt": "If f(x) = −x² + 6x + 3, what is f(−3)?",
     "choices": [
       {
         "id": "A",
-        "text": "46",
-        "rationale": "Correct."
+        "text": "-6",
+        "rationale": "(−k)² is positive; don't carry the sign through the square."
       },
       {
         "id": "B",
-        "text": "34",
+        "text": "-12",
         "rationale": "This squares only the coefficient, not x."
       },
       {
         "id": "C",
-        "text": "10",
-        "rationale": "Watch the sign on the middle term."
+        "text": "-24",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "52",
-        "rationale": "Arithmetic slip in squaring; recompute (k)²."
+        "text": "12",
+        "rationale": "Watch the sign on the middle term."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "f(2) = 6·(2)² + 9·(2) + 4 = 24 + 18 + 4 = 46.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "C",
+    "explanation": "f(−3) = −1·(−3)² + 6·(−3) + 3 = −9 − 18 + 3 = −24.",
+    "estimated_time_seconds": 85,
     "tags": [
       "functions",
-      "quadratic"
+      "evaluate",
+      "family:fn_evaluate"
     ],
-    "answer_verification": "f(2)=46"
+    "answer_verification": "f(-3)=-24"
   },
   {
     "question_id": "sat-math-functions-hard-q20",
@@ -846,37 +916,38 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "evaluate",
-    "prompt": "The function f is defined by f(x) = 3x² − 8x + 10. What is the value of f(-3)?",
+    "subskill": "interpret",
+    "prompt": "The function f is defined by f(x) = x² − 11x + 26. What is the greatest value of x for which f(x) = 2?",
     "choices": [
       {
         "id": "A",
-        "text": "13",
-        "rationale": "Watch the sign on the middle term."
+        "text": "11",
+        "rationale": "That is the sum of the solutions, not one of them."
       },
       {
         "id": "B",
-        "text": "25",
-        "rationale": "This squares only the coefficient, not x."
+        "text": "3",
+        "rationale": "That is the lesser solution."
       },
       {
         "id": "C",
-        "text": "61",
+        "text": "8",
         "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "64",
-        "rationale": "Arithmetic slip in squaring; recompute (k)²."
+        "text": "-8",
+        "rationale": "Sign slip when reading the roots from the factors."
       }
     ],
     "correct_choice": "C",
-    "explanation": "f(-3) = 3·(-3)² + -8·(-3) + 10 = 27 + 24 + 10 = 61.",
+    "explanation": "Set x² − 11x + 26 = 2: x² − 11x + 24 = 0, which factors as (x − (3))(x − (8)) = 0. The greater solution is 8.",
     "estimated_time_seconds": 80,
     "tags": [
       "functions",
-      "quadratic"
+      "solve",
+      "family:fn_solve_input"
     ],
-    "answer_verification": "f(-3)=61"
+    "answer_verification": "x=8"
   }
 ]

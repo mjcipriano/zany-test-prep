@@ -11,37 +11,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "mean_median_mode",
-    "prompt": "The mean of 5 numbers is 15. Four of the numbers are 19, 10, 17, 20. What is the fifth number?",
+    "prompt": "What is the mean (average) of the data set 34, 43, 11, 48, 56, 59, 8?",
     "choices": [
       {
         "id": "A",
-        "text": "15",
-        "rationale": "This is the mean itself, not the missing value."
+        "text": "51",
+        "rationale": "This is the range, not the mean."
       },
       {
         "id": "B",
-        "text": "9",
+        "text": "37",
         "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "66",
-        "rationale": "This is the sum of the four shown numbers."
+        "text": "38",
+        "rationale": "Recheck the sum before dividing."
       },
       {
         "id": "D",
-        "text": "75",
-        "rationale": "This is the total of all five; subtract the four shown."
+        "text": "43",
+        "rationale": "This is the median, not the mean."
       }
     ],
     "correct_choice": "B",
-    "explanation": "The five numbers total 15×5 = 75. The four shown total 66, so the fifth is 75 − 66 = 9.",
-    "estimated_time_seconds": 95,
+    "explanation": "Mean = sum ÷ count = 259 ÷ 7 = 37.",
+    "estimated_time_seconds": 75,
     "tags": [
       "statistics",
-      "mean"
+      "mean",
+      "family:st_center_list"
     ],
-    "answer_verification": "missing=9"
+    "answer_verification": "mean=37"
   },
   {
     "question_id": "sat-math-statistics-hard-q02",
@@ -54,38 +55,40 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "mean_median_mode",
-    "prompt": "The mean of 5 numbers is 15. Four of the numbers are 11, 13, 18, 18. What is the fifth number?",
+    "subskill": "spread",
+    "prompt": "A data set has the values 10, 11, 14, 23, 29, 32. If the value 62 is added to the data set, which of the following describes the effect on the mean and the standard deviation?",
     "choices": [
       {
         "id": "A",
-        "text": "15",
-        "rationale": "Correct."
+        "text": "The mean increases and the standard deviation is unchanged.",
+        "rationale": "Adding a distant value changes the spread."
       },
       {
         "id": "B",
-        "text": "75",
-        "rationale": "This is the total of all five; subtract the four shown."
+        "text": "Both the mean and the standard deviation increase.",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "16",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "The mean decreases and the standard deviation increases.",
+        "rationale": "62 is above the current mean 19.8, so the mean rises."
       },
       {
         "id": "D",
-        "text": "60",
-        "rationale": "This is the sum of the four shown numbers."
+        "text": "The mean increases and the standard deviation decreases.",
+        "rationale": "A value far from the others increases the spread."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "The five numbers total 15×5 = 75. The four shown total 60, so the fifth is 75 − 60 = 15.",
-    "estimated_time_seconds": 95,
+    "correct_choice": "B",
+    "explanation": "The mean rises from 19.8 to 25.9 because 62 is above it, and the added value is far from the center, so the spread (standard deviation) grows.",
+    "estimated_time_seconds": 90,
     "tags": [
       "statistics",
-      "mean"
+      "standard-deviation",
+      "outlier",
+      "family:st_spread"
     ],
-    "answer_verification": "missing=15"
+    "answer_verification": "mean 19.83->25.86"
   },
   {
     "question_id": "sat-math-statistics-hard-q03",
@@ -97,39 +100,40 @@
     "lesson_id": "sat-math-statistics-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "multi_step_math",
     "subskill": "mean_median_mode",
-    "prompt": "The mean of 5 numbers is 9. Four of the numbers are 5, 4, 5, 19. What is the fifth number?",
+    "prompt": "In one class of 18 students the mean test score was 73, and in another class of 15 students the mean was 74. What is the mean score of all 33 students? (Round to the nearest tenth.)",
     "choices": [
       {
         "id": "A",
-        "text": "33",
-        "rationale": "This is the sum of the four shown numbers."
+        "text": "73.7",
+        "rationale": "Weight each mean by its class size."
       },
       {
         "id": "B",
-        "text": "9",
-        "rationale": "This is the mean itself, not the missing value."
+        "text": "74",
+        "rationale": "The combined mean lies between the two means."
       },
       {
         "id": "C",
-        "text": "12",
-        "rationale": "Correct."
+        "text": "75",
+        "rationale": "Arithmetic slip; recompute the weighted total."
       },
       {
         "id": "D",
-        "text": "45",
-        "rationale": "This is the total of all five; subtract the four shown."
+        "text": "73.5",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "The five numbers total 9×5 = 45. The four shown total 33, so the fifth is 45 − 33 = 12.",
-    "estimated_time_seconds": 95,
+    "correct_choice": "D",
+    "explanation": "Total points = 18·73 + 15·74 = 2424; divide by 33: 73.5.",
+    "estimated_time_seconds": 100,
     "tags": [
       "statistics",
-      "mean"
+      "weighted-mean",
+      "family:st_missing_value"
     ],
-    "answer_verification": "missing=12"
+    "answer_verification": "(18*73+15*74)/33=73.45"
   },
   {
     "question_id": "sat-math-statistics-hard-q04",
@@ -141,39 +145,73 @@
     "lesson_id": "sat-math-statistics-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The mean of 5 numbers is 9. Four of the numbers are 8, 10, 14, 3. What is the fifth number?",
+    "prompt": "The table shows the results of a survey of 38 people. What is the mean pets per student? (Round to the nearest hundredth if necessary.)",
     "choices": [
       {
         "id": "A",
-        "text": "35",
-        "rationale": "This is the sum of the four shown numbers."
+        "text": "22.2",
+        "rationale": "Divide by the number of people, not the number of rows."
       },
       {
         "id": "B",
-        "text": "9",
-        "rationale": "This is the mean itself, not the missing value."
+        "text": "2.92",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "45",
-        "rationale": "This is the total of all five; subtract the four shown."
+        "text": "3",
+        "rationale": "Weight each value by its frequency; don't average the listed values."
       },
       {
         "id": "D",
-        "text": "10",
-        "rationale": "Correct."
+        "text": "7.6",
+        "rationale": "That is the mean frequency, not the mean value."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "The five numbers total 9×5 = 45. The four shown total 35, so the fifth is 45 − 35 = 10.",
-    "estimated_time_seconds": 95,
+    "correct_choice": "B",
+    "explanation": "Mean = Σ(value × frequency)/N = 111/38 ≈ 2.92.",
+    "estimated_time_seconds": 100,
     "tags": [
       "statistics",
-      "mean"
+      "table",
+      "mean",
+      "family:st_frequency_table"
     ],
-    "answer_verification": "missing=10"
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Survey results",
+        "headers": [
+          "Number of pets",
+          "Number of students"
+        ],
+        "rows": [
+          [
+            "1",
+            "8"
+          ],
+          [
+            "2",
+            "8"
+          ],
+          [
+            "3",
+            "8"
+          ],
+          [
+            "4",
+            "7"
+          ],
+          [
+            "5",
+            "7"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "111/38"
   },
   {
     "question_id": "sat-math-statistics-hard-q05",
@@ -187,37 +225,39 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "mean_median_mode",
-    "prompt": "The mean of 5 numbers is 9. Four of the numbers are 16, 3, 5, 19. What is the fifth number?",
+    "prompt": "The data set 7, 16, 23, 26, 28, 32 has mean 22. If the greatest value is removed, what is the mean of the remaining values?",
     "choices": [
       {
         "id": "A",
-        "text": "2",
-        "rationale": "Correct."
+        "text": "132/5",
+        "rationale": "Subtract the removed value from the total as well."
       },
       {
         "id": "B",
-        "text": "43",
-        "rationale": "This is the sum of the four shown numbers."
+        "text": "20",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "9",
-        "rationale": "This is the mean itself, not the missing value."
+        "text": "16.67",
+        "rationale": "Divide by the new count, 5."
       },
       {
         "id": "D",
-        "text": "45",
-        "rationale": "This is the total of all five; subtract the four shown."
+        "text": "22",
+        "rationale": "Removing an extreme value changes the mean."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "The five numbers total 9×5 = 45. The four shown total 43, so the fifth is 45 − 43 = 2.",
-    "estimated_time_seconds": 95,
+    "correct_choice": "B",
+    "explanation": "Remove 32: new total 132 − 32 = 100, over 5 values: 20.",
+    "estimated_time_seconds": 85,
     "tags": [
       "statistics",
-      "mean"
+      "mean",
+      "change",
+      "family:st_change_effect"
     ],
-    "answer_verification": "missing=2"
+    "answer_verification": "val=20"
   },
   {
     "question_id": "sat-math-statistics-hard-q06",
@@ -229,39 +269,25 @@
     "lesson_id": "sat-math-statistics-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "student_produced",
     "subskill": "mean_median_mode",
-    "prompt": "The mean of 5 numbers is 10. Four of the numbers are 2, 15, 6, 6. What is the fifth number?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "29",
-        "rationale": "This is the sum of the four shown numbers."
-      },
-      {
-        "id": "B",
-        "text": "10",
-        "rationale": "This is the mean itself, not the missing value."
-      },
-      {
-        "id": "C",
-        "text": "21",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "50",
-        "rationale": "This is the total of all five; subtract the four shown."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "The five numbers total 10×5 = 50. The four shown total 29, so the fifth is 50 − 29 = 21.",
-    "estimated_time_seconds": 95,
+    "prompt": "The mean of 6 numbers is 14. If 5 of the numbers are 7, 25, 17, 6, 27, what is the remaining number?",
+    "answer": {
+      "type": "numeric",
+      "value": 2,
+      "accepted": [
+        "2"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "14 × 6 − 82 = 2.",
+    "estimated_time_seconds": 80,
     "tags": [
       "statistics",
-      "mean"
+      "grid-in",
+      "family:st_gridin"
     ],
-    "answer_verification": "missing=21"
+    "answer_verification": "val=2"
   },
   {
     "question_id": "sat-math-statistics-hard-q07",
@@ -275,37 +301,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "mean_median_mode",
-    "prompt": "The mean of 5 numbers is 11. Four of the numbers are 17, 11, 2, 9. What is the fifth number?",
+    "prompt": "The data set 102, 24, 28, 29, 26, 11, 24, 24, 22 lists the number of minutes 9 customers waited. Which of the following is true about the mean and the median of the data?",
     "choices": [
       {
         "id": "A",
-        "text": "55",
-        "rationale": "This is the total of all five; subtract the four shown."
+        "text": "The mean is less than the median, because most values are below 102.",
+        "rationale": "A large outlier raises the mean above the median."
       },
       {
         "id": "B",
-        "text": "16",
-        "rationale": "Correct."
+        "text": "The mean and the median are equal, because the data are symmetric.",
+        "rationale": "The mean is 32.2 and the median is 24; they differ."
       },
       {
         "id": "C",
-        "text": "39",
-        "rationale": "This is the sum of the four shown numbers."
+        "text": "The mean is greater than the median, because the value 102 pulls the mean up.",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "11",
-        "rationale": "This is the mean itself, not the missing value."
+        "text": "The median is greater than the mean, because the value 102 pulls the median up.",
+        "rationale": "The median is resistant to outliers; it is the middle value, 24."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "The five numbers total 11×5 = 55. The four shown total 39, so the fifth is 55 − 39 = 16.",
+    "correct_choice": "C",
+    "explanation": "Median = 24 (middle value); mean = 290/9 ≈ 32.2. The outlier 102 raises the mean.",
     "estimated_time_seconds": 95,
     "tags": [
       "statistics",
-      "mean"
+      "outlier",
+      "family:st_center_list"
     ],
-    "answer_verification": "missing=16"
+    "answer_verification": "mean=32.22 median=24"
   },
   {
     "question_id": "sat-math-statistics-hard-q08",
@@ -318,38 +345,40 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "mean_median_mode",
-    "prompt": "The mean of 5 numbers is 15. Four of the numbers are 3, 19, 16, 16. What is the fifth number?",
+    "subskill": "spread",
+    "prompt": "A data set has the values 10, 17, 29, 30, 37, 39. If the value 76 is added to the data set, which of the following describes the effect on the mean and the standard deviation?",
     "choices": [
       {
         "id": "A",
-        "text": "21",
-        "rationale": "Correct."
+        "text": "The mean increases and the standard deviation decreases.",
+        "rationale": "A value far from the others increases the spread."
       },
       {
         "id": "B",
-        "text": "54",
-        "rationale": "This is the sum of the four shown numbers."
+        "text": "Both the mean and the standard deviation increase.",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "15",
-        "rationale": "This is the mean itself, not the missing value."
+        "text": "The mean increases and the standard deviation is unchanged.",
+        "rationale": "Adding a distant value changes the spread."
       },
       {
         "id": "D",
-        "text": "75",
-        "rationale": "This is the total of all five; subtract the four shown."
+        "text": "The mean decreases and the standard deviation increases.",
+        "rationale": "76 is above the current mean 27.0, so the mean rises."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "The five numbers total 15×5 = 75. The four shown total 54, so the fifth is 75 − 54 = 21.",
-    "estimated_time_seconds": 95,
+    "correct_choice": "B",
+    "explanation": "The mean rises from 27.0 to 34.0 because 76 is above it, and the added value is far from the center, so the spread (standard deviation) grows.",
+    "estimated_time_seconds": 90,
     "tags": [
       "statistics",
-      "mean"
+      "standard-deviation",
+      "outlier",
+      "family:st_spread"
     ],
-    "answer_verification": "missing=21"
+    "answer_verification": "mean 27.00->34.00"
   },
   {
     "question_id": "sat-math-statistics-hard-q09",
@@ -361,39 +390,40 @@
     "lesson_id": "sat-math-statistics-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "multi_step_math",
     "subskill": "mean_median_mode",
-    "prompt": "The mean of 5 numbers is 14. Four of the numbers are 11, 3, 14, 14. What is the fifth number?",
+    "prompt": "In one class of 17 students the mean test score was 86, and in another class of 10 students the mean was 65. What is the mean score of all 27 students? (Round to the nearest tenth.)",
     "choices": [
       {
         "id": "A",
-        "text": "28",
-        "rationale": "Correct."
+        "text": "75.5",
+        "rationale": "Averaging the two means ignores the different class sizes."
       },
       {
         "id": "B",
-        "text": "14",
-        "rationale": "This is the mean itself, not the missing value."
+        "text": "78.2",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "42",
-        "rationale": "This is the sum of the four shown numbers."
+        "text": "79.7",
+        "rationale": "Arithmetic slip; recompute the weighted total."
       },
       {
         "id": "D",
-        "text": "70",
-        "rationale": "This is the total of all five; subtract the four shown."
+        "text": "73",
+        "rationale": "Weight each mean by its class size."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "The five numbers total 14×5 = 70. The four shown total 42, so the fifth is 70 − 42 = 28.",
-    "estimated_time_seconds": 95,
+    "correct_choice": "B",
+    "explanation": "Total points = 17·86 + 10·65 = 2112; divide by 27: 78.2.",
+    "estimated_time_seconds": 100,
     "tags": [
       "statistics",
-      "mean"
+      "weighted-mean",
+      "family:st_missing_value"
     ],
-    "answer_verification": "missing=28"
+    "answer_verification": "(17*86+10*65)/27=78.22"
   },
   {
     "question_id": "sat-math-statistics-hard-q10",
@@ -405,39 +435,73 @@
     "lesson_id": "sat-math-statistics-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The mean of 5 numbers is 13. Four of the numbers are 13, 9, 4, 14. What is the fifth number?",
+    "prompt": "The table shows the results of a survey of 24 people. What is the mean pets per student? (Round to the nearest hundredth if necessary.)",
     "choices": [
       {
         "id": "A",
-        "text": "13",
-        "rationale": "This is the mean itself, not the missing value."
+        "text": "2",
+        "rationale": "Weight each value by its frequency; don't average the listed values."
       },
       {
         "id": "B",
-        "text": "65",
-        "rationale": "This is the total of all five; subtract the four shown."
+        "text": "6.6",
+        "rationale": "Divide by the number of people, not the number of rows."
       },
       {
         "id": "C",
-        "text": "25",
+        "text": "1.38",
         "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "40",
-        "rationale": "This is the sum of the four shown numbers."
+        "text": "4.8",
+        "rationale": "That is the mean frequency, not the mean value."
       }
     ],
     "correct_choice": "C",
-    "explanation": "The five numbers total 13×5 = 65. The four shown total 40, so the fifth is 65 − 40 = 25.",
-    "estimated_time_seconds": 95,
+    "explanation": "Mean = Σ(value × frequency)/N = 33/24 ≈ 1.38.",
+    "estimated_time_seconds": 100,
     "tags": [
       "statistics",
-      "mean"
+      "table",
+      "mean",
+      "family:st_frequency_table"
     ],
-    "answer_verification": "missing=25"
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Survey results",
+        "headers": [
+          "Number of pets",
+          "Number of students"
+        ],
+        "rows": [
+          [
+            "0",
+            "7"
+          ],
+          [
+            "1",
+            "5"
+          ],
+          [
+            "2",
+            "9"
+          ],
+          [
+            "3",
+            "2"
+          ],
+          [
+            "4",
+            "1"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "33/24"
   },
   {
     "question_id": "sat-math-statistics-hard-q11",
@@ -451,37 +515,39 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "mean_median_mode",
-    "prompt": "The mean of 5 numbers is 9. Four of the numbers are 3, 4, 5, 6. What is the fifth number?",
+    "prompt": "The data set 4, 11, 22, 32, 38, 43 has mean 25. If the least value is removed, what is the mean of the remaining values?",
     "choices": [
       {
         "id": "A",
-        "text": "27",
-        "rationale": "Correct."
+        "text": "24.33",
+        "rationale": "Divide by the new count, 5."
       },
       {
         "id": "B",
-        "text": "9",
-        "rationale": "This is the mean itself, not the missing value."
+        "text": "146/5",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "18",
-        "rationale": "This is the sum of the four shown numbers."
+        "text": "30",
+        "rationale": "Subtract the removed value from the total as well."
       },
       {
         "id": "D",
-        "text": "45",
-        "rationale": "This is the total of all five; subtract the four shown."
+        "text": "25",
+        "rationale": "Removing an extreme value changes the mean."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "The five numbers total 9×5 = 45. The four shown total 18, so the fifth is 45 − 18 = 27.",
-    "estimated_time_seconds": 95,
+    "correct_choice": "B",
+    "explanation": "Remove 4: new total 150 − 4 = 146, over 5 values: 146/5.",
+    "estimated_time_seconds": 85,
     "tags": [
       "statistics",
-      "mean"
+      "mean",
+      "change",
+      "family:st_change_effect"
     ],
-    "answer_verification": "missing=27"
+    "answer_verification": "val=146/5"
   },
   {
     "question_id": "sat-math-statistics-hard-q12",
@@ -493,39 +559,25 @@
     "lesson_id": "sat-math-statistics-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "student_produced",
     "subskill": "mean_median_mode",
-    "prompt": "The mean of 5 numbers is 14. Four of the numbers are 20, 3, 16, 7. What is the fifth number?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "14",
-        "rationale": "This is the mean itself, not the missing value."
-      },
-      {
-        "id": "B",
-        "text": "24",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "70",
-        "rationale": "This is the total of all five; subtract the four shown."
-      },
-      {
-        "id": "D",
-        "text": "46",
-        "rationale": "This is the sum of the four shown numbers."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "The five numbers total 14×5 = 70. The four shown total 46, so the fifth is 70 − 46 = 24.",
-    "estimated_time_seconds": 95,
+    "prompt": "The mean of 7 numbers is 22. If 6 of the numbers are 29, 6, 22, 6, 21, 22, what is the remaining number?",
+    "answer": {
+      "type": "numeric",
+      "value": 48,
+      "accepted": [
+        "48"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "22 × 7 − 106 = 48.",
+    "estimated_time_seconds": 80,
     "tags": [
       "statistics",
-      "mean"
+      "grid-in",
+      "family:st_gridin"
     ],
-    "answer_verification": "missing=24"
+    "answer_verification": "val=48"
   },
   {
     "question_id": "sat-math-statistics-hard-q13",
@@ -539,37 +591,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "mean_median_mode",
-    "prompt": "The mean of 5 numbers is 16. Four of the numbers are 9, 19, 19, 18. What is the fifth number?",
+    "prompt": "The data set 25, 28, 29, 23, 91, 20, 19 lists the number of minutes 7 customers waited. Which of the following is true about the mean and the median of the data?",
     "choices": [
       {
         "id": "A",
-        "text": "65",
-        "rationale": "This is the sum of the four shown numbers."
+        "text": "The median is greater than the mean, because the value 91 pulls the median up.",
+        "rationale": "The median is resistant to outliers; it is the middle value, 25."
       },
       {
         "id": "B",
-        "text": "16",
-        "rationale": "This is the mean itself, not the missing value."
+        "text": "The mean is greater than the median, because the value 91 pulls the mean up.",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "80",
-        "rationale": "This is the total of all five; subtract the four shown."
+        "text": "The mean is less than the median, because most values are below 91.",
+        "rationale": "A large outlier raises the mean above the median."
       },
       {
         "id": "D",
-        "text": "15",
-        "rationale": "Correct."
+        "text": "The mean and the median are equal, because the data are symmetric.",
+        "rationale": "The mean is 33.6 and the median is 25; they differ."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "The five numbers total 16×5 = 80. The four shown total 65, so the fifth is 80 − 65 = 15.",
+    "correct_choice": "B",
+    "explanation": "Median = 25 (middle value); mean = 235/7 ≈ 33.6. The outlier 91 raises the mean.",
     "estimated_time_seconds": 95,
     "tags": [
       "statistics",
-      "mean"
+      "outlier",
+      "family:st_center_list"
     ],
-    "answer_verification": "missing=15"
+    "answer_verification": "mean=33.57 median=25"
   },
   {
     "question_id": "sat-math-statistics-hard-q14",
@@ -582,38 +635,40 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "mean_median_mode",
-    "prompt": "The mean of 5 numbers is 9. Four of the numbers are 9, 2, 7, 13. What is the fifth number?",
+    "subskill": "spread",
+    "prompt": "A data set has the values 14, 22, 24, 25, 28, 31. If the value 55 is added to the data set, which of the following describes the effect on the mean and the standard deviation?",
     "choices": [
       {
         "id": "A",
-        "text": "31",
-        "rationale": "This is the sum of the four shown numbers."
+        "text": "The mean increases and the standard deviation is unchanged.",
+        "rationale": "Adding a distant value changes the spread."
       },
       {
         "id": "B",
-        "text": "9",
-        "rationale": "This is the mean itself, not the missing value."
+        "text": "Both the mean and the standard deviation increase.",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "45",
-        "rationale": "This is the total of all five; subtract the four shown."
+        "text": "The mean increases and the standard deviation decreases.",
+        "rationale": "A value far from the others increases the spread."
       },
       {
         "id": "D",
-        "text": "14",
-        "rationale": "Correct."
+        "text": "The mean decreases and the standard deviation increases.",
+        "rationale": "55 is above the current mean 24.0, so the mean rises."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "The five numbers total 9×5 = 45. The four shown total 31, so the fifth is 45 − 31 = 14.",
-    "estimated_time_seconds": 95,
+    "correct_choice": "B",
+    "explanation": "The mean rises from 24.0 to 28.4 because 55 is above it, and the added value is far from the center, so the spread (standard deviation) grows.",
+    "estimated_time_seconds": 90,
     "tags": [
       "statistics",
-      "mean"
+      "standard-deviation",
+      "outlier",
+      "family:st_spread"
     ],
-    "answer_verification": "missing=14"
+    "answer_verification": "mean 24.00->28.43"
   },
   {
     "question_id": "sat-math-statistics-hard-q15",
@@ -625,39 +680,40 @@
     "lesson_id": "sat-math-statistics-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "multi_step_math",
     "subskill": "mean_median_mode",
-    "prompt": "The mean of 5 numbers is 12. Four of the numbers are 2, 2, 20, 16. What is the fifth number?",
+    "prompt": "In one class of 12 students the mean test score was 86, and in another class of 25 students the mean was 87. What is the mean score of all 37 students? (Round to the nearest tenth.)",
     "choices": [
       {
         "id": "A",
-        "text": "12",
-        "rationale": "This is the mean itself, not the missing value."
+        "text": "86.5",
+        "rationale": "Averaging the two means ignores the different class sizes."
       },
       {
         "id": "B",
-        "text": "60",
-        "rationale": "This is the total of all five; subtract the four shown."
-      },
-      {
-        "id": "C",
-        "text": "20",
+        "text": "86.7",
         "rationale": "Correct."
       },
       {
+        "id": "C",
+        "text": "88.2",
+        "rationale": "Arithmetic slip; recompute the weighted total."
+      },
+      {
         "id": "D",
-        "text": "40",
-        "rationale": "This is the sum of the four shown numbers."
+        "text": "86.9",
+        "rationale": "Weight each mean by its class size."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "The five numbers total 12×5 = 60. The four shown total 40, so the fifth is 60 − 40 = 20.",
-    "estimated_time_seconds": 95,
+    "correct_choice": "B",
+    "explanation": "Total points = 12·86 + 25·87 = 3207; divide by 37: 86.7.",
+    "estimated_time_seconds": 100,
     "tags": [
       "statistics",
-      "mean"
+      "weighted-mean",
+      "family:st_missing_value"
     ],
-    "answer_verification": "missing=20"
+    "answer_verification": "(12*86+25*87)/37=86.68"
   },
   {
     "question_id": "sat-math-statistics-hard-q16",
@@ -669,39 +725,73 @@
     "lesson_id": "sat-math-statistics-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The mean of 5 numbers is 13. Four of the numbers are 7, 7, 10, 13. What is the fifth number?",
+    "prompt": "The table shows the results of a survey of 16 people. What is the mean goals per game? (Round to the nearest hundredth if necessary.)",
     "choices": [
       {
         "id": "A",
-        "text": "13",
-        "rationale": "This is the mean itself, not the missing value."
+        "text": "9.2",
+        "rationale": "Divide by the number of people, not the number of rows."
       },
       {
         "id": "B",
-        "text": "37",
-        "rationale": "This is the sum of the four shown numbers."
+        "text": "2.88",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "65",
-        "rationale": "This is the total of all five; subtract the four shown."
+        "text": "3.2",
+        "rationale": "That is the mean frequency, not the mean value."
       },
       {
         "id": "D",
-        "text": "28",
-        "rationale": "Correct."
+        "text": "3",
+        "rationale": "Weight each value by its frequency; don't average the listed values."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "The five numbers total 13×5 = 65. The four shown total 37, so the fifth is 65 − 37 = 28.",
-    "estimated_time_seconds": 95,
+    "correct_choice": "B",
+    "explanation": "Mean = Σ(value × frequency)/N = 46/16 ≈ 2.88.",
+    "estimated_time_seconds": 100,
     "tags": [
       "statistics",
-      "mean"
+      "table",
+      "mean",
+      "family:st_frequency_table"
     ],
-    "answer_verification": "missing=28"
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Survey results",
+        "headers": [
+          "Goals scored",
+          "Number of games"
+        ],
+        "rows": [
+          [
+            "1",
+            "3"
+          ],
+          [
+            "2",
+            "1"
+          ],
+          [
+            "3",
+            "9"
+          ],
+          [
+            "4",
+            "1"
+          ],
+          [
+            "5",
+            "2"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "46/16"
   },
   {
     "question_id": "sat-math-statistics-hard-q17",
@@ -715,37 +805,39 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "mean_median_mode",
-    "prompt": "The mean of 5 numbers is 15. Four of the numbers are 13, 18, 9, 15. What is the fifth number?",
+    "prompt": "The data set 9, 10, 16, 32, 35, 36 has mean 23. If the greatest value is removed, what is the mean of the remaining values?",
     "choices": [
       {
         "id": "A",
-        "text": "15",
-        "rationale": "This is the mean itself, not the missing value."
-      },
-      {
-        "id": "B",
-        "text": "20",
+        "text": "102/5",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "138/5",
+        "rationale": "Subtract the removed value from the total as well."
+      },
+      {
         "id": "C",
-        "text": "55",
-        "rationale": "This is the sum of the four shown numbers."
+        "text": "23",
+        "rationale": "Removing an extreme value changes the mean."
       },
       {
         "id": "D",
-        "text": "75",
-        "rationale": "This is the total of all five; subtract the four shown."
+        "text": "17",
+        "rationale": "Divide by the new count, 5."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "The five numbers total 15×5 = 75. The four shown total 55, so the fifth is 75 − 55 = 20.",
-    "estimated_time_seconds": 95,
+    "correct_choice": "A",
+    "explanation": "Remove 36: new total 138 − 36 = 102, over 5 values: 102/5.",
+    "estimated_time_seconds": 85,
     "tags": [
       "statistics",
-      "mean"
+      "mean",
+      "change",
+      "family:st_change_effect"
     ],
-    "answer_verification": "missing=20"
+    "answer_verification": "val=102/5"
   },
   {
     "question_id": "sat-math-statistics-hard-q18",
@@ -757,39 +849,25 @@
     "lesson_id": "sat-math-statistics-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "student_produced",
     "subskill": "mean_median_mode",
-    "prompt": "The mean of 5 numbers is 10. Four of the numbers are 11, 5, 7, 8. What is the fifth number?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "31",
-        "rationale": "This is the sum of the four shown numbers."
-      },
-      {
-        "id": "B",
-        "text": "10",
-        "rationale": "This is the mean itself, not the missing value."
-      },
-      {
-        "id": "C",
-        "text": "50",
-        "rationale": "This is the total of all five; subtract the four shown."
-      },
-      {
-        "id": "D",
-        "text": "19",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "The five numbers total 10×5 = 50. The four shown total 31, so the fifth is 50 − 31 = 19.",
-    "estimated_time_seconds": 95,
+    "prompt": "The mean of 6 numbers is 22. If 5 of the numbers are 29, 12, 5, 20, 39, what is the remaining number?",
+    "answer": {
+      "type": "numeric",
+      "value": 27,
+      "accepted": [
+        "27"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "22 × 6 − 105 = 27.",
+    "estimated_time_seconds": 80,
     "tags": [
       "statistics",
-      "mean"
+      "grid-in",
+      "family:st_gridin"
     ],
-    "answer_verification": "missing=19"
+    "answer_verification": "val=27"
   },
   {
     "question_id": "sat-math-statistics-hard-q19",
@@ -803,37 +881,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "mean_median_mode",
-    "prompt": "The mean of 5 numbers is 15. Four of the numbers are 20, 17, 15, 12. What is the fifth number?",
+    "prompt": "The data set 12, 12, 98, 20, 26, 12, 16, 28, 21 lists the number of minutes 9 customers waited. Which of the following is true about the mean and the median of the data?",
     "choices": [
       {
         "id": "A",
-        "text": "75",
-        "rationale": "This is the total of all five; subtract the four shown."
+        "text": "The mean is less than the median, because most values are below 98.",
+        "rationale": "A large outlier raises the mean above the median."
       },
       {
         "id": "B",
-        "text": "64",
-        "rationale": "This is the sum of the four shown numbers."
+        "text": "The mean is greater than the median, because the value 98 pulls the mean up.",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "15",
-        "rationale": "This is the mean itself, not the missing value."
+        "text": "The median is greater than the mean, because the value 98 pulls the median up.",
+        "rationale": "The median is resistant to outliers; it is the middle value, 20."
       },
       {
         "id": "D",
-        "text": "11",
-        "rationale": "Correct."
+        "text": "The mean and the median are equal, because the data are symmetric.",
+        "rationale": "The mean is 27.2 and the median is 20; they differ."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "The five numbers total 15×5 = 75. The four shown total 64, so the fifth is 75 − 64 = 11.",
+    "correct_choice": "B",
+    "explanation": "Median = 20 (middle value); mean = 245/9 ≈ 27.2. The outlier 98 raises the mean.",
     "estimated_time_seconds": 95,
     "tags": [
       "statistics",
-      "mean"
+      "outlier",
+      "family:st_center_list"
     ],
-    "answer_verification": "missing=11"
+    "answer_verification": "mean=27.22 median=20"
   },
   {
     "question_id": "sat-math-statistics-hard-q20",
@@ -846,37 +925,39 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "mean_median_mode",
-    "prompt": "The mean of 5 numbers is 15. Four of the numbers are 20, 17, 15, 4. What is the fifth number?",
+    "subskill": "spread",
+    "prompt": "A data set has the values 16, 20, 28, 31, 33, 39. If the value 65 is added to the data set, which of the following describes the effect on the mean and the standard deviation?",
     "choices": [
       {
         "id": "A",
-        "text": "19",
-        "rationale": "Correct."
+        "text": "The mean increases and the standard deviation decreases.",
+        "rationale": "A value far from the others increases the spread."
       },
       {
         "id": "B",
-        "text": "75",
-        "rationale": "This is the total of all five; subtract the four shown."
+        "text": "The mean increases and the standard deviation is unchanged.",
+        "rationale": "Adding a distant value changes the spread."
       },
       {
         "id": "C",
-        "text": "15",
-        "rationale": "This is the mean itself, not the missing value."
+        "text": "The mean decreases and the standard deviation increases.",
+        "rationale": "65 is above the current mean 27.8, so the mean rises."
       },
       {
         "id": "D",
-        "text": "56",
-        "rationale": "This is the sum of the four shown numbers."
+        "text": "Both the mean and the standard deviation increase.",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "The five numbers total 15×5 = 75. The four shown total 56, so the fifth is 75 − 56 = 19.",
-    "estimated_time_seconds": 95,
+    "correct_choice": "D",
+    "explanation": "The mean rises from 27.8 to 33.1 because 65 is above it, and the added value is far from the center, so the spread (standard deviation) grows.",
+    "estimated_time_seconds": 90,
     "tags": [
       "statistics",
-      "mean"
+      "standard-deviation",
+      "outlier",
+      "family:st_spread"
     ],
-    "answer_verification": "missing=19"
+    "answer_verification": "mean 27.83->33.14"
   }
 ]

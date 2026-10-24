@@ -2,7 +2,8 @@
 exam_id: sat
 exam_name: "SAT"
 display_name: "Digital SAT"
-enabled: true            # only SAT is surfaced in the UI initially
+tagline: "Reading, Writing & Math"
+enabled: true
 content_version: "1.0.0"
 description: >
   Original, SAT-style practice for the Digital SAT, covering the Reading and
@@ -20,3 +21,19 @@ question_types:
   - grammar_editing
   - data_interpretation
   - multi_step_math
+# Full-length practice test layout (the app's Practice Test mode). Mirrors the
+# Digital SAT: two Reading & Writing modules, then two Math modules.
+timed_test:
+  intro: >
+    This mirrors the Digital SAT: two Reading & Writing modules, then two Math
+    modules, each timed.
+  modules:
+    - { name: "Reading & Writing — Module 1", domain: reading_writing, count: 27, minutes: 32 }
+    - { name: "Reading & Writing — Module 2", domain: reading_writing, count: 27, minutes: 32 }
+    - { name: "Math — Module 1", domain: math, count: 22, minutes: 35 }
+    - { name: "Math — Module 2", domain: math, count: 22, minutes: 35 }
+# How raw accuracy maps to the reported scale: each section 200-800, total =
+# sum of the two sections (400-1600).
+scoring:
+  type: sat_1600
+  composite_label: "Estimated total score"

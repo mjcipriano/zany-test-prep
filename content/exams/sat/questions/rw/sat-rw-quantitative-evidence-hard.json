@@ -11,27 +11,27 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "quantitative_evidence",
-    "prompt": "A researcher claims that wetland bird species in the reserve increased steadily from 2018 to 2023.\n\nWhich statement is best supported by the data in the table?",
+    "prompt": "A researcher claims that water use in the campus fell steadily from 2016 to 2021.\n\nWhich choice best uses data from the table to support the researcher's claim?",
     "choices": [
       {
         "id": "A",
-        "text": "The value increased by more than 30 species in a single year.",
-        "rationale": "The largest one-year change was only 20 species."
+        "text": "Almost all of the change happened between 2016 and 2017, with little movement afterward.",
+        "rationale": "The value changes in every year shown, not just the first span."
       },
       {
         "id": "B",
-        "text": "The value changed by the same amount every year, a constant 14 species per year.",
-        "rationale": "The year-to-year changes vary, so the change was not a constant 14 species."
+        "text": "The value declined by more than 30 million liters in a single year.",
+        "rationale": "The largest one-year change was only 15 million liters."
       },
       {
         "id": "C",
-        "text": "From 2018 to 2023, the value increased every year, going from 188 to 258 species.",
-        "rationale": "Correct. This matches the steady, one-direction trend the claim describes across every year shown."
+        "text": "The value declined each year, moving from 256 to 201 million liters over the period.",
+        "rationale": "Correct. This matches the steady, one-direction trend across every year shown."
       },
       {
         "id": "D",
-        "text": "Almost all of the change happened between 2018 and 2019, with little movement afterward.",
-        "rationale": "The value changes in every year shown, not just the first span."
+        "text": "The value changed by the same amount every year, a constant 11 million liters per year.",
+        "rationale": "The year-to-year changes vary, so the change was not a constant 11 million liters."
       }
     ],
     "correct_choice": "C",
@@ -40,40 +40,41 @@
     "tags": [
       "reading",
       "evidence",
-      "quantitative"
+      "quantitative",
+      "family:qe_trend"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Wetland bird species in the reserve (species)",
+        "caption": "Water use in the campus (million liters)",
         "headers": [
           "Year",
-          "Wetland bird species"
+          "Water use"
         ],
         "rows": [
           [
+            "2016",
+            "256"
+          ],
+          [
+            "2017",
+            "241"
+          ],
+          [
             "2018",
-            "188"
+            "226"
           ],
           [
             "2019",
-            "197"
+            "217"
           ],
           [
-            "2022",
-            "208"
+            "2020",
+            "210"
           ],
           [
-            "2023",
-            "228"
-          ],
-          [
-            "2023",
-            "243"
-          ],
-          [
-            "2023",
-            "258"
+            "2021",
+            "201"
           ]
         ]
       }
@@ -91,69 +92,66 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "quantitative_evidence",
-    "prompt": "A researcher claims that coral cover in the reef declined steadily from 2018 to 2024.\n\nWhich choice best uses data from the table to support the researcher's claim?",
+    "prompt": "A student argues that the share of households with solar panels varied considerably across the regions studied.\n\nWhich choice most effectively uses data from the table to support the claim?",
     "choices": [
       {
         "id": "A",
-        "text": "The value dropped by more than 40 percent in a single year.",
-        "rationale": "The largest one-year change was only 20 percent."
+        "text": "North had the highest share of households with solar panels, at 65 percent, while West had the lowest, at 86 percent.",
+        "rationale": "This reverses the table: West had the highest value and North the lowest."
       },
       {
         "id": "B",
-        "text": "The value changed by the same amount every year, a constant 11 percent per year.",
-        "rationale": "The year-to-year changes vary, so the change was not a constant 11 percent."
+        "text": "Central led all regions with 79 percent, ahead of West at 86 percent.",
+        "rationale": "Central was second; West had the highest value, 86 percent."
       },
       {
         "id": "C",
-        "text": "Almost all of the change happened between 2018 and 2021, with little movement afterward.",
-        "rationale": "The value changes in every year shown, not just the first span."
+        "text": "West had the highest share of households with solar panels, at 86 percent, while North had the lowest, at 65 percent.",
+        "rationale": "Correct. These figures are read directly from the table and compare the highest and lowest values."
       },
       {
         "id": "D",
-        "text": "The value dropped each year, moving from 452 to 396 percent over the period.",
-        "rationale": "Correct. This matches the steady, one-direction trend the claim describes across every year shown."
+        "text": "At 86 percent, West exceeded the lowest region, North, by 31 percent.",
+        "rationale": "The actual gap is 86 − 65 = 21 percent."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "The supporting statement must reflect the table's actual, consistent trend across all the years shown.",
+    "correct_choice": "C",
+    "explanation": "Find the largest and smallest values in the table and check each statement's numbers against them.",
     "estimated_time_seconds": 80,
     "tags": [
       "reading",
       "evidence",
-      "quantitative"
+      "quantitative",
+      "family:qe_category_max"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Coral cover in the reef (percent)",
+        "caption": "Share of households with solar panels by region (percent)",
         "headers": [
-          "Year",
-          "Coral cover"
+          "Region",
+          "Share of households with solar panels"
         ],
         "rows": [
           [
-            "2018",
-            "452"
+            "Central",
+            "79"
           ],
           [
-            "2021",
-            "443"
+            "South",
+            "78"
           ],
           [
-            "2020",
-            "423"
+            "West",
+            "86"
           ],
           [
-            "2021",
-            "412"
+            "North",
+            "65"
           ],
           [
-            "2024",
-            "405"
-          ],
-          [
-            "2024",
-            "396"
+            "East",
+            "73"
           ]
         ]
       }
@@ -171,69 +169,72 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "quantitative_evidence",
-    "prompt": "A researcher claims that library visits in the downtown branch increased steadily from 2020 to 2023.\n\nWhich finding from the table most directly supports the claim?",
+    "prompt": "A researcher claims that the gap between North and Central in share of households with solar panels has been closing.\n\nWhich statement is best supported by the data in the table?",
     "choices": [
       {
         "id": "A",
-        "text": "Almost all of the change happened between 2020 and 2019, with little movement afterward.",
-        "rationale": "The value changes in every year shown, not just the first span."
+        "text": "North exceeded Central in every year shown, finishing 2022 at 69 percent to Central's 70.",
+        "rationale": "In 2022 Central was ahead, 70 to 69."
       },
       {
         "id": "B",
-        "text": "The value changed by the same amount every year, a constant 16 thousands per year.",
-        "rationale": "The year-to-year changes vary, so the change was not a constant 16 thousands."
+        "text": "By 2022, Central (70 percent) had overtaken North (69 percent).",
+        "rationale": "Correct. The statement matches the two columns year by year."
       },
       {
         "id": "C",
-        "text": "Across all 6 years shown, the value increased from 144 to 222 thousands.",
-        "rationale": "Correct. This matches the steady, one-direction trend the claim describes across every year shown."
+        "text": "The gap between Central and North widened each year, reaching its largest in 2022.",
+        "rationale": "The gap shrank and then reversed."
       },
       {
         "id": "D",
-        "text": "The value increased by more than 30 thousands in a single year.",
-        "rationale": "The largest one-year change was only 20 thousands."
+        "text": "Central led North throughout the period, from 2018 (54 percent) through 2022 (70 percent).",
+        "rationale": "North was ahead in every year before 2022."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "The supporting statement must reflect the table's actual, consistent trend across all the years shown.",
+    "correct_choice": "B",
+    "explanation": "Compare the two columns in each row; note which is larger and how the difference changes over time.",
     "estimated_time_seconds": 80,
     "tags": [
       "reading",
       "evidence",
-      "quantitative"
+      "quantitative",
+      "family:qe_compare_two"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Library visits in the downtown branch (thousands)",
+        "caption": "Share of households with solar panels (percent)",
         "headers": [
           "Year",
-          "Library visits"
+          "Central",
+          "North"
         ],
         "rows": [
           [
-            "2020",
-            "144"
+            "2018",
+            "54",
+            "84"
           ],
           [
             "2019",
-            "164"
+            "58",
+            "82"
           ],
           [
             "2020",
-            "171"
+            "62",
+            "82"
+          ],
+          [
+            "2021",
+            "66",
+            "78"
           ],
           [
             "2022",
-            "191"
-          ],
-          [
-            "2023",
-            "211"
-          ],
-          [
-            "2023",
-            "222"
+            "70",
+            "69"
           ]
         ]
       }
@@ -251,69 +252,72 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "quantitative_evidence",
-    "prompt": "A researcher claims that wetland bird species in the reserve increased steadily from 2018 to 2025.\n\nWhich statement is best supported by the data in the table?",
+    "prompt": "A columnist claims that the points scored improved for every team between 2019 and 2023.\n\nWhich finding from the table most effectively undermines the claim?",
     "choices": [
       {
         "id": "A",
-        "text": "The value changed by the same amount every year, a constant 12 species per year.",
-        "rationale": "The year-to-year changes vary, so the change was not a constant 12 species."
+        "text": "The average across all teams was higher in 2023 than in 2019, as the columnist suggests.",
+        "rationale": "An average can rise even when one category falls; it does not test the word 'every'."
       },
       {
         "id": "B",
-        "text": "The value climbed each year, moving from 226 to 287 species over the period.",
-        "rationale": "Correct. This matches the steady, one-direction trend the claim describes across every year shown."
+        "text": "Comets declined by 4 points over the period.",
+        "rationale": "Correct. One category moved the opposite way, which directly contradicts the claim that every category improved."
       },
       {
         "id": "C",
-        "text": "Almost all of the change happened between 2018 and 2020, with little movement afterward.",
-        "rationale": "The value changes in every year shown, not just the first span."
+        "text": "Otters improved by 14 points, one of the gains the columnist points to.",
+        "rationale": "This is consistent with the claim; it does not undermine it."
       },
       {
         "id": "D",
-        "text": "The value climbed by more than 40 species in a single year.",
-        "rationale": "The largest one-year change was only 20 species."
+        "text": "Falcons rose from 34 to 44 points between 2019 and 2023, the pattern the columnist describes.",
+        "rationale": "This supports the claim rather than weakening it."
       }
     ],
     "correct_choice": "B",
-    "explanation": "The supporting statement must reflect the table's actual, consistent trend across all the years shown.",
+    "explanation": "A claim about 'every' category is disproved by a single category that moved the other way; find the row whose value fell.",
     "estimated_time_seconds": 80,
     "tags": [
       "reading",
       "evidence",
-      "quantitative"
+      "quantitative",
+      "family:qe_undermine"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Wetland bird species in the reserve (species)",
+        "caption": "Points scored (points)",
         "headers": [
-          "Year",
-          "Wetland bird species"
+          "Team",
+          "2019",
+          "2023"
         ],
         "rows": [
           [
-            "2018",
-            "226"
+            "Comets",
+            "61",
+            "57"
           ],
           [
-            "2020",
-            "246"
+            "Falcons",
+            "34",
+            "44"
           ],
           [
-            "2022",
-            "253"
+            "Otters",
+            "64",
+            "78"
           ],
           [
-            "2021",
-            "273"
+            "Badgers",
+            "36",
+            "46"
           ],
           [
-            "2022",
-            "280"
-          ],
-          [
-            "2025",
-            "287"
+            "Herons",
+            "23",
+            "26"
           ]
         ]
       }
@@ -331,69 +335,66 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "quantitative_evidence",
-    "prompt": "A researcher claims that ticket sales in the festival rose steadily from 2019 to 2024.\n\nWhich choice best uses data from the table to support the researcher's claim?",
+    "prompt": "A writer argues that Maple leads the other species in seedling survival rate.\n\nWhich choice most effectively uses data from the table to support the writer's claim?",
     "choices": [
       {
         "id": "A",
-        "text": "Year over year the figure climbed, reaching 362 thousands by 2024 from 298 thousands.",
-        "rationale": "Correct. This matches the steady, one-direction trend the claim describes across every year shown."
+        "text": "Pine recorded 56 percent, placing it near the middle of the species shown.",
+        "rationale": "Pine's value says nothing about Maple."
       },
       {
         "id": "B",
-        "text": "The value climbed by more than 35 thousands in a single year.",
-        "rationale": "The largest one-year change was only 20 thousands."
+        "text": "Maple recorded 68 percent, the highest value of any species in the table.",
+        "rationale": "The table shows 73 percent for Maple, not 68."
       },
       {
         "id": "C",
-        "text": "The value changed by the same amount every year, a constant 13 thousands per year.",
-        "rationale": "The year-to-year changes vary, so the change was not a constant 13 thousands."
+        "text": "Elm recorded the highest value, 67 percent, with Maple next at 73 percent.",
+        "rationale": "Elm is not the highest; Maple is, at 73 percent."
       },
       {
         "id": "D",
-        "text": "Almost all of the change happened between 2019 and 2021, with little movement afterward.",
-        "rationale": "The value changes in every year shown, not just the first span."
+        "text": "Maple recorded 73 percent, the highest value of any species in the table.",
+        "rationale": "Correct. Maple's figure is the highest in the table, which is exactly what the claim needs."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "The supporting statement must reflect the table's actual, consistent trend across all the years shown.",
+    "correct_choice": "D",
+    "explanation": "The claim concerns Maple specifically, so the supporting data must be Maple's own value and its rank among the others.",
     "estimated_time_seconds": 80,
     "tags": [
       "reading",
       "evidence",
-      "quantitative"
+      "quantitative",
+      "family:qe_support_point"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Ticket sales in the festival (thousands)",
+        "caption": "Seedling survival rate by species (percent)",
         "headers": [
-          "Year",
-          "Ticket sales"
+          "Species",
+          "Seedling survival rate"
         ],
         "rows": [
           [
-            "2019",
-            "298"
+            "Elm",
+            "67"
           ],
           [
-            "2021",
-            "305"
+            "Pine",
+            "56"
           ],
           [
-            "2022",
-            "325"
+            "Oak",
+            "15"
           ],
           [
-            "2023",
-            "332"
+            "Maple",
+            "73"
           ],
           [
-            "2023",
-            "347"
-          ],
-          [
-            "2024",
-            "362"
+            "Birch",
+            "39"
           ]
         ]
       }
@@ -411,69 +412,70 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "quantitative_evidence",
-    "prompt": "A researcher claims that coral cover in the reef declined steadily from 2019 to 2024.\n\nWhich finding from the table most directly supports the claim?",
+    "prompt": "A researcher claims that wetland bird species in the reserve increased steadily from 2019 to 2024.\n\nWhich finding from the table most directly supports the claim?",
     "choices": [
       {
         "id": "A",
-        "text": "The value changed by the same amount every year, a constant 9 percent per year.",
-        "rationale": "The year-to-year changes vary, so the change was not a constant 9 percent."
+        "text": "From 2019 to 2024, the value climbed every year, going from 373 to 437 species.",
+        "rationale": "Correct. This matches the steady, one-direction trend across every year shown."
       },
       {
         "id": "B",
-        "text": "Almost all of the change happened between 2019 and 2021, with little movement afterward.",
+        "text": "Almost all of the change happened between 2019 and 2020, with little movement afterward.",
         "rationale": "The value changes in every year shown, not just the first span."
       },
       {
         "id": "C",
-        "text": "The value dropped by more than 30 percent in a single year.",
-        "rationale": "The largest one-year change was only 15 percent."
+        "text": "The value climbed by more than 40 species in a single year.",
+        "rationale": "The largest one-year change was only 20 species."
       },
       {
         "id": "D",
-        "text": "Across all 6 years shown, the value dropped from 296 to 249 percent.",
-        "rationale": "Correct. This matches the steady, one-direction trend the claim describes across every year shown."
+        "text": "The value changed by the same amount every year, a constant 13 species per year.",
+        "rationale": "The year-to-year changes vary, so the change was not a constant 13 species."
       }
     ],
-    "correct_choice": "D",
+    "correct_choice": "A",
     "explanation": "The supporting statement must reflect the table's actual, consistent trend across all the years shown.",
     "estimated_time_seconds": 80,
     "tags": [
       "reading",
       "evidence",
-      "quantitative"
+      "quantitative",
+      "family:qe_trend"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Coral cover in the reef (percent)",
+        "caption": "Wetland bird species in the reserve (species)",
         "headers": [
           "Year",
-          "Coral cover"
+          "Wetland bird species"
         ],
         "rows": [
           [
             "2019",
-            "296"
-          ],
-          [
-            "2021",
-            "281"
+            "373"
           ],
           [
             "2020",
-            "274"
+            "388"
+          ],
+          [
+            "2021",
+            "399"
+          ],
+          [
+            "2022",
+            "419"
           ],
           [
             "2023",
-            "267"
-          ],
-          [
-            "2023",
-            "258"
+            "430"
           ],
           [
             "2024",
-            "249"
+            "437"
           ]
         ]
       }
@@ -491,69 +493,66 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "quantitative_evidence",
-    "prompt": "A researcher claims that average commute in the metro area fell steadily from 2020 to 2025.\n\nWhich finding from the table most directly supports the claim?",
+    "prompt": "A report claims that one team stood out from the others in points scored.\n\nWhich choice most effectively uses data from the table to support the claim?",
     "choices": [
       {
         "id": "A",
-        "text": "The value declined by more than 25 minutes in a single year.",
-        "rationale": "The largest one-year change was only 15 minutes."
+        "text": "Herons led all teams with 87 points, ahead of Badgers at 89 points.",
+        "rationale": "Herons was second; Badgers had the highest value, 89 points."
       },
       {
         "id": "B",
-        "text": "The value changed by the same amount every year, a constant 12 minutes per year.",
-        "rationale": "The year-to-year changes vary, so the change was not a constant 12 minutes."
+        "text": "At 89 points, Badgers exceeded the lowest team, Falcons, by 57 points.",
+        "rationale": "The actual gap is 89 − 37 = 52 points."
       },
       {
         "id": "C",
-        "text": "The value declined each year, moving from 410 to 349 minutes over the period.",
-        "rationale": "Correct. This matches the steady, one-direction trend the claim describes across every year shown."
+        "text": "Badgers had the highest points scored, at 89 points, while Falcons had the lowest, at 37 points.",
+        "rationale": "Correct. These figures are read directly from the table and compare the highest and lowest values."
       },
       {
         "id": "D",
-        "text": "Almost all of the change happened between 2020 and 2021, with little movement afterward.",
-        "rationale": "The value changes in every year shown, not just the first span."
+        "text": "Falcons had the highest points scored, at 37 points, while Badgers had the lowest, at 89 points.",
+        "rationale": "This reverses the table: Badgers had the highest value and Falcons the lowest."
       }
     ],
     "correct_choice": "C",
-    "explanation": "The supporting statement must reflect the table's actual, consistent trend across all the years shown.",
+    "explanation": "Find the largest and smallest values in the table and check each statement's numbers against them.",
     "estimated_time_seconds": 80,
     "tags": [
       "reading",
       "evidence",
-      "quantitative"
+      "quantitative",
+      "family:qe_category_max"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Average commute in the metro area (minutes)",
+        "caption": "Points scored by team (points)",
         "headers": [
-          "Year",
-          "Average commute"
+          "Team",
+          "Points scored"
         ],
         "rows": [
           [
-            "2020",
-            "410"
+            "Badgers",
+            "89"
           ],
           [
-            "2021",
-            "395"
+            "Otters",
+            "70"
           ],
           [
-            "2020",
-            "386"
+            "Falcons",
+            "37"
           ],
           [
-            "2021",
-            "371"
+            "Comets",
+            "38"
           ],
           [
-            "2022",
-            "360"
-          ],
-          [
-            "2025",
-            "349"
+            "Herons",
+            "87"
           ]
         ]
       }
@@ -571,69 +570,72 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "quantitative_evidence",
-    "prompt": "A researcher claims that coral cover in the reef declined steadily from 2020 to 2024.\n\nWhich finding from the table most directly supports the claim?",
+    "prompt": "A researcher claims that the gap between Comets and Herons in points scored has been closing.\n\nWhich statement is best supported by the data in the table?",
     "choices": [
       {
         "id": "A",
-        "text": "Across all 6 years shown, the value dropped from 327 to 264 percent.",
-        "rationale": "Correct. This matches the steady, one-direction trend the claim describes across every year shown."
+        "text": "By 2021, Herons (54 points) had overtaken Comets (50 points).",
+        "rationale": "Correct. The statement matches the two columns year by year."
       },
       {
         "id": "B",
-        "text": "The value changed by the same amount every year, a constant 13 percent per year.",
-        "rationale": "The year-to-year changes vary, so the change was not a constant 13 percent."
+        "text": "Comets exceeded Herons in every year shown, finishing 2021 at 50 points to Herons' 54.",
+        "rationale": "In 2021 Herons was ahead, 54 to 50."
       },
       {
         "id": "C",
-        "text": "The value dropped by more than 30 percent in a single year.",
-        "rationale": "The largest one-year change was only 20 percent."
+        "text": "Herons led Comets throughout the period, from 2017 (46 points) through 2021 (54 points).",
+        "rationale": "Comets was ahead in every year before 2021."
       },
       {
         "id": "D",
-        "text": "Almost all of the change happened between 2020 and 2020, with little movement afterward.",
-        "rationale": "The value changes in every year shown, not just the first span."
+        "text": "The gap between Herons and Comets widened each year, reaching its largest in 2021.",
+        "rationale": "The gap shrank and then reversed."
       }
     ],
     "correct_choice": "A",
-    "explanation": "The supporting statement must reflect the table's actual, consistent trend across all the years shown.",
+    "explanation": "Compare the two columns in each row; note which is larger and how the difference changes over time.",
     "estimated_time_seconds": 80,
     "tags": [
       "reading",
       "evidence",
-      "quantitative"
+      "quantitative",
+      "family:qe_compare_two"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Coral cover in the reef (percent)",
+        "caption": "Points scored (points)",
         "headers": [
           "Year",
-          "Coral cover"
+          "Herons",
+          "Comets"
         ],
         "rows": [
           [
-            "2020",
-            "327"
+            "2017",
+            "46",
+            "72"
+          ],
+          [
+            "2018",
+            "48",
+            "70"
+          ],
+          [
+            "2019",
+            "54",
+            "70"
           ],
           [
             "2020",
-            "320"
+            "58",
+            "69"
           ],
           [
-            "2020",
-            "300"
-          ],
-          [
-            "2023",
-            "291"
-          ],
-          [
-            "2024",
-            "284"
-          ],
-          [
-            "2024",
-            "264"
+            "2021",
+            "54",
+            "50"
           ]
         ]
       }
@@ -651,69 +653,72 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "quantitative_evidence",
-    "prompt": "A researcher claims that coral cover in the reef declined steadily from 2019 to 2025.\n\nWhich finding from the table most directly supports the claim?",
+    "prompt": "A columnist claims that the seedling survival rate improved for every species between 2020 and 2022.\n\nWhich finding from the table most effectively undermines the claim?",
     "choices": [
       {
         "id": "A",
-        "text": "Almost all of the change happened between 2019 and 2019, with little movement afterward.",
-        "rationale": "The value changes in every year shown, not just the first span."
+        "text": "Elm improved by 13 percent, one of the gains the columnist points to.",
+        "rationale": "This is consistent with the claim; it does not undermine it."
       },
       {
         "id": "B",
-        "text": "The value declined each year, moving from 327 to 264 percent over the period.",
-        "rationale": "Correct. This matches the steady, one-direction trend the claim describes across every year shown."
+        "text": "Pine declined by 7 percent over the period.",
+        "rationale": "Correct. One category moved the opposite way, which directly contradicts the claim that every category improved."
       },
       {
         "id": "C",
-        "text": "The value changed by the same amount every year, a constant 13 percent per year.",
-        "rationale": "The year-to-year changes vary, so the change was not a constant 13 percent."
+        "text": "Birch rose from 64 to 70 percent between 2020 and 2022, the pattern the columnist describes.",
+        "rationale": "This supports the claim rather than weakening it."
       },
       {
         "id": "D",
-        "text": "The value declined by more than 35 percent in a single year.",
-        "rationale": "The largest one-year change was only 15 percent."
+        "text": "The average across all species was higher in 2022 than in 2020, as the columnist suggests.",
+        "rationale": "An average can rise even when one category falls; it does not test the word 'every'."
       }
     ],
     "correct_choice": "B",
-    "explanation": "The supporting statement must reflect the table's actual, consistent trend across all the years shown.",
+    "explanation": "A claim about 'every' category is disproved by a single category that moved the other way; find the row whose value fell.",
     "estimated_time_seconds": 80,
     "tags": [
       "reading",
       "evidence",
-      "quantitative"
+      "quantitative",
+      "family:qe_undermine"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Coral cover in the reef (percent)",
+        "caption": "Seedling survival rate (percent)",
         "headers": [
-          "Year",
-          "Coral cover"
+          "Species",
+          "2020",
+          "2022"
         ],
         "rows": [
           [
-            "2019",
-            "327"
+            "Birch",
+            "64",
+            "70"
           ],
           [
-            "2019",
-            "318"
+            "Pine",
+            "41",
+            "34"
           ],
           [
-            "2021",
-            "303"
+            "Elm",
+            "30",
+            "43"
           ],
           [
-            "2023",
-            "288"
+            "Oak",
+            "64",
+            "74"
           ],
           [
-            "2024",
-            "279"
-          ],
-          [
-            "2025",
-            "264"
+            "Maple",
+            "27",
+            "32"
           ]
         ]
       }
@@ -731,69 +736,66 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "quantitative_evidence",
-    "prompt": "A researcher claims that coral cover in the reef declined steadily from 2020 to 2025.\n\nWhich statement is best supported by the data in the table?",
+    "prompt": "A writer argues that East lags well behind the other regions in share of households with solar panels.\n\nWhich choice most effectively uses data from the table to support the writer's claim?",
     "choices": [
       {
         "id": "A",
-        "text": "Almost all of the change happened between 2020 and 2020, with little movement afterward.",
-        "rationale": "The value changes in every year shown, not just the first span."
+        "text": "East recorded 21 percent, the lowest value of any region in the table.",
+        "rationale": "The table shows 16 percent for East, not 21."
       },
       {
         "id": "B",
-        "text": "The value changed by the same amount every year, a constant 8 percent per year.",
-        "rationale": "The year-to-year changes vary, so the change was not a constant 8 percent."
+        "text": "Central recorded 40 percent, placing it near the middle of the regions shown.",
+        "rationale": "Central's value says nothing about East."
       },
       {
         "id": "C",
-        "text": "The value declined by more than 26 percent in a single year.",
-        "rationale": "The largest one-year change was only 11 percent."
+        "text": "West recorded the lowest value, 34 percent, with East next at 16 percent.",
+        "rationale": "West is not the lowest; East is, at 16 percent."
       },
       {
         "id": "D",
-        "text": "From 2020 to 2025, the value declined every year, going from 334 to 293 percent.",
-        "rationale": "Correct. This matches the steady, one-direction trend the claim describes across every year shown."
+        "text": "East recorded 16 percent, the lowest value of any region in the table.",
+        "rationale": "Correct. East's figure is the lowest in the table, which is exactly what the claim needs."
       }
     ],
     "correct_choice": "D",
-    "explanation": "The supporting statement must reflect the table's actual, consistent trend across all the years shown.",
+    "explanation": "The claim concerns East specifically, so the supporting data must be East's own value and its rank among the others.",
     "estimated_time_seconds": 80,
     "tags": [
       "reading",
       "evidence",
-      "quantitative"
+      "quantitative",
+      "family:qe_support_point"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Coral cover in the reef (percent)",
+        "caption": "Share of households with solar panels by region (percent)",
         "headers": [
-          "Year",
-          "Coral cover"
+          "Region",
+          "Share of households with solar panels"
         ],
         "rows": [
           [
-            "2020",
-            "334"
+            "West",
+            "34"
           ],
           [
-            "2020",
-            "327"
+            "East",
+            "16"
           ],
           [
-            "2020",
-            "316"
+            "North",
+            "58"
           ],
           [
-            "2023",
-            "309"
+            "South",
+            "84"
           ],
           [
-            "2022",
-            "302"
-          ],
-          [
-            "2025",
-            "293"
+            "Central",
+            "40"
           ]
         ]
       }
@@ -811,27 +813,27 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "quantitative_evidence",
-    "prompt": "A researcher claims that average commute in the metro area fell steadily from 2018 to 2023.\n\nWhich finding from the table most directly supports the claim?",
+    "prompt": "A researcher claims that library visits in the downtown branch increased steadily from 2017 to 2022.\n\nWhich finding from the table most directly supports the claim?",
     "choices": [
       {
         "id": "A",
-        "text": "Almost all of the change happened between 2018 and 2019, with little movement afterward.",
-        "rationale": "The value changes in every year shown, not just the first span."
+        "text": "The value climbed by more than 40 thousand in a single year.",
+        "rationale": "The largest one-year change was only 20 thousand."
       },
       {
         "id": "B",
-        "text": "Year over year the figure dropped, reaching 253 minutes by 2023 from 316 minutes.",
-        "rationale": "Correct. This matches the steady, one-direction trend the claim describes across every year shown."
+        "text": "From 2017 to 2022, the value climbed every year, going from 141 to 201 thousand.",
+        "rationale": "Correct. This matches the steady, one-direction trend across every year shown."
       },
       {
         "id": "C",
-        "text": "The value changed by the same amount every year, a constant 13 minutes per year.",
-        "rationale": "The year-to-year changes vary, so the change was not a constant 13 minutes."
+        "text": "The value changed by the same amount every year, a constant 12 thousand per year.",
+        "rationale": "The year-to-year changes vary, so the change was not a constant 12 thousand."
       },
       {
         "id": "D",
-        "text": "The value dropped by more than 30 minutes in a single year.",
-        "rationale": "The largest one-year change was only 15 minutes."
+        "text": "Almost all of the change happened between 2017 and 2018, with little movement afterward.",
+        "rationale": "The value changes in every year shown, not just the first span."
       }
     ],
     "correct_choice": "B",
@@ -840,40 +842,41 @@
     "tags": [
       "reading",
       "evidence",
-      "quantitative"
+      "quantitative",
+      "family:qe_trend"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Average commute in the metro area (minutes)",
+        "caption": "Library visits in the downtown branch (thousand)",
         "headers": [
           "Year",
-          "Average commute"
+          "Library visits"
         ],
         "rows": [
           [
+            "2017",
+            "141"
+          ],
+          [
             "2018",
-            "316"
+            "156"
           ],
           [
             "2019",
-            "301"
+            "167"
           ],
           [
             "2020",
-            "294"
+            "174"
           ],
           [
             "2021",
-            "279"
+            "181"
           ],
           [
-            "2023",
-            "268"
-          ],
-          [
-            "2023",
-            "253"
+            "2022",
+            "201"
           ]
         ]
       }
@@ -891,69 +894,66 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "quantitative_evidence",
-    "prompt": "A researcher claims that recycling rate in the town climbed steadily from 2020 to 2024.\n\nWhich choice best uses data from the table to support the researcher's claim?",
+    "prompt": "A student argues that the yield per acre varied considerably across the crops studied.\n\nWhich choice most effectively uses data from the table to support the claim?",
     "choices": [
       {
         "id": "A",
-        "text": "Almost all of the change happened between 2020 and 2020, with little movement afterward.",
-        "rationale": "The value changes in every year shown, not just the first span."
+        "text": "Barley had the highest yield per acre, at 26 bushels, while Wheat had the lowest, at 89 bushels.",
+        "rationale": "This reverses the table: Wheat had the highest value and Barley the lowest."
       },
       {
         "id": "B",
-        "text": "The value increased by more than 31 percent in a single year.",
-        "rationale": "The largest one-year change was only 11 percent."
+        "text": "At 89 bushels, Wheat exceeded the lowest crop, Barley, by 68 bushels.",
+        "rationale": "The actual gap is 89 − 26 = 63 bushels."
       },
       {
         "id": "C",
-        "text": "The value changed by the same amount every year, a constant 9 percent per year.",
-        "rationale": "The year-to-year changes vary, so the change was not a constant 9 percent."
+        "text": "Rye led all crops with 69 bushels, ahead of Wheat at 89 bushels.",
+        "rationale": "Rye was second; Wheat had the highest value, 89 bushels."
       },
       {
         "id": "D",
-        "text": "Across all 6 years shown, the value increased from 186 to 233 percent.",
-        "rationale": "Correct. This matches the steady, one-direction trend the claim describes across every year shown."
+        "text": "Wheat's figure (89 bushels) was 63 bushels higher than Barley's.",
+        "rationale": "Correct. These figures are read directly from the table and compare the highest and lowest values."
       }
     ],
     "correct_choice": "D",
-    "explanation": "The supporting statement must reflect the table's actual, consistent trend across all the years shown.",
+    "explanation": "Find the largest and smallest values in the table and check each statement's numbers against them.",
     "estimated_time_seconds": 80,
     "tags": [
       "reading",
       "evidence",
-      "quantitative"
+      "quantitative",
+      "family:qe_category_max"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Recycling rate in the town (percent)",
+        "caption": "Yield per acre by crop (bushels)",
         "headers": [
-          "Year",
-          "Recycling rate"
+          "Crop",
+          "Yield per acre"
         ],
         "rows": [
           [
-            "2020",
-            "186"
+            "Corn",
+            "28"
           ],
           [
-            "2020",
-            "195"
+            "Rye",
+            "69"
           ],
           [
-            "2022",
-            "202"
+            "Wheat",
+            "89"
           ],
           [
-            "2022",
-            "213"
+            "Barley",
+            "26"
           ],
           [
-            "2023",
-            "224"
-          ],
-          [
-            "2024",
-            "233"
+            "Oats",
+            "38"
           ]
         ]
       }
@@ -971,69 +971,72 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "quantitative_evidence",
-    "prompt": "A researcher claims that coral cover in the reef declined steadily from 2019 to 2025.\n\nWhich choice best uses data from the table to support the researcher's claim?",
+    "prompt": "A researcher claims that the gap between Barley and Rye in yield per acre has been closing.\n\nWhich choice best uses data from the table to support the researcher's claim?",
     "choices": [
       {
         "id": "A",
-        "text": "Across all 6 years shown, the value dropped from 314 to 244 percent.",
-        "rationale": "Correct. This matches the steady, one-direction trend the claim describes across every year shown."
+        "text": "By 2024, Rye (69 bushels) had overtaken Barley (66 bushels).",
+        "rationale": "Correct. The statement matches the two columns year by year."
       },
       {
         "id": "B",
-        "text": "The value changed by the same amount every year, a constant 14 percent per year.",
-        "rationale": "The year-to-year changes vary, so the change was not a constant 14 percent."
+        "text": "The gap between Rye and Barley widened each year, reaching its largest in 2024.",
+        "rationale": "The gap shrank and then reversed."
       },
       {
         "id": "C",
-        "text": "The value dropped by more than 40 percent in a single year.",
-        "rationale": "The largest one-year change was only 20 percent."
+        "text": "Barley exceeded Rye in every year shown, finishing 2024 at 66 bushels to Rye's 69.",
+        "rationale": "In 2024 Rye was ahead, 69 to 66."
       },
       {
         "id": "D",
-        "text": "Almost all of the change happened between 2019 and 2019, with little movement afterward.",
-        "rationale": "The value changes in every year shown, not just the first span."
+        "text": "Rye led Barley throughout the period, from 2020 (57 bushels) through 2024 (69 bushels).",
+        "rationale": "Barley was ahead in every year before 2024."
       }
     ],
     "correct_choice": "A",
-    "explanation": "The supporting statement must reflect the table's actual, consistent trend across all the years shown.",
+    "explanation": "Compare the two columns in each row; note which is larger and how the difference changes over time.",
     "estimated_time_seconds": 80,
     "tags": [
       "reading",
       "evidence",
-      "quantitative"
+      "quantitative",
+      "family:qe_compare_two"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Coral cover in the reef (percent)",
+        "caption": "Yield per acre (bushels)",
         "headers": [
           "Year",
-          "Coral cover"
+          "Rye",
+          "Barley"
         ],
         "rows": [
           [
-            "2019",
-            "314"
+            "2020",
+            "57",
+            "90"
           ],
           [
-            "2019",
-            "303"
-          ],
-          [
-            "2022",
-            "294"
-          ],
-          [
-            "2022",
-            "279"
+            "2021",
+            "61",
+            "89"
           ],
           [
             "2022",
-            "259"
+            "65",
+            "88"
           ],
           [
-            "2025",
-            "244"
+            "2023",
+            "66",
+            "84"
+          ],
+          [
+            "2024",
+            "69",
+            "66"
           ]
         ]
       }
@@ -1051,69 +1054,72 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "quantitative_evidence",
-    "prompt": "A researcher claims that library visits in the downtown branch increased steadily from 2020 to 2024.\n\nWhich choice best uses data from the table to support the researcher's claim?",
+    "prompt": "A columnist claims that the yield per acre improved for every crop between 2020 and 2022.\n\nWhich choice uses data from the table to most directly challenge the columnist's claim?",
     "choices": [
       {
         "id": "A",
-        "text": "Almost all of the change happened between 2020 and 2020, with little movement afterward.",
-        "rationale": "The value changes in every year shown, not just the first span."
+        "text": "Corn improved by 7 bushels, one of the gains the columnist points to.",
+        "rationale": "This is consistent with the claim; it does not undermine it."
       },
       {
         "id": "B",
-        "text": "The value increased by more than 30 thousands in a single year.",
-        "rationale": "The largest one-year change was only 20 thousands."
+        "text": "Wheat rose from 22 to 31 bushels between 2020 and 2022, the pattern the columnist describes.",
+        "rationale": "This supports the claim rather than weakening it."
       },
       {
         "id": "C",
-        "text": "The value changed by the same amount every year, a constant 12 thousands per year.",
-        "rationale": "The year-to-year changes vary, so the change was not a constant 12 thousands."
+        "text": "The average across all crops was higher in 2022 than in 2020, as the columnist suggests.",
+        "rationale": "An average can rise even when one category falls; it does not test the word 'every'."
       },
       {
         "id": "D",
-        "text": "Year over year the figure increased, reaching 183 thousands by 2024 from 125 thousands.",
-        "rationale": "Correct. This matches the steady, one-direction trend the claim describes across every year shown."
+        "text": "For Oats, the 2022 figure (31 bushels) is lower than the 2020 figure (33 bushels).",
+        "rationale": "Correct. One category moved the opposite way, which directly contradicts the claim that every category improved."
       }
     ],
     "correct_choice": "D",
-    "explanation": "The supporting statement must reflect the table's actual, consistent trend across all the years shown.",
+    "explanation": "A claim about 'every' category is disproved by a single category that moved the other way; find the row whose value fell.",
     "estimated_time_seconds": 80,
     "tags": [
       "reading",
       "evidence",
-      "quantitative"
+      "quantitative",
+      "family:qe_undermine"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Library visits in the downtown branch (thousands)",
+        "caption": "Yield per acre (bushels)",
         "headers": [
-          "Year",
-          "Library visits"
+          "Crop",
+          "2020",
+          "2022"
         ],
         "rows": [
           [
-            "2020",
-            "125"
+            "Oats",
+            "33",
+            "31"
           ],
           [
-            "2020",
-            "140"
+            "Wheat",
+            "22",
+            "31"
           ],
           [
-            "2021",
-            "149"
+            "Corn",
+            "61",
+            "68"
           ],
           [
-            "2023",
-            "156"
+            "Barley",
+            "48",
+            "60"
           ],
           [
-            "2024",
-            "163"
-          ],
-          [
-            "2024",
-            "183"
+            "Rye",
+            "53",
+            "56"
           ]
         ]
       }
@@ -1131,69 +1137,66 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "quantitative_evidence",
-    "prompt": "A researcher claims that coral cover in the reef declined steadily from 2020 to 2025.\n\nWhich statement is best supported by the data in the table?",
+    "prompt": "A writer argues that Downtown leads the other branches in monthly visitor count.\n\nWhich data point from the table best supports the claim?",
     "choices": [
       {
         "id": "A",
-        "text": "The value fell by more than 30 percent in a single year.",
-        "rationale": "The largest one-year change was only 20 percent."
+        "text": "Harbor recorded the highest value, 49 thousand, with Downtown next at 66 thousand.",
+        "rationale": "Harbor is not the highest; Downtown is, at 66 thousand."
       },
       {
         "id": "B",
-        "text": "From 2020 to 2025, the value fell every year, going from 293 to 225 percent.",
-        "rationale": "Correct. This matches the steady, one-direction trend the claim describes across every year shown."
+        "text": "Eastgate recorded 44 thousand, placing it near the middle of the branches shown.",
+        "rationale": "Eastgate's value says nothing about Downtown."
       },
       {
         "id": "C",
-        "text": "The value changed by the same amount every year, a constant 14 percent per year.",
-        "rationale": "The year-to-year changes vary, so the change was not a constant 14 percent."
+        "text": "Downtown recorded 58 thousand, the highest value of any branch in the table.",
+        "rationale": "The table shows 66 thousand for Downtown, not 58."
       },
       {
         "id": "D",
-        "text": "Almost all of the change happened between 2020 and 2020, with little movement afterward.",
-        "rationale": "The value changes in every year shown, not just the first span."
+        "text": "At 66 thousand, Downtown was 17 thousand above the next-highest branch, Harbor.",
+        "rationale": "Correct. Downtown's figure is the highest in the table, which is exactly what the claim needs."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "The supporting statement must reflect the table's actual, consistent trend across all the years shown.",
+    "correct_choice": "D",
+    "explanation": "The claim concerns Downtown specifically, so the supporting data must be Downtown's own value and its rank among the others.",
     "estimated_time_seconds": 80,
     "tags": [
       "reading",
       "evidence",
-      "quantitative"
+      "quantitative",
+      "family:qe_support_point"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Coral cover in the reef (percent)",
+        "caption": "Monthly visitor count by branch (thousand)",
         "headers": [
-          "Year",
-          "Coral cover"
+          "Branch",
+          "Monthly visitor count"
         ],
         "rows": [
           [
-            "2020",
-            "293"
+            "Downtown",
+            "66"
           ],
           [
-            "2020",
-            "273"
+            "Riverside",
+            "26"
           ],
           [
-            "2022",
-            "258"
+            "Eastgate",
+            "44"
           ],
           [
-            "2021",
-            "243"
+            "Harbor",
+            "49"
           ],
           [
-            "2022",
-            "232"
-          ],
-          [
-            "2025",
-            "225"
+            "Hillside",
+            "38"
           ]
         ]
       }
@@ -1211,27 +1214,27 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "quantitative_evidence",
-    "prompt": "A researcher claims that annual rainfall in City reservoir levels rose steadily from 2020 to 2025.\n\nWhich statement is best supported by the data in the table?",
+    "prompt": "A researcher claims that water use in the campus fell steadily from 2018 to 2023.\n\nWhich finding from the table most directly supports the claim?",
     "choices": [
       {
         "id": "A",
-        "text": "Across all 6 years shown, the value increased from 320 to 393 millimeters.",
-        "rationale": "Correct. This matches the steady, one-direction trend the claim describes across every year shown."
+        "text": "Year over year the figure declined, reaching 159 million liters by 2023 from 222 million liters.",
+        "rationale": "Correct. This matches the steady, one-direction trend across every year shown."
       },
       {
         "id": "B",
-        "text": "Almost all of the change happened between 2020 and 2021, with little movement afterward.",
-        "rationale": "The value changes in every year shown, not just the first span."
+        "text": "The value declined by more than 40 million liters in a single year.",
+        "rationale": "The largest one-year change was only 20 million liters."
       },
       {
         "id": "C",
-        "text": "The value increased by more than 35 millimeters in a single year.",
-        "rationale": "The largest one-year change was only 20 millimeters."
+        "text": "The value changed by the same amount every year, a constant 13 million liters per year.",
+        "rationale": "The year-to-year changes vary, so the change was not a constant 13 million liters."
       },
       {
         "id": "D",
-        "text": "The value changed by the same amount every year, a constant 15 millimeters per year.",
-        "rationale": "The year-to-year changes vary, so the change was not a constant 15 millimeters."
+        "text": "Almost all of the change happened between 2018 and 2019, with little movement afterward.",
+        "rationale": "The value changes in every year shown, not just the first span."
       }
     ],
     "correct_choice": "A",
@@ -1240,40 +1243,41 @@
     "tags": [
       "reading",
       "evidence",
-      "quantitative"
+      "quantitative",
+      "family:qe_trend"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Annual rainfall in City reservoir levels (millimeters)",
+        "caption": "Water use in the campus (million liters)",
         "headers": [
           "Year",
-          "Annual rainfall"
+          "Water use"
         ],
         "rows": [
           [
+            "2018",
+            "222"
+          ],
+          [
+            "2019",
+            "215"
+          ],
+          [
             "2020",
-            "320"
+            "195"
           ],
           [
             "2021",
-            "329"
-          ],
-          [
-            "2021",
-            "338"
-          ],
-          [
-            "2023",
-            "358"
+            "188"
           ],
           [
             "2022",
-            "373"
+            "168"
           ],
           [
-            "2025",
-            "393"
+            "2023",
+            "159"
           ]
         ]
       }
@@ -1291,69 +1295,66 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "quantitative_evidence",
-    "prompt": "A researcher claims that average commute in the metro area fell steadily from 2018 to 2024.\n\nWhich choice best uses data from the table to support the researcher's claim?",
+    "prompt": "A report claims that one species stood out from the others in seedling survival rate.\n\nWhich statement about the data in the table is accurate?",
     "choices": [
       {
         "id": "A",
-        "text": "Almost all of the change happened between 2018 and 2020, with little movement afterward.",
-        "rationale": "The value changes in every year shown, not just the first span."
+        "text": "Oak had the highest seedling survival rate, at 29 percent, while Birch had the lowest, at 75 percent.",
+        "rationale": "This reverses the table: Birch had the highest value and Oak the lowest."
       },
       {
         "id": "B",
-        "text": "The value fell by more than 40 minutes in a single year.",
-        "rationale": "The largest one-year change was only 20 minutes."
+        "text": "At 75 percent, Birch exceeded the lowest species, Oak, by 51 percent.",
+        "rationale": "The actual gap is 75 − 29 = 46 percent."
       },
       {
         "id": "C",
-        "text": "Year over year the figure fell, reaching 349 minutes by 2024 from 401 minutes.",
-        "rationale": "Correct. This matches the steady, one-direction trend the claim describes across every year shown."
+        "text": "At 75 percent, Birch exceeded the lowest species, Oak, by 46 percent.",
+        "rationale": "Correct. These figures are read directly from the table and compare the highest and lowest values."
       },
       {
         "id": "D",
-        "text": "The value changed by the same amount every year, a constant 10 minutes per year.",
-        "rationale": "The year-to-year changes vary, so the change was not a constant 10 minutes."
+        "text": "Pine led all species with 62 percent, ahead of Birch at 75 percent.",
+        "rationale": "Pine was second; Birch had the highest value, 75 percent."
       }
     ],
     "correct_choice": "C",
-    "explanation": "The supporting statement must reflect the table's actual, consistent trend across all the years shown.",
+    "explanation": "Find the largest and smallest values in the table and check each statement's numbers against them.",
     "estimated_time_seconds": 80,
     "tags": [
       "reading",
       "evidence",
-      "quantitative"
+      "quantitative",
+      "family:qe_category_max"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Average commute in the metro area (minutes)",
+        "caption": "Seedling survival rate by species (percent)",
         "headers": [
-          "Year",
-          "Average commute"
+          "Species",
+          "Seedling survival rate"
         ],
         "rows": [
           [
-            "2018",
-            "401"
+            "Pine",
+            "62"
           ],
           [
-            "2020",
-            "392"
+            "Birch",
+            "75"
           ],
           [
-            "2022",
-            "383"
+            "Elm",
+            "40"
           ],
           [
-            "2021",
-            "376"
+            "Maple",
+            "59"
           ],
           [
-            "2023",
-            "356"
-          ],
-          [
-            "2024",
-            "349"
+            "Oak",
+            "29"
           ]
         ]
       }
@@ -1371,69 +1372,72 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "quantitative_evidence",
-    "prompt": "A researcher claims that wetland bird species in the reserve increased steadily from 2018 to 2024.\n\nWhich statement is best supported by the data in the table?",
+    "prompt": "A researcher claims that the gap between Paper and Plastic in share recycled has been closing.\n\nWhich choice best uses data from the table to support the researcher's claim?",
     "choices": [
       {
         "id": "A",
-        "text": "Almost all of the change happened between 2018 and 2020, with little movement afterward.",
-        "rationale": "The value changes in every year shown, not just the first span."
+        "text": "Plastic led Paper throughout the period, from 2017 (32 percent) through 2021 (44 percent).",
+        "rationale": "Paper was ahead in every year before 2021."
       },
       {
         "id": "B",
-        "text": "The value changed by the same amount every year, a constant 18 species per year.",
-        "rationale": "The year-to-year changes vary, so the change was not a constant 18 species."
+        "text": "Paper exceeded Plastic in every year shown, finishing 2021 at 41 percent to Plastic's 44.",
+        "rationale": "In 2021 Plastic was ahead, 44 to 41."
       },
       {
         "id": "C",
-        "text": "The value increased by more than 40 species in a single year.",
-        "rationale": "The largest one-year change was only 20 species."
+        "text": "The gap between Plastic and Paper widened each year, reaching its largest in 2021.",
+        "rationale": "The gap shrank and then reversed."
       },
       {
         "id": "D",
-        "text": "From 2018 to 2024, the value increased every year, going from 137 to 227 species.",
-        "rationale": "Correct. This matches the steady, one-direction trend the claim describes across every year shown."
+        "text": "Paper led in every year until 2021, when Plastic moved ahead, 44 to 41 percent.",
+        "rationale": "Correct. The statement matches the two columns year by year."
       }
     ],
     "correct_choice": "D",
-    "explanation": "The supporting statement must reflect the table's actual, consistent trend across all the years shown.",
+    "explanation": "Compare the two columns in each row; note which is larger and how the difference changes over time.",
     "estimated_time_seconds": 80,
     "tags": [
       "reading",
       "evidence",
-      "quantitative"
+      "quantitative",
+      "family:qe_compare_two"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Wetland bird species in the reserve (species)",
+        "caption": "Share recycled (percent)",
         "headers": [
           "Year",
-          "Wetland bird species"
+          "Plastic",
+          "Paper"
         ],
         "rows": [
           [
+            "2017",
+            "32",
+            "62"
+          ],
+          [
             "2018",
-            "137"
+            "36",
+            "60"
+          ],
+          [
+            "2019",
+            "36",
+            "60"
           ],
           [
             "2020",
-            "157"
+            "41",
+            "59"
           ],
           [
-            "2020",
-            "177"
-          ],
-          [
-            "2023",
-            "192"
-          ],
-          [
-            "2022",
-            "212"
-          ],
-          [
-            "2024",
-            "227"
+            "2021",
+            "44",
+            "41"
           ]
         ]
       }
@@ -1451,69 +1455,72 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "quantitative_evidence",
-    "prompt": "A researcher claims that recycling rate in the town climbed steadily from 2019 to 2023.\n\nWhich choice best uses data from the table to support the researcher's claim?",
+    "prompt": "A columnist claims that the share of households with solar panels improved for every region between 2020 and 2024.\n\nWhich finding from the table most effectively undermines the claim?",
     "choices": [
       {
         "id": "A",
-        "text": "The value increased by more than 30 percent in a single year.",
-        "rationale": "The largest one-year change was only 20 percent."
+        "text": "The average across all regions was higher in 2024 than in 2020, as the columnist suggests.",
+        "rationale": "An average can rise even when one category falls; it does not test the word 'every'."
       },
       {
         "id": "B",
-        "text": "Almost all of the change happened between 2019 and 2021, with little movement afterward.",
-        "rationale": "The value changes in every year shown, not just the first span."
+        "text": "West improved by 13 percent, one of the gains the columnist points to.",
+        "rationale": "This is consistent with the claim; it does not undermine it."
       },
       {
         "id": "C",
-        "text": "The value changed by the same amount every year, a constant 15 percent per year.",
-        "rationale": "The year-to-year changes vary, so the change was not a constant 15 percent."
+        "text": "For South, the 2024 figure (42 percent) is lower than the 2020 figure (51 percent).",
+        "rationale": "Correct. One category moved the opposite way, which directly contradicts the claim that every category improved."
       },
       {
         "id": "D",
-        "text": "The value increased each year, moving from 280 to 353 percent over the period.",
-        "rationale": "Correct. This matches the steady, one-direction trend the claim describes across every year shown."
+        "text": "East rose from 69 to 77 percent between 2020 and 2024, the pattern the columnist describes.",
+        "rationale": "This supports the claim rather than weakening it."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "The supporting statement must reflect the table's actual, consistent trend across all the years shown.",
+    "correct_choice": "C",
+    "explanation": "A claim about 'every' category is disproved by a single category that moved the other way; find the row whose value fell.",
     "estimated_time_seconds": 80,
     "tags": [
       "reading",
       "evidence",
-      "quantitative"
+      "quantitative",
+      "family:qe_undermine"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Recycling rate in the town (percent)",
+        "caption": "Share of households with solar panels (percent)",
         "headers": [
-          "Year",
-          "Recycling rate"
+          "Region",
+          "2020",
+          "2024"
         ],
         "rows": [
           [
-            "2019",
-            "280"
+            "East",
+            "69",
+            "77"
           ],
           [
-            "2021",
-            "287"
+            "West",
+            "43",
+            "56"
           ],
           [
-            "2021",
-            "307"
+            "South",
+            "51",
+            "42"
           ],
           [
-            "2023",
-            "322"
+            "Central",
+            "56",
+            "59"
           ],
           [
-            "2022",
-            "333"
-          ],
-          [
-            "2023",
-            "353"
+            "North",
+            "32",
+            "46"
           ]
         ]
       }
@@ -1531,69 +1538,66 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "quantitative_evidence",
-    "prompt": "A researcher claims that coral cover in the reef declined steadily from 2018 to 2023.\n\nWhich statement is best supported by the data in the table?",
+    "prompt": "A writer argues that Metal leads the other materials in share recycled.\n\nWhich choice most effectively uses data from the table to support the writer's claim?",
     "choices": [
       {
         "id": "A",
-        "text": "The value changed by the same amount every year, a constant 14 percent per year.",
-        "rationale": "The year-to-year changes vary, so the change was not a constant 14 percent."
+        "text": "At 78 percent, Metal was 28 percent above the next-highest material, Glass.",
+        "rationale": "Correct. Metal's figure is the highest in the table, which is exactly what the claim needs."
       },
       {
         "id": "B",
-        "text": "Almost all of the change happened between 2018 and 2019, with little movement afterward.",
-        "rationale": "The value changes in every year shown, not just the first span."
+        "text": "Metal recorded 75 percent, the highest value of any material in the table.",
+        "rationale": "The table shows 78 percent for Metal, not 75."
       },
       {
         "id": "C",
-        "text": "The value fell by more than 40 percent in a single year.",
-        "rationale": "The largest one-year change was only 20 percent."
+        "text": "Glass recorded the highest value, 50 percent, with Metal next at 78 percent.",
+        "rationale": "Glass is not the highest; Metal is, at 78 percent."
       },
       {
         "id": "D",
-        "text": "Across all 6 years shown, the value fell from 201 to 132 percent.",
-        "rationale": "Correct. This matches the steady, one-direction trend the claim describes across every year shown."
+        "text": "Plastic recorded 35 percent, placing it near the middle of the materials shown.",
+        "rationale": "Plastic's value says nothing about Metal."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "The supporting statement must reflect the table's actual, consistent trend across all the years shown.",
+    "correct_choice": "A",
+    "explanation": "The claim concerns Metal specifically, so the supporting data must be Metal's own value and its rank among the others.",
     "estimated_time_seconds": 80,
     "tags": [
       "reading",
       "evidence",
-      "quantitative"
+      "quantitative",
+      "family:qe_support_point"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Coral cover in the reef (percent)",
+        "caption": "Share recycled by material (percent)",
         "headers": [
-          "Year",
-          "Coral cover"
+          "Material",
+          "Share recycled"
         ],
         "rows": [
           [
-            "2018",
-            "201"
+            "Plastic",
+            "35"
           ],
           [
-            "2019",
-            "186"
+            "Textiles",
+            "22"
           ],
           [
-            "2020",
-            "166"
+            "Glass",
+            "50"
           ],
           [
-            "2021",
-            "159"
+            "Paper",
+            "23"
           ],
           [
-            "2022",
-            "139"
-          ],
-          [
-            "2023",
-            "132"
+            "Metal",
+            "78"
           ]
         ]
       }
@@ -1611,27 +1615,27 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "quantitative_evidence",
-    "prompt": "A researcher claims that ticket sales in the festival rose steadily from 2018 to 2024.\n\nWhich statement is best supported by the data in the table?",
+    "prompt": "A researcher claims that recycling rate in the town climbed steadily from 2018 to 2023.\n\nWhich finding from the table most directly supports the claim?",
     "choices": [
       {
         "id": "A",
-        "text": "The value climbed by more than 30 thousands in a single year.",
-        "rationale": "The largest one-year change was only 20 thousands."
+        "text": "The value increased by more than 35 percent in a single year.",
+        "rationale": "The largest one-year change was only 20 percent."
       },
       {
         "id": "B",
-        "text": "Almost all of the change happened between 2018 and 2020, with little movement afterward.",
-        "rationale": "The value changes in every year shown, not just the first span."
+        "text": "The value changed by the same amount every year, a constant 12 percent per year.",
+        "rationale": "The year-to-year changes vary, so the change was not a constant 12 percent."
       },
       {
         "id": "C",
-        "text": "The value changed by the same amount every year, a constant 13 thousands per year.",
-        "rationale": "The year-to-year changes vary, so the change was not a constant 13 thousands."
+        "text": "Almost all of the change happened between 2018 and 2019, with little movement afterward.",
+        "rationale": "The value changes in every year shown, not just the first span."
       },
       {
         "id": "D",
-        "text": "The value climbed each year, moving from 379 to 443 thousands over the period.",
-        "rationale": "Correct. This matches the steady, one-direction trend the claim describes across every year shown."
+        "text": "Year over year the figure increased, reaching 421 percent by 2023 from 359 percent.",
+        "rationale": "Correct. This matches the steady, one-direction trend across every year shown."
       }
     ],
     "correct_choice": "D",
@@ -1640,40 +1644,41 @@
     "tags": [
       "reading",
       "evidence",
-      "quantitative"
+      "quantitative",
+      "family:qe_trend"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Ticket sales in the festival (thousands)",
+        "caption": "Recycling rate in the town (percent)",
         "headers": [
           "Year",
-          "Ticket sales"
+          "Recycling rate"
         ],
         "rows": [
           [
             "2018",
-            "379"
+            "359"
+          ],
+          [
+            "2019",
+            "368"
           ],
           [
             "2020",
-            "399"
+            "379"
+          ],
+          [
+            "2021",
+            "394"
           ],
           [
             "2022",
-            "414"
+            "401"
           ],
           [
             "2023",
-            "425"
-          ],
-          [
-            "2022",
-            "432"
-          ],
-          [
-            "2024",
-            "443"
+            "421"
           ]
         ]
       }
@@ -1691,69 +1696,66 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "quantitative_evidence",
-    "prompt": "A researcher claims that wetland bird species in the reserve increased steadily from 2019 to 2024.\n\nWhich finding from the table most directly supports the claim?",
+    "prompt": "A report claims that one species stood out from the others in seedling survival rate.\n\nWhich choice most effectively uses data from the table to support the claim?",
     "choices": [
       {
         "id": "A",
-        "text": "The value climbed each year, moving from 215 to 277 species over the period.",
-        "rationale": "Correct. This matches the steady, one-direction trend the claim describes across every year shown."
+        "text": "Pine had the highest seedling survival rate, at 18 percent, while Maple had the lowest, at 55 percent.",
+        "rationale": "This reverses the table: Maple had the highest value and Pine the lowest."
       },
       {
         "id": "B",
-        "text": "Almost all of the change happened between 2019 and 2019, with little movement afterward.",
-        "rationale": "The value changes in every year shown, not just the first span."
+        "text": "At 55 percent, Maple exceeded the lowest species, Pine, by 45 percent.",
+        "rationale": "The actual gap is 55 − 18 = 37 percent."
       },
       {
         "id": "C",
-        "text": "The value changed by the same amount every year, a constant 12 species per year.",
-        "rationale": "The year-to-year changes vary, so the change was not a constant 12 species."
+        "text": "Oak led all species with 54 percent, ahead of Maple at 55 percent.",
+        "rationale": "Oak was second; Maple had the highest value, 55 percent."
       },
       {
         "id": "D",
-        "text": "The value climbed by more than 35 species in a single year.",
-        "rationale": "The largest one-year change was only 20 species."
+        "text": "Maple's figure (55 percent) was 37 percent higher than Pine's.",
+        "rationale": "Correct. These figures are read directly from the table and compare the highest and lowest values."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "The supporting statement must reflect the table's actual, consistent trend across all the years shown.",
+    "correct_choice": "D",
+    "explanation": "Find the largest and smallest values in the table and check each statement's numbers against them.",
     "estimated_time_seconds": 80,
     "tags": [
       "reading",
       "evidence",
-      "quantitative"
+      "quantitative",
+      "family:qe_category_max"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Wetland bird species in the reserve (species)",
+        "caption": "Seedling survival rate by species (percent)",
         "headers": [
-          "Year",
-          "Wetland bird species"
+          "Species",
+          "Seedling survival rate"
         ],
         "rows": [
           [
-            "2019",
-            "215"
+            "Oak",
+            "54"
           ],
           [
-            "2019",
-            "230"
+            "Elm",
+            "43"
           ],
           [
-            "2021",
-            "241"
+            "Birch",
+            "27"
           ],
           [
-            "2023",
-            "250"
+            "Maple",
+            "55"
           ],
           [
-            "2023",
-            "270"
-          ],
-          [
-            "2024",
-            "277"
+            "Pine",
+            "18"
           ]
         ]
       }
@@ -1771,69 +1773,72 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "quantitative_evidence",
-    "prompt": "A researcher claims that recycling rate in the town climbed steadily from 2018 to 2024.\n\nWhich choice best uses data from the table to support the researcher's claim?",
+    "prompt": "A researcher claims that the gap between West and East in share of households with solar panels has been closing.\n\nWhich choice best uses data from the table to support the researcher's claim?",
     "choices": [
       {
         "id": "A",
-        "text": "The value changed by the same amount every year, a constant 11 percent per year.",
-        "rationale": "The year-to-year changes vary, so the change was not a constant 11 percent."
+        "text": "By 2024, East (62 percent) had overtaken West (61 percent).",
+        "rationale": "Correct. The statement matches the two columns year by year."
       },
       {
         "id": "B",
-        "text": "The value rose each year, moving from 179 to 236 percent over the period.",
-        "rationale": "Correct. This matches the steady, one-direction trend the claim describes across every year shown."
+        "text": "The gap between East and West widened each year, reaching its largest in 2024.",
+        "rationale": "The gap shrank and then reversed."
       },
       {
         "id": "C",
-        "text": "The value rose by more than 35 percent in a single year.",
-        "rationale": "The largest one-year change was only 15 percent."
+        "text": "East led West throughout the period, from 2020 (46 percent) through 2024 (62 percent).",
+        "rationale": "West was ahead in every year before 2024."
       },
       {
         "id": "D",
-        "text": "Almost all of the change happened between 2018 and 2021, with little movement afterward.",
-        "rationale": "The value changes in every year shown, not just the first span."
+        "text": "West exceeded East in every year shown, finishing 2024 at 61 percent to East's 62.",
+        "rationale": "In 2024 East was ahead, 62 to 61."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "The supporting statement must reflect the table's actual, consistent trend across all the years shown.",
+    "correct_choice": "A",
+    "explanation": "Compare the two columns in each row; note which is larger and how the difference changes over time.",
     "estimated_time_seconds": 80,
     "tags": [
       "reading",
       "evidence",
-      "quantitative"
+      "quantitative",
+      "family:qe_compare_two"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Recycling rate in the town (percent)",
+        "caption": "Share of households with solar panels (percent)",
         "headers": [
           "Year",
-          "Recycling rate"
+          "East",
+          "West"
         ],
         "rows": [
           [
-            "2018",
-            "179"
+            "2020",
+            "46",
+            "72"
           ],
           [
             "2021",
-            "194"
-          ],
-          [
-            "2020",
-            "201"
-          ],
-          [
-            "2023",
-            "210"
+            "48",
+            "70"
           ],
           [
             "2022",
-            "221"
+            "52",
+            "70"
+          ],
+          [
+            "2023",
+            "58",
+            "69"
           ],
           [
             "2024",
-            "236"
+            "62",
+            "61"
           ]
         ]
       }
@@ -1851,69 +1856,72 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "quantitative_evidence",
-    "prompt": "A researcher claims that library visits in the downtown branch increased steadily from 2020 to 2025.\n\nWhich statement is best supported by the data in the table?",
+    "prompt": "A columnist claims that the points scored improved for every team between 2020 and 2023.\n\nWhich choice uses data from the table to most directly challenge the columnist's claim?",
     "choices": [
       {
         "id": "A",
-        "text": "The value changed by the same amount every year, a constant 9 thousands per year.",
-        "rationale": "The year-to-year changes vary, so the change was not a constant 9 thousands."
+        "text": "Falcons fell from 48 to 46 points, so not every team improved.",
+        "rationale": "Correct. One category moved the opposite way, which directly contradicts the claim that every category improved."
       },
       {
         "id": "B",
-        "text": "Almost all of the change happened between 2020 and 2021, with little movement afterward.",
-        "rationale": "The value changes in every year shown, not just the first span."
+        "text": "The average across all teams was higher in 2023 than in 2020, as the columnist suggests.",
+        "rationale": "An average can rise even when one category falls; it does not test the word 'every'."
       },
       {
         "id": "C",
-        "text": "From 2020 to 2025, the value rose every year, going from 210 to 253 thousands.",
-        "rationale": "Correct. This matches the steady, one-direction trend the claim describes across every year shown."
+        "text": "Comets improved by 13 points, one of the gains the columnist points to.",
+        "rationale": "This is consistent with the claim; it does not undermine it."
       },
       {
         "id": "D",
-        "text": "The value rose by more than 26 thousands in a single year.",
-        "rationale": "The largest one-year change was only 11 thousands."
+        "text": "Herons rose from 38 to 43 points between 2020 and 2023, the pattern the columnist describes.",
+        "rationale": "This supports the claim rather than weakening it."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "The supporting statement must reflect the table's actual, consistent trend across all the years shown.",
+    "correct_choice": "A",
+    "explanation": "A claim about 'every' category is disproved by a single category that moved the other way; find the row whose value fell.",
     "estimated_time_seconds": 80,
     "tags": [
       "reading",
       "evidence",
-      "quantitative"
+      "quantitative",
+      "family:qe_undermine"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Library visits in the downtown branch (thousands)",
+        "caption": "Points scored (points)",
         "headers": [
-          "Year",
-          "Library visits"
+          "Team",
+          "2020",
+          "2023"
         ],
         "rows": [
           [
-            "2020",
-            "210"
+            "Herons",
+            "38",
+            "43"
           ],
           [
-            "2021",
-            "217"
+            "Comets",
+            "48",
+            "61"
           ],
           [
-            "2022",
-            "226"
+            "Otters",
+            "25",
+            "34"
           ],
           [
-            "2021",
-            "233"
+            "Badgers",
+            "45",
+            "60"
           ],
           [
-            "2024",
-            "244"
-          ],
-          [
-            "2025",
-            "253"
+            "Falcons",
+            "48",
+            "46"
           ]
         ]
       }

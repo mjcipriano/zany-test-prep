@@ -49,11 +49,18 @@ class SettingsScreen extends ConsumerWidget {
                   contentPadding: EdgeInsets.zero,
                   leading: const Icon(Icons.menu_book_rounded),
                   title: const Text('Exam'),
-                  subtitle: const Text('SAT (more coming soon)'),
+                  subtitle: Text(
+                    data.exams.length > 1
+                        ? 'Tap to switch — XP and streaks carry across'
+                        : data.bundle.exam.displayName,
+                  ),
                   trailing: Text(
-                    data.bundle.exam.displayName,
+                    data.bundle.exam.name,
                     style: const TextStyle(fontWeight: FontWeight.w700),
                   ),
+                  onTap: data.exams.length > 1
+                      ? () => _pickExam(context, controller, data)
+                      : null,
                 ),
                 const Divider(height: 1),
                 ListTile(
@@ -195,6 +202,60 @@ class SettingsScreen extends ConsumerWidget {
         ],
       ),
     );
+  }
+
+  Future<void> _pickExam(
+    BuildContext context,
+    AppController controller,
+    AppData data,
+  ) async {
+    final picked = await showDialog<String>(
+      context: context,
+      builder: (ctx) => SimpleDialog(
+        title: const Text('Switch exam'),
+        children: [
+          for (final exam in data.exams)
+            SimpleDialogOption(
+              onPressed: () => Navigator.pop(ctx, exam.id),
+              child: Row(
+                children: [
+                  Icon(
+                    exam.id == data.bundle.exam.id
+                        ? Icons.radio_button_checked_rounded
+                        : Icons.radio_button_unchecked_rounded,
+                    color: Theme.of(ctx).colorScheme.primary,
+                  ),
+                  Gap.s,
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          exam.name,
+                          style: const TextStyle(fontWeight: FontWeight.w700),
+                        ),
+                        if (exam.tagline.isNotEmpty)
+                          Text(
+                            exam.tagline,
+                            style: Theme.of(ctx).textTheme.bodySmall,
+                          ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+        ],
+      ),
+    );
+    if (picked != null && picked != data.bundle.exam.id) {
+      await controller.switchExam(picked);
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Switched to the ${picked.toUpperCase()}.')),
+        );
+      }
+    }
   }
 
   static String _fmt(DateTime d) =>

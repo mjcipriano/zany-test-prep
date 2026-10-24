@@ -8,32 +8,47 @@ import 'package:go_router/go_router.dart';
 import '../../app/app_controller.dart';
 import '../../design/theme.dart';
 import '../../design/widgets.dart';
+import '../../domain/models/content_bundle.dart';
+import '../../domain/models/exam.dart';
 import '../../domain/models/question.dart';
 import '../../domain/services/answer_checker.dart';
 import '../../domain/services/game_service.dart';
+import '../../domain/services/scoring.dart';
 import '../lessons/question_view.dart';
-
-class _Module {
-  const _Module(this.name, this.domain, this.count, this.minutes);
-  final String name;
-  final String domain;
-  final int count;
-  final int minutes;
-}
-
-// A Digital-SAT-shaped simulation: two Reading & Writing modules then two Math
-// modules, each timed. (Difficulty is not adaptive between modules.)
-const _modules = [
-  _Module('Reading & Writing — Module 1', 'reading_writing', 27, 32),
-  _Module('Reading & Writing — Module 2', 'reading_writing', 27, 32),
-  _Module('Math — Module 1', 'math', 22, 35),
-  _Module('Math — Module 2', 'math', 22, 35),
-];
 
 enum _Phase { intro, module, breakScreen, results }
 
+/// Deals [bundle]'s questions into the exam's timed-test modules (from
+/// exam.yaml: SAT = 2 Reading & Writing + 2 Math modules; ACT = English, Math,
+/// Reading, Science). Each module draws fresh questions from its domain; a
+/// module is simply shorter when the domain runs out of questions.
+List<List<Question>> dealTestModules(
+  ContentBundle bundle,
+  List<TestModule> modules,
+  Random rng,
+) {
+  final byDomain = <String, List<Question>>{};
+  for (final q in bundle.questions) {
+    byDomain.putIfAbsent(q.domain, () => []).add(q);
+  }
+  for (final list in byDomain.values) {
+    list.shuffle(rng);
+  }
+  final cursor = <String, int>{};
+  return [
+    for (final m in modules)
+      () {
+        final src = byDomain[m.domain] ?? const <Question>[];
+        final start = (cursor[m.domain] ?? 0).clamp(0, src.length);
+        final end = (start + m.count).clamp(0, src.length);
+        cursor[m.domain] = end;
+        return src.sublist(start, end);
+      }(),
+  ];
+}
+
 /// Full timed practice test with per-module timers, flag/navigate, and an
-/// estimated section + total score.
+/// estimated section + total/composite score on the exam's own scale.
 class TimedTestScreen extends ConsumerStatefulWidget {
   const TimedTestScreen({super.key});
 
@@ -45,6 +60,7 @@ class _TimedTestScreenState extends ConsumerState<TimedTestScreen> {
   static const _checker = AnswerChecker();
 
   _Phase _phase = _Phase.intro;
+  late List<TestModule> _modules;
   late List<List<Question>> _moduleQs; // questions per module
   int _moduleIndex = 0;
   int _q = 0;
@@ -53,6 +69,7 @@ class _TimedTestScreenState extends ConsumerState<TimedTestScreen> {
   final _text = TextEditingController();
   int _remaining = 0;
   Timer? _timer;
+  bool _ending = false; // the current module is being closed/scored
 
   @override
   void dispose() {
@@ -61,37 +78,26 @@ class _TimedTestScreenState extends ConsumerState<TimedTestScreen> {
     super.dispose();
   }
 
+  ContentBundle get _bundle =>
+      ref.read(appControllerProvider).valueOrNull!.bundle;
+
+  Exam get _exam => _bundle.exam;
+
   void _buildTest() {
-    final bundle = ref.read(appControllerProvider).valueOrNull!.bundle;
-    final byDomain = <String, List<Question>>{
-      'math': [],
-      'reading_writing': [],
-    };
-    for (final q in bundle.questions) {
-      (byDomain[q.domain] ??= []).add(q);
-    }
-    final rng = Random();
-    for (final list in byDomain.values) {
-      list.shuffle(rng);
-    }
-    final cursor = {'math': 0, 'reading_writing': 0};
-    _moduleQs = [
-      for (final m in _modules)
-        () {
-          final src = byDomain[m.domain]!;
-          final start = cursor[m.domain]!;
-          final slice = src.sublist(
-            start,
-            (start + m.count).clamp(0, src.length),
-          );
-          cursor[m.domain] = start + m.count;
-          return slice;
-        }(),
+    _modules = _exam.timedTest.modules;
+    _moduleQs = dealTestModules(_bundle, _modules, Random());
+    // Drop modules that received no questions at all (domain absent).
+    final keep = <int>[
+      for (var i = 0; i < _modules.length; i++)
+        if (_moduleQs[i].isNotEmpty) i,
     ];
+    _modules = [for (final i in keep) _modules[i]];
+    _moduleQs = [for (final i in keep) _moduleQs[i]];
   }
 
   void _startModule(int i) {
     _timer?.cancel();
+    _ending = false;
     setState(() {
       _moduleIndex = i;
       _q = 0;
@@ -132,6 +138,10 @@ class _TimedTestScreenState extends ConsumerState<TimedTestScreen> {
   }
 
   void _endModule() {
+    // The timer can fire while the submit dialog is open; whichever path gets
+    // here first wins, so a section is never scored twice.
+    if (_ending || _phase != _Phase.module) return;
+    _ending = true;
     _timer?.cancel();
     if (_question.type.isStudentProduced && _text.text.trim().isNotEmpty) {
       _record(_text.text.trim());
@@ -181,8 +191,14 @@ class _TimedTestScreenState extends ConsumerState<TimedTestScreen> {
   }
 
   Widget _intro() {
+    final exam = _exam;
+    final plan = exam.timedTest;
+    final intro = plan.intro.isNotEmpty
+        ? plan.intro
+        : 'This mirrors the ${exam.displayName}: ${plan.modules.length} timed '
+              'sections.';
     return Scaffold(
-      appBar: AppBar(title: const Text('Practice Test')),
+      appBar: AppBar(title: Text('${exam.name} Practice Test')),
       body: ListView(
         padding: kPagePadding,
         children: [
@@ -192,14 +208,13 @@ class _TimedTestScreenState extends ConsumerState<TimedTestScreen> {
             style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800),
           ),
           Gap.s,
-          const Text(
-            'This mirrors the Digital SAT: two Reading & Writing modules, then two '
-            'Math modules, each timed. You can flag questions and move back and '
-            'forth within a module, but not between modules. There is no feedback '
-            'until the end.',
+          Text(
+            '$intro You can flag questions and move back and forth within a '
+            'section, but not between sections. There is no feedback until the '
+            'end.',
           ),
           Gap.m,
-          for (final m in _modules)
+          for (final m in plan.modules)
             Padding(
               padding: const EdgeInsets.only(bottom: 6),
               child: Row(
@@ -211,12 +226,22 @@ class _TimedTestScreenState extends ConsumerState<TimedTestScreen> {
                 ],
               ),
             ),
+          Padding(
+            padding: const EdgeInsets.only(top: 6),
+            child: Text(
+              'Total: ${plan.totalQuestions} questions · ${plan.totalMinutes} min',
+              style: const TextStyle(fontWeight: FontWeight.w700),
+            ),
+          ),
           Gap.l,
           FilledButton(
-            onPressed: () {
-              _buildTest();
-              _startModule(0);
-            },
+            onPressed: plan.isEmpty
+                ? null
+                : () {
+                    _buildTest();
+                    if (_moduleQs.isEmpty) return;
+                    _startModule(0);
+                  },
             child: const Text('Begin test'),
           ),
           TextButton(
@@ -320,6 +345,11 @@ class _TimedTestScreenState extends ConsumerState<TimedTestScreen> {
               child: Row(
                 children: [
                   OutlinedButton(
+                    // Bounded width: the themed default is full-width, which
+                    // is an infinite-width constraint inside a Row.
+                    style: OutlinedButton.styleFrom(
+                      minimumSize: const Size(96, 54),
+                    ),
                     onPressed: _q > 0 ? () => _go(-1) : null,
                     child: const Text('Back'),
                   ),
@@ -477,17 +507,19 @@ class _TimedTestScreenState extends ConsumerState<TimedTestScreen> {
   int _totalIn(String domain) =>
       _moduleQs.expand((m) => m).where((q) => q.domain == domain).length;
 
-  int _scaled(int correct, int total) {
-    if (total == 0) return 200;
-    final s = 200 + (correct / total) * 600;
-    return (s / 10).round() * 10; // nearest 10, 200..800
-  }
-
   Widget _results() {
-    final rwC = _correctIn('reading_writing'),
-        rwT = _totalIn('reading_writing');
-    final mC = _correctIn('math'), mT = _totalIn('math');
-    final rwScore = _scaled(rwC, rwT), mScore = _scaled(mC, mT);
+    final bundle = _bundle;
+    final scoring = ExamScoring(bundle.exam.scoring);
+    final domains = [
+      for (final d in bundle.domainIds)
+        if (_totalIn(d) > 0) d,
+    ];
+    final sectionScores = {
+      for (final d in domains)
+        d: scoring.sectionScore(_correctIn(d), _totalIn(d)),
+    };
+    final composite = scoring.composite(sectionScores);
+    final compositeDomains = scoring.compositeDomains(domains);
     final scheme = Theme.of(context).colorScheme;
     return Scaffold(
       appBar: AppBar(
@@ -503,43 +535,54 @@ class _TimedTestScreenState extends ConsumerState<TimedTestScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  'Estimated total score',
-                  style: TextStyle(fontWeight: FontWeight.w700),
+                Text(
+                  bundle.exam.scoring.compositeLabel,
+                  style: const TextStyle(fontWeight: FontWeight.w700),
                 ),
                 Text(
-                  '${rwScore + mScore}',
+                  scoring.formatSection(composite),
                   style: const TextStyle(
                     fontSize: 44,
                     fontWeight: FontWeight.w900,
                   ),
                 ),
-                const Text(
-                  'Out of 1600 — an estimate based on raw correct answers.',
+                Text(
+                  '${scoring.compositeCaption(domains)} — an estimate based on '
+                  'raw correct answers.',
                 ),
+                if (compositeDomains.length < domains.length)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 4),
+                    child: Text(
+                      'Composite counts: '
+                      '${compositeDomains.map(bundle.domainName).join(', ')}.',
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
+                  ),
               ],
             ),
           ),
           Gap.m,
-          Row(
+          Wrap(
+            spacing: 8,
+            runSpacing: 8,
             children: [
-              Expanded(
-                child: _ScoreCard(
-                  label: 'Reading & Writing',
-                  score: rwScore,
-                  detail: '$rwC / $rwT correct',
-                  color: AppTheme.seed,
+              for (final (i, d) in domains.indexed)
+                SizedBox(
+                  width:
+                      (MediaQuery.of(context).size.width -
+                          kPagePadding.horizontal -
+                          8) /
+                      2,
+                  child: _ScoreCard(
+                    label: bundle.domainName(d),
+                    score: scoring.formatSection(sectionScores[d]!),
+                    detail: '${_correctIn(d)} / ${_totalIn(d)} correct',
+                    color: AppTheme.domainColor(
+                      bundle.domainIndex(d) < 0 ? i : bundle.domainIndex(d),
+                    ),
+                  ),
                 ),
-              ),
-              Gap.s,
-              Expanded(
-                child: _ScoreCard(
-                  label: 'Math',
-                  score: mScore,
-                  detail: '$mC / $mT correct',
-                  color: AppTheme.correct,
-                ),
-              ),
             ],
           ),
           Gap.l,
@@ -612,7 +655,7 @@ class _ScoreCard extends StatelessWidget {
     required this.color,
   });
   final String label;
-  final int score;
+  final String score;
   final String detail;
   final Color color;
 
@@ -625,7 +668,7 @@ class _ScoreCard extends StatelessWidget {
         Text(label, style: const TextStyle(fontWeight: FontWeight.w700)),
         Gap.xs,
         Text(
-          '$score',
+          score,
           style: const TextStyle(fontSize: 28, fontWeight: FontWeight.w900),
         ),
         Text(detail, style: Theme.of(context).textTheme.bodySmall),

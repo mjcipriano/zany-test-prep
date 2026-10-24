@@ -1,5 +1,6 @@
 # CI workflow for the zany_test_prep Flutter app.
-# Runs format/analyze/test plus Python content validation on every push and PR.
+# Runs format/analyze/test plus Python tooling tests + content validation on
+# every push and PR.
 name: CI
 
 on:
@@ -65,6 +66,11 @@ jobs:
       - name: Install content validation dependencies
         run: pip install pyyaml jsonschema
 
+      # Unit tests for the Python content tooling (generators, plans, validator).
+      - name: Run content tooling tests
+        run: python -m unittest discover -s tools/tests -t . -v 2>&1 | tail -40
+
+      # Validates every exam under content/exams/ (SAT, ACT, ...).
       - name: Validate content
         run: python tools/validate_content.py
 

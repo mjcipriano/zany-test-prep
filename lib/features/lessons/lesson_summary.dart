@@ -122,6 +122,18 @@ class LessonSummary extends StatelessWidget {
                   text: 'Level up! You reached level ${outcome.newLevel}.',
                 ),
               ],
+              if (outcome.petXpGained > 0) ...[
+                Gap.s,
+                _Banner(
+                  color: const Color(0xFF8E44AD),
+                  icon: Icons.pets_rounded,
+                  text: outcome.petLevelUps.isEmpty
+                      ? 'Your companion earned ${outcome.petXpGained} pet XP.'
+                      : outcome.petLevelUps.entries
+                            .map((e) => '${e.key} reached level ${e.value}!')
+                            .join(' '),
+                ),
+              ],
               if (outcome.dailyGoalJustMet) ...[
                 Gap.s,
                 const _Banner(
@@ -291,7 +303,7 @@ class _MistakeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final q = result.question;
     final answer = q.type.isStudentProduced
-        ? (q.answer?.accepted.first ?? '')
+        ? (q.answer?.accepted.firstOrNull ?? '')
         : (q.correct?.text ?? '');
     return Padding(
       padding: const EdgeInsets.only(bottom: 8),
