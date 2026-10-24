@@ -50,7 +50,7 @@ Tag `vX.Y.Z` to cut a release (CI builds + attaches the APK, see docs/release.md
   brow line (`kHeadwearBrimLine`, except `floating` items), adds shadows/glow and an
   idle float. Layout is guarded by `test/render/catalog_geometry_test.dart` (whole
   catalog) and the pixel tests in `test/render/overlap_test.dart`.
-- **Quality:** `flutter analyze` clean; `dart format` clean; Flutter suite ~<<DART_TESTS>>
+- **Quality:** `flutter analyze` clean; `dart format` clean; Flutter suite 198
   tests; Python tooling suite (`python -m unittest discover -s tools/tests -t .`) covers
   the registry, plans, orchestrator, validator, bundler and every generator family. CI
   runs all of it plus the validator for every exam and the bundle-freshness check.
