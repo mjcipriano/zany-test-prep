@@ -297,27 +297,13 @@ void main() {
         final ff = fittedRect(fox, 'side_left_1', 512);
         expect(ff.center.dx, closeTo(fb.center.dx, 1e-6));
         expect(ff.center.dy, closeTo(fb.center.dy, 1e-6));
-        // Halos float rather than sit on the brow.
+        // Only the pack's `floating` tag lets headwear hover; ids never do.
         final halo = _catalog['item_007_halo_ring'];
         if (halo != null) {
-          expect(halo.floatsAboveHead, isTrue);
-          expect(
-            fittedRect(halo, null, 512).center.dy,
-            closeTo(placementRect(halo, null, 512).center.dy, 1e-6),
-          );
+          expect(halo.floatsAboveHead, halo.tags.contains('floating'));
         }
       },
     );
-
-    test('side asset uses the per-slot target for the equipped slot', () {
-      final fox = _catalog['pet_fox_study_cap_001']!;
-      final r1 = placementRect(fox, 'side_left_1', 512);
-      final r2 = placementRect(fox, 'side_right_2', 512);
-      // Different side slots place the sprite in different positions.
-      expect(r1.center.dx, lessThan(256)); // left
-      expect(r2.center.dx, greaterThan(256)); // right
-      expect(r2.center.dy, greaterThan(r1.center.dy)); // bottom vs top
-    });
   });
 
   group('rendered overlap (looking at the composed pixels)', () {

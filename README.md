@@ -39,12 +39,15 @@ no network.
 | --- | --- | --- | --- |
 | ![Rewards](docs/screenshots/10_rewards.png) | ![Chest](docs/screenshots/13_chest_reward.png) | ![Store](docs/screenshots/11_store.png) | ![Items](docs/screenshots/14_avatar_items.png) |
 
-### Avatar customization
+### Avatar customization & pet companions
 
 Meet the daily goal to earn chests, spend XP in the store, then dress up a
-customizable avatar. Worn items snap to the right spot and side slots hold pets
-and floating props. Here's one avatar built up layer by layer, plus a couple of
-other looks:
+customizable avatar from the vendored art pack (110 avatars, 376 items including
+104 Prism variants, 90 pet lines). Worn items snap to the right body region (hats
+rest on the brow line), and the four side slots hold pets and floating props.
+**Pets level up while equipped** and evolve from Base to Shiny to Radiant forms
+(270 pet sprites in all); evolved stages are earned, never bought. Here's one
+avatar built up layer by layer, plus a couple of other looks:
 
 | Starter | + Headwear | + Eyewear | + Scarf & badge |
 | --- | --- | --- | --- |

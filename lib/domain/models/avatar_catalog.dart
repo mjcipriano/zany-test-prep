@@ -135,11 +135,11 @@ class CatalogAsset {
   double? get spriteAspect =>
       spriteWidth > 0 && spriteHeight > 0 ? spriteWidth / spriteHeight : null;
 
-  /// Headwear that should hover above the head (halos, orbiting rings) rather
-  /// than sit on the brow line. Driven by tags, with a name-based fallback for
-  /// packs that predate the `floating` tag.
-  bool get floatsAboveHead =>
-      tags.contains('floating') || id.contains('halo') || id.contains('orbit');
+  /// Headwear that should hover above the head (a halo, an orbiting ring)
+  /// rather than sit on the brow line. Decided by the pack's `floating` tag
+  /// only — item ids are not reliable (the pack's "halo_ring" is drawn as a
+  /// bucket hat).
+  bool get floatsAboveHead => tags.contains('floating');
 
   /// Pets beyond their base stage are earned by levelling, never bought or
   /// dropped from chests.
