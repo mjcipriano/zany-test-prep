@@ -2,9 +2,13 @@
 
 ## Known limitations
 
-- **One exam surfaced.** The data model is exam-agnostic and the bundler builds every
-  exam under `content/exams/`, but only SAT is authored and the UI exam-switcher is
-  not built yet.
+- **Two exams.** SAT and ACT ship; switching exams in Settings keeps XP, streaks and
+  rewards (lesson/question ids are exam-prefixed, so each exam keeps its own path
+  progress; skills with the same id share mastery across exams).
+- **Score estimates are linear.** Section scores (SAT 200–800, ACT 1–36) are mapped
+  from accuracy, not from an official equating table.
+- **ACT Reading uses the shared passage pool.** Passages are shorter than a real ACT
+  reading passage (one question per skill per passage).
 - **Lesson resume is coarse.** Leaving a lesson mid-way discards in-lesson progress
   (with a confirm dialog); completed-lesson state is always saved. Per-question resume
   is not implemented.
@@ -26,8 +30,10 @@
 
 **Content**
 - Grow the bank (more lessons per skill, more reading passages, more grid-ins).
-- Add ACT and AP (Biology, Chemistry, Calculus, Statistics) exams using the existing
-  pipeline; build the exam-switcher UI.
+- Add AP (Biology, Chemistry, Calculus, Statistics) exams using the existing
+  per-exam plans.
+- Longer ACT-style reading passages with multiple questions each; more
+  conflicting-viewpoint sets.
 
 **Learning**
 - Adaptive difficulty and smarter "suggested next" using mastery + review signals.

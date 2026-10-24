@@ -194,3 +194,20 @@ The architecture is built for testability:
 Run them with `flutter test` (unit + widget) and
 `flutter test integration_test` (launch → onboard → complete a lesson → verify
 XP and persistence across a reload).
+
+## Exam-agnostic UI
+
+Nothing in `lib/features/` hard-codes an exam. Screens read the active
+`ContentBundle`:
+
+- **Domains** come from the bundle's skill map (`bundle.domainIds`,
+  `domainName`, `domainIndex`), so the home path shows one track per domain
+  (SAT: Reading & Writing, Math; ACT: English, Math, Reading, Science) coloured
+  from `AppTheme.domainPalette`. Practice sampling (`balancedSample`,
+  `interleaveByDomain`) and the dashboard group by those domains.
+- **Timed test** layout (`Exam.timedTest`, from `exam.yaml`) and **scoring**
+  (`Exam.scoring` → `ExamScoring`: SAT 200–800 / 1600, ACT 1–36 / composite of
+  English+Math+Reading) are data, not code.
+- **Exam switching**: `AppController.switchExam` loads another bundle and updates
+  the profile; `AppData.exams` (from `assets/content/exams.json`) feeds the
+  onboarding picker and the Settings switcher.
