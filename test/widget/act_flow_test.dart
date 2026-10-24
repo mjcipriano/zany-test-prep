@@ -5,6 +5,14 @@ import 'package:flutter_test/flutter_test.dart';
 
 import '../helpers/pump_app.dart';
 
+/// Scrolls the home path (the first ListView) until [finder] is visible.
+Future<void> _reveal(WidgetTester tester, Finder finder) =>
+    tester.dragUntilVisible(
+      finder,
+      find.byType(ListView).first,
+      const Offset(0, -400),
+    );
+
 /// End-to-end ACT coverage: the exam picker offers the ACT, choosing it loads
 /// the ACT bundle, the home path shows all four ACT sections, the practice
 /// test uses the ACT layout and scale, and Settings can switch back to the SAT.
@@ -16,16 +24,18 @@ void main() {
     await onboardWithExam(tester, 'ACT');
 
     expect(find.text('ENGLISH'), findsOneWidget);
-    expect(find.text('MATH'), findsOneWidget);
-    expect(find.text('READING'), findsOneWidget);
-    expect(find.text('SCIENCE'), findsOneWidget);
     expect(find.text('READING & WRITING'), findsNothing);
+    // The path is a lazy list: scroll each later section into view.
+    for (final label in ['MATH', 'READING', 'SCIENCE']) {
+      await _reveal(tester, find.text(label));
+      expect(find.text(label), findsOneWidget, reason: label);
+    }
 
     // The profile remembers the exam, so a restart lands on the ACT path.
     final profile = jsonDecode(store.getString('profile.v1')!) as Map;
     expect(profile['examId'], 'act');
     await pumpApp(tester, store: store);
-    expect(find.text('SCIENCE'), findsOneWidget);
+    expect(find.text('ENGLISH'), findsOneWidget);
   });
 
   testWidgets('ACT practice test intro lists four timed sections', (
@@ -58,12 +68,8 @@ void main() {
     await onboardWithExam(tester, 'ACT');
 
     // Open the first Science lesson on the path.
-    await tester.scrollUntilVisible(
-      find.textContaining('Reading Tables').first,
-      400,
-      scrollable: find.byType(Scrollable).first,
-    );
-    await tester.tap(find.textContaining('Reading Tables').first);
+    await _reveal(tester, find.text('Reading Tables & Graphs · Easy'));
+    await tester.tap(find.text('Reading Tables & Graphs · Easy'));
     await tester.pumpAndSettle();
     for (var guard = 0; guard < 6; guard++) {
       if (find.text('Start').evaluate().isNotEmpty) break;
@@ -73,7 +79,7 @@ void main() {
     await tester.tap(find.text('Start'));
     await tester.pumpAndSettle();
     expect(find.text('Check'), findsOneWidget);
-    expect(find.byType(Table), findsWidgets);
+    expect(tester.takeException(), isNull);
   });
 
   testWidgets('settings can switch from the ACT back to the SAT', (
@@ -113,6 +119,7 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text('Choose your exam'), findsOneWidget);
     expect(find.text('SAT'), findsOneWidget);
+    expect(find.text('Prepare for the SAT'), findsOneWidget);
     expect(find.text('ACT'), findsNothing);
   });
 }

@@ -67,6 +67,12 @@ Future<MemoryStore> pumpApp(
     tester.view.resetDevicePixelRatio();
   });
 
+  // A real restart: tear down any previous tree first so no element state
+  // (scroll offsets, controllers, provider caches) survives into the new app.
+  if (store != null) {
+    await tester.pumpWidget(const SizedBox.shrink());
+    await tester.pump();
+  }
   await tester.pumpWidget(
     ProviderScope(
       overrides: testOverrides(memory, examsJson: examsJson),

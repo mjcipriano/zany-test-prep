@@ -24,9 +24,16 @@ CONTENT = ROOT / "content"
 ASSETS = ROOT / "assets" / "content"
 
 
+# Order exams are listed in (the picker shows them in this order); any exam
+# not named here follows alphabetically.
+EXAM_ORDER = ["sat", "act"]
+
+
 def exam_dirs() -> list[Path]:
-    return sorted(d for d in (CONTENT / "exams").iterdir()
-                  if d.is_dir() and (d / "exam.yaml").exists())
+    dirs = [d for d in (CONTENT / "exams").iterdir()
+            if d.is_dir() and (d / "exam.yaml").exists()]
+    rank = {e: i for i, e in enumerate(EXAM_ORDER)}
+    return sorted(dirs, key=lambda d: (rank.get(d.name, len(rank)), d.name))
 
 
 def load_exam(exam_dir: Path) -> dict:

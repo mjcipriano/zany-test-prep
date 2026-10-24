@@ -200,7 +200,9 @@ class _ExamStep extends StatelessWidget {
                 label: exam.name,
                 subtitle: exam.tagline.isNotEmpty
                     ? '${exam.displayName} — ${exam.tagline}'
-                    : exam.displayName,
+                    : (exam.displayName != exam.name
+                          ? exam.displayName
+                          : 'Prepare for the ${exam.name}'),
                 selected: selected == exam.id,
                 onTap: () => onSelect(exam.id),
               ),

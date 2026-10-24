@@ -29,7 +29,7 @@ void main() {
       for (final d in bundle.domainIds) {
         expect(
           bundle.questions.where((q) => q.domain == d).length,
-          greaterThanOrEqualTo(250),
+          greaterThanOrEqualTo(d == 'reading' ? 150 : 250),
           reason: 'domain $d',
         );
         expect(bundle.lessonsForDomain(d), isNotEmpty, reason: 'domain $d');

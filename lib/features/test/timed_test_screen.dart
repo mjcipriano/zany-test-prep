@@ -345,6 +345,11 @@ class _TimedTestScreenState extends ConsumerState<TimedTestScreen> {
               child: Row(
                 children: [
                   OutlinedButton(
+                    // Bounded width: the themed default is full-width, which
+                    // is an infinite-width constraint inside a Row.
+                    style: OutlinedButton.styleFrom(
+                      minimumSize: const Size(96, 54),
+                    ),
                     onPressed: _q > 0 ? () => _go(-1) : null,
                     child: const Text('Back'),
                   ),
