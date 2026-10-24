@@ -20,7 +20,7 @@ from __future__ import annotations
 
 import random
 
-from .rw_gen import NAMES, build, cap, conv_stem, dispatch, family, fill, low
+from .rw_gen import NAMES, build, cap, conv_stem, dispatch, family, fill, low, soft_low
 
 SUBSKILLS = {
     "usage_idioms": ["confused_words", "idiomatic_prepositions", "comparatives",
@@ -210,7 +210,7 @@ def ui_confused(rng, difficulty):
     name = rng.choice(NAMES)
     text = text.format(N=name)
     if difficulty == "hard":
-        text = rng.choice(["According to the minutes, ", "As the newsletter notes, ", "In the end, "]) + low(text)
+        text = rng.choice(["According to the minutes, ", "As the newsletter notes, ", "In the end, "]) + soft_low(text)
     correct = (right, f"Correct. {why}")
     return build(rng, fill(text, _stem(rng)), correct, wrongs, subskill="confused_words",
                  explanation=why, tags=["usage", "confused-words"])
@@ -269,11 +269,11 @@ def ui_preposition(rng, difficulty):
     correct = (right, f"Correct. {rule}")
     ds = [(w, f"'{w}' is not the preposition this expression takes in standard English.") for w in wrongs]
     if difficulty == "medium":
-        text = rng.choice(["As the brochure explains, ", "Visitors soon learn that ", "By all accounts, "]) + low(text)
+        text = rng.choice(["As the brochure explains, ", "By all accounts, ", "As it happens, "]) + soft_low(text)
     elif difficulty == "hard":
-        close = rng.choice(["Few visitors notice the difference.", "The pattern has held for years.",
+        close = rng.choice(["No one disputed the point.", "The wording was never in doubt.",
                             "The detail is easy to miss."])
-        text = rng.choice(["As the brochure explains, ", "In the end, "]) + low(text) + " " + close
+        text = rng.choice(["As the brochure explains, ", "As it happens, "]) + soft_low(text) + " " + close
     return build(rng, fill(text, _stem(rng)), correct, ds, subskill="idiomatic_prepositions",
                  explanation=rule, tags=["usage", "idiom", "preposition"])
 
@@ -315,8 +315,8 @@ def ui_prep_passage(rng, difficulty):
     elif difficulty == "medium":
         text = f"{lead} {mid}. {close}"
     else:
-        text = f"{lead} " + rng.choice(["As regulars will tell you, ", "Perhaps surprisingly, ",
-                                        "According to the staff, "]) + low(mid) + f". {close}"
+        text = f"{lead} " + rng.choice(["As regulars will tell you, ", "As it happens, ",
+                                        "According to the staff, "]) + soft_low(mid) + f". {close}"
     return build(rng, fill(text, _stem(rng)), correct, ds, subskill="idiomatic_prepositions",
                  explanation="Certain adjectives and verbs pair with a fixed preposition; memorize the idiom.",
                  tags=["usage", "idiom", "preposition", "passage"], est=50)
@@ -325,26 +325,36 @@ def ui_prep_passage(rng, difficulty):
 # --------------------------------------------------------------------------- #
 # Comparatives and superlatives
 # --------------------------------------------------------------------------- #
-_ADJ = [("short", "shorter", "shortest"), ("fast", "faster", "fastest"), ("tall", "taller", "tallest"),
-        ("old", "older", "oldest"), ("cheap", "cheaper", "cheapest"), ("steep", "steeper", "steepest"),
-        ("quiet", "quieter", "quietest"), ("busy", "busier", "busiest"), ("early", "earlier", "earliest"),
-        ("expensive", "more expensive", "most expensive"), ("reliable", "more reliable", "most reliable"),
-        ("crowded", "more crowded", "most crowded"), ("good", "better", "best"), ("far", "farther", "farthest")]
+_ADJ = {
+    "routes": [("short", "shorter", "shortest"), ("steep", "steeper", "steepest"),
+               ("busy", "busier", "busiest"), ("scenic", "more scenic", "most scenic")],
+    "towers": [("tall", "taller", "tallest"), ("old", "older", "oldest"),
+               ("narrow", "narrower", "narrowest"), ("famous", "more famous", "most famous")],
+    "trains": [("fast", "faster", "fastest"), ("early", "earlier", "earliest"),
+               ("crowded", "more crowded", "most crowded"), ("cheap", "cheaper", "cheapest"),
+               ("reliable", "more reliable", "most reliable")],
+    "bridges": [("old", "older", "oldest"), ("long", "longer", "longest"),
+                ("busy", "busier", "busiest"), ("expensive", "more expensive", "most expensive")],
+    "ovens": [("hot", "hotter", "hottest"), ("reliable", "more reliable", "most reliable"),
+              ("expensive", "more expensive", "most expensive"), ("old", "older", "oldest")],
+    "drafts": [("short", "shorter", "shortest"), ("good", "better", "best"),
+               ("clear", "clearer", "clearest"), ("ambitious", "more ambitious", "most ambitious")],
+}
 _CMP_PAIRS = [("the coastal route", "the mountain route", "routes"), ("the north tower", "the south tower", "towers"),
               ("the morning train", "the evening train", "trains"), ("the old bridge", "the new bridge", "bridges"),
               ("the brick oven", "the gas oven", "ovens"), ("the first draft", "the second draft", "drafts")]
-_CMP_GROUPS = [("the three routes", "the coastal route"), ("the four towers", "the north tower"),
-               ("the five trains", "the morning train"), ("all the bridges in the county", "the old bridge"),
-               ("the six ovens in the bakery", "the brick oven"), ("the many drafts", "the first draft")]
+_CMP_GROUPS = [("the three routes", "the coastal route", "routes"), ("the four towers", "the north tower", "towers"),
+               ("the five trains", "the morning train", "trains"), ("all the bridges in the county", "the old bridge", "bridges"),
+               ("the six ovens in the bakery", "the brick oven", "ovens"), ("the many drafts", "the first draft", "drafts")]
 
 
 @family(fill_in=True)
 def ui_comparative(rng, difficulty):
     """-er/more for two items; -est/most for three or more; no double forms."""
-    base, cmp_, sup = rng.choice(_ADJ)
     two = rng.random() < 0.5
     if two:
         a, b, plural = rng.choice(_CMP_PAIRS)
+        base, cmp_, sup = rng.choice(_ADJ[plural])
         text = rng.choice([f"Of the two {plural}, {a} is ___.",
                            f"{cap(a)} is ___ than {b}.",
                            f"Between {a} and {b}, the first is clearly ___."])
@@ -358,12 +368,13 @@ def ui_comparative(rng, difficulty):
               (base, f"The plain form '{base}' cannot complete a comparison of two items.")]
         rule = "Use the comparative (-er or 'more') when exactly two things are compared."
     else:
-        group, item = rng.choice(_CMP_GROUPS)
+        group, item, key = rng.choice(_CMP_GROUPS)
+        base, cmp_, sup = rng.choice(_ADJ[key])
         text = rng.choice([f"Of {group}, {item} is the ___.",
                            f"{cap(item)} is the ___ of {group}.",
                            f"Among {group}, {item} is by far the ___."])
         correct = (sup, f"Correct. Three or more items are compared, so the superlative '{sup}' is needed.")
-        most = f"most {cmp_}" if " " not in cmp_ else f"most {base}est"
+        most = f"most {cmp_}"
         ds = [(cmp_, f"The comparative '{cmp_}' is for two items; here there are three or more."),
               (most, "This stacks two superlative markers, which is nonstandard."),
               (base, f"The plain form '{base}' does not single out one item from the group.")]
@@ -514,7 +525,7 @@ def ui_precision(rng, difficulty):
     text, right, wrongs, why = rng.choice(_PRECISE)
     correct = (right, f"Correct. {why}")
     if difficulty != "easy":
-        text = rng.choice(["In its summary, ", "As the report explains, ", "According to the minutes, "]) + low(text) \
+        text = rng.choice(["According to the article, ", "As the report explains, ", "By most accounts, "]) + low(text) \
             if not text.startswith("Because") else text
     if difficulty == "hard":
         text = text + " " + rng.choice(["The finding was not disputed.", "The detail appears in a footnote.",
@@ -532,7 +543,7 @@ def ui_redundancy(rng, difficulty):
     text, right, wrongs, why = rng.choice(_REDUND)
     correct = (right, f"Correct. {why}")
     if difficulty != "easy":
-        text = rng.choice(["As the records show, ", "In the end, ", "According to the plan, "]) + low(text) \
+        text = rng.choice(["As the records show, ", "In the end, ", "As it happens, "]) + low(text) \
             if not text.startswith("At dawn") else text
     if difficulty == "hard":
         text = text + " " + rng.choice(["The change took effect immediately.", "Nobody objected.",
@@ -598,8 +609,8 @@ def ui_passage(rng, difficulty):
     elif difficulty == "medium":
         text = f"{lead} {mid}. {close}"
     else:
-        text = f"{lead} " + rng.choice(["As regulars will tell you, ", "Perhaps surprisingly, ",
-                                        "According to the staff, "]) + low(mid) + f". {close}"
+        text = f"{lead} " + rng.choice(["As regulars will tell you, ", "As it happens, ",
+                                        "According to the staff, "]) + soft_low(mid) + f". {close}"
     return build(rng, fill(text, _stem(rng)), correct, wrongs, subskill="confused_words",
                  explanation=("Read the sentence around the blank for its meaning, then pick the word "
                               "whose standard meaning and form match it."),

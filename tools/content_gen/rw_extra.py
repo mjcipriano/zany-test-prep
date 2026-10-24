@@ -14,7 +14,7 @@ from __future__ import annotations
 import random
 
 from .util import mc
-from .rw_gen import (NAMES, build, cap, conv_stem, dispatch, family, fill, low, pron)
+from .rw_gen import (NAMES, build, cap, conv_stem, dispatch, family, fill, low, pron, soft_low)
 
 _NAMES = NAMES
 
@@ -58,9 +58,38 @@ _VT_SUBJ_PL = ["the researchers", "the students", "the volunteers", "the enginee
                "the musicians", "the historians", "the designers"]
 _VT_SUBJ_SG = ["the committee", "the museum", "the orchestra", "the mayor", "the lab",
                "the company", "the chef", "the pilot"]
-_VT_TAILS = ["the new exhibit", "the final route", "the annual report", "the old bridge",
-             "the research site", "the entire collection", "the city archive",
-             "the wetland survey", "the harvest festival", "the winter schedule"]
+_VT_TAILS_BY_VERB = {
+    "travel": ["to the research site", "across the northern valley", "to the coast for the survey"],
+    "study": ["the wetland birds", "the old harbor maps", "the effects of the new fertilizer"],
+    "present": ["the annual report", "the findings at the conference", "a plan for the new exhibit"],
+    "repair": ["the old bridge", "the stage lights", "the greenhouse roof"],
+    "design": ["the new exhibit", "a lighter bicycle frame", "the festival posters"],
+    "publish": ["the annual report", "the wetland survey", "a guide to the city archive"],
+    "complete": ["the wetland survey", "the final route", "the renovation of the lobby"],
+    "explore": ["the sea caves", "the research site", "the ruins north of town"],
+    "record": ["the harvest totals", "the temperature at dawn", "every bird call on the trail"],
+    "organize": ["the harvest festival", "the winter schedule", "the city archive"],
+    "review": ["the winter schedule", "the safety plan", "the entire collection"],
+    "measure": ["the snowpack", "the width of the river", "the growth of the saplings"],
+    "begin": ["the harvest early", "the renovation of the lobby", "a new series of lectures"],
+    "write": ["a guide to the trails", "the annual report", "a history of the mill"],
+    "see": ["the comet from the ridge", "the first cranes of the season", "the finished mural"],
+    "take": ["the ferry to the island", "samples from the reef", "a shorter route home"],
+    "go": ["to the research station", "on a tour of the archive", "to the harvest festival"],
+    "choose": ["a new director", "the site for the garden", "a route through the valley"],
+    "drive": ["to the research site", "the supplies up the mountain", "across the salt flats"],
+    "speak": ["at the opening ceremony", "to the city council", "about the wetland survey"],
+    "break": ["the old attendance record", "ground on the new library", "the ice on the pond"],
+    "grow": ["tomatoes behind the station", "wheat on the upper field", "herbs for the kitchen"],
+    "run": ["the summer workshop", "the ferry on weekends", "the city archive"],
+    "swim": ["across the harbor", "in the cold lake", "before the morning tide"],
+    "ring": ["the bell at noon", "the old tower bell", "in the new year"],
+    "forget": ["the keys to the archive", "the lines of the play", "the way to the site"],
+}
+
+
+def _tail(rng, base):
+    return rng.choice(_VT_TAILS_BY_VERB[base])
 _VT_TIME = {
     "past": ["Last year", "Yesterday", "A decade ago", "Last summer", "In 2009", "Two weeks ago"],
     "present": ["Each day", "These days", "Every season", "Routinely", "Currently", "Every spring"],
@@ -81,7 +110,7 @@ def vt_time_cue(rng, difficulty):
         subj = name if rng.random() < 0.4 else subj
         plural = plural and subj != name
     base, s3, past, pp, ing = rng.choice(_VERBS if difficulty != "hard" else _VERBS + _IRREG)
-    tail = rng.choice(_VT_TAILS)
+    tail = _tail(rng, base)
     cue = rng.choice(_VT_TIME[tense])
     present = base if plural else s3
     forms = {"past": past, "present": present, "future": f"will {base}"}
@@ -233,7 +262,7 @@ def vt_irregular(rng, difficulty):
     text = frame.format(N=name)
     if difficulty == "hard":
         text = rng.choice(["According to the program notes, ", "As the logbook shows, ",
-                           "By every account, "]) + low(text)
+                           "By every account, "]) + soft_low(text)
     return build(rng, fill(text, conv_stem(rng)), correct, ds, subskill="verb_tense",
                  explanation=expl, tags=["conventions", "verb-tense", "irregular"])
 
@@ -367,7 +396,7 @@ def vt_clause_options(rng, difficulty):
     subj = rng.choice(_VT_SUBJ_PL + _VT_SUBJ_SG)
     plural = subj in _VT_SUBJ_PL
     base, s3, past, pp, ing = rng.choice(_VERBS)
-    tail = rng.choice(_VT_TAILS)
+    tail = _tail(rng, base)
     present = base if plural else s3
     forms = {"past": past, "present": present, "future": f"will {base}"}
     right = forms[tense]
@@ -450,15 +479,16 @@ def par_series(rng, difficulty):
 _PAR_CORR = [
     ("not only", "but also"), ("either", "or"), ("neither", "nor"), ("both", "and"),
 ]
+# (first quality, second quality, -ing distractor, clause distractor)
 _PAR_CORR_ITEMS = [
-    ("her paintings", "her poetry", "writing poetry", "that she writes poetry"),
+    ("its clarity", "its humor", "being humorous", "that it is humorous"),
     ("its speed", "its reliability", "being reliable", "that it is reliable"),
-    ("the price", "the location", "where it is located", "being well located"),
-    ("the lecture", "the field trip", "going on the field trip", "that there was a field trip"),
-    ("clear skies", "calm seas", "the sea being calm", "that the sea was calm"),
-    ("a quiet office", "a short commute", "commuting briefly", "that the commute is short"),
-    ("patience", "precision", "being precise", "to be precise"),
-    ("the violin", "the cello", "playing the cello", "to play the cello"),
+    ("its low cost", "its simplicity", "being simple", "that it is simple"),
+    ("its originality", "its practicality", "being practical", "that it is practical"),
+    ("its maps", "its clear directions", "giving clear directions", "that its directions are clear"),
+    ("its detail", "its accuracy", "being accurate", "that it is accurate"),
+    ("its color", "its texture", "having texture", "that it has texture"),
+    ("its honesty", "its wit", "being witty", "that it is witty"),
 ]
 _PAR_CORR_VERBS = [
     ("sing", "dance", "dancing", "to dance"), ("swim", "run", "running", "to run"),
@@ -471,7 +501,7 @@ def par_correlative(rng, difficulty):
     """Correlative pairs (not only...but also, either...or) need matching forms."""
     name = rng.choice(_NAMES)
     first, second = rng.choice(_PAR_CORR)
-    if difficulty == "easy" or rng.random() < 0.5:
+    if rng.random() < 0.5:
         a, b, w1, w2 = rng.choice(_PAR_CORR_ITEMS)
         frames = {
             "not only": f"The judges praised the entry not only for {a} but also for ___.",
@@ -483,8 +513,10 @@ def par_correlative(rng, difficulty):
         correct = (b, f"Correct. After '{first}...for {a},' the second half repeats the same "
                       f"'for' + noun pattern: 'for {b}'.")
         ds = [(w1, "An -ing phrase does not match the noun phrase in the first half."),
-              (w2, "A clause does not match the noun phrase in the first half."),
+              (f"its {w1}", "This wordy '-ing' nominalization does not match the simple noun phrase in the first half."),
               (f"for {b}", "'for' is already supplied before the blank; repeating it doubles the preposition.")]
+        if difficulty == "hard":
+            ds[0] = (w2, "A clause does not match the noun phrase in the first half.")
     else:
         a, b, g, inf = rng.choice(_PAR_CORR_VERBS)
         frames = {
@@ -664,8 +696,8 @@ def par_passage(rng, difficulty):
 # PRONOUN-ANTECEDENT AGREEMENT
 # =========================================================================== #
 _PA_SING = ["The company", "The team", "The committee", "The school", "The city",
-            "The orchestra", "The museum", "The agency", "Each student", "Every applicant",
-            "The university", "The startup", "The clinic", "The council"]
+            "The orchestra", "The museum", "The agency", "The university", "The startup",
+            "The clinic", "The council"]
 _PA_PLUR = ["The players", "The teachers", "The volunteers", "The residents", "The scientists",
             "The workers", "The artists", "Both companies", "The members", "The engineers",
             "The students", "The farmers", "The divers", "The founders"]
@@ -717,31 +749,45 @@ _PA_SUBJ_FRAMES = [
     ("Once {A} finished the tour,", "posted photographs online"),
     ("Although {A} expected delays,", "finished ahead of schedule"),
     ("Because {A} needed more space,", "moved to a larger building"),
-    ("As soon as {A} arrived,", "began unpacking the equipment"),
+    ("As soon as {A} received the grant,", "ordered new equipment"),
 ]
+_PA_SUBJ_SING = ["the committee", "the team", "the orchestra", "the company", "the agency",
+                 "the council", "the startup", "the clinic", "the choir", "the museum"]
+_PA_SUBJ_PLUR = ["the players", "the volunteers", "the scientists", "the engineers",
+                 "the students", "the founders", "the divers", "the members", "the singers",
+                 "the curators"]
+_PA_SUBJ_BAIT = {"plural": {"short": ["with offices in three towns", "of forty members",
+                                      "with dozens of volunteers"],
+                            "long": ["which had grown out of a single research lab downtown",
+                                     "together with the dozens of branches it had opened abroad"]},
+                 "singular": {"short": ["from the main office", "on the night shift", "in the league"],
+                              "long": ["along with a partner organization that joined last year",
+                                       "despite objections from the neighboring district"]}}
 
 
 @family(fill_in=True)
 def pa_subject(rng, difficulty):
     """it / they as the subject referring back to a singular or plural noun."""
     plural = rng.random() < 0.5
-    ante = rng.choice(_PA_PLUR if plural else _PA_SING)
+    ante = rng.choice(_PA_SUBJ_PLUR if plural else _PA_SUBJ_SING)
     frame, pred = rng.choice(_PA_SUBJ_FRAMES)
     right = "they" if plural else "it"
     wrong = "it" if plural else "they"
     num = "plural" if plural else "singular"
+    ante = cap(ante)
     correct = (right, f"Correct. '{ante}' is {num}, so the subject pronoun is '{right}'.")
     ds = [(wrong, f"'{wrong}' does not agree with the {num} antecedent '{ante}'."),
           ("them" if plural else "its", "This form cannot be the subject of the clause."),
           ("one" if not plural else "those", "This pronoun does not refer clearly back to the antecedent.")]
-    lead = frame.format(A=low(ante))
-    text = f"{cap(lead)} ___ {pred}."
+    a_low = low(ante)
+    text = f"{cap(frame.format(A=a_low))} ___ {pred}."
+    bait_num = "singular" if plural else "plural"
     if difficulty == "medium":
-        bait = rng.choice(_PA_BAIT_SHORT["singular" if plural else "plural"])
-        text = f"{cap(frame.format(A=low(ante) + ' ' + bait))} ___ {pred}."
+        bait = rng.choice(_PA_SUBJ_BAIT[bait_num]["short"])
+        text = f"{cap(frame.format(A=a_low + ' ' + bait))} ___ {pred}."
     elif difficulty == "hard":
-        bait = rng.choice(_PA_BAIT_LONG["singular" if plural else "plural"])
-        text = f"{cap(frame.format(A=low(ante) + ', ' + bait + ','))} ___ {pred}."
+        bait = rng.choice(_PA_SUBJ_BAIT[bait_num]["long"])
+        text = f"{cap(frame.format(A=a_low + ', ' + bait + ','))} ___ {pred}."
     return build(rng, fill(text, conv_stem(rng)), correct, ds, subskill="pronoun_antecedent",
                  explanation=f"The pronoun refers to '{ante}', which is {num}, so '{right}' is required.",
                  tags=["conventions", "pronoun-antecedent", "subject-pronoun"])
@@ -866,27 +912,32 @@ def pa_whole_sentence(rng, difficulty):
 # =========================================================================== #
 _QE_TOPICS = [
     ("Annual rainfall", "the city", "millimeters", "rose"),
-    ("Library visits", "the downtown branch", "thousands", "increased"),
+    ("Library visits", "the downtown branch", "thousand", "increased"),
     ("Solar installations", "the county", "units", "grew"),
     ("Recycling rate", "the town", "percent", "climbed"),
     ("Average commute", "the metro area", "minutes", "fell"),
     ("Wetland bird species", "the reserve", "species", "increased"),
-    ("Ticket sales", "the festival", "thousands", "rose"),
+    ("Ticket sales", "the festival", "thousand", "rose"),
     ("Coral cover", "the reef", "percent", "declined"),
-    ("Bicycle trips", "the river district", "thousands", "rose"),
+    ("Bicycle trips", "the river district", "thousand", "rose"),
     ("Water use", "the campus", "million liters", "fell"),
 ]
 _QE_STEMS = ["Which choice best uses data from the table to support the researcher's claim?",
              "Which statement is best supported by the data in the table?",
              "Which finding from the table most directly supports the claim?"]
+# (label, plural label, category names, measure, unit)
 _QE_CATS = [
-    ("Region", ["North", "South", "East", "West", "Central"], "households with solar panels", "percent"),
-    ("Species", ["Oak", "Maple", "Birch", "Pine", "Elm"], "seedlings surviving after one year", "percent"),
-    ("Branch", ["Harbor", "Hillside", "Downtown", "Riverside", "Eastgate"], "monthly visitors", "thousands"),
-    ("Crop", ["Wheat", "Barley", "Oats", "Rye", "Corn"], "yield per acre", "bushels"),
-    ("Team", ["Falcons", "Otters", "Comets", "Herons", "Badgers"], "points scored", "points"),
-    ("Material", ["Glass", "Paper", "Plastic", "Metal", "Textiles"], "share recycled", "percent"),
+    ("Region", "regions", ["North", "South", "East", "West", "Central"], "share of households with solar panels", "percent"),
+    ("Species", "species", ["Oak", "Maple", "Birch", "Pine", "Elm"], "seedling survival rate", "percent"),
+    ("Branch", "branches", ["Harbor", "Hillside", "Downtown", "Riverside", "Eastgate"], "monthly visitor count", "thousand"),
+    ("Crop", "crops", ["Wheat", "Barley", "Oats", "Rye", "Corn"], "yield per acre", "bushels"),
+    ("Team", "teams", ["Falcons", "Otters", "Comets", "Herons", "Badgers"], "points scored", "points"),
+    ("Material", "materials", ["Glass", "Paper", "Plastic", "Metal", "Textiles"], "share recycled", "percent"),
 ]
+
+
+def _poss(name):
+    return name + ("'" if name.endswith("s") else "'s")
 
 
 def _qe_table(caption, headers, rows):
@@ -906,7 +957,8 @@ def qe_trend(rng, difficulty):
     metric, place, unit, verb = rng.choice(_QE_TOPICS)
     rising = verb in ("rose", "increased", "grew", "climbed")
     n = {"easy": 4, "medium": 5, "hard": 6}[difficulty]
-    years = [2016 + rng.randint(0, 3) + i for i in range(n)]
+    y0 = 2016 + rng.randint(0, 3)
+    years = [y0 + i for i in range(n)]
     if difficulty == "easy":
         start = rng.randint(20, 60)
         steps = [rng.choice([3, 4, 5, 6, 8])] * (n - 1)
@@ -965,7 +1017,7 @@ def qe_trend(rng, difficulty):
 @family(fill_in=False)
 def qe_category_max(rng, difficulty):
     """Bar-style read: which category is largest/smallest, by how much."""
-    label, cats, measure, unit = rng.choice(_QE_CATS)
+    label, plural, cats, measure, unit = rng.choice(_QE_CATS)
     k = {"easy": 3, "medium": 4, "hard": 5}[difficulty]
     names = rng.sample(cats, k)
     vals = rng.sample(range(12, 90), k)
@@ -975,19 +1027,19 @@ def qe_category_max(rng, difficulty):
     second = sorted(rows, key=lambda r: -r[1])[1]
     gap = hi[1] - lo[1]
     claim = rng.choice([
-        f"A student argues that {measure} varied considerably across the {label.lower()}s studied.",
+        f"A student argues that the {measure} varied considerably across the {plural} studied.",
         f"A report claims that one {label.lower()} stood out from the others in {measure}.",
     ])
     correct_text = rng.choice([
         f"{hi[0]} had the highest {measure}, at {hi[1]} {unit}, while {lo[0]} had the lowest, at {lo[1]} {unit}.",
         f"At {hi[1]} {unit}, {hi[0]} exceeded the lowest {label.lower()}, {lo[0]}, by {gap} {unit}.",
-        f"The {measure} for {hi[0]} ({hi[1]} {unit}) was {gap} {unit} higher than for {lo[0]}.",
+        f"{_poss(hi[0])} figure ({hi[1]} {unit}) was {gap} {unit} higher than {_poss(lo[0])}.",
     ])
     correct = (correct_text, "Correct. These figures are read directly from the table and compare "
                              "the highest and lowest values.")
     ds = [(f"{lo[0]} had the highest {measure}, at {lo[1]} {unit}, while {hi[0]} had the lowest, at {hi[1]} {unit}.",
            f"This reverses the table: {hi[0]} had the highest value and {lo[0]} the lowest."),
-          (f"{second[0]} led all {label.lower()}s with {second[1]} {unit}, ahead of {hi[0]} at {hi[1]} {unit}.",
+          (f"{second[0]} led all {plural} with {second[1]} {unit}, ahead of {hi[0]} at {hi[1]} {unit}.",
            f"{second[0]} was second; {hi[0]} had the highest value, {hi[1]} {unit}."),
           (f"Every {label.lower()} recorded roughly the same {measure}, within a few {unit} of {hi[1]} {unit}.",
            f"The values range from {lo[1]} to {hi[1]} {unit}, so they are not roughly the same.")]
@@ -1006,12 +1058,15 @@ def qe_category_max(rng, difficulty):
 @family(fill_in=False)
 def qe_compare_two(rng, difficulty):
     """Two categories tracked over the same years; compare them."""
-    label, cats, measure, unit = rng.choice(_QE_CATS)
+    label, plural, cats, measure, unit = rng.choice(_QE_CATS)
     a, b = rng.sample(cats, 2)
     n = {"easy": 3, "medium": 4, "hard": 5}[difficulty]
-    years = [2017 + rng.randint(0, 3) + i for i in range(n)]
+    y0 = 2017 + rng.randint(0, 3)
+    years = [y0 + i for i in range(n)]
     base_a = rng.randint(30, 60)
-    base_b = base_a + rng.randint(8, 20)
+    # b starts far enough ahead that a (rising <=4/yr) cannot pass b (falling <=2/yr)
+    # before the final year, where the hard tier forces a crossing.
+    base_b = base_a + rng.randint(6 * (n - 1) + 2, 6 * (n - 1) + 12)
     a_vals = [base_a + i * rng.choice([2, 3, 4]) for i in range(n)]
     b_vals = [base_b - i * rng.choice([1, 2]) for i in range(n)]
     if difficulty == "hard":
@@ -1021,13 +1076,13 @@ def qe_compare_two(rng, difficulty):
     crossed = b_vals[-1] < a_vals[-1]
     a_change = a_vals[-1] - a_vals[0]
     b_change = b_vals[0] - b_vals[-1]
-    claim = f"A researcher claims that {a} has been catching up with {b} in {measure}."
+    claim = f"A researcher claims that the gap between {b} and {a} in {measure} has been closing."
     if crossed:
         correct_text = rng.choice([
             f"{b} led in every year until {years[-1]}, when {a} moved ahead, {a_vals[-1]} to {b_vals[-1]} {unit}.",
             f"By {years[-1]}, {a} ({a_vals[-1]} {unit}) had overtaken {b} ({b_vals[-1]} {unit}).",
         ])
-        ds = [(f"{b} exceeded {a} in every year shown, finishing {years[-1]} at {b_vals[-1]} {unit} to {a}'s {a_vals[-1]}.",
+        ds = [(f"{b} exceeded {a} in every year shown, finishing {years[-1]} at {b_vals[-1]} {unit} to {_poss(a)} {a_vals[-1]}.",
                f"In {years[-1]} {a} was ahead, {a_vals[-1]} to {b_vals[-1]}."),
               (f"{a} led {b} throughout the period, from {years[0]} ({a_vals[0]} {unit}) through {years[-1]} ({a_vals[-1]} {unit}).",
                f"{b} was ahead in every year before {years[-1]}."),
@@ -1040,7 +1095,7 @@ def qe_compare_two(rng, difficulty):
             f"{a} rose by {a_change} {unit} over the period while {b} fell by {b_change} {unit}.",
             f"{b} stayed ahead in every year, but its lead shrank from {gap0} to {gap1} {unit}.",
         ])
-        ds = [(f"{a} exceeded {b} in {years[-1]}, finishing at {a_vals[-1]} {unit} to {b}'s {b_vals[-1]} {unit}.",
+        ds = [(f"{a} exceeded {b} in {years[-1]}, finishing at {a_vals[-1]} {unit} to {_poss(b)} {b_vals[-1]} {unit}.",
                f"{b} was still ahead in {years[-1]}, {b_vals[-1]} to {a_vals[-1]}."),
               (f"The gap between {b} and {a} widened from {gap0} {unit} in {years[0]} to {gap0 + 4} {unit} in {years[-1]}.",
                f"The gap actually narrowed to {gap1} {unit}."),
@@ -1057,7 +1112,7 @@ def qe_compare_two(rng, difficulty):
 @family(fill_in=False)
 def qe_undermine(rng, difficulty):
     """Which data point most directly weakens a sweeping claim?"""
-    label, cats, measure, unit = rng.choice(_QE_CATS)
+    label, plural, cats, measure, unit = rng.choice(_QE_CATS)
     k = {"easy": 3, "medium": 4, "hard": 5}[difficulty]
     names = rng.sample(cats, k)
     y1, y2 = 2019 + rng.randint(0, 2), 2022 + rng.randint(0, 2)
@@ -1069,7 +1124,7 @@ def qe_undermine(rng, difficulty):
     odd = rng.randrange(k)
     drop = rng.randint(2, 9)
     rows[odd][2] = rows[odd][1] - drop
-    claim = f"A columnist claims that {measure} improved for every {label.lower()} between {y1} and {y2}."
+    claim = f"A columnist claims that the {measure} improved for every {label.lower()} between {y1} and {y2}."
     o = rows[odd]
     correct_text = rng.choice([
         f"{o[0]} fell from {o[1]} to {o[2]} {unit}, so not every {label.lower()} improved.",
@@ -1085,7 +1140,7 @@ def qe_undermine(rng, difficulty):
            "This supports the claim rather than weakening it."),
           (f"{r2[0]} improved by {r2[2] - r2[1]} {unit}, one of the gains the columnist points to.",
            "This is consistent with the claim; it does not undermine it."),
-          (f"The average across all {label.lower()}s was higher in {y2} than in {y1}, as the columnist suggests.",
+          (f"The average across all {plural} was higher in {y2} than in {y1}, as the columnist suggests.",
            "An average can rise even when one category falls; it does not test the word 'every'.")]
     prompt = (f"{claim}\n\n" + rng.choice([
         "Which choice uses data from the table to most directly challenge the columnist's claim?",
@@ -1099,7 +1154,7 @@ def qe_undermine(rng, difficulty):
 @family(fill_in=False)
 def qe_support_point(rng, difficulty):
     """Which single data point best supports a specific claim?"""
-    label, cats, measure, unit = rng.choice(_QE_CATS)
+    label, plural, cats, measure, unit = rng.choice(_QE_CATS)
     k = {"easy": 3, "medium": 4, "hard": 5}[difficulty]
     names = rng.sample(cats, k)
     vals = rng.sample(range(15, 85), k)
@@ -1110,16 +1165,16 @@ def qe_support_point(rng, difficulty):
     kind = rng.choice(["lowest", "highest"])
     tgt = lo if kind == "lowest" else hi
     thresh = (tgt[1] + rng.choice([3, 5, 8])) if kind == "lowest" else (tgt[1] - rng.choice([3, 5, 8]))
-    claim = (f"A writer argues that {tgt[0]} lags well behind the other {label.lower()}s in {measure}."
+    claim = (f"A writer argues that {tgt[0]} lags well behind the other {plural} in {measure}."
              if kind == "lowest" else
-             f"A writer argues that {tgt[0]} leads the other {label.lower()}s in {measure}.")
+             f"A writer argues that {tgt[0]} leads the other {plural} in {measure}.")
     nxt = srt[1] if kind == "lowest" else srt[-2]
     correct_text = rng.choice([
         f"{tgt[0]} recorded {tgt[1]} {unit}, the {kind} value of any {label.lower()} in the table.",
         f"At {tgt[1]} {unit}, {tgt[0]} was {abs(nxt[1] - tgt[1])} {unit} {'below' if kind == 'lowest' else 'above'} the next-{kind} {label.lower()}, {nxt[0]}.",
     ])
     correct = (correct_text, f"Correct. {tgt[0]}'s figure is the {kind} in the table, which is exactly what the claim needs.")
-    ds = [(f"{mid[0]} recorded {mid[1]} {unit}, placing it near the middle of the {label.lower()}s shown.",
+    ds = [(f"{mid[0]} recorded {mid[1]} {unit}, placing it near the middle of the {plural} shown.",
            f"{mid[0]}'s value says nothing about {tgt[0]}."),
           (f"{tgt[0]} recorded {thresh} {unit}, the {kind} value of any {label.lower()} in the table.",
            f"The table shows {tgt[1]} {unit} for {tgt[0]}, not {thresh}."),

@@ -61,6 +61,12 @@ def low(s: str) -> str:
     return s[0].lower() + s[1:] if s else s
 
 
+def soft_low(s: str) -> str:
+    """Lowercase the first letter unless the text opens with a proper name."""
+    first = s.split()[0].strip(",.'") if s.strip() else ""
+    return s if first in NAMES else low(s)
+
+
 def fill(text: str, stem: str) -> str:
     """Prompt for a blank-filling item (one ___, stem on its own paragraph)."""
     assert text.count("___") == 1, text
@@ -186,7 +192,8 @@ def _sva_opts(plural, verbs, hard_tense=False):
     ds = [(wrong, f"Agreement error: '{wrong}' is {anti}, but the true subject is {num}. "
                   "Ignore the words between the subject and the verb."),
           (ing, "An -ing form alone cannot serve as the main verb of the sentence."),
-          (f"to {plur}", "An infinitive cannot serve as the main verb here.")]
+          (f"to {plur}" if plur != "are" else "to be",
+           "An infinitive cannot serve as the main verb here.")]
     return correct, ds, right
 
 
@@ -365,12 +372,6 @@ def sva_inverted(rng, difficulty):
         right, wrong = ("were", "was") if plural else ("was", "were")
         others = [("is" if plural else "are"), "being"]
         np_ = np_ + rng.choice([" at the time", " when the inspectors visited"])
-    if difficulty == "hard" and rng.random() < 0.5:
-        right2 = ("have been" if plural else "has been") if tense == "present" else right
-        if tense == "present":
-            others = ["is" if plural else "are", "being"]
-            wrong = "has been" if plural else "have been"
-            right = right2
     num = "plural" if plural else "singular"
     correct = (right, f"Correct. The subject comes after the verb and is {num}, so "
                       f"'{right}' is needed.")
@@ -386,23 +387,23 @@ def sva_inverted(rng, difficulty):
                  tags=["conventions", "agreement", "inverted-order"])
 
 
+# (plural noun, relative pronoun, verb sing, verb plural, -ing, past participle, object, category)
 _SVA_REL = [
-    ("researchers", "who", "the study", "p"), ("architects", "who", "the plaza", "p"),
-    ("volunteers", "who", "the shelter", "p"), ("engineers", "who", "the dam", "p"),
-    ("novels", "that", "the prize", "t"), ("bridges", "that", "the river", "t"),
-    ("theories", "that", "the data", "t"), ("murals", "that", "the station", "t"),
+    ("researchers", "who", "oversees", "oversee", "overseeing", "overseen", "the study", "p"),
+    ("architects", "who", "designs", "design", "designing", "designed", "the plaza", "p"),
+    ("volunteers", "who", "runs", "run", "running", "run", "the shelter", "p"),
+    ("engineers", "who", "maintains", "maintain", "maintaining", "maintained", "the dam", "p"),
+    ("novels", "that", "describes", "describe", "describing", "described", "the harbor town", "t"),
+    ("bridges", "that", "spans", "span", "spanning", "spanned", "the river", "t"),
+    ("theories", "that", "explains", "explain", "explaining", "explained", "the data", "t"),
+    ("murals", "that", "decorates", "decorate", "decorating", "decorated", "the station", "t"),
 ]
-_SVA_REL_VERBS_P = [("oversees", "oversee"), ("visits", "visit"), ("studies", "study"),
-                    ("praises", "praise")]
-_SVA_REL_VERBS_T = [("describes", "describe"), ("spans", "span"), ("explains", "explain"),
-                    ("decorates", "decorate")]
 
 
 @family(fill_in=True)
 def sva_relative(rng, difficulty):
     """Relative clauses: 'one of the X who ___' (plural) vs 'the only one of the X who ___'."""
-    noun, rel, obj, cat = rng.choice(_SVA_REL)
-    sing, plur = rng.choice(_SVA_REL_VERBS_P if cat == "p" else _SVA_REL_VERBS_T)
+    noun, rel, sing, plur, ing, pp, obj, cat = rng.choice(_SVA_REL)
     name = rng.choice(NAMES)
     lead = {"p": f"{name} is", "t": f"The {noun[:-1]} {name} chose is"}[cat]
     form = rng.choice({"easy": ["plain"], "medium": ["one_of", "plain"],
@@ -424,14 +425,9 @@ def sva_relative(rng, difficulty):
     right, wrong = (plur, sing) if plural else (sing, plur)
     num = "plural" if plural else "singular"
     correct = (right, f"Correct. In this clause {rule}, so '{right}' is required.")
-    ing = (sing[:-2] if sing.endswith("es") and not sing.endswith("ses") else sing[:-1])
     ds = [(wrong, f"Agreement error: the verb's subject here is {num}."),
-          (f"{plur}ing" if not plur.endswith("e") else f"{plur[:-1]}ing",
-           "An -ing form alone cannot serve as the verb of the clause."),
-          (f"having {plur}d" if plur.endswith("e") else f"having {plur}ed"
-           if not plur.endswith("y") else f"having {plur[:-1]}ied",
-           "This participle phrase leaves the relative clause without a finite verb.")]
-    del ing
+          (ing, "An -ing form alone cannot serve as the verb of the clause."),
+          (f"having {pp}", "This participle phrase leaves the relative clause without a finite verb.")]
     return build(rng, fill(text, conv_stem(rng)), correct, ds,
                  subskill="subject_verb_agreement",
                  explanation=(f"Find what the relative pronoun stands for: {rule}. "
@@ -441,10 +437,10 @@ def sva_relative(rng, difficulty):
 
 _SVA_COLL = [("The committee", "p"), ("The jury", "p"), ("The orchestra", "p"),
              ("The faculty", "p"), ("The audience", "p"), ("The crew", "p"),
-             ("The herd", "t"), ("The flock", "t"), ("The fleet", "t"), ("The family", "p")]
+             ("The family", "p"), ("The board", "p"), ("The cast", "p")]
 _SVA_COLL_PH = ["of twelve members", "of forty musicians", "of retired judges",
-                "of volunteers from three towns", "of ships from the northern ports",
-                "of young goats"]
+                "of volunteers from three towns", "of young performers",
+                "of parents and teachers"]
 _SVA_FIELDS = ["Economics", "Physics", "Statistics", "Mathematics", "Linguistics",
                "Gymnastics"]
 _SVA_FIELD_TAILS = ["a demanding subject for first-year students",
@@ -638,6 +634,23 @@ _BND = [
     ("The market opens at dawn", "the best produce is gone by eight", "addition"),
     ("The lighthouse was automated in 1987", "a keeper still lives on the island", "contrast"),
 ]
+# B clauses whose subject is longer than one word (default is one word).
+_BND_SUBJ_WORDS = {"their loss": 2, "local businesses": 2, "the banks": 2, "the premiere": 2,
+                   "the building's energy bills": 4, "regular customers": 2, "the crew": 2,
+                   "their endurance": 2, "every system": 2, "the new plan": 3,
+                   "a thunderstorm": 2, "the sauce": 2, "its shows": 2, "the best produce": 3,
+                   "a keeper": 2, "it": 1}
+
+
+def _split_subject(b: str):
+    words = b.split()
+    n = 1
+    for k, v in _BND_SUBJ_WORDS.items():
+        if b.startswith(k + " "):
+            n = v
+    return " ".join(words[:n]), " ".join(words[n:])
+
+
 _BND_SUB = {"cause": ["Because", "Since", "After"], "contrast": ["Although", "While", "Even though"],
             "addition": ["When", "After", "Once"]}
 _BND_ADV = {"cause": ["therefore", "as a result", "consequently"],
@@ -779,8 +792,7 @@ def bnd_conjunctive_adverb(rng, difficulty):
         text = f"{a}___ {b_rest}."
     else:
         # adverb inside the second clause: "A. B-subject, however, rest."
-        bw = b.split()
-        b_subj, b_rest = bw[0], " ".join(bw[1:])
+        b_subj, b_rest = _split_subject(b)
         correct = (f". {cap(b_subj)}, {adv}, {b_rest}", f"Correct. A period ends the first "
                                                         f"sentence, and '{adv}' inside the "
                                                         "second is set off by commas.")
@@ -856,8 +868,8 @@ def bnd_colon(rng, difficulty):
               (f"{lead.split()[-1]}: and {w[0]}", "A colon should not be followed by 'and'; "
                                                    "the colon alone does the introducing.")]
         if difficulty == "hard":
-            ds[1] = (f"{lead.split()[-1]}, which was that {w[0]}",
-                     "This clumsy relative clause changes the meaning and is not idiomatic.")
+            ds[1] = (f"{lead.split()[-1]} being {w[0]}",
+                     "'being' is not a connector; this leaves a run-on with a dangling participle.")
         text = f"{' '.join(lead.split()[:-1])} ___ {' '.join(w[1:])}."
         expl = ("A colon can join two independent clauses when the second explains the first; "
                 "a comma alone makes a splice.")
@@ -882,15 +894,15 @@ def bnd_dependent(rng, difficulty):
         text = f"{sub} ___."
     elif difficulty == "medium":
         # dependent clause second: no comma before most subordinators
-        bw = b.split()
-        b_first, b_rest = bw[0], " ".join(bw[1:])
-        correct = (f"{low(sub)} {b_first}", f"Correct. When the '{low(sub)}' clause comes second, "
+        aw = a.split()
+        a_first, a_rest = low(aw[0]), " ".join(aw[1:])
+        correct = (f"{low(sub)} {a_first}", f"Correct. When the '{low(sub)}' clause comes second, "
                                             "it attaches without extra punctuation.")
-        ds = [(f"; {low(sub)} {b_first}", "A semicolon cannot precede a dependent clause."),
-              (f". {sub} {b_first}", f"'{sub} {b}' cannot stand alone; it is a fragment."),
-              (f", {conj} {low(sub)} {b_first}", f"'{conj}' plus '{low(sub)}' doubles the connector "
+        ds = [(f"; {low(sub)} {a_first}", "A semicolon cannot precede a dependent clause."),
+              (f". {sub} {a_first}", f"'{sub} {low(a)}' cannot stand alone; it is a fragment."),
+              (f", {conj} {low(sub)} {a_first}", f"'{conj}' plus '{low(sub)}' doubles the connector "
                                                   "and leaves the structure muddled.")]
-        text = f"{a} ___ {b_rest}."
+        text = f"{cap(b)} ___ {a_rest}."
     else:
         # relative clause fragment: "which" trap
         bw = b.split()
@@ -900,8 +912,8 @@ def bnd_dependent(rng, difficulty):
         ds = [(f"which {b_first}", "Adding 'which' turns the second half into a relative clause "
                                    "that has nothing sensible to modify."),
               (f"{b_first}", "Comma splice: a comma alone cannot join independent clauses."),
-              (f"{conj} that {b_first}", f"'{conj} that' turns the second half into a dependent "
-                                         "clause and leaves the sentence incomplete.")]
+              (f"being that {b_first}", "'being that' is nonstandard and does not properly join "
+                                        "the two clauses.")]
         text = f"{a}, ___ {b_rest}."
     prompt = fill(text, conv_stem(rng))
     est = 45
@@ -1038,7 +1050,7 @@ def punct_possessive(rng, difficulty):
     frame = rng.choice(_POSS_FRAMES)
     item = frame.split("___ ")[1].split()[0]
     pre, post = frame.split(" ___ ")
-    pre = pre.replace("{n} ", "")
+    pre = pre.replace(" {n}", "")
     if kind == "singular":
         ds = [(f"{base}s", "A plain -s makes a plural, not a possessive."),
               (f"{base}s'", "This puts the apostrophe after a plural -s, but the owner is singular."),
@@ -1148,12 +1160,10 @@ def punct_nonrestrictive(rng, difficulty):
                               "paired with a dash."),
               (f" — being {app} —", "Adding 'being' is wordy and unidiomatic; the phrase "
                                      "stands on its own between the dashes.")]
+    text = f"{head}___ {pred}."
     if difficulty == "hard":
-        # subject + appositive + interrupting adverb
-        pred2 = rng.choice(["reportedly ", "finally ", "quietly "]) + pred
-    else:
-        pred2 = pred
-    text = f"{head}___ {pred2}."
+        text = text + " " + rng.choice(["Few people know the story.", "The detail is easy to miss.",
+                                        "Guides mention it on every tour."])
     return build(rng, fill(text, conv_stem(rng)), correct, ds, subskill="punctuation",
                  explanation=(f"'{app}' is extra information that could be lifted out, so it "
                               "is enclosed by a matched pair of commas or dashes."),
@@ -1360,7 +1370,7 @@ def punct_paired(rng, difficulty):
                                      "relative clause and leaves no main verb."))
     if difficulty == "hard":
         pred = pred + rng.choice([", much to everyone's relief", ", as the plaque explains",
-                                  ", according to the city"])
+                                  ", or so the story goes"])
     text = f"{head}___ {pred}."
     return build(rng, fill(text, conv_stem(rng)), correct, ds, subskill="punctuation",
                  explanation=("Whatever opens an interruption must also close it: two commas, "
@@ -1378,10 +1388,10 @@ _PRON_SETS = {  # pronoun -> (subject, object, possessive, reflexive, label)
 }
 _PRON_VERBS_OBJ = ["thanked", "invited", "called", "emailed", "congratulated", "interviewed",
                    "photographed", "reminded"]
-_PRON_VERBS_SUBJ = ["finished", "presented", "organized", "led", "rehearsed", "mapped",
-                    "planted", "repaired"]
-_PRON_OBJECTS = ["the project", "the mural", "the survey", "the fundraiser", "the garden",
-                 "the final report", "the trail map", "the exhibit"]
+_PRON_SUBJ_PAIRS = [("finished", "the survey"), ("presented", "the final report"),
+                    ("organized", "the fundraiser"), ("led", "the cleanup"),
+                    ("rehearsed", "the duet"), ("mapped", "the trail"),
+                    ("planted", "the garden"), ("repaired", "the mural")]
 _PRON_AGENTS = ["The coach", "The editor", "The mayor", "The curator", "The principal",
                 "The judges", "The reporter", "The director"]
 _PRON_TIMES = ["after the match", "before the ceremony", "at the end of the tour",
@@ -1411,8 +1421,7 @@ def pron_compound(rng, difficulty):
         if poss == obj:
             ds[2] = ("hers" if key == "she" else "mine", "A possessive pronoun cannot be the object here.")
     else:
-        verb = rng.choice(_PRON_VERBS_SUBJ)
-        thing = rng.choice(_PRON_OBJECTS)
+        verb, thing = rng.choice(_PRON_SUBJ_PAIRS)
         tail = rng.choice(["ahead of schedule", "over the weekend", "without any help",
                            "in record time"])
         text = f"{name} and ___ {verb} {thing} {tail}."
@@ -1425,7 +1434,7 @@ def pron_compound(rng, difficulty):
             ds[2] = ("hers" if key == "she" else poss, "A possessive pronoun cannot act as the subject.")
     if difficulty != "easy":
         text = rng.choice(["According to the newsletter, ", "As everyone expected, ",
-                           "To nobody's surprise, "]) + low(text)
+                           "To nobody's surprise, "]) + soft_low(text)
     if difficulty == "hard":
         text = text + " " + rng.choice(["The photograph ran in the paper the next day.",
                                         "Nobody mentioned it again.",
@@ -1591,7 +1600,7 @@ def pron_reflexive(rng, difficulty):
                 "the plain object form 'me' is correct.")
     text = frame.format(N=name) + "."
     if difficulty != "easy":
-        text = rng.choice(["Before the recital, ", "After the vote, ", "That winter, "]) + low(text)
+        text = rng.choice(["Before the recital, ", "After the vote, ", "That winter, "]) + soft_low(text)
     if difficulty == "hard":
         text = text + " " + rng.choice(["It made a surprising difference.", "No one argued.",
                                         "The change was permanent."])
@@ -1651,7 +1660,7 @@ def pron_passage(rng, difficulty):
         text = f"{lead} {mid_s} {close}"
     if difficulty == "hard":
         text = text.replace(mid_s, rng.choice(["Not surprisingly, ", "As the local paper reported, ",
-                                               "Within a few weeks, "]) + low(mid_s))
+                                               "By all accounts, "]) + soft_low(mid_s))
     return build(rng, fill(text, conv_stem(rng)), correct, ds, subskill="pronouns",
                  explanation=("Find the pronoun's job in its own sentence (subject or object) and "
                               "choose the matching case; test by dropping the other name."),
@@ -1938,7 +1947,7 @@ def mod_passage(rng, difficulty):
     ds = [(f"{w1} {pred}", f"'{mod[:-1]}' cannot describe '{w1}'; the modifier dangles."),
           (f"{_possessive(right)} {w2.split()[-1]} {pred}",
            f"The possessive makes '{w2.split()[-1]}' the subject, which the modifier does not describe."),
-          (f"there was {right} who {pred}", "Beginning with 'there was' leaves the modifier with "
+          (f"there was {right} that {pred}", "Beginning with 'there was' leaves the modifier with "
                                             "nothing sensible to describe.")]
     if difficulty == "easy":
         ds[1] = (f"{w2} {pred}", f"The opening phrase does not sensibly describe '{w2}'.")
