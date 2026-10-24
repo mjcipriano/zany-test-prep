@@ -11,65 +11,66 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "Based on the table, how many tickets were sold on the busiest day?",
+    "prompt": "Based on the table, what is the total number of bikes for all 4 stores combined?",
     "choices": [
       {
         "id": "A",
-        "text": "16",
-        "rationale": "This is the second-largest value."
+        "text": "48",
+        "rationale": "This is only the largest single value."
       },
       {
         "id": "B",
-        "text": "17",
-        "rationale": "This is the average, not the maximum."
-      },
-      {
-        "id": "C",
-        "text": "28",
+        "text": "146",
         "rationale": "Correct."
       },
       {
+        "id": "C",
+        "text": "134",
+        "rationale": "This omits the smallest value."
+      },
+      {
         "id": "D",
-        "text": "10",
-        "rationale": "This is the least busy day."
+        "text": "158",
+        "rationale": "This double-counts the smallest value."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "The largest value in the table is 28 (on Fri).",
-    "estimated_time_seconds": 80,
+    "correct_choice": "B",
+    "explanation": "Add the values: 12 + 48 + 42 + 44 = 146.",
+    "estimated_time_seconds": 70,
     "tags": [
       "data",
-      "table"
+      "table",
+      "family:da_read"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Daily ticket sales",
+        "caption": "Bike sales by store",
         "headers": [
-          "Day",
-          "Tickets sold"
+          "Store",
+          "Bikes sold"
         ],
         "rows": [
           [
-            "Fri",
-            "28"
+            "North",
+            "12"
           ],
           [
-            "Wed",
-            "10"
+            "South",
+            "48"
           ],
           [
-            "Tue",
-            "15"
+            "East",
+            "42"
           ],
           [
-            "Mon",
-            "16"
+            "West",
+            "44"
           ]
         ]
       }
     },
-    "answer_verification": "val=28"
+    "answer_verification": "val=146"
   },
   {
     "question_id": "sat-math-data-analysis-easy-q02",
@@ -83,65 +84,66 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "Based on the table, how many tickets were sold in all four days combined?",
+    "prompt": "The table shows centimeters for 4 plants, but the value for B is missing. If the total for all 4 is 77, what is the missing value?",
     "choices": [
       {
         "id": "A",
-        "text": "106",
-        "rationale": "This omits the smallest day."
+        "text": "19",
+        "rationale": "That is the mean, not necessarily the missing value."
       },
       {
         "id": "B",
-        "text": "132",
-        "rationale": "This double-counts the smallest day."
+        "text": "45",
+        "rationale": "That is the sum of the other rows, not the missing one."
       },
       {
         "id": "C",
-        "text": "119",
-        "rationale": "Correct."
+        "text": "44",
+        "rationale": "Subtract every known row from the total."
       },
       {
         "id": "D",
-        "text": "38",
-        "rationale": "This is only the largest single day."
+        "text": "32",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Add the four values: 35 + 33 + 38 + 13 = 119.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "D",
+    "explanation": "77 − (20 + 12 + 13) = 32.",
+    "estimated_time_seconds": 75,
     "tags": [
       "data",
-      "table"
+      "table",
+      "family:da_mean_from_table"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Daily ticket sales",
+        "caption": "Plant heights",
         "headers": [
-          "Day",
-          "Tickets sold"
+          "Plant",
+          "Height (cm)"
         ],
         "rows": [
           [
-            "Tue",
-            "35"
+            "A",
+            "20"
           ],
           [
-            "Thu",
-            "33"
+            "B",
+            "?"
           ],
           [
-            "Fri",
-            "38"
+            "C",
+            "12"
           ],
           [
-            "Mon",
+            "D",
             "13"
           ]
         ]
       }
     },
-    "answer_verification": "val=119"
+    "answer_verification": "missing=32"
   },
   {
     "question_id": "sat-math-data-analysis-easy-q03",
@@ -155,65 +157,72 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "Based on the table, what is the difference between the greatest and least number of tickets sold in a single day?",
+    "prompt": "The table shows the number of bikes for 4 stores in 2021 and 2022 (a total of 231 in 2021 and 213 in 2022). Which store had the greatest increase in bikes from 2021 to 2022?",
     "choices": [
       {
         "id": "A",
-        "text": "18",
+        "text": "West",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "40",
-        "rationale": "This is only the greatest value."
+        "text": "East",
+        "rationale": "East changed by 6, which is not the greatest increase."
       },
       {
         "id": "C",
-        "text": "129",
-        "rationale": "This is the total, not the difference."
+        "text": "South",
+        "rationale": "South changed by −7, which is not the greatest increase."
       },
       {
         "id": "D",
-        "text": "20",
-        "rationale": "Recheck the subtraction."
+        "text": "North",
+        "rationale": "North changed by −24, which is not the greatest increase."
       }
     ],
     "correct_choice": "A",
-    "explanation": "The greatest is 40 and the least is 22; the difference is 18.",
+    "explanation": "Compute 2022 − 2021 for each row; West increased by 7, the most.",
     "estimated_time_seconds": 80,
     "tags": [
       "data",
-      "table"
+      "table",
+      "compare",
+      "family:da_two_year"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Daily ticket sales",
+        "caption": "Bike sales by store, 2021 and 2022",
         "headers": [
-          "Day",
-          "Tickets sold"
+          "Store",
+          "2021",
+          "2022"
         ],
         "rows": [
           [
-            "Fri",
-            "22"
+            "North",
+            "29",
+            "5"
           ],
           [
-            "Thu",
-            "31"
+            "South",
+            "71",
+            "64"
           ],
           [
-            "Tue",
-            "40"
+            "East",
+            "65",
+            "71"
           ],
           [
-            "Mon",
-            "36"
+            "West",
+            "66",
+            "73"
           ]
         ]
       }
     },
-    "answer_verification": "val=18"
+    "answer_verification": "West"
   },
   {
     "question_id": "sat-math-data-analysis-easy-q04",
@@ -226,66 +235,68 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "data_interpretation",
-    "subskill": "tables",
-    "prompt": "Based on the table, how many tickets were sold on the busiest day?",
+    "subskill": "graphs",
+    "prompt": "The table shows a constant rate. What is the rate, in dollars per item?",
     "choices": [
       {
         "id": "A",
-        "text": "22",
-        "rationale": "This is the average, not the maximum."
+        "text": "24",
+        "rationale": "Divide by the change in the first column too."
       },
       {
         "id": "B",
-        "text": "31",
-        "rationale": "Correct."
+        "text": "16",
+        "rationale": "Recheck the division."
       },
       {
         "id": "C",
-        "text": "26",
-        "rationale": "This is the second-largest value."
+        "text": "1/8",
+        "rationale": "Divide the second column by the first, not the reverse."
       },
       {
         "id": "D",
-        "text": "13",
-        "rationale": "This is the least busy day."
+        "text": "8",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "The largest value in the table is 31 (on Wed).",
-    "estimated_time_seconds": 80,
+    "correct_choice": "D",
+    "explanation": "Divide any row: 8 ÷ 1 = 8 dollars per item.",
+    "estimated_time_seconds": 75,
     "tags": [
       "data",
-      "table"
+      "table",
+      "rate",
+      "family:da_rate_table"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Daily ticket sales",
+        "caption": "Recorded values",
         "headers": [
-          "Day",
-          "Tickets sold"
+          "Number of items",
+          "Cost (dollars)"
         ],
         "rows": [
           [
-            "Tue",
-            "26"
+            "1",
+            "8"
           ],
           [
-            "Wed",
-            "31"
+            "4",
+            "32"
           ],
           [
-            "Fri",
-            "13"
+            "5",
+            "40"
           ],
           [
-            "Thu",
-            "19"
+            "8",
+            "64"
           ]
         ]
       }
     },
-    "answer_verification": "val=31"
+    "answer_verification": "r=8,val=8"
   },
   {
     "question_id": "sat-math-data-analysis-easy-q05",
@@ -299,65 +310,67 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "Based on the table, how many tickets were sold on the busiest day?",
+    "prompt": "The table shows the number of bikes recorded for 4 stores, 187 in all. Which of the following statements is supported by the data?",
     "choices": [
       {
         "id": "A",
-        "text": "22",
-        "rationale": "This is the average, not the maximum."
+        "text": "The total number of bikes for all 4 stores is 199.",
+        "rationale": "The values sum to 187."
       },
       {
         "id": "B",
-        "text": "17",
-        "rationale": "This is the least busy day."
+        "text": "West recorded more bikes than any other store.",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "24",
-        "rationale": "This is the second-largest value."
+        "text": "East recorded more bikes than any other store.",
+        "rationale": "East has the least value, 12."
       },
       {
         "id": "D",
-        "text": "29",
-        "rationale": "Correct."
+        "text": "North recorded the greatest number of bikes of any store.",
+        "rationale": "West has 81, more than North."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "The largest value in the table is 29 (on Tue).",
-    "estimated_time_seconds": 80,
+    "correct_choice": "B",
+    "explanation": "West has the largest value in the table (81).",
+    "estimated_time_seconds": 85,
     "tags": [
       "data",
-      "table"
+      "table",
+      "statement",
+      "family:da_statement"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Daily ticket sales",
+        "caption": "Bike sales by store",
         "headers": [
-          "Day",
-          "Tickets sold"
+          "Store",
+          "Bikes sold"
         ],
         "rows": [
           [
-            "Tue",
-            "29"
+            "North",
+            "59"
           ],
           [
-            "Wed",
-            "19"
+            "South",
+            "35"
           ],
           [
-            "Thu",
-            "24"
+            "East",
+            "12"
           ],
           [
-            "Mon",
-            "17"
+            "West",
+            "81"
           ]
         ]
       }
     },
-    "answer_verification": "val=29"
+    "answer_verification": "statement"
   },
   {
     "question_id": "sat-math-data-analysis-easy-q06",
@@ -371,65 +384,66 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "Based on the table, what is the difference between the greatest and least number of tickets sold in a single day?",
+    "prompt": "Based on the table, what is the combined number of points for Bears and Otters?",
     "choices": [
       {
         "id": "A",
-        "text": "38",
-        "rationale": "This is only the greatest value."
+        "text": "107",
+        "rationale": "Add only the two requested rows."
       },
       {
         "id": "B",
-        "text": "121",
-        "rationale": "This is the total, not the difference."
+        "text": "4",
+        "rationale": "Add the two values; don't subtract."
       },
       {
         "id": "C",
-        "text": "21",
+        "text": "86",
         "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "23",
-        "rationale": "Recheck the subtraction."
+        "text": "166",
+        "rationale": "Only two of the teams are asked about."
       }
     ],
     "correct_choice": "C",
-    "explanation": "The greatest is 38 and the least is 17; the difference is 21.",
-    "estimated_time_seconds": 80,
+    "explanation": "41 + 45 = 86.",
+    "estimated_time_seconds": 70,
     "tags": [
       "data",
-      "table"
+      "table",
+      "family:da_read"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Daily ticket sales",
+        "caption": "Points scored",
         "headers": [
-          "Day",
-          "Tickets sold"
+          "Team",
+          "Points scored"
         ],
         "rows": [
           [
-            "Wed",
-            "37"
+            "Hawks",
+            "21"
           ],
           [
-            "Fri",
-            "17"
+            "Bears",
+            "41"
           ],
           [
-            "Thu",
-            "29"
+            "Otters",
+            "45"
           ],
           [
-            "Tue",
-            "38"
+            "Lynx",
+            "59"
           ]
         ]
       }
     },
-    "answer_verification": "val=21"
+    "answer_verification": "val=86"
   },
   {
     "question_id": "sat-math-data-analysis-easy-q07",
@@ -443,65 +457,66 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "Based on the table, how many tickets were sold in all four days combined?",
+    "prompt": "The table shows millimeters of rain for 4 months, but the value for Apr is missing. If the total for all 4 is 118, what is the missing value?",
     "choices": [
       {
         "id": "A",
-        "text": "103",
-        "rationale": "This omits the smallest day."
+        "text": "44",
+        "rationale": "Subtract every known row from the total."
       },
       {
         "id": "B",
-        "text": "121",
+        "text": "25",
         "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "139",
-        "rationale": "This double-counts the smallest day."
+        "text": "29",
+        "rationale": "That is the mean, not necessarily the missing value."
       },
       {
         "id": "D",
-        "text": "40",
-        "rationale": "This is only the largest single day."
+        "text": "93",
+        "rationale": "That is the sum of the other rows, not the missing one."
       }
     ],
     "correct_choice": "B",
-    "explanation": "Add the four values: 37 + 18 + 40 + 26 = 121.",
-    "estimated_time_seconds": 80,
+    "explanation": "118 − (48 + 26 + 19) = 25.",
+    "estimated_time_seconds": 75,
     "tags": [
       "data",
-      "table"
+      "table",
+      "family:da_mean_from_table"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Daily ticket sales",
+        "caption": "Monthly rainfall",
         "headers": [
-          "Day",
-          "Tickets sold"
+          "Month",
+          "Rainfall (mm)"
         ],
         "rows": [
           [
-            "Fri",
-            "37"
+            "Jan",
+            "48"
           ],
           [
-            "Thu",
-            "18"
-          ],
-          [
-            "Mon",
-            "40"
-          ],
-          [
-            "Tue",
+            "Feb",
             "26"
+          ],
+          [
+            "Mar",
+            "19"
+          ],
+          [
+            "Apr",
+            "?"
           ]
         ]
       }
     },
-    "answer_verification": "val=121"
+    "answer_verification": "missing=25"
   },
   {
     "question_id": "sat-math-data-analysis-easy-q08",
@@ -515,65 +530,72 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "Based on the table, what is the difference between the greatest and least number of tickets sold in a single day?",
+    "prompt": "The table shows the number of millimeters of rain for 4 months in 2022 and 2023 (a total of 217 in 2022 and 188 in 2023). Which month had the greatest increase in millimeters of rain from 2022 to 2023?",
     "choices": [
       {
         "id": "A",
-        "text": "36",
-        "rationale": "This is only the greatest value."
-      },
-      {
-        "id": "B",
-        "text": "25",
-        "rationale": "Recheck the subtraction."
-      },
-      {
-        "id": "C",
-        "text": "23",
+        "text": "Mar",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "Jan",
+        "rationale": "Jan changed by −19, which is not the greatest increase."
+      },
+      {
+        "id": "C",
+        "text": "Apr",
+        "rationale": "Apr changed by −9, which is not the greatest increase."
+      },
+      {
         "id": "D",
-        "text": "93",
-        "rationale": "This is the total, not the difference."
+        "text": "Feb",
+        "rationale": "Feb changed by −8, which is not the greatest increase."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "The greatest is 36 and the least is 13; the difference is 23.",
+    "correct_choice": "A",
+    "explanation": "Compute 2023 − 2022 for each row; Mar increased by 7, the most.",
     "estimated_time_seconds": 80,
     "tags": [
       "data",
-      "table"
+      "table",
+      "compare",
+      "family:da_two_year"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Daily ticket sales",
+        "caption": "Monthly rainfall, 2022 and 2023",
         "headers": [
-          "Day",
-          "Tickets sold"
+          "Month",
+          "2022",
+          "2023"
         ],
         "rows": [
           [
-            "Mon",
-            "13"
+            "Jan",
+            "50",
+            "31"
           ],
           [
-            "Fri",
-            "36"
+            "Feb",
+            "68",
+            "60"
           ],
           [
-            "Wed",
-            "18"
+            "Mar",
+            "57",
+            "64"
           ],
           [
-            "Thu",
-            "26"
+            "Apr",
+            "42",
+            "33"
           ]
         ]
       }
     },
-    "answer_verification": "val=23"
+    "answer_verification": "Mar"
   },
   {
     "question_id": "sat-math-data-analysis-easy-q09",
@@ -586,66 +608,68 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "data_interpretation",
-    "subskill": "tables",
-    "prompt": "Based on the table, what is the difference between the greatest and least number of tickets sold in a single day?",
+    "subskill": "graphs",
+    "prompt": "The table shows a constant rate. What is the rate, in gallons per minute?",
     "choices": [
       {
         "id": "A",
-        "text": "84",
-        "rationale": "This is the total, not the difference."
+        "text": "5",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "20",
-        "rationale": "Recheck the subtraction."
+        "text": "6",
+        "rationale": "Arithmetic slip."
       },
       {
         "id": "C",
-        "text": "29",
-        "rationale": "This is only the greatest value."
+        "text": "1/5",
+        "rationale": "Divide the second column by the first, not the reverse."
       },
       {
         "id": "D",
-        "text": "18",
-        "rationale": "Correct."
+        "text": "10",
+        "rationale": "Recheck the division."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "The greatest is 29 and the least is 11; the difference is 18.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "A",
+    "explanation": "Divide any row: 5 ÷ 1 = 5 gallons per minute.",
+    "estimated_time_seconds": 75,
     "tags": [
       "data",
-      "table"
+      "table",
+      "rate",
+      "family:da_rate_table"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Daily ticket sales",
+        "caption": "Recorded values",
         "headers": [
-          "Day",
-          "Tickets sold"
+          "Minutes",
+          "Gallons pumped"
         ],
         "rows": [
           [
-            "Tue",
-            "18"
+            "1",
+            "5"
           ],
           [
-            "Wed",
-            "11"
+            "2",
+            "10"
           ],
           [
-            "Mon",
-            "29"
+            "6",
+            "30"
           ],
           [
-            "Thu",
-            "26"
+            "8",
+            "40"
           ]
         ]
       }
     },
-    "answer_verification": "val=18"
+    "answer_verification": "r=5,val=5"
   },
   {
     "question_id": "sat-math-data-analysis-easy-q10",
@@ -659,35 +683,37 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "Based on the table, how many tickets were sold in all four days combined?",
+    "prompt": "The table shows the number of tickets recorded for 4 days, 131 in all. Which of the following statements is supported by the data?",
     "choices": [
       {
         "id": "A",
-        "text": "100",
-        "rationale": "This double-counts the smallest day."
+        "text": "Wed recorded more tickets than any other day.",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "34",
-        "rationale": "This is only the largest single day."
+        "text": "Tue recorded more tickets than any other day.",
+        "rationale": "Tue has the least value, 27."
       },
       {
         "id": "C",
-        "text": "78",
-        "rationale": "This omits the smallest day."
+        "text": "The total number of tickets for all 4 days is 149.",
+        "rationale": "The values sum to 131."
       },
       {
         "id": "D",
-        "text": "89",
-        "rationale": "Correct."
+        "text": "Mon recorded the greatest number of tickets of any day.",
+        "rationale": "Wed has 41, more than Mon."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Add the four values: 11 + 16 + 28 + 34 = 89.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "A",
+    "explanation": "Wed has the largest value in the table (41).",
+    "estimated_time_seconds": 85,
     "tags": [
       "data",
-      "table"
+      "table",
+      "statement",
+      "family:da_statement"
     ],
     "stimulus": {
       "type": "table",
@@ -699,25 +725,25 @@
         ],
         "rows": [
           [
-            "Fri",
-            "11"
+            "Mon",
+            "34"
           ],
           [
             "Tue",
-            "16"
+            "27"
+          ],
+          [
+            "Wed",
+            "41"
           ],
           [
             "Thu",
-            "28"
-          ],
-          [
-            "Mon",
-            "34"
+            "29"
           ]
         ]
       }
     },
-    "answer_verification": "val=89"
+    "answer_verification": "statement"
   },
   {
     "question_id": "sat-math-data-analysis-easy-q11",
@@ -731,65 +757,66 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "Based on the table, how many tickets were sold in all four days combined?",
+    "prompt": "Based on the table, how many more millimeters of rain does the greatest month have than the least?",
     "choices": [
       {
         "id": "A",
-        "text": "82",
-        "rationale": "Correct."
+        "text": "55",
+        "rationale": "This is only the greatest value."
       },
       {
         "id": "B",
-        "text": "94",
-        "rationale": "This double-counts the smallest day."
+        "text": "42",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "26",
-        "rationale": "This is only the largest single day."
+        "text": "149",
+        "rationale": "This is the total, not the difference."
       },
       {
         "id": "D",
-        "text": "70",
-        "rationale": "This omits the smallest day."
+        "text": "68",
+        "rationale": "Subtract; don't add."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Add the four values: 19 + 25 + 26 + 12 = 82.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "B",
+    "explanation": "Greatest 55 − least 13 = 42.",
+    "estimated_time_seconds": 70,
     "tags": [
       "data",
-      "table"
+      "table",
+      "family:da_read"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Daily ticket sales",
+        "caption": "Monthly rainfall",
         "headers": [
-          "Day",
-          "Tickets sold"
+          "Month",
+          "Rainfall (mm)"
         ],
         "rows": [
           [
-            "Wed",
-            "19"
+            "Jan",
+            "45"
           ],
           [
-            "Tue",
-            "25"
+            "Feb",
+            "13"
           ],
           [
-            "Fri",
-            "26"
+            "Mar",
+            "36"
           ],
           [
-            "Mon",
-            "12"
+            "Apr",
+            "55"
           ]
         ]
       }
     },
-    "answer_verification": "val=82"
+    "answer_verification": "val=42"
   },
   {
     "question_id": "sat-math-data-analysis-easy-q12",
@@ -803,35 +830,36 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "Based on the table, how many tickets were sold on the busiest day?",
+    "prompt": "The table shows tickets for 4 days, but the value for Mon is missing. If the total for all 4 is 131, what is the missing value?",
     "choices": [
       {
         "id": "A",
-        "text": "16",
-        "rationale": "This is the least busy day."
+        "text": "32",
+        "rationale": "That is the mean, not necessarily the missing value."
       },
       {
         "id": "B",
-        "text": "38",
+        "text": "26",
         "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "27",
-        "rationale": "This is the average, not the maximum."
+        "text": "46",
+        "rationale": "Subtract every known row from the total."
       },
       {
         "id": "D",
-        "text": "36",
-        "rationale": "This is the second-largest value."
+        "text": "105",
+        "rationale": "That is the sum of the other rows, not the missing one."
       }
     ],
     "correct_choice": "B",
-    "explanation": "The largest value in the table is 38 (on Thu).",
-    "estimated_time_seconds": 80,
+    "explanation": "131 − (20 + 50 + 35) = 26.",
+    "estimated_time_seconds": 75,
     "tags": [
       "data",
-      "table"
+      "table",
+      "family:da_mean_from_table"
     ],
     "stimulus": {
       "type": "table",
@@ -843,25 +871,25 @@
         ],
         "rows": [
           [
-            "Thu",
-            "38"
-          ],
-          [
             "Mon",
-            "21"
+            "?"
           ],
           [
             "Tue",
-            "36"
+            "20"
           ],
           [
-            "Fri",
-            "16"
+            "Wed",
+            "50"
+          ],
+          [
+            "Thu",
+            "35"
           ]
         ]
       }
     },
-    "answer_verification": "val=38"
+    "answer_verification": "missing=26"
   },
   {
     "question_id": "sat-math-data-analysis-easy-q13",
@@ -875,65 +903,72 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "Based on the table, how many tickets were sold in all four days combined?",
+    "prompt": "The table shows the number of bikes for 4 stores in 2023 and 2024 (a total of 196 in 2023 and 157 in 2024). Which store had the greatest increase in bikes from 2023 to 2024?",
     "choices": [
       {
         "id": "A",
-        "text": "93",
-        "rationale": "Correct."
+        "text": "West",
+        "rationale": "West changed by −20, which is not the greatest increase."
       },
       {
         "id": "B",
-        "text": "35",
-        "rationale": "This is only the largest single day."
+        "text": "East",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "82",
-        "rationale": "This omits the smallest day."
+        "text": "South",
+        "rationale": "South changed by −18, which is not the greatest increase."
       },
       {
         "id": "D",
-        "text": "104",
-        "rationale": "This double-counts the smallest day."
+        "text": "North",
+        "rationale": "North changed by −19, which is not the greatest increase."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Add the four values: 25 + 11 + 35 + 22 = 93.",
+    "correct_choice": "B",
+    "explanation": "Compute 2024 − 2023 for each row; East increased by 18, the most.",
     "estimated_time_seconds": 80,
     "tags": [
       "data",
-      "table"
+      "table",
+      "compare",
+      "family:da_two_year"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Daily ticket sales",
+        "caption": "Bike sales by store, 2023 and 2024",
         "headers": [
-          "Day",
-          "Tickets sold"
+          "Store",
+          "2023",
+          "2024"
         ],
         "rows": [
           [
-            "Mon",
-            "25"
+            "North",
+            "46",
+            "27"
           ],
           [
-            "Tue",
-            "11"
+            "South",
+            "71",
+            "53"
           ],
           [
-            "Wed",
-            "35"
+            "East",
+            "28",
+            "46"
           ],
           [
-            "Thu",
-            "22"
+            "West",
+            "51",
+            "31"
           ]
         ]
       }
     },
-    "answer_verification": "val=93"
+    "answer_verification": "East"
   },
   {
     "question_id": "sat-math-data-analysis-easy-q14",
@@ -946,66 +981,68 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "data_interpretation",
-    "subskill": "tables",
-    "prompt": "Based on the table, how many tickets were sold on the busiest day?",
+    "subskill": "graphs",
+    "prompt": "The table shows a constant rate. What is the rate, in dollars per item?",
     "choices": [
       {
         "id": "A",
-        "text": "24",
-        "rationale": "This is the average, not the maximum."
+        "text": "1/9",
+        "rationale": "Divide the second column by the first, not the reverse."
       },
       {
         "id": "B",
-        "text": "29",
-        "rationale": "This is the second-largest value."
+        "text": "10",
+        "rationale": "Arithmetic slip."
       },
       {
         "id": "C",
-        "text": "32",
-        "rationale": "Correct."
+        "text": "45",
+        "rationale": "That is a value from the table, not the rate."
       },
       {
         "id": "D",
-        "text": "16",
-        "rationale": "This is the least busy day."
+        "text": "9",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "The largest value in the table is 32 (on Wed).",
-    "estimated_time_seconds": 80,
+    "correct_choice": "D",
+    "explanation": "Divide any row: 45 ÷ 5 = 9 dollars per item.",
+    "estimated_time_seconds": 75,
     "tags": [
       "data",
-      "table"
+      "table",
+      "rate",
+      "family:da_rate_table"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Daily ticket sales",
+        "caption": "Recorded values",
         "headers": [
-          "Day",
-          "Tickets sold"
+          "Number of items",
+          "Cost (dollars)"
         ],
         "rows": [
           [
-            "Wed",
-            "32"
+            "5",
+            "45"
           ],
           [
-            "Fri",
-            "20"
+            "6",
+            "54"
           ],
           [
-            "Tue",
-            "16"
+            "8",
+            "72"
           ],
           [
-            "Mon",
-            "29"
+            "9",
+            "81"
           ]
         ]
       }
     },
-    "answer_verification": "val=32"
+    "answer_verification": "r=9,val=9"
   },
   {
     "question_id": "sat-math-data-analysis-easy-q15",
@@ -1019,65 +1056,67 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "Based on the table, how many tickets were sold on the busiest day?",
+    "prompt": "The table shows the number of centimeters recorded for 4 plants, 75 in all. Which of the following statements is supported by the data?",
     "choices": [
       {
         "id": "A",
-        "text": "16",
-        "rationale": "This is the least busy day."
+        "text": "The total number of centimeters for all 4 plants is 89.",
+        "rationale": "The values sum to 75."
       },
       {
         "id": "B",
-        "text": "36",
-        "rationale": "This is the second-largest value."
-      },
-      {
-        "id": "C",
-        "text": "38",
+        "text": "A recorded more centimeters than any other plant.",
         "rationale": "Correct."
       },
       {
+        "id": "C",
+        "text": "C recorded the greatest number of centimeters of any plant.",
+        "rationale": "A has 31, more than C."
+      },
+      {
         "id": "D",
-        "text": "30",
-        "rationale": "This is the average, not the maximum."
+        "text": "B recorded more centimeters than any other plant.",
+        "rationale": "B has the least value, 10."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "The largest value in the table is 38 (on Wed).",
-    "estimated_time_seconds": 80,
+    "correct_choice": "B",
+    "explanation": "A has the largest value in the table (31).",
+    "estimated_time_seconds": 85,
     "tags": [
       "data",
-      "table"
+      "table",
+      "statement",
+      "family:da_statement"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Daily ticket sales",
+        "caption": "Plant heights",
         "headers": [
-          "Day",
-          "Tickets sold"
+          "Plant",
+          "Height (cm)"
         ],
         "rows": [
           [
-            "Fri",
+            "A",
             "31"
           ],
           [
-            "Tue",
-            "36"
+            "B",
+            "10"
           ],
           [
-            "Wed",
-            "38"
+            "C",
+            "20"
           ],
           [
-            "Mon",
-            "16"
+            "D",
+            "14"
           ]
         ]
       }
     },
-    "answer_verification": "val=38"
+    "answer_verification": "statement"
   },
   {
     "question_id": "sat-math-data-analysis-easy-q16",
@@ -1091,35 +1130,36 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "Based on the table, how many tickets were sold in all four days combined?",
+    "prompt": "According to the table, which is the greatest number of tickets recorded for a single day?",
     "choices": [
       {
         "id": "A",
-        "text": "26",
-        "rationale": "This is only the largest single day."
+        "text": "51",
+        "rationale": "This is the average, not the maximum."
       },
       {
         "id": "B",
-        "text": "84",
-        "rationale": "Correct."
+        "text": "46",
+        "rationale": "This is the least value."
       },
       {
         "id": "C",
-        "text": "102",
-        "rationale": "This double-counts the smallest day."
+        "text": "60",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "66",
-        "rationale": "This omits the smallest day."
+        "text": "55",
+        "rationale": "This is the second-largest value."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Add the four values: 18 + 20 + 26 + 20 = 84.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "C",
+    "explanation": "The largest value in the table is 60 (Mon).",
+    "estimated_time_seconds": 70,
     "tags": [
       "data",
-      "table"
+      "table",
+      "family:da_read"
     ],
     "stimulus": {
       "type": "table",
@@ -1131,25 +1171,25 @@
         ],
         "rows": [
           [
-            "Wed",
-            "18"
-          ],
-          [
-            "Fri",
-            "20"
+            "Mon",
+            "60"
           ],
           [
             "Tue",
-            "26"
+            "46"
+          ],
+          [
+            "Wed",
+            "55"
           ],
           [
             "Thu",
-            "20"
+            "46"
           ]
         ]
       }
     },
-    "answer_verification": "val=84"
+    "answer_verification": "val=60"
   },
   {
     "question_id": "sat-math-data-analysis-easy-q17",
@@ -1163,65 +1203,66 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "Based on the table, how many tickets were sold in all four days combined?",
+    "prompt": "The table shows bikes for 4 stores, but the value for West is missing. If the total for all 4 is 186, what is the missing value?",
     "choices": [
       {
         "id": "A",
-        "text": "60",
-        "rationale": "Correct."
+        "text": "46",
+        "rationale": "That is the mean, not necessarily the missing value."
       },
       {
         "id": "B",
-        "text": "49",
-        "rationale": "This omits the smallest day."
+        "text": "33",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "71",
-        "rationale": "This double-counts the smallest day."
+        "text": "74",
+        "rationale": "Subtract every known row from the total."
       },
       {
         "id": "D",
-        "text": "19",
-        "rationale": "This is only the largest single day."
+        "text": "153",
+        "rationale": "That is the sum of the other rows, not the missing one."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Add the four values: 19 + 11 + 16 + 14 = 60.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "B",
+    "explanation": "186 − (54 + 41 + 58) = 33.",
+    "estimated_time_seconds": 75,
     "tags": [
       "data",
-      "table"
+      "table",
+      "family:da_mean_from_table"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Daily ticket sales",
+        "caption": "Bike sales by store",
         "headers": [
-          "Day",
-          "Tickets sold"
+          "Store",
+          "Bikes sold"
         ],
         "rows": [
           [
-            "Mon",
-            "19"
+            "North",
+            "54"
           ],
           [
-            "Tue",
-            "11"
+            "South",
+            "41"
           ],
           [
-            "Thu",
-            "16"
+            "East",
+            "58"
           ],
           [
-            "Wed",
-            "14"
+            "West",
+            "?"
           ]
         ]
       }
     },
-    "answer_verification": "val=60"
+    "answer_verification": "missing=33"
   },
   {
     "question_id": "sat-math-data-analysis-easy-q18",
@@ -1235,65 +1276,72 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "Based on the table, what is the difference between the greatest and least number of tickets sold in a single day?",
+    "prompt": "The table shows the number of tickets for 4 days in 2021 and 2022 (a total of 211 in 2021 and 215 in 2022). Which day had the greatest increase in tickets from 2021 to 2022?",
     "choices": [
       {
         "id": "A",
-        "text": "32",
-        "rationale": "This is only the greatest value."
+        "text": "Mon",
+        "rationale": "Mon changed by 11, which is not the greatest increase."
       },
       {
         "id": "B",
-        "text": "13",
+        "text": "Tue",
         "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "15",
-        "rationale": "Recheck the subtraction."
+        "text": "Wed",
+        "rationale": "Wed changed by 0, which is not the greatest increase."
       },
       {
         "id": "D",
-        "text": "101",
-        "rationale": "This is the total, not the difference."
+        "text": "Thu",
+        "rationale": "Thu changed by −22, which is not the greatest increase."
       }
     ],
     "correct_choice": "B",
-    "explanation": "The greatest is 32 and the least is 19; the difference is 13.",
+    "explanation": "Compute 2022 − 2021 for each row; Tue increased by 15, the most.",
     "estimated_time_seconds": 80,
     "tags": [
       "data",
-      "table"
+      "table",
+      "compare",
+      "family:da_two_year"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Daily ticket sales",
+        "caption": "Daily ticket sales, 2021 and 2022",
         "headers": [
           "Day",
-          "Tickets sold"
+          "2021",
+          "2022"
         ],
         "rows": [
           [
-            "Wed",
-            "23"
+            "Mon",
+            "66",
+            "77"
           ],
           [
             "Tue",
-            "32"
+            "45",
+            "60"
           ],
           [
-            "Fri",
+            "Wed",
+            "27",
             "27"
           ],
           [
-            "Mon",
-            "19"
+            "Thu",
+            "73",
+            "51"
           ]
         ]
       }
     },
-    "answer_verification": "val=13"
+    "answer_verification": "Tue"
   },
   {
     "question_id": "sat-math-data-analysis-easy-q19",
@@ -1306,66 +1354,68 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "data_interpretation",
-    "subskill": "tables",
-    "prompt": "Based on the table, how many tickets were sold on the busiest day?",
+    "subskill": "graphs",
+    "prompt": "The table shows a constant rate. What is the rate, in dollars per item?",
     "choices": [
       {
         "id": "A",
-        "text": "35",
+        "text": "9",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "22",
-        "rationale": "This is the average, not the maximum."
+        "text": "18",
+        "rationale": "Divide by the change in the first column too."
       },
       {
         "id": "C",
-        "text": "30",
-        "rationale": "This is the second-largest value."
+        "text": "15",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
       },
       {
         "id": "D",
-        "text": "11",
-        "rationale": "This is the least busy day."
+        "text": "1/9",
+        "rationale": "Divide the second column by the first, not the reverse."
       }
     ],
     "correct_choice": "A",
-    "explanation": "The largest value in the table is 35 (on Fri).",
-    "estimated_time_seconds": 80,
+    "explanation": "Divide any row: 9 ÷ 1 = 9 dollars per item.",
+    "estimated_time_seconds": 75,
     "tags": [
       "data",
-      "table"
+      "table",
+      "rate",
+      "family:da_rate_table"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Daily ticket sales",
+        "caption": "Recorded values",
         "headers": [
-          "Day",
-          "Tickets sold"
+          "Number of items",
+          "Cost (dollars)"
         ],
         "rows": [
           [
-            "Mon",
-            "30"
+            "1",
+            "9"
           ],
           [
-            "Wed",
-            "11"
+            "3",
+            "27"
           ],
           [
-            "Fri",
-            "35"
+            "6",
+            "54"
           ],
           [
-            "Tue",
-            "14"
+            "8",
+            "72"
           ]
         ]
       }
     },
-    "answer_verification": "val=35"
+    "answer_verification": "r=9,val=9"
   },
   {
     "question_id": "sat-math-data-analysis-easy-q20",
@@ -1379,64 +1429,66 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "Based on the table, what is the difference between the greatest and least number of tickets sold in a single day?",
+    "prompt": "The table shows the number of bikes recorded for 4 stores, 262 in all. Which of the following statements is supported by the data?",
     "choices": [
       {
         "id": "A",
-        "text": "26",
-        "rationale": "Recheck the subtraction."
-      },
-      {
-        "id": "B",
-        "text": "24",
+        "text": "South recorded more bikes than any other store.",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "North recorded more bikes than any other store.",
+        "rationale": "North has the least value, 33."
+      },
+      {
         "id": "C",
-        "text": "114",
-        "rationale": "This is the total, not the difference."
+        "text": "East recorded the greatest number of bikes of any store.",
+        "rationale": "South has 87, more than East."
       },
       {
         "id": "D",
-        "text": "36",
-        "rationale": "This is only the greatest value."
+        "text": "The total number of bikes for all 4 stores is 282.",
+        "rationale": "The values sum to 262."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "The greatest is 36 and the least is 12; the difference is 24.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "A",
+    "explanation": "South has the largest value in the table (87).",
+    "estimated_time_seconds": 85,
     "tags": [
       "data",
-      "table"
+      "table",
+      "statement",
+      "family:da_statement"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Daily ticket sales",
+        "caption": "Bike sales by store",
         "headers": [
-          "Day",
-          "Tickets sold"
+          "Store",
+          "Bikes sold"
         ],
         "rows": [
           [
-            "Tue",
-            "31"
+            "North",
+            "33"
           ],
           [
-            "Thu",
-            "36"
+            "South",
+            "87"
           ],
           [
-            "Mon",
-            "12"
+            "East",
+            "73"
           ],
           [
-            "Wed",
-            "35"
+            "West",
+            "69"
           ]
         ]
       }
     },
-    "answer_verification": "val=24"
+    "answer_verification": "statement"
   }
 ]

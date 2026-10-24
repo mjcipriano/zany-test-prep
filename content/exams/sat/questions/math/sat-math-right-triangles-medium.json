@@ -11,35 +11,36 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "pythagorean",
-    "prompt": "The right triangle shown has one leg of length 15 and a hypotenuse of length 25. What is the length of the other leg?",
+    "prompt": "The right triangle shown has one leg of length 20 and a hypotenuse of length 25. What is the length of the other leg?",
     "choices": [
       {
         "id": "A",
-        "text": "20",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "40",
+        "text": "45",
         "rationale": "Add/subtract under the square root, not outside it."
       },
       {
+        "id": "B",
+        "text": "15",
+        "rationale": "Correct."
+      },
+      {
         "id": "C",
-        "text": "21",
+        "text": "16",
         "rationale": "Off by one; recompute c² − a²."
       },
       {
         "id": "D",
-        "text": "10",
+        "text": "5",
         "rationale": "Subtracting the lengths is not the Pythagorean theorem."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "By the Pythagorean theorem, leg = √(c² − a²) = √(625 − 225) = √400 = 20.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "B",
+    "explanation": "leg = √(c² − a²) = √(625 − 400) = √225 = 15.",
+    "estimated_time_seconds": 80,
     "tags": [
       "geometry",
-      "right-triangle"
+      "right-triangle",
+      "family:rt_pythagorean"
     ],
     "stimulus": {
       "type": "figure",
@@ -47,13 +48,13 @@
         "kind": "right_triangle",
         "caption": "Right triangle",
         "labels": {
-          "a": "15",
+          "a": "20",
           "b": "?",
           "c": "25"
         }
       }
     },
-    "answer_verification": "sides 15,20,25"
+    "answer_verification": "sides 20,15,25"
   },
   {
     "question_id": "sat-math-right-triangles-medium-q02",
@@ -66,36 +67,96 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "pythagorean",
-    "prompt": "The right triangle shown has one leg of length 9 and a hypotenuse of length 15. What is the length of the other leg?",
+    "subskill": "special_triangles",
+    "prompt": "The right triangle shown is a 45°-45°-90° triangle with legs of length 3. What is the length of the hypotenuse?",
     "choices": [
       {
         "id": "A",
-        "text": "12",
+        "text": "3√2",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "6",
-        "rationale": "Subtracting the lengths is not the Pythagorean theorem."
+        "text": "3√3",
+        "rationale": "√3 is for a 30-60-90 triangle, not 45-45-90."
       },
       {
         "id": "C",
-        "text": "24",
-        "rationale": "Add/subtract under the square root, not outside it."
+        "text": "6",
+        "rationale": "That would be 2·leg; a 45-45-90 hypotenuse is leg·√2."
       },
       {
         "id": "D",
-        "text": "13",
-        "rationale": "Off by one; recompute c² − a²."
+        "text": "9",
+        "rationale": "Don't square the leg; multiply by √2."
       }
     ],
     "correct_choice": "A",
-    "explanation": "By the Pythagorean theorem, leg = √(c² − a²) = √(225 − 81) = √144 = 12.",
-    "estimated_time_seconds": 85,
+    "explanation": "In a 45-45-90 triangle the hypotenuse is leg·√2, so it is 3√2.",
+    "estimated_time_seconds": 95,
     "tags": [
       "geometry",
-      "right-triangle"
+      "right-triangle",
+      "special",
+      "family:rt_special"
+    ],
+    "stimulus": {
+      "type": "figure",
+      "figure": {
+        "kind": "right_triangle",
+        "caption": "45°-45°-90° triangle",
+        "labels": {
+          "a": "3",
+          "b": "3",
+          "c": "?"
+        },
+        "angle": "45°"
+      }
+    },
+    "answer_verification": "3√2"
+  },
+  {
+    "question_id": "sat-math-right-triangles-medium-q03",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "geometry_trigonometry",
+    "skill": "right_triangles",
+    "lesson_id": "sat-math-right-triangles-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "pythagorean",
+    "prompt": "The right triangle shown has a hypotenuse of length 15 and one leg of length 9. What is its area?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "67",
+        "rationale": "Use the two legs, not the hypotenuse, for base and height."
+      },
+      {
+        "id": "B",
+        "text": "54",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "36",
+        "rationale": "That is the perimeter."
+      },
+      {
+        "id": "D",
+        "text": "108",
+        "rationale": "You forgot the ½."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Other leg = √(15² − 9²) = 12; area = ½ × 9 × 12 = 54.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "geometry",
+      "right-triangle",
+      "family:rt_area_perimeter"
     ],
     "stimulus": {
       "type": "figure",
@@ -112,62 +173,6 @@
     "answer_verification": "sides 9,12,15"
   },
   {
-    "question_id": "sat-math-right-triangles-medium-q03",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "geometry_trigonometry",
-    "skill": "right_triangles",
-    "lesson_id": "sat-math-right-triangles-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "pythagorean",
-    "prompt": "The right triangle shown has one leg of length 5 and a hypotenuse of length 13. What is the length of the other leg?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "18",
-        "rationale": "Add/subtract under the square root, not outside it."
-      },
-      {
-        "id": "B",
-        "text": "8",
-        "rationale": "Subtracting the lengths is not the Pythagorean theorem."
-      },
-      {
-        "id": "C",
-        "text": "12",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "13",
-        "rationale": "Off by one; recompute c² − a²."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "By the Pythagorean theorem, leg = √(c² − a²) = √(169 − 25) = √144 = 12.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "geometry",
-      "right-triangle"
-    ],
-    "stimulus": {
-      "type": "figure",
-      "figure": {
-        "kind": "right_triangle",
-        "caption": "Right triangle",
-        "labels": {
-          "a": "5",
-          "b": "?",
-          "c": "13"
-        }
-      }
-    },
-    "answer_verification": "sides 5,12,13"
-  },
-  {
     "question_id": "sat-math-right-triangles-medium-q04",
     "exam_id": "sat",
     "exam_name": "SAT",
@@ -179,35 +184,36 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "pythagorean",
-    "prompt": "The right triangle shown has one leg of length 12 and a hypotenuse of length 20. What is the length of the other leg?",
+    "prompt": "The right triangle shown has one leg of length 36 and a hypotenuse of length 39. What is the length of the other leg?",
     "choices": [
       {
         "id": "A",
-        "text": "32",
-        "rationale": "Add/subtract under the square root, not outside it."
-      },
-      {
-        "id": "B",
-        "text": "8",
-        "rationale": "Subtracting the lengths is not the Pythagorean theorem."
-      },
-      {
-        "id": "C",
-        "text": "17",
+        "text": "16",
         "rationale": "Off by one; recompute c² − a²."
       },
       {
-        "id": "D",
-        "text": "16",
+        "id": "B",
+        "text": "15",
         "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "3",
+        "rationale": "Subtracting the lengths is not the Pythagorean theorem."
+      },
+      {
+        "id": "D",
+        "text": "75",
+        "rationale": "Add/subtract under the square root, not outside it."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "By the Pythagorean theorem, leg = √(c² − a²) = √(400 − 144) = √256 = 16.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "B",
+    "explanation": "leg = √(c² − a²) = √(1521 − 1296) = √225 = 15.",
+    "estimated_time_seconds": 80,
     "tags": [
       "geometry",
-      "right-triangle"
+      "right-triangle",
+      "family:rt_pythagorean"
     ],
     "stimulus": {
       "type": "figure",
@@ -215,13 +221,13 @@
         "kind": "right_triangle",
         "caption": "Right triangle",
         "labels": {
-          "a": "12",
+          "a": "36",
           "b": "?",
-          "c": "20"
+          "c": "39"
         }
       }
     },
-    "answer_verification": "sides 12,16,20"
+    "answer_verification": "sides 36,15,39"
   },
   {
     "question_id": "sat-math-right-triangles-medium-q05",
@@ -234,50 +240,53 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "pythagorean",
-    "prompt": "The right triangle shown has one leg of length 8 and a hypotenuse of length 17. What is the length of the other leg?",
+    "subskill": "special_triangles",
+    "prompt": "In the 30°-60°-90° triangle shown, the shorter leg (opposite the 30° angle) has length 12. What is the length of the hypotenuse?",
     "choices": [
       {
         "id": "A",
-        "text": "16",
-        "rationale": "Off by one; recompute c² − a²."
-      },
-      {
-        "id": "B",
-        "text": "9",
-        "rationale": "Subtracting the lengths is not the Pythagorean theorem."
-      },
-      {
-        "id": "C",
-        "text": "15",
+        "text": "24",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "14",
+        "rationale": "Multiply by 2; don't add."
+      },
+      {
+        "id": "C",
+        "text": "144",
+        "rationale": "Don't square the leg."
+      },
+      {
         "id": "D",
-        "text": "25",
-        "rationale": "Add/subtract under the square root, not outside it."
+        "text": "36",
+        "rationale": "The hypotenuse is 2·(short leg), not 3·(short leg)."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "By the Pythagorean theorem, leg = √(c² − a²) = √(289 − 64) = √225 = 15.",
+    "correct_choice": "A",
+    "explanation": "In a 30-60-90 triangle the hypotenuse is twice the shorter leg: 2·12 = 24.",
     "estimated_time_seconds": 85,
     "tags": [
       "geometry",
-      "right-triangle"
+      "right-triangle",
+      "special",
+      "family:rt_special"
     ],
     "stimulus": {
       "type": "figure",
       "figure": {
         "kind": "right_triangle",
-        "caption": "Right triangle",
+        "caption": "30°-60°-90° triangle",
         "labels": {
-          "a": "8",
-          "b": "?",
-          "c": "17"
-        }
+          "a": "?",
+          "b": "12",
+          "c": "?"
+        },
+        "angle": "30°"
       }
     },
-    "answer_verification": "sides 8,15,17"
+    "answer_verification": "hyp=24"
   },
   {
     "question_id": "sat-math-right-triangles-medium-q06",
@@ -291,35 +300,36 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "pythagorean",
-    "prompt": "The right triangle shown has one leg of length 18 and a hypotenuse of length 30. What is the length of the other leg?",
+    "prompt": "The right triangle shown has legs of length 20 and 21. What is its perimeter?",
     "choices": [
       {
         "id": "A",
-        "text": "24",
-        "rationale": "Correct."
+        "text": "82",
+        "rationale": "The hypotenuse is √(a² + b²), not a + b."
       },
       {
         "id": "B",
-        "text": "48",
-        "rationale": "Add/subtract under the square root, not outside it."
+        "text": "70",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "25",
-        "rationale": "Off by one; recompute c² − a²."
+        "text": "41",
+        "rationale": "Find and include the hypotenuse."
       },
       {
         "id": "D",
-        "text": "12",
-        "rationale": "Subtracting the lengths is not the Pythagorean theorem."
+        "text": "210",
+        "rationale": "That is the area."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "By the Pythagorean theorem, leg = √(c² − a²) = √(900 − 324) = √576 = 24.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "B",
+    "explanation": "Hypotenuse = √(20² + 21²) = 29; perimeter = 20 + 21 + 29 = 70.",
+    "estimated_time_seconds": 95,
     "tags": [
       "geometry",
-      "right-triangle"
+      "right-triangle",
+      "family:rt_area_perimeter"
     ],
     "stimulus": {
       "type": "figure",
@@ -327,13 +337,13 @@
         "kind": "right_triangle",
         "caption": "Right triangle",
         "labels": {
-          "a": "18",
-          "b": "?",
-          "c": "30"
+          "a": "20",
+          "b": "21",
+          "c": "?"
         }
       }
     },
-    "answer_verification": "sides 18,24,30"
+    "answer_verification": "sides 20,21,29"
   },
   {
     "question_id": "sat-math-right-triangles-medium-q07",
@@ -347,35 +357,36 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "pythagorean",
-    "prompt": "The right triangle shown has one leg of length 6 and a hypotenuse of length 10. What is the length of the other leg?",
+    "prompt": "In a right triangle, the hypotenuse has length 35 and one leg has length 21. What is the length of the other leg?",
     "choices": [
       {
         "id": "A",
-        "text": "9",
-        "rationale": "Off by one; recompute c² − a²."
-      },
-      {
-        "id": "B",
-        "text": "16",
+        "text": "56",
         "rationale": "Add/subtract under the square root, not outside it."
       },
       {
+        "id": "B",
+        "text": "29",
+        "rationale": "Off by one; recompute c² − a²."
+      },
+      {
         "id": "C",
-        "text": "8",
+        "text": "28",
         "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "4",
+        "text": "14",
         "rationale": "Subtracting the lengths is not the Pythagorean theorem."
       }
     ],
     "correct_choice": "C",
-    "explanation": "By the Pythagorean theorem, leg = √(c² − a²) = √(100 − 36) = √64 = 8.",
-    "estimated_time_seconds": 85,
+    "explanation": "leg = √(c² − a²) = √(1225 − 441) = √784 = 28.",
+    "estimated_time_seconds": 80,
     "tags": [
       "geometry",
-      "right-triangle"
+      "right-triangle",
+      "family:rt_pythagorean"
     ],
     "stimulus": {
       "type": "figure",
@@ -383,13 +394,13 @@
         "kind": "right_triangle",
         "caption": "Right triangle",
         "labels": {
-          "a": "6",
+          "a": "21",
           "b": "?",
-          "c": "10"
+          "c": "35"
         }
       }
     },
-    "answer_verification": "sides 6,8,10"
+    "answer_verification": "sides 21,28,35"
   },
   {
     "question_id": "sat-math-right-triangles-medium-q08",
@@ -402,49 +413,52 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "pythagorean",
-    "prompt": "The right triangle shown has one leg of length 7 and a hypotenuse of length 25. What is the length of the other leg?",
+    "subskill": "special_triangles",
+    "prompt": "The right triangle shown is a 45°-45°-90° triangle with legs of length 14. What is the length of the hypotenuse?",
     "choices": [
       {
         "id": "A",
-        "text": "18",
-        "rationale": "Subtracting the lengths is not the Pythagorean theorem."
+        "text": "196",
+        "rationale": "Don't square the leg; multiply by √2."
       },
       {
         "id": "B",
-        "text": "25",
-        "rationale": "Off by one; recompute c² − a²."
+        "text": "14√2",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "32",
-        "rationale": "Add/subtract under the square root, not outside it."
+        "text": "14√3",
+        "rationale": "√3 is for a 30-60-90 triangle, not 45-45-90."
       },
       {
         "id": "D",
-        "text": "24",
-        "rationale": "Correct."
+        "text": "28",
+        "rationale": "That would be 2·leg; a 45-45-90 hypotenuse is leg·√2."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "By the Pythagorean theorem, leg = √(c² − a²) = √(625 − 49) = √576 = 24.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "B",
+    "explanation": "In a 45-45-90 triangle the hypotenuse is leg·√2, so it is 14√2.",
+    "estimated_time_seconds": 95,
     "tags": [
       "geometry",
-      "right-triangle"
+      "right-triangle",
+      "special",
+      "family:rt_special"
     ],
     "stimulus": {
       "type": "figure",
       "figure": {
         "kind": "right_triangle",
-        "caption": "Right triangle",
+        "caption": "45°-45°-90° triangle",
         "labels": {
-          "a": "7",
-          "b": "?",
-          "c": "25"
-        }
+          "a": "14",
+          "b": "14",
+          "c": "?"
+        },
+        "angle": "45°"
       }
     },
-    "answer_verification": "sides 7,24,25"
+    "answer_verification": "14√2"
   }
 ]

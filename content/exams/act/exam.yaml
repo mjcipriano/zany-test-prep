@@ -32,6 +32,11 @@ timed_test:
     - { name: "Math", domain: math, count: 45, minutes: 50 }
     - { name: "Reading", domain: reading, count: 36, minutes: 40 }
     - { name: "Science", domain: science, count: 40, minutes: 40 }
+# Reading reuses the shared authored passage pool (one item per passage per
+# skill), so its floor is lower than the generated domains'.
+validation:
+  min_per_domain:
+    reading: 150
 # Each section is reported 1-36; the composite is the rounded average of the
 # English, Math and Reading scores (Science is reported separately, as on the
 # enhanced ACT where it is optional).

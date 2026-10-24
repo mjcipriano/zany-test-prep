@@ -10,38 +10,39 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "exponential",
-    "prompt": "A population of 6 bacteria in a culture doubles every hour. How many will there be after 5 hours?",
+    "subskill": "growth_decay",
+    "prompt": "There are 12 cells in a sample, and the number triples each hour. How many cells in a sample are there after 4 hours?",
     "choices": [
       {
         "id": "A",
-        "text": "192",
-        "rationale": "Correct."
+        "text": "324",
+        "rationale": "This is the count one period too early."
       },
       {
         "id": "B",
-        "text": "60",
-        "rationale": "This grows linearly (×r×time) instead of exponentially."
-      },
-      {
-        "id": "C",
-        "text": "16",
+        "text": "24",
         "rationale": "This adds instead of repeatedly multiplying."
       },
       {
+        "id": "C",
+        "text": "972",
+        "rationale": "Correct."
+      },
+      {
         "id": "D",
-        "text": "96",
-        "rationale": "This is the count one period too early."
+        "text": "144",
+        "rationale": "This grows linearly (×r×time) instead of exponentially."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Multiply by 2 each hour: 6 × 2^5 = 192.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "C",
+    "explanation": "Multiply by 3 each hour: 12 × 3^4 = 972.",
+    "estimated_time_seconds": 80,
     "tags": [
       "advanced-math",
-      "exponential"
+      "exponential",
+      "family:ex_value"
     ],
-    "answer_verification": "6*2^5=192"
+    "answer_verification": "val=972"
   },
   {
     "question_id": "sat-math-exponential-easy-q02",
@@ -54,38 +55,40 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "exponential",
-    "prompt": "A population of 8 cells in a sample triples every hour. How many will there be after 2 hours?",
+    "subskill": "growth_decay",
+    "prompt": "A population of 50 subscribers to a newsletter doubles every month. Which expression gives the population after t months?",
     "choices": [
       {
         "id": "A",
-        "text": "48",
-        "rationale": "This grows linearly (×r×time) instead of exponentially."
+        "text": "50·2·t",
+        "rationale": "This models linear change (a fixed amount each period), not repeated multiplication."
       },
       {
         "id": "B",
-        "text": "72",
-        "rationale": "Correct."
+        "text": "50^t·2",
+        "rationale": "The repeating growth factor is the base raised to t, applied to the starting amount."
       },
       {
         "id": "C",
-        "text": "24",
-        "rationale": "This is the count one period too early."
+        "text": "50·2^t",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "14",
-        "rationale": "This adds instead of repeatedly multiplying."
+        "text": "50 + 2·t",
+        "rationale": "This adds a constant each period instead of multiplying."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Multiply by 3 each hour: 8 × 3^2 = 72.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "C",
+    "explanation": "Each month multiplies the amount by 2, so after t months the population is 50·2^t.",
+    "estimated_time_seconds": 90,
     "tags": [
       "advanced-math",
-      "exponential"
+      "exponential",
+      "model",
+      "family:ex_model"
     ],
-    "answer_verification": "8*3^2=72"
+    "answer_verification": "model 50·2^t"
   },
   {
     "question_id": "sat-math-exponential-easy-q03",
@@ -98,38 +101,40 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "exponential",
-    "prompt": "A population of 15 cells in a sample triples every hour. How many will there be after 4 hours?",
+    "subskill": "growth_decay",
+    "prompt": "The function f(t) = 400(0.95)^t models the value, in dollars, of a collectible t years after it was first measured. What was the initial value?",
     "choices": [
       {
         "id": "A",
-        "text": "180",
-        "rationale": "This grows linearly (×r×time) instead of exponentially."
+        "text": "5",
+        "rationale": "That is the percent rate, not the starting value."
       },
       {
         "id": "B",
-        "text": "405",
-        "rationale": "This is the count one period too early."
+        "text": "380",
+        "rationale": "That is the value after one year."
       },
       {
         "id": "C",
-        "text": "27",
-        "rationale": "This adds instead of repeatedly multiplying."
+        "text": "361",
+        "rationale": "That is the value after two periods."
       },
       {
         "id": "D",
-        "text": "1215",
+        "text": "400",
         "rationale": "Correct."
       }
     ],
     "correct_choice": "D",
-    "explanation": "Multiply by 3 each hour: 15 × 3^4 = 1215.",
-    "estimated_time_seconds": 85,
+    "explanation": "At t = 0, f(0) = 400·(0.95)⁰ = 400.",
+    "estimated_time_seconds": 65,
     "tags": [
       "advanced-math",
-      "exponential"
+      "exponential",
+      "interpret",
+      "family:ex_interpret"
     ],
-    "answer_verification": "15*3^4=1215"
+    "answer_verification": "f(0)=400"
   },
   {
     "question_id": "sat-math-exponential-easy-q04",
@@ -142,38 +147,39 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "exponential",
-    "prompt": "A population of 5 bacteria in a culture triples every hour. How many will there be after 4 hours?",
+    "subskill": "growth_decay",
+    "prompt": "A count of 20 dollars in an account is multiplied by 2 every year. After how many years will the count first reach 80?",
     "choices": [
       {
         "id": "A",
-        "text": "135",
-        "rationale": "This is the count one period too early."
+        "text": "4",
+        "rationale": "That is the growth multiple, not the number of periods."
       },
       {
         "id": "B",
-        "text": "405",
+        "text": "2",
         "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "60",
-        "rationale": "This grows linearly (×r×time) instead of exponentially."
+        "text": "1",
+        "rationale": "That is one period too few."
       },
       {
         "id": "D",
-        "text": "17",
-        "rationale": "This adds instead of repeatedly multiplying."
+        "text": "3",
+        "rationale": "That is one period too many."
       }
     ],
     "correct_choice": "B",
-    "explanation": "Multiply by 3 each hour: 5 × 3^4 = 405.",
-    "estimated_time_seconds": 85,
+    "explanation": "20·2^t = 80 → 2^t = 4 = 2^2 → t = 2.",
+    "estimated_time_seconds": 80,
     "tags": [
       "advanced-math",
-      "exponential"
+      "exponential",
+      "family:ex_periods"
     ],
-    "answer_verification": "5*3^4=405"
+    "answer_verification": "20*2^2=80"
   },
   {
     "question_id": "sat-math-exponential-easy-q05",
@@ -185,39 +191,26 @@
     "lesson_id": "sat-math-exponential-easy",
     "difficulty": "easy",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "exponential",
-    "prompt": "A population of 2 bacteria in a culture triples every hour. How many will there be after 3 hours?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "54",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "53",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "C",
-        "text": "18",
-        "rationale": "This grows linearly (×r×time) instead of exponentially."
-      },
-      {
-        "id": "D",
-        "text": "11",
-        "rationale": "This adds instead of repeatedly multiplying."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "Multiply by 3 each hour: 2 × 3^3 = 54.",
+    "question_type": "student_produced",
+    "subskill": "growth_decay",
+    "prompt": "A population of 6 doubles every hour. What is the population after 5 hours?",
+    "answer": {
+      "type": "numeric",
+      "value": 192,
+      "accepted": [
+        "192"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "6 × 2^5 = 192.",
     "estimated_time_seconds": 85,
     "tags": [
       "advanced-math",
-      "exponential"
+      "exponential",
+      "grid-in",
+      "family:ex_gridin"
     ],
-    "answer_verification": "2*3^3=54"
+    "answer_verification": "val=192"
   },
   {
     "question_id": "sat-math-exponential-easy-q06",
@@ -230,38 +223,39 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "exponential",
-    "prompt": "A population of 10 cells in a sample doubles every hour. How many will there be after 4 hours?",
+    "subskill": "growth_decay",
+    "prompt": "There are 30 cells in a sample, and the number triples each hour. How many cells in a sample are there after 4 hours?",
     "choices": [
       {
         "id": "A",
-        "text": "161",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "42",
+        "rationale": "This adds instead of repeatedly multiplying."
       },
       {
         "id": "B",
-        "text": "80",
+        "text": "360",
         "rationale": "This grows linearly (×r×time) instead of exponentially."
       },
       {
         "id": "C",
-        "text": "18",
-        "rationale": "This adds instead of repeatedly multiplying."
+        "text": "2430",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "160",
-        "rationale": "Correct."
+        "text": "810",
+        "rationale": "This is the count one period too early."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Multiply by 2 each hour: 10 × 2^4 = 160.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "C",
+    "explanation": "Multiply by 3 each hour: 30 × 3^4 = 2430.",
+    "estimated_time_seconds": 80,
     "tags": [
       "advanced-math",
-      "exponential"
+      "exponential",
+      "family:ex_value"
     ],
-    "answer_verification": "10*2^4=160"
+    "answer_verification": "val=2430"
   },
   {
     "question_id": "sat-math-exponential-easy-q07",
@@ -274,38 +268,40 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "exponential",
-    "prompt": "A population of 6 users of an app triples every month. How many will there be after 3 months?",
+    "subskill": "growth_decay",
+    "prompt": "A population of 5 subscribers to a newsletter triples every month. Which expression gives the population after t months?",
     "choices": [
       {
         "id": "A",
-        "text": "157",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "5^t·3",
+        "rationale": "The repeating growth factor is the base raised to t, applied to the starting amount."
       },
       {
         "id": "B",
-        "text": "54",
-        "rationale": "This grows linearly (×r×time) instead of exponentially."
-      },
-      {
-        "id": "C",
-        "text": "162",
+        "text": "5·3^t",
         "rationale": "Correct."
       },
       {
+        "id": "C",
+        "text": "5·3·t",
+        "rationale": "This models linear change (a fixed amount each period), not repeated multiplication."
+      },
+      {
         "id": "D",
-        "text": "15",
-        "rationale": "This adds instead of repeatedly multiplying."
+        "text": "5 + 3·t",
+        "rationale": "This adds a constant each period instead of multiplying."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Multiply by 3 each month: 6 × 3^3 = 162.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "B",
+    "explanation": "Each month multiplies the amount by 3, so after t months the population is 5·3^t.",
+    "estimated_time_seconds": 90,
     "tags": [
       "advanced-math",
-      "exponential"
+      "exponential",
+      "model",
+      "family:ex_model"
     ],
-    "answer_verification": "6*3^3=162"
+    "answer_verification": "model 5·3^t"
   },
   {
     "question_id": "sat-math-exponential-easy-q08",
@@ -318,38 +314,40 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "exponential",
-    "prompt": "A population of 25 shares of a rumor doubles every day. How many will there be after 3 days?",
+    "subskill": "growth_decay",
+    "prompt": "The function f(t) = 80(0.98)^t models the value, in dollars, of a collectible t years after it was first measured. What was the initial value?",
     "choices": [
       {
         "id": "A",
-        "text": "100",
-        "rationale": "This is the count one period too early."
+        "text": "80",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "31",
-        "rationale": "This adds instead of repeatedly multiplying."
+        "text": "77",
+        "rationale": "That is the value after two periods."
       },
       {
         "id": "C",
-        "text": "150",
-        "rationale": "This grows linearly (×r×time) instead of exponentially."
+        "text": "78",
+        "rationale": "That is the value after one year."
       },
       {
         "id": "D",
-        "text": "200",
-        "rationale": "Correct."
+        "text": "2",
+        "rationale": "That is the percent rate, not the starting value."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Multiply by 2 each day: 25 × 2^3 = 200.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "A",
+    "explanation": "At t = 0, f(0) = 80·(0.98)⁰ = 80.",
+    "estimated_time_seconds": 65,
     "tags": [
       "advanced-math",
-      "exponential"
+      "exponential",
+      "interpret",
+      "family:ex_interpret"
     ],
-    "answer_verification": "25*2^3=200"
+    "answer_verification": "f(0)=80"
   },
   {
     "question_id": "sat-math-exponential-easy-q09",
@@ -362,38 +360,39 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "exponential",
-    "prompt": "A population of 20 cells in a sample doubles every hour. How many will there be after 2 hours?",
+    "subskill": "growth_decay",
+    "prompt": "A count of 50 cells is multiplied by 2 every hour. After how many hours will the count first reach 200?",
     "choices": [
       {
         "id": "A",
-        "text": "24",
-        "rationale": "This adds instead of repeatedly multiplying."
+        "text": "1",
+        "rationale": "That is one period too few."
       },
       {
         "id": "B",
-        "text": "75",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "4",
+        "rationale": "That is the growth multiple, not the number of periods."
       },
       {
         "id": "C",
-        "text": "80",
+        "text": "2",
         "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "40",
-        "rationale": "This is the count one period too early."
+        "text": "3",
+        "rationale": "That is one period too many."
       }
     ],
     "correct_choice": "C",
-    "explanation": "Multiply by 2 each hour: 20 × 2^2 = 80.",
-    "estimated_time_seconds": 85,
+    "explanation": "50·2^t = 200 → 2^t = 4 = 2^2 → t = 2.",
+    "estimated_time_seconds": 80,
     "tags": [
       "advanced-math",
-      "exponential"
+      "exponential",
+      "family:ex_periods"
     ],
-    "answer_verification": "20*2^2=80"
+    "answer_verification": "50*2^2=200"
   },
   {
     "question_id": "sat-math-exponential-easy-q10",
@@ -405,39 +404,26 @@
     "lesson_id": "sat-math-exponential-easy",
     "difficulty": "easy",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "exponential",
-    "prompt": "A population of 6 bacteria in a culture triples every hour. How many will there be after 3 hours?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "165",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "B",
-        "text": "54",
-        "rationale": "This grows linearly (×r×time) instead of exponentially."
-      },
-      {
-        "id": "C",
-        "text": "15",
-        "rationale": "This adds instead of repeatedly multiplying."
-      },
-      {
-        "id": "D",
-        "text": "162",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Multiply by 3 each hour: 6 × 3^3 = 162.",
+    "question_type": "student_produced",
+    "subskill": "growth_decay",
+    "prompt": "A population of 8 triples every hour. What is the population after 4 hours?",
+    "answer": {
+      "type": "numeric",
+      "value": 648,
+      "accepted": [
+        "648"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "8 × 3^4 = 648.",
     "estimated_time_seconds": 85,
     "tags": [
       "advanced-math",
-      "exponential"
+      "exponential",
+      "grid-in",
+      "family:ex_gridin"
     ],
-    "answer_verification": "6*3^3=162"
+    "answer_verification": "val=648"
   },
   {
     "question_id": "sat-math-exponential-easy-q11",
@@ -450,38 +436,39 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "exponential",
-    "prompt": "A population of 15 bacteria in a culture triples every hour. How many will there be after 4 hours?",
+    "subskill": "growth_decay",
+    "prompt": "A population of 2 views of a video triples every day. How many will there be after 4 days?",
     "choices": [
       {
         "id": "A",
-        "text": "27",
-        "rationale": "This adds instead of repeatedly multiplying."
-      },
-      {
-        "id": "B",
-        "text": "1215",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "405",
+        "text": "54",
         "rationale": "This is the count one period too early."
       },
       {
-        "id": "D",
-        "text": "180",
+        "id": "B",
+        "text": "24",
         "rationale": "This grows linearly (×r×time) instead of exponentially."
+      },
+      {
+        "id": "C",
+        "text": "162",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "14",
+        "rationale": "This adds instead of repeatedly multiplying."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Multiply by 3 each hour: 15 × 3^4 = 1215.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "C",
+    "explanation": "Multiply by 3 each day: 2 × 3^4 = 162.",
+    "estimated_time_seconds": 80,
     "tags": [
       "advanced-math",
-      "exponential"
+      "exponential",
+      "family:ex_value"
     ],
-    "answer_verification": "15*3^4=1215"
+    "answer_verification": "val=162"
   },
   {
     "question_id": "sat-math-exponential-easy-q12",
@@ -494,38 +481,40 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "exponential",
-    "prompt": "A population of 8 users of an app doubles every month. How many will there be after 4 months?",
+    "subskill": "growth_decay",
+    "prompt": "A population of 300 cells in a sample doubles every hour. Which expression gives the population after t hours?",
     "choices": [
       {
         "id": "A",
-        "text": "64",
-        "rationale": "This grows linearly (×r×time) instead of exponentially."
+        "text": "300 + 2·t",
+        "rationale": "This adds a constant each period instead of multiplying."
       },
       {
         "id": "B",
-        "text": "16",
-        "rationale": "This adds instead of repeatedly multiplying."
+        "text": "300^t·2",
+        "rationale": "The repeating growth factor is the base raised to t, applied to the starting amount."
       },
       {
         "id": "C",
-        "text": "128",
-        "rationale": "Correct."
+        "text": "300·2·t",
+        "rationale": "This models linear change (a fixed amount each period), not repeated multiplication."
       },
       {
         "id": "D",
-        "text": "129",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "300·2^t",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Multiply by 2 each month: 8 × 2^4 = 128.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "D",
+    "explanation": "Each hour multiplies the amount by 2, so after t hours the population is 300·2^t.",
+    "estimated_time_seconds": 90,
     "tags": [
       "advanced-math",
-      "exponential"
+      "exponential",
+      "model",
+      "family:ex_model"
     ],
-    "answer_verification": "8*2^4=128"
+    "answer_verification": "model 300·2^t"
   },
   {
     "question_id": "sat-math-exponential-easy-q13",
@@ -538,38 +527,40 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "exponential",
-    "prompt": "A population of 8 bacteria in a culture doubles every hour. How many will there be after 3 hours?",
+    "subskill": "growth_decay",
+    "prompt": "The function f(t) = 2000(1.06)^t models the value, in dollars, of a collectible t years after it was first measured. What was the initial value?",
     "choices": [
       {
         "id": "A",
-        "text": "32",
-        "rationale": "This is the count one period too early."
+        "text": "2247",
+        "rationale": "That is the value after two periods."
       },
       {
         "id": "B",
-        "text": "48",
-        "rationale": "This grows linearly (×r×time) instead of exponentially."
+        "text": "2000",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "14",
-        "rationale": "This adds instead of repeatedly multiplying."
+        "text": "6",
+        "rationale": "That is the percent rate, not the starting value."
       },
       {
         "id": "D",
-        "text": "64",
-        "rationale": "Correct."
+        "text": "2120",
+        "rationale": "That is the value after one year."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Multiply by 2 each hour: 8 × 2^3 = 64.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "B",
+    "explanation": "At t = 0, f(0) = 2000·(1.06)⁰ = 2000.",
+    "estimated_time_seconds": 65,
     "tags": [
       "advanced-math",
-      "exponential"
+      "exponential",
+      "interpret",
+      "family:ex_interpret"
     ],
-    "answer_verification": "8*2^3=64"
+    "answer_verification": "f(0)=2000"
   },
   {
     "question_id": "sat-math-exponential-easy-q14",
@@ -582,38 +573,39 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "exponential",
-    "prompt": "A population of 8 bacteria in a culture triples every hour. How many will there be after 4 hours?",
+    "subskill": "growth_decay",
+    "prompt": "A count of 10 bacteria is multiplied by 3 every hour. After how many hours will the count first reach 810?",
     "choices": [
       {
         "id": "A",
-        "text": "96",
-        "rationale": "This grows linearly (×r×time) instead of exponentially."
+        "text": "5",
+        "rationale": "That is one period too many."
       },
       {
         "id": "B",
-        "text": "20",
-        "rationale": "This adds instead of repeatedly multiplying."
+        "text": "3",
+        "rationale": "That is one period too few."
       },
       {
         "id": "C",
-        "text": "216",
-        "rationale": "This is the count one period too early."
+        "text": "81",
+        "rationale": "That is the growth multiple, not the number of periods."
       },
       {
         "id": "D",
-        "text": "648",
+        "text": "4",
         "rationale": "Correct."
       }
     ],
     "correct_choice": "D",
-    "explanation": "Multiply by 3 each hour: 8 × 3^4 = 648.",
-    "estimated_time_seconds": 85,
+    "explanation": "10·3^t = 810 → 3^t = 81 = 3^4 → t = 4.",
+    "estimated_time_seconds": 80,
     "tags": [
       "advanced-math",
-      "exponential"
+      "exponential",
+      "family:ex_periods"
     ],
-    "answer_verification": "8*3^4=648"
+    "answer_verification": "10*3^4=810"
   },
   {
     "question_id": "sat-math-exponential-easy-q15",
@@ -625,39 +617,26 @@
     "lesson_id": "sat-math-exponential-easy",
     "difficulty": "easy",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "exponential",
-    "prompt": "A population of 2 bacteria in a culture doubles every hour. How many will there be after 5 hours?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "32",
-        "rationale": "This is the count one period too early."
-      },
-      {
-        "id": "B",
-        "text": "20",
-        "rationale": "This grows linearly (×r×time) instead of exponentially."
-      },
-      {
-        "id": "C",
-        "text": "12",
-        "rationale": "This adds instead of repeatedly multiplying."
-      },
-      {
-        "id": "D",
-        "text": "64",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Multiply by 2 each hour: 2 × 2^5 = 64.",
+    "question_type": "student_produced",
+    "subskill": "growth_decay",
+    "prompt": "A population of 8 doubles every hour. What is the population after 4 hours?",
+    "answer": {
+      "type": "numeric",
+      "value": 128,
+      "accepted": [
+        "128"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "8 × 2^4 = 128.",
     "estimated_time_seconds": 85,
     "tags": [
       "advanced-math",
-      "exponential"
+      "exponential",
+      "grid-in",
+      "family:ex_gridin"
     ],
-    "answer_verification": "2*2^5=64"
+    "answer_verification": "val=128"
   },
   {
     "question_id": "sat-math-exponential-easy-q16",
@@ -670,38 +649,39 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "exponential",
-    "prompt": "A population of 5 cells in a sample triples every hour. How many will there be after 5 hours?",
+    "subskill": "growth_decay",
+    "prompt": "There are 25 fruit flies in a jar, and the number triples each week. How many fruit flies in a jar are there after 3 weeks?",
     "choices": [
       {
         "id": "A",
-        "text": "1215",
-        "rationale": "Correct."
+        "text": "2025",
+        "rationale": "This is one period too late."
       },
       {
         "id": "B",
-        "text": "405",
-        "rationale": "This is the count one period too early."
+        "text": "225",
+        "rationale": "This grows linearly (×r×time) instead of exponentially."
       },
       {
         "id": "C",
-        "text": "20",
+        "text": "34",
         "rationale": "This adds instead of repeatedly multiplying."
       },
       {
         "id": "D",
-        "text": "75",
-        "rationale": "This grows linearly (×r×time) instead of exponentially."
+        "text": "675",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Multiply by 3 each hour: 5 × 3^5 = 1215.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "D",
+    "explanation": "Multiply by 3 each week: 25 × 3^3 = 675.",
+    "estimated_time_seconds": 80,
     "tags": [
       "advanced-math",
-      "exponential"
+      "exponential",
+      "family:ex_value"
     ],
-    "answer_verification": "5*3^5=1215"
+    "answer_verification": "val=675"
   },
   {
     "question_id": "sat-math-exponential-easy-q17",
@@ -714,38 +694,40 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "exponential",
-    "prompt": "A population of 4 cells in a sample triples every hour. How many will there be after 2 hours?",
+    "subskill": "growth_decay",
+    "prompt": "A population of 100 subscribers to a newsletter doubles every month. Which expression gives the population after t months?",
     "choices": [
       {
         "id": "A",
-        "text": "10",
-        "rationale": "This adds instead of repeatedly multiplying."
-      },
-      {
-        "id": "B",
-        "text": "12",
-        "rationale": "This is the count one period too early."
-      },
-      {
-        "id": "C",
-        "text": "36",
+        "text": "100·2^t",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "100·2·t",
+        "rationale": "This models linear change (a fixed amount each period), not repeated multiplication."
+      },
+      {
+        "id": "C",
+        "text": "100 + 2·t",
+        "rationale": "This adds a constant each period instead of multiplying."
+      },
+      {
         "id": "D",
-        "text": "24",
-        "rationale": "This grows linearly (×r×time) instead of exponentially."
+        "text": "100^t·2",
+        "rationale": "The repeating growth factor is the base raised to t, applied to the starting amount."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Multiply by 3 each hour: 4 × 3^2 = 36.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "A",
+    "explanation": "Each month multiplies the amount by 2, so after t months the population is 100·2^t.",
+    "estimated_time_seconds": 90,
     "tags": [
       "advanced-math",
-      "exponential"
+      "exponential",
+      "model",
+      "family:ex_model"
     ],
-    "answer_verification": "4*3^2=36"
+    "answer_verification": "model 100·2^t"
   },
   {
     "question_id": "sat-math-exponential-easy-q18",
@@ -758,38 +740,40 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "exponential",
-    "prompt": "A population of 8 shares of a rumor triples every day. How many will there be after 3 days?",
+    "subskill": "growth_decay",
+    "prompt": "The function f(t) = 120(1.25)^t models the value, in dollars, of a collectible t years after it was first measured. What was the initial value?",
     "choices": [
       {
         "id": "A",
-        "text": "213",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "188",
+        "rationale": "That is the value after two periods."
       },
       {
         "id": "B",
-        "text": "17",
-        "rationale": "This adds instead of repeatedly multiplying."
+        "text": "150",
+        "rationale": "That is the value after one year."
       },
       {
         "id": "C",
-        "text": "216",
+        "text": "120",
         "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "72",
-        "rationale": "This grows linearly (×r×time) instead of exponentially."
+        "text": "25",
+        "rationale": "That is the percent rate, not the starting value."
       }
     ],
     "correct_choice": "C",
-    "explanation": "Multiply by 3 each day: 8 × 3^3 = 216.",
-    "estimated_time_seconds": 85,
+    "explanation": "At t = 0, f(0) = 120·(1.25)⁰ = 120.",
+    "estimated_time_seconds": 65,
     "tags": [
       "advanced-math",
-      "exponential"
+      "exponential",
+      "interpret",
+      "family:ex_interpret"
     ],
-    "answer_verification": "8*3^3=216"
+    "answer_verification": "f(0)=120"
   },
   {
     "question_id": "sat-math-exponential-easy-q19",
@@ -802,38 +786,39 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "exponential",
-    "prompt": "A population of 6 cells in a sample triples every hour. How many will there be after 2 hours?",
+    "subskill": "growth_decay",
+    "prompt": "A count of 10 bacteria is multiplied by 5 every day. After how many days will the count first reach 250?",
     "choices": [
       {
         "id": "A",
-        "text": "36",
-        "rationale": "This grows linearly (×r×time) instead of exponentially."
+        "text": "3",
+        "rationale": "That is one period too many."
       },
       {
         "id": "B",
-        "text": "54",
-        "rationale": "Correct."
+        "text": "25",
+        "rationale": "That is the growth multiple, not the number of periods."
       },
       {
         "id": "C",
-        "text": "18",
-        "rationale": "This is the count one period too early."
+        "text": "2",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "12",
-        "rationale": "This adds instead of repeatedly multiplying."
+        "text": "1",
+        "rationale": "That is one period too few."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Multiply by 3 each hour: 6 × 3^2 = 54.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "C",
+    "explanation": "10·5^t = 250 → 5^t = 25 = 5^2 → t = 2.",
+    "estimated_time_seconds": 80,
     "tags": [
       "advanced-math",
-      "exponential"
+      "exponential",
+      "family:ex_periods"
     ],
-    "answer_verification": "6*3^2=54"
+    "answer_verification": "10*5^2=250"
   },
   {
     "question_id": "sat-math-exponential-easy-q20",
@@ -845,38 +830,25 @@
     "lesson_id": "sat-math-exponential-easy",
     "difficulty": "easy",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "exponential",
-    "prompt": "A population of 5 users of an app doubles every month. How many will there be after 2 months?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "20",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "9",
-        "rationale": "This adds instead of repeatedly multiplying."
-      },
-      {
-        "id": "C",
-        "text": "10",
-        "rationale": "This is the count one period too early."
-      },
-      {
-        "id": "D",
-        "text": "19",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "Multiply by 2 each month: 5 × 2^2 = 20.",
+    "question_type": "student_produced",
+    "subskill": "growth_decay",
+    "prompt": "A population of 2 doubles every hour. What is the population after 5 hours?",
+    "answer": {
+      "type": "numeric",
+      "value": 64,
+      "accepted": [
+        "64"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "2 × 2^5 = 64.",
     "estimated_time_seconds": 85,
     "tags": [
       "advanced-math",
-      "exponential"
+      "exponential",
+      "grid-in",
+      "family:ex_gridin"
     ],
-    "answer_verification": "5*2^2=20"
+    "answer_verification": "val=64"
   }
 ]

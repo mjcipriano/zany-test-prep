@@ -11,37 +11,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "evaluate",
-    "prompt": "The function f is defined by f(x) = 2x + 9. What is the value of f(10)?",
+    "prompt": "The function f is defined by f(x) = 4x − 7. What is the value of f(−8)?",
     "choices": [
       {
         "id": "A",
-        "text": "11",
-        "rationale": "Check the sign of the constant term."
+        "text": "-35",
+        "rationale": "Arithmetic slip; recompute a·k."
       },
       {
         "id": "B",
-        "text": "29",
+        "text": "-39",
         "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "21",
+        "text": "-11",
         "rationale": "This adds k to the coefficient instead of multiplying."
       },
       {
         "id": "D",
-        "text": "31",
-        "rationale": "Arithmetic slip; recompute a·k."
+        "text": "-25",
+        "rationale": "Check the sign of the constant term."
       }
     ],
     "correct_choice": "B",
-    "explanation": "f(10) = 2·10 + 9 = 20 + 9 = 29.",
+    "explanation": "f(−8) = 4·(−8) − 7 = −32 − 7 = −39.",
     "estimated_time_seconds": 70,
     "tags": [
       "functions",
-      "linear"
+      "evaluate",
+      "family:fn_evaluate"
     ],
-    "answer_verification": "f(10)=29"
+    "answer_verification": "f(-8)=-39"
   },
   {
     "question_id": "sat-math-functions-easy-q02",
@@ -54,38 +55,39 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "evaluate",
-    "prompt": "The function f is defined by f(x) = 10x + -9. What is the value of f(0)?",
+    "subskill": "interpret",
+    "prompt": "The function f is defined by f(x) = 8x + 1. If f(x) = 17, what is the value of x?",
     "choices": [
       {
         "id": "A",
-        "text": "1",
-        "rationale": "This adds k to the coefficient instead of multiplying."
-      },
-      {
-        "id": "B",
-        "text": "-9",
+        "text": "2",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "16",
+        "rationale": "This is a·x (before dividing by the coefficient a)."
+      },
+      {
         "id": "C",
-        "text": "-14",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "18",
+        "rationale": "Subtract b before dividing, don't add it."
       },
       {
         "id": "D",
-        "text": "9",
-        "rationale": "Check the sign of the constant term."
+        "text": "137",
+        "rationale": "This evaluates f(n) instead of solving f(x) = n."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "f(0) = 10·0 + -9 = 0 + -9 = -9.",
-    "estimated_time_seconds": 70,
+    "correct_choice": "A",
+    "explanation": "Set 8x + 1 = 17: 8x = 16, so x = 2.",
+    "estimated_time_seconds": 80,
     "tags": [
       "functions",
-      "linear"
+      "solve",
+      "family:fn_solve_input"
     ],
-    "answer_verification": "f(0)=-9"
+    "answer_verification": "x=2"
   },
   {
     "question_id": "sat-math-functions-easy-q03",
@@ -97,39 +99,72 @@
     "lesson_id": "sat-math-functions-easy",
     "difficulty": "easy",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "data_interpretation",
     "subskill": "evaluate",
-    "prompt": "The function f is defined by f(x) = 2x + -12. What is the value of f(-6)?",
+    "prompt": "The table gives selected values of the function f. What is the value of f(−2)?",
     "choices": [
       {
         "id": "A",
-        "text": "-22",
-        "rationale": "Arithmetic slip; recompute a·k."
+        "text": "-9",
+        "rationale": "That is the output for a different input; read the row for x = −2."
       },
       {
         "id": "B",
-        "text": "-16",
-        "rationale": "This adds k to the coefficient instead of multiplying."
-      },
-      {
-        "id": "C",
-        "text": "-24",
+        "text": "-10",
         "rationale": "Correct."
       },
       {
+        "id": "C",
+        "text": "21",
+        "rationale": "Read across the correct row."
+      },
+      {
         "id": "D",
-        "text": "0",
-        "rationale": "Check the sign of the constant term."
+        "text": "-2",
+        "rationale": "That is the input, not the output."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "f(-6) = 2·-6 + -12 = -12 + -12 = -24.",
+    "correct_choice": "B",
+    "explanation": "Find x = −2 in the table; the corresponding f(x) is −10.",
     "estimated_time_seconds": 70,
     "tags": [
       "functions",
-      "linear"
+      "table",
+      "family:fn_table"
     ],
-    "answer_verification": "f(-6)=-24"
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Values of f",
+        "headers": [
+          "x",
+          "f(x)"
+        ],
+        "rows": [
+          [
+            "-3",
+            "21"
+          ],
+          [
+            "-2",
+            "-10"
+          ],
+          [
+            "2",
+            "-9"
+          ],
+          [
+            "4",
+            "-1"
+          ],
+          [
+            "9",
+            "-5"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "val=-10"
   },
   {
     "question_id": "sat-math-functions-easy-q04",
@@ -142,38 +177,39 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "evaluate",
-    "prompt": "The function f is defined by f(x) = 12x + -10. What is the value of f(4)?",
+    "subskill": "interpret",
+    "prompt": "The function f is defined by f(x) = (x + 2)/(x + 8). For what value of x is f(x) undefined?",
     "choices": [
       {
         "id": "A",
-        "text": "6",
-        "rationale": "This adds k to the coefficient instead of multiplying."
+        "text": "2",
+        "rationale": "The numerator's constant doesn't make f undefined."
       },
       {
         "id": "B",
-        "text": "38",
+        "text": "-8",
         "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "50",
-        "rationale": "Arithmetic slip; recompute a·k."
+        "text": "8",
+        "rationale": "Solve x + b = 0, so x = −b."
       },
       {
         "id": "D",
-        "text": "58",
-        "rationale": "Check the sign of the constant term."
+        "text": "-2",
+        "rationale": "That makes the numerator 0, so f(x) = 0 there; the function is defined."
       }
     ],
     "correct_choice": "B",
-    "explanation": "f(4) = 12·4 + -10 = 48 + -10 = 38.",
-    "estimated_time_seconds": 70,
+    "explanation": "A fraction is undefined when its denominator is 0: x + 8 = 0 gives x = −8.",
+    "estimated_time_seconds": 75,
     "tags": [
       "functions",
-      "linear"
+      "rational",
+      "family:fn_undefined"
     ],
-    "answer_verification": "f(4)=38"
+    "answer_verification": "x=-8"
   },
   {
     "question_id": "sat-math-functions-easy-q05",
@@ -185,39 +221,25 @@
     "lesson_id": "sat-math-functions-easy",
     "difficulty": "easy",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "student_produced",
     "subskill": "evaluate",
-    "prompt": "The function f is defined by f(x) = 5x + 12. What is the value of f(-4)?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "13",
-        "rationale": "This adds k to the coefficient instead of multiplying."
-      },
-      {
-        "id": "B",
-        "text": "-32",
-        "rationale": "Check the sign of the constant term."
-      },
-      {
-        "id": "C",
-        "text": "-3",
-        "rationale": "Arithmetic slip; recompute a·k."
-      },
-      {
-        "id": "D",
-        "text": "-8",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "f(-4) = 5·-4 + 12 = -20 + 12 = -8.",
-    "estimated_time_seconds": 70,
+    "prompt": "The function f is defined by f(x) = 5x − 9. What is the value of f(6)?",
+    "answer": {
+      "type": "numeric",
+      "value": 21,
+      "accepted": [
+        "21"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "f(6) = 5·(6) − 9 = 21.",
+    "estimated_time_seconds": 75,
     "tags": [
       "functions",
-      "linear"
+      "grid-in",
+      "family:fn_gridin"
     ],
-    "answer_verification": "f(-4)=-8"
+    "answer_verification": "val=21"
   },
   {
     "question_id": "sat-math-functions-easy-q06",
@@ -231,37 +253,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "evaluate",
-    "prompt": "The function f is defined by f(x) = 10x + -8. What is the value of f(8)?",
+    "prompt": "For the function f defined by f(x) = 2x − 12, what is f(−4)?",
     "choices": [
       {
         "id": "A",
-        "text": "82",
+        "text": "-18",
         "rationale": "Arithmetic slip; recompute a·k."
       },
       {
         "id": "B",
-        "text": "10",
-        "rationale": "This adds k to the coefficient instead of multiplying."
+        "text": "4",
+        "rationale": "Check the sign of the constant term."
       },
       {
         "id": "C",
-        "text": "72",
+        "text": "-20",
         "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "88",
-        "rationale": "Check the sign of the constant term."
+        "text": "-14",
+        "rationale": "This adds k to the coefficient instead of multiplying."
       }
     ],
     "correct_choice": "C",
-    "explanation": "f(8) = 10·8 + -8 = 80 + -8 = 72.",
+    "explanation": "f(−4) = 2·(−4) − 12 = −8 − 12 = −20.",
     "estimated_time_seconds": 70,
     "tags": [
       "functions",
-      "linear"
+      "evaluate",
+      "family:fn_evaluate"
     ],
-    "answer_verification": "f(8)=72"
+    "answer_verification": "f(-4)=-20"
   },
   {
     "question_id": "sat-math-functions-easy-q07",
@@ -274,38 +297,39 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "evaluate",
-    "prompt": "The function f is defined by f(x) = 3x + -10. What is the value of f(3)?",
+    "subskill": "interpret",
+    "prompt": "The function f is defined by f(x) = 7x − 5. If f(x) = 51, what is the value of x?",
     "choices": [
       {
         "id": "A",
-        "text": "2",
-        "rationale": "Arithmetic slip; recompute a·k."
+        "text": "56",
+        "rationale": "This is a·x (before dividing by the coefficient a)."
       },
       {
         "id": "B",
-        "text": "19",
-        "rationale": "Check the sign of the constant term."
+        "text": "46",
+        "rationale": "Subtract b before dividing, don't add it."
       },
       {
         "id": "C",
-        "text": "-4",
-        "rationale": "This adds k to the coefficient instead of multiplying."
+        "text": "352",
+        "rationale": "This evaluates f(n) instead of solving f(x) = n."
       },
       {
         "id": "D",
-        "text": "-1",
+        "text": "8",
         "rationale": "Correct."
       }
     ],
     "correct_choice": "D",
-    "explanation": "f(3) = 3·3 + -10 = 9 + -10 = -1.",
-    "estimated_time_seconds": 70,
+    "explanation": "Set 7x − 5 = 51: 7x = 56, so x = 8.",
+    "estimated_time_seconds": 80,
     "tags": [
       "functions",
-      "linear"
+      "solve",
+      "family:fn_solve_input"
     ],
-    "answer_verification": "f(3)=-1"
+    "answer_verification": "x=8"
   },
   {
     "question_id": "sat-math-functions-easy-q08",
@@ -317,39 +341,72 @@
     "lesson_id": "sat-math-functions-easy",
     "difficulty": "easy",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "data_interpretation",
     "subskill": "evaluate",
-    "prompt": "The function f is defined by f(x) = 10x + -10. What is the value of f(-1)?",
+    "prompt": "The table gives selected values of the function f. What is the value of f(−2)?",
     "choices": [
       {
         "id": "A",
-        "text": "0",
-        "rationale": "Check the sign of the constant term."
+        "text": "-2",
+        "rationale": "That is the input, not the output."
       },
       {
         "id": "B",
-        "text": "-1",
-        "rationale": "This adds k to the coefficient instead of multiplying."
+        "text": "5",
+        "rationale": "Read across the correct row."
       },
       {
         "id": "C",
-        "text": "-20",
-        "rationale": "Correct."
+        "text": "15",
+        "rationale": "That is the output for a different input; read the row for x = −2."
       },
       {
         "id": "D",
-        "text": "-10",
-        "rationale": "Arithmetic slip; recompute a·k."
+        "text": "3",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "f(-1) = 10·-1 + -10 = -10 + -10 = -20.",
+    "correct_choice": "D",
+    "explanation": "Find x = −2 in the table; the corresponding f(x) is 3.",
     "estimated_time_seconds": 70,
     "tags": [
       "functions",
-      "linear"
+      "table",
+      "family:fn_table"
     ],
-    "answer_verification": "f(-1)=-20"
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Values of f",
+        "headers": [
+          "x",
+          "f(x)"
+        ],
+        "rows": [
+          [
+            "-3",
+            "5"
+          ],
+          [
+            "-2",
+            "3"
+          ],
+          [
+            "-1",
+            "15"
+          ],
+          [
+            "1",
+            "19"
+          ],
+          [
+            "5",
+            "16"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "val=3"
   },
   {
     "question_id": "sat-math-functions-easy-q09",
@@ -362,38 +419,39 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "evaluate",
-    "prompt": "The function f is defined by f(x) = 7x + 3. What is the value of f(-2)?",
+    "subskill": "interpret",
+    "prompt": "The function f is defined by f(x) = (x + 3)/(x − 2). For what value of x is f(x) undefined?",
     "choices": [
       {
         "id": "A",
-        "text": "-17",
-        "rationale": "Check the sign of the constant term."
+        "text": "2",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "-4",
-        "rationale": "Arithmetic slip; recompute a·k."
+        "text": "-3",
+        "rationale": "That makes the numerator 0, so f(x) = 0 there; the function is defined."
       },
       {
         "id": "C",
-        "text": "8",
-        "rationale": "This adds k to the coefficient instead of multiplying."
+        "text": "3",
+        "rationale": "The numerator's constant doesn't make f undefined."
       },
       {
         "id": "D",
-        "text": "-11",
-        "rationale": "Correct."
+        "text": "-2",
+        "rationale": "Solve x + b = 0, so x = −b."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "f(-2) = 7·-2 + 3 = -14 + 3 = -11.",
-    "estimated_time_seconds": 70,
+    "correct_choice": "A",
+    "explanation": "A fraction is undefined when its denominator is 0: x − 2 = 0 gives x = 2.",
+    "estimated_time_seconds": 75,
     "tags": [
       "functions",
-      "linear"
+      "rational",
+      "family:fn_undefined"
     ],
-    "answer_verification": "f(-2)=-11"
+    "answer_verification": "x=2"
   },
   {
     "question_id": "sat-math-functions-easy-q10",
@@ -405,39 +463,25 @@
     "lesson_id": "sat-math-functions-easy",
     "difficulty": "easy",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "student_produced",
     "subskill": "evaluate",
-    "prompt": "The function f is defined by f(x) = 2x + -2. What is the value of f(-5)?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-10",
-        "rationale": "Arithmetic slip; recompute a·k."
-      },
-      {
-        "id": "B",
-        "text": "-12",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "-8",
-        "rationale": "Check the sign of the constant term."
-      },
-      {
-        "id": "D",
-        "text": "-5",
-        "rationale": "This adds k to the coefficient instead of multiplying."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "f(-5) = 2·-5 + -2 = -10 + -2 = -12.",
-    "estimated_time_seconds": 70,
+    "prompt": "The function f is defined by f(x) = 10x + 73. What is the value of f(−4)?",
+    "answer": {
+      "type": "numeric",
+      "value": 33,
+      "accepted": [
+        "33"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "f(−4) = 10·(−4) + 73 = 33.",
+    "estimated_time_seconds": 75,
     "tags": [
       "functions",
-      "linear"
+      "grid-in",
+      "family:fn_gridin"
     ],
-    "answer_verification": "f(-5)=-12"
+    "answer_verification": "val=33"
   },
   {
     "question_id": "sat-math-functions-easy-q11",
@@ -449,25 +493,40 @@
     "lesson_id": "sat-math-functions-easy",
     "difficulty": "easy",
     "version": "1.0.0",
-    "question_type": "student_produced",
+    "question_type": "multiple_choice",
     "subskill": "evaluate",
-    "prompt": "The function f is defined by f(x) = 11x + 15. What is the value of f(6)?",
-    "answer": {
-      "type": "numeric",
-      "value": 81,
-      "accepted": [
-        "81"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "f(6) = 11·6 + 15 = 66 + 15 = 81.",
+    "prompt": "If f(x) = 10x − 13, what is f(−1)?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-13",
+        "rationale": "Arithmetic slip; recompute a·k."
+      },
+      {
+        "id": "B",
+        "text": "-4",
+        "rationale": "This adds k to the coefficient instead of multiplying."
+      },
+      {
+        "id": "C",
+        "text": "3",
+        "rationale": "Check the sign of the constant term."
+      },
+      {
+        "id": "D",
+        "text": "-23",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "f(−1) = 10·(−1) − 13 = −10 − 13 = −23.",
     "estimated_time_seconds": 70,
     "tags": [
       "functions",
-      "linear",
-      "grid-in"
+      "evaluate",
+      "family:fn_evaluate"
     ],
-    "answer_verification": "f(6)=81"
+    "answer_verification": "f(-1)=-23"
   },
   {
     "question_id": "sat-math-functions-easy-q12",
@@ -480,38 +539,39 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "evaluate",
-    "prompt": "The function f is defined by f(x) = 8x + -3. What is the value of f(3)?",
+    "subskill": "interpret",
+    "prompt": "The function f is defined by f(x) = 9x − 8. If f(x) = 64, what is the value of x?",
     "choices": [
       {
         "id": "A",
-        "text": "21",
+        "text": "8",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "27",
-        "rationale": "Check the sign of the constant term."
+        "text": "72",
+        "rationale": "This is a·x (before dividing by the coefficient a)."
       },
       {
         "id": "C",
-        "text": "29",
-        "rationale": "Arithmetic slip; recompute a·k."
+        "text": "568",
+        "rationale": "This evaluates f(n) instead of solving f(x) = n."
       },
       {
         "id": "D",
-        "text": "8",
-        "rationale": "This adds k to the coefficient instead of multiplying."
+        "text": "56",
+        "rationale": "Subtract b before dividing, don't add it."
       }
     ],
     "correct_choice": "A",
-    "explanation": "f(3) = 8·3 + -3 = 24 + -3 = 21.",
-    "estimated_time_seconds": 70,
+    "explanation": "Set 9x − 8 = 64: 9x = 72, so x = 8.",
+    "estimated_time_seconds": 80,
     "tags": [
       "functions",
-      "linear"
+      "solve",
+      "family:fn_solve_input"
     ],
-    "answer_verification": "f(3)=21"
+    "answer_verification": "x=8"
   },
   {
     "question_id": "sat-math-functions-easy-q13",
@@ -523,25 +583,72 @@
     "lesson_id": "sat-math-functions-easy",
     "difficulty": "easy",
     "version": "1.0.0",
-    "question_type": "student_produced",
+    "question_type": "data_interpretation",
     "subskill": "evaluate",
-    "prompt": "The function f is defined by f(x) = 2x + 1. What is the value of f(10)?",
-    "answer": {
-      "type": "numeric",
-      "value": 21,
-      "accepted": [
-        "21"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "f(10) = 2·10 + 1 = 20 + 1 = 21.",
+    "prompt": "The table gives selected values of the function f. What is the value of f(2)?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "29",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "11",
+        "rationale": "That is the output for a different input; read the row for x = 2."
+      },
+      {
+        "id": "C",
+        "text": "19",
+        "rationale": "Read across the correct row."
+      },
+      {
+        "id": "D",
+        "text": "2",
+        "rationale": "That is the input, not the output."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Find x = 2 in the table; the corresponding f(x) is 29.",
     "estimated_time_seconds": 70,
     "tags": [
       "functions",
-      "linear",
-      "grid-in"
+      "table",
+      "family:fn_table"
     ],
-    "answer_verification": "f(10)=21"
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Values of f",
+        "headers": [
+          "x",
+          "f(x)"
+        ],
+        "rows": [
+          [
+            "-3",
+            "26"
+          ],
+          [
+            "-1",
+            "7"
+          ],
+          [
+            "0",
+            "19"
+          ],
+          [
+            "2",
+            "29"
+          ],
+          [
+            "4",
+            "11"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "val=29"
   },
   {
     "question_id": "sat-math-functions-easy-q14",
@@ -553,25 +660,40 @@
     "lesson_id": "sat-math-functions-easy",
     "difficulty": "easy",
     "version": "1.0.0",
-    "question_type": "student_produced",
-    "subskill": "evaluate",
-    "prompt": "The function f is defined by f(x) = 8x + -10. What is the value of f(2)?",
-    "answer": {
-      "type": "numeric",
-      "value": 6,
-      "accepted": [
-        "6"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "f(2) = 8·2 + -10 = 16 + -10 = 6.",
-    "estimated_time_seconds": 70,
+    "question_type": "multiple_choice",
+    "subskill": "interpret",
+    "prompt": "The function f is defined by f(x) = (x + 2)/(x − 8). For what value of x is f(x) = 0?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "8",
+        "rationale": "That makes the denominator 0, so f is undefined there."
+      },
+      {
+        "id": "B",
+        "text": "2",
+        "rationale": "Solve x + a = 0, so x = −a."
+      },
+      {
+        "id": "C",
+        "text": "-2",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "-8",
+        "rationale": "The denominator's constant isn't the zero of f."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "A fraction is 0 when its numerator is 0 (and the denominator isn't): x + 2 = 0 gives x = −2.",
+    "estimated_time_seconds": 75,
     "tags": [
       "functions",
-      "linear",
-      "grid-in"
+      "rational",
+      "family:fn_undefined"
     ],
-    "answer_verification": "f(2)=6"
+    "answer_verification": "x=-2"
   },
   {
     "question_id": "sat-math-functions-easy-q15",
@@ -583,39 +705,25 @@
     "lesson_id": "sat-math-functions-easy",
     "difficulty": "easy",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "student_produced",
     "subskill": "evaluate",
-    "prompt": "The function f is defined by f(x) = 7x + -7. What is the value of f(0)?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "0",
-        "rationale": "This adds k to the coefficient instead of multiplying."
-      },
-      {
-        "id": "B",
-        "text": "-7",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "-3",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "D",
-        "text": "7",
-        "rationale": "Check the sign of the constant term."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "f(0) = 7·0 + -7 = 0 + -7 = -7.",
-    "estimated_time_seconds": 70,
+    "prompt": "The function f is defined by f(x) = 9x − 6. What is the value of f(1)?",
+    "answer": {
+      "type": "numeric",
+      "value": 3,
+      "accepted": [
+        "3"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "f(1) = 9·(1) − 6 = 3.",
+    "estimated_time_seconds": 75,
     "tags": [
       "functions",
-      "linear"
+      "grid-in",
+      "family:fn_gridin"
     ],
-    "answer_verification": "f(0)=-7"
+    "answer_verification": "val=3"
   },
   {
     "question_id": "sat-math-functions-easy-q16",
@@ -629,37 +737,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "evaluate",
-    "prompt": "The function f is defined by f(x) = 8x + 0. What is the value of f(-7)?",
+    "prompt": "The function f is defined by f(x) = 10x + 9. What is the value of f(−4)?",
     "choices": [
       {
         "id": "A",
-        "text": "-58",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "-31",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "1",
-        "rationale": "This adds k to the coefficient instead of multiplying."
-      },
-      {
-        "id": "C",
-        "text": "-48",
+        "text": "-21",
         "rationale": "Arithmetic slip; recompute a·k."
       },
       {
+        "id": "C",
+        "text": "15",
+        "rationale": "This adds k to the coefficient instead of multiplying."
+      },
+      {
         "id": "D",
-        "text": "-56",
-        "rationale": "Correct."
+        "text": "-49",
+        "rationale": "Check the sign of the constant term."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "f(-7) = 8·-7 + 0 = -56 + 0 = -56.",
+    "correct_choice": "A",
+    "explanation": "f(−4) = 10·(−4) + 9 = −40 + 9 = −31.",
     "estimated_time_seconds": 70,
     "tags": [
       "functions",
-      "linear"
+      "evaluate",
+      "family:fn_evaluate"
     ],
-    "answer_verification": "f(-7)=-56"
+    "answer_verification": "f(-4)=-31"
   },
   {
     "question_id": "sat-math-functions-easy-q17",
@@ -672,38 +781,39 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "evaluate",
-    "prompt": "The function f is defined by f(x) = 9x + -8. What is the value of f(-8)?",
+    "subskill": "interpret",
+    "prompt": "The function f is defined by f(x) = 7x − 2. If f(x) = 40, what is the value of x?",
     "choices": [
       {
         "id": "A",
-        "text": "-7",
-        "rationale": "This adds k to the coefficient instead of multiplying."
+        "text": "6",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "-64",
-        "rationale": "Check the sign of the constant term."
+        "text": "42",
+        "rationale": "This is a·x (before dividing by the coefficient a)."
       },
       {
         "id": "C",
-        "text": "-71",
-        "rationale": "Arithmetic slip; recompute a·k."
+        "text": "278",
+        "rationale": "This evaluates f(n) instead of solving f(x) = n."
       },
       {
         "id": "D",
-        "text": "-80",
-        "rationale": "Correct."
+        "text": "38",
+        "rationale": "Subtract b before dividing, don't add it."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "f(-8) = 9·-8 + -8 = -72 + -8 = -80.",
-    "estimated_time_seconds": 70,
+    "correct_choice": "A",
+    "explanation": "Set 7x − 2 = 40: 7x = 42, so x = 6.",
+    "estimated_time_seconds": 80,
     "tags": [
       "functions",
-      "linear"
+      "solve",
+      "family:fn_solve_input"
     ],
-    "answer_verification": "f(-8)=-80"
+    "answer_verification": "x=6"
   },
   {
     "question_id": "sat-math-functions-easy-q18",
@@ -715,25 +825,72 @@
     "lesson_id": "sat-math-functions-easy",
     "difficulty": "easy",
     "version": "1.0.0",
-    "question_type": "student_produced",
+    "question_type": "data_interpretation",
     "subskill": "evaluate",
-    "prompt": "The function f is defined by f(x) = 9x + 1. What is the value of f(7)?",
-    "answer": {
-      "type": "numeric",
-      "value": 64,
-      "accepted": [
-        "64"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "f(7) = 9·7 + 1 = 63 + 1 = 64.",
+    "prompt": "The table gives selected values of the function f. What is the value of f(−2)?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "28",
+        "rationale": "That is the output for a different input; read the row for x = −2."
+      },
+      {
+        "id": "B",
+        "text": "25",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "-7",
+        "rationale": "Read across the correct row."
+      },
+      {
+        "id": "D",
+        "text": "-2",
+        "rationale": "That is the input, not the output."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Find x = −2 in the table; the corresponding f(x) is 25.",
     "estimated_time_seconds": 70,
     "tags": [
       "functions",
-      "linear",
-      "grid-in"
+      "table",
+      "family:fn_table"
     ],
-    "answer_verification": "f(7)=64"
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Values of f",
+        "headers": [
+          "x",
+          "f(x)"
+        ],
+        "rows": [
+          [
+            "-4",
+            "-7"
+          ],
+          [
+            "-2",
+            "25"
+          ],
+          [
+            "2",
+            "28"
+          ],
+          [
+            "6",
+            "2"
+          ],
+          [
+            "8",
+            "-4"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "val=25"
   },
   {
     "question_id": "sat-math-functions-easy-q19",
@@ -745,25 +902,40 @@
     "lesson_id": "sat-math-functions-easy",
     "difficulty": "easy",
     "version": "1.0.0",
-    "question_type": "student_produced",
-    "subskill": "evaluate",
-    "prompt": "The function f is defined by f(x) = 3x + 8. What is the value of f(6)?",
-    "answer": {
-      "type": "numeric",
-      "value": 26,
-      "accepted": [
-        "26"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "f(6) = 3·6 + 8 = 18 + 8 = 26.",
-    "estimated_time_seconds": 70,
+    "question_type": "multiple_choice",
+    "subskill": "interpret",
+    "prompt": "The function f is defined by f(x) = (x + 8)/(x − 2). For what value of x is f(x) = 0?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "8",
+        "rationale": "Solve x + a = 0, so x = −a."
+      },
+      {
+        "id": "B",
+        "text": "-2",
+        "rationale": "The denominator's constant isn't the zero of f."
+      },
+      {
+        "id": "C",
+        "text": "2",
+        "rationale": "That makes the denominator 0, so f is undefined there."
+      },
+      {
+        "id": "D",
+        "text": "-8",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "A fraction is 0 when its numerator is 0 (and the denominator isn't): x + 8 = 0 gives x = −8.",
+    "estimated_time_seconds": 75,
     "tags": [
       "functions",
-      "linear",
-      "grid-in"
+      "rational",
+      "family:fn_undefined"
     ],
-    "answer_verification": "f(6)=26"
+    "answer_verification": "x=-8"
   },
   {
     "question_id": "sat-math-functions-easy-q20",
@@ -777,22 +949,22 @@
     "version": "1.0.0",
     "question_type": "student_produced",
     "subskill": "evaluate",
-    "prompt": "The function f is defined by f(x) = 6x + 14. What is the value of f(9)?",
+    "prompt": "The function f is defined by f(x) = 4x + 12. What is the value of f(6)?",
     "answer": {
       "type": "numeric",
-      "value": 68,
+      "value": 36,
       "accepted": [
-        "68"
+        "36"
       ],
       "tolerance": 0.0
     },
-    "explanation": "f(9) = 6·9 + 14 = 54 + 14 = 68.",
-    "estimated_time_seconds": 70,
+    "explanation": "f(6) = 4·(6) + 12 = 36.",
+    "estimated_time_seconds": 75,
     "tags": [
       "functions",
-      "linear",
-      "grid-in"
+      "grid-in",
+      "family:fn_gridin"
     ],
-    "answer_verification": "f(9)=68"
+    "answer_verification": "val=36"
   }
 ]

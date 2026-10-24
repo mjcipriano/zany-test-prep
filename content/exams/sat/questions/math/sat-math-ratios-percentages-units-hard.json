@@ -9,39 +9,40 @@
     "lesson_id": "sat-math-ratios-percentages-units-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "multi_step_math",
     "subskill": "percent_change",
-    "prompt": "After a 50% decrease, a quantity is 150. What was the original value?",
+    "prompt": "A jacket priced at $350 is marked down 40%, and a week later the sale price is reduced by an additional 25%. What is the final price, in dollars?",
     "choices": [
       {
         "id": "A",
-        "text": "75",
-        "rationale": "This applies the decrease to the new value instead of reversing it."
+        "text": "$262.50",
+        "rationale": "Apply both discounts, in order."
       },
       {
         "id": "B",
-        "text": "150",
-        "rationale": "This is the value after the change, not the original."
+        "text": "$122.50",
+        "rationale": "Successive discounts don't simply add; apply the second to the reduced price."
       },
       {
         "id": "C",
-        "text": "297",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "$157.50",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "300",
-        "rationale": "Correct."
+        "text": "$210",
+        "rationale": "That is the price after only the first markdown."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "new = original × (1 − 50/100), so original = 150 ÷ (1 − 50/100) = 300.",
-    "estimated_time_seconds": 90,
+    "correct_choice": "C",
+    "explanation": "First markdown: 350·(1 − 40/100) = 210. Second: 210·(1 − 25/100) = 315/2.",
+    "estimated_time_seconds": 95,
     "tags": [
       "percent",
-      "reverse"
+      "successive",
+      "family:rp_percent_of"
     ],
-    "answer_verification": "orig=300"
+    "answer_verification": "final=315/2"
   },
   {
     "question_id": "sat-math-ratios-percentages-units-hard-q02",
@@ -55,37 +56,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "percent_change",
-    "prompt": "After a 50% decrease, a quantity is 80. What was the original value?",
+    "prompt": "After a 60% raise, an employee earns $544 per week. What was the weekly pay before the raise, in dollars?",
     "choices": [
       {
         "id": "A",
-        "text": "40",
-        "rationale": "This applies the decrease to the new value instead of reversing it."
-      },
-      {
-        "id": "B",
-        "text": "80",
-        "rationale": "This is the value after the change, not the original."
-      },
-      {
-        "id": "C",
-        "text": "160",
+        "text": "340",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "870",
+        "rationale": "This applies the increase to the new value instead of reversing it."
+      },
+      {
+        "id": "C",
+        "text": "218",
+        "rationale": "Divide by the factor; don't apply the opposite percent to the new value."
+      },
+      {
         "id": "D",
-        "text": "162",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "544",
+        "rationale": "This is the value after the change, not the original."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "new = original × (1 − 50/100), so original = 80 ÷ (1 − 50/100) = 160.",
+    "correct_choice": "A",
+    "explanation": "new = original × (1 + 60/100), so original = 544 ÷ (1 + 60/100) = 340.",
     "estimated_time_seconds": 90,
     "tags": [
       "percent",
-      "reverse"
+      "reverse",
+      "family:rp_percent_change"
     ],
-    "answer_verification": "orig=160"
+    "answer_verification": "val=340"
   },
   {
     "question_id": "sat-math-ratios-percentages-units-hard-q03",
@@ -97,39 +99,39 @@
     "lesson_id": "sat-math-ratios-percentages-units-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "percent_change",
-    "prompt": "After a 20% increase, a quantity is 312. What was the original value?",
+    "question_type": "multi_step_math",
+    "subskill": "unit_rate",
+    "prompt": "A collection of animals at a shelter has 81 cats and 135 dogs. How many cats must be added so that the ratio of cats to dogs becomes 89:135?",
     "choices": [
       {
         "id": "A",
-        "text": "374",
-        "rationale": "This applies the increase to the new value instead of reversing it."
+        "text": "3",
+        "rationale": "Keep dogs fixed and solve for the new cats count."
       },
       {
         "id": "B",
-        "text": "260",
-        "rationale": "Correct."
+        "text": "89",
+        "rationale": "That is the new total of cats, not the number added."
       },
       {
         "id": "C",
-        "text": "261",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "11",
+        "rationale": "Arithmetic slip; recompute the new count minus the old."
       },
       {
         "id": "D",
-        "text": "312",
-        "rationale": "This is the value after the change, not the original."
+        "text": "8",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "new = original × (1 + 20/100), so original = 312 ÷ (1 + 20/100) = 260.",
-    "estimated_time_seconds": 90,
+    "correct_choice": "D",
+    "explanation": "The dogs stay at 135, so cats must become 89·(135/135) = 89; that is 89 − 81 = 8 more.",
+    "estimated_time_seconds": 100,
     "tags": [
-      "percent",
-      "reverse"
+      "ratio",
+      "family:rp_ratio"
     ],
-    "answer_verification": "orig=260"
+    "answer_verification": "add=8"
   },
   {
     "question_id": "sat-math-ratios-percentages-units-hard-q04",
@@ -142,38 +144,38 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "percent_change",
-    "prompt": "After a 50% decrease, a quantity is 130. What was the original value?",
+    "subskill": "unit_rate",
+    "prompt": "A machine fills 40 bottles per minute. At this rate, how many bottles does it fill in 4 hours and 30 minutes?",
     "choices": [
       {
         "id": "A",
-        "text": "260",
+        "text": "10800",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "65",
-        "rationale": "This applies the decrease to the new value instead of reversing it."
+        "text": "9600",
+        "rationale": "Include the extra 30 minutes."
       },
       {
         "id": "C",
-        "text": "130",
-        "rationale": "This is the value after the change, not the original."
+        "text": "10830",
+        "rationale": "Multiply the rate by the whole number of minutes."
       },
       {
         "id": "D",
-        "text": "263",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "1360",
+        "rationale": "Convert the time entirely to minutes before multiplying."
       }
     ],
     "correct_choice": "A",
-    "explanation": "new = original × (1 − 50/100), so original = 130 ÷ (1 − 50/100) = 260.",
+    "explanation": "4 h 30 min = 270 minutes; 40 × 270 = 10800 bottles.",
     "estimated_time_seconds": 90,
     "tags": [
-      "percent",
-      "reverse"
+      "units",
+      "family:rp_units"
     ],
-    "answer_verification": "orig=260"
+    "answer_verification": "val=10800"
   },
   {
     "question_id": "sat-math-ratios-percentages-units-hard-q05",
@@ -185,39 +187,25 @@
     "lesson_id": "sat-math-ratios-percentages-units-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "student_produced",
     "subskill": "percent_change",
-    "prompt": "After a 10% increase, a quantity is 352. What was the original value?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "352",
-        "rationale": "This is the value after the change, not the original."
-      },
-      {
-        "id": "B",
-        "text": "387",
-        "rationale": "This applies the increase to the new value instead of reversing it."
-      },
-      {
-        "id": "C",
-        "text": "323",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "D",
-        "text": "320",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "new = original × (1 + 10/100), so original = 352 ÷ (1 + 10/100) = 320.",
-    "estimated_time_seconds": 90,
+    "prompt": "After a 20% discount, an item costs $384. What was the original price, in dollars?",
+    "answer": {
+      "type": "numeric",
+      "value": 480,
+      "accepted": [
+        "480"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "384 = original × (1 − 20/100), so original = 384/0.8 = 480.",
+    "estimated_time_seconds": 75,
     "tags": [
       "percent",
-      "reverse"
+      "grid-in",
+      "family:rp_gridin"
     ],
-    "answer_verification": "orig=320"
+    "answer_verification": "val=480"
   },
   {
     "question_id": "sat-math-ratios-percentages-units-hard-q06",
@@ -229,39 +217,40 @@
     "lesson_id": "sat-math-ratios-percentages-units-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "multi_step_math",
     "subskill": "percent_change",
-    "prompt": "After a 20% increase, a quantity is 360. What was the original value?",
+    "prompt": "A jacket priced at $220 is marked down 30%, and a week later the sale price is reduced by an additional 20%. What is the final price, in dollars?",
     "choices": [
       {
         "id": "A",
-        "text": "300",
+        "text": "$123.20",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "303",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "$110",
+        "rationale": "Successive discounts don't simply add; apply the second to the reduced price."
       },
       {
         "id": "C",
-        "text": "432",
-        "rationale": "This applies the increase to the new value instead of reversing it."
+        "text": "$176",
+        "rationale": "Apply both discounts, in order."
       },
       {
         "id": "D",
-        "text": "360",
-        "rationale": "This is the value after the change, not the original."
+        "text": "$154",
+        "rationale": "That is the price after only the first markdown."
       }
     ],
     "correct_choice": "A",
-    "explanation": "new = original × (1 + 20/100), so original = 360 ÷ (1 + 20/100) = 300.",
-    "estimated_time_seconds": 90,
+    "explanation": "First markdown: 220·(1 − 30/100) = 154. Second: 154·(1 − 20/100) = 616/5.",
+    "estimated_time_seconds": 95,
     "tags": [
       "percent",
-      "reverse"
+      "successive",
+      "family:rp_percent_of"
     ],
-    "answer_verification": "orig=300"
+    "answer_verification": "final=616/5"
   },
   {
     "question_id": "sat-math-ratios-percentages-units-hard-q07",
@@ -275,37 +264,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "percent_change",
-    "prompt": "After a 20% increase, a quantity is 168. What was the original value?",
+    "prompt": "A coat is on sale for $336, which is 40% less than its original price. What was the original price, in dollars?",
     "choices": [
       {
         "id": "A",
-        "text": "137",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "560",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "201",
-        "rationale": "This applies the increase to the new value instead of reversing it."
-      },
-      {
-        "id": "C",
-        "text": "168",
+        "text": "336",
         "rationale": "This is the value after the change, not the original."
       },
       {
+        "id": "C",
+        "text": "470",
+        "rationale": "Divide by the factor; don't apply the opposite percent to the new value."
+      },
+      {
         "id": "D",
-        "text": "140",
-        "rationale": "Correct."
+        "text": "202",
+        "rationale": "This applies the decrease to the new value instead of reversing it."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "new = original × (1 + 20/100), so original = 168 ÷ (1 + 20/100) = 140.",
+    "correct_choice": "A",
+    "explanation": "new = original × (1 − 40/100), so original = 336 ÷ (1 − 40/100) = 560.",
     "estimated_time_seconds": 90,
     "tags": [
       "percent",
-      "reverse"
+      "reverse",
+      "family:rp_percent_change"
     ],
-    "answer_verification": "orig=140"
+    "answer_verification": "val=560"
   },
   {
     "question_id": "sat-math-ratios-percentages-units-hard-q08",
@@ -317,39 +307,39 @@
     "lesson_id": "sat-math-ratios-percentages-units-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "percent_change",
-    "prompt": "After a 25% increase, a quantity is 300. What was the original value?",
+    "question_type": "multi_step_math",
+    "subskill": "unit_rate",
+    "prompt": "A collection of pieces of fruit in a basket has 54 apples and 189 pears. How many apples must be added so that the ratio of apples to pears becomes 8:21?",
     "choices": [
       {
         "id": "A",
-        "text": "300",
-        "rationale": "This is the value after the change, not the original."
+        "text": "8",
+        "rationale": "Scale the ratio to the actual count of pears first."
       },
       {
         "id": "B",
-        "text": "239",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "C",
-        "text": "240",
+        "text": "18",
         "rationale": "Correct."
       },
       {
+        "id": "C",
+        "text": "20",
+        "rationale": "Arithmetic slip; recompute the new count minus the old."
+      },
+      {
         "id": "D",
-        "text": "375",
-        "rationale": "This applies the increase to the new value instead of reversing it."
+        "text": "72",
+        "rationale": "That is the new total of apples, not the number added."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "new = original × (1 + 25/100), so original = 300 ÷ (1 + 25/100) = 240.",
-    "estimated_time_seconds": 90,
+    "correct_choice": "B",
+    "explanation": "The pears stay at 189, so apples must become 8·(189/21) = 72; that is 72 − 54 = 18 more.",
+    "estimated_time_seconds": 100,
     "tags": [
-      "percent",
-      "reverse"
+      "ratio",
+      "family:rp_ratio"
     ],
-    "answer_verification": "orig=240"
+    "answer_verification": "add=18"
   },
   {
     "question_id": "sat-math-ratios-percentages-units-hard-q09",
@@ -362,38 +352,38 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "percent_change",
-    "prompt": "After a 50% increase, a quantity is 480. What was the original value?",
+    "subskill": "unit_rate",
+    "prompt": "A machine fills 28 bottles per minute. At this rate, how many bottles does it fill in 8 hours and 30 minutes?",
     "choices": [
       {
         "id": "A",
-        "text": "320",
+        "text": "14280",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "720",
-        "rationale": "This applies the increase to the new value instead of reversing it."
+        "text": "14310",
+        "rationale": "Multiply the rate by the whole number of minutes."
       },
       {
         "id": "C",
-        "text": "480",
-        "rationale": "This is the value after the change, not the original."
+        "text": "1064",
+        "rationale": "Convert the time entirely to minutes before multiplying."
       },
       {
         "id": "D",
-        "text": "324",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "13440",
+        "rationale": "Include the extra 30 minutes."
       }
     ],
     "correct_choice": "A",
-    "explanation": "new = original × (1 + 50/100), so original = 480 ÷ (1 + 50/100) = 320.",
+    "explanation": "8 h 30 min = 510 minutes; 28 × 510 = 14280 bottles.",
     "estimated_time_seconds": 90,
     "tags": [
-      "percent",
-      "reverse"
+      "units",
+      "family:rp_units"
     ],
-    "answer_verification": "orig=320"
+    "answer_verification": "val=14280"
   },
   {
     "question_id": "sat-math-ratios-percentages-units-hard-q10",
@@ -405,39 +395,25 @@
     "lesson_id": "sat-math-ratios-percentages-units-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "student_produced",
     "subskill": "percent_change",
-    "prompt": "After a 10% decrease, a quantity is 396. What was the original value?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "396",
-        "rationale": "This is the value after the change, not the original."
-      },
-      {
-        "id": "B",
-        "text": "357",
-        "rationale": "This applies the decrease to the new value instead of reversing it."
-      },
-      {
-        "id": "C",
-        "text": "441",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "D",
-        "text": "440",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "new = original × (1 − 10/100), so original = 396 ÷ (1 − 10/100) = 440.",
-    "estimated_time_seconds": 90,
+    "prompt": "After a 25% discount, an item costs $150. What was the original price, in dollars?",
+    "answer": {
+      "type": "numeric",
+      "value": 200,
+      "accepted": [
+        "200"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "150 = original × (1 − 25/100), so original = 150/0.75 = 200.",
+    "estimated_time_seconds": 75,
     "tags": [
       "percent",
-      "reverse"
+      "grid-in",
+      "family:rp_gridin"
     ],
-    "answer_verification": "orig=440"
+    "answer_verification": "val=200"
   },
   {
     "question_id": "sat-math-ratios-percentages-units-hard-q11",
@@ -449,39 +425,40 @@
     "lesson_id": "sat-math-ratios-percentages-units-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "multi_step_math",
     "subskill": "percent_change",
-    "prompt": "After a 10% decrease, a quantity is 162. What was the original value?",
+    "prompt": "A jacket priced at $160 is marked down 10%, and a week later the sale price is reduced by an additional 10%. What is the final price, in dollars?",
     "choices": [
       {
         "id": "A",
-        "text": "180",
-        "rationale": "Correct."
+        "text": "$32",
+        "rationale": "That is the total of the two percents applied to the original, not a price."
       },
       {
         "id": "B",
-        "text": "146",
-        "rationale": "This applies the decrease to the new value instead of reversing it."
+        "text": "$144",
+        "rationale": "That is the price after only the first markdown."
       },
       {
         "id": "C",
-        "text": "182",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "$128",
+        "rationale": "Successive discounts don't simply add; apply the second to the reduced price."
       },
       {
         "id": "D",
-        "text": "162",
-        "rationale": "This is the value after the change, not the original."
+        "text": "$129.60",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "new = original × (1 − 10/100), so original = 162 ÷ (1 − 10/100) = 180.",
-    "estimated_time_seconds": 90,
+    "correct_choice": "D",
+    "explanation": "First markdown: 160·(1 − 10/100) = 144. Second: 144·(1 − 10/100) = 648/5.",
+    "estimated_time_seconds": 95,
     "tags": [
       "percent",
-      "reverse"
+      "successive",
+      "family:rp_percent_of"
     ],
-    "answer_verification": "orig=180"
+    "answer_verification": "final=648/5"
   },
   {
     "question_id": "sat-math-ratios-percentages-units-hard-q12",
@@ -495,37 +472,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "percent_change",
-    "prompt": "After a 25% decrease, a quantity is 165. What was the original value?",
+    "prompt": "After a 20% increase, a quantity is 480. What was the original value?",
     "choices": [
       {
         "id": "A",
-        "text": "165",
-        "rationale": "This is the value after the change, not the original."
-      },
-      {
-        "id": "B",
-        "text": "220",
+        "text": "400",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "480",
+        "rationale": "This is the value after the change, not the original."
+      },
+      {
         "id": "C",
-        "text": "124",
-        "rationale": "This applies the decrease to the new value instead of reversing it."
+        "text": "384",
+        "rationale": "Divide by the factor; don't apply the opposite percent to the new value."
       },
       {
         "id": "D",
-        "text": "221",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "576",
+        "rationale": "This applies the increase to the new value instead of reversing it."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "new = original × (1 − 25/100), so original = 165 ÷ (1 − 25/100) = 220.",
+    "correct_choice": "A",
+    "explanation": "new = original × (1 + 20/100), so original = 480 ÷ (1 + 20/100) = 400.",
     "estimated_time_seconds": 90,
     "tags": [
       "percent",
-      "reverse"
+      "reverse",
+      "family:rp_percent_change"
     ],
-    "answer_verification": "orig=220"
+    "answer_verification": "val=400"
   },
   {
     "question_id": "sat-math-ratios-percentages-units-hard-q13",
@@ -537,39 +515,39 @@
     "lesson_id": "sat-math-ratios-percentages-units-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "percent_change",
-    "prompt": "After a 20% increase, a quantity is 408. What was the original value?",
+    "question_type": "multi_step_math",
+    "subskill": "unit_rate",
+    "prompt": "A collection of animals at a shelter has 12 cats and 9 dogs. How many cats must be added so that the ratio of cats to dogs becomes 40:9?",
     "choices": [
       {
         "id": "A",
-        "text": "408",
-        "rationale": "This is the value after the change, not the original."
+        "text": "40",
+        "rationale": "That is the new total of cats, not the number added."
       },
       {
         "id": "B",
-        "text": "489",
-        "rationale": "This applies the increase to the new value instead of reversing it."
+        "text": "32",
+        "rationale": "Arithmetic slip; recompute the new count minus the old."
       },
       {
         "id": "C",
-        "text": "340",
-        "rationale": "Correct."
+        "text": "25",
+        "rationale": "Keep dogs fixed and solve for the new cats count."
       },
       {
         "id": "D",
-        "text": "339",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "28",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "new = original × (1 + 20/100), so original = 408 ÷ (1 + 20/100) = 340.",
-    "estimated_time_seconds": 90,
+    "correct_choice": "D",
+    "explanation": "The dogs stay at 9, so cats must become 40·(9/9) = 40; that is 40 − 12 = 28 more.",
+    "estimated_time_seconds": 100,
     "tags": [
-      "percent",
-      "reverse"
+      "ratio",
+      "family:rp_ratio"
     ],
-    "answer_verification": "orig=340"
+    "answer_verification": "add=28"
   },
   {
     "question_id": "sat-math-ratios-percentages-units-hard-q14",
@@ -582,38 +560,38 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "percent_change",
-    "prompt": "After a 50% decrease, a quantity is 180. What was the original value?",
+    "subskill": "unit_rate",
+    "prompt": "A car travels at 35 miles per hour. How many feet does it travel in one second? (1 mile = 5,280 feet.) Round to the nearest tenth.",
     "choices": [
       {
         "id": "A",
-        "text": "357",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "51.3",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "180",
-        "rationale": "This is the value after the change, not the original."
+        "text": "23.9",
+        "rationale": "Multiply by feet per mile and divide by seconds per hour."
       },
       {
         "id": "C",
-        "text": "90",
-        "rationale": "This applies the decrease to the new value instead of reversing it."
+        "text": "3080",
+        "rationale": "Divide by 3600 seconds per hour, not 60."
       },
       {
         "id": "D",
-        "text": "360",
-        "rationale": "Correct."
+        "text": "0.01",
+        "rationale": "Convert miles to feet as well."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "new = original × (1 − 50/100), so original = 180 ÷ (1 − 50/100) = 360.",
+    "correct_choice": "A",
+    "explanation": "35 mi/h × 5280 ft/mi ÷ 3600 s/h = 51.3 ft/s.",
     "estimated_time_seconds": 90,
     "tags": [
-      "percent",
-      "reverse"
+      "units",
+      "family:rp_units"
     ],
-    "answer_verification": "orig=360"
+    "answer_verification": "val=51.3"
   },
   {
     "question_id": "sat-math-ratios-percentages-units-hard-q15",
@@ -625,39 +603,25 @@
     "lesson_id": "sat-math-ratios-percentages-units-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "student_produced",
     "subskill": "percent_change",
-    "prompt": "After a 10% increase, a quantity is 220. What was the original value?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "202",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "B",
-        "text": "220",
-        "rationale": "This is the value after the change, not the original."
-      },
-      {
-        "id": "C",
-        "text": "200",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "242",
-        "rationale": "This applies the increase to the new value instead of reversing it."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "new = original × (1 + 10/100), so original = 220 ÷ (1 + 10/100) = 200.",
-    "estimated_time_seconds": 90,
+    "prompt": "After a 25% discount, an item costs $450. What was the original price, in dollars?",
+    "answer": {
+      "type": "numeric",
+      "value": 600,
+      "accepted": [
+        "600"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "450 = original × (1 − 25/100), so original = 450/0.75 = 600.",
+    "estimated_time_seconds": 75,
     "tags": [
       "percent",
-      "reverse"
+      "grid-in",
+      "family:rp_gridin"
     ],
-    "answer_verification": "orig=200"
+    "answer_verification": "val=600"
   },
   {
     "question_id": "sat-math-ratios-percentages-units-hard-q16",
@@ -669,39 +633,40 @@
     "lesson_id": "sat-math-ratios-percentages-units-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "multi_step_math",
     "subskill": "percent_change",
-    "prompt": "After a 10% decrease, a quantity is 432. What was the original value?",
+    "prompt": "A jacket priced at $180 is marked down 20%, and a week later the sale price is reduced by an additional 25%. What is the final price, in dollars?",
     "choices": [
       {
         "id": "A",
-        "text": "486",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "B",
-        "text": "480",
+        "text": "$108",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "$99",
+        "rationale": "Successive discounts don't simply add; apply the second to the reduced price."
+      },
+      {
         "id": "C",
-        "text": "389",
-        "rationale": "This applies the decrease to the new value instead of reversing it."
+        "text": "$135",
+        "rationale": "Apply both discounts, in order."
       },
       {
         "id": "D",
-        "text": "432",
-        "rationale": "This is the value after the change, not the original."
+        "text": "$144",
+        "rationale": "That is the price after only the first markdown."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "new = original × (1 − 10/100), so original = 432 ÷ (1 − 10/100) = 480.",
-    "estimated_time_seconds": 90,
+    "correct_choice": "A",
+    "explanation": "First markdown: 180·(1 − 20/100) = 144. Second: 144·(1 − 25/100) = 108.",
+    "estimated_time_seconds": 95,
     "tags": [
       "percent",
-      "reverse"
+      "successive",
+      "family:rp_percent_of"
     ],
-    "answer_verification": "orig=480"
+    "answer_verification": "final=108"
   },
   {
     "question_id": "sat-math-ratios-percentages-units-hard-q17",
@@ -715,37 +680,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "percent_change",
-    "prompt": "After a 50% increase, a quantity is 630. What was the original value?",
+    "prompt": "After a 10% decrease, a quantity is 540. What was the original value?",
     "choices": [
       {
         "id": "A",
-        "text": "420",
-        "rationale": "Correct."
+        "text": "540",
+        "rationale": "This is the value after the change, not the original."
       },
       {
         "id": "B",
-        "text": "945",
-        "rationale": "This applies the increase to the new value instead of reversing it."
+        "text": "486",
+        "rationale": "This applies the decrease to the new value instead of reversing it."
       },
       {
         "id": "C",
-        "text": "423",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "600",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "630",
-        "rationale": "This is the value after the change, not the original."
+        "text": "594",
+        "rationale": "Divide by the factor; don't apply the opposite percent to the new value."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "new = original × (1 + 50/100), so original = 630 ÷ (1 + 50/100) = 420.",
+    "correct_choice": "C",
+    "explanation": "new = original × (1 − 10/100), so original = 540 ÷ (1 − 10/100) = 600.",
     "estimated_time_seconds": 90,
     "tags": [
       "percent",
-      "reverse"
+      "reverse",
+      "family:rp_percent_change"
     ],
-    "answer_verification": "orig=420"
+    "answer_verification": "val=600"
   },
   {
     "question_id": "sat-math-ratios-percentages-units-hard-q18",
@@ -757,39 +723,39 @@
     "lesson_id": "sat-math-ratios-percentages-units-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "percent_change",
-    "prompt": "After a 25% decrease, a quantity is 195. What was the original value?",
+    "question_type": "multi_step_math",
+    "subskill": "unit_rate",
+    "prompt": "A collection of marbles in a bag has 60 red and 75 blue. How many red must be added so that the ratio of red to blue becomes 26:25?",
     "choices": [
       {
         "id": "A",
-        "text": "195",
-        "rationale": "This is the value after the change, not the original."
+        "text": "18",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "147",
-        "rationale": "This applies the decrease to the new value instead of reversing it."
+        "text": "78",
+        "rationale": "That is the new total of red, not the number added."
       },
       {
         "id": "C",
-        "text": "261",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "22",
+        "rationale": "Arithmetic slip; recompute the new count minus the old."
       },
       {
         "id": "D",
-        "text": "260",
-        "rationale": "Correct."
+        "text": "26",
+        "rationale": "Scale the ratio to the actual count of blue first."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "new = original × (1 − 25/100), so original = 195 ÷ (1 − 25/100) = 260.",
-    "estimated_time_seconds": 90,
+    "correct_choice": "A",
+    "explanation": "The blue stay at 75, so red must become 26·(75/25) = 78; that is 78 − 60 = 18 more.",
+    "estimated_time_seconds": 100,
     "tags": [
-      "percent",
-      "reverse"
+      "ratio",
+      "family:rp_ratio"
     ],
-    "answer_verification": "orig=260"
+    "answer_verification": "add=18"
   },
   {
     "question_id": "sat-math-ratios-percentages-units-hard-q19",
@@ -802,38 +768,38 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "percent_change",
-    "prompt": "After a 20% increase, a quantity is 216. What was the original value?",
+    "subskill": "unit_rate",
+    "prompt": "A car travels at 69 miles per hour. How many feet does it travel in one second? (1 mile = 5,280 feet.) Round to the nearest tenth.",
     "choices": [
       {
         "id": "A",
-        "text": "186",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "47",
+        "rationale": "Multiply by feet per mile and divide by seconds per hour."
       },
       {
         "id": "B",
-        "text": "259",
-        "rationale": "This applies the increase to the new value instead of reversing it."
+        "text": "0.02",
+        "rationale": "Convert miles to feet as well."
       },
       {
         "id": "C",
-        "text": "180",
+        "text": "101.2",
         "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "216",
-        "rationale": "This is the value after the change, not the original."
+        "text": "6072",
+        "rationale": "Divide by 3600 seconds per hour, not 60."
       }
     ],
     "correct_choice": "C",
-    "explanation": "new = original × (1 + 20/100), so original = 216 ÷ (1 + 20/100) = 180.",
+    "explanation": "69 mi/h × 5280 ft/mi ÷ 3600 s/h = 101.2 ft/s.",
     "estimated_time_seconds": 90,
     "tags": [
-      "percent",
-      "reverse"
+      "units",
+      "family:rp_units"
     ],
-    "answer_verification": "orig=180"
+    "answer_verification": "val=101.2"
   },
   {
     "question_id": "sat-math-ratios-percentages-units-hard-q20",
@@ -845,38 +811,24 @@
     "lesson_id": "sat-math-ratios-percentages-units-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "student_produced",
     "subskill": "percent_change",
-    "prompt": "After a 25% decrease, a quantity is 255. What was the original value?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "340",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "341",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "C",
-        "text": "192",
-        "rationale": "This applies the decrease to the new value instead of reversing it."
-      },
-      {
-        "id": "D",
-        "text": "255",
-        "rationale": "This is the value after the change, not the original."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "new = original × (1 − 25/100), so original = 255 ÷ (1 − 25/100) = 340.",
-    "estimated_time_seconds": 90,
+    "prompt": "After a 25% discount, an item costs $105. What was the original price, in dollars?",
+    "answer": {
+      "type": "numeric",
+      "value": 140,
+      "accepted": [
+        "140"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "105 = original × (1 − 25/100), so original = 105/0.75 = 140.",
+    "estimated_time_seconds": 75,
     "tags": [
       "percent",
-      "reverse"
+      "grid-in",
+      "family:rp_gridin"
     ],
-    "answer_verification": "orig=340"
+    "answer_verification": "val=140"
   }
 ]

@@ -11,35 +11,37 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "Based on the table, what is the mean number of tickets sold per day?",
+    "prompt": "Based on the table, approximately what percent of the total tickets were recorded for Tue?",
     "choices": [
       {
         "id": "A",
-        "text": "135",
-        "rationale": "This is the total; divide by the number of days."
+        "text": "89%",
+        "rationale": "That is the percent for all the other rows."
       },
       {
         "id": "B",
-        "text": "24",
-        "rationale": "This is the range, not the mean."
+        "text": "12%",
+        "rationale": "Divide by the total of all rows, not the other rows."
       },
       {
         "id": "C",
-        "text": "27",
-        "rationale": "Correct."
+        "text": "16%",
+        "rationale": "That is the count, not a percent."
       },
       {
         "id": "D",
-        "text": "39",
-        "rationale": "This is the busiest day, not the average."
+        "text": "11%",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Mean = total ÷ days = 135 ÷ 5 = 27.",
+    "correct_choice": "D",
+    "explanation": "16/151 × 100 ≈ 11%.",
     "estimated_time_seconds": 85,
     "tags": [
       "data",
-      "table"
+      "table",
+      "percent",
+      "family:da_read"
     ],
     "stimulus": {
       "type": "table",
@@ -51,29 +53,29 @@
         ],
         "rows": [
           [
-            "Thu",
-            "19"
-          ],
-          [
-            "Fri",
-            "39"
+            "Mon",
+            "45"
           ],
           [
             "Tue",
-            "30"
+            "16"
           ],
           [
             "Wed",
-            "15"
+            "24"
           ],
           [
-            "Mon",
-            "32"
+            "Thu",
+            "17"
+          ],
+          [
+            "Fri",
+            "49"
           ]
         ]
       }
     },
-    "answer_verification": "mean=27"
+    "answer_verification": "16/151"
   },
   {
     "question_id": "sat-math-data-analysis-medium-q02",
@@ -87,69 +89,71 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "Based on the table, what is the mean number of tickets sold per day?",
+    "prompt": "Based on the table, what is the mean number of bikes per store?",
     "choices": [
       {
         "id": "A",
-        "text": "30",
+        "text": "32",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "150",
-        "rationale": "This is the total; divide by the number of days."
+        "text": "160",
+        "rationale": "This is the total; divide by the number of stores."
       },
       {
         "id": "C",
-        "text": "29",
+        "text": "43",
         "rationale": "This is the range, not the mean."
       },
       {
         "id": "D",
-        "text": "42",
-        "rationale": "This is the busiest day, not the average."
+        "text": "59",
+        "rationale": "This is the largest value, not the average."
       }
     ],
     "correct_choice": "A",
-    "explanation": "Mean = total ÷ days = 150 ÷ 5 = 30.",
+    "explanation": "Mean = total ÷ count = 160 ÷ 5 = 32.",
     "estimated_time_seconds": 85,
     "tags": [
       "data",
-      "table"
+      "table",
+      "mean",
+      "family:da_mean_from_table"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Daily ticket sales",
+        "caption": "Bike sales by store",
         "headers": [
-          "Day",
-          "Tickets sold"
+          "Store",
+          "Bikes sold"
         ],
         "rows": [
           [
-            "Mon",
-            "13"
+            "North",
+            "24"
           ],
           [
-            "Wed",
-            "35"
+            "South",
+            "59"
           ],
           [
-            "Thu",
-            "28"
+            "East",
+            "16"
           ],
           [
-            "Fri",
-            "32"
+            "West",
+            "23"
           ],
           [
-            "Tue",
-            "42"
+            "Central",
+            "38"
           ]
         ]
       }
     },
-    "answer_verification": "mean=30"
+    "answer_verification": "mean=32"
   },
   {
     "question_id": "sat-math-data-analysis-medium-q03",
@@ -163,69 +167,77 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "Based on the table, what is the mean number of tickets sold per day?",
+    "prompt": "The table shows the number of centimeters for 5 plants in 2022 and 2023 (a total of 212 in 2022 and 251 in 2023). Which plant had the greatest decrease in centimeters from 2022 to 2023?",
     "choices": [
       {
         "id": "A",
-        "text": "100",
-        "rationale": "This is the total; divide by the number of days."
+        "text": "D",
+        "rationale": "D changed by 20, which is not the greatest decrease."
       },
       {
         "id": "B",
-        "text": "27",
-        "rationale": "This is the busiest day, not the average."
+        "text": "C",
+        "rationale": "C changed by 22, which is not the greatest decrease."
       },
       {
         "id": "C",
-        "text": "14",
-        "rationale": "This is the range, not the mean."
+        "text": "A",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "20",
-        "rationale": "Correct."
+        "text": "B",
+        "rationale": "B changed by 1, which is not the greatest decrease."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Mean = total ÷ days = 100 ÷ 5 = 20.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "C",
+    "explanation": "A went from 37 to 22, a decrease of 15, the largest drop.",
+    "estimated_time_seconds": 100,
     "tags": [
       "data",
-      "table"
+      "table",
+      "compare",
+      "family:da_two_year"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Daily ticket sales",
+        "caption": "Plant heights, 2022 and 2023",
         "headers": [
-          "Day",
-          "Tickets sold"
+          "Plant",
+          "2022",
+          "2023"
         ],
         "rows": [
           [
-            "Mon",
-            "27"
+            "A",
+            "37",
+            "22"
           ],
           [
-            "Thu",
-            "25"
+            "B",
+            "23",
+            "24"
           ],
           [
-            "Tue",
-            "14"
+            "C",
+            "38",
+            "60"
           ],
           [
-            "Wed",
-            "21"
+            "D",
+            "72",
+            "92"
           ],
           [
-            "Fri",
-            "13"
+            "E",
+            "42",
+            "53"
           ]
         ]
       }
     },
-    "answer_verification": "mean=20"
+    "answer_verification": "A"
   },
   {
     "question_id": "sat-math-data-analysis-medium-q04",
@@ -238,70 +250,68 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "data_interpretation",
-    "subskill": "tables",
-    "prompt": "Based on the table, what is the mean number of tickets sold per day?",
+    "subskill": "graphs",
+    "prompt": "The table shows a constant rate. At this rate, what is the cost when the first column is 13?",
     "choices": [
       {
         "id": "A",
-        "text": "20",
-        "rationale": "This is the range, not the mean."
+        "text": "55",
+        "rationale": "Each unit adds 7, not 1."
       },
       {
         "id": "B",
-        "text": "24",
-        "rationale": "Correct."
+        "text": "20",
+        "rationale": "Multiply the rate by 13; don't add."
       },
       {
         "id": "C",
-        "text": "120",
-        "rationale": "This is the total; divide by the number of days."
+        "text": "637",
+        "rationale": "Use the unit rate, not the last table value."
       },
       {
         "id": "D",
-        "text": "32",
-        "rationale": "This is the busiest day, not the average."
+        "text": "91",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Mean = total ÷ days = 120 ÷ 5 = 24.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "D",
+    "explanation": "Rate = 14/2 = 7; 7 × 13 = 91.",
+    "estimated_time_seconds": 90,
     "tags": [
       "data",
-      "table"
+      "table",
+      "rate",
+      "family:da_rate_table"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Daily ticket sales",
+        "caption": "Recorded values",
         "headers": [
-          "Day",
-          "Tickets sold"
+          "Number of items",
+          "Cost (dollars)"
         ],
         "rows": [
           [
-            "Mon",
-            "32"
+            "2",
+            "14"
           ],
           [
-            "Thu",
-            "12"
+            "5",
+            "35"
           ],
           [
-            "Fri",
-            "25"
+            "6",
+            "42"
           ],
           [
-            "Wed",
-            "20"
-          ],
-          [
-            "Tue",
-            "31"
+            "7",
+            "49"
           ]
         ]
       }
     },
-    "answer_verification": "mean=24"
+    "answer_verification": "r=7,val=91"
   },
   {
     "question_id": "sat-math-data-analysis-medium-q05",
@@ -315,69 +325,67 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "Based on the table, what is the mean number of tickets sold per day?",
+    "prompt": "The table shows the number of centimeters recorded for 4 plants, 184 in all. Which of the following statements is supported by the data?",
     "choices": [
       {
         "id": "A",
-        "text": "29",
+        "text": "C recorded 42 more centimeters than D.",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "38",
-        "rationale": "This is the busiest day, not the average."
+        "text": "D recorded 42 more centimeters than C.",
+        "rationale": "The comparison is reversed."
       },
       {
         "id": "C",
-        "text": "14",
-        "rationale": "This is the range, not the mean."
+        "text": "C recorded 98 more centimeters than D.",
+        "rationale": "That is the sum, not the difference, of the two values."
       },
       {
         "id": "D",
-        "text": "145",
-        "rationale": "This is the total; divide by the number of days."
+        "text": "The mean number of centimeters is 70.",
+        "rationale": "The mean is 184/4 = 46.0."
       }
     ],
     "correct_choice": "A",
-    "explanation": "Mean = total ÷ days = 145 ÷ 5 = 29.",
+    "explanation": "70 − 28 = 42.",
     "estimated_time_seconds": 85,
     "tags": [
       "data",
-      "table"
+      "table",
+      "statement",
+      "family:da_statement"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Daily ticket sales",
+        "caption": "Plant heights",
         "headers": [
-          "Day",
-          "Tickets sold"
+          "Plant",
+          "Height (cm)"
         ],
         "rows": [
           [
-            "Tue",
+            "A",
             "29"
           ],
           [
-            "Thu",
-            "25"
+            "B",
+            "57"
           ],
           [
-            "Fri",
-            "38"
+            "C",
+            "70"
           ],
           [
-            "Wed",
-            "24"
-          ],
-          [
-            "Mon",
-            "29"
+            "D",
+            "28"
           ]
         ]
       }
     },
-    "answer_verification": "mean=29"
+    "answer_verification": "statement"
   },
   {
     "question_id": "sat-math-data-analysis-medium-q06",
@@ -391,69 +399,71 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "Based on the table, what is the mean number of tickets sold per day?",
+    "prompt": "Based on the table, approximately what percent of the total centimeters were recorded for E?",
     "choices": [
       {
         "id": "A",
-        "text": "39",
-        "rationale": "This is the busiest day, not the average."
-      },
-      {
-        "id": "B",
-        "text": "145",
-        "rationale": "This is the total; divide by the number of days."
-      },
-      {
-        "id": "C",
-        "text": "29",
+        "text": "9%",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "10%",
+        "rationale": "Divide by the total of all rows, not the other rows."
+      },
+      {
+        "id": "C",
+        "text": "91%",
+        "rationale": "That is the percent for all the other rows."
+      },
+      {
         "id": "D",
-        "text": "26",
-        "rationale": "This is the range, not the mean."
+        "text": "17%",
+        "rationale": "That is the count, not a percent."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Mean = total ÷ days = 145 ÷ 5 = 29.",
+    "correct_choice": "A",
+    "explanation": "17/191 × 100 ≈ 9%.",
     "estimated_time_seconds": 85,
     "tags": [
       "data",
-      "table"
+      "table",
+      "percent",
+      "family:da_read"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Daily ticket sales",
+        "caption": "Plant heights",
         "headers": [
-          "Day",
-          "Tickets sold"
+          "Plant",
+          "Height (cm)"
         ],
         "rows": [
           [
-            "Mon",
-            "39"
+            "A",
+            "56"
           ],
           [
-            "Fri",
-            "13"
+            "B",
+            "60"
           ],
           [
-            "Thu",
-            "39"
+            "C",
+            "30"
           ],
           [
-            "Wed",
+            "D",
             "28"
           ],
           [
-            "Tue",
-            "26"
+            "E",
+            "17"
           ]
         ]
       }
     },
-    "answer_verification": "mean=29"
+    "answer_verification": "17/191"
   },
   {
     "question_id": "sat-math-data-analysis-medium-q07",
@@ -467,69 +477,71 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "Based on the table, what is the mean number of tickets sold per day?",
+    "prompt": "Based on the table, what is the mean number of bikes per store?",
     "choices": [
       {
         "id": "A",
-        "text": "21",
-        "rationale": "Correct."
+        "text": "160",
+        "rationale": "This is the total; divide by the number of stores."
       },
       {
         "id": "B",
-        "text": "36",
-        "rationale": "This is the busiest day, not the average."
+        "text": "42",
+        "rationale": "This is the largest value, not the average."
       },
       {
         "id": "C",
-        "text": "25",
-        "rationale": "This is the range, not the mean."
+        "text": "32",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "105",
-        "rationale": "This is the total; divide by the number of days."
+        "text": "28",
+        "rationale": "This is the range, not the mean."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Mean = total ÷ days = 105 ÷ 5 = 21.",
+    "correct_choice": "C",
+    "explanation": "Mean = total ÷ count = 160 ÷ 5 = 32.",
     "estimated_time_seconds": 85,
     "tags": [
       "data",
-      "table"
+      "table",
+      "mean",
+      "family:da_mean_from_table"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Daily ticket sales",
+        "caption": "Bike sales by store",
         "headers": [
-          "Day",
-          "Tickets sold"
+          "Store",
+          "Bikes sold"
         ],
         "rows": [
           [
-            "Tue",
-            "11"
+            "North",
+            "14"
           ],
           [
-            "Thu",
-            "19"
-          ],
-          [
-            "Mon",
+            "South",
             "36"
           ],
           [
-            "Fri",
-            "21"
+            "East",
+            "37"
           ],
           [
-            "Wed",
-            "18"
+            "West",
+            "42"
+          ],
+          [
+            "Central",
+            "31"
           ]
         ]
       }
     },
-    "answer_verification": "mean=21"
+    "answer_verification": "mean=32"
   },
   {
     "question_id": "sat-math-data-analysis-medium-q08",
@@ -543,69 +555,77 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "Based on the table, what is the mean number of tickets sold per day?",
+    "prompt": "The table shows the number of bikes for 5 stores in 2021 and 2022 (a total of 283 in 2021 and 275 in 2022). Which store had the greatest decrease in bikes from 2021 to 2022?",
     "choices": [
       {
         "id": "A",
-        "text": "100",
-        "rationale": "This is the total; divide by the number of days."
+        "text": "South",
+        "rationale": "South changed by −1, which is not the greatest decrease."
       },
       {
         "id": "B",
-        "text": "20",
-        "rationale": "Correct."
+        "text": "West",
+        "rationale": "West changed by −9, which is not the greatest decrease."
       },
       {
         "id": "C",
-        "text": "29",
-        "rationale": "This is the range, not the mean."
+        "text": "East",
+        "rationale": "East changed by 15, which is not the greatest decrease."
       },
       {
         "id": "D",
-        "text": "39",
-        "rationale": "This is the busiest day, not the average."
+        "text": "North",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Mean = total ÷ days = 100 ÷ 5 = 20.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "D",
+    "explanation": "North went from 75 to 55, a decrease of 20, the largest drop.",
+    "estimated_time_seconds": 100,
     "tags": [
       "data",
-      "table"
+      "table",
+      "compare",
+      "family:da_two_year"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Daily ticket sales",
+        "caption": "Bike sales by store, 2021 and 2022",
         "headers": [
-          "Day",
-          "Tickets sold"
+          "Store",
+          "2021",
+          "2022"
         ],
         "rows": [
           [
-            "Fri",
-            "10"
+            "North",
+            "75",
+            "55"
           ],
           [
-            "Tue",
-            "39"
+            "South",
+            "76",
+            "75"
           ],
           [
-            "Mon",
-            "18"
+            "East",
+            "30",
+            "45"
           ],
           [
-            "Wed",
-            "13"
+            "West",
+            "61",
+            "52"
           ],
           [
-            "Thu",
-            "20"
+            "Central",
+            "41",
+            "48"
           ]
         ]
       }
     },
-    "answer_verification": "mean=20"
+    "answer_verification": "North"
   },
   {
     "question_id": "sat-math-data-analysis-medium-q09",
@@ -618,70 +638,68 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "data_interpretation",
-    "subskill": "tables",
-    "prompt": "Based on the table, what is the mean number of tickets sold per day?",
+    "subskill": "graphs",
+    "prompt": "The table shows a constant rate. At this rate, what is the distance when the first column is 24?",
     "choices": [
       {
         "id": "A",
-        "text": "24",
-        "rationale": "Correct."
+        "text": "645",
+        "rationale": "Each unit adds 70, not 1."
       },
       {
         "id": "B",
-        "text": "34",
-        "rationale": "This is the busiest day, not the average."
+        "text": "94",
+        "rationale": "Multiply the rate by 24; don't add."
       },
       {
         "id": "C",
-        "text": "120",
-        "rationale": "This is the total; divide by the number of days."
+        "text": "1680",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "20",
-        "rationale": "This is the range, not the mean."
+        "text": "15120",
+        "rationale": "Use the unit rate, not the last table value."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Mean = total ÷ days = 120 ÷ 5 = 24.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "C",
+    "explanation": "Rate = 210/3 = 70; 70 × 24 = 1680.",
+    "estimated_time_seconds": 90,
     "tags": [
       "data",
-      "table"
+      "table",
+      "rate",
+      "family:da_rate_table"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Daily ticket sales",
+        "caption": "Recorded values",
         "headers": [
-          "Day",
-          "Tickets sold"
+          "Time (hours)",
+          "Distance (miles)"
         ],
         "rows": [
           [
-            "Mon",
-            "25"
+            "3",
+            "210"
           ],
           [
-            "Tue",
-            "14"
+            "5",
+            "350"
           ],
           [
-            "Wed",
-            "25"
+            "8",
+            "560"
           ],
           [
-            "Fri",
-            "22"
-          ],
-          [
-            "Thu",
-            "34"
+            "9",
+            "630"
           ]
         ]
       }
     },
-    "answer_verification": "mean=24"
+    "answer_verification": "r=70,val=1680"
   },
   {
     "question_id": "sat-math-data-analysis-medium-q10",
@@ -695,69 +713,67 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "Based on the table, what is the mean number of tickets sold per day?",
+    "prompt": "The table shows the number of points recorded for 4 teams, 242 in all. Which of the following statements is supported by the data?",
     "choices": [
       {
         "id": "A",
-        "text": "21",
-        "rationale": "Correct."
+        "text": "Lynx recorded 69 more points than Bears.",
+        "rationale": "The comparison is reversed."
       },
       {
         "id": "B",
-        "text": "26",
-        "rationale": "This is the busiest day, not the average."
+        "text": "The mean number of points is 80.",
+        "rationale": "The mean is 242/4 = 60.5."
       },
       {
         "id": "C",
-        "text": "105",
-        "rationale": "This is the total; divide by the number of days."
+        "text": "Bears recorded 91 more points than Lynx.",
+        "rationale": "That is the sum, not the difference, of the two values."
       },
       {
         "id": "D",
-        "text": "14",
-        "rationale": "This is the range, not the mean."
+        "text": "Bears recorded 69 more points than Lynx.",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Mean = total ÷ days = 105 ÷ 5 = 21.",
+    "correct_choice": "D",
+    "explanation": "80 − 11 = 69.",
     "estimated_time_seconds": 85,
     "tags": [
       "data",
-      "table"
+      "table",
+      "statement",
+      "family:da_statement"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Daily ticket sales",
+        "caption": "Points scored",
         "headers": [
-          "Day",
-          "Tickets sold"
+          "Team",
+          "Points scored"
         ],
         "rows": [
           [
-            "Wed",
-            "21"
+            "Hawks",
+            "76"
           ],
           [
-            "Mon",
-            "12"
+            "Bears",
+            "80"
           ],
           [
-            "Fri",
-            "23"
+            "Otters",
+            "75"
           ],
           [
-            "Tue",
-            "23"
-          ],
-          [
-            "Thu",
-            "26"
+            "Lynx",
+            "11"
           ]
         ]
       }
     },
-    "answer_verification": "mean=21"
+    "answer_verification": "statement"
   },
   {
     "question_id": "sat-math-data-analysis-medium-q11",
@@ -771,69 +787,71 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "Based on the table, what is the mean number of tickets sold per day?",
+    "prompt": "Based on the table, approximately what percent of the total points were recorded for Otters?",
     "choices": [
       {
         "id": "A",
-        "text": "40",
-        "rationale": "This is the busiest day, not the average."
-      },
-      {
-        "id": "B",
-        "text": "30",
+        "text": "29%",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "71%",
+        "rationale": "That is the percent for all the other rows."
+      },
+      {
         "id": "C",
-        "text": "150",
-        "rationale": "This is the total; divide by the number of days."
+        "text": "56%",
+        "rationale": "That is the count, not a percent."
       },
       {
         "id": "D",
-        "text": "28",
-        "rationale": "This is the range, not the mean."
+        "text": "40%",
+        "rationale": "Divide by the total of all rows, not the other rows."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Mean = total ÷ days = 150 ÷ 5 = 30.",
+    "correct_choice": "A",
+    "explanation": "56/195 × 100 ≈ 29%.",
     "estimated_time_seconds": 85,
     "tags": [
       "data",
-      "table"
+      "table",
+      "percent",
+      "family:da_read"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Daily ticket sales",
+        "caption": "Points scored",
         "headers": [
-          "Day",
-          "Tickets sold"
+          "Team",
+          "Points scored"
         ],
         "rows": [
           [
-            "Mon",
-            "40"
+            "Hawks",
+            "60"
           ],
           [
-            "Thu",
-            "12"
+            "Bears",
+            "42"
           ],
           [
-            "Tue",
-            "36"
+            "Otters",
+            "56"
           ],
           [
-            "Fri",
-            "22"
+            "Lynx",
+            "24"
           ],
           [
-            "Wed",
-            "40"
+            "Wolves",
+            "13"
           ]
         ]
       }
     },
-    "answer_verification": "mean=30"
+    "answer_verification": "56/195"
   },
   {
     "question_id": "sat-math-data-analysis-medium-q12",
@@ -847,69 +865,71 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "Based on the table, what is the mean number of tickets sold per day?",
+    "prompt": "Based on the table, what is the mean number of centimeters per plant?",
     "choices": [
       {
         "id": "A",
-        "text": "23",
-        "rationale": "This is the range, not the mean."
+        "text": "57",
+        "rationale": "This is the largest value, not the average."
       },
       {
         "id": "B",
-        "text": "25",
-        "rationale": "Correct."
+        "text": "46",
+        "rationale": "This is the range, not the mean."
       },
       {
         "id": "C",
-        "text": "125",
-        "rationale": "This is the total; divide by the number of days."
+        "text": "34",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "39",
-        "rationale": "This is the busiest day, not the average."
+        "text": "170",
+        "rationale": "This is the total; divide by the number of plants."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Mean = total ÷ days = 125 ÷ 5 = 25.",
+    "correct_choice": "C",
+    "explanation": "Mean = total ÷ count = 170 ÷ 5 = 34.",
     "estimated_time_seconds": 85,
     "tags": [
       "data",
-      "table"
+      "table",
+      "mean",
+      "family:da_mean_from_table"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Daily ticket sales",
+        "caption": "Plant heights",
         "headers": [
-          "Day",
-          "Tickets sold"
+          "Plant",
+          "Height (cm)"
         ],
         "rows": [
           [
-            "Mon",
-            "27"
+            "A",
+            "11"
           ],
           [
-            "Fri",
-            "20"
+            "B",
+            "28"
           ],
           [
-            "Tue",
-            "39"
+            "C",
+            "45"
           ],
           [
-            "Thu",
-            "23"
+            "D",
+            "29"
           ],
           [
-            "Wed",
-            "16"
+            "E",
+            "57"
           ]
         ]
       }
     },
-    "answer_verification": "mean=25"
+    "answer_verification": "mean=34"
   },
   {
     "question_id": "sat-math-data-analysis-medium-q13",
@@ -923,69 +943,77 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "Based on the table, what is the mean number of tickets sold per day?",
+    "prompt": "The table shows the number of tickets for 5 days in 2022 and 2023 (a total of 214 in 2022 and 180 in 2023). Which day had the greatest decrease in tickets from 2022 to 2023?",
     "choices": [
       {
         "id": "A",
-        "text": "38",
-        "rationale": "This is the busiest day, not the average."
+        "text": "Tue",
+        "rationale": "Tue changed by 8, which is not the greatest decrease."
       },
       {
         "id": "B",
-        "text": "23",
+        "text": "Wed",
         "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "115",
-        "rationale": "This is the total; divide by the number of days."
+        "text": "Thu",
+        "rationale": "Thu changed by −10, which is not the greatest decrease."
       },
       {
         "id": "D",
-        "text": "27",
-        "rationale": "This is the range, not the mean."
+        "text": "Mon",
+        "rationale": "Mon changed by −4, which is not the greatest decrease."
       }
     ],
     "correct_choice": "B",
-    "explanation": "Mean = total ÷ days = 115 ÷ 5 = 23.",
-    "estimated_time_seconds": 85,
+    "explanation": "Wed went from 65 to 49, a decrease of 16, the largest drop.",
+    "estimated_time_seconds": 100,
     "tags": [
       "data",
-      "table"
+      "table",
+      "compare",
+      "family:da_two_year"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Daily ticket sales",
+        "caption": "Daily ticket sales, 2022 and 2023",
         "headers": [
           "Day",
-          "Tickets sold"
+          "2022",
+          "2023"
         ],
         "rows": [
           [
             "Mon",
-            "11"
-          ],
-          [
-            "Thu",
-            "31"
-          ],
-          [
-            "Fri",
-            "38"
+            "56",
+            "52"
           ],
           [
             "Tue",
-            "19"
+            "24",
+            "32"
           ],
           [
             "Wed",
-            "16"
+            "65",
+            "49"
+          ],
+          [
+            "Thu",
+            "49",
+            "39"
+          ],
+          [
+            "Fri",
+            "20",
+            "8"
           ]
         ]
       }
     },
-    "answer_verification": "mean=23"
+    "answer_verification": "Wed"
   },
   {
     "question_id": "sat-math-data-analysis-medium-q14",
@@ -998,70 +1026,68 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "data_interpretation",
-    "subskill": "tables",
-    "prompt": "Based on the table, what is the mean number of tickets sold per day?",
+    "subskill": "graphs",
+    "prompt": "The table shows a constant rate. At this rate, what is the cost when the first column is 15?",
     "choices": [
       {
         "id": "A",
-        "text": "100",
-        "rationale": "This is the total; divide by the number of days."
+        "text": "900",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "24",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "4500",
+        "rationale": "Use the unit rate, not the last table value."
       },
       {
         "id": "C",
-        "text": "32",
-        "rationale": "This is the busiest day, not the average."
+        "text": "310",
+        "rationale": "Each unit adds 60, not 1."
       },
       {
         "id": "D",
-        "text": "20",
-        "rationale": "Correct."
+        "text": "75",
+        "rationale": "Multiply the rate by 15; don't add."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Mean = total ÷ days = 100 ÷ 5 = 20.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "A",
+    "explanation": "Rate = 60/1 = 60; 60 × 15 = 900.",
+    "estimated_time_seconds": 90,
     "tags": [
       "data",
-      "table"
+      "table",
+      "rate",
+      "family:da_rate_table"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Daily ticket sales",
+        "caption": "Recorded values",
         "headers": [
-          "Day",
-          "Tickets sold"
+          "Number of items",
+          "Cost (dollars)"
         ],
         "rows": [
           [
-            "Wed",
-            "15"
+            "1",
+            "60"
           ],
           [
-            "Fri",
-            "13"
+            "2",
+            "120"
           ],
           [
-            "Thu",
-            "28"
+            "3",
+            "180"
           ],
           [
-            "Tue",
-            "12"
-          ],
-          [
-            "Mon",
-            "32"
+            "5",
+            "300"
           ]
         ]
       }
     },
-    "answer_verification": "mean=20"
+    "answer_verification": "r=60,val=900"
   },
   {
     "question_id": "sat-math-data-analysis-medium-q15",
@@ -1075,35 +1101,37 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "Based on the table, what is the mean number of tickets sold per day?",
+    "prompt": "The table shows the number of tickets recorded for 4 days, 206 in all. Which of the following statements is supported by the data?",
     "choices": [
       {
         "id": "A",
-        "text": "24",
-        "rationale": "This is the range, not the mean."
+        "text": "Tue recorded 77 more tickets than Thu.",
+        "rationale": "The comparison is reversed."
       },
       {
         "id": "B",
-        "text": "28",
-        "rationale": "Correct."
+        "text": "The mean number of tickets is 88.",
+        "rationale": "The mean is 206/4 = 51.5."
       },
       {
         "id": "C",
-        "text": "37",
-        "rationale": "This is the busiest day, not the average."
+        "text": "Thu recorded 77 more tickets than Tue.",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "140",
-        "rationale": "This is the total; divide by the number of days."
+        "text": "Thu recorded 99 more tickets than Tue.",
+        "rationale": "That is the sum, not the difference, of the two values."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Mean = total ÷ days = 140 ÷ 5 = 28.",
+    "correct_choice": "C",
+    "explanation": "88 − 11 = 77.",
     "estimated_time_seconds": 85,
     "tags": [
       "data",
-      "table"
+      "table",
+      "statement",
+      "family:da_statement"
     ],
     "stimulus": {
       "type": "table",
@@ -1115,29 +1143,25 @@
         ],
         "rows": [
           [
-            "Tue",
-            "13"
-          ],
-          [
-            "Fri",
-            "31"
-          ],
-          [
-            "Thu",
-            "27"
-          ],
-          [
             "Mon",
-            "32"
+            "51"
+          ],
+          [
+            "Tue",
+            "11"
           ],
           [
             "Wed",
-            "37"
+            "56"
+          ],
+          [
+            "Thu",
+            "88"
           ]
         ]
       }
     },
-    "answer_verification": "mean=28"
+    "answer_verification": "statement"
   },
   {
     "question_id": "sat-math-data-analysis-medium-q16",
@@ -1151,69 +1175,71 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "Based on the table, what is the mean number of tickets sold per day?",
+    "prompt": "Based on the table, approximately what percent of the total points were recorded for Bears?",
     "choices": [
       {
         "id": "A",
-        "text": "18",
-        "rationale": "This is the range, not the mean."
+        "text": "19%",
+        "rationale": "That is the count, not a percent."
       },
       {
         "id": "B",
-        "text": "150",
-        "rationale": "This is the total; divide by the number of days."
+        "text": "17%",
+        "rationale": "Divide by the total of all rows, not the other rows."
       },
       {
         "id": "C",
-        "text": "38",
-        "rationale": "This is the busiest day, not the average."
+        "text": "14%",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "30",
-        "rationale": "Correct."
+        "text": "86%",
+        "rationale": "That is the percent for all the other rows."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Mean = total ÷ days = 150 ÷ 5 = 30.",
+    "correct_choice": "C",
+    "explanation": "19/133 × 100 ≈ 14%.",
     "estimated_time_seconds": 85,
     "tags": [
       "data",
-      "table"
+      "table",
+      "percent",
+      "family:da_read"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Daily ticket sales",
+        "caption": "Points scored",
         "headers": [
-          "Day",
-          "Tickets sold"
+          "Team",
+          "Points scored"
         ],
         "rows": [
           [
-            "Mon",
-            "20"
+            "Hawks",
+            "46"
           ],
           [
-            "Wed",
-            "32"
+            "Bears",
+            "19"
           ],
           [
-            "Thu",
+            "Otters",
+            "19"
+          ],
+          [
+            "Lynx",
+            "11"
+          ],
+          [
+            "Wolves",
             "38"
-          ],
-          [
-            "Tue",
-            "23"
-          ],
-          [
-            "Fri",
-            "37"
           ]
         ]
       }
     },
-    "answer_verification": "mean=30"
+    "answer_verification": "19/133"
   },
   {
     "question_id": "sat-math-data-analysis-medium-q17",
@@ -1227,69 +1253,71 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "Based on the table, what is the mean number of tickets sold per day?",
+    "prompt": "Based on the table, what is the mean number of points per team?",
     "choices": [
       {
         "id": "A",
-        "text": "26",
-        "rationale": "This is the range, not the mean."
+        "text": "205",
+        "rationale": "This is the total; divide by the number of teams."
       },
       {
         "id": "B",
-        "text": "135",
-        "rationale": "This is the total; divide by the number of days."
+        "text": "41",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "40",
-        "rationale": "This is the busiest day, not the average."
+        "text": "53",
+        "rationale": "This is the largest value, not the average."
       },
       {
         "id": "D",
-        "text": "27",
-        "rationale": "Correct."
+        "text": "37",
+        "rationale": "This is the range, not the mean."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Mean = total ÷ days = 135 ÷ 5 = 27.",
+    "correct_choice": "B",
+    "explanation": "Mean = total ÷ count = 205 ÷ 5 = 41.",
     "estimated_time_seconds": 85,
     "tags": [
       "data",
-      "table"
+      "table",
+      "mean",
+      "family:da_mean_from_table"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Daily ticket sales",
+        "caption": "Points scored",
         "headers": [
-          "Day",
-          "Tickets sold"
+          "Team",
+          "Points scored"
         ],
         "rows": [
           [
-            "Wed",
-            "36"
+            "Hawks",
+            "51"
           ],
           [
-            "Tue",
-            "28"
+            "Bears",
+            "48"
           ],
           [
-            "Mon",
-            "40"
+            "Otters",
+            "37"
           ],
           [
-            "Thu",
-            "14"
+            "Lynx",
+            "53"
           ],
           [
-            "Fri",
-            "17"
+            "Wolves",
+            "16"
           ]
         ]
       }
     },
-    "answer_verification": "mean=27"
+    "answer_verification": "mean=41"
   },
   {
     "question_id": "sat-math-data-analysis-medium-q18",
@@ -1303,69 +1331,77 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "Based on the table, what is the mean number of tickets sold per day?",
+    "prompt": "The table shows the number of tickets for 5 days in 2022 and 2023 (a total of 258 in 2022 and 269 in 2023). Which day had the greatest decrease in tickets from 2022 to 2023?",
     "choices": [
       {
         "id": "A",
-        "text": "160",
-        "rationale": "This is the total; divide by the number of days."
+        "text": "Mon",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "40",
-        "rationale": "This is the busiest day, not the average."
+        "text": "Tue",
+        "rationale": "Tue changed by 17, which is not the greatest decrease."
       },
       {
         "id": "C",
-        "text": "14",
-        "rationale": "This is the range, not the mean."
+        "text": "Wed",
+        "rationale": "Wed changed by −3, which is not the greatest decrease."
       },
       {
         "id": "D",
-        "text": "32",
-        "rationale": "Correct."
+        "text": "Thu",
+        "rationale": "Thu changed by 18, which is not the greatest decrease."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Mean = total ÷ days = 160 ÷ 5 = 32.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "A",
+    "explanation": "Mon went from 25 to 13, a decrease of 12, the largest drop.",
+    "estimated_time_seconds": 100,
     "tags": [
       "data",
-      "table"
+      "table",
+      "compare",
+      "family:da_two_year"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Daily ticket sales",
+        "caption": "Daily ticket sales, 2022 and 2023",
         "headers": [
           "Day",
-          "Tickets sold"
+          "2022",
+          "2023"
         ],
         "rows": [
           [
-            "Fri",
-            "30"
-          ],
-          [
-            "Thu",
-            "40"
-          ],
-          [
             "Mon",
-            "29"
+            "25",
+            "13"
           ],
           [
             "Tue",
-            "35"
+            "55",
+            "72"
           ],
           [
             "Wed",
-            "26"
+            "49",
+            "46"
+          ],
+          [
+            "Thu",
+            "63",
+            "81"
+          ],
+          [
+            "Fri",
+            "66",
+            "57"
           ]
         ]
       }
     },
-    "answer_verification": "mean=32"
+    "answer_verification": "Mon"
   },
   {
     "question_id": "sat-math-data-analysis-medium-q19",
@@ -1378,70 +1414,68 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "data_interpretation",
-    "subskill": "tables",
-    "prompt": "Based on the table, what is the mean number of tickets sold per day?",
+    "subskill": "graphs",
+    "prompt": "The table shows a constant rate. At this rate, what is the distance when the first column is 14?",
     "choices": [
       {
         "id": "A",
-        "text": "27",
+        "text": "910",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "135",
-        "rationale": "This is the total; divide by the number of days."
+        "text": "79",
+        "rationale": "Multiply the rate by 14; don't add."
       },
       {
         "id": "C",
-        "text": "33",
-        "rationale": "This is the busiest day, not the average."
+        "text": "8190",
+        "rationale": "Use the unit rate, not the last table value."
       },
       {
         "id": "D",
-        "text": "17",
-        "rationale": "This is the range, not the mean."
+        "text": "590",
+        "rationale": "Each unit adds 65, not 1."
       }
     ],
     "correct_choice": "A",
-    "explanation": "Mean = total ÷ days = 135 ÷ 5 = 27.",
-    "estimated_time_seconds": 85,
+    "explanation": "Rate = 65/1 = 65; 65 × 14 = 910.",
+    "estimated_time_seconds": 90,
     "tags": [
       "data",
-      "table"
+      "table",
+      "rate",
+      "family:da_rate_table"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Daily ticket sales",
+        "caption": "Recorded values",
         "headers": [
-          "Day",
-          "Tickets sold"
+          "Time (hours)",
+          "Distance (miles)"
         ],
         "rows": [
           [
-            "Thu",
-            "31"
+            "1",
+            "65"
           ],
           [
-            "Tue",
-            "33"
+            "5",
+            "325"
           ],
           [
-            "Mon",
-            "16"
+            "8",
+            "520"
           ],
           [
-            "Wed",
-            "31"
-          ],
-          [
-            "Fri",
-            "24"
+            "9",
+            "585"
           ]
         ]
       }
     },
-    "answer_verification": "mean=27"
+    "answer_verification": "r=65,val=910"
   },
   {
     "question_id": "sat-math-data-analysis-medium-q20",
@@ -1455,68 +1489,66 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "Based on the table, what is the mean number of tickets sold per day?",
+    "prompt": "The table shows the number of bikes recorded for 4 stores, 241 in all. Which of the following statements is supported by the data?",
     "choices": [
       {
         "id": "A",
-        "text": "125",
-        "rationale": "This is the total; divide by the number of days."
+        "text": "West recorded 53 more bikes than East.",
+        "rationale": "The comparison is reversed."
       },
       {
         "id": "B",
-        "text": "36",
-        "rationale": "This is the busiest day, not the average."
+        "text": "East recorded 101 more bikes than West.",
+        "rationale": "That is the sum, not the difference, of the two values."
       },
       {
         "id": "C",
-        "text": "25",
+        "text": "East recorded 53 more bikes than West.",
         "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "23",
-        "rationale": "This is the range, not the mean."
+        "text": "The mean number of bikes is 77.",
+        "rationale": "The mean is 241/4 = 60.2."
       }
     ],
     "correct_choice": "C",
-    "explanation": "Mean = total ÷ days = 125 ÷ 5 = 25.",
+    "explanation": "77 − 24 = 53.",
     "estimated_time_seconds": 85,
     "tags": [
       "data",
-      "table"
+      "table",
+      "statement",
+      "family:da_statement"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Daily ticket sales",
+        "caption": "Bike sales by store",
         "headers": [
-          "Day",
-          "Tickets sold"
+          "Store",
+          "Bikes sold"
         ],
         "rows": [
           [
-            "Fri",
-            "36"
+            "North",
+            "74"
           ],
           [
-            "Wed",
-            "18"
+            "South",
+            "66"
           ],
           [
-            "Thu",
-            "25"
+            "East",
+            "77"
           ],
           [
-            "Tue",
-            "13"
-          ],
-          [
-            "Mon",
-            "33"
+            "West",
+            "24"
           ]
         ]
       }
     },
-    "answer_verification": "mean=25"
+    "answer_verification": "statement"
   }
 ]

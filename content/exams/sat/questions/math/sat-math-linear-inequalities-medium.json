@@ -11,37 +11,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "one_variable",
-    "prompt": "What is the greatest integer value of x that satisfies 6x + 5 ≤ 41?",
+    "prompt": "What is the least integer value of x that satisfies −9x + 23 ≤ −22?",
     "choices": [
       {
         "id": "A",
         "text": "6",
-        "rationale": "Correct."
+        "rationale": "This works but is not the least such value."
       },
       {
         "id": "B",
-        "text": "7",
-        "rationale": "x=7 makes the left side exceed 41."
+        "text": "4",
+        "rationale": "This value does not satisfy the inequality."
       },
       {
         "id": "C",
-        "text": "36",
-        "rationale": "This is 6x; divide by 6."
+        "text": "5",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "5",
-        "rationale": "This satisfies the inequality but is not the greatest such value."
+        "text": "-5",
+        "rationale": "Sign slip; the solution is positive."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Subtract 5: 6x ≤ 36. Divide by 6: x ≤ 6. The greatest integer is 6.",
-    "estimated_time_seconds": 70,
+    "correct_choice": "C",
+    "explanation": "Subtract 23: −9x ≤ −45. Dividing by −9 flips the sign: x ≥ 5. The least integer is 5.",
+    "estimated_time_seconds": 80,
     "tags": [
       "algebra",
-      "inequality"
+      "inequality",
+      "family:li_extreme_integer"
     ],
-    "answer_verification": "x<= 6"
+    "answer_verification": "-9x + 23 ≤ -22 -> least 5"
   },
   {
     "question_id": "sat-math-linear-inequalities-medium-q02",
@@ -55,37 +56,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "one_variable",
-    "prompt": "What is the greatest integer value of x that satisfies 10x + 1 ≤ 41?",
+    "prompt": "What is the solution set of the inequality −3x + 20 ≥ 44?",
     "choices": [
       {
         "id": "A",
-        "text": "5",
-        "rationale": "x=5 makes the left side exceed 41."
+        "text": "x ≥ 8",
+        "rationale": "Both the direction and the sign are wrong."
       },
       {
         "id": "B",
-        "text": "3",
-        "rationale": "This satisfies the inequality but is not the greatest such value."
+        "text": "x ≤ 8",
+        "rationale": "Sign slip on the boundary value."
       },
       {
         "id": "C",
-        "text": "40",
-        "rationale": "This is 10x; divide by 10."
+        "text": "x ≤ −8",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "4",
-        "rationale": "Correct."
+        "text": "x ≥ −8",
+        "rationale": "The direction of the inequality is reversed."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Subtract 1: 10x ≤ 40. Divide by 10: x ≤ 4. The greatest integer is 4.",
-    "estimated_time_seconds": 70,
+    "correct_choice": "C",
+    "explanation": "Subtract 20: −3x ≥ 24. Dividing by −3 flips the inequality: x ≤ −8.",
+    "estimated_time_seconds": 75,
     "tags": [
       "algebra",
-      "inequality"
+      "inequality",
+      "family:li_solution_set"
     ],
-    "answer_verification": "x<= 4"
+    "answer_verification": "-3x + 20 ≥ 44 -> x ≤ -8"
   },
   {
     "question_id": "sat-math-linear-inequalities-medium-q03",
@@ -99,37 +101,39 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "one_variable",
-    "prompt": "What is the greatest integer value of x that satisfies 4x + 24 ≤ 32?",
+    "prompt": "A truck can carry at most 360 kilograms. It already holds a 42-kilogram toolbox, and each crate loaded weighs 13 kilograms. Which inequality gives the number of crates c that can be added?",
     "choices": [
       {
         "id": "A",
-        "text": "2",
+        "text": "13c + 42 ≤ 360",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "8",
-        "rationale": "This is 4x; divide by 4."
+        "text": "42c + 13 ≤ 360",
+        "rationale": "The crate weight, not the toolbox, multiplies c."
       },
       {
         "id": "C",
-        "text": "1",
-        "rationale": "This satisfies the inequality but is not the greatest such value."
+        "text": "13c + 42 ≥ 360",
+        "rationale": "The load must stay at or below the limit."
       },
       {
         "id": "D",
-        "text": "3",
-        "rationale": "x=3 makes the left side exceed 32."
+        "text": "13c ≤ 360 + 42",
+        "rationale": "The toolbox uses up capacity; it doesn't add to it."
       }
     ],
     "correct_choice": "A",
-    "explanation": "Subtract 24: 4x ≤ 8. Divide by 4: x ≤ 2. The greatest integer is 2.",
-    "estimated_time_seconds": 70,
+    "explanation": "Total weight 13c + 42 must be at most 360: 13c + 42 ≤ 360.",
+    "estimated_time_seconds": 85,
     "tags": [
       "algebra",
-      "inequality"
+      "inequality",
+      "model",
+      "family:li_model"
     ],
-    "answer_verification": "x<= 2"
+    "answer_verification": "model 13c + 42 ≤ 360"
   },
   {
     "question_id": "sat-math-linear-inequalities-medium-q04",
@@ -141,39 +145,41 @@
     "lesson_id": "sat-math-linear-inequalities-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "multi_step_math",
     "subskill": "one_variable",
-    "prompt": "What is the greatest integer value of x that satisfies 6x + 27 ≤ 93?",
+    "prompt": "A car rental costs $35 plus $18 per day. Dmitri can spend at most $461. What is the maximum number of whole days Dmitri can rent the car?",
     "choices": [
       {
         "id": "A",
-        "text": "66",
-        "rationale": "This is 6x; divide by 6."
+        "text": "25",
+        "rationale": "Subtract the fixed cost before dividing by the daily rate."
       },
       {
         "id": "B",
-        "text": "11",
-        "rationale": "Correct."
+        "text": "22",
+        "rationale": "One more day still fits the budget."
       },
       {
         "id": "C",
-        "text": "10",
-        "rationale": "This satisfies the inequality but is not the greatest such value."
+        "text": "24",
+        "rationale": "That many days would exceed the budget."
       },
       {
         "id": "D",
-        "text": "12",
-        "rationale": "x=12 makes the left side exceed 93."
+        "text": "23",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Subtract 27: 6x ≤ 66. Divide by 6: x ≤ 11. The greatest integer is 11.",
-    "estimated_time_seconds": 70,
+    "correct_choice": "D",
+    "explanation": "35 + 18d ≤ 461 → d ≤ (461 − 35)/18 = 23.67, so d = 23.",
+    "estimated_time_seconds": 90,
     "tags": [
       "algebra",
-      "inequality"
+      "inequality",
+      "word-problem",
+      "family:li_word_max"
     ],
-    "answer_verification": "x<= 11"
+    "answer_verification": "n=23"
   },
   {
     "question_id": "sat-math-linear-inequalities-medium-q05",
@@ -186,38 +192,40 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "one_variable",
-    "prompt": "What is the greatest integer value of x that satisfies 9x + 3 ≤ 57?",
+    "subskill": "graph_regions",
+    "prompt": "Which of the following ordered pairs (x, y) is a solution to the inequality y < −4x + 1?",
     "choices": [
       {
         "id": "A",
-        "text": "6",
-        "rationale": "Correct."
+        "text": "(1, 1)",
+        "rationale": "1 < −3 is false."
       },
       {
         "id": "B",
-        "text": "54",
-        "rationale": "This is 9x; divide by 9."
+        "text": "(−1, 0)",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "7",
-        "rationale": "x=7 makes the left side exceed 57."
+        "text": "(−1, 8)",
+        "rationale": "8 < 5 is false."
       },
       {
         "id": "D",
-        "text": "5",
-        "rationale": "This satisfies the inequality but is not the greatest such value."
+        "text": "(2, −3)",
+        "rationale": "−3 < −7 is false."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Subtract 3: 9x ≤ 54. Divide by 9: x ≤ 6. The greatest integer is 6.",
-    "estimated_time_seconds": 70,
+    "correct_choice": "B",
+    "explanation": "Substitute (−1, 0): 0 < −4(−1) + 1 = 5 is true.",
+    "estimated_time_seconds": 90,
     "tags": [
       "algebra",
-      "inequality"
+      "inequality",
+      "graph",
+      "family:li_ordered_pair"
     ],
-    "answer_verification": "x<= 6"
+    "answer_verification": "(-1,0) satisfies y < -4x+1"
   },
   {
     "question_id": "sat-math-linear-inequalities-medium-q06",
@@ -229,39 +237,26 @@
     "lesson_id": "sat-math-linear-inequalities-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "student_produced",
     "subskill": "one_variable",
-    "prompt": "What is the greatest integer value of x that satisfies 4x + 23 ≤ 35?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "2",
-        "rationale": "This satisfies the inequality but is not the greatest such value."
-      },
-      {
-        "id": "B",
-        "text": "12",
-        "rationale": "This is 4x; divide by 4."
-      },
-      {
-        "id": "C",
-        "text": "3",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "4",
-        "rationale": "x=4 makes the left side exceed 35."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "Subtract 23: 4x ≤ 12. Divide by 4: x ≤ 3. The greatest integer is 3.",
-    "estimated_time_seconds": 70,
+    "prompt": "What is the least integer value of x for which −7x + 9 ≤ −33?",
+    "answer": {
+      "type": "numeric",
+      "value": 6,
+      "accepted": [
+        "6"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "−7x ≤ −42; dividing by −7 flips the sign: x ≥ 6.",
+    "estimated_time_seconds": 75,
     "tags": [
       "algebra",
-      "inequality"
+      "inequality",
+      "grid-in",
+      "family:li_gridin"
     ],
-    "answer_verification": "x<= 3"
+    "answer_verification": "val=6"
   },
   {
     "question_id": "sat-math-linear-inequalities-medium-q07",
@@ -275,37 +270,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "one_variable",
-    "prompt": "What is the greatest integer value of x that satisfies 2x + 23 ≤ 35?",
+    "prompt": "If −7x + 22 > −41, what is the greatest possible integer value of x?",
     "choices": [
       {
         "id": "A",
-        "text": "7",
-        "rationale": "x=7 makes the left side exceed 35."
+        "text": "-9",
+        "rationale": "Sign slip; the solution is positive."
       },
       {
         "id": "B",
-        "text": "12",
-        "rationale": "This is 2x; divide by 2."
+        "text": "10",
+        "rationale": "This value does not satisfy the inequality."
       },
       {
         "id": "C",
-        "text": "6",
+        "text": "8",
         "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "5",
-        "rationale": "This satisfies the inequality but is not the greatest such value."
+        "text": "7",
+        "rationale": "This works but is not the greatest such value."
       }
     ],
     "correct_choice": "C",
-    "explanation": "Subtract 23: 2x ≤ 12. Divide by 2: x ≤ 6. The greatest integer is 6.",
-    "estimated_time_seconds": 70,
+    "explanation": "Subtract 22: −7x > −63. Dividing by −7 flips the sign: x < 9. The greatest integer is 8.",
+    "estimated_time_seconds": 80,
     "tags": [
       "algebra",
-      "inequality"
+      "inequality",
+      "family:li_extreme_integer"
     ],
-    "answer_verification": "x<= 6"
+    "answer_verification": "-7x + 22 > -41 -> greatest 8"
   },
   {
     "question_id": "sat-math-linear-inequalities-medium-q08",
@@ -319,37 +315,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "one_variable",
-    "prompt": "What is the greatest integer value of x that satisfies 8x + 28 ≤ 92?",
+    "prompt": "Which of the following describes all solutions to −4x + 6 < −10?",
     "choices": [
       {
         "id": "A",
-        "text": "64",
-        "rationale": "This is 8x; divide by 8."
+        "text": "x > −4",
+        "rationale": "Sign slip on the boundary value."
       },
       {
         "id": "B",
-        "text": "9",
-        "rationale": "x=9 makes the left side exceed 92."
+        "text": "x < −4",
+        "rationale": "Both the direction and the sign are wrong."
       },
       {
         "id": "C",
-        "text": "8",
+        "text": "x > 4",
         "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "7",
-        "rationale": "This satisfies the inequality but is not the greatest such value."
+        "text": "x < 4",
+        "rationale": "The direction of the inequality is reversed."
       }
     ],
     "correct_choice": "C",
-    "explanation": "Subtract 28: 8x ≤ 64. Divide by 8: x ≤ 8. The greatest integer is 8.",
-    "estimated_time_seconds": 70,
+    "explanation": "Subtract 6: −4x < −16. Dividing by −4 flips the inequality: x > 4.",
+    "estimated_time_seconds": 75,
     "tags": [
       "algebra",
-      "inequality"
+      "inequality",
+      "family:li_solution_set"
     ],
-    "answer_verification": "x<= 8"
+    "answer_verification": "-4x + 6 < -10 -> x > 4"
   },
   {
     "question_id": "sat-math-linear-inequalities-medium-q09",
@@ -363,37 +360,39 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "one_variable",
-    "prompt": "What is the greatest integer value of x that satisfies 5x + 26 ≤ 41?",
+    "prompt": "A truck can carry at most 133 kilograms. It already holds a 21-kilogram toolbox, and each crate loaded weighs 17 kilograms. Which inequality gives the number of crates c that can be added?",
     "choices": [
       {
         "id": "A",
-        "text": "4",
-        "rationale": "x=4 makes the left side exceed 41."
+        "text": "21c + 17 ≤ 133",
+        "rationale": "The crate weight, not the toolbox, multiplies c."
       },
       {
         "id": "B",
-        "text": "3",
-        "rationale": "Correct."
+        "text": "17c ≤ 133 + 21",
+        "rationale": "The toolbox uses up capacity; it doesn't add to it."
       },
       {
         "id": "C",
-        "text": "15",
-        "rationale": "This is 5x; divide by 5."
+        "text": "17c + 21 ≥ 133",
+        "rationale": "The load must stay at or below the limit."
       },
       {
         "id": "D",
-        "text": "2",
-        "rationale": "This satisfies the inequality but is not the greatest such value."
+        "text": "17c + 21 ≤ 133",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Subtract 26: 5x ≤ 15. Divide by 5: x ≤ 3. The greatest integer is 3.",
-    "estimated_time_seconds": 70,
+    "correct_choice": "D",
+    "explanation": "Total weight 17c + 21 must be at most 133: 17c + 21 ≤ 133.",
+    "estimated_time_seconds": 85,
     "tags": [
       "algebra",
-      "inequality"
+      "inequality",
+      "model",
+      "family:li_model"
     ],
-    "answer_verification": "x<= 3"
+    "answer_verification": "model 17c + 21 ≤ 133"
   },
   {
     "question_id": "sat-math-linear-inequalities-medium-q10",
@@ -405,39 +404,41 @@
     "lesson_id": "sat-math-linear-inequalities-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "multi_step_math",
     "subskill": "one_variable",
-    "prompt": "What is the greatest integer value of x that satisfies 5x + 21 ≤ 36?",
+    "prompt": "A car rental costs $40 plus $9 per day. Keiko can spend at most $181. What is the maximum number of whole days Keiko can rent the car?",
     "choices": [
       {
         "id": "A",
-        "text": "3",
-        "rationale": "Correct."
+        "text": "16",
+        "rationale": "That many days would exceed the budget."
       },
       {
         "id": "B",
-        "text": "2",
-        "rationale": "This satisfies the inequality but is not the greatest such value."
+        "text": "15",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "15",
-        "rationale": "This is 5x; divide by 5."
+        "text": "20",
+        "rationale": "Subtract the fixed cost before dividing by the daily rate."
       },
       {
         "id": "D",
-        "text": "4",
-        "rationale": "x=4 makes the left side exceed 36."
+        "text": "14",
+        "rationale": "One more day still fits the budget."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Subtract 21: 5x ≤ 15. Divide by 5: x ≤ 3. The greatest integer is 3.",
-    "estimated_time_seconds": 70,
+    "correct_choice": "B",
+    "explanation": "40 + 9d ≤ 181 → d ≤ (181 − 40)/9 = 15.67, so d = 15.",
+    "estimated_time_seconds": 90,
     "tags": [
       "algebra",
-      "inequality"
+      "inequality",
+      "word-problem",
+      "family:li_word_max"
     ],
-    "answer_verification": "x<= 3"
+    "answer_verification": "n=15"
   },
   {
     "question_id": "sat-math-linear-inequalities-medium-q11",
@@ -450,38 +451,40 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "one_variable",
-    "prompt": "What is the greatest integer value of x that satisfies 2x + 21 ≤ 51?",
+    "subskill": "graph_regions",
+    "prompt": "Which of the following ordered pairs (x, y) is a solution to the inequality y < x + 2?",
     "choices": [
       {
         "id": "A",
-        "text": "15",
-        "rationale": "Correct."
+        "text": "(−3, 1)",
+        "rationale": "1 < −1 is false."
       },
       {
         "id": "B",
-        "text": "30",
-        "rationale": "This is 2x; divide by 2."
+        "text": "(5, −1)",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "14",
-        "rationale": "This satisfies the inequality but is not the greatest such value."
+        "text": "(−2, 1)",
+        "rationale": "1 < 0 is false."
       },
       {
         "id": "D",
-        "text": "16",
-        "rationale": "x=16 makes the left side exceed 51."
+        "text": "(−1, 5)",
+        "rationale": "5 < 1 is false."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Subtract 21: 2x ≤ 30. Divide by 2: x ≤ 15. The greatest integer is 15.",
-    "estimated_time_seconds": 70,
+    "correct_choice": "B",
+    "explanation": "Substitute (5, −1): −1 < 1(5) + 2 = 7 is true.",
+    "estimated_time_seconds": 90,
     "tags": [
       "algebra",
-      "inequality"
+      "inequality",
+      "graph",
+      "family:li_ordered_pair"
     ],
-    "answer_verification": "x<= 15"
+    "answer_verification": "(5,-1) satisfies y < 1x+2"
   },
   {
     "question_id": "sat-math-linear-inequalities-medium-q12",
@@ -493,39 +496,26 @@
     "lesson_id": "sat-math-linear-inequalities-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "student_produced",
     "subskill": "one_variable",
-    "prompt": "What is the greatest integer value of x that satisfies 4x + 22 ≤ 42?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "5",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "6",
-        "rationale": "x=6 makes the left side exceed 42."
-      },
-      {
-        "id": "C",
-        "text": "20",
-        "rationale": "This is 4x; divide by 4."
-      },
-      {
-        "id": "D",
-        "text": "4",
-        "rationale": "This satisfies the inequality but is not the greatest such value."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "Subtract 22: 4x ≤ 20. Divide by 4: x ≤ 5. The greatest integer is 5.",
-    "estimated_time_seconds": 70,
+    "prompt": "What is the least integer value of x for which −4x + 29 ≤ −31?",
+    "answer": {
+      "type": "numeric",
+      "value": 15,
+      "accepted": [
+        "15"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "−4x ≤ −60; dividing by −4 flips the sign: x ≥ 15.",
+    "estimated_time_seconds": 75,
     "tags": [
       "algebra",
-      "inequality"
+      "inequality",
+      "grid-in",
+      "family:li_gridin"
     ],
-    "answer_verification": "x<= 5"
+    "answer_verification": "val=15"
   },
   {
     "question_id": "sat-math-linear-inequalities-medium-q13",
@@ -539,37 +529,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "one_variable",
-    "prompt": "What is the greatest integer value of x that satisfies 5x + 24 ≤ 49?",
+    "prompt": "If −5x + 14 > −1, what is the greatest possible integer value of x?",
     "choices": [
       {
         "id": "A",
-        "text": "5",
-        "rationale": "Correct."
+        "text": "1",
+        "rationale": "This works but is not the greatest such value."
       },
       {
         "id": "B",
-        "text": "25",
-        "rationale": "This is 5x; divide by 5."
+        "text": "4",
+        "rationale": "This value does not satisfy the inequality."
       },
       {
         "id": "C",
-        "text": "6",
-        "rationale": "x=6 makes the left side exceed 49."
+        "text": "2",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "4",
-        "rationale": "This satisfies the inequality but is not the greatest such value."
+        "text": "-3",
+        "rationale": "Sign slip; the solution is positive."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Subtract 24: 5x ≤ 25. Divide by 5: x ≤ 5. The greatest integer is 5.",
-    "estimated_time_seconds": 70,
+    "correct_choice": "C",
+    "explanation": "Subtract 14: −5x > −15. Dividing by −5 flips the sign: x < 3. The greatest integer is 2.",
+    "estimated_time_seconds": 80,
     "tags": [
       "algebra",
-      "inequality"
+      "inequality",
+      "family:li_extreme_integer"
     ],
-    "answer_verification": "x<= 5"
+    "answer_verification": "-5x + 14 > -1 -> greatest 2"
   },
   {
     "question_id": "sat-math-linear-inequalities-medium-q14",
@@ -583,37 +574,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "one_variable",
-    "prompt": "What is the greatest integer value of x that satisfies 9x + 23 ≤ 68?",
+    "prompt": "Which of the following describes all solutions to −4x + 1 > 29?",
     "choices": [
       {
         "id": "A",
-        "text": "45",
-        "rationale": "This is 9x; divide by 9."
+        "text": "x > 7",
+        "rationale": "Both the direction and the sign are wrong."
       },
       {
         "id": "B",
-        "text": "6",
-        "rationale": "x=6 makes the left side exceed 68."
+        "text": "x > −7",
+        "rationale": "The direction of the inequality is reversed."
       },
       {
         "id": "C",
-        "text": "4",
-        "rationale": "This satisfies the inequality but is not the greatest such value."
+        "text": "x < −7",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "5",
-        "rationale": "Correct."
+        "text": "x < 7",
+        "rationale": "Sign slip on the boundary value."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Subtract 23: 9x ≤ 45. Divide by 9: x ≤ 5. The greatest integer is 5.",
-    "estimated_time_seconds": 70,
+    "correct_choice": "C",
+    "explanation": "Subtract 1: −4x > 28. Dividing by −4 flips the inequality: x < −7.",
+    "estimated_time_seconds": 75,
     "tags": [
       "algebra",
-      "inequality"
+      "inequality",
+      "family:li_solution_set"
     ],
-    "answer_verification": "x<= 5"
+    "answer_verification": "-4x + 1 > 29 -> x < -7"
   },
   {
     "question_id": "sat-math-linear-inequalities-medium-q15",
@@ -627,37 +619,39 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "one_variable",
-    "prompt": "What is the greatest integer value of x that satisfies 4x + 14 ≤ 66?",
+    "prompt": "A truck can carry at most 487 kilograms. It already holds a 55-kilogram toolbox, and each crate loaded weighs 24 kilograms. Which inequality gives the number of crates c that can be added?",
     "choices": [
       {
         "id": "A",
-        "text": "14",
-        "rationale": "x=14 makes the left side exceed 66."
-      },
-      {
-        "id": "B",
-        "text": "13",
+        "text": "24c + 55 ≤ 487",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "55c + 24 ≤ 487",
+        "rationale": "The crate weight, not the toolbox, multiplies c."
+      },
+      {
         "id": "C",
-        "text": "52",
-        "rationale": "This is 4x; divide by 4."
+        "text": "24c ≤ 487 + 55",
+        "rationale": "The toolbox uses up capacity; it doesn't add to it."
       },
       {
         "id": "D",
-        "text": "12",
-        "rationale": "This satisfies the inequality but is not the greatest such value."
+        "text": "24c + 55 ≥ 487",
+        "rationale": "The load must stay at or below the limit."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Subtract 14: 4x ≤ 52. Divide by 4: x ≤ 13. The greatest integer is 13.",
-    "estimated_time_seconds": 70,
+    "correct_choice": "A",
+    "explanation": "Total weight 24c + 55 must be at most 487: 24c + 55 ≤ 487.",
+    "estimated_time_seconds": 85,
     "tags": [
       "algebra",
-      "inequality"
+      "inequality",
+      "model",
+      "family:li_model"
     ],
-    "answer_verification": "x<= 13"
+    "answer_verification": "model 24c + 55 ≤ 487"
   },
   {
     "question_id": "sat-math-linear-inequalities-medium-q16",
@@ -669,39 +663,41 @@
     "lesson_id": "sat-math-linear-inequalities-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "multi_step_math",
     "subskill": "one_variable",
-    "prompt": "What is the greatest integer value of x that satisfies 11x + 26 ≤ 48?",
+    "prompt": "A car rental costs $45 plus $4 per day. Keiko can spend at most $98. What is the maximum number of whole days Keiko can rent the car?",
     "choices": [
       {
         "id": "A",
-        "text": "3",
-        "rationale": "x=3 makes the left side exceed 48."
+        "text": "14",
+        "rationale": "That many days would exceed the budget."
       },
       {
         "id": "B",
-        "text": "2",
-        "rationale": "Correct."
+        "text": "24",
+        "rationale": "Subtract the fixed cost before dividing by the daily rate."
       },
       {
         "id": "C",
-        "text": "22",
-        "rationale": "This is 11x; divide by 11."
+        "text": "12",
+        "rationale": "One more day still fits the budget."
       },
       {
         "id": "D",
-        "text": "1",
-        "rationale": "This satisfies the inequality but is not the greatest such value."
+        "text": "13",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Subtract 26: 11x ≤ 22. Divide by 11: x ≤ 2. The greatest integer is 2.",
-    "estimated_time_seconds": 70,
+    "correct_choice": "D",
+    "explanation": "45 + 4d ≤ 98 → d ≤ (98 − 45)/4 = 13.25, so d = 13.",
+    "estimated_time_seconds": 90,
     "tags": [
       "algebra",
-      "inequality"
+      "inequality",
+      "word-problem",
+      "family:li_word_max"
     ],
-    "answer_verification": "x<= 2"
+    "answer_verification": "n=13"
   },
   {
     "question_id": "sat-math-linear-inequalities-medium-q17",
@@ -714,38 +710,40 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "one_variable",
-    "prompt": "What is the greatest integer value of x that satisfies 4x + 8 ≤ 68?",
+    "subskill": "graph_regions",
+    "prompt": "Which of the following ordered pairs (x, y) is a solution to the inequality y ≤ −3x − 6?",
     "choices": [
       {
         "id": "A",
-        "text": "14",
-        "rationale": "This satisfies the inequality but is not the greatest such value."
+        "text": "(−5, −3)",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "16",
-        "rationale": "x=16 makes the left side exceed 68."
+        "text": "(4, −1)",
+        "rationale": "−1 ≤ −18 is false."
       },
       {
         "id": "C",
-        "text": "60",
-        "rationale": "This is 4x; divide by 4."
+        "text": "(2, 3)",
+        "rationale": "3 ≤ −12 is false."
       },
       {
         "id": "D",
-        "text": "15",
-        "rationale": "Correct."
+        "text": "(3, −8)",
+        "rationale": "−8 ≤ −15 is false."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Subtract 8: 4x ≤ 60. Divide by 4: x ≤ 15. The greatest integer is 15.",
-    "estimated_time_seconds": 70,
+    "correct_choice": "A",
+    "explanation": "Substitute (−5, −3): −3 ≤ −3(−5) − 6 = 9 is true.",
+    "estimated_time_seconds": 90,
     "tags": [
       "algebra",
-      "inequality"
+      "inequality",
+      "graph",
+      "family:li_ordered_pair"
     ],
-    "answer_verification": "x<= 15"
+    "answer_verification": "(-5,-3) satisfies y ≤ -3x+-6"
   },
   {
     "question_id": "sat-math-linear-inequalities-medium-q18",
@@ -757,39 +755,26 @@
     "lesson_id": "sat-math-linear-inequalities-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "student_produced",
     "subskill": "one_variable",
-    "prompt": "What is the greatest integer value of x that satisfies 7x + 10 ≤ 115?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "15",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "105",
-        "rationale": "This is 7x; divide by 7."
-      },
-      {
-        "id": "C",
-        "text": "16",
-        "rationale": "x=16 makes the left side exceed 115."
-      },
-      {
-        "id": "D",
-        "text": "14",
-        "rationale": "This satisfies the inequality but is not the greatest such value."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "Subtract 10: 7x ≤ 105. Divide by 7: x ≤ 15. The greatest integer is 15.",
-    "estimated_time_seconds": 70,
+    "prompt": "What is the least integer value of x for which −9x + 14 ≤ −157?",
+    "answer": {
+      "type": "numeric",
+      "value": 19,
+      "accepted": [
+        "19"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "−9x ≤ −171; dividing by −9 flips the sign: x ≥ 19.",
+    "estimated_time_seconds": 75,
     "tags": [
       "algebra",
-      "inequality"
+      "inequality",
+      "grid-in",
+      "family:li_gridin"
     ],
-    "answer_verification": "x<= 15"
+    "answer_verification": "val=19"
   },
   {
     "question_id": "sat-math-linear-inequalities-medium-q19",
@@ -803,37 +788,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "one_variable",
-    "prompt": "What is the greatest integer value of x that satisfies 9x + 21 ≤ 102?",
+    "prompt": "If −2x + 29 ≤ 25, what is the least possible integer value of x?",
     "choices": [
       {
         "id": "A",
-        "text": "81",
-        "rationale": "This is 9x; divide by 9."
+        "text": "3",
+        "rationale": "This works but is not the least such value."
       },
       {
         "id": "B",
-        "text": "10",
-        "rationale": "x=10 makes the left side exceed 102."
+        "text": "1",
+        "rationale": "This value does not satisfy the inequality."
       },
       {
         "id": "C",
-        "text": "9",
-        "rationale": "Correct."
+        "text": "-2",
+        "rationale": "Sign slip; the solution is positive."
       },
       {
         "id": "D",
-        "text": "8",
-        "rationale": "This satisfies the inequality but is not the greatest such value."
+        "text": "2",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Subtract 21: 9x ≤ 81. Divide by 9: x ≤ 9. The greatest integer is 9.",
-    "estimated_time_seconds": 70,
+    "correct_choice": "D",
+    "explanation": "Subtract 29: −2x ≤ −4. Dividing by −2 flips the sign: x ≥ 2. The least integer is 2.",
+    "estimated_time_seconds": 80,
     "tags": [
       "algebra",
-      "inequality"
+      "inequality",
+      "family:li_extreme_integer"
     ],
-    "answer_verification": "x<= 9"
+    "answer_verification": "-2x + 29 ≤ 25 -> least 2"
   },
   {
     "question_id": "sat-math-linear-inequalities-medium-q20",
@@ -847,36 +833,37 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "one_variable",
-    "prompt": "What is the greatest integer value of x that satisfies 3x + 29 ≤ 59?",
+    "prompt": "Which of the following describes all solutions to −9x + 11 ≤ −7?",
     "choices": [
       {
         "id": "A",
-        "text": "30",
-        "rationale": "This is 3x; divide by 3."
+        "text": "x ≤ 2",
+        "rationale": "The direction of the inequality is reversed."
       },
       {
         "id": "B",
-        "text": "9",
-        "rationale": "This satisfies the inequality but is not the greatest such value."
+        "text": "x ≥ 2",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "11",
-        "rationale": "x=11 makes the left side exceed 59."
+        "text": "x ≤ −2",
+        "rationale": "Both the direction and the sign are wrong."
       },
       {
         "id": "D",
-        "text": "10",
-        "rationale": "Correct."
+        "text": "x ≥ −2",
+        "rationale": "Sign slip on the boundary value."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Subtract 29: 3x ≤ 30. Divide by 3: x ≤ 10. The greatest integer is 10.",
-    "estimated_time_seconds": 70,
+    "correct_choice": "B",
+    "explanation": "Subtract 11: −9x ≤ −18. Dividing by −9 flips the inequality: x ≥ 2.",
+    "estimated_time_seconds": 75,
     "tags": [
       "algebra",
-      "inequality"
+      "inequality",
+      "family:li_solution_set"
     ],
-    "answer_verification": "x<= 10"
+    "answer_verification": "-9x + 11 ≤ -7 -> x ≥ 2"
   }
 ]

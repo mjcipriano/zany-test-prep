@@ -255,12 +255,21 @@ def validate_exam(exam_id, rep: Report):
         if not (10 <= q["estimated_time_seconds"] <= 600):
             rep.err(f"{where}: estimated_time_seconds out of range")
 
-        # near-duplicate detection (prompt + sorted choices + stimulus head)
+        # near-duplicate detection (prompt + sorted choices + stimulus head +
+        # table data + grid-in answer: two items that share a prompt but ask
+        # about different numbers are different questions)
         sig_parts = [normalize_prompt(q.get("prompt", ""))]
         sig_parts += sorted(normalize_prompt(t) for t in choice_texts)
         stim = q.get("stimulus") or {}
         if stim.get("text"):
             sig_parts.append(normalize_prompt(stim["text"])[:80])
+        if stim.get("table"):
+            cells = [str(c) for row in stim["table"].get("rows", []) for c in row]
+            sig_parts.append(normalize_prompt(" ".join(cells))[:160])
+        if stim.get("figure"):
+            sig_parts.append(normalize_prompt(json.dumps(stim["figure"], sort_keys=True))[:160])
+        if q.get("answer") is not None:
+            sig_parts.append("ans=" + normalize_prompt(str(q["answer"].get("value", ""))))
         sig = "|".join(sig_parts)
         if sig in prompt_index:
             dup_prompts += 1
@@ -316,9 +325,13 @@ def validate_exam(exam_id, rep: Report):
         rep.err(f"need >= {MIN_LESSONS} lessons, found {len(lessons)}")
     if len(questions) < MIN_QUESTIONS:
         rep.err(f"need >= {MIN_QUESTIONS} questions, found {len(questions)}")
+    # exam.yaml may lower the floor for a domain made only of authored items
+    # (e.g. ACT reading reuses the shared passage pool): validation.min_per_domain.
+    overrides = (exam.get("validation") or {}).get("min_per_domain") or {}
     for d in sorted(domain_ids):
-        if by_domain.get(d, 0) < MIN_PER_DOMAIN:
-            rep.err(f"need >= {MIN_PER_DOMAIN} {d} questions, found {by_domain.get(d, 0)}")
+        floor = int(overrides.get(d, MIN_PER_DOMAIN))
+        if by_domain.get(d, 0) < floor:
+            rep.err(f"need >= {floor} {d} questions, found {by_domain.get(d, 0)}")
 
     # --- answer-position and length-tell balance ---
     # A well-shuffled bank spreads the correct answer roughly evenly across

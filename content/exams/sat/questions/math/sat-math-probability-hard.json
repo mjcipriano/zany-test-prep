@@ -11,37 +11,37 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "A bag contains 7 red, 2 blue, and 6 green marbles. If two marbles are drawn at random without replacement, what is the probability that both are blue?",
+    "prompt": "In a survey, 20% of respondents own a bicycle, 10% own a scooter, and 5% own both. If a respondent is selected at random, what is the probability that the respondent owns a bicycle or a scooter (or both)?",
     "choices": [
       {
         "id": "A",
-        "text": "1/105",
-        "rationale": "Correct."
+        "text": "3/10",
+        "rationale": "Subtract the overlap; it was counted twice."
       },
       {
         "id": "B",
-        "text": "4/225",
-        "rationale": "Without replacement the second draw has one fewer marble of that colour and one fewer total."
+        "text": "7/20",
+        "rationale": "The overlap is subtracted, not added."
       },
       {
         "id": "C",
-        "text": "2/225",
-        "rationale": "Reduce the total by one on the second draw as well."
+        "text": "1/4",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "2/15",
-        "rationale": "This is the probability for a single draw, not two."
+        "text": "1/20",
+        "rationale": "That is P(both), not P(either)."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "P(both blue) = 2/15 × 1/14 = 1/105.",
-    "estimated_time_seconds": 95,
+    "correct_choice": "C",
+    "explanation": "P(A or B) = P(A) + P(B) − P(A and B) = (20 + 10 − 5)/100 = 1/4.",
+    "estimated_time_seconds": 90,
     "tags": [
       "probability",
-      "without-replacement"
+      "family:pb_single"
     ],
-    "answer_verification": "P=1/105"
+    "answer_verification": "P=1/4"
   },
   {
     "question_id": "sat-math-probability-hard-q02",
@@ -55,37 +55,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "A bag contains 5 red, 12 blue, and 2 green marbles. If two marbles are drawn at random without replacement, what is the probability that both are red?",
+    "prompt": "A bag contains 4 green, 8 yellow, and 3 blue beads. Two beads are drawn at random without replacement. What is the probability that the first is yellow and the second is blue?",
     "choices": [
       {
         "id": "A",
-        "text": "10/171",
+        "text": "4/35",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "20/361",
-        "rationale": "Reduce the total by one on the second draw as well."
+        "text": "8/75",
+        "rationale": "The second draw is from 14 beads, not 15."
       },
       {
         "id": "C",
-        "text": "5/19",
-        "rationale": "This is the probability for a single draw, not two."
+        "text": "11/15",
+        "rationale": "'And' for two draws multiplies; it doesn't add."
       },
       {
         "id": "D",
-        "text": "25/361",
-        "rationale": "Without replacement the second draw has one fewer marble of that colour and one fewer total."
+        "text": "8/105",
+        "rationale": "The blue count doesn't drop after drawing a yellow."
       }
     ],
     "correct_choice": "A",
-    "explanation": "P(both red) = 5/19 × 4/18 = 10/171.",
-    "estimated_time_seconds": 95,
+    "explanation": "P = 8/15 × 3/14 = 4/35.",
+    "estimated_time_seconds": 100,
     "tags": [
       "probability",
-      "without-replacement"
+      "without-replacement",
+      "family:pb_compound"
     ],
-    "answer_verification": "P=10/171"
+    "answer_verification": "P=4/35"
   },
   {
     "question_id": "sat-math-probability-hard-q03",
@@ -99,37 +100,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "A bag contains 8 red, 5 blue, and 7 green marbles. If two marbles are drawn at random without replacement, what is the probability that both are blue?",
+    "prompt": "In a random sample of 400 light bulbs from a factory, 36 were defective. Based on the sample, approximately how many defective bulbs would be expected in a shipment of 1000 bulbs?",
     "choices": [
       {
         "id": "A",
-        "text": "1/19",
-        "rationale": "Correct."
+        "text": "360",
+        "rationale": "Divide by the sample size 400, not by 100."
       },
       {
         "id": "B",
-        "text": "1/16",
-        "rationale": "Without replacement the second draw has one fewer marble of that colour and one fewer total."
+        "text": "180",
+        "rationale": "Use the fraction defective (k/n), not n/k."
       },
       {
         "id": "C",
-        "text": "1/20",
-        "rationale": "Reduce the total by one on the second draw as well."
+        "text": "36",
+        "rationale": "That is the number defective in the sample, not the shipment."
       },
       {
         "id": "D",
-        "text": "1/4",
-        "rationale": "This is the probability for a single draw, not two."
+        "text": "90",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "P(both blue) = 5/20 × 4/19 = 1/19.",
-    "estimated_time_seconds": 95,
+    "correct_choice": "D",
+    "explanation": "Sample rate = 36/400 = 9/100; × 1000 = 90.",
+    "estimated_time_seconds": 80,
     "tags": [
       "probability",
-      "without-replacement"
+      "expected",
+      "family:pb_expected"
     ],
-    "answer_verification": "P=1/19"
+    "answer_verification": "val=90"
   },
   {
     "question_id": "sat-math-probability-hard-q04",
@@ -141,39 +143,72 @@
     "lesson_id": "sat-math-probability-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "simple_probability",
-    "prompt": "A bag contains 8 red, 10 blue, and 2 green marbles. If two marbles are drawn at random without replacement, what is the probability that both are red?",
+    "question_type": "data_interpretation",
+    "subskill": "two_way_tables",
+    "prompt": "The table summarizes 84 responses. If a response in the Prefers tea category is selected at random, what is the probability that it is from the Online group?",
     "choices": [
       {
         "id": "A",
-        "text": "2/5",
-        "rationale": "This is the probability for a single draw, not two."
+        "text": "13/54",
+        "rationale": "Condition on the column, not the row."
       },
       {
         "id": "B",
-        "text": "4/25",
-        "rationale": "Without replacement the second draw has one fewer marble of that colour and one fewer total."
+        "text": "12/25",
+        "rationale": "That is the probability of the In store group within the column."
       },
       {
         "id": "C",
-        "text": "7/50",
-        "rationale": "Reduce the total by one on the second draw as well."
+        "text": "13/84",
+        "rationale": "Condition on the column total, not the grand total."
       },
       {
         "id": "D",
-        "text": "14/95",
+        "text": "13/25",
         "rationale": "Correct."
       }
     ],
     "correct_choice": "D",
-    "explanation": "P(both red) = 8/20 × 7/19 = 14/95.",
-    "estimated_time_seconds": 95,
+    "explanation": "Restrict to the Prefers tea column (25 responses); 13 are Online: 13/25.",
+    "estimated_time_seconds": 90,
     "tags": [
       "probability",
-      "without-replacement"
+      "table",
+      "family:pb_table"
     ],
-    "answer_verification": "P=14/95"
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Survey results",
+        "headers": [
+          "",
+          "Prefers tea",
+          "Prefers coffee",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Online",
+            "13",
+            "41",
+            "54"
+          ],
+          [
+            "In store",
+            "12",
+            "18",
+            "30"
+          ],
+          [
+            "Total",
+            "25",
+            "59",
+            "84"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "P=13/25"
   },
   {
     "question_id": "sat-math-probability-hard-q05",
@@ -185,39 +220,25 @@
     "lesson_id": "sat-math-probability-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "student_produced",
     "subskill": "simple_probability",
-    "prompt": "A bag contains 4 red, 8 blue, and 6 green marbles. If two marbles are drawn at random without replacement, what is the probability that both are blue?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "4/9",
-        "rationale": "This is the probability for a single draw, not two."
-      },
-      {
-        "id": "B",
-        "text": "16/81",
-        "rationale": "Without replacement the second draw has one fewer marble of that colour and one fewer total."
-      },
-      {
-        "id": "C",
-        "text": "28/153",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "14/81",
-        "rationale": "Reduce the total by one on the second draw as well."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "P(both blue) = 8/18 × 7/17 = 28/153.",
-    "estimated_time_seconds": 95,
+    "prompt": "The probability that a randomly selected customer uses a coupon is 5%. Of 80 customers, how many are expected to use a coupon?",
+    "answer": {
+      "type": "numeric",
+      "value": 4,
+      "accepted": [
+        "4"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "5/100 × 80 = 4.",
+    "estimated_time_seconds": 80,
     "tags": [
       "probability",
-      "without-replacement"
+      "grid-in",
+      "family:pb_gridin"
     ],
-    "answer_verification": "P=28/153"
+    "answer_verification": "val=4"
   },
   {
     "question_id": "sat-math-probability-hard-q06",
@@ -231,37 +252,37 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "A bag contains 2 red, 5 blue, and 4 green marbles. If two marbles are drawn at random without replacement, what is the probability that both are blue?",
+    "prompt": "In a survey, 35% of respondents own a bicycle, 15% own a scooter, and 10% own both. If a respondent is selected at random, what is the probability that the respondent owns a bicycle or a scooter (or both)?",
     "choices": [
       {
         "id": "A",
-        "text": "20/121",
-        "rationale": "Reduce the total by one on the second draw as well."
+        "text": "1/10",
+        "rationale": "That is P(both), not P(either)."
       },
       {
         "id": "B",
-        "text": "2/11",
+        "text": "2/5",
         "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "5/11",
-        "rationale": "This is the probability for a single draw, not two."
+        "text": "1/2",
+        "rationale": "Subtract the overlap; it was counted twice."
       },
       {
         "id": "D",
-        "text": "25/121",
-        "rationale": "Without replacement the second draw has one fewer marble of that colour and one fewer total."
+        "text": "3/5",
+        "rationale": "The overlap is subtracted, not added."
       }
     ],
     "correct_choice": "B",
-    "explanation": "P(both blue) = 5/11 × 4/10 = 2/11.",
-    "estimated_time_seconds": 95,
+    "explanation": "P(A or B) = P(A) + P(B) − P(A and B) = (35 + 15 − 10)/100 = 2/5.",
+    "estimated_time_seconds": 90,
     "tags": [
       "probability",
-      "without-replacement"
+      "family:pb_single"
     ],
-    "answer_verification": "P=2/11"
+    "answer_verification": "P=2/5"
   },
   {
     "question_id": "sat-math-probability-hard-q07",
@@ -275,37 +296,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "A bag contains 5 red, 14 blue, and 10 green marbles. If two marbles are drawn at random without replacement, what is the probability that both are blue?",
+    "prompt": "A bag contains 10 yellow, 5 blue, and 3 orange balls. Two balls are drawn at random without replacement. What is the probability that the first is yellow and the second is blue?",
     "choices": [
       {
         "id": "A",
-        "text": "13/58",
-        "rationale": "Correct."
+        "text": "25/162",
+        "rationale": "The second draw is from 17 balls, not 18."
       },
       {
         "id": "B",
-        "text": "14/29",
-        "rationale": "This is the probability for a single draw, not two."
+        "text": "25/153",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "182/841",
-        "rationale": "Reduce the total by one on the second draw as well."
+        "text": "5/6",
+        "rationale": "'And' for two draws multiplies; it doesn't add."
       },
       {
         "id": "D",
-        "text": "196/841",
-        "rationale": "Without replacement the second draw has one fewer marble of that colour and one fewer total."
+        "text": "20/153",
+        "rationale": "The blue count doesn't drop after drawing a yellow."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "P(both blue) = 14/29 × 13/28 = 13/58.",
-    "estimated_time_seconds": 95,
+    "correct_choice": "B",
+    "explanation": "P = 10/18 × 5/17 = 25/153.",
+    "estimated_time_seconds": 100,
     "tags": [
       "probability",
-      "without-replacement"
+      "without-replacement",
+      "family:pb_compound"
     ],
-    "answer_verification": "P=13/58"
+    "answer_verification": "P=25/153"
   },
   {
     "question_id": "sat-math-probability-hard-q08",
@@ -319,37 +341,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "A bag contains 8 red, 7 blue, and 9 green marbles. If two marbles are drawn at random without replacement, what is the probability that both are blue?",
+    "prompt": "In a random sample of 200 light bulbs from a factory, 14 were defective. Based on the sample, approximately how many defective bulbs would be expected in a shipment of 1500 bulbs?",
     "choices": [
       {
         "id": "A",
-        "text": "7/24",
-        "rationale": "This is the probability for a single draw, not two."
+        "text": "120",
+        "rationale": "Arithmetic slip; recompute k/n × 1500."
       },
       {
         "id": "B",
-        "text": "7/96",
-        "rationale": "Reduce the total by one on the second draw as well."
+        "text": "210",
+        "rationale": "Use the fraction defective (k/n), not n/k."
       },
       {
         "id": "C",
-        "text": "49/576",
-        "rationale": "Without replacement the second draw has one fewer marble of that colour and one fewer total."
+        "text": "14",
+        "rationale": "That is the number defective in the sample, not the shipment."
       },
       {
         "id": "D",
-        "text": "7/92",
+        "text": "105",
         "rationale": "Correct."
       }
     ],
     "correct_choice": "D",
-    "explanation": "P(both blue) = 7/24 × 6/23 = 7/92.",
-    "estimated_time_seconds": 95,
+    "explanation": "Sample rate = 14/200 = 7/100; × 1500 = 105.",
+    "estimated_time_seconds": 80,
     "tags": [
       "probability",
-      "without-replacement"
+      "expected",
+      "family:pb_expected"
     ],
-    "answer_verification": "P=7/92"
+    "answer_verification": "val=105"
   },
   {
     "question_id": "sat-math-probability-hard-q09",
@@ -361,39 +384,72 @@
     "lesson_id": "sat-math-probability-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "simple_probability",
-    "prompt": "A bag contains 5 red, 13 blue, and 10 green marbles. If two marbles are drawn at random without replacement, what is the probability that both are blue?",
+    "question_type": "data_interpretation",
+    "subskill": "two_way_tables",
+    "prompt": "The table summarizes 122 responses. If a response in the Yes category is selected at random, what is the probability that it is from the Adults group?",
     "choices": [
       {
         "id": "A",
-        "text": "13/28",
-        "rationale": "This is the probability for a single draw, not two."
+        "text": "43/122",
+        "rationale": "Condition on the column total, not the grand total."
       },
       {
         "id": "B",
-        "text": "13/63",
+        "text": "43/74",
         "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "169/784",
-        "rationale": "Without replacement the second draw has one fewer marble of that colour and one fewer total."
+        "text": "43/72",
+        "rationale": "Condition on the column, not the row."
       },
       {
         "id": "D",
-        "text": "39/196",
-        "rationale": "Reduce the total by one on the second draw as well."
+        "text": "31/74",
+        "rationale": "That is the probability of the Children group within the column."
       }
     ],
     "correct_choice": "B",
-    "explanation": "P(both blue) = 13/28 × 12/27 = 13/63.",
-    "estimated_time_seconds": 95,
+    "explanation": "Restrict to the Yes column (74 responses); 43 are Adults: 43/74.",
+    "estimated_time_seconds": 90,
     "tags": [
       "probability",
-      "without-replacement"
+      "table",
+      "family:pb_table"
     ],
-    "answer_verification": "P=13/63"
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Survey results",
+        "headers": [
+          "",
+          "Yes",
+          "No",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Adults",
+            "43",
+            "29",
+            "72"
+          ],
+          [
+            "Children",
+            "31",
+            "19",
+            "50"
+          ],
+          [
+            "Total",
+            "74",
+            "48",
+            "122"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "P=43/74"
   },
   {
     "question_id": "sat-math-probability-hard-q10",
@@ -405,39 +461,25 @@
     "lesson_id": "sat-math-probability-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "student_produced",
     "subskill": "simple_probability",
-    "prompt": "A bag contains 7 red, 11 blue, and 6 green marbles. If two marbles are drawn at random without replacement, what is the probability that both are blue?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "55/276",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "121/576",
-        "rationale": "Without replacement the second draw has one fewer marble of that colour and one fewer total."
-      },
-      {
-        "id": "C",
-        "text": "55/288",
-        "rationale": "Reduce the total by one on the second draw as well."
-      },
-      {
-        "id": "D",
-        "text": "11/24",
-        "rationale": "This is the probability for a single draw, not two."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "P(both blue) = 11/24 × 10/23 = 55/276.",
-    "estimated_time_seconds": 95,
+    "prompt": "The probability that a randomly selected customer uses a coupon is 20%. Of 60 customers, how many are expected to use a coupon?",
+    "answer": {
+      "type": "numeric",
+      "value": 12,
+      "accepted": [
+        "12"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "20/100 × 60 = 12.",
+    "estimated_time_seconds": 80,
     "tags": [
       "probability",
-      "without-replacement"
+      "grid-in",
+      "family:pb_gridin"
     ],
-    "answer_verification": "P=55/276"
+    "answer_verification": "val=12"
   },
   {
     "question_id": "sat-math-probability-hard-q11",
@@ -451,37 +493,37 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "A bag contains 14 red, 13 blue, and 5 green marbles. If two marbles are drawn at random without replacement, what is the probability that both are red?",
+    "prompt": "In a survey, 45% of respondents own a bicycle, 30% own a scooter, and 10% own both. If a respondent is selected at random, what is the probability that the respondent owns a bicycle or a scooter (or both)?",
     "choices": [
       {
         "id": "A",
-        "text": "7/16",
-        "rationale": "This is the probability for a single draw, not two."
+        "text": "17/20",
+        "rationale": "The overlap is subtracted, not added."
       },
       {
         "id": "B",
-        "text": "49/256",
-        "rationale": "Without replacement the second draw has one fewer marble of that colour and one fewer total."
+        "text": "3/4",
+        "rationale": "Subtract the overlap; it was counted twice."
       },
       {
         "id": "C",
-        "text": "91/512",
-        "rationale": "Reduce the total by one on the second draw as well."
+        "text": "13/20",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "91/496",
-        "rationale": "Correct."
+        "text": "1/10",
+        "rationale": "That is P(both), not P(either)."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "P(both red) = 14/32 × 13/31 = 91/496.",
-    "estimated_time_seconds": 95,
+    "correct_choice": "C",
+    "explanation": "P(A or B) = P(A) + P(B) − P(A and B) = (45 + 30 − 10)/100 = 13/20.",
+    "estimated_time_seconds": 90,
     "tags": [
       "probability",
-      "without-replacement"
+      "family:pb_single"
     ],
-    "answer_verification": "P=91/496"
+    "answer_verification": "P=13/20"
   },
   {
     "question_id": "sat-math-probability-hard-q12",
@@ -495,37 +537,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "A bag contains 8 red, 14 blue, and 5 green marbles. If two marbles are drawn at random without replacement, what is the probability that both are red?",
+    "prompt": "A bag contains 11 green, 13 white, and 8 black balls. Two balls are drawn at random without replacement. What is the probability that both are green?",
     "choices": [
       {
         "id": "A",
-        "text": "28/351",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "56/729",
+        "text": "55/512",
         "rationale": "Reduce the total by one on the second draw as well."
       },
       {
+        "id": "B",
+        "text": "121/1024",
+        "rationale": "Without replacement, the second draw has one fewer green and one fewer total."
+      },
+      {
         "id": "C",
-        "text": "8/27",
-        "rationale": "This is the probability for a single draw, not two."
+        "text": "11/32",
+        "rationale": "This is the probability for a single draw."
       },
       {
         "id": "D",
-        "text": "64/729",
-        "rationale": "Without replacement the second draw has one fewer marble of that colour and one fewer total."
+        "text": "55/496",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "P(both red) = 8/27 × 7/26 = 28/351.",
-    "estimated_time_seconds": 95,
+    "correct_choice": "D",
+    "explanation": "P(both green) = 11/32 × 10/31 = 55/496.",
+    "estimated_time_seconds": 100,
     "tags": [
       "probability",
-      "without-replacement"
+      "without-replacement",
+      "family:pb_compound"
     ],
-    "answer_verification": "P=28/351"
+    "answer_verification": "P=55/496"
   },
   {
     "question_id": "sat-math-probability-hard-q13",
@@ -539,37 +582,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "A bag contains 12 red, 2 blue, and 1 green marbles. If two marbles are drawn at random without replacement, what is the probability that both are blue?",
+    "prompt": "In a random sample of 300 light bulbs from a factory, 21 were defective. Based on the sample, approximately how many defective bulbs would be expected in a shipment of 5000 bulbs?",
     "choices": [
       {
         "id": "A",
-        "text": "4/225",
-        "rationale": "Without replacement the second draw has one fewer marble of that colour and one fewer total."
+        "text": "21",
+        "rationale": "That is the number defective in the sample, not the shipment."
       },
       {
         "id": "B",
-        "text": "2/15",
-        "rationale": "This is the probability for a single draw, not two."
-      },
-      {
-        "id": "C",
-        "text": "1/105",
+        "text": "350",
         "rationale": "Correct."
       },
       {
+        "id": "C",
+        "text": "700",
+        "rationale": "Use the fraction defective (k/n), not n/k."
+      },
+      {
         "id": "D",
-        "text": "2/225",
-        "rationale": "Reduce the total by one on the second draw as well."
+        "text": "1050",
+        "rationale": "Divide by the sample size 300, not by 100."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "P(both blue) = 2/15 × 1/14 = 1/105.",
-    "estimated_time_seconds": 95,
+    "correct_choice": "B",
+    "explanation": "Sample rate = 21/300 = 7/100; × 5000 = 350.",
+    "estimated_time_seconds": 80,
     "tags": [
       "probability",
-      "without-replacement"
+      "expected",
+      "family:pb_expected"
     ],
-    "answer_verification": "P=1/105"
+    "answer_verification": "val=350"
   },
   {
     "question_id": "sat-math-probability-hard-q14",
@@ -581,39 +625,72 @@
     "lesson_id": "sat-math-probability-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "simple_probability",
-    "prompt": "A bag contains 14 red, 14 blue, and 4 green marbles. If two marbles are drawn at random without replacement, what is the probability that both are blue?",
+    "question_type": "data_interpretation",
+    "subskill": "two_way_tables",
+    "prompt": "The table summarizes 102 responses. If a response in the Prefers tea category is selected at random, what is the probability that it is from the Online group?",
     "choices": [
       {
         "id": "A",
-        "text": "91/496",
-        "rationale": "Correct."
+        "text": "20/41",
+        "rationale": "That is the probability of the In store group within the column."
       },
       {
         "id": "B",
-        "text": "91/512",
-        "rationale": "Reduce the total by one on the second draw as well."
+        "text": "21/40",
+        "rationale": "Condition on the column, not the row."
       },
       {
         "id": "C",
-        "text": "7/16",
-        "rationale": "This is the probability for a single draw, not two."
+        "text": "21/41",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "49/256",
-        "rationale": "Without replacement the second draw has one fewer marble of that colour and one fewer total."
+        "text": "7/34",
+        "rationale": "Condition on the column total, not the grand total."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "P(both blue) = 14/32 × 13/31 = 91/496.",
-    "estimated_time_seconds": 95,
+    "correct_choice": "C",
+    "explanation": "Restrict to the Prefers tea column (41 responses); 21 are Online: 21/41.",
+    "estimated_time_seconds": 90,
     "tags": [
       "probability",
-      "without-replacement"
+      "table",
+      "family:pb_table"
     ],
-    "answer_verification": "P=91/496"
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Survey results",
+        "headers": [
+          "",
+          "Prefers tea",
+          "Prefers coffee",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Online",
+            "21",
+            "19",
+            "40"
+          ],
+          [
+            "In store",
+            "20",
+            "42",
+            "62"
+          ],
+          [
+            "Total",
+            "41",
+            "61",
+            "102"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "P=21/41"
   },
   {
     "question_id": "sat-math-probability-hard-q15",
@@ -625,39 +702,25 @@
     "lesson_id": "sat-math-probability-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "student_produced",
     "subskill": "simple_probability",
-    "prompt": "A bag contains 14 red, 12 blue, and 6 green marbles. If two marbles are drawn at random without replacement, what is the probability that both are red?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "91/496",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "49/256",
-        "rationale": "Without replacement the second draw has one fewer marble of that colour and one fewer total."
-      },
-      {
-        "id": "C",
-        "text": "91/512",
-        "rationale": "Reduce the total by one on the second draw as well."
-      },
-      {
-        "id": "D",
-        "text": "7/16",
-        "rationale": "This is the probability for a single draw, not two."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "P(both red) = 14/32 × 13/31 = 91/496.",
-    "estimated_time_seconds": 95,
+    "prompt": "The probability that a randomly selected customer uses a coupon is 25%. Of 80 customers, how many are expected to use a coupon?",
+    "answer": {
+      "type": "numeric",
+      "value": 20,
+      "accepted": [
+        "20"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "25/100 × 80 = 20.",
+    "estimated_time_seconds": 80,
     "tags": [
       "probability",
-      "without-replacement"
+      "grid-in",
+      "family:pb_gridin"
     ],
-    "answer_verification": "P=91/496"
+    "answer_verification": "val=20"
   },
   {
     "question_id": "sat-math-probability-hard-q16",
@@ -671,37 +734,37 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "A bag contains 14 red, 11 blue, and 5 green marbles. If two marbles are drawn at random without replacement, what is the probability that both are blue?",
+    "prompt": "In a survey, 30% of respondents own a bicycle, 20% own a scooter, and 5% own both. If a respondent is selected at random, what is the probability that the respondent owns a bicycle or a scooter (or both)?",
     "choices": [
       {
         "id": "A",
-        "text": "11/87",
-        "rationale": "Correct."
+        "text": "11/20",
+        "rationale": "The overlap is subtracted, not added."
       },
       {
         "id": "B",
-        "text": "11/90",
-        "rationale": "Reduce the total by one on the second draw as well."
+        "text": "9/20",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "11/30",
-        "rationale": "This is the probability for a single draw, not two."
+        "text": "1/20",
+        "rationale": "That is P(both), not P(either)."
       },
       {
         "id": "D",
-        "text": "121/900",
-        "rationale": "Without replacement the second draw has one fewer marble of that colour and one fewer total."
+        "text": "1/2",
+        "rationale": "Subtract the overlap; it was counted twice."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "P(both blue) = 11/30 × 10/29 = 11/87.",
-    "estimated_time_seconds": 95,
+    "correct_choice": "B",
+    "explanation": "P(A or B) = P(A) + P(B) − P(A and B) = (30 + 20 − 5)/100 = 9/20.",
+    "estimated_time_seconds": 90,
     "tags": [
       "probability",
-      "without-replacement"
+      "family:pb_single"
     ],
-    "answer_verification": "P=11/87"
+    "answer_verification": "P=9/20"
   },
   {
     "question_id": "sat-math-probability-hard-q17",
@@ -715,37 +778,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "A bag contains 5 red, 5 blue, and 2 green marbles. If two marbles are drawn at random without replacement, what is the probability that both are red?",
+    "prompt": "A bag contains 10 purple, 14 orange, and 4 red chips. Two chips are drawn at random without replacement. What is the probability that the first is purple and the second is red?",
     "choices": [
       {
         "id": "A",
-        "text": "5/36",
-        "rationale": "Reduce the total by one on the second draw as well."
+        "text": "1/2",
+        "rationale": "'And' for two draws multiplies; it doesn't add."
       },
       {
         "id": "B",
-        "text": "5/33",
-        "rationale": "Correct."
+        "text": "5/98",
+        "rationale": "The second draw is from 27 chips, not 28."
       },
       {
         "id": "C",
-        "text": "25/144",
-        "rationale": "Without replacement the second draw has one fewer marble of that colour and one fewer total."
+        "text": "10/189",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "5/12",
-        "rationale": "This is the probability for a single draw, not two."
+        "text": "5/126",
+        "rationale": "The red count doesn't drop after drawing a purple."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "P(both red) = 5/12 × 4/11 = 5/33.",
-    "estimated_time_seconds": 95,
+    "correct_choice": "C",
+    "explanation": "P = 10/28 × 4/27 = 10/189.",
+    "estimated_time_seconds": 100,
     "tags": [
       "probability",
-      "without-replacement"
+      "without-replacement",
+      "family:pb_compound"
     ],
-    "answer_verification": "P=5/33"
+    "answer_verification": "P=10/189"
   },
   {
     "question_id": "sat-math-probability-hard-q18",
@@ -759,37 +823,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "A bag contains 10 red, 7 blue, and 6 green marbles. If two marbles are drawn at random without replacement, what is the probability that both are blue?",
+    "prompt": "In a random sample of 200 light bulbs from a factory, 6 were defective. Based on the sample, approximately how many defective bulbs would be expected in a shipment of 3000 bulbs?",
     "choices": [
       {
         "id": "A",
-        "text": "49/529",
-        "rationale": "Without replacement the second draw has one fewer marble of that colour and one fewer total."
+        "text": "180",
+        "rationale": "Use the fraction defective (k/n), not n/k."
       },
       {
         "id": "B",
-        "text": "21/253",
-        "rationale": "Correct."
+        "text": "120",
+        "rationale": "Arithmetic slip; recompute k/n × 3000."
       },
       {
         "id": "C",
-        "text": "42/529",
-        "rationale": "Reduce the total by one on the second draw as well."
+        "text": "6",
+        "rationale": "That is the number defective in the sample, not the shipment."
       },
       {
         "id": "D",
-        "text": "7/23",
-        "rationale": "This is the probability for a single draw, not two."
+        "text": "90",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "P(both blue) = 7/23 × 6/22 = 21/253.",
-    "estimated_time_seconds": 95,
+    "correct_choice": "D",
+    "explanation": "Sample rate = 6/200 = 3/100; × 3000 = 90.",
+    "estimated_time_seconds": 80,
     "tags": [
       "probability",
-      "without-replacement"
+      "expected",
+      "family:pb_expected"
     ],
-    "answer_verification": "P=21/253"
+    "answer_verification": "val=90"
   },
   {
     "question_id": "sat-math-probability-hard-q19",
@@ -801,39 +866,72 @@
     "lesson_id": "sat-math-probability-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "simple_probability",
-    "prompt": "A bag contains 6 red, 4 blue, and 1 green marbles. If two marbles are drawn at random without replacement, what is the probability that both are blue?",
+    "question_type": "data_interpretation",
+    "subskill": "two_way_tables",
+    "prompt": "The table summarizes 77 responses. If a response in the Passed category is selected at random, what is the probability that it is from the Online group?",
     "choices": [
       {
         "id": "A",
-        "text": "12/121",
-        "rationale": "Reduce the total by one on the second draw as well."
-      },
-      {
-        "id": "B",
-        "text": "4/11",
-        "rationale": "This is the probability for a single draw, not two."
-      },
-      {
-        "id": "C",
-        "text": "6/55",
+        "text": "6/37",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "31/37",
+        "rationale": "That is the probability of the In store group within the column."
+      },
+      {
+        "id": "C",
+        "text": "6/77",
+        "rationale": "Condition on the column total, not the grand total."
+      },
+      {
         "id": "D",
-        "text": "16/121",
-        "rationale": "Without replacement the second draw has one fewer marble of that colour and one fewer total."
+        "text": "6/29",
+        "rationale": "Condition on the column, not the row."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "P(both blue) = 4/11 × 3/10 = 6/55.",
-    "estimated_time_seconds": 95,
+    "correct_choice": "A",
+    "explanation": "Restrict to the Passed column (37 responses); 6 are Online: 6/37.",
+    "estimated_time_seconds": 90,
     "tags": [
       "probability",
-      "without-replacement"
+      "table",
+      "family:pb_table"
     ],
-    "answer_verification": "P=6/55"
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Survey results",
+        "headers": [
+          "",
+          "Passed",
+          "Failed",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Online",
+            "6",
+            "23",
+            "29"
+          ],
+          [
+            "In store",
+            "31",
+            "17",
+            "48"
+          ],
+          [
+            "Total",
+            "37",
+            "40",
+            "77"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "P=6/37"
   },
   {
     "question_id": "sat-math-probability-hard-q20",
@@ -845,38 +943,24 @@
     "lesson_id": "sat-math-probability-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "student_produced",
     "subskill": "simple_probability",
-    "prompt": "A bag contains 8 red, 4 blue, and 3 green marbles. If two marbles are drawn at random without replacement, what is the probability that both are blue?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "4/15",
-        "rationale": "This is the probability for a single draw, not two."
-      },
-      {
-        "id": "B",
-        "text": "4/75",
-        "rationale": "Reduce the total by one on the second draw as well."
-      },
-      {
-        "id": "C",
-        "text": "16/225",
-        "rationale": "Without replacement the second draw has one fewer marble of that colour and one fewer total."
-      },
-      {
-        "id": "D",
-        "text": "2/35",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "P(both blue) = 4/15 × 3/14 = 2/35.",
-    "estimated_time_seconds": 95,
+    "prompt": "The probability that a randomly selected customer uses a coupon is 25%. Of 40 customers, how many are expected to use a coupon?",
+    "answer": {
+      "type": "numeric",
+      "value": 10,
+      "accepted": [
+        "10"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "25/100 × 40 = 10.",
+    "estimated_time_seconds": 80,
     "tags": [
       "probability",
-      "without-replacement"
+      "grid-in",
+      "family:pb_gridin"
     ],
-    "answer_verification": "P=2/35"
+    "answer_verification": "val=10"
   }
 ]

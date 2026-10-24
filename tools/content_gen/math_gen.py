@@ -85,6 +85,9 @@ def _ask(rng, eq, var="x"):
 
 def _spr_num(prompt, value, **kw):
     """spr() for ints or Fractions; terminating fractions also accept a decimal."""
+    # A grid-in has no options, so a stem written for multiple choice is reworded.
+    prompt = prompt.replace("Which of the following is the solution to",
+                            "What is the solution to")
     if isinstance(value, Fraction):
         if value.denominator == 1:
             value = int(value)
@@ -485,27 +488,34 @@ _INTERP_CTX = [
 ]
 
 
+_INTERP_CTX_DOWN = [
+    ("The amount of fuel F, in gallons, left in a truck's tank after it has driven m miles is F = {b} − {m}m.",
+     "m", "the number of gallons of fuel used per mile driven", "the number of gallons in the tank before the trip began",
+     "the number of miles the truck has driven so far on the trip", "the amount of fuel left in the tank after driving m miles"),
+    ("The balance B, in dollars, of a gift card after it has been used to buy n coffees is B = {b} − {m}n.",
+     "n", "the price, in dollars, of one coffee", "the balance of the card before any coffees were bought",
+     "the number of coffees that have been bought with the card", "the balance remaining on the card after n coffees"),
+    ("The depth D, in centimeters, of water in a leaking tank t hours after it was filled is D = {b} − {m}t.",
+     "t", "the decrease in depth, in centimeters, each hour", "the depth of the water when the tank was full",
+     "the number of hours that have passed since the tank was filled", "the depth of the water in the tank after t hours"),
+    ("The distance R, in miles, remaining on a road trip after h hours of driving is R = {b} − {m}h.",
+     "h", "the number of miles driven each hour", "the total length of the trip, in miles",
+     "the number of hours that have been spent driving so far", "the distance remaining on the trip after h hours of driving"),
+]
+
+
 def le_interpret(rng, d):
     """Interpret the slope or intercept of a linear model in context."""
-    setup, var, slope_mean, int_mean, var_mean, total_mean = rng.choice(_INTERP_CTX)
+    setup, var, slope_mean, int_mean, var_mean, total_mean = rng.choice(
+        _INTERP_CTX_DOWN if d == "hard" else _INTERP_CTX)
     m, b = rng.randint(2, 60), rng.randint(5, 120)
     if d == "hard":
-        # Decreasing model, interpret the rate or the intercept.
-        setup = setup.replace("+ {b}", "").replace("= {m}", "= {b} − {m}")
-        setup = setup.replace("= {b} − {m}" + var, "= {b} − {m}" + var)
+        b = rng.randint(10, 60) * 10
     setup = setup.format(m=m, b=b)
     which = rng.choice(["slope", "intercept"])
     num = m if which == "slope" else b
     prompt = (f"{setup} Which of the following is the best interpretation of the "
               f"number {num} in this context?")
-    if d == "hard":
-        slope_mean = slope_mean.replace("cost per", "decrease in cost for each").replace(
-            "charge per", "decrease in charge for each").replace(
-            "weight of one", "decrease in weight for each").replace(
-            "hourly labor rate", "decrease in fee for each hour").replace(
-            "stretch, in inches, per gram", "decrease in length, in inches, per gram")
-        int_mean = int_mean.replace("fee charged for any rental", "cost when the rental lasts 0 hours").replace(
-            "base charge regardless of the number of guests", "charge when there are 0 guests")
     if which == "slope":
         correct, note = slope_mean, "The coefficient of the variable is the rate of change."
         ds = [(int_mean, "That describes the constant term (the value when the variable is 0)."),
@@ -660,6 +670,7 @@ def le_parallel_perp(rng, d):
         expl = expl.replace(" (rewrite as y = 0…: solve for y to see the slope −a/b)",
                             " (solve for y: the slope is −a/b)")
         ds = [(-1 / slope, "That is the perpendicular slope (negative reciprocal)."),
+              (-1 / slope - 1, "Recheck: parallel lines share the given slope exactly."),
               (-slope, "Parallel lines have the same slope, not the opposite sign."),
               (1 / slope, "Don't invert; parallel means equal slopes."),
               (slope + 1, "Recheck the slope of the given line.")]
@@ -667,6 +678,7 @@ def le_parallel_perp(rng, d):
         expl = (f"The given line has slope {num_str(slope)}; a perpendicular line has the "
                 f"negative reciprocal slope, {num_str(val)}.")
         ds = [(slope, "That is the parallel slope; perpendicular needs the negative reciprocal."),
+              (-1 / slope - 1, "Recheck the negative reciprocal; don't shift it."),
               (-slope, "Take the reciprocal as well as changing the sign."),
               (1 / slope, "Change the sign as well as taking the reciprocal."),
               (-1 / slope + 1, "Recheck the slope of the given line.")]
@@ -1573,10 +1585,11 @@ def fn_interpret(rng, d):
     setup, expr, correct, w1, w2, w3 = [s.format(m=m, b=b) if isinstance(s, str) else s for s in ctx]
     if d == "medium":
         prompt = f"{setup} Which of the following is the best interpretation of {expr} = {b}?"
-        ds = [(w1, "That would be an input (a time or count) set equal to the output, which reverses the roles."),
+        ds = [(f"the total change in the output of the function over the first {b} units of input",
+               "The constant term is a starting value, not a change over an interval."),
+              (w1, "That would be an input (a time or count) set equal to the output, which reverses the roles."),
               (w2, "That describes the coefficient of the variable, the rate of change."),
-              (w3, "The input {0} here is 0, not {1}.".format(expr[2], b)),
-              ("the maximum possible value of the function", "A linear model has no maximum in general; 0 is just the starting input.")]
+              (w3, "The input {0} here is 0, not {1}.".format(expr[2], b))]
         expl = f"{expr} is the output when the input is 0, so {b} is {correct}."
     else:
         k = rng.randint(2, 12)
@@ -1588,8 +1601,8 @@ def fn_interpret(rng, d):
                   f"in this model?")
         correct = w2
         ds = [(ctx[2].format(m=m, b=b), "That describes the constant term, the value at input 0."),
-              (f"the value of the function when {var} = {m}", f"{m} is a coefficient, not an input."),
-              (f"the input {var} for which the function equals {m}", "The number multiplies the variable; it is a rate, not an input."),
+              (f"the value of the function when the input {var} is equal to {m}", f"{m} is a coefficient, not an input."),
+              (f"the input {var} at which the output of the function is equal to {m}", "The number multiplies the variable; it is a rate, not an input."),
               (f"the total change in the output over {m} {'minutes' if var == 't' and 'tank' in setup else ('weeks' if var == 't' else 'posters')}",
                "The coefficient is the change per single unit of input.")]
         expl = f"In a linear model the coefficient of {var} is the rate of change: {correct}."
@@ -2908,9 +2921,10 @@ def pr_similar(rng, d):
         val = w * h * k * k
         expl = f"Scale factor {k}: new dimensions {w * k} by {h * k}, area {w * k}×{h * k} = {val}."
         ds = [(w * h * k, "Both dimensions scale, so area scales by k², not k."),
-              (w * k * h, "The height also scales by {0}.".format(k)),
+              (w * h * k ** 3, "Area scales by k², not k³ (that is for volume)."),
               (w * h, "That is the original area."),
-              (2 * (w * k + h * k), "That is the new perimeter, not the area.")]
+              (2 * (w * k + h * k), "That is the new perimeter, not the area."),
+              (w * k * h + w, "Arithmetic slip; recompute the scaled dimensions.")]
     return _numeric_mc(rng, prompt, val, ds, subskill="scaling", explanation=expl,
                        tags=["proportion", "similar"], est=80 if d != "hard" else 95,
                        verify=f"val={val}")
@@ -3236,10 +3250,10 @@ def da_statement(rng, d):
     i, j = order[0], order[-1]
     if d == "easy":
         correct = f"{hi} recorded more {unit} than any other {cat.lower()}."
-        ds = [(f"{lo} recorded more {unit} than {second}.", f"{lo} has the least value, {min(vals)}."),
-              (f"{second} recorded the greatest number of {unit}.", f"{hi} has {max(vals)}, more than {second}."),
-              (f"The total number of {unit} is {total + rng.randint(5, 20)}.", f"The values sum to {total}."),
-              (f"{hi} recorded fewer {unit} than {lo}.", f"{hi} has {max(vals)}, far more than {lo}'s {min(vals)}.")]
+        ds = [(f"{lo} recorded more {unit} than any other {cat.lower()}.", f"{lo} has the least value, {min(vals)}."),
+              (f"{second} recorded the greatest number of {unit} of any {cat.lower()}.", f"{hi} has {max(vals)}, more than {second}."),
+              (f"The total number of {unit} for all {n} {cat.lower()}s is {total + rng.randint(5, 20)}.", f"The values sum to {total}."),
+              (f"{hi} recorded fewer {unit} than {lo} recorded.", f"{hi} has {max(vals)}, far more than {lo}'s {min(vals)}.")]
         expl = f"{hi} has the largest value in the table ({max(vals)})."
     elif d == "medium":
         correct = f"{hi} recorded {max(vals) - min(vals)} more {unit} than {lo}."
@@ -3537,6 +3551,7 @@ def st_change_effect(rng, d):
     """Effect of adding/removing a value on the mean/median."""
     n = 5 if d != "hard" else 6
     data = sorted(_data_list(rng, n, 4, 40))
+    data[-1] += (n - sum(data) % n) % n
     s = sum(data)
     if d == "easy":
         add = rng.randint(1, 10)
@@ -4650,6 +4665,9 @@ def tr_word(rng, d):
     vals = {"sin": f"{opp}/{hyp}", "cos": f"{adj}/{hyp}", "tan": f"{opp}/{adj}"}
     ds = [(v, f"That is {r} θ.") for r, v in vals.items() if r != ratio]
     ds.append((f"{val.split('/')[1]}/{val.split('/')[0]}", f"This inverts {ratio} θ."))
+    for r, v in vals.items():
+        if r != ratio:
+            ds.append((f"{v.split('/')[1]}/{v.split('/')[0]}", f"That is the reciprocal of {r} θ."))
     expl = f"Relative to θ: opposite = {opp}, adjacent = {adj}, hypotenuse = {hyp}. {ratio} θ = {val}."
     return _numeric_mc(rng, prompt, val, ds, subskill="sohcahtoa", explanation=expl,
                        tags=["trigonometry", "word-problem"], fmt=str, est=85, verify=f"{ratio}={val}",

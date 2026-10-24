@@ -10,38 +10,39 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "scaling",
-    "prompt": "3 notebooks cost $6. At the same rate, how much do 18 notebooks cost?",
+    "subskill": "direct_proportion",
+    "prompt": "2 movie passes cost $24. At the same rate, how much do 10 movie passes cost, in dollars?",
     "choices": [
       {
         "id": "A",
-        "text": "21",
-        "rationale": "This adds the extra count instead of scaling by the rate."
+        "text": "32",
+        "rationale": "Each extra item costs the unit price, not $1."
       },
       {
         "id": "B",
-        "text": "30",
-        "rationale": "This prices only the additional items, not all of them."
-      },
-      {
-        "id": "C",
-        "text": "36",
+        "text": "120",
         "rationale": "Correct."
       },
       {
+        "id": "C",
+        "text": "240",
+        "rationale": "Divide by 2 to get the unit price first."
+      },
+      {
         "id": "D",
-        "text": "108",
-        "rationale": "You forgot to divide by the first quantity to get the unit rate."
+        "text": "96",
+        "rationale": "This prices only the extra items."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Unit rate = $6 ÷ 3 = $2 each, so 18 × $2 = $36.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "B",
+    "explanation": "Unit price = 24 ÷ 2 = $12; 10 × 12 = $120.",
+    "estimated_time_seconds": 90,
     "tags": [
       "proportion",
-      "unit-rate"
+      "rate",
+      "family:pr_direct"
     ],
-    "answer_verification": "cost=36"
+    "answer_verification": "val=120"
   },
   {
     "question_id": "sat-math-proportions-medium-q02",
@@ -54,38 +55,39 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "scaling",
-    "prompt": "5 notebooks cost $15. At the same rate, how much do 17 notebooks cost?",
+    "subskill": "direct_proportion",
+    "prompt": "If 2/10 = 6/x, what is the value of x?",
     "choices": [
       {
         "id": "A",
-        "text": "255",
-        "rationale": "You forgot to divide by the first quantity to get the unit rate."
+        "text": "14",
+        "rationale": "Scale multiplicatively."
       },
       {
         "id": "B",
-        "text": "51",
-        "rationale": "Correct."
+        "text": "60",
+        "rationale": "That is 2x; divide by 2."
       },
       {
         "id": "C",
-        "text": "36",
-        "rationale": "This prices only the additional items, not all of them."
+        "text": "6/5",
+        "rationale": "x is in the denominator here; cross-multiply carefully."
       },
       {
         "id": "D",
-        "text": "27",
-        "rationale": "This adds the extra count instead of scaling by the rate."
+        "text": "30",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Unit rate = $15 ÷ 5 = $3 each, so 17 × $3 = $51.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "D",
+    "explanation": "Cross-multiply: 2x = 10·6 = 60, so x = 30.",
+    "estimated_time_seconds": 70,
     "tags": [
       "proportion",
-      "unit-rate"
+      "solve",
+      "family:pr_solve"
     ],
-    "answer_verification": "cost=51"
+    "answer_verification": "x=30"
   },
   {
     "question_id": "sat-math-proportions-medium-q03",
@@ -99,37 +101,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "scaling",
-    "prompt": "4 notebooks cost $24. At the same rate, how much do 12 notebooks cost?",
+    "prompt": "It takes 4 painters 12 hours to paint a house. Working at the same rate, how many hours would it take 6 painters?",
     "choices": [
       {
         "id": "A",
-        "text": "32",
-        "rationale": "This adds the extra count instead of scaling by the rate."
+        "text": "12",
+        "rationale": "This ignores the change in the number of painters."
       },
       {
         "id": "B",
-        "text": "48",
-        "rationale": "This prices only the additional items, not all of them."
+        "text": "18",
+        "rationale": "More painters means less time; this scales the wrong way."
       },
       {
         "id": "C",
-        "text": "288",
-        "rationale": "You forgot to divide by the first quantity to get the unit rate."
+        "text": "48",
+        "rationale": "That is total painter-hours, not the time for 6 painters."
       },
       {
         "id": "D",
-        "text": "72",
+        "text": "8",
         "rationale": "Correct."
       }
     ],
     "correct_choice": "D",
-    "explanation": "Unit rate = $24 ÷ 4 = $6 each, so 12 × $6 = $72.",
-    "estimated_time_seconds": 85,
+    "explanation": "Total work = 4×12 = 48 painter-hours; ÷ 6 painters = 8 hours.",
+    "estimated_time_seconds": 95,
     "tags": [
       "proportion",
-      "unit-rate"
+      "inverse",
+      "family:pr_inverse"
     ],
-    "answer_verification": "cost=72"
+    "answer_verification": "val=8"
   },
   {
     "question_id": "sat-math-proportions-medium-q04",
@@ -143,37 +146,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "scaling",
-    "prompt": "6 bags cost $24. At the same rate, how much do 16 bags cost?",
+    "prompt": "Two triangles are similar. The sides of the smaller triangle are 9, 12, and 15. If the shortest side of the larger triangle is 45, what is the length of the middle side of the larger triangle?",
     "choices": [
       {
         "id": "A",
-        "text": "64",
-        "rationale": "Correct."
+        "text": "48",
+        "rationale": "Similar triangles scale by multiplying, not adding."
       },
       {
         "id": "B",
-        "text": "34",
-        "rationale": "This adds the extra count instead of scaling by the rate."
+        "text": "12/5",
+        "rationale": "Multiply by the scale factor; the larger triangle is bigger."
       },
       {
         "id": "C",
-        "text": "384",
-        "rationale": "You forgot to divide by the first quantity to get the unit rate."
+        "text": "75",
+        "rationale": "That is a different side of the larger triangle."
       },
       {
         "id": "D",
-        "text": "40",
-        "rationale": "This prices only the additional items, not all of them."
+        "text": "60",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Unit rate = $24 ÷ 6 = $4 each, so 16 × $4 = $64.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "D",
+    "explanation": "The scale factor is 45/9 = 5; 12 × 5 = 60.",
+    "estimated_time_seconds": 80,
     "tags": [
       "proportion",
-      "unit-rate"
+      "similar",
+      "family:pr_similar"
     ],
-    "answer_verification": "cost=64"
+    "answer_verification": "val=60"
   },
   {
     "question_id": "sat-math-proportions-medium-q05",
@@ -187,37 +191,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "scaling",
-    "prompt": "2 bags cost $4. At the same rate, how much do 7 bags cost?",
+    "prompt": "A recipe that serves 4 people calls for 3/4 cups of rice. How many cups of rice are needed to serve 10 people?",
     "choices": [
       {
         "id": "A",
-        "text": "10",
-        "rationale": "This prices only the additional items, not all of them."
+        "text": "27/4",
+        "rationale": "Scale multiplicatively, not by adding the extra servings."
       },
       {
         "id": "B",
-        "text": "14",
-        "rationale": "Correct."
+        "text": "3/10",
+        "rationale": "The recipe is scaled up, not down."
       },
       {
         "id": "C",
-        "text": "28",
-        "rationale": "You forgot to divide by the first quantity to get the unit rate."
+        "text": "15/8",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "9",
-        "rationale": "This adds the extra count instead of scaling by the rate."
+        "text": "15/2",
+        "rationale": "Divide by the original number of servings first."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Unit rate = $4 ÷ 2 = $2 each, so 7 × $2 = $14.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "C",
+    "explanation": "The recipe is scaled by 10/4 = 5/2; 3/4 × 5/2 = 15/8 cups.",
+    "estimated_time_seconds": 75,
     "tags": [
       "proportion",
-      "unit-rate"
+      "recipe",
+      "family:pr_recipe"
     ],
-    "answer_verification": "cost=14"
+    "answer_verification": "val=15/8"
   },
   {
     "question_id": "sat-math-proportions-medium-q06",
@@ -229,39 +234,25 @@
     "lesson_id": "sat-math-proportions-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "scaling",
-    "prompt": "6 tickets cost $36. At the same rate, how much do 19 tickets cost?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "114",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "49",
-        "rationale": "This adds the extra count instead of scaling by the rate."
-      },
-      {
-        "id": "C",
-        "text": "684",
-        "rationale": "You forgot to divide by the first quantity to get the unit rate."
-      },
-      {
-        "id": "D",
-        "text": "78",
-        "rationale": "This prices only the additional items, not all of them."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "Unit rate = $36 ÷ 6 = $6 each, so 19 × $6 = $114.",
-    "estimated_time_seconds": 85,
+    "question_type": "student_produced",
+    "subskill": "direct_proportion",
+    "prompt": "5 identical tickets cost $25. How much, in dollars, do 15 of the same tickets cost?",
+    "answer": {
+      "type": "numeric",
+      "value": 75,
+      "accepted": [
+        "75"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "Each ticket is $5; 15 × 5 = 75.",
+    "estimated_time_seconds": 75,
     "tags": [
       "proportion",
-      "unit-rate"
+      "grid-in",
+      "family:pr_gridin"
     ],
-    "answer_verification": "cost=114"
+    "answer_verification": "val=75"
   },
   {
     "question_id": "sat-math-proportions-medium-q07",
@@ -274,38 +265,39 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "scaling",
-    "prompt": "2 bags cost $4. At the same rate, how much do 12 bags cost?",
+    "subskill": "direct_proportion",
+    "prompt": "If 4 notebooks cost $40, what is the cost, in dollars, of 13 notebooks at the same price each?",
     "choices": [
       {
         "id": "A",
-        "text": "20",
-        "rationale": "This prices only the additional items, not all of them."
+        "text": "49",
+        "rationale": "Each extra item costs the unit price, not $1."
       },
       {
         "id": "B",
-        "text": "24",
-        "rationale": "Correct."
+        "text": "520",
+        "rationale": "Divide by 4 to get the unit price first."
       },
       {
         "id": "C",
-        "text": "14",
-        "rationale": "This adds the extra count instead of scaling by the rate."
+        "text": "130",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "48",
-        "rationale": "You forgot to divide by the first quantity to get the unit rate."
+        "text": "90",
+        "rationale": "This prices only the extra items."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Unit rate = $4 ÷ 2 = $2 each, so 12 × $2 = $24.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "C",
+    "explanation": "Unit price = 40 ÷ 4 = $10; 13 × 10 = $130.",
+    "estimated_time_seconds": 90,
     "tags": [
       "proportion",
-      "unit-rate"
+      "rate",
+      "family:pr_direct"
     ],
-    "answer_verification": "cost=24"
+    "answer_verification": "val=130"
   },
   {
     "question_id": "sat-math-proportions-medium-q08",
@@ -318,38 +310,39 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "scaling",
-    "prompt": "3 bags cost $15. At the same rate, how much do 12 bags cost?",
+    "subskill": "direct_proportion",
+    "prompt": "If 12/12 = 84/x, what is the value of x?",
     "choices": [
       {
         "id": "A",
-        "text": "60",
-        "rationale": "Correct."
+        "text": "83",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
       },
       {
         "id": "B",
-        "text": "24",
-        "rationale": "This adds the extra count instead of scaling by the rate."
+        "text": "72",
+        "rationale": "Arithmetic slip; recheck."
       },
       {
         "id": "C",
-        "text": "45",
-        "rationale": "This prices only the additional items, not all of them."
+        "text": "1008",
+        "rationale": "That is 12x; divide by 12."
       },
       {
         "id": "D",
-        "text": "180",
-        "rationale": "You forgot to divide by the first quantity to get the unit rate."
+        "text": "84",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Unit rate = $15 ÷ 3 = $5 each, so 12 × $5 = $60.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "D",
+    "explanation": "Cross-multiply: 12x = 12·84 = 1008, so x = 84.",
+    "estimated_time_seconds": 70,
     "tags": [
       "proportion",
-      "unit-rate"
+      "solve",
+      "family:pr_solve"
     ],
-    "answer_verification": "cost=60"
+    "answer_verification": "x=84"
   },
   {
     "question_id": "sat-math-proportions-medium-q09",
@@ -363,37 +356,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "scaling",
-    "prompt": "5 notebooks cost $10. At the same rate, how much do 12 notebooks cost?",
+    "prompt": "It takes 6 painters 64 hours to paint a house. Working at the same rate, how many hours would it take 8 painters?",
     "choices": [
       {
         "id": "A",
-        "text": "120",
-        "rationale": "You forgot to divide by the first quantity to get the unit rate."
+        "text": "48",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "14",
-        "rationale": "This prices only the additional items, not all of them."
+        "text": "256/3",
+        "rationale": "More painters means less time; this scales the wrong way."
       },
       {
         "id": "C",
-        "text": "17",
-        "rationale": "This adds the extra count instead of scaling by the rate."
+        "text": "384",
+        "rationale": "That is total painter-hours, not the time for 8 painters."
       },
       {
         "id": "D",
-        "text": "24",
-        "rationale": "Correct."
+        "text": "64",
+        "rationale": "This ignores the change in the number of painters."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Unit rate = $10 ÷ 5 = $2 each, so 12 × $2 = $24.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "A",
+    "explanation": "Total work = 6×64 = 384 painter-hours; ÷ 8 painters = 48 hours.",
+    "estimated_time_seconds": 95,
     "tags": [
       "proportion",
-      "unit-rate"
+      "inverse",
+      "family:pr_inverse"
     ],
-    "answer_verification": "cost=24"
+    "answer_verification": "val=48"
   },
   {
     "question_id": "sat-math-proportions-medium-q10",
@@ -407,37 +401,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "scaling",
-    "prompt": "5 tickets cost $15. At the same rate, how much do 7 tickets cost?",
+    "prompt": "Two triangles are similar. The sides of the smaller triangle are 6, 8, and 10. If the shortest side of the larger triangle is 24, what is the length of the middle side of the larger triangle?",
     "choices": [
       {
         "id": "A",
-        "text": "105",
-        "rationale": "You forgot to divide by the first quantity to get the unit rate."
+        "text": "40",
+        "rationale": "That is a different side of the larger triangle."
       },
       {
         "id": "B",
-        "text": "6",
-        "rationale": "This prices only the additional items, not all of them."
+        "text": "2",
+        "rationale": "Multiply by the scale factor; the larger triangle is bigger."
       },
       {
         "id": "C",
-        "text": "21",
-        "rationale": "Correct."
+        "text": "26",
+        "rationale": "Similar triangles scale by multiplying, not adding."
       },
       {
         "id": "D",
-        "text": "17",
-        "rationale": "This adds the extra count instead of scaling by the rate."
+        "text": "32",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Unit rate = $15 ÷ 5 = $3 each, so 7 × $3 = $21.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "D",
+    "explanation": "The scale factor is 24/6 = 4; 8 × 4 = 32.",
+    "estimated_time_seconds": 80,
     "tags": [
       "proportion",
-      "unit-rate"
+      "similar",
+      "family:pr_similar"
     ],
-    "answer_verification": "cost=21"
+    "answer_verification": "val=32"
   },
   {
     "question_id": "sat-math-proportions-medium-q11",
@@ -451,37 +446,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "scaling",
-    "prompt": "2 tickets cost $6. At the same rate, how much do 8 tickets cost?",
+    "prompt": "A recipe that serves 2 people calls for 3/2 cups of milk. How many cups of milk are needed to serve 3 people?",
     "choices": [
       {
         "id": "A",
-        "text": "12",
-        "rationale": "This adds the extra count instead of scaling by the rate."
+        "text": "9/2",
+        "rationale": "Divide by the original number of servings first."
       },
       {
         "id": "B",
-        "text": "24",
+        "text": "9/4",
         "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "48",
-        "rationale": "You forgot to divide by the first quantity to get the unit rate."
+        "text": "1",
+        "rationale": "The recipe is scaled up, not down."
       },
       {
         "id": "D",
-        "text": "18",
-        "rationale": "This prices only the additional items, not all of them."
+        "text": "5/2",
+        "rationale": "Scale multiplicatively, not by adding the extra servings."
       }
     ],
     "correct_choice": "B",
-    "explanation": "Unit rate = $6 ÷ 2 = $3 each, so 8 × $3 = $24.",
-    "estimated_time_seconds": 85,
+    "explanation": "The recipe is scaled by 3/2 = 3/2; 3/2 × 3/2 = 9/4 cups.",
+    "estimated_time_seconds": 75,
     "tags": [
       "proportion",
-      "unit-rate"
+      "recipe",
+      "family:pr_recipe"
     ],
-    "answer_verification": "cost=24"
+    "answer_verification": "val=9/4"
   },
   {
     "question_id": "sat-math-proportions-medium-q12",
@@ -493,39 +489,25 @@
     "lesson_id": "sat-math-proportions-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "scaling",
-    "prompt": "6 notebooks cost $12. At the same rate, how much do 8 notebooks cost?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "16",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "14",
-        "rationale": "This adds the extra count instead of scaling by the rate."
-      },
-      {
-        "id": "C",
-        "text": "96",
-        "rationale": "You forgot to divide by the first quantity to get the unit rate."
-      },
-      {
-        "id": "D",
-        "text": "4",
-        "rationale": "This prices only the additional items, not all of them."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "Unit rate = $12 ÷ 6 = $2 each, so 8 × $2 = $16.",
-    "estimated_time_seconds": 85,
+    "question_type": "student_produced",
+    "subskill": "direct_proportion",
+    "prompt": "4 identical tickets cost $20. How much, in dollars, do 11 of the same tickets cost?",
+    "answer": {
+      "type": "numeric",
+      "value": 55,
+      "accepted": [
+        "55"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "Each ticket is $5; 11 × 5 = 55.",
+    "estimated_time_seconds": 75,
     "tags": [
       "proportion",
-      "unit-rate"
+      "grid-in",
+      "family:pr_gridin"
     ],
-    "answer_verification": "cost=16"
+    "answer_verification": "val=55"
   },
   {
     "question_id": "sat-math-proportions-medium-q13",
@@ -538,38 +520,39 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "scaling",
-    "prompt": "2 bags cost $12. At the same rate, how much do 15 bags cost?",
+    "subskill": "direct_proportion",
+    "prompt": "If 5 notebooks cost $50, what is the cost, in dollars, of 23 notebooks at the same price each?",
     "choices": [
       {
         "id": "A",
         "text": "180",
-        "rationale": "You forgot to divide by the first quantity to get the unit rate."
+        "rationale": "This prices only the extra items."
       },
       {
         "id": "B",
-        "text": "25",
-        "rationale": "This adds the extra count instead of scaling by the rate."
+        "text": "1150",
+        "rationale": "Divide by 5 to get the unit price first."
       },
       {
         "id": "C",
-        "text": "78",
-        "rationale": "This prices only the additional items, not all of them."
+        "text": "68",
+        "rationale": "Each extra item costs the unit price, not $1."
       },
       {
         "id": "D",
-        "text": "90",
+        "text": "230",
         "rationale": "Correct."
       }
     ],
     "correct_choice": "D",
-    "explanation": "Unit rate = $12 ÷ 2 = $6 each, so 15 × $6 = $90.",
-    "estimated_time_seconds": 85,
+    "explanation": "Unit price = 50 ÷ 5 = $10; 23 × 10 = $230.",
+    "estimated_time_seconds": 90,
     "tags": [
       "proportion",
-      "unit-rate"
+      "rate",
+      "family:pr_direct"
     ],
-    "answer_verification": "cost=90"
+    "answer_verification": "val=230"
   },
   {
     "question_id": "sat-math-proportions-medium-q14",
@@ -582,38 +565,39 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "scaling",
-    "prompt": "4 notebooks cost $24. At the same rate, how much do 11 notebooks cost?",
+    "subskill": "direct_proportion",
+    "prompt": "What value of x makes 12/2 and 72/x equal?",
     "choices": [
       {
         "id": "A",
-        "text": "31",
-        "rationale": "This adds the extra count instead of scaling by the rate."
+        "text": "62",
+        "rationale": "Scale multiplicatively."
       },
       {
         "id": "B",
-        "text": "42",
-        "rationale": "This prices only the additional items, not all of them."
+        "text": "432",
+        "rationale": "x is in the denominator here; cross-multiply carefully."
       },
       {
         "id": "C",
-        "text": "66",
-        "rationale": "Correct."
+        "text": "144",
+        "rationale": "That is 12x; divide by 12."
       },
       {
         "id": "D",
-        "text": "264",
-        "rationale": "You forgot to divide by the first quantity to get the unit rate."
+        "text": "12",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Unit rate = $24 ÷ 4 = $6 each, so 11 × $6 = $66.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "D",
+    "explanation": "Cross-multiply: 12x = 2·72 = 144, so x = 12.",
+    "estimated_time_seconds": 70,
     "tags": [
       "proportion",
-      "unit-rate"
+      "solve",
+      "family:pr_solve"
     ],
-    "answer_verification": "cost=66"
+    "answer_verification": "x=12"
   },
   {
     "question_id": "sat-math-proportions-medium-q15",
@@ -627,37 +611,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "scaling",
-    "prompt": "5 notebooks cost $30. At the same rate, how much do 12 notebooks cost?",
+    "prompt": "It takes 2 painters 10 hours to paint a house. Working at the same rate, how many hours would it take 5 painters?",
     "choices": [
       {
         "id": "A",
-        "text": "360",
-        "rationale": "You forgot to divide by the first quantity to get the unit rate."
+        "text": "25",
+        "rationale": "More painters means less time; this scales the wrong way."
       },
       {
         "id": "B",
-        "text": "72",
-        "rationale": "Correct."
+        "text": "20",
+        "rationale": "That is total painter-hours, not the time for 5 painters."
       },
       {
         "id": "C",
-        "text": "42",
-        "rationale": "This prices only the additional items, not all of them."
+        "text": "4",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "37",
-        "rationale": "This adds the extra count instead of scaling by the rate."
+        "text": "10",
+        "rationale": "This ignores the change in the number of painters."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Unit rate = $30 ÷ 5 = $6 each, so 12 × $6 = $72.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "C",
+    "explanation": "Total work = 2×10 = 20 painter-hours; ÷ 5 painters = 4 hours.",
+    "estimated_time_seconds": 95,
     "tags": [
       "proportion",
-      "unit-rate"
+      "inverse",
+      "family:pr_inverse"
     ],
-    "answer_verification": "cost=72"
+    "answer_verification": "val=4"
   },
   {
     "question_id": "sat-math-proportions-medium-q16",
@@ -671,37 +656,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "scaling",
-    "prompt": "5 tickets cost $15. At the same rate, how much do 17 tickets cost?",
+    "prompt": "Two triangles are similar. The sides of the smaller triangle are 8, 15, and 17. If the shortest side of the larger triangle is 16, what is the length of the longest side of the larger triangle?",
     "choices": [
       {
         "id": "A",
-        "text": "51",
-        "rationale": "Correct."
+        "text": "17/2",
+        "rationale": "Multiply by the scale factor; the larger triangle is bigger."
       },
       {
         "id": "B",
-        "text": "27",
-        "rationale": "This adds the extra count instead of scaling by the rate."
+        "text": "34",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "36",
-        "rationale": "This prices only the additional items, not all of them."
+        "text": "16",
+        "rationale": "That is a different side of the larger triangle."
       },
       {
         "id": "D",
-        "text": "255",
-        "rationale": "You forgot to divide by the first quantity to get the unit rate."
+        "text": "25",
+        "rationale": "Similar triangles scale by multiplying, not adding."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Unit rate = $15 ÷ 5 = $3 each, so 17 × $3 = $51.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "B",
+    "explanation": "The scale factor is 16/8 = 2; 17 × 2 = 34.",
+    "estimated_time_seconds": 80,
     "tags": [
       "proportion",
-      "unit-rate"
+      "similar",
+      "family:pr_similar"
     ],
-    "answer_verification": "cost=51"
+    "answer_verification": "val=34"
   },
   {
     "question_id": "sat-math-proportions-medium-q17",
@@ -715,37 +701,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "scaling",
-    "prompt": "4 tickets cost $16. At the same rate, how much do 8 tickets cost?",
+    "prompt": "A recipe that serves 4 people calls for 3/4 cups of milk. How many cups of milk are needed to serve 2 people?",
     "choices": [
       {
         "id": "A",
-        "text": "32",
+        "text": "3/8",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "128",
-        "rationale": "You forgot to divide by the first quantity to get the unit rate."
+        "text": "7/8",
+        "rationale": "Arithmetic slip; recompute."
       },
       {
         "id": "C",
-        "text": "20",
-        "rationale": "This adds the extra count instead of scaling by the rate."
+        "text": "-5/4",
+        "rationale": "Scale multiplicatively, not by adding the extra servings."
       },
       {
         "id": "D",
-        "text": "16",
-        "rationale": "This prices only the additional items, not all of them."
+        "text": "3/2",
+        "rationale": "Divide by the original number of servings first."
       }
     ],
     "correct_choice": "A",
-    "explanation": "Unit rate = $16 ÷ 4 = $4 each, so 8 × $4 = $32.",
-    "estimated_time_seconds": 85,
+    "explanation": "The recipe is scaled by 2/4 = 1/2; 3/4 × 1/2 = 3/8 cups.",
+    "estimated_time_seconds": 75,
     "tags": [
       "proportion",
-      "unit-rate"
+      "recipe",
+      "family:pr_recipe"
     ],
-    "answer_verification": "cost=32"
+    "answer_verification": "val=3/8"
   },
   {
     "question_id": "sat-math-proportions-medium-q18",
@@ -757,39 +744,25 @@
     "lesson_id": "sat-math-proportions-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "scaling",
-    "prompt": "5 tickets cost $35. At the same rate, how much do 8 tickets cost?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "21",
-        "rationale": "This prices only the additional items, not all of them."
-      },
-      {
-        "id": "B",
-        "text": "280",
-        "rationale": "You forgot to divide by the first quantity to get the unit rate."
-      },
-      {
-        "id": "C",
-        "text": "56",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "38",
-        "rationale": "This adds the extra count instead of scaling by the rate."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "Unit rate = $35 ÷ 5 = $7 each, so 8 × $7 = $56.",
-    "estimated_time_seconds": 85,
+    "question_type": "student_produced",
+    "subskill": "direct_proportion",
+    "prompt": "2 identical tickets cost $22. How much, in dollars, do 18 of the same tickets cost?",
+    "answer": {
+      "type": "numeric",
+      "value": 198,
+      "accepted": [
+        "198"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "Each ticket is $11; 18 × 11 = 198.",
+    "estimated_time_seconds": 75,
     "tags": [
       "proportion",
-      "unit-rate"
+      "grid-in",
+      "family:pr_gridin"
     ],
-    "answer_verification": "cost=56"
+    "answer_verification": "val=198"
   },
   {
     "question_id": "sat-math-proportions-medium-q19",
@@ -802,38 +775,39 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "scaling",
-    "prompt": "2 notebooks cost $10. At the same rate, how much do 13 notebooks cost?",
+    "subskill": "direct_proportion",
+    "prompt": "5 tickets cost $50. At the same rate, how much do 14 tickets cost, in dollars?",
     "choices": [
       {
         "id": "A",
-        "text": "21",
-        "rationale": "This adds the extra count instead of scaling by the rate."
+        "text": "700",
+        "rationale": "Divide by 5 to get the unit price first."
       },
       {
         "id": "B",
-        "text": "65",
-        "rationale": "Correct."
+        "text": "90",
+        "rationale": "This prices only the extra items."
       },
       {
         "id": "C",
-        "text": "55",
-        "rationale": "This prices only the additional items, not all of them."
+        "text": "140",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "130",
-        "rationale": "You forgot to divide by the first quantity to get the unit rate."
+        "text": "59",
+        "rationale": "Each extra item costs the unit price, not $1."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Unit rate = $10 ÷ 2 = $5 each, so 13 × $5 = $65.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "C",
+    "explanation": "Unit price = 50 ÷ 5 = $10; 14 × 10 = $140.",
+    "estimated_time_seconds": 90,
     "tags": [
       "proportion",
-      "unit-rate"
+      "rate",
+      "family:pr_direct"
     ],
-    "answer_verification": "cost=65"
+    "answer_verification": "val=140"
   },
   {
     "question_id": "sat-math-proportions-medium-q20",
@@ -846,23 +820,23 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "scaling",
-    "prompt": "4 bags cost $20. At the same rate, how much do 9 bags cost?",
+    "subskill": "direct_proportion",
+    "prompt": "If 2/5 = 18/x, what is the value of x?",
     "choices": [
       {
         "id": "A",
-        "text": "46",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "36/5",
+        "rationale": "x is in the denominator here; cross-multiply carefully."
       },
       {
         "id": "B",
-        "text": "180",
-        "rationale": "You forgot to divide by the first quantity to get the unit rate."
+        "text": "90",
+        "rationale": "That is 2x; divide by 2."
       },
       {
         "id": "C",
-        "text": "25",
-        "rationale": "This adds the extra count instead of scaling by the rate."
+        "text": "21",
+        "rationale": "Scale multiplicatively."
       },
       {
         "id": "D",
@@ -871,12 +845,13 @@
       }
     ],
     "correct_choice": "D",
-    "explanation": "Unit rate = $20 ÷ 4 = $5 each, so 9 × $5 = $45.",
-    "estimated_time_seconds": 85,
+    "explanation": "Cross-multiply: 2x = 5·18 = 90, so x = 45.",
+    "estimated_time_seconds": 70,
     "tags": [
       "proportion",
-      "unit-rate"
+      "solve",
+      "family:pr_solve"
     ],
-    "answer_verification": "cost=45"
+    "answer_verification": "x=45"
   }
 ]

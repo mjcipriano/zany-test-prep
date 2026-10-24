@@ -11,37 +11,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "roots",
-    "prompt": "How many distinct real solutions does 2x² + x + 7 = 0 have?",
+    "prompt": "What is the sum of the solutions to the equation 2x² − 3x − 35 = 0?",
     "choices": [
       {
         "id": "A",
-        "text": "2",
-        "rationale": "The sign of b²−4ac decides the number of real roots."
+        "text": "-2/7",
+        "rationale": "The root of ax − p = 0 is p/a, not a/p."
       },
       {
         "id": "B",
-        "text": "1",
-        "rationale": "Recompute the discriminant b²−4ac and use its sign."
+        "text": "5/2",
+        "rationale": "Sum of roots is −b/a; make sure you answer what was asked."
       },
       {
         "id": "C",
-        "text": "0",
+        "text": "3/2",
         "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "3",
-        "rationale": "A quadratic can have at most two real solutions."
+        "text": "-3/2",
+        "rationale": "Sign slip reading the roots."
       }
     ],
     "correct_choice": "C",
-    "explanation": "The discriminant is b²−4ac = 1²−4·2·7 = -55, which is negative (no real roots).",
-    "estimated_time_seconds": 90,
+    "explanation": "Factor: (2x + 7)(x − 5) = 0, so x = -7/2 or x = 5. Then the sum of the solutions is 3/2.",
+    "estimated_time_seconds": 85,
     "tags": [
       "quadratics",
-      "discriminant"
+      "factoring",
+      "family:q_roots"
     ],
-    "answer_verification": "D=-55"
+    "answer_verification": "val=3/2"
   },
   {
     "question_id": "sat-math-quadratics-hard-q02",
@@ -54,38 +55,39 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "roots",
-    "prompt": "How many distinct real solutions does x² + 2x + 1 = 0 have?",
+    "subskill": "vertex",
+    "prompt": "The function f is defined by f(x) = −2x² − 16x − 44. What is the maximum value of f(x)?",
     "choices": [
       {
         "id": "A",
-        "text": "3",
-        "rationale": "A quadratic can have at most two real solutions."
+        "text": "12",
+        "rationale": "Sign slip evaluating f at the vertex."
       },
       {
         "id": "B",
-        "text": "1",
+        "text": "-12",
         "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "2",
-        "rationale": "The sign of b²−4ac decides the number of real roots."
+        "text": "-44",
+        "rationale": "That is f(0), not the extreme value."
       },
       {
         "id": "D",
-        "text": "0",
-        "rationale": "Recompute the discriminant b²−4ac and use its sign."
+        "text": "-4",
+        "rationale": "That is the x-coordinate of the vertex, not the value of f there."
       }
     ],
     "correct_choice": "B",
-    "explanation": "The discriminant is b²−4ac = 2²−4·1·1 = 0, which is zero (one root).",
-    "estimated_time_seconds": 90,
+    "explanation": "The vertex is at x = −b/(2a) = −4; f(−4) = −2(−4)² − 16(−4) − 44 = −12.",
+    "estimated_time_seconds": 95,
     "tags": [
       "quadratics",
-      "discriminant"
+      "vertex",
+      "family:q_vertex"
     ],
-    "answer_verification": "D=0"
+    "answer_verification": "vertex (-4,-12)"
   },
   {
     "question_id": "sat-math-quadratics-hard-q03",
@@ -99,7 +101,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "roots",
-    "prompt": "How many distinct real solutions does x² + 9 = 0 have?",
+    "prompt": "x² + 8x + 16 = 0\nHow many distinct real solutions does the equation above have?",
     "choices": [
       {
         "id": "A",
@@ -109,27 +111,28 @@
       {
         "id": "B",
         "text": "1",
-        "rationale": "Recompute the discriminant b²−4ac and use its sign."
+        "rationale": "Correct."
       },
       {
         "id": "C",
         "text": "0",
-        "rationale": "Correct."
+        "rationale": "Recompute the discriminant b² − 4ac and use its sign."
       },
       {
         "id": "D",
         "text": "2",
-        "rationale": "The sign of b²−4ac decides the number of real roots."
+        "rationale": "The sign of b² − 4ac decides the number of real roots."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "The discriminant is b²−4ac = 0²−4·1·9 = -36, which is negative (no real roots).",
+    "correct_choice": "B",
+    "explanation": "The discriminant is b² − 4ac = (8)² − 4·1·(16) = 0, which is zero (one root).",
     "estimated_time_seconds": 90,
     "tags": [
       "quadratics",
-      "discriminant"
+      "discriminant",
+      "family:q_discriminant"
     ],
-    "answer_verification": "D=-36"
+    "answer_verification": "D=0"
   },
   {
     "question_id": "sat-math-quadratics-hard-q04",
@@ -142,38 +145,39 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "roots",
-    "prompt": "How many distinct real solutions does 3x² − 4x + 5 = 0 have?",
+    "subskill": "factoring",
+    "prompt": "Which equation has solutions x = −6 and x = 5?",
     "choices": [
       {
         "id": "A",
-        "text": "0",
-        "rationale": "Correct."
+        "text": "x² + x + 30 = 0",
+        "rationale": "The constant is the product of the roots, including its sign."
       },
       {
         "id": "B",
-        "text": "1",
-        "rationale": "Recompute the discriminant b²−4ac and use its sign."
+        "text": "x² + x − 30 = 0",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "3",
-        "rationale": "A quadratic can have at most two real solutions."
+        "text": "x² − x + 30 = 0",
+        "rationale": "Both the x-coefficient and the constant have the wrong sign."
       },
       {
         "id": "D",
-        "text": "2",
-        "rationale": "The sign of b²−4ac decides the number of real roots."
+        "text": "x² − x − 30 = 0",
+        "rationale": "The x-coefficient is −(sum of roots); the sign is wrong."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "The discriminant is b²−4ac = -4²−4·3·5 = -44, which is negative (no real roots).",
-    "estimated_time_seconds": 90,
+    "correct_choice": "B",
+    "explanation": "(x − (−6))(x − (5)) = x² + x − 30, since the sum of the roots is −1 and their product is −30.",
+    "estimated_time_seconds": 85,
     "tags": [
       "quadratics",
-      "discriminant"
+      "factoring",
+      "family:q_equivalent_form"
     ],
-    "answer_verification": "D=-44"
+    "answer_verification": "roots -6,5"
   },
   {
     "question_id": "sat-math-quadratics-hard-q05",
@@ -187,37 +191,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "roots",
-    "prompt": "How many distinct real solutions does 3x² − 8x − 2 = 0 have?",
+    "prompt": "If (x − 5)² = 25, what is the sum of all possible values of x?",
     "choices": [
       {
         "id": "A",
-        "text": "1",
-        "rationale": "The sign of b²−4ac decides the number of real roots."
+        "text": "10",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "0",
-        "rationale": "Recompute the discriminant b²−4ac and use its sign."
+        "text": "-10",
+        "rationale": "Sign slip; the solutions are centered at 5."
       },
       {
         "id": "C",
-        "text": "3",
-        "rationale": "A quadratic can have at most two real solutions."
+        "text": "5",
+        "rationale": "That is the average of the solutions, not their sum."
       },
       {
         "id": "D",
-        "text": "2",
-        "rationale": "Correct."
+        "text": "7",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "The discriminant is b²−4ac = -8²−4·3·-2 = 88, which is positive (two roots).",
-    "estimated_time_seconds": 90,
+    "correct_choice": "A",
+    "explanation": "x − 5 = ±5, so x = 10 or x = 0; the sum is 10.",
+    "estimated_time_seconds": 85,
     "tags": [
       "quadratics",
-      "discriminant"
+      "square-root",
+      "family:q_square_root"
     ],
-    "answer_verification": "D=88"
+    "answer_verification": "val=10"
   },
   {
     "question_id": "sat-math-quadratics-hard-q06",
@@ -229,39 +234,40 @@
     "lesson_id": "sat-math-quadratics-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "roots",
-    "prompt": "How many distinct real solutions does 2x² + 4x + 5 = 0 have?",
+    "question_type": "multi_step_math",
+    "subskill": "vertex",
+    "prompt": "A ball is thrown upward, and its height above the ground, in feet, t seconds after it is thrown is given by h(t) = −16t² + 112t. What is the maximum height, in feet, the ball reaches?",
     "choices": [
       {
         "id": "A",
-        "text": "2",
-        "rationale": "The sign of b²−4ac decides the number of real roots."
-      },
-      {
-        "id": "B",
-        "text": "1",
-        "rationale": "Recompute the discriminant b²−4ac and use its sign."
-      },
-      {
-        "id": "C",
-        "text": "0",
+        "text": "196",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "212",
+        "rationale": "Include the initial height in the maximum."
+      },
+      {
+        "id": "C",
+        "text": "112",
+        "rationale": "Substitute the vertex time, not t = 1."
+      },
+      {
         "id": "D",
-        "text": "3",
-        "rationale": "A quadratic can have at most two real solutions."
+        "text": "7/2",
+        "rationale": "That is the time of the peak, not the height."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "The discriminant is b²−4ac = 4²−4·2·5 = -24, which is negative (no real roots).",
-    "estimated_time_seconds": 90,
+    "correct_choice": "A",
+    "explanation": "The vertex is at t = −b/(2a) = 112/32 = 7/2; h(7/2) = 196 feet.",
+    "estimated_time_seconds": 110,
     "tags": [
       "quadratics",
-      "discriminant"
+      "model",
+      "family:q_projectile"
     ],
-    "answer_verification": "D=-24"
+    "answer_verification": "peak t=7/2 h=196 ground t=7"
   },
   {
     "question_id": "sat-math-quadratics-hard-q07",
@@ -273,39 +279,26 @@
     "lesson_id": "sat-math-quadratics-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "student_produced",
     "subskill": "roots",
-    "prompt": "How many distinct real solutions does 2x² + 16x + 32 = 0 have?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "1",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "3",
-        "rationale": "A quadratic can have at most two real solutions."
-      },
-      {
-        "id": "C",
-        "text": "2",
-        "rationale": "The sign of b²−4ac decides the number of real roots."
-      },
-      {
-        "id": "D",
-        "text": "0",
-        "rationale": "Recompute the discriminant b²−4ac and use its sign."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "The discriminant is b²−4ac = 16²−4·2·32 = 0, which is zero (one root).",
-    "estimated_time_seconds": 90,
+    "prompt": "What is the positive solution to the equation 5x² + 32x − 21 = 0?",
+    "answer": {
+      "type": "numeric",
+      "value": 0.6,
+      "accepted": [
+        "3/5",
+        "0.6"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "Factor: (5x − 3)(x + 7) = 0, so the positive solution is x = 3/5.",
+    "estimated_time_seconds": 85,
     "tags": [
       "quadratics",
-      "discriminant"
+      "grid-in",
+      "family:q_gridin"
     ],
-    "answer_verification": "D=0"
+    "answer_verification": "x=3/5"
   },
   {
     "question_id": "sat-math-quadratics-hard-q08",
@@ -319,37 +312,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "roots",
-    "prompt": "How many distinct real solutions does x² + 4x + 7 = 0 have?",
+    "prompt": "What is the sum of the solutions to the equation 4x² − x − 5 = 0?",
     "choices": [
       {
         "id": "A",
-        "text": "2",
-        "rationale": "The sign of b²−4ac decides the number of real roots."
-      },
-      {
-        "id": "B",
-        "text": "0",
+        "text": "1/4",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "4/5",
+        "rationale": "The root of ax − p = 0 is p/a, not a/p."
+      },
+      {
         "id": "C",
-        "text": "1",
-        "rationale": "Recompute the discriminant b²−4ac and use its sign."
+        "text": "5/4",
+        "rationale": "Sum of roots is −b/a; make sure you answer what was asked."
       },
       {
         "id": "D",
-        "text": "3",
-        "rationale": "A quadratic can have at most two real solutions."
+        "text": "-1/4",
+        "rationale": "Sign slip reading the roots."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "The discriminant is b²−4ac = 4²−4·1·7 = -12, which is negative (no real roots).",
-    "estimated_time_seconds": 90,
+    "correct_choice": "A",
+    "explanation": "Factor: (4x − 5)(x + 1) = 0, so x = 5/4 or x = −1. Then the sum of the solutions is 1/4.",
+    "estimated_time_seconds": 85,
     "tags": [
       "quadratics",
-      "discriminant"
+      "factoring",
+      "family:q_roots"
     ],
-    "answer_verification": "D=-12"
+    "answer_verification": "val=1/4"
   },
   {
     "question_id": "sat-math-quadratics-hard-q09",
@@ -362,38 +356,39 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "roots",
-    "prompt": "How many distinct real solutions does 3x² − 5 = 0 have?",
+    "subskill": "vertex",
+    "prompt": "The function f is defined by f(x) = −x² + 6x − 1. What is the maximum value of f(x)?",
     "choices": [
       {
         "id": "A",
-        "text": "1",
-        "rationale": "The sign of b²−4ac decides the number of real roots."
+        "text": "8",
+        "rationale": "Correct."
       },
       {
         "id": "B",
         "text": "3",
-        "rationale": "A quadratic can have at most two real solutions."
+        "rationale": "That is the x-coordinate of the vertex, not the value of f there."
       },
       {
         "id": "C",
-        "text": "2",
-        "rationale": "Correct."
+        "text": "-8",
+        "rationale": "Sign slip evaluating f at the vertex."
       },
       {
         "id": "D",
-        "text": "0",
-        "rationale": "Recompute the discriminant b²−4ac and use its sign."
+        "text": "-1",
+        "rationale": "That is f(0), not the extreme value."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "The discriminant is b²−4ac = 0²−4·3·-5 = 60, which is positive (two roots).",
-    "estimated_time_seconds": 90,
+    "correct_choice": "A",
+    "explanation": "The vertex is at x = −b/(2a) = 3; f(3) = −1(3)² + 6(3) − 1 = 8.",
+    "estimated_time_seconds": 95,
     "tags": [
       "quadratics",
-      "discriminant"
+      "vertex",
+      "family:q_vertex"
     ],
-    "answer_verification": "D=60"
+    "answer_verification": "vertex (3,8)"
   },
   {
     "question_id": "sat-math-quadratics-hard-q10",
@@ -407,37 +402,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "roots",
-    "prompt": "How many distinct real solutions does 3x² − 2x + 8 = 0 have?",
+    "prompt": "In the equation x² + kx + 25 = 0, k is a positive constant. If the equation has exactly one real solution, what is the value of k?",
     "choices": [
       {
         "id": "A",
-        "text": "0",
+        "text": "10",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "3",
-        "rationale": "A quadratic can have at most two real solutions."
+        "text": "100",
+        "rationale": "That is k², not k."
       },
       {
         "id": "C",
-        "text": "2",
-        "rationale": "The sign of b²−4ac decides the number of real roots."
+        "text": "5",
+        "rationale": "k² = 4·25, so k = 2·5, not 5."
       },
       {
         "id": "D",
-        "text": "1",
-        "rationale": "Recompute the discriminant b²−4ac and use its sign."
+        "text": "25",
+        "rationale": "Set the discriminant to 0, not k equal to c."
       }
     ],
     "correct_choice": "A",
-    "explanation": "The discriminant is b²−4ac = -2²−4·3·8 = -92, which is negative (no real roots).",
-    "estimated_time_seconds": 90,
+    "explanation": "One solution means b² − 4ac = 0: k² − 4·25 = 0, so k² = 100 and k = 10 (positive).",
+    "estimated_time_seconds": 95,
     "tags": [
       "quadratics",
-      "discriminant"
+      "discriminant",
+      "family:q_discriminant"
     ],
-    "answer_verification": "D=-92"
+    "answer_verification": "k=10"
   },
   {
     "question_id": "sat-math-quadratics-hard-q11",
@@ -450,38 +446,39 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "roots",
-    "prompt": "How many distinct real solutions does x² + 6 = 0 have?",
+    "subskill": "factoring",
+    "prompt": "Which equation has solutions x = −1 and x = 4?",
     "choices": [
       {
         "id": "A",
-        "text": "0",
-        "rationale": "Correct."
+        "text": "x² − 3x + 4 = 0",
+        "rationale": "The constant is the product of the roots, including its sign."
       },
       {
         "id": "B",
-        "text": "2",
-        "rationale": "The sign of b²−4ac decides the number of real roots."
+        "text": "x² − 3x − 4 = 0",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "3",
-        "rationale": "A quadratic can have at most two real solutions."
+        "text": "x² + 3x + 4 = 0",
+        "rationale": "Both the x-coefficient and the constant have the wrong sign."
       },
       {
         "id": "D",
-        "text": "1",
-        "rationale": "Recompute the discriminant b²−4ac and use its sign."
+        "text": "x² + 3x − 4 = 0",
+        "rationale": "The x-coefficient is −(sum of roots); the sign is wrong."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "The discriminant is b²−4ac = 0²−4·1·6 = -24, which is negative (no real roots).",
-    "estimated_time_seconds": 90,
+    "correct_choice": "B",
+    "explanation": "(x − (−1))(x − (4)) = x² − 3x − 4, since the sum of the roots is 3 and their product is −4.",
+    "estimated_time_seconds": 85,
     "tags": [
       "quadratics",
-      "discriminant"
+      "factoring",
+      "family:q_equivalent_form"
     ],
-    "answer_verification": "D=-24"
+    "answer_verification": "roots -1,4"
   },
   {
     "question_id": "sat-math-quadratics-hard-q12",
@@ -495,37 +492,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "roots",
-    "prompt": "How many distinct real solutions does 2x² + 8x − 6 = 0 have?",
+    "prompt": "If (x + 1)² = 4, what is the sum of all possible values of x?",
     "choices": [
       {
         "id": "A",
-        "text": "3",
-        "rationale": "A quadratic can have at most two real solutions."
-      },
-      {
-        "id": "B",
-        "text": "0",
-        "rationale": "Recompute the discriminant b²−4ac and use its sign."
-      },
-      {
-        "id": "C",
-        "text": "2",
+        "text": "-2",
         "rationale": "Correct."
       },
       {
-        "id": "D",
+        "id": "B",
         "text": "1",
-        "rationale": "The sign of b²−4ac decides the number of real roots."
+        "rationale": "That is one solution, not the sum."
+      },
+      {
+        "id": "C",
+        "text": "-1",
+        "rationale": "That is the average of the solutions, not their sum."
+      },
+      {
+        "id": "D",
+        "text": "4",
+        "rationale": "The solutions are symmetric about −1, so their sum is 2·−1."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "The discriminant is b²−4ac = 8²−4·2·-6 = 112, which is positive (two roots).",
-    "estimated_time_seconds": 90,
+    "correct_choice": "A",
+    "explanation": "x + 1 = ±2, so x = 1 or x = −3; the sum is −2.",
+    "estimated_time_seconds": 85,
     "tags": [
       "quadratics",
-      "discriminant"
+      "square-root",
+      "family:q_square_root"
     ],
-    "answer_verification": "D=112"
+    "answer_verification": "val=-2"
   },
   {
     "question_id": "sat-math-quadratics-hard-q13",
@@ -537,39 +535,40 @@
     "lesson_id": "sat-math-quadratics-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "roots",
-    "prompt": "How many distinct real solutions does x² − 8x − 1 = 0 have?",
+    "question_type": "multi_step_math",
+    "subskill": "vertex",
+    "prompt": "A ball is thrown upward, and its height above the ground, in feet, t seconds after it is thrown is given by h(t) = −16t² + 32t + 48. After how many seconds does the ball hit the ground?",
     "choices": [
       {
         "id": "A",
-        "text": "2",
-        "rationale": "Correct."
+        "text": "64",
+        "rationale": "That is the maximum height, not a time."
       },
       {
         "id": "B",
-        "text": "1",
-        "rationale": "The sign of b²−4ac decides the number of real roots."
+        "text": "2",
+        "rationale": "That is the time to return to the launch height, not the ground."
       },
       {
         "id": "C",
-        "text": "3",
-        "rationale": "A quadratic can have at most two real solutions."
+        "text": "1",
+        "rationale": "That is when the ball reaches its maximum height."
       },
       {
         "id": "D",
-        "text": "0",
-        "rationale": "Recompute the discriminant b²−4ac and use its sign."
+        "text": "3",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "The discriminant is b²−4ac = -8²−4·1·-1 = 68, which is positive (two roots).",
-    "estimated_time_seconds": 90,
+    "correct_choice": "D",
+    "explanation": "Set h(t) = 0: 16t² − 32t − 48 = 0 → t = (32 ± √4096)/32 = 3 (the positive root).",
+    "estimated_time_seconds": 110,
     "tags": [
       "quadratics",
-      "discriminant"
+      "model",
+      "family:q_projectile"
     ],
-    "answer_verification": "D=68"
+    "answer_verification": "peak t=1 h=64 ground t=3"
   },
   {
     "question_id": "sat-math-quadratics-hard-q14",
@@ -581,39 +580,26 @@
     "lesson_id": "sat-math-quadratics-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "student_produced",
     "subskill": "roots",
-    "prompt": "How many distinct real solutions does 3x² + 8x − 4 = 0 have?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "3",
-        "rationale": "A quadratic can have at most two real solutions."
-      },
-      {
-        "id": "B",
-        "text": "1",
-        "rationale": "The sign of b²−4ac decides the number of real roots."
-      },
-      {
-        "id": "C",
-        "text": "2",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "0",
-        "rationale": "Recompute the discriminant b²−4ac and use its sign."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "The discriminant is b²−4ac = 8²−4·3·-4 = 112, which is positive (two roots).",
-    "estimated_time_seconds": 90,
+    "prompt": "What is the positive solution to the equation 4x² + 9x − 28 = 0?",
+    "answer": {
+      "type": "numeric",
+      "value": 1.75,
+      "accepted": [
+        "7/4",
+        "1.75"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "Factor: (4x − 7)(x + 4) = 0, so the positive solution is x = 7/4.",
+    "estimated_time_seconds": 85,
     "tags": [
       "quadratics",
-      "discriminant"
+      "grid-in",
+      "family:q_gridin"
     ],
-    "answer_verification": "D=112"
+    "answer_verification": "x=7/4"
   },
   {
     "question_id": "sat-math-quadratics-hard-q15",
@@ -627,37 +613,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "roots",
-    "prompt": "How many distinct real solutions does 2x² + 24x + 72 = 0 have?",
+    "prompt": "What is the sum of the solutions to the equation 2x² + 3x − 5 = 0?",
     "choices": [
       {
         "id": "A",
-        "text": "2",
-        "rationale": "The sign of b²−4ac decides the number of real roots."
+        "text": "-1/2",
+        "rationale": "Sum of roots is −b/a; make sure you answer what was asked."
       },
       {
         "id": "B",
-        "text": "3",
-        "rationale": "A quadratic can have at most two real solutions."
+        "text": "-3/2",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "0",
-        "rationale": "Recompute the discriminant b²−4ac and use its sign."
+        "text": "-2/5",
+        "rationale": "The root of ax − p = 0 is p/a, not a/p."
       },
       {
         "id": "D",
-        "text": "1",
-        "rationale": "Correct."
+        "text": "3/2",
+        "rationale": "Sign slip reading the roots."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "The discriminant is b²−4ac = 24²−4·2·72 = 0, which is zero (one root).",
-    "estimated_time_seconds": 90,
+    "correct_choice": "B",
+    "explanation": "Factor: (2x + 5)(x − 1) = 0, so x = -5/2 or x = 1. Then the sum of the solutions is -3/2.",
+    "estimated_time_seconds": 85,
     "tags": [
       "quadratics",
-      "discriminant"
+      "factoring",
+      "family:q_roots"
     ],
-    "answer_verification": "D=0"
+    "answer_verification": "val=-3/2"
   },
   {
     "question_id": "sat-math-quadratics-hard-q16",
@@ -670,38 +657,39 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "roots",
-    "prompt": "How many distinct real solutions does 2x² − 7 = 0 have?",
+    "subskill": "vertex",
+    "prompt": "The function f is defined by f(x) = −2x² − 9. What is the maximum value of f(x)?",
     "choices": [
       {
         "id": "A",
-        "text": "2",
-        "rationale": "Correct."
+        "text": "-11",
+        "rationale": "Arithmetic slip; recompute f(h)."
       },
       {
         "id": "B",
-        "text": "1",
-        "rationale": "The sign of b²−4ac decides the number of real roots."
+        "text": "-9",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "3",
-        "rationale": "A quadratic can have at most two real solutions."
+        "text": "0",
+        "rationale": "That is the x-coordinate of the vertex, not the value of f there."
       },
       {
         "id": "D",
-        "text": "0",
-        "rationale": "Recompute the discriminant b²−4ac and use its sign."
+        "text": "9",
+        "rationale": "Sign slip evaluating f at the vertex."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "The discriminant is b²−4ac = 0²−4·2·-7 = 56, which is positive (two roots).",
-    "estimated_time_seconds": 90,
+    "correct_choice": "B",
+    "explanation": "The vertex is at x = −b/(2a) = 0; f(0) = −2(0)² + 0(0) − 9 = −9.",
+    "estimated_time_seconds": 95,
     "tags": [
       "quadratics",
-      "discriminant"
+      "vertex",
+      "family:q_vertex"
     ],
-    "answer_verification": "D=56"
+    "answer_verification": "vertex (0,-9)"
   },
   {
     "question_id": "sat-math-quadratics-hard-q17",
@@ -715,37 +703,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "roots",
-    "prompt": "How many distinct real solutions does 2x² + 4x + 9 = 0 have?",
+    "prompt": "In the equation x² + kx + 81 = 0, k is a positive constant. If the equation has exactly one real solution, what is the value of k?",
     "choices": [
       {
         "id": "A",
-        "text": "0",
-        "rationale": "Correct."
+        "text": "324",
+        "rationale": "That is k², not k."
       },
       {
         "id": "B",
-        "text": "2",
-        "rationale": "The sign of b²−4ac decides the number of real roots."
+        "text": "18",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "1",
-        "rationale": "Recompute the discriminant b²−4ac and use its sign."
+        "text": "9",
+        "rationale": "k² = 4·81, so k = 2·9, not 9."
       },
       {
         "id": "D",
-        "text": "3",
-        "rationale": "A quadratic can have at most two real solutions."
+        "text": "81",
+        "rationale": "Set the discriminant to 0, not k equal to c."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "The discriminant is b²−4ac = 4²−4·2·9 = -56, which is negative (no real roots).",
-    "estimated_time_seconds": 90,
+    "correct_choice": "B",
+    "explanation": "One solution means b² − 4ac = 0: k² − 4·81 = 0, so k² = 324 and k = 18 (positive).",
+    "estimated_time_seconds": 95,
     "tags": [
       "quadratics",
-      "discriminant"
+      "discriminant",
+      "family:q_discriminant"
     ],
-    "answer_verification": "D=-56"
+    "answer_verification": "k=18"
   },
   {
     "question_id": "sat-math-quadratics-hard-q18",
@@ -758,38 +747,39 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "roots",
-    "prompt": "How many distinct real solutions does 2x² + x + 5 = 0 have?",
+    "subskill": "factoring",
+    "prompt": "Which equation has solutions x = −1 and x = 3?",
     "choices": [
       {
         "id": "A",
-        "text": "0",
+        "text": "x² − 2x − 3 = 0",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "1",
-        "rationale": "Recompute the discriminant b²−4ac and use its sign."
+        "text": "x² + 2x − 3 = 0",
+        "rationale": "The x-coefficient is −(sum of roots); the sign is wrong."
       },
       {
         "id": "C",
-        "text": "3",
-        "rationale": "A quadratic can have at most two real solutions."
+        "text": "x² − 2x + 3 = 0",
+        "rationale": "The constant is the product of the roots, including its sign."
       },
       {
         "id": "D",
-        "text": "2",
-        "rationale": "The sign of b²−4ac decides the number of real roots."
+        "text": "x² + 2x + 3 = 0",
+        "rationale": "Both the x-coefficient and the constant have the wrong sign."
       }
     ],
     "correct_choice": "A",
-    "explanation": "The discriminant is b²−4ac = 1²−4·2·5 = -39, which is negative (no real roots).",
-    "estimated_time_seconds": 90,
+    "explanation": "(x − (−1))(x − (3)) = x² − 2x − 3, since the sum of the roots is 2 and their product is −3.",
+    "estimated_time_seconds": 85,
     "tags": [
       "quadratics",
-      "discriminant"
+      "factoring",
+      "family:q_equivalent_form"
     ],
-    "answer_verification": "D=-39"
+    "answer_verification": "roots -1,3"
   },
   {
     "question_id": "sat-math-quadratics-hard-q19",
@@ -803,37 +793,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "roots",
-    "prompt": "How many distinct real solutions does x² + 2x + 8 = 0 have?",
+    "prompt": "If (x − 8)² = 25, what is the sum of all possible values of x?",
     "choices": [
       {
         "id": "A",
-        "text": "0",
-        "rationale": "Correct."
+        "text": "10",
+        "rationale": "The solutions are symmetric about 8, so their sum is 2·8."
       },
       {
         "id": "B",
-        "text": "3",
-        "rationale": "A quadratic can have at most two real solutions."
+        "text": "8",
+        "rationale": "That is the average of the solutions, not their sum."
       },
       {
         "id": "C",
-        "text": "1",
-        "rationale": "Recompute the discriminant b²−4ac and use its sign."
+        "text": "13",
+        "rationale": "That is one solution, not the sum."
       },
       {
         "id": "D",
-        "text": "2",
-        "rationale": "The sign of b²−4ac decides the number of real roots."
+        "text": "16",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "The discriminant is b²−4ac = 2²−4·1·8 = -28, which is negative (no real roots).",
-    "estimated_time_seconds": 90,
+    "correct_choice": "D",
+    "explanation": "x − 8 = ±5, so x = 13 or x = 3; the sum is 16.",
+    "estimated_time_seconds": 85,
     "tags": [
       "quadratics",
-      "discriminant"
+      "square-root",
+      "family:q_square_root"
     ],
-    "answer_verification": "D=-28"
+    "answer_verification": "val=16"
   },
   {
     "question_id": "sat-math-quadratics-hard-q20",
@@ -845,38 +836,39 @@
     "lesson_id": "sat-math-quadratics-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "roots",
-    "prompt": "How many distinct real solutions does 2x² + 8x − 8 = 0 have?",
+    "question_type": "multi_step_math",
+    "subskill": "vertex",
+    "prompt": "A ball is thrown upward, and its height above the ground, in feet, t seconds after it is thrown is given by h(t) = −16t² + 16t + 96. After how many seconds does the ball hit the ground?",
     "choices": [
       {
         "id": "A",
-        "text": "2",
-        "rationale": "Correct."
+        "text": "1/2",
+        "rationale": "That is when the ball reaches its maximum height."
       },
       {
         "id": "B",
-        "text": "3",
-        "rationale": "A quadratic can have at most two real solutions."
+        "text": "1",
+        "rationale": "That is the time to return to the launch height, not the ground."
       },
       {
         "id": "C",
-        "text": "1",
-        "rationale": "The sign of b²−4ac decides the number of real roots."
+        "text": "3",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "0",
-        "rationale": "Recompute the discriminant b²−4ac and use its sign."
+        "text": "100",
+        "rationale": "That is the maximum height, not a time."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "The discriminant is b²−4ac = 8²−4·2·-8 = 128, which is positive (two roots).",
-    "estimated_time_seconds": 90,
+    "correct_choice": "C",
+    "explanation": "Set h(t) = 0: 16t² − 16t − 96 = 0 → t = (16 ± √6400)/32 = 3 (the positive root).",
+    "estimated_time_seconds": 110,
     "tags": [
       "quadratics",
-      "discriminant"
+      "model",
+      "family:q_projectile"
     ],
-    "answer_verification": "D=128"
+    "answer_verification": "peak t=1/2 h=100 ground t=3"
   }
 ]

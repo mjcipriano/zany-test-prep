@@ -10,39 +10,39 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "exponential",
-    "prompt": "A population of 1377 cells in a sample is cut to one-third every hour. How many will there be after 4 hours?",
+    "subskill": "growth_decay",
+    "prompt": "A population of 136 subscribers to a newsletter halves every month. How many will there be after 3 months?",
     "choices": [
       {
         "id": "A",
-        "text": "51",
-        "rationale": "This stops one period too early."
-      },
-      {
-        "id": "B",
-        "text": "114",
+        "text": "22",
         "rationale": "This divides once by r×time instead of repeatedly."
       },
       {
+        "id": "B",
+        "text": "17",
+        "rationale": "Correct."
+      },
+      {
         "id": "C",
-        "text": "1365",
-        "rationale": "This subtracts instead of repeatedly dividing."
+        "text": "34",
+        "rationale": "This stops one period too early."
       },
       {
         "id": "D",
-        "text": "17",
-        "rationale": "Correct."
+        "text": "130",
+        "rationale": "This subtracts instead of repeatedly dividing."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Divide by 3 each hour: 1377 ÷ 3^4 = 17.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "B",
+    "explanation": "Divide by 2 each month: 136 ÷ 2^3 = 17.",
+    "estimated_time_seconds": 80,
     "tags": [
       "advanced-math",
       "exponential",
-      "decay"
+      "family:ex_value"
     ],
-    "answer_verification": "1377/3^4=17"
+    "answer_verification": "val=17"
   },
   {
     "question_id": "sat-math-exponential-medium-q02",
@@ -55,39 +55,40 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "exponential",
-    "prompt": "A population of 162 cells in a sample is cut to one-third every hour. How many will there be after 3 hours?",
+    "subskill": "growth_decay",
+    "prompt": "The value of a car is $250 and increases by 15% each year. Which function gives the value V after t years?",
     "choices": [
       {
         "id": "A",
-        "text": "18",
-        "rationale": "This divides once by r×time instead of repeatedly."
+        "text": "V(t) = 250(0.85)^t",
+        "rationale": "A 15% increase means a factor of 1.15, not 0.85."
       },
       {
         "id": "B",
-        "text": "6",
+        "text": "V(t) = 250(1.15)^t",
         "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "10",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "V(t) = 250(0.15)^t",
+        "rationale": "The factor is 1 ± the rate, not the rate alone."
       },
       {
         "id": "D",
-        "text": "153",
-        "rationale": "This subtracts instead of repeatedly dividing."
+        "text": "V(t) = 250 + 37.5t",
+        "rationale": "Percent change compounds (exponential), it doesn't add a fixed amount each year."
       }
     ],
     "correct_choice": "B",
-    "explanation": "Divide by 3 each hour: 162 ÷ 3^3 = 6.",
-    "estimated_time_seconds": 85,
+    "explanation": "A 15% increase per year multiplies by 1.15 each year: V(t) = 250(1.15)^t.",
+    "estimated_time_seconds": 90,
     "tags": [
       "advanced-math",
       "exponential",
-      "decay"
+      "model",
+      "family:ex_model"
     ],
-    "answer_verification": "162/3^3=6"
+    "answer_verification": "model V(t) = 250(1.15)^t"
   },
   {
     "question_id": "sat-math-exponential-medium-q03",
@@ -100,39 +101,40 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "exponential",
-    "prompt": "A population of 272 cells in a sample halves every hour. How many will there be after 4 hours?",
+    "subskill": "growth_decay",
+    "prompt": "The function f(t) = 150(1.08)^t models the mass, in grams, of a substance t hours after it was first measured. By what percent does the quantity increase each hour?",
     "choices": [
       {
         "id": "A",
-        "text": "17",
-        "rationale": "Correct."
+        "text": "92%",
+        "rationale": "Compare the factor to 1 (100%)."
       },
       {
         "id": "B",
-        "text": "12",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "108%",
+        "rationale": "108% is the factor as a percent; the change is the part above or below 100%."
       },
       {
         "id": "C",
-        "text": "264",
-        "rationale": "This subtracts instead of repeatedly dividing."
+        "text": "8%",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "34",
-        "rationale": "This divides once by r×time instead of repeatedly."
+        "text": "16%",
+        "rationale": "Arithmetic slip; 1.08 − 1 = ±0.08."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Divide by 2 each hour: 272 ÷ 2^4 = 17.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "C",
+    "explanation": "The factor 1.08 = 1 + 0.08, so the quantity grows by 8% per hour.",
+    "estimated_time_seconds": 80,
     "tags": [
       "advanced-math",
       "exponential",
-      "decay"
+      "interpret",
+      "family:ex_interpret"
     ],
-    "answer_verification": "272/2^4=17"
+    "answer_verification": "rate=8%"
   },
   {
     "question_id": "sat-math-exponential-medium-q04",
@@ -145,39 +147,40 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "exponential",
-    "prompt": "A population of 153 cells in a sample is cut to one-third every hour. How many will there be after 2 hours?",
+    "subskill": "growth_decay",
+    "prompt": "A radioactive sample has a half-life of 50 days: every 50 days, half of it decays. If the sample starts at 48 grams, how many grams remain after 150 days?",
     "choices": [
       {
         "id": "A",
-        "text": "25",
-        "rationale": "This divides once by r×time instead of repeatedly."
+        "text": "3",
+        "rationale": "Each half-life halves what remains; it doesn't subtract a fixed amount."
       },
       {
         "id": "B",
-        "text": "147",
-        "rationale": "This subtracts instead of repeatedly dividing."
+        "text": "24",
+        "rationale": "That is after one half-life only."
       },
       {
         "id": "C",
-        "text": "51",
-        "rationale": "This stops one period too early."
+        "text": "6",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "17",
-        "rationale": "Correct."
+        "text": "8",
+        "rationale": "Divide by 2 repeatedly (3 times), not by 2·3."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Divide by 3 each hour: 153 ÷ 3^2 = 17.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "C",
+    "explanation": "150 days is 3 half-lives; 48 ÷ 2^3 = 6 grams.",
+    "estimated_time_seconds": 90,
     "tags": [
       "advanced-math",
       "exponential",
-      "decay"
+      "half-life",
+      "family:ex_periods"
     ],
-    "answer_verification": "153/3^2=17"
+    "answer_verification": "48/2^3"
   },
   {
     "question_id": "sat-math-exponential-medium-q05",
@@ -189,40 +192,26 @@
     "lesson_id": "sat-math-exponential-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "exponential",
-    "prompt": "A population of 972 bacteria in a culture is cut to one-third every hour. How many will there be after 4 hours?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "81",
-        "rationale": "This divides once by r×time instead of repeatedly."
-      },
-      {
-        "id": "B",
-        "text": "960",
-        "rationale": "This subtracts instead of repeatedly dividing."
-      },
-      {
-        "id": "C",
-        "text": "12",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "36",
-        "rationale": "This stops one period too early."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "Divide by 3 each hour: 972 ÷ 3^4 = 12.",
+    "question_type": "student_produced",
+    "subskill": "growth_decay",
+    "prompt": "A quantity of 64 is divided by 2 every day. What is the quantity after 2 days?",
+    "answer": {
+      "type": "numeric",
+      "value": 16,
+      "accepted": [
+        "16"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "64 ÷ 2^2 = 16.",
     "estimated_time_seconds": 85,
     "tags": [
       "advanced-math",
       "exponential",
-      "decay"
+      "grid-in",
+      "family:ex_gridin"
     ],
-    "answer_verification": "972/3^4=12"
+    "answer_verification": "val=16"
   },
   {
     "question_id": "sat-math-exponential-medium-q06",
@@ -235,39 +224,39 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "exponential",
-    "prompt": "A population of 48 shares of a rumor halves every day. How many will there be after 4 days?",
+    "subskill": "growth_decay",
+    "prompt": "A population of 45 cells in a sample is cut to one-third every hour. How many will there be after 2 hours?",
     "choices": [
       {
         "id": "A",
-        "text": "6",
-        "rationale": "This divides once by r×time instead of repeatedly."
+        "text": "15",
+        "rationale": "This stops one period too early."
       },
       {
         "id": "B",
-        "text": "1",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "39",
+        "rationale": "This subtracts instead of repeatedly dividing."
       },
       {
         "id": "C",
-        "text": "3",
+        "text": "5",
         "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "40",
-        "rationale": "This subtracts instead of repeatedly dividing."
+        "text": "7",
+        "rationale": "This divides once by r×time instead of repeatedly."
       }
     ],
     "correct_choice": "C",
-    "explanation": "Divide by 2 each day: 48 ÷ 2^4 = 3.",
-    "estimated_time_seconds": 85,
+    "explanation": "Divide by 3 each hour: 45 ÷ 3^2 = 5.",
+    "estimated_time_seconds": 80,
     "tags": [
       "advanced-math",
       "exponential",
-      "decay"
+      "family:ex_value"
     ],
-    "answer_verification": "48/2^4=3"
+    "answer_verification": "val=5"
   },
   {
     "question_id": "sat-math-exponential-medium-q07",
@@ -280,39 +269,40 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "exponential",
-    "prompt": "A population of 20 bacteria in a culture halves every hour. How many will there be after 2 hours?",
+    "subskill": "growth_decay",
+    "prompt": "A town's population is 250 and increases by 6% per year. Which function gives the value V after t years?",
     "choices": [
       {
         "id": "A",
-        "text": "5",
-        "rationale": "Correct."
+        "text": "V(t) = 250 + 15t",
+        "rationale": "Percent change compounds (exponential), it doesn't add a fixed amount each year."
       },
       {
         "id": "B",
-        "text": "2",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "V(t) = 250(0.94)^t",
+        "rationale": "A 6% increase means a factor of 1.06, not 0.94."
       },
       {
         "id": "C",
-        "text": "16",
-        "rationale": "This subtracts instead of repeatedly dividing."
+        "text": "V(t) = 250(1.06)^t",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "10",
-        "rationale": "This stops one period too early."
+        "text": "V(t) = 250(0.06)^t",
+        "rationale": "The factor is 1 ± the rate, not the rate alone."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Divide by 2 each hour: 20 ÷ 2^2 = 5.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "C",
+    "explanation": "A 6% increase per year multiplies by 1.06 each year: V(t) = 250(1.06)^t.",
+    "estimated_time_seconds": 90,
     "tags": [
       "advanced-math",
       "exponential",
-      "decay"
+      "model",
+      "family:ex_model"
     ],
-    "answer_verification": "20/2^2=5"
+    "answer_verification": "model V(t) = 250(1.06)^t"
   },
   {
     "question_id": "sat-math-exponential-medium-q08",
@@ -325,39 +315,40 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "exponential",
-    "prompt": "A population of 48 cells in a sample halves every hour. How many will there be after 2 hours?",
+    "subskill": "growth_decay",
+    "prompt": "The function f(t) = 1200(1.08)^t models the number of members of a club t months after it was first measured. By what percent does the quantity increase each month?",
     "choices": [
       {
         "id": "A",
-        "text": "10",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "92%",
+        "rationale": "Compare the factor to 1 (100%)."
       },
       {
         "id": "B",
-        "text": "44",
-        "rationale": "This subtracts instead of repeatedly dividing."
+        "text": "16%",
+        "rationale": "Arithmetic slip; 1.08 − 1 = ±0.08."
       },
       {
         "id": "C",
-        "text": "24",
-        "rationale": "This stops one period too early."
+        "text": "108%",
+        "rationale": "108% is the factor as a percent; the change is the part above or below 100%."
       },
       {
         "id": "D",
-        "text": "12",
+        "text": "8%",
         "rationale": "Correct."
       }
     ],
     "correct_choice": "D",
-    "explanation": "Divide by 2 each hour: 48 ÷ 2^2 = 12.",
-    "estimated_time_seconds": 85,
+    "explanation": "The factor 1.08 = 1 + 0.08, so the quantity grows by 8% per month.",
+    "estimated_time_seconds": 80,
     "tags": [
       "advanced-math",
       "exponential",
-      "decay"
+      "interpret",
+      "family:ex_interpret"
     ],
-    "answer_verification": "48/2^2=12"
+    "answer_verification": "rate=8%"
   },
   {
     "question_id": "sat-math-exponential-medium-q09",
@@ -370,39 +361,40 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "exponential",
-    "prompt": "A population of 54 users of an app is cut to one-third every month. How many will there be after 3 months?",
+    "subskill": "growth_decay",
+    "prompt": "A radioactive sample has a half-life of 20 hours: every 20 hours, half of it decays. If the sample starts at 40 grams, how many grams remain after 40 hours?",
     "choices": [
       {
         "id": "A",
-        "text": "6",
-        "rationale": "This divides once by r×time instead of repeatedly."
+        "text": "10",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "5",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "20",
+        "rationale": "That is after one half-life only."
       },
       {
         "id": "C",
-        "text": "45",
-        "rationale": "This subtracts instead of repeatedly dividing."
+        "text": "25/3",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
       },
       {
         "id": "D",
-        "text": "2",
-        "rationale": "Correct."
+        "text": "5",
+        "rationale": "Each half-life halves what remains; it doesn't subtract a fixed amount."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Divide by 3 each month: 54 ÷ 3^3 = 2.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "A",
+    "explanation": "40 hours is 2 half-lives; 40 ÷ 2^2 = 10 grams.",
+    "estimated_time_seconds": 90,
     "tags": [
       "advanced-math",
       "exponential",
-      "decay"
+      "half-life",
+      "family:ex_periods"
     ],
-    "answer_verification": "54/3^3=2"
+    "answer_verification": "40/2^2"
   },
   {
     "question_id": "sat-math-exponential-medium-q10",
@@ -414,40 +406,26 @@
     "lesson_id": "sat-math-exponential-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "exponential",
-    "prompt": "A population of 540 bacteria in a culture is cut to one-third every hour. How many will there be after 3 hours?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "531",
-        "rationale": "This subtracts instead of repeatedly dividing."
-      },
-      {
-        "id": "B",
-        "text": "19",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "C",
-        "text": "60",
-        "rationale": "This divides once by r×time instead of repeatedly."
-      },
-      {
-        "id": "D",
-        "text": "20",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Divide by 3 each hour: 540 ÷ 3^3 = 20.",
+    "question_type": "student_produced",
+    "subskill": "growth_decay",
+    "prompt": "A quantity of 640 is divided by 4 every day. What is the quantity after 3 days?",
+    "answer": {
+      "type": "numeric",
+      "value": 10,
+      "accepted": [
+        "10"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "640 ÷ 4^3 = 10.",
     "estimated_time_seconds": 85,
     "tags": [
       "advanced-math",
       "exponential",
-      "decay"
+      "grid-in",
+      "family:ex_gridin"
     ],
-    "answer_verification": "540/3^3=20"
+    "answer_verification": "val=10"
   },
   {
     "question_id": "sat-math-exponential-medium-q11",
@@ -460,39 +438,39 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "exponential",
-    "prompt": "A population of 32 shares of a rumor halves every day. How many will there be after 3 days?",
+    "subskill": "growth_decay",
+    "prompt": "A population of 192 views of a video is cut to one-quarter every day. How many will there be after 3 days?",
     "choices": [
       {
         "id": "A",
-        "text": "8",
-        "rationale": "This stops one period too early."
+        "text": "3",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "26",
-        "rationale": "This subtracts instead of repeatedly dividing."
+        "text": "12",
+        "rationale": "This stops one period too early."
       },
       {
         "id": "C",
-        "text": "5",
+        "text": "16",
         "rationale": "This divides once by r×time instead of repeatedly."
       },
       {
         "id": "D",
-        "text": "4",
-        "rationale": "Correct."
+        "text": "180",
+        "rationale": "This subtracts instead of repeatedly dividing."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Divide by 2 each day: 32 ÷ 2^3 = 4.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "A",
+    "explanation": "Divide by 4 each day: 192 ÷ 4^3 = 3.",
+    "estimated_time_seconds": 80,
     "tags": [
       "advanced-math",
       "exponential",
-      "decay"
+      "family:ex_value"
     ],
-    "answer_verification": "32/2^3=4"
+    "answer_verification": "val=3"
   },
   {
     "question_id": "sat-math-exponential-medium-q12",
@@ -505,39 +483,40 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "exponential",
-    "prompt": "A population of 208 users of an app halves every month. How many will there be after 4 months?",
+    "subskill": "growth_decay",
+    "prompt": "A town's population is 500 and decreases by 20% per year. Which function gives the value V after t years?",
     "choices": [
       {
         "id": "A",
-        "text": "12",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "B",
-        "text": "13",
+        "text": "V(t) = 500(0.8)^t",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "V(t) = 500 − 100t",
+        "rationale": "Percent change compounds (exponential), it doesn't add a fixed amount each year."
+      },
+      {
         "id": "C",
-        "text": "26",
-        "rationale": "This divides once by r×time instead of repeatedly."
+        "text": "V(t) = 500(0.2)^t",
+        "rationale": "The factor is 1 ± the rate, not the rate alone."
       },
       {
         "id": "D",
-        "text": "200",
-        "rationale": "This subtracts instead of repeatedly dividing."
+        "text": "V(t) = 500(1.2)^t",
+        "rationale": "A 20% decrease means a factor of 0.8, not 1.2."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Divide by 2 each month: 208 ÷ 2^4 = 13.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "A",
+    "explanation": "A 20% decrease per year multiplies by 0.8 each year: V(t) = 500(0.8)^t.",
+    "estimated_time_seconds": 90,
     "tags": [
       "advanced-math",
       "exponential",
-      "decay"
+      "model",
+      "family:ex_model"
     ],
-    "answer_verification": "208/2^4=13"
+    "answer_verification": "model V(t) = 500(0.8)^t"
   },
   {
     "question_id": "sat-math-exponential-medium-q13",
@@ -550,39 +529,40 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "exponential",
-    "prompt": "A population of 54 cells in a sample is cut to one-third every hour. How many will there be after 2 hours?",
+    "subskill": "growth_decay",
+    "prompt": "The function f(t) = 50(0.8)^t models the number of fish in a lake t years after it was first measured. By what percent does the quantity decrease each year?",
     "choices": [
       {
         "id": "A",
-        "text": "9",
-        "rationale": "This divides once by r×time instead of repeatedly."
-      },
-      {
-        "id": "B",
-        "text": "48",
-        "rationale": "This subtracts instead of repeatedly dividing."
-      },
-      {
-        "id": "C",
-        "text": "6",
+        "text": "20%",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "40%",
+        "rationale": "Arithmetic slip; 0.8 − 1 = ±0.2."
+      },
+      {
+        "id": "C",
+        "text": "120%",
+        "rationale": "Compare the factor to 1 (100%)."
+      },
+      {
         "id": "D",
-        "text": "18",
-        "rationale": "This stops one period too early."
+        "text": "80%",
+        "rationale": "80% is the factor as a percent; the change is the part above or below 100%."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Divide by 3 each hour: 54 ÷ 3^2 = 6.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "A",
+    "explanation": "The factor 0.8 = 1 − 0.2, so the quantity shrinks by 20% per year.",
+    "estimated_time_seconds": 80,
     "tags": [
       "advanced-math",
       "exponential",
-      "decay"
+      "interpret",
+      "family:ex_interpret"
     ],
-    "answer_verification": "54/3^2=6"
+    "answer_verification": "rate=20%"
   },
   {
     "question_id": "sat-math-exponential-medium-q14",
@@ -595,39 +575,40 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "exponential",
-    "prompt": "A population of 36 users of an app is cut to one-third every month. How many will there be after 2 months?",
+    "subskill": "growth_decay",
+    "prompt": "A radioactive sample has a half-life of 25 days: every 25 days, half of it decays. If the sample starts at 80 grams, how many grams remain after 75 days?",
     "choices": [
       {
         "id": "A",
-        "text": "30",
-        "rationale": "This subtracts instead of repeatedly dividing."
+        "text": "5",
+        "rationale": "Each half-life halves what remains; it doesn't subtract a fixed amount."
       },
       {
         "id": "B",
-        "text": "12",
-        "rationale": "This stops one period too early."
+        "text": "40",
+        "rationale": "That is after one half-life only."
       },
       {
         "id": "C",
-        "text": "6",
-        "rationale": "This divides once by r×time instead of repeatedly."
+        "text": "10",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "4",
-        "rationale": "Correct."
+        "text": "40/3",
+        "rationale": "Divide by 2 repeatedly (3 times), not by 2·3."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Divide by 3 each month: 36 ÷ 3^2 = 4.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "C",
+    "explanation": "75 days is 3 half-lives; 80 ÷ 2^3 = 10 grams.",
+    "estimated_time_seconds": 90,
     "tags": [
       "advanced-math",
       "exponential",
-      "decay"
+      "half-life",
+      "family:ex_periods"
     ],
-    "answer_verification": "36/3^2=4"
+    "answer_verification": "80/2^3"
   },
   {
     "question_id": "sat-math-exponential-medium-q15",
@@ -639,40 +620,26 @@
     "lesson_id": "sat-math-exponential-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "exponential",
-    "prompt": "A population of 162 shares of a rumor is cut to one-third every day. How many will there be after 3 days?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "6",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "4",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "C",
-        "text": "153",
-        "rationale": "This subtracts instead of repeatedly dividing."
-      },
-      {
-        "id": "D",
-        "text": "18",
-        "rationale": "This divides once by r×time instead of repeatedly."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "Divide by 3 each day: 162 ÷ 3^3 = 6.",
+    "question_type": "student_produced",
+    "subskill": "growth_decay",
+    "prompt": "A quantity of 320 is divided by 4 every day. What is the quantity after 2 days?",
+    "answer": {
+      "type": "numeric",
+      "value": 20,
+      "accepted": [
+        "20"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "320 ÷ 4^2 = 20.",
     "estimated_time_seconds": 85,
     "tags": [
       "advanced-math",
       "exponential",
-      "decay"
+      "grid-in",
+      "family:ex_gridin"
     ],
-    "answer_verification": "162/3^3=6"
+    "answer_verification": "val=20"
   },
   {
     "question_id": "sat-math-exponential-medium-q16",
@@ -685,39 +652,39 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "exponential",
-    "prompt": "A population of 972 cells in a sample is cut to one-third every hour. How many will there be after 4 hours?",
+    "subskill": "growth_decay",
+    "prompt": "A population of 1152 bacteria in a culture is cut to one-quarter every hour. How many will there be after 3 hours?",
     "choices": [
       {
         "id": "A",
-        "text": "12",
+        "text": "18",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "81",
+        "text": "96",
         "rationale": "This divides once by r×time instead of repeatedly."
       },
       {
         "id": "C",
-        "text": "36",
+        "text": "72",
         "rationale": "This stops one period too early."
       },
       {
         "id": "D",
-        "text": "960",
+        "text": "1140",
         "rationale": "This subtracts instead of repeatedly dividing."
       }
     ],
     "correct_choice": "A",
-    "explanation": "Divide by 3 each hour: 972 ÷ 3^4 = 12.",
-    "estimated_time_seconds": 85,
+    "explanation": "Divide by 4 each hour: 1152 ÷ 4^3 = 18.",
+    "estimated_time_seconds": 80,
     "tags": [
       "advanced-math",
       "exponential",
-      "decay"
+      "family:ex_value"
     ],
-    "answer_verification": "972/3^4=12"
+    "answer_verification": "val=18"
   },
   {
     "question_id": "sat-math-exponential-medium-q17",
@@ -730,39 +697,40 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "exponential",
-    "prompt": "A population of 128 bacteria in a culture halves every hour. How many will there be after 4 hours?",
+    "subskill": "growth_decay",
+    "prompt": "An investment of $500 decreases by 12% each year. Which function gives the value V after t years?",
     "choices": [
       {
         "id": "A",
-        "text": "8",
-        "rationale": "Correct."
+        "text": "V(t) = 500(0.12)^t",
+        "rationale": "The factor is 1 ± the rate, not the rate alone."
       },
       {
         "id": "B",
-        "text": "16",
-        "rationale": "This divides once by r×time instead of repeatedly."
+        "text": "V(t) = 500 − 60t",
+        "rationale": "Percent change compounds (exponential), it doesn't add a fixed amount each year."
       },
       {
         "id": "C",
-        "text": "120",
-        "rationale": "This subtracts instead of repeatedly dividing."
+        "text": "V(t) = 500(1.12)^t",
+        "rationale": "A 12% decrease means a factor of 0.88, not 1.12."
       },
       {
         "id": "D",
-        "text": "14",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "V(t) = 500(0.88)^t",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Divide by 2 each hour: 128 ÷ 2^4 = 8.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "D",
+    "explanation": "A 12% decrease per year multiplies by 0.88 each year: V(t) = 500(0.88)^t.",
+    "estimated_time_seconds": 90,
     "tags": [
       "advanced-math",
       "exponential",
-      "decay"
+      "model",
+      "family:ex_model"
     ],
-    "answer_verification": "128/2^4=8"
+    "answer_verification": "model V(t) = 500(0.88)^t"
   },
   {
     "question_id": "sat-math-exponential-medium-q18",
@@ -775,39 +743,40 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "exponential",
-    "prompt": "A population of 81 shares of a rumor is cut to one-third every day. How many will there be after 3 days?",
+    "subskill": "growth_decay",
+    "prompt": "The function f(t) = 500(1.08)^t models the number of fish in a lake t years after it was first measured. By what percent does the quantity increase each year?",
     "choices": [
       {
         "id": "A",
-        "text": "72",
-        "rationale": "This subtracts instead of repeatedly dividing."
+        "text": "108%",
+        "rationale": "108% is the factor as a percent; the change is the part above or below 100%."
       },
       {
         "id": "B",
-        "text": "9",
-        "rationale": "This divides once by r×time instead of repeatedly."
+        "text": "92%",
+        "rationale": "Compare the factor to 1 (100%)."
       },
       {
         "id": "C",
-        "text": "3",
-        "rationale": "Correct."
+        "text": "16%",
+        "rationale": "Arithmetic slip; 1.08 − 1 = ±0.08."
       },
       {
         "id": "D",
-        "text": "2",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "8%",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Divide by 3 each day: 81 ÷ 3^3 = 3.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "D",
+    "explanation": "The factor 1.08 = 1 + 0.08, so the quantity grows by 8% per year.",
+    "estimated_time_seconds": 80,
     "tags": [
       "advanced-math",
       "exponential",
-      "decay"
+      "interpret",
+      "family:ex_interpret"
     ],
-    "answer_verification": "81/3^3=3"
+    "answer_verification": "rate=8%"
   },
   {
     "question_id": "sat-math-exponential-medium-q19",
@@ -820,39 +789,40 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "exponential",
-    "prompt": "A population of 72 shares of a rumor halves every day. How many will there be after 3 days?",
+    "subskill": "growth_decay",
+    "prompt": "A radioactive sample has a half-life of 3 years: every 3 years, half of it decays. If the sample starts at 800 grams, how many grams remain after 6 years?",
     "choices": [
       {
         "id": "A",
-        "text": "9",
-        "rationale": "Correct."
+        "text": "100",
+        "rationale": "Each half-life halves what remains; it doesn't subtract a fixed amount."
       },
       {
         "id": "B",
-        "text": "66",
-        "rationale": "This subtracts instead of repeatedly dividing."
+        "text": "403/2",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
       },
       {
         "id": "C",
-        "text": "12",
-        "rationale": "This divides once by r×time instead of repeatedly."
+        "text": "200",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "18",
-        "rationale": "This stops one period too early."
+        "text": "400",
+        "rationale": "That is after one half-life only."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Divide by 2 each day: 72 ÷ 2^3 = 9.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "C",
+    "explanation": "6 years is 2 half-lives; 800 ÷ 2^2 = 200 grams.",
+    "estimated_time_seconds": 90,
     "tags": [
       "advanced-math",
       "exponential",
-      "decay"
+      "half-life",
+      "family:ex_periods"
     ],
-    "answer_verification": "72/2^3=9"
+    "answer_verification": "800/2^2"
   },
   {
     "question_id": "sat-math-exponential-medium-q20",
@@ -864,39 +834,25 @@
     "lesson_id": "sat-math-exponential-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "exponential",
-    "prompt": "A population of 160 cells in a sample halves every hour. How many will there be after 3 hours?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "154",
-        "rationale": "This subtracts instead of repeatedly dividing."
-      },
-      {
-        "id": "B",
-        "text": "20",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "26",
-        "rationale": "This divides once by r×time instead of repeatedly."
-      },
-      {
-        "id": "D",
-        "text": "40",
-        "rationale": "This stops one period too early."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Divide by 2 each hour: 160 ÷ 2^3 = 20.",
+    "question_type": "student_produced",
+    "subskill": "growth_decay",
+    "prompt": "A quantity of 567 is divided by 3 every day. What is the quantity after 4 days?",
+    "answer": {
+      "type": "numeric",
+      "value": 7,
+      "accepted": [
+        "7"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "567 ÷ 3^4 = 7.",
     "estimated_time_seconds": 85,
     "tags": [
       "advanced-math",
       "exponential",
-      "decay"
+      "grid-in",
+      "family:ex_gridin"
     ],
-    "answer_verification": "160/2^3=20"
+    "answer_verification": "val=7"
   }
 ]

@@ -11,37 +11,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "operations",
-    "prompt": "In the expansion of (3x + 6)(6x − 4), what is the coefficient of x?",
+    "prompt": "In the expansion of (2x + 6)(3x − 8), what is the coefficient of x?",
     "choices": [
       {
         "id": "A",
-        "text": "24",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "-12",
-        "rationale": "This includes only one of the two x-terms."
-      },
-      {
-        "id": "C",
-        "text": "18",
+        "text": "6",
         "rationale": "This is the coefficient of x², not x."
       },
       {
+        "id": "B",
+        "text": "2",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "-16",
+        "rationale": "This includes only one of the two x-terms."
+      },
+      {
         "id": "D",
-        "text": "-24",
+        "text": "-48",
         "rationale": "This is the constant term, not the x coefficient."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Using FOIL, the x-terms are 3x·-4 and 6·6x, giving (3·-4 + 6·6) = 24.",
+    "correct_choice": "B",
+    "explanation": "Using FOIL, the x-terms are 2x·(−8) and (6)·3x, giving (−16) + (18) = 2.",
     "estimated_time_seconds": 80,
     "tags": [
       "polynomials",
-      "foil"
+      "foil",
+      "family:poly_expand"
     ],
-    "answer_verification": "x2=18,x=24,c=-24"
+    "answer_verification": "x2=6,x=2,c=-48"
   },
   {
     "question_id": "sat-math-polynomials-medium-q02",
@@ -55,37 +56,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "operations",
-    "prompt": "In the expansion of (x + 6)(7x − 5), what is the coefficient of x²?",
+    "prompt": "Which of the following is equivalent to (5x² − 4x − 8) − (7x² + x − 3)?",
     "choices": [
       {
         "id": "A",
-        "text": "7",
-        "rationale": "Correct."
+        "text": "2x² + 5x + 5",
+        "rationale": "This subtracts in the wrong order."
       },
       {
         "id": "B",
-        "text": "37",
-        "rationale": "This is the coefficient of x, not x²."
+        "text": "−2x² − 5x − 5",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "8",
-        "rationale": "Multiply the leading coefficients; don't add them."
+        "text": "−2x² − 3x − 11",
+        "rationale": "The minus sign must be distributed to every term, not just the first."
       },
       {
         "id": "D",
-        "text": "-30",
-        "rationale": "This is the constant term, not the x² coefficient."
+        "text": "12x² − 3x − 11",
+        "rationale": "This adds instead of subtracting."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "The x² term is 1x·7x = 7x².",
+    "correct_choice": "B",
+    "explanation": "Distribute the minus sign to every term of the second polynomial, then combine: −2x² − 5x − 5.",
     "estimated_time_seconds": 80,
     "tags": [
       "polynomials",
-      "foil"
+      "add-subtract",
+      "family:poly_add_sub"
     ],
-    "answer_verification": "x2=7,x=37,c=-30"
+    "answer_verification": "result [-2, -5, -5]"
   },
   {
     "question_id": "sat-math-polynomials-medium-q03",
@@ -98,38 +100,39 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "operations",
-    "prompt": "In the expansion of (x + 6)(7x + 8), what is the constant term?",
+    "subskill": "factoring",
+    "prompt": "Which of the following is a factor of x² − 49?",
     "choices": [
       {
         "id": "A",
-        "text": "48",
-        "rationale": "Correct."
+        "text": "(x + 14)",
+        "rationale": "a² − b² = (a + b)(a − b); b is √49 = 7."
       },
       {
         "id": "B",
-        "text": "14",
-        "rationale": "Multiply the constants; don't add them."
+        "text": "(x + 7)²",
+        "rationale": "A difference of squares has two different factors, not a square."
       },
       {
         "id": "C",
-        "text": "7",
-        "rationale": "This is the coefficient of x², not the constant."
+        "text": "(x + 7)",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "50",
-        "rationale": "This is the coefficient of x, not the constant."
+        "text": "(x + 49)",
+        "rationale": "Take the square root of 49, which is 7."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "The constant term is 6·8 = 48.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "C",
+    "explanation": "x² − 49 is a difference of squares: (x + 7)(x − 7).",
+    "estimated_time_seconds": 85,
     "tags": [
       "polynomials",
-      "foil"
+      "factoring",
+      "family:poly_factor"
     ],
-    "answer_verification": "x2=7,x=50,c=48"
+    "answer_verification": "factor (x + 7)"
   },
   {
     "question_id": "sat-math-polynomials-medium-q04",
@@ -143,37 +146,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "operations",
-    "prompt": "In the expansion of (3x − 4)(2x + 2), what is the constant term?",
+    "prompt": "If x = 3, what is the value of (x + 7)²?",
     "choices": [
       {
         "id": "A",
-        "text": "-9",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "58",
+        "rationale": "(p + q)² = p² + 2pq + q²; the middle term is missing."
       },
       {
         "id": "B",
-        "text": "-2",
-        "rationale": "This is the coefficient of x, not the constant."
-      },
-      {
-        "id": "C",
-        "text": "-8",
+        "text": "100",
         "rationale": "Correct."
       },
       {
+        "id": "C",
+        "text": "20",
+        "rationale": "Square the value; don't double it."
+      },
+      {
         "id": "D",
-        "text": "6",
-        "rationale": "This is the coefficient of x², not the constant."
+        "text": "-100",
+        "rationale": "A square is never negative."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "The constant term is -4·2 = -8.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "B",
+    "explanation": "1·3 + 7 = 10, and (10)² = 100.",
+    "estimated_time_seconds": 75,
     "tags": [
       "polynomials",
-      "foil"
+      "evaluate",
+      "family:poly_evaluate"
     ],
-    "answer_verification": "x2=6,x=-2,c=-8"
+    "answer_verification": "val=100"
   },
   {
     "question_id": "sat-math-polynomials-medium-q05",
@@ -187,656 +191,41 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "operations",
-    "prompt": "In the expansion of (6x − 4)(x − 3), what is the constant term?",
+    "prompt": "Which of the following is equivalent to (4x + 1)²?",
     "choices": [
       {
         "id": "A",
-        "text": "-7",
-        "rationale": "Multiply the constants; don't add them."
+        "text": "16x² + 8x + 1",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "6",
-        "rationale": "This is the coefficient of x², not the constant."
+        "text": "16x² + 4x + 1",
+        "rationale": "The middle term is 2·p·q, not p·q."
       },
       {
         "id": "C",
-        "text": "-22",
-        "rationale": "This is the coefficient of x, not the constant."
+        "text": "16x² + 8x − 1",
+        "rationale": "The last term is q², which is positive."
       },
       {
         "id": "D",
-        "text": "12",
-        "rationale": "Correct."
+        "text": "16x² + 1",
+        "rationale": "(p + q)² has a middle term 2pq."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "The constant term is -4·-3 = 12.",
+    "correct_choice": "A",
+    "explanation": "(4x + 1)² = (4x + 1)(4x + 1) = 16x² + 8x + 1.",
     "estimated_time_seconds": 80,
     "tags": [
       "polynomials",
-      "foil"
+      "square",
+      "family:poly_product_coeff"
     ],
-    "answer_verification": "x2=6,x=-22,c=12"
+    "answer_verification": "16x² + 8x + 1"
   },
   {
     "question_id": "sat-math-polynomials-medium-q06",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "polynomials",
-    "lesson_id": "sat-math-polynomials-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "operations",
-    "prompt": "In the expansion of (x − 8)(x + 3), what is the constant term?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-5",
-        "rationale": "This is the coefficient of x, not the constant."
-      },
-      {
-        "id": "B",
-        "text": "-24",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "1",
-        "rationale": "This is the coefficient of x², not the constant."
-      },
-      {
-        "id": "D",
-        "text": "-27",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "The constant term is -8·3 = -24.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "polynomials",
-      "foil"
-    ],
-    "answer_verification": "x2=1,x=-5,c=-24"
-  },
-  {
-    "question_id": "sat-math-polynomials-medium-q07",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "polynomials",
-    "lesson_id": "sat-math-polynomials-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "operations",
-    "prompt": "In the expansion of (3x + 6)(2x + 4), what is the constant term?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "24",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "25",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "C",
-        "text": "10",
-        "rationale": "Multiply the constants; don't add them."
-      },
-      {
-        "id": "D",
-        "text": "6",
-        "rationale": "This is the coefficient of x², not the constant."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "The constant term is 6·4 = 24.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "polynomials",
-      "foil"
-    ],
-    "answer_verification": "x2=6,x=24,c=24"
-  },
-  {
-    "question_id": "sat-math-polynomials-medium-q08",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "polynomials",
-    "lesson_id": "sat-math-polynomials-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "operations",
-    "prompt": "In the expansion of (5x + 8)(3x − 5), what is the coefficient of x²?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "15",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "-40",
-        "rationale": "This is the constant term, not the x² coefficient."
-      },
-      {
-        "id": "C",
-        "text": "8",
-        "rationale": "Multiply the leading coefficients; don't add them."
-      },
-      {
-        "id": "D",
-        "text": "-1",
-        "rationale": "This is the coefficient of x, not x²."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "The x² term is 5x·3x = 15x².",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "polynomials",
-      "foil"
-    ],
-    "answer_verification": "x2=15,x=-1,c=-40"
-  },
-  {
-    "question_id": "sat-math-polynomials-medium-q09",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "polynomials",
-    "lesson_id": "sat-math-polynomials-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "operations",
-    "prompt": "In the expansion of (2x − 8)(2x + 9), what is the constant term?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "2",
-        "rationale": "This is the coefficient of x, not the constant."
-      },
-      {
-        "id": "B",
-        "text": "1",
-        "rationale": "Multiply the constants; don't add them."
-      },
-      {
-        "id": "C",
-        "text": "4",
-        "rationale": "This is the coefficient of x², not the constant."
-      },
-      {
-        "id": "D",
-        "text": "-72",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "The constant term is -8·9 = -72.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "polynomials",
-      "foil"
-    ],
-    "answer_verification": "x2=4,x=2,c=-72"
-  },
-  {
-    "question_id": "sat-math-polynomials-medium-q10",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "polynomials",
-    "lesson_id": "sat-math-polynomials-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "operations",
-    "prompt": "In the expansion of (5x − 8)(7x − 4), what is the constant term?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-12",
-        "rationale": "Multiply the constants; don't add them."
-      },
-      {
-        "id": "B",
-        "text": "32",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "-76",
-        "rationale": "This is the coefficient of x, not the constant."
-      },
-      {
-        "id": "D",
-        "text": "35",
-        "rationale": "This is the coefficient of x², not the constant."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "The constant term is -8·-4 = 32.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "polynomials",
-      "foil"
-    ],
-    "answer_verification": "x2=35,x=-76,c=32"
-  },
-  {
-    "question_id": "sat-math-polynomials-medium-q11",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "polynomials",
-    "lesson_id": "sat-math-polynomials-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "operations",
-    "prompt": "In the expansion of (x − 8)(5x − 4), what is the coefficient of x²?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "6",
-        "rationale": "Multiply the leading coefficients; don't add them."
-      },
-      {
-        "id": "B",
-        "text": "32",
-        "rationale": "This is the constant term, not the x² coefficient."
-      },
-      {
-        "id": "C",
-        "text": "5",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "-44",
-        "rationale": "This is the coefficient of x, not x²."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "The x² term is 1x·5x = 5x².",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "polynomials",
-      "foil"
-    ],
-    "answer_verification": "x2=5,x=-44,c=32"
-  },
-  {
-    "question_id": "sat-math-polynomials-medium-q12",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "polynomials",
-    "lesson_id": "sat-math-polynomials-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "operations",
-    "prompt": "In the expansion of (4x − 3)(6x + 3), what is the coefficient of x?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-9",
-        "rationale": "This is the constant term, not the x coefficient."
-      },
-      {
-        "id": "B",
-        "text": "12",
-        "rationale": "This includes only one of the two x-terms."
-      },
-      {
-        "id": "C",
-        "text": "24",
-        "rationale": "This is the coefficient of x², not x."
-      },
-      {
-        "id": "D",
-        "text": "-6",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Using FOIL, the x-terms are 4x·3 and -3·6x, giving (4·3 + -3·6) = -6.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "polynomials",
-      "foil"
-    ],
-    "answer_verification": "x2=24,x=-6,c=-9"
-  },
-  {
-    "question_id": "sat-math-polynomials-medium-q13",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "polynomials",
-    "lesson_id": "sat-math-polynomials-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "operations",
-    "prompt": "In the expansion of (2x − 6)(2x + 4), what is the coefficient of x²?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-4",
-        "rationale": "This is the coefficient of x, not x²."
-      },
-      {
-        "id": "B",
-        "text": "5",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "C",
-        "text": "-24",
-        "rationale": "This is the constant term, not the x² coefficient."
-      },
-      {
-        "id": "D",
-        "text": "4",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "The x² term is 2x·2x = 4x².",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "polynomials",
-      "foil"
-    ],
-    "answer_verification": "x2=4,x=-4,c=-24"
-  },
-  {
-    "question_id": "sat-math-polynomials-medium-q14",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "polynomials",
-    "lesson_id": "sat-math-polynomials-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "operations",
-    "prompt": "In the expansion of (x + 3)(7x − 5), what is the constant term?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "16",
-        "rationale": "This is the coefficient of x, not the constant."
-      },
-      {
-        "id": "B",
-        "text": "-15",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "-2",
-        "rationale": "Multiply the constants; don't add them."
-      },
-      {
-        "id": "D",
-        "text": "7",
-        "rationale": "This is the coefficient of x², not the constant."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "The constant term is 3·-5 = -15.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "polynomials",
-      "foil"
-    ],
-    "answer_verification": "x2=7,x=16,c=-15"
-  },
-  {
-    "question_id": "sat-math-polynomials-medium-q15",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "polynomials",
-    "lesson_id": "sat-math-polynomials-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "operations",
-    "prompt": "In the expansion of (3x + 7)(x − 2), what is the coefficient of x?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-6",
-        "rationale": "This includes only one of the two x-terms."
-      },
-      {
-        "id": "B",
-        "text": "-14",
-        "rationale": "This is the constant term, not the x coefficient."
-      },
-      {
-        "id": "C",
-        "text": "3",
-        "rationale": "This is the coefficient of x², not x."
-      },
-      {
-        "id": "D",
-        "text": "1",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Using FOIL, the x-terms are 3x·-2 and 7·1x, giving (3·-2 + 7·1) = 1.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "polynomials",
-      "foil"
-    ],
-    "answer_verification": "x2=3,x=1,c=-14"
-  },
-  {
-    "question_id": "sat-math-polynomials-medium-q16",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "polynomials",
-    "lesson_id": "sat-math-polynomials-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "operations",
-    "prompt": "In the expansion of (2x + 6)(3x − 8), what is the coefficient of x?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-16",
-        "rationale": "This includes only one of the two x-terms."
-      },
-      {
-        "id": "B",
-        "text": "6",
-        "rationale": "This is the coefficient of x², not x."
-      },
-      {
-        "id": "C",
-        "text": "-48",
-        "rationale": "This is the constant term, not the x coefficient."
-      },
-      {
-        "id": "D",
-        "text": "2",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Using FOIL, the x-terms are 2x·-8 and 6·3x, giving (2·-8 + 6·3) = 2.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "polynomials",
-      "foil"
-    ],
-    "answer_verification": "x2=6,x=2,c=-48"
-  },
-  {
-    "question_id": "sat-math-polynomials-medium-q17",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "polynomials",
-    "lesson_id": "sat-math-polynomials-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "operations",
-    "prompt": "In the expansion of (6x + 4)(2x − 8), what is the constant term?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-4",
-        "rationale": "Multiply the constants; don't add them."
-      },
-      {
-        "id": "B",
-        "text": "-40",
-        "rationale": "This is the coefficient of x, not the constant."
-      },
-      {
-        "id": "C",
-        "text": "-32",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "12",
-        "rationale": "This is the coefficient of x², not the constant."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "The constant term is 4·-8 = -32.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "polynomials",
-      "foil"
-    ],
-    "answer_verification": "x2=12,x=-40,c=-32"
-  },
-  {
-    "question_id": "sat-math-polynomials-medium-q18",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "polynomials",
-    "lesson_id": "sat-math-polynomials-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "operations",
-    "prompt": "In the expansion of (7x − 7)(4x − 5), what is the coefficient of x?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "28",
-        "rationale": "This is the coefficient of x², not x."
-      },
-      {
-        "id": "B",
-        "text": "-63",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "35",
-        "rationale": "This is the constant term, not the x coefficient."
-      },
-      {
-        "id": "D",
-        "text": "-35",
-        "rationale": "This includes only one of the two x-terms."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Using FOIL, the x-terms are 7x·-5 and -7·4x, giving (7·-5 + -7·4) = -63.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "polynomials",
-      "foil"
-    ],
-    "answer_verification": "x2=28,x=-63,c=35"
-  },
-  {
-    "question_id": "sat-math-polynomials-medium-q19",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "polynomials",
-    "lesson_id": "sat-math-polynomials-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "operations",
-    "prompt": "In the expansion of (4x + 5)(3x + 6), what is the constant term?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "30",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "12",
-        "rationale": "This is the coefficient of x², not the constant."
-      },
-      {
-        "id": "C",
-        "text": "11",
-        "rationale": "Multiply the constants; don't add them."
-      },
-      {
-        "id": "D",
-        "text": "39",
-        "rationale": "This is the coefficient of x, not the constant."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "The constant term is 5·6 = 30.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "polynomials",
-      "foil"
-    ],
-    "answer_verification": "x2=12,x=39,c=30"
-  },
-  {
-    "question_id": "sat-math-polynomials-medium-q20",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -851,8 +240,8 @@
     "choices": [
       {
         "id": "A",
-        "text": "-63",
-        "rationale": "This is the constant term, not the x coefficient."
+        "text": "-9",
+        "rationale": "This includes only one of the two x-terms."
       },
       {
         "id": "B",
@@ -861,8 +250,8 @@
       },
       {
         "id": "C",
-        "text": "-9",
-        "rationale": "This includes only one of the two x-terms."
+        "text": "-63",
+        "rationale": "This is the constant term, not the x coefficient."
       },
       {
         "id": "D",
@@ -871,12 +260,643 @@
       }
     ],
     "correct_choice": "D",
-    "explanation": "Using FOIL, the x-terms are 1x·-9 and 7·1x, giving (1·-9 + 7·1) = -2.",
+    "explanation": "Using FOIL, the x-terms are 1x·(−9) and (7)·1x, giving (−9) + (7) = −2.",
     "estimated_time_seconds": 80,
     "tags": [
       "polynomials",
-      "foil"
+      "foil",
+      "family:poly_expand"
     ],
     "answer_verification": "x2=1,x=-2,c=-63"
+  },
+  {
+    "question_id": "sat-math-polynomials-medium-q07",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "polynomials",
+    "lesson_id": "sat-math-polynomials-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "operations",
+    "prompt": "Which of the following is equivalent to (2x² + 3x + 4) − (3x² − 7x − 1)?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "−x² + 10x + 5",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "x² − 10x − 5",
+        "rationale": "This subtracts in the wrong order."
+      },
+      {
+        "id": "C",
+        "text": "−x² − 4x + 3",
+        "rationale": "The minus sign must be distributed to every term, not just the first."
+      },
+      {
+        "id": "D",
+        "text": "5x² − 4x + 3",
+        "rationale": "This adds instead of subtracting."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Distribute the minus sign to every term of the second polynomial, then combine: −x² + 10x + 5.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "polynomials",
+      "add-subtract",
+      "family:poly_add_sub"
+    ],
+    "answer_verification": "result [-1, 10, 5]"
+  },
+  {
+    "question_id": "sat-math-polynomials-medium-q08",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "polynomials",
+    "lesson_id": "sat-math-polynomials-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "factoring",
+    "prompt": "Which of the following is a factor of 16x² − 144?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "(16x + 12)",
+        "rationale": "Take the square root of the leading coefficient as well."
+      },
+      {
+        "id": "B",
+        "text": "(4x + 24)",
+        "rationale": "a² − b² = (a + b)(a − b); b is √144 = 12."
+      },
+      {
+        "id": "C",
+        "text": "(4x + 144)",
+        "rationale": "Take the square root of 144, which is 12."
+      },
+      {
+        "id": "D",
+        "text": "(4x + 12)",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "16x² − 144 is a difference of squares: (4x + 12)(4x − 12).",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "polynomials",
+      "factoring",
+      "family:poly_factor"
+    ],
+    "answer_verification": "factor (4x + 12)"
+  },
+  {
+    "question_id": "sat-math-polynomials-medium-q09",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "polynomials",
+    "lesson_id": "sat-math-polynomials-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "operations",
+    "prompt": "If x = 5, what is the value of (3x − 5)²?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "20",
+        "rationale": "Square the value; don't double it."
+      },
+      {
+        "id": "B",
+        "text": "-100",
+        "rationale": "A square is never negative."
+      },
+      {
+        "id": "C",
+        "text": "100",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "250",
+        "rationale": "(p + q)² = p² + 2pq + q²; the middle term is missing."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "3·5 − 5 = 10, and (10)² = 100.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "polynomials",
+      "evaluate",
+      "family:poly_evaluate"
+    ],
+    "answer_verification": "val=100"
+  },
+  {
+    "question_id": "sat-math-polynomials-medium-q10",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "polynomials",
+    "lesson_id": "sat-math-polynomials-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "operations",
+    "prompt": "Which of the following is equivalent to (4x + 3)²?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "16x² + 9",
+        "rationale": "(p + q)² has a middle term 2pq."
+      },
+      {
+        "id": "B",
+        "text": "16x² + 24x + 9",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "16x² + 24x − 9",
+        "rationale": "The last term is q², which is positive."
+      },
+      {
+        "id": "D",
+        "text": "16x² + 12x + 9",
+        "rationale": "The middle term is 2·p·q, not p·q."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "(4x + 3)² = (4x + 3)(4x + 3) = 16x² + 24x + 9.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "polynomials",
+      "square",
+      "family:poly_product_coeff"
+    ],
+    "answer_verification": "16x² + 24x + 9"
+  },
+  {
+    "question_id": "sat-math-polynomials-medium-q11",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "polynomials",
+    "lesson_id": "sat-math-polynomials-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "operations",
+    "prompt": "In the expansion of (4x + 9)(3x + 8), what is the constant term?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "17",
+        "rationale": "Multiply the constants; don't add them."
+      },
+      {
+        "id": "B",
+        "text": "59",
+        "rationale": "This is the coefficient of x, not the constant."
+      },
+      {
+        "id": "C",
+        "text": "72",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "12",
+        "rationale": "This is the coefficient of x², not the constant."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "The constant term is (9)·(8) = 72.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "polynomials",
+      "foil",
+      "family:poly_expand"
+    ],
+    "answer_verification": "x2=12,x=59,c=72"
+  },
+  {
+    "question_id": "sat-math-polynomials-medium-q12",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "polynomials",
+    "lesson_id": "sat-math-polynomials-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "operations",
+    "prompt": "Which of the following is equivalent to (5x² − 4x + 2) − (9x² + x + 4)?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "−4x² − 3x + 6",
+        "rationale": "The minus sign must be distributed to every term, not just the first."
+      },
+      {
+        "id": "B",
+        "text": "−4x² − 5x − 2",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "4x² + 5x + 2",
+        "rationale": "This subtracts in the wrong order."
+      },
+      {
+        "id": "D",
+        "text": "14x² − 3x + 6",
+        "rationale": "This adds instead of subtracting."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Distribute the minus sign to every term of the second polynomial, then combine: −4x² − 5x − 2.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "polynomials",
+      "add-subtract",
+      "family:poly_add_sub"
+    ],
+    "answer_verification": "result [-4, -5, -2]"
+  },
+  {
+    "question_id": "sat-math-polynomials-medium-q13",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "polynomials",
+    "lesson_id": "sat-math-polynomials-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "factoring",
+    "prompt": "Which of the following is a factor of 9x² − 225?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "(3x + 225)",
+        "rationale": "Take the square root of 225, which is 15."
+      },
+      {
+        "id": "B",
+        "text": "(9x + 15)",
+        "rationale": "Take the square root of the leading coefficient as well."
+      },
+      {
+        "id": "C",
+        "text": "(3x + 30)",
+        "rationale": "a² − b² = (a + b)(a − b); b is √225 = 15."
+      },
+      {
+        "id": "D",
+        "text": "(3x + 15)",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "9x² − 225 is a difference of squares: (3x + 15)(3x − 15).",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "polynomials",
+      "factoring",
+      "family:poly_factor"
+    ],
+    "answer_verification": "factor (3x + 15)"
+  },
+  {
+    "question_id": "sat-math-polynomials-medium-q14",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "polynomials",
+    "lesson_id": "sat-math-polynomials-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "operations",
+    "prompt": "If x = 3, what is the value of (x − 8)²?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "73",
+        "rationale": "(p + q)² = p² + 2pq + q²; the middle term is missing."
+      },
+      {
+        "id": "B",
+        "text": "25",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "-25",
+        "rationale": "A square is never negative."
+      },
+      {
+        "id": "D",
+        "text": "-10",
+        "rationale": "Square the value; don't double it."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "1·3 − 8 = −5, and (−5)² = 25.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "polynomials",
+      "evaluate",
+      "family:poly_evaluate"
+    ],
+    "answer_verification": "val=25"
+  },
+  {
+    "question_id": "sat-math-polynomials-medium-q15",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "polynomials",
+    "lesson_id": "sat-math-polynomials-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "operations",
+    "prompt": "Which of the following is equivalent to (2x − 4)²?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "4x² − 8x + 16",
+        "rationale": "The middle term is 2·p·q, not p·q."
+      },
+      {
+        "id": "B",
+        "text": "4x² − 16x − 16",
+        "rationale": "The last term is q², which is positive."
+      },
+      {
+        "id": "C",
+        "text": "4x² + 16",
+        "rationale": "(p + q)² has a middle term 2pq."
+      },
+      {
+        "id": "D",
+        "text": "4x² − 16x + 16",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "(2x − 4)² = (2x − 4)(2x − 4) = 4x² − 16x + 16.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "polynomials",
+      "square",
+      "family:poly_product_coeff"
+    ],
+    "answer_verification": "4x² − 16x + 16"
+  },
+  {
+    "question_id": "sat-math-polynomials-medium-q16",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "polynomials",
+    "lesson_id": "sat-math-polynomials-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "operations",
+    "prompt": "In the expansion of (7x + 2)(2x − 5), what is the coefficient of x²?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "9",
+        "rationale": "Multiply the leading coefficients; don't add them."
+      },
+      {
+        "id": "B",
+        "text": "-10",
+        "rationale": "This is the constant term, not the x² coefficient."
+      },
+      {
+        "id": "C",
+        "text": "-31",
+        "rationale": "This is the coefficient of x, not x²."
+      },
+      {
+        "id": "D",
+        "text": "14",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "The x² term is 7x·2x = 14x².",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "polynomials",
+      "foil",
+      "family:poly_expand"
+    ],
+    "answer_verification": "x2=14,x=-31,c=-10"
+  },
+  {
+    "question_id": "sat-math-polynomials-medium-q17",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "polynomials",
+    "lesson_id": "sat-math-polynomials-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "operations",
+    "prompt": "Which of the following is equivalent to (8x² + 7x − 9) − (6x² − 5x + 5)?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "2x² + 12x − 14",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "−2x² − 12x + 14",
+        "rationale": "This subtracts in the wrong order."
+      },
+      {
+        "id": "C",
+        "text": "14x² + 2x − 4",
+        "rationale": "This adds instead of subtracting."
+      },
+      {
+        "id": "D",
+        "text": "2x² + 2x − 4",
+        "rationale": "The minus sign must be distributed to every term, not just the first."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Distribute the minus sign to every term of the second polynomial, then combine: 2x² + 12x − 14.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "polynomials",
+      "add-subtract",
+      "family:poly_add_sub"
+    ],
+    "answer_verification": "result [2, 12, -14]"
+  },
+  {
+    "question_id": "sat-math-polynomials-medium-q18",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "polynomials",
+    "lesson_id": "sat-math-polynomials-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "factoring",
+    "prompt": "Which of the following is a factor of x² − 169?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "(x + 169)",
+        "rationale": "Take the square root of 169, which is 13."
+      },
+      {
+        "id": "B",
+        "text": "(x + 13)",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "(x + 26)",
+        "rationale": "a² − b² = (a + b)(a − b); b is √169 = 13."
+      },
+      {
+        "id": "D",
+        "text": "(x + 13)²",
+        "rationale": "A difference of squares has two different factors, not a square."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "x² − 169 is a difference of squares: (x + 13)(x − 13).",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "polynomials",
+      "factoring",
+      "family:poly_factor"
+    ],
+    "answer_verification": "factor (x + 13)"
+  },
+  {
+    "question_id": "sat-math-polynomials-medium-q19",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "polynomials",
+    "lesson_id": "sat-math-polynomials-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "operations",
+    "prompt": "If x = 6, what is the value of (4x − 7)²?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "625",
+        "rationale": "(p + q)² = p² + 2pq + q²; the middle term is missing."
+      },
+      {
+        "id": "B",
+        "text": "-289",
+        "rationale": "A square is never negative."
+      },
+      {
+        "id": "C",
+        "text": "34",
+        "rationale": "Square the value; don't double it."
+      },
+      {
+        "id": "D",
+        "text": "289",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "4·6 − 7 = 17, and (17)² = 289.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "polynomials",
+      "evaluate",
+      "family:poly_evaluate"
+    ],
+    "answer_verification": "val=289"
+  },
+  {
+    "question_id": "sat-math-polynomials-medium-q20",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "polynomials",
+    "lesson_id": "sat-math-polynomials-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "operations",
+    "prompt": "Which of the following is equivalent to (x − 9)²?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "x² + 81",
+        "rationale": "(p + q)² has a middle term 2pq."
+      },
+      {
+        "id": "B",
+        "text": "x² − 9x + 81",
+        "rationale": "The middle term is 2·p·q, not p·q."
+      },
+      {
+        "id": "C",
+        "text": "x² − 18x + 81",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "x² − 18x − 81",
+        "rationale": "The last term is q², which is positive."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "(x − 9)² = (x − 9)(x − 9) = x² − 18x + 81.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "polynomials",
+      "square",
+      "family:poly_product_coeff"
+    ],
+    "answer_verification": "x² − 18x + 81"
   }
 ]

@@ -203,13 +203,15 @@ ACT_MATH = [
     SkillSpec("ratios_percentages_units"), SkillSpec("proportions"),
 ]
 
+READ10: Tuple[Tier, ...] = (("easy", 10), ("medium", 10), ("hard", 10))
+
 ACT_READING = [
-    SkillSpec("main_idea", "reading", "main_idea", READ3),
-    SkillSpec("inferences", "reading", "inference", READ3),
-    SkillSpec("command_of_evidence", "reading", "evidence", READ3),
-    SkillSpec("words_in_context", "reading", "wic", READ3),
-    SkillSpec("text_structure_purpose", "reading", "structure", READ3),
-    SkillSpec("cross_text_connections", "cross_text", None, READ3),
+    SkillSpec("main_idea", "reading", "main_idea", READ10),
+    SkillSpec("inferences", "reading", "inference", READ10),
+    SkillSpec("command_of_evidence", "reading", "evidence", READ10),
+    SkillSpec("words_in_context", "reading", "wic", READ10),
+    SkillSpec("text_structure_purpose", "reading", "structure", READ10),
+    SkillSpec("cross_text_connections", "cross_text", None, READ10),
 ]
 
 ACT_SCIENCE = [

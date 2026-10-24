@@ -236,7 +236,7 @@ def wp_rate_time(rng, d):
             f"{name} can paint a fence in {a} hours, and {other} can paint the same fence in {b} hours. Working together at these rates, how many hours would it take them to paint the fence?",
             f"A large printer finishes a job in {a} minutes and a smaller printer finishes the same job in {b} minutes. If both printers work on the job together, how many minutes does it take?"])
         expl = f"Rates: 1/{a} + 1/{b} = {a + b}/{a * b} pool per hour; time = {a * b}/{a + b} = {num_str(val)} hours."
-        ds = [(Fraction(a + b, 2), "Averaging the times is wrong; add the rates."), (a + b, "Together they are faster than either alone."), (min(a, b), "Together they finish faster than the faster pump alone."), (Fraction(a * b, 2), "Divide ab by a + b, not by 2.")]
+        ds = [(Fraction(a + b, 2), "Averaging the times is wrong; add the rates."), (a + b, "Together they are faster than either alone."), (Fraction(a + b, a * b), "That is the combined rate (jobs per hour); the time is its reciprocal."), (Fraction(a * b, 2), "Divide ab by a + b, not by 2."), (Fraction(a * b, a + b) + 1, "Arithmetic slip; recompute ab/(a + b).")]
         return _numeric_mc(rng, prompt, val, ds, subskill="model_and_solve", explanation=expl,
                            qtype="multi_step_math", tags=["algebra", "word-problem", "work-rate"], est=105,
                            verify=f"{a}*{b}/({a}+{b})={num_str(val)}")
@@ -644,10 +644,10 @@ def ex_interpret(rng, d):
                            tags=["advanced-math", "exponential", "interpret"], fmt=lambda v: f"{num_str(v)}%", est=80, verify=f"rate={pct}%")
     prompt = f"The function {rule} models {ctx[0]} t {ctx[1]} after it was first measured. Which statement best interprets the number {f:g} in this model?"
     correct = f"Each {ctx[1][:-1]}, the quantity is {f:g} times what it was the previous {ctx[1][:-1]}."
-    ds = [(f"Each {ctx[1][:-1]}, the quantity {'increases' if up else 'decreases'} by {f:g} {ctx[2]}.", "The base is a multiplier, not an amount added or removed."),
-          (f"The quantity was {f:g} {ctx[2]} when first measured.", "The initial value is {0}, the coefficient.".format(n0)),
-          (f"After {f:g} {ctx[1]}, the quantity doubles.", "The base says nothing about doubling time directly."),
-          (f"Each {ctx[1][:-1]}, the quantity {'increases' if up else 'decreases'} by {round(f * 100)}%.", "The percent change is {0}%, the part of {1} beyond 1.".format(pct, f))]
+    ds = [(f"Each {ctx[1][:-1]}, the quantity {'increases' if up else 'decreases'} by {f:g} {ctx[2]} compared with the previous {ctx[1][:-1]}.", "The base is a multiplier, not an amount added or removed."),
+          (f"The quantity was {f:g} {ctx[2]} at the moment it was first measured, when t = 0.", "The initial value is {0}, the coefficient.".format(n0)),
+          (f"After {f:g} {ctx[1]} have passed, the quantity is twice what it was at the start.", "The base says nothing about doubling time directly."),
+          (f"Each {ctx[1][:-1]}, the quantity {'increases' if up else 'decreases'} by {round(f * 100)}% of what it was the previous {ctx[1][:-1]}.", "The percent change is {0}%, the part of {1} beyond 1.".format(pct, f))]
     expl = f"In f(t) = a·b^t, the base b = {f:g} is the factor applied each {ctx[1][:-1]}: a {pct}% {'increase' if up else 'decrease'}."
     return _text_mc(rng, prompt, correct, ds, subskill="growth_decay", explanation=expl,
                     tags=["advanced-math", "exponential", "interpret"], est=85, verify=f"base={f:g}")
@@ -1034,8 +1034,8 @@ def sp_residual(rng, d):
     prompt = f"The line of best fit for the scatterplot is {eq}. Which of the following statements about the data point ({pt[0]}, {_m(pt[1])}) is true?"
     correct = f"The actual y-value is {abs(res)} {'greater' if res > 0 else 'less'} than the value predicted by the line."
     ds = [(f"The actual y-value is {abs(res)} {'less' if res > 0 else 'greater'} than the value predicted by the line.", f"The line predicts {_m(pred)}; the actual {_m(pt[1])} is {'above' if res > 0 else 'below'} it."),
-          (f"The point lies exactly on the line of best fit.", f"The line predicts {_m(pred)}, not {_m(pt[1])}."),
-          (f"The predicted y-value at x = {pt[0]} is {_m(pt[1])}.", f"{_m(pt[1])} is the actual value; the prediction is {_m(pred)}."),
+          (f"The point lies exactly on the line of best fit, so its actual and predicted y-values are equal.", f"The line predicts {_m(pred)}, not {_m(pt[1])}."),
+          (f"The value predicted by the line at x = {pt[0]} is {_m(pt[1])}, the same as the actual y-value.", f"{_m(pt[1])} is the actual value; the prediction is {_m(pred)}."),
           (f"The actual y-value is {abs(res) + abs(m)} {'greater' if res > 0 else 'less'} than the predicted value.", "Recompute the prediction with the slope and intercept.")]
     expl = f"Predicted y = {_m(pred)}; actual = {_m(pt[1])}; the difference is {_m(res)}."
     return _text_mc(rng, prompt, correct, ds, subskill="model_interpret", explanation=expl,
@@ -1056,8 +1056,8 @@ def sp_association(rng, d):
                    else "There is a negative linear association: as x increases, y tends to decrease.")
         ds = [("There is a negative linear association: as x increases, y tends to decrease." if m > 0
                else "There is a positive linear association: as x increases, y tends to increase.", "The trend goes the other way."),
-              ("There is no association between the variables.", "The points follow a clear linear trend."),
-              ("The association is nonlinear, because y changes by different amounts.", "Small scatter around a line is still a linear association."),
+              ("There is no association between the variables, because the points do not all lie on one line.", "The points follow a clear linear trend."),
+              ("The association is nonlinear, because y changes by different amounts between points.", "Small scatter around a line is still a linear association."),
               ("There is a positive association because all y-values are positive." if m < 0 else "There is a negative association because the slope is less than 10.",
                "The direction of association comes from the trend, not the sign or size of the values.")]
         expl = f"The slope of the trend is {_m(m)}, so y tends to {'increase' if m > 0 else 'decrease'} as x increases."
@@ -1079,11 +1079,11 @@ def sp_association(rng, d):
         k = max(p[0] for p in pts) + rng.randint(5, 15)
         prompt = (f"The scatterplot shows {yl} versus {xl} for x-values from {pts[0][0]} to {pts[-1][0]}, with line of best fit "
                   f"y = {_lin(m, b)}. A student uses the model to predict y when x = {k}. Which statement best describes this prediction?")
-        correct = f"It is an extrapolation beyond the observed data, so it may be unreliable even though the model gives y ≈ {_m(m * k + b)}."
-        ds = [(f"It is reliable because the model gives an exact value, y = {_m(m * k + b)}.", "A value from the model is not automatically reliable outside the data's range."),
-              ("It is impossible to compute because x = {0} is not a data point.".format(k), "The equation can be evaluated at any x; the issue is reliability."),
-              (f"It is an interpolation within the observed data, so it is reliable.", f"x = {k} is beyond the largest observed x-value, {pts[-1][0]}."),
-              ("The prediction must be 0 because the trend cannot continue.", "The model gives a number; it is the trustworthiness that is uncertain.")]
+        correct = f"It is an extrapolation beyond the observed data, so it may be unreliable."
+        ds = [(f"It is reliable because the model gives an exact value, y = {_m(m * k + b)}, at x = {k}.", "A value from the model is not automatically reliable outside the data's range."),
+              ("It cannot be computed because x = {0} does not appear among the data points.".format(k), "The equation can be evaluated at any x; the issue is reliability."),
+              (f"It is an interpolation within the range of the observed data, so it is reliable.", f"x = {k} is beyond the largest observed x-value, {pts[-1][0]}."),
+              (f"The prediction must be 0 because the trend in the data cannot continue past x = {pts[-1][0]}.", "The model gives a number; it is the trustworthiness that is uncertain.")]
         expl = f"x = {k} lies outside the observed range ({pts[0][0]} to {pts[-1][0]}), so using the model there is extrapolation."
         verify = f"extrapolate x={k}"
     return _text_mc(rng, prompt, correct, ds, subskill="model_interpret", explanation=expl,

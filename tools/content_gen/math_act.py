@@ -194,18 +194,18 @@ def np_parity(rng, d):
                              "If n is an integer, which of the following is always divisible by 4?"])
         if "by 4" in prompt:
             correct = rng.choice(["4n² + 8n", "n(n + 1)(n + 2)(n + 3)", "(2n)(2n + 2)"])
-            ds = [("n(n + 2)", "For n = 1 this is 3."), ("4n + 2", "This leaves remainder 2 when divided by 4."),
-                  ("n² + 4", "For n = 1 this is 5."), ("2n + 4", "For odd n this is not a multiple of 4.")]
+            ds = [("n(n + 1)(n + 2)", "For n = 1 this is 6, not a multiple of 4."), ("(2n + 1)(2n + 3)", "This is a product of odd numbers, so it is odd."),
+                  ("n² + 4n + 4", "For n = 1 this is 9."), ("2n(n + 2)", "For n = 1 this is 6, not a multiple of 4.")]
             expl = f"{correct} always contains a factor of 4 (a multiple of 4 or two even factors)."
         elif "3" in prompt:
             correct = rng.choice(["n(n + 1)(n + 2)", "n³ − n", "(n − 1)n(n + 1)"])
-            ds = [("n(n + 1)", "Two consecutive integers need not include a multiple of 3."), ("n² + 1", "For n = 1 this is 2."),
-                  ("3n + 1", "This leaves remainder 1 when divided by 3."), ("n² + n + 1", "For n = 1 this is 3, but for n = 2 it is 7.")]
+            ds = [("n(n + 1)(n + 3)", "For n = 1 this is 8, not a multiple of 3."), ("(n + 1)(n + 2)", "For n = 3 this is 20."),
+                  ("3n² + 3n + 1", "This leaves remainder 1 when divided by 3."), ("n² + n + 1", "For n = 1 this is 3, but for n = 2 it is 7.")]
             expl = f"Among any three consecutive integers one is a multiple of 3, so {correct} is divisible by 3."
         else:
             correct = rng.choice(["n(n + 1)", "n² + n", "n² − n"])
-            ds = [("n² + 1", "For odd n this is even, but for even n it is odd."), ("2n + 1", "This is always odd."),
-                  ("n³", "An odd n gives an odd cube."), ("n + 2", "This has the same parity as n.")]
+            ds = [("n² + n + 1", "n² + n is even, so this is always odd."), ("(n + 1)(n + 3)", "For even n this is a product of two odd numbers."),
+                  ("n³ + 2n", "For odd n this is odd."), ("n(n + 2)", "For odd n this is a product of two odd numbers.")]
             expl = f"{correct} is the product of two consecutive integers, one of which is even."
     return _text_mc(rng, prompt, correct, ds, subskill="integer_reasoning", explanation=expl,
                     tags=["number", "parity"], est=80, verify=correct)
@@ -349,7 +349,7 @@ def np_fdp(rng, d):
             expl = f"{num_str(pct)}% = {num_str(pct)}/100 = {correct} in lowest terms."
         return _text_mc(rng, prompt, correct, ds, subskill="fraction_decimal_percent", explanation=expl, tags=["number", "fdp"], est=60, verify=correct)
     if d == "medium":
-        vals = rng.sample([Fraction(1, 2), Fraction(2, 3), Fraction(3, 5), Fraction(5, 8), Fraction(7, 10), Fraction(3, 4), Fraction(4, 7), Fraction(5, 9), Fraction(9, 16), Fraction(11, 20), Fraction(13, 20), Fraction(7, 12), Fraction(17, 25), Fraction(5, 6)], 4)
+        vals = rng.sample([Fraction(1, 2), Fraction(2, 3), Fraction(3, 5), Fraction(5, 8), Fraction(7, 10), Fraction(3, 4), Fraction(4, 7), Fraction(5, 9), Fraction(9, 16), Fraction(11, 20), Fraction(13, 20), Fraction(7, 12), Fraction(17, 25), Fraction(5, 6)], 5)
         forms = []
         for v in vals:
             kind = rng.choice(["f", "d", "p"])
@@ -488,6 +488,8 @@ def cg_midpoint(rng, d):
         ds = [(f"({num_str(Fraction(x2 - x1, 2))}, {num_str(Fraction(y2 - y1, 2))})", "Average the coordinates: add, then halve."), (f"({num_str(mx * 2)}, {num_str(my * 2)})", "Divide the sums by 2."),
               (f"({num_str(my)}, {num_str(mx)})" if mx != my else f"({num_str(mx + 1)}, {num_str(my)})", "The x-coordinate comes from the x-values."), (f"({num_str(-mx)}, {num_str(-my)})" if mx != 0 or my != 0 else f"({num_str(mx + 1)}, {num_str(my)})", "Sign slip.")]
         expl = f"Midpoint = (({_m(x1)} + {_m(x2)})/2, ({_m(y1)} + {_m(y2)})/2) = {correct}."
+    if not _distinct(correct, ds):
+        return cg_midpoint(rng, d)
     return _text_mc(rng, prompt, correct, ds, subskill="distance_midpoint", explanation=expl, tags=["coordinate", "midpoint"], est=75, verify=correct)
 
 
@@ -1047,7 +1049,8 @@ def lg_evaluate(rng, d):
             ds = [(b, "b^(log_b x) = x, not b."), (k * b, "The exponential and log cancel exactly."), (1, "The answer is the argument of the log."), (k + 1, "Arithmetic slip.")]
     else:
         b = rng.choice([2, 3, 5, 10])
-        m, n = rng.randint(1, 4), rng.randint(1, 3)
+        m = rng.randint(1, 4)
+        n = rng.choice([v for v in range(1, 4) if v != m])
         x, y = b ** m, b ** n
         op = rng.choice(["+", "−"])
         val = m + n if op == "+" else m - n

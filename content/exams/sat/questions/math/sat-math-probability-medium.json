@@ -11,36 +11,37 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "A bag contains 9 red, 14 blue, and 9 green marbles. If one marble is drawn at random, what is the probability that it is green or blue?",
+    "prompt": "A bag contains 11 black, 3 green, and 3 blue beads. If one of the beads is selected at random, what is the probability that it is not green?",
     "choices": [
       {
         "id": "A",
-        "text": "23/32",
-        "rationale": "Correct."
+        "text": "14/3",
+        "rationale": "Keep the total in the denominator."
       },
       {
         "id": "B",
-        "text": "-137/32",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "3/14",
+        "rationale": "Compare favourable to total, not to the rest."
       },
       {
         "id": "C",
-        "text": "23/9",
-        "rationale": "Use the total in the denominator."
+        "text": "3/17",
+        "rationale": "This is the probability of drawing green."
       },
       {
         "id": "D",
-        "text": "9/32",
-        "rationale": "This counts only the green marbles."
+        "text": "14/17",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "P(green or blue) = (9 + 14)/32 = 23/32.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "D",
+    "explanation": "P(not green) = 1 − 3/17 = 14/17.",
+    "estimated_time_seconds": 90,
     "tags": [
-      "probability"
+      "probability",
+      "family:pb_single"
     ],
-    "answer_verification": "P=23/32"
+    "answer_verification": "P=14/17"
   },
   {
     "question_id": "sat-math-probability-medium-q02",
@@ -54,36 +55,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "A bag contains 9 red, 14 blue, and 2 green marbles. If one marble is drawn at random, what is the probability that it is NOT blue?",
+    "prompt": "Two events are independent. The probability that the first spinner lands on red is 1/6, and the probability that the second spinner lands on blue is 3/4. What is the probability that both events occur?",
     "choices": [
       {
         "id": "A",
-        "text": "11/14",
-        "rationale": "Keep the total in the denominator."
+        "text": "11/12",
+        "rationale": "'Both' means multiply the probabilities, not add."
       },
       {
         "id": "B",
-        "text": "14/11",
-        "rationale": "Compare favourable to total, not to the rest."
+        "text": "2/5",
+        "rationale": "Multiply numerators and denominators separately."
       },
       {
         "id": "C",
-        "text": "14/25",
-        "rationale": "This is the probability of drawing blue."
+        "text": "1/8",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "11/25",
-        "rationale": "Correct."
+        "text": "19/24",
+        "rationale": "That is P(at least one), not P(both)."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "P(not blue) = (25 − 14)/25 = 11/25.",
+    "correct_choice": "C",
+    "explanation": "For independent events, P(both) = 1/6 × 3/4 = 1/8.",
     "estimated_time_seconds": 85,
     "tags": [
-      "probability"
+      "probability",
+      "independent",
+      "family:pb_compound"
     ],
-    "answer_verification": "P=11/25"
+    "answer_verification": "P=1/8"
   },
   {
     "question_id": "sat-math-probability-medium-q03",
@@ -97,36 +100,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "A bag contains 3 red, 4 blue, and 10 green marbles. If one marble is drawn at random, what is the probability that it is blue or green?",
+    "prompt": "The probability that a randomly chosen part from a production line is defective is 3/8. If 160 parts are produced, how many are expected to be defective?",
     "choices": [
       {
         "id": "A",
-        "text": "14/3",
-        "rationale": "Use the total in the denominator."
+        "text": "60",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "4/17",
-        "rationale": "This counts only the blue marbles."
+        "text": "100",
+        "rationale": "That is the expected number of good parts."
       },
       {
         "id": "C",
-        "text": "3/17",
-        "rationale": "This is the probability of the third colour."
+        "text": "140",
+        "rationale": "Multiply 20 by the numerator 3."
       },
       {
         "id": "D",
-        "text": "14/17",
-        "rationale": "Correct."
+        "text": "54",
+        "rationale": "Multiply by the probability, not by its reciprocal."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "P(blue or green) = (4 + 10)/17 = 14/17.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "A",
+    "explanation": "3/8 × 160 = 60.",
+    "estimated_time_seconds": 80,
     "tags": [
-      "probability"
+      "probability",
+      "expected",
+      "family:pb_expected"
     ],
-    "answer_verification": "P=14/17"
+    "answer_verification": "val=60"
   },
   {
     "question_id": "sat-math-probability-medium-q04",
@@ -138,38 +143,72 @@
     "lesson_id": "sat-math-probability-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "simple_probability",
-    "prompt": "A bag contains 5 red, 3 blue, and 6 green marbles. If one marble is drawn at random, what is the probability that it is NOT red?",
+    "question_type": "data_interpretation",
+    "subskill": "two_way_tables",
+    "prompt": "The table summarizes 105 responses. If one response is selected at random, what is the probability that it is from the Adults group and in the Passed category?",
     "choices": [
       {
         "id": "A",
-        "text": "9/5",
-        "rationale": "Keep the total in the denominator."
+        "text": "35/73",
+        "rationale": "This conditions on the column instead of the grand total."
       },
       {
         "id": "B",
-        "text": "5/14",
-        "rationale": "This is the probability of drawing red."
+        "text": "35/62",
+        "rationale": "This conditions on the row instead of using the grand total."
       },
       {
         "id": "C",
-        "text": "9/14",
-        "rationale": "Correct."
+        "text": "62/105",
+        "rationale": "That is the whole row, not the single cell."
       },
       {
         "id": "D",
-        "text": "5/9",
-        "rationale": "Compare favourable to total, not to the rest."
+        "text": "1/3",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "P(not red) = (14 − 5)/14 = 9/14.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "D",
+    "explanation": "The single cell holds 35 of the 105 responses: 1/3.",
+    "estimated_time_seconds": 90,
     "tags": [
-      "probability"
+      "probability",
+      "table",
+      "family:pb_table"
     ],
-    "answer_verification": "P=9/14"
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Survey results",
+        "headers": [
+          "",
+          "Passed",
+          "Failed",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Adults",
+            "35",
+            "27",
+            "62"
+          ],
+          [
+            "Children",
+            "38",
+            "5",
+            "43"
+          ],
+          [
+            "Total",
+            "73",
+            "32",
+            "105"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "P=1/3"
   },
   {
     "question_id": "sat-math-probability-medium-q05",
@@ -181,38 +220,26 @@
     "lesson_id": "sat-math-probability-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "student_produced",
     "subskill": "simple_probability",
-    "prompt": "A bag contains 13 red, 8 blue, and 1 green marbles. If one marble is drawn at random, what is the probability that it is NOT blue?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "7/11",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "7/4",
-        "rationale": "Keep the total in the denominator."
-      },
-      {
-        "id": "C",
-        "text": "4/7",
-        "rationale": "Compare favourable to total, not to the rest."
-      },
-      {
-        "id": "D",
-        "text": "4/11",
-        "rationale": "This is the probability of drawing blue."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "P(not blue) = (22 − 8)/22 = 7/11.",
-    "estimated_time_seconds": 85,
+    "prompt": "A bag contains 12 black, 9 white, and 3 green tokens. If one of the tokens is chosen at random, what is the probability that it is not black?",
+    "answer": {
+      "type": "numeric",
+      "value": 0.5,
+      "accepted": [
+        "1/2",
+        "0.5"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "1 − 12/24 = 1/2.",
+    "estimated_time_seconds": 80,
     "tags": [
-      "probability"
+      "probability",
+      "grid-in",
+      "family:pb_gridin"
     ],
-    "answer_verification": "P=7/11"
+    "answer_verification": "val=1/2"
   },
   {
     "question_id": "sat-math-probability-medium-q06",
@@ -226,36 +253,37 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "A bag contains 10 red, 8 blue, and 3 green marbles. If one marble is drawn at random, what is the probability that it is red or green?",
+    "prompt": "A bag contains 8 green, 13 red, and 4 blue marbles. If one of the marbles is selected at random, what is the probability that it is not green?",
     "choices": [
       {
         "id": "A",
-        "text": "13/21",
-        "rationale": "Correct."
+        "text": "8/17",
+        "rationale": "Compare favourable to total, not to the rest."
       },
       {
         "id": "B",
-        "text": "13/8",
-        "rationale": "Use the total in the denominator."
+        "text": "8/25",
+        "rationale": "This is the probability of drawing green."
       },
       {
         "id": "C",
-        "text": "10/21",
-        "rationale": "This counts only the red marbles."
+        "text": "17/8",
+        "rationale": "Keep the total in the denominator."
       },
       {
         "id": "D",
-        "text": "8/21",
-        "rationale": "This is the probability of the third colour."
+        "text": "17/25",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "P(red or green) = (10 + 3)/21 = 13/21.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "D",
+    "explanation": "P(not green) = 1 − 8/25 = 17/25.",
+    "estimated_time_seconds": 90,
     "tags": [
-      "probability"
+      "probability",
+      "family:pb_single"
     ],
-    "answer_verification": "P=13/21"
+    "answer_verification": "P=17/25"
   },
   {
     "question_id": "sat-math-probability-medium-q07",
@@ -269,36 +297,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "A bag contains 11 red, 5 blue, and 5 green marbles. If one marble is drawn at random, what is the probability that it is NOT red?",
+    "prompt": "Two events are independent. The probability that the first machine passes inspection is 3/4, and the probability that the second machine passes inspection is 3/5. What is the probability that both events occur?",
     "choices": [
       {
         "id": "A",
-        "text": "10/21",
-        "rationale": "Correct."
+        "text": "2/3",
+        "rationale": "Multiply numerators and denominators separately."
       },
       {
         "id": "B",
-        "text": "10/11",
-        "rationale": "Keep the total in the denominator."
+        "text": "9/20",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "11/21",
-        "rationale": "This is the probability of drawing red."
+        "text": "9/10",
+        "rationale": "That is P(at least one), not P(both)."
       },
       {
         "id": "D",
-        "text": "11/10",
-        "rationale": "Compare favourable to total, not to the rest."
+        "text": "13/30",
+        "rationale": "'Both' means multiply the probabilities, not add."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "P(not red) = (21 − 11)/21 = 10/21.",
+    "correct_choice": "B",
+    "explanation": "For independent events, P(both) = 3/4 × 3/5 = 9/20.",
     "estimated_time_seconds": 85,
     "tags": [
-      "probability"
+      "probability",
+      "independent",
+      "family:pb_compound"
     ],
-    "answer_verification": "P=10/21"
+    "answer_verification": "P=9/20"
   },
   {
     "question_id": "sat-math-probability-medium-q08",
@@ -312,36 +342,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "A bag contains 5 red, 11 blue, and 1 green marbles. If one marble is drawn at random, what is the probability that it is NOT red?",
+    "prompt": "The probability that a randomly chosen part from a production line is defective is 2/5. If 80 parts are produced, how many are expected to be defective?",
     "choices": [
       {
         "id": "A",
-        "text": "12/5",
-        "rationale": "Keep the total in the denominator."
+        "text": "40",
+        "rationale": "Multiply by the probability, not by its reciprocal."
       },
       {
         "id": "B",
-        "text": "12/17",
+        "text": "32",
         "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "5/12",
-        "rationale": "Compare favourable to total, not to the rest."
+        "text": "48",
+        "rationale": "That is the expected number of good parts."
       },
       {
         "id": "D",
-        "text": "5/17",
-        "rationale": "This is the probability of drawing red."
+        "text": "64",
+        "rationale": "Multiply 16 by the numerator 2."
       }
     ],
     "correct_choice": "B",
-    "explanation": "P(not red) = (17 − 5)/17 = 12/17.",
-    "estimated_time_seconds": 85,
+    "explanation": "2/5 × 80 = 32.",
+    "estimated_time_seconds": 80,
     "tags": [
-      "probability"
+      "probability",
+      "expected",
+      "family:pb_expected"
     ],
-    "answer_verification": "P=12/17"
+    "answer_verification": "val=32"
   },
   {
     "question_id": "sat-math-probability-medium-q09",
@@ -353,38 +385,72 @@
     "lesson_id": "sat-math-probability-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "simple_probability",
-    "prompt": "A bag contains 8 red, 10 blue, and 8 green marbles. If one marble is drawn at random, what is the probability that it is NOT red?",
+    "question_type": "data_interpretation",
+    "subskill": "two_way_tables",
+    "prompt": "The table summarizes 129 responses. If one response is selected at random, what is the probability that it is from the Adults group and in the Prefers tea category?",
     "choices": [
       {
         "id": "A",
-        "text": "9/4",
-        "rationale": "Keep the total in the denominator."
+        "text": "24/65",
+        "rationale": "This conditions on the row instead of using the grand total."
       },
       {
         "id": "B",
-        "text": "4/9",
-        "rationale": "Compare favourable to total, not to the rest."
+        "text": "24/59",
+        "rationale": "This conditions on the column instead of the grand total."
       },
       {
         "id": "C",
-        "text": "9/13",
-        "rationale": "Correct."
+        "text": "65/129",
+        "rationale": "That is the whole row, not the single cell."
       },
       {
         "id": "D",
-        "text": "4/13",
-        "rationale": "This is the probability of drawing red."
+        "text": "8/43",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "P(not red) = (26 − 8)/26 = 9/13.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "D",
+    "explanation": "The single cell holds 24 of the 129 responses: 8/43.",
+    "estimated_time_seconds": 90,
     "tags": [
-      "probability"
+      "probability",
+      "table",
+      "family:pb_table"
     ],
-    "answer_verification": "P=9/13"
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Survey results",
+        "headers": [
+          "",
+          "Prefers tea",
+          "Prefers coffee",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Adults",
+            "24",
+            "41",
+            "65"
+          ],
+          [
+            "Children",
+            "35",
+            "29",
+            "64"
+          ],
+          [
+            "Total",
+            "59",
+            "70",
+            "129"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "P=8/43"
   },
   {
     "question_id": "sat-math-probability-medium-q10",
@@ -396,38 +462,25 @@
     "lesson_id": "sat-math-probability-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "student_produced",
     "subskill": "simple_probability",
-    "prompt": "A bag contains 7 red, 6 blue, and 1 green marbles. If one marble is drawn at random, what is the probability that it is NOT blue?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "4/7",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "4/3",
-        "rationale": "Keep the total in the denominator."
-      },
-      {
-        "id": "C",
-        "text": "3/4",
-        "rationale": "Compare favourable to total, not to the rest."
-      },
-      {
-        "id": "D",
-        "text": "3/7",
-        "rationale": "This is the probability of drawing blue."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "P(not blue) = (14 − 6)/14 = 4/7.",
-    "estimated_time_seconds": 85,
+    "prompt": "A bag contains 4 red, 8 white, and 14 yellow balls. If one of the balls is chosen at random, what is the probability that it is not white?",
+    "answer": {
+      "type": "numeric",
+      "value": 0.6923076923076923,
+      "accepted": [
+        "9/13"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "1 − 8/26 = 9/13.",
+    "estimated_time_seconds": 80,
     "tags": [
-      "probability"
+      "probability",
+      "grid-in",
+      "family:pb_gridin"
     ],
-    "answer_verification": "P=4/7"
+    "answer_verification": "val=9/13"
   },
   {
     "question_id": "sat-math-probability-medium-q11",
@@ -441,36 +494,37 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "A bag contains 9 red, 6 blue, and 4 green marbles. If one marble is drawn at random, what is the probability that it is NOT green?",
+    "prompt": "A bag contains 2 orange, 5 red, and 5 green balls. If one of the balls is selected at random, what is the probability that it is green or orange?",
     "choices": [
       {
         "id": "A",
-        "text": "4/19",
-        "rationale": "This is the probability of drawing green."
+        "text": "5/72",
+        "rationale": "'Or' with disjoint outcomes adds probabilities; it doesn't multiply."
       },
       {
         "id": "B",
-        "text": "15/4",
-        "rationale": "Keep the total in the denominator."
+        "text": "5/12",
+        "rationale": "This counts only the green balls."
       },
       {
         "id": "C",
-        "text": "15/19",
-        "rationale": "Correct."
+        "text": "7/5",
+        "rationale": "Use the total in the denominator."
       },
       {
         "id": "D",
-        "text": "4/15",
-        "rationale": "Compare favourable to total, not to the rest."
+        "text": "7/12",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "P(not green) = (19 − 4)/19 = 15/19.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "D",
+    "explanation": "P(green or orange) = (5 + 2)/12 = 7/12.",
+    "estimated_time_seconds": 90,
     "tags": [
-      "probability"
+      "probability",
+      "family:pb_single"
     ],
-    "answer_verification": "P=15/19"
+    "answer_verification": "P=7/12"
   },
   {
     "question_id": "sat-math-probability-medium-q12",
@@ -484,36 +538,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "A bag contains 6 red, 5 blue, and 2 green marbles. If one marble is drawn at random, what is the probability that it is NOT green?",
+    "prompt": "Two events are independent. The probability that it rains on Saturday is 2/3, and the probability that it rains on Sunday is 2/3. What is the probability that both events occur?",
     "choices": [
       {
         "id": "A",
-        "text": "11/13",
+        "text": "4/9",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "2/13",
-        "rationale": "This is the probability of drawing green."
+        "text": "8/9",
+        "rationale": "That is P(at least one), not P(both)."
       },
       {
         "id": "C",
-        "text": "11/2",
-        "rationale": "Keep the total in the denominator."
+        "text": "5/12",
+        "rationale": "'Both' means multiply the probabilities, not add."
       },
       {
         "id": "D",
-        "text": "2/11",
-        "rationale": "Compare favourable to total, not to the rest."
+        "text": "2/3",
+        "rationale": "Multiply numerators and denominators separately."
       }
     ],
     "correct_choice": "A",
-    "explanation": "P(not green) = (13 − 2)/13 = 11/13.",
+    "explanation": "For independent events, P(both) = 2/3 × 2/3 = 4/9.",
     "estimated_time_seconds": 85,
     "tags": [
-      "probability"
+      "probability",
+      "independent",
+      "family:pb_compound"
     ],
-    "answer_verification": "P=11/13"
+    "answer_verification": "P=4/9"
   },
   {
     "question_id": "sat-math-probability-medium-q13",
@@ -527,36 +583,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "A bag contains 3 red, 14 blue, and 1 green marbles. If one marble is drawn at random, what is the probability that it is NOT blue?",
+    "prompt": "The probability that a randomly chosen part from a production line is defective is 1/4. If 136 parts are produced, how many are expected to be defective?",
     "choices": [
       {
         "id": "A",
-        "text": "7/9",
-        "rationale": "This is the probability of drawing blue."
+        "text": "136",
+        "rationale": "Multiply by the probability, not by its reciprocal."
       },
       {
         "id": "B",
-        "text": "2/7",
-        "rationale": "Keep the total in the denominator."
+        "text": "68",
+        "rationale": "Arithmetic slip; recompute 1/4 of 136."
       },
       {
         "id": "C",
-        "text": "2/9",
+        "text": "34",
         "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "7/2",
-        "rationale": "Compare favourable to total, not to the rest."
+        "text": "102",
+        "rationale": "That is the expected number of good parts."
       }
     ],
     "correct_choice": "C",
-    "explanation": "P(not blue) = (18 − 14)/18 = 2/9.",
-    "estimated_time_seconds": 85,
+    "explanation": "1/4 × 136 = 34.",
+    "estimated_time_seconds": 80,
     "tags": [
-      "probability"
+      "probability",
+      "expected",
+      "family:pb_expected"
     ],
-    "answer_verification": "P=2/9"
+    "answer_verification": "val=34"
   },
   {
     "question_id": "sat-math-probability-medium-q14",
@@ -568,38 +626,72 @@
     "lesson_id": "sat-math-probability-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "simple_probability",
-    "prompt": "A bag contains 10 red, 8 blue, and 3 green marbles. If one marble is drawn at random, what is the probability that it is NOT blue?",
+    "question_type": "data_interpretation",
+    "subskill": "two_way_tables",
+    "prompt": "The table summarizes 108 responses. If one response is selected at random, what is the probability that it is from the Adults group and in the Member category?",
     "choices": [
       {
         "id": "A",
-        "text": "13/21",
+        "text": "7/54",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "8/13",
-        "rationale": "Compare favourable to total, not to the rest."
+        "text": "14/39",
+        "rationale": "This conditions on the row instead of using the grand total."
       },
       {
         "id": "C",
-        "text": "13/8",
-        "rationale": "Keep the total in the denominator."
+        "text": "13/36",
+        "rationale": "That is the whole row, not the single cell."
       },
       {
         "id": "D",
-        "text": "8/21",
-        "rationale": "This is the probability of drawing blue."
+        "text": "14/55",
+        "rationale": "This conditions on the column instead of the grand total."
       }
     ],
     "correct_choice": "A",
-    "explanation": "P(not blue) = (21 − 8)/21 = 13/21.",
-    "estimated_time_seconds": 85,
+    "explanation": "The single cell holds 14 of the 108 responses: 7/54.",
+    "estimated_time_seconds": 90,
     "tags": [
-      "probability"
+      "probability",
+      "table",
+      "family:pb_table"
     ],
-    "answer_verification": "P=13/21"
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Survey results",
+        "headers": [
+          "",
+          "Member",
+          "Non-member",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Adults",
+            "14",
+            "25",
+            "39"
+          ],
+          [
+            "Children",
+            "41",
+            "28",
+            "69"
+          ],
+          [
+            "Total",
+            "55",
+            "53",
+            "108"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "P=7/54"
   },
   {
     "question_id": "sat-math-probability-medium-q15",
@@ -611,38 +703,25 @@
     "lesson_id": "sat-math-probability-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "student_produced",
     "subskill": "simple_probability",
-    "prompt": "A bag contains 6 red, 14 blue, and 4 green marbles. If one marble is drawn at random, what is the probability that it is red or blue?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "5/6",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "1/6",
-        "rationale": "This is the probability of the third colour."
-      },
-      {
-        "id": "C",
-        "text": "5",
-        "rationale": "Use the total in the denominator."
-      },
-      {
-        "id": "D",
-        "text": "1/4",
-        "rationale": "This counts only the red marbles."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "P(red or blue) = (6 + 14)/24 = 5/6.",
-    "estimated_time_seconds": 85,
+    "prompt": "A bag contains 12 black, 6 orange, and 5 purple marbles. If one of the marbles is chosen at random, what is the probability that it is not black?",
+    "answer": {
+      "type": "numeric",
+      "value": 0.4782608695652174,
+      "accepted": [
+        "11/23"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "1 − 12/23 = 11/23.",
+    "estimated_time_seconds": 80,
     "tags": [
-      "probability"
+      "probability",
+      "grid-in",
+      "family:pb_gridin"
     ],
-    "answer_verification": "P=5/6"
+    "answer_verification": "val=11/23"
   },
   {
     "question_id": "sat-math-probability-medium-q16",
@@ -656,36 +735,37 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "A bag contains 2 red, 9 blue, and 9 green marbles. If one marble is drawn at random, what is the probability that it is green or blue?",
+    "prompt": "A bag contains 10 orange, 14 yellow, and 3 green tokens. If one of the tokens is selected at random, what is the probability that it is yellow or orange?",
     "choices": [
       {
         "id": "A",
-        "text": "1/10",
-        "rationale": "This is the probability of the third colour."
+        "text": "140/729",
+        "rationale": "'Or' with disjoint outcomes adds probabilities; it doesn't multiply."
       },
       {
         "id": "B",
-        "text": "9",
-        "rationale": "Use the total in the denominator."
+        "text": "1/9",
+        "rationale": "This is the probability of the third colour."
       },
       {
         "id": "C",
-        "text": "9/20",
-        "rationale": "This counts only the green marbles."
+        "text": "14/27",
+        "rationale": "This counts only the yellow tokens."
       },
       {
         "id": "D",
-        "text": "9/10",
+        "text": "8/9",
         "rationale": "Correct."
       }
     ],
     "correct_choice": "D",
-    "explanation": "P(green or blue) = (9 + 9)/20 = 9/10.",
-    "estimated_time_seconds": 85,
+    "explanation": "P(yellow or orange) = (14 + 10)/27 = 8/9.",
+    "estimated_time_seconds": 90,
     "tags": [
-      "probability"
+      "probability",
+      "family:pb_single"
     ],
-    "answer_verification": "P=9/10"
+    "answer_verification": "P=8/9"
   },
   {
     "question_id": "sat-math-probability-medium-q17",
@@ -699,36 +779,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "A bag contains 10 red, 12 blue, and 10 green marbles. If one marble is drawn at random, what is the probability that it is red or green?",
+    "prompt": "Two events are independent. The probability that the first spinner lands on red is 2/3, and the probability that the second spinner lands on blue is 3/4. What is the probability that both events occur?",
     "choices": [
       {
         "id": "A",
-        "text": "5/8",
-        "rationale": "Correct."
+        "text": "5/7",
+        "rationale": "Multiply numerators and denominators separately."
       },
       {
         "id": "B",
-        "text": "5/16",
-        "rationale": "This counts only the red marbles."
+        "text": "1/2",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "5/3",
-        "rationale": "Use the total in the denominator."
+        "text": "3/4",
+        "rationale": "Both must happen, so the probability is less than either alone."
       },
       {
         "id": "D",
-        "text": "3/8",
-        "rationale": "This is the probability of the third colour."
+        "text": "11/12",
+        "rationale": "That is P(at least one), not P(both)."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "P(red or green) = (10 + 10)/32 = 5/8.",
+    "correct_choice": "B",
+    "explanation": "For independent events, P(both) = 2/3 × 3/4 = 1/2.",
     "estimated_time_seconds": 85,
     "tags": [
-      "probability"
+      "probability",
+      "independent",
+      "family:pb_compound"
     ],
-    "answer_verification": "P=5/8"
+    "answer_verification": "P=1/2"
   },
   {
     "question_id": "sat-math-probability-medium-q18",
@@ -742,36 +824,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "A bag contains 8 red, 4 blue, and 8 green marbles. If one marble is drawn at random, what is the probability that it is NOT red?",
+    "prompt": "The probability that a randomly chosen part from a production line is defective is 3/5. If 130 parts are produced, how many are expected to be defective?",
     "choices": [
       {
         "id": "A",
-        "text": "3/2",
-        "rationale": "Keep the total in the denominator."
+        "text": "78",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "2/5",
-        "rationale": "This is the probability of drawing red."
+        "text": "44",
+        "rationale": "Multiply by the probability, not by its reciprocal."
       },
       {
         "id": "C",
-        "text": "2/3",
-        "rationale": "Compare favourable to total, not to the rest."
+        "text": "104",
+        "rationale": "Multiply 26 by the numerator 3."
       },
       {
         "id": "D",
-        "text": "3/5",
-        "rationale": "Correct."
+        "text": "52",
+        "rationale": "That is the expected number of good parts."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "P(not red) = (20 − 8)/20 = 3/5.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "A",
+    "explanation": "3/5 × 130 = 78.",
+    "estimated_time_seconds": 80,
     "tags": [
-      "probability"
+      "probability",
+      "expected",
+      "family:pb_expected"
     ],
-    "answer_verification": "P=3/5"
+    "answer_verification": "val=78"
   },
   {
     "question_id": "sat-math-probability-medium-q19",
@@ -783,38 +867,72 @@
     "lesson_id": "sat-math-probability-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "simple_probability",
-    "prompt": "A bag contains 7 red, 10 blue, and 6 green marbles. If one marble is drawn at random, what is the probability that it is red or green?",
+    "question_type": "data_interpretation",
+    "subskill": "two_way_tables",
+    "prompt": "The table summarizes 107 responses. If one response is selected at random, what is the probability that it is from the Online group and in the Prefers tea category?",
     "choices": [
       {
         "id": "A",
-        "text": "7/23",
-        "rationale": "This counts only the red marbles."
+        "text": "61/107",
+        "rationale": "That is the whole row, not the single cell."
       },
       {
         "id": "B",
-        "text": "13/10",
-        "rationale": "Use the total in the denominator."
+        "text": "19/46",
+        "rationale": "This conditions on the column instead of the grand total."
       },
       {
         "id": "C",
-        "text": "10/23",
-        "rationale": "This is the probability of the third colour."
+        "text": "19/107",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "13/23",
-        "rationale": "Correct."
+        "text": "19/61",
+        "rationale": "This conditions on the row instead of using the grand total."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "P(red or green) = (7 + 6)/23 = 13/23.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "C",
+    "explanation": "The single cell holds 19 of the 107 responses: 19/107.",
+    "estimated_time_seconds": 90,
     "tags": [
-      "probability"
+      "probability",
+      "table",
+      "family:pb_table"
     ],
-    "answer_verification": "P=13/23"
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Survey results",
+        "headers": [
+          "",
+          "Prefers tea",
+          "Prefers coffee",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Online",
+            "19",
+            "42",
+            "61"
+          ],
+          [
+            "In store",
+            "27",
+            "19",
+            "46"
+          ],
+          [
+            "Total",
+            "46",
+            "61",
+            "107"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "P=19/107"
   },
   {
     "question_id": "sat-math-probability-medium-q20",
@@ -826,37 +944,24 @@
     "lesson_id": "sat-math-probability-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "student_produced",
     "subskill": "simple_probability",
-    "prompt": "A bag contains 2 red, 4 blue, and 7 green marbles. If one marble is drawn at random, what is the probability that it is red or green?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "4/13",
-        "rationale": "This is the probability of the third colour."
-      },
-      {
-        "id": "B",
-        "text": "9/4",
-        "rationale": "Use the total in the denominator."
-      },
-      {
-        "id": "C",
-        "text": "9/13",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "2/13",
-        "rationale": "This counts only the red marbles."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "P(red or green) = (2 + 7)/13 = 9/13.",
-    "estimated_time_seconds": 85,
+    "prompt": "A bag contains 10 white, 7 yellow, and 7 blue beads. If one of the beads is chosen at random, what is the probability that it is not blue?",
+    "answer": {
+      "type": "numeric",
+      "value": 0.7083333333333334,
+      "accepted": [
+        "17/24"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "1 − 7/24 = 17/24.",
+    "estimated_time_seconds": 80,
     "tags": [
-      "probability"
+      "probability",
+      "grid-in",
+      "family:pb_gridin"
     ],
-    "answer_verification": "P=9/13"
+    "answer_verification": "val=17/24"
   }
 ]
