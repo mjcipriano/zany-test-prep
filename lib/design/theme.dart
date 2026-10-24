@@ -8,6 +8,20 @@ class AppTheme {
   static const streak = Color(0xFFFF8A3D);
   static const xpGold = Color(0xFFF4B740);
 
+  /// Accent colours for an exam's domains, by position in the exam's domain
+  /// order (SAT: Reading & Writing, Math; ACT: English, Math, Reading, Science).
+  static const domainPalette = [
+    seed,
+    correct,
+    Color(0xFF8E44AD), // violet
+    Color(0xFF0E9AA7), // teal
+    streak,
+    Color(0xFFB03A6B), // berry
+  ];
+
+  static Color domainColor(int index) =>
+      domainPalette[index < 0 ? 0 : index % domainPalette.length];
+
   static ThemeData light() => _build(Brightness.light);
   static ThemeData dark() => _build(Brightness.dark);
 

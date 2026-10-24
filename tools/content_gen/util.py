@@ -20,6 +20,43 @@ from fractions import Fraction
 
 LETTERS = ["A", "B", "C", "D", "E", "F"]
 
+# How many answer choices a multiple-choice item should carry. The SAT uses 4;
+# the ACT Math test uses 5. The exam plan sets this before generating, and
+# ``mc`` trims surplus *distractors* (never the correct choice) down to it, so a
+# family can always supply 4 distractors and work for both exams.
+OPTION_COUNT = 4
+
+
+def set_option_count(n: int) -> None:
+    global OPTION_COUNT
+    assert 2 <= n <= 6
+    OPTION_COUNT = n
+
+
+def pad_numeric_distractors(rng, correct, distractors, n, fmt=None):
+    """Grow ``distractors`` (list of (text, rationale)) to ``n`` entries with
+    plausible near-miss numbers around ``correct`` (int/float/Fraction).
+    Returns a new list; never duplicates the correct answer or each other."""
+    fmt = fmt or num_str
+    seen = {fmt(correct)} | {t for t, _ in distractors}
+    out = list(distractors)
+    tries = 0
+    while len(out) < n and tries < 80:
+        tries += 1
+        delta = rng.choice([-10, -5, -3, -2, -1, 1, 2, 3, 4, 5, 6, 10])
+        if isinstance(correct, Fraction):
+            cand = correct + Fraction(delta, rng.choice([1, 2, 3]))
+        else:
+            cand = correct + delta
+            if isinstance(correct, float):
+                cand = round(cand, 2)
+        s = fmt(cand)
+        if s in seen:
+            continue
+        seen.add(s)
+        out.append((s, "This comes from a small arithmetic slip; recompute carefully."))
+    return out
+
 
 def mc(prompt, options, correct_index, rationales, *, subskill, explanation,
        qtype="multiple_choice", est=60, tags=None, stimulus=None, verify=None):
@@ -32,6 +69,14 @@ def mc(prompt, options, correct_index, rationales, *, subskill, explanation,
     assert len(options) == len(rationales), "need a rationale per option"
     assert 2 <= len(options) <= 6
     assert 0 <= correct_index < len(options)
+    if len(options) > OPTION_COUNT:
+        # Trim surplus distractors (keep the correct one and the first ones).
+        keep = [i for i in range(len(options)) if i != correct_index][:OPTION_COUNT - 1]
+        keep.append(correct_index)
+        keep.sort()
+        options = [options[i] for i in keep]
+        rationales = [rationales[i] for i in keep]
+        correct_index = keep.index(correct_index)
     choices = []
     for i, (text, rat) in enumerate(zip(options, rationales)):
         choices.append({"id": LETTERS[i], "text": str(text), "rationale": rat})

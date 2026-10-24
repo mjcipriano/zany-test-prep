@@ -4,7 +4,11 @@ import 'package:zany_test_prep/features/lessons/figure_view.dart';
 
 Future<void> _pump(WidgetTester tester, Map<String, dynamic> figure) async {
   await tester.pumpWidget(
-    MaterialApp(home: Scaffold(body: Center(child: FigureView(figure: figure)))),
+    MaterialApp(
+      home: Scaffold(
+        body: Center(child: FigureView(figure: figure)),
+      ),
+    ),
   );
   await tester.pump();
 }

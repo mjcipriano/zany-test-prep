@@ -2,8 +2,8 @@
 """Validate the offline content bank. Runs locally and in CI.
 
 Usage:
-    python tools/validate_content.py            # validate content/exams/sat
-    python tools/validate_content.py --exam sat
+    python tools/validate_content.py            # validate every exam under content/exams/
+    python tools/validate_content.py --exam act # validate one exam
 
 Exit code 0 means all checks passed; non-zero means at least one failure.
 """
@@ -18,6 +18,9 @@ from pathlib import Path
 import yaml
 from jsonschema import Draft7Validator
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from content_gen.registry import family_of  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
 CONTENT = ROOT / "content"
 SCHEMAS = CONTENT / "schemas"
@@ -27,6 +30,16 @@ PLACEHOLDER_PATTERNS = [
     r"\bxxx+\b", r"\byour answer here\b", r"\bsample text\b",
 ]
 ID_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
+
+# Aggregate minimums every exam must meet.
+MIN_LESSONS = 36
+MIN_QUESTIONS = 1000
+MIN_PER_DOMAIN = 250
+
+# Per-lesson variety: lessons built from generator families must mix at least
+# this many families, and no single family may fill more than this share.
+MIN_FAMILIES_PER_LESSON = 3
+MAX_FAMILY_SHARE = 0.5
 
 
 class Report:
@@ -83,13 +96,21 @@ def validate_exam(exam_id, rep: Report):
     skill_ids = set()
     section_ids = set()
     domain_ids = set()
+    subskills = {}   # skill id -> set of subskill ids
     for dom in skills_doc["domains"]:
         domain_ids.add(dom["id"])
         for sec in dom["sections"]:
             section_ids.add(sec["id"])
             for sk in sec["skills"]:
                 skill_ids.add(sk["id"])
+                subskills[sk["id"]] = set(sk.get("subskills") or [])
     rep.stats["skills"] = len(skill_ids)
+    for d in exam.get("domains", []):
+        if d not in domain_ids:
+            rep.err(f"exam.yaml domain {d!r} is not in skills.yaml")
+    for m in (exam.get("timed_test") or {}).get("modules", []):
+        if m.get("domain") not in domain_ids:
+            rep.err(f"timed_test module {m.get('name')!r} uses unknown domain {m.get('domain')!r}")
 
     # --- schemas ---
     q_schema = load_json(SCHEMAS / "question.schema.json")
@@ -149,7 +170,8 @@ def validate_exam(exam_id, rep: Report):
     rep.stats["bank_questions"] = len(bank_ids)
 
     # --- per-question semantic checks ---
-    by_domain = {"math": 0, "reading_writing": 0}
+    by_domain = {d: 0 for d in domain_ids}
+    unknown_subskills = set()
     # Track correct-answer position and "correct is longest option" to catch the
     # tells where the right answer always sits in slot A or is the longest choice.
     pos_counts = {}   # domain -> {A,B,C,D: n}
@@ -164,6 +186,12 @@ def validate_exam(exam_id, rep: Report):
             rep.err(f"{where}: id not a valid slug")
         if q["skill"] not in skill_ids:
             rep.err(f"{where}: unknown skill {q['skill']}")
+        if q["domain"] not in domain_ids:
+            rep.err(f"{where}: unknown domain {q['domain']}")
+        if q["section"] not in section_ids:
+            rep.err(f"{where}: unknown section {q['section']}")
+        if q.get("subskill") and q["subskill"] not in subskills.get(q["skill"], set()):
+            unknown_subskills.add((q["skill"], q["subskill"]))
         if q["lesson_id"] not in lessons:
             rep.err(f"{where}: references missing lesson {q['lesson_id']}")
         if q["exam_id"] != exam_id:
@@ -240,10 +268,28 @@ def validate_exam(exam_id, rep: Report):
         else:
             prompt_index[sig] = qid
 
+    for skill, sub in sorted(unknown_subskills):
+        rep.warn(f"{skill}: subskill {sub!r} is not listed in skills.yaml")
+
     # --- per-lesson checks ---
+    variety_flags = 0
     for lid, lesson in lessons.items():
         where = f"lesson {lid}"
         qids = lesson["question_ids"]
+        # Variety: a lesson built from generator families must not be one
+        # template with the numbers changed. (Authored pools/passages carry no
+        # family tag; their variety comes from distinct prompts/stimuli, which
+        # the near-duplicate check above already enforces.)
+        fams = [family_of(questions[q]) for q in qids if q in questions]
+        fams = [f for f in fams if f]
+        if len(qids) >= 8 and len(fams) >= len(qids) * 0.5:
+            distinct = len(set(fams))
+            top = max(fams.count(f) for f in set(fams)) / len(fams)
+            if distinct < MIN_FAMILIES_PER_LESSON or top > MAX_FAMILY_SHARE:
+                variety_flags += 1
+                rep.err(f"{where}: low variety — {distinct} question families, top "
+                        f"family {top*100:.0f}% of items (need >= "
+                        f"{MIN_FAMILIES_PER_LESSON} and <= {MAX_FAMILY_SHARE*100:.0f}%)")
         if not (8 <= len(qids) <= 25):
             rep.err(f"{where}: has {len(qids)} questions (must be 8-25)")
         if len(qids) != len(set(qids)):
@@ -262,17 +308,17 @@ def validate_exam(exam_id, rep: Report):
             rep.err(f"{where}: estimated_minutes out of range")
 
     # --- aggregate requirements ---
-    rep.stats["math_questions"] = by_domain.get("math", 0)
-    rep.stats["rw_questions"] = by_domain.get("reading_writing", 0)
+    for d, n in sorted(by_domain.items()):
+        rep.stats[f"{d}_questions"] = n
     rep.stats["duplicate_prompts"] = dup_prompts
-    if len(lessons) < 50:
-        rep.err(f"need >= 50 lessons, found {len(lessons)}")
-    if len(questions) < 1000:
-        rep.err(f"need >= 1000 questions, found {len(questions)}")
-    if by_domain.get("reading_writing", 0) < 500:
-        rep.err(f"need >= 500 reading/writing questions, found {by_domain.get('reading_writing',0)}")
-    if by_domain.get("math", 0) < 500:
-        rep.err(f"need >= 500 math questions, found {by_domain.get('math',0)}")
+    rep.stats["low_variety_lessons"] = variety_flags
+    if len(lessons) < MIN_LESSONS:
+        rep.err(f"need >= {MIN_LESSONS} lessons, found {len(lessons)}")
+    if len(questions) < MIN_QUESTIONS:
+        rep.err(f"need >= {MIN_QUESTIONS} questions, found {len(questions)}")
+    for d in sorted(domain_ids):
+        if by_domain.get(d, 0) < MIN_PER_DOMAIN:
+            rep.err(f"need >= {MIN_PER_DOMAIN} {d} questions, found {by_domain.get(d, 0)}")
 
     # --- answer-position and length-tell balance ---
     # A well-shuffled bank spreads the correct answer roughly evenly across
@@ -291,9 +337,9 @@ def validate_exam(exam_id, rep: Report):
             rep.warn(f"{dom}: correct-answer positions are uneven (top {top*100:.0f}%)")
         longest_rate = longest_counts.get(dom, 0) / total
         rep.stats[f"{dom}_correct_is_longest"] = round(longest_rate, 2)
-        # Numeric math answers are often the largest value, so only flag text-heavy
-        # reading/writing where a long correct option is a real tell.
-        if dom == "reading_writing" and longest_rate > 0.45:
+        # Numeric math answers are often the largest value, so only flag the
+        # text-heavy verbal domains where a long correct option is a real tell.
+        if dom != "math" and longest_rate > 0.45:
             rep.warn(f"{dom}: correct answer is the longest option {longest_rate*100:.0f}% "
                      "of the time; balance distractor lengths")
 
@@ -336,30 +382,39 @@ def _parse_numeric(s):
     return False
 
 
+def available_exams():
+    return sorted(d.name for d in (CONTENT / "exams").iterdir()
+                  if d.is_dir() and (d / "exam.yaml").exists())
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--exam", default="sat")
+    ap.add_argument("--exam", default="all",
+                    help="exam id to validate (default: every exam under content/exams/)")
     args = ap.parse_args()
-    rep = Report()
-    validate_exam(args.exam, rep)
-
-    print("Content validation report")
-    print("=" * 40)
-    for k, v in rep.stats.items():
-        print(f"  {k}: {v}")
-    print("-" * 40)
-    for w in rep.warnings:
-        print(f"  WARN: {w}")
-    if rep.errors:
-        for e in rep.errors[:100]:
-            print(f"  ERROR: {e}")
-        more = len(rep.errors) - 100
-        if more > 0:
-            print(f"  ... and {more} more errors")
-        print(f"\nFAILED with {len(rep.errors)} error(s).")
-        sys.exit(1)
-    print("\nAll content checks passed.")
-    sys.exit(0)
+    exams = available_exams() if args.exam == "all" else [args.exam]
+    failed = 0
+    for exam_id in exams:
+        rep = Report()
+        validate_exam(exam_id, rep)
+        print(f"Content validation report — {exam_id}")
+        print("=" * 40)
+        for k, v in rep.stats.items():
+            print(f"  {k}: {v}")
+        print("-" * 40)
+        for w in rep.warnings:
+            print(f"  WARN: {w}")
+        if rep.errors:
+            for e in rep.errors[:100]:
+                print(f"  ERROR: {e}")
+            more = len(rep.errors) - 100
+            if more > 0:
+                print(f"  ... and {more} more errors")
+            print(f"\n{exam_id}: FAILED with {len(rep.errors)} error(s).\n")
+            failed += 1
+        else:
+            print(f"\n{exam_id}: all content checks passed.\n")
+    sys.exit(1 if failed else 0)
 
 
 if __name__ == "__main__":

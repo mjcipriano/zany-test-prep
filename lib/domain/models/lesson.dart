@@ -62,7 +62,9 @@ class TeachingCard {
     keyPoints: (json['key_points'] as List).map((e) => e.toString()).toList(),
     workedExample: json['worked_example'] as String?,
     screens: (json['screens'] as List?)
-        ?.map((e) => TeachingScreen.fromJson((e as Map).cast<String, dynamic>()))
+        ?.map(
+          (e) => TeachingScreen.fromJson((e as Map).cast<String, dynamic>()),
+        )
         .toList(),
   );
 }

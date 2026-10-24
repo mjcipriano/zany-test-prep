@@ -1,0 +1,41 @@
+# Top-level descriptor for the ACT. Same exam-agnostic shape as the SAT's.
+exam_id: act
+exam_name: "ACT"
+display_name: "ACT"
+tagline: "English, Math, Reading & Science"
+enabled: true
+content_version: "1.0.0"
+description: >
+  Original, ACT-style practice covering all four sections: English, Math,
+  Reading, and Science. All content is original and contains no copyrighted
+  ACT, Inc. material.
+domains:
+  - english
+  - math
+  - reading
+  - science
+difficulties: [easy, medium, hard]
+question_types:
+  - multiple_choice
+  - passage_reading
+  - grammar_editing
+  - data_interpretation
+  - multi_step_math
+# Full-length practice test layout (the app's Practice Test mode). Mirrors the
+# enhanced ACT (2025+): English, Math, Reading, then Science, each timed.
+timed_test:
+  intro: >
+    This mirrors the ACT: four timed sections — English, Math, Reading, and
+    Science — taken in order.
+  modules:
+    - { name: "English", domain: english, count: 50, minutes: 35 }
+    - { name: "Math", domain: math, count: 45, minutes: 50 }
+    - { name: "Reading", domain: reading, count: 36, minutes: 40 }
+    - { name: "Science", domain: science, count: 40, minutes: 40 }
+# Each section is reported 1-36; the composite is the rounded average of the
+# English, Math and Reading scores (Science is reported separately, as on the
+# enhanced ACT where it is optional).
+scoring:
+  type: act_36
+  composite_domains: [english, math, reading]
+  composite_label: "Estimated composite score"

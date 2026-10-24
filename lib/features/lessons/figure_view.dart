@@ -24,15 +24,21 @@ class FigureView extends StatelessWidget {
           if (caption != null)
             Padding(
               padding: const EdgeInsets.only(bottom: 8),
-              child: Text(caption,
-                  style: const TextStyle(fontWeight: FontWeight.w700)),
+              child: Text(
+                caption,
+                style: const TextStyle(fontWeight: FontWeight.w700),
+              ),
             ),
           Center(
             child: SizedBox(
               width: 248,
               height: 196,
               child: CustomPaint(
-                painter: _FigurePainter(figure, scheme.onSurface, scheme.primary),
+                painter: _FigurePainter(
+                  figure,
+                  scheme.onSurface,
+                  scheme.primary,
+                ),
               ),
             ),
           ),
@@ -92,7 +98,10 @@ class _FigurePainter extends CustomPainter {
       text: TextSpan(
         text: text,
         style: TextStyle(
-            color: color ?? ink, fontSize: 13, fontWeight: FontWeight.w700),
+          color: color ?? ink,
+          fontSize: 13,
+          fontWeight: FontWeight.w700,
+        ),
       ),
       textDirection: TextDirection.ltr,
     )..layout();
@@ -121,8 +130,11 @@ class _FigurePainter extends CustomPainter {
     c.drawRect(Rect.fromLTWH(corner.dx, corner.dy - m, m, m), _thin);
     _label(c, _s(lab['a']), Offset((corner.dx + right.dx) / 2, corner.dy + 14));
     _label(c, _s(lab['b']), Offset(corner.dx - 16, (corner.dy + top.dy) / 2));
-    _label(c, _s(lab['c']),
-        Offset((right.dx + top.dx) / 2 + 10, (right.dy + top.dy) / 2 - 8));
+    _label(
+      c,
+      _s(lab['c']),
+      Offset((right.dx + top.dx) / 2 + 10, (right.dy + top.dy) / 2 - 8),
+    );
     final angle = _s(f['angle']);
     if (angle != null) _label(c, angle, Offset(right.dx - 26, right.dy - 12));
   }
@@ -145,8 +157,12 @@ class _FigurePainter extends CustomPainter {
       final sweep = sector * math.pi / 180;
       final p = Path()
         ..moveTo(center.dx, center.dy)
-        ..arcTo(Rect.fromCircle(center: center, radius: radius), -math.pi / 2,
-            sweep, false)
+        ..arcTo(
+          Rect.fromCircle(center: center, radius: radius),
+          -math.pi / 2,
+          sweep,
+          false,
+        )
         ..close();
       c.drawPath(p, _fill);
     }
@@ -154,17 +170,28 @@ class _FigurePainter extends CustomPainter {
     c.drawcircleDot(center, ink);
     // radius (or diameter) marker
     if (_s(lab['d']) != null) {
-      c.drawLine(Offset(center.dx - radius, center.dy),
-          Offset(center.dx + radius, center.dy), _accentStroke);
+      c.drawLine(
+        Offset(center.dx - radius, center.dy),
+        Offset(center.dx + radius, center.dy),
+        _accentStroke,
+      );
       _label(c, _s(lab['d']), Offset(center.dx, center.dy - 12), color: accent);
     } else {
       c.drawLine(center, Offset(center.dx + radius, center.dy), _accentStroke);
-      _label(c, _s(lab['r']) ?? 'r',
-          Offset(center.dx + radius / 2, center.dy - 12), color: accent);
+      _label(
+        c,
+        _s(lab['r']) ?? 'r',
+        Offset(center.dx + radius / 2, center.dy - 12),
+        color: accent,
+      );
     }
     if (sector > 0) {
-      _label(c, _s(lab['angle']) ?? '${sector.toStringAsFixed(0)}°',
-          Offset(center.dx + 16, center.dy - radius / 3), color: accent);
+      _label(
+        c,
+        _s(lab['angle']) ?? '${sector.toStringAsFixed(0)}°',
+        Offset(center.dx + 16, center.dy - radius / 3),
+        color: accent,
+      );
     }
   }
 
@@ -177,9 +204,7 @@ class _FigurePainter extends CustomPainter {
     c.drawRect(r, _stroke);
     final off = const Offset(dx, -dy);
     // back corners
-    final tl = r.topLeft + off,
-        tr = r.topRight + off,
-        br = r.bottomRight + off;
+    final tl = r.topLeft + off, tr = r.topRight + off, br = r.bottomRight + off;
     c.drawLine(r.topLeft, tl, _stroke);
     c.drawLine(r.topRight, tr, _stroke);
     c.drawLine(r.bottomRight, br, _stroke);
@@ -198,9 +223,15 @@ class _FigurePainter extends CustomPainter {
     final topY = 40.0;
     final botY = s.height - 40.0;
     final topRect = Rect.fromCenter(
-        center: Offset(cx, topY), width: rx * 2, height: ry * 2);
+      center: Offset(cx, topY),
+      width: rx * 2,
+      height: ry * 2,
+    );
     final botRect = Rect.fromCenter(
-        center: Offset(cx, botY), width: rx * 2, height: ry * 2);
+      center: Offset(cx, botY),
+      width: rx * 2,
+      height: ry * 2,
+    );
     // body
     final body = Path()
       ..moveTo(cx - rx, topY)
@@ -210,12 +241,23 @@ class _FigurePainter extends CustomPainter {
     c.drawPath(body, _fill);
     c.drawLine(Offset(cx - rx, topY), Offset(cx - rx, botY), _stroke);
     c.drawLine(Offset(cx + rx, topY), Offset(cx + rx, botY), _stroke);
-    c.drawArc(botRect, 0, math.pi, false, _stroke);        // front bottom
-    c.drawArc(botRect, math.pi, math.pi, false, _thin);    // back bottom (dashed-ish)
-    c.drawOval(topRect, _stroke);                           // top ellipse
+    c.drawArc(botRect, 0, math.pi, false, _stroke); // front bottom
+    c.drawArc(
+      botRect,
+      math.pi,
+      math.pi,
+      false,
+      _thin,
+    ); // back bottom (dashed-ish)
+    c.drawOval(topRect, _stroke); // top ellipse
     // radius on top
     c.drawLine(Offset(cx, topY), Offset(cx + rx, topY), _accentStroke);
-    _label(c, _s(lab['r']) ?? 'r', Offset(cx + rx / 2, topY - 12), color: accent);
+    _label(
+      c,
+      _s(lab['r']) ?? 'r',
+      Offset(cx + rx / 2, topY - 12),
+      color: accent,
+    );
     _label(c, _s(lab['h']), Offset(cx + rx + 14, (topY + botY) / 2));
   }
 
@@ -239,11 +281,14 @@ class _FigurePainter extends CustomPainter {
     // pad domain a touch
     final dx = (maxX - minX) == 0 ? 1 : (maxX - minX) * 0.1;
     final dy = (maxY - minY) == 0 ? 1 : (maxY - minY) * 0.1;
-    minX -= dx; maxX += dx; minY -= dy; maxY += dy;
+    minX -= dx;
+    maxX += dx;
+    minY -= dy;
+    maxY += dy;
     Offset toPx(double x, double y) => Offset(
-          plot.left + (x - minX) / (maxX - minX) * plot.width,
-          plot.bottom - (y - minY) / (maxY - minY) * plot.height,
-        );
+      plot.left + (x - minX) / (maxX - minX) * plot.width,
+      plot.bottom - (y - minY) / (maxY - minY) * plot.height,
+    );
     final dot = Paint()..color = accent;
     for (final p in pts) {
       c.drawCircle(toPx(p.dx, p.dy), 3.5, dot);
@@ -251,8 +296,11 @@ class _FigurePainter extends CustomPainter {
     final line = f['line'] as Map?;
     if (line != null) {
       final m = _d(line['m']), b = _d(line['b']);
-      c.drawLine(toPx(minX, m * minX + b), toPx(maxX, m * maxX + b),
-          _accentStroke);
+      c.drawLine(
+        toPx(minX, m * minX + b),
+        toPx(maxX, m * maxX + b),
+        _accentStroke,
+      );
     }
     _label(c, _s(f['xlabel']), Offset(plot.center.dx, s.height - 8));
   }

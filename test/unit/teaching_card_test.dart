@@ -5,7 +5,8 @@ void main() {
   test('legacy single card renders as one screen', () {
     final card = TeachingCard.fromJson({
       'title': 'Solving Linear Equations',
-      'body': 'Undo operations to isolate the variable, keeping both sides equal.',
+      'body':
+          'Undo operations to isolate the variable, keeping both sides equal.',
       'key_points': ['Same op both sides', 'Constants then coefficient'],
       'worked_example': '3x + 5 = 20 → x = 5',
     });
@@ -28,7 +29,8 @@ void main() {
         },
         {
           'title': 'How to find it',
-          'body': 'Summarize each part in a few words, then ask what they share.',
+          'body':
+              'Summarize each part in a few words, then ask what they share.',
           'worked_example': 'Topic sentences usually point at it.',
         },
       ],

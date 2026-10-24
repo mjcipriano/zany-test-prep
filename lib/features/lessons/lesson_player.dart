@@ -412,9 +412,9 @@ class _ScreenView extends StatelessWidget {
       children: [
         Text(
           screen.title,
-          style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-            fontWeight: FontWeight.w800,
-          ),
+          style: Theme.of(
+            context,
+          ).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w800),
         ),
         Gap.m,
         Text(screen.body, style: const TextStyle(fontSize: 16, height: 1.5)),

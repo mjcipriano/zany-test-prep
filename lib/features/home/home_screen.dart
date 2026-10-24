@@ -45,9 +45,29 @@ class HomeScreen extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Zany Test Prep',
-          style: TextStyle(fontWeight: FontWeight.w800),
+        title: Row(
+          children: [
+            const Text(
+              'Zany Test Prep',
+              style: TextStyle(fontWeight: FontWeight.w800),
+            ),
+            Gap.s,
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.primaryContainer,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Text(
+                bundle.exam.name,
+                style: TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w800,
+                  color: Theme.of(context).colorScheme.onPrimaryContainer,
+                ),
+              ),
+            ),
+          ],
         ),
         actions: [
           IconButton(
@@ -208,24 +228,17 @@ class HomeScreen extends ConsumerWidget {
               ),
             ],
           ),
-          Gap.l,
-          _DomainPath(
-            title: 'Reading & Writing',
-            color: AppTheme.seed,
-            lessons: bundle.lessonsForDomain('reading_writing'),
-            bundle: bundle,
-            progress: progress,
-            unlock: unlock,
-          ),
-          Gap.l,
-          _DomainPath(
-            title: 'Math',
-            color: AppTheme.correct,
-            lessons: bundle.lessonsForDomain('math'),
-            bundle: bundle,
-            progress: progress,
-            unlock: unlock,
-          ),
+          for (final (i, domain) in bundle.domainIds.indexed) ...[
+            Gap.l,
+            _DomainPath(
+              title: bundle.domainName(domain),
+              color: AppTheme.domainColor(i),
+              lessons: bundle.lessonsForDomain(domain),
+              bundle: bundle,
+              progress: progress,
+              unlock: unlock,
+            ),
+          ],
           Gap.xl,
         ],
       ),

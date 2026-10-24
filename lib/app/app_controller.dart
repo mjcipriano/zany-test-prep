@@ -10,6 +10,7 @@ import '../data/repositories/progress_repository.dart';
 import '../domain/models/avatar_catalog.dart';
 import '../domain/models/backup.dart';
 import '../domain/models/content_bundle.dart';
+import '../domain/models/exam.dart';
 import '../domain/models/lesson.dart';
 import '../domain/models/profile.dart';
 import '../domain/models/progress.dart';
@@ -26,6 +27,7 @@ class AppData {
     required this.progress,
     required this.onboarded,
     required this.catalog,
+    this.exams = const [],
     this.revision = 0,
   });
 
@@ -34,18 +36,23 @@ class AppData {
   final AppProgress progress;
   final bool onboarded;
   final AvatarCatalog catalog;
+
+  /// Every exam the app ships content for (SAT, ACT, …), for the exam picker.
+  final List<ExamInfo> exams;
   final int revision;
 
   AppData bump({
     UserProfile? profile,
     bool? onboarded,
     AppProgress? progress,
+    ContentBundle? bundle,
   }) => AppData(
-    bundle: bundle,
+    bundle: bundle ?? this.bundle,
     profile: profile ?? this.profile,
     progress: progress ?? this.progress,
     onboarded: onboarded ?? this.onboarded,
     catalog: catalog,
+    exams: exams,
     revision: revision + 1,
   );
 }
@@ -64,6 +71,9 @@ class SurvivalResult {
   final bool isRecord;
   final List<BadgeDef> newBadges;
 }
+
+/// The exam loaded when no profile exists yet (first launch).
+const String kDefaultExamId = 'sat';
 
 /// Provides the content repository (overridable in tests).
 final contentRepositoryProvider = Provider<ContentRepository>(
@@ -102,7 +112,12 @@ class AppController extends AsyncNotifier<AppData> {
     final avatars = ref.read(avatarRepositoryProvider);
 
     final profile = _repo.loadProfile();
-    final examId = profile?.examId ?? 'sat';
+    final exams = await _loadExams(content);
+    // Fall back to the first shipped exam if the stored exam no longer exists.
+    final wanted = profile?.examId ?? kDefaultExamId;
+    final examId = exams.any((e) => e.id == wanted)
+        ? wanted
+        : (exams.isEmpty ? wanted : exams.first.id);
     final bundle = await content.loadBundle(examId);
     final catalog = await avatars.loadCatalog();
     return AppData(
@@ -111,24 +126,59 @@ class AppController extends AsyncNotifier<AppData> {
       progress: _repo.loadProgress(),
       onboarded: _repo.isOnboarded,
       catalog: catalog,
+      exams: exams,
     );
   }
 
   AppData get _data => state.requireValue;
 
-  /// Creates the local profile at the end of onboarding.
+  /// Reads exams.json; a missing/corrupt file degrades to the default exam so
+  /// the app still boots.
+  Future<List<ExamInfo>> _loadExams(ContentRepository content) async {
+    try {
+      final exams = await content.enabledExams();
+      if (exams.isNotEmpty) return exams;
+    } catch (_) {
+      // fall through
+    }
+    return const [
+      ExamInfo(id: kDefaultExamId, name: 'SAT', displayName: 'Digital SAT'),
+    ];
+  }
+
+  /// Switches the active exam (e.g. SAT -> ACT): loads that exam's bundle and
+  /// updates the profile. Progress is kept — lesson/question ids are
+  /// exam-prefixed, so each exam's path keeps its own completion state while
+  /// XP, streaks, and rewards carry across.
+  Future<void> switchExam(String examId) async {
+    final data = _data;
+    if (data.bundle.exam.id == examId) return;
+    final bundle = await ref.read(contentRepositoryProvider).loadBundle(examId);
+    final profile = data.profile?.copyWith(examId: examId);
+    if (profile != null) await _repo.saveProfile(profile);
+    state = AsyncData(data.bump(bundle: bundle, profile: profile));
+  }
+
+  /// Creates the local profile at the end of onboarding and loads the chosen
+  /// exam's content if it differs from the bundle loaded at boot.
   Future<void> completeOnboarding({
     required String examId,
     required int dailyGoalMinutes,
     DateTime? targetTestDate,
   }) async {
+    final data = _data;
     final profile = UserProfile.initial(
       examId,
       dailyGoalMinutes,
     ).copyWith(targetTestDate: targetTestDate);
+    final bundle = data.bundle.exam.id == examId
+        ? data.bundle
+        : await ref.read(contentRepositoryProvider).loadBundle(examId);
     await _repo.saveProfile(profile);
     await _repo.setOnboarded(true);
-    state = AsyncData(_data.bump(profile: profile, onboarded: true));
+    state = AsyncData(
+      data.bump(profile: profile, onboarded: true, bundle: bundle),
+    );
   }
 
   /// Applies a finished lesson attempt; persists and returns the outcome.
@@ -251,6 +301,7 @@ class AppController extends AsyncNotifier<AppData> {
         progress: AppProgress(),
         onboarded: false,
         catalog: _data.catalog,
+        exams: _data.exams,
         revision: _data.revision + 1,
       ),
     );
@@ -375,6 +426,7 @@ class AppController extends AsyncNotifier<AppData> {
         progress: progress,
         onboarded: _repo.isOnboarded,
         catalog: data0.catalog,
+        exams: data0.exams,
         revision: data0.revision + 1,
       ),
     );
