@@ -48,6 +48,12 @@ git push origin v1.0.0
 secrets, see below) and creates a GitHub Release with a single tag-named asset,
 `zany-test-prep-v1.0.0.apk`, plus a generated changelog.
 
+**No tag push available?** (e.g. from an environment whose git proxy only allows
+branch pushes.) Run the Release workflow manually from the Actions tab — or
+`gh workflow run release.yml -f version=v1.0.0 --ref master` — with the
+`version` input set. The workflow builds the chosen ref, creates the tag on that
+commit and publishes the Release exactly as a tag push would.
+
 **Let CI do the release build — don't also upload one by hand.** Pushing the tag
 already triggers the workflow; a second manual `gh release create`/upload would add
 a duplicate (and possibly differently-signed) asset to the same release.

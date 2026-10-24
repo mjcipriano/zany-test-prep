@@ -1,14 +1,25 @@
 # Release workflow.
-# Triggered manually (workflow_dispatch) or by pushing a tag like v1.0.0.
-# Produces a release APK (and, best-effort, an app bundle). When run from a
-# version tag it also creates a GitHub Release with the APK attached.
+# Triggered by pushing a tag like v1.0.0, or manually (workflow_dispatch). A
+# manual run with a `version` input (e.g. v2.0.0) tags the chosen ref and
+# publishes a GitHub Release exactly like a tag push would; a manual run
+# without one only builds artifacts. Produces a release APK (and, best-effort,
+# an app bundle).
 name: Release
 
 on:
   workflow_dispatch:
+    inputs:
+      version:
+        description: "Version tag to create and release (e.g. v2.0.0). Leave empty to only build artifacts."
+        required: false
+        default: ""
   push:
     tags:
       - "v*"
+
+env:
+  # The tag this run releases: the pushed tag, or the manual `version` input.
+  RELEASE_TAG: ${{ startsWith(github.ref, 'refs/tags/v') && github.ref_name || inputs.version }}
 
 # Needed for softprops/action-gh-release@v2 to create releases / upload assets.
 permissions:
@@ -101,14 +112,18 @@ jobs:
 
       # Name the APK after the tag for a clean, unambiguous release asset.
       - name: Stage tag-named APK
-        if: startsWith(github.ref, 'refs/tags/v')
-        run: cp build/app/outputs/flutter-apk/app-release.apk "zany-test-prep-${GITHUB_REF_NAME}.apk"
+        if: env.RELEASE_TAG != ''
+        run: cp build/app/outputs/flutter-apk/app-release.apk "zany-test-prep-${RELEASE_TAG}.apk"
 
-      # Only create a GitHub Release when triggered by a version tag push.
-      # Attaches just the stable-signed, tag-named APK (sideload target).
+      # Create a GitHub Release for a version tag push, or for a manual run
+      # that names a version (the action creates the tag on the built commit
+      # when it does not exist yet). Attaches just the stable-signed,
+      # tag-named APK (sideload target).
       - name: Create GitHub Release
-        if: startsWith(github.ref, 'refs/tags/v')
+        if: env.RELEASE_TAG != ''
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ env.RELEASE_TAG }}
+          target_commitish: ${{ github.sha }}
           generate_release_notes: true
-          files: zany-test-prep-${{ github.ref_name }}.apk
+          files: zany-test-prep-${{ env.RELEASE_TAG }}.apk
