@@ -1,3 +1,4 @@
+import '../models/avatar_catalog.dart';
 import '../models/content_bundle.dart';
 import '../models/difficulty.dart';
 import '../models/lesson.dart';
@@ -8,6 +9,7 @@ import 'badges.dart';
 import 'leveling.dart';
 import 'mastery_engine.dart';
 import 'review_engine.dart';
+import 'rewards_service.dart';
 import 'streak_engine.dart';
 
 /// One answered question within a lesson attempt.
@@ -44,6 +46,8 @@ class LessonOutcome {
     this.chestEarned = false,
     this.freezesUsed = 0,
     this.xpBoosted = false,
+    this.petXpGained = 0,
+    this.petLevelUps = const {},
   });
 
   final int xpGained;
@@ -62,6 +66,8 @@ class LessonOutcome {
   final bool chestEarned; // daily goal hit -> a chest is waiting to open
   final int freezesUsed; // streak freezes spent to survive missed days
   final bool xpBoosted; // an XP boost multiplied today's earnings
+  final int petXpGained; // companion XP granted to equipped pets
+  final Map<String, int> petLevelUps; // pet name -> new level
 
   double get accuracy => total == 0 ? 0 : correct / total;
 }
@@ -74,6 +80,7 @@ class GameService {
     this.streak = const StreakEngine(),
     this.mastery = const MasteryEngine(),
     this.review = const ReviewEngine(),
+    this.rewards = const RewardsService(),
   });
 
   final XpEngine xp;
@@ -81,6 +88,7 @@ class GameService {
   final StreakEngine streak;
   final MasteryEngine mastery;
   final ReviewEngine review;
+  final RewardsService rewards;
 
   static int starsForAccuracy(double accuracy) {
     if (accuracy >= 0.999) return 3;
@@ -95,6 +103,7 @@ class GameService {
     required UserProfile profile,
     required List<AnswerResult> results,
     required ContentBundle bundle,
+    AvatarCatalog? catalog,
     DateTime? now,
   }) => applyLessonResult(
     progress: progress,
@@ -102,6 +111,7 @@ class GameService {
     lesson: null,
     results: results,
     bundle: bundle,
+    catalog: catalog,
     now: now,
   );
 
@@ -111,6 +121,7 @@ class GameService {
     required Lesson? lesson,
     required List<AnswerResult> results,
     required ContentBundle bundle,
+    AvatarCatalog? catalog,
     DateTime? now,
   }) {
     final today = now ?? DateTime.now();
@@ -219,6 +230,22 @@ class GameService {
       );
     }
 
+    // --- Pet companions: equipped pets level up alongside the learner ---
+    var petXpGained = 0;
+    final petLevelUps = <String, int>{};
+    if (catalog != null &&
+        total > 0 &&
+        rewards.equippedPets(g, catalog).isNotEmpty) {
+      petXpGained = RewardsService.petEngine.xpForSession(
+        correct: correctCount,
+        total: total,
+      );
+      rewards.grantPetXp(g, catalog, petXpGained).forEach((lineId, level) {
+        final pet = rewards.highestOwnedStage(g, catalog, lineId);
+        petLevelUps[pet?.name ?? lineId] = level;
+      });
+    }
+
     // --- Badges ---
     final newBadgeIds = Badges.evaluateAndGrant(progress, bundle);
     final newBadges = newBadgeIds
@@ -243,6 +270,8 @@ class GameService {
       chestEarned: chestEarned,
       freezesUsed: sr.freezesUsed,
       xpBoosted: xpBoosted,
+      petXpGained: petXpGained,
+      petLevelUps: petLevelUps,
     );
   }
 

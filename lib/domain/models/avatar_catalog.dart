@@ -37,6 +37,43 @@ class TargetBox {
   );
 }
 
+/// A pet's place in its evolution line (pack contract `pet_evolution_v1`).
+/// Stage 1 is the base companion bought in the store; stages 2 and 3 are
+/// unlocked by levelling the pet up while it is equipped.
+class PetEvolution {
+  const PetEvolution({
+    required this.lineId,
+    required this.stage,
+    required this.stageName,
+    required this.baseId,
+    required this.nextId,
+    required this.requiresLevel,
+  });
+
+  final String lineId;
+  final int stage;
+  final String stageName;
+  final String baseId;
+  final String? nextId;
+
+  /// Pet level needed to unlock *this* stage (1 for the base stage).
+  final int requiresLevel;
+
+  bool get isBase => stage <= 1;
+
+  factory PetEvolution.fromJson(Map<String, dynamic> j, String fallbackId) {
+    final stage = (j['stage'] as num?)?.toInt() ?? 1;
+    return PetEvolution(
+      lineId: (j['line_id'] ?? fallbackId).toString(),
+      stage: stage,
+      stageName: (j['stage_name'] ?? 'Stage $stage').toString(),
+      baseId: (j['base_id'] ?? fallbackId).toString(),
+      nextId: j['next_id']?.toString(),
+      requiresLevel: (j['requires_level'] as num?)?.toInt() ?? 1,
+    );
+  }
+}
+
 /// One entry in the catalog: an avatar, a wearable item, or a side pet/prop.
 class CatalogAsset {
   const CatalogAsset({
@@ -55,6 +92,12 @@ class CatalogAsset {
     required this.target,
     required this.targetsBySlot,
     required this.defaultUnlocked,
+    this.unlockCondition = '',
+    this.evolution,
+    this.variantOf,
+    this.spriteWidth = 0,
+    this.spriteHeight = 0,
+    this.tags = const [],
   });
 
   final String id;
@@ -73,6 +116,44 @@ class CatalogAsset {
   final Map<String, TargetBox>
   targetsBySlot; // per-slot overrides (side assets)
   final bool defaultUnlocked;
+
+  /// Raw unlock rule from the pack (`default`, `spend_xp:<n>`, `evolve:…`).
+  final String unlockCondition;
+
+  /// Evolution metadata (pets only; null for packs without the contract).
+  final PetEvolution? evolution;
+
+  /// For procedurally derived item variants, the base item's id.
+  final String? variantOf;
+
+  /// Pixel size of the trimmed sprite (0 when the pack does not record it).
+  final int spriteWidth;
+  final int spriteHeight;
+  final List<String> tags;
+
+  /// Sprite aspect ratio (width / height), or null when unknown.
+  double? get spriteAspect =>
+      spriteWidth > 0 && spriteHeight > 0 ? spriteWidth / spriteHeight : null;
+
+  /// Headwear that should hover above the head (halos, orbiting rings) rather
+  /// than sit on the brow line. Driven by tags, with a name-based fallback for
+  /// packs that predate the `floating` tag.
+  bool get floatsAboveHead =>
+      tags.contains('floating') || id.contains('halo') || id.contains('orbit');
+
+  /// Pets beyond their base stage are earned by levelling, never bought or
+  /// dropped from chests.
+  bool get isEvolvedStage => (evolution?.stage ?? 1) > 1;
+
+  /// Whether the store / chests may hand this out.
+  bool get isPurchasable =>
+      !defaultUnlocked &&
+      !isEvolvedStage &&
+      !unlockCondition.startsWith('evolve:');
+
+  /// The evolution line this pet belongs to (its own id when the pack has no
+  /// evolution data, so every pet still has a line to level).
+  String get lineId => evolution?.lineId ?? id;
 
   bool get isAvatar => type == 'avatar';
   bool get isPet => type == 'pet';
@@ -125,6 +206,20 @@ class CatalogAsset {
       target: target,
       targetsBySlot: targetsBySlot,
       defaultUnlocked: j['default_unlocked'] as bool? ?? false,
+      unlockCondition: (j['unlock_condition'] ?? '').toString(),
+      evolution: j['evolution'] is Map
+          ? PetEvolution.fromJson(
+              (j['evolution'] as Map).cast<String, dynamic>(),
+              j['id'] as String,
+            )
+          : null,
+      variantOf: j['variant_of']?.toString(),
+      spriteWidth: ((j['sprite_size'] as Map?)?['width'] as num?)?.toInt() ?? 0,
+      spriteHeight:
+          ((j['sprite_size'] as Map?)?['height'] as num?)?.toInt() ?? 0,
+      tags: ((j['tags'] as List?) ?? const [])
+          .map((e) => e.toString())
+          .toList(),
     );
   }
 }
@@ -149,6 +244,16 @@ class AvatarCatalog {
   /// Avatars unlocked by default (the starter set, always owned).
   List<CatalogAsset> get starterAvatars =>
       avatars.where((a) => a.defaultUnlocked).toList();
+
+  /// Base-stage pets (what the store sells); evolved stages are earned.
+  List<CatalogAsset> get basePets =>
+      pets.where((p) => !p.isEvolvedStage).toList();
+
+  /// All stages of a pet line, lowest stage first.
+  List<CatalogAsset> evolutionLine(String lineId) =>
+      pets.where((p) => p.lineId == lineId).toList()..sort(
+        (a, b) => (a.evolution?.stage ?? 1).compareTo(b.evolution?.stage ?? 1),
+      );
 
   CatalogAsset? operator [](String id) => byId[id];
 

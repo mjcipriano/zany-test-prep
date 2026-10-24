@@ -213,10 +213,12 @@ class GameState {
     this.selectedAvatarId,
     Set<String>? ownedAssetIds,
     Map<String, String>? equipped,
+    Map<String, int>? petXp,
   }) : earnedBadges = earnedBadges ?? <String>{},
        diagnosticDoneExams = diagnosticDoneExams ?? <String>{},
        ownedAssetIds = ownedAssetIds ?? <String>{},
-       equipped = equipped ?? <String, String>{};
+       equipped = equipped ?? <String, String>{},
+       petXp = petXp ?? <String, int>{};
 
   int totalXp; // lifetime XP gained (never decreases)
   int spentXp; // lifetime XP spent in the store
@@ -248,6 +250,7 @@ class GameState {
   String? selectedAvatarId; // null => first starter avatar
   Set<String> ownedAssetIds; // unlocked avatar/item/pet catalog ids
   Map<String, String> equipped; // slot id -> equipped asset id
+  Map<String, int> petXp; // pet line id -> companion XP (levels/evolution)
 
   /// XP still available to spend in the store.
   int get availableXp => totalXp - spentXp;
@@ -275,6 +278,7 @@ class GameState {
     'selectedAvatarId': selectedAvatarId,
     'ownedAssetIds': ownedAssetIds.toList(),
     'equipped': equipped,
+    'petXp': petXp,
   };
 
   factory GameState.fromJson(Map<String, dynamic> j) => GameState(
@@ -298,6 +302,10 @@ class GameState {
     equipped: asMap(
       j['equipped'],
     ).map((k, v) => MapEntry(k.toString(), v.toString())),
+    petXp: {
+      for (final e in asMap(j['petXp']).entries)
+        if (asInt(e.value) > 0) e.key.toString(): asInt(e.value),
+    },
   );
 }
 

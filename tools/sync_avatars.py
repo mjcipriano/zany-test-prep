@@ -14,10 +14,16 @@ picks up the new content automatically because nothing hardcodes asset lists.
 Usage:
     python3 tools/sync_avatars.py                 # catalog + starter art (default, small)
     python3 tools/sync_avatars.py --tag v1.1.0    # pull a different release
-    python3 tools/sync_avatars.py --full          # also vendor ALL images (~100MB+)
+    python3 tools/sync_avatars.py --full          # also vendor ALL images
     python3 tools/sync_avatars.py --avatars-only  # catalog + every avatar image (no items/pets)
+    python3 tools/sync_avatars.py --local ../zany-test-prep-avatars --full
+                                                  # copy from a local checkout instead
 
-Requires the GitHub CLI (`gh`) to be authenticated, or set ZANY_GH_TOKEN.
+Vendored item/pet sprites are downscaled to --max-side pixels (default 384) to
+keep the APK small; the app places sprites with contain-fit so this is lossless
+for layout (the catalog's sprite_size keeps the source dimensions). Pass
+--max-side 0 to keep originals. Needs Pillow for downscaling (falls back to
+copying originals if it is missing).
 
 This only writes files under assets/avatar/. After running, run `flutter pub get`
 and rebuild. Image directories are already declared in pubspec.yaml, so adding
@@ -27,6 +33,7 @@ from __future__ import annotations
 
 import argparse
 import collections
+import io
 import json
 import os
 import sys
@@ -60,9 +67,40 @@ def write(rel_path: str, data: bytes) -> None:
         fh.write(data)
 
 
+def read_local(root: str, path_in_repo: str) -> bytes:
+    with open(os.path.join(root, path_in_repo), "rb") as fh:
+        return fh.read()
+
+
+def downscale_png(data: bytes, max_side: int) -> bytes:
+    """Shrink a PNG so its longer side is at most ``max_side`` (keeps alpha).
+    Returns the original bytes when already small enough or Pillow is absent."""
+    if max_side <= 0:
+        return data
+    try:
+        from PIL import Image
+    except ImportError:  # pragma: no cover - optional dependency
+        return data
+    with Image.open(io.BytesIO(data)) as im:
+        w, h = im.size
+        if max(w, h) <= max_side:
+            return data
+        scale = max_side / max(w, h)
+        out = im.convert("RGBA").resize(
+            (max(1, round(w * scale)), max(1, round(h * scale))), Image.LANCZOS)
+        buf = io.BytesIO()
+        out.save(buf, format="PNG", optimize=True)
+        return buf.getvalue()
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("--tag", default="v2.1.0", help="release tag/ref to pull")
+    ap.add_argument("--tag", default="v3.0.0", help="release tag/ref to pull")
+    ap.add_argument("--local", help="path to a local checkout of the pack repo "
+                                    "(copies files instead of downloading)")
+    ap.add_argument("--max-side", type=int, default=384,
+                    help="downscale item/pet sprites to this many pixels on the "
+                         "longer side (0 = keep originals)")
     group = ap.add_mutually_exclusive_group()
     group.add_argument("--full", action="store_true", help="vendor all images")
     group.add_argument(
@@ -72,8 +110,18 @@ def main() -> int:
     )
     args = ap.parse_args()
 
-    print(f"Syncing avatar pack {REPO}@{args.tag} ...")
-    catalog_bytes = fetch(CATALOG_PATH, args.tag)
+    if args.local:
+        print(f"Syncing avatar pack from local checkout {args.local} (tag label {args.tag}) ...")
+
+        def get(path):
+            return read_local(args.local, path)
+    else:
+        print(f"Syncing avatar pack {REPO}@{args.tag} ...")
+
+        def get(path):
+            return fetch(path, args.tag)
+
+    catalog_bytes = get(CATALOG_PATH)
     write(CATALOG_PATH, catalog_bytes)
     catalog = json.loads(catalog_bytes)
     assets = catalog["assets"]
@@ -93,9 +141,12 @@ def main() -> int:
             continue
         path = asset["asset_path"]
         try:
-            write(path, fetch(path, args.tag))
+            data = get(path)
+            if asset["type"] != "avatar":
+                data = downscale_png(data, args.max_side)
+            write(path, data)
             bundled.append(asset["id"])
-        except RuntimeError as exc:  # keep going; report at the end
+        except (RuntimeError, OSError) as exc:  # keep going; report at the end
             print(f"  WARN: {asset['id']}: {exc}", file=sys.stderr)
     print(f"  images: {len(bundled)} downloaded")
 
@@ -107,6 +158,7 @@ def main() -> int:
         "schema_version": catalog.get("schema_version"),
         "catalog_total": len(assets),
         "counts": dict(collections.Counter(a["type"] for a in assets)),
+        "sprite_max_side": args.max_side,
         "bundled_images": bundled,
         "note": (
             "Run tools/sync_avatars.py --full to vendor every image; the catalog "

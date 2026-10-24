@@ -195,6 +195,7 @@ class AppController extends AsyncNotifier<AppData> {
       lesson: lesson,
       results: results,
       bundle: data.bundle,
+      catalog: data.catalog,
     );
     await _repo.saveProgress(data.progress);
     state = AsyncData(data.bump());
@@ -211,6 +212,7 @@ class AppController extends AsyncNotifier<AppData> {
       profile: data.profile!,
       results: results,
       bundle: data.bundle,
+      catalog: data.catalog,
     );
     await _repo.saveProgress(data.progress);
     state = AsyncData(data.bump());
@@ -230,6 +232,7 @@ class AppController extends AsyncNotifier<AppData> {
         profile: data.profile!,
         results: results,
         bundle: data.bundle,
+        catalog: data.catalog,
       );
     }
     final g = data.progress.game;
@@ -395,6 +398,17 @@ class AppController extends AsyncNotifier<AppData> {
     _rewards.unequipAsset(data.progress.game, assetId);
     await _repo.saveProgress(data.progress);
     state = AsyncData(data.bump());
+  }
+
+  /// Evolves a pet line into its next stage once its level allows. Returns the
+  /// new stage, or null when it cannot evolve yet.
+  Future<CatalogAsset?> evolvePet(String lineId) async {
+    final data = _data;
+    final next = _rewards.evolvePet(data.progress.game, data.catalog, lineId);
+    if (next == null) return null;
+    await _repo.saveProgress(data.progress);
+    state = AsyncData(data.bump());
+    return next;
   }
 
   /// Moves an equipped side asset to its next available side slot.

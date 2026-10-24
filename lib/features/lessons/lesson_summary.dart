@@ -122,6 +122,18 @@ class LessonSummary extends StatelessWidget {
                   text: 'Level up! You reached level ${outcome.newLevel}.',
                 ),
               ],
+              if (outcome.petXpGained > 0) ...[
+                Gap.s,
+                _Banner(
+                  color: const Color(0xFF8E44AD),
+                  icon: Icons.pets_rounded,
+                  text: outcome.petLevelUps.isEmpty
+                      ? 'Your companion earned ${outcome.petXpGained} pet XP.'
+                      : outcome.petLevelUps.entries
+                            .map((e) => '${e.key} reached level ${e.value}!')
+                            .join(' '),
+                ),
+              ],
               if (outcome.dailyGoalJustMet) ...[
                 Gap.s,
                 const _Banner(

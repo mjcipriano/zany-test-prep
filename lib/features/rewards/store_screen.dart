@@ -46,7 +46,10 @@ class StoreScreen extends ConsumerWidget {
               assets: _sorted(catalog.items),
               header: const _StreakFreezeCard(),
             ),
-            _StoreGrid(assets: _sorted(catalog.pets)),
+            _StoreGrid(
+              assets: _sorted(catalog.basePets),
+              header: const _PetHint(),
+            ),
           ],
         ),
       ),
@@ -55,6 +58,27 @@ class StoreScreen extends ConsumerWidget {
 
   static List<CatalogAsset> _sorted(List<CatalogAsset> a) =>
       [...a]..sort((x, y) => x.xpCost.compareTo(y.xpCost));
+}
+
+class _PetHint extends StatelessWidget {
+  const _PetHint();
+  @override
+  Widget build(BuildContext context) => AppCard(
+    color: const Color(0xFF8E44AD).withValues(alpha: 0.12),
+    child: Row(
+      children: [
+        const Icon(Icons.pets_rounded, color: Color(0xFF8E44AD)),
+        Gap.m,
+        Expanded(
+          child: Text(
+            'Equip a companion and it earns pet XP while you practice. Level it '
+            'up to evolve it into Shiny and Radiant forms.',
+            style: Theme.of(context).textTheme.bodySmall,
+          ),
+        ),
+      ],
+    ),
+  );
 }
 
 class _XpChip extends StatelessWidget {
