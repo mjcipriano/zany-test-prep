@@ -26,7 +26,7 @@ publishes the GitHub Release (see docs/release.md). Never push tags by hand — 
 sessions cannot, and the workflow does it for you. The avatar pack repo works the same
 way (`pubspec.yaml` version there → `vX.Y.Z` tag + release on merge).
 
-## Latest state (v2.1.1)
+## Latest state (v2.1.2)
 
 - **Two exams.** SAT and ACT. Onboarding offers every exam listed in
   `assets/content/exams.json`; Settings → Exam switches (XP/streak/rewards carry
@@ -58,6 +58,9 @@ way (`pubspec.yaml` version there → `vX.Y.Z` tag + release on merge).
   tests; Python tooling suite (`python -m unittest discover -s tools/tests -t .`) covers
   the registry, plans, orchestrator, validator, bundler and every generator family. CI
   runs all of it plus the validator for every exam and the bundle-freshness check.
+- **2.1.2:** cheat code made reliable: counts on touch-down (a wobbling finger no
+  longer turns taps into a scroll), bigger target, 1.5 s window, countdown, and also
+  works on the Settings "Content version" row.
 - **2.1.1:** avatar art vendored as WebP (APK 152 MB → ~75 MB; phones failed to
   parse truncated downloads); release CI verifies the APK (apksigner/zipalign/aapt2,
   size cap) and publishes a SHA-256; `ownership-proof.yml` for Android developer
@@ -115,3 +118,8 @@ flutter build apk --release               # release APK -> build/app/outputs/flu
   defensive (`safe_json.dart`) so updates never crash on old data.
 - Widget tests inject the real bundles synchronously (`test/helpers/pump_app.dart`) and an
   in-memory store, so the suite is deterministic and headless.
+- **Testing cheat:** tap **Content version** in Settings (or the "Content x.y.z" line on
+  About) 10× quickly, at most 1.5 s apart; a countdown appears from the 5th tap and the
+  10th grants +10,000 XP (`lib/features/settings/cheat_tap.dart` →
+  `AppController.grantCheatXp`). Taps count on touch-down so a slight finger drag can't
+  swallow them.
