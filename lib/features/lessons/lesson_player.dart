@@ -8,6 +8,7 @@ import '../../core/sound_service.dart';
 import '../../design/theme.dart';
 import '../../design/widgets.dart';
 import '../../domain/models/lesson.dart';
+import '../../domain/models/lesson_resume.dart';
 import '../../domain/models/question.dart';
 import '../../domain/services/answer_checker.dart';
 import '../../domain/services/game_service.dart';
@@ -18,6 +19,10 @@ enum _Phase { teaching, quiz, summary }
 
 /// Plays through a teaching card + questions with immediate feedback, then a
 /// summary. Used for both lessons and the review queue.
+///
+/// Lessons pass [onProgress] to have the attempt saved after every step, and
+/// [resumeFrom] to continue a saved attempt at the same question (with the
+/// same answers and feedback) instead of starting over.
 class LessonPlayer extends ConsumerStatefulWidget {
   const LessonPlayer({
     super.key,
@@ -26,6 +31,8 @@ class LessonPlayer extends ConsumerStatefulWidget {
     required this.onComplete,
     this.teachingCard,
     this.isReview = false,
+    this.resumeFrom,
+    this.onProgress,
   });
 
   final String title;
@@ -33,6 +40,14 @@ class LessonPlayer extends ConsumerStatefulWidget {
   final TeachingCard? teachingCard;
   final bool isReview;
   final Future<LessonOutcome> Function(List<AnswerResult>) onComplete;
+
+  /// A saved attempt to continue. Must already be validated against
+  /// [questions] (see [LessonResume.isValidFor]).
+  final LessonAttempt? resumeFrom;
+
+  /// Called with the attempt so far whenever it changes (quiz started, answer
+  /// checked, moved on). Null means progress is not saved (reviews).
+  final ValueChanged<LessonAttempt>? onProgress;
 
   @override
   ConsumerState<LessonPlayer> createState() => _LessonPlayerState();
@@ -50,7 +65,10 @@ class _LessonPlayerState extends ConsumerState<LessonPlayer> {
   String? _selectedChoiceId;
   final _textController = TextEditingController();
   final List<AnswerResult> _results = [];
+  // Parallel to [_results]: what was picked/typed, for saving the attempt.
+  final List<SavedAnswer> _saved = [];
   DateTime _questionStart = DateTime.now();
+  DateTime _startedAt = DateTime.now();
   LessonOutcome? _outcome;
   bool _submitting = false;
 
@@ -66,8 +84,52 @@ class _LessonPlayerState extends ConsumerState<LessonPlayer> {
   @override
   void initState() {
     super.initState();
+    final resume = widget.resumeFrom;
+    if (resume != null) _restore(resume);
     // Re-evaluate the Check button as the user types a grid-in answer.
     _textController.addListener(_onTextChanged);
+  }
+
+  /// Rebuilds the in-memory attempt from a saved one. The results restored
+  /// here are only handed to [LessonPlayer.onComplete] at the end, so no XP
+  /// is granted for them twice.
+  void _restore(LessonAttempt attempt) {
+    _startedAt = attempt.startedAt;
+    _index = attempt.index;
+    for (var i = 0; i < attempt.answers.length; i++) {
+      final a = attempt.answers[i];
+      _saved.add(a);
+      _results.add(
+        AnswerResult(
+          question: widget.questions[i],
+          correct: a.correct,
+          isReview: widget.isReview,
+          responseMs: a.responseMs,
+        ),
+      );
+    }
+    if (attempt.teachingDone || widget.teachingCard == null) {
+      _phase = _Phase.quiz;
+    }
+    if (attempt.showingFeedback) {
+      final last = attempt.answers.last;
+      _answered = true;
+      _lastCorrect = last.correct;
+      _selectedChoiceId = last.choiceId;
+      _textController.text = last.produced ?? '';
+    }
+  }
+
+  /// Reports the attempt so far to [LessonPlayer.onProgress] (saves it).
+  void _emitProgress() {
+    widget.onProgress?.call(
+      LessonAttempt(
+        teachingDone: true,
+        index: _index,
+        answers: List.unmodifiable(_saved),
+        startedAt: _startedAt,
+      ),
+    );
   }
 
   void _onTextChanged() {
@@ -113,12 +175,23 @@ class _LessonPlayerState extends ConsumerState<LessonPlayer> {
       choiceId: _selectedChoiceId,
       produced: _textController.text,
     );
+    final responseMs = DateTime.now().difference(_questionStart).inMilliseconds;
     _results.add(
       AnswerResult(
         question: _q,
         correct: correct,
         isReview: widget.isReview,
-        responseMs: DateTime.now().difference(_questionStart).inMilliseconds,
+        responseMs: responseMs,
+      ),
+    );
+    final produced = _q.type.isStudentProduced;
+    _saved.add(
+      SavedAnswer(
+        questionId: _q.id,
+        correct: correct,
+        responseMs: responseMs,
+        choiceId: produced ? null : _selectedChoiceId,
+        produced: produced ? _textController.text : null,
       ),
     );
     _feedbackEffects(correct);
@@ -126,6 +199,7 @@ class _LessonPlayerState extends ConsumerState<LessonPlayer> {
       _answered = true;
       _lastCorrect = correct;
     });
+    _emitProgress();
   }
 
   Future<void> _next() async {
@@ -139,6 +213,7 @@ class _LessonPlayerState extends ConsumerState<LessonPlayer> {
         _textController.clear();
         _questionStart = DateTime.now();
       });
+      _emitProgress();
     } else {
       setState(() => _submitting = true);
       final outcome = await widget.onComplete(_results);
@@ -154,13 +229,17 @@ class _LessonPlayerState extends ConsumerState<LessonPlayer> {
 
   Future<bool> _confirmExit() async {
     if (_phase != _Phase.quiz) return true;
+    final saved = widget.onProgress != null;
     final leave = await showDialog<bool>(
       context: context,
       builder: (ctx) => AlertDialog(
         title: const Text('Leave lesson?'),
-        content: const Text(
-          'Your progress in this lesson will not be saved. You can start it '
-          'again anytime.',
+        content: Text(
+          saved
+              ? 'Your progress is saved. Come back anytime to pick up at '
+                    'question ${_index + 1} of ${widget.questions.length}.'
+              : 'Your progress in this lesson will not be saved. You can '
+                    'start it again anytime.',
         ),
         actions: [
           TextButton(
@@ -195,10 +274,14 @@ class _LessonPlayerState extends ConsumerState<LessonPlayer> {
         return _TeachingView(
           title: widget.title,
           card: widget.teachingCard!,
-          onStart: () => setState(() {
-            _phase = _Phase.quiz;
-            _questionStart = DateTime.now();
-          }),
+          onStart: () {
+            setState(() {
+              _phase = _Phase.quiz;
+              _questionStart = DateTime.now();
+              if (_results.isEmpty) _startedAt = DateTime.now();
+            });
+            _emitProgress();
+          },
           onClose: () => context.pop(),
         );
       case _Phase.summary:
