@@ -11,38 +11,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "spread",
-    "prompt": "For the data set 44, 4, 15, 59, 44, 19, 3, 56, 28, 57, 30, 53, an outlier is defined as a value more than 1.5 times the interquartile range above the third quartile. What is the least integer value that would be considered an outlier if added to the set?",
+    "prompt": "For the data set 22, 7, 46, 35, 4, 12, 48, 43, 22, 59, 16, 2, a value is called an outlier if it is more than 1.5 times the interquartile range above the third quartile. Using the quartiles of this data set, what is the least integer that lies above this outlier cutoff?",
     "choices": [
       {
         "id": "A",
-        "text": "110",
-        "rationale": "The value must be strictly greater than the fence."
+        "text": "45",
+        "rationale": "Add 1.5 × IQR to Q3, not just 1."
       },
       {
         "id": "B",
-        "text": "111",
+        "text": "98",
         "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "55",
-        "rationale": "Add 1.5 × IQR to Q3, not just 1."
+        "text": "97",
+        "rationale": "The value must be strictly greater than the fence."
       },
       {
         "id": "D",
-        "text": "93",
+        "text": "80",
         "rationale": "Multiply the IQR by 1.5, not 1."
       }
     ],
     "correct_choice": "B",
-    "explanation": "Q1 = 17, Q3 = 109/2, IQR = 75/2; fence = 109/2 + 1.5·75/2 = 443/4; the least integer above it is 111.",
+    "explanation": "Q1 = 19/2, Q3 = 89/2, IQR = 35; fence = 89/2 + 1.5·35 = 97; the least integer above it is 98.",
     "estimated_time_seconds": 110,
     "tags": [
       "statistics",
       "quartiles",
       "family:st_quartiles"
     ],
-    "answer_verification": "q1=17,q3=109/2"
+    "answer_verification": "q1=19/2,q3=89/2"
   },
   {
     "question_id": "sat-math-statistics-hard-b0002",
@@ -54,273 +54,32 @@
     "lesson_id": "sat-math-statistics-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "mean_median_mode",
-    "prompt": "A data set of 5 values, 16, 19, 21, 22, 27, is extended by one value x. For what value of x will the mean of the new data set equal 25?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "25",
-        "rationale": "x must be well above the target mean to pull it up."
-      },
-      {
-        "id": "B",
-        "text": "150",
-        "rationale": "That is the required total, not x."
-      },
-      {
-        "id": "C",
-        "text": "45",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "20",
-        "rationale": "Use the new count 6."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "Required total = 25 × 6 = 150; x = 150 − 105 = 45.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "statistics",
-      "mean",
-      "family:st_outlier_effect"
-    ],
-    "answer_verification": "x=45"
-  },
-  {
-    "question_id": "sat-math-statistics-hard-b0003",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "statistics",
-    "lesson_id": "sat-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multi_step_math",
-    "subskill": "mean_median_mode",
-    "prompt": "In one class of 10 students the mean test score was 77, and in another class of 25 students the mean was 60. What is the mean score of all 35 students? (Round to the nearest tenth.)",
-    "choices": [
-      {
-        "id": "A",
-        "text": "66.4",
-        "rationale": "Arithmetic slip; recompute the weighted total."
-      },
-      {
-        "id": "B",
-        "text": "64.9",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "68.5",
-        "rationale": "Averaging the two means ignores the different class sizes."
-      },
-      {
-        "id": "D",
-        "text": "60.6",
-        "rationale": "Weight each mean by its class size."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Total points = 10·77 + 25·60 = 2270; divide by 35: 64.9.",
-    "estimated_time_seconds": 100,
-    "tags": [
-      "statistics",
-      "weighted-mean",
-      "family:st_missing_value"
-    ],
-    "answer_verification": "(10*77+25*60)/35=64.86"
-  },
-  {
-    "question_id": "sat-math-statistics-hard-b0004",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "statistics",
-    "lesson_id": "sat-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "mean_median_mode",
-    "prompt": "A data set of 7 values, 14, 18, 22, 22, 34, 35, 44, is extended by one value x. For what value of x will the mean of the new data set equal 31?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "28",
-        "rationale": "Use the new count 8."
-      },
-      {
-        "id": "B",
-        "text": "248",
-        "rationale": "That is the required total, not x."
-      },
-      {
-        "id": "C",
-        "text": "59",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "31",
-        "rationale": "x must be well above the target mean to pull it up."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "Required total = 31 × 8 = 248; x = 248 − 189 = 59.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "statistics",
-      "mean",
-      "family:st_outlier_effect"
-    ],
-    "answer_verification": "x=59"
-  },
-  {
-    "question_id": "sat-math-statistics-hard-b0005",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "statistics",
-    "lesson_id": "sat-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "mean_median_mode",
-    "prompt": "The data set 4, 7, 14, 21, 30, 32 has mean 18. If the least value is removed, what is the mean of the remaining values?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "108/5",
-        "rationale": "Subtract the removed value from the total as well."
-      },
-      {
-        "id": "B",
-        "text": "18",
-        "rationale": "Removing an extreme value changes the mean."
-      },
-      {
-        "id": "C",
-        "text": "104/5",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "17.33",
-        "rationale": "Divide by the new count, 5."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "Remove 4: new total 108 − 4 = 104, over 5 values: 104/5.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "statistics",
-      "mean",
-      "change",
-      "family:st_change_effect"
-    ],
-    "answer_verification": "val=104/5"
-  },
-  {
-    "question_id": "sat-math-statistics-hard-b0006",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "statistics",
-    "lesson_id": "sat-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "student_produced",
-    "subskill": "mean_median_mode",
-    "prompt": "The mean of 7 numbers is 19. If 6 of the numbers are 29, 28, 9, 22, 15, 7, what is the remaining number?",
-    "answer": {
-      "type": "numeric",
-      "value": 23,
-      "accepted": [
-        "23"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "19 × 7 − 110 = 23.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "statistics",
-      "grid-in",
-      "family:st_gridin"
-    ],
-    "answer_verification": "val=23"
-  },
-  {
-    "question_id": "sat-math-statistics-hard-b0007",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "statistics",
-    "lesson_id": "sat-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "student_produced",
-    "subskill": "mean_median_mode",
-    "prompt": "The mean of 7 numbers is 25. If 6 of the numbers are 40, 26, 33, 11, 15, 29, what is the remaining number?",
-    "answer": {
-      "type": "numeric",
-      "value": 21,
-      "accepted": [
-        "21"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "25 × 7 − 154 = 21.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "statistics",
-      "grid-in",
-      "family:st_gridin"
-    ],
-    "answer_verification": "val=21"
-  },
-  {
-    "question_id": "sat-math-statistics-hard-b0008",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "statistics",
-    "lesson_id": "sat-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "spread",
-    "prompt": "The table shows how many responses in two groups took each value (Group A: 15 responses, Group B: 20). If every value in Group B were increased by 10, how would its mean and standard deviation change?",
+    "prompt": "The table shows how many responses in two groups took each value (Group A: 15 responses, Group B: 18). If every value in Group B were increased by 10, how would its mean and standard deviation change?",
     "choices": [
       {
         "id": "A",
-        "text": "The mean would not change and the standard deviation would increase by 10.",
-        "rationale": "Adding 10 to every value raises the mean by 10."
-      },
-      {
-        "id": "B",
-        "text": "Both the mean and the standard deviation would increase by 10.",
-        "rationale": "Shifting every value leaves the distances from the center unchanged."
-      },
-      {
-        "id": "C",
         "text": "The mean would increase by 10 and the standard deviation would increase by a factor of 10.",
         "rationale": "Only multiplying every value scales the standard deviation."
       },
       {
-        "id": "D",
+        "id": "B",
         "text": "The mean would increase by 10 and the standard deviation would not change.",
         "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "Both the mean and the standard deviation would increase by 10.",
+        "rationale": "Shifting every value leaves the distances from the center unchanged."
+      },
+      {
+        "id": "D",
+        "text": "The mean would not change and the standard deviation would increase by 10.",
+        "rationale": "Adding 10 to every value raises the mean by 10."
       }
     ],
-    "correct_choice": "D",
+    "correct_choice": "B",
     "explanation": "Adding a constant to every data value shifts the mean by that constant but leaves the spread (standard deviation) unchanged.",
     "estimated_time_seconds": 90,
     "tags": [
@@ -351,23 +110,281 @@
           ],
           [
             "30",
-            "7",
+            "8",
             "0"
           ],
           [
             "40",
-            "4",
-            "3"
+            "2",
+            "2"
           ],
           [
             "50",
-            "0",
-            "8"
+            "1",
+            "7"
           ]
         ]
       }
     },
     "answer_verification": "wide=B"
+  },
+  {
+    "question_id": "sat-math-statistics-hard-b0003",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "statistics",
+    "lesson_id": "sat-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "spread",
+    "prompt": "A data set has the values 14, 19, 22, 23, 30, 39. If the value 78 is added to the data set, which of the following describes the effect on the mean and the standard deviation?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Both the mean and the standard deviation increase.",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "The mean increases and the standard deviation decreases.",
+        "rationale": "A value far from the others increases the spread."
+      },
+      {
+        "id": "C",
+        "text": "The mean increases and the standard deviation is unchanged.",
+        "rationale": "Adding a distant value changes the spread."
+      },
+      {
+        "id": "D",
+        "text": "The mean decreases and the standard deviation increases.",
+        "rationale": "78 is above the current mean 24.5, so the mean rises."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "The mean rises from 24.5 to 32.1 because 78 is above it, and the added value is far from the center, so the spread (standard deviation) grows.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "statistics",
+      "standard-deviation",
+      "outlier",
+      "family:st_spread"
+    ],
+    "answer_verification": "mean 24.50->32.14"
+  },
+  {
+    "question_id": "sat-math-statistics-hard-b0004",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "statistics",
+    "lesson_id": "sat-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "spread",
+    "prompt": "A data set has the values 10, 20, 22, 25, 35, 38. If the value 78 is added to the data set, which of the following describes the effect on the mean and the standard deviation?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Both the mean and the standard deviation increase.",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "The mean decreases and the standard deviation increases.",
+        "rationale": "78 is above the current mean 25.0, so the mean rises."
+      },
+      {
+        "id": "C",
+        "text": "The mean increases and the standard deviation is unchanged.",
+        "rationale": "Adding a distant value changes the spread."
+      },
+      {
+        "id": "D",
+        "text": "The mean increases and the standard deviation decreases.",
+        "rationale": "A value far from the others increases the spread."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "The mean rises from 25.0 to 32.6 because 78 is above it, and the added value is far from the center, so the spread (standard deviation) grows.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "statistics",
+      "standard-deviation",
+      "outlier",
+      "family:st_spread"
+    ],
+    "answer_verification": "mean 25.00->32.57"
+  },
+  {
+    "question_id": "sat-math-statistics-hard-b0005",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "statistics",
+    "lesson_id": "sat-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "student_produced",
+    "subskill": "mean_median_mode",
+    "prompt": "The mean of 6 numbers is 23. If 5 of the numbers are 16, 34, 3, 19, 28, what is the remaining number?",
+    "answer": {
+      "type": "numeric",
+      "value": 38,
+      "accepted": [
+        "38"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "23 × 6 − 100 = 38.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "statistics",
+      "grid-in",
+      "family:st_gridin"
+    ],
+    "answer_verification": "val=38"
+  },
+  {
+    "question_id": "sat-math-statistics-hard-b0006",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "statistics",
+    "lesson_id": "sat-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "mean_median_mode",
+    "prompt": "A data set of 5 values, 11, 13, 15, 25, 41, is extended by one value x. For what value of x will the mean of the new data set equal 26?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "25",
+        "rationale": "Use the new count 6."
+      },
+      {
+        "id": "B",
+        "text": "26",
+        "rationale": "x must be well above the target mean to pull it up."
+      },
+      {
+        "id": "C",
+        "text": "51",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "156",
+        "rationale": "That is the required total, not x."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "Required total = 26 × 6 = 156; x = 156 − 105 = 51.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "statistics",
+      "mean",
+      "family:st_outlier_effect"
+    ],
+    "answer_verification": "x=51"
+  },
+  {
+    "question_id": "sat-math-statistics-hard-b0007",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "statistics",
+    "lesson_id": "sat-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "mean_median_mode",
+    "prompt": "The data set 4, 14, 22, 33, 34, 37 has mean 24. If the greatest value is removed, what is the mean of the remaining values?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "24",
+        "rationale": "Removing an extreme value changes the mean."
+      },
+      {
+        "id": "B",
+        "text": "144/5",
+        "rationale": "Subtract the removed value from the total as well."
+      },
+      {
+        "id": "C",
+        "text": "17.83",
+        "rationale": "Divide by the new count, 5."
+      },
+      {
+        "id": "D",
+        "text": "107/5",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Remove 37: new total 144 − 37 = 107, over 5 values: 107/5.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "statistics",
+      "mean",
+      "change",
+      "family:st_change_effect"
+    ],
+    "answer_verification": "val=107/5"
+  },
+  {
+    "question_id": "sat-math-statistics-hard-b0008",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "statistics",
+    "lesson_id": "sat-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "spread",
+    "prompt": "For the data set 2, 18, 23, 2, 24, 9, 33, 2, 27, 36, 10, 53, a value is called an outlier if it is more than 1.5 times the interquartile range above the third quartile. Using the quartiles of this data set, what is the least integer that lies above this outlier cutoff?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "55",
+        "rationale": "Multiply the IQR by 1.5, not 1."
+      },
+      {
+        "id": "B",
+        "text": "66",
+        "rationale": "The value must be strictly greater than the fence."
+      },
+      {
+        "id": "C",
+        "text": "31",
+        "rationale": "Add 1.5 × IQR to Q3, not just 1."
+      },
+      {
+        "id": "D",
+        "text": "67",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Q1 = 11/2, Q3 = 30, IQR = 49/2; fence = 30 + 1.5·49/2 = 267/4; the least integer above it is 67.",
+    "estimated_time_seconds": 110,
+    "tags": [
+      "statistics",
+      "quartiles",
+      "family:st_quartiles"
+    ],
+    "answer_verification": "q1=11/2,q3=30"
   },
   {
     "question_id": "sat-math-statistics-hard-b0009",
@@ -379,73 +396,40 @@
     "lesson_id": "sat-math-statistics-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "data_interpretation",
+    "question_type": "multi_step_math",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 19 people. What is the mean pets per student? (Round to the nearest hundredth if necessary.)",
+    "prompt": "In one class of 23 students the mean test score was 83, and in another class of 23 students the mean was 60. What is the mean score of all 46 students? (Round to the nearest tenth.)",
     "choices": [
       {
         "id": "A",
-        "text": "1.32",
-        "rationale": "Correct."
+        "text": "73",
+        "rationale": "Arithmetic slip; recompute the weighted total."
       },
       {
         "id": "B",
-        "text": "5",
-        "rationale": "Divide by the number of people, not the number of rows."
+        "text": "83",
+        "rationale": "The combined mean lies between the two means."
       },
       {
         "id": "C",
-        "text": "2",
-        "rationale": "Weight each value by its frequency; don't average the listed values."
+        "text": "65.8",
+        "rationale": "Weight each mean by its class size."
       },
       {
         "id": "D",
-        "text": "3.8",
-        "rationale": "That is the mean frequency, not the mean value."
+        "text": "71.5",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Mean = Σ(value × frequency)/N = 25/19 ≈ 1.32.",
+    "correct_choice": "D",
+    "explanation": "Total points = 23·83 + 23·60 = 3289; divide by 46: 71.5.",
     "estimated_time_seconds": 100,
     "tags": [
       "statistics",
-      "table",
-      "mean",
-      "family:st_frequency_table"
+      "weighted-mean",
+      "family:st_missing_value"
     ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Survey results",
-        "headers": [
-          "Number of pets",
-          "Number of students"
-        ],
-        "rows": [
-          [
-            "0",
-            "7"
-          ],
-          [
-            "1",
-            "4"
-          ],
-          [
-            "2",
-            "4"
-          ],
-          [
-            "3",
-            "3"
-          ],
-          [
-            "4",
-            "1"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "25/19"
+    "answer_verification": "(23*83+23*60)/46=71.50"
   },
   {
     "question_id": "sat-math-statistics-hard-b0010",
@@ -457,25 +441,73 @@
     "lesson_id": "sat-math-statistics-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "student_produced",
+    "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The mean of 5 numbers is 24. If 4 of the numbers are 3, 6, 37, 40, what is the remaining number?",
-    "answer": {
-      "type": "numeric",
-      "value": 34,
-      "accepted": [
-        "34"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "24 × 5 − 86 = 34.",
-    "estimated_time_seconds": 80,
+    "prompt": "The table summarizes data for 18 students. What is the mean pets per student? (Round to the nearest hundredth if necessary.)",
+    "choices": [
+      {
+        "id": "A",
+        "text": "3",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "3.6",
+        "rationale": "That is the mean frequency, not the mean value."
+      },
+      {
+        "id": "C",
+        "text": "10.8",
+        "rationale": "Divide by the number of students, not the number of rows."
+      },
+      {
+        "id": "D",
+        "text": "3.5",
+        "rationale": "Arithmetic slip; recompute Σ(value × frequency)."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Mean = Σ(value × frequency)/N = 54/18 ≈ 3.00.",
+    "estimated_time_seconds": 100,
     "tags": [
       "statistics",
-      "grid-in",
-      "family:st_gridin"
+      "table",
+      "mean",
+      "family:st_frequency_table"
     ],
-    "answer_verification": "val=34"
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Frequency table",
+        "headers": [
+          "Number of pets",
+          "Number of students"
+        ],
+        "rows": [
+          [
+            "1",
+            "6"
+          ],
+          [
+            "2",
+            "2"
+          ],
+          [
+            "3",
+            "2"
+          ],
+          [
+            "4",
+            "2"
+          ],
+          [
+            "5",
+            "6"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "54/18"
   },
   {
     "question_id": "sat-math-statistics-hard-b0011",
@@ -487,25 +519,40 @@
     "lesson_id": "sat-math-statistics-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "student_produced",
+    "question_type": "multi_step_math",
     "subskill": "mean_median_mode",
-    "prompt": "The mean of 6 numbers is 24. If 5 of the numbers are 19, 18, 28, 18, 36, what is the remaining number?",
-    "answer": {
-      "type": "numeric",
-      "value": 25,
-      "accepted": [
-        "25"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "24 × 6 − 119 = 25.",
-    "estimated_time_seconds": 80,
+    "prompt": "In one class of 11 students the mean test score was 73, and in another class of 28 students the mean was 64. What is the mean score of all 39 students? (Round to the nearest tenth.)",
+    "choices": [
+      {
+        "id": "A",
+        "text": "68",
+        "rationale": "Arithmetic slip; recompute the weighted total."
+      },
+      {
+        "id": "B",
+        "text": "66.5",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "64.3",
+        "rationale": "Weight each mean by its class size."
+      },
+      {
+        "id": "D",
+        "text": "68.5",
+        "rationale": "Averaging the two means ignores the different class sizes."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Total points = 11·73 + 28·64 = 2595; divide by 39: 66.5.",
+    "estimated_time_seconds": 100,
     "tags": [
       "statistics",
-      "grid-in",
-      "family:st_gridin"
+      "weighted-mean",
+      "family:st_missing_value"
     ],
-    "answer_verification": "val=25"
+    "answer_verification": "(11*73+28*64)/39=66.54"
   },
   {
     "question_id": "sat-math-statistics-hard-b0012",
@@ -517,40 +564,73 @@
     "lesson_id": "sat-math-statistics-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The data set 12, 84, 10, 27, 30, 22, 26 lists the number of minutes 7 customers waited. Which of the following is true about the mean and the median of the data?",
+    "prompt": "The table summarizes data for 30 students. What is the mean pets per student? (Round to the nearest hundredth if necessary.)",
     "choices": [
       {
         "id": "A",
-        "text": "The mean and the median are equal, because the data are symmetric.",
-        "rationale": "The mean is 30.1 and the median is 26; they differ."
+        "text": "13.8",
+        "rationale": "Divide by the number of students, not the number of rows."
       },
       {
         "id": "B",
-        "text": "The mean is less than the median, because most values are below 84.",
-        "rationale": "A large outlier raises the mean above the median."
+        "text": "6",
+        "rationale": "That is the mean frequency, not the mean value."
       },
       {
         "id": "C",
-        "text": "The median is greater than the mean, because the value 84 pulls the median up.",
-        "rationale": "The median is resistant to outliers; it is the middle value, 26."
+        "text": "2",
+        "rationale": "Weight each value by its frequency; don't average the listed values."
       },
       {
         "id": "D",
-        "text": "The mean is greater than the median, because the value 84 pulls the mean up.",
+        "text": "2.3",
         "rationale": "Correct."
       }
     ],
     "correct_choice": "D",
-    "explanation": "Median = 26 (middle value); mean = 211/7 ≈ 30.1. The outlier 84 raises the mean.",
-    "estimated_time_seconds": 95,
+    "explanation": "Mean = Σ(value × frequency)/N = 69/30 ≈ 2.30.",
+    "estimated_time_seconds": 100,
     "tags": [
       "statistics",
-      "outlier",
-      "family:st_center_list"
+      "table",
+      "mean",
+      "family:st_frequency_table"
     ],
-    "answer_verification": "mean=30.14 median=26"
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Frequency table",
+        "headers": [
+          "Number of pets",
+          "Number of students"
+        ],
+        "rows": [
+          [
+            "0",
+            "2"
+          ],
+          [
+            "1",
+            "8"
+          ],
+          [
+            "2",
+            "6"
+          ],
+          [
+            "3",
+            "7"
+          ],
+          [
+            "4",
+            "7"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "69/30"
   },
   {
     "question_id": "sat-math-statistics-hard-b0013",
@@ -563,39 +643,40 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "mean_median_mode",
-    "prompt": "What is the mean (average) of the data set 9, 64, 51, 12, 31, 17, 29, 15, 24?",
+    "subskill": "spread",
+    "prompt": "A data set has the values 13, 16, 20, 21, 26, 30. If the value 60 is added to the data set, which of the following describes the effect on the mean and the standard deviation?",
     "choices": [
       {
         "id": "A",
-        "text": "24",
-        "rationale": "This is the median, not the mean."
+        "text": "The mean increases and the standard deviation decreases.",
+        "rationale": "A value far from the others increases the spread."
       },
       {
         "id": "B",
-        "text": "28",
-        "rationale": "Correct."
+        "text": "The mean increases and the standard deviation is unchanged.",
+        "rationale": "Adding a distant value changes the spread."
       },
       {
         "id": "C",
-        "text": "29",
-        "rationale": "Recheck the sum before dividing."
+        "text": "The mean decreases and the standard deviation increases.",
+        "rationale": "60 is above the current mean 21.0, so the mean rises."
       },
       {
         "id": "D",
-        "text": "55",
-        "rationale": "This is the range, not the mean."
+        "text": "Both the mean and the standard deviation increase.",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Mean = sum ÷ count = 252 ÷ 9 = 28.",
-    "estimated_time_seconds": 75,
+    "correct_choice": "D",
+    "explanation": "The mean rises from 21.0 to 26.6 because 60 is above it, and the added value is far from the center, so the spread (standard deviation) grows.",
+    "estimated_time_seconds": 90,
     "tags": [
       "statistics",
-      "mean",
-      "family:st_center_list"
+      "standard-deviation",
+      "outlier",
+      "family:st_spread"
     ],
-    "answer_verification": "mean=28"
+    "answer_verification": "mean 21.00->26.57"
   },
   {
     "question_id": "sat-math-statistics-hard-b0014",
@@ -608,39 +689,39 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "spread",
-    "prompt": "For the data set 43, 39, 13, 10, 51, 27, 47, 33, 29, 32, 56, 33, an outlier is defined as a value more than 1.5 times the interquartile range above the third quartile. What is the least integer value that would be considered an outlier if added to the set?",
+    "subskill": "mean_median_mode",
+    "prompt": "A data set of 5 values, 13, 17, 18, 32, 35, is extended by one value x. For what value of x will the mean of the new data set equal 25?",
     "choices": [
       {
         "id": "A",
-        "text": "63",
-        "rationale": "Multiply the IQR by 1.5, not 1."
+        "text": "150",
+        "rationale": "That is the required total, not x."
       },
       {
         "id": "B",
-        "text": "71",
-        "rationale": "Correct."
+        "text": "25",
+        "rationale": "x must be well above the target mean to pull it up."
       },
       {
         "id": "C",
-        "text": "46",
-        "rationale": "Add 1.5 × IQR to Q3, not just 1."
+        "text": "35",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "70",
-        "rationale": "The value must be strictly greater than the fence."
+        "text": "10",
+        "rationale": "Use the new count 6."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Q1 = 28, Q3 = 45, IQR = 17; fence = 45 + 1.5·17 = 141/2; the least integer above it is 71.",
-    "estimated_time_seconds": 110,
+    "correct_choice": "C",
+    "explanation": "Required total = 25 × 6 = 150; x = 150 − 115 = 35.",
+    "estimated_time_seconds": 95,
     "tags": [
       "statistics",
-      "quartiles",
-      "family:st_quartiles"
+      "mean",
+      "family:st_outlier_effect"
     ],
-    "answer_verification": "q1=28,q3=45"
+    "answer_verification": "x=35"
   },
   {
     "question_id": "sat-math-statistics-hard-b0015",
@@ -652,41 +733,73 @@
     "lesson_id": "sat-math-statistics-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The data set 4, 7, 10, 15, 28, 32 has mean 16. If the greatest value is removed, what is the mean of the remaining values?",
+    "prompt": "The table summarizes data for 24 games. What is the mean goals per game? (Round to the nearest hundredth if necessary.)",
     "choices": [
       {
         "id": "A",
-        "text": "96/5",
-        "rationale": "Subtract the removed value from the total as well."
+        "text": "2",
+        "rationale": "Weight each value by its frequency; don't average the listed values."
       },
       {
         "id": "B",
-        "text": "16",
-        "rationale": "Removing an extreme value changes the mean."
+        "text": "2.33",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "10.67",
-        "rationale": "Divide by the new count, 5."
+        "text": "4.8",
+        "rationale": "That is the mean frequency, not the mean value."
       },
       {
         "id": "D",
-        "text": "64/5",
-        "rationale": "Correct."
+        "text": "11.2",
+        "rationale": "Divide by the number of games, not the number of rows."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Remove 32: new total 96 − 32 = 64, over 5 values: 64/5.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "B",
+    "explanation": "Mean = Σ(value × frequency)/N = 56/24 ≈ 2.33.",
+    "estimated_time_seconds": 100,
     "tags": [
       "statistics",
+      "table",
       "mean",
-      "change",
-      "family:st_change_effect"
+      "family:st_frequency_table"
     ],
-    "answer_verification": "val=64/5"
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Frequency table",
+        "headers": [
+          "Goals scored",
+          "Number of games"
+        ],
+        "rows": [
+          [
+            "0",
+            "1"
+          ],
+          [
+            "1",
+            "7"
+          ],
+          [
+            "2",
+            "5"
+          ],
+          [
+            "3",
+            "5"
+          ],
+          [
+            "4",
+            "6"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "56/24"
   },
   {
     "question_id": "sat-math-statistics-hard-b0016",
@@ -700,22 +813,22 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "spread",
-    "prompt": "The table shows how many responses in two groups took each value (Group A: 13 responses, Group B: 18). If every value in Group B were increased by 10, how would its mean and standard deviation change?",
+    "prompt": "The table shows how many responses in two groups took each value (Group A: 17 responses, Group B: 15). If every value in Group A were increased by 10, how would its mean and standard deviation change?",
     "choices": [
       {
         "id": "A",
-        "text": "The mean would increase by 10 and the standard deviation would not change.",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
         "text": "Both the mean and the standard deviation would increase by 10.",
         "rationale": "Shifting every value leaves the distances from the center unchanged."
       },
       {
-        "id": "C",
+        "id": "B",
         "text": "The mean would not change and the standard deviation would increase by 10.",
         "rationale": "Adding 10 to every value raises the mean by 10."
+      },
+      {
+        "id": "C",
+        "text": "The mean would increase by 10 and the standard deviation would not change.",
+        "rationale": "Correct."
       },
       {
         "id": "D",
@@ -723,7 +836,7 @@
         "rationale": "Only multiplying every value scales the standard deviation."
       }
     ],
-    "correct_choice": "A",
+    "correct_choice": "C",
     "explanation": "Adding a constant to every data value shifts the mean by that constant but leaves the spread (standard deviation) unchanged.",
     "estimated_time_seconds": 90,
     "tags": [
@@ -744,33 +857,33 @@
         "rows": [
           [
             "10",
-            "1",
-            "7"
+            "6",
+            "0"
           ],
           [
             "20",
-            "3",
-            "3"
+            "1",
+            "4"
           ],
           [
             "30",
-            "7",
-            "1"
+            "0",
+            "6"
           ],
           [
             "40",
-            "2",
-            "3"
+            "3",
+            "4"
           ],
           [
             "50",
-            "0",
-            "4"
+            "7",
+            "1"
           ]
         ]
       }
     },
-    "answer_verification": "wide=B"
+    "answer_verification": "wide=A"
   },
   {
     "question_id": "sat-math-statistics-hard-b0017",
@@ -782,25 +895,73 @@
     "lesson_id": "sat-math-statistics-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "student_produced",
+    "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The mean of 5 numbers is 17. If 4 of the numbers are 4, 8, 21, 26, what is the remaining number?",
-    "answer": {
-      "type": "numeric",
-      "value": 26,
-      "accepted": [
-        "26"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "17 × 5 − 59 = 26.",
-    "estimated_time_seconds": 80,
+    "prompt": "The table summarizes data for 28 children. What is the mean siblings per child? (Round to the nearest hundredth if necessary.)",
+    "choices": [
+      {
+        "id": "A",
+        "text": "5.6",
+        "rationale": "That is the mean frequency, not the mean value."
+      },
+      {
+        "id": "B",
+        "text": "3",
+        "rationale": "Weight each value by its frequency; don't average the listed values."
+      },
+      {
+        "id": "C",
+        "text": "14.6",
+        "rationale": "Divide by the number of children, not the number of rows."
+      },
+      {
+        "id": "D",
+        "text": "2.61",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Mean = Σ(value × frequency)/N = 73/28 ≈ 2.61.",
+    "estimated_time_seconds": 100,
     "tags": [
       "statistics",
-      "grid-in",
-      "family:st_gridin"
+      "table",
+      "mean",
+      "family:st_frequency_table"
     ],
-    "answer_verification": "val=26"
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Frequency table",
+        "headers": [
+          "Siblings",
+          "Number of children"
+        ],
+        "rows": [
+          [
+            "1",
+            "7"
+          ],
+          [
+            "2",
+            "8"
+          ],
+          [
+            "3",
+            "3"
+          ],
+          [
+            "4",
+            "9"
+          ],
+          [
+            "5",
+            "1"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "73/28"
   },
   {
     "question_id": "sat-math-statistics-hard-b0018",
@@ -812,43 +973,438 @@
     "lesson_id": "sat-math-statistics-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multi_step_math",
-    "subskill": "mean_median_mode",
-    "prompt": "In one class of 11 students the mean test score was 67, and in another class of 16 students the mean was 81. What is the mean score of all 27 students? (Round to the nearest tenth.)",
+    "question_type": "multiple_choice",
+    "subskill": "spread",
+    "prompt": "For the data set 29, 31, 59, 38, 7, 48, 34, 31, 9, 19, 40, 26, a value is called an outlier if it is more than 1.5 times the interquartile range above the third quartile. Using the quartiles of this data set, what is the least integer that lies above this outlier cutoff?",
     "choices": [
       {
         "id": "A",
-        "text": "76.8",
-        "rationale": "Arithmetic slip; recompute the weighted total."
+        "text": "56",
+        "rationale": "Multiply the IQR by 1.5, not 1."
       },
       {
         "id": "B",
-        "text": "78.8",
-        "rationale": "Weight each mean by its class size."
+        "text": "40",
+        "rationale": "Add 1.5 × IQR to Q3, not just 1."
       },
       {
         "id": "C",
-        "text": "74",
-        "rationale": "Averaging the two means ignores the different class sizes."
+        "text": "63",
+        "rationale": "The value must be strictly greater than the fence."
       },
       {
         "id": "D",
-        "text": "75.3",
+        "text": "64",
         "rationale": "Correct."
       }
     ],
     "correct_choice": "D",
-    "explanation": "Total points = 11·67 + 16·81 = 2033; divide by 27: 75.3.",
+    "explanation": "Q1 = 45/2, Q3 = 39, IQR = 33/2; fence = 39 + 1.5·33/2 = 255/4; the least integer above it is 64.",
+    "estimated_time_seconds": 110,
+    "tags": [
+      "statistics",
+      "quartiles",
+      "family:st_quartiles"
+    ],
+    "answer_verification": "q1=45/2,q3=39"
+  },
+  {
+    "question_id": "sat-math-statistics-hard-b0019",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "statistics",
+    "lesson_id": "sat-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "mean_median_mode",
+    "prompt": "The numbers of points Liam scored in 7 games were 57, 49, 15, 7, 41, 8, 47. What was the mean number of points per game?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "50",
+        "rationale": "This is the range, not the mean."
+      },
+      {
+        "id": "B",
+        "text": "41",
+        "rationale": "This is the median, not the mean."
+      },
+      {
+        "id": "C",
+        "text": "33",
+        "rationale": "Recheck the sum before dividing."
+      },
+      {
+        "id": "D",
+        "text": "32",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Mean = sum ÷ count = 224 ÷ 7 = 32.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "statistics",
+      "mean",
+      "family:st_center_list"
+    ],
+    "answer_verification": "mean=32"
+  },
+  {
+    "question_id": "sat-math-statistics-hard-b0020",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "statistics",
+    "lesson_id": "sat-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "mean_median_mode",
+    "prompt": "The data set 5, 6, 11, 16, 27, 31 has mean 16. If the least value is removed, what is the mean of the remaining values?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "16",
+        "rationale": "Removing an extreme value changes the mean."
+      },
+      {
+        "id": "B",
+        "text": "96/5",
+        "rationale": "Subtract the removed value from the total as well."
+      },
+      {
+        "id": "C",
+        "text": "91/5",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "15.17",
+        "rationale": "Divide by the new count, 5."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "Remove 5: new total 96 − 5 = 91, over 5 values: 91/5.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "statistics",
+      "mean",
+      "change",
+      "family:st_change_effect"
+    ],
+    "answer_verification": "val=91/5"
+  },
+  {
+    "question_id": "sat-math-statistics-hard-b0021",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "statistics",
+    "lesson_id": "sat-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "mean_median_mode",
+    "prompt": "A data set of 7 values, 14, 18, 22, 27, 30, 30, 34, is extended by one value x. For what value of x will the mean of the new data set equal 31?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "248",
+        "rationale": "That is the required total, not x."
+      },
+      {
+        "id": "B",
+        "text": "31",
+        "rationale": "x must be well above the target mean to pull it up."
+      },
+      {
+        "id": "C",
+        "text": "42",
+        "rationale": "Use the new count 8."
+      },
+      {
+        "id": "D",
+        "text": "73",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Required total = 31 × 8 = 248; x = 248 − 175 = 73.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "statistics",
+      "mean",
+      "family:st_outlier_effect"
+    ],
+    "answer_verification": "x=73"
+  },
+  {
+    "question_id": "sat-math-statistics-hard-b0022",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "statistics",
+    "lesson_id": "sat-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multi_step_math",
+    "subskill": "mean_median_mode",
+    "prompt": "In one class of 23 students the mean test score was 84, and in another class of 25 students the mean was 78. What is the mean score of all 48 students? (Round to the nearest tenth.)",
+    "choices": [
+      {
+        "id": "A",
+        "text": "80.9",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "79.4",
+        "rationale": "Weight each mean by its class size."
+      },
+      {
+        "id": "C",
+        "text": "82.4",
+        "rationale": "Arithmetic slip; recompute the weighted total."
+      },
+      {
+        "id": "D",
+        "text": "81",
+        "rationale": "Averaging the two means ignores the different class sizes."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Total points = 23·84 + 25·78 = 3882; divide by 48: 80.9.",
     "estimated_time_seconds": 100,
     "tags": [
       "statistics",
       "weighted-mean",
       "family:st_missing_value"
     ],
-    "answer_verification": "(11*67+16*81)/27=75.30"
+    "answer_verification": "(23*84+25*78)/48=80.88"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0019",
+    "question_id": "sat-math-statistics-hard-b0023",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "statistics",
+    "lesson_id": "sat-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "spread",
+    "prompt": "For the data set 44, 6, 44, 44, 30, 18, 48, 10, 25, 5, 46, 32, a value is called an outlier if it is more than 1.5 times the interquartile range above the third quartile. Using the quartiles of this data set, what is the least integer that lies above this outlier cutoff?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "45",
+        "rationale": "Add 1.5 × IQR to Q3, not just 1."
+      },
+      {
+        "id": "B",
+        "text": "89",
+        "rationale": "The value must be strictly greater than the fence."
+      },
+      {
+        "id": "C",
+        "text": "90",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "75",
+        "rationale": "Multiply the IQR by 1.5, not 1."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "Q1 = 14, Q3 = 44, IQR = 30; fence = 44 + 1.5·30 = 89; the least integer above it is 90.",
+    "estimated_time_seconds": 110,
+    "tags": [
+      "statistics",
+      "quartiles",
+      "family:st_quartiles"
+    ],
+    "answer_verification": "q1=14,q3=44"
+  },
+  {
+    "question_id": "sat-math-statistics-hard-b0024",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "statistics",
+    "lesson_id": "sat-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "mean_median_mode",
+    "prompt": "A sample of 9 packages had weights, in pounds, of 50, 35, 31, 5, 55, 41, 34, 46, 63. What is the mean weight?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "58",
+        "rationale": "This is the range, not the mean."
+      },
+      {
+        "id": "B",
+        "text": "40",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "41",
+        "rationale": "This is the median, not the mean."
+      },
+      {
+        "id": "D",
+        "text": "360",
+        "rationale": "This is the sum; divide by the count."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Mean = sum ÷ count = 360 ÷ 9 = 40.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "statistics",
+      "mean",
+      "family:st_center_list"
+    ],
+    "answer_verification": "mean=40"
+  },
+  {
+    "question_id": "sat-math-statistics-hard-b0025",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "statistics",
+    "lesson_id": "sat-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "mean_median_mode",
+    "prompt": "The table summarizes data for 23 students. What is the mean pets per student? (Round to the nearest hundredth if necessary.)",
+    "choices": [
+      {
+        "id": "A",
+        "text": "2.39",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "2",
+        "rationale": "Weight each value by its frequency; don't average the listed values."
+      },
+      {
+        "id": "C",
+        "text": "11",
+        "rationale": "Divide by the number of students, not the number of rows."
+      },
+      {
+        "id": "D",
+        "text": "4.6",
+        "rationale": "That is the mean frequency, not the mean value."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Mean = Σ(value × frequency)/N = 55/23 ≈ 2.39.",
+    "estimated_time_seconds": 100,
+    "tags": [
+      "statistics",
+      "table",
+      "mean",
+      "family:st_frequency_table"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Frequency table",
+        "headers": [
+          "Number of pets",
+          "Number of students"
+        ],
+        "rows": [
+          [
+            "0",
+            "3"
+          ],
+          [
+            "1",
+            "5"
+          ],
+          [
+            "2",
+            "1"
+          ],
+          [
+            "3",
+            "8"
+          ],
+          [
+            "4",
+            "6"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "55/23"
+  },
+  {
+    "question_id": "sat-math-statistics-hard-b0026",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "statistics",
+    "lesson_id": "sat-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "spread",
+    "prompt": "A data set has the values 11, 11, 16, 17, 31, 32. If the value 62 is added to the data set, which of the following describes the effect on the mean and the standard deviation?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The mean decreases and the standard deviation increases.",
+        "rationale": "62 is above the current mean 19.7, so the mean rises."
+      },
+      {
+        "id": "B",
+        "text": "The mean increases and the standard deviation decreases.",
+        "rationale": "A value far from the others increases the spread."
+      },
+      {
+        "id": "C",
+        "text": "Both the mean and the standard deviation increase.",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "The mean increases and the standard deviation is unchanged.",
+        "rationale": "Adding a distant value changes the spread."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "The mean rises from 19.7 to 25.7 because 62 is above it, and the added value is far from the center, so the spread (standard deviation) grows.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "statistics",
+      "standard-deviation",
+      "outlier",
+      "family:st_spread"
+    ],
+    "answer_verification": "mean 19.67->25.71"
+  },
+  {
+    "question_id": "sat-math-statistics-hard-b0027",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -893,7 +1449,7 @@
     "answer_verification": "mean=31.44 median=28"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0020",
+    "question_id": "sat-math-statistics-hard-b0028",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -938,7 +1494,7 @@
     "answer_verification": "(23*86+20*72)/43=79.49"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0021",
+    "question_id": "sat-math-statistics-hard-b0029",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -984,7 +1540,7 @@
     "answer_verification": "val=29"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0022",
+    "question_id": "sat-math-statistics-hard-b0030",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1029,7 +1585,7 @@
     "answer_verification": "(10*88+25*62)/35=69.43"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0023",
+    "question_id": "sat-math-statistics-hard-b0031",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1113,7 +1669,7 @@
     "answer_verification": "wide=A"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0024",
+    "question_id": "sat-math-statistics-hard-b0032",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1143,7 +1699,7 @@
     "answer_verification": "val=33"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0025",
+    "question_id": "sat-math-statistics-hard-b0033",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1189,7 +1745,7 @@
     "answer_verification": "val=79/5"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0026",
+    "question_id": "sat-math-statistics-hard-b0034",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1273,7 +1829,7 @@
     "answer_verification": "wide=B"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0027",
+    "question_id": "sat-math-statistics-hard-b0035",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1318,7 +1874,7 @@
     "answer_verification": "(30*62+26*64)/56=62.93"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0028",
+    "question_id": "sat-math-statistics-hard-b0036",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1364,7 +1920,7 @@
     "answer_verification": "mean 24.17->30.71"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0029",
+    "question_id": "sat-math-statistics-hard-b0037",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1410,7 +1966,7 @@
     "answer_verification": "val=134/5"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0030",
+    "question_id": "sat-math-statistics-hard-b0038",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1421,7 +1977,7 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 27 people. What is the mean goals per game? (Round to the nearest hundredth if necessary.)",
+    "prompt": "The table summarizes data for 27 games. What is the mean goals per game? (Round to the nearest hundredth if necessary.)",
     "choices": [
       {
         "id": "A",
@@ -1441,7 +1997,7 @@
       {
         "id": "D",
         "text": "18.4",
-        "rationale": "Divide by the number of people, not the number of rows."
+        "rationale": "Divide by the number of games, not the number of rows."
       }
     ],
     "correct_choice": "B",
@@ -1456,7 +2012,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Goals scored",
           "Number of games"
@@ -1488,7 +2044,7 @@
     "answer_verification": "92/27"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0031",
+    "question_id": "sat-math-statistics-hard-b0039",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1534,7 +2090,7 @@
     "answer_verification": "mean 28.83->33.14"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0032",
+    "question_id": "sat-math-statistics-hard-b0040",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1579,7 +2135,7 @@
     "answer_verification": "(15*69+10*90)/25=77.40"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0033",
+    "question_id": "sat-math-statistics-hard-b0041",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1625,7 +2181,7 @@
     "answer_verification": "val=121/5"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0034",
+    "question_id": "sat-math-statistics-hard-b0042",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1709,7 +2265,7 @@
     "answer_verification": "wide=A"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0035",
+    "question_id": "sat-math-statistics-hard-b0043",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1739,7 +2295,7 @@
     "answer_verification": "val=20"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0036",
+    "question_id": "sat-math-statistics-hard-b0044",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1750,12 +2306,12 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 18 people. What is the mean pets per student? (Round to the nearest hundredth if necessary.)",
+    "prompt": "The table summarizes data for 18 students. What is the mean pets per student? (Round to the nearest hundredth if necessary.)",
     "choices": [
       {
         "id": "A",
         "text": "10.2",
-        "rationale": "Divide by the number of people, not the number of rows."
+        "rationale": "Divide by the number of students, not the number of rows."
       },
       {
         "id": "B",
@@ -1785,7 +2341,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Number of pets",
           "Number of students"
@@ -1817,7 +2373,7 @@
     "answer_verification": "51/18"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0037",
+    "question_id": "sat-math-statistics-hard-b0045",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1862,7 +2418,7 @@
     "answer_verification": "(22*86+28*90)/50=88.24"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0038",
+    "question_id": "sat-math-statistics-hard-b0046",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1873,7 +2429,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "spread",
-    "prompt": "For the data set 5, 33, 36, 46, 4, 21, 20, 15, 54, 6, 15, 13, an outlier is defined as a value more than 1.5 times the interquartile range above the third quartile. What is the least integer value that would be considered an outlier if added to the set?",
+    "prompt": "For the data set 5, 33, 36, 46, 4, 21, 20, 15, 54, 6, 15, 13, a value is called an outlier if it is more than 1.5 times the interquartile range above the third quartile. Using the quartiles of this data set, what is the least integer that lies above this outlier cutoff?",
     "choices": [
       {
         "id": "A",
@@ -1907,7 +2463,7 @@
     "answer_verification": "q1=19/2,q3=69/2"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0039",
+    "question_id": "sat-math-statistics-hard-b0047",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1953,7 +2509,7 @@
     "answer_verification": "val=26"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0040",
+    "question_id": "sat-math-statistics-hard-b0048",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1964,7 +2520,7 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 18 people. What is the mean siblings per child? (Round to the nearest hundredth if necessary.)",
+    "prompt": "The table summarizes data for 18 children. What is the mean siblings per child? (Round to the nearest hundredth if necessary.)",
     "choices": [
       {
         "id": "A",
@@ -1974,7 +2530,7 @@
       {
         "id": "B",
         "text": "6.6",
-        "rationale": "Divide by the number of people, not the number of rows."
+        "rationale": "Divide by the number of children, not the number of rows."
       },
       {
         "id": "C",
@@ -1999,7 +2555,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Siblings",
           "Number of children"
@@ -2031,7 +2587,7 @@
     "answer_verification": "33/18"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0041",
+    "question_id": "sat-math-statistics-hard-b0049",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2042,7 +2598,7 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 37 people. What is the mean siblings per child? (Round to the nearest hundredth if necessary.)",
+    "prompt": "The table summarizes data for 37 children. What is the mean siblings per child? (Round to the nearest hundredth if necessary.)",
     "choices": [
       {
         "id": "A",
@@ -2062,7 +2618,7 @@
       {
         "id": "D",
         "text": "22.6",
-        "rationale": "Divide by the number of people, not the number of rows."
+        "rationale": "Divide by the number of children, not the number of rows."
       }
     ],
     "correct_choice": "C",
@@ -2077,7 +2633,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Siblings",
           "Number of children"
@@ -2109,7 +2665,7 @@
     "answer_verification": "113/37"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0042",
+    "question_id": "sat-math-statistics-hard-b0050",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2154,7 +2710,7 @@
     "answer_verification": "mean=38.00 median=29"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0043",
+    "question_id": "sat-math-statistics-hard-b0051",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2165,12 +2721,12 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 35 people. What is the mean siblings per child? (Round to the nearest hundredth if necessary.)",
+    "prompt": "The table summarizes data for 35 children. What is the mean siblings per child? (Round to the nearest hundredth if necessary.)",
     "choices": [
       {
         "id": "A",
         "text": "19.2",
-        "rationale": "Divide by the number of people, not the number of rows."
+        "rationale": "Divide by the number of children, not the number of rows."
       },
       {
         "id": "B",
@@ -2200,7 +2756,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Siblings",
           "Number of children"
@@ -2232,7 +2788,7 @@
     "answer_verification": "96/35"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0044",
+    "question_id": "sat-math-statistics-hard-b0052",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2277,7 +2833,7 @@
     "answer_verification": "(27*83+25*69)/52=76.27"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0045",
+    "question_id": "sat-math-statistics-hard-b0053",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2307,7 +2863,7 @@
     "answer_verification": "val=31"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0046",
+    "question_id": "sat-math-statistics-hard-b0054",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2353,7 +2909,7 @@
     "answer_verification": "val=87/5"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0047",
+    "question_id": "sat-math-statistics-hard-b0055",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2398,7 +2954,7 @@
     "answer_verification": "(18*70+21*76)/39=73.23"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0048",
+    "question_id": "sat-math-statistics-hard-b0056",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2444,7 +3000,7 @@
     "answer_verification": "val=28"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0049",
+    "question_id": "sat-math-statistics-hard-b0057",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2489,7 +3045,7 @@
     "answer_verification": "(20*79+22*60)/42=69.05"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0050",
+    "question_id": "sat-math-statistics-hard-b0058",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2519,7 +3075,7 @@
     "answer_verification": "val=26"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0051",
+    "question_id": "sat-math-statistics-hard-b0059",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2530,7 +3086,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "spread",
-    "prompt": "For the data set 29, 12, 8, 30, 27, 3, 26, 53, 58, 22, 53, 12, an outlier is defined as a value more than 1.5 times the interquartile range above the third quartile. What is the least integer value that would be considered an outlier if added to the set?",
+    "prompt": "For the data set 29, 12, 8, 30, 27, 3, 26, 53, 58, 22, 53, 12, a value is called an outlier if it is more than 1.5 times the interquartile range above the third quartile. Using the quartiles of this data set, what is the least integer that lies above this outlier cutoff?",
     "choices": [
       {
         "id": "A",
@@ -2564,7 +3120,7 @@
     "answer_verification": "q1=12,q3=83/2"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0052",
+    "question_id": "sat-math-statistics-hard-b0060",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2610,7 +3166,7 @@
     "answer_verification": "mean 21.17->26.00"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0053",
+    "question_id": "sat-math-statistics-hard-b0061",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2655,7 +3211,7 @@
     "answer_verification": "x=47"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0054",
+    "question_id": "sat-math-statistics-hard-b0062",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2701,7 +3257,7 @@
     "answer_verification": "mean 27.17->33.14"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0055",
+    "question_id": "sat-math-statistics-hard-b0063",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2746,7 +3302,7 @@
     "answer_verification": "(27*66+19*87)/46=74.67"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0056",
+    "question_id": "sat-math-statistics-hard-b0064",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2757,7 +3313,7 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 31 people. What is the mean books per reader? (Round to the nearest hundredth if necessary.)",
+    "prompt": "The table summarizes data for 31 readers. What is the mean books per reader? (Round to the nearest hundredth if necessary.)",
     "choices": [
       {
         "id": "A",
@@ -2772,7 +3328,7 @@
       {
         "id": "C",
         "text": "17",
-        "rationale": "Divide by the number of people, not the number of rows."
+        "rationale": "Divide by the number of readers, not the number of rows."
       },
       {
         "id": "D",
@@ -2792,7 +3348,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Books read",
           "Number of readers"
@@ -2824,7 +3380,7 @@
     "answer_verification": "85/31"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0057",
+    "question_id": "sat-math-statistics-hard-b0065",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2869,7 +3425,7 @@
     "answer_verification": "mean=19"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0058",
+    "question_id": "sat-math-statistics-hard-b0066",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2880,7 +3436,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "spread",
-    "prompt": "For the data set 32, 43, 41, 45, 52, 50, 3, 19, 26, 45, 57, 13, an outlier is defined as a value more than 1.5 times the interquartile range above the third quartile. What is the least integer value that would be considered an outlier if added to the set?",
+    "prompt": "For the data set 32, 43, 41, 45, 52, 50, 3, 19, 26, 45, 57, 13, a value is called an outlier if it is more than 1.5 times the interquartile range above the third quartile. Using the quartiles of this data set, what is the least integer that lies above this outlier cutoff?",
     "choices": [
       {
         "id": "A",
@@ -2914,7 +3470,7 @@
     "answer_verification": "q1=45/2,q3=95/2"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0059",
+    "question_id": "sat-math-statistics-hard-b0067",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2998,7 +3554,7 @@
     "answer_verification": "wide=B"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0060",
+    "question_id": "sat-math-statistics-hard-b0068",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3043,7 +3599,7 @@
     "answer_verification": "x=50"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0061",
+    "question_id": "sat-math-statistics-hard-b0069",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3089,7 +3645,7 @@
     "answer_verification": "val=107/5"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0062",
+    "question_id": "sat-math-statistics-hard-b0070",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3134,7 +3690,7 @@
     "answer_verification": "x=38"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0063",
+    "question_id": "sat-math-statistics-hard-b0071",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3218,7 +3774,7 @@
     "answer_verification": "wide=B"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0064",
+    "question_id": "sat-math-statistics-hard-b0072",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3264,7 +3820,7 @@
     "answer_verification": "mean 19.67->24.71"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0065",
+    "question_id": "sat-math-statistics-hard-b0073",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3294,7 +3850,7 @@
     "answer_verification": "val=8"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0066",
+    "question_id": "sat-math-statistics-hard-b0074",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3324,7 +3880,7 @@
     "answer_verification": "val=39"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0067",
+    "question_id": "sat-math-statistics-hard-b0075",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3354,7 +3910,7 @@
     "answer_verification": "val=16"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0068",
+    "question_id": "sat-math-statistics-hard-b0076",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3399,7 +3955,7 @@
     "answer_verification": "(16*90+15*86)/31=88.06"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0069",
+    "question_id": "sat-math-statistics-hard-b0077",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3429,7 +3985,7 @@
     "answer_verification": "val=12"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0070",
+    "question_id": "sat-math-statistics-hard-b0078",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3440,7 +3996,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "spread",
-    "prompt": "For the data set 46, 4, 10, 21, 4, 57, 41, 24, 44, 49, 46, 25, an outlier is defined as a value more than 1.5 times the interquartile range above the third quartile. What is the least integer value that would be considered an outlier if added to the set?",
+    "prompt": "For the data set 46, 4, 10, 21, 4, 57, 41, 24, 44, 49, 46, 25, a value is called an outlier if it is more than 1.5 times the interquartile range above the third quartile. Using the quartiles of this data set, what is the least integer that lies above this outlier cutoff?",
     "choices": [
       {
         "id": "A",
@@ -3474,7 +4030,7 @@
     "answer_verification": "q1=31/2,q3=46"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0071",
+    "question_id": "sat-math-statistics-hard-b0079",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3519,7 +4075,7 @@
     "answer_verification": "(12*85+10*88)/22=86.36"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0072",
+    "question_id": "sat-math-statistics-hard-b0080",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3549,7 +4105,7 @@
     "answer_verification": "val=32"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0073",
+    "question_id": "sat-math-statistics-hard-b0081",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3560,7 +4116,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "spread",
-    "prompt": "For the data set 43, 24, 55, 8, 29, 7, 12, 59, 2, 22, 39, 44, an outlier is defined as a value more than 1.5 times the interquartile range above the third quartile. What is the least integer value that would be considered an outlier if added to the set?",
+    "prompt": "For the data set 43, 24, 55, 8, 29, 7, 12, 59, 2, 22, 39, 44, a value is called an outlier if it is more than 1.5 times the interquartile range above the third quartile. Using the quartiles of this data set, what is the least integer that lies above this outlier cutoff?",
     "choices": [
       {
         "id": "A",
@@ -3594,7 +4150,7 @@
     "answer_verification": "q1=10,q3=87/2"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0074",
+    "question_id": "sat-math-statistics-hard-b0082",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3678,7 +4234,7 @@
     "answer_verification": "wide=B"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0075",
+    "question_id": "sat-math-statistics-hard-b0083",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3708,7 +4264,7 @@
     "answer_verification": "val=53"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0076",
+    "question_id": "sat-math-statistics-hard-b0084",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3753,7 +4309,7 @@
     "answer_verification": "(18*67+24*60)/42=63.00"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0077",
+    "question_id": "sat-math-statistics-hard-b0085",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3798,7 +4354,7 @@
     "answer_verification": "(11*88+27*83)/38=84.45"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0078",
+    "question_id": "sat-math-statistics-hard-b0086",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3843,7 +4399,7 @@
     "answer_verification": "mean=32.78 median=21"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0079",
+    "question_id": "sat-math-statistics-hard-b0087",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3889,7 +4445,7 @@
     "answer_verification": "val=31"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0080",
+    "question_id": "sat-math-statistics-hard-b0088",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3935,7 +4491,7 @@
     "answer_verification": "mean 25.83->30.71"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0081",
+    "question_id": "sat-math-statistics-hard-b0089",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3946,12 +4502,12 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 19 people. What is the mean siblings per child? (Round to the nearest hundredth if necessary.)",
+    "prompt": "The table summarizes data for 19 children. What is the mean siblings per child? (Round to the nearest hundredth if necessary.)",
     "choices": [
       {
         "id": "A",
         "text": "13.8",
-        "rationale": "Divide by the number of people, not the number of rows."
+        "rationale": "Divide by the number of children, not the number of rows."
       },
       {
         "id": "B",
@@ -3981,7 +4537,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Siblings",
           "Number of children"
@@ -4013,7 +4569,7 @@
     "answer_verification": "69/19"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0082",
+    "question_id": "sat-math-statistics-hard-b0090",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4043,7 +4599,7 @@
     "answer_verification": "val=39"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0083",
+    "question_id": "sat-math-statistics-hard-b0091",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4054,7 +4610,7 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 31 people. What is the mean books per reader? (Round to the nearest hundredth if necessary.)",
+    "prompt": "The table summarizes data for 31 readers. What is the mean books per reader? (Round to the nearest hundredth if necessary.)",
     "choices": [
       {
         "id": "A",
@@ -4064,7 +4620,7 @@
       {
         "id": "B",
         "text": "13.4",
-        "rationale": "Divide by the number of people, not the number of rows."
+        "rationale": "Divide by the number of readers, not the number of rows."
       },
       {
         "id": "C",
@@ -4089,7 +4645,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Books read",
           "Number of readers"
@@ -4121,7 +4677,7 @@
     "answer_verification": "67/31"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0084",
+    "question_id": "sat-math-statistics-hard-b0092",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4132,7 +4688,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "spread",
-    "prompt": "For the data set 55, 4, 49, 39, 2, 34, 21, 8, 54, 48, 30, 50, an outlier is defined as a value more than 1.5 times the interquartile range above the third quartile. What is the least integer value that would be considered an outlier if added to the set?",
+    "prompt": "For the data set 55, 4, 49, 39, 2, 34, 21, 8, 54, 48, 30, 50, a value is called an outlier if it is more than 1.5 times the interquartile range above the third quartile. Using the quartiles of this data set, what is the least integer that lies above this outlier cutoff?",
     "choices": [
       {
         "id": "A",
@@ -4166,7 +4722,7 @@
     "answer_verification": "q1=29/2,q3=99/2"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0085",
+    "question_id": "sat-math-statistics-hard-b0093",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4211,7 +4767,7 @@
     "answer_verification": "x=44"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0086",
+    "question_id": "sat-math-statistics-hard-b0094",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4257,7 +4813,7 @@
     "answer_verification": "mean 26.00->32.29"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0087",
+    "question_id": "sat-math-statistics-hard-b0095",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4302,7 +4858,7 @@
     "answer_verification": "x=62"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0088",
+    "question_id": "sat-math-statistics-hard-b0096",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4313,12 +4869,12 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 21 people. What is the mean pets per student? (Round to the nearest hundredth if necessary.)",
+    "prompt": "The table summarizes data for 21 students. What is the mean pets per student? (Round to the nearest hundredth if necessary.)",
     "choices": [
       {
         "id": "A",
         "text": "10",
-        "rationale": "Divide by the number of people, not the number of rows."
+        "rationale": "Divide by the number of students, not the number of rows."
       },
       {
         "id": "B",
@@ -4348,7 +4904,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Number of pets",
           "Number of students"
@@ -4380,7 +4936,7 @@
     "answer_verification": "50/21"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0089",
+    "question_id": "sat-math-statistics-hard-b0097",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4425,7 +4981,7 @@
     "answer_verification": "mean=28"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0090",
+    "question_id": "sat-math-statistics-hard-b0098",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4436,12 +4992,12 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 16 people. What is the mean goals per game? (Round to the nearest hundredth if necessary.)",
+    "prompt": "The table summarizes data for 16 games. What is the mean goals per game? (Round to the nearest hundredth if necessary.)",
     "choices": [
       {
         "id": "A",
         "text": "10.2",
-        "rationale": "Divide by the number of people, not the number of rows."
+        "rationale": "Divide by the number of games, not the number of rows."
       },
       {
         "id": "B",
@@ -4471,7 +5027,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Goals scored",
           "Number of games"
@@ -4503,7 +5059,7 @@
     "answer_verification": "51/16"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0091",
+    "question_id": "sat-math-statistics-hard-b0099",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4548,7 +5104,7 @@
     "answer_verification": "x=62"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0092",
+    "question_id": "sat-math-statistics-hard-b0100",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4559,7 +5115,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "spread",
-    "prompt": "For the data set 30, 47, 25, 24, 41, 30, 25, 46, 12, 23, 14, 13, an outlier is defined as a value more than 1.5 times the interquartile range above the third quartile. What is the least integer value that would be considered an outlier if added to the set?",
+    "prompt": "For the data set 30, 47, 25, 24, 41, 30, 25, 46, 12, 23, 14, 13, a value is called an outlier if it is more than 1.5 times the interquartile range above the third quartile. Using the quartiles of this data set, what is the least integer that lies above this outlier cutoff?",
     "choices": [
       {
         "id": "A",
@@ -4593,7 +5149,7 @@
     "answer_verification": "q1=37/2,q3=71/2"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0093",
+    "question_id": "sat-math-statistics-hard-b0101",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4604,7 +5160,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "spread",
-    "prompt": "For the data set 14, 17, 37, 58, 10, 22, 43, 42, 49, 24, 39, 9, an outlier is defined as a value more than 1.5 times the interquartile range above the third quartile. What is the least integer value that would be considered an outlier if added to the set?",
+    "prompt": "For the data set 14, 17, 37, 58, 10, 22, 43, 42, 49, 24, 39, 9, a value is called an outlier if it is more than 1.5 times the interquartile range above the third quartile. Using the quartiles of this data set, what is the least integer that lies above this outlier cutoff?",
     "choices": [
       {
         "id": "A",
@@ -4638,7 +5194,7 @@
     "answer_verification": "q1=31/2,q3=85/2"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0094",
+    "question_id": "sat-math-statistics-hard-b0102",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4649,7 +5205,7 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 28 people. What is the mean books per reader? (Round to the nearest hundredth if necessary.)",
+    "prompt": "The table summarizes data for 28 readers. What is the mean books per reader? (Round to the nearest hundredth if necessary.)",
     "choices": [
       {
         "id": "A",
@@ -4669,7 +5225,7 @@
       {
         "id": "D",
         "text": "12",
-        "rationale": "Divide by the number of people, not the number of rows."
+        "rationale": "Divide by the number of readers, not the number of rows."
       }
     ],
     "correct_choice": "C",
@@ -4684,7 +5240,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Books read",
           "Number of readers"
@@ -4716,7 +5272,7 @@
     "answer_verification": "60/28"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0095",
+    "question_id": "sat-math-statistics-hard-b0103",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4727,7 +5283,7 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 23 people. What is the mean books per reader? (Round to the nearest hundredth if necessary.)",
+    "prompt": "The table summarizes data for 23 readers. What is the mean books per reader? (Round to the nearest hundredth if necessary.)",
     "choices": [
       {
         "id": "A",
@@ -4742,7 +5298,7 @@
       {
         "id": "C",
         "text": "9.6",
-        "rationale": "Divide by the number of people, not the number of rows."
+        "rationale": "Divide by the number of readers, not the number of rows."
       },
       {
         "id": "D",
@@ -4762,7 +5318,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Books read",
           "Number of readers"
@@ -4794,7 +5350,7 @@
     "answer_verification": "48/23"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0096",
+    "question_id": "sat-math-statistics-hard-b0104",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4805,12 +5361,12 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 32 people. What is the mean pets per student? (Round to the nearest hundredth if necessary.)",
+    "prompt": "The table summarizes data for 32 students. What is the mean pets per student? (Round to the nearest hundredth if necessary.)",
     "choices": [
       {
         "id": "A",
         "text": "19.8",
-        "rationale": "Divide by the number of people, not the number of rows."
+        "rationale": "Divide by the number of students, not the number of rows."
       },
       {
         "id": "B",
@@ -4840,7 +5396,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Number of pets",
           "Number of students"
@@ -4872,7 +5428,7 @@
     "answer_verification": "99/32"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0097",
+    "question_id": "sat-math-statistics-hard-b0105",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4918,7 +5474,7 @@
     "answer_verification": "mean 23.33->29.29"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0098",
+    "question_id": "sat-math-statistics-hard-b0106",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4964,7 +5520,7 @@
     "answer_verification": "mean 23.33->29.29"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0099",
+    "question_id": "sat-math-statistics-hard-b0107",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5009,7 +5565,7 @@
     "answer_verification": "(15*66+26*90)/41=81.22"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0100",
+    "question_id": "sat-math-statistics-hard-b0108",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5020,7 +5576,7 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "spread",
-    "prompt": "The table shows how many responses in two groups took each value (Group A: 17 responses, Group B: 15). If every value in Group A were increased by 10, how would its mean and standard deviation change?",
+    "prompt": "The table shows how many responses in two groups took each value (Group A: 20 responses, Group B: 13). If every value in Group A were increased by 10, how would its mean and standard deviation change?",
     "choices": [
       {
         "id": "A",
@@ -5029,8 +5585,461 @@
       },
       {
         "id": "B",
+        "text": "The mean would increase by 10 and the standard deviation would not change.",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
         "text": "The mean would increase by 10 and the standard deviation would increase by a factor of 10.",
         "rationale": "Only multiplying every value scales the standard deviation."
+      },
+      {
+        "id": "D",
+        "text": "Both the mean and the standard deviation would increase by 10.",
+        "rationale": "Shifting every value leaves the distances from the center unchanged."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Adding a constant to every data value shifts the mean by that constant but leaves the spread (standard deviation) unchanged.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "statistics",
+      "table",
+      "standard-deviation",
+      "family:st_compare_tables"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Number of responses by value",
+        "headers": [
+          "Value",
+          "Group A",
+          "Group B"
+        ],
+        "rows": [
+          [
+            "10",
+            "5",
+            "0"
+          ],
+          [
+            "20",
+            "3",
+            "2"
+          ],
+          [
+            "30",
+            "2",
+            "7"
+          ],
+          [
+            "40",
+            "2",
+            "4"
+          ],
+          [
+            "50",
+            "8",
+            "0"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "wide=A"
+  },
+  {
+    "question_id": "sat-math-statistics-hard-b0109",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "statistics",
+    "lesson_id": "sat-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "student_produced",
+    "subskill": "mean_median_mode",
+    "prompt": "The mean of 6 numbers is 16. If 5 of the numbers are 24, 8, 7, 11, 12, what is the remaining number?",
+    "answer": {
+      "type": "numeric",
+      "value": 34,
+      "accepted": [
+        "34"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "16 × 6 − 62 = 34.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "statistics",
+      "grid-in",
+      "family:st_gridin"
+    ],
+    "answer_verification": "val=34"
+  },
+  {
+    "question_id": "sat-math-statistics-hard-b0110",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "statistics",
+    "lesson_id": "sat-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "mean_median_mode",
+    "prompt": "The table summarizes data for 17 games. What is the mean goals per game? (Round to the nearest hundredth if necessary.)",
+    "choices": [
+      {
+        "id": "A",
+        "text": "3.4",
+        "rationale": "That is the mean frequency, not the mean value."
+      },
+      {
+        "id": "B",
+        "text": "3",
+        "rationale": "Weight each value by its frequency; don't average the listed values."
+      },
+      {
+        "id": "C",
+        "text": "4",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "13.6",
+        "rationale": "Divide by the number of games, not the number of rows."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "Mean = Σ(value × frequency)/N = 68/17 ≈ 4.00.",
+    "estimated_time_seconds": 100,
+    "tags": [
+      "statistics",
+      "table",
+      "mean",
+      "family:st_frequency_table"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Frequency table",
+        "headers": [
+          "Goals scored",
+          "Number of games"
+        ],
+        "rows": [
+          [
+            "1",
+            "1"
+          ],
+          [
+            "2",
+            "1"
+          ],
+          [
+            "3",
+            "4"
+          ],
+          [
+            "4",
+            "2"
+          ],
+          [
+            "5",
+            "9"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "68/17"
+  },
+  {
+    "question_id": "sat-math-statistics-hard-b0111",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "statistics",
+    "lesson_id": "sat-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "spread",
+    "prompt": "A data set has the values 10, 16, 20, 21, 25, 30. If the value 56 is added to the data set, which of the following describes the effect on the mean and the standard deviation?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The mean increases and the standard deviation is unchanged.",
+        "rationale": "Adding a distant value changes the spread."
+      },
+      {
+        "id": "B",
+        "text": "The mean decreases and the standard deviation increases.",
+        "rationale": "56 is above the current mean 20.3, so the mean rises."
+      },
+      {
+        "id": "C",
+        "text": "Both the mean and the standard deviation increase.",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "The mean increases and the standard deviation decreases.",
+        "rationale": "A value far from the others increases the spread."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "The mean rises from 20.3 to 25.4 because 56 is above it, and the added value is far from the center, so the spread (standard deviation) grows.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "statistics",
+      "standard-deviation",
+      "outlier",
+      "family:st_spread"
+    ],
+    "answer_verification": "mean 20.33->25.43"
+  },
+  {
+    "question_id": "sat-math-statistics-hard-b0112",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "statistics",
+    "lesson_id": "sat-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "spread",
+    "prompt": "A data set has the values 14, 26, 27, 32, 34, 38. If the value 69 is added to the data set, which of the following describes the effect on the mean and the standard deviation?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The mean increases and the standard deviation decreases.",
+        "rationale": "A value far from the others increases the spread."
+      },
+      {
+        "id": "B",
+        "text": "Both the mean and the standard deviation increase.",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "The mean increases and the standard deviation is unchanged.",
+        "rationale": "Adding a distant value changes the spread."
+      },
+      {
+        "id": "D",
+        "text": "The mean decreases and the standard deviation increases.",
+        "rationale": "69 is above the current mean 28.5, so the mean rises."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "The mean rises from 28.5 to 34.3 because 69 is above it, and the added value is far from the center, so the spread (standard deviation) grows.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "statistics",
+      "standard-deviation",
+      "outlier",
+      "family:st_spread"
+    ],
+    "answer_verification": "mean 28.50->34.29"
+  },
+  {
+    "question_id": "sat-math-statistics-hard-b0113",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "statistics",
+    "lesson_id": "sat-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "mean_median_mode",
+    "prompt": "A data set of 5 values, 12, 13, 18, 23, 39, is extended by one value x. For what value of x will the mean of the new data set equal 24?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "15",
+        "rationale": "Use the new count 6."
+      },
+      {
+        "id": "B",
+        "text": "24",
+        "rationale": "x must be well above the target mean to pull it up."
+      },
+      {
+        "id": "C",
+        "text": "39",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "144",
+        "rationale": "That is the required total, not x."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "Required total = 24 × 6 = 144; x = 144 − 105 = 39.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "statistics",
+      "mean",
+      "family:st_outlier_effect"
+    ],
+    "answer_verification": "x=39"
+  },
+  {
+    "question_id": "sat-math-statistics-hard-b0114",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "statistics",
+    "lesson_id": "sat-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "mean_median_mode",
+    "prompt": "The data set 4, 5, 11, 22, 22, 38 has mean 17. If the least value is removed, what is the mean of the remaining values?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "16.33",
+        "rationale": "Divide by the new count, 5."
+      },
+      {
+        "id": "B",
+        "text": "17",
+        "rationale": "Removing an extreme value changes the mean."
+      },
+      {
+        "id": "C",
+        "text": "102/5",
+        "rationale": "Subtract the removed value from the total as well."
+      },
+      {
+        "id": "D",
+        "text": "98/5",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Remove 4: new total 102 − 4 = 98, over 5 values: 98/5.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "statistics",
+      "mean",
+      "change",
+      "family:st_change_effect"
+    ],
+    "answer_verification": "val=98/5"
+  },
+  {
+    "question_id": "sat-math-statistics-hard-b0115",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "statistics",
+    "lesson_id": "sat-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "mean_median_mode",
+    "prompt": "The table summarizes data for 32 games. What is the mean goals per game? (Round to the nearest hundredth if necessary.)",
+    "choices": [
+      {
+        "id": "A",
+        "text": "6.4",
+        "rationale": "That is the mean frequency, not the mean value."
+      },
+      {
+        "id": "B",
+        "text": "2",
+        "rationale": "Weight each value by its frequency; don't average the listed values."
+      },
+      {
+        "id": "C",
+        "text": "14",
+        "rationale": "Divide by the number of games, not the number of rows."
+      },
+      {
+        "id": "D",
+        "text": "2.19",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Mean = Σ(value × frequency)/N = 70/32 ≈ 2.19.",
+    "estimated_time_seconds": 100,
+    "tags": [
+      "statistics",
+      "table",
+      "mean",
+      "family:st_frequency_table"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Frequency table",
+        "headers": [
+          "Goals scored",
+          "Number of games"
+        ],
+        "rows": [
+          [
+            "0",
+            "6"
+          ],
+          [
+            "1",
+            "5"
+          ],
+          [
+            "2",
+            "7"
+          ],
+          [
+            "3",
+            "5"
+          ],
+          [
+            "4",
+            "9"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "70/32"
+  },
+  {
+    "question_id": "sat-math-statistics-hard-b0116",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "statistics",
+    "lesson_id": "sat-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "spread",
+    "prompt": "The table shows how many responses in two groups took each value (Group A: 20 responses, Group B: 12). If every value in Group A were increased by 10, how would its mean and standard deviation change?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The mean would increase by 10 and the standard deviation would not change.",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "The mean would not change and the standard deviation would increase by 10.",
+        "rationale": "Adding 10 to every value raises the mean by 10."
       },
       {
         "id": "C",
@@ -5039,11 +6048,11 @@
       },
       {
         "id": "D",
-        "text": "The mean would increase by 10 and the standard deviation would not change.",
-        "rationale": "Correct."
+        "text": "The mean would increase by 10 and the standard deviation would increase by a factor of 10.",
+        "rationale": "Only multiplying every value scales the standard deviation."
       }
     ],
-    "correct_choice": "D",
+    "correct_choice": "A",
     "explanation": "Adding a constant to every data value shifts the mean by that constant but leaves the spread (standard deviation) unchanged.",
     "estimated_time_seconds": 90,
     "tags": [
@@ -5069,23 +6078,23 @@
           ],
           [
             "20",
-            "2",
+            "1",
             "3"
           ],
           [
             "30",
             "1",
-            "7"
+            "6"
           ],
           [
             "40",
             "2",
-            "3"
+            "2"
           ],
           [
             "50",
-            "4",
-            "1"
+            "8",
+            "0"
           ]
         ]
       }
@@ -5093,322 +6102,7 @@
     "answer_verification": "wide=A"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0101",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "statistics",
-    "lesson_id": "sat-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "mean_median_mode",
-    "prompt": "The data set 16, 18, 24, 22, 92, 21, 21 lists the number of minutes 7 customers waited. Which of the following is true about the mean and the median of the data?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "The median is greater than the mean, because the value 92 pulls the median up.",
-        "rationale": "The median is resistant to outliers; it is the middle value, 21."
-      },
-      {
-        "id": "B",
-        "text": "The mean and the median are equal, because the data are symmetric.",
-        "rationale": "The mean is 30.6 and the median is 21; they differ."
-      },
-      {
-        "id": "C",
-        "text": "The mean is less than the median, because most values are below 92.",
-        "rationale": "A large outlier raises the mean above the median."
-      },
-      {
-        "id": "D",
-        "text": "The mean is greater than the median, because the value 92 pulls the mean up.",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Median = 21 (middle value); mean = 214/7 ≈ 30.6. The outlier 92 raises the mean.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "statistics",
-      "outlier",
-      "family:st_center_list"
-    ],
-    "answer_verification": "mean=30.57 median=21"
-  },
-  {
-    "question_id": "sat-math-statistics-hard-b0102",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "statistics",
-    "lesson_id": "sat-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "spread",
-    "prompt": "For the data set 57, 52, 24, 6, 24, 31, 41, 57, 32, 21, 9, 16, an outlier is defined as a value more than 1.5 times the interquartile range above the third quartile. What is the least integer value that would be considered an outlier if added to the set?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "75",
-        "rationale": "Multiply the IQR by 1.5, not 1."
-      },
-      {
-        "id": "B",
-        "text": "88",
-        "rationale": "The value must be strictly greater than the fence."
-      },
-      {
-        "id": "C",
-        "text": "89",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "47",
-        "rationale": "Add 1.5 × IQR to Q3, not just 1."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "Q1 = 37/2, Q3 = 93/2, IQR = 28; fence = 93/2 + 1.5·28 = 177/2; the least integer above it is 89.",
-    "estimated_time_seconds": 110,
-    "tags": [
-      "statistics",
-      "quartiles",
-      "family:st_quartiles"
-    ],
-    "answer_verification": "q1=37/2,q3=93/2"
-  },
-  {
-    "question_id": "sat-math-statistics-hard-b0103",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "statistics",
-    "lesson_id": "sat-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "mean_median_mode",
-    "prompt": "The numbers of points Elena scored in 7 games were 24, 7, 36, 59, 34, 40, 59. What was the mean number of points per game?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "38",
-        "rationale": "Recheck the sum before dividing."
-      },
-      {
-        "id": "B",
-        "text": "36",
-        "rationale": "This is the median, not the mean."
-      },
-      {
-        "id": "C",
-        "text": "52",
-        "rationale": "This is the range, not the mean."
-      },
-      {
-        "id": "D",
-        "text": "37",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Mean = sum ÷ count = 259 ÷ 7 = 37.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "statistics",
-      "mean",
-      "family:st_center_list"
-    ],
-    "answer_verification": "mean=37"
-  },
-  {
-    "question_id": "sat-math-statistics-hard-b0104",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "statistics",
-    "lesson_id": "sat-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multi_step_math",
-    "subskill": "mean_median_mode",
-    "prompt": "In one class of 13 students the mean test score was 85, and in another class of 23 students the mean was 68. What is the mean score of all 36 students? (Round to the nearest tenth.)",
-    "choices": [
-      {
-        "id": "A",
-        "text": "69.9",
-        "rationale": "Weight each mean by its class size."
-      },
-      {
-        "id": "B",
-        "text": "75.6",
-        "rationale": "Arithmetic slip; recompute the weighted total."
-      },
-      {
-        "id": "C",
-        "text": "76.5",
-        "rationale": "Averaging the two means ignores the different class sizes."
-      },
-      {
-        "id": "D",
-        "text": "74.1",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Total points = 13·85 + 23·68 = 2669; divide by 36: 74.1.",
-    "estimated_time_seconds": 100,
-    "tags": [
-      "statistics",
-      "weighted-mean",
-      "family:st_missing_value"
-    ],
-    "answer_verification": "(13*85+23*68)/36=74.14"
-  },
-  {
-    "question_id": "sat-math-statistics-hard-b0105",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "statistics",
-    "lesson_id": "sat-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "mean_median_mode",
-    "prompt": "A data set of 5 values, 19, 21, 26, 27, 32, is extended by one value x. For what value of x will the mean of the new data set equal 29?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "29",
-        "rationale": "x must be well above the target mean to pull it up."
-      },
-      {
-        "id": "B",
-        "text": "20",
-        "rationale": "Use the new count 6."
-      },
-      {
-        "id": "C",
-        "text": "174",
-        "rationale": "That is the required total, not x."
-      },
-      {
-        "id": "D",
-        "text": "49",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Required total = 29 × 6 = 174; x = 174 − 125 = 49.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "statistics",
-      "mean",
-      "family:st_outlier_effect"
-    ],
-    "answer_verification": "x=49"
-  },
-  {
-    "question_id": "sat-math-statistics-hard-b0106",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "statistics",
-    "lesson_id": "sat-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "spread",
-    "prompt": "For the data set 57, 25, 15, 11, 4, 57, 24, 4, 7, 2, 14, 21, an outlier is defined as a value more than 1.5 times the interquartile range above the third quartile. What is the least integer value that would be considered an outlier if added to the set?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "53",
-        "rationale": "The value must be strictly greater than the fence."
-      },
-      {
-        "id": "B",
-        "text": "25",
-        "rationale": "Add 1.5 × IQR to Q3, not just 1."
-      },
-      {
-        "id": "C",
-        "text": "44",
-        "rationale": "Multiply the IQR by 1.5, not 1."
-      },
-      {
-        "id": "D",
-        "text": "54",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Q1 = 11/2, Q3 = 49/2, IQR = 19; fence = 49/2 + 1.5·19 = 53; the least integer above it is 54.",
-    "estimated_time_seconds": 110,
-    "tags": [
-      "statistics",
-      "quartiles",
-      "family:st_quartiles"
-    ],
-    "answer_verification": "q1=11/2,q3=49/2"
-  },
-  {
-    "question_id": "sat-math-statistics-hard-b0107",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "statistics",
-    "lesson_id": "sat-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "mean_median_mode",
-    "prompt": "A data set of 7 values, 22, 24, 30, 32, 33, 34, 35, is extended by one value x. For what value of x will the mean of the new data set equal 34?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "34",
-        "rationale": "x must be well above the target mean to pull it up."
-      },
-      {
-        "id": "B",
-        "text": "28",
-        "rationale": "Use the new count 8."
-      },
-      {
-        "id": "C",
-        "text": "62",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "272",
-        "rationale": "That is the required total, not x."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "Required total = 34 × 8 = 272; x = 272 − 210 = 62.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "statistics",
-      "mean",
-      "family:st_outlier_effect"
-    ],
-    "answer_verification": "x=62"
-  },
-  {
-    "question_id": "sat-math-statistics-hard-b0108",
+    "question_id": "sat-math-statistics-hard-b0117",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5419,31 +6113,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 29 people. What is the mean goals per game? (Round to the nearest hundredth if necessary.)",
+    "prompt": "The table summarizes data for 36 children. What is the mean siblings per child? (Round to the nearest hundredth if necessary.)",
     "choices": [
       {
         "id": "A",
-        "text": "2.03",
-        "rationale": "Correct."
+        "text": "25",
+        "rationale": "Divide by the number of children, not the number of rows."
       },
       {
         "id": "B",
-        "text": "5.8",
+        "text": "7.2",
         "rationale": "That is the mean frequency, not the mean value."
       },
       {
         "id": "C",
-        "text": "11.8",
-        "rationale": "Divide by the number of people, not the number of rows."
+        "text": "3.47",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "2",
+        "text": "3",
         "rationale": "Weight each value by its frequency; don't average the listed values."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Mean = Σ(value × frequency)/N = 59/29 ≈ 2.03.",
+    "correct_choice": "C",
+    "explanation": "Mean = Σ(value × frequency)/N = 125/36 ≈ 3.47.",
     "estimated_time_seconds": 100,
     "tags": [
       "statistics",
@@ -5454,84 +6148,39 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
-          "Goals scored",
-          "Number of games"
+          "Siblings",
+          "Number of children"
         ],
         "rows": [
           [
-            "0",
-            "7"
-          ],
-          [
             "1",
-            "3"
+            "1"
           ],
           [
             "2",
-            "7"
+            "8"
           ],
           [
             "3",
-            "6"
+            "9"
           ],
           [
             "4",
-            "6"
+            "9"
+          ],
+          [
+            "5",
+            "9"
           ]
         ]
       }
     },
-    "answer_verification": "59/29"
+    "answer_verification": "125/36"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0109",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "statistics",
-    "lesson_id": "sat-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "mean_median_mode",
-    "prompt": "A data set of 5 values, 24, 27, 27, 37, 40, is extended by one value x. For what value of x will the mean of the new data set equal 37?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "30",
-        "rationale": "Use the new count 6."
-      },
-      {
-        "id": "B",
-        "text": "222",
-        "rationale": "That is the required total, not x."
-      },
-      {
-        "id": "C",
-        "text": "67",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "37",
-        "rationale": "x must be well above the target mean to pull it up."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "Required total = 37 × 6 = 222; x = 222 − 155 = 67.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "statistics",
-      "mean",
-      "family:st_outlier_effect"
-    ],
-    "answer_verification": "x=67"
-  },
-  {
-    "question_id": "sat-math-statistics-hard-b0110",
+    "question_id": "sat-math-statistics-hard-b0118",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5577,7 +6226,7 @@
     "answer_verification": "val=103/5"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0111",
+    "question_id": "sat-math-statistics-hard-b0119",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5623,7 +6272,7 @@
     "answer_verification": "mean 22.67->28.43"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0112",
+    "question_id": "sat-math-statistics-hard-b0120",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5668,7 +6317,7 @@
     "answer_verification": "mean=19"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0113",
+    "question_id": "sat-math-statistics-hard-b0121",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5679,7 +6328,7 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 20 people. What is the mean siblings per child? (Round to the nearest hundredth if necessary.)",
+    "prompt": "The table summarizes data for 20 children. What is the mean siblings per child? (Round to the nearest hundredth if necessary.)",
     "choices": [
       {
         "id": "A",
@@ -5689,7 +6338,7 @@
       {
         "id": "B",
         "text": "11.4",
-        "rationale": "Divide by the number of people, not the number of rows."
+        "rationale": "Divide by the number of children, not the number of rows."
       },
       {
         "id": "C",
@@ -5714,7 +6363,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Siblings",
           "Number of children"
@@ -5746,7 +6395,7 @@
     "answer_verification": "57/20"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0114",
+    "question_id": "sat-math-statistics-hard-b0122",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5792,7 +6441,7 @@
     "answer_verification": "val=122/5"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0115",
+    "question_id": "sat-math-statistics-hard-b0123",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5837,7 +6486,7 @@
     "answer_verification": "(25*76+11*70)/36=74.17"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0116",
+    "question_id": "sat-math-statistics-hard-b0124",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5883,7 +6532,7 @@
     "answer_verification": "mean 23.33->29.29"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0117",
+    "question_id": "sat-math-statistics-hard-b0125",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5913,7 +6562,7 @@
     "answer_verification": "val=15"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0118",
+    "question_id": "sat-math-statistics-hard-b0126",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5958,7 +6607,7 @@
     "answer_verification": "(20*72+24*80)/44=76.36"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0119",
+    "question_id": "sat-math-statistics-hard-b0127",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6004,7 +6653,7 @@
     "answer_verification": "val=148/5"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0120",
+    "question_id": "sat-math-statistics-hard-b0128",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6049,7 +6698,7 @@
     "answer_verification": "mean=33"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0121",
+    "question_id": "sat-math-statistics-hard-b0129",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6079,7 +6728,7 @@
     "answer_verification": "val=21"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0122",
+    "question_id": "sat-math-statistics-hard-b0130",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6125,7 +6774,7 @@
     "answer_verification": "mean 21.33->28.71"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0123",
+    "question_id": "sat-math-statistics-hard-b0131",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6170,7 +6819,7 @@
     "answer_verification": "x=57"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0124",
+    "question_id": "sat-math-statistics-hard-b0132",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6181,7 +6830,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "spread",
-    "prompt": "For the data set 20, 45, 52, 15, 27, 56, 37, 8, 39, 10, 31, 55, an outlier is defined as a value more than 1.5 times the interquartile range above the third quartile. What is the least integer value that would be considered an outlier if added to the set?",
+    "prompt": "For the data set 20, 45, 52, 15, 27, 56, 37, 8, 39, 10, 31, 55, a value is called an outlier if it is more than 1.5 times the interquartile range above the third quartile. Using the quartiles of this data set, what is the least integer that lies above this outlier cutoff?",
     "choices": [
       {
         "id": "A",
@@ -6215,7 +6864,7 @@
     "answer_verification": "q1=35/2,q3=97/2"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0125",
+    "question_id": "sat-math-statistics-hard-b0133",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6260,7 +6909,7 @@
     "answer_verification": "(15*68+13*69)/28=68.46"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0126",
+    "question_id": "sat-math-statistics-hard-b0134",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6290,7 +6939,7 @@
     "answer_verification": "val=47"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0127",
+    "question_id": "sat-math-statistics-hard-b0135",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6335,7 +6984,7 @@
     "answer_verification": "(30*61+28*81)/58=70.66"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0128",
+    "question_id": "sat-math-statistics-hard-b0136",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6381,7 +7030,7 @@
     "answer_verification": "val=78/5"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0129",
+    "question_id": "sat-math-statistics-hard-b0137",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6427,7 +7076,7 @@
     "answer_verification": "val=24"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0130",
+    "question_id": "sat-math-statistics-hard-b0138",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6472,7 +7121,7 @@
     "answer_verification": "mean=32.33 median=19"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0131",
+    "question_id": "sat-math-statistics-hard-b0139",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6518,7 +7167,7 @@
     "answer_verification": "val=128/5"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0132",
+    "question_id": "sat-math-statistics-hard-b0140",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6564,7 +7213,7 @@
     "answer_verification": "mean 25.33->30.29"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0133",
+    "question_id": "sat-math-statistics-hard-b0141",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6609,7 +7258,7 @@
     "answer_verification": "x=62"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0134",
+    "question_id": "sat-math-statistics-hard-b0142",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6655,7 +7304,7 @@
     "answer_verification": "val=61/5"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0135",
+    "question_id": "sat-math-statistics-hard-b0143",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6685,7 +7334,7 @@
     "answer_verification": "val=29"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0136",
+    "question_id": "sat-math-statistics-hard-b0144",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6769,7 +7418,7 @@
     "answer_verification": "wide=A"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0137",
+    "question_id": "sat-math-statistics-hard-b0145",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6814,7 +7463,7 @@
     "answer_verification": "x=42"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0138",
+    "question_id": "sat-math-statistics-hard-b0146",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6898,7 +7547,7 @@
     "answer_verification": "wide=B"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0139",
+    "question_id": "sat-math-statistics-hard-b0147",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6982,7 +7631,7 @@
     "answer_verification": "wide=B"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0140",
+    "question_id": "sat-math-statistics-hard-b0148",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7066,7 +7715,7 @@
     "answer_verification": "wide=B"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0141",
+    "question_id": "sat-math-statistics-hard-b0149",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7077,7 +7726,7 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 29 people. What is the mean books per reader? (Round to the nearest hundredth if necessary.)",
+    "prompt": "The table summarizes data for 29 readers. What is the mean books per reader? (Round to the nearest hundredth if necessary.)",
     "choices": [
       {
         "id": "A",
@@ -7097,7 +7746,7 @@
       {
         "id": "D",
         "text": "11",
-        "rationale": "Divide by the number of people, not the number of rows."
+        "rationale": "Divide by the number of readers, not the number of rows."
       }
     ],
     "correct_choice": "B",
@@ -7112,7 +7761,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Books read",
           "Number of readers"
@@ -7144,7 +7793,7 @@
     "answer_verification": "55/29"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0142",
+    "question_id": "sat-math-statistics-hard-b0150",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7189,7 +7838,7 @@
     "answer_verification": "(30*75+22*88)/52=80.50"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0143",
+    "question_id": "sat-math-statistics-hard-b0151",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7200,7 +7849,7 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 22 people. What is the mean siblings per child? (Round to the nearest hundredth if necessary.)",
+    "prompt": "The table summarizes data for 22 children. What is the mean siblings per child? (Round to the nearest hundredth if necessary.)",
     "choices": [
       {
         "id": "A",
@@ -7215,7 +7864,7 @@
       {
         "id": "C",
         "text": "14.6",
-        "rationale": "Divide by the number of people, not the number of rows."
+        "rationale": "Divide by the number of children, not the number of rows."
       },
       {
         "id": "D",
@@ -7235,7 +7884,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Siblings",
           "Number of children"
@@ -7267,7 +7916,7 @@
     "answer_verification": "73/22"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0144",
+    "question_id": "sat-math-statistics-hard-b0152",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7278,12 +7927,12 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 16 people. What is the mean goals per game? (Round to the nearest hundredth if necessary.)",
+    "prompt": "The table summarizes data for 16 games. What is the mean goals per game? (Round to the nearest hundredth if necessary.)",
     "choices": [
       {
         "id": "A",
         "text": "9.6",
-        "rationale": "Divide by the number of people, not the number of rows."
+        "rationale": "Divide by the number of games, not the number of rows."
       },
       {
         "id": "B",
@@ -7313,7 +7962,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Goals scored",
           "Number of games"
@@ -7345,7 +7994,7 @@
     "answer_verification": "48/16"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0145",
+    "question_id": "sat-math-statistics-hard-b0153",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7391,7 +8040,7 @@
     "answer_verification": "mean 22.83->28.71"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0146",
+    "question_id": "sat-math-statistics-hard-b0154",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7421,7 +8070,7 @@
     "answer_verification": "val=36"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0147",
+    "question_id": "sat-math-statistics-hard-b0155",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7505,7 +8154,7 @@
     "answer_verification": "wide=A"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0148",
+    "question_id": "sat-math-statistics-hard-b0156",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7550,7 +8199,7 @@
     "answer_verification": "(19*64+24*81)/43=73.49"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0149",
+    "question_id": "sat-math-statistics-hard-b0157",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7561,7 +8210,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "spread",
-    "prompt": "For the data set 34, 5, 26, 32, 44, 30, 17, 48, 24, 29, 22, 20, an outlier is defined as a value more than 1.5 times the interquartile range above the third quartile. What is the least integer value that would be considered an outlier if added to the set?",
+    "prompt": "For the data set 34, 5, 26, 32, 44, 30, 17, 48, 24, 29, 22, 20, a value is called an outlier if it is more than 1.5 times the interquartile range above the third quartile. Using the quartiles of this data set, what is the least integer that lies above this outlier cutoff?",
     "choices": [
       {
         "id": "A",
@@ -7595,7 +8244,7 @@
     "answer_verification": "q1=21,q3=33"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0150",
+    "question_id": "sat-math-statistics-hard-b0158",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7679,7 +8328,7 @@
     "answer_verification": "wide=A"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0151",
+    "question_id": "sat-math-statistics-hard-b0159",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7709,7 +8358,7 @@
     "answer_verification": "val=3"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0152",
+    "question_id": "sat-math-statistics-hard-b0160",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7754,7 +8403,7 @@
     "answer_verification": "mean=31"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0153",
+    "question_id": "sat-math-statistics-hard-b0161",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7784,7 +8433,7 @@
     "answer_verification": "val=12"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0154",
+    "question_id": "sat-math-statistics-hard-b0162",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7795,7 +8444,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "spread",
-    "prompt": "For the data set 9, 46, 10, 34, 58, 44, 13, 57, 33, 17, 30, 59, an outlier is defined as a value more than 1.5 times the interquartile range above the third quartile. What is the least integer value that would be considered an outlier if added to the set?",
+    "prompt": "For the data set 9, 46, 10, 34, 58, 44, 13, 57, 33, 17, 30, 59, a value is called an outlier if it is more than 1.5 times the interquartile range above the third quartile. Using the quartiles of this data set, what is the least integer that lies above this outlier cutoff?",
     "choices": [
       {
         "id": "A",
@@ -7829,7 +8478,7 @@
     "answer_verification": "q1=15,q3=103/2"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0155",
+    "question_id": "sat-math-statistics-hard-b0163",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7874,7 +8523,7 @@
     "answer_verification": "mean=32.44 median=20"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0156",
+    "question_id": "sat-math-statistics-hard-b0164",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7919,7 +8568,7 @@
     "answer_verification": "x=43"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0157",
+    "question_id": "sat-math-statistics-hard-b0165",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7964,7 +8613,7 @@
     "answer_verification": "mean=30.11 median=19"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0158",
+    "question_id": "sat-math-statistics-hard-b0166",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8009,7 +8658,7 @@
     "answer_verification": "mean=43"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0159",
+    "question_id": "sat-math-statistics-hard-b0167",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8055,7 +8704,7 @@
     "answer_verification": "val=144/5"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0160",
+    "question_id": "sat-math-statistics-hard-b0168",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8100,7 +8749,7 @@
     "answer_verification": "x=64"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0161",
+    "question_id": "sat-math-statistics-hard-b0169",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8130,7 +8779,7 @@
     "answer_verification": "val=25"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0162",
+    "question_id": "sat-math-statistics-hard-b0170",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8214,7 +8863,7 @@
     "answer_verification": "wide=A"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0163",
+    "question_id": "sat-math-statistics-hard-b0171",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8225,7 +8874,7 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 26 people. What is the mean pets per student? (Round to the nearest hundredth if necessary.)",
+    "prompt": "The table summarizes data for 26 students. What is the mean pets per student? (Round to the nearest hundredth if necessary.)",
     "choices": [
       {
         "id": "A",
@@ -8245,7 +8894,7 @@
       {
         "id": "D",
         "text": "11.6",
-        "rationale": "Divide by the number of people, not the number of rows."
+        "rationale": "Divide by the number of students, not the number of rows."
       }
     ],
     "correct_choice": "A",
@@ -8260,7 +8909,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Number of pets",
           "Number of students"
@@ -8292,7 +8941,7 @@
     "answer_verification": "58/26"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0164",
+    "question_id": "sat-math-statistics-hard-b0172",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8338,7 +8987,7 @@
     "answer_verification": "val=24"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0165",
+    "question_id": "sat-math-statistics-hard-b0173",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8384,7 +9033,7 @@
     "answer_verification": "val=82/5"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0166",
+    "question_id": "sat-math-statistics-hard-b0174",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8414,7 +9063,7 @@
     "answer_verification": "val=16"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0167",
+    "question_id": "sat-math-statistics-hard-b0175",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8459,7 +9108,7 @@
     "answer_verification": "mean=29.00 median=24"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0168",
+    "question_id": "sat-math-statistics-hard-b0176",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8504,7 +9153,7 @@
     "answer_verification": "(10*71+23*84)/33=80.06"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0169",
+    "question_id": "sat-math-statistics-hard-b0177",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8550,7 +9199,7 @@
     "answer_verification": "val=27"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0170",
+    "question_id": "sat-math-statistics-hard-b0178",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8561,7 +9210,7 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 31 people. What is the mean books per reader? (Round to the nearest hundredth if necessary.)",
+    "prompt": "The table summarizes data for 31 readers. What is the mean books per reader? (Round to the nearest hundredth if necessary.)",
     "choices": [
       {
         "id": "A",
@@ -8576,7 +9225,7 @@
       {
         "id": "C",
         "text": "19",
-        "rationale": "Divide by the number of people, not the number of rows."
+        "rationale": "Divide by the number of readers, not the number of rows."
       },
       {
         "id": "D",
@@ -8596,7 +9245,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Books read",
           "Number of readers"
@@ -8628,7 +9277,7 @@
     "answer_verification": "95/31"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0171",
+    "question_id": "sat-math-statistics-hard-b0179",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8673,7 +9322,7 @@
     "answer_verification": "mean=34"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0172",
+    "question_id": "sat-math-statistics-hard-b0180",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8684,7 +9333,7 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 27 people. What is the mean siblings per child? (Round to the nearest hundredth if necessary.)",
+    "prompt": "The table summarizes data for 27 children. What is the mean siblings per child? (Round to the nearest hundredth if necessary.)",
     "choices": [
       {
         "id": "A",
@@ -8704,7 +9353,7 @@
       {
         "id": "D",
         "text": "17.6",
-        "rationale": "Divide by the number of people, not the number of rows."
+        "rationale": "Divide by the number of children, not the number of rows."
       }
     ],
     "correct_choice": "A",
@@ -8719,7 +9368,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Siblings",
           "Number of children"
@@ -8751,7 +9400,7 @@
     "answer_verification": "88/27"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0173",
+    "question_id": "sat-math-statistics-hard-b0181",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8797,7 +9446,7 @@
     "answer_verification": "val=119/5"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0174",
+    "question_id": "sat-math-statistics-hard-b0182",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8881,7 +9530,7 @@
     "answer_verification": "wide=B"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0175",
+    "question_id": "sat-math-statistics-hard-b0183",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8926,7 +9575,7 @@
     "answer_verification": "mean=36"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0176",
+    "question_id": "sat-math-statistics-hard-b0184",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8971,7 +9620,7 @@
     "answer_verification": "(25*63+14*79)/39=68.74"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0177",
+    "question_id": "sat-math-statistics-hard-b0185",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9001,7 +9650,7 @@
     "answer_verification": "val=3"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0178",
+    "question_id": "sat-math-statistics-hard-b0186",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9031,7 +9680,7 @@
     "answer_verification": "val=9"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0179",
+    "question_id": "sat-math-statistics-hard-b0187",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9061,7 +9710,7 @@
     "answer_verification": "val=31"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0180",
+    "question_id": "sat-math-statistics-hard-b0188",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9107,7 +9756,7 @@
     "answer_verification": "mean 22.17->25.71"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0181",
+    "question_id": "sat-math-statistics-hard-b0189",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9153,7 +9802,7 @@
     "answer_verification": "val=139/5"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0182",
+    "question_id": "sat-math-statistics-hard-b0190",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9164,12 +9813,12 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 21 people. What is the mean siblings per child? (Round to the nearest hundredth if necessary.)",
+    "prompt": "The table summarizes data for 21 children. What is the mean siblings per child? (Round to the nearest hundredth if necessary.)",
     "choices": [
       {
         "id": "A",
         "text": "10",
-        "rationale": "Divide by the number of people, not the number of rows."
+        "rationale": "Divide by the number of children, not the number of rows."
       },
       {
         "id": "B",
@@ -9199,7 +9848,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Siblings",
           "Number of children"
@@ -9231,7 +9880,7 @@
     "answer_verification": "50/21"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0183",
+    "question_id": "sat-math-statistics-hard-b0191",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9277,7 +9926,7 @@
     "answer_verification": "mean 28.50->34.29"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0184",
+    "question_id": "sat-math-statistics-hard-b0192",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9323,7 +9972,7 @@
     "answer_verification": "val=54/5"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0185",
+    "question_id": "sat-math-statistics-hard-b0193",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9369,7 +10018,7 @@
     "answer_verification": "mean 26.00->33.29"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0186",
+    "question_id": "sat-math-statistics-hard-b0194",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9414,7 +10063,7 @@
     "answer_verification": "x=68"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0187",
+    "question_id": "sat-math-statistics-hard-b0195",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9425,7 +10074,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "spread",
-    "prompt": "For the data set 26, 6, 16, 31, 33, 60, 15, 34, 42, 32, 40, 53, an outlier is defined as a value more than 1.5 times the interquartile range above the third quartile. What is the least integer value that would be considered an outlier if added to the set?",
+    "prompt": "For the data set 26, 6, 16, 31, 33, 60, 15, 34, 42, 32, 40, 53, a value is called an outlier if it is more than 1.5 times the interquartile range above the third quartile. Using the quartiles of this data set, what is the least integer that lies above this outlier cutoff?",
     "choices": [
       {
         "id": "A",
@@ -9459,7 +10108,7 @@
     "answer_verification": "q1=21,q3=41"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0188",
+    "question_id": "sat-math-statistics-hard-b0196",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9505,7 +10154,7 @@
     "answer_verification": "val=30"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0189",
+    "question_id": "sat-math-statistics-hard-b0197",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9551,7 +10200,7 @@
     "answer_verification": "val=77/5"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0190",
+    "question_id": "sat-math-statistics-hard-b0198",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9581,7 +10230,7 @@
     "answer_verification": "val=30"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0191",
+    "question_id": "sat-math-statistics-hard-b0199",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9592,7 +10241,7 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 18 people. What is the mean books per reader? (Round to the nearest hundredth if necessary.)",
+    "prompt": "The table summarizes data for 18 readers. What is the mean books per reader? (Round to the nearest hundredth if necessary.)",
     "choices": [
       {
         "id": "A",
@@ -9612,7 +10261,7 @@
       {
         "id": "D",
         "text": "8.2",
-        "rationale": "Divide by the number of people, not the number of rows."
+        "rationale": "Divide by the number of readers, not the number of rows."
       }
     ],
     "correct_choice": "A",
@@ -9627,7 +10276,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Books read",
           "Number of readers"
@@ -9659,7 +10308,7 @@
     "answer_verification": "41/18"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0192",
+    "question_id": "sat-math-statistics-hard-b0200",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9704,7 +10353,7 @@
     "answer_verification": "x=54"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0193",
+    "question_id": "sat-math-statistics-hard-b0201",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9750,7 +10399,7 @@
     "answer_verification": "mean 22.17->29.29"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0194",
+    "question_id": "sat-math-statistics-hard-b0202",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9795,7 +10444,7 @@
     "answer_verification": "x=53"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0195",
+    "question_id": "sat-math-statistics-hard-b0203",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9841,7 +10490,7 @@
     "answer_verification": "val=22"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0196",
+    "question_id": "sat-math-statistics-hard-b0204",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9871,7 +10520,7 @@
     "answer_verification": "val=23"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0197",
+    "question_id": "sat-math-statistics-hard-b0205",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9917,7 +10566,7 @@
     "answer_verification": "mean 30.67->37.29"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0198",
+    "question_id": "sat-math-statistics-hard-b0206",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9947,7 +10596,7 @@
     "answer_verification": "val=7"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0199",
+    "question_id": "sat-math-statistics-hard-b0207",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9977,7 +10626,7 @@
     "answer_verification": "val=51"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0200",
+    "question_id": "sat-math-statistics-hard-b0208",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10061,7 +10710,7 @@
     "answer_verification": "wide=A"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0201",
+    "question_id": "sat-math-statistics-hard-b0209",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10106,7 +10755,7 @@
     "answer_verification": "x=33"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0202",
+    "question_id": "sat-math-statistics-hard-b0210",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10190,7 +10839,7 @@
     "answer_verification": "wide=B"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0203",
+    "question_id": "sat-math-statistics-hard-b0211",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10220,7 +10869,7 @@
     "answer_verification": "val=40"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0204",
+    "question_id": "sat-math-statistics-hard-b0212",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10266,7 +10915,7 @@
     "answer_verification": "val=16"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0205",
+    "question_id": "sat-math-statistics-hard-b0213",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10277,12 +10926,12 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 31 people. What is the mean siblings per child? (Round to the nearest hundredth if necessary.)",
+    "prompt": "The table summarizes data for 31 children. What is the mean siblings per child? (Round to the nearest hundredth if necessary.)",
     "choices": [
       {
         "id": "A",
         "text": "11.4",
-        "rationale": "Divide by the number of people, not the number of rows."
+        "rationale": "Divide by the number of children, not the number of rows."
       },
       {
         "id": "B",
@@ -10312,7 +10961,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Siblings",
           "Number of children"
@@ -10344,7 +10993,7 @@
     "answer_verification": "57/31"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0206",
+    "question_id": "sat-math-statistics-hard-b0214",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10355,7 +11004,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "spread",
-    "prompt": "For the data set 8, 40, 30, 9, 16, 29, 6, 7, 58, 12, 13, 42, an outlier is defined as a value more than 1.5 times the interquartile range above the third quartile. What is the least integer value that would be considered an outlier if added to the set?",
+    "prompt": "For the data set 8, 40, 30, 9, 16, 29, 6, 7, 58, 12, 13, 42, a value is called an outlier if it is more than 1.5 times the interquartile range above the third quartile. Using the quartiles of this data set, what is the least integer that lies above this outlier cutoff?",
     "choices": [
       {
         "id": "A",
@@ -10389,7 +11038,7 @@
     "answer_verification": "q1=17/2,q3=35"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0207",
+    "question_id": "sat-math-statistics-hard-b0215",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10400,7 +11049,7 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 20 people. What is the mean siblings per child? (Round to the nearest hundredth if necessary.)",
+    "prompt": "The table summarizes data for 20 children. What is the mean siblings per child? (Round to the nearest hundredth if necessary.)",
     "choices": [
       {
         "id": "A",
@@ -10420,7 +11069,7 @@
       {
         "id": "D",
         "text": "10.2",
-        "rationale": "Divide by the number of people, not the number of rows."
+        "rationale": "Divide by the number of children, not the number of rows."
       }
     ],
     "correct_choice": "B",
@@ -10435,7 +11084,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Siblings",
           "Number of children"
@@ -10467,7 +11116,7 @@
     "answer_verification": "51/20"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0208",
+    "question_id": "sat-math-statistics-hard-b0216",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10512,7 +11161,7 @@
     "answer_verification": "x=50"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0209",
+    "question_id": "sat-math-statistics-hard-b0217",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10557,7 +11206,7 @@
     "answer_verification": "mean=28"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0210",
+    "question_id": "sat-math-statistics-hard-b0218",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10587,7 +11236,7 @@
     "answer_verification": "val=5"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0211",
+    "question_id": "sat-math-statistics-hard-b0219",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10632,7 +11281,7 @@
     "answer_verification": "x=42"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0212",
+    "question_id": "sat-math-statistics-hard-b0220",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10677,7 +11326,7 @@
     "answer_verification": "x=66"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0213",
+    "question_id": "sat-math-statistics-hard-b0221",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10688,7 +11337,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "spread",
-    "prompt": "For the data set 12, 7, 44, 2, 55, 21, 14, 24, 7, 45, 60, 42, an outlier is defined as a value more than 1.5 times the interquartile range above the third quartile. What is the least integer value that would be considered an outlier if added to the set?",
+    "prompt": "For the data set 12, 7, 44, 2, 55, 21, 14, 24, 7, 45, 60, 42, a value is called an outlier if it is more than 1.5 times the interquartile range above the third quartile. Using the quartiles of this data set, what is the least integer that lies above this outlier cutoff?",
     "choices": [
       {
         "id": "A",
@@ -10722,7 +11371,7 @@
     "answer_verification": "q1=19/2,q3=89/2"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0214",
+    "question_id": "sat-math-statistics-hard-b0222",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10733,7 +11382,7 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 14 people. What is the mean pets per student? (Round to the nearest hundredth if necessary.)",
+    "prompt": "The table summarizes data for 14 students. What is the mean pets per student? (Round to the nearest hundredth if necessary.)",
     "choices": [
       {
         "id": "A",
@@ -10753,7 +11402,7 @@
       {
         "id": "D",
         "text": "9",
-        "rationale": "Divide by the number of people, not the number of rows."
+        "rationale": "Divide by the number of students, not the number of rows."
       }
     ],
     "correct_choice": "A",
@@ -10768,7 +11417,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Number of pets",
           "Number of students"
@@ -10800,7 +11449,7 @@
     "answer_verification": "45/14"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0215",
+    "question_id": "sat-math-statistics-hard-b0223",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10846,7 +11495,7 @@
     "answer_verification": "val=29"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0216",
+    "question_id": "sat-math-statistics-hard-b0224",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10857,12 +11506,12 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 38 people. What is the mean pets per student? (Round to the nearest hundredth if necessary.)",
+    "prompt": "The table summarizes data for 38 students. What is the mean pets per student? (Round to the nearest hundredth if necessary.)",
     "choices": [
       {
         "id": "A",
         "text": "23",
-        "rationale": "Divide by the number of people, not the number of rows."
+        "rationale": "Divide by the number of students, not the number of rows."
       },
       {
         "id": "B",
@@ -10892,7 +11541,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Number of pets",
           "Number of students"
@@ -10924,7 +11573,7 @@
     "answer_verification": "115/38"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0217",
+    "question_id": "sat-math-statistics-hard-b0225",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10954,7 +11603,7 @@
     "answer_verification": "val=15"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0218",
+    "question_id": "sat-math-statistics-hard-b0226",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10984,7 +11633,7 @@
     "answer_verification": "val=28"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0219",
+    "question_id": "sat-math-statistics-hard-b0227",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11030,7 +11679,7 @@
     "answer_verification": "mean 25.17->30.86"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0220",
+    "question_id": "sat-math-statistics-hard-b0228",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11060,7 +11709,7 @@
     "answer_verification": "val=18"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0221",
+    "question_id": "sat-math-statistics-hard-b0229",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11105,7 +11754,7 @@
     "answer_verification": "x=37"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0222",
+    "question_id": "sat-math-statistics-hard-b0230",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11151,7 +11800,7 @@
     "answer_verification": "mean 22.17->28.14"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0223",
+    "question_id": "sat-math-statistics-hard-b0231",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11162,7 +11811,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "spread",
-    "prompt": "For the data set 17, 12, 37, 46, 55, 48, 51, 22, 19, 50, 31, 58, an outlier is defined as a value more than 1.5 times the interquartile range above the third quartile. What is the least integer value that would be considered an outlier if added to the set?",
+    "prompt": "For the data set 17, 12, 37, 46, 55, 48, 51, 22, 19, 50, 31, 58, a value is called an outlier if it is more than 1.5 times the interquartile range above the third quartile. Using the quartiles of this data set, what is the least integer that lies above this outlier cutoff?",
     "choices": [
       {
         "id": "A",
@@ -11196,7 +11845,7 @@
     "answer_verification": "q1=41/2,q3=101/2"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0224",
+    "question_id": "sat-math-statistics-hard-b0232",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11226,7 +11875,7 @@
     "answer_verification": "val=7"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0225",
+    "question_id": "sat-math-statistics-hard-b0233",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11256,7 +11905,7 @@
     "answer_verification": "val=46"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0226",
+    "question_id": "sat-math-statistics-hard-b0234",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11302,7 +11951,7 @@
     "answer_verification": "mean 27.00->34.14"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0227",
+    "question_id": "sat-math-statistics-hard-b0235",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11347,7 +11996,7 @@
     "answer_verification": "x=50"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0228",
+    "question_id": "sat-math-statistics-hard-b0236",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11392,7 +12041,7 @@
     "answer_verification": "(18*86+20*64)/38=74.42"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0229",
+    "question_id": "sat-math-statistics-hard-b0237",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11403,7 +12052,7 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 30 people. What is the mean goals per game? (Round to the nearest hundredth if necessary.)",
+    "prompt": "The table summarizes data for 30 games. What is the mean goals per game? (Round to the nearest hundredth if necessary.)",
     "choices": [
       {
         "id": "A",
@@ -11413,7 +12062,7 @@
       {
         "id": "B",
         "text": "20",
-        "rationale": "Divide by the number of people, not the number of rows."
+        "rationale": "Divide by the number of games, not the number of rows."
       },
       {
         "id": "C",
@@ -11438,7 +12087,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Goals scored",
           "Number of games"
@@ -11470,7 +12119,7 @@
     "answer_verification": "100/30"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0230",
+    "question_id": "sat-math-statistics-hard-b0238",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11500,7 +12149,7 @@
     "answer_verification": "val=10"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0231",
+    "question_id": "sat-math-statistics-hard-b0239",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11545,7 +12194,7 @@
     "answer_verification": "x=65"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0232",
+    "question_id": "sat-math-statistics-hard-b0240",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11591,7 +12240,7 @@
     "answer_verification": "mean 27.50->34.14"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0233",
+    "question_id": "sat-math-statistics-hard-b0241",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11602,12 +12251,12 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 25 people. What is the mean goals per game? (Round to the nearest hundredth if necessary.)",
+    "prompt": "The table summarizes data for 25 games. What is the mean goals per game? (Round to the nearest hundredth if necessary.)",
     "choices": [
       {
         "id": "A",
         "text": "15",
-        "rationale": "Divide by the number of people, not the number of rows."
+        "rationale": "Divide by the number of games, not the number of rows."
       },
       {
         "id": "B",
@@ -11637,7 +12286,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Goals scored",
           "Number of games"
@@ -11669,7 +12318,7 @@
     "answer_verification": "75/25"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0234",
+    "question_id": "sat-math-statistics-hard-b0242",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11714,7 +12363,7 @@
     "answer_verification": "x=73"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0235",
+    "question_id": "sat-math-statistics-hard-b0243",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11798,7 +12447,7 @@
     "answer_verification": "wide=A"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0236",
+    "question_id": "sat-math-statistics-hard-b0244",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11882,7 +12531,7 @@
     "answer_verification": "wide=A"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0237",
+    "question_id": "sat-math-statistics-hard-b0245",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11893,12 +12542,12 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 30 people. What is the mean books per reader? (Round to the nearest hundredth if necessary.)",
+    "prompt": "The table summarizes data for 30 readers. What is the mean books per reader? (Round to the nearest hundredth if necessary.)",
     "choices": [
       {
         "id": "A",
         "text": "19.2",
-        "rationale": "Divide by the number of people, not the number of rows."
+        "rationale": "Divide by the number of readers, not the number of rows."
       },
       {
         "id": "B",
@@ -11928,7 +12577,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Books read",
           "Number of readers"
@@ -11960,7 +12609,7 @@
     "answer_verification": "96/30"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0238",
+    "question_id": "sat-math-statistics-hard-b0246",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11990,7 +12639,7 @@
     "answer_verification": "val=37"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0239",
+    "question_id": "sat-math-statistics-hard-b0247",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12036,7 +12685,7 @@
     "answer_verification": "val=126/5"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0240",
+    "question_id": "sat-math-statistics-hard-b0248",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12120,7 +12769,7 @@
     "answer_verification": "wide=A"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0241",
+    "question_id": "sat-math-statistics-hard-b0249",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12165,7 +12814,7 @@
     "answer_verification": "(12*72+10*68)/22=70.18"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0242",
+    "question_id": "sat-math-statistics-hard-b0250",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12249,7 +12898,7 @@
     "answer_verification": "wide=B"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0243",
+    "question_id": "sat-math-statistics-hard-b0251",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12260,7 +12909,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "spread",
-    "prompt": "For the data set 14, 33, 2, 40, 19, 49, 50, 53, 7, 46, 20, 46, an outlier is defined as a value more than 1.5 times the interquartile range above the third quartile. What is the least integer value that would be considered an outlier if added to the set?",
+    "prompt": "For the data set 14, 33, 2, 40, 19, 49, 50, 53, 7, 46, 20, 46, a value is called an outlier if it is more than 1.5 times the interquartile range above the third quartile. Using the quartiles of this data set, what is the least integer that lies above this outlier cutoff?",
     "choices": [
       {
         "id": "A",
@@ -12294,7 +12943,7 @@
     "answer_verification": "q1=33/2,q3=95/2"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0244",
+    "question_id": "sat-math-statistics-hard-b0252",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12340,7 +12989,7 @@
     "answer_verification": "val=104/5"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0245",
+    "question_id": "sat-math-statistics-hard-b0253",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12385,7 +13034,7 @@
     "answer_verification": "(23*60+18*70)/41=64.39"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0246",
+    "question_id": "sat-math-statistics-hard-b0254",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12396,7 +13045,7 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 21 people. What is the mean books per reader? (Round to the nearest hundredth if necessary.)",
+    "prompt": "The table summarizes data for 21 readers. What is the mean books per reader? (Round to the nearest hundredth if necessary.)",
     "choices": [
       {
         "id": "A",
@@ -12416,7 +13065,7 @@
       {
         "id": "D",
         "text": "6",
-        "rationale": "Divide by the number of people, not the number of rows."
+        "rationale": "Divide by the number of readers, not the number of rows."
       }
     ],
     "correct_choice": "C",
@@ -12431,7 +13080,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Books read",
           "Number of readers"
@@ -12463,7 +13112,7 @@
     "answer_verification": "30/21"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0247",
+    "question_id": "sat-math-statistics-hard-b0255",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12474,7 +13123,7 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 28 people. What is the mean goals per game? (Round to the nearest hundredth if necessary.)",
+    "prompt": "The table summarizes data for 28 games. What is the mean goals per game? (Round to the nearest hundredth if necessary.)",
     "choices": [
       {
         "id": "A",
@@ -12489,7 +13138,7 @@
       {
         "id": "C",
         "text": "18.2",
-        "rationale": "Divide by the number of people, not the number of rows."
+        "rationale": "Divide by the number of games, not the number of rows."
       },
       {
         "id": "D",
@@ -12509,7 +13158,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Goals scored",
           "Number of games"
@@ -12541,7 +13190,7 @@
     "answer_verification": "91/28"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0248",
+    "question_id": "sat-math-statistics-hard-b0256",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12552,7 +13201,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "spread",
-    "prompt": "For the data set 46, 55, 23, 32, 14, 58, 41, 8, 39, 33, 59, 57, an outlier is defined as a value more than 1.5 times the interquartile range above the third quartile. What is the least integer value that would be considered an outlier if added to the set?",
+    "prompt": "For the data set 46, 55, 23, 32, 14, 58, 41, 8, 39, 33, 59, 57, a value is called an outlier if it is more than 1.5 times the interquartile range above the third quartile. Using the quartiles of this data set, what is the least integer that lies above this outlier cutoff?",
     "choices": [
       {
         "id": "A",
@@ -12586,7 +13235,7 @@
     "answer_verification": "q1=55/2,q3=56"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0249",
+    "question_id": "sat-math-statistics-hard-b0257",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12597,7 +13246,7 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 28 people. What is the mean siblings per child? (Round to the nearest hundredth if necessary.)",
+    "prompt": "The table summarizes data for 28 children. What is the mean siblings per child? (Round to the nearest hundredth if necessary.)",
     "choices": [
       {
         "id": "A",
@@ -12617,7 +13266,7 @@
       {
         "id": "D",
         "text": "16.4",
-        "rationale": "Divide by the number of people, not the number of rows."
+        "rationale": "Divide by the number of children, not the number of rows."
       }
     ],
     "correct_choice": "C",
@@ -12632,7 +13281,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Siblings",
           "Number of children"
@@ -12664,7 +13313,7 @@
     "answer_verification": "82/28"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0250",
+    "question_id": "sat-math-statistics-hard-b0258",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12675,7 +13324,7 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 27 people. What is the mean goals per game? (Round to the nearest hundredth if necessary.)",
+    "prompt": "The table summarizes data for 27 games. What is the mean goals per game? (Round to the nearest hundredth if necessary.)",
     "choices": [
       {
         "id": "A",
@@ -12695,7 +13344,7 @@
       {
         "id": "D",
         "text": "14.2",
-        "rationale": "Divide by the number of people, not the number of rows."
+        "rationale": "Divide by the number of games, not the number of rows."
       }
     ],
     "correct_choice": "A",
@@ -12710,7 +13359,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Goals scored",
           "Number of games"
@@ -12742,7 +13391,7 @@
     "answer_verification": "71/27"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0251",
+    "question_id": "sat-math-statistics-hard-b0259",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12772,7 +13421,7 @@
     "answer_verification": "val=10"
   },
   {
-    "question_id": "sat-math-statistics-hard-b0252",
+    "question_id": "sat-math-statistics-hard-b0260",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12815,422 +13464,5 @@
       "family:st_outlier_effect"
     ],
     "answer_verification": "x=59"
-  },
-  {
-    "question_id": "sat-math-statistics-hard-b0253",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "statistics",
-    "lesson_id": "sat-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "mean_median_mode",
-    "prompt": "A data set of 5 values, 24, 24, 31, 39, 42, is extended by one value x. For what value of x will the mean of the new data set equal 37?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "62",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "222",
-        "rationale": "That is the required total, not x."
-      },
-      {
-        "id": "C",
-        "text": "37",
-        "rationale": "x must be well above the target mean to pull it up."
-      },
-      {
-        "id": "D",
-        "text": "25",
-        "rationale": "Use the new count 6."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "Required total = 37 × 6 = 222; x = 222 − 160 = 62.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "statistics",
-      "mean",
-      "family:st_outlier_effect"
-    ],
-    "answer_verification": "x=62"
-  },
-  {
-    "question_id": "sat-math-statistics-hard-b0254",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "statistics",
-    "lesson_id": "sat-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "spread",
-    "prompt": "For the data set 44, 40, 41, 11, 40, 23, 25, 30, 18, 29, 44, 52, an outlier is defined as a value more than 1.5 times the interquartile range above the third quartile. What is the least integer value that would be considered an outlier if added to the set?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "43",
-        "rationale": "Add 1.5 × IQR to Q3, not just 1."
-      },
-      {
-        "id": "B",
-        "text": "70",
-        "rationale": "The value must be strictly greater than the fence."
-      },
-      {
-        "id": "C",
-        "text": "71",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "62",
-        "rationale": "Multiply the IQR by 1.5, not 1."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "Q1 = 24, Q3 = 85/2, IQR = 37/2; fence = 85/2 + 1.5·37/2 = 281/4; the least integer above it is 71.",
-    "estimated_time_seconds": 110,
-    "tags": [
-      "statistics",
-      "quartiles",
-      "family:st_quartiles"
-    ],
-    "answer_verification": "q1=24,q3=85/2"
-  },
-  {
-    "question_id": "sat-math-statistics-hard-b0255",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "statistics",
-    "lesson_id": "sat-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "mean_median_mode",
-    "prompt": "A data set of 5 values, 14, 14, 19, 27, 31, is extended by one value x. For what value of x will the mean of the new data set equal 23?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "33",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "23",
-        "rationale": "x must be well above the target mean to pull it up."
-      },
-      {
-        "id": "C",
-        "text": "138",
-        "rationale": "That is the required total, not x."
-      },
-      {
-        "id": "D",
-        "text": "10",
-        "rationale": "Use the new count 6."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "Required total = 23 × 6 = 138; x = 138 − 105 = 33.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "statistics",
-      "mean",
-      "family:st_outlier_effect"
-    ],
-    "answer_verification": "x=33"
-  },
-  {
-    "question_id": "sat-math-statistics-hard-b0256",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "statistics",
-    "lesson_id": "sat-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 10 people. What is the mean books per reader? (Round to the nearest hundredth if necessary.)",
-    "choices": [
-      {
-        "id": "A",
-        "text": "3.4",
-        "rationale": "Divide by the number of people, not the number of rows."
-      },
-      {
-        "id": "B",
-        "text": "2.2",
-        "rationale": "Arithmetic slip; recompute Σ(value × frequency)."
-      },
-      {
-        "id": "C",
-        "text": "2",
-        "rationale": "Weight each value by its frequency; don't average the listed values."
-      },
-      {
-        "id": "D",
-        "text": "1.7",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Mean = Σ(value × frequency)/N = 17/10 ≈ 1.70.",
-    "estimated_time_seconds": 100,
-    "tags": [
-      "statistics",
-      "table",
-      "mean",
-      "family:st_frequency_table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Survey results",
-        "headers": [
-          "Books read",
-          "Number of readers"
-        ],
-        "rows": [
-          [
-            "0",
-            "3"
-          ],
-          [
-            "1",
-            "1"
-          ],
-          [
-            "2",
-            "3"
-          ],
-          [
-            "3",
-            "2"
-          ],
-          [
-            "4",
-            "1"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "17/10"
-  },
-  {
-    "question_id": "sat-math-statistics-hard-b0257",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "statistics",
-    "lesson_id": "sat-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "student_produced",
-    "subskill": "mean_median_mode",
-    "prompt": "The mean of 7 numbers is 25. If 6 of the numbers are 11, 30, 40, 37, 6, 2, what is the remaining number?",
-    "answer": {
-      "type": "numeric",
-      "value": 49,
-      "accepted": [
-        "49"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "25 × 7 − 126 = 49.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "statistics",
-      "grid-in",
-      "family:st_gridin"
-    ],
-    "answer_verification": "val=49"
-  },
-  {
-    "question_id": "sat-math-statistics-hard-b0258",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "statistics",
-    "lesson_id": "sat-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "spread",
-    "prompt": "The table shows how many responses in two groups took each value (Group A: 17 responses, Group B: 12). If every value in Group A were increased by 10, how would its mean and standard deviation change?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "The mean would not change and the standard deviation would increase by 10.",
-        "rationale": "Adding 10 to every value raises the mean by 10."
-      },
-      {
-        "id": "B",
-        "text": "The mean would increase by 10 and the standard deviation would not change.",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "Both the mean and the standard deviation would increase by 10.",
-        "rationale": "Shifting every value leaves the distances from the center unchanged."
-      },
-      {
-        "id": "D",
-        "text": "The mean would increase by 10 and the standard deviation would increase by a factor of 10.",
-        "rationale": "Only multiplying every value scales the standard deviation."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Adding a constant to every data value shifts the mean by that constant but leaves the spread (standard deviation) unchanged.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "statistics",
-      "table",
-      "standard-deviation",
-      "family:st_compare_tables"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Number of responses by value",
-        "headers": [
-          "Value",
-          "Group A",
-          "Group B"
-        ],
-        "rows": [
-          [
-            "10",
-            "6",
-            "1"
-          ],
-          [
-            "20",
-            "2",
-            "3"
-          ],
-          [
-            "30",
-            "0",
-            "6"
-          ],
-          [
-            "40",
-            "3",
-            "2"
-          ],
-          [
-            "50",
-            "6",
-            "0"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "wide=A"
-  },
-  {
-    "question_id": "sat-math-statistics-hard-b0259",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "statistics",
-    "lesson_id": "sat-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "spread",
-    "prompt": "For the data set 28, 30, 56, 44, 57, 41, 13, 5, 13, 51, 44, 44, an outlier is defined as a value more than 1.5 times the interquartile range above the third quartile. What is the least integer value that would be considered an outlier if added to the set?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "88",
-        "rationale": "The value must be strictly greater than the fence."
-      },
-      {
-        "id": "B",
-        "text": "75",
-        "rationale": "Multiply the IQR by 1.5, not 1."
-      },
-      {
-        "id": "C",
-        "text": "89",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "48",
-        "rationale": "Add 1.5 × IQR to Q3, not just 1."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "Q1 = 41/2, Q3 = 95/2, IQR = 27; fence = 95/2 + 1.5·27 = 88; the least integer above it is 89.",
-    "estimated_time_seconds": 110,
-    "tags": [
-      "statistics",
-      "quartiles",
-      "family:st_quartiles"
-    ],
-    "answer_verification": "q1=41/2,q3=95/2"
-  },
-  {
-    "question_id": "sat-math-statistics-hard-b0260",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "statistics",
-    "lesson_id": "sat-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multi_step_math",
-    "subskill": "mean_median_mode",
-    "prompt": "In one class of 11 students the mean test score was 73, and in another class of 21 students the mean was 75. What is the mean score of all 32 students? (Round to the nearest tenth.)",
-    "choices": [
-      {
-        "id": "A",
-        "text": "75.8",
-        "rationale": "Arithmetic slip; recompute the weighted total."
-      },
-      {
-        "id": "B",
-        "text": "74",
-        "rationale": "Averaging the two means ignores the different class sizes."
-      },
-      {
-        "id": "C",
-        "text": "74.3",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "74.8",
-        "rationale": "Weight each mean by its class size."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "Total points = 11·73 + 21·75 = 2378; divide by 32: 74.3.",
-    "estimated_time_seconds": 100,
-    "tags": [
-      "statistics",
-      "weighted-mean",
-      "family:st_missing_value"
-    ],
-    "answer_verification": "(11*73+21*75)/32=74.31"
   }
 ]

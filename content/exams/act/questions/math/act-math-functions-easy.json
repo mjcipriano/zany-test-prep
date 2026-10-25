@@ -11,43 +11,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "evaluate",
-    "prompt": "For the function f defined by f(x) = 5x + 7, what is f(1)?",
+    "prompt": "If f(x) = 6x − 13, what is f(−5)?",
     "choices": [
       {
         "id": "A",
-        "text": "13",
-        "rationale": "This adds k to the coefficient instead of multiplying."
+        "text": "-17",
+        "rationale": "Check the sign of the constant term."
       },
       {
         "id": "B",
-        "text": "17",
+        "text": "-37",
         "rationale": "Arithmetic slip; recompute a·k."
       },
       {
         "id": "C",
-        "text": "-2",
-        "rationale": "Check the sign of the constant term."
-      },
-      {
-        "id": "D",
-        "text": "40",
+        "text": "-108",
         "rationale": "Multiply a by k first, then add b."
       },
       {
-        "id": "E",
-        "text": "12",
+        "id": "D",
+        "text": "-43",
         "rationale": "Correct."
+      },
+      {
+        "id": "E",
+        "text": "-12",
+        "rationale": "This adds k to the coefficient instead of multiplying."
       }
     ],
-    "correct_choice": "E",
-    "explanation": "f(1) = 5·(1) + 7 = 5 + 7 = 12.",
+    "correct_choice": "D",
+    "explanation": "f(−5) = 6·(−5) − 13 = −30 − 13 = −43.",
     "estimated_time_seconds": 70,
     "tags": [
       "functions",
       "evaluate",
       "family:fn_evaluate"
     ],
-    "answer_verification": "f(1)=12"
+    "answer_verification": "f(-5)=-43"
   },
   {
     "question_id": "act-math-functions-easy-q02",
@@ -61,43 +61,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = 8x + 7. If f(x) = 103, what is the value of x?",
+    "prompt": "The function f is defined by f(x) = 8x + 3. If f(x) = 11, what is the value of x?",
     "choices": [
       {
         "id": "A",
-        "text": "12",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "13",
+        "text": "2",
         "rationale": "Off by one; recheck the division."
       },
       {
+        "id": "B",
+        "text": "1",
+        "rationale": "Correct."
+      },
+      {
         "id": "C",
-        "text": "110",
-        "rationale": "Subtract b before dividing, don't add it."
+        "text": "8",
+        "rationale": "This is a·x (before dividing by the coefficient a)."
       },
       {
         "id": "D",
-        "text": "831",
-        "rationale": "This evaluates f(n) instead of solving f(x) = n."
+        "text": "14",
+        "rationale": "Subtract b before dividing, don't add it."
       },
       {
         "id": "E",
-        "text": "96",
-        "rationale": "This is a·x (before dividing by the coefficient a)."
+        "text": "91",
+        "rationale": "This evaluates f(n) instead of solving f(x) = n."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Set 8x + 7 = 103: 8x = 96, so x = 12.",
+    "correct_choice": "B",
+    "explanation": "Set 8x + 3 = 11: 8x = 8, so x = 1.",
     "estimated_time_seconds": 80,
     "tags": [
       "functions",
       "solve",
       "family:fn_solve_input"
     ],
-    "answer_verification": "x=12"
+    "answer_verification": "x=1"
   },
   {
     "question_id": "act-math-functions-easy-q03",
@@ -111,36 +111,368 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "evaluate",
-    "prompt": "The table gives selected values of the function f. What is the value of f(2)?",
+    "prompt": "The table gives selected values of the function f. For what value of x is f(x) = 24?",
     "choices": [
       {
         "id": "A",
+        "text": "24",
+        "rationale": "That is the output; the question asks for the input."
+      },
+      {
+        "id": "B",
+        "text": "2",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "-1",
+        "rationale": "Read the x in the same row."
+      },
+      {
+        "id": "D",
+        "text": "6",
+        "rationale": "That input gives a different output."
+      },
+      {
+        "id": "E",
+        "text": "-2",
+        "rationale": "Sign slip reading the table."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Find 24 in the f(x) column; the matching x is 2.",
+    "estimated_time_seconds": 70,
+    "tags": [
+      "functions",
+      "table",
+      "family:fn_table"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Values of f",
+        "headers": [
+          "x",
+          "f(x)"
+        ],
+        "rows": [
+          [
+            "-3",
+            "28"
+          ],
+          [
+            "-2",
+            "25"
+          ],
+          [
+            "-1",
+            "4"
+          ],
+          [
+            "2",
+            "24"
+          ],
+          [
+            "6",
+            "5"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "val=2"
+  },
+  {
+    "question_id": "act-math-functions-easy-q04",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "functions",
+    "lesson_id": "act-math-functions-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "interpret",
+    "prompt": "The function f is defined by f(x) = (x + 8)/(x + 1). For what value of x is f(x) undefined?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-8",
+        "rationale": "That makes the numerator 0, so f(x) = 0 there; the function is defined."
+      },
+      {
+        "id": "B",
+        "text": "0",
+        "rationale": "f(0) is a perfectly good value here."
+      },
+      {
+        "id": "C",
         "text": "1",
+        "rationale": "Solve x + b = 0, so x = −b."
+      },
+      {
+        "id": "D",
+        "text": "8",
+        "rationale": "The numerator's constant doesn't make f undefined."
+      },
+      {
+        "id": "E",
+        "text": "-1",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "E",
+    "explanation": "A fraction is undefined when its denominator is 0: x + 1 = 0 gives x = −1.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "functions",
+      "rational",
+      "family:fn_undefined"
+    ],
+    "answer_verification": "x=-1"
+  },
+  {
+    "question_id": "act-math-functions-easy-q05",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "functions",
+    "lesson_id": "act-math-functions-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "interpret",
+    "prompt": "The function f is defined by f(x) = 7x − 5. What is the average rate of change of f between x = −3 and x = 0?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "7",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "19",
+        "text": "-7",
+        "rationale": "Sign slip."
+      },
+      {
+        "id": "C",
+        "text": "-5",
+        "rationale": "That is the y-intercept, not the rate of change."
+      },
+      {
+        "id": "D",
+        "text": "21",
+        "rationale": "Divide the change in f by the change in x."
+      },
+      {
+        "id": "E",
+        "text": "2",
+        "rationale": "That is f(1), not the rate."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "For a linear function the average rate of change is the slope, 7: (f(0) − f(−3))/(0 − −3) = 7.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "functions",
+      "rate-of-change",
+      "family:fn_rate_of_change"
+    ],
+    "answer_verification": "rate=7"
+  },
+  {
+    "question_id": "act-math-functions-easy-q06",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "functions",
+    "lesson_id": "act-math-functions-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "interpret",
+    "prompt": "The graph of f(x) = 2x + k in the xy-plane passes through the point (−3, −3). What is the value of the constant k?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "5",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      },
+      {
+        "id": "B",
+        "text": "-9",
+        "rationale": "Subtract −6; don't add it."
+      },
+      {
+        "id": "C",
+        "text": "3/2",
+        "rationale": "k is added, not multiplied, so don't divide by m."
+      },
+      {
+        "id": "D",
+        "text": "3",
+        "rationale": "Correct."
+      },
+      {
+        "id": "E",
+        "text": "-3",
+        "rationale": "Sign slip."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Substitute: −3 = 2(−3) + k, so k = −3 − (−6) = 3.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "functions",
+      "graph",
+      "family:fn_graph_point"
+    ],
+    "answer_verification": "val=3"
+  },
+  {
+    "question_id": "act-math-functions-easy-q07",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "functions",
+    "lesson_id": "act-math-functions-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "evaluate",
+    "prompt": "If f(x) = 9x − 9, what is f(4)?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "4",
+        "rationale": "This adds k to the coefficient instead of multiplying."
+      },
+      {
+        "id": "B",
+        "text": "27",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "36",
+        "rationale": "Arithmetic slip; recompute a·k."
+      },
+      {
+        "id": "D",
+        "text": "45",
+        "rationale": "Check the sign of the constant term."
+      },
+      {
+        "id": "E",
+        "text": "-45",
+        "rationale": "Multiply a by k first, then add b."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "f(4) = 9·(4) − 9 = 36 − 9 = 27.",
+    "estimated_time_seconds": 70,
+    "tags": [
+      "functions",
+      "evaluate",
+      "family:fn_evaluate"
+    ],
+    "answer_verification": "f(4)=27"
+  },
+  {
+    "question_id": "act-math-functions-easy-q08",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "functions",
+    "lesson_id": "act-math-functions-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "interpret",
+    "prompt": "The function f is defined by f(x) = 2x + 1. If f(x) = 17, what is the value of x?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "16",
+        "rationale": "This is a·x (before dividing by the coefficient a)."
+      },
+      {
+        "id": "B",
+        "text": "8",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "18",
+        "rationale": "Subtract b before dividing, don't add it."
+      },
+      {
+        "id": "D",
+        "text": "9",
+        "rationale": "Off by one; recheck the division."
+      },
+      {
+        "id": "E",
+        "text": "35",
+        "rationale": "This evaluates f(n) instead of solving f(x) = n."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Set 2x + 1 = 17: 2x = 16, so x = 8.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "functions",
+      "solve",
+      "family:fn_solve_input"
+    ],
+    "answer_verification": "x=8"
+  },
+  {
+    "question_id": "act-math-functions-easy-q09",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "functions",
+    "lesson_id": "act-math-functions-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "evaluate",
+    "prompt": "The table gives selected values of the function f. What is the value of f(7)?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-2",
         "rationale": "Read across the correct row."
+      },
+      {
+        "id": "B",
+        "text": "7",
+        "rationale": "That is the input, not the output."
       },
       {
         "id": "C",
         "text": "2",
-        "rationale": "That is the input, not the output."
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "12",
-        "rationale": "That is the output for a different input; read the row for x = 2."
+        "text": "8",
+        "rationale": "No calculation is needed; read the table."
       },
       {
         "id": "E",
-        "text": "9",
-        "rationale": "No calculation is needed; read the table."
+        "text": "3",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Find x = 2 in the table; the corresponding f(x) is 1.",
+    "correct_choice": "C",
+    "explanation": "Find x = 7 in the table; the corresponding f(x) is 2.",
     "estimated_time_seconds": 70,
     "tags": [
       "functions",
@@ -158,31 +490,31 @@
         "rows": [
           [
             "-2",
-            "19"
+            "25"
           ],
           [
-            "2",
-            "1"
-          ],
-          [
-            "3",
+            "0",
             "12"
           ],
           [
-            "5",
-            "-8"
+            "6",
+            "-2"
+          ],
+          [
+            "7",
+            "2"
           ],
           [
             "8",
-            "23"
+            "7"
           ]
         ]
       }
     },
-    "answer_verification": "val=1"
+    "answer_verification": "val=2"
   },
   {
-    "question_id": "act-math-functions-easy-q04",
+    "question_id": "act-math-functions-easy-q10",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -193,46 +525,46 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = (x + 3)/(x − 4). For what value of x is f(x) = 0?",
+    "prompt": "The function f is defined by f(x) = (x + 4)/(x + 6). For what value of x is f(x) undefined?",
     "choices": [
       {
         "id": "A",
-        "text": "4",
-        "rationale": "That makes the denominator 0, so f is undefined there."
+        "text": "6",
+        "rationale": "Solve x + b = 0, so x = −b."
       },
       {
         "id": "B",
-        "text": "3",
-        "rationale": "Solve x + a = 0, so x = −a."
+        "text": "0",
+        "rationale": "f(0) is a perfectly good value here."
       },
       {
         "id": "C",
-        "text": "0",
-        "rationale": "f(0) equals a/b, which isn't 0."
+        "text": "-4",
+        "rationale": "That makes the numerator 0, so f(x) = 0 there; the function is defined."
       },
       {
         "id": "D",
-        "text": "-3",
-        "rationale": "Correct."
+        "text": "4",
+        "rationale": "The numerator's constant doesn't make f undefined."
       },
       {
         "id": "E",
-        "text": "-4",
-        "rationale": "The denominator's constant isn't the zero of f."
+        "text": "-6",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "A fraction is 0 when its numerator is 0 (and the denominator isn't): x + 3 = 0 gives x = −3.",
+    "correct_choice": "E",
+    "explanation": "A fraction is undefined when its denominator is 0: x + 6 = 0 gives x = −6.",
     "estimated_time_seconds": 75,
     "tags": [
       "functions",
       "rational",
       "family:fn_undefined"
     ],
-    "answer_verification": "x=-3"
+    "answer_verification": "x=-6"
   },
   {
-    "question_id": "act-math-functions-easy-q05",
+    "question_id": "act-math-functions-easy-q11",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -243,17 +575,17 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = 5x + 5. What is the average rate of change of f between x = 3 and x = 8?",
+    "prompt": "The function f is defined by f(x) = 7x − 10. What is the average rate of change of f between x = −3 and x = −2?",
     "choices": [
       {
         "id": "A",
-        "text": "25",
-        "rationale": "Divide the change in f by the change in x."
+        "text": "-7",
+        "rationale": "Sign slip."
       },
       {
         "id": "B",
-        "text": "10",
-        "rationale": "That is f(1), not the rate."
+        "text": "-10",
+        "rationale": "That is the y-intercept, not the rate of change."
       },
       {
         "id": "C",
@@ -262,27 +594,27 @@
       },
       {
         "id": "D",
-        "text": "-5",
-        "rationale": "Sign slip."
+        "text": "-3",
+        "rationale": "That is f(1), not the rate."
       },
       {
         "id": "E",
-        "text": "5",
+        "text": "7",
         "rationale": "Correct."
       }
     ],
     "correct_choice": "E",
-    "explanation": "For a linear function the average rate of change is the slope, 5: (f(8) − f(3))/(8 − 3) = 5.",
+    "explanation": "For a linear function the average rate of change is the slope, 7: (f(−2) − f(−3))/(−2 − −3) = 7.",
     "estimated_time_seconds": 80,
     "tags": [
       "functions",
       "rate-of-change",
       "family:fn_rate_of_change"
     ],
-    "answer_verification": "rate=5"
+    "answer_verification": "rate=7"
   },
   {
-    "question_id": "act-math-functions-easy-q06",
+    "question_id": "act-math-functions-easy-q12",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -293,46 +625,46 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "interpret",
-    "prompt": "The graph of f(x) = −4x + k in the xy-plane passes through the point (−5, 11). What is the value of the constant k?",
+    "prompt": "The graph of f(x) = 2x + k in the xy-plane passes through the point (−5, −18). What is the value of the constant k?",
     "choices": [
       {
         "id": "A",
-        "text": "11",
-        "rationale": "That is the y-coordinate of the point, not k."
+        "text": "-28",
+        "rationale": "Subtract −10; don't add it."
       },
       {
         "id": "B",
-        "text": "-9",
-        "rationale": "Correct."
+        "text": "-18",
+        "rationale": "That is the y-coordinate of the point, not k."
       },
       {
         "id": "C",
-        "text": "9/4",
-        "rationale": "k is added, not multiplied, so don't divide by m."
+        "text": "8",
+        "rationale": "Sign slip."
       },
       {
         "id": "D",
-        "text": "31",
-        "rationale": "Subtract 20; don't add it."
+        "text": "-8",
+        "rationale": "Correct."
       },
       {
         "id": "E",
-        "text": "9",
-        "rationale": "Sign slip."
+        "text": "-4",
+        "rationale": "k is added, not multiplied, so don't divide by m."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Substitute: 11 = −4(−5) + k, so k = 11 − (20) = −9.",
+    "correct_choice": "D",
+    "explanation": "Substitute: −18 = 2(−5) + k, so k = −18 − (−10) = −8.",
     "estimated_time_seconds": 80,
     "tags": [
       "functions",
       "graph",
       "family:fn_graph_point"
     ],
-    "answer_verification": "val=-9"
+    "answer_verification": "val=-8"
   },
   {
-    "question_id": "act-math-functions-easy-q07",
+    "question_id": "act-math-functions-easy-q13",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -343,46 +675,46 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "evaluate",
-    "prompt": "The function f is defined by f(x) = 7x + 12. What is the value of f(5)?",
+    "prompt": "If f(x) = 5x − 13, what is f(7)?",
     "choices": [
       {
         "id": "A",
-        "text": "119",
-        "rationale": "Multiply a by k first, then add b."
-      },
-      {
-        "id": "B",
-        "text": "24",
+        "text": "-1",
         "rationale": "This adds k to the coefficient instead of multiplying."
       },
       {
-        "id": "C",
-        "text": "54",
-        "rationale": "Arithmetic slip; recompute a·k."
+        "id": "B",
+        "text": "48",
+        "rationale": "Check the sign of the constant term."
       },
       {
-        "id": "D",
-        "text": "47",
+        "id": "C",
+        "text": "22",
         "rationale": "Correct."
       },
       {
+        "id": "D",
+        "text": "27",
+        "rationale": "Arithmetic slip; recompute a·k."
+      },
+      {
         "id": "E",
-        "text": "23",
-        "rationale": "Check the sign of the constant term."
+        "text": "-30",
+        "rationale": "Multiply a by k first, then add b."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "f(5) = 7·(5) + 12 = 35 + 12 = 47.",
+    "correct_choice": "C",
+    "explanation": "f(7) = 5·(7) − 13 = 35 − 13 = 22.",
     "estimated_time_seconds": 70,
     "tags": [
       "functions",
       "evaluate",
       "family:fn_evaluate"
     ],
-    "answer_verification": "f(5)=47"
+    "answer_verification": "f(7)=22"
   },
   {
-    "question_id": "act-math-functions-easy-q08",
+    "question_id": "act-math-functions-easy-q14",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -393,46 +725,46 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = 3x − 10. If f(x) = 23, what is the value of x?",
+    "prompt": "The function f is defined by f(x) = 7x − 8. If f(x) = 48, what is the value of x?",
     "choices": [
       {
         "id": "A",
-        "text": "11",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "12",
+        "text": "9",
         "rationale": "Off by one; recheck the division."
       },
       {
-        "id": "C",
-        "text": "13",
+        "id": "B",
+        "text": "40",
         "rationale": "Subtract b before dividing, don't add it."
       },
       {
+        "id": "C",
+        "text": "56",
+        "rationale": "This is a·x (before dividing by the coefficient a)."
+      },
+      {
         "id": "D",
-        "text": "59",
-        "rationale": "This evaluates f(n) instead of solving f(x) = n."
+        "text": "8",
+        "rationale": "Correct."
       },
       {
         "id": "E",
-        "text": "33",
-        "rationale": "This is a·x (before dividing by the coefficient a)."
+        "text": "328",
+        "rationale": "This evaluates f(n) instead of solving f(x) = n."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Set 3x − 10 = 23: 3x = 33, so x = 11.",
+    "correct_choice": "D",
+    "explanation": "Set 7x − 8 = 48: 7x = 56, so x = 8.",
     "estimated_time_seconds": 80,
     "tags": [
       "functions",
       "solve",
       "family:fn_solve_input"
     ],
-    "answer_verification": "x=11"
+    "answer_verification": "x=8"
   },
   {
-    "question_id": "act-math-functions-easy-q09",
+    "question_id": "act-math-functions-easy-q15",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -447,32 +779,32 @@
     "choices": [
       {
         "id": "A",
+        "text": "7",
+        "rationale": "That is the output for a different input; read the row for x = −4."
+      },
+      {
+        "id": "B",
         "text": "-4",
         "rationale": "That is the input, not the output."
       },
       {
-        "id": "B",
-        "text": "20",
-        "rationale": "That is the output for a different input; read the row for x = −4."
-      },
-      {
         "id": "C",
-        "text": "10",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "28",
+        "text": "23",
         "rationale": "Read across the correct row."
       },
       {
+        "id": "D",
+        "text": "29",
+        "rationale": "Correct."
+      },
+      {
         "id": "E",
-        "text": "12",
+        "text": "16",
         "rationale": "No calculation is needed; read the table."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Find x = −4 in the table; the corresponding f(x) is 10.",
+    "correct_choice": "D",
+    "explanation": "Find x = −4 in the table; the corresponding f(x) is 29.",
     "estimated_time_seconds": 70,
     "tags": [
       "functions",
@@ -490,360 +822,28 @@
         "rows": [
           [
             "-4",
-            "10"
-          ],
-          [
-            "-2",
-            "20"
-          ],
-          [
-            "0",
-            "-5"
-          ],
-          [
-            "6",
-            "8"
-          ],
-          [
-            "8",
-            "28"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "val=10"
-  },
-  {
-    "question_id": "act-math-functions-easy-q10",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "functions",
-    "lesson_id": "act-math-functions-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = (x + 3)/(x − 3). For what value of x is f(x) = 0?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-2",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "B",
-        "text": "3",
-        "rationale": "That makes the denominator 0, so f is undefined there."
-      },
-      {
-        "id": "C",
-        "text": "-3",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "0",
-        "rationale": "f(0) equals a/b, which isn't 0."
-      },
-      {
-        "id": "E",
-        "text": "-8",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "A fraction is 0 when its numerator is 0 (and the denominator isn't): x + 3 = 0 gives x = −3.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "functions",
-      "rational",
-      "family:fn_undefined"
-    ],
-    "answer_verification": "x=-3"
-  },
-  {
-    "question_id": "act-math-functions-easy-q11",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "functions",
-    "lesson_id": "act-math-functions-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = −6x − 8. What is the average rate of change of f between x = −3 and x = −2?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-14",
-        "rationale": "That is f(1), not the rate."
-      },
-      {
-        "id": "B",
-        "text": "-6",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "6",
-        "rationale": "Sign slip."
-      },
-      {
-        "id": "D",
-        "text": "-8",
-        "rationale": "That is the y-intercept, not the rate of change."
-      },
-      {
-        "id": "E",
-        "text": "-4",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "For a linear function the average rate of change is the slope, −6: (f(−2) − f(−3))/(−2 − −3) = −6.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "functions",
-      "rate-of-change",
-      "family:fn_rate_of_change"
-    ],
-    "answer_verification": "rate=-6"
-  },
-  {
-    "question_id": "act-math-functions-easy-q12",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "functions",
-    "lesson_id": "act-math-functions-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "interpret",
-    "prompt": "The graph of f(x) = −4x + k in the xy-plane passes through the point (−2, 14). What is the value of the constant k?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "22",
-        "rationale": "Subtract 8; don't add it."
-      },
-      {
-        "id": "B",
-        "text": "14",
-        "rationale": "That is the y-coordinate of the point, not k."
-      },
-      {
-        "id": "C",
-        "text": "-6",
-        "rationale": "Sign slip."
-      },
-      {
-        "id": "D",
-        "text": "-3/2",
-        "rationale": "k is added, not multiplied, so don't divide by m."
-      },
-      {
-        "id": "E",
-        "text": "6",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "E",
-    "explanation": "Substitute: 14 = −4(−2) + k, so k = 14 − (8) = 6.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "functions",
-      "graph",
-      "family:fn_graph_point"
-    ],
-    "answer_verification": "val=6"
-  },
-  {
-    "question_id": "act-math-functions-easy-q13",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "functions",
-    "lesson_id": "act-math-functions-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "evaluate",
-    "prompt": "If f(x) = 3x + 12, what is f(0)?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "15",
-        "rationale": "This adds k to the coefficient instead of multiplying."
-      },
-      {
-        "id": "B",
-        "text": "-12",
-        "rationale": "Check the sign of the constant term."
-      },
-      {
-        "id": "C",
-        "text": "12",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "10",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "E",
-        "text": "36",
-        "rationale": "Multiply a by k first, then add b."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "f(0) = 3·(0) + 12 = 0 + 12 = 12.",
-    "estimated_time_seconds": 70,
-    "tags": [
-      "functions",
-      "evaluate",
-      "family:fn_evaluate"
-    ],
-    "answer_verification": "f(0)=12"
-  },
-  {
-    "question_id": "act-math-functions-easy-q14",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "functions",
-    "lesson_id": "act-math-functions-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = 2x + 9. If f(x) = 23, what is the value of x?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "14",
-        "rationale": "This is a·x (before dividing by the coefficient a)."
-      },
-      {
-        "id": "B",
-        "text": "7",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "32",
-        "rationale": "Subtract b before dividing, don't add it."
-      },
-      {
-        "id": "D",
-        "text": "8",
-        "rationale": "Off by one; recheck the division."
-      },
-      {
-        "id": "E",
-        "text": "55",
-        "rationale": "This evaluates f(n) instead of solving f(x) = n."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Set 2x + 9 = 23: 2x = 14, so x = 7.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "functions",
-      "solve",
-      "family:fn_solve_input"
-    ],
-    "answer_verification": "x=7"
-  },
-  {
-    "question_id": "act-math-functions-easy-q15",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "functions",
-    "lesson_id": "act-math-functions-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "evaluate",
-    "prompt": "The table gives selected values of the function f. For what value of x is f(x) = 15?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "15",
-        "rationale": "That is the output; the question asks for the input."
-      },
-      {
-        "id": "B",
-        "text": "6",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "-6",
-        "rationale": "Sign slip reading the table."
-      },
-      {
-        "id": "D",
-        "text": "8",
-        "rationale": "That input gives a different output."
-      },
-      {
-        "id": "E",
-        "text": "0",
-        "rationale": "Read the x in the same row."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Find 15 in the f(x) column; the matching x is 6.",
-    "estimated_time_seconds": 70,
-    "tags": [
-      "functions",
-      "table",
-      "family:fn_table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Values of f",
-        "headers": [
-          "x",
-          "f(x)"
-        ],
-        "rows": [
-          [
-            "-4",
-            "1"
-          ],
-          [
-            "0",
-            "22"
-          ],
-          [
-            "6",
-            "15"
-          ],
-          [
-            "8",
-            "10"
-          ],
-          [
-            "9",
             "29"
+          ],
+          [
+            "-3",
+            "7"
+          ],
+          [
+            "0",
+            "24"
+          ],
+          [
+            "1",
+            "-1"
+          ],
+          [
+            "7",
+            "23"
           ]
         ]
       }
     },
-    "answer_verification": "val=6"
+    "answer_verification": "val=29"
   },
   {
     "question_id": "act-math-functions-easy-q16",
@@ -857,12 +857,12 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = (x + 1)/(x + 2). For what value of x is f(x) undefined?",
+    "prompt": "The function f is defined by f(x) = (x + 6)/(x − 4). For what value of x is f(x) undefined?",
     "choices": [
       {
         "id": "A",
-        "text": "2",
-        "rationale": "Solve x + b = 0, so x = −b."
+        "text": "6",
+        "rationale": "The numerator's constant doesn't make f undefined."
       },
       {
         "id": "B",
@@ -871,29 +871,29 @@
       },
       {
         "id": "C",
-        "text": "-2",
-        "rationale": "Correct."
+        "text": "-4",
+        "rationale": "Solve x + b = 0, so x = −b."
       },
       {
         "id": "D",
-        "text": "-1",
-        "rationale": "That makes the numerator 0, so f(x) = 0 there; the function is defined."
+        "text": "4",
+        "rationale": "Correct."
       },
       {
         "id": "E",
-        "text": "1",
-        "rationale": "The numerator's constant doesn't make f undefined."
+        "text": "-6",
+        "rationale": "That makes the numerator 0, so f(x) = 0 there; the function is defined."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "A fraction is undefined when its denominator is 0: x + 2 = 0 gives x = −2.",
+    "correct_choice": "D",
+    "explanation": "A fraction is undefined when its denominator is 0: x − 4 = 0 gives x = 4.",
     "estimated_time_seconds": 75,
     "tags": [
       "functions",
       "rational",
       "family:fn_undefined"
     ],
-    "answer_verification": "x=-2"
+    "answer_verification": "x=4"
   },
   {
     "question_id": "act-math-functions-easy-q17",
@@ -907,43 +907,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = 3x + 9. What is the average rate of change of f between x = 3 and x = 8?",
+    "prompt": "The function f is defined by f(x) = x + 5. What is the average rate of change of f between x = 5 and x = 11?",
     "choices": [
       {
         "id": "A",
-        "text": "3",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "9",
-        "rationale": "That is the y-intercept, not the rate of change."
-      },
-      {
-        "id": "C",
-        "text": "12",
-        "rationale": "That is f(1), not the rate."
-      },
-      {
-        "id": "D",
-        "text": "-3",
+        "text": "-1",
         "rationale": "Sign slip."
       },
       {
-        "id": "E",
-        "text": "15",
+        "id": "B",
+        "text": "1",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "6",
         "rationale": "Divide the change in f by the change in x."
+      },
+      {
+        "id": "D",
+        "text": "3",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      },
+      {
+        "id": "E",
+        "text": "5",
+        "rationale": "That is the y-intercept, not the rate of change."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "For a linear function the average rate of change is the slope, 3: (f(8) − f(3))/(8 − 3) = 3.",
+    "correct_choice": "B",
+    "explanation": "For a linear function the average rate of change is the slope, 1: (f(11) − f(5))/(11 − 5) = 1.",
     "estimated_time_seconds": 80,
     "tags": [
       "functions",
       "rate-of-change",
       "family:fn_rate_of_change"
     ],
-    "answer_verification": "rate=3"
+    "answer_verification": "rate=1"
   },
   {
     "question_id": "act-math-functions-easy-q18",
@@ -957,43 +957,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "interpret",
-    "prompt": "The graph of f(x) = −5x + k in the xy-plane passes through the point (−2, 5). What is the value of the constant k?",
+    "prompt": "The graph of f(x) = −6x + k in the xy-plane passes through the point (4, −31). What is the value of the constant k?",
     "choices": [
       {
         "id": "A",
-        "text": "5",
-        "rationale": "Sign slip."
+        "text": "7/6",
+        "rationale": "k is added, not multiplied, so don't divide by m."
       },
       {
         "id": "B",
-        "text": "-5",
-        "rationale": "Correct."
+        "text": "-55",
+        "rationale": "Subtract −24; don't add it."
       },
       {
         "id": "C",
-        "text": "15",
-        "rationale": "Subtract 10; don't add it."
+        "text": "-7",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "-1",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "7",
+        "rationale": "Sign slip."
       },
       {
         "id": "E",
-        "text": "1",
-        "rationale": "k is added, not multiplied, so don't divide by m."
+        "text": "-31",
+        "rationale": "That is the y-coordinate of the point, not k."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Substitute: 5 = −5(−2) + k, so k = 5 − (10) = −5.",
+    "correct_choice": "C",
+    "explanation": "Substitute: −31 = −6(4) + k, so k = −31 − (−24) = −7.",
     "estimated_time_seconds": 80,
     "tags": [
       "functions",
       "graph",
       "family:fn_graph_point"
     ],
-    "answer_verification": "val=-5"
+    "answer_verification": "val=-7"
   },
   {
     "question_id": "act-math-functions-easy-q19",
@@ -1007,43 +1007,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "evaluate",
-    "prompt": "For the function f defined by f(x) = 5x + 11, what is f(−3)?",
+    "prompt": "If f(x) = 6x + 9, what is f(10)?",
     "choices": [
       {
         "id": "A",
-        "text": "1",
-        "rationale": "Arithmetic slip; recompute a·k."
-      },
-      {
-        "id": "B",
-        "text": "40",
-        "rationale": "Multiply a by k first, then add b."
-      },
-      {
-        "id": "C",
-        "text": "13",
+        "text": "25",
         "rationale": "This adds k to the coefficient instead of multiplying."
       },
       {
+        "id": "B",
+        "text": "75",
+        "rationale": "Arithmetic slip; recompute a·k."
+      },
+      {
+        "id": "C",
+        "text": "114",
+        "rationale": "Multiply a by k first, then add b."
+      },
+      {
         "id": "D",
-        "text": "-26",
+        "text": "51",
         "rationale": "Check the sign of the constant term."
       },
       {
         "id": "E",
-        "text": "-4",
+        "text": "69",
         "rationale": "Correct."
       }
     ],
     "correct_choice": "E",
-    "explanation": "f(−3) = 5·(−3) + 11 = −15 + 11 = −4.",
+    "explanation": "f(10) = 6·(10) + 9 = 60 + 9 = 69.",
     "estimated_time_seconds": 70,
     "tags": [
       "functions",
       "evaluate",
       "family:fn_evaluate"
     ],
-    "answer_verification": "f(-3)=-4"
+    "answer_verification": "f(10)=69"
   },
   {
     "question_id": "act-math-functions-easy-q20",
@@ -1057,42 +1057,42 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = 7x − 11. If f(x) = 10, what is the value of x?",
+    "prompt": "The function f is defined by f(x) = 4x − 12. If f(x) = −8, what is the value of x?",
     "choices": [
       {
         "id": "A",
-        "text": "21",
-        "rationale": "This is a·x (before dividing by the coefficient a)."
-      },
-      {
-        "id": "B",
-        "text": "-1",
+        "text": "-20",
         "rationale": "Subtract b before dividing, don't add it."
       },
       {
+        "id": "B",
+        "text": "4",
+        "rationale": "This is a·x (before dividing by the coefficient a)."
+      },
+      {
         "id": "C",
-        "text": "59",
-        "rationale": "This evaluates f(n) instead of solving f(x) = n."
+        "text": "1",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "4",
+        "text": "2",
         "rationale": "Off by one; recheck the division."
       },
       {
         "id": "E",
-        "text": "3",
-        "rationale": "Correct."
+        "text": "-44",
+        "rationale": "This evaluates f(n) instead of solving f(x) = n."
       }
     ],
-    "correct_choice": "E",
-    "explanation": "Set 7x − 11 = 10: 7x = 21, so x = 3.",
+    "correct_choice": "C",
+    "explanation": "Set 4x − 12 = −8: 4x = 4, so x = 1.",
     "estimated_time_seconds": 80,
     "tags": [
       "functions",
       "solve",
       "family:fn_solve_input"
     ],
-    "answer_verification": "x=3"
+    "answer_verification": "x=1"
   }
 ]

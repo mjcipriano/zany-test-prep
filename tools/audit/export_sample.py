@@ -7,6 +7,7 @@ then grades their answers against the separately written key.
     python tools/audit/export_sample.py                       # -> build/audit/
     python tools/audit/export_sample.py --out-dir /tmp/audit --max-total 2500
     python tools/audit/export_sample.py --bundle-dir <dir with sat/act.bundle.json>
+    python tools/audit/export_sample.py --families st_spread,act:trans_blank --per-stratum 4
 
 Sampling: one stratum per exam × family × difficulty (authored items without a
 ``family:`` tag are stratified by skill as ``authored-<skill>``). Every stratum
@@ -102,6 +103,16 @@ def key_entry(q: dict) -> dict:
     return e
 
 
+def filter_families(questions_by_exam: Dict[str, List[dict]], families) -> Dict[str, List[dict]]:
+    """Keep only the given families. Each entry is ``<family>`` (both exams) or
+    ``<exam>:<family>`` (one exam); ``None``/empty keeps everything."""
+    if not families:
+        return questions_by_exam
+    wanted = {f.strip() for f in families if f.strip()}
+    return {exam: [q for q in qs if family_key(q) in wanted or f"{exam}:{family_key(q)}" in wanted]
+            for exam, qs in questions_by_exam.items()}
+
+
 def _rng_for(seed: int, *parts: str) -> random.Random:
     return random.Random(zlib.crc32("|".join((str(seed),) + parts).encode()))
 
@@ -129,7 +140,9 @@ def stratified_sample(questions_by_exam: Dict[str, List[dict]], per_stratum: int
 
 
 def export(questions_by_exam: Dict[str, List[dict]], out_dir: Path, *, per_stratum: int = 2,
-           max_total: int = 3000, batch_size: int = 150, seed: int = 1234) -> dict:
+           max_total: int = 3000, batch_size: int = 150, seed: int = 1234,
+           families=None) -> dict:
+    questions_by_exam = filter_families(questions_by_exam, families)
     out_dir.mkdir(parents=True, exist_ok=True)
     for old in out_dir.glob("batch_*.json"):
         old.unlink()
@@ -160,9 +173,14 @@ def main(argv=None) -> int:
     ap.add_argument("--max-total", type=int, default=3000)
     ap.add_argument("--batch-size", type=int, default=150)
     ap.add_argument("--seed", type=int, default=1234)
+    ap.add_argument("--families", default="",
+                    help="comma-separated families to sample (e.g. 'st_spread,act:trans_blank'); "
+                         "default: every family")
     args = ap.parse_args(argv)
+    fams = [f for f in args.families.split(",") if f.strip()]
     res = export(load_bundles(args.bundle_dir), args.out_dir, per_stratum=args.per_stratum,
-                 max_total=args.max_total, batch_size=args.batch_size, seed=args.seed)
+                 max_total=args.max_total, batch_size=args.batch_size, seed=args.seed,
+                 families=fams)
     print(f"Exported {res['questions']} questions in {len(res['batches'])} batches:")
     for p in res["batches"]:
         print("  " + p)

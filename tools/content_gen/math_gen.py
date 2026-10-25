@@ -23,6 +23,8 @@ from __future__ import annotations
 
 import math
 import random
+import re
+import statistics as _stats
 from fractions import Fraction
 
 from . import util
@@ -109,6 +111,19 @@ def _need():
     return util.OPTION_COUNT - 1
 
 
+_RADICAL_RE = re.compile(r"^([−-])?(\d+)?(?:√(\d+))?(?:/(\d+))?$")
+
+
+def _radical_value(text):
+    """Value of a simple 'a√b/c' / '√b' / 'a/c' / 'a' string (rounded), else None."""
+    m = _RADICAL_RE.match(str(text).strip())
+    if not m or not (m.group(2) or m.group(3)):
+        return None
+    sign, coef, rad, den = m.groups()
+    v = (int(coef) if coef else 1) * (math.sqrt(int(rad)) if rad else 1) / (int(den) if den else 1)
+    return round(-v if sign else v, 9)
+
+
 def _numeric_mc(rng, prompt, correct, distractor_specs, *, subskill, explanation,
                 est=70, tags=None, fmt=num_str, verify=None,
                 qtype="multiple_choice", correct_note="Correct.", stimulus=None,
@@ -122,12 +137,21 @@ def _numeric_mc(rng, prompt, correct, distractor_specs, *, subskill, explanation
     """
     need = _need()
     seen = {fmt(correct)}
+    # Also dedupe by VALUE for plain radical/number strings ("2√4" is "4", "√100"
+    # is "10"): two equal-valued choices are either two right answers or a
+    # giveaway pair (automated_checks' choices / dup_distractors checks).
+    seen_vals = {v for v in (_radical_value(fmt(correct)),) if v is not None}
     ds = []
     for val, rat in distractor_specs:
         s = fmt(val)
         if s in seen or not s:
             continue
+        v = _radical_value(s)
+        if v is not None and v in seen_vals:
+            continue
         seen.add(s)
+        if v is not None:
+            seen_vals.add(v)
         ds.append((s, rat))
     numeric = isinstance(correct, (int, float, Fraction)) and not isinstance(correct, bool)
     if len(ds) < need:
@@ -1033,6 +1057,8 @@ def li_word_max(rng, d):
         n = rng.randint(5, 60)
         # profit = (price - cost) n - fixed >= target
         target = (price - cost) * n - fixed - rng.randint(0, price - cost - 1)
+        if target < 10:  # a "profit of at least $−58" is not a profit goal
+            return li_word_max(rng, d)
         val = n
         prompt = (f"A club sells T-shirts for ${price} each. Each shirt costs ${cost} to "
                   f"make, and the club paid ${fixed} for a printing setup. What is the "
@@ -1107,7 +1133,10 @@ def li_must_be_true(rng, d):
     ds = [(f"{k}x + {c} < {_m(k * x0 + c)}", f"Multiplying by {k} and adding {c} keeps the direction of the inequality."),
           (f"−x > {_m(-x0)}", "Multiplying by −1 flips the inequality."),
           (f"x − {c} > {_m(x0)}", f"Subtracting {c} lowers the boundary to {_m(x0 - c)}."),
-          (f"x² > {x0 * x0}", "Squaring doesn't preserve inequalities when x can be negative or small.")]
+          # x > x0 ≥ 0 DOES imply x² > x0², so that option only works for x0 < 0.
+          (f"x² > {x0 * x0}", "Squaring doesn't preserve inequalities when x can be negative or small.")
+          if x0 < 0 else
+          (f"x² > {(x0 + 1) ** 2}", f"x can be just above {x0} (for example, {x0}.5), so x² need not exceed {(x0 + 1) ** 2}.")]
     expl = (f"Multiplying x > {_m(x0)} by the positive number {k} gives {k}x > {_m(k * x0)}, "
             f"and adding {c} gives {correct}.")
     return _text_mc(rng, prompt, correct, ds, subskill="one_variable",
@@ -1594,8 +1623,11 @@ def fn_interpret(rng, d):
          "p(0)", "the amount of water in the tank when the valve opens", "the number of minutes until the tank is empty",
          "the number of gallons drained each minute", "the amount of water remaining after {b} minutes"),
         ("The function C(n) = {m}n + {b} gives the cost, in dollars, of printing n posters.",
-         "C(0)", "the cost before any posters are printed", "the cost of printing one poster",
-         "the number of posters that cost ${b}", "the cost per poster"),
+         # (w1 input-for-output, w2 the rate, w3 output at input {b}) like the other two
+         # contexts; the slots were shuffled, so the hard item keyed "posters that cost $b"
+         # and never offered "the cost per poster".
+         "C(0)", "the cost before any posters are printed", "the number of posters that cost ${b}",
+         "the cost per poster", "the cost of printing {b} posters"),
         ("The function h(t) = {b} + {m}t gives the height, in centimeters, of a plant t weeks after it was planted.",
          "h(0)", "the height of the plant when it was planted", "the number of weeks until it reaches {b} cm",
          "the growth, in centimeters, each week", "the height after {b} weeks"),
@@ -1608,7 +1640,7 @@ def fn_interpret(rng, d):
                "The constant term is a starting value, not a change over an interval."),
               (w1, "That would be an input (a time or count) set equal to the output, which reverses the roles."),
               (w2, "That describes the coefficient of the variable, the rate of change."),
-              (w3, "The input {0} here is 0, not {1}.".format(expr[2], b))]
+              (w3, "In {0} the input is 0, not {1}.".format(expr, b))]
         expl = f"{expr} is the output when the input is 0, so {b} is {correct}."
     else:
         k = rng.randint(2, 12)
@@ -2119,13 +2151,16 @@ def ex_radicals(rng, d):
     elif d == "medium":
         k = rng.randint(2, 12)
         r = rng.choice([2, 3, 5, 6, 7, 10, 11, 13, 14, 15, 17, 19, 21, 22, 23])
+        if r == k:  # "r√k" would repeat the key
+            return ex_radicals(rng, d)
         n = k * k * r
         prompt = f"Which of the following is equivalent to √{n}?"
         correct = f"{k}√{r}"
         ds = [(f"{r}√{k}", "The perfect-square factor comes out of the radical; the rest stays."),
               (f"{k * k}√{r}", "Taking the square root of {0} gives {1}, not {0}.".format(k * k, k)),
               (f"{k}√{r * k}" if r * k != n else f"{k}√{r + 1}", "Factor out the largest perfect square."),
-              (f"{k * r}", "√{0} is not an integer; only the square factor simplifies.".format(n))]
+              (f"{k * r}", "√{0} is not an integer; only the square factor simplifies.".format(n)),
+              (f"{k + 1}√{r}", f"Check: ({k + 1}√{r})² = {(k + 1) ** 2 * r}, not {n}.")]
         expl = f"√{n} = √({k * k}·{r}) = √{k * k}·√{r} = {k}√{r}."
     else:
         c, a = rng.choice([v for v in range(1, 10)]), rng.randint(2, 9)
@@ -2944,7 +2979,8 @@ def pr_similar(rng, d):
     elif d == "medium":
         a, b, c = _pyth_triple(rng, 26)
         k = rng.randint(2, 5)
-        which = rng.choice([0, 1, 2])
+        # Never ask for the shortest side: the prompt already gives it.
+        which = rng.choice([1, 2])
         sides = (a, b, c)
         names = ("the shortest side", "the middle side", "the longest side")
         prompt = (f"Two triangles are similar. The sides of the smaller triangle are {a}, "
@@ -3439,14 +3475,17 @@ def st_spread(rng, d):
     tight = sorted(center + rng.choice([-2, -1, 0, 1, 2]) for _ in range(6))
     wide = sorted(center + rng.choice([-15, -10, -6, 6, 10, 15]) for _ in range(6))
     if d == "medium":
-        a, b = ("A", tight), ("B", wide)
-        if rng.random() < 0.5:
-            a, b = b, a
-        prompt = (f"Data set {a[0]}: {', '.join(map(str, a[1]))}\nData set {b[0]}: "
-                  f"{', '.join(map(str, b[1]))}\nWhich statement about the standard deviations "
-                  f"of the two data sets is true?")
-        wide_name = "A" if a[1] is wide else "B"
+        # Labels always read A then B; randomise which data set is which. (The
+        # old code swapped the labelled pairs and then named the wide set by
+        # position, so half the items keyed the tighter set as more spread.)
+        wide_name = rng.choice("AB")
         tight_name = "B" if wide_name == "A" else "A"
+        sets = {wide_name: wide, tight_name: tight}
+        if _stats.pstdev(wide) <= _stats.pstdev(tight) + 2:
+            return st_spread(rng, d)
+        prompt = (f"Data set A: {', '.join(map(str, sets['A']))}\nData set B: "
+                  f"{', '.join(map(str, sets['B']))}\nWhich statement about the standard deviations "
+                  f"of the two data sets is true?")
         correct = f"The standard deviation of data set {wide_name} is greater than that of data set {tight_name}."
         ds = [(f"The standard deviation of data set {tight_name} is greater than that of data set {wide_name}.",
                f"Set {tight_name}'s values cluster tightly around {center}; set {wide_name}'s are spread out."),
@@ -3537,15 +3576,16 @@ def st_missing_value(rng, d):
 
 def st_frequency_table(rng, d):
     """Mean/median/mode from a frequency table (data_interpretation)."""
-    ctx = rng.choice([("Number of pets", "Number of students", "pets per student"),
-                      ("Goals scored", "Number of games", "goals per game"),
-                      ("Books read", "Number of readers", "books per reader"),
-                      ("Siblings", "Number of children", "siblings per child")])
+    ctx = rng.choice([("Number of pets", "Number of students", "pets per student", "students"),
+                      ("Goals scored", "Number of games", "goals per game", "games"),
+                      ("Books read", "Number of readers", "books per reader", "readers"),
+                      ("Siblings", "Number of children", "siblings per child", "children")])
+    who = ctx[3]  # what the frequencies count (games are not "people surveyed")
     k = 4 if d == "easy" else 5
     values = list(range(0, k)) if rng.random() < 0.5 else list(range(1, k + 1))
     freqs = [rng.randint(1, 9) for _ in values]
     N = sum(freqs)
-    stim = _table("Survey results", [ctx[0], ctx[1]], [[v, f] for v, f in zip(values, freqs)])
+    stim = _table("Frequency table", [ctx[0], ctx[1]], [[v, f] for v, f in zip(values, freqs)])
     expanded = [v for v, f in zip(values, freqs) for _ in range(f)]
     if d == "easy":
         mode_f = max(freqs)
@@ -3553,23 +3593,23 @@ def st_frequency_table(rng, d):
             return st_frequency_table(rng, d)
         if rng.random() < 0.5:
             val = values[freqs.index(mode_f)]
-            prompt = f"The table shows the results of a survey of {N} people. What is the mode of the data?"
+            prompt = f"The table summarizes data for {N} {who}. What is the mode of the data?"
             expl = f"The mode is the value with the greatest frequency: {val} (frequency {mode_f})."
             ds = [(mode_f, "That is the frequency, not the value that occurs most."),
-                  (N, "That is the number of people surveyed."),
+                  (N, f"That is the number of {who}."),
                   (max(values), "The mode is the most frequent value, not the largest."),
                   (values[freqs.index(min(freqs))], "That value occurs least often.")]
         else:
             val = N
-            prompt = "The table summarizes survey responses. How many people were surveyed in total?"
+            prompt = f"The table summarizes data about {who}. How many {who} are represented in the table in total?"
             expl = f"Add the frequencies: {' + '.join(map(str, freqs))} = {N}."
             ds = [(sum(values), "Add the frequencies, not the values."),
-                  (sum(v * f for v, f in zip(values, freqs)), "That is the total of all responses' values, not the number of people."),
+                  (sum(v * f for v, f in zip(values, freqs)), f"That is the total of all the values, not the number of {who}."),
                   (max(freqs), "That is one frequency, not the total."),
                   (N + 1, "Arithmetic slip; recheck the sum.")]
     elif d == "medium":
         val = expanded[N // 2] if N % 2 else Fraction(expanded[N // 2 - 1] + expanded[N // 2], 2)
-        prompt = f"The table shows the results of a survey of {N} people. What is the median of the data?"
+        prompt = f"The table summarizes data for {N} {who}. What is the median of the data?"
         expl = (f"List the {N} responses in order using the frequencies; the middle "
                 f"{'value is' if N % 2 else 'two values average to'} {num_str(val)}.")
         ds = [(values[len(values) // 2], "The median is the middle of the {0} responses, not the middle listed value.".format(N)),
@@ -3579,11 +3619,11 @@ def st_frequency_table(rng, d):
     else:
         total_val = sum(v * f for v, f in zip(values, freqs))
         val = Fraction(total_val, N)
-        prompt = f"The table shows the results of a survey of {N} people. What is the mean {ctx[2]}? (Round to the nearest hundredth if necessary.)"
+        prompt = f"The table summarizes data for {N} {who}. What is the mean {ctx[2]}? (Round to the nearest hundredth if necessary.)"
         expl = f"Mean = Σ(value × frequency)/N = {total_val}/{N} ≈ {float(val):.2f}."
         valr = round(float(val), 2)
         ds = [(round(sum(values) / len(values), 2), "Weight each value by its frequency; don't average the listed values."),
-              (round(total_val / len(values), 2), "Divide by the number of people, not the number of rows."),
+              (round(total_val / len(values), 2), f"Divide by the number of {who}, not the number of rows."),
               (round(N / len(values), 2), "That is the mean frequency, not the mean value."),
               (round(valr + 0.5, 2), "Arithmetic slip; recompute Σ(value × frequency).")]
         return _numeric_mc(rng, prompt, valr, ds, subskill="mean_median_mode", explanation=expl,
@@ -5380,8 +5420,10 @@ def q_intercepts(rng, d):
         if kind == "axis":
             prompt = f"A parabola in the xy-plane has x-intercepts at x = {_m(r1)} and x = {_m(r2)}. What is the equation of its axis of symmetry?"
             mid = Fraction(r1 + r2, 2)
-            correct = f"x = {num_str(mid)}"
-            ds = [(f"x = {num_str(mid * 2)}", "The axis is halfway between the intercepts: divide by 2."), (f"y = {num_str(mid)}", "The axis of symmetry of y = ax² + … is a vertical line x = h."), (f"x = {num_str(-mid)}" if mid else f"x = {num_str(mid + 1)}", "Sign slip."), (f"x = {num_str(Fraction(r2 - r1, 2))}", "Average the intercepts; don't halve their difference."),
+            def ns(v):  # one minus sign style, so "x = -1" and "x = −1" can't both appear
+                return num_str(v).replace("-", "−")
+            correct = f"x = {ns(mid)}"
+            ds = [(f"x = {ns(mid * 2)}", "The axis is halfway between the intercepts: divide by 2."), (f"y = {ns(mid)}", "The axis of symmetry of y = ax² + … is a vertical line x = h."), (f"x = {ns(-mid)}" if mid else f"x = {ns(mid + 1)}", "Sign slip."), (f"x = {ns(Fraction(r2 - r1, 2))}", "Average the intercepts; don't halve their difference."),
                   # The intercepts themselves are never the midpoint, so these
                   # keep enough distinct options even when the axis is x = 0.
                   (f"x = {_m(r1)}", "That is one x-intercept; the axis is midway between the two."),
@@ -5435,9 +5477,14 @@ def ex_radical_ops(rng, d):
         coef = k1 + k2 if op == "+" else k1 - k2
         if coef == 0:
             return ex_radical_ops(rng, d)
-        correct = f"{coef}√{r}" if abs(coef) != 1 else ("√" + str(r) if coef == 1 else f"−√{r}")
+        def rad(c, rr):
+            return f"{c}√{rr}" if abs(c) != 1 else ("√" + str(rr) if c == 1 else f"−√{rr}")
+        correct = rad(coef, r)
         prompt = f"Which of the following is equivalent to √{n1} {op} √{n2}?"
-        ds = [(f"√{n1 + n2 if op == '+' else abs(n1 - n2)}", "Radicals don't combine by adding/subtracting the radicands."), (f"{coef}√{2 * r}", "Simplify each radical first; the radicand stays {0}.".format(r)), (f"{k1 + k2 if op == '−' else k1 - k2}√{r}" if (k1 + k2 if op == '−' else k1 - k2) != 0 else f"{coef * 2}√{r}", "Check the operation."), (f"{coef * r}", "√{0} stays in the answer.".format(r))]
+        other = k1 + k2 if op == '−' else k1 - k2
+        ds = [(f"√{n1 + n2 if op == '+' else abs(n1 - n2)}", "Radicals don't combine by adding/subtracting the radicands."), (rad(coef, 2 * r if r != 2 else 3 * r), "Simplify each radical first; the radicand stays {0}.".format(r)), (rad(other, r) if other != 0 else rad(coef * 2, r), "Check the operation."), (f"{coef * r}", "√{0} stays in the answer.".format(r)),
+              (rad(coef + (1 if coef > 0 else -1), r), "Recheck each perfect-square factor: √{0} = {1}√{2} and √{3} = {4}√{2}.".format(n1, k1, r, n2, k2)),
+              (rad(coef, r * r + 1), "The radicand stays {0}.".format(r))]
         expl = f"√{n1} = {k1}√{r} and √{n2} = {k2}√{r}; {k1}√{r} {op} {k2}√{r} = {correct}."
         return _text_mc(rng, prompt, correct, ds, subskill="radical_simplify", explanation=expl, tags=["radicals", "combine"], est=85, verify=correct)
     k = rng.choice([2, 3, 5, 6, 7, 10, 11])
@@ -5623,7 +5670,7 @@ def rp_best_deal(rng, d):
         return rp_best_deal(rng, d)
     options = [(s, pers[i] * s) for i, s in enumerate(sizes)]
     if d == "medium":
-        prompt = f"Four packages of {item} are priced as follows: " + "; ".join(f"{s} {unit}s for {_money(p)}" for s, p in options) + ". Which package has the lowest price per {unit}?"
+        prompt = f"Four packages of {item} are priced as follows: " + "; ".join(f"{s} {unit}s for {_money(p)}" for s, p in options) + f". Which package has the lowest price per {unit}?"
         correct = f"{sizes[best]} {unit}s for {_money(options[best][1])}"
         ds = [(f"{s} {unit}s for {_money(p)}", f"Its unit price is {_money(pers[i])} per {unit}, higher than {_money(pers[best])}.") for i, (s, p) in enumerate(options) if i != best]
         expl = f"Compute each price per {unit}: " + ", ".join(_money(p) for p in pers) + f". The lowest is {_money(pers[best])}."
@@ -5631,7 +5678,7 @@ def rp_best_deal(rng, d):
     i, j = rng.sample(range(4), 2)
     diff = abs(pers[i] - pers[j])
     prompt = (f"A {sizes[i]}-{unit} package of {item} costs {_money(options[i][1])} and a {sizes[j]}-{unit} package costs {_money(options[j][1])}. "
-              f"How much more, in dollars per {unit}, does the more expensive package cost per {unit}?")
+              f"Per {unit}, how many more dollars does the package with the higher unit price cost?")
     val = diff
     expl = f"Unit prices: {_money(pers[i])} and {_money(pers[j])}; the difference is {_money(diff)}."
     ds = [(abs(options[i][1] - options[j][1]), "Compare prices per {0}, not package prices.".format(unit)), (pers[i], "That is one unit price, not the difference."), (pers[j], "That is one unit price, not the difference."), (diff * 2, "Arithmetic slip.")]
@@ -5893,7 +5940,11 @@ def st_quartiles(rng, d):
     else:
         fence_hi = q3 + Fraction(3, 2) * (q3 - q1)
         out = int(fence_hi) + rng.randint(5, 25)
-        prompt = f"For the data set {shown}, an outlier is defined as a value more than 1.5 times the interquartile range above the third quartile. What is the least integer value that would be considered an outlier if added to the set?"
+        # Ask about the cutoff of THIS data set: "if added to the set" changed the
+        # quartiles themselves, so the keyed fence was no longer the right one.
+        prompt = (f"For the data set {shown}, a value is called an outlier if it is more than 1.5 times "
+                  f"the interquartile range above the third quartile. Using the quartiles of this data "
+                  f"set, what is the least integer that lies above this outlier cutoff?")
         val = int(fence_hi) + 1
         expl = f"Q1 = {num_str(q1)}, Q3 = {num_str(q3)}, IQR = {num_str(q3 - q1)}; fence = {num_str(q3)} + 1.5·{num_str(q3 - q1)} = {num_str(fence_hi)}; the least integer above it is {val}."
         ds = [(int(q3) + 1, "Add 1.5 × IQR to Q3, not just 1."), (int(fence_hi) if int(fence_hi) != val else val + 1, "The value must be strictly greater than the fence."), (int(q3 + (q3 - q1)) + 1, "Multiply the IQR by 1.5, not 1."), (data[-1] + 1, "The fence is computed from the quartiles, not the maximum.")]

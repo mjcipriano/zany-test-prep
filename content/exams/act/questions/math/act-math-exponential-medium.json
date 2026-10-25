@@ -11,43 +11,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "A population of 405 subscribers to a newsletter is cut to one-third every month. How many will there be after 4 months?",
+    "prompt": "A population of 24 bacteria in a culture halves every hour. How many will there be after 2 hours?",
     "choices": [
       {
         "id": "A",
-        "text": "6",
-        "rationale": "This goes one period too far."
-      },
-      {
-        "id": "B",
-        "text": "15",
-        "rationale": "This stops one period too early."
-      },
-      {
-        "id": "C",
-        "text": "5",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "393",
+        "text": "20",
         "rationale": "This subtracts instead of repeatedly dividing."
       },
       {
+        "id": "B",
+        "text": "3",
+        "rationale": "This goes one period too far."
+      },
+      {
+        "id": "C",
+        "text": "8",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      },
+      {
+        "id": "D",
+        "text": "12",
+        "rationale": "This stops one period too early."
+      },
+      {
         "id": "E",
-        "text": "33",
-        "rationale": "This divides once by r×time instead of repeatedly."
+        "text": "6",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Divide by 3 each month: 405 ÷ 3^4 = 5.",
+    "correct_choice": "E",
+    "explanation": "Divide by 2 each hour: 24 ÷ 2^2 = 6.",
     "estimated_time_seconds": 80,
     "tags": [
       "advanced-math",
       "exponential",
       "family:ex_value"
     ],
-    "answer_verification": "val=5"
+    "answer_verification": "val=6"
   },
   {
     "question_id": "act-math-exponential-medium-q02",
@@ -61,36 +61,36 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "An investment of $5000 decreases by 20% each year. Which function gives the value V after t years?",
+    "prompt": "The value of a car is $250 and increases by 2% each year. Which function gives the value V after t years?",
     "choices": [
       {
         "id": "A",
-        "text": "V(t) = 5000(1.2)^t",
-        "rationale": "A 20% decrease means a factor of 0.8, not 1.2."
+        "text": "V(t) = 250 + 5t",
+        "rationale": "Percent change compounds (exponential), it doesn't add a fixed amount each year."
       },
       {
         "id": "B",
-        "text": "V(t) = 5000(0.8)^t",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "V(t) = 5000·0.8·t",
-        "rationale": "The time t belongs in the exponent."
-      },
-      {
-        "id": "D",
-        "text": "V(t) = 5000(0.2)^t",
+        "text": "V(t) = 250(0.02)^t",
         "rationale": "The factor is 1 ± the rate, not the rate alone."
       },
       {
+        "id": "C",
+        "text": "V(t) = 250(1.02)^t",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "V(t) = 250·1.02·t",
+        "rationale": "The time t belongs in the exponent."
+      },
+      {
         "id": "E",
-        "text": "V(t) = 5000 − 1000t",
-        "rationale": "Percent change compounds (exponential), it doesn't add a fixed amount each year."
+        "text": "V(t) = 250(0.98)^t",
+        "rationale": "A 2% increase means a factor of 1.02, not 0.98."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "A 20% decrease per year multiplies by 0.8 each year: V(t) = 5000(0.8)^t.",
+    "correct_choice": "C",
+    "explanation": "A 2% increase per year multiplies by 1.02 each year: V(t) = 250(1.02)^t.",
     "estimated_time_seconds": 90,
     "tags": [
       "advanced-math",
@@ -98,7 +98,7 @@
       "model",
       "family:ex_model"
     ],
-    "answer_verification": "model V(t) = 5000(0.8)^t"
+    "answer_verification": "model V(t) = 250(1.02)^t"
   },
   {
     "question_id": "act-math-exponential-medium-q03",
@@ -112,36 +112,36 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "The function f(t) = 2000(1.06)^t models the value, in dollars, of a collectible t years after it was first measured. By what percent does the quantity increase each year?",
+    "prompt": "The function f(t) = 800(0.9)^t models the mass, in grams, of a substance t hours after it was first measured. By what percent does the quantity decrease each hour?",
     "choices": [
       {
         "id": "A",
-        "text": "94%",
-        "rationale": "Compare the factor to 1 (100%)."
+        "text": "90%",
+        "rationale": "90% is the factor as a percent; the change is the part above or below 100%."
       },
       {
         "id": "B",
-        "text": "6%",
-        "rationale": "Correct."
+        "text": "20%",
+        "rationale": "Arithmetic slip; 0.9 − 1 = ±0.1."
       },
       {
         "id": "C",
-        "text": "12%",
-        "rationale": "Arithmetic slip; 1.06 − 1 = ±0.06."
+        "text": "10%",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "106%",
-        "rationale": "106% is the factor as a percent; the change is the part above or below 100%."
+        "text": "110%",
+        "rationale": "Compare the factor to 1 (100%)."
       },
       {
         "id": "E",
-        "text": "200%",
+        "text": "80%",
         "rationale": "The percent comes from the base, not the coefficient."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "The factor 1.06 = 1 + 0.06, so the quantity grows by 6% per year.",
+    "correct_choice": "C",
+    "explanation": "The factor 0.9 = 1 − 0.1, so the quantity shrinks by 10% per hour.",
     "estimated_time_seconds": 80,
     "tags": [
       "advanced-math",
@@ -149,7 +149,7 @@
       "interpret",
       "family:ex_interpret"
     ],
-    "answer_verification": "rate=6%"
+    "answer_verification": "rate=10%"
   },
   {
     "question_id": "act-math-exponential-medium-q04",
@@ -163,36 +163,36 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "A radioactive sample has a half-life of 50 hours: every 50 hours, half of it decays. If the sample starts at 120 grams, how many grams remain after 150 hours?",
+    "prompt": "A radioactive sample has a half-life of 100 days: every 100 days, half of it decays. If the sample starts at 32 grams, how many grams remain after 200 days?",
     "choices": [
       {
         "id": "A",
-        "text": "15",
-        "rationale": "Correct."
+        "text": "-2",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
       },
       {
         "id": "B",
-        "text": "60",
-        "rationale": "That is after one half-life only."
+        "text": "8",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "20",
-        "rationale": "Divide by 2 repeatedly (3 times), not by 2·3."
-      },
-      {
-        "id": "D",
-        "text": "15/2",
+        "text": "4",
         "rationale": "Each half-life halves what remains; it doesn't subtract a fixed amount."
       },
       {
+        "id": "D",
+        "text": "16",
+        "rationale": "That is after one half-life only."
+      },
+      {
         "id": "E",
-        "text": "43/3",
+        "text": "19/3",
         "rationale": "This comes from a small arithmetic slip; recompute carefully."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "150 hours is 3 half-lives; 120 ÷ 2^3 = 15 grams.",
+    "correct_choice": "B",
+    "explanation": "200 days is 2 half-lives; 32 ÷ 2^2 = 8 grams.",
     "estimated_time_seconds": 90,
     "tags": [
       "advanced-math",
@@ -200,7 +200,7 @@
       "half-life",
       "family:ex_periods"
     ],
-    "answer_verification": "120/2^3"
+    "answer_verification": "32/2^2"
   },
   {
     "question_id": "act-math-exponential-medium-q05",
@@ -214,36 +214,36 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "An investment of $2000 grows by 4% per year, compounded annually. Which expression gives the value, in dollars, of the investment after 4 years?",
+    "prompt": "An investment of $6000 grows by 6% per year, compounded annually. Which expression gives the value, in dollars, of the investment after 2 years?",
     "choices": [
       {
         "id": "A",
-        "text": "2000(1 + 4·0.04)",
+        "text": "6000(1 + 2·0.06)",
         "rationale": "Compound growth is repeated multiplication, not repeated addition."
       },
       {
         "id": "B",
-        "text": "2000(1.04)·4",
-        "rationale": "Raise the factor to the power 4."
+        "text": "6000(0.06)^2",
+        "rationale": "The growth factor is 1 + r, not r."
       },
       {
         "id": "C",
-        "text": "2000·4·1.04",
-        "rationale": "The number of years is an exponent."
+        "text": "6000(1.06)·2",
+        "rationale": "Raise the factor to the power 2."
       },
       {
         "id": "D",
-        "text": "2000(1.04)^4",
-        "rationale": "Correct."
+        "text": "6000·2·1.06",
+        "rationale": "The number of years is an exponent."
       },
       {
         "id": "E",
-        "text": "2000(0.04)^4",
-        "rationale": "The growth factor is 1 + r, not r."
+        "text": "6000(1.06)^2",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Each year multiplies the value by 1 + 4/100 = 1.04; after 4 years: 2000(1.04)^4.",
+    "correct_choice": "E",
+    "explanation": "Each year multiplies the value by 1 + 6/100 = 1.06; after 2 years: 6000(1.06)^2.",
     "estimated_time_seconds": 80,
     "tags": [
       "advanced-math",
@@ -251,7 +251,7 @@
       "compound",
       "family:ex_compound"
     ],
-    "answer_verification": "2000(1.04)^4"
+    "answer_verification": "6000(1.06)^2"
   },
   {
     "question_id": "act-math-exponential-medium-q06",
@@ -265,17 +265,17 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "A machine worth $500 loses 5% of its value each year. Which statement best describes the quantity over time?",
+    "prompt": "A town's population is 100 and shrinks by 5% per year. Which statement best describes the quantity over time?",
     "choices": [
       {
         "id": "A",
-        "text": "It changes linearly: it changes by exactly 25 every year.",
-        "rationale": "A percent change is proportional to the current amount, so the yearly change is not constant."
+        "text": "It changes exponentially: it is multiplied by 0.95 each year.",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "It changes exponentially: it is multiplied by 0.95 each year.",
-        "rationale": "Correct."
+        "text": "It changes linearly: it changes by exactly 5 every year.",
+        "rationale": "A percent change is proportional to the current amount, so the yearly change is not constant."
       },
       {
         "id": "C",
@@ -289,11 +289,11 @@
       },
       {
         "id": "E",
-        "text": "It changes exponentially: it changes by exactly 25 every year.",
+        "text": "It changes exponentially: it changes by exactly 5 every year.",
         "rationale": "Exponential change is a constant factor, not a constant amount."
       }
     ],
-    "correct_choice": "B",
+    "correct_choice": "A",
     "explanation": "A 5% decrease multiplies by 0.95 every year, so the model is exponential.",
     "estimated_time_seconds": 85,
     "tags": [
@@ -316,43 +316,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "A population of 240 fruit flies in a jar is cut to one-quarter every week. How many will there be after 2 weeks?",
+    "prompt": "A population of 1280 views of a video is cut to one-quarter every day. How many will there be after 4 days?",
     "choices": [
       {
         "id": "A",
-        "text": "60",
+        "text": "20",
         "rationale": "This stops one period too early."
       },
       {
         "id": "B",
-        "text": "15",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "16",
-        "rationale": "This goes one period too far."
-      },
-      {
-        "id": "D",
-        "text": "232",
+        "text": "1264",
         "rationale": "This subtracts instead of repeatedly dividing."
       },
       {
-        "id": "E",
-        "text": "30",
+        "id": "C",
+        "text": "5",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "80",
         "rationale": "This divides once by r×time instead of repeatedly."
+      },
+      {
+        "id": "E",
+        "text": "6",
+        "rationale": "This goes one period too far."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Divide by 4 each week: 240 ÷ 4^2 = 15.",
+    "correct_choice": "C",
+    "explanation": "Divide by 4 each day: 1280 ÷ 4^4 = 5.",
     "estimated_time_seconds": 80,
     "tags": [
       "advanced-math",
       "exponential",
       "family:ex_value"
     ],
-    "answer_verification": "val=15"
+    "answer_verification": "val=5"
   },
   {
     "question_id": "act-math-exponential-medium-q08",
@@ -366,36 +366,36 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "The value of a car is $500 and increases by 5% each year. Which function gives the value V after t years?",
+    "prompt": "A town's population is 1000 and decreases by 3% per year. Which function gives the value V after t years?",
     "choices": [
       {
         "id": "A",
-        "text": "V(t) = 500·1.05·t",
-        "rationale": "The time t belongs in the exponent."
+        "text": "V(t) = 1000(0.03)^t",
+        "rationale": "The factor is 1 ± the rate, not the rate alone."
       },
       {
         "id": "B",
-        "text": "V(t) = 500(1.05)^t",
-        "rationale": "Correct."
+        "text": "V(t) = 1000(1.03)^t",
+        "rationale": "A 3% decrease means a factor of 0.97, not 1.03."
       },
       {
         "id": "C",
-        "text": "V(t) = 500 + 25t",
-        "rationale": "Percent change compounds (exponential), it doesn't add a fixed amount each year."
+        "text": "V(t) = 1000(0.97)^t",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "V(t) = 500(0.95)^t",
-        "rationale": "A 5% increase means a factor of 1.05, not 0.95."
+        "text": "V(t) = 1000·0.97·t",
+        "rationale": "The time t belongs in the exponent."
       },
       {
         "id": "E",
-        "text": "V(t) = 500(0.05)^t",
-        "rationale": "The factor is 1 ± the rate, not the rate alone."
+        "text": "V(t) = 1000 − 30t",
+        "rationale": "Percent change compounds (exponential), it doesn't add a fixed amount each year."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "A 5% increase per year multiplies by 1.05 each year: V(t) = 500(1.05)^t.",
+    "correct_choice": "C",
+    "explanation": "A 3% decrease per year multiplies by 0.97 each year: V(t) = 1000(0.97)^t.",
     "estimated_time_seconds": 90,
     "tags": [
       "advanced-math",
@@ -403,7 +403,7 @@
       "model",
       "family:ex_model"
     ],
-    "answer_verification": "model V(t) = 500(1.05)^t"
+    "answer_verification": "model V(t) = 1000(0.97)^t"
   },
   {
     "question_id": "act-math-exponential-medium-q09",
@@ -417,36 +417,36 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "The function f(t) = 80(1.02)^t models the mass, in grams, of a substance t hours after it was first measured. By what percent does the quantity increase each hour?",
+    "prompt": "The function f(t) = 200(0.94)^t models the value, in dollars, of a collectible t years after it was first measured. By what percent does the quantity decrease each year?",
     "choices": [
       {
         "id": "A",
-        "text": "2%",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "98%",
-        "rationale": "Compare the factor to 1 (100%)."
-      },
-      {
-        "id": "C",
-        "text": "4%",
-        "rationale": "Arithmetic slip; 1.02 − 1 = ±0.02."
-      },
-      {
-        "id": "D",
-        "text": "8%",
+        "text": "20%",
         "rationale": "The percent comes from the base, not the coefficient."
       },
       {
+        "id": "B",
+        "text": "6%",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "106%",
+        "rationale": "Compare the factor to 1 (100%)."
+      },
+      {
+        "id": "D",
+        "text": "94%",
+        "rationale": "94% is the factor as a percent; the change is the part above or below 100%."
+      },
+      {
         "id": "E",
-        "text": "102%",
-        "rationale": "102% is the factor as a percent; the change is the part above or below 100%."
+        "text": "12%",
+        "rationale": "Arithmetic slip; 0.94 − 1 = ±0.06."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "The factor 1.02 = 1 + 0.02, so the quantity grows by 2% per hour.",
+    "correct_choice": "B",
+    "explanation": "The factor 0.94 = 1 − 0.06, so the quantity shrinks by 6% per year.",
     "estimated_time_seconds": 80,
     "tags": [
       "advanced-math",
@@ -454,7 +454,7 @@
       "interpret",
       "family:ex_interpret"
     ],
-    "answer_verification": "rate=2%"
+    "answer_verification": "rate=6%"
   },
   {
     "question_id": "act-math-exponential-medium-q10",
@@ -468,36 +468,36 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "A radioactive sample has a half-life of 8 years: every 8 years, half of it decays. If the sample starts at 48 grams, how many grams remain after 16 years?",
+    "prompt": "A radioactive sample has a half-life of 4 years: every 4 years, half of it decays. If the sample starts at 400 grams, how many grams remain after 12 years?",
     "choices": [
       {
         "id": "A",
-        "text": "15",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "B",
-        "text": "17",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "C",
-        "text": "6",
-        "rationale": "Each half-life halves what remains; it doesn't subtract a fixed amount."
-      },
-      {
-        "id": "D",
-        "text": "24",
+        "text": "200",
         "rationale": "That is after one half-life only."
       },
       {
-        "id": "E",
-        "text": "12",
+        "id": "B",
+        "text": "50",
         "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "200/3",
+        "rationale": "Divide by 2 repeatedly (3 times), not by 2·3."
+      },
+      {
+        "id": "D",
+        "text": "160/3",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      },
+      {
+        "id": "E",
+        "text": "25",
+        "rationale": "Each half-life halves what remains; it doesn't subtract a fixed amount."
       }
     ],
-    "correct_choice": "E",
-    "explanation": "16 years is 2 half-lives; 48 ÷ 2^2 = 12 grams.",
+    "correct_choice": "B",
+    "explanation": "12 years is 3 half-lives; 400 ÷ 2^3 = 50 grams.",
     "estimated_time_seconds": 90,
     "tags": [
       "advanced-math",
@@ -505,7 +505,7 @@
       "half-life",
       "family:ex_periods"
     ],
-    "answer_verification": "48/2^2"
+    "answer_verification": "400/2^3"
   },
   {
     "question_id": "act-math-exponential-medium-q11",
@@ -519,36 +519,36 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "An investment of $8000 grows by 8% per year, compounded annually. Which expression gives the value, in dollars, of the investment after 4 years?",
+    "prompt": "An investment of $2500 grows by 5% per year, compounded annually. Which expression gives the value, in dollars, of the investment after 4 years?",
     "choices": [
       {
         "id": "A",
-        "text": "8000(0.08)^4",
-        "rationale": "The growth factor is 1 + r, not r."
-      },
-      {
-        "id": "B",
-        "text": "8000(1 + 4·0.08)",
-        "rationale": "Compound growth is repeated multiplication, not repeated addition."
-      },
-      {
-        "id": "C",
-        "text": "8000·4·1.08",
-        "rationale": "The number of years is an exponent."
-      },
-      {
-        "id": "D",
-        "text": "8000(1.08)^4",
+        "text": "2500(1.05)^4",
         "rationale": "Correct."
       },
       {
-        "id": "E",
-        "text": "8000(1.08)·4",
+        "id": "B",
+        "text": "2500(0.05)^4",
+        "rationale": "The growth factor is 1 + r, not r."
+      },
+      {
+        "id": "C",
+        "text": "2500(1 + 4·0.05)",
+        "rationale": "Compound growth is repeated multiplication, not repeated addition."
+      },
+      {
+        "id": "D",
+        "text": "2500(1.05)·4",
         "rationale": "Raise the factor to the power 4."
+      },
+      {
+        "id": "E",
+        "text": "2500·4·1.05",
+        "rationale": "The number of years is an exponent."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Each year multiplies the value by 1 + 8/100 = 1.08; after 4 years: 8000(1.08)^4.",
+    "correct_choice": "A",
+    "explanation": "Each year multiplies the value by 1 + 5/100 = 1.05; after 4 years: 2500(1.05)^4.",
     "estimated_time_seconds": 80,
     "tags": [
       "advanced-math",
@@ -556,7 +556,7 @@
       "compound",
       "family:ex_compound"
     ],
-    "answer_verification": "8000(1.08)^4"
+    "answer_verification": "2500(1.05)^4"
   },
   {
     "question_id": "act-math-exponential-medium-q12",
@@ -570,36 +570,36 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "A town's population is 800 and grows by 5% per year. Which statement best describes the quantity over time?",
+    "prompt": "A town's population is 1500 and grows by 12% per year. Which statement best describes the quantity over time?",
     "choices": [
       {
         "id": "A",
-        "text": "It changes exponentially: it changes by exactly 40 every year.",
-        "rationale": "Exponential change is a constant factor, not a constant amount."
-      },
-      {
-        "id": "B",
-        "text": "It changes exponentially: it is multiplied by 1.05 each year.",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
         "text": "It changes linearly: the same percent is applied every year.",
         "rationale": "A constant percent is a constant multiplier, which is exponential."
       },
       {
-        "id": "D",
-        "text": "It stays essentially constant, because 5% is a small change.",
+        "id": "B",
+        "text": "It stays essentially constant, because 12% is a small change.",
         "rationale": "Any nonzero percent change compounds over time."
       },
       {
-        "id": "E",
-        "text": "It changes linearly: it changes by exactly 40 every year.",
+        "id": "C",
+        "text": "It changes exponentially: it is multiplied by 1.12 each year.",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "It changes linearly: it changes by exactly 180 every year.",
         "rationale": "A percent change is proportional to the current amount, so the yearly change is not constant."
+      },
+      {
+        "id": "E",
+        "text": "It changes exponentially: it changes by exactly 180 every year.",
+        "rationale": "Exponential change is a constant factor, not a constant amount."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "A 5% increase multiplies by 1.05 every year, so the model is exponential.",
+    "correct_choice": "C",
+    "explanation": "A 12% increase multiplies by 1.12 every year, so the model is exponential.",
     "estimated_time_seconds": 85,
     "tags": [
       "advanced-math",
@@ -607,7 +607,7 @@
       "identify",
       "family:ex_identify_type"
     ],
-    "answer_verification": "It changes exponentially: it is multiplied by 1.05 each year."
+    "answer_verification": "It changes exponentially: it is multiplied by 1.12 each year."
   },
   {
     "question_id": "act-math-exponential-medium-q13",
@@ -621,43 +621,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "A population of 189 views of a video is cut to one-third every day. How many will there be after 2 days?",
+    "prompt": "A population of 176 bacteria in a culture is cut to one-quarter every hour. How many will there be after 2 hours?",
     "choices": [
       {
         "id": "A",
-        "text": "31",
-        "rationale": "This divides once by r×time instead of repeatedly."
+        "text": "168",
+        "rationale": "This subtracts instead of repeatedly dividing."
       },
       {
         "id": "B",
-        "text": "7",
+        "text": "12",
         "rationale": "This goes one period too far."
       },
       {
         "id": "C",
-        "text": "183",
-        "rationale": "This subtracts instead of repeatedly dividing."
+        "text": "11",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "63",
-        "rationale": "This stops one period too early."
+        "text": "22",
+        "rationale": "This divides once by r×time instead of repeatedly."
       },
       {
         "id": "E",
-        "text": "21",
-        "rationale": "Correct."
+        "text": "44",
+        "rationale": "This stops one period too early."
       }
     ],
-    "correct_choice": "E",
-    "explanation": "Divide by 3 each day: 189 ÷ 3^2 = 21.",
+    "correct_choice": "C",
+    "explanation": "Divide by 4 each hour: 176 ÷ 4^2 = 11.",
     "estimated_time_seconds": 80,
     "tags": [
       "advanced-math",
       "exponential",
       "family:ex_value"
     ],
-    "answer_verification": "val=21"
+    "answer_verification": "val=11"
   },
   {
     "question_id": "act-math-exponential-medium-q14",
@@ -671,36 +671,36 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "An investment of $1500 decreases by 5% each year. Which function gives the value V after t years?",
+    "prompt": "The value of a car is $1500 and increases by 8% each year. Which function gives the value V after t years?",
     "choices": [
       {
         "id": "A",
-        "text": "V(t) = 1500 − 75t",
-        "rationale": "Percent change compounds (exponential), it doesn't add a fixed amount each year."
+        "text": "V(t) = 1500(0.92)^t",
+        "rationale": "A 8% increase means a factor of 1.08, not 0.92."
       },
       {
         "id": "B",
-        "text": "V(t) = 1500(1.05)^t",
-        "rationale": "A 5% decrease means a factor of 0.95, not 1.05."
-      },
-      {
-        "id": "C",
-        "text": "V(t) = 1500·0.95·t",
+        "text": "V(t) = 1500·1.08·t",
         "rationale": "The time t belongs in the exponent."
       },
       {
+        "id": "C",
+        "text": "V(t) = 1500 + 120t",
+        "rationale": "Percent change compounds (exponential), it doesn't add a fixed amount each year."
+      },
+      {
         "id": "D",
-        "text": "V(t) = 1500(0.05)^t",
-        "rationale": "The factor is 1 ± the rate, not the rate alone."
+        "text": "V(t) = 1500(1.08)^t",
+        "rationale": "Correct."
       },
       {
         "id": "E",
-        "text": "V(t) = 1500(0.95)^t",
-        "rationale": "Correct."
+        "text": "V(t) = 1500(0.08)^t",
+        "rationale": "The factor is 1 ± the rate, not the rate alone."
       }
     ],
-    "correct_choice": "E",
-    "explanation": "A 5% decrease per year multiplies by 0.95 each year: V(t) = 1500(0.95)^t.",
+    "correct_choice": "D",
+    "explanation": "A 8% increase per year multiplies by 1.08 each year: V(t) = 1500(1.08)^t.",
     "estimated_time_seconds": 90,
     "tags": [
       "advanced-math",
@@ -708,7 +708,7 @@
       "model",
       "family:ex_model"
     ],
-    "answer_verification": "model V(t) = 1500(0.95)^t"
+    "answer_verification": "model V(t) = 1500(1.08)^t"
   },
   {
     "question_id": "act-math-exponential-medium-q15",
@@ -722,36 +722,36 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "The function f(t) = 2000(0.8)^t models the mass, in grams, of a substance t hours after it was first measured. By what percent does the quantity decrease each hour?",
+    "prompt": "The function f(t) = 1200(1.02)^t models the value, in dollars, of a collectible t years after it was first measured. By what percent does the quantity increase each year?",
     "choices": [
       {
         "id": "A",
-        "text": "200%",
-        "rationale": "The percent comes from the base, not the coefficient."
+        "text": "102%",
+        "rationale": "102% is the factor as a percent; the change is the part above or below 100%."
       },
       {
         "id": "B",
-        "text": "20%",
-        "rationale": "Correct."
+        "text": "98%",
+        "rationale": "Compare the factor to 1 (100%)."
       },
       {
         "id": "C",
-        "text": "80%",
-        "rationale": "80% is the factor as a percent; the change is the part above or below 100%."
+        "text": "4%",
+        "rationale": "Arithmetic slip; 1.02 − 1 = ±0.02."
       },
       {
         "id": "D",
         "text": "120%",
-        "rationale": "Compare the factor to 1 (100%)."
+        "rationale": "The percent comes from the base, not the coefficient."
       },
       {
         "id": "E",
-        "text": "40%",
-        "rationale": "Arithmetic slip; 0.8 − 1 = ±0.2."
+        "text": "2%",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "The factor 0.8 = 1 − 0.2, so the quantity shrinks by 20% per hour.",
+    "correct_choice": "E",
+    "explanation": "The factor 1.02 = 1 + 0.02, so the quantity grows by 2% per year.",
     "estimated_time_seconds": 80,
     "tags": [
       "advanced-math",
@@ -759,7 +759,7 @@
       "interpret",
       "family:ex_interpret"
     ],
-    "answer_verification": "rate=20%"
+    "answer_verification": "rate=2%"
   },
   {
     "question_id": "act-math-exponential-medium-q16",
@@ -773,36 +773,36 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "A radioactive sample has a half-life of 8 years: every 8 years, half of it decays. If the sample starts at 800 grams, how many grams remain after 32 years?",
+    "prompt": "A radioactive sample has a half-life of 8 years: every 8 years, half of it decays. If the sample starts at 8 grams, how many grams remain after 32 years?",
     "choices": [
       {
         "id": "A",
-        "text": "25",
-        "rationale": "Each half-life halves what remains; it doesn't subtract a fixed amount."
-      },
-      {
-        "id": "B",
-        "text": "50",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "52",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "D",
-        "text": "400",
+        "text": "4",
         "rationale": "That is after one half-life only."
       },
       {
-        "id": "E",
-        "text": "100",
+        "id": "B",
+        "text": "11/2",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      },
+      {
+        "id": "C",
+        "text": "1",
         "rationale": "Divide by 2 repeatedly (4 times), not by 2·4."
+      },
+      {
+        "id": "D",
+        "text": "1/4",
+        "rationale": "Each half-life halves what remains; it doesn't subtract a fixed amount."
+      },
+      {
+        "id": "E",
+        "text": "1/2",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "32 years is 4 half-lives; 800 ÷ 2^4 = 50 grams.",
+    "correct_choice": "E",
+    "explanation": "32 years is 4 half-lives; 8 ÷ 2^4 = 1/2 grams.",
     "estimated_time_seconds": 90,
     "tags": [
       "advanced-math",
@@ -810,7 +810,7 @@
       "half-life",
       "family:ex_periods"
     ],
-    "answer_verification": "800/2^4"
+    "answer_verification": "8/2^4"
   },
   {
     "question_id": "act-math-exponential-medium-q17",
@@ -824,36 +824,36 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "An investment of $6000 grows by 4% per year, compounded annually. Which expression gives the value, in dollars, of the investment after 4 years?",
+    "prompt": "An investment of $3000 grows by 5% per year, compounded annually. Which expression gives the value, in dollars, of the investment after 3 years?",
     "choices": [
       {
         "id": "A",
-        "text": "6000(1 + 4·0.04)",
-        "rationale": "Compound growth is repeated multiplication, not repeated addition."
-      },
-      {
-        "id": "B",
-        "text": "6000(1.04)^4",
+        "text": "3000(1.05)^3",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "3000·3·1.05",
+        "rationale": "The number of years is an exponent."
+      },
+      {
         "id": "C",
-        "text": "6000(0.04)^4",
-        "rationale": "The growth factor is 1 + r, not r."
+        "text": "3000(1 + 3·0.05)",
+        "rationale": "Compound growth is repeated multiplication, not repeated addition."
       },
       {
         "id": "D",
-        "text": "6000(1.04)·4",
-        "rationale": "Raise the factor to the power 4."
+        "text": "3000(1.05)·3",
+        "rationale": "Raise the factor to the power 3."
       },
       {
         "id": "E",
-        "text": "6000·4·1.04",
-        "rationale": "The number of years is an exponent."
+        "text": "3000(0.05)^3",
+        "rationale": "The growth factor is 1 + r, not r."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Each year multiplies the value by 1 + 4/100 = 1.04; after 4 years: 6000(1.04)^4.",
+    "correct_choice": "A",
+    "explanation": "Each year multiplies the value by 1 + 5/100 = 1.05; after 3 years: 3000(1.05)^3.",
     "estimated_time_seconds": 80,
     "tags": [
       "advanced-math",
@@ -861,7 +861,7 @@
       "compound",
       "family:ex_compound"
     ],
-    "answer_verification": "6000(1.04)^4"
+    "answer_verification": "3000(1.05)^3"
   },
   {
     "question_id": "act-math-exponential-medium-q18",
@@ -875,7 +875,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "A town's population is 200 and shrinks by 25% per year. Which statement best describes the quantity over time?",
+    "prompt": "A town's population is 200 and grows by 25% per year. Which statement best describes the quantity over time?",
     "choices": [
       {
         "id": "A",
@@ -884,27 +884,27 @@
       },
       {
         "id": "B",
-        "text": "It changes exponentially: it changes by exactly 50 every year.",
-        "rationale": "Exponential change is a constant factor, not a constant amount."
-      },
-      {
-        "id": "C",
         "text": "It changes linearly: it changes by exactly 50 every year.",
         "rationale": "A percent change is proportional to the current amount, so the yearly change is not constant."
       },
       {
+        "id": "C",
+        "text": "It changes exponentially: it changes by exactly 50 every year.",
+        "rationale": "Exponential change is a constant factor, not a constant amount."
+      },
+      {
         "id": "D",
-        "text": "It changes exponentially: it is multiplied by 0.75 each year.",
-        "rationale": "Correct."
+        "text": "It changes linearly: the same percent is applied every year.",
+        "rationale": "A constant percent is a constant multiplier, which is exponential."
       },
       {
         "id": "E",
-        "text": "It changes linearly: the same percent is applied every year.",
-        "rationale": "A constant percent is a constant multiplier, which is exponential."
+        "text": "It changes exponentially: it is multiplied by 1.25 each year.",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "A 25% decrease multiplies by 0.75 every year, so the model is exponential.",
+    "correct_choice": "E",
+    "explanation": "A 25% increase multiplies by 1.25 every year, so the model is exponential.",
     "estimated_time_seconds": 85,
     "tags": [
       "advanced-math",
@@ -912,7 +912,7 @@
       "identify",
       "family:ex_identify_type"
     ],
-    "answer_verification": "It changes exponentially: it is multiplied by 0.75 each year."
+    "answer_verification": "It changes exponentially: it is multiplied by 1.25 each year."
   },
   {
     "question_id": "act-math-exponential-medium-q19",
@@ -926,43 +926,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "A population of 198 subscribers to a newsletter is cut to one-third every month. How many will there be after 2 months?",
+    "prompt": "A population of 152 views of a video halves every day. How many will there be after 3 days?",
     "choices": [
       {
         "id": "A",
-        "text": "192",
+        "text": "146",
         "rationale": "This subtracts instead of repeatedly dividing."
       },
       {
         "id": "B",
-        "text": "22",
-        "rationale": "Correct."
+        "text": "25",
+        "rationale": "This divides once by r×time instead of repeatedly."
       },
       {
         "id": "C",
-        "text": "11",
-        "rationale": "This goes one period too far."
-      },
-      {
-        "id": "D",
-        "text": "66",
+        "text": "38",
         "rationale": "This stops one period too early."
       },
       {
+        "id": "D",
+        "text": "20",
+        "rationale": "This goes one period too far."
+      },
+      {
         "id": "E",
-        "text": "33",
-        "rationale": "This divides once by r×time instead of repeatedly."
+        "text": "19",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Divide by 3 each month: 198 ÷ 3^2 = 22.",
+    "correct_choice": "E",
+    "explanation": "Divide by 2 each day: 152 ÷ 2^3 = 19.",
     "estimated_time_seconds": 80,
     "tags": [
       "advanced-math",
       "exponential",
       "family:ex_value"
     ],
-    "answer_verification": "val=22"
+    "answer_verification": "val=19"
   },
   {
     "question_id": "act-math-exponential-medium-q20",
@@ -976,36 +976,36 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "The value of a car is $100 and increases by 12% each year. Which function gives the value V after t years?",
+    "prompt": "The value of a car is $100 and decreases by 4% each year. Which function gives the value V after t years?",
     "choices": [
       {
         "id": "A",
-        "text": "V(t) = 100(0.12)^t",
-        "rationale": "The factor is 1 ± the rate, not the rate alone."
-      },
-      {
-        "id": "B",
-        "text": "V(t) = 100(0.88)^t",
-        "rationale": "A 12% increase means a factor of 1.12, not 0.88."
-      },
-      {
-        "id": "C",
-        "text": "V(t) = 100(1.12)^t",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "V(t) = 100·1.12·t",
+        "text": "V(t) = 100·0.96·t",
         "rationale": "The time t belongs in the exponent."
       },
       {
-        "id": "E",
-        "text": "V(t) = 100 + 12t",
+        "id": "B",
+        "text": "V(t) = 100(0.96)^t",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "V(t) = 100 − 4t",
         "rationale": "Percent change compounds (exponential), it doesn't add a fixed amount each year."
+      },
+      {
+        "id": "D",
+        "text": "V(t) = 100(1.04)^t",
+        "rationale": "A 4% decrease means a factor of 0.96, not 1.04."
+      },
+      {
+        "id": "E",
+        "text": "V(t) = 100(0.04)^t",
+        "rationale": "The factor is 1 ± the rate, not the rate alone."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "A 12% increase per year multiplies by 1.12 each year: V(t) = 100(1.12)^t.",
+    "correct_choice": "B",
+    "explanation": "A 4% decrease per year multiplies by 0.96 each year: V(t) = 100(0.96)^t.",
     "estimated_time_seconds": 90,
     "tags": [
       "advanced-math",
@@ -1013,6 +1013,6 @@
       "model",
       "family:ex_model"
     ],
-    "answer_verification": "model V(t) = 100(1.12)^t"
+    "answer_verification": "model V(t) = 100(0.96)^t"
   }
 ]

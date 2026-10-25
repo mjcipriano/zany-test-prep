@@ -882,7 +882,8 @@ def ui_number_amount(rng, difficulty):
           ("quantity" if countable else "sum", "This word does not fit the kind of thing being described."),
           ("numbers" if countable else "amounts", "The singular is needed after 'the ___ of'.")]
     if difficulty != "easy":
-        text = rng.choice(["According to the survey, ", "As the ranger noted, ", "Last year, "]) + low(text)
+        # (no "Last year, ": several sentences are in the present tense)
+        text = rng.choice(["According to the survey, ", "As the ranger noted, ", "As the report shows, "]) + low(text)
     if difficulty == "hard":
         text = text + " " + rng.choice(["The trend continues.", "No one could explain it.", "The figure is now posted online."])
     return build(rng, fill(text, _stem(rng)), correct, ds, subskill="confused_words",

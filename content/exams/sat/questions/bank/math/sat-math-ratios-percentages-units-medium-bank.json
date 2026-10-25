@@ -9,25 +9,40 @@
     "lesson_id": "sat-math-ratios-percentages-units-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "student_produced",
+    "question_type": "multiple_choice",
     "subskill": "percent_change",
-    "prompt": "A value increases from 300 to 360. By what percent did it increase? (Ignore the percent sign when gridding.)",
-    "answer": {
-      "type": "numeric",
-      "value": 20,
-      "accepted": [
-        "20"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "(360 − 300)/300 × 100 = 20.",
-    "estimated_time_seconds": 75,
+    "prompt": "A laptop's price dropped from $520 to $208. What was the percent decrease in price?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "60%",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "150%",
+        "rationale": "Divide by the original value, not the new value."
+      },
+      {
+        "id": "C",
+        "text": "312%",
+        "rationale": "This is the raw change, not the percent change."
+      },
+      {
+        "id": "D",
+        "text": "65%",
+        "rationale": "Recheck the division."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Percent decrease = |new − old|/old × 100 = 312/520 × 100 = 60%.",
+    "estimated_time_seconds": 80,
     "tags": [
       "percent",
-      "grid-in",
-      "family:rp_gridin"
+      "change",
+      "family:rp_percent_change"
     ],
-    "answer_verification": "val=20"
+    "answer_verification": "decrease=60%"
   },
   {
     "question_id": "sat-math-ratios-percentages-units-medium-b0002",
@@ -39,25 +54,41 @@
     "lesson_id": "sat-math-ratios-percentages-units-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "student_produced",
-    "subskill": "percent_change",
-    "prompt": "A value increases from 900 to 1260. By what percent did it increase? (Ignore the percent sign when gridding.)",
-    "answer": {
-      "type": "numeric",
-      "value": 40,
-      "accepted": [
-        "40"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "(1260 − 900)/900 × 100 = 40.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "percent",
-      "grid-in",
-      "family:rp_gridin"
+    "question_type": "multiple_choice",
+    "subskill": "unit_rate",
+    "prompt": "Four packages of detergent are priced as follows: 8 ounces for $8.72; 16 ounces for $18.88; 24 ounces for $29.04; 40 ounces for $49.60. Which package has the lowest price per ounce?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "24 ounces for $29.04",
+        "rationale": "Its unit price is $1.21 per ounce, higher than $1.09."
+      },
+      {
+        "id": "B",
+        "text": "8 ounces for $8.72",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "40 ounces for $49.60",
+        "rationale": "Its unit price is $1.24 per ounce, higher than $1.09."
+      },
+      {
+        "id": "D",
+        "text": "16 ounces for $18.88",
+        "rationale": "Its unit price is $1.18 per ounce, higher than $1.09."
+      }
     ],
-    "answer_verification": "val=40"
+    "correct_choice": "B",
+    "explanation": "Compute each price per ounce: $1.09, $1.18, $1.21, $1.24. The lowest is $1.09.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "ratio",
+      "unit-price",
+      "compare",
+      "family:rp_best_deal"
+    ],
+    "answer_verification": "best=8"
   },
   {
     "question_id": "sat-math-ratios-percentages-units-medium-b0003",
@@ -71,37 +102,39 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "unit_rate",
-    "prompt": "How many cups are in 9 gallons? (1 gallon = 4 quarts and 1 quart = 4 cups.)",
+    "prompt": "Four packages of coffee are priced as follows: 10 pounds for $2.60; 12 pounds for $5.28; 16 pounds for $6.56; 40 pounds for $12.80. Which package has the lowest price per pound?",
     "choices": [
       {
         "id": "A",
-        "text": "9/16",
-        "rationale": "Multiply to convert to a smaller unit."
-      },
-      {
-        "id": "B",
-        "text": "36",
-        "rationale": "Only one of the two conversion steps was applied."
-      },
-      {
-        "id": "C",
-        "text": "144",
+        "text": "10 pounds for $2.60",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "40 pounds for $12.80",
+        "rationale": "Its unit price is $0.32 per pound, higher than $0.26."
+      },
+      {
+        "id": "C",
+        "text": "16 pounds for $6.56",
+        "rationale": "Its unit price is $0.41 per pound, higher than $0.26."
+      },
+      {
         "id": "D",
-        "text": "160",
-        "rationale": "Arithmetic slip; recompute."
+        "text": "12 pounds for $5.28",
+        "rationale": "Its unit price is $0.44 per pound, higher than $0.26."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "9 × 16 = 144 cups.",
-    "estimated_time_seconds": 90,
+    "correct_choice": "A",
+    "explanation": "Compute each price per pound: $0.26, $0.44, $0.41, $0.32. The lowest is $0.26.",
+    "estimated_time_seconds": 95,
     "tags": [
-      "units",
-      "family:rp_units"
+      "ratio",
+      "unit-price",
+      "compare",
+      "family:rp_best_deal"
     ],
-    "answer_verification": "val=144"
+    "answer_verification": "best=10"
   },
   {
     "question_id": "sat-math-ratios-percentages-units-medium-b0004",
@@ -115,38 +148,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "percent_change",
-    "prompt": "A laptop's price dropped from $300 to $210. What was the percent decrease in price?",
+    "prompt": "Last year a shop sold 160 units; this year it sold 40. By what percent did sales decrease?",
     "choices": [
       {
         "id": "A",
-        "text": "42.9%",
-        "rationale": "Divide by the original value, not the new value."
-      },
-      {
-        "id": "B",
-        "text": "35%",
+        "text": "80%",
         "rationale": "Recheck the division."
       },
       {
-        "id": "C",
-        "text": "30%",
+        "id": "B",
+        "text": "75%",
         "rationale": "Correct."
       },
       {
-        "id": "D",
-        "text": "90%",
+        "id": "C",
+        "text": "120%",
         "rationale": "This is the raw change, not the percent change."
+      },
+      {
+        "id": "D",
+        "text": "300%",
+        "rationale": "Divide by the original value, not the new value."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Percent decrease = |new − old|/old × 100 = 90/300 × 100 = 30%.",
+    "correct_choice": "B",
+    "explanation": "Percent decrease = |new − old|/old × 100 = 120/160 × 100 = 75%.",
     "estimated_time_seconds": 80,
     "tags": [
       "percent",
       "change",
       "family:rp_percent_change"
     ],
-    "answer_verification": "decrease=30%"
+    "answer_verification": "decrease=75%"
   },
   {
     "question_id": "sat-math-ratios-percentages-units-medium-b0005",
@@ -159,38 +192,38 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "percent_change",
-    "prompt": "A team won 39 of its 65 games. What percent of its games did the team win?",
+    "subskill": "unit_rate",
+    "prompt": "The ratio of cats to dogs animals at a shelter is 1:4, and there are 145 in all. How many cats are there?",
     "choices": [
       {
         "id": "A",
-        "text": "60%",
-        "rationale": "Correct."
+        "text": "116",
+        "rationale": "That is the number of dogs."
       },
       {
         "id": "B",
-        "text": "26%",
-        "rationale": "That is the number of the rest, not a percent."
+        "text": "145",
+        "rationale": "Recheck: each part is 29."
       },
       {
         "id": "C",
-        "text": "167%",
-        "rationale": "Divide the part by the whole, not the whole by the part."
+        "text": "145/4",
+        "rationale": "Divide the total by the sum of the ratio parts, not by 4."
       },
       {
         "id": "D",
-        "text": "40%",
-        "rationale": "That is the percent of the remaining part."
+        "text": "29",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "39/65 = 0.60, which is 60%.",
+    "correct_choice": "D",
+    "explanation": "The ratio has 1 + 4 = 5 parts; each part is 145/5 = 29, so cats = 1·29 = 29.",
     "estimated_time_seconds": 75,
     "tags": [
-      "percent",
-      "family:rp_percent_of"
+      "ratio",
+      "family:rp_ratio"
     ],
-    "answer_verification": "39/65=60%"
+    "answer_verification": "29:116"
   },
   {
     "question_id": "sat-math-ratios-percentages-units-medium-b0006",
@@ -203,38 +236,40 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "percent_change",
-    "prompt": "32 is what percent of 40?",
+    "subskill": "unit_rate",
+    "prompt": "Four packages of trail mix are priced as follows: 8 grams for $6.88; 24 grams for $21.36; 32 grams for $26.56; 48 grams for $34.08. Which package has the lowest price per gram?",
     "choices": [
       {
         "id": "A",
-        "text": "125%",
-        "rationale": "Divide the part by the whole, not the whole by the part."
+        "text": "8 grams for $6.88",
+        "rationale": "Its unit price is $0.86 per gram, higher than $0.71."
       },
       {
         "id": "B",
-        "text": "20%",
-        "rationale": "That is the percent of the remaining part."
+        "text": "24 grams for $21.36",
+        "rationale": "Its unit price is $0.89 per gram, higher than $0.71."
       },
       {
         "id": "C",
-        "text": "80%",
+        "text": "48 grams for $34.08",
         "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "8%",
-        "rationale": "That is the number of the rest, not a percent."
+        "text": "32 grams for $26.56",
+        "rationale": "Its unit price is $0.83 per gram, higher than $0.71."
       }
     ],
     "correct_choice": "C",
-    "explanation": "32/40 = 0.80, which is 80%.",
-    "estimated_time_seconds": 75,
+    "explanation": "Compute each price per gram: $0.86, $0.89, $0.83, $0.71. The lowest is $0.71.",
+    "estimated_time_seconds": 95,
     "tags": [
-      "percent",
-      "family:rp_percent_of"
+      "ratio",
+      "unit-price",
+      "compare",
+      "family:rp_best_deal"
     ],
-    "answer_verification": "32/40=80%"
+    "answer_verification": "best=48"
   },
   {
     "question_id": "sat-math-ratios-percentages-units-medium-b0007",
@@ -247,38 +282,40 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "percent_change",
-    "prompt": "A team won 68 of its 85 games. What percent of its games did the team win?",
+    "subskill": "unit_rate",
+    "prompt": "Four packages of detergent are priced as follows: 8 grams for $5.04; 24 grams for $16.56; 32 grams for $16.32; 48 grams for $31.68. Which package has the lowest price per gram?",
     "choices": [
       {
         "id": "A",
-        "text": "20%",
-        "rationale": "That is the percent of the remaining part."
-      },
-      {
-        "id": "B",
-        "text": "80%",
+        "text": "32 grams for $16.32",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "48 grams for $31.68",
+        "rationale": "Its unit price is $0.66 per gram, higher than $0.51."
+      },
+      {
         "id": "C",
-        "text": "125%",
-        "rationale": "Divide the part by the whole, not the whole by the part."
+        "text": "8 grams for $5.04",
+        "rationale": "Its unit price is $0.63 per gram, higher than $0.51."
       },
       {
         "id": "D",
-        "text": "17%",
-        "rationale": "That is the number of the rest, not a percent."
+        "text": "24 grams for $16.56",
+        "rationale": "Its unit price is $0.69 per gram, higher than $0.51."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "68/85 = 0.80, which is 80%.",
-    "estimated_time_seconds": 75,
+    "correct_choice": "A",
+    "explanation": "Compute each price per gram: $0.63, $0.69, $0.51, $0.66. The lowest is $0.51.",
+    "estimated_time_seconds": 95,
     "tags": [
-      "percent",
-      "family:rp_percent_of"
+      "ratio",
+      "unit-price",
+      "compare",
+      "family:rp_best_deal"
     ],
-    "answer_verification": "68/85=80%"
+    "answer_verification": "best=32"
   },
   {
     "question_id": "sat-math-ratios-percentages-units-medium-b0008",
@@ -292,31 +329,120 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "unit_rate",
-    "prompt": "Four packages of trail mix are priced as follows: 6 grams for $2.64; 12 grams for $5.64; 20 grams for $8.20; 24 grams for $14.16. Which package has the lowest price per {unit}?",
+    "prompt": "How many inches are in 11/4 yards? (1 yard = 3 feet and 1 foot = 12 inches.)",
     "choices": [
       {
         "id": "A",
-        "text": "24 grams for $14.16",
-        "rationale": "Its unit price is $0.59 per gram, higher than $0.41."
-      },
-      {
-        "id": "B",
-        "text": "20 grams for $8.20",
+        "text": "99",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "33/4",
+        "rationale": "Only one of the two conversion steps was applied."
+      },
+      {
         "id": "C",
-        "text": "12 grams for $5.64",
-        "rationale": "Its unit price is $0.47 per gram, higher than $0.41."
+        "text": "49",
+        "rationale": "Multiply to convert to a smaller unit."
       },
       {
         "id": "D",
-        "text": "6 grams for $2.64",
-        "rationale": "Its unit price is $0.44 per gram, higher than $0.41."
+        "text": "135",
+        "rationale": "Arithmetic slip; recompute."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Compute each price per gram: $0.44, $0.47, $0.41, $0.59. The lowest is $0.41.",
+    "correct_choice": "A",
+    "explanation": "11/4 × 36 = 99 inches.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "units",
+      "family:rp_units"
+    ],
+    "answer_verification": "val=99"
+  },
+  {
+    "question_id": "sat-math-ratios-percentages-units-medium-b0009",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "ratios_percentages_units",
+    "lesson_id": "sat-math-ratios-percentages-units-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "percent_change",
+    "prompt": "Last year a shop sold 1120 units; this year it sold 1288. By what percent did sales increase?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "13%",
+        "rationale": "Divide by the original value, not the new value."
+      },
+      {
+        "id": "B",
+        "text": "20%",
+        "rationale": "Recheck the division."
+      },
+      {
+        "id": "C",
+        "text": "15%",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "168%",
+        "rationale": "This is the raw change, not the percent change."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "Percent increase = |new − old|/old × 100 = 168/1120 × 100 = 15%.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "percent",
+      "change",
+      "family:rp_percent_change"
+    ],
+    "answer_verification": "increase=15%"
+  },
+  {
+    "question_id": "sat-math-ratios-percentages-units-medium-b0010",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "ratios_percentages_units",
+    "lesson_id": "sat-math-ratios-percentages-units-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "unit_rate",
+    "prompt": "Four packages of juice are priced as follows: 10 grams for $8.90; 20 grams for $20.80; 32 grams for $31.36; 48 grams for $41.28. Which package has the lowest price per gram?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "48 grams for $41.28",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "32 grams for $31.36",
+        "rationale": "Its unit price is $0.98 per gram, higher than $0.86."
+      },
+      {
+        "id": "C",
+        "text": "20 grams for $20.80",
+        "rationale": "Its unit price is $1.04 per gram, higher than $0.86."
+      },
+      {
+        "id": "D",
+        "text": "10 grams for $8.90",
+        "rationale": "Its unit price is $0.89 per gram, higher than $0.86."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Compute each price per gram: $0.89, $1.04, $0.98, $0.86. The lowest is $0.86.",
     "estimated_time_seconds": 95,
     "tags": [
       "ratio",
@@ -324,10 +450,85 @@
       "compare",
       "family:rp_best_deal"
     ],
-    "answer_verification": "best=20"
+    "answer_verification": "best=48"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0009",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0011",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "ratios_percentages_units",
+    "lesson_id": "sat-math-ratios-percentages-units-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "percent_change",
+    "prompt": "After a 8% sales tax was added, Nina paid $27 for a jacket. What was the price of the jacket before tax, in dollars?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$24.84",
+        "rationale": "Divide by 1.08; don't subtract 8%."
+      },
+      {
+        "id": "B",
+        "text": "$27",
+        "rationale": "That is the total with tax."
+      },
+      {
+        "id": "C",
+        "text": "$19",
+        "rationale": "The tax is a percent, not $8."
+      },
+      {
+        "id": "D",
+        "text": "$25",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "total = price × (1 + 8/100), so price = 27 ÷ 27/25 = 25.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "percent",
+      "money",
+      "family:rp_tax_tip"
+    ],
+    "answer_verification": "val=25"
+  },
+  {
+    "question_id": "sat-math-ratios-percentages-units-medium-b0012",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "ratios_percentages_units",
+    "lesson_id": "sat-math-ratios-percentages-units-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "student_produced",
+    "subskill": "percent_change",
+    "prompt": "A value increases from 960 to 1104. By what percent did it increase? (Ignore the percent sign when gridding.)",
+    "answer": {
+      "type": "numeric",
+      "value": 15,
+      "accepted": [
+        "15"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "(1104 − 960)/960 × 100 = 15.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "percent",
+      "grid-in",
+      "family:rp_gridin"
+    ],
+    "answer_verification": "val=15"
+  },
+  {
+    "question_id": "sat-math-ratios-percentages-units-medium-b0013",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -371,7 +572,7 @@
     "answer_verification": "val=24"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0010",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0014",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -415,7 +616,7 @@
     "answer_verification": "90:36"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0011",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0015",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -459,7 +660,7 @@
     "answer_verification": "val=320"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0012",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0016",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -504,7 +705,7 @@
     "answer_verification": "val=59"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0013",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0017",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -548,7 +749,7 @@
     "answer_verification": "12/100=12%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0014",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0018",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -592,7 +793,7 @@
     "answer_verification": "51/60=85%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0015",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0019",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -636,7 +837,7 @@
     "answer_verification": "24/160=15%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0016",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0020",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -681,7 +882,7 @@
     "answer_verification": "val=56"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0017",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0021",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -725,7 +926,7 @@
     "answer_verification": "30:18"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0018",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0022",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -770,7 +971,7 @@
     "answer_verification": "decrease=25%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0019",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0023",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -800,7 +1001,7 @@
     "answer_verification": "val=40"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0020",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0024",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -845,7 +1046,7 @@
     "answer_verification": "val=22"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0021",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0025",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -856,7 +1057,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "unit_rate",
-    "prompt": "Four packages of juice are priced as follows: 12 pounds for $12.96; 20 pounds for $19.80; 24 pounds for $27.36; 40 pounds for $44.40. Which package has the lowest price per {unit}?",
+    "prompt": "Four packages of juice are priced as follows: 12 pounds for $12.96; 20 pounds for $19.80; 24 pounds for $27.36; 40 pounds for $44.40. Which package has the lowest price per pound?",
     "choices": [
       {
         "id": "A",
@@ -891,7 +1092,7 @@
     "answer_verification": "best=20"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0022",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0026",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -921,7 +1122,7 @@
     "answer_verification": "val=5"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0023",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0027",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -966,7 +1167,7 @@
     "answer_verification": "val=40"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0024",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0028",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -996,7 +1197,7 @@
     "answer_verification": "val=10"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0025",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0029",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1040,7 +1241,7 @@
     "answer_verification": "val=43200"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0026",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0030",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1085,7 +1286,7 @@
     "answer_verification": "decrease=75%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0027",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0031",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1129,7 +1330,7 @@
     "answer_verification": "27/45=60%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0028",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0032",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1174,7 +1375,7 @@
     "answer_verification": "increase=15%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0029",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0033",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1218,7 +1419,7 @@
     "answer_verification": "78/195=40%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0030",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0034",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1263,7 +1464,7 @@
     "answer_verification": "increase=40%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0031",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0035",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1307,7 +1508,7 @@
     "answer_verification": "55:33"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0032",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0036",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1351,7 +1552,7 @@
     "answer_verification": "val=8"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0033",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0037",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1396,7 +1597,7 @@
     "answer_verification": "decrease=60%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0034",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0038",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1441,7 +1642,7 @@
     "answer_verification": "increase=60%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0035",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0039",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1486,7 +1687,7 @@
     "answer_verification": "decrease=20%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0036",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0040",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1531,7 +1732,7 @@
     "answer_verification": "val=7"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0037",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0041",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1542,7 +1743,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "unit_rate",
-    "prompt": "Four packages of juice are priced as follows: 16 ounces for $18.24; 20 ounces for $22.20; 32 ounces for $32.64; 48 ounces for $51.84. Which package has the lowest price per {unit}?",
+    "prompt": "Four packages of juice are priced as follows: 16 ounces for $18.24; 20 ounces for $22.20; 32 ounces for $32.64; 48 ounces for $51.84. Which package has the lowest price per ounce?",
     "choices": [
       {
         "id": "A",
@@ -1577,7 +1778,7 @@
     "answer_verification": "best=32"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0038",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0042",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1621,7 +1822,7 @@
     "answer_verification": "92:23"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0039",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0043",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1666,7 +1867,7 @@
     "answer_verification": "val=59"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0040",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0044",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1711,7 +1912,7 @@
     "answer_verification": "decrease=60%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0041",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0045",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1755,7 +1956,7 @@
     "answer_verification": "15:60"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0042",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0046",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1799,7 +2000,7 @@
     "answer_verification": "54/135=40%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0043",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0047",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1843,7 +2044,7 @@
     "answer_verification": "72/160=45%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0044",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0048",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1887,7 +2088,7 @@
     "answer_verification": "90:144"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0045",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0049",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1932,7 +2133,7 @@
     "answer_verification": "val=25"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0046",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0050",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1976,7 +2177,7 @@
     "answer_verification": "90:36"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0047",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0051",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1987,7 +2188,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "unit_rate",
-    "prompt": "Four packages of coffee are priced as follows: 6 pounds for $5.64; 10 pounds for $8.80; 16 pounds for $13.12; 20 pounds for $15.80. Which package has the lowest price per {unit}?",
+    "prompt": "Four packages of coffee are priced as follows: 6 pounds for $5.64; 10 pounds for $8.80; 16 pounds for $13.12; 20 pounds for $15.80. Which package has the lowest price per pound?",
     "choices": [
       {
         "id": "A",
@@ -2022,7 +2223,7 @@
     "answer_verification": "best=20"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0048",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0052",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2067,7 +2268,7 @@
     "answer_verification": "increase=60%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0049",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0053",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2111,7 +2312,7 @@
     "answer_verification": "64:40"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0050",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0054",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2156,7 +2357,7 @@
     "answer_verification": "decrease=10%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0051",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0055",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2186,7 +2387,7 @@
     "answer_verification": "val=10"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0052",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0056",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2230,7 +2431,7 @@
     "answer_verification": "val=7200"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0053",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0057",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2275,7 +2476,7 @@
     "answer_verification": "decrease=60%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0054",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0058",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2320,7 +2521,7 @@
     "answer_verification": "decrease=30%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0055",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0059",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2365,7 +2566,7 @@
     "answer_verification": "decrease=10%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0056",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0060",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2410,7 +2611,7 @@
     "answer_verification": "decrease=10%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0057",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0061",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2455,7 +2656,7 @@
     "answer_verification": "val=49"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0058",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0062",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2485,7 +2686,7 @@
     "answer_verification": "val=40"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0059",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0063",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2529,7 +2730,7 @@
     "answer_verification": "36/180=20%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0060",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0064",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2540,7 +2741,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "unit_rate",
-    "prompt": "Four packages of coffee are priced as follows: 8 grams for $4.08; 12 grams for $5.76; 32 grams for $12.48; 40 grams for $21.60. Which package has the lowest price per {unit}?",
+    "prompt": "Four packages of coffee are priced as follows: 8 grams for $4.08; 12 grams for $5.76; 32 grams for $12.48; 40 grams for $21.60. Which package has the lowest price per gram?",
     "choices": [
       {
         "id": "A",
@@ -2575,7 +2776,7 @@
     "answer_verification": "best=32"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0061",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0065",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2620,7 +2821,7 @@
     "answer_verification": "increase=20%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0062",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0066",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2631,7 +2832,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "unit_rate",
-    "prompt": "Four packages of rice are priced as follows: 6 ounces for $5.76; 8 ounces for $8.88; 10 ounces for $10.20; 32 ounces for $31.68. Which package has the lowest price per {unit}?",
+    "prompt": "Four packages of rice are priced as follows: 6 ounces for $5.76; 8 ounces for $8.88; 10 ounces for $10.20; 32 ounces for $31.68. Which package has the lowest price per ounce?",
     "choices": [
       {
         "id": "A",
@@ -2666,7 +2867,7 @@
     "answer_verification": "best=6"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0063",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0067",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2711,7 +2912,7 @@
     "answer_verification": "val=18"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0064",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0068",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2755,7 +2956,7 @@
     "answer_verification": "70/100=70%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0065",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0069",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2800,7 +3001,7 @@
     "answer_verification": "val=57"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0066",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0070",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2844,7 +3045,7 @@
     "answer_verification": "115:46"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0067",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0071",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2888,7 +3089,7 @@
     "answer_verification": "val=240"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0068",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0072",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2918,7 +3119,7 @@
     "answer_verification": "val=20"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0069",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0073",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2962,7 +3163,7 @@
     "answer_verification": "5:20"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0070",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0074",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2992,7 +3193,7 @@
     "answer_verification": "val=25"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0071",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0075",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3003,7 +3204,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "unit_rate",
-    "prompt": "Four packages of coffee are priced as follows: 8 liters for $8.48; 16 liters for $17.44; 24 liters for $21.84; 32 liters for $32.96. Which package has the lowest price per {unit}?",
+    "prompt": "Four packages of coffee are priced as follows: 8 liters for $8.48; 16 liters for $17.44; 24 liters for $21.84; 32 liters for $32.96. Which package has the lowest price per liter?",
     "choices": [
       {
         "id": "A",
@@ -3038,7 +3239,7 @@
     "answer_verification": "best=24"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0072",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0076",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3082,7 +3283,7 @@
     "answer_verification": "102/120=85%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0073",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0077",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3126,7 +3327,7 @@
     "answer_verification": "val=56"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0074",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0078",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3137,7 +3338,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "unit_rate",
-    "prompt": "Four packages of juice are priced as follows: 10 ounces for $2.20; 32 ounces for $10.88; 40 ounces for $6.40; 48 ounces for $14.88. Which package has the lowest price per {unit}?",
+    "prompt": "Four packages of juice are priced as follows: 10 ounces for $2.20; 32 ounces for $10.88; 40 ounces for $6.40; 48 ounces for $14.88. Which package has the lowest price per ounce?",
     "choices": [
       {
         "id": "A",
@@ -3172,7 +3373,7 @@
     "answer_verification": "best=40"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0075",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0079",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3183,7 +3384,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "unit_rate",
-    "prompt": "Four packages of detergent are priced as follows: 10 grams for $6.90; 16 grams for $9.12; 24 grams for $12.24; 40 grams for $21.60. Which package has the lowest price per {unit}?",
+    "prompt": "Four packages of detergent are priced as follows: 10 grams for $6.90; 16 grams for $9.12; 24 grams for $12.24; 40 grams for $21.60. Which package has the lowest price per gram?",
     "choices": [
       {
         "id": "A",
@@ -3218,7 +3419,7 @@
     "answer_verification": "best=24"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0076",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0080",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3263,7 +3464,7 @@
     "answer_verification": "val=49"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0077",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0081",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3274,7 +3475,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "unit_rate",
-    "prompt": "Four packages of trail mix are priced as follows: 6 grams for $4.86; 10 grams for $8.70; 24 grams for $20.16; 40 grams for $37.20. Which package has the lowest price per {unit}?",
+    "prompt": "Four packages of trail mix are priced as follows: 6 grams for $4.86; 10 grams for $8.70; 24 grams for $20.16; 40 grams for $37.20. Which package has the lowest price per gram?",
     "choices": [
       {
         "id": "A",
@@ -3309,7 +3510,7 @@
     "answer_verification": "best=6"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0078",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0082",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3339,7 +3540,7 @@
     "answer_verification": "val=20"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0079",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0083",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3383,7 +3584,7 @@
     "answer_verification": "val=160"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0080",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0084",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3428,7 +3629,7 @@
     "answer_verification": "val=47"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0081",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0085",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3473,7 +3674,7 @@
     "answer_verification": "val=43"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0082",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0086",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3518,7 +3719,7 @@
     "answer_verification": "decrease=15%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0083",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0087",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3563,7 +3764,7 @@
     "answer_verification": "increase=40%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0084",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0088",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3608,7 +3809,7 @@
     "answer_verification": "decrease=20%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0085",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0089",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3619,7 +3820,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "unit_rate",
-    "prompt": "Four packages of cereal are priced as follows: 6 liters for $3.06; 12 liters for $4.68; 16 liters for $8.64; 20 liters for $8.40. Which package has the lowest price per {unit}?",
+    "prompt": "Four packages of cereal are priced as follows: 6 liters for $3.06; 12 liters for $4.68; 16 liters for $8.64; 20 liters for $8.40. Which package has the lowest price per liter?",
     "choices": [
       {
         "id": "A",
@@ -3654,7 +3855,7 @@
     "answer_verification": "best=12"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0086",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0090",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3698,7 +3899,7 @@
     "answer_verification": "val=12"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0087",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0091",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3743,7 +3944,7 @@
     "answer_verification": "decrease=25%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0088",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0092",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3773,7 +3974,7 @@
     "answer_verification": "val=20"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0089",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0093",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3818,7 +4019,7 @@
     "answer_verification": "increase=50%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0090",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0094",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3848,7 +4049,7 @@
     "answer_verification": "val=5"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0091",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0095",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3859,7 +4060,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "unit_rate",
-    "prompt": "Four packages of coffee are priced as follows: 6 ounces for $3.54; 12 ounces for $5.28; 20 ounces for $10.60; 48 ounces for $26.88. Which package has the lowest price per {unit}?",
+    "prompt": "Four packages of coffee are priced as follows: 6 ounces for $3.54; 12 ounces for $5.28; 20 ounces for $10.60; 48 ounces for $26.88. Which package has the lowest price per ounce?",
     "choices": [
       {
         "id": "A",
@@ -3894,7 +4095,7 @@
     "answer_verification": "best=12"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0092",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0096",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3939,7 +4140,7 @@
     "answer_verification": "increase=20%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0093",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0097",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3984,7 +4185,7 @@
     "answer_verification": "increase=10%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0094",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0098",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4028,7 +4229,7 @@
     "answer_verification": "val=80"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0095",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0099",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4058,7 +4259,7 @@
     "answer_verification": "val=20"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0096",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0100",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4102,7 +4303,7 @@
     "answer_verification": "75/100=75%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0097",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0101",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4147,7 +4348,7 @@
     "answer_verification": "val=57"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0098",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0102",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4177,7 +4378,7 @@
     "answer_verification": "val=15"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0099",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0103",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4222,7 +4423,7 @@
     "answer_verification": "val=49"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0100",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0104",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4252,7 +4453,7 @@
     "answer_verification": "val=30"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0101",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0105",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4263,7 +4464,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "unit_rate",
-    "prompt": "Four packages of rice are priced as follows: 12 grams for $7.08; 16 grams for $7.52; 40 grams for $22.40; 48 grams for $19.68. Which package has the lowest price per {unit}?",
+    "prompt": "Four packages of rice are priced as follows: 12 grams for $7.08; 16 grams for $7.52; 40 grams for $22.40; 48 grams for $19.68. Which package has the lowest price per gram?",
     "choices": [
       {
         "id": "A",
@@ -4298,7 +4499,7 @@
     "answer_verification": "best=48"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0102",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0106",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4343,7 +4544,7 @@
     "answer_verification": "decrease=40%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0103",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0107",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4373,7 +4574,7 @@
     "answer_verification": "val=40"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0104",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0108",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4417,7 +4618,7 @@
     "answer_verification": "val=96"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0105",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0109",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4461,7 +4662,7 @@
     "answer_verification": "5/100=5%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0106",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0110",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4472,7 +4673,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "unit_rate",
-    "prompt": "Four packages of detergent are priced as follows: 6 liters for $4.98; 8 liters for $7.12; 24 liters for $17.04; 32 liters for $27.52. Which package has the lowest price per {unit}?",
+    "prompt": "Four packages of detergent are priced as follows: 6 liters for $4.98; 8 liters for $7.12; 24 liters for $17.04; 32 liters for $27.52. Which package has the lowest price per liter?",
     "choices": [
       {
         "id": "A",
@@ -4507,7 +4708,7 @@
     "answer_verification": "best=24"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0107",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0111",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4551,7 +4752,7 @@
     "answer_verification": "val=2880"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0108",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0112",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4596,7 +4797,7 @@
     "answer_verification": "increase=20%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0109",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0113",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4641,7 +4842,7 @@
     "answer_verification": "increase=5%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0110",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0114",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4685,7 +4886,7 @@
     "answer_verification": "26:65"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0111",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0115",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4715,7 +4916,7 @@
     "answer_verification": "val=10"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0112",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0116",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4759,7 +4960,7 @@
     "answer_verification": "77:55"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0113",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0117",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4789,7 +4990,7 @@
     "answer_verification": "val=25"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0114",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0118",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4833,7 +5034,7 @@
     "answer_verification": "35:56"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0115",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0119",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4878,7 +5079,7 @@
     "answer_verification": "decrease=30%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0116",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0120",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4923,7 +5124,7 @@
     "answer_verification": "increase=40%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0117",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0121",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4967,7 +5168,7 @@
     "answer_verification": "6:18"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0118",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0122",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5011,7 +5212,7 @@
     "answer_verification": "4:16"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0119",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0123",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5056,7 +5257,7 @@
     "answer_verification": "decrease=25%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0120",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0124",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5067,7 +5268,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "unit_rate",
-    "prompt": "Four packages of coffee are priced as follows: 16 grams for $15.52; 24 grams for $24.72; 32 grams for $30.08; 48 grams for $52.32. Which package has the lowest price per {unit}?",
+    "prompt": "Four packages of coffee are priced as follows: 16 grams for $15.52; 24 grams for $24.72; 32 grams for $30.08; 48 grams for $52.32. Which package has the lowest price per gram?",
     "choices": [
       {
         "id": "A",
@@ -5102,7 +5303,7 @@
     "answer_verification": "best=32"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0121",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0125",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5146,7 +5347,7 @@
     "answer_verification": "val=90"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0122",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0126",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5190,7 +5391,7 @@
     "answer_verification": "val=2000000"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0123",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0127",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5234,7 +5435,7 @@
     "answer_verification": "21:15"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0124",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0128",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5278,7 +5479,7 @@
     "answer_verification": "171/190=90%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0125",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0129",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5323,7 +5524,7 @@
     "answer_verification": "val=25"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0126",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0130",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5368,7 +5569,7 @@
     "answer_verification": "increase=60%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0127",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0131",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5379,7 +5580,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "unit_rate",
-    "prompt": "Four packages of detergent are priced as follows: 16 liters for $18.24; 32 liters for $34.56; 40 liters for $40.80; 48 liters for $46.08. Which package has the lowest price per {unit}?",
+    "prompt": "Four packages of detergent are priced as follows: 16 liters for $18.24; 32 liters for $34.56; 40 liters for $40.80; 48 liters for $46.08. Which package has the lowest price per liter?",
     "choices": [
       {
         "id": "A",
@@ -5414,7 +5615,7 @@
     "answer_verification": "best=48"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0128",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0132",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5444,7 +5645,7 @@
     "answer_verification": "val=20"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0129",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0133",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5489,7 +5690,7 @@
     "answer_verification": "decrease=50%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0130",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0134",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5534,7 +5735,7 @@
     "answer_verification": "val=51"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0131",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0135",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5564,7 +5765,7 @@
     "answer_verification": "val=30"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0132",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0136",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5608,7 +5809,7 @@
     "answer_verification": "18/40=45%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0133",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0137",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5652,7 +5853,7 @@
     "answer_verification": "12/80=15%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0134",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0138",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5697,7 +5898,7 @@
     "answer_verification": "val=36"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0135",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0139",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5742,7 +5943,7 @@
     "answer_verification": "val=60"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0136",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0140",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5786,7 +5987,7 @@
     "answer_verification": "58:29"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0137",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0141",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5830,7 +6031,7 @@
     "answer_verification": "val=56"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0138",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0142",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5875,7 +6076,7 @@
     "answer_verification": "val=47"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0139",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0143",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5919,7 +6120,7 @@
     "answer_verification": "val=64"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0140",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0144",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5963,7 +6164,7 @@
     "answer_verification": "val=27"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0141",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0145",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6007,7 +6208,7 @@
     "answer_verification": "45/180=25%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0142",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0146",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6051,7 +6252,7 @@
     "answer_verification": "87:203"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0143",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0147",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6096,7 +6297,7 @@
     "answer_verification": "increase=15%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0144",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0148",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6107,7 +6308,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "unit_rate",
-    "prompt": "Four packages of coffee are priced as follows: 8 ounces for $3.84; 20 ounces for $10.80; 32 ounces for $16.32; 40 ounces for $15.60. Which package has the lowest price per {unit}?",
+    "prompt": "Four packages of coffee are priced as follows: 8 ounces for $3.84; 20 ounces for $10.80; 32 ounces for $16.32; 40 ounces for $15.60. Which package has the lowest price per ounce?",
     "choices": [
       {
         "id": "A",
@@ -6142,7 +6343,7 @@
     "answer_verification": "best=40"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0145",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0149",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6186,7 +6387,7 @@
     "answer_verification": "21:84"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0146",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0150",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6230,7 +6431,7 @@
     "answer_verification": "77:22"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0147",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0151",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6274,7 +6475,7 @@
     "answer_verification": "39:65"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0148",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0152",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6285,7 +6486,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "unit_rate",
-    "prompt": "Four packages of coffee are priced as follows: 8 ounces for $4.56; 10 ounces for $5.10; 16 ounces for $8.64; 20 ounces for $12.60. Which package has the lowest price per {unit}?",
+    "prompt": "Four packages of coffee are priced as follows: 8 ounces for $4.56; 10 ounces for $5.10; 16 ounces for $8.64; 20 ounces for $12.60. Which package has the lowest price per ounce?",
     "choices": [
       {
         "id": "A",
@@ -6320,7 +6521,7 @@
     "answer_verification": "best=10"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0149",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0153",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6364,7 +6565,7 @@
     "answer_verification": "9/90=10%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0150",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0154",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6375,7 +6576,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "unit_rate",
-    "prompt": "Four packages of coffee are priced as follows: 8 liters for $4.72; 10 liters for $6.80; 32 liters for $17.92; 40 liters for $28.40. Which package has the lowest price per {unit}?",
+    "prompt": "Four packages of coffee are priced as follows: 8 liters for $4.72; 10 liters for $6.80; 32 liters for $17.92; 40 liters for $28.40. Which package has the lowest price per liter?",
     "choices": [
       {
         "id": "A",
@@ -6410,7 +6611,7 @@
     "answer_verification": "best=32"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0151",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0155",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6454,7 +6655,7 @@
     "answer_verification": "30/200=15%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0152",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0156",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6499,7 +6700,7 @@
     "answer_verification": "val=31"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0153",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0157",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6543,7 +6744,7 @@
     "answer_verification": "102/170=60%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0154",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0158",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6587,7 +6788,7 @@
     "answer_verification": "14:7"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0155",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0159",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6631,7 +6832,7 @@
     "answer_verification": "182:130"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0156",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0160",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6675,7 +6876,7 @@
     "answer_verification": "9/45=20%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0157",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0161",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6686,7 +6887,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "unit_rate",
-    "prompt": "Four packages of coffee are priced as follows: 16 pounds for $15.04; 20 pounds for $18.20; 40 pounds for $35.20; 48 pounds for $37.92. Which package has the lowest price per {unit}?",
+    "prompt": "Four packages of coffee are priced as follows: 16 pounds for $15.04; 20 pounds for $18.20; 40 pounds for $35.20; 48 pounds for $37.92. Which package has the lowest price per pound?",
     "choices": [
       {
         "id": "A",
@@ -6721,7 +6922,7 @@
     "answer_verification": "best=48"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0158",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0162",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6765,7 +6966,7 @@
     "answer_verification": "val=1500000"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0159",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0163",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6809,7 +7010,7 @@
     "answer_verification": "119/170=70%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0160",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0164",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6839,7 +7040,7 @@
     "answer_verification": "val=20"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0161",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0165",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6850,7 +7051,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "unit_rate",
-    "prompt": "Four packages of coffee are priced as follows: 8 ounces for $6.32; 10 ounces for $6.70; 16 ounces for $12.16; 20 ounces for $14.60. Which package has the lowest price per {unit}?",
+    "prompt": "Four packages of coffee are priced as follows: 8 ounces for $6.32; 10 ounces for $6.70; 16 ounces for $12.16; 20 ounces for $14.60. Which package has the lowest price per ounce?",
     "choices": [
       {
         "id": "A",
@@ -6885,7 +7086,7 @@
     "answer_verification": "best=10"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0162",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0166",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6930,7 +7131,7 @@
     "answer_verification": "increase=20%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0163",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0167",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6941,7 +7142,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "unit_rate",
-    "prompt": "Four packages of coffee are priced as follows: 6 pounds for $6.54; 10 pounds for $12.40; 16 pounds for $17.92; 40 pounds for $48.40. Which package has the lowest price per {unit}?",
+    "prompt": "Four packages of coffee are priced as follows: 6 pounds for $6.54; 10 pounds for $12.40; 16 pounds for $17.92; 40 pounds for $48.40. Which package has the lowest price per pound?",
     "choices": [
       {
         "id": "A",
@@ -6976,7 +7177,7 @@
     "answer_verification": "best=6"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0164",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0168",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7020,7 +7221,7 @@
     "answer_verification": "35/100=35%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0165",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0169",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7050,7 +7251,7 @@
     "answer_verification": "val=5"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0166",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0170",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7095,7 +7296,7 @@
     "answer_verification": "val=47"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0167",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0171",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7140,7 +7341,7 @@
     "answer_verification": "increase=20%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0168",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0172",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7170,7 +7371,7 @@
     "answer_verification": "val=20"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0169",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0173",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7214,7 +7415,7 @@
     "answer_verification": "210:90"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0170",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0174",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7259,7 +7460,7 @@
     "answer_verification": "val=38"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0171",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0175",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7304,7 +7505,7 @@
     "answer_verification": "val=37"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0172",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0176",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7349,7 +7550,7 @@
     "answer_verification": "val=51"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0173",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0177",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7360,7 +7561,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "unit_rate",
-    "prompt": "Four packages of juice are priced as follows: 6 grams for $4.56; 16 grams for $10.24; 32 grams for $21.44; 40 grams for $31.60. Which package has the lowest price per {unit}?",
+    "prompt": "Four packages of juice are priced as follows: 6 grams for $4.56; 16 grams for $10.24; 32 grams for $21.44; 40 grams for $31.60. Which package has the lowest price per gram?",
     "choices": [
       {
         "id": "A",
@@ -7395,7 +7596,7 @@
     "answer_verification": "best=16"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0174",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0178",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7406,7 +7607,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "unit_rate",
-    "prompt": "Four packages of detergent are priced as follows: 10 liters for $10.40; 12 liters for $12.12; 24 liters for $28.56; 40 liters for $42.80. Which package has the lowest price per {unit}?",
+    "prompt": "Four packages of detergent are priced as follows: 10 liters for $10.40; 12 liters for $12.12; 24 liters for $28.56; 40 liters for $42.80. Which package has the lowest price per liter?",
     "choices": [
       {
         "id": "A",
@@ -7441,7 +7642,7 @@
     "answer_verification": "best=12"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0175",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0179",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7486,7 +7687,7 @@
     "answer_verification": "decrease=40%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0176",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0180",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7531,7 +7732,7 @@
     "answer_verification": "val=55"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0177",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0181",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7575,7 +7776,7 @@
     "answer_verification": "val=240"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0178",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0182",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7605,7 +7806,7 @@
     "answer_verification": "val=40"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0179",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0183",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7616,7 +7817,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "unit_rate",
-    "prompt": "Four packages of trail mix are priced as follows: 6 pounds for $1.32; 10 pounds for $3.40; 12 pounds for $3.72; 24 pounds for $6.72. Which package has the lowest price per {unit}?",
+    "prompt": "Four packages of trail mix are priced as follows: 6 pounds for $1.32; 10 pounds for $3.40; 12 pounds for $3.72; 24 pounds for $6.72. Which package has the lowest price per pound?",
     "choices": [
       {
         "id": "A",
@@ -7651,7 +7852,7 @@
     "answer_verification": "best=6"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0180",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0184",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7696,7 +7897,7 @@
     "answer_verification": "val=43"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0181",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0185",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7740,7 +7941,7 @@
     "answer_verification": "63/140=45%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0182",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0186",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7785,7 +7986,7 @@
     "answer_verification": "val=14"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0183",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0187",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7815,7 +8016,7 @@
     "answer_verification": "val=40"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0184",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0188",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7859,7 +8060,7 @@
     "answer_verification": "42/70=60%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0185",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0189",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7904,7 +8105,7 @@
     "answer_verification": "increase=20%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0186",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0190",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7934,7 +8135,7 @@
     "answer_verification": "val=40"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0187",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0191",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7979,7 +8180,7 @@
     "answer_verification": "val=38"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0188",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0192",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8023,7 +8224,7 @@
     "answer_verification": "27/60=45%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0189",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0193",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8053,7 +8254,7 @@
     "answer_verification": "val=5"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0190",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0194",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8098,7 +8299,7 @@
     "answer_verification": "val=36"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0191",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0195",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8109,7 +8310,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "unit_rate",
-    "prompt": "Four packages of cereal are priced as follows: 16 ounces for $9.76; 24 ounces for $12.48; 40 ounces for $19.60; 48 ounces for $27.84. Which package has the lowest price per {unit}?",
+    "prompt": "Four packages of cereal are priced as follows: 16 ounces for $9.76; 24 ounces for $12.48; 40 ounces for $19.60; 48 ounces for $27.84. Which package has the lowest price per ounce?",
     "choices": [
       {
         "id": "A",
@@ -8144,7 +8345,7 @@
     "answer_verification": "best=40"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0192",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0196",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8188,7 +8389,7 @@
     "answer_verification": "98:70"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0193",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0197",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8232,7 +8433,7 @@
     "answer_verification": "78:26"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0194",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0198",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8277,7 +8478,7 @@
     "answer_verification": "decrease=15%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0195",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0199",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8321,7 +8522,7 @@
     "answer_verification": "55:88"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0196",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0200",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8365,7 +8566,7 @@
     "answer_verification": "val=1080"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0197",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0201",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8376,7 +8577,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "unit_rate",
-    "prompt": "Four packages of rice are priced as follows: 8 grams for $7.44; 10 grams for $8.70; 20 grams for $16.80; 32 grams for $30.72. Which package has the lowest price per {unit}?",
+    "prompt": "Four packages of rice are priced as follows: 8 grams for $7.44; 10 grams for $8.70; 20 grams for $16.80; 32 grams for $30.72. Which package has the lowest price per gram?",
     "choices": [
       {
         "id": "A",
@@ -8411,7 +8612,7 @@
     "answer_verification": "best=20"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0198",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0202",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8456,7 +8657,7 @@
     "answer_verification": "val=51"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0199",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0203",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8467,7 +8668,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "unit_rate",
-    "prompt": "Four packages of detergent are priced as follows: 16 pounds for $11.36; 24 pounds for $17.76; 40 pounds for $30.80; 48 pounds for $39.84. Which package has the lowest price per {unit}?",
+    "prompt": "Four packages of detergent are priced as follows: 16 pounds for $11.36; 24 pounds for $17.76; 40 pounds for $30.80; 48 pounds for $39.84. Which package has the lowest price per pound?",
     "choices": [
       {
         "id": "A",
@@ -8502,7 +8703,7 @@
     "answer_verification": "best=16"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0200",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0204",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8546,7 +8747,7 @@
     "answer_verification": "170/200=85%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0201",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0205",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8576,7 +8777,7 @@
     "answer_verification": "val=40"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0202",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0206",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8606,7 +8807,7 @@
     "answer_verification": "val=15"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0203",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0207",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8650,7 +8851,7 @@
     "answer_verification": "99/110=90%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0204",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0208",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8695,7 +8896,7 @@
     "answer_verification": "increase=40%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0205",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0209",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8740,7 +8941,7 @@
     "answer_verification": "val=54"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0206",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0210",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8785,7 +8986,7 @@
     "answer_verification": "val=14"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0207",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0211",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8830,7 +9031,7 @@
     "answer_verification": "decrease=60%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0208",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0212",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8874,7 +9075,7 @@
     "answer_verification": "val=96"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0209",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0213",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8885,7 +9086,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "unit_rate",
-    "prompt": "Four packages of detergent are priced as follows: 6 grams for $6.12; 10 grams for $9.60; 12 grams for $12.96; 16 grams for $15.84. Which package has the lowest price per {unit}?",
+    "prompt": "Four packages of detergent are priced as follows: 6 grams for $6.12; 10 grams for $9.60; 12 grams for $12.96; 16 grams for $15.84. Which package has the lowest price per gram?",
     "choices": [
       {
         "id": "A",
@@ -8920,7 +9121,7 @@
     "answer_verification": "best=10"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0210",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0214",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8965,7 +9166,7 @@
     "answer_verification": "increase=50%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0211",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0215",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9009,7 +9210,7 @@
     "answer_verification": "135:81"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0212",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0216",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9053,7 +9254,7 @@
     "answer_verification": "val=17280"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0213",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0217",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9098,7 +9299,7 @@
     "answer_verification": "val=33"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0214",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0218",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9142,7 +9343,7 @@
     "answer_verification": "102/120=85%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0215",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0219",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9153,7 +9354,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "unit_rate",
-    "prompt": "Four packages of detergent are priced as follows: 10 grams for $3.30; 12 grams for $4.32; 40 grams for $10.80; 48 grams for $18.72. Which package has the lowest price per {unit}?",
+    "prompt": "Four packages of detergent are priced as follows: 10 grams for $3.30; 12 grams for $4.32; 40 grams for $10.80; 48 grams for $18.72. Which package has the lowest price per gram?",
     "choices": [
       {
         "id": "A",
@@ -9188,7 +9389,7 @@
     "answer_verification": "best=40"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0216",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0220",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9232,7 +9433,7 @@
     "answer_verification": "val=720"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0217",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0221",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9276,7 +9477,7 @@
     "answer_verification": "150/200=75%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0218",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0222",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9320,7 +9521,7 @@
     "answer_verification": "75:50"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0219",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0223",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9365,7 +9566,7 @@
     "answer_verification": "val=40"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0220",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0224",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9409,7 +9610,7 @@
     "answer_verification": "36:9"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0221",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0225",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9454,7 +9655,7 @@
     "answer_verification": "val=50"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0222",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0226",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9498,7 +9699,7 @@
     "answer_verification": "42:56"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0223",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0227",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9509,7 +9710,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "unit_rate",
-    "prompt": "Four packages of juice are priced as follows: 6 grams for $2.82; 10 grams for $4.10; 16 grams for $8.96; 48 grams for $28.32. Which package has the lowest price per {unit}?",
+    "prompt": "Four packages of juice are priced as follows: 6 grams for $2.82; 10 grams for $4.10; 16 grams for $8.96; 48 grams for $28.32. Which package has the lowest price per gram?",
     "choices": [
       {
         "id": "A",
@@ -9544,7 +9745,7 @@
     "answer_verification": "best=10"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0224",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0228",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9555,7 +9756,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "unit_rate",
-    "prompt": "Four packages of cereal are priced as follows: 12 grams for $3.84; 20 grams for $7.60; 40 grams for $17.60; 48 grams for $19.68. Which package has the lowest price per {unit}?",
+    "prompt": "Four packages of cereal are priced as follows: 12 grams for $3.84; 20 grams for $7.60; 40 grams for $17.60; 48 grams for $19.68. Which package has the lowest price per gram?",
     "choices": [
       {
         "id": "A",
@@ -9590,7 +9791,7 @@
     "answer_verification": "best=12"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0225",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0229",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9634,7 +9835,7 @@
     "answer_verification": "75:120"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0226",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0230",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9678,7 +9879,7 @@
     "answer_verification": "72/120=60%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0227",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0231",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9708,7 +9909,7 @@
     "answer_verification": "val=40"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0228",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0232",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9738,7 +9939,7 @@
     "answer_verification": "val=25"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0229",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0233",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9782,7 +9983,7 @@
     "answer_verification": "val=144"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0230",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0234",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9826,7 +10027,7 @@
     "answer_verification": "val=350000"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0231",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0235",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9870,7 +10071,7 @@
     "answer_verification": "100:60"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0232",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0236",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9914,7 +10115,7 @@
     "answer_verification": "90/120=75%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0233",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0237",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9944,7 +10145,7 @@
     "answer_verification": "val=5"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0234",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0238",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9989,7 +10190,7 @@
     "answer_verification": "val=2"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0235",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0239",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10000,7 +10201,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "unit_rate",
-    "prompt": "Four packages of coffee are priced as follows: 6 liters for $1.44; 8 liters for $2.88; 16 liters for $3.36; 24 liters for $7.92. Which package has the lowest price per {unit}?",
+    "prompt": "Four packages of coffee are priced as follows: 6 liters for $1.44; 8 liters for $2.88; 16 liters for $3.36; 24 liters for $7.92. Which package has the lowest price per liter?",
     "choices": [
       {
         "id": "A",
@@ -10035,7 +10236,7 @@
     "answer_verification": "best=16"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0236",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0240",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10079,7 +10280,7 @@
     "answer_verification": "90/120=75%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0237",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0241",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10124,7 +10325,7 @@
     "answer_verification": "decrease=30%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0238",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0242",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10168,7 +10369,7 @@
     "answer_verification": "119/170=70%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0239",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0243",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10213,7 +10414,7 @@
     "answer_verification": "val=60"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0240",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0244",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10257,7 +10458,7 @@
     "answer_verification": "45/60=75%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0241",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0245",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10302,7 +10503,7 @@
     "answer_verification": "increase=30%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0242",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0246",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10346,7 +10547,7 @@
     "answer_verification": "49/140=35%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0243",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0247",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10376,7 +10577,7 @@
     "answer_verification": "val=25"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0244",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0248",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10406,7 +10607,7 @@
     "answer_verification": "val=10"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0245",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0249",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10451,7 +10652,7 @@
     "answer_verification": "decrease=25%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0246",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0250",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10481,7 +10682,7 @@
     "answer_verification": "val=40"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0247",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0251",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10526,7 +10727,7 @@
     "answer_verification": "val=29"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0248",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0252",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10570,7 +10771,7 @@
     "answer_verification": "val=8640"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0249",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0253",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10581,7 +10782,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "unit_rate",
-    "prompt": "Four packages of cereal are priced as follows: 8 liters for $2.08; 12 liters for $1.32; 24 liters for $3.36; 48 liters for $11.04. Which package has the lowest price per {unit}?",
+    "prompt": "Four packages of cereal are priced as follows: 8 liters for $2.08; 12 liters for $1.32; 24 liters for $3.36; 48 liters for $11.04. Which package has the lowest price per liter?",
     "choices": [
       {
         "id": "A",
@@ -10616,7 +10817,7 @@
     "answer_verification": "best=12"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0250",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0254",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10660,7 +10861,7 @@
     "answer_verification": "68:85"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0251",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0255",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10705,7 +10906,7 @@
     "answer_verification": "increase=25%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0252",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0256",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10749,7 +10950,7 @@
     "answer_verification": "64/160=40%"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0253",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0257",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10779,7 +10980,7 @@
     "answer_verification": "val=25"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0254",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0258",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10790,7 +10991,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "unit_rate",
-    "prompt": "Four packages of rice are priced as follows: 6 pounds for $6.36; 8 pounds for $8.72; 16 pounds for $14.56; 40 pounds for $41.20. Which package has the lowest price per {unit}?",
+    "prompt": "Four packages of rice are priced as follows: 6 pounds for $6.36; 8 pounds for $8.72; 16 pounds for $14.56; 40 pounds for $41.20. Which package has the lowest price per pound?",
     "choices": [
       {
         "id": "A",
@@ -10825,7 +11026,7 @@
     "answer_verification": "best=16"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0255",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0259",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10836,7 +11037,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "unit_rate",
-    "prompt": "Four packages of coffee are priced as follows: 10 grams for $5.30; 24 grams for $9.84; 32 grams for $14.08; 48 grams for $28.32. Which package has the lowest price per {unit}?",
+    "prompt": "Four packages of coffee are priced as follows: 10 grams for $5.30; 24 grams for $9.84; 32 grams for $14.08; 48 grams for $28.32. Which package has the lowest price per gram?",
     "choices": [
       {
         "id": "A",
@@ -10871,7 +11072,7 @@
     "answer_verification": "best=24"
   },
   {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0256",
+    "question_id": "sat-math-ratios-percentages-units-medium-b0260",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10913,183 +11114,5 @@
       "family:rp_percent_of"
     ],
     "answer_verification": "96/120=80%"
-  },
-  {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0257",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "ratios_percentages_units",
-    "lesson_id": "sat-math-ratios-percentages-units-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "percent_change",
-    "prompt": "On a quiz, Mila answered 18 of 120 questions correctly. What percent of the questions were answered correctly?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "15%",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "102%",
-        "rationale": "That is the number of the rest, not a percent."
-      },
-      {
-        "id": "C",
-        "text": "667%",
-        "rationale": "Divide the part by the whole, not the whole by the part."
-      },
-      {
-        "id": "D",
-        "text": "85%",
-        "rationale": "That is the percent of the remaining part."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "18/120 = 0.15, which is 15%.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "percent",
-      "family:rp_percent_of"
-    ],
-    "answer_verification": "18/120=15%"
-  },
-  {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0258",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "ratios_percentages_units",
-    "lesson_id": "sat-math-ratios-percentages-units-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "unit_rate",
-    "prompt": "The ratio of cats to dogs animals at a shelter is 7:3, and there are 240 in all. How many cats are there?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "24",
-        "rationale": "That is one part; multiply by 7."
-      },
-      {
-        "id": "B",
-        "text": "72",
-        "rationale": "That is the number of dogs."
-      },
-      {
-        "id": "C",
-        "text": "560",
-        "rationale": "Divide the total by the sum of the ratio parts, not by 3."
-      },
-      {
-        "id": "D",
-        "text": "168",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "The ratio has 7 + 3 = 10 parts; each part is 240/10 = 24, so cats = 7·24 = 168.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "ratio",
-      "family:rp_ratio"
-    ],
-    "answer_verification": "168:72"
-  },
-  {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0259",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "ratios_percentages_units",
-    "lesson_id": "sat-math-ratios-percentages-units-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "unit_rate",
-    "prompt": "Four packages of juice are priced as follows: 6 pounds for $3.42; 24 pounds for $16.56; 32 pounds for $20.16; 48 pounds for $24.48. Which package has the lowest price per {unit}?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "32 pounds for $20.16",
-        "rationale": "Its unit price is $0.63 per pound, higher than $0.51."
-      },
-      {
-        "id": "B",
-        "text": "24 pounds for $16.56",
-        "rationale": "Its unit price is $0.69 per pound, higher than $0.51."
-      },
-      {
-        "id": "C",
-        "text": "6 pounds for $3.42",
-        "rationale": "Its unit price is $0.57 per pound, higher than $0.51."
-      },
-      {
-        "id": "D",
-        "text": "48 pounds for $24.48",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Compute each price per pound: $0.57, $0.69, $0.63, $0.51. The lowest is $0.51.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "ratio",
-      "unit-price",
-      "compare",
-      "family:rp_best_deal"
-    ],
-    "answer_verification": "best=48"
-  },
-  {
-    "question_id": "sat-math-ratios-percentages-units-medium-b0260",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "ratios_percentages_units",
-    "lesson_id": "sat-math-ratios-percentages-units-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "unit_rate",
-    "prompt": "How many ounces are in 7 pounds? (1 pound = 16 ounces.)",
-    "choices": [
-      {
-        "id": "A",
-        "text": "128",
-        "rationale": "Arithmetic slip; recompute."
-      },
-      {
-        "id": "B",
-        "text": "112",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "7/16",
-        "rationale": "Multiply to convert to a smaller unit."
-      },
-      {
-        "id": "D",
-        "text": "28",
-        "rationale": "Only one of the two conversion steps was applied."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "7 × 16 = 112 ounces.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "units",
-      "family:rp_units"
-    ],
-    "answer_verification": "val=112"
   }
 ]

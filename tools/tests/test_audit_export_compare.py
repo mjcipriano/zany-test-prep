@@ -113,6 +113,25 @@ class ExportTest(unittest.TestCase):
         self.assertEqual(grid["answer"], 0.75)
         self.assertEqual(grid["accepted"], ["3/4", ".75"])
 
+    def test_families_filter(self):
+        # bare name = both exams; "exam:family" = that exam only
+        res = export_sample.export(_bank(), self.out, families=["q_roots", "act:le_two_step"],
+                                   max_total=1000)
+        key = json.loads(Path(res["key"]).read_text())
+        self.assertEqual({(v["exam"], v["family"]) for v in key.values()},
+                         {("sat", "q_roots"), ("act", "le_two_step")})
+        # the CLI accepts a comma-separated list
+        bundle_dir = self.out / "bundles"
+        bundle_dir.mkdir()
+        for exam, qs in _bank().items():
+            (bundle_dir / f"{exam}.bundle.json").write_text(json.dumps({"questions": qs}))
+        with contextlib.redirect_stdout(io.StringIO()):
+            export_sample.main(["--bundle-dir", str(bundle_dir), "--out-dir", str(self.out / "cli"),
+                                "--families", "sat:le_two_step, grid"])
+        key = json.loads((self.out / "cli" / "key.json").read_text())
+        self.assertEqual({v["family"] for v in key.values()}, {"le_two_step", "grid"})
+        self.assertEqual({v["exam"] for v in key.values()}, {"sat"})
+
     def test_stimulus_is_kept(self):
         view = export_sample.student_view(_bank()["act"][0])
         self.assertEqual(view["stimulus"]["type"], "table")
