@@ -11,31 +11,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "interpolation",
-    "prompt": "According to the trend in Table 1, the rate of photosynthesis at a light intensity of 450 µmol/m²/s would most likely have been closest to:",
+    "prompt": "According to the trend in Table 1, the mass of soil eroded at a slope angle of 23.75° would most likely have been closest to:",
     "choices": [
       {
         "id": "A",
-        "text": "29.9 bubbles/min",
-        "rationale": "This is the value for 500 µmol/m²/s, not the intermediate light intensity asked about."
+        "text": "325 g",
+        "rationale": "This is the value for 20°; the question asks about a slope angle beyond that row."
       },
       {
         "id": "B",
-        "text": "29.1 bubbles/min",
-        "rationale": "Correct. 450 µmol/m²/s is halfway from 400 µmol/m²/s to 500 µmol/m²/s, so the value should be about that far from 28.4 toward 29.9."
+        "text": "474 g",
+        "rationale": "This is the value for 25°, not the intermediate slope angle asked about."
       },
       {
         "id": "C",
-        "text": "30.6 bubbles/min",
-        "rationale": "This continues past 500 µmol/m²/s instead of staying between the two bracketing rows."
+        "text": "437 g",
+        "rationale": "Correct. 23.75° is three-quarters of the way from 20° to 25°, so the value should be about that far from 325 toward 474."
       },
       {
         "id": "D",
-        "text": "28.4 bubbles/min",
-        "rationale": "This is the value for 400 µmol/m²/s; the question asks about a light intensity beyond that row."
+        "text": "Cannot be determined without a trial at exactly 23.75°",
+        "rationale": "The steady trend between the two bracketing rows allows a close estimate."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "450 µmol/m²/s lies between 400 µmol/m²/s (28.4) and 500 µmol/m²/s (29.9). Assuming a steady change, 28.4 + 0.5 × (29.9 − 28.4) ≈ 29.1.",
+    "correct_choice": "C",
+    "explanation": "23.75° lies between 20° (325) and 25° (474). Assuming a steady change, 325 + 0.75 × (474 − 325) ≈ 437.",
     "estimated_time_seconds": 75,
     "tags": [
       "science",
@@ -45,38 +45,42 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Light and Photosynthesis",
+      "title": "Slope and Soil Erosion",
       "table": {
-        "caption": "Table 1. Rate of photosynthesis of a water plant at several light intensities.",
+        "caption": "Table 1. Mass of soil washed from trays set at several slope angles.",
         "headers": [
-          "Light intensity (µmol/m²/s)",
-          "Bubbles per minute (bubbles/min)"
+          "Slope angle (°)",
+          "Soil eroded (g)"
         ],
         "rows": [
           [
-            "200",
-            "22.8"
+            "5",
+            "41"
           ],
           [
-            "300",
-            "26.3"
+            "10",
+            "108"
           ],
           [
-            "400",
-            "28.4"
+            "15",
+            "203"
           ],
           [
-            "500",
-            "29.9"
+            "20",
+            "325"
           ],
           [
-            "600",
-            "31.0"
+            "25",
+            "474"
+          ],
+          [
+            "30",
+            "650"
           ]
         ]
       }
     },
-    "answer_verification": "science:interp;x=450;col=1"
+    "answer_verification": "science:interp;x=23.75;col=1"
   },
   {
     "question_id": "act-science-trends-extrapolation-medium-q02",
@@ -90,31 +94,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "interpolation",
-    "prompt": "Based on Table 1, the temperature of the water would most likely have equaled 43.7 °C at a time between:",
+    "prompt": "According to the data in Table 1, at which of the following distance ranges would the maximum ground motion most likely have been 1.66 mm?",
     "choices": [
       {
         "id": "A",
-        "text": "15 min and 20 min",
-        "rationale": "Over this range the values run from 53.3 to 46.4, which does not include 43.7 °C."
+        "text": "100 km and 150 km",
+        "rationale": "Correct. 1.66 mm lies between 2.15 (at 100 km) and 1.17 (at 150 km)."
       },
       {
         "id": "B",
-        "text": "20 min and 25 min",
-        "rationale": "Correct. 43.7 °C lies between 46.4 (at 20 min) and 41.0 (at 25 min)."
+        "text": "beyond 300 km, outside the range tested",
+        "rationale": "1.66 mm is already bracketed by two listed rows, so no extrapolation is needed."
       },
       {
         "id": "C",
-        "text": "10 min and 15 min",
-        "rationale": "Over this range the values run from 62.3 to 53.3, which does not include 43.7 °C."
+        "text": "150 km and 200 km",
+        "rationale": "Over this range the values run from 1.17 to 0.76, which does not include 1.66 mm."
       },
       {
         "id": "D",
-        "text": "25 min and 30 min",
-        "rationale": "Over this range the values run from 41.0 to 36.8, which does not include 43.7 °C."
+        "text": "200 km and 250 km",
+        "rationale": "Over this range the values run from 0.76 to 0.54, which does not include 1.66 mm."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Find the two consecutive rows whose values bracket 43.7 °C: 46.4 and 41.0, at 20 min and 25 min.",
+    "correct_choice": "A",
+    "explanation": "Find the two consecutive rows whose values bracket 1.66 mm: 2.15 and 1.17, at 100 km and 150 km.",
     "estimated_time_seconds": 70,
     "tags": [
       "science",
@@ -124,42 +128,38 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Cooling Curve",
+      "title": "Earthquake Distance and Shaking",
       "table": {
-        "caption": "Table 1. Temperature of hot water in an open cup at several times after pouring.",
+        "caption": "Table 1. Maximum ground motion recorded by seismographs at several distances from an earthquake.",
         "headers": [
-          "Time since pouring (min)",
-          "Water temperature (°C)"
+          "Distance from epicenter (km)",
+          "Ground motion (mm)"
         ],
         "rows": [
           [
-            "10",
-            "62.3"
+            "100",
+            "2.15"
           ],
           [
-            "15",
-            "53.3"
+            "150",
+            "1.17"
           ],
           [
-            "20",
-            "46.4"
+            "200",
+            "0.76"
           ],
           [
-            "25",
-            "41.0"
+            "250",
+            "0.54"
           ],
           [
-            "30",
-            "36.8"
-          ],
-          [
-            "35",
-            "33.6"
+            "300",
+            "0.41"
           ]
         ]
       }
     },
-    "answer_verification": "science:target;v=43.7;col=1"
+    "answer_verification": "science:target;v=1.66;col=1"
   },
   {
     "question_id": "act-science-trends-extrapolation-medium-q03",
@@ -173,532 +173,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "proportional_reasoning",
-    "prompt": "Based on Table 1, doubling the mass hung from the spring from 100 g to 200 g caused the stretch of the spring to have:",
+    "prompt": "Based on Table 1, doubling the temperature of the water from 15 °C to 30 °C caused the dissolved oxygen concentration to have:",
     "choices": [
       {
         "id": "A",
         "text": "approximately doubled",
-        "rationale": "Correct. 8.2 ÷ 4.1 ≈ 2.00."
+        "rationale": "The ratio of the two values is 0.79, which does not match this description."
       },
       {
         "id": "B",
-        "text": "decreased, but to more than half its value",
-        "rationale": "The ratio of the two values is 2.00, which does not match this description."
+        "text": "decreased to approximately one-fourth of its value",
+        "rationale": "The ratio of the two values is 0.79, which does not match this description."
       },
       {
         "id": "C",
         "text": "decreased to approximately half its value",
-        "rationale": "The ratio of the two values is 2.00, which does not match this description."
-      },
-      {
-        "id": "D",
-        "text": "more than doubled but less than quadrupled",
-        "rationale": "The ratio of the two values is 2.00, which does not match this description."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "Divide the value at 200 g by the value at 100 g: 8.2 ÷ 4.1 ≈ 2.00, so the stretch of the spring approximately doubled.",
-    "estimated_time_seconds": 70,
-    "tags": [
-      "science",
-      "trends",
-      "doubling",
-      "family:tr_doubling"
-    ],
-    "stimulus": {
-      "type": "table",
-      "title": "Spring Stretch",
-      "table": {
-        "caption": "Table 1. Stretch of a spring when several masses are hung from it.",
-        "headers": [
-          "Mass (g)",
-          "Stretch (cm)"
-        ],
-        "rows": [
-          [
-            "50",
-            "2.1"
-          ],
-          [
-            "100",
-            "4.1"
-          ],
-          [
-            "150",
-            "6.2"
-          ],
-          [
-            "200",
-            "8.2"
-          ],
-          [
-            "250",
-            "10.3"
-          ],
-          [
-            "300",
-            "12.4"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "science:double;x1=100;x2=200;bucket=double"
-  },
-  {
-    "question_id": "act-science-trends-extrapolation-medium-q04",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "science",
-    "section": "interpretation_of_data",
-    "skill": "trends_extrapolation",
-    "lesson_id": "act-science-trends-extrapolation-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "trend_shape",
-    "prompt": "According to Table 1, between which two consecutive values of catalyst mass did the time for the reaction to finish change by the greatest amount?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "2 mg and 4 mg",
-        "rationale": "The change here is only 60 s."
-      },
-      {
-        "id": "B",
-        "text": "4 mg and 6 mg",
-        "rationale": "The change here is only 30 s."
-      },
-      {
-        "id": "C",
-        "text": "6 mg and 8 mg",
-        "rationale": "The change here is only 16 s."
-      },
-      {
-        "id": "D",
-        "text": "0 mg and 2 mg",
-        "rationale": "Correct. The change here is 119 s, larger than any other consecutive change."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Subtract each value from the next: the changes are 119, 60, 30, 16, 7. The largest, 119, is between 0 mg and 2 mg.",
-    "estimated_time_seconds": 65,
-    "tags": [
-      "science",
-      "trends",
-      "step",
-      "family:tr_biggest_step"
-    ],
-    "stimulus": {
-      "type": "table",
-      "title": "Catalyst and Reaction Time",
-      "table": {
-        "caption": "Table 1. Time for a reaction to finish with several masses of catalyst.",
-        "headers": [
-          "Mass of catalyst (mg)",
-          "Reaction time (s)"
-        ],
-        "rows": [
-          [
-            "0",
-            "270"
-          ],
-          [
-            "2",
-            "151"
-          ],
-          [
-            "4",
-            "91"
-          ],
-          [
-            "6",
-            "61"
-          ],
-          [
-            "8",
-            "45"
-          ],
-          [
-            "10",
-            "38"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "science:maxstep;col=1"
-  },
-  {
-    "question_id": "act-science-trends-extrapolation-medium-q05",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "science",
-    "section": "interpretation_of_data",
-    "skill": "trends_extrapolation",
-    "lesson_id": "act-science-trends-extrapolation-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "trend_shape",
-    "prompt": "According to Table 1, from the first row to the last, the voltage of the battery decreased by about:",
-    "choices": [
-      {
-        "id": "A",
-        "text": "69%",
-        "rationale": "This divides the change by the final value (0.94) instead of the starting value (1.59)."
-      },
-      {
-        "id": "B",
-        "text": "82%",
-        "rationale": "This is double the actual percent change."
-      },
-      {
-        "id": "C",
-        "text": "41%",
-        "rationale": "Correct. |0.94 − 1.59| ÷ 1.59 × 100 ≈ 41%."
-      },
-      {
-        "id": "D",
-        "text": "20%",
-        "rationale": "This is half the actual percent change."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "Percent change = (last − first) ÷ first × 100 = (0.94 − 1.59) ÷ 1.59 × 100 ≈ 41% decrease.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "science",
-      "trends",
-      "percent",
-      "family:tr_percent_across_table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "title": "Battery Voltage Over Time",
-      "table": {
-        "caption": "Table 1. Voltage of a battery after several hours of powering a lamp.",
-        "headers": [
-          "Time (h)",
-          "Voltage (V)"
-        ],
-        "rows": [
-          [
-            "0",
-            "1.59"
-          ],
-          [
-            "2",
-            "1.52"
-          ],
-          [
-            "4",
-            "1.43"
-          ],
-          [
-            "6",
-            "1.30"
-          ],
-          [
-            "8",
-            "1.14"
-          ],
-          [
-            "10",
-            "0.94"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "science:pct;x1=0;x2=10;col=1"
-  },
-  {
-    "question_id": "act-science-trends-extrapolation-medium-q06",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "science",
-    "section": "interpretation_of_data",
-    "skill": "trends_extrapolation",
-    "lesson_id": "act-science-trends-extrapolation-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "series_crossing",
-    "prompt": "According to Table 1, over the interval from 4 mg/L to 6 mg/L, the number of mayfly nymphs for gravel bed changed about how many times as fast as the number of mayfly nymphs for sand bed?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "4.2",
-        "rationale": "This doubles the ratio; recheck the division."
-      },
-      {
-        "id": "B",
-        "text": "14",
-        "rationale": "This is the difference between the two changes, not their ratio."
-      },
-      {
-        "id": "C",
-        "text": "2.1",
-        "rationale": "Correct. Both rates share the same Δdissolved oxygen, so compare the changes: 27 ÷ 13 ≈ 2.1."
-      },
-      {
-        "id": "D",
-        "text": "0.5",
-        "rationale": "This is the inverse ratio (slower rate divided by faster rate)."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "Over the same change in dissolved oxygen, the number of mayfly nymphs for gravel bed changed by 27 and the number of mayfly nymphs for sand bed by 13; the ratio of the rates is about 2.1.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "science",
-      "trends",
-      "slopes",
-      "family:tr_compare_slopes"
-    ],
-    "stimulus": {
-      "type": "table",
-      "title": "Dissolved Oxygen and Mayflies",
-      "table": {
-        "caption": "Table 1. Number of mayfly nymphs found in stream samples with several dissolved-oxygen levels. Results are shown for two conditions: gravel bed and sand bed.",
-        "headers": [
-          "Dissolved oxygen (mg/L)",
-          "Mayfly count (nymphs), gravel bed",
-          "Mayfly count (nymphs), sand bed"
-        ],
-        "rows": [
-          [
-            "2",
-            "7",
-            "3"
-          ],
-          [
-            "4",
-            "25",
-            "11"
-          ],
-          [
-            "6",
-            "52",
-            "24"
-          ],
-          [
-            "8",
-            "90",
-            "41"
-          ],
-          [
-            "10",
-            "137",
-            "63"
-          ],
-          [
-            "12",
-            "195",
-            "90"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "science:slopes;x1=4;x2=6;num=1;den=2"
-  },
-  {
-    "question_id": "act-science-trends-extrapolation-medium-q07",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "science",
-    "section": "interpretation_of_data",
-    "skill": "trends_extrapolation",
-    "lesson_id": "act-science-trends-extrapolation-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "interpolation",
-    "prompt": "According to the trend in Table 1, the count rate at a time of 32.5 min would most likely have been closest to:",
-    "choices": [
-      {
-        "id": "A",
-        "text": "485 counts/min",
-        "rationale": "Correct. 32.5 min is a quarter of the way from 30 min to 40 min, so the value should be about that far from 535 toward 334."
-      },
-      {
-        "id": "B",
-        "text": "535 counts/min",
-        "rationale": "This is the value for 30 min; the question asks about a time beyond that row."
-      },
-      {
-        "id": "C",
-        "text": "334 counts/min",
-        "rationale": "This is the value for 40 min, not the intermediate time asked about."
-      },
-      {
-        "id": "D",
-        "text": "284 counts/min",
-        "rationale": "This continues past 40 min instead of staying between the two bracketing rows."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "32.5 min lies between 30 min (535) and 40 min (334). Assuming a steady change, 535 + 0.25 × (334 − 535) ≈ 485.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "science",
-      "trends",
-      "interpolate",
-      "family:tr_interpolate_value"
-    ],
-    "stimulus": {
-      "type": "table",
-      "title": "Radioactive Decay",
-      "table": {
-        "caption": "Table 1. Counts per minute recorded from a radioactive sample at several times.",
-        "headers": [
-          "Time (min)",
-          "Counts per minute (counts/min)"
-        ],
-        "rows": [
-          [
-            "10",
-            "1371"
-          ],
-          [
-            "20",
-            "857"
-          ],
-          [
-            "30",
-            "535"
-          ],
-          [
-            "40",
-            "334"
-          ],
-          [
-            "50",
-            "209"
-          ],
-          [
-            "60",
-            "131"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "science:interp;x=32.5;col=1"
-  },
-  {
-    "question_id": "act-science-trends-extrapolation-medium-q08",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "science",
-    "section": "interpretation_of_data",
-    "skill": "trends_extrapolation",
-    "lesson_id": "act-science-trends-extrapolation-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "interpolation",
-    "prompt": "According to the data in Table 1, at which of the following altitude ranges would the boiling point of the water most likely have been 95.6 °C?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "1500 m and 2000 m",
-        "rationale": "Over this range the values run from 94.7 to 93.0, which does not include 95.6 °C."
-      },
-      {
-        "id": "B",
-        "text": "0 m and 500 m",
-        "rationale": "Over this range the values run from 100.0 to 98.2, which does not include 95.6 °C."
-      },
-      {
-        "id": "C",
-        "text": "500 m and 1000 m",
-        "rationale": "Over this range the values run from 98.2 to 96.5, which does not include 95.6 °C."
-      },
-      {
-        "id": "D",
-        "text": "1000 m and 1500 m",
-        "rationale": "Correct. 95.6 °C lies between 96.5 (at 1000 m) and 94.7 (at 1500 m)."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Find the two consecutive rows whose values bracket 95.6 °C: 96.5 and 94.7, at 1000 m and 1500 m.",
-    "estimated_time_seconds": 70,
-    "tags": [
-      "science",
-      "trends",
-      "target",
-      "family:tr_x_for_target"
-    ],
-    "stimulus": {
-      "type": "table",
-      "title": "Altitude and Boiling Point",
-      "table": {
-        "caption": "Table 1. Boiling point of water measured at several altitudes.",
-        "headers": [
-          "Altitude (m)",
-          "Boiling point (°C)"
-        ],
-        "rows": [
-          [
-            "0",
-            "100.0"
-          ],
-          [
-            "500",
-            "98.2"
-          ],
-          [
-            "1000",
-            "96.5"
-          ],
-          [
-            "1500",
-            "94.7"
-          ],
-          [
-            "2000",
-            "93.0"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "science:target;v=95.6;col=1"
-  },
-  {
-    "question_id": "act-science-trends-extrapolation-medium-q09",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "science",
-    "section": "interpretation_of_data",
-    "skill": "trends_extrapolation",
-    "lesson_id": "act-science-trends-extrapolation-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "proportional_reasoning",
-    "prompt": "According to Table 1, when the temperature of the water doubled from 15 °C to 30 °C, the dissolved oxygen concentration:",
-    "choices": [
-      {
-        "id": "A",
-        "text": "more than doubled but less than quadrupled",
-        "rationale": "The ratio of the two values is 0.84, which does not match this description."
-      },
-      {
-        "id": "B",
-        "text": "approximately doubled",
-        "rationale": "The ratio of the two values is 0.84, which does not match this description."
-      },
-      {
-        "id": "C",
-        "text": "decreased to approximately half its value",
-        "rationale": "The ratio of the two values is 0.84, which does not match this description."
+        "rationale": "The ratio of the two values is 0.79, which does not match this description."
       },
       {
         "id": "D",
         "text": "decreased, but to more than half its value",
-        "rationale": "Correct. 9.0 ÷ 10.7 ≈ 0.84."
+        "rationale": "Correct. 7.5 ÷ 9.5 ≈ 0.79."
       }
     ],
     "correct_choice": "D",
-    "explanation": "Divide the value at 30 °C by the value at 15 °C: 9.0 ÷ 10.7 ≈ 0.84, so the dissolved oxygen concentration decreased, but to more than half its value.",
+    "explanation": "Divide the value at 30 °C by the value at 15 °C: 7.5 ÷ 9.5 ≈ 0.79, so the dissolved oxygen concentration decreased, but to more than half its value.",
     "estimated_time_seconds": 70,
     "tags": [
       "science",
@@ -717,29 +216,521 @@
         ],
         "rows": [
           [
+            "5",
+            "12.4"
+          ],
+          [
             "10",
-            "11.9"
+            "10.8"
           ],
           [
             "15",
-            "10.7"
+            "9.5"
           ],
           [
             "20",
-            "9.8"
+            "8.5"
           ],
           [
             "25",
-            "9.2"
+            "7.8"
           ],
           [
             "30",
-            "9.0"
+            "7.5"
           ]
         ]
       }
     },
     "answer_verification": "science:double;x1=15;x2=30;bucket=dec_lt_half"
+  },
+  {
+    "question_id": "act-science-trends-extrapolation-medium-q04",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "science",
+    "section": "interpretation_of_data",
+    "skill": "trends_extrapolation",
+    "lesson_id": "act-science-trends-extrapolation-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "trend_shape",
+    "prompt": "Based on Table 1, the largest change in the temperature of the water between neighboring rows occurred between:",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The change was the same between every pair of rows",
+        "rationale": "The consecutive changes range from 3.1 to 14.1; they are not equal."
+      },
+      {
+        "id": "B",
+        "text": "15 min and 20 min",
+        "rationale": "The change here is only 6.6 °C."
+      },
+      {
+        "id": "C",
+        "text": "10 min and 15 min",
+        "rationale": "The change here is only 9.6 °C."
+      },
+      {
+        "id": "D",
+        "text": "5 min and 10 min",
+        "rationale": "Correct. The change here is 14.1 °C, larger than any other consecutive change."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Subtract each value from the next: the changes are 14.1, 9.6, 6.6, 4.6, 3.1. The largest, 14.1, is between 5 min and 10 min.",
+    "estimated_time_seconds": 65,
+    "tags": [
+      "science",
+      "trends",
+      "step",
+      "family:tr_biggest_step"
+    ],
+    "stimulus": {
+      "type": "table",
+      "title": "Cooling Curve",
+      "table": {
+        "caption": "Table 1. Temperature of hot water in an open cup at several times after pouring.",
+        "headers": [
+          "Time since pouring (min)",
+          "Water temperature (°C)"
+        ],
+        "rows": [
+          [
+            "5",
+            "66.1"
+          ],
+          [
+            "10",
+            "52.0"
+          ],
+          [
+            "15",
+            "42.4"
+          ],
+          [
+            "20",
+            "35.8"
+          ],
+          [
+            "25",
+            "31.2"
+          ],
+          [
+            "30",
+            "28.1"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "science:maxstep;col=1"
+  },
+  {
+    "question_id": "act-science-trends-extrapolation-medium-q05",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "science",
+    "section": "interpretation_of_data",
+    "skill": "trends_extrapolation",
+    "lesson_id": "act-science-trends-extrapolation-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "trend_shape",
+    "prompt": "According to Table 1, from the first row to the last, the mass of soil eroded increased by about:",
+    "choices": [
+      {
+        "id": "A",
+        "text": "969%",
+        "rationale": "Correct. |417 − 39| ÷ 39 × 100 ≈ 969%."
+      },
+      {
+        "id": "B",
+        "text": "378 g",
+        "rationale": "This is the absolute change in soil eroded, not a percent of the starting value."
+      },
+      {
+        "id": "C",
+        "text": "1938%",
+        "rationale": "This is double the actual percent change."
+      },
+      {
+        "id": "D",
+        "text": "91%",
+        "rationale": "This divides the change by the final value (417) instead of the starting value (39)."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Percent change = (last − first) ÷ first × 100 = (417 − 39) ÷ 39 × 100 ≈ 969% increase.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "science",
+      "trends",
+      "percent",
+      "family:tr_percent_across_table"
+    ],
+    "stimulus": {
+      "type": "table",
+      "title": "Slope and Soil Erosion",
+      "table": {
+        "caption": "Table 1. Mass of soil washed from trays set at several slope angles.",
+        "headers": [
+          "Slope angle (°)",
+          "Soil eroded (g)"
+        ],
+        "rows": [
+          [
+            "5",
+            "39"
+          ],
+          [
+            "10",
+            "100"
+          ],
+          [
+            "15",
+            "184"
+          ],
+          [
+            "20",
+            "289"
+          ],
+          [
+            "25",
+            "417"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "science:pct;x1=5;x2=25;col=1"
+  },
+  {
+    "question_id": "act-science-trends-extrapolation-medium-q06",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "science",
+    "section": "interpretation_of_data",
+    "skill": "trends_extrapolation",
+    "lesson_id": "act-science-trends-extrapolation-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "series_crossing",
+    "prompt": "Between pH 4 and pH 5, the rate of change of the activity of the enzyme for 35°C was approximately how many times the rate of change of the activity of the enzyme for 25°C?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "0.63",
+        "rationale": "This is the inverse ratio (slower rate divided by faster rate)."
+      },
+      {
+        "id": "B",
+        "text": "1.6",
+        "rationale": "Correct. Both rates share the same ΔpH, so compare the changes: 63 ÷ 40 ≈ 1.6."
+      },
+      {
+        "id": "C",
+        "text": "23",
+        "rationale": "This is the difference between the two changes, not their ratio."
+      },
+      {
+        "id": "D",
+        "text": "3.2",
+        "rationale": "This doubles the ratio; recheck the division."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Over the same change in pH, the activity of the enzyme for 35°C changed by 63 and the activity of the enzyme for 25°C by 40; the ratio of the rates is about 1.6.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "science",
+      "trends",
+      "slopes",
+      "family:tr_compare_slopes"
+    ],
+    "stimulus": {
+      "type": "table",
+      "title": "Enzyme Activity and pH",
+      "table": {
+        "caption": "Table 1. Activity of an enzyme in solutions of several pH values. Results are shown for two conditions: 25°C and 35°C.",
+        "headers": [
+          "pH",
+          "Enzyme activity (µmol/min), 25°C",
+          "Enzyme activity (µmol/min), 35°C"
+        ],
+        "rows": [
+          [
+            "4",
+            "29",
+            "46"
+          ],
+          [
+            "5",
+            "69",
+            "109"
+          ],
+          [
+            "6",
+            "80",
+            "126"
+          ],
+          [
+            "7",
+            "45",
+            "71"
+          ],
+          [
+            "8",
+            "12",
+            "20"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "science:slopes;x1=4;x2=5;num=2;den=1"
+  },
+  {
+    "question_id": "act-science-trends-extrapolation-medium-q07",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "science",
+    "section": "interpretation_of_data",
+    "skill": "trends_extrapolation",
+    "lesson_id": "act-science-trends-extrapolation-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "interpolation",
+    "prompt": "Based on Table 1, if the concentration of the acid had been 0.2875 mol/L, the volume of base needed would have been closest to:",
+    "choices": [
+      {
+        "id": "A",
+        "text": "46.0 mL",
+        "rationale": "This is the value for 0.25 mol/L; the question asks about a acid concentration beyond that row."
+      },
+      {
+        "id": "B",
+        "text": "52.9 mL",
+        "rationale": "Correct. 0.2875 mol/L is three-quarters of the way from 0.25 mol/L to 0.3 mol/L, so the value should be about that far from 46.0 toward 55.2."
+      },
+      {
+        "id": "C",
+        "text": "Cannot be determined without a trial at exactly 0.2875 mol/L",
+        "rationale": "The steady trend between the two bracketing rows allows a close estimate."
+      },
+      {
+        "id": "D",
+        "text": "55.2 mL",
+        "rationale": "This is the value for 0.3 mol/L, not the intermediate acid concentration asked about."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "0.2875 mol/L lies between 0.25 mol/L (46.0) and 0.3 mol/L (55.2). Assuming a steady change, 46.0 + 0.75 × (55.2 − 46.0) ≈ 52.9.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "science",
+      "trends",
+      "interpolate",
+      "family:tr_interpolate_value"
+    ],
+    "stimulus": {
+      "type": "table",
+      "title": "Acid Concentration and Titration",
+      "table": {
+        "caption": "Table 1. Volume of base solution needed to neutralize 25 mL of acid at several acid concentrations.",
+        "headers": [
+          "Acid concentration (mol/L)",
+          "Volume of base (mL)"
+        ],
+        "rows": [
+          [
+            "0.1",
+            "18.4"
+          ],
+          [
+            "0.15",
+            "27.6"
+          ],
+          [
+            "0.2",
+            "36.8"
+          ],
+          [
+            "0.25",
+            "46.0"
+          ],
+          [
+            "0.3",
+            "55.2"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "science:interp;x=0.2875;col=1"
+  },
+  {
+    "question_id": "act-science-trends-extrapolation-medium-q08",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "science",
+    "section": "interpretation_of_data",
+    "skill": "trends_extrapolation",
+    "lesson_id": "act-science-trends-extrapolation-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "interpolation",
+    "prompt": "According to the data in Table 1, at which of the following distance ranges would the sound intensity most likely have been 2.9 µW/m²?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "5 m and 6 m",
+        "rationale": "Correct. 2.9 µW/m² lies between 3.4 (at 5 m) and 2.4 (at 6 m)."
+      },
+      {
+        "id": "B",
+        "text": "beyond 6 m, outside the range tested",
+        "rationale": "2.9 µW/m² is already bracketed by two listed rows, so no extrapolation is needed."
+      },
+      {
+        "id": "C",
+        "text": "4 m and 5 m",
+        "rationale": "Over this range the values run from 5.3 to 3.4, which does not include 2.9 µW/m²."
+      },
+      {
+        "id": "D",
+        "text": "3 m and 4 m",
+        "rationale": "Over this range the values run from 9.4 to 5.3, which does not include 2.9 µW/m²."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Find the two consecutive rows whose values bracket 2.9 µW/m²: 3.4 and 2.4, at 5 m and 6 m.",
+    "estimated_time_seconds": 70,
+    "tags": [
+      "science",
+      "trends",
+      "target",
+      "family:tr_x_for_target"
+    ],
+    "stimulus": {
+      "type": "table",
+      "title": "Distance and Sound Intensity",
+      "table": {
+        "caption": "Table 1. Sound intensity measured at several distances from a speaker.",
+        "headers": [
+          "Distance (m)",
+          "Intensity (µW/m²)"
+        ],
+        "rows": [
+          [
+            "1",
+            "84.7"
+          ],
+          [
+            "2",
+            "21.2"
+          ],
+          [
+            "3",
+            "9.4"
+          ],
+          [
+            "4",
+            "5.3"
+          ],
+          [
+            "5",
+            "3.4"
+          ],
+          [
+            "6",
+            "2.4"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "science:target;v=2.9;col=1"
+  },
+  {
+    "question_id": "act-science-trends-extrapolation-medium-q09",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "science",
+    "section": "interpretation_of_data",
+    "skill": "trends_extrapolation",
+    "lesson_id": "act-science-trends-extrapolation-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "proportional_reasoning",
+    "prompt": "Based on Table 1, doubling the speed of the car from 60 km/h to 120 km/h caused the stopping distance to have:",
+    "choices": [
+      {
+        "id": "A",
+        "text": "more than doubled but less than quadrupled",
+        "rationale": "Correct. 137.8 ÷ 41.3 ≈ 3.34."
+      },
+      {
+        "id": "B",
+        "text": "approximately quadrupled",
+        "rationale": "The ratio of the two values is 3.34, which does not match this description."
+      },
+      {
+        "id": "C",
+        "text": "decreased to approximately half its value",
+        "rationale": "The ratio of the two values is 3.34, which does not match this description."
+      },
+      {
+        "id": "D",
+        "text": "approximately doubled",
+        "rationale": "The ratio of the two values is 3.34, which does not match this description."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Divide the value at 120 km/h by the value at 60 km/h: 137.8 ÷ 41.3 ≈ 3.34, so the stopping distance more than doubled but less than quadrupled.",
+    "estimated_time_seconds": 70,
+    "tags": [
+      "science",
+      "trends",
+      "doubling",
+      "family:tr_doubling"
+    ],
+    "stimulus": {
+      "type": "table",
+      "title": "Speed and Stopping Distance",
+      "table": {
+        "caption": "Table 1. Distance needed for a car to stop from several speeds.",
+        "headers": [
+          "Speed (km/h)",
+          "Stopping distance (m)"
+        ],
+        "rows": [
+          [
+            "40",
+            "21.4"
+          ],
+          [
+            "60",
+            "41.3"
+          ],
+          [
+            "80",
+            "67.4"
+          ],
+          [
+            "100",
+            "99.5"
+          ],
+          [
+            "120",
+            "137.8"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "science:double;x1=60;x2=120;bucket=inc_gt2"
   },
   {
     "question_id": "act-science-trends-extrapolation-medium-q10",
@@ -753,31 +744,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "trend_shape",
-    "prompt": "Based on Table 1, the largest change in the mass of salt that dissolved between neighboring rows occurred between:",
+    "prompt": "According to Table 1, between which two consecutive values of rainfall did the flow rate of the river change by the greatest amount?",
     "choices": [
       {
         "id": "A",
-        "text": "60 °C and 80 °C",
-        "rationale": "The change here is only 57 g."
+        "text": "50 mm and 60 mm",
+        "rationale": "Correct. The change here is 8.7 m³/s, larger than any other consecutive change."
       },
       {
         "id": "B",
-        "text": "20 °C and 40 °C",
-        "rationale": "The change here is only 30 g."
+        "text": "30 mm and 40 mm",
+        "rationale": "The change here is only 6.5 m³/s."
       },
       {
         "id": "C",
-        "text": "80 °C and 100 °C",
-        "rationale": "Correct. The change here is 70 g, larger than any other consecutive change."
+        "text": "The change was the same between every pair of rows",
+        "rationale": "The consecutive changes range from 5.4 to 8.7; they are not equal."
       },
       {
         "id": "D",
-        "text": "40 °C and 60 °C",
-        "rationale": "The change here is only 44 g."
+        "text": "40 mm and 50 mm",
+        "rationale": "The change here is only 7.6 m³/s."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Subtract each value from the next: the changes are 30, 44, 57, 70. The largest, 70, is between 80 °C and 100 °C.",
+    "correct_choice": "A",
+    "explanation": "Subtract each value from the next: the changes are 5.4, 6.5, 7.6, 8.7. The largest, 8.7, is between 50 mm and 60 mm.",
     "estimated_time_seconds": 65,
     "tags": [
       "science",
@@ -787,33 +778,33 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Solubility and Temperature",
+      "title": "Rainfall and River Flow",
       "table": {
-        "caption": "Table 1. Mass of a salt that dissolves in 100 g of water at several temperatures.",
+        "caption": "Table 1. Flow rate of a river measured the day after several amounts of rain.",
         "headers": [
-          "Water temperature (°C)",
-          "Mass dissolved (g)"
+          "Rainfall (mm)",
+          "Flow rate (m³/s)"
         ],
         "rows": [
           [
             "20",
-            "36"
+            "15.7"
+          ],
+          [
+            "30",
+            "21.1"
           ],
           [
             "40",
-            "66"
+            "27.6"
+          ],
+          [
+            "50",
+            "35.2"
           ],
           [
             "60",
-            "110"
-          ],
-          [
-            "80",
-            "167"
-          ],
-          [
-            "100",
-            "237"
+            "43.9"
           ]
         ]
       }
@@ -832,31 +823,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "trend_shape",
-    "prompt": "Over the entire range of wind speed shown in Table 1 (3 m/s to 8 m/s), the power output of the turbine increased by approximately what percent?",
+    "prompt": "According to Table 1, from the first row to the last, the volume of carbon dioxide produced increased by about:",
     "choices": [
       {
         "id": "A",
-        "text": "887%",
-        "rationale": "This is half the actual percent change."
+        "text": "55%",
+        "rationale": "This divides the change by the final value (75) instead of the starting value (34)."
       },
       {
         "id": "B",
-        "text": "95%",
-        "rationale": "This divides the change by the final value (637) instead of the starting value (34)."
+        "text": "41 mL",
+        "rationale": "This is the absolute change in CO₂ volume, not a percent of the starting value."
       },
       {
         "id": "C",
-        "text": "1774%",
-        "rationale": "Correct. |637 − 34| ÷ 34 × 100 ≈ 1774%."
+        "text": "242%",
+        "rationale": "This is double the actual percent change."
       },
       {
         "id": "D",
-        "text": "3548%",
-        "rationale": "This is double the actual percent change."
+        "text": "121%",
+        "rationale": "Correct. |75 − 34| ÷ 34 × 100 ≈ 121%."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Percent change = (last − first) ÷ first × 100 = (637 − 34) ÷ 34 × 100 ≈ 1774% increase.",
+    "correct_choice": "D",
+    "explanation": "Percent change = (last − first) ÷ first × 100 = (75 − 34) ÷ 34 × 100 ≈ 121% increase.",
     "estimated_time_seconds": 75,
     "tags": [
       "science",
@@ -866,42 +857,38 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Wind Speed and Turbine Power",
+      "title": "Sugar and Yeast Fermentation",
       "table": {
-        "caption": "Table 1. Electrical power produced by a small wind turbine at several wind speeds.",
+        "caption": "Table 1. Volume of carbon dioxide produced in 30 minutes by yeast given several amounts of sugar.",
         "headers": [
-          "Wind speed (m/s)",
-          "Power output (W)"
+          "Sugar (g)",
+          "CO₂ produced (mL)"
         ],
         "rows": [
           [
-            "3",
+            "2",
             "34"
           ],
           [
             "4",
-            "80"
-          ],
-          [
-            "5",
-            "155"
+            "52"
           ],
           [
             "6",
-            "269"
-          ],
-          [
-            "7",
-            "427"
+            "62"
           ],
           [
             "8",
-            "637"
+            "69"
+          ],
+          [
+            "10",
+            "75"
           ]
         ]
       }
     },
-    "answer_verification": "science:pct;x1=3;x2=8;col=1"
+    "answer_verification": "science:pct;x1=2;x2=10;col=1"
   },
   {
     "question_id": "act-science-trends-extrapolation-medium-q12",
@@ -915,31 +902,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "series_crossing",
-    "prompt": "Between 0 °C and 20 °C, the rate of change of the mass of salt that dissolved for Salt A was approximately how many times the rate of change of the mass of salt that dissolved for Salt B?",
+    "prompt": "Between 0 µg/mL and 10 µg/mL, the rate of change of the number of colonies for 37°C was approximately how many times the rate of change of the number of colonies for 30°C?",
     "choices": [
       {
         "id": "A",
-        "text": "2.0",
-        "rationale": "Correct. Both rates share the same Δwater temperature, so compare the changes: 12 ÷ 6 ≈ 2.0."
+        "text": "122",
+        "rationale": "This is the difference between the two changes, not their ratio."
       },
       {
         "id": "B",
-        "text": "0.5",
-        "rationale": "This is the inverse ratio (slower rate divided by faster rate)."
+        "text": "1.4",
+        "rationale": "Correct. Both rates share the same Δantibiotic concentration, so compare the changes: 397 ÷ 275 ≈ 1.4."
       },
       {
         "id": "C",
-        "text": "4.0",
-        "rationale": "This doubles the ratio; recheck the division."
+        "text": "0.69",
+        "rationale": "This is the inverse ratio (slower rate divided by faster rate)."
       },
       {
         "id": "D",
-        "text": "6",
-        "rationale": "This is the difference between the two changes, not their ratio."
+        "text": "2.8",
+        "rationale": "This doubles the ratio; recheck the division."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Over the same change in water temperature, the mass of salt that dissolved for Salt A changed by 12 and the mass of salt that dissolved for Salt B by 6; the ratio of the rates is about 2.0.",
+    "correct_choice": "B",
+    "explanation": "Over the same change in antibiotic concentration, the number of colonies for 37°C changed by 397 and the number of colonies for 30°C by 275; the ratio of the rates is about 1.4.",
     "estimated_time_seconds": 80,
     "tags": [
       "science",
@@ -949,48 +936,43 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Solubility and Temperature",
+      "title": "Antibiotic Dose and Bacterial Growth",
       "table": {
-        "caption": "Table 1. Mass of a salt that dissolves in 100 g of water at several temperatures. Results are shown for two conditions: Salt A and Salt B.",
+        "caption": "Table 1. Number of bacterial colonies on plates with several antibiotic concentrations. Results are shown for two conditions: 30°C and 37°C.",
         "headers": [
-          "Water temperature (°C)",
-          "Mass dissolved (g), Salt A",
-          "Mass dissolved (g), Salt B"
+          "Antibiotic concentration (µg/mL)",
+          "Colony count (colonies), 30°C",
+          "Colony count (colonies), 37°C"
         ],
         "rows": [
           [
             "0",
+            "319",
+            "460"
+          ],
+          [
+            "5",
+            "119",
+            "171"
+          ],
+          [
+            "10",
+            "44",
+            "63"
+          ],
+          [
             "15",
-            "9"
+            "16",
+            "23"
           ],
           [
             "20",
-            "27",
-            "15"
-          ],
-          [
-            "40",
-            "51",
-            "29"
-          ],
-          [
-            "60",
-            "88",
-            "50"
-          ],
-          [
-            "80",
-            "136",
-            "78"
-          ],
-          [
-            "100",
-            "197",
-            "112"
+            "6",
+            "9"
           ]
         ]
       }
     },
-    "answer_verification": "science:slopes;x1=0;x2=20;num=1;den=2"
+    "answer_verification": "science:slopes;x1=0;x2=10;num=2;den=1"
   }
 ]

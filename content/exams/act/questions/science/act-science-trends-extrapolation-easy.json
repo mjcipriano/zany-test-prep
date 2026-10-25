@@ -11,31 +11,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "trend_shape",
-    "prompt": "According to Table 1, as the distance from the epicenter increased, the maximum ground motion:",
+    "prompt": "According to Table 1, as the slope angle of the tray increased, the mass of soil eroded:",
     "choices": [
       {
         "id": "A",
-        "text": "decreased by approximately the same amount for each step in distance",
-        "rationale": "The decreases from row to row are not all about the same size."
+        "text": "decreased, by larger and larger amounts",
+        "rationale": "The values rise down the column; they never decrease."
       },
       {
         "id": "B",
-        "text": "decreased, by larger and larger amounts",
-        "rationale": "The decreases do not get steadily larger down the column."
+        "text": "increased, by larger and larger amounts",
+        "rationale": "Correct. The row-to-row changes are 49, 68, 87, 106, which fits this description."
       },
       {
         "id": "C",
-        "text": "increased, by larger and larger amounts",
-        "rationale": "The values fall down the column; they never increase."
+        "text": "increased by approximately the same amount for each step in slope angle",
+        "rationale": "The increases from row to row are not all about the same size."
       },
       {
         "id": "D",
-        "text": "decreased, but by smaller and smaller amounts",
-        "rationale": "Correct. The row-to-row changes are 0.80, 0.33, 0.18, 0.10, which fits this description."
+        "text": "increased, but by smaller and smaller amounts",
+        "rationale": "The increases do not get steadily smaller down the column."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Compute the change between consecutive rows (0.80, 0.33, 0.18, 0.10). The maximum ground motion decreased, but by smaller and smaller amounts.",
+    "correct_choice": "B",
+    "explanation": "Compute the change between consecutive rows (49, 68, 87, 106). The mass of soil eroded increased, by larger and larger amounts.",
     "estimated_time_seconds": 60,
     "tags": [
       "science",
@@ -45,38 +45,38 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Earthquake Distance and Shaking",
+      "title": "Slope and Soil Erosion",
       "table": {
-        "caption": "Table 1. Maximum ground motion recorded by seismographs at several distances from an earthquake.",
+        "caption": "Table 1. Mass of soil washed from trays set at several slope angles.",
         "headers": [
-          "Distance from epicenter (km)",
-          "Ground motion (mm)"
+          "Slope angle (°)",
+          "Soil eroded (g)"
         ],
         "rows": [
           [
-            "100",
-            "1.75"
+            "5",
+            "30"
           ],
           [
-            "150",
-            "0.95"
+            "10",
+            "79"
           ],
           [
-            "200",
-            "0.62"
+            "15",
+            "147"
           ],
           [
-            "250",
-            "0.44"
+            "20",
+            "234"
           ],
           [
-            "300",
-            "0.34"
+            "25",
+            "340"
           ]
         ]
       }
     },
-    "answer_verification": "science:shape;col=1;expect=dec_slow"
+    "answer_verification": "science:shape;col=1;expect=inc_acc"
   },
   {
     "question_id": "act-science-trends-extrapolation-easy-q02",
@@ -90,31 +90,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "interpolation",
-    "prompt": "Based on the trend in Table 1, if the current through the resistor had been 0.55 A, the voltage across the resistor would most likely have been:",
+    "prompt": "Suppose a trial had been run at a dissolved oxygen of 9 mg/L. Based on Table 1, the number of mayfly nymphs would most likely have been:",
     "choices": [
       {
         "id": "A",
-        "text": "below every listed value, less than 4.9 V",
-        "rationale": "This is below every value in the table; the trend has no reason to jump there."
+        "text": "between 120 nymphs and 164 nymphs",
+        "rationale": "This is the interval for dissolved oxygen between 10 mg/L and 12 mg/L."
       },
       {
         "id": "B",
-        "text": "between 12.2 V and 14.6 V",
-        "rationale": "Correct. 0.55 A lies between 0.5 A and 0.6 A, whose values are 12.2 and 14.6."
+        "text": "above every listed value, greater than 164 nymphs",
+        "rationale": "This is above every value in the table; the trend has no reason to jump there."
       },
       {
         "id": "C",
-        "text": "between 9.7 V and 12.2 V",
-        "rationale": "This is the interval for current between 0.4 A and 0.5 A."
+        "text": "between 83 nymphs and 120 nymphs",
+        "rationale": "Correct. 9 mg/L lies between 8 mg/L and 10 mg/L, whose values are 83 and 120."
       },
       {
         "id": "D",
-        "text": "above every listed value, greater than 14.6 V",
-        "rationale": "This is above every value in the table; the trend has no reason to jump there."
+        "text": "below every listed value, less than 52 nymphs",
+        "rationale": "This is below every value in the table; the trend has no reason to jump there."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "0.55 A falls between the rows for 0.5 A and 0.6 A; since the values change steadily, the result should fall between 12.2 and 14.6 V.",
+    "correct_choice": "C",
+    "explanation": "9 mg/L falls between the rows for 8 mg/L and 10 mg/L; since the values change steadily, the result should fall between 83 and 120 nymphs.",
     "estimated_time_seconds": 60,
     "tags": [
       "science",
@@ -124,38 +124,34 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Current and Voltage",
+      "title": "Dissolved Oxygen and Mayflies",
       "table": {
-        "caption": "Table 1. Voltage across a resistor at several currents.",
+        "caption": "Table 1. Number of mayfly nymphs found in stream samples with several dissolved-oxygen levels.",
         "headers": [
-          "Current (A)",
-          "Voltage (V)"
+          "Dissolved oxygen (mg/L)",
+          "Mayfly count (nymphs)"
         ],
         "rows": [
           [
-            "0.2",
-            "4.9"
+            "6",
+            "52"
           ],
           [
-            "0.3",
-            "7.3"
+            "8",
+            "83"
           ],
           [
-            "0.4",
-            "9.7"
+            "10",
+            "120"
           ],
           [
-            "0.5",
-            "12.2"
-          ],
-          [
-            "0.6",
-            "14.6"
+            "12",
+            "164"
           ]
         ]
       }
     },
-    "answer_verification": "science:interp_range;x=0.55;col=1"
+    "answer_verification": "science:interp_range;x=9;col=1"
   },
   {
     "question_id": "act-science-trends-extrapolation-easy-q03",
@@ -169,31 +165,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "extrapolation",
-    "prompt": "Based on Table 1, if a trial were run at a sugar mass of 10 g, the volume of carbon dioxide produced would most likely be:",
+    "prompt": "If the trend in Table 1 continued, the mass of salt that dissolved at a water temperature of 100 °C would most likely be:",
     "choices": [
       {
         "id": "A",
-        "text": "between 25 mL and 45 mL",
-        "rationale": "These are values from earlier rows; the trend has already moved past them."
+        "text": "greater than 163 g",
+        "rationale": "Correct. The values rise with every row, so the next value should exceed the last one, 163 g."
       },
       {
         "id": "B",
-        "text": "less than 25 mL",
-        "rationale": "This is below the very first value; the data rise, not fall."
-      },
-      {
-        "id": "C",
-        "text": "between 45 mL and 50 mL",
+        "text": "between 104 g and 163 g",
         "rationale": "This would require the trend to reverse and fall back below the last value."
       },
       {
+        "id": "C",
+        "text": "less than 31 g",
+        "rationale": "This is below the very first value; the data rise, not fall."
+      },
+      {
         "id": "D",
-        "text": "greater than 50 mL",
-        "rationale": "Correct. The values rise with every row, so the next value should exceed the last one, 50 mL."
+        "text": "between 31 g and 104 g",
+        "rationale": "These are values from earlier rows; the trend has already moved past them."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Every step in sugar mass raised the volume of carbon dioxide produced, so one more step beyond 8 g should give a value greater than 50 mL.",
+    "correct_choice": "A",
+    "explanation": "Every step in water temperature raised the mass of salt that dissolved, so one more step beyond 80 °C should give a value greater than 163 g.",
     "estimated_time_seconds": 55,
     "tags": [
       "science",
@@ -203,29 +199,29 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Sugar and Yeast Fermentation",
+      "title": "Solubility and Temperature",
       "table": {
-        "caption": "Table 1. Volume of carbon dioxide produced in 30 minutes by yeast given several amounts of sugar.",
+        "caption": "Table 1. Mass of a salt that dissolves in 100 g of water at several temperatures.",
         "headers": [
-          "Sugar (g)",
-          "CO₂ produced (mL)"
+          "Water temperature (°C)",
+          "Mass dissolved (g)"
         ],
         "rows": [
           [
-            "2",
-            "25"
+            "20",
+            "31"
           ],
           [
-            "4",
-            "38"
+            "40",
+            "60"
           ],
           [
-            "6",
-            "45"
+            "60",
+            "104"
           ],
           [
-            "8",
-            "50"
+            "80",
+            "163"
           ]
         ]
       }
@@ -244,31 +240,31 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "trend_shape",
-    "prompt": "Which of the following best describes the relationship between speed and heart rate shown in Figure 1?",
+    "prompt": "According to Figure 1, as the slope angle of the tray increases, the mass of soil eroded:",
     "choices": [
       {
         "id": "A",
-        "text": "decreases",
-        "rationale": "The points would have to fall from left to right; they do not."
-      },
-      {
-        "id": "B",
         "text": "increases",
         "rationale": "Correct. Reading the points from left to right shows this pattern."
       },
       {
-        "id": "C",
+        "id": "B",
         "text": "increases, then decreases",
         "rationale": "The points keep climbing to the rightmost one; they never turn down."
       },
       {
-        "id": "D",
+        "id": "C",
         "text": "decreases, then increases",
         "rationale": "The points would have to fall and then rise; they do not."
+      },
+      {
+        "id": "D",
+        "text": "stays about the same",
+        "rationale": "The points change height clearly from left to right."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Follow the points from left (small speed) to right (large speed): the heart rate increases.",
+    "correct_choice": "A",
+    "explanation": "Follow the points from left (small slope angle) to right (large slope angle): the mass of soil eroded increases.",
     "estimated_time_seconds": 45,
     "tags": [
       "science",
@@ -278,33 +274,37 @@
     ],
     "stimulus": {
       "type": "figure",
-      "title": "Exercise Intensity and Heart Rate",
+      "title": "Slope and Soil Erosion",
       "figure": {
         "kind": "scatter",
         "points": [
           [
-            6.0,
-            132.0
-          ],
-          [
-            8.0,
-            151.0
-          ],
-          [
             10.0,
-            171.0
+            85.0
           ],
           [
-            12.0,
-            191.0
+            15.0,
+            161.0
+          ],
+          [
+            20.0,
+            257.0
+          ],
+          [
+            25.0,
+            375.0
+          ],
+          [
+            30.0,
+            515.0
           ]
         ],
-        "xlabel": "Treadmill speed (km/h)",
-        "ylabel": "Heart rate (beats/min)",
-        "caption": "Figure 1. Heart rate (beats/min) (vertical axis) versus Treadmill speed (km/h) (horizontal axis). Each point is one trial.",
+        "xlabel": "Slope angle (°)",
+        "ylabel": "Soil eroded (g)",
+        "caption": "Figure 1. Soil eroded (g) (vertical axis) versus Slope angle (°) (horizontal axis). Each point is one trial.",
         "line": {
-          "m": 9.85,
-          "b": 72.6
+          "m": 21.48,
+          "b": -151.0
         }
       }
     },
@@ -322,31 +322,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "trend_shape",
-    "prompt": "According to Table 1, between 25 °C and 30 °C, the height of the dough changed at an average rate closest to:",
+    "prompt": "According to Table 1, between 500 µmol/m²/s and 600 µmol/m²/s, the rate of photosynthesis changed at an average rate closest to:",
     "choices": [
       {
         "id": "A",
-        "text": "2.3 cm per °C",
-        "rationale": "This is the total change in dough height, not divided by the change in temperature."
+        "text": "0.008 bubbles/min per µmol/m²/s",
+        "rationale": "Correct. Change in photosynthesis rate ÷ change in light intensity = 0.8 ÷ 100 ≈ 0.008."
       },
       {
         "id": "B",
-        "text": "0.46 cm per °C",
-        "rationale": "Correct. Change in dough height ÷ change in temperature = 2.3 ÷ 5 ≈ 0.46."
-      },
-      {
-        "id": "C",
-        "text": "0.23 cm per °C",
+        "text": "0.004 bubbles/min per µmol/m²/s",
         "rationale": "This is half the rate; recheck the division."
       },
       {
+        "id": "C",
+        "text": "0.8 bubbles/min over the whole interval",
+        "rationale": "This is the total change in photosynthesis rate, not divided by the change in light intensity."
+      },
+      {
         "id": "D",
-        "text": "0.92 cm per °C",
+        "text": "0.016 bubbles/min per µmol/m²/s",
         "rationale": "This is twice the rate; recheck the division."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Rate = Δdough height ÷ Δtemperature = (7.6 − 5.3) ÷ (30 − 25) ≈ 0.46 cm per °C.",
+    "correct_choice": "A",
+    "explanation": "Rate = Δphotosynthesis rate ÷ Δlight intensity = (26.2 − 25.4) ÷ (600 − 500) ≈ 0.008 bubbles/min per µmol/m²/s.",
     "estimated_time_seconds": 70,
     "tags": [
       "science",
@@ -356,38 +356,34 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Proofing Temperature and Dough Rise",
+      "title": "Light and Photosynthesis",
       "table": {
-        "caption": "Table 1. Height of bread dough after rising for one hour at several temperatures.",
+        "caption": "Table 1. Rate of photosynthesis of a water plant at several light intensities.",
         "headers": [
-          "Temperature (°C)",
-          "Dough height (cm)"
+          "Light intensity (µmol/m²/s)",
+          "Bubbles per minute (bubbles/min)"
         ],
         "rows": [
           [
-            "25",
-            "5.3"
+            "300",
+            "23.0"
           ],
           [
-            "30",
-            "7.6"
+            "400",
+            "24.5"
           ],
           [
-            "35",
-            "9.5"
+            "500",
+            "25.4"
           ],
           [
-            "40",
-            "8.6"
-          ],
-          [
-            "45",
-            "6.1"
+            "600",
+            "26.2"
           ]
         ]
       }
     },
-    "answer_verification": "science:rate;x1=25;x2=30;col=1"
+    "answer_verification": "science:rate;x1=500;x2=600;col=1"
   },
   {
     "question_id": "act-science-trends-extrapolation-easy-q06",
@@ -401,31 +397,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "trend_shape",
-    "prompt": "Based on Table 1, the trend in the horizontal distance the ball traveled reversed direction at approximately which launch angle?",
+    "prompt": "According to Table 1, the blood glucose level increased as the time after the meal increased up to which value, after which it decreased?",
     "choices": [
       {
         "id": "A",
-        "text": "20°",
-        "rationale": "At this launch angle the values were still rising, not at the turning point."
+        "text": "60 min",
+        "rationale": "At this time the values were already falling, not at the turning point."
       },
       {
         "id": "B",
-        "text": "30°",
-        "rationale": "At this launch angle the values were still rising, not at the turning point."
+        "text": "30 min",
+        "rationale": "At this time the values were still rising, not at the turning point."
       },
       {
         "id": "C",
-        "text": "50°",
-        "rationale": "At this launch angle the values were already falling, not at the turning point."
+        "text": "The trend never reversed within the range tested",
+        "rationale": "The values rise to 142 and then fall, so the trend does reverse."
       },
       {
         "id": "D",
-        "text": "40°",
-        "rationale": "Correct. The horizontal distance the ball traveled rises to 18.9 m here and falls in the next row."
+        "text": "45 min",
+        "rationale": "Correct. The blood glucose level rises to 142 mg/dL here and falls in the next row."
       }
     ],
     "correct_choice": "D",
-    "explanation": "The values rise down the column until 40° (18.9) and fall after it, so that is where the trend reverses.",
+    "explanation": "The values rise down the column until 45 min (142) and fall after it, so that is where the trend reverses.",
     "estimated_time_seconds": 55,
     "tags": [
       "science",
@@ -435,33 +431,33 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Launch Angle and Range",
+      "title": "Blood Glucose After a Meal",
       "table": {
-        "caption": "Table 1. Horizontal distance traveled by a ball launched at several angles.",
+        "caption": "Table 1. Blood glucose of a volunteer at several times after eating a meal.",
         "headers": [
-          "Launch angle (°)",
-          "Range (m)"
+          "Time after meal (min)",
+          "Blood glucose (mg/dL)"
         ],
         "rows": [
           [
-            "20",
-            "13.7"
-          ],
-          [
             "30",
-            "17.5"
+            "137"
           ],
           [
-            "40",
-            "18.9"
-          ],
-          [
-            "50",
-            "18.0"
+            "45",
+            "142"
           ],
           [
             "60",
-            "15.3"
+            "141"
+          ],
+          [
+            "90",
+            "132"
+          ],
+          [
+            "120",
+            "121"
           ]
         ]
       }
@@ -480,31 +476,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "trend_shape",
-    "prompt": "Which of the following best describes how the stopping distance changed as the speed of the car increased from 20 km/h to 100 km/h?",
+    "prompt": "Which of the following best describes how the salinity of the water changed as the depth below the surface increased from 200 m to 600 m?",
     "choices": [
       {
         "id": "A",
-        "text": "increased, but by smaller and smaller amounts",
-        "rationale": "The increases do not get steadily smaller down the column."
+        "text": "increased, by larger and larger amounts",
+        "rationale": "The increases do not get steadily larger down the column."
       },
       {
         "id": "B",
-        "text": "decreased by approximately the same amount for each step in speed",
-        "rationale": "The values rise down the column; they never decrease."
+        "text": "increased by approximately the same amount for each step in depth",
+        "rationale": "The increases from row to row are not all about the same size."
       },
       {
         "id": "C",
-        "text": "increased, by larger and larger amounts",
-        "rationale": "Correct. The row-to-row changes are 13.1, 19.0, 25.0, 30.8, which fits this description."
+        "text": "increased, but by smaller and smaller amounts",
+        "rationale": "Correct. The row-to-row changes are 0.45, 0.27, 0.18, 0.10, which fits this description."
       },
       {
         "id": "D",
-        "text": "increased by approximately the same amount for each step in speed",
-        "rationale": "The increases from row to row are not all about the same size."
+        "text": "decreased by approximately the same amount for each step in depth",
+        "rationale": "The values rise down the column; they never decrease."
       }
     ],
     "correct_choice": "C",
-    "explanation": "Compute the change between consecutive rows (13.1, 19.0, 25.0, 30.8). The stopping distance increased, by larger and larger amounts.",
+    "explanation": "Compute the change between consecutive rows (0.45, 0.27, 0.18, 0.10). The salinity of the water increased, but by smaller and smaller amounts.",
     "estimated_time_seconds": 60,
     "tags": [
       "science",
@@ -514,38 +510,38 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Speed and Stopping Distance",
+      "title": "Ocean Salinity and Depth",
       "table": {
-        "caption": "Table 1. Distance needed for a car to stop from several speeds.",
+        "caption": "Table 1. Salinity of seawater measured at several depths at one station.",
         "headers": [
-          "Speed (km/h)",
-          "Stopping distance (m)"
+          "Depth (m)",
+          "Salinity (g/kg)"
         ],
         "rows": [
           [
-            "20",
-            "7.3"
+            "200",
+            "34.10"
           ],
           [
-            "40",
-            "20.4"
+            "300",
+            "34.55"
           ],
           [
-            "60",
-            "39.4"
+            "400",
+            "34.82"
           ],
           [
-            "80",
-            "64.4"
+            "500",
+            "35.00"
           ],
           [
-            "100",
-            "95.2"
+            "600",
+            "35.10"
           ]
         ]
       }
     },
-    "answer_verification": "science:shape;col=1;expect=inc_acc"
+    "answer_verification": "science:shape;col=1;expect=inc_slow"
   },
   {
     "question_id": "act-science-trends-extrapolation-easy-q08",
@@ -559,31 +555,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "interpolation",
-    "prompt": "Suppose a trial had been run at an antibiotic concentration of 12.5 µg/mL. Based on Table 1, the number of colonies would most likely have been:",
+    "prompt": "Based on the trend in Table 1, if the altitude of the station had been 1750 m, the boiling point of the water would most likely have been:",
     "choices": [
       {
         "id": "A",
-        "text": "above every listed value, greater than 275 colonies",
-        "rationale": "This is above every value in the table; the trend has no reason to jump there."
+        "text": "between 92.9 °C and 94.7 °C",
+        "rationale": "Correct. 1750 m lies between 1500 m and 2000 m, whose values are 92.9 and 94.7."
       },
       {
         "id": "B",
-        "text": "between 23 colonies and 52 colonies",
-        "rationale": "Correct. 12.5 µg/mL lies between 10 µg/mL and 15 µg/mL, whose values are 23 and 52."
-      },
-      {
-        "id": "C",
-        "text": "below every listed value, less than 23 colonies",
+        "text": "below every listed value, less than 91.1 °C",
         "rationale": "This is below every value in the table; the trend has no reason to jump there."
       },
       {
+        "id": "C",
+        "text": "above every listed value, greater than 96.4 °C",
+        "rationale": "This is above every value in the table; the trend has no reason to jump there."
+      },
+      {
         "id": "D",
-        "text": "between 52 colonies and 120 colonies",
-        "rationale": "This is the interval for antibiotic concentration between 5 µg/mL and 10 µg/mL."
+        "text": "between 91.1 °C and 92.9 °C",
+        "rationale": "This is the interval for altitude between 2000 m and 2500 m."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "12.5 µg/mL falls between the rows for 10 µg/mL and 15 µg/mL; since the values change steadily, the result should fall between 23 and 52 colonies.",
+    "correct_choice": "A",
+    "explanation": "1750 m falls between the rows for 1500 m and 2000 m; since the values change steadily, the result should fall between 92.9 and 94.7 °C.",
     "estimated_time_seconds": 60,
     "tags": [
       "science",
@@ -593,34 +589,34 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Antibiotic Dose and Bacterial Growth",
+      "title": "Altitude and Boiling Point",
       "table": {
-        "caption": "Table 1. Number of bacterial colonies on plates with several antibiotic concentrations.",
+        "caption": "Table 1. Boiling point of water measured at several altitudes.",
         "headers": [
-          "Antibiotic concentration (µg/mL)",
-          "Colony count (colonies)"
+          "Altitude (m)",
+          "Boiling point (°C)"
         ],
         "rows": [
           [
-            "0",
-            "275"
+            "1000",
+            "96.4"
           ],
           [
-            "5",
-            "120"
+            "1500",
+            "94.7"
           ],
           [
-            "10",
-            "52"
+            "2000",
+            "92.9"
           ],
           [
-            "15",
-            "23"
+            "2500",
+            "91.1"
           ]
         ]
       }
     },
-    "answer_verification": "science:interp_range;x=12.5;col=1"
+    "answer_verification": "science:interp_range;x=1750;col=1"
   },
   {
     "question_id": "act-science-trends-extrapolation-easy-q09",
@@ -634,31 +630,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "extrapolation",
-    "prompt": "Based on Table 1, if a trial were run at a depth of 600 m, the salinity of the water would most likely be:",
+    "prompt": "If the trend in Table 1 continued, the number of colonies at an antibiotic concentration of 20 µg/mL would most likely be:",
     "choices": [
       {
         "id": "A",
-        "text": "between 34.32 g/kg and 34.44 g/kg",
-        "rationale": "This would require the trend to reverse and fall back below the last value."
+        "text": "between 21 colonies and 54 colonies",
+        "rationale": "This would require the trend to reverse and climb back above the last value."
       },
       {
         "id": "B",
-        "text": "less than 33.29 g/kg",
-        "rationale": "This is below the very first value; the data rise, not fall."
+        "text": "less than 21 colonies",
+        "rationale": "Correct. The values fall with every row, so the next value should be below the last one, 21 colonies."
       },
       {
         "id": "C",
-        "text": "between 33.29 g/kg and 34.32 g/kg",
-        "rationale": "These are values from earlier rows; the trend has already moved past them."
+        "text": "greater than 371 colonies",
+        "rationale": "This is above the very first value; the data fall, not rise."
       },
       {
         "id": "D",
-        "text": "greater than 34.44 g/kg",
-        "rationale": "Correct. The values rise with every row, so the next value should exceed the last one, 34.44 g/kg."
+        "text": "between 54 colonies and 371 colonies",
+        "rationale": "These are values from earlier rows; the trend has already moved past them."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Every step in depth raised the salinity of the water, so one more step beyond 500 m should give a value greater than 34.44 g/kg.",
+    "correct_choice": "B",
+    "explanation": "Every step in antibiotic concentration lowered the number of colonies, so one more step beyond 15 µg/mL should give a value less than 21 colonies.",
     "estimated_time_seconds": 55,
     "tags": [
       "science",
@@ -668,38 +664,34 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Ocean Salinity and Depth",
+      "title": "Antibiotic Dose and Bacterial Growth",
       "table": {
-        "caption": "Table 1. Salinity of seawater measured at several depths at one station.",
+        "caption": "Table 1. Number of bacterial colonies on plates with several antibiotic concentrations.",
         "headers": [
-          "Depth (m)",
-          "Salinity (g/kg)"
+          "Antibiotic concentration (µg/mL)",
+          "Colony count (colonies)"
         ],
         "rows": [
           [
-            "100",
-            "33.29"
+            "0",
+            "371"
           ],
           [
-            "200",
-            "33.81"
+            "5",
+            "141"
           ],
           [
-            "300",
-            "34.13"
+            "10",
+            "54"
           ],
           [
-            "400",
-            "34.32"
-          ],
-          [
-            "500",
-            "34.44"
+            "15",
+            "21"
           ]
         ]
       }
     },
-    "answer_verification": "science:beyond;col=1;expect=gt"
+    "answer_verification": "science:beyond;col=1;expect=lt"
   },
   {
     "question_id": "act-science-trends-extrapolation-easy-q10",
@@ -713,31 +705,31 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "trend_shape",
-    "prompt": "According to Figure 1, as the temperature of the water increases, the mass of salt that dissolved:",
+    "prompt": "According to Figure 1, as the depth below the surface increases, the water temperature:",
     "choices": [
       {
         "id": "A",
-        "text": "decreases",
-        "rationale": "The points would have to fall from left to right; they do not."
+        "text": "decreases, then increases",
+        "rationale": "The points keep falling to the rightmost one; they never turn up."
       },
       {
         "id": "B",
-        "text": "stays about the same",
-        "rationale": "The points change height clearly from left to right."
+        "text": "decreases",
+        "rationale": "Correct. Reading the points from left to right shows this pattern."
       },
       {
         "id": "C",
         "text": "increases",
-        "rationale": "Correct. Reading the points from left to right shows this pattern."
+        "rationale": "The points would have to climb from left to right; they do not."
       },
       {
         "id": "D",
-        "text": "decreases, then increases",
-        "rationale": "The points would have to fall and then rise; they do not."
+        "text": "increases, then decreases",
+        "rationale": "The points would have to rise and then fall; they do not reverse."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Follow the points from left (small water temperature) to right (large water temperature): the mass of salt that dissolved increases.",
+    "correct_choice": "B",
+    "explanation": "Follow the points from left (small depth) to right (large depth): the water temperature decreases.",
     "estimated_time_seconds": 45,
     "tags": [
       "science",
@@ -747,37 +739,41 @@
     ],
     "stimulus": {
       "type": "figure",
-      "title": "Solubility and Temperature",
+      "title": "Lake Temperature and Depth",
       "figure": {
         "kind": "scatter",
         "points": [
           [
-            20.0,
-            29.0
+            4.0,
+            11.8
           ],
           [
-            40.0,
-            56.0
+            6.0,
+            9.7
           ],
           [
-            60.0,
-            96.0
+            8.0,
+            8.5
           ],
           [
-            80.0,
-            149.0
+            10.0,
+            7.8
+          ],
+          [
+            12.0,
+            7.5
           ]
         ],
-        "xlabel": "Water temperature (°C)",
-        "ylabel": "Mass dissolved (g)",
-        "caption": "Figure 1. Mass dissolved (g) (vertical axis) versus Water temperature (°C) (horizontal axis). Each point is one trial.",
+        "xlabel": "Depth (m)",
+        "ylabel": "Water temperature (°C)",
+        "caption": "Figure 1. Water temperature (°C) (vertical axis) versus Depth (m) (horizontal axis). Each point is one trial.",
         "line": {
-          "m": 2.0,
-          "b": -17.5
+          "m": -0.525,
+          "b": 13.26
         }
       }
     },
-    "answer_verification": "science:fig_trend;expect=inc"
+    "answer_verification": "science:fig_trend;expect=dec"
   },
   {
     "question_id": "act-science-trends-extrapolation-easy-q11",
@@ -791,31 +787,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "trend_shape",
-    "prompt": "Based on Table 1, what was the average rate of increase in the flow rate of the river as rainfall went from 30 mm to 40 mm?",
+    "prompt": "Based on Table 1, what was the average rate of decrease in the count rate as time went from 10 min to 20 min?",
     "choices": [
       {
         "id": "A",
-        "text": "0.83 m³/s per mm",
-        "rationale": "Correct. Change in flow rate ÷ change in rainfall = 8.3 ÷ 10 ≈ 0.83."
+        "text": "34.8 counts/min per min",
+        "rationale": "Correct. Change in count rate ÷ change in time = 348 ÷ 10 ≈ 34.8."
       },
       {
         "id": "B",
-        "text": "0.415 m³/s per mm",
-        "rationale": "This is half the rate; recheck the division."
+        "text": "348 counts/min over the whole interval",
+        "rationale": "This is the total change in count rate, not divided by the change in time."
       },
       {
         "id": "C",
-        "text": "8.3 m³/s per mm",
-        "rationale": "This is the total change in flow rate, not divided by the change in rainfall."
+        "text": "69.6 counts/min per min",
+        "rationale": "This is twice the rate; recheck the division."
       },
       {
         "id": "D",
-        "text": "1.66 m³/s per mm",
-        "rationale": "This is twice the rate; recheck the division."
+        "text": "17.4 counts/min per min",
+        "rationale": "This is half the rate; recheck the division."
       }
     ],
     "correct_choice": "A",
-    "explanation": "Rate = Δflow rate ÷ Δrainfall = (28.7 − 20.4) ÷ (40 − 30) ≈ 0.83 m³/s per mm.",
+    "explanation": "Rate = Δcount rate ÷ Δtime = (1083 − 1431) ÷ (20 − 10) ≈ 34.8 counts/min per min.",
     "estimated_time_seconds": 70,
     "tags": [
       "science",
@@ -825,38 +821,38 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Rainfall and River Flow",
+      "title": "Radioactive Decay",
       "table": {
-        "caption": "Table 1. Flow rate of a river measured the day after several amounts of rain.",
+        "caption": "Table 1. Counts per minute recorded from a radioactive sample at several times.",
         "headers": [
-          "Rainfall (mm)",
-          "Flow rate (m³/s)"
+          "Time (min)",
+          "Counts per minute (counts/min)"
         ],
         "rows": [
           [
+            "0",
+            "1891"
+          ],
+          [
+            "10",
+            "1431"
+          ],
+          [
             "20",
-            "13.6"
+            "1083"
           ],
           [
             "30",
-            "20.4"
+            "820"
           ],
           [
             "40",
-            "28.7"
-          ],
-          [
-            "50",
-            "38.7"
-          ],
-          [
-            "60",
-            "50.3"
+            "621"
           ]
         ]
       }
     },
-    "answer_verification": "science:rate;x1=30;x2=40;col=1"
+    "answer_verification": "science:rate;x1=10;x2=20;col=1"
   },
   {
     "question_id": "act-science-trends-extrapolation-easy-q12",
@@ -870,31 +866,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "trend_shape",
-    "prompt": "According to Table 1, the height of the seedlings increased as the fertilizer concentration increased up to which value, after which it decreased?",
+    "prompt": "Based on Table 1, the trend in the activity of the enzyme reversed direction at approximately which pH?",
     "choices": [
       {
         "id": "A",
-        "text": "10 g/L",
-        "rationale": "At this fertilizer concentration the values were still rising, not at the turning point."
+        "text": "pH 7",
+        "rationale": "At this pH the values were already falling, not at the turning point."
       },
       {
         "id": "B",
-        "text": "15 g/L",
-        "rationale": "Correct. The height of the seedlings rises to 21.2 cm here and falls in the next row."
+        "text": "pH 6",
+        "rationale": "Correct. The activity of the enzyme rises to 57 µmol/min here and falls in the next row."
       },
       {
         "id": "C",
-        "text": "20 g/L",
-        "rationale": "At this fertilizer concentration the values were already falling, not at the turning point."
+        "text": "pH 5",
+        "rationale": "At this pH the values were still rising, not at the turning point."
       },
       {
         "id": "D",
-        "text": "5 g/L",
-        "rationale": "At this fertilizer concentration the values were still rising, not at the turning point."
+        "text": "The trend never reversed within the range tested",
+        "rationale": "The values rise to 57 and then fall, so the trend does reverse."
       }
     ],
     "correct_choice": "B",
-    "explanation": "The values rise down the column until 15 g/L (21.2) and fall after it, so that is where the trend reverses.",
+    "explanation": "The values rise down the column until pH 6 (57) and fall after it, so that is where the trend reverses.",
     "estimated_time_seconds": 55,
     "tags": [
       "science",
@@ -904,33 +900,33 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Fertilizer and Plant Growth",
+      "title": "Enzyme Activity and pH",
       "table": {
-        "caption": "Table 1. Average height of bean seedlings after 4 weeks at several fertilizer concentrations.",
+        "caption": "Table 1. Activity of an enzyme in solutions of several pH values.",
         "headers": [
-          "Fertilizer concentration (g/L)",
-          "Seedling height (cm)"
+          "pH",
+          "Enzyme activity (µmol/min)"
         ],
         "rows": [
           [
-            "0",
-            "13.4"
+            "3",
+            "3"
+          ],
+          [
+            "4",
+            "14"
           ],
           [
             "5",
-            "18.4"
+            "37"
           ],
           [
-            "10",
-            "21.0"
+            "6",
+            "57"
           ],
           [
-            "15",
-            "21.2"
-          ],
-          [
-            "20",
-            "19.1"
+            "7",
+            "51"
           ]
         ]
       }

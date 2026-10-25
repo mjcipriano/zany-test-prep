@@ -11,44 +11,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "mean_median_mode",
-    "prompt": "The data set 5, 9, 18, 29, 36, 41 has mean 23. If the least value is removed, what is the mean of the remaining values?",
+    "prompt": "The data set 27, 21, 17, 23, 27, 18, 16, 127, 14 lists the number of minutes 9 customers waited. Which of the following is true about the mean and the median of the data?",
     "choices": [
       {
         "id": "A",
-        "text": "138/5",
-        "rationale": "Subtract the removed value from the total as well."
+        "text": "The median is greater than the mean, because the value 127 pulls the median up.",
+        "rationale": "The median is resistant to outliers; it is the middle value, 21."
       },
       {
         "id": "B",
-        "text": "133/5",
-        "rationale": "Correct."
+        "text": "The mean and the median are equal, because the data are symmetric.",
+        "rationale": "The mean is 32.2 and the median is 21; they differ."
       },
       {
         "id": "C",
-        "text": "22.17",
-        "rationale": "Divide by the new count, 5."
+        "text": "The mean is less than the median, because most values are below 127.",
+        "rationale": "A large outlier raises the mean above the median."
       },
       {
         "id": "D",
-        "text": "23",
-        "rationale": "Removing an extreme value changes the mean."
+        "text": "The mean is greater than the median, because the value 127 pulls the mean up.",
+        "rationale": "Correct."
       },
       {
         "id": "E",
-        "text": "29.93",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "The median cannot be determined without the mode.",
+        "rationale": "The median is simply the middle value of the ordered data."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Remove 5: new total 138 − 5 = 133, over 5 values: 133/5.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "D",
+    "explanation": "Median = 21 (middle value); mean = 290/9 ≈ 32.2. The outlier 127 raises the mean.",
+    "estimated_time_seconds": 95,
     "tags": [
       "statistics",
-      "mean",
-      "change",
-      "family:st_change_effect"
+      "outlier",
+      "family:st_center_list"
     ],
-    "answer_verification": "val=133/5"
+    "answer_verification": "mean=32.22 median=21"
   },
   {
     "question_id": "act-math-statistics-hard-b0002",
@@ -62,421 +61,36 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 24 people. What is the mean siblings per child? (Round to the nearest hundredth if necessary.)",
+    "prompt": "The table shows the results of a survey of 24 people. What is the mean goals per game? (Round to the nearest hundredth if necessary.)",
     "choices": [
       {
         "id": "A",
-        "text": "7",
-        "rationale": "Divide by the number of people, not the number of rows."
+        "text": "2.08",
+        "rationale": "Correct."
       },
       {
         "id": "B",
+        "text": "2.58",
+        "rationale": "Arithmetic slip; recompute Σ(value × frequency)."
+      },
+      {
+        "id": "C",
         "text": "4.8",
         "rationale": "That is the mean frequency, not the mean value."
       },
       {
-        "id": "C",
-        "text": "2",
-        "rationale": "Weight each value by its frequency; don't average the listed values."
-      },
-      {
         "id": "D",
-        "text": "1.46",
-        "rationale": "Correct."
-      },
-      {
-        "id": "E",
-        "text": "1.96",
-        "rationale": "Arithmetic slip; recompute Σ(value × frequency)."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Mean = Σ(value × frequency)/N = 35/24 ≈ 1.46.",
-    "estimated_time_seconds": 100,
-    "tags": [
-      "statistics",
-      "table",
-      "mean",
-      "family:st_frequency_table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Survey results",
-        "headers": [
-          "Siblings",
-          "Number of children"
-        ],
-        "rows": [
-          [
-            "0",
-            "6"
-          ],
-          [
-            "1",
-            "8"
-          ],
-          [
-            "2",
-            "6"
-          ],
-          [
-            "3",
-            "1"
-          ],
-          [
-            "4",
-            "3"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "35/24"
-  },
-  {
-    "question_id": "act-math-statistics-hard-b0003",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "statistics",
-    "lesson_id": "act-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "mean_median_mode",
-    "prompt": "A data set of 5 values, 10, 12, 25, 27, 31, is extended by one value x. For what value of x will the mean of the new data set equal 26?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "25",
-        "rationale": "Use the new count 6."
-      },
-      {
-        "id": "B",
-        "text": "26",
-        "rationale": "x must be well above the target mean to pull it up."
-      },
-      {
-        "id": "C",
-        "text": "56",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "D",
-        "text": "156",
-        "rationale": "That is the required total, not x."
-      },
-      {
-        "id": "E",
-        "text": "51",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "E",
-    "explanation": "Required total = 26 × 6 = 156; x = 156 − 105 = 51.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "statistics",
-      "mean",
-      "family:st_outlier_effect"
-    ],
-    "answer_verification": "x=51"
-  },
-  {
-    "question_id": "act-math-statistics-hard-b0004",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "statistics",
-    "lesson_id": "act-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "mean_median_mode",
-    "prompt": "The data set 16, 25, 27, 139, 25, 15, 11 lists the number of minutes 7 customers waited. Which of the following is true about the mean and the median of the data?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "The median is greater than the mean, because the value 139 pulls the median up.",
-        "rationale": "The median is resistant to outliers; it is the middle value, 25."
-      },
-      {
-        "id": "B",
-        "text": "The median cannot be determined without the mode.",
-        "rationale": "The median is simply the middle value of the ordered data."
-      },
-      {
-        "id": "C",
-        "text": "The mean is less than the median, because most values are below 139.",
-        "rationale": "A large outlier raises the mean above the median."
-      },
-      {
-        "id": "D",
-        "text": "The mean is greater than the median, because the value 139 pulls the mean up.",
-        "rationale": "Correct."
-      },
-      {
-        "id": "E",
-        "text": "The mean and the median are equal, because the data are symmetric.",
-        "rationale": "The mean is 36.9 and the median is 25; they differ."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Median = 25 (middle value); mean = 258/7 ≈ 36.9. The outlier 139 raises the mean.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "statistics",
-      "outlier",
-      "family:st_center_list"
-    ],
-    "answer_verification": "mean=36.86 median=25"
-  },
-  {
-    "question_id": "act-math-statistics-hard-b0005",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "statistics",
-    "lesson_id": "act-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "spread",
-    "prompt": "For the data set 60, 3, 11, 38, 59, 14, 55, 42, 33, 39, 29, 21, an outlier is defined as a value more than 1.5 times the interquartile range above the third quartile. What is the least integer value that would be considered an outlier if added to the set?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "49",
-        "rationale": "Add 1.5 × IQR to Q3, not just 1."
-      },
-      {
-        "id": "B",
-        "text": "80",
-        "rationale": "Multiply the IQR by 1.5, not 1."
-      },
-      {
-        "id": "C",
-        "text": "61",
-        "rationale": "The fence is computed from the quartiles, not the maximum."
-      },
-      {
-        "id": "D",
-        "text": "96",
-        "rationale": "Correct."
-      },
-      {
-        "id": "E",
-        "text": "95",
-        "rationale": "The value must be strictly greater than the fence."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Q1 = 35/2, Q3 = 97/2, IQR = 31; fence = 97/2 + 1.5·31 = 95; the least integer above it is 96.",
-    "estimated_time_seconds": 110,
-    "tags": [
-      "statistics",
-      "quartiles",
-      "family:st_quartiles"
-    ],
-    "answer_verification": "q1=35/2,q3=97/2"
-  },
-  {
-    "question_id": "act-math-statistics-hard-b0006",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "statistics",
-    "lesson_id": "act-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "spread",
-    "prompt": "A data set has the values 20, 26, 26, 28, 29, 39. If the value 77 is added to the data set, which of the following describes the effect on the mean and the standard deviation?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "The mean increases and the standard deviation is unchanged.",
-        "rationale": "Adding a distant value changes the spread."
-      },
-      {
-        "id": "B",
-        "text": "The mean increases and the standard deviation decreases.",
-        "rationale": "A value far from the others increases the spread."
-      },
-      {
-        "id": "C",
-        "text": "The mean decreases and the standard deviation increases.",
-        "rationale": "77 is above the current mean 28.0, so the mean rises."
-      },
-      {
-        "id": "D",
-        "text": "Neither the mean nor the standard deviation changes.",
-        "rationale": "Adding a value far from the center changes both."
-      },
-      {
-        "id": "E",
-        "text": "Both the mean and the standard deviation increase.",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "E",
-    "explanation": "The mean rises from 28.0 to 35.0 because 77 is above it, and the added value is far from the center, so the spread (standard deviation) grows.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "statistics",
-      "standard-deviation",
-      "outlier",
-      "family:st_spread"
-    ],
-    "answer_verification": "mean 28.00->35.00"
-  },
-  {
-    "question_id": "act-math-statistics-hard-b0007",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "statistics",
-    "lesson_id": "act-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "mean_median_mode",
-    "prompt": "A data set of 5 values, 14, 15, 16, 35, 35, is extended by one value x. For what value of x will the mean of the new data set equal 25?",
-    "choices": [
-      {
-        "id": "A",
         "text": "10",
-        "rationale": "Use the new count 6."
-      },
-      {
-        "id": "B",
-        "text": "25",
-        "rationale": "x must be well above the target mean to pull it up."
-      },
-      {
-        "id": "C",
-        "text": "33",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "D",
-        "text": "150",
-        "rationale": "That is the required total, not x."
-      },
-      {
-        "id": "E",
-        "text": "35",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "E",
-    "explanation": "Required total = 25 × 6 = 150; x = 150 − 115 = 35.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "statistics",
-      "mean",
-      "family:st_outlier_effect"
-    ],
-    "answer_verification": "x=35"
-  },
-  {
-    "question_id": "act-math-statistics-hard-b0008",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "statistics",
-    "lesson_id": "act-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "mean_median_mode",
-    "prompt": "The data set 18, 25, 28, 32, 34, 37 has mean 29. If the least value is removed, what is the mean of the remaining values?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "174/5",
-        "rationale": "Subtract the removed value from the total as well."
-      },
-      {
-        "id": "B",
-        "text": "161/5",
-        "rationale": "Arithmetic slip; recompute the new total."
-      },
-      {
-        "id": "C",
-        "text": "26",
-        "rationale": "Divide by the new count, 5."
-      },
-      {
-        "id": "D",
-        "text": "156/5",
-        "rationale": "Correct."
-      },
-      {
-        "id": "E",
-        "text": "29",
-        "rationale": "Removing an extreme value changes the mean."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Remove 18: new total 174 − 18 = 156, over 5 values: 156/5.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "statistics",
-      "mean",
-      "change",
-      "family:st_change_effect"
-    ],
-    "answer_verification": "val=156/5"
-  },
-  {
-    "question_id": "act-math-statistics-hard-b0009",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "statistics",
-    "lesson_id": "act-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 17 people. What is the mean goals per game? (Round to the nearest hundredth if necessary.)",
-    "choices": [
-      {
-        "id": "A",
-        "text": "9.2",
         "rationale": "Divide by the number of people, not the number of rows."
       },
       {
-        "id": "B",
-        "text": "3.4",
-        "rationale": "That is the mean frequency, not the mean value."
-      },
-      {
-        "id": "C",
-        "text": "2.71",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
+        "id": "E",
         "text": "2",
         "rationale": "Weight each value by its frequency; don't average the listed values."
-      },
-      {
-        "id": "E",
-        "text": "3.21",
-        "rationale": "Arithmetic slip; recompute Σ(value × frequency)."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Mean = Σ(value × frequency)/N = 46/17 ≈ 2.71.",
+    "correct_choice": "A",
+    "explanation": "Mean = Σ(value × frequency)/N = 50/24 ≈ 2.08.",
     "estimated_time_seconds": 100,
     "tags": [
       "statistics",
@@ -495,801 +109,15 @@
         "rows": [
           [
             "0",
-            "2"
+            "5"
           ],
           [
             "1",
+            "6"
+          ],
+          [
+            "2",
             "2"
-          ],
-          [
-            "2",
-            "1"
-          ],
-          [
-            "3",
-            "6"
-          ],
-          [
-            "4",
-            "6"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "46/17"
-  },
-  {
-    "question_id": "act-math-statistics-hard-b0010",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "statistics",
-    "lesson_id": "act-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "mean_median_mode",
-    "prompt": "The data set 7, 25, 27, 28, 30, 39 has mean 26. If the least value is removed, what is the mean of the remaining values?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "156/5",
-        "rationale": "Subtract the removed value from the total as well."
-      },
-      {
-        "id": "B",
-        "text": "24.83",
-        "rationale": "Divide by the new count, 5."
-      },
-      {
-        "id": "C",
-        "text": "26",
-        "rationale": "Removing an extreme value changes the mean."
-      },
-      {
-        "id": "D",
-        "text": "154/5",
-        "rationale": "Arithmetic slip; recompute the new total."
-      },
-      {
-        "id": "E",
-        "text": "149/5",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "E",
-    "explanation": "Remove 7: new total 156 − 7 = 149, over 5 values: 149/5.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "statistics",
-      "mean",
-      "change",
-      "family:st_change_effect"
-    ],
-    "answer_verification": "val=149/5"
-  },
-  {
-    "question_id": "act-math-statistics-hard-b0011",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "statistics",
-    "lesson_id": "act-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "mean_median_mode",
-    "prompt": "The data set 16, 19, 23, 132, 19, 24, 11 lists the number of minutes 7 customers waited. Which of the following is true about the mean and the median of the data?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "The mean is greater than the median, because the value 132 pulls the mean up.",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "The median cannot be determined without the mode.",
-        "rationale": "The median is simply the middle value of the ordered data."
-      },
-      {
-        "id": "C",
-        "text": "The mean and the median are equal, because the data are symmetric.",
-        "rationale": "The mean is 34.9 and the median is 19; they differ."
-      },
-      {
-        "id": "D",
-        "text": "The median is greater than the mean, because the value 132 pulls the median up.",
-        "rationale": "The median is resistant to outliers; it is the middle value, 19."
-      },
-      {
-        "id": "E",
-        "text": "The mean is less than the median, because most values are below 132.",
-        "rationale": "A large outlier raises the mean above the median."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "Median = 19 (middle value); mean = 244/7 ≈ 34.9. The outlier 132 raises the mean.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "statistics",
-      "outlier",
-      "family:st_center_list"
-    ],
-    "answer_verification": "mean=34.86 median=19"
-  },
-  {
-    "question_id": "act-math-statistics-hard-b0012",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "statistics",
-    "lesson_id": "act-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "mean_median_mode",
-    "prompt": "What is the mean (average) of the data set 10, 59, 57, 46, 23, 19, 19, 54, 55?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "46",
-        "rationale": "This is the median, not the mean."
-      },
-      {
-        "id": "B",
-        "text": "342",
-        "rationale": "This is the sum; divide by the count."
-      },
-      {
-        "id": "C",
-        "text": "39",
-        "rationale": "Recheck the sum before dividing."
-      },
-      {
-        "id": "D",
-        "text": "49",
-        "rationale": "This is the range, not the mean."
-      },
-      {
-        "id": "E",
-        "text": "38",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "E",
-    "explanation": "Mean = sum ÷ count = 342 ÷ 9 = 38.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "statistics",
-      "mean",
-      "family:st_center_list"
-    ],
-    "answer_verification": "mean=38"
-  },
-  {
-    "question_id": "act-math-statistics-hard-b0013",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "statistics",
-    "lesson_id": "act-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "mean_median_mode",
-    "prompt": "The data set 11, 11, 18, 20, 27, 33 has mean 20. If the greatest value is removed, what is the mean of the remaining values?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "29/2",
-        "rationale": "Divide by the new count, 5."
-      },
-      {
-        "id": "B",
-        "text": "82/5",
-        "rationale": "Arithmetic slip; recompute the new total."
-      },
-      {
-        "id": "C",
-        "text": "87/5",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "24",
-        "rationale": "Subtract the removed value from the total as well."
-      },
-      {
-        "id": "E",
-        "text": "20",
-        "rationale": "Removing an extreme value changes the mean."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "Remove 33: new total 120 − 33 = 87, over 5 values: 87/5.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "statistics",
-      "mean",
-      "change",
-      "family:st_change_effect"
-    ],
-    "answer_verification": "val=87/5"
-  },
-  {
-    "question_id": "act-math-statistics-hard-b0014",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "statistics",
-    "lesson_id": "act-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multi_step_math",
-    "subskill": "mean_median_mode",
-    "prompt": "In one class of 14 students the mean test score was 79, and in another class of 12 students the mean was 61. What is the mean score of all 26 students? (Round to the nearest tenth.)",
-    "choices": [
-      {
-        "id": "A",
-        "text": "70.7",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "72.2",
-        "rationale": "Arithmetic slip; recompute the weighted total."
-      },
-      {
-        "id": "C",
-        "text": "70",
-        "rationale": "Averaging the two means ignores the different class sizes."
-      },
-      {
-        "id": "D",
-        "text": "79",
-        "rationale": "The combined mean lies between the two means."
-      },
-      {
-        "id": "E",
-        "text": "66.2",
-        "rationale": "Weight each mean by its class size."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "Total points = 14·79 + 12·61 = 1838; divide by 26: 70.7.",
-    "estimated_time_seconds": 100,
-    "tags": [
-      "statistics",
-      "weighted-mean",
-      "family:st_missing_value"
-    ],
-    "answer_verification": "(14*79+12*61)/26=70.69"
-  },
-  {
-    "question_id": "act-math-statistics-hard-b0015",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "statistics",
-    "lesson_id": "act-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "spread",
-    "prompt": "For the data set 41, 31, 12, 27, 5, 10, 13, 26, 59, 28, 34, 58, an outlier is defined as a value more than 1.5 times the interquartile range above the third quartile. What is the least integer value that would be considered an outlier if added to the set?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "60",
-        "rationale": "The fence is computed from the quartiles, not the maximum."
-      },
-      {
-        "id": "B",
-        "text": "63",
-        "rationale": "Multiply the IQR by 1.5, not 1."
-      },
-      {
-        "id": "C",
-        "text": "75",
-        "rationale": "The value must be strictly greater than the fence."
-      },
-      {
-        "id": "D",
-        "text": "38",
-        "rationale": "Add 1.5 × IQR to Q3, not just 1."
-      },
-      {
-        "id": "E",
-        "text": "76",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "E",
-    "explanation": "Q1 = 25/2, Q3 = 75/2, IQR = 25; fence = 75/2 + 1.5·25 = 75; the least integer above it is 76.",
-    "estimated_time_seconds": 110,
-    "tags": [
-      "statistics",
-      "quartiles",
-      "family:st_quartiles"
-    ],
-    "answer_verification": "q1=25/2,q3=75/2"
-  },
-  {
-    "question_id": "act-math-statistics-hard-b0016",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "statistics",
-    "lesson_id": "act-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "mean_median_mode",
-    "prompt": "A sample of 7 packages had weights, in pounds, of 62, 53, 21, 20, 48, 45, 52. What is the mean weight?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "44",
-        "rationale": "Recheck the sum before dividing."
-      },
-      {
-        "id": "B",
-        "text": "48",
-        "rationale": "This is the median, not the mean."
-      },
-      {
-        "id": "C",
-        "text": "42",
-        "rationale": "This is the range, not the mean."
-      },
-      {
-        "id": "D",
-        "text": "43",
-        "rationale": "Correct."
-      },
-      {
-        "id": "E",
-        "text": "301",
-        "rationale": "This is the sum; divide by the count."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Mean = sum ÷ count = 301 ÷ 7 = 43.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "statistics",
-      "mean",
-      "family:st_center_list"
-    ],
-    "answer_verification": "mean=43"
-  },
-  {
-    "question_id": "act-math-statistics-hard-b0017",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "statistics",
-    "lesson_id": "act-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "mean_median_mode",
-    "prompt": "The data set 22, 131, 19, 14, 29, 12, 12 lists the number of minutes 7 customers waited. Which of the following is true about the mean and the median of the data?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "The mean is less than the median, because most values are below 131.",
-        "rationale": "A large outlier raises the mean above the median."
-      },
-      {
-        "id": "B",
-        "text": "The mean is greater than the median, because the value 131 pulls the mean up.",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "The mean and the median are equal, because the data are symmetric.",
-        "rationale": "The mean is 34.1 and the median is 19; they differ."
-      },
-      {
-        "id": "D",
-        "text": "The median is greater than the mean, because the value 131 pulls the median up.",
-        "rationale": "The median is resistant to outliers; it is the middle value, 19."
-      },
-      {
-        "id": "E",
-        "text": "The median cannot be determined without the mode.",
-        "rationale": "The median is simply the middle value of the ordered data."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Median = 19 (middle value); mean = 239/7 ≈ 34.1. The outlier 131 raises the mean.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "statistics",
-      "outlier",
-      "family:st_center_list"
-    ],
-    "answer_verification": "mean=34.14 median=19"
-  },
-  {
-    "question_id": "act-math-statistics-hard-b0018",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "statistics",
-    "lesson_id": "act-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "mean_median_mode",
-    "prompt": "The numbers of points Mila scored in 7 games were 12, 34, 37, 21, 49, 57, 7. What was the mean number of points per game?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "31",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "34",
-        "rationale": "This is the median, not the mean."
-      },
-      {
-        "id": "C",
-        "text": "50",
-        "rationale": "This is the range, not the mean."
-      },
-      {
-        "id": "D",
-        "text": "217",
-        "rationale": "This is the sum; divide by the count."
-      },
-      {
-        "id": "E",
-        "text": "32",
-        "rationale": "Recheck the sum before dividing."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "Mean = sum ÷ count = 217 ÷ 7 = 31.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "statistics",
-      "mean",
-      "family:st_center_list"
-    ],
-    "answer_verification": "mean=31"
-  },
-  {
-    "question_id": "act-math-statistics-hard-b0019",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "statistics",
-    "lesson_id": "act-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "mean_median_mode",
-    "prompt": "The data set 10, 10, 15, 31, 33, 39 has mean 23. If the least value is removed, what is the mean of the remaining values?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "133/5",
-        "rationale": "Arithmetic slip; recompute the new total."
-      },
-      {
-        "id": "B",
-        "text": "23",
-        "rationale": "Removing an extreme value changes the mean."
-      },
-      {
-        "id": "C",
-        "text": "128/5",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "138/5",
-        "rationale": "Subtract the removed value from the total as well."
-      },
-      {
-        "id": "E",
-        "text": "21.33",
-        "rationale": "Divide by the new count, 5."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "Remove 10: new total 138 − 10 = 128, over 5 values: 128/5.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "statistics",
-      "mean",
-      "change",
-      "family:st_change_effect"
-    ],
-    "answer_verification": "val=128/5"
-  },
-  {
-    "question_id": "act-math-statistics-hard-b0020",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "statistics",
-    "lesson_id": "act-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "spread",
-    "prompt": "For the data set 43, 7, 57, 12, 4, 18, 43, 44, 15, 33, 16, 5, an outlier is defined as a value more than 1.5 times the interquartile range above the third quartile. What is the least integer value that would be considered an outlier if added to the set?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "94",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "58",
-        "rationale": "The fence is computed from the quartiles, not the maximum."
-      },
-      {
-        "id": "C",
-        "text": "77",
-        "rationale": "Multiply the IQR by 1.5, not 1."
-      },
-      {
-        "id": "D",
-        "text": "44",
-        "rationale": "Add 1.5 × IQR to Q3, not just 1."
-      },
-      {
-        "id": "E",
-        "text": "93",
-        "rationale": "The value must be strictly greater than the fence."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "Q1 = 19/2, Q3 = 43, IQR = 67/2; fence = 43 + 1.5·67/2 = 373/4; the least integer above it is 94.",
-    "estimated_time_seconds": 110,
-    "tags": [
-      "statistics",
-      "quartiles",
-      "family:st_quartiles"
-    ],
-    "answer_verification": "q1=19/2,q3=43"
-  },
-  {
-    "question_id": "act-math-statistics-hard-b0021",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "statistics",
-    "lesson_id": "act-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "spread",
-    "prompt": "For the data set 37, 28, 48, 29, 27, 49, 59, 55, 56, 28, 7, 56, an outlier is defined as a value more than 1.5 times the interquartile range above the third quartile. What is the least integer value that would be considered an outlier if added to the set?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "97",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "96",
-        "rationale": "The value must be strictly greater than the fence."
-      },
-      {
-        "id": "C",
-        "text": "60",
-        "rationale": "The fence is computed from the quartiles, not the maximum."
-      },
-      {
-        "id": "D",
-        "text": "84",
-        "rationale": "Multiply the IQR by 1.5, not 1."
-      },
-      {
-        "id": "E",
-        "text": "56",
-        "rationale": "Add 1.5 × IQR to Q3, not just 1."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "Q1 = 28, Q3 = 111/2, IQR = 55/2; fence = 111/2 + 1.5·55/2 = 387/4; the least integer above it is 97.",
-    "estimated_time_seconds": 110,
-    "tags": [
-      "statistics",
-      "quartiles",
-      "family:st_quartiles"
-    ],
-    "answer_verification": "q1=28,q3=111/2"
-  },
-  {
-    "question_id": "act-math-statistics-hard-b0022",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "statistics",
-    "lesson_id": "act-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multi_step_math",
-    "subskill": "mean_median_mode",
-    "prompt": "In one class of 28 students the mean test score was 65, and in another class of 25 students the mean was 88. What is the mean score of all 53 students? (Round to the nearest tenth.)",
-    "choices": [
-      {
-        "id": "A",
-        "text": "77.3",
-        "rationale": "Arithmetic slip; recompute the weighted total."
-      },
-      {
-        "id": "B",
-        "text": "76.5",
-        "rationale": "Averaging the two means ignores the different class sizes."
-      },
-      {
-        "id": "C",
-        "text": "75.8",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "88",
-        "rationale": "The combined mean lies between the two means."
-      },
-      {
-        "id": "E",
-        "text": "81.6",
-        "rationale": "Weight each mean by its class size."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "Total points = 28·65 + 25·88 = 4020; divide by 53: 75.8.",
-    "estimated_time_seconds": 100,
-    "tags": [
-      "statistics",
-      "weighted-mean",
-      "family:st_missing_value"
-    ],
-    "answer_verification": "(28*65+25*88)/53=75.85"
-  },
-  {
-    "question_id": "act-math-statistics-hard-b0023",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "statistics",
-    "lesson_id": "act-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "mean_median_mode",
-    "prompt": "A data set of 5 values, 15, 19, 20, 22, 29, is extended by one value x. For what value of x will the mean of the new data set equal 23?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "33",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "138",
-        "rationale": "That is the required total, not x."
-      },
-      {
-        "id": "C",
-        "text": "10",
-        "rationale": "Use the new count 6."
-      },
-      {
-        "id": "D",
-        "text": "38",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "E",
-        "text": "23",
-        "rationale": "x must be well above the target mean to pull it up."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "Required total = 23 × 6 = 138; x = 138 − 105 = 33.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "statistics",
-      "mean",
-      "family:st_outlier_effect"
-    ],
-    "answer_verification": "x=33"
-  },
-  {
-    "question_id": "act-math-statistics-hard-b0024",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "statistics",
-    "lesson_id": "act-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 22 people. What is the mean siblings per child? (Round to the nearest hundredth if necessary.)",
-    "choices": [
-      {
-        "id": "A",
-        "text": "8.2",
-        "rationale": "Divide by the number of people, not the number of rows."
-      },
-      {
-        "id": "B",
-        "text": "2.36",
-        "rationale": "Arithmetic slip; recompute Σ(value × frequency)."
-      },
-      {
-        "id": "C",
-        "text": "2",
-        "rationale": "Weight each value by its frequency; don't average the listed values."
-      },
-      {
-        "id": "D",
-        "text": "1.86",
-        "rationale": "Correct."
-      },
-      {
-        "id": "E",
-        "text": "4.4",
-        "rationale": "That is the mean frequency, not the mean value."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Mean = Σ(value × frequency)/N = 41/22 ≈ 1.86.",
-    "estimated_time_seconds": 100,
-    "tags": [
-      "statistics",
-      "table",
-      "mean",
-      "family:st_frequency_table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Survey results",
-        "headers": [
-          "Siblings",
-          "Number of children"
-        ],
-        "rows": [
-          [
-            "0",
-            "8"
-          ],
-          [
-            "1",
-            "1"
-          ],
-          [
-            "2",
-            "4"
           ],
           [
             "3",
@@ -1297,1080 +125,15 @@
           ],
           [
             "4",
-            "5"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "41/22"
-  },
-  {
-    "question_id": "act-math-statistics-hard-b0025",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "statistics",
-    "lesson_id": "act-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "spread",
-    "prompt": "A data set has the values 11, 15, 20, 28, 35, 37. If the value 73 is added to the data set, which of the following describes the effect on the mean and the standard deviation?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "The mean increases and the standard deviation decreases.",
-        "rationale": "A value far from the others increases the spread."
-      },
-      {
-        "id": "B",
-        "text": "The mean increases and the standard deviation is unchanged.",
-        "rationale": "Adding a distant value changes the spread."
-      },
-      {
-        "id": "C",
-        "text": "Neither the mean nor the standard deviation changes.",
-        "rationale": "Adding a value far from the center changes both."
-      },
-      {
-        "id": "D",
-        "text": "The mean decreases and the standard deviation increases.",
-        "rationale": "73 is above the current mean 24.3, so the mean rises."
-      },
-      {
-        "id": "E",
-        "text": "Both the mean and the standard deviation increase.",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "E",
-    "explanation": "The mean rises from 24.3 to 31.3 because 73 is above it, and the added value is far from the center, so the spread (standard deviation) grows.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "statistics",
-      "standard-deviation",
-      "outlier",
-      "family:st_spread"
-    ],
-    "answer_verification": "mean 24.33->31.29"
-  },
-  {
-    "question_id": "act-math-statistics-hard-b0026",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "statistics",
-    "lesson_id": "act-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multi_step_math",
-    "subskill": "mean_median_mode",
-    "prompt": "In one class of 10 students the mean test score was 72, and in another class of 23 students the mean was 90. What is the mean score of all 33 students? (Round to the nearest tenth.)",
-    "choices": [
-      {
-        "id": "A",
-        "text": "90",
-        "rationale": "The combined mean lies between the two means."
-      },
-      {
-        "id": "B",
-        "text": "84.5",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "86",
-        "rationale": "Arithmetic slip; recompute the weighted total."
-      },
-      {
-        "id": "D",
-        "text": "81",
-        "rationale": "Averaging the two means ignores the different class sizes."
-      },
-      {
-        "id": "E",
-        "text": "89",
-        "rationale": "Weight each mean by its class size."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Total points = 10·72 + 23·90 = 2790; divide by 33: 84.5.",
-    "estimated_time_seconds": 100,
-    "tags": [
-      "statistics",
-      "weighted-mean",
-      "family:st_missing_value"
-    ],
-    "answer_verification": "(10*72+23*90)/33=84.55"
-  },
-  {
-    "question_id": "act-math-statistics-hard-b0027",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "statistics",
-    "lesson_id": "act-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "spread",
-    "prompt": "For the data set 37, 39, 2, 17, 51, 56, 20, 52, 8, 35, 53, 16, an outlier is defined as a value more than 1.5 times the interquartile range above the third quartile. What is the least integer value that would be considered an outlier if added to the set?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "87",
-        "rationale": "Multiply the IQR by 1.5, not 1."
-      },
-      {
-        "id": "B",
-        "text": "104",
-        "rationale": "The value must be strictly greater than the fence."
-      },
-      {
-        "id": "C",
-        "text": "105",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "52",
-        "rationale": "Add 1.5 × IQR to Q3, not just 1."
-      },
-      {
-        "id": "E",
-        "text": "57",
-        "rationale": "The fence is computed from the quartiles, not the maximum."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "Q1 = 33/2, Q3 = 103/2, IQR = 35; fence = 103/2 + 1.5·35 = 104; the least integer above it is 105.",
-    "estimated_time_seconds": 110,
-    "tags": [
-      "statistics",
-      "quartiles",
-      "family:st_quartiles"
-    ],
-    "answer_verification": "q1=33/2,q3=103/2"
-  },
-  {
-    "question_id": "act-math-statistics-hard-b0028",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "statistics",
-    "lesson_id": "act-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "spread",
-    "prompt": "For the data set 9, 23, 6, 15, 18, 55, 43, 18, 10, 34, 15, 48, an outlier is defined as a value more than 1.5 times the interquartile range above the third quartile. What is the least integer value that would be considered an outlier if added to the set?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "39",
-        "rationale": "Add 1.5 × IQR to Q3, not just 1."
-      },
-      {
-        "id": "B",
-        "text": "78",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "77",
-        "rationale": "The value must be strictly greater than the fence."
-      },
-      {
-        "id": "D",
-        "text": "56",
-        "rationale": "The fence is computed from the quartiles, not the maximum."
-      },
-      {
-        "id": "E",
-        "text": "65",
-        "rationale": "Multiply the IQR by 1.5, not 1."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Q1 = 25/2, Q3 = 77/2, IQR = 26; fence = 77/2 + 1.5·26 = 155/2; the least integer above it is 78.",
-    "estimated_time_seconds": 110,
-    "tags": [
-      "statistics",
-      "quartiles",
-      "family:st_quartiles"
-    ],
-    "answer_verification": "q1=25/2,q3=77/2"
-  },
-  {
-    "question_id": "act-math-statistics-hard-b0029",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "statistics",
-    "lesson_id": "act-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "mean_median_mode",
-    "prompt": "The data set 16, 12, 21, 24, 22, 10, 99 lists the number of minutes 7 customers waited. Which of the following is true about the mean and the median of the data?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "The median is greater than the mean, because the value 99 pulls the median up.",
-        "rationale": "The median is resistant to outliers; it is the middle value, 21."
-      },
-      {
-        "id": "B",
-        "text": "The mean and the median are equal, because the data are symmetric.",
-        "rationale": "The mean is 29.1 and the median is 21; they differ."
-      },
-      {
-        "id": "C",
-        "text": "The median cannot be determined without the mode.",
-        "rationale": "The median is simply the middle value of the ordered data."
-      },
-      {
-        "id": "D",
-        "text": "The mean is less than the median, because most values are below 99.",
-        "rationale": "A large outlier raises the mean above the median."
-      },
-      {
-        "id": "E",
-        "text": "The mean is greater than the median, because the value 99 pulls the mean up.",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "E",
-    "explanation": "Median = 21 (middle value); mean = 204/7 ≈ 29.1. The outlier 99 raises the mean.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "statistics",
-      "outlier",
-      "family:st_center_list"
-    ],
-    "answer_verification": "mean=29.14 median=21"
-  },
-  {
-    "question_id": "act-math-statistics-hard-b0030",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "statistics",
-    "lesson_id": "act-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "mean_median_mode",
-    "prompt": "A data set of 7 values, 10, 12, 13, 14, 25, 26, 40, is extended by one value x. For what value of x will the mean of the new data set equal 25?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "25",
-        "rationale": "x must be well above the target mean to pull it up."
-      },
-      {
-        "id": "B",
-        "text": "55",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "C",
-        "text": "60",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "200",
-        "rationale": "That is the required total, not x."
-      },
-      {
-        "id": "E",
-        "text": "35",
-        "rationale": "Use the new count 8."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "Required total = 25 × 8 = 200; x = 200 − 140 = 60.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "statistics",
-      "mean",
-      "family:st_outlier_effect"
-    ],
-    "answer_verification": "x=60"
-  },
-  {
-    "question_id": "act-math-statistics-hard-b0031",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "statistics",
-    "lesson_id": "act-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "mean_median_mode",
-    "prompt": "The numbers of points Kwame scored in 7 games were 15, 66, 19, 53, 46, 30, 51. What was the mean number of points per game?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "46",
-        "rationale": "This is the median, not the mean."
-      },
-      {
-        "id": "B",
-        "text": "280",
-        "rationale": "This is the sum; divide by the count."
-      },
-      {
-        "id": "C",
-        "text": "51",
-        "rationale": "This is the range, not the mean."
-      },
-      {
-        "id": "D",
-        "text": "40",
-        "rationale": "Correct."
-      },
-      {
-        "id": "E",
-        "text": "41",
-        "rationale": "Recheck the sum before dividing."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Mean = sum ÷ count = 280 ÷ 7 = 40.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "statistics",
-      "mean",
-      "family:st_center_list"
-    ],
-    "answer_verification": "mean=40"
-  },
-  {
-    "question_id": "act-math-statistics-hard-b0032",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "statistics",
-    "lesson_id": "act-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "spread",
-    "prompt": "A data set has the values 14, 17, 17, 21, 28, 32. If the value 57 is added to the data set, which of the following describes the effect on the mean and the standard deviation?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "The mean decreases and the standard deviation increases.",
-        "rationale": "57 is above the current mean 21.5, so the mean rises."
-      },
-      {
-        "id": "B",
-        "text": "Both the mean and the standard deviation increase.",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "The mean increases and the standard deviation decreases.",
-        "rationale": "A value far from the others increases the spread."
-      },
-      {
-        "id": "D",
-        "text": "The mean increases and the standard deviation is unchanged.",
-        "rationale": "Adding a distant value changes the spread."
-      },
-      {
-        "id": "E",
-        "text": "Neither the mean nor the standard deviation changes.",
-        "rationale": "Adding a value far from the center changes both."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "The mean rises from 21.5 to 26.6 because 57 is above it, and the added value is far from the center, so the spread (standard deviation) grows.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "statistics",
-      "standard-deviation",
-      "outlier",
-      "family:st_spread"
-    ],
-    "answer_verification": "mean 21.50->26.57"
-  },
-  {
-    "question_id": "act-math-statistics-hard-b0033",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "statistics",
-    "lesson_id": "act-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "mean_median_mode",
-    "prompt": "A data set of 5 values, 12, 13, 17, 21, 32, is extended by one value x. For what value of x will the mean of the new data set equal 21?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "31",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "10",
-        "rationale": "Use the new count 6."
-      },
-      {
-        "id": "C",
-        "text": "126",
-        "rationale": "That is the required total, not x."
-      },
-      {
-        "id": "D",
-        "text": "21",
-        "rationale": "x must be well above the target mean to pull it up."
-      },
-      {
-        "id": "E",
-        "text": "34",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "Required total = 21 × 6 = 126; x = 126 − 95 = 31.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "statistics",
-      "mean",
-      "family:st_outlier_effect"
-    ],
-    "answer_verification": "x=31"
-  },
-  {
-    "question_id": "act-math-statistics-hard-b0034",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "statistics",
-    "lesson_id": "act-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "spread",
-    "prompt": "For the data set 39, 57, 31, 56, 20, 57, 13, 33, 50, 26, 28, 30, an outlier is defined as a value more than 1.5 times the interquartile range above the third quartile. What is the least integer value that would be considered an outlier if added to the set?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "92",
-        "rationale": "The value must be strictly greater than the fence."
-      },
-      {
-        "id": "B",
-        "text": "80",
-        "rationale": "Multiply the IQR by 1.5, not 1."
-      },
-      {
-        "id": "C",
-        "text": "93",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "58",
-        "rationale": "The fence is computed from the quartiles, not the maximum."
-      },
-      {
-        "id": "E",
-        "text": "54",
-        "rationale": "Add 1.5 × IQR to Q3, not just 1."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "Q1 = 27, Q3 = 53, IQR = 26; fence = 53 + 1.5·26 = 92; the least integer above it is 93.",
-    "estimated_time_seconds": 110,
-    "tags": [
-      "statistics",
-      "quartiles",
-      "family:st_quartiles"
-    ],
-    "answer_verification": "q1=27,q3=53"
-  },
-  {
-    "question_id": "act-math-statistics-hard-b0035",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "statistics",
-    "lesson_id": "act-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "spread",
-    "prompt": "For the data set 32, 36, 53, 52, 42, 57, 15, 36, 11, 59, 17, 17, an outlier is defined as a value more than 1.5 times the interquartile range above the third quartile. What is the least integer value that would be considered an outlier if added to the set?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "89",
-        "rationale": "Multiply the IQR by 1.5, not 1."
-      },
-      {
-        "id": "B",
-        "text": "53",
-        "rationale": "Add 1.5 × IQR to Q3, not just 1."
-      },
-      {
-        "id": "C",
-        "text": "106",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "60",
-        "rationale": "The fence is computed from the quartiles, not the maximum."
-      },
-      {
-        "id": "E",
-        "text": "105",
-        "rationale": "The value must be strictly greater than the fence."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "Q1 = 17, Q3 = 105/2, IQR = 71/2; fence = 105/2 + 1.5·71/2 = 423/4; the least integer above it is 106.",
-    "estimated_time_seconds": 110,
-    "tags": [
-      "statistics",
-      "quartiles",
-      "family:st_quartiles"
-    ],
-    "answer_verification": "q1=17,q3=105/2"
-  },
-  {
-    "question_id": "act-math-statistics-hard-b0036",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "statistics",
-    "lesson_id": "act-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "spread",
-    "prompt": "The table shows how many responses in two groups took each value (Group A: 13 responses, Group B: 17). If every value in Group B were increased by 10, how would its mean and standard deviation change?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "Both the mean and the standard deviation would increase by 10.",
-        "rationale": "Shifting every value leaves the distances from the center unchanged."
-      },
-      {
-        "id": "B",
-        "text": "The mean would increase by 10 and the standard deviation would not change.",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "The mean would not change and the standard deviation would increase by 10.",
-        "rationale": "Adding 10 to every value raises the mean by 10."
-      },
-      {
-        "id": "D",
-        "text": "The mean would increase by 10 and the standard deviation would increase by a factor of 10.",
-        "rationale": "Only multiplying every value scales the standard deviation."
-      },
-      {
-        "id": "E",
-        "text": "Neither the mean nor the standard deviation would change.",
-        "rationale": "The mean shifts with the data."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Adding a constant to every data value shifts the mean by that constant but leaves the spread (standard deviation) unchanged.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "statistics",
-      "table",
-      "standard-deviation",
-      "family:st_compare_tables"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Number of responses by value",
-        "headers": [
-          "Value",
-          "Group A",
-          "Group B"
-        ],
-        "rows": [
-          [
-            "10",
-            "1",
-            "5"
-          ],
-          [
-            "20",
-            "2",
-            "1"
-          ],
-          [
-            "30",
-            "8",
-            "1"
-          ],
-          [
-            "40",
-            "2",
-            "3"
-          ],
-          [
-            "50",
-            "0",
             "7"
           ]
         ]
       }
     },
-    "answer_verification": "wide=B"
+    "answer_verification": "50/24"
   },
   {
-    "question_id": "act-math-statistics-hard-b0037",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "statistics",
-    "lesson_id": "act-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 35 people. What is the mean siblings per child? (Round to the nearest hundredth if necessary.)",
-    "choices": [
-      {
-        "id": "A",
-        "text": "13.6",
-        "rationale": "Divide by the number of people, not the number of rows."
-      },
-      {
-        "id": "B",
-        "text": "2.44",
-        "rationale": "Arithmetic slip; recompute Σ(value × frequency)."
-      },
-      {
-        "id": "C",
-        "text": "7",
-        "rationale": "That is the mean frequency, not the mean value."
-      },
-      {
-        "id": "D",
-        "text": "2",
-        "rationale": "Weight each value by its frequency; don't average the listed values."
-      },
-      {
-        "id": "E",
-        "text": "1.94",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "E",
-    "explanation": "Mean = Σ(value × frequency)/N = 68/35 ≈ 1.94.",
-    "estimated_time_seconds": 100,
-    "tags": [
-      "statistics",
-      "table",
-      "mean",
-      "family:st_frequency_table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Survey results",
-        "headers": [
-          "Siblings",
-          "Number of children"
-        ],
-        "rows": [
-          [
-            "0",
-            "8"
-          ],
-          [
-            "1",
-            "8"
-          ],
-          [
-            "2",
-            "5"
-          ],
-          [
-            "3",
-            "6"
-          ],
-          [
-            "4",
-            "8"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "68/35"
-  },
-  {
-    "question_id": "act-math-statistics-hard-b0038",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "statistics",
-    "lesson_id": "act-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multi_step_math",
-    "subskill": "mean_median_mode",
-    "prompt": "In one class of 16 students the mean test score was 75, and in another class of 26 students the mean was 65. What is the mean score of all 42 students? (Round to the nearest tenth.)",
-    "choices": [
-      {
-        "id": "A",
-        "text": "66.3",
-        "rationale": "Weight each mean by its class size."
-      },
-      {
-        "id": "B",
-        "text": "70",
-        "rationale": "Averaging the two means ignores the different class sizes."
-      },
-      {
-        "id": "C",
-        "text": "68.8",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "70.3",
-        "rationale": "Arithmetic slip; recompute the weighted total."
-      },
-      {
-        "id": "E",
-        "text": "75",
-        "rationale": "The combined mean lies between the two means."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "Total points = 16·75 + 26·65 = 2890; divide by 42: 68.8.",
-    "estimated_time_seconds": 100,
-    "tags": [
-      "statistics",
-      "weighted-mean",
-      "family:st_missing_value"
-    ],
-    "answer_verification": "(16*75+26*65)/42=68.81"
-  },
-  {
-    "question_id": "act-math-statistics-hard-b0039",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "statistics",
-    "lesson_id": "act-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "mean_median_mode",
-    "prompt": "The data set 7, 10, 20, 31, 32, 38 has mean 23. If the greatest value is removed, what is the mean of the remaining values?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "138/5",
-        "rationale": "Subtract the removed value from the total as well."
-      },
-      {
-        "id": "B",
-        "text": "16.67",
-        "rationale": "Divide by the new count, 5."
-      },
-      {
-        "id": "C",
-        "text": "20",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "23",
-        "rationale": "Removing an extreme value changes the mean."
-      },
-      {
-        "id": "E",
-        "text": "19",
-        "rationale": "Arithmetic slip; recompute the new total."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "Remove 38: new total 138 − 38 = 100, over 5 values: 20.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "statistics",
-      "mean",
-      "change",
-      "family:st_change_effect"
-    ],
-    "answer_verification": "val=20"
-  },
-  {
-    "question_id": "act-math-statistics-hard-b0040",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "statistics",
-    "lesson_id": "act-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "spread",
-    "prompt": "The table shows how many responses in two groups took each value (Group A: 12 responses, Group B: 13). If every value in Group A were increased by 10, how would its mean and standard deviation change?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "Both the mean and the standard deviation would increase by 10.",
-        "rationale": "Shifting every value leaves the distances from the center unchanged."
-      },
-      {
-        "id": "B",
-        "text": "The mean would not change and the standard deviation would increase by 10.",
-        "rationale": "Adding 10 to every value raises the mean by 10."
-      },
-      {
-        "id": "C",
-        "text": "Neither the mean nor the standard deviation would change.",
-        "rationale": "The mean shifts with the data."
-      },
-      {
-        "id": "D",
-        "text": "The mean would increase by 10 and the standard deviation would not change.",
-        "rationale": "Correct."
-      },
-      {
-        "id": "E",
-        "text": "The mean would increase by 10 and the standard deviation would increase by a factor of 10.",
-        "rationale": "Only multiplying every value scales the standard deviation."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Adding a constant to every data value shifts the mean by that constant but leaves the spread (standard deviation) unchanged.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "statistics",
-      "table",
-      "standard-deviation",
-      "family:st_compare_tables"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Number of responses by value",
-        "headers": [
-          "Value",
-          "Group A",
-          "Group B"
-        ],
-        "rows": [
-          [
-            "10",
-            "4",
-            "1"
-          ],
-          [
-            "20",
-            "2",
-            "3"
-          ],
-          [
-            "30",
-            "0",
-            "7"
-          ],
-          [
-            "40",
-            "2",
-            "2"
-          ],
-          [
-            "50",
-            "4",
-            "0"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "wide=A"
-  },
-  {
-    "question_id": "act-math-statistics-hard-b0041",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "statistics",
-    "lesson_id": "act-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multi_step_math",
-    "subskill": "mean_median_mode",
-    "prompt": "In one class of 27 students the mean test score was 67, and in another class of 18 students the mean was 71. What is the mean score of all 45 students? (Round to the nearest tenth.)",
-    "choices": [
-      {
-        "id": "A",
-        "text": "68.6",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "69.6",
-        "rationale": "Weight each mean by its class size."
-      },
-      {
-        "id": "C",
-        "text": "71",
-        "rationale": "The combined mean lies between the two means."
-      },
-      {
-        "id": "D",
-        "text": "70.1",
-        "rationale": "Arithmetic slip; recompute the weighted total."
-      },
-      {
-        "id": "E",
-        "text": "69",
-        "rationale": "Averaging the two means ignores the different class sizes."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "Total points = 27·67 + 18·71 = 3087; divide by 45: 68.6.",
-    "estimated_time_seconds": 100,
-    "tags": [
-      "statistics",
-      "weighted-mean",
-      "family:st_missing_value"
-    ],
-    "answer_verification": "(27*67+18*71)/45=68.60"
-  },
-  {
-    "question_id": "act-math-statistics-hard-b0042",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "statistics",
-    "lesson_id": "act-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "mean_median_mode",
-    "prompt": "The data set 10, 21, 26, 33, 35, 37 has mean 27. If the least value is removed, what is the mean of the remaining values?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "162/5",
-        "rationale": "Subtract the removed value from the total as well."
-      },
-      {
-        "id": "B",
-        "text": "27",
-        "rationale": "Removing an extreme value changes the mean."
-      },
-      {
-        "id": "C",
-        "text": "152/5",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "157/5",
-        "rationale": "Arithmetic slip; recompute the new total."
-      },
-      {
-        "id": "E",
-        "text": "25.33",
-        "rationale": "Divide by the new count, 5."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "Remove 10: new total 162 − 10 = 152, over 5 values: 152/5.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "statistics",
-      "mean",
-      "change",
-      "family:st_change_effect"
-    ],
-    "answer_verification": "val=152/5"
-  },
-  {
-    "question_id": "act-math-statistics-hard-b0043",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "statistics",
-    "lesson_id": "act-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "mean_median_mode",
-    "prompt": "A data set of 7 values, 12, 21, 30, 31, 34, 36, 39, is extended by one value x. For what value of x will the mean of the new data set equal 34?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "69",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "79",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "C",
-        "text": "272",
-        "rationale": "That is the required total, not x."
-      },
-      {
-        "id": "D",
-        "text": "35",
-        "rationale": "Use the new count 8."
-      },
-      {
-        "id": "E",
-        "text": "34",
-        "rationale": "x must be well above the target mean to pull it up."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "Required total = 34 × 8 = 272; x = 272 − 203 = 69.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "statistics",
-      "mean",
-      "family:st_outlier_effect"
-    ],
-    "answer_verification": "x=69"
-  },
-  {
-    "question_id": "act-math-statistics-hard-b0044",
+    "question_id": "act-math-statistics-hard-b0003",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2420,7 +183,7 @@
     "answer_verification": "(13*77+23*68)/36=71.25"
   },
   {
-    "question_id": "act-math-statistics-hard-b0045",
+    "question_id": "act-math-statistics-hard-b0004",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2470,7 +233,7 @@
     "answer_verification": "(16*78+12*80)/28=78.86"
   },
   {
-    "question_id": "act-math-statistics-hard-b0046",
+    "question_id": "act-math-statistics-hard-b0005",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2520,7 +283,7 @@
     "answer_verification": "q1=12,q3=81/2"
   },
   {
-    "question_id": "act-math-statistics-hard-b0047",
+    "question_id": "act-math-statistics-hard-b0006",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2603,7 +366,7 @@
     "answer_verification": "37/18"
   },
   {
-    "question_id": "act-math-statistics-hard-b0048",
+    "question_id": "act-math-statistics-hard-b0007",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2692,7 +455,7 @@
     "answer_verification": "wide=B"
   },
   {
-    "question_id": "act-math-statistics-hard-b0049",
+    "question_id": "act-math-statistics-hard-b0008",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2742,7 +505,7 @@
     "answer_verification": "(29*68+28*90)/57=78.81"
   },
   {
-    "question_id": "act-math-statistics-hard-b0050",
+    "question_id": "act-math-statistics-hard-b0009",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2825,7 +588,7 @@
     "answer_verification": "35/24"
   },
   {
-    "question_id": "act-math-statistics-hard-b0051",
+    "question_id": "act-math-statistics-hard-b0010",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2908,7 +671,7 @@
     "answer_verification": "70/21"
   },
   {
-    "question_id": "act-math-statistics-hard-b0052",
+    "question_id": "act-math-statistics-hard-b0011",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2958,7 +721,7 @@
     "answer_verification": "x=50"
   },
   {
-    "question_id": "act-math-statistics-hard-b0053",
+    "question_id": "act-math-statistics-hard-b0012",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3008,7 +771,7 @@
     "answer_verification": "q1=41/2,q3=45"
   },
   {
-    "question_id": "act-math-statistics-hard-b0054",
+    "question_id": "act-math-statistics-hard-b0013",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3058,7 +821,7 @@
     "answer_verification": "mean=30"
   },
   {
-    "question_id": "act-math-statistics-hard-b0055",
+    "question_id": "act-math-statistics-hard-b0014",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3108,7 +871,7 @@
     "answer_verification": "(18*74+23*60)/41=66.15"
   },
   {
-    "question_id": "act-math-statistics-hard-b0056",
+    "question_id": "act-math-statistics-hard-b0015",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3158,7 +921,7 @@
     "answer_verification": "x=43"
   },
   {
-    "question_id": "act-math-statistics-hard-b0057",
+    "question_id": "act-math-statistics-hard-b0016",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3209,7 +972,7 @@
     "answer_verification": "mean 24.33->29.29"
   },
   {
-    "question_id": "act-math-statistics-hard-b0058",
+    "question_id": "act-math-statistics-hard-b0017",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3259,7 +1022,7 @@
     "answer_verification": "x=76"
   },
   {
-    "question_id": "act-math-statistics-hard-b0059",
+    "question_id": "act-math-statistics-hard-b0018",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3309,7 +1072,7 @@
     "answer_verification": "x=49"
   },
   {
-    "question_id": "act-math-statistics-hard-b0060",
+    "question_id": "act-math-statistics-hard-b0019",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3360,7 +1123,7 @@
     "answer_verification": "mean 22.50->30.14"
   },
   {
-    "question_id": "act-math-statistics-hard-b0061",
+    "question_id": "act-math-statistics-hard-b0020",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3443,7 +1206,7 @@
     "answer_verification": "49/14"
   },
   {
-    "question_id": "act-math-statistics-hard-b0062",
+    "question_id": "act-math-statistics-hard-b0021",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3493,7 +1256,7 @@
     "answer_verification": "x=49"
   },
   {
-    "question_id": "act-math-statistics-hard-b0063",
+    "question_id": "act-math-statistics-hard-b0022",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3543,7 +1306,7 @@
     "answer_verification": "mean=48"
   },
   {
-    "question_id": "act-math-statistics-hard-b0064",
+    "question_id": "act-math-statistics-hard-b0023",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3594,7 +1357,7 @@
     "answer_verification": "mean 24.83->31.29"
   },
   {
-    "question_id": "act-math-statistics-hard-b0065",
+    "question_id": "act-math-statistics-hard-b0024",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3644,7 +1407,7 @@
     "answer_verification": "x=52"
   },
   {
-    "question_id": "act-math-statistics-hard-b0066",
+    "question_id": "act-math-statistics-hard-b0025",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3695,7 +1458,7 @@
     "answer_verification": "val=157/5"
   },
   {
-    "question_id": "act-math-statistics-hard-b0067",
+    "question_id": "act-math-statistics-hard-b0026",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3746,7 +1509,7 @@
     "answer_verification": "mean 25.33->32.14"
   },
   {
-    "question_id": "act-math-statistics-hard-b0068",
+    "question_id": "act-math-statistics-hard-b0027",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3796,7 +1559,7 @@
     "answer_verification": "mean=36"
   },
   {
-    "question_id": "act-math-statistics-hard-b0069",
+    "question_id": "act-math-statistics-hard-b0028",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3846,7 +1609,7 @@
     "answer_verification": "q1=43/2,q3=53"
   },
   {
-    "question_id": "act-math-statistics-hard-b0070",
+    "question_id": "act-math-statistics-hard-b0029",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3896,7 +1659,7 @@
     "answer_verification": "x=47"
   },
   {
-    "question_id": "act-math-statistics-hard-b0071",
+    "question_id": "act-math-statistics-hard-b0030",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3979,7 +1742,7 @@
     "answer_verification": "49/27"
   },
   {
-    "question_id": "act-math-statistics-hard-b0072",
+    "question_id": "act-math-statistics-hard-b0031",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4029,7 +1792,7 @@
     "answer_verification": "mean=37.43 median=20"
   },
   {
-    "question_id": "act-math-statistics-hard-b0073",
+    "question_id": "act-math-statistics-hard-b0032",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4079,7 +1842,7 @@
     "answer_verification": "q1=17/2,q3=91/2"
   },
   {
-    "question_id": "act-math-statistics-hard-b0074",
+    "question_id": "act-math-statistics-hard-b0033",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4168,7 +1931,7 @@
     "answer_verification": "wide=A"
   },
   {
-    "question_id": "act-math-statistics-hard-b0075",
+    "question_id": "act-math-statistics-hard-b0034",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4257,7 +2020,7 @@
     "answer_verification": "wide=A"
   },
   {
-    "question_id": "act-math-statistics-hard-b0076",
+    "question_id": "act-math-statistics-hard-b0035",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4308,7 +2071,7 @@
     "answer_verification": "mean 32.17->36.14"
   },
   {
-    "question_id": "act-math-statistics-hard-b0077",
+    "question_id": "act-math-statistics-hard-b0036",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4359,7 +2122,7 @@
     "answer_verification": "mean 19.67->24.71"
   },
   {
-    "question_id": "act-math-statistics-hard-b0078",
+    "question_id": "act-math-statistics-hard-b0037",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4410,7 +2173,7 @@
     "answer_verification": "mean 21.50->28.14"
   },
   {
-    "question_id": "act-math-statistics-hard-b0079",
+    "question_id": "act-math-statistics-hard-b0038",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4493,7 +2256,7 @@
     "answer_verification": "76/26"
   },
   {
-    "question_id": "act-math-statistics-hard-b0080",
+    "question_id": "act-math-statistics-hard-b0039",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4582,7 +2345,7 @@
     "answer_verification": "wide=B"
   },
   {
-    "question_id": "act-math-statistics-hard-b0081",
+    "question_id": "act-math-statistics-hard-b0040",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4665,7 +2428,7 @@
     "answer_verification": "73/27"
   },
   {
-    "question_id": "act-math-statistics-hard-b0082",
+    "question_id": "act-math-statistics-hard-b0041",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4715,7 +2478,7 @@
     "answer_verification": "q1=18,q3=77/2"
   },
   {
-    "question_id": "act-math-statistics-hard-b0083",
+    "question_id": "act-math-statistics-hard-b0042",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4798,7 +2561,7 @@
     "answer_verification": "60/18"
   },
   {
-    "question_id": "act-math-statistics-hard-b0084",
+    "question_id": "act-math-statistics-hard-b0043",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4848,7 +2611,7 @@
     "answer_verification": "q1=43/2,q3=93/2"
   },
   {
-    "question_id": "act-math-statistics-hard-b0085",
+    "question_id": "act-math-statistics-hard-b0044",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4898,7 +2661,7 @@
     "answer_verification": "q1=16,q3=85/2"
   },
   {
-    "question_id": "act-math-statistics-hard-b0086",
+    "question_id": "act-math-statistics-hard-b0045",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4948,7 +2711,7 @@
     "answer_verification": "(17*81+24*66)/41=72.22"
   },
   {
-    "question_id": "act-math-statistics-hard-b0087",
+    "question_id": "act-math-statistics-hard-b0046",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4999,7 +2762,7 @@
     "answer_verification": "mean 32.00->36.29"
   },
   {
-    "question_id": "act-math-statistics-hard-b0088",
+    "question_id": "act-math-statistics-hard-b0047",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5082,7 +2845,7 @@
     "answer_verification": "75/30"
   },
   {
-    "question_id": "act-math-statistics-hard-b0089",
+    "question_id": "act-math-statistics-hard-b0048",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5132,7 +2895,7 @@
     "answer_verification": "q1=15,q3=93/2"
   },
   {
-    "question_id": "act-math-statistics-hard-b0090",
+    "question_id": "act-math-statistics-hard-b0049",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5182,7 +2945,7 @@
     "answer_verification": "q1=11,q3=31"
   },
   {
-    "question_id": "act-math-statistics-hard-b0091",
+    "question_id": "act-math-statistics-hard-b0050",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5271,7 +3034,7 @@
     "answer_verification": "wide=A"
   },
   {
-    "question_id": "act-math-statistics-hard-b0092",
+    "question_id": "act-math-statistics-hard-b0051",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5321,7 +3084,7 @@
     "answer_verification": "q1=15,q3=48"
   },
   {
-    "question_id": "act-math-statistics-hard-b0093",
+    "question_id": "act-math-statistics-hard-b0052",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5371,7 +3134,7 @@
     "answer_verification": "mean=34"
   },
   {
-    "question_id": "act-math-statistics-hard-b0094",
+    "question_id": "act-math-statistics-hard-b0053",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5460,7 +3223,7 @@
     "answer_verification": "wide=B"
   },
   {
-    "question_id": "act-math-statistics-hard-b0095",
+    "question_id": "act-math-statistics-hard-b0054",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5510,7 +3273,7 @@
     "answer_verification": "(30*81+26*84)/56=82.39"
   },
   {
-    "question_id": "act-math-statistics-hard-b0096",
+    "question_id": "act-math-statistics-hard-b0055",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5560,7 +3323,7 @@
     "answer_verification": "x=75"
   },
   {
-    "question_id": "act-math-statistics-hard-b0097",
+    "question_id": "act-math-statistics-hard-b0056",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5611,7 +3374,7 @@
     "answer_verification": "val=126/5"
   },
   {
-    "question_id": "act-math-statistics-hard-b0098",
+    "question_id": "act-math-statistics-hard-b0057",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5661,7 +3424,7 @@
     "answer_verification": "x=49"
   },
   {
-    "question_id": "act-math-statistics-hard-b0099",
+    "question_id": "act-math-statistics-hard-b0058",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5711,7 +3474,7 @@
     "answer_verification": "q1=35/2,q3=77/2"
   },
   {
-    "question_id": "act-math-statistics-hard-b0100",
+    "question_id": "act-math-statistics-hard-b0059",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5761,7 +3524,7 @@
     "answer_verification": "(23*84+17*83)/40=83.58"
   },
   {
-    "question_id": "act-math-statistics-hard-b0101",
+    "question_id": "act-math-statistics-hard-b0060",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5812,7 +3575,7 @@
     "answer_verification": "val=74/5"
   },
   {
-    "question_id": "act-math-statistics-hard-b0102",
+    "question_id": "act-math-statistics-hard-b0061",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5862,7 +3625,7 @@
     "answer_verification": "x=50"
   },
   {
-    "question_id": "act-math-statistics-hard-b0103",
+    "question_id": "act-math-statistics-hard-b0062",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5913,7 +3676,7 @@
     "answer_verification": "mean 26.67->30.57"
   },
   {
-    "question_id": "act-math-statistics-hard-b0104",
+    "question_id": "act-math-statistics-hard-b0063",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5964,7 +3727,7 @@
     "answer_verification": "mean 29.17->36.29"
   },
   {
-    "question_id": "act-math-statistics-hard-b0105",
+    "question_id": "act-math-statistics-hard-b0064",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6015,7 +3778,7 @@
     "answer_verification": "val=91/5"
   },
   {
-    "question_id": "act-math-statistics-hard-b0106",
+    "question_id": "act-math-statistics-hard-b0065",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6065,7 +3828,7 @@
     "answer_verification": "mean=33"
   },
   {
-    "question_id": "act-math-statistics-hard-b0107",
+    "question_id": "act-math-statistics-hard-b0066",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6115,7 +3878,7 @@
     "answer_verification": "(11*81+10*67)/21=74.33"
   },
   {
-    "question_id": "act-math-statistics-hard-b0108",
+    "question_id": "act-math-statistics-hard-b0067",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6166,7 +3929,7 @@
     "answer_verification": "mean 19.17->26.00"
   },
   {
-    "question_id": "act-math-statistics-hard-b0109",
+    "question_id": "act-math-statistics-hard-b0068",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6255,7 +4018,7 @@
     "answer_verification": "wide=A"
   },
   {
-    "question_id": "act-math-statistics-hard-b0110",
+    "question_id": "act-math-statistics-hard-b0069",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6305,7 +4068,7 @@
     "answer_verification": "q1=19/2,q3=45"
   },
   {
-    "question_id": "act-math-statistics-hard-b0111",
+    "question_id": "act-math-statistics-hard-b0070",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6394,7 +4157,7 @@
     "answer_verification": "wide=A"
   },
   {
-    "question_id": "act-math-statistics-hard-b0112",
+    "question_id": "act-math-statistics-hard-b0071",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6444,7 +4207,7 @@
     "answer_verification": "mean=35"
   },
   {
-    "question_id": "act-math-statistics-hard-b0113",
+    "question_id": "act-math-statistics-hard-b0072",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6494,7 +4257,7 @@
     "answer_verification": "q1=14,q3=91/2"
   },
   {
-    "question_id": "act-math-statistics-hard-b0114",
+    "question_id": "act-math-statistics-hard-b0073",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6544,7 +4307,7 @@
     "answer_verification": "q1=43/2,q3=91/2"
   },
   {
-    "question_id": "act-math-statistics-hard-b0115",
+    "question_id": "act-math-statistics-hard-b0074",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6594,7 +4357,7 @@
     "answer_verification": "x=48"
   },
   {
-    "question_id": "act-math-statistics-hard-b0116",
+    "question_id": "act-math-statistics-hard-b0075",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6644,7 +4407,7 @@
     "answer_verification": "mean=36"
   },
   {
-    "question_id": "act-math-statistics-hard-b0117",
+    "question_id": "act-math-statistics-hard-b0076",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6733,7 +4496,7 @@
     "answer_verification": "wide=B"
   },
   {
-    "question_id": "act-math-statistics-hard-b0118",
+    "question_id": "act-math-statistics-hard-b0077",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6783,7 +4546,7 @@
     "answer_verification": "mean=38"
   },
   {
-    "question_id": "act-math-statistics-hard-b0119",
+    "question_id": "act-math-statistics-hard-b0078",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6872,7 +4635,7 @@
     "answer_verification": "wide=A"
   },
   {
-    "question_id": "act-math-statistics-hard-b0120",
+    "question_id": "act-math-statistics-hard-b0079",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6922,7 +4685,7 @@
     "answer_verification": "(23*75+20*79)/43=76.86"
   },
   {
-    "question_id": "act-math-statistics-hard-b0121",
+    "question_id": "act-math-statistics-hard-b0080",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6972,7 +4735,7 @@
     "answer_verification": "(12*87+20*60)/32=70.12"
   },
   {
-    "question_id": "act-math-statistics-hard-b0122",
+    "question_id": "act-math-statistics-hard-b0081",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7022,7 +4785,7 @@
     "answer_verification": "mean=32"
   },
   {
-    "question_id": "act-math-statistics-hard-b0123",
+    "question_id": "act-math-statistics-hard-b0082",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7072,7 +4835,7 @@
     "answer_verification": "x=71"
   },
   {
-    "question_id": "act-math-statistics-hard-b0124",
+    "question_id": "act-math-statistics-hard-b0083",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7155,7 +4918,7 @@
     "answer_verification": "56/26"
   },
   {
-    "question_id": "act-math-statistics-hard-b0125",
+    "question_id": "act-math-statistics-hard-b0084",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7206,7 +4969,7 @@
     "answer_verification": "mean 22.17->26.43"
   },
   {
-    "question_id": "act-math-statistics-hard-b0126",
+    "question_id": "act-math-statistics-hard-b0085",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7256,7 +5019,7 @@
     "answer_verification": "(24*66+13*75)/37=69.16"
   },
   {
-    "question_id": "act-math-statistics-hard-b0127",
+    "question_id": "act-math-statistics-hard-b0086",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7306,7 +5069,7 @@
     "answer_verification": "x=48"
   },
   {
-    "question_id": "act-math-statistics-hard-b0128",
+    "question_id": "act-math-statistics-hard-b0087",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7356,7 +5119,7 @@
     "answer_verification": "(26*85+20*66)/46=76.74"
   },
   {
-    "question_id": "act-math-statistics-hard-b0129",
+    "question_id": "act-math-statistics-hard-b0088",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7406,7 +5169,7 @@
     "answer_verification": "x=38"
   },
   {
-    "question_id": "act-math-statistics-hard-b0130",
+    "question_id": "act-math-statistics-hard-b0089",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7456,7 +5219,7 @@
     "answer_verification": "x=57"
   },
   {
-    "question_id": "act-math-statistics-hard-b0131",
+    "question_id": "act-math-statistics-hard-b0090",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7507,7 +5270,7 @@
     "answer_verification": "mean 26.17->32.71"
   },
   {
-    "question_id": "act-math-statistics-hard-b0132",
+    "question_id": "act-math-statistics-hard-b0091",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7558,7 +5321,7 @@
     "answer_verification": "mean 25.50->32.57"
   },
   {
-    "question_id": "act-math-statistics-hard-b0133",
+    "question_id": "act-math-statistics-hard-b0092",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7608,7 +5371,7 @@
     "answer_verification": "mean=45"
   },
   {
-    "question_id": "act-math-statistics-hard-b0134",
+    "question_id": "act-math-statistics-hard-b0093",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7658,7 +5421,7 @@
     "answer_verification": "(24*82+22*86)/46=83.91"
   },
   {
-    "question_id": "act-math-statistics-hard-b0135",
+    "question_id": "act-math-statistics-hard-b0094",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7747,7 +5510,7 @@
     "answer_verification": "wide=B"
   },
   {
-    "question_id": "act-math-statistics-hard-b0136",
+    "question_id": "act-math-statistics-hard-b0095",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7798,7 +5561,7 @@
     "answer_verification": "mean 27.50->34.14"
   },
   {
-    "question_id": "act-math-statistics-hard-b0137",
+    "question_id": "act-math-statistics-hard-b0096",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7848,7 +5611,7 @@
     "answer_verification": "(29*76+13*79)/42=76.93"
   },
   {
-    "question_id": "act-math-statistics-hard-b0138",
+    "question_id": "act-math-statistics-hard-b0097",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7899,7 +5662,7 @@
     "answer_verification": "val=86/5"
   },
   {
-    "question_id": "act-math-statistics-hard-b0139",
+    "question_id": "act-math-statistics-hard-b0098",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7949,7 +5712,7 @@
     "answer_verification": "q1=11,q3=45"
   },
   {
-    "question_id": "act-math-statistics-hard-b0140",
+    "question_id": "act-math-statistics-hard-b0099",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7999,7 +5762,7 @@
     "answer_verification": "mean=40"
   },
   {
-    "question_id": "act-math-statistics-hard-b0141",
+    "question_id": "act-math-statistics-hard-b0100",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8088,7 +5851,7 @@
     "answer_verification": "wide=B"
   },
   {
-    "question_id": "act-math-statistics-hard-b0142",
+    "question_id": "act-math-statistics-hard-b0101",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8139,7 +5902,7 @@
     "answer_verification": "mean 23.00->27.71"
   },
   {
-    "question_id": "act-math-statistics-hard-b0143",
+    "question_id": "act-math-statistics-hard-b0102",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8189,7 +5952,7 @@
     "answer_verification": "q1=25/2,q3=38"
   },
   {
-    "question_id": "act-math-statistics-hard-b0144",
+    "question_id": "act-math-statistics-hard-b0103",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8239,7 +6002,7 @@
     "answer_verification": "x=53"
   },
   {
-    "question_id": "act-math-statistics-hard-b0145",
+    "question_id": "act-math-statistics-hard-b0104",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8290,7 +6053,7 @@
     "answer_verification": "mean 29.33->35.86"
   },
   {
-    "question_id": "act-math-statistics-hard-b0146",
+    "question_id": "act-math-statistics-hard-b0105",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8340,7 +6103,7 @@
     "answer_verification": "mean=31.00 median=20"
   },
   {
-    "question_id": "act-math-statistics-hard-b0147",
+    "question_id": "act-math-statistics-hard-b0106",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8390,7 +6153,7 @@
     "answer_verification": "q1=19/2,q3=67/2"
   },
   {
-    "question_id": "act-math-statistics-hard-b0148",
+    "question_id": "act-math-statistics-hard-b0107",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8440,7 +6203,7 @@
     "answer_verification": "mean=32.44 median=23"
   },
   {
-    "question_id": "act-math-statistics-hard-b0149",
+    "question_id": "act-math-statistics-hard-b0108",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8490,7 +6253,7 @@
     "answer_verification": "(27*84+12*60)/39=76.62"
   },
   {
-    "question_id": "act-math-statistics-hard-b0150",
+    "question_id": "act-math-statistics-hard-b0109",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8541,7 +6304,7 @@
     "answer_verification": "val=86/5"
   },
   {
-    "question_id": "act-math-statistics-hard-b0151",
+    "question_id": "act-math-statistics-hard-b0110",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8591,7 +6354,7 @@
     "answer_verification": "mean=29.43 median=14"
   },
   {
-    "question_id": "act-math-statistics-hard-b0152",
+    "question_id": "act-math-statistics-hard-b0111",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8641,7 +6404,7 @@
     "answer_verification": "(28*87+18*65)/46=78.39"
   },
   {
-    "question_id": "act-math-statistics-hard-b0153",
+    "question_id": "act-math-statistics-hard-b0112",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8691,7 +6454,7 @@
     "answer_verification": "mean=26"
   },
   {
-    "question_id": "act-math-statistics-hard-b0154",
+    "question_id": "act-math-statistics-hard-b0113",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8774,7 +6537,7 @@
     "answer_verification": "38/21"
   },
   {
-    "question_id": "act-math-statistics-hard-b0155",
+    "question_id": "act-math-statistics-hard-b0114",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8785,35 +6548,35 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "spread",
-    "prompt": "The table shows how many responses in two groups took each value (Group A: 16 responses, Group B: 17). If every value in Group B were increased by 10, how would its mean and standard deviation change?",
+    "prompt": "The table shows how many responses in two groups took each value (Group A: 13 responses, Group B: 17). If every value in Group B were increased by 10, how would its mean and standard deviation change?",
     "choices": [
       {
         "id": "A",
-        "text": "Both the mean and the standard deviation would increase by 10.",
-        "rationale": "Shifting every value leaves the distances from the center unchanged."
+        "text": "The mean would increase by 10 and the standard deviation would not change.",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "The mean would increase by 10 and the standard deviation would increase by a factor of 10.",
-        "rationale": "Only multiplying every value scales the standard deviation."
-      },
-      {
-        "id": "C",
-        "text": "The mean would not change and the standard deviation would increase by 10.",
-        "rationale": "Adding 10 to every value raises the mean by 10."
-      },
-      {
-        "id": "D",
         "text": "Neither the mean nor the standard deviation would change.",
         "rationale": "The mean shifts with the data."
       },
       {
+        "id": "C",
+        "text": "Both the mean and the standard deviation would increase by 10.",
+        "rationale": "Shifting every value leaves the distances from the center unchanged."
+      },
+      {
+        "id": "D",
+        "text": "The mean would increase by 10 and the standard deviation would increase by a factor of 10.",
+        "rationale": "Only multiplying every value scales the standard deviation."
+      },
+      {
         "id": "E",
-        "text": "The mean would increase by 10 and the standard deviation would not change.",
-        "rationale": "Correct."
+        "text": "The mean would not change and the standard deviation would increase by 10.",
+        "rationale": "Adding 10 to every value raises the mean by 10."
       }
     ],
-    "correct_choice": "E",
+    "correct_choice": "A",
     "explanation": "Adding a constant to every data value shifts the mean by that constant but leaves the spread (standard deviation) unchanged.",
     "estimated_time_seconds": 90,
     "tags": [
@@ -8835,27 +6598,27 @@
           [
             "10",
             "1",
-            "5"
+            "7"
           ],
           [
             "20",
-            "4",
-            "1"
+            "3",
+            "3"
           ],
           [
             "30",
-            "7",
-            "2"
+            "6",
+            "0"
           ],
           [
             "40",
             "3",
-            "1"
+            "2"
           ],
           [
             "50",
-            "1",
-            "8"
+            "0",
+            "5"
           ]
         ]
       }
@@ -8863,7 +6626,7 @@
     "answer_verification": "wide=B"
   },
   {
-    "question_id": "act-math-statistics-hard-b0156",
+    "question_id": "act-math-statistics-hard-b0115",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8874,46 +6637,96 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "spread",
-    "prompt": "For the data set 32, 36, 44, 9, 2, 49, 57, 39, 31, 47, 16, 8, an outlier is defined as a value more than 1.5 times the interquartile range above the third quartile. What is the least integer value that would be considered an outlier if added to the set?",
+    "prompt": "For the data set 52, 7, 48, 42, 15, 54, 33, 50, 33, 35, 34, 15, an outlier is defined as a value more than 1.5 times the interquartile range above the third quartile. What is the least integer value that would be considered an outlier if added to the set?",
     "choices": [
       {
         "id": "A",
-        "text": "79",
-        "rationale": "Multiply the IQR by 1.5, not 1."
+        "text": "86",
+        "rationale": "The value must be strictly greater than the fence."
       },
       {
         "id": "B",
-        "text": "46",
+        "text": "50",
         "rationale": "Add 1.5 × IQR to Q3, not just 1."
       },
       {
         "id": "C",
-        "text": "95",
-        "rationale": "The value must be strictly greater than the fence."
+        "text": "75",
+        "rationale": "Multiply the IQR by 1.5, not 1."
       },
       {
         "id": "D",
-        "text": "96",
+        "text": "87",
         "rationale": "Correct."
       },
       {
         "id": "E",
-        "text": "58",
+        "text": "55",
         "rationale": "The fence is computed from the quartiles, not the maximum."
       }
     ],
     "correct_choice": "D",
-    "explanation": "Q1 = 25/2, Q3 = 91/2, IQR = 33; fence = 91/2 + 1.5·33 = 95; the least integer above it is 96.",
+    "explanation": "Q1 = 24, Q3 = 49, IQR = 25; fence = 49 + 1.5·25 = 173/2; the least integer above it is 87.",
     "estimated_time_seconds": 110,
     "tags": [
       "statistics",
       "quartiles",
       "family:st_quartiles"
     ],
-    "answer_verification": "q1=25/2,q3=91/2"
+    "answer_verification": "q1=24,q3=49"
   },
   {
-    "question_id": "act-math-statistics-hard-b0157",
+    "question_id": "act-math-statistics-hard-b0116",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "statistics",
+    "lesson_id": "act-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "mean_median_mode",
+    "prompt": "A data set of 5 values, 11, 12, 12, 31, 39, is extended by one value x. For what value of x will the mean of the new data set equal 23?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "138",
+        "rationale": "That is the required total, not x."
+      },
+      {
+        "id": "B",
+        "text": "23",
+        "rationale": "x must be well above the target mean to pull it up."
+      },
+      {
+        "id": "C",
+        "text": "10",
+        "rationale": "Use the new count 6."
+      },
+      {
+        "id": "D",
+        "text": "34",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      },
+      {
+        "id": "E",
+        "text": "33",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "E",
+    "explanation": "Required total = 23 × 6 = 138; x = 138 − 105 = 33.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "statistics",
+      "mean",
+      "family:st_outlier_effect"
+    ],
+    "answer_verification": "x=33"
+  },
+  {
+    "question_id": "act-math-statistics-hard-b0117",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8963,7 +6776,7 @@
     "answer_verification": "mean=32"
   },
   {
-    "question_id": "act-math-statistics-hard-b0158",
+    "question_id": "act-math-statistics-hard-b0118",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -9014,7 +6827,7 @@
     "answer_verification": "mean 21.00->27.86"
   },
   {
-    "question_id": "act-math-statistics-hard-b0159",
+    "question_id": "act-math-statistics-hard-b0119",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -9065,7 +6878,7 @@
     "answer_verification": "val=142/5"
   },
   {
-    "question_id": "act-math-statistics-hard-b0160",
+    "question_id": "act-math-statistics-hard-b0120",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -9146,5 +6959,2403 @@
       }
     },
     "answer_verification": "83/33"
+  },
+  {
+    "question_id": "act-math-statistics-hard-b0121",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "statistics",
+    "lesson_id": "act-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "mean_median_mode",
+    "prompt": "The data set 8, 13, 20, 28, 33, 36 has mean 23. If the least value is removed, what is the mean of the remaining values?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "26",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "21.67",
+        "rationale": "Divide by the new count, 5."
+      },
+      {
+        "id": "C",
+        "text": "23",
+        "rationale": "Removing an extreme value changes the mean."
+      },
+      {
+        "id": "D",
+        "text": "138/5",
+        "rationale": "Subtract the removed value from the total as well."
+      },
+      {
+        "id": "E",
+        "text": "27",
+        "rationale": "Arithmetic slip; recompute the new total."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Remove 8: new total 138 − 8 = 130, over 5 values: 26.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "statistics",
+      "mean",
+      "change",
+      "family:st_change_effect"
+    ],
+    "answer_verification": "val=26"
+  },
+  {
+    "question_id": "act-math-statistics-hard-b0122",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "statistics",
+    "lesson_id": "act-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "mean_median_mode",
+    "prompt": "A sample of 7 packages had weights, in pounds, of 5, 21, 27, 48, 47, 52, 59. What is the mean weight?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "54",
+        "rationale": "This is the range, not the mean."
+      },
+      {
+        "id": "B",
+        "text": "47",
+        "rationale": "This is the median, not the mean."
+      },
+      {
+        "id": "C",
+        "text": "37",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "259",
+        "rationale": "This is the sum; divide by the count."
+      },
+      {
+        "id": "E",
+        "text": "38",
+        "rationale": "Recheck the sum before dividing."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "Mean = sum ÷ count = 259 ÷ 7 = 37.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "statistics",
+      "mean",
+      "family:st_center_list"
+    ],
+    "answer_verification": "mean=37"
+  },
+  {
+    "question_id": "act-math-statistics-hard-b0123",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "statistics",
+    "lesson_id": "act-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "mean_median_mode",
+    "prompt": "The data set 15, 18, 20, 26, 28, 31 has mean 23. If the greatest value is removed, what is the mean of the remaining values?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "23",
+        "rationale": "Removing an extreme value changes the mean."
+      },
+      {
+        "id": "B",
+        "text": "102/5",
+        "rationale": "Arithmetic slip; recompute the new total."
+      },
+      {
+        "id": "C",
+        "text": "107/5",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "17.83",
+        "rationale": "Divide by the new count, 5."
+      },
+      {
+        "id": "E",
+        "text": "138/5",
+        "rationale": "Subtract the removed value from the total as well."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "Remove 31: new total 138 − 31 = 107, over 5 values: 107/5.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "statistics",
+      "mean",
+      "change",
+      "family:st_change_effect"
+    ],
+    "answer_verification": "val=107/5"
+  },
+  {
+    "question_id": "act-math-statistics-hard-b0124",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "statistics",
+    "lesson_id": "act-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "mean_median_mode",
+    "prompt": "A data set of 7 values, 13, 15, 20, 28, 28, 34, 44, is extended by one value x. For what value of x will the mean of the new data set equal 32?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "256",
+        "rationale": "That is the required total, not x."
+      },
+      {
+        "id": "B",
+        "text": "32",
+        "rationale": "x must be well above the target mean to pull it up."
+      },
+      {
+        "id": "C",
+        "text": "74",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "79",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      },
+      {
+        "id": "E",
+        "text": "42",
+        "rationale": "Use the new count 8."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "Required total = 32 × 8 = 256; x = 256 − 182 = 74.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "statistics",
+      "mean",
+      "family:st_outlier_effect"
+    ],
+    "answer_verification": "x=74"
+  },
+  {
+    "question_id": "act-math-statistics-hard-b0125",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "statistics",
+    "lesson_id": "act-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "mean_median_mode",
+    "prompt": "The data set 26, 92, 21, 26, 29, 16, 27 lists the number of minutes 7 customers waited. Which of the following is true about the mean and the median of the data?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The mean is greater than the median, because the value 92 pulls the mean up.",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "The mean is less than the median, because most values are below 92.",
+        "rationale": "A large outlier raises the mean above the median."
+      },
+      {
+        "id": "C",
+        "text": "The median cannot be determined without the mode.",
+        "rationale": "The median is simply the middle value of the ordered data."
+      },
+      {
+        "id": "D",
+        "text": "The mean and the median are equal, because the data are symmetric.",
+        "rationale": "The mean is 33.9 and the median is 26; they differ."
+      },
+      {
+        "id": "E",
+        "text": "The median is greater than the mean, because the value 92 pulls the median up.",
+        "rationale": "The median is resistant to outliers; it is the middle value, 26."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Median = 26 (middle value); mean = 237/7 ≈ 33.9. The outlier 92 raises the mean.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "statistics",
+      "outlier",
+      "family:st_center_list"
+    ],
+    "answer_verification": "mean=33.86 median=26"
+  },
+  {
+    "question_id": "act-math-statistics-hard-b0126",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "statistics",
+    "lesson_id": "act-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "spread",
+    "prompt": "The table shows how many responses in two groups took each value (Group A: 18 responses, Group B: 22). If every value in Group B were increased by 10, how would its mean and standard deviation change?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Both the mean and the standard deviation would increase by 10.",
+        "rationale": "Shifting every value leaves the distances from the center unchanged."
+      },
+      {
+        "id": "B",
+        "text": "The mean would increase by 10 and the standard deviation would not change.",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "The mean would increase by 10 and the standard deviation would increase by a factor of 10.",
+        "rationale": "Only multiplying every value scales the standard deviation."
+      },
+      {
+        "id": "D",
+        "text": "The mean would not change and the standard deviation would increase by 10.",
+        "rationale": "Adding 10 to every value raises the mean by 10."
+      },
+      {
+        "id": "E",
+        "text": "Neither the mean nor the standard deviation would change.",
+        "rationale": "The mean shifts with the data."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Adding a constant to every data value shifts the mean by that constant but leaves the spread (standard deviation) unchanged.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "statistics",
+      "table",
+      "standard-deviation",
+      "family:st_compare_tables"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Number of responses by value",
+        "headers": [
+          "Value",
+          "Group A",
+          "Group B"
+        ],
+        "rows": [
+          [
+            "10",
+            "0",
+            "8"
+          ],
+          [
+            "20",
+            "4",
+            "2"
+          ],
+          [
+            "30",
+            "9",
+            "2"
+          ],
+          [
+            "40",
+            "4",
+            "2"
+          ],
+          [
+            "50",
+            "1",
+            "8"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "wide=B"
+  },
+  {
+    "question_id": "act-math-statistics-hard-b0127",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "statistics",
+    "lesson_id": "act-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "mean_median_mode",
+    "prompt": "The table shows the results of a survey of 26 people. What is the mean pets per student? (Round to the nearest hundredth if necessary.)",
+    "choices": [
+      {
+        "id": "A",
+        "text": "1.77",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "5.2",
+        "rationale": "That is the mean frequency, not the mean value."
+      },
+      {
+        "id": "C",
+        "text": "9.2",
+        "rationale": "Divide by the number of people, not the number of rows."
+      },
+      {
+        "id": "D",
+        "text": "2",
+        "rationale": "Weight each value by its frequency; don't average the listed values."
+      },
+      {
+        "id": "E",
+        "text": "2.27",
+        "rationale": "Arithmetic slip; recompute Σ(value × frequency)."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Mean = Σ(value × frequency)/N = 46/26 ≈ 1.77.",
+    "estimated_time_seconds": 100,
+    "tags": [
+      "statistics",
+      "table",
+      "mean",
+      "family:st_frequency_table"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Survey results",
+        "headers": [
+          "Number of pets",
+          "Number of students"
+        ],
+        "rows": [
+          [
+            "0",
+            "4"
+          ],
+          [
+            "1",
+            "9"
+          ],
+          [
+            "2",
+            "6"
+          ],
+          [
+            "3",
+            "3"
+          ],
+          [
+            "4",
+            "4"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "46/26"
+  },
+  {
+    "question_id": "act-math-statistics-hard-b0128",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "statistics",
+    "lesson_id": "act-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "spread",
+    "prompt": "A data set has the values 11, 19, 20, 26, 27, 40. If the value 66 is added to the data set, which of the following describes the effect on the mean and the standard deviation?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The mean decreases and the standard deviation increases.",
+        "rationale": "66 is above the current mean 23.8, so the mean rises."
+      },
+      {
+        "id": "B",
+        "text": "The mean increases and the standard deviation decreases.",
+        "rationale": "A value far from the others increases the spread."
+      },
+      {
+        "id": "C",
+        "text": "The mean increases and the standard deviation is unchanged.",
+        "rationale": "Adding a distant value changes the spread."
+      },
+      {
+        "id": "D",
+        "text": "Both the mean and the standard deviation increase.",
+        "rationale": "Correct."
+      },
+      {
+        "id": "E",
+        "text": "Neither the mean nor the standard deviation changes.",
+        "rationale": "Adding a value far from the center changes both."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "The mean rises from 23.8 to 29.9 because 66 is above it, and the added value is far from the center, so the spread (standard deviation) grows.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "statistics",
+      "standard-deviation",
+      "outlier",
+      "family:st_spread"
+    ],
+    "answer_verification": "mean 23.83->29.86"
+  },
+  {
+    "question_id": "act-math-statistics-hard-b0129",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "statistics",
+    "lesson_id": "act-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "spread",
+    "prompt": "A data set has the values 10, 23, 23, 24, 27, 33. If the value 70 is added to the data set, which of the following describes the effect on the mean and the standard deviation?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The mean decreases and the standard deviation increases.",
+        "rationale": "70 is above the current mean 23.3, so the mean rises."
+      },
+      {
+        "id": "B",
+        "text": "Neither the mean nor the standard deviation changes.",
+        "rationale": "Adding a value far from the center changes both."
+      },
+      {
+        "id": "C",
+        "text": "The mean increases and the standard deviation is unchanged.",
+        "rationale": "Adding a distant value changes the spread."
+      },
+      {
+        "id": "D",
+        "text": "The mean increases and the standard deviation decreases.",
+        "rationale": "A value far from the others increases the spread."
+      },
+      {
+        "id": "E",
+        "text": "Both the mean and the standard deviation increase.",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "E",
+    "explanation": "The mean rises from 23.3 to 30.0 because 70 is above it, and the added value is far from the center, so the spread (standard deviation) grows.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "statistics",
+      "standard-deviation",
+      "outlier",
+      "family:st_spread"
+    ],
+    "answer_verification": "mean 23.33->30.00"
+  },
+  {
+    "question_id": "act-math-statistics-hard-b0130",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "statistics",
+    "lesson_id": "act-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "spread",
+    "prompt": "For the data set 49, 31, 22, 59, 25, 8, 31, 25, 28, 56, 19, 36, an outlier is defined as a value more than 1.5 times the interquartile range above the third quartile. What is the least integer value that would be considered an outlier if added to the set?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "62",
+        "rationale": "Multiply the IQR by 1.5, not 1."
+      },
+      {
+        "id": "B",
+        "text": "72",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "71",
+        "rationale": "The value must be strictly greater than the fence."
+      },
+      {
+        "id": "D",
+        "text": "60",
+        "rationale": "The fence is computed from the quartiles, not the maximum."
+      },
+      {
+        "id": "E",
+        "text": "43",
+        "rationale": "Add 1.5 × IQR to Q3, not just 1."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Q1 = 47/2, Q3 = 85/2, IQR = 19; fence = 85/2 + 1.5·19 = 71; the least integer above it is 72.",
+    "estimated_time_seconds": 110,
+    "tags": [
+      "statistics",
+      "quartiles",
+      "family:st_quartiles"
+    ],
+    "answer_verification": "q1=47/2,q3=85/2"
+  },
+  {
+    "question_id": "act-math-statistics-hard-b0131",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "statistics",
+    "lesson_id": "act-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "mean_median_mode",
+    "prompt": "A data set of 7 values, 12, 19, 22, 26, 33, 34, 43, is extended by one value x. For what value of x will the mean of the new data set equal 30?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "30",
+        "rationale": "x must be well above the target mean to pull it up."
+      },
+      {
+        "id": "B",
+        "text": "21",
+        "rationale": "Use the new count 8."
+      },
+      {
+        "id": "C",
+        "text": "240",
+        "rationale": "That is the required total, not x."
+      },
+      {
+        "id": "D",
+        "text": "50",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      },
+      {
+        "id": "E",
+        "text": "51",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "E",
+    "explanation": "Required total = 30 × 8 = 240; x = 240 − 189 = 51.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "statistics",
+      "mean",
+      "family:st_outlier_effect"
+    ],
+    "answer_verification": "x=51"
+  },
+  {
+    "question_id": "act-math-statistics-hard-b0132",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "statistics",
+    "lesson_id": "act-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "mean_median_mode",
+    "prompt": "The table shows the results of a survey of 28 people. What is the mean pets per student? (Round to the nearest hundredth if necessary.)",
+    "choices": [
+      {
+        "id": "A",
+        "text": "5.6",
+        "rationale": "That is the mean frequency, not the mean value."
+      },
+      {
+        "id": "B",
+        "text": "20.2",
+        "rationale": "Divide by the number of people, not the number of rows."
+      },
+      {
+        "id": "C",
+        "text": "3.61",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "3",
+        "rationale": "Weight each value by its frequency; don't average the listed values."
+      },
+      {
+        "id": "E",
+        "text": "4.11",
+        "rationale": "Arithmetic slip; recompute Σ(value × frequency)."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "Mean = Σ(value × frequency)/N = 101/28 ≈ 3.61.",
+    "estimated_time_seconds": 100,
+    "tags": [
+      "statistics",
+      "table",
+      "mean",
+      "family:st_frequency_table"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Survey results",
+        "headers": [
+          "Number of pets",
+          "Number of students"
+        ],
+        "rows": [
+          [
+            "1",
+            "1"
+          ],
+          [
+            "2",
+            "6"
+          ],
+          [
+            "3",
+            "5"
+          ],
+          [
+            "4",
+            "7"
+          ],
+          [
+            "5",
+            "9"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "101/28"
+  },
+  {
+    "question_id": "act-math-statistics-hard-b0133",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "statistics",
+    "lesson_id": "act-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "mean_median_mode",
+    "prompt": "A data set of 7 values, 11, 16, 18, 18, 19, 24, 34, is extended by one value x. For what value of x will the mean of the new data set equal 23?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "46",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      },
+      {
+        "id": "B",
+        "text": "44",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "184",
+        "rationale": "That is the required total, not x."
+      },
+      {
+        "id": "D",
+        "text": "21",
+        "rationale": "Use the new count 8."
+      },
+      {
+        "id": "E",
+        "text": "23",
+        "rationale": "x must be well above the target mean to pull it up."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Required total = 23 × 8 = 184; x = 184 − 140 = 44.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "statistics",
+      "mean",
+      "family:st_outlier_effect"
+    ],
+    "answer_verification": "x=44"
+  },
+  {
+    "question_id": "act-math-statistics-hard-b0134",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "statistics",
+    "lesson_id": "act-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "spread",
+    "prompt": "A data set has the values 13, 17, 19, 23, 25, 38. If the value 77 is added to the data set, which of the following describes the effect on the mean and the standard deviation?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Both the mean and the standard deviation increase.",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "The mean decreases and the standard deviation increases.",
+        "rationale": "77 is above the current mean 22.5, so the mean rises."
+      },
+      {
+        "id": "C",
+        "text": "Neither the mean nor the standard deviation changes.",
+        "rationale": "Adding a value far from the center changes both."
+      },
+      {
+        "id": "D",
+        "text": "The mean increases and the standard deviation is unchanged.",
+        "rationale": "Adding a distant value changes the spread."
+      },
+      {
+        "id": "E",
+        "text": "The mean increases and the standard deviation decreases.",
+        "rationale": "A value far from the others increases the spread."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "The mean rises from 22.5 to 30.3 because 77 is above it, and the added value is far from the center, so the spread (standard deviation) grows.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "statistics",
+      "standard-deviation",
+      "outlier",
+      "family:st_spread"
+    ],
+    "answer_verification": "mean 22.50->30.29"
+  },
+  {
+    "question_id": "act-math-statistics-hard-b0135",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "statistics",
+    "lesson_id": "act-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "spread",
+    "prompt": "A data set has the values 11, 23, 25, 30, 35, 40. If the value 77 is added to the data set, which of the following describes the effect on the mean and the standard deviation?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The mean increases and the standard deviation is unchanged.",
+        "rationale": "Adding a distant value changes the spread."
+      },
+      {
+        "id": "B",
+        "text": "Neither the mean nor the standard deviation changes.",
+        "rationale": "Adding a value far from the center changes both."
+      },
+      {
+        "id": "C",
+        "text": "Both the mean and the standard deviation increase.",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "The mean increases and the standard deviation decreases.",
+        "rationale": "A value far from the others increases the spread."
+      },
+      {
+        "id": "E",
+        "text": "The mean decreases and the standard deviation increases.",
+        "rationale": "77 is above the current mean 27.3, so the mean rises."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "The mean rises from 27.3 to 34.4 because 77 is above it, and the added value is far from the center, so the spread (standard deviation) grows.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "statistics",
+      "standard-deviation",
+      "outlier",
+      "family:st_spread"
+    ],
+    "answer_verification": "mean 27.33->34.43"
+  },
+  {
+    "question_id": "act-math-statistics-hard-b0136",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "statistics",
+    "lesson_id": "act-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "spread",
+    "prompt": "For the data set 36, 45, 58, 36, 48, 33, 37, 46, 39, 54, 58, 52, an outlier is defined as a value more than 1.5 times the interquartile range above the third quartile. What is the least integer value that would be considered an outlier if added to the set?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "59",
+        "rationale": "The fence is computed from the quartiles, not the maximum."
+      },
+      {
+        "id": "B",
+        "text": "54",
+        "rationale": "Add 1.5 × IQR to Q3, not just 1."
+      },
+      {
+        "id": "C",
+        "text": "78",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "70",
+        "rationale": "Multiply the IQR by 1.5, not 1."
+      },
+      {
+        "id": "E",
+        "text": "77",
+        "rationale": "The value must be strictly greater than the fence."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "Q1 = 73/2, Q3 = 53, IQR = 33/2; fence = 53 + 1.5·33/2 = 311/4; the least integer above it is 78.",
+    "estimated_time_seconds": 110,
+    "tags": [
+      "statistics",
+      "quartiles",
+      "family:st_quartiles"
+    ],
+    "answer_verification": "q1=73/2,q3=53"
+  },
+  {
+    "question_id": "act-math-statistics-hard-b0137",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "statistics",
+    "lesson_id": "act-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "mean_median_mode",
+    "prompt": "A data set of 7 values, 14, 16, 21, 23, 29, 34, 38, is extended by one value x. For what value of x will the mean of the new data set equal 30?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "65",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "240",
+        "rationale": "That is the required total, not x."
+      },
+      {
+        "id": "C",
+        "text": "30",
+        "rationale": "x must be well above the target mean to pull it up."
+      },
+      {
+        "id": "D",
+        "text": "35",
+        "rationale": "Use the new count 8."
+      },
+      {
+        "id": "E",
+        "text": "55",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Required total = 30 × 8 = 240; x = 240 − 175 = 65.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "statistics",
+      "mean",
+      "family:st_outlier_effect"
+    ],
+    "answer_verification": "x=65"
+  },
+  {
+    "question_id": "act-math-statistics-hard-b0138",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "statistics",
+    "lesson_id": "act-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "spread",
+    "prompt": "The table shows how many responses in two groups took each value (Group A: 14 responses, Group B: 16). If every value in Group B were increased by 10, how would its mean and standard deviation change?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The mean would increase by 10 and the standard deviation would increase by a factor of 10.",
+        "rationale": "Only multiplying every value scales the standard deviation."
+      },
+      {
+        "id": "B",
+        "text": "The mean would not change and the standard deviation would increase by 10.",
+        "rationale": "Adding 10 to every value raises the mean by 10."
+      },
+      {
+        "id": "C",
+        "text": "The mean would increase by 10 and the standard deviation would not change.",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "Neither the mean nor the standard deviation would change.",
+        "rationale": "The mean shifts with the data."
+      },
+      {
+        "id": "E",
+        "text": "Both the mean and the standard deviation would increase by 10.",
+        "rationale": "Shifting every value leaves the distances from the center unchanged."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "Adding a constant to every data value shifts the mean by that constant but leaves the spread (standard deviation) unchanged.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "statistics",
+      "table",
+      "standard-deviation",
+      "family:st_compare_tables"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Number of responses by value",
+        "headers": [
+          "Value",
+          "Group A",
+          "Group B"
+        ],
+        "rows": [
+          [
+            "10",
+            "1",
+            "6"
+          ],
+          [
+            "20",
+            "2",
+            "1"
+          ],
+          [
+            "30",
+            "9",
+            "2"
+          ],
+          [
+            "40",
+            "2",
+            "1"
+          ],
+          [
+            "50",
+            "0",
+            "6"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "wide=B"
+  },
+  {
+    "question_id": "act-math-statistics-hard-b0139",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "statistics",
+    "lesson_id": "act-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "spread",
+    "prompt": "For the data set 58, 51, 14, 27, 6, 50, 16, 7, 20, 15, 35, 14, an outlier is defined as a value more than 1.5 times the interquartile range above the third quartile. What is the least integer value that would be considered an outlier if added to the set?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "43",
+        "rationale": "Add 1.5 × IQR to Q3, not just 1."
+      },
+      {
+        "id": "B",
+        "text": "72",
+        "rationale": "Multiply the IQR by 1.5, not 1."
+      },
+      {
+        "id": "C",
+        "text": "85",
+        "rationale": "The value must be strictly greater than the fence."
+      },
+      {
+        "id": "D",
+        "text": "86",
+        "rationale": "Correct."
+      },
+      {
+        "id": "E",
+        "text": "59",
+        "rationale": "The fence is computed from the quartiles, not the maximum."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Q1 = 14, Q3 = 85/2, IQR = 57/2; fence = 85/2 + 1.5·57/2 = 341/4; the least integer above it is 86.",
+    "estimated_time_seconds": 110,
+    "tags": [
+      "statistics",
+      "quartiles",
+      "family:st_quartiles"
+    ],
+    "answer_verification": "q1=14,q3=85/2"
+  },
+  {
+    "question_id": "act-math-statistics-hard-b0140",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "statistics",
+    "lesson_id": "act-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "mean_median_mode",
+    "prompt": "The table shows the results of a survey of 17 people. What is the mean books per reader? (Round to the nearest hundredth if necessary.)",
+    "choices": [
+      {
+        "id": "A",
+        "text": "7.6",
+        "rationale": "Divide by the number of people, not the number of rows."
+      },
+      {
+        "id": "B",
+        "text": "2.74",
+        "rationale": "Arithmetic slip; recompute Σ(value × frequency)."
+      },
+      {
+        "id": "C",
+        "text": "2",
+        "rationale": "Weight each value by its frequency; don't average the listed values."
+      },
+      {
+        "id": "D",
+        "text": "3.4",
+        "rationale": "That is the mean frequency, not the mean value."
+      },
+      {
+        "id": "E",
+        "text": "2.24",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "E",
+    "explanation": "Mean = Σ(value × frequency)/N = 38/17 ≈ 2.24.",
+    "estimated_time_seconds": 100,
+    "tags": [
+      "statistics",
+      "table",
+      "mean",
+      "family:st_frequency_table"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Survey results",
+        "headers": [
+          "Books read",
+          "Number of readers"
+        ],
+        "rows": [
+          [
+            "0",
+            "2"
+          ],
+          [
+            "1",
+            "2"
+          ],
+          [
+            "2",
+            "5"
+          ],
+          [
+            "3",
+            "6"
+          ],
+          [
+            "4",
+            "2"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "38/17"
+  },
+  {
+    "question_id": "act-math-statistics-hard-b0141",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "statistics",
+    "lesson_id": "act-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "mean_median_mode",
+    "prompt": "The data set 10, 10, 16, 16, 23, 39 has mean 19. If the least value is removed, what is the mean of the remaining values?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "17.33",
+        "rationale": "Divide by the new count, 5."
+      },
+      {
+        "id": "B",
+        "text": "109/5",
+        "rationale": "Arithmetic slip; recompute the new total."
+      },
+      {
+        "id": "C",
+        "text": "114/5",
+        "rationale": "Subtract the removed value from the total as well."
+      },
+      {
+        "id": "D",
+        "text": "19",
+        "rationale": "Removing an extreme value changes the mean."
+      },
+      {
+        "id": "E",
+        "text": "104/5",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "E",
+    "explanation": "Remove 10: new total 114 − 10 = 104, over 5 values: 104/5.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "statistics",
+      "mean",
+      "change",
+      "family:st_change_effect"
+    ],
+    "answer_verification": "val=104/5"
+  },
+  {
+    "question_id": "act-math-statistics-hard-b0142",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "statistics",
+    "lesson_id": "act-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "mean_median_mode",
+    "prompt": "The table shows the results of a survey of 36 people. What is the mean pets per student? (Round to the nearest hundredth if necessary.)",
+    "choices": [
+      {
+        "id": "A",
+        "text": "2.56",
+        "rationale": "Arithmetic slip; recompute Σ(value × frequency)."
+      },
+      {
+        "id": "B",
+        "text": "14.8",
+        "rationale": "Divide by the number of people, not the number of rows."
+      },
+      {
+        "id": "C",
+        "text": "7.2",
+        "rationale": "That is the mean frequency, not the mean value."
+      },
+      {
+        "id": "D",
+        "text": "2",
+        "rationale": "Weight each value by its frequency; don't average the listed values."
+      },
+      {
+        "id": "E",
+        "text": "2.06",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "E",
+    "explanation": "Mean = Σ(value × frequency)/N = 74/36 ≈ 2.06.",
+    "estimated_time_seconds": 100,
+    "tags": [
+      "statistics",
+      "table",
+      "mean",
+      "family:st_frequency_table"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Survey results",
+        "headers": [
+          "Number of pets",
+          "Number of students"
+        ],
+        "rows": [
+          [
+            "0",
+            "4"
+          ],
+          [
+            "1",
+            "9"
+          ],
+          [
+            "2",
+            "9"
+          ],
+          [
+            "3",
+            "9"
+          ],
+          [
+            "4",
+            "5"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "74/36"
+  },
+  {
+    "question_id": "act-math-statistics-hard-b0143",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "statistics",
+    "lesson_id": "act-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "mean_median_mode",
+    "prompt": "What is the mean (average) of the data set 20, 7, 10, 18, 44, 52, 17?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "18",
+        "rationale": "This is the median, not the mean."
+      },
+      {
+        "id": "B",
+        "text": "25",
+        "rationale": "Recheck the sum before dividing."
+      },
+      {
+        "id": "C",
+        "text": "168",
+        "rationale": "This is the sum; divide by the count."
+      },
+      {
+        "id": "D",
+        "text": "24",
+        "rationale": "Correct."
+      },
+      {
+        "id": "E",
+        "text": "45",
+        "rationale": "This is the range, not the mean."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Mean = sum ÷ count = 168 ÷ 7 = 24.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "statistics",
+      "mean",
+      "family:st_center_list"
+    ],
+    "answer_verification": "mean=24"
+  },
+  {
+    "question_id": "act-math-statistics-hard-b0144",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "statistics",
+    "lesson_id": "act-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "mean_median_mode",
+    "prompt": "The data set 10, 12, 15, 20, 28, 41 has mean 21. If the greatest value is removed, what is the mean of the remaining values?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "126/5",
+        "rationale": "Subtract the removed value from the total as well."
+      },
+      {
+        "id": "B",
+        "text": "14.17",
+        "rationale": "Divide by the new count, 5."
+      },
+      {
+        "id": "C",
+        "text": "17",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "16",
+        "rationale": "Arithmetic slip; recompute the new total."
+      },
+      {
+        "id": "E",
+        "text": "21",
+        "rationale": "Removing an extreme value changes the mean."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "Remove 41: new total 126 − 41 = 85, over 5 values: 17.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "statistics",
+      "mean",
+      "change",
+      "family:st_change_effect"
+    ],
+    "answer_verification": "val=17"
+  },
+  {
+    "question_id": "act-math-statistics-hard-b0145",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "statistics",
+    "lesson_id": "act-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "mean_median_mode",
+    "prompt": "The numbers of points Dmitri scored in 9 games were 10, 46, 11, 45, 20, 9, 13, 13, 58. What was the mean number of points per game?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "13",
+        "rationale": "This is the median, not the mean."
+      },
+      {
+        "id": "B",
+        "text": "25",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "225",
+        "rationale": "This is the sum; divide by the count."
+      },
+      {
+        "id": "D",
+        "text": "49",
+        "rationale": "This is the range, not the mean."
+      },
+      {
+        "id": "E",
+        "text": "26",
+        "rationale": "Recheck the sum before dividing."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Mean = sum ÷ count = 225 ÷ 9 = 25.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "statistics",
+      "mean",
+      "family:st_center_list"
+    ],
+    "answer_verification": "mean=25"
+  },
+  {
+    "question_id": "act-math-statistics-hard-b0146",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "statistics",
+    "lesson_id": "act-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "spread",
+    "prompt": "A data set has the values 10, 13, 16, 22, 35, 39. If the value 62 is added to the data set, which of the following describes the effect on the mean and the standard deviation?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The mean decreases and the standard deviation increases.",
+        "rationale": "62 is above the current mean 22.5, so the mean rises."
+      },
+      {
+        "id": "B",
+        "text": "The mean increases and the standard deviation is unchanged.",
+        "rationale": "Adding a distant value changes the spread."
+      },
+      {
+        "id": "C",
+        "text": "Both the mean and the standard deviation increase.",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "The mean increases and the standard deviation decreases.",
+        "rationale": "A value far from the others increases the spread."
+      },
+      {
+        "id": "E",
+        "text": "Neither the mean nor the standard deviation changes.",
+        "rationale": "Adding a value far from the center changes both."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "The mean rises from 22.5 to 28.1 because 62 is above it, and the added value is far from the center, so the spread (standard deviation) grows.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "statistics",
+      "standard-deviation",
+      "outlier",
+      "family:st_spread"
+    ],
+    "answer_verification": "mean 22.50->28.14"
+  },
+  {
+    "question_id": "act-math-statistics-hard-b0147",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "statistics",
+    "lesson_id": "act-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "spread",
+    "prompt": "For the data set 29, 53, 44, 17, 10, 9, 12, 45, 17, 57, 59, 54, an outlier is defined as a value more than 1.5 times the interquartile range above the third quartile. What is the least integer value that would be considered an outlier if added to the set?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "93",
+        "rationale": "Multiply the IQR by 1.5, not 1."
+      },
+      {
+        "id": "B",
+        "text": "54",
+        "rationale": "Add 1.5 × IQR to Q3, not just 1."
+      },
+      {
+        "id": "C",
+        "text": "112",
+        "rationale": "The value must be strictly greater than the fence."
+      },
+      {
+        "id": "D",
+        "text": "113",
+        "rationale": "Correct."
+      },
+      {
+        "id": "E",
+        "text": "60",
+        "rationale": "The fence is computed from the quartiles, not the maximum."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Q1 = 29/2, Q3 = 107/2, IQR = 39; fence = 107/2 + 1.5·39 = 112; the least integer above it is 113.",
+    "estimated_time_seconds": 110,
+    "tags": [
+      "statistics",
+      "quartiles",
+      "family:st_quartiles"
+    ],
+    "answer_verification": "q1=29/2,q3=107/2"
+  },
+  {
+    "question_id": "act-math-statistics-hard-b0148",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "statistics",
+    "lesson_id": "act-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "spread",
+    "prompt": "For the data set 44, 19, 51, 37, 50, 32, 36, 17, 54, 18, 18, 27, an outlier is defined as a value more than 1.5 times the interquartile range above the third quartile. What is the least integer value that would be considered an outlier if added to the set?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "76",
+        "rationale": "Multiply the IQR by 1.5, not 1."
+      },
+      {
+        "id": "B",
+        "text": "48",
+        "rationale": "Add 1.5 × IQR to Q3, not just 1."
+      },
+      {
+        "id": "C",
+        "text": "90",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "89",
+        "rationale": "The value must be strictly greater than the fence."
+      },
+      {
+        "id": "E",
+        "text": "55",
+        "rationale": "The fence is computed from the quartiles, not the maximum."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "Q1 = 37/2, Q3 = 47, IQR = 57/2; fence = 47 + 1.5·57/2 = 359/4; the least integer above it is 90.",
+    "estimated_time_seconds": 110,
+    "tags": [
+      "statistics",
+      "quartiles",
+      "family:st_quartiles"
+    ],
+    "answer_verification": "q1=37/2,q3=47"
+  },
+  {
+    "question_id": "act-math-statistics-hard-b0149",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "statistics",
+    "lesson_id": "act-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "spread",
+    "prompt": "For the data set 22, 11, 57, 21, 17, 45, 34, 51, 41, 41, 42, 48, an outlier is defined as a value more than 1.5 times the interquartile range above the third quartile. What is the least integer value that would be considered an outlier if added to the set?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "85",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "72",
+        "rationale": "Multiply the IQR by 1.5, not 1."
+      },
+      {
+        "id": "C",
+        "text": "58",
+        "rationale": "The fence is computed from the quartiles, not the maximum."
+      },
+      {
+        "id": "D",
+        "text": "47",
+        "rationale": "Add 1.5 × IQR to Q3, not just 1."
+      },
+      {
+        "id": "E",
+        "text": "84",
+        "rationale": "The value must be strictly greater than the fence."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Q1 = 43/2, Q3 = 93/2, IQR = 25; fence = 93/2 + 1.5·25 = 84; the least integer above it is 85.",
+    "estimated_time_seconds": 110,
+    "tags": [
+      "statistics",
+      "quartiles",
+      "family:st_quartiles"
+    ],
+    "answer_verification": "q1=43/2,q3=93/2"
+  },
+  {
+    "question_id": "act-math-statistics-hard-b0150",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "statistics",
+    "lesson_id": "act-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multi_step_math",
+    "subskill": "mean_median_mode",
+    "prompt": "In one class of 16 students the mean test score was 90, and in another class of 13 students the mean was 72. What is the mean score of all 29 students? (Round to the nearest tenth.)",
+    "choices": [
+      {
+        "id": "A",
+        "text": "90",
+        "rationale": "The combined mean lies between the two means."
+      },
+      {
+        "id": "B",
+        "text": "83.4",
+        "rationale": "Arithmetic slip; recompute the weighted total."
+      },
+      {
+        "id": "C",
+        "text": "81.9",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "77.4",
+        "rationale": "Weight each mean by its class size."
+      },
+      {
+        "id": "E",
+        "text": "81",
+        "rationale": "Averaging the two means ignores the different class sizes."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "Total points = 16·90 + 13·72 = 2376; divide by 29: 81.9.",
+    "estimated_time_seconds": 100,
+    "tags": [
+      "statistics",
+      "weighted-mean",
+      "family:st_missing_value"
+    ],
+    "answer_verification": "(16*90+13*72)/29=81.93"
+  },
+  {
+    "question_id": "act-math-statistics-hard-b0151",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "statistics",
+    "lesson_id": "act-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "mean_median_mode",
+    "prompt": "A data set of 7 values, 14, 17, 19, 19, 26, 27, 32, is extended by one value x. For what value of x will the mean of the new data set equal 27?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "62",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "35",
+        "rationale": "Use the new count 8."
+      },
+      {
+        "id": "C",
+        "text": "67",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      },
+      {
+        "id": "D",
+        "text": "27",
+        "rationale": "x must be well above the target mean to pull it up."
+      },
+      {
+        "id": "E",
+        "text": "216",
+        "rationale": "That is the required total, not x."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Required total = 27 × 8 = 216; x = 216 − 154 = 62.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "statistics",
+      "mean",
+      "family:st_outlier_effect"
+    ],
+    "answer_verification": "x=62"
+  },
+  {
+    "question_id": "act-math-statistics-hard-b0152",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "statistics",
+    "lesson_id": "act-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "mean_median_mode",
+    "prompt": "A data set of 5 values, 10, 16, 20, 26, 38, is extended by one value x. For what value of x will the mean of the new data set equal 26?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "26",
+        "rationale": "x must be well above the target mean to pull it up."
+      },
+      {
+        "id": "B",
+        "text": "52",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      },
+      {
+        "id": "C",
+        "text": "20",
+        "rationale": "Use the new count 6."
+      },
+      {
+        "id": "D",
+        "text": "156",
+        "rationale": "That is the required total, not x."
+      },
+      {
+        "id": "E",
+        "text": "46",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "E",
+    "explanation": "Required total = 26 × 6 = 156; x = 156 − 110 = 46.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "statistics",
+      "mean",
+      "family:st_outlier_effect"
+    ],
+    "answer_verification": "x=46"
+  },
+  {
+    "question_id": "act-math-statistics-hard-b0153",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "statistics",
+    "lesson_id": "act-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "mean_median_mode",
+    "prompt": "The data set 21, 22, 25, 25, 34, 35 has mean 27. If the least value is removed, what is the mean of the remaining values?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "146/5",
+        "rationale": "Arithmetic slip; recompute the new total."
+      },
+      {
+        "id": "B",
+        "text": "141/5",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "162/5",
+        "rationale": "Subtract the removed value from the total as well."
+      },
+      {
+        "id": "D",
+        "text": "47/2",
+        "rationale": "Divide by the new count, 5."
+      },
+      {
+        "id": "E",
+        "text": "27",
+        "rationale": "Removing an extreme value changes the mean."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Remove 21: new total 162 − 21 = 141, over 5 values: 141/5.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "statistics",
+      "mean",
+      "change",
+      "family:st_change_effect"
+    ],
+    "answer_verification": "val=141/5"
+  },
+  {
+    "question_id": "act-math-statistics-hard-b0154",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "statistics",
+    "lesson_id": "act-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "spread",
+    "prompt": "The table shows how many responses in two groups took each value (Group A: 13 responses, Group B: 20). If every value in Group B were increased by 10, how would its mean and standard deviation change?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The mean would increase by 10 and the standard deviation would not change.",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "The mean would not change and the standard deviation would increase by 10.",
+        "rationale": "Adding 10 to every value raises the mean by 10."
+      },
+      {
+        "id": "C",
+        "text": "The mean would increase by 10 and the standard deviation would increase by a factor of 10.",
+        "rationale": "Only multiplying every value scales the standard deviation."
+      },
+      {
+        "id": "D",
+        "text": "Both the mean and the standard deviation would increase by 10.",
+        "rationale": "Shifting every value leaves the distances from the center unchanged."
+      },
+      {
+        "id": "E",
+        "text": "Neither the mean nor the standard deviation would change.",
+        "rationale": "The mean shifts with the data."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Adding a constant to every data value shifts the mean by that constant but leaves the spread (standard deviation) unchanged.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "statistics",
+      "table",
+      "standard-deviation",
+      "family:st_compare_tables"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Number of responses by value",
+        "headers": [
+          "Value",
+          "Group A",
+          "Group B"
+        ],
+        "rows": [
+          [
+            "10",
+            "0",
+            "8"
+          ],
+          [
+            "20",
+            "2",
+            "3"
+          ],
+          [
+            "30",
+            "7",
+            "2"
+          ],
+          [
+            "40",
+            "3",
+            "2"
+          ],
+          [
+            "50",
+            "1",
+            "5"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "wide=B"
+  },
+  {
+    "question_id": "act-math-statistics-hard-b0155",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "statistics",
+    "lesson_id": "act-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "spread",
+    "prompt": "The table shows how many responses in two groups took each value (Group A: 19 responses, Group B: 15). If every value in Group A were increased by 10, how would its mean and standard deviation change?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Both the mean and the standard deviation would increase by 10.",
+        "rationale": "Shifting every value leaves the distances from the center unchanged."
+      },
+      {
+        "id": "B",
+        "text": "The mean would increase by 10 and the standard deviation would increase by a factor of 10.",
+        "rationale": "Only multiplying every value scales the standard deviation."
+      },
+      {
+        "id": "C",
+        "text": "The mean would not change and the standard deviation would increase by 10.",
+        "rationale": "Adding 10 to every value raises the mean by 10."
+      },
+      {
+        "id": "D",
+        "text": "Neither the mean nor the standard deviation would change.",
+        "rationale": "The mean shifts with the data."
+      },
+      {
+        "id": "E",
+        "text": "The mean would increase by 10 and the standard deviation would not change.",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "E",
+    "explanation": "Adding a constant to every data value shifts the mean by that constant but leaves the spread (standard deviation) unchanged.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "statistics",
+      "table",
+      "standard-deviation",
+      "family:st_compare_tables"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Number of responses by value",
+        "headers": [
+          "Value",
+          "Group A",
+          "Group B"
+        ],
+        "rows": [
+          [
+            "10",
+            "8",
+            "1"
+          ],
+          [
+            "20",
+            "3",
+            "2"
+          ],
+          [
+            "30",
+            "2",
+            "7"
+          ],
+          [
+            "40",
+            "1",
+            "4"
+          ],
+          [
+            "50",
+            "5",
+            "1"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "wide=A"
+  },
+  {
+    "question_id": "act-math-statistics-hard-b0156",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "statistics",
+    "lesson_id": "act-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "spread",
+    "prompt": "A data set has the values 10, 10, 11, 25, 31, 40. If the value 62 is added to the data set, which of the following describes the effect on the mean and the standard deviation?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The mean decreases and the standard deviation increases.",
+        "rationale": "62 is above the current mean 21.2, so the mean rises."
+      },
+      {
+        "id": "B",
+        "text": "The mean increases and the standard deviation decreases.",
+        "rationale": "A value far from the others increases the spread."
+      },
+      {
+        "id": "C",
+        "text": "The mean increases and the standard deviation is unchanged.",
+        "rationale": "Adding a distant value changes the spread."
+      },
+      {
+        "id": "D",
+        "text": "Neither the mean nor the standard deviation changes.",
+        "rationale": "Adding a value far from the center changes both."
+      },
+      {
+        "id": "E",
+        "text": "Both the mean and the standard deviation increase.",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "E",
+    "explanation": "The mean rises from 21.2 to 27.0 because 62 is above it, and the added value is far from the center, so the spread (standard deviation) grows.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "statistics",
+      "standard-deviation",
+      "outlier",
+      "family:st_spread"
+    ],
+    "answer_verification": "mean 21.17->27.00"
+  },
+  {
+    "question_id": "act-math-statistics-hard-b0157",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "statistics",
+    "lesson_id": "act-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "mean_median_mode",
+    "prompt": "The table shows the results of a survey of 23 people. What is the mean books per reader? (Round to the nearest hundredth if necessary.)",
+    "choices": [
+      {
+        "id": "A",
+        "text": "4.6",
+        "rationale": "That is the mean frequency, not the mean value."
+      },
+      {
+        "id": "B",
+        "text": "3.28",
+        "rationale": "Arithmetic slip; recompute Σ(value × frequency)."
+      },
+      {
+        "id": "C",
+        "text": "3",
+        "rationale": "Weight each value by its frequency; don't average the listed values."
+      },
+      {
+        "id": "D",
+        "text": "2.78",
+        "rationale": "Correct."
+      },
+      {
+        "id": "E",
+        "text": "12.8",
+        "rationale": "Divide by the number of people, not the number of rows."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Mean = Σ(value × frequency)/N = 64/23 ≈ 2.78.",
+    "estimated_time_seconds": 100,
+    "tags": [
+      "statistics",
+      "table",
+      "mean",
+      "family:st_frequency_table"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Survey results",
+        "headers": [
+          "Books read",
+          "Number of readers"
+        ],
+        "rows": [
+          [
+            "1",
+            "5"
+          ],
+          [
+            "2",
+            "4"
+          ],
+          [
+            "3",
+            "9"
+          ],
+          [
+            "4",
+            "1"
+          ],
+          [
+            "5",
+            "4"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "64/23"
+  },
+  {
+    "question_id": "act-math-statistics-hard-b0158",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "statistics",
+    "lesson_id": "act-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "mean_median_mode",
+    "prompt": "The table shows the results of a survey of 32 people. What is the mean pets per student? (Round to the nearest hundredth if necessary.)",
+    "choices": [
+      {
+        "id": "A",
+        "text": "16.8",
+        "rationale": "Divide by the number of people, not the number of rows."
+      },
+      {
+        "id": "B",
+        "text": "3.12",
+        "rationale": "Arithmetic slip; recompute Σ(value × frequency)."
+      },
+      {
+        "id": "C",
+        "text": "6.4",
+        "rationale": "That is the mean frequency, not the mean value."
+      },
+      {
+        "id": "D",
+        "text": "2",
+        "rationale": "Weight each value by its frequency; don't average the listed values."
+      },
+      {
+        "id": "E",
+        "text": "2.62",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "E",
+    "explanation": "Mean = Σ(value × frequency)/N = 84/32 ≈ 2.62.",
+    "estimated_time_seconds": 100,
+    "tags": [
+      "statistics",
+      "table",
+      "mean",
+      "family:st_frequency_table"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Survey results",
+        "headers": [
+          "Number of pets",
+          "Number of students"
+        ],
+        "rows": [
+          [
+            "0",
+            "1"
+          ],
+          [
+            "1",
+            "5"
+          ],
+          [
+            "2",
+            "8"
+          ],
+          [
+            "3",
+            "9"
+          ],
+          [
+            "4",
+            "9"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "84/32"
+  },
+  {
+    "question_id": "act-math-statistics-hard-b0159",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "statistics",
+    "lesson_id": "act-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "mean_median_mode",
+    "prompt": "The table shows the results of a survey of 24 people. What is the mean goals per game? (Round to the nearest hundredth if necessary.)",
+    "choices": [
+      {
+        "id": "A",
+        "text": "2.88",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "13.8",
+        "rationale": "Divide by the number of people, not the number of rows."
+      },
+      {
+        "id": "C",
+        "text": "3",
+        "rationale": "Weight each value by its frequency; don't average the listed values."
+      },
+      {
+        "id": "D",
+        "text": "3.38",
+        "rationale": "Arithmetic slip; recompute Σ(value × frequency)."
+      },
+      {
+        "id": "E",
+        "text": "4.8",
+        "rationale": "That is the mean frequency, not the mean value."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Mean = Σ(value × frequency)/N = 69/24 ≈ 2.88.",
+    "estimated_time_seconds": 100,
+    "tags": [
+      "statistics",
+      "table",
+      "mean",
+      "family:st_frequency_table"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Survey results",
+        "headers": [
+          "Goals scored",
+          "Number of games"
+        ],
+        "rows": [
+          [
+            "1",
+            "8"
+          ],
+          [
+            "2",
+            "3"
+          ],
+          [
+            "3",
+            "3"
+          ],
+          [
+            "4",
+            "4"
+          ],
+          [
+            "5",
+            "6"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "69/24"
+  },
+  {
+    "question_id": "act-math-statistics-hard-b0160",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "statistics",
+    "lesson_id": "act-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "mean_median_mode",
+    "prompt": "What is the mean (average) of the data set 21, 34, 66, 37, 59, 24, 27, 15, 14?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "52",
+        "rationale": "This is the range, not the mean."
+      },
+      {
+        "id": "B",
+        "text": "33",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "297",
+        "rationale": "This is the sum; divide by the count."
+      },
+      {
+        "id": "D",
+        "text": "34",
+        "rationale": "Recheck the sum before dividing."
+      },
+      {
+        "id": "E",
+        "text": "27",
+        "rationale": "This is the median, not the mean."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Mean = sum ÷ count = 297 ÷ 9 = 33.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "statistics",
+      "mean",
+      "family:st_center_list"
+    ],
+    "answer_verification": "mean=33"
   }
 ]
