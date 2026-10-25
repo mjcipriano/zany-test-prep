@@ -1502,7 +1502,7 @@ def pa_indefinite(rng, difficulty):
     ante, pred = rng.choice(_PA_INDEF)
     head = ante.split()[0]
     plural_noun = ante.split()[-1]
-    pred = pred + rng.choice(["", " last year", " this spring", " after the storm"])
+    pred = pred + rng.choice(["", ", as the newsletter reports", ", to nobody's surprise"])
     correct = ("its", f"Correct. '{head}' is singular, so the pronoun is 'its'; the plural '{plural_noun}' "
                       "is the object of 'of', not the antecedent.")
     ds = [("their", f"'their' agrees with '{plural_noun}', but the antecedent is the singular '{head}'."),
@@ -1513,7 +1513,7 @@ def pa_indefinite(rng, difficulty):
         text = rng.choice(["According to the newsletter, ", "As of this month, ", "To the surprise of many, "]) + low(text)
     elif difficulty == "hard":
         text = f"{ante}, {rng.choice(['after months of debate', 'along with its partners', 'despite the cost'])}, {pred}. " + \
-            rng.choice(["The other has not.", "Nobody noticed at first.", "The change was overdue."])
+            rng.choice(["The decision drew little notice.", "Nobody noticed at first.", "The change was overdue."])
     return build(rng, fill(text, conv_stem(rng)), correct, ds, subskill="pronoun_antecedent",
                  explanation=f"Indefinite pronouns such as '{head.lower()}' are singular, whatever plural noun follows 'of'.",
                  tags=["conventions", "pronoun-antecedent", "indefinite"])
