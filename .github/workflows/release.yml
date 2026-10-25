@@ -1,37 +1,99 @@
-# Release workflow.
-# Triggered by pushing a tag like v1.0.0, or manually (workflow_dispatch). A
-# manual run with a `version` input (e.g. v2.0.0) tags the chosen ref and
-# publishes a GitHub Release exactly like a tag push would; a manual run
-# without one only builds artifacts. Produces a release APK (and, best-effort,
-# an app bundle).
+# Release workflow — tags and publishes releases from CI so no developer
+# machine (or sandboxed agent whose git proxy refuses tag pushes) ever needs
+# to push a tag by hand.
+#
+# A release happens when any of these is true:
+#   * a tag like v1.2.3 is pushed (classic path);
+#   * the workflow is run manually with a `version` input (e.g. v1.2.3);
+#   * master is pushed and `version:` in pubspec.yaml names a version whose
+#     tag does not exist yet — i.e. bumping the version and merging to master
+#     IS the release.
+# Every path builds the stable-signed release APK, creates the tag on the
+# built commit if it is missing, and publishes a GitHub Release with the
+# tag-named APK attached. A manual run with no version only builds artifacts.
 name: Release
 
 on:
   workflow_dispatch:
     inputs:
       version:
-        description: "Version tag to create and release (e.g. v2.0.0). Leave empty to only build artifacts."
+        description: "Version tag to create and release (e.g. v2.1.0). Leave empty to only build artifacts."
         required: false
         default: ""
   push:
+    branches:
+      - master
     tags:
       - "v*"
 
-env:
-  # The tag this run releases: the pushed tag, or the manual `version` input.
-  RELEASE_TAG: ${{ startsWith(github.ref, 'refs/tags/v') && github.ref_name || inputs.version }}
-
-# Needed for softprops/action-gh-release@v2 to create releases / upload assets.
+# Needed to create tags/releases and upload assets.
 permissions:
   contents: write
 
 jobs:
-  build-release:
-    name: Build & Publish Release
+  # Decide which tag (if any) this run releases.
+  resolve:
+    name: Resolve release tag
     runs-on: ubuntu-latest
+    outputs:
+      tag: ${{ steps.pick.outputs.tag }}
+      release: ${{ steps.pick.outputs.release }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Pick the tag
+        id: pick
+        env:
+          GH_TOKEN: ${{ github.token }}
+          INPUT_VERSION: ${{ inputs.version }}
+        run: |
+          set -euo pipefail
+          tag=""
+          if [[ "$GITHUB_REF" == refs/tags/v* ]]; then
+            tag="$GITHUB_REF_NAME"
+          elif [[ "$GITHUB_EVENT_NAME" == "workflow_dispatch" ]]; then
+            tag="$INPUT_VERSION"
+          else
+            # Push to master: release iff pubspec's version has no tag yet.
+            version="$(sed -nE 's/^version:[[:space:]]*([0-9]+\.[0-9]+\.[0-9]+).*/\1/p' pubspec.yaml | head -n1)"
+            tag="v${version}"
+            if git ls-remote --exit-code --tags origin "refs/tags/${tag}" >/dev/null 2>&1; then
+              echo "Tag ${tag} already exists; nothing to release for this push."
+              tag=""
+            fi
+          fi
+          if [[ -n "$tag" && ! "$tag" =~ ^v[0-9]+\.[0-9]+\.[0-9]+ ]]; then
+            echo "::error::'$tag' is not a version tag like v1.2.3"; exit 1
+          fi
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          echo "release=$([[ -n "$tag" ]] && echo true || echo false)" >> "$GITHUB_OUTPUT"
+          echo "Release tag: '${tag:-<none>}'"
+
+  build-release:
+    name: Build & Publish Release
+    needs: resolve
+    # A master push without a version bump has nothing to do.
+    if: needs.resolve.outputs.release == 'true' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    env:
+      RELEASE_TAG: ${{ needs.resolve.outputs.tag }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # The release must match what CI validates: the version in pubspec.yaml
+      # and the About screen's kAppVersion must agree with the tag.
+      - name: Check the version matches the tag
+        if: env.RELEASE_TAG != ''
+        run: |
+          set -euo pipefail
+          want="${RELEASE_TAG#v}"
+          pub="$(sed -nE 's/^version:[[:space:]]*([0-9]+\.[0-9]+\.[0-9]+).*/\1/p' pubspec.yaml | head -n1)"
+          app="$(sed -nE "s/.*kAppVersion = '([^']+)'.*/\1/p" lib/core/app_info.dart | head -n1)"
+          if [[ "$pub" != "$want" || "$app" != "$want" ]]; then
+            echo "::error::tag $RELEASE_TAG but pubspec.yaml says $pub and kAppVersion says $app"; exit 1
+          fi
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -62,8 +124,6 @@ jobs:
       #   KEYSTORE_BASE64 - base64 of android/app/zany-release.jks
       #   KEY_ALIAS, KEY_PASSWORD, STORE_PASSWORD
       # -------------------------------------------------------------------------
-      # Note: the `secrets` context can't be used in a step `if:`, so the
-      # presence check happens inside the script (absent secret -> debug signing).
       - name: Decode keystore and write signing config
         env:
           KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
@@ -76,12 +136,12 @@ jobs:
             exit 0
           fi
           echo "$KEYSTORE_BASE64" | base64 --decode > android/app/zany-release.jks
-          cat > android/key.properties <<EOF
+          cat > android/key.properties <<EOT
           storeFile=zany-release.jks
           storePassword=$STORE_PASSWORD
           keyAlias=$KEY_ALIAS
           keyPassword=$KEY_PASSWORD
-          EOF
+          EOT
           echo "Wrote android/key.properties for stable release signing."
 
       - name: Build release APK
@@ -100,8 +160,6 @@ jobs:
           if-no-files-found: error
           retention-days: 30
 
-      # The .aab may not exist if the bundle build was skipped/failed; ignore it
-      # if missing so the workflow still succeeds.
       - name: Upload release app bundle artifact
         uses: actions/upload-artifact@v4
         with:
@@ -115,15 +173,28 @@ jobs:
         if: env.RELEASE_TAG != ''
         run: cp build/app/outputs/flutter-apk/app-release.apk "zany-test-prep-${RELEASE_TAG}.apk"
 
-      # Create a GitHub Release for a version tag push, or for a manual run
-      # that names a version (the action creates the tag on the built commit
-      # when it does not exist yet). Attaches just the stable-signed,
-      # tag-named APK (sideload target).
+      # Create the tag on the built commit if it does not exist yet (annotated,
+      # pushed with the workflow token), then publish the Release with the
+      # stable-signed, tag-named APK (sideload target) and generated notes.
+      - name: Create the release tag
+        if: env.RELEASE_TAG != ''
+        run: |
+          set -euo pipefail
+          if git ls-remote --exit-code --tags origin "refs/tags/${RELEASE_TAG}" >/dev/null 2>&1; then
+            echo "Tag ${RELEASE_TAG} already exists."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git tag -a "${RELEASE_TAG}" -m "Zany Test Prep ${RELEASE_TAG}" "${GITHUB_SHA}"
+          git push origin "refs/tags/${RELEASE_TAG}"
+
       - name: Create GitHub Release
         if: env.RELEASE_TAG != ''
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ env.RELEASE_TAG }}
           target_commitish: ${{ github.sha }}
+          name: ${{ env.RELEASE_TAG }}
           generate_release_notes: true
           files: zany-test-prep-${{ env.RELEASE_TAG }}.apk

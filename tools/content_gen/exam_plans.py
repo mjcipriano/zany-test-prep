@@ -165,7 +165,7 @@ SAT_PLAN = ExamPlan(
     skills=SAT_MATH + SAT_RW,
     domain_slug={"reading_writing": "rw", "math": "math"},
     skill_titles=SKILL_TITLES,
-    bank_per_kind={"math": 200, "reading_writing": 400},
+    bank_per_kind={"math": 260, "reading_writing": 500},
     no_bank_skills=frozenset({"circles", "right_triangles", "trigonometry"}),
 )
 
@@ -291,7 +291,7 @@ ACT_PLAN = ExamPlan(
                  "science": "science"},
     skill_titles={**SKILL_TITLES, **ACT_TITLE_OVERRIDES},
     option_count={"math": 5},
-    bank_per_kind={"english": 150, "math": 120, "science": 100},
+    bank_per_kind={"english": 200, "math": 160, "science": 150},
     no_bank_skills=frozenset({"circles", "right_triangles", "trigonometry",
                               "conflicting_viewpoints"}),
     transforms=[act_no_change],
