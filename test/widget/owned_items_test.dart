@@ -6,6 +6,8 @@ import 'package:zany_test_prep/data/local/key_value_store.dart';
 import 'package:zany_test_prep/domain/models/profile.dart';
 import 'package:zany_test_prep/domain/models/progress.dart';
 
+import 'package:zany_test_prep/features/rewards/avatar_view.dart';
+
 import '../helpers/pump_app.dart';
 
 // Real catalog asset ids (assets/avatar/manifest/avatar_catalog.json), one per
@@ -77,5 +79,32 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text('Remove'), findsNWidgets(2));
     expect(find.text('Equip'), findsOneWidget);
+  });
+
+  testWidgets('an avatar that already wears glasses hides equipped glasses', (
+    tester,
+  ) async {
+    const specsAvatar = 'avatar_advanced_007_algebra_dragon'; // glasses in art
+    final store = _storeOwning({_glasses, specsAvatar});
+    final progress = AppProgress.fromJson(
+      jsonDecode(store.getString('progress.v1')!) as Map<String, dynamic>,
+    );
+    progress.game.selectedAvatarId = specsAvatar;
+    progress.game.equipped['eyewear'] = _glasses;
+    store.setString('progress.v1', jsonEncode(progress.toJson()));
+
+    await pumpApp(tester, store: store);
+    await _openCustomizer(tester);
+
+    // Still equipped (Remove), but the row explains why it isn't shown...
+    expect(find.text('Remove'), findsOneWidget);
+    expect(find.text('Algebra Dragon already wears glasses'), findsOneWidget);
+    // ...and the preview doesn't stack a second pair on the avatar.
+    expect(
+      find.byWidgetPredicate(
+        (w) => w is AssetImage512 && w.asset.id == _glasses,
+      ),
+      findsOneWidget, // only the row thumbnail, not a preview layer
+    );
   });
 }

@@ -204,6 +204,44 @@ void main() {
       expect(g.spentXp, 0);
     });
 
+    test('an avatar whose art wears a hat hides the equipped hat', () {
+      const capped = CatalogAsset(
+        id: 'av_capped',
+        name: 'Capped',
+        type: 'avatar',
+        category: 'starter',
+        slotType: 'base',
+        rarity: 'starter',
+        xpCost: 0,
+        assetPath: 'p/c.png',
+        previewAssetPath: 'p/c.png',
+        allowedSlots: ['avatar'],
+        zIndex: 0,
+        scale: 1,
+        target: TargetBox.full,
+        targetsBySlot: {},
+        defaultUnlocked: true,
+        builtInSlots: ['headwear'],
+      );
+      final base = _catalog();
+      final catalog = AvatarCatalog(
+        packId: 'test',
+        styleVersion: 'v1',
+        assets: [...base.assets, capped],
+      );
+      final g = GameState(totalXp: 1000);
+      expect(svc.purchase(g, catalog['hat']!), isTrue);
+      expect(svc.equip(g, catalog, 'hat'), isTrue);
+      expect(
+        svc.equippedLayers(g, catalog).map((l) => l.asset.id),
+        contains('hat'),
+      );
+      g.selectedAvatarId = 'av_capped';
+      final ids = svc.equippedLayers(g, catalog).map((l) => l.asset.id);
+      expect(ids, isNot(contains('hat'))); // hidden, not stacked
+      expect(g.equipped['headwear'], 'hat'); // still equipped for other avatars
+    });
+
     test('starter avatars are owned without buying', () {
       final catalog = _catalog();
       final g = GameState();

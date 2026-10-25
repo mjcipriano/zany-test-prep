@@ -26,7 +26,7 @@ publishes the GitHub Release (see docs/release.md). Never push tags by hand — 
 sessions cannot, and the workflow does it for you. The avatar pack repo works the same
 way (`pubspec.yaml` version there → `vX.Y.Z` tag + release on merge).
 
-## Latest state (v2.2.1)
+## Latest state (v2.2.2)
 
 - **Two exams.** SAT and ACT. Onboarding offers every exam listed in
   `assets/content/exams.json`; Settings → Exam switches (XP/streak/rewards carry
@@ -46,7 +46,7 @@ way (`pubspec.yaml` version there → `vX.Y.Z` tag + release on merge).
   writing (`rw_gen.py`, `rw_extra.py`, ACT usage `rw_act.py`), reading passages
   (`passages*.py`, shared: 69 passages + 29 paired sets), science (`science_gen.py`: 40
   computed experiment scenarios + 21 authored viewpoint sets), teaching cards (`teaching*.py`).
-- **Avatar & pets:** pack `mjcipriano/zany-test-prep-avatars` **v3.1.0** vendored by
+- **Avatar & pets:** pack `mjcipriano/zany-test-prep-avatars` **v3.2.1** vendored by
   `tools/sync_avatars.py --full` (sprites downscaled to 384 px; `--local <checkout>`
   copies from disk). Pets level up while equipped (`PetEngine`) and evolve through
   Base → Shiny → Radiant stages (`RewardsService.evolvePet`); the store sells base
@@ -64,6 +64,11 @@ way (`pubspec.yaml` version there → `vX.Y.Z` tag + release on merge).
   tests; Python tooling suite (`python -m unittest discover -s tools/tests -t .`) covers
   the registry, plans, orchestrator, validator, bundler and every generator family. CI
   runs all of it plus the validator for every exam and the bundle-freshness check.
+- **2.2.2:** avatar pack v3.2.1. Eight avatars whose art already wears glasses
+  (`CatalogAsset.builtInSlots`, from the pack's `built_in_slots`) no longer get a second
+  pair stacked on top: the equipped item stays equipped but is hidden on that avatar,
+  and the customizer row says "<avatar> already wears glasses". Also reads the pack's
+  hat data (`width_floor`, `clip_avatar_above` hat-hair clipping) for when hats return.
 - **2.2.1:** hats retired from the store, customizer and chests (`kRetiredItemCategories`):
   the hat art is tilted and its underside shows over the face, which code can't fix.
   Art and catalog entries are kept; owned hats stay owned and return when the art is
