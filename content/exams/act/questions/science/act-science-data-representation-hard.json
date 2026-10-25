@@ -15,27 +15,27 @@
     "choices": [
       {
         "id": "A",
-        "text": "The tire pressure for Tire B at 20 °C was greater than the tire pressure for Tire A at 30 °C.",
-        "rationale": "Correct. Checking both condition columns confirms this statement."
+        "text": "The difference between the two conditions was greatest at 120 min.",
+        "rationale": "The largest gap between the columns is at 45 min (39 mg/dL)."
       },
       {
         "id": "B",
-        "text": "The tire pressure for Tire A at 50 °C was greater than the tire pressure for Tire B at 20 °C.",
-        "rationale": "The table lists 229.3 kPa (Tire A, 50 °C) and 258.7 kPa (Tire B, 20 °C)."
+        "text": "The blood glucose level for whole-grain meal at 90 min was greater than the blood glucose level for sugary drink at 30 min.",
+        "rationale": "The table lists 116 mg/dL (whole-grain meal, 90 min) and 167 mg/dL (sugary drink, 30 min)."
       },
       {
         "id": "C",
-        "text": "The tire pressure for Tire A at 50 °C was greater than the tire pressure for Tire B at 0 °C.",
-        "rationale": "The table lists 229.3 kPa (Tire A, 50 °C) and 241.0 kPa (Tire B, 0 °C)."
+        "text": "At every time tested, the blood glucose level was higher for sugary drink than for whole-grain meal.",
+        "rationale": "Correct. Checking both condition columns confirms this statement."
       },
       {
         "id": "D",
-        "text": "The tire pressure for Tire A at 50 °C was greater than the tire pressure for Tire B at 40 °C.",
-        "rationale": "The table lists 229.3 kPa (Tire A, 50 °C) and 276.3 kPa (Tire B, 40 °C)."
+        "text": "The blood glucose level for sugary drink at 120 min was greater than the blood glucose level for whole-grain meal at 60 min.",
+        "rationale": "The table lists 123 mg/dL (sugary drink, 120 min) and 127 mg/dL (whole-grain meal, 60 min)."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Compare the two condition columns row by row. Only \"The tire pressure for Tire B at 20 °C was greater than the tire pressure for Tire A at 30 °C.\" survives that check.",
+    "correct_choice": "C",
+    "explanation": "Compare the two condition columns row by row. Only \"At every time tested, the blood glucose level was higher for sugary drink than for whole-grain meal.\" survives that check.",
     "estimated_time_seconds": 80,
     "tags": [
       "science",
@@ -46,44 +46,39 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Temperature and Tire Pressure",
+      "title": "Blood Glucose After a Meal",
       "table": {
-        "caption": "Table 1. Pressure in a sealed tire at several air temperatures. Results are shown for two conditions: Tire A and Tire B.",
+        "caption": "Table 1. Blood glucose of a volunteer at several times after eating a meal. Results are shown for two conditions: sugary drink and whole-grain meal.",
         "headers": [
-          "Air temperature (°C)",
-          "Pressure (kPa), Tire A",
-          "Pressure (kPa), Tire B"
+          "Time after meal (min)",
+          "Blood glucose (mg/dL), sugary drink",
+          "Blood glucose (mg/dL), whole-grain meal"
         ],
         "rows": [
           [
-            "0",
-            "193.8",
-            "241.0"
-          ],
-          [
-            "10",
-            "200.9",
-            "249.8"
-          ],
-          [
-            "20",
-            "208.0",
-            "258.7"
-          ],
-          [
             "30",
-            "215.1",
-            "267.5"
+            "167",
+            "129"
           ],
           [
-            "40",
-            "222.2",
-            "276.3"
+            "45",
+            "169",
+            "130"
           ],
           [
-            "50",
-            "229.3",
-            "285.1"
+            "60",
+            "163",
+            "127"
+          ],
+          [
+            "90",
+            "142",
+            "116"
+          ],
+          [
+            "120",
+            "123",
+            "107"
           ]
         ]
       }
@@ -101,31 +96,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "compare_entries",
-    "prompt": "According to Table 1, the percent increase in the height of the seedlings from 0 g/L to 20 g/L is closest to:",
+    "prompt": "According to Table 1, the percent decrease in the blood glucose level from 30 min to 120 min is closest to:",
     "choices": [
       {
         "id": "A",
-        "text": "158%",
+        "text": "28%",
         "rationale": "This is double the actual percent change; recheck the arithmetic."
       },
       {
         "id": "B",
-        "text": "79%",
-        "rationale": "Correct. (20.8 − 11.6) ÷ 11.6 × 100 ≈ 79%."
+        "text": "21 mg/dL",
+        "rationale": "This is the absolute change in blood glucose, not a percent of the starting value."
       },
       {
         "id": "C",
-        "text": "44%",
-        "rationale": "This divides by the final value (20.8) instead of the starting value (11.6)."
+        "text": "14%",
+        "rationale": "Correct. (125 − 146) ÷ 146 × 100 ≈ 14%."
       },
       {
         "id": "D",
-        "text": "40%",
-        "rationale": "This is half the actual percent change; recheck the arithmetic."
+        "text": "17%",
+        "rationale": "This divides by the final value (125) instead of the starting value (146)."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Percent change = (final − initial) ÷ initial × 100 = (20.8 − 11.6) ÷ 11.6 × 100 ≈ 79% increase.",
+    "correct_choice": "C",
+    "explanation": "Percent change = (final − initial) ÷ initial × 100 = (125 − 146) ÷ 146 × 100 ≈ 14% decrease.",
     "estimated_time_seconds": 75,
     "tags": [
       "science",
@@ -135,42 +130,42 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Fertilizer and Plant Growth",
+      "title": "Blood Glucose After a Meal",
       "table": {
-        "caption": "Table 1. Average height of bean seedlings after 4 weeks at several fertilizer concentrations.",
+        "caption": "Table 1. Blood glucose of a volunteer at several times after eating a meal.",
         "headers": [
-          "Fertilizer concentration (g/L)",
-          "Seedling height (cm)"
+          "Time after meal (min)",
+          "Blood glucose (mg/dL)"
         ],
         "rows": [
           [
-            "0",
-            "11.6"
-          ],
-          [
-            "5",
-            "16.0"
-          ],
-          [
-            "10",
-            "19.1"
-          ],
-          [
             "15",
-            "20.7"
+            "126"
           ],
           [
-            "20",
-            "20.8"
+            "30",
+            "146"
           ],
           [
-            "25",
-            "19.5"
+            "45",
+            "152"
+          ],
+          [
+            "60",
+            "151"
+          ],
+          [
+            "90",
+            "140"
+          ],
+          [
+            "120",
+            "125"
           ]
         ]
       }
     },
-    "answer_verification": "science:pct;x1=0;x2=20;col=1"
+    "answer_verification": "science:pct;x1=30;x2=120;col=1"
   },
   {
     "question_id": "act-science-data-representation-hard-q03",
@@ -184,31 +179,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "table_lookup",
-    "prompt": "Consider the altitude in Table 1 at which the boiling point of the water for pure water was closest to 98.0 °C. At that altitude, the boiling point of the water for salt water was:",
+    "prompt": "Consider the sugar mass in Table 1 at which the volume of carbon dioxide produced for 25°C was closest to 53 mL. At that sugar mass, the volume of carbon dioxide produced for 35°C was:",
     "choices": [
       {
         "id": "A",
-        "text": "100.8 °C",
-        "rationale": "This is the salt water value for 0 m, a different row."
+        "text": "84 mL",
+        "rationale": "Correct. The 25°C value closest to 53 mL is 54, at 6 g; the 35°C entry in that row is 84."
       },
       {
         "id": "B",
-        "text": "97.4 °C",
-        "rationale": "This is the salt water value for 1000 m, a different row."
+        "text": "73 mL",
+        "rationale": "This is the 35°C value for 4 g, a different row."
       },
       {
         "id": "C",
-        "text": "98.3 °C",
-        "rationale": "This is the pure water value in that row; the question asks for the salt water value."
+        "text": "69.0 mL",
+        "rationale": "This averages the two conditions in that row instead of reading the 35°C value."
       },
       {
         "id": "D",
-        "text": "99.1 °C",
-        "rationale": "Correct. The pure water value closest to 98.0 °C is 98.3, at 500 m; the salt water entry in that row is 99.1."
+        "text": "54 mL",
+        "rationale": "This is the 25°C value in that row; the question asks for the 35°C value."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "First locate the pure water entry nearest 98.0 °C: 98.3 at 500 m. Then read the salt water column in that row: 99.1 °C.",
+    "correct_choice": "A",
+    "explanation": "First locate the 25°C entry nearest 53 mL: 54 at 6 g. Then read the 35°C column in that row: 84 mL.",
     "estimated_time_seconds": 80,
     "tags": [
       "science",
@@ -219,49 +214,44 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Altitude and Boiling Point",
+      "title": "Sugar and Yeast Fermentation",
       "table": {
-        "caption": "Table 1. Boiling point of water measured at several altitudes. Results are shown for two conditions: pure water and salt water.",
+        "caption": "Table 1. Volume of carbon dioxide produced in 30 minutes by yeast given several amounts of sugar. Results are shown for two conditions: 25°C and 35°C.",
         "headers": [
-          "Altitude (m)",
-          "Boiling point (°C), pure water",
-          "Boiling point (°C), salt water"
+          "Sugar (g)",
+          "CO₂ produced (mL), 25°C",
+          "CO₂ produced (mL), 35°C"
         ],
         "rows": [
           [
-            "0",
-            "100.0",
-            "100.8"
+            "2",
+            "33",
+            "52"
           ],
           [
-            "500",
-            "98.3",
-            "99.1"
+            "4",
+            "47",
+            "73"
           ],
           [
-            "1000",
-            "96.6",
-            "97.4"
+            "6",
+            "54",
+            "84"
           ],
           [
-            "1500",
-            "94.9",
-            "95.7"
+            "8",
+            "58",
+            "91"
           ],
           [
-            "2000",
-            "93.2",
-            "94.0"
-          ],
-          [
-            "2500",
-            "91.5",
-            "92.3"
+            "10",
+            "61",
+            "95"
           ]
         ]
       }
     },
-    "answer_verification": "science:closest_then;v=98.0;src=1;dst=2"
+    "answer_verification": "science:closest_then;v=53.0;src=1;dst=2"
   },
   {
     "question_id": "act-science-data-representation-hard-q04",
@@ -275,31 +265,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "compare_entries",
-    "prompt": "According to Table 1, the average of the stopping distance for the three values of speed from 40 km/h to 80 km/h is closest to:",
+    "prompt": "According to Table 1, the average of the power output of the turbine for the three values of wind speed from 5 m/s to 7 m/s is closest to:",
     "choices": [
       {
         "id": "A",
-        "text": "62.0 m",
-        "rationale": "This averages the rows from 60 km/h to 100 km/h instead."
+        "text": "357.5 W",
+        "rationale": "This averages only the first and last of the three values."
       },
       {
         "id": "B",
-        "text": "22.0 m",
-        "rationale": "This averages the rows from 20 km/h to 60 km/h instead."
+        "text": "348 W",
+        "rationale": "Correct. (191 + 330 + 524) ÷ 3 ≈ 348."
       },
       {
         "id": "C",
-        "text": "39.5 m",
-        "rationale": "Correct. (20.4 + 37.9 + 60.3) ÷ 3 ≈ 39.5."
+        "text": "206 W",
+        "rationale": "This averages the rows from 4 m/s to 6 m/s instead."
       },
       {
         "id": "D",
-        "text": "40.3 m",
-        "rationale": "This averages only the first and last of the three values."
+        "text": "545 W",
+        "rationale": "This averages the rows from 6 m/s to 8 m/s instead."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Add the three entries (20.4, 37.9, 60.3) and divide by 3: about 39.5 m.",
+    "correct_choice": "B",
+    "explanation": "Add the three entries (191, 330, 524) and divide by 3: about 348 W.",
     "estimated_time_seconds": 75,
     "tags": [
       "science",
@@ -309,38 +299,38 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Speed and Stopping Distance",
+      "title": "Wind Speed and Turbine Power",
       "table": {
-        "caption": "Table 1. Distance needed for a car to stop from several speeds.",
+        "caption": "Table 1. Electrical power produced by a small wind turbine at several wind speeds.",
         "headers": [
-          "Speed (km/h)",
-          "Stopping distance (m)"
+          "Wind speed (m/s)",
+          "Power output (W)"
         ],
         "rows": [
           [
-            "20",
-            "7.7"
+            "4",
+            "98"
           ],
           [
-            "40",
-            "20.4"
+            "5",
+            "191"
           ],
           [
-            "60",
-            "37.9"
+            "6",
+            "330"
           ],
           [
-            "80",
-            "60.3"
+            "7",
+            "524"
           ],
           [
-            "100",
-            "87.7"
+            "8",
+            "782"
           ]
         ]
       }
     },
-    "answer_verification": "science:avg3;x1=40;col=1"
+    "answer_verification": "science:avg3;x1=5;col=1"
   },
   {
     "question_id": "act-science-data-representation-hard-q05",
@@ -354,31 +344,31 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "figure_reading",
-    "prompt": "According to Figure 1, between which two consecutive values of insulation thickness did the rate of heat loss decrease the most?",
+    "prompt": "Based on Figure 1, the largest decrease in the water temperature between neighboring points occurred between:",
     "choices": [
       {
         "id": "A",
-        "text": "4 cm and 6 cm",
-        "rationale": "The vertical change between these points is only 9, less than 48."
+        "text": "The points are evenly spaced vertically, so no interval stands out",
+        "rationale": "The vertical gaps range from 1.2 to 7.0."
       },
       {
         "id": "B",
-        "text": "0 cm and 2 cm",
-        "rationale": "Correct. The points at 0 cm and 2 cm are the farthest apart vertically (48 W)."
+        "text": "4 m and 6 m",
+        "rationale": "The vertical change between these points is only 2.9, less than 7.0."
       },
       {
         "id": "C",
-        "text": "6 cm and 8 cm",
-        "rationale": "The vertical change between these points is only 6, less than 48."
+        "text": "0 m and 2 m",
+        "rationale": "Correct. The points at 0 m and 2 m are the farthest apart vertically (7.0 °C)."
       },
       {
         "id": "D",
-        "text": "2 cm and 4 cm",
-        "rationale": "The vertical change between these points is only 19, less than 48."
+        "text": "2 m and 4 m",
+        "rationale": "The vertical change between these points is only 4.4, less than 7.0."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Compare the vertical gaps between neighboring points; the gap between 0 cm and 2 cm is the largest.",
+    "correct_choice": "C",
+    "explanation": "Compare the vertical gaps between neighboring points; the gap between 0 m and 2 m is the largest.",
     "estimated_time_seconds": 70,
     "tags": [
       "science",
@@ -388,38 +378,38 @@
     ],
     "stimulus": {
       "type": "figure",
-      "title": "Insulation and Heat Loss",
+      "title": "Lake Temperature and Depth",
       "figure": {
         "kind": "scatter",
         "points": [
           [
             0.0,
-            107.0
+            25.6
           ],
           [
             2.0,
-            59.0
+            18.6
           ],
           [
             4.0,
-            40.0
+            14.2
           ],
           [
             6.0,
-            31.0
+            11.3
           ],
           [
             8.0,
-            25.0
+            9.5
           ],
           [
             10.0,
-            21.0
+            8.3
           ]
         ],
-        "xlabel": "Foam thickness (cm)",
-        "ylabel": "Heat loss (W)",
-        "caption": "Figure 1. Heat loss (W) (vertical axis) versus Foam thickness (cm) (horizontal axis). Each point is one trial."
+        "xlabel": "Depth (m)",
+        "ylabel": "Water temperature (°C)",
+        "caption": "Figure 1. Water temperature (°C) (vertical axis) versus Depth (m) (horizontal axis). Each point is one trial."
       }
     },
     "answer_verification": "science:fig_maxstep"
@@ -435,84 +425,85 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "data_interpretation",
-    "subskill": "consistent_statement",
-    "prompt": "Based on Table 1, which statement comparing the two conditions is accurate?",
+    "subskill": "compare_entries",
+    "prompt": "According to Table 1, the difference between the rate of heat loss for 60°C inside and for 80°C inside was greatest at which insulation thickness?",
     "choices": [
       {
         "id": "A",
-        "text": "The difference between the two conditions was smallest at 80 km/h.",
-        "rationale": "The smallest gap between the columns is at 20 km/h (2.7 m)."
+        "text": "The gap is the same at every insulation thickness",
+        "rationale": "The gaps range from 14 to 58; they are not equal."
       },
       {
         "id": "B",
-        "text": "The stopping distance for dry pavement at 40 km/h was greater than the stopping distance for wet pavement at 120 km/h.",
-        "rationale": "The table lists 20.6 m (dry pavement, 40 km/h) and 175.4 m (wet pavement, 120 km/h)."
+        "text": "2 cm",
+        "rationale": "The gap here is 36 W, which is not the greatest."
       },
       {
         "id": "C",
-        "text": "The stopping distance for wet pavement at 80 km/h was greater than the stopping distance for dry pavement at 20 km/h.",
-        "rationale": "Correct. Checking both condition columns confirms this statement."
+        "text": "0 cm",
+        "rationale": "Correct. Here the gap is 58 W, the greatest in the table."
       },
       {
         "id": "D",
-        "text": "The difference between the two conditions was smallest at 100 km/h.",
-        "rationale": "The smallest gap between the columns is at 20 km/h (2.7 m)."
+        "text": "4 cm",
+        "rationale": "The gap here is 26 W, which is not the greatest."
       }
     ],
     "correct_choice": "C",
-    "explanation": "Compare the two condition columns row by row. Only \"The stopping distance for wet pavement at 80 km/h was greater than the stopping distance for dry pavement at 20 km/h.\" survives that check.",
-    "estimated_time_seconds": 80,
+    "explanation": "Subtract the two condition columns in each row: 58, 36, 26, 20, 16, 14. The greatest difference is at 0 cm.",
+    "estimated_time_seconds": 75,
     "tags": [
       "science",
       "data-representation",
       "conditions",
-      "statement",
-      "family:dr_condition_statement"
+      "extreme",
+      "family:dr_condition_gap_extreme"
     ],
     "stimulus": {
       "type": "table",
-      "title": "Speed and Stopping Distance",
+      "title": "Insulation and Heat Loss",
       "table": {
-        "caption": "Table 1. Distance needed for a car to stop from several speeds. Results are shown for two conditions: dry pavement and wet pavement.",
+        "caption": "Table 1. Rate of heat loss from a heated box wrapped in several thicknesses of foam. Results are shown for two conditions: 60°C inside and 80°C inside.",
         "headers": [
-          "Speed (km/h)",
-          "Stopping distance (m), dry pavement",
-          "Stopping distance (m), wet pavement"
+          "Foam thickness (cm)",
+          "Heat loss (W), 60°C inside",
+          "Heat loss (W), 80°C inside"
         ],
         "rows": [
           [
-            "20",
-            "7.5",
-            "10.2"
+            "0",
+            "103",
+            "161"
           ],
           [
-            "40",
-            "20.6",
-            "28.0"
+            "2",
+            "64",
+            "100"
           ],
           [
-            "60",
-            "39.2",
-            "53.5"
+            "4",
+            "46",
+            "72"
           ],
           [
-            "80",
-            "63.5",
-            "86.5"
+            "6",
+            "36",
+            "56"
           ],
           [
-            "100",
-            "93.3",
-            "127.1"
+            "8",
+            "30",
+            "46"
           ],
           [
-            "120",
-            "128.7",
-            "175.4"
+            "10",
+            "25",
+            "39"
           ]
         ]
       }
-    }
+    },
+    "answer_verification": "science:gap_extreme;mode=max"
   },
   {
     "question_id": "act-science-data-representation-hard-q07",
@@ -526,76 +517,79 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "compare_entries",
-    "prompt": "Based on Table 1, by approximately what percent did the tire pressure change between 0 °C and 50 °C?",
+    "prompt": "According to Table 1, the greatest value of the height of the seedlings for 6 h of light exceeds the least value for 10 h of light by:",
     "choices": [
       {
         "id": "A",
-        "text": "+36%",
-        "rationale": "This is double the actual percent change; recheck the arithmetic."
+        "text": "14.1 cm",
+        "rationale": "This is the range within the 10 h of light column alone."
       },
       {
         "id": "B",
-        "text": "+15%",
-        "rationale": "This divides by the final value (257.4) instead of the starting value (217.6)."
+        "text": "8.2 cm",
+        "rationale": "Correct. 26.7 − 18.5 = 8.2."
       },
       {
         "id": "C",
-        "text": "+18%",
-        "rationale": "Correct. (257.4 − 217.6) ÷ 217.6 × 100 ≈ 18%."
+        "text": "22.60 cm",
+        "rationale": "This averages the two values instead of subtracting them."
       },
       {
         "id": "D",
-        "text": "+9%",
-        "rationale": "This is half the actual percent change; recheck the arithmetic."
+        "text": "11.5 cm",
+        "rationale": "This is the range within the 6 h of light column alone."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Percent change = (final − initial) ÷ initial × 100 = (257.4 − 217.6) ÷ 217.6 × 100 ≈ 18% increase.",
-    "estimated_time_seconds": 75,
+    "correct_choice": "B",
+    "explanation": "Greatest 6 h of light value: 26.7. Least 10 h of light value: 18.5. Difference: 8.2 cm.",
+    "estimated_time_seconds": 80,
     "tags": [
       "science",
       "data-representation",
-      "percent",
-      "family:dr_percent_change"
+      "conditions",
+      "extreme",
+      "family:dr_max_minus_min"
     ],
     "stimulus": {
       "type": "table",
-      "title": "Temperature and Tire Pressure",
+      "title": "Fertilizer and Plant Growth",
       "table": {
-        "caption": "Table 1. Pressure in a sealed tire at several air temperatures.",
+        "caption": "Table 1. Average height of bean seedlings after 4 weeks at several fertilizer concentrations. Results are shown for two conditions: 6 h of light and 10 h of light.",
         "headers": [
-          "Air temperature (°C)",
-          "Pressure (kPa)"
+          "Fertilizer concentration (g/L)",
+          "Seedling height (cm), 6 h of light",
+          "Seedling height (cm), 10 h of light"
         ],
         "rows": [
           [
             "0",
-            "217.6"
+            "15.2",
+            "18.5"
+          ],
+          [
+            "5",
+            "21.3",
+            "26.0"
           ],
           [
             "10",
-            "225.6"
+            "25.2",
+            "30.7"
+          ],
+          [
+            "15",
+            "26.7",
+            "32.6"
           ],
           [
             "20",
-            "233.5"
-          ],
-          [
-            "30",
-            "241.5"
-          ],
-          [
-            "40",
-            "249.5"
-          ],
-          [
-            "50",
-            "257.4"
+            "26.1",
+            "31.8"
           ]
         ]
       }
     },
-    "answer_verification": "science:pct;x1=0;x2=50;col=1"
+    "answer_verification": "science:maxmin;hi=1;lo=2"
   },
   {
     "question_id": "act-science-data-representation-hard-q08",
@@ -608,85 +602,79 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "data_interpretation",
-    "subskill": "table_lookup",
-    "prompt": "In Table 1, find the row in which the tire pressure for Tire A is nearest 224.5 kPa. What was the tire pressure for Tire B in that row?",
+    "subskill": "consistent_statement",
+    "prompt": "Which conclusion about the two conditions is consistent with the data in Table 1?",
     "choices": [
       {
         "id": "A",
-        "text": "223.2 kPa",
-        "rationale": "This is the Tire A value in that row; the question asks for the Tire B value."
+        "text": "The flow rate of the river for summer at 30 mm was greater than the flow rate of the river for winter at 40 mm.",
+        "rationale": "The table lists 18.5 m³/s (summer, 30 mm) and 35.3 m³/s (winter, 40 mm)."
       },
       {
         "id": "B",
-        "text": "255.9 kPa",
-        "rationale": "This is the Tire B value for 30 °C, a different row."
+        "text": "The flow rate of the river for winter at 40 mm was greater than the flow rate of the river for summer at 60 mm.",
+        "rationale": "The table lists 35.3 m³/s (winter, 40 mm) and 36.7 m³/s (summer, 60 mm)."
       },
       {
         "id": "C",
-        "text": "264.4 kPa",
-        "rationale": "This is the Tire B value for 40 °C, a different row."
+        "text": "The flow rate of the river for winter at 20 mm was greater than the flow rate of the river for summer at 60 mm.",
+        "rationale": "The table lists 21.2 m³/s (winter, 20 mm) and 36.7 m³/s (summer, 60 mm)."
       },
       {
         "id": "D",
-        "text": "272.8 kPa",
-        "rationale": "Correct. The Tire A value closest to 224.5 kPa is 223.2, at 50 °C; the Tire B entry in that row is 272.8."
+        "text": "The difference between the two conditions was greatest at 60 mm.",
+        "rationale": "Correct. Checking both condition columns confirms this statement."
       }
     ],
     "correct_choice": "D",
-    "explanation": "First locate the Tire A entry nearest 224.5 kPa: 223.2 at 50 °C. Then read the Tire B column in that row: 272.8 kPa.",
+    "explanation": "Compare the two condition columns row by row. Only \"The difference between the two conditions was greatest at 60 mm.\" survives that check.",
     "estimated_time_seconds": 80,
     "tags": [
       "science",
       "data-representation",
       "conditions",
-      "lookup",
-      "family:dr_cross_condition_lookup"
+      "statement",
+      "family:dr_condition_statement"
     ],
     "stimulus": {
       "type": "table",
-      "title": "Temperature and Tire Pressure",
+      "title": "Rainfall and River Flow",
       "table": {
-        "caption": "Table 1. Pressure in a sealed tire at several air temperatures. Results are shown for two conditions: Tire A and Tire B.",
+        "caption": "Table 1. Flow rate of a river measured the day after several amounts of rain. Results are shown for two conditions: summer and winter.",
         "headers": [
-          "Air temperature (°C)",
-          "Pressure (kPa), Tire A",
-          "Pressure (kPa), Tire B"
+          "Rainfall (mm)",
+          "Flow rate (m³/s), summer",
+          "Flow rate (m³/s), winter"
         ],
         "rows": [
           [
-            "0",
-            "188.6",
-            "230.6"
-          ],
-          [
-            "10",
-            "195.5",
-            "239.1"
-          ],
-          [
             "20",
-            "202.4",
-            "247.5"
+            "14.2",
+            "21.2"
           ],
           [
             "30",
-            "209.3",
-            "255.9"
+            "18.5",
+            "27.5"
           ],
           [
             "40",
-            "216.3",
-            "264.4"
+            "23.7",
+            "35.3"
           ],
           [
             "50",
-            "223.2",
-            "272.8"
+            "29.8",
+            "44.3"
+          ],
+          [
+            "60",
+            "36.7",
+            "54.7"
           ]
         ]
       }
-    },
-    "answer_verification": "science:closest_then;v=224.5;src=1;dst=2"
+    }
   },
   {
     "question_id": "act-science-data-representation-hard-q09",
@@ -700,72 +688,76 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "compare_entries",
-    "prompt": "According to Table 1, the average of the boiling point of the water for the three values of altitude from 1500 m to 2500 m is closest to:",
+    "prompt": "Based on Table 1, by approximately what percent did the rate of photosynthesis change between 100 µmol/m²/s and 600 µmol/m²/s?",
     "choices": [
       {
         "id": "A",
-        "text": "95.0 °C",
-        "rationale": "This averages the rows from 1000 m to 2000 m instead."
+        "text": "+150%",
+        "rationale": "This is double the actual percent change; recheck the arithmetic."
       },
       {
         "id": "B",
-        "text": "93.4 °C",
-        "rationale": "Correct. (95.0 + 93.4 + 91.7) ÷ 3 ≈ 93.4."
+        "text": "+11.0 bubbles/min",
+        "rationale": "This is the absolute change in photosynthesis rate, not a percent of the starting value."
       },
       {
         "id": "C",
-        "text": "93.3 °C",
-        "rationale": "This averages only the first and last of the three values."
+        "text": "+43%",
+        "rationale": "This divides by the final value (25.7) instead of the starting value (14.7)."
       },
       {
         "id": "D",
-        "text": "280.1 °C",
-        "rationale": "This is the sum of the three values, not their mean."
+        "text": "+75%",
+        "rationale": "Correct. (25.7 − 14.7) ÷ 14.7 × 100 ≈ 75%."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Add the three entries (95.0, 93.4, 91.7) and divide by 3: about 93.4 °C.",
+    "correct_choice": "D",
+    "explanation": "Percent change = (final − initial) ÷ initial × 100 = (25.7 − 14.7) ÷ 14.7 × 100 ≈ 75% increase.",
     "estimated_time_seconds": 75,
     "tags": [
       "science",
       "data-representation",
-      "average",
-      "family:dr_average"
+      "percent",
+      "family:dr_percent_change"
     ],
     "stimulus": {
       "type": "table",
-      "title": "Altitude and Boiling Point",
+      "title": "Light and Photosynthesis",
       "table": {
-        "caption": "Table 1. Boiling point of water measured at several altitudes.",
+        "caption": "Table 1. Rate of photosynthesis of a water plant at several light intensities.",
         "headers": [
-          "Altitude (m)",
-          "Boiling point (°C)"
+          "Light intensity (µmol/m²/s)",
+          "Bubbles per minute (bubbles/min)"
         ],
         "rows": [
           [
+            "100",
+            "14.7"
+          ],
+          [
+            "200",
+            "19.7"
+          ],
+          [
+            "300",
+            "22.3"
+          ],
+          [
+            "400",
+            "23.9"
+          ],
+          [
             "500",
-            "98.3"
+            "24.9"
           ],
           [
-            "1000",
-            "96.7"
-          ],
-          [
-            "1500",
-            "95.0"
-          ],
-          [
-            "2000",
-            "93.4"
-          ],
-          [
-            "2500",
-            "91.7"
+            "600",
+            "25.7"
           ]
         ]
       }
     },
-    "answer_verification": "science:avg3;x1=1500;col=1"
+    "answer_verification": "science:pct;x1=100;x2=600;col=1"
   },
   {
     "question_id": "act-science-data-representation-hard-q10",
@@ -777,77 +769,81 @@
     "lesson_id": "act-science-data-representation-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "figure_reading",
-    "prompt": "According to Figure 1, between which two consecutive values of water temperature did the mass of salt that dissolved increase the most?",
+    "question_type": "data_interpretation",
+    "subskill": "table_lookup",
+    "prompt": "Consider the current in Table 1 at which the voltage across the resistor for Resistor 1 was closest to 10.6 V. At that current, the voltage across the resistor for Resistor 2 was:",
     "choices": [
       {
         "id": "A",
-        "text": "40 °C and 60 °C",
-        "rationale": "The vertical change between these points is only 33, less than 52."
+        "text": "17.90 V",
+        "rationale": "This averages the two conditions in that row instead of reading the Resistor 2 value."
       },
       {
         "id": "B",
-        "text": "60 °C and 80 °C",
-        "rationale": "The vertical change between these points is only 43, less than 52."
+        "text": "10.5 V",
+        "rationale": "This is the Resistor 1 value in that row; the question asks for the Resistor 2 value."
       },
       {
         "id": "C",
-        "text": "80 °C and 100 °C",
-        "rationale": "Correct. The points at 80 °C and 100 °C are the farthest apart vertically (52 g)."
+        "text": "21.1 V",
+        "rationale": "This is the Resistor 2 value for 0.5 A, a different row."
       },
       {
         "id": "D",
-        "text": "20 °C and 40 °C",
-        "rationale": "The vertical change between these points is only 22, less than 52."
+        "text": "25.3 V",
+        "rationale": "Correct. The Resistor 1 value closest to 10.6 V is 10.5, at 0.6 A; the Resistor 2 entry in that row is 25.3."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Compare the vertical gaps between neighboring points; the gap between 80 °C and 100 °C is the largest.",
-    "estimated_time_seconds": 70,
+    "correct_choice": "D",
+    "explanation": "First locate the Resistor 1 entry nearest 10.6 V: 10.5 at 0.6 A. Then read the Resistor 2 column in that row: 25.3 V.",
+    "estimated_time_seconds": 80,
     "tags": [
       "science",
       "data-representation",
-      "figure",
-      "family:dr_figure_biggest_step"
+      "conditions",
+      "lookup",
+      "family:dr_cross_condition_lookup"
     ],
     "stimulus": {
-      "type": "figure",
-      "title": "Solubility and Temperature",
-      "figure": {
-        "kind": "scatter",
-        "points": [
-          [
-            0.0,
-            14.0
-          ],
-          [
-            20.0,
-            27.0
-          ],
-          [
-            40.0,
-            49.0
-          ],
-          [
-            60.0,
-            82.0
-          ],
-          [
-            80.0,
-            125.0
-          ],
-          [
-            100.0,
-            177.0
-          ]
+      "type": "table",
+      "title": "Current and Voltage",
+      "table": {
+        "caption": "Table 1. Voltage across a resistor at several currents. Results are shown for two conditions: Resistor 1 and Resistor 2.",
+        "headers": [
+          "Current (A)",
+          "Voltage (V), Resistor 1",
+          "Voltage (V), Resistor 2"
         ],
-        "xlabel": "Water temperature (°C)",
-        "ylabel": "Mass dissolved (g)",
-        "caption": "Figure 1. Mass dissolved (g) (vertical axis) versus Water temperature (°C) (horizontal axis). Each point is one trial."
+        "rows": [
+          [
+            "0.2",
+            "3.5",
+            "8.4"
+          ],
+          [
+            "0.3",
+            "5.3",
+            "12.6"
+          ],
+          [
+            "0.4",
+            "7.0",
+            "16.9"
+          ],
+          [
+            "0.5",
+            "8.8",
+            "21.1"
+          ],
+          [
+            "0.6",
+            "10.5",
+            "25.3"
+          ]
+        ]
       }
     },
-    "answer_verification": "science:fig_maxstep"
+    "answer_verification": "science:closest_then;v=10.6;src=1;dst=2"
   },
   {
     "question_id": "act-science-data-representation-hard-q11",
@@ -860,84 +856,77 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "data_interpretation",
-    "subskill": "consistent_statement",
-    "prompt": "Which of the following statements about the two conditions is supported by Table 1?",
+    "subskill": "compare_entries",
+    "prompt": "According to Table 1, the average of the chirping rate for the three values of temperature from 18 °C to 24 °C is closest to:",
     "choices": [
       {
         "id": "A",
-        "text": "The percent of seeds that sprouted for 25°C at 8 h was greater than the percent of seeds that sprouted for 15°C at 0 h.",
-        "rationale": "Correct. Checking both condition columns confirms this statement."
+        "text": "114.5 chirps/min",
+        "rationale": "This averages only the first and last of the three values."
       },
       {
         "id": "B",
-        "text": "The difference between the two conditions was smallest at 12 h.",
-        "rationale": "The smallest gap between the columns is at 0 h (9%)."
+        "text": "94 chirps/min",
+        "rationale": "This averages the rows from 15 °C to 21 °C instead."
       },
       {
         "id": "C",
-        "text": "The percent of seeds that sprouted for 15°C at 0 h was greater than the percent of seeds that sprouted for 25°C at 16 h.",
-        "rationale": "The table lists 27% (15°C, 0 h) and 93% (25°C, 16 h)."
+        "text": "115 chirps/min",
+        "rationale": "Correct. (94 + 115 + 135) ÷ 3 ≈ 115."
       },
       {
         "id": "D",
-        "text": "At every soaking time tested, the percent of seeds that sprouted was higher for 15°C than for 25°C.",
-        "rationale": "Compare the two columns row by row; 15°C is not higher in every row."
+        "text": "135 chirps/min",
+        "rationale": "This averages the rows from 21 °C to 27 °C instead."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Compare the two condition columns row by row. Only \"The percent of seeds that sprouted for 25°C at 8 h was greater than the percent of seeds that sprouted for 15°C at 0 h.\" survives that check.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "C",
+    "explanation": "Add the three entries (94, 115, 135) and divide by 3: about 115 chirps/min.",
+    "estimated_time_seconds": 75,
     "tags": [
       "science",
       "data-representation",
-      "conditions",
-      "statement",
-      "family:dr_condition_statement"
+      "average",
+      "family:dr_average"
     ],
     "stimulus": {
       "type": "table",
-      "title": "Seed Soaking and Germination",
+      "title": "Temperature and Cricket Chirps",
       "table": {
-        "caption": "Table 1. Percent of radish seeds that sprouted after soaking for several lengths of time. Results are shown for two conditions: 15°C and 25°C.",
+        "caption": "Table 1. Number of chirps per minute made by a cricket at several air temperatures.",
         "headers": [
-          "Soaking time (h)",
-          "Seeds sprouted (%), 15°C",
-          "Seeds sprouted (%), 25°C"
+          "Air temperature (°C)",
+          "Chirps per minute (chirps/min)"
         ],
         "rows": [
           [
-            "0",
+            "15",
+            "73"
+          ],
+          [
+            "18",
+            "94"
+          ],
+          [
+            "21",
+            "115"
+          ],
+          [
+            "24",
+            "135"
+          ],
+          [
             "27",
-            "36"
+            "156"
           ],
           [
-            "4",
-            "35",
-            "48"
-          ],
-          [
-            "8",
-            "50",
-            "68"
-          ],
-          [
-            "12",
-            "65",
-            "88"
-          ],
-          [
-            "16",
-            "68",
-            "93"
-          ],
-          [
-            "20",
-            "58",
-            "79"
+            "30",
+            "177"
           ]
         ]
       }
-    }
+    },
+    "answer_verification": "science:avg3;x1=18;col=1"
   },
   {
     "question_id": "act-science-data-representation-hard-q12",
@@ -949,77 +938,76 @@
     "lesson_id": "act-science-data-representation-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "compare_entries",
-    "prompt": "According to Table 1, the percent decrease in the time for the reaction to finish from 0 mg to 10 mg is closest to:",
+    "question_type": "multiple_choice",
+    "subskill": "figure_reading",
+    "prompt": "Based on Figure 1, the largest increase in the rate of photosynthesis between neighboring points occurred between:",
     "choices": [
       {
         "id": "A",
-        "text": "86%",
-        "rationale": "Correct. (41 − 290) ÷ 290 × 100 ≈ 86%."
+        "text": "The points are evenly spaced vertically, so no interval stands out",
+        "rationale": "The vertical gaps range from 0.8 to 5.3."
       },
       {
         "id": "B",
-        "text": "81%",
-        "rationale": "This uses the row for 8 mg instead of 10 mg."
+        "text": "200 µmol/m²/s and 300 µmol/m²/s",
+        "rationale": "The vertical change between these points is only 2.9, less than 5.3."
       },
       {
         "id": "C",
-        "text": "43%",
-        "rationale": "This is half the actual percent change; recheck the arithmetic."
+        "text": "300 µmol/m²/s and 400 µmol/m²/s",
+        "rationale": "The vertical change between these points is only 1.7, less than 5.3."
       },
       {
         "id": "D",
-        "text": "172%",
-        "rationale": "This is double the actual percent change; recheck the arithmetic."
+        "text": "100 µmol/m²/s and 200 µmol/m²/s",
+        "rationale": "Correct. The points at 100 µmol/m²/s and 200 µmol/m²/s are the farthest apart vertically (5.3 bubbles/min)."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Percent change = (final − initial) ÷ initial × 100 = (41 − 290) ÷ 290 × 100 ≈ 86% decrease.",
-    "estimated_time_seconds": 75,
+    "correct_choice": "D",
+    "explanation": "Compare the vertical gaps between neighboring points; the gap between 100 µmol/m²/s and 200 µmol/m²/s is the largest.",
+    "estimated_time_seconds": 70,
     "tags": [
       "science",
       "data-representation",
-      "percent",
-      "family:dr_percent_change"
+      "figure",
+      "family:dr_figure_biggest_step"
     ],
     "stimulus": {
-      "type": "table",
-      "title": "Catalyst and Reaction Time",
-      "table": {
-        "caption": "Table 1. Time for a reaction to finish with several masses of catalyst.",
-        "headers": [
-          "Mass of catalyst (mg)",
-          "Reaction time (s)"
-        ],
-        "rows": [
+      "type": "figure",
+      "title": "Light and Photosynthesis",
+      "figure": {
+        "kind": "scatter",
+        "points": [
           [
-            "0",
-            "290"
+            100.0,
+            14.5
           ],
           [
-            "2",
-            "178"
+            200.0,
+            19.8
           ],
           [
-            "4",
-            "113"
+            300.0,
+            22.7
           ],
           [
-            "6",
-            "76"
+            400.0,
+            24.4
           ],
           [
-            "8",
-            "54"
+            500.0,
+            25.6
           ],
           [
-            "10",
-            "41"
+            600.0,
+            26.4
           ]
-        ]
+        ],
+        "xlabel": "Light intensity (µmol/m²/s)",
+        "ylabel": "Bubbles per minute (bubbles/min)",
+        "caption": "Figure 1. Bubbles per minute (bubbles/min) (vertical axis) versus Light intensity (µmol/m²/s) (horizontal axis). Each point is one trial."
       }
     },
-    "answer_verification": "science:pct;x1=0;x2=10;col=1"
+    "answer_verification": "science:fig_maxstep"
   }
 ]

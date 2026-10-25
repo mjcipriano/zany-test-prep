@@ -16,8 +16,8 @@ from content_gen.teaching_science import TEACHING_SCIENCE
 from content_gen.util import item_signature
 
 DIFFS = registry.DIFFICULTIES
-MIN_FAMILIES = {"data_representation": 4, "trends_extrapolation": 3,
-                "experimental_design": 3, "conflicting_viewpoints": 3}
+MIN_FAMILIES = {"data_representation": 6, "trends_extrapolation": 5,
+                "experimental_design": 5, "conflicting_viewpoints": 5}
 _LESSON_SCHEMA = json.loads(
     (helpers.ROOT / "content" / "schemas" / "lesson.schema.json").read_text())
 _LESSON_VALIDATOR = Draft7Validator(_LESSON_SCHEMA)
@@ -59,6 +59,10 @@ def _table(body):
     cols = [[float(v) for v in col] for col in strs]
     decs = [max(len(v.split(".")[1]) if "." in v else 0 for v in col) for col in strs]
     return xs, cols, labels, decs
+
+
+def _correct_raw(body):
+    return next(c["text"] for c in body["choices"] if c["id"] == body["correct_choice"])
 
 
 def _correct(body):
@@ -131,6 +135,17 @@ class ScienceFamilyTableTests(unittest.TestCase):
             self.assertLess(longest / len(bodies), 0.7,
                             f"{skill}/{diff}/{registry.family_name(fn)}: longest-correct {longest}/120")
 
+    def test_aggregate_longest_share_is_low(self):
+        """Domain-wide 'correct is the longest option' share, counting ties the way
+        tools/validate_content.py does, stays at or below 40% across all families."""
+        hits = total = 0
+        for skill, diff, fn in _all_families():
+            for b in helpers.sample_family(fn, diff, 120, seed=41):
+                longest = max(len(c["text"]) for c in b["choices"])
+                hits += len(_correct_raw(b)) == longest
+                total += 1
+        self.assertLessEqual(hits / total, 0.40, f"aggregate longest share {hits / total:.3f}")
+
     def test_correct_position_varies(self):
         for skill, diff, fn in _all_families():
             bodies = helpers.sample_family(fn, diff, 60, seed=17)
@@ -152,7 +167,7 @@ class ScienceFamilyTableTests(unittest.TestCase):
 
 class ScenarioLibraryTests(unittest.TestCase):
     def test_library_size_and_shapes(self):
-        self.assertGreaterEqual(len(sg.SCENARIOS), 15)
+        self.assertGreaterEqual(len(sg.SCENARIOS), 37)
         rng = random.Random(3)
         for scen in sg.SCENARIOS:
             ds = sg.build(rng, scen, n=5)
@@ -277,11 +292,10 @@ class ScienceCorrectnessTests(unittest.TestCase):
                     self.assertTrue(all(b < a for a, b in zip(m, m[1:])), where)
                 else:
                     self.assertTrue(all(b > a for a, b in zip(m, m[1:])), where)
-            key = {"const": "same amount", "slow": "smaller and smaller", "acc": "larger and larger"}
-            if expect == "peak":
-                self.assertIn("maximum", correct, where)
-            else:
-                self.assertIn(key[expect.split("_")[1]], correct, where)
+            # Accept either the trend-shape wording or the graph-shape wording.
+            texts = {sg._SHAPE_TEXT[expect].format(x=""), sg._GRAPH_TEXT[expect]}
+            self.assertTrue(any(correct.startswith(t.split("{")[0].rstrip()) for t in texts) or
+                            correct in texts, f"{where}: {correct!r}")
         elif kind == "interp_range":
             x = float(kw["x"])
             fx = [float(v) for v in xs]
@@ -349,6 +363,64 @@ class ScienceCorrectnessTests(unittest.TestCase):
             self.assertTrue(all((y > x) if hi == 2 else (x > y) for x, y in zip(a, b)), where)
             self.assertTrue(correct.startswith("Yes;"), where)
             self.assertIn(f"higher for {labels[hi - 1]} than", correct, where)
+        elif kind == "convert":
+            r = xs.index(kw["x"])
+            self.assertAlmostEqual(_num(correct), vals[r] * float(kw["mult"]), places=4, msg=where)
+        elif kind == "count2":
+            a, b = cols
+            ta, tb = float(kw["ta"]), float(kw["tb"])
+            def ok(v, t, op):
+                return v > t if op == "gt" else v < t
+            n = sum(1 for p, q in zip(a, b) if ok(p, ta, kw["opa"]) and ok(q, tb, kw["opb"]))
+            self.assertEqual(int(correct), n, where)
+        elif kind == "condavg":
+            r = xs.index(kw["x"])
+            self.assertAlmostEqual(_num(correct), round((cols[0][r] + cols[1][r]) / 2, dec), places=6, msg=where)
+        elif kind == "gap_extreme":
+            gaps = [abs(p - q) for p, q in zip(cols[0], cols[1])]
+            k = gaps.index((max if kw["mode"] == "max" else min)(gaps))
+            self.assertTrue(correct.startswith(xs[k]), where)
+        elif kind == "maxmin":
+            hi, lo = cols[int(kw["hi"]) - 1], cols[int(kw["lo"]) - 1]
+            self.assertAlmostEqual(_num(correct), round(max(hi) - min(lo), dec), places=6, msg=where)
+        elif kind == "rate":
+            i, j = xs.index(kw["x1"]), xs.index(kw["x2"])
+            rate = abs(vals[j] - vals[i]) / (float(xs[j]) - float(xs[i]))
+            self.assertAlmostEqual(_num(correct), rate, delta=abs(rate) * 0.02 + 1e-9, msg=where)
+        elif kind == "slopes":
+            i, j = xs.index(kw["x1"]), xs.index(kw["x2"])
+            num, den = cols[int(kw["num"]) - 1], cols[int(kw["den"]) - 1]
+            r = abs(num[j] - num[i]) / abs(den[j] - den[i])
+            self.assertAlmostEqual(_num(correct), round(r, 1), places=6, msg=where)
+        elif kind == "ratecmp":
+            fx = [float(x) for x in xs]
+            a, b = xs.index(kw["a"]), xs.index(kw["b"])
+            ra = abs(vals[a + 1] - vals[a]) / (fx[a + 1] - fx[a])
+            rb = abs(vals[b + 1] - vals[b]) / (fx[b + 1] - fx[b])
+            self.assertAlmostEqual(_num(correct), round(ra / rb, 1), places=6, msg=where)
+        elif kind == "extrap_cross":
+            a, b = cols
+            fx = [float(x) for x in xs]
+            step = fx[-1] - fx[-2]
+            da, db = a[-1] - a[-2], b[-1] - b[-2]
+            k = 1
+            while a[-1] + k * da >= b[-1] + k * db:
+                k += 1
+            self.assertAlmostEqual(_num(correct), fx[-1] + k * step, places=6, msg=where)
+        elif kind == "unit":
+            header = body["stimulus"]["table"]["headers"][1]
+            self.assertIn(f"({correct})", header, where)
+        elif kind == "control_zero":
+            self.assertEqual(xs[0], "0", where)
+            self.assertTrue(correct.startswith("The trial at 0"), where)
+        elif kind == "unsupported":
+            # every distractor must be a true statement about the table
+            for c in body["choices"]:
+                if c["id"] == body["correct_choice"]:
+                    continue
+                truth = self._statement_truth(c["text"], xs, cols, labels)
+                if truth is not None:
+                    self.assertTrue(truth, f"{where}: supported option {c['text']!r} is false")
         elif kind == "cond_between":
             r = xs.index(kw["x"])
             lo, hi = sorted([cols[0][r], cols[1][r]])
@@ -374,7 +446,12 @@ class ScienceCorrectnessTests(unittest.TestCase):
                      "tr_interpolate_range", "tr_interpolate_value", "tr_x_for_target",
                      "tr_extrapolate_value", "tr_reach_threshold", "tr_doubling",
                      "tr_crossing", "tr_beyond_direction", "ed_predict_trial",
-                     "ed_results_support_claim", "ed_predict_between_conditions"):
+                     "ed_results_support_claim", "ed_predict_between_conditions",
+                     "dr_unit_convert", "dr_graph_shape", "dr_two_condition_count",
+                     "dr_condition_average", "dr_condition_gap_extreme", "dr_max_minus_min",
+                     "tr_rate_of_change", "tr_peak_x", "tr_percent_across_table",
+                     "tr_compare_slopes", "tr_rate_compare_intervals", "tr_extrapolate_crossing",
+                     "ed_dependent_unit", "ed_control_trial", "ed_unsupported_conclusion"):
             self.assertIn(name, verified, f"{name} is not verified against its table")
 
     def test_consistent_statement_truth(self):
@@ -394,6 +471,8 @@ class ScienceCorrectnessTests(unittest.TestCase):
     def _statement_truth(text, xs, cols, labels):
         """Independently evaluate the simple comparative statements the families emit."""
         text = text.replace("pH ", "")
+        if len(cols) > 1 and not any(labels):
+            return None   # two-series table: statements may concern either series
 
         def col_for(label):
             return cols[labels.index(label)] if label in labels else cols[0]
@@ -449,16 +528,22 @@ class ScienceCorrectnessTests(unittest.TestCase):
 
 class ConflictingViewpointsTests(unittest.TestCase):
     def test_pool_size_and_structure(self):
-        self.assertGreaterEqual(len(sg.VIEWPOINTS), 10)
+        self.assertGreaterEqual(len(sg.VIEWPOINTS), 20)
+        self.assertGreaterEqual(sum(1 for p in sg.VIEWPOINTS if p.get("text_c")), 3)
+        with_extra = [p for p in sg.VIEWPOINTS if all(s in p["questions"] for s in sg.CV_EXTRA_SLOTS)]
+        self.assertGreaterEqual(len(with_extra), 12)
         ids = [p["id"] for p in sg.VIEWPOINTS]
         self.assertEqual(len(ids), len(set(ids)))
         for pair in sg.VIEWPOINTS:
-            for key in ("text_a", "text_b"):
+            for key in ("text_a", "text_b", "text_c"):
+                if key == "text_c" and not pair.get(key):
+                    continue
                 words = len(pair[key].split())
                 self.assertTrue(90 <= words <= 160, f"{pair['id']}.{key}: {words} words")
             qs = pair["questions"]
-            self.assertTrue(4 <= len(qs) <= 5, pair["id"])
-            self.assertEqual(set(qs), set(sg.CV_SLOTS), pair["id"])
+            self.assertTrue(5 <= len(qs) <= 7, pair["id"])
+            self.assertTrue(set(sg.CV_SLOTS) <= set(qs) <= set(sg.CV_SLOTS) | set(sg.CV_EXTRA_SLOTS),
+                            pair["id"])
             for slot, (prompt, options, ci, rats, expl) in qs.items():
                 where = f"{pair['id']}/{slot}"
                 self.assertGreaterEqual(len(prompt), 10, where)
@@ -474,6 +559,9 @@ class ConflictingViewpointsTests(unittest.TestCase):
         tiers = sg.viewpoint_tiers()
         for diff in DIFFS:
             self.assertGreaterEqual(len(tiers[diff]), 8, diff)
+            for slot in sg.CV_EXTRA_SLOTS:
+                self.assertGreaterEqual(sum(1 for p in tiers[diff] if slot in p["questions"]), 8,
+                                        f"{diff}/{slot}")
         covered = {p["id"] for d in DIFFS for p in tiers[d]}
         self.assertEqual(covered, {p["id"] for p in sg.VIEWPOINTS})
         cx = {d: [sg._pair_complexity(p) for p in tiers[d]] for d in DIFFS}
@@ -488,17 +576,20 @@ class ConflictingViewpointsTests(unittest.TestCase):
                 self.assertTrue(getattr(fn, "small_space", False), registry.family_name(fn))
                 bodies = helpers.sample_family(fn, diff, 40, seed=37)
                 for b in bodies:
-                    slot = next(t for t in b["tags"] if t in sg.CV_SLOTS)
+                    slot = next(t for t in b["tags"] if t in sg.CV_SLOTS or t in sg.CV_EXTRA_SLOTS)
                     slots.add(slot)
                     self.assertEqual(b["subskill"], sg.CV_SUBSKILL[slot])
                     self.assertTrue(b["stimulus"]["text"].startswith("Scientist 1"))
                     self.assertTrue(b["stimulus"]["text_b"].startswith("Scientist 2"))
                     pair_id = next(t for t in b["tags"] if t.startswith("pair:"))[5:]
                     pair = next(p for p in sg.VIEWPOINTS if p["id"] == pair_id)
+                    if pair.get("text_c"):
+                        self.assertIn("\n\nScientist 3\n", b["stimulus"]["text_b"])
+                        self.assertIn("three-viewpoints", b["tags"])
                     key_text = pair["questions"][slot][1][pair["questions"][slot][2]]
                     self.assertEqual(_correct(b), key_text)
                 self.assertGreaterEqual(len({b["correct_choice"] for b in bodies}), 3)
-            self.assertEqual(slots, set(sg.CV_SLOTS), diff)
+            self.assertEqual(slots, set(sg.CV_SLOTS) | set(sg.CV_EXTRA_SLOTS), diff)
 
 
 class TeachingScienceTests(unittest.TestCase):

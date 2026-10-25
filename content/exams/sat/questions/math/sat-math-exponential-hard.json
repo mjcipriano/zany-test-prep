@@ -11,31 +11,31 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "The number of subscribers to a newsletter is 200 and decreases by 50% each month. How many subscribers to a newsletter will there be after 3 months? (Round to the nearest whole number if necessary.)",
+    "prompt": "The number of fruit flies in a jar is 2500 and decreases by 50% each week. How many fruit flies in a jar will there be after 3 weeks? (Round to the nearest whole number if necessary.)",
     "choices": [
       {
         "id": "A",
-        "text": "25",
-        "rationale": "Correct."
+        "text": "-1250",
+        "rationale": "Percent change compounds; it doesn't add up linearly."
       },
       {
         "id": "B",
-        "text": "100",
-        "rationale": "That is after only one month."
+        "text": "1250",
+        "rationale": "That is after only one week."
       },
       {
         "id": "C",
-        "text": "12",
-        "rationale": "That is one month too many."
+        "text": "156",
+        "rationale": "That is one week too many."
       },
       {
         "id": "D",
-        "text": "-100",
-        "rationale": "Percent change compounds; it doesn't add up linearly."
+        "text": "312",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Each month multiplies by 1/2: 200 × (1/2)^3 ≈ 25.",
+    "correct_choice": "D",
+    "explanation": "Each week multiplies by 1/2: 2500 × (1/2)^3 ≈ 312.",
     "estimated_time_seconds": 95,
     "tags": [
       "advanced-math",
@@ -43,7 +43,7 @@
       "percent",
       "family:ex_value"
     ],
-    "answer_verification": "200*(1/2)^3=25.00"
+    "answer_verification": "2500*(1/2)^3=312.50"
   },
   {
     "question_id": "sat-math-exponential-hard-q02",
@@ -57,31 +57,31 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "A population of 100 subscribers to a newsletter triples every 24 hours. Which function gives the population P after t hours?",
+    "prompt": "A population of 200 fruit flies in a jar doubles every 12 years. Which function gives the population P after t years?",
     "choices": [
       {
         "id": "A",
-        "text": "P(t) = 100·3^t",
-        "rationale": "That would be triples every hour, not every 24 hours."
-      },
-      {
-        "id": "B",
-        "text": "P(t) = 100·24^(t/3)",
-        "rationale": "The growth factor is 3; the period is 24."
-      },
-      {
-        "id": "C",
-        "text": "P(t) = 100·3^(t/24)",
+        "text": "P(t) = 200·2^(t/12)",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "P(t) = 200·12^(t/2)",
+        "rationale": "The growth factor is 2; the period is 12."
+      },
+      {
+        "id": "C",
+        "text": "P(t) = 200·2^t",
+        "rationale": "That would be doubles every year, not every 12 years."
+      },
+      {
         "id": "D",
-        "text": "P(t) = 100·3^(24t)",
-        "rationale": "The population multiplies once every 24 hours, so the exponent is t/24."
+        "text": "P(t) = 200·2^(12t)",
+        "rationale": "The population multiplies once every 12 years, so the exponent is t/12."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "In t hours there are t/24 periods, each multiplying by 3: P(t) = 100·3^(t/24).",
+    "correct_choice": "A",
+    "explanation": "In t years there are t/12 periods, each multiplying by 2: P(t) = 200·2^(t/12).",
     "estimated_time_seconds": 90,
     "tags": [
       "advanced-math",
@@ -89,7 +89,7 @@
       "model",
       "family:ex_model"
     ],
-    "answer_verification": "model P(t) = 100·3^(t/24)"
+    "answer_verification": "model P(t) = 200·2^(t/12)"
   },
   {
     "question_id": "sat-math-exponential-hard-q03",
@@ -103,31 +103,31 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "The function f(t) = 400(1.2)^t models the number of members of a club t months after it was first measured. Which statement best interprets the number 1.2 in this model?",
+    "prompt": "The function f(t) = 250(0.85)^t models the number of members of a club t months after it was first measured. Which statement best interprets the number 0.85 in this model?",
     "choices": [
       {
         "id": "A",
-        "text": "The quantity was 1.2 members at the moment it was first measured, when t = 0.",
-        "rationale": "The initial value is 400, the coefficient."
+        "text": "Each month, the quantity decreases by 0.85 members compared with the previous month.",
+        "rationale": "The base is a multiplier, not an amount added or removed."
       },
       {
         "id": "B",
-        "text": "Each month, the quantity is 1.2 times what it was the previous month.",
+        "text": "Each month, the quantity is 0.85 times what it was the previous month.",
         "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "After 1.2 months have passed, the quantity is twice what it was at the start.",
+        "text": "After 0.85 months have passed, the quantity is twice what it was at the start.",
         "rationale": "The base says nothing about doubling time directly."
       },
       {
         "id": "D",
-        "text": "Each month, the quantity increases by 1.2 members compared with the previous month.",
-        "rationale": "The base is a multiplier, not an amount added or removed."
+        "text": "The quantity was 0.85 members at the moment it was first measured, when t = 0.",
+        "rationale": "The initial value is 250, the coefficient."
       }
     ],
     "correct_choice": "B",
-    "explanation": "In f(t) = a·b^t, the base b = 1.2 is the factor applied each month: a 20% increase.",
+    "explanation": "In f(t) = a·b^t, the base b = 0.85 is the factor applied each month: a 15% decrease.",
     "estimated_time_seconds": 85,
     "tags": [
       "advanced-math",
@@ -135,7 +135,7 @@
       "interpret",
       "family:ex_interpret"
     ],
-    "answer_verification": "base=1.2"
+    "answer_verification": "base=0.85"
   },
   {
     "question_id": "sat-math-exponential-hard-q04",
@@ -149,31 +149,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "growth_decay",
-    "prompt": "The table gives values of a function f with f(0) = 2 and f(3) = 26. Which statement about f is supported by the table?",
+    "prompt": "The table gives values of a function f with f(0) = 12 and f(3) = 324. Which statement about f is supported by the table?",
     "choices": [
       {
         "id": "A",
-        "text": "f is exponential, because each output is 5 times the previous output.",
-        "rationale": "The ratios 5 and 9/5 differ, so the ratio isn't constant."
+        "text": "f is linear, because each output increases by 24.",
+        "rationale": "The differences 24, 72, 216 are not constant."
       },
       {
         "id": "B",
-        "text": "f is exponential, because the outputs increase as x increases.",
-        "rationale": "Increasing outputs alone don't make a function exponential; check the ratios."
+        "text": "f is exponential, because each output is 24 more than the previous output.",
+        "rationale": "Exponential growth is a constant ratio, not a constant difference."
       },
       {
         "id": "C",
-        "text": "f is linear, because each output is 8 more than the previous output.",
+        "text": "f is exponential, because each output is 3 times the previous output.",
         "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "f is linear, because each output is 8 times the previous output.",
-        "rationale": "Linear growth is a constant difference, not a constant ratio."
+        "text": "f is linear, because the outputs increase as x increases.",
+        "rationale": "Increasing outputs alone don't make a function linear; check the differences."
       }
     ],
     "correct_choice": "C",
-    "explanation": "Differences of consecutive outputs: 8, 8, 8, a constant 8, so f is linear.",
+    "explanation": "Ratios of consecutive outputs: 36/12 = 108/36 = 324/108 = 3, a constant ratio, so f is exponential.",
     "estimated_time_seconds": 95,
     "tags": [
       "advanced-math",
@@ -192,24 +192,24 @@
         "rows": [
           [
             "0",
-            "2"
+            "12"
           ],
           [
             "1",
-            "10"
+            "36"
           ],
           [
             "2",
-            "18"
+            "108"
           ],
           [
             "3",
-            "26"
+            "324"
           ]
         ]
       }
     },
-    "answer_verification": "lin [2, 10, 18, 26]"
+    "answer_verification": "exp [12, 36, 108, 324]"
   },
   {
     "question_id": "sat-math-exponential-hard-q05",
@@ -223,16 +223,17 @@
     "version": "1.0.0",
     "question_type": "student_produced",
     "subskill": "growth_decay",
-    "prompt": "An account balance of $2000 grows by 30% each year. What is the balance, in dollars, after 2 years?",
+    "prompt": "An account balance of $600 grows by 5% each year. What is the balance, in dollars, after 2 years?",
     "answer": {
       "type": "numeric",
-      "value": 3380,
+      "value": 661.5,
       "accepted": [
-        "3380"
+        "1323/2",
+        "661.5"
       ],
       "tolerance": 0.0
     },
-    "explanation": "2000 × (13/10)² = 3380.",
+    "explanation": "600 × (21/20)² = 1323/2.",
     "estimated_time_seconds": 85,
     "tags": [
       "advanced-math",
@@ -240,7 +241,7 @@
       "grid-in",
       "family:ex_gridin"
     ],
-    "answer_verification": "val=3380"
+    "answer_verification": "val=1323/2"
   },
   {
     "question_id": "sat-math-exponential-hard-q06",
@@ -254,39 +255,39 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "The number of users of an app is 1000 and decreases by 25% each month. How many users of an app will there be after 3 months? (Round to the nearest whole number if necessary.)",
+    "prompt": "$2000 is invested at an annual rate of 12%, compounded semiannually. Which expression gives the value, in dollars, after 2 years?",
     "choices": [
       {
         "id": "A",
-        "text": "250",
-        "rationale": "Percent change compounds; it doesn't add up linearly."
+        "text": "2000(1 + 0.12·2)^(2·2)",
+        "rationale": "Divide the annual rate by the number of periods; don't multiply."
       },
       {
         "id": "B",
-        "text": "316",
-        "rationale": "That is one month too many."
+        "text": "2000(1 + 0.12/2)^2",
+        "rationale": "The exponent counts compounding periods: 2·2."
       },
       {
         "id": "C",
-        "text": "422",
-        "rationale": "Correct."
+        "text": "2000(1 + 0.12)^2",
+        "rationale": "That compounds once a year; divide the rate by 2 and multiply the exponent by 2."
       },
       {
         "id": "D",
-        "text": "750",
-        "rationale": "That is after only one month."
+        "text": "2000(1 + 0.12/2)^(2·2)",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Each month multiplies by 3/4: 1000 × (3/4)^3 ≈ 422.",
+    "correct_choice": "D",
+    "explanation": "A = P(1 + r/n)^(nt) with r = 0.12, n = 2, t = 2: 2000(1 + 0.12/2)^(2·2).",
     "estimated_time_seconds": 95,
     "tags": [
       "advanced-math",
       "exponential",
-      "percent",
-      "family:ex_value"
+      "compound",
+      "family:ex_compound"
     ],
-    "answer_verification": "1000*(3/4)^3=421.88"
+    "answer_verification": "2000(1 + 0.12/2)^(2·2)"
   },
   {
     "question_id": "sat-math-exponential-hard-q07",
@@ -300,39 +301,39 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "A population of 3000 fruit flies in a jar quadruples every 10 days. Which function gives the population P after t days?",
+    "prompt": "A quantity is measured at times t = 0, 1, 2, 3 and takes the values 64, 79, 94, 109. Which function best models the quantity Q(t)?",
     "choices": [
       {
         "id": "A",
-        "text": "P(t) = 3000·4^t",
-        "rationale": "That would be quadruples every day, not every 10 days."
+        "text": "Q(t) = 64 + 15t",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "P(t) = 3000·4^(10t)",
-        "rationale": "The population multiplies once every 10 days, so the exponent is t/10."
+        "text": "Q(t) = 64(79/64)^t",
+        "rationale": "The ratios are not constant, so the model is not exponential."
       },
       {
         "id": "C",
-        "text": "P(t) = 3000·10^(t/4)",
-        "rationale": "The growth factor is 4; the period is 10."
+        "text": "Q(t) = 15 + 64t",
+        "rationale": "The starting value is 64 and the rate is 15."
       },
       {
         "id": "D",
-        "text": "P(t) = 3000·4^(t/10)",
-        "rationale": "Correct."
+        "text": "Q(t) = 64 − 15t",
+        "rationale": "The values increase."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "In t days there are t/10 periods, each multiplying by 4: P(t) = 3000·4^(t/10).",
-    "estimated_time_seconds": 90,
+    "correct_choice": "A",
+    "explanation": "Consecutive values differ by a constant 15, so Q(t) = 64 + 15t.",
+    "estimated_time_seconds": 85,
     "tags": [
       "advanced-math",
       "exponential",
-      "model",
-      "family:ex_model"
+      "identify",
+      "family:ex_identify_type"
     ],
-    "answer_verification": "model P(t) = 3000·4^(t/10)"
+    "answer_verification": "Q(t) = 64 + 15t"
   },
   {
     "question_id": "sat-math-exponential-hard-q08",
@@ -346,39 +347,39 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "The function f(t) = 1000(0.96)^t models the number of fish in a lake t years after it was first measured. Which statement best interprets the number 0.96 in this model?",
+    "prompt": "The number of bacteria in a culture is 200 and decreases by 10% each hour. How many bacteria in a culture will there be after 3 hours? (Round to the nearest whole number if necessary.)",
     "choices": [
       {
         "id": "A",
-        "text": "After 0.96 years have passed, the quantity is twice what it was at the start.",
-        "rationale": "The base says nothing about doubling time directly."
+        "text": "180",
+        "rationale": "That is after only one hour."
       },
       {
         "id": "B",
-        "text": "Each year, the quantity decreases by 0.96 fish compared with the previous year.",
-        "rationale": "The base is a multiplier, not an amount added or removed."
+        "text": "140",
+        "rationale": "Percent change compounds; it doesn't add up linearly."
       },
       {
         "id": "C",
-        "text": "Each year, the quantity is 0.96 times what it was the previous year.",
-        "rationale": "Correct."
+        "text": "131",
+        "rationale": "That is one hour too many."
       },
       {
         "id": "D",
-        "text": "The quantity was 0.96 fish at the moment it was first measured, when t = 0.",
-        "rationale": "The initial value is 1000, the coefficient."
+        "text": "146",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "In f(t) = a·b^t, the base b = 0.96 is the factor applied each year: a 4% decrease.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "D",
+    "explanation": "Each hour multiplies by 9/10: 200 × (9/10)^3 ≈ 146.",
+    "estimated_time_seconds": 95,
     "tags": [
       "advanced-math",
       "exponential",
-      "interpret",
-      "family:ex_interpret"
+      "percent",
+      "family:ex_value"
     ],
-    "answer_verification": "base=0.96"
+    "answer_verification": "200*(9/10)^3=145.80"
   },
   {
     "question_id": "sat-math-exponential-hard-q09",
@@ -390,19 +391,111 @@
     "lesson_id": "sat-math-exponential-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "data_interpretation",
+    "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "The table gives values of a function f with f(0) = 3 and f(3) = 18. Which statement about f is supported by the table?",
+    "prompt": "A population of 100 bacteria in a culture quadruples every 4 years. Which function gives the population P after t years?",
     "choices": [
       {
         "id": "A",
-        "text": "f is linear, because each output is 5 more than the previous output.",
+        "text": "P(t) = 100·4^(t/4)",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "f is linear, because each output is 5 times the previous output.",
-        "rationale": "Linear growth is a constant difference, not a constant ratio."
+        "text": "P(t) = 100·4^t",
+        "rationale": "That would be quadruples every year, not every 4 years."
+      },
+      {
+        "id": "C",
+        "text": "P(t) = 100·(4/4)^t",
+        "rationale": "The period divides the exponent, not the base."
+      },
+      {
+        "id": "D",
+        "text": "P(t) = 100·4^(4t)",
+        "rationale": "The population multiplies once every 4 years, so the exponent is t/4."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "In t years there are t/4 periods, each multiplying by 4: P(t) = 100·4^(t/4).",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "model",
+      "family:ex_model"
+    ],
+    "answer_verification": "model P(t) = 100·4^(t/4)"
+  },
+  {
+    "question_id": "sat-math-exponential-hard-q10",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "exponential",
+    "lesson_id": "sat-math-exponential-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "growth_decay",
+    "prompt": "The function f(t) = 400(0.92)^t models the mass, in grams, of a substance t hours after it was first measured. Which statement best interprets the number 0.92 in this model?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Each hour, the quantity is 0.92 times what it was the previous hour.",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "After 0.92 hours have passed, the quantity is twice what it was at the start.",
+        "rationale": "The base says nothing about doubling time directly."
+      },
+      {
+        "id": "C",
+        "text": "The quantity was 0.92 grams at the moment it was first measured, when t = 0.",
+        "rationale": "The initial value is 400, the coefficient."
+      },
+      {
+        "id": "D",
+        "text": "Each hour, the quantity decreases by 0.92 grams compared with the previous hour.",
+        "rationale": "The base is a multiplier, not an amount added or removed."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "In f(t) = a·b^t, the base b = 0.92 is the factor applied each hour: a 8% decrease.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "interpret",
+      "family:ex_interpret"
+    ],
+    "answer_verification": "base=0.92"
+  },
+  {
+    "question_id": "sat-math-exponential-hard-q11",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "exponential",
+    "lesson_id": "sat-math-exponential-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "growth_decay",
+    "prompt": "The table gives values of a function f with f(0) = 1 and f(3) = 61. Which statement about f is supported by the table?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "f is exponential, because each output is 21 times the previous output.",
+        "rationale": "The ratios 21 and 41/21 differ, so the ratio isn't constant."
+      },
+      {
+        "id": "B",
+        "text": "f is linear, because each output is 20 more than the previous output.",
+        "rationale": "Correct."
       },
       {
         "id": "C",
@@ -411,12 +504,12 @@
       },
       {
         "id": "D",
-        "text": "f is exponential, because each output is 8/3 times the previous output.",
-        "rationale": "The ratios 8/3 and 13/8 differ, so the ratio isn't constant."
+        "text": "f is linear, because each output is 20 times the previous output.",
+        "rationale": "Linear growth is a constant difference, not a constant ratio."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Differences of consecutive outputs: 5, 5, 5, a constant 5, so f is linear.",
+    "correct_choice": "B",
+    "explanation": "Differences of consecutive outputs: 20, 20, 20, a constant 20, so f is linear.",
     "estimated_time_seconds": 95,
     "tags": [
       "advanced-math",
@@ -435,101 +528,24 @@
         "rows": [
           [
             "0",
-            "3"
+            "1"
           ],
           [
             "1",
-            "8"
+            "21"
           ],
           [
             "2",
-            "13"
+            "41"
           ],
           [
             "3",
-            "18"
+            "61"
           ]
         ]
       }
     },
-    "answer_verification": "lin [3, 8, 13, 18]"
-  },
-  {
-    "question_id": "sat-math-exponential-hard-q10",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "exponential",
-    "lesson_id": "sat-math-exponential-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "student_produced",
-    "subskill": "growth_decay",
-    "prompt": "An account balance of $500 grows by 40% each year. What is the balance, in dollars, after 2 years?",
-    "answer": {
-      "type": "numeric",
-      "value": 980,
-      "accepted": [
-        "980"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "500 × (7/5)² = 980.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "grid-in",
-      "family:ex_gridin"
-    ],
-    "answer_verification": "val=980"
-  },
-  {
-    "question_id": "sat-math-exponential-hard-q11",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "exponential",
-    "lesson_id": "sat-math-exponential-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "growth_decay",
-    "prompt": "The number of fruit flies in a jar is 1000 and increases by 20% each week. How many fruit flies in a jar will there be after 3 weeks? (Round to the nearest whole number if necessary.)",
-    "choices": [
-      {
-        "id": "A",
-        "text": "1600",
-        "rationale": "Percent change compounds; it doesn't add up linearly."
-      },
-      {
-        "id": "B",
-        "text": "1200",
-        "rationale": "That is after only one week."
-      },
-      {
-        "id": "C",
-        "text": "2074",
-        "rationale": "That is one week too many."
-      },
-      {
-        "id": "D",
-        "text": "1728",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Each week multiplies by 6/5: 1000 × (6/5)^3 ≈ 1728.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "percent",
-      "family:ex_value"
-    ],
-    "answer_verification": "1000*(6/5)^3=1728.00"
+    "answer_verification": "lin [1, 21, 41, 61]"
   },
   {
     "question_id": "sat-math-exponential-hard-q12",
@@ -541,41 +557,26 @@
     "lesson_id": "sat-math-exponential-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "student_produced",
     "subskill": "growth_decay",
-    "prompt": "A population of 1000 fruit flies in a jar triples every 12 minutes. Which function gives the population P after t minutes?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "P(t) = 1000·12^(t/3)",
-        "rationale": "The growth factor is 3; the period is 12."
-      },
-      {
-        "id": "B",
-        "text": "P(t) = 1000·3^(t/12)",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "P(t) = 1000·3^(12t)",
-        "rationale": "The population multiplies once every 12 minutes, so the exponent is t/12."
-      },
-      {
-        "id": "D",
-        "text": "P(t) = 1000·3^t",
-        "rationale": "That would be triples every minute, not every 12 minutes."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "In t minutes there are t/12 periods, each multiplying by 3: P(t) = 1000·3^(t/12).",
-    "estimated_time_seconds": 90,
+    "prompt": "An account balance of $1500 grows by 40% each year. What is the balance, in dollars, after 2 years?",
+    "answer": {
+      "type": "numeric",
+      "value": 2940,
+      "accepted": [
+        "2940"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "1500 × (7/5)² = 2940.",
+    "estimated_time_seconds": 85,
     "tags": [
       "advanced-math",
       "exponential",
-      "model",
-      "family:ex_model"
+      "grid-in",
+      "family:ex_gridin"
     ],
-    "answer_verification": "model P(t) = 1000·3^(t/12)"
+    "answer_verification": "val=2940"
   },
   {
     "question_id": "sat-math-exponential-hard-q13",
@@ -589,39 +590,39 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "The function f(t) = 150(1.25)^t models the number of members of a club t months after it was first measured. Which statement best interprets the number 1.25 in this model?",
+    "prompt": "$10000 is invested at an annual rate of 8%, compounded monthly. Which expression gives the value, in dollars, after 2 years?",
     "choices": [
       {
         "id": "A",
-        "text": "Each month, the quantity increases by 1.25 members compared with the previous month.",
-        "rationale": "The base is a multiplier, not an amount added or removed."
+        "text": "10000(1 + 0.08)^2",
+        "rationale": "That compounds once a year; divide the rate by 12 and multiply the exponent by 12."
       },
       {
         "id": "B",
-        "text": "Each month, the quantity is 1.25 times what it was the previous month.",
-        "rationale": "Correct."
+        "text": "10000(1 + 0.08·12)^(12·2)",
+        "rationale": "Divide the annual rate by the number of periods; don't multiply."
       },
       {
         "id": "C",
-        "text": "The quantity was 1.25 members at the moment it was first measured, when t = 0.",
-        "rationale": "The initial value is 150, the coefficient."
+        "text": "10000(1 + 0.08/12)^2",
+        "rationale": "The exponent counts compounding periods: 12·2."
       },
       {
         "id": "D",
-        "text": "After 1.25 months have passed, the quantity is twice what it was at the start.",
-        "rationale": "The base says nothing about doubling time directly."
+        "text": "10000(1 + 0.08/12)^(12·2)",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "In f(t) = a·b^t, the base b = 1.25 is the factor applied each month: a 25% increase.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "D",
+    "explanation": "A = P(1 + r/n)^(nt) with r = 0.08, n = 12, t = 2: 10000(1 + 0.08/12)^(12·2).",
+    "estimated_time_seconds": 95,
     "tags": [
       "advanced-math",
       "exponential",
-      "interpret",
-      "family:ex_interpret"
+      "compound",
+      "family:ex_compound"
     ],
-    "answer_verification": "base=1.25"
+    "answer_verification": "10000(1 + 0.08/12)^(12·2)"
   },
   {
     "question_id": "sat-math-exponential-hard-q14",
@@ -633,69 +634,41 @@
     "lesson_id": "sat-math-exponential-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "data_interpretation",
+    "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "The table gives values of a function f with f(0) = 5 and f(3) = 29. Which statement about f is supported by the table?",
+    "prompt": "A quantity is measured at times t = 0, 1, 2, 3 and takes the values 5, 10, 20, 40. Which function best models the quantity Q(t)?",
     "choices": [
       {
         "id": "A",
-        "text": "f is exponential, because the outputs increase as x increases.",
-        "rationale": "Increasing outputs alone don't make a function exponential; check the ratios."
-      },
-      {
-        "id": "B",
-        "text": "f is linear, because each output is 8 more than the previous output.",
+        "text": "Q(t) = 5(2)^t",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "Q(t) = 5(2)t",
+        "rationale": "t belongs in the exponent."
+      },
+      {
         "id": "C",
-        "text": "f is exponential, because each output is 13/5 times the previous output.",
-        "rationale": "The ratios 13/5 and 21/13 differ, so the ratio isn't constant."
+        "text": "Q(t) = 5 + 5t",
+        "rationale": "The differences are not constant, so the model is not linear."
       },
       {
         "id": "D",
-        "text": "f is linear, because each output is 8 times the previous output.",
-        "rationale": "Linear growth is a constant difference, not a constant ratio."
+        "text": "Q(t) = 10(2)^t",
+        "rationale": "Q(0) = 5, so the coefficient is 5."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Differences of consecutive outputs: 8, 8, 8, a constant 8, so f is linear.",
-    "estimated_time_seconds": 95,
+    "correct_choice": "A",
+    "explanation": "Consecutive values have constant ratio 2, so Q(t) = 5·(2)^t.",
+    "estimated_time_seconds": 85,
     "tags": [
       "advanced-math",
       "exponential",
-      "table",
-      "family:ex_periods"
+      "identify",
+      "family:ex_identify_type"
     ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Values of f",
-        "headers": [
-          "x",
-          "f(x)"
-        ],
-        "rows": [
-          [
-            "0",
-            "5"
-          ],
-          [
-            "1",
-            "13"
-          ],
-          [
-            "2",
-            "21"
-          ],
-          [
-            "3",
-            "29"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "lin [5, 13, 21, 29]"
+    "answer_verification": "Q(t) = 5(2)^t"
   },
   {
     "question_id": "sat-math-exponential-hard-q15",
@@ -707,26 +680,41 @@
     "lesson_id": "sat-math-exponential-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "student_produced",
+    "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "An account balance of $600 grows by 40% each year. What is the balance, in dollars, after 2 years?",
-    "answer": {
-      "type": "numeric",
-      "value": 1176,
-      "accepted": [
-        "1176"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "600 × (7/5)² = 1176.",
-    "estimated_time_seconds": 85,
+    "prompt": "The number of views of a video is 5000 and increases by 5% each day. How many views of a video will there be after 3 days? (Round to the nearest whole number if necessary.)",
+    "choices": [
+      {
+        "id": "A",
+        "text": "5250",
+        "rationale": "That is after only one day."
+      },
+      {
+        "id": "B",
+        "text": "5750",
+        "rationale": "Percent change compounds; it doesn't add up linearly."
+      },
+      {
+        "id": "C",
+        "text": "6078",
+        "rationale": "That is one day too many."
+      },
+      {
+        "id": "D",
+        "text": "5788",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Each day multiplies by 21/20: 5000 × (21/20)^3 ≈ 5788.",
+    "estimated_time_seconds": 95,
     "tags": [
       "advanced-math",
       "exponential",
-      "grid-in",
-      "family:ex_gridin"
+      "percent",
+      "family:ex_value"
     ],
-    "answer_verification": "val=1176"
+    "answer_verification": "5000*(21/20)^3=5788.12"
   },
   {
     "question_id": "sat-math-exponential-hard-q16",
@@ -740,39 +728,39 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "The number of cells in a sample is 100 and decreases by 50% each hour. How many cells in a sample will there be after 2 hours? (Round to the nearest whole number if necessary.)",
+    "prompt": "A population of 2000 fruit flies in a jar doubles every 24 years. Which function gives the population P after t years?",
     "choices": [
       {
         "id": "A",
-        "text": "50",
-        "rationale": "That is after only one hour."
+        "text": "P(t) = 2000·24^(t/2)",
+        "rationale": "The growth factor is 2; the period is 24."
       },
       {
         "id": "B",
-        "text": "12",
-        "rationale": "That is one hour too many."
+        "text": "P(t) = 2000·2^t",
+        "rationale": "That would be doubles every year, not every 24 years."
       },
       {
         "id": "C",
-        "text": "25",
+        "text": "P(t) = 2000·2^(t/24)",
         "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "0",
-        "rationale": "Percent change compounds; it doesn't add up linearly."
+        "text": "P(t) = 2000·2^(24t)",
+        "rationale": "The population multiplies once every 24 years, so the exponent is t/24."
       }
     ],
     "correct_choice": "C",
-    "explanation": "Each hour multiplies by 1/2: 100 × (1/2)^2 ≈ 25.",
-    "estimated_time_seconds": 95,
+    "explanation": "In t years there are t/24 periods, each multiplying by 2: P(t) = 2000·2^(t/24).",
+    "estimated_time_seconds": 90,
     "tags": [
       "advanced-math",
       "exponential",
-      "percent",
-      "family:ex_value"
+      "model",
+      "family:ex_model"
     ],
-    "answer_verification": "100*(1/2)^2=25.00"
+    "answer_verification": "model P(t) = 2000·2^(t/24)"
   },
   {
     "question_id": "sat-math-exponential-hard-q17",
@@ -786,39 +774,39 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "A population of 400 bacteria in a culture quadruples every 10 days. Which function gives the population P after t days?",
+    "prompt": "The function f(t) = 500(1.3)^t models the number of fish in a lake t years after it was first measured. Which statement best interprets the number 1.3 in this model?",
     "choices": [
       {
         "id": "A",
-        "text": "P(t) = 400·4^(t/10)",
+        "text": "Each year, the quantity is 1.3 times what it was the previous year.",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "P(t) = 400·4^(10t)",
-        "rationale": "The population multiplies once every 10 days, so the exponent is t/10."
+        "text": "The quantity was 1.3 fish at the moment it was first measured, when t = 0.",
+        "rationale": "The initial value is 500, the coefficient."
       },
       {
         "id": "C",
-        "text": "P(t) = 400·10^(t/4)",
-        "rationale": "The growth factor is 4; the period is 10."
+        "text": "After 1.3 years have passed, the quantity is twice what it was at the start.",
+        "rationale": "The base says nothing about doubling time directly."
       },
       {
         "id": "D",
-        "text": "P(t) = 400·4^t",
-        "rationale": "That would be quadruples every day, not every 10 days."
+        "text": "Each year, the quantity increases by 1.3 fish compared with the previous year.",
+        "rationale": "The base is a multiplier, not an amount added or removed."
       }
     ],
     "correct_choice": "A",
-    "explanation": "In t days there are t/10 periods, each multiplying by 4: P(t) = 400·4^(t/10).",
-    "estimated_time_seconds": 90,
+    "explanation": "In f(t) = a·b^t, the base b = 1.3 is the factor applied each year: a 30% increase.",
+    "estimated_time_seconds": 85,
     "tags": [
       "advanced-math",
       "exponential",
-      "model",
-      "family:ex_model"
+      "interpret",
+      "family:ex_interpret"
     ],
-    "answer_verification": "model P(t) = 400·4^(t/10)"
+    "answer_verification": "base=1.3"
   },
   {
     "question_id": "sat-math-exponential-hard-q18",
@@ -830,55 +818,9 @@
     "lesson_id": "sat-math-exponential-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "growth_decay",
-    "prompt": "The function f(t) = 150(1.04)^t models the value, in dollars, of a collectible t years after it was first measured. Which statement best interprets the number 1.04 in this model?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "Each year, the quantity is 1.04 times what it was the previous year.",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "After 1.04 years have passed, the quantity is twice what it was at the start.",
-        "rationale": "The base says nothing about doubling time directly."
-      },
-      {
-        "id": "C",
-        "text": "The quantity was 1.04 dollars at the moment it was first measured, when t = 0.",
-        "rationale": "The initial value is 150, the coefficient."
-      },
-      {
-        "id": "D",
-        "text": "Each year, the quantity increases by 1.04 dollars compared with the previous year.",
-        "rationale": "The base is a multiplier, not an amount added or removed."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "In f(t) = a·b^t, the base b = 1.04 is the factor applied each year: a 4% increase.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "interpret",
-      "family:ex_interpret"
-    ],
-    "answer_verification": "base=1.04"
-  },
-  {
-    "question_id": "sat-math-exponential-hard-q19",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "exponential",
-    "lesson_id": "sat-math-exponential-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "growth_decay",
-    "prompt": "The table gives values of a function f with f(0) = 10 and f(3) = 80. Which statement about f is supported by the table?",
+    "prompt": "The table gives values of a function f with f(0) = 6 and f(3) = 48. Which statement about f is supported by the table?",
     "choices": [
       {
         "id": "A",
@@ -887,13 +829,13 @@
       },
       {
         "id": "B",
-        "text": "f is exponential, because each output is 10 more than the previous output.",
+        "text": "f is exponential, because each output is 6 more than the previous output.",
         "rationale": "Exponential growth is a constant ratio, not a constant difference."
       },
       {
         "id": "C",
-        "text": "f is linear, because each output increases by 10.",
-        "rationale": "The differences 10, 20, 40 are not constant."
+        "text": "f is linear, because each output increases by 6.",
+        "rationale": "The differences 6, 12, 24 are not constant."
       },
       {
         "id": "D",
@@ -902,7 +844,7 @@
       }
     ],
     "correct_choice": "A",
-    "explanation": "Ratios of consecutive outputs: 20/10 = 40/20 = 80/40 = 2, a constant ratio, so f is exponential.",
+    "explanation": "Ratios of consecutive outputs: 12/6 = 24/12 = 48/24 = 2, a constant ratio, so f is exponential.",
     "estimated_time_seconds": 95,
     "tags": [
       "advanced-math",
@@ -921,24 +863,55 @@
         "rows": [
           [
             "0",
-            "10"
+            "6"
           ],
           [
             "1",
-            "20"
+            "12"
           ],
           [
             "2",
-            "40"
+            "24"
           ],
           [
             "3",
-            "80"
+            "48"
           ]
         ]
       }
     },
-    "answer_verification": "exp [10, 20, 40, 80]"
+    "answer_verification": "exp [6, 12, 24, 48]"
+  },
+  {
+    "question_id": "sat-math-exponential-hard-q19",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "exponential",
+    "lesson_id": "sat-math-exponential-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "student_produced",
+    "subskill": "growth_decay",
+    "prompt": "An account balance of $2000 grows by 40% each year. What is the balance, in dollars, after 2 years?",
+    "answer": {
+      "type": "numeric",
+      "value": 3920,
+      "accepted": [
+        "3920"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "2000 × (7/5)² = 3920.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "grid-in",
+      "family:ex_gridin"
+    ],
+    "answer_verification": "val=3920"
   },
   {
     "question_id": "sat-math-exponential-hard-q20",
@@ -950,25 +923,40 @@
     "lesson_id": "sat-math-exponential-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "student_produced",
+    "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "An account balance of $800 grows by 50% each year. What is the balance, in dollars, after 2 years?",
-    "answer": {
-      "type": "numeric",
-      "value": 1800,
-      "accepted": [
-        "1800"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "800 × (3/2)² = 1800.",
-    "estimated_time_seconds": 85,
+    "prompt": "$6000 is invested at an annual rate of 6%, compounded monthly. Which expression gives the value, in dollars, after 1 years?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "6000(1 + 0.06)^1",
+        "rationale": "That compounds once a year; divide the rate by 12 and multiply the exponent by 12."
+      },
+      {
+        "id": "B",
+        "text": "6000(1 + 0.06·12)^12",
+        "rationale": "Divide the annual rate by the number of periods; don't multiply."
+      },
+      {
+        "id": "C",
+        "text": "6000(1 + 0.06/12)^1",
+        "rationale": "The exponent counts compounding periods: 12·1."
+      },
+      {
+        "id": "D",
+        "text": "6000(1 + 0.06/12)^12",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "A = P(1 + r/n)^(nt) with r = 0.06, n = 12, t = 1: 6000(1 + 0.06/12)^12.",
+    "estimated_time_seconds": 95,
     "tags": [
       "advanced-math",
       "exponential",
-      "grid-in",
-      "family:ex_gridin"
+      "compound",
+      "family:ex_compound"
     ],
-    "answer_verification": "val=1800"
+    "answer_verification": "6000(1 + 0.06/12)^12"
   }
 ]

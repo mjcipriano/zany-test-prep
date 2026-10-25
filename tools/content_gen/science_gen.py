@@ -50,7 +50,7 @@ SUBSKILLS = {
     ],
     "conflicting_viewpoints": [
         "scientist_claim", "common_ground", "supporting_evidence",
-        "new_observation", "main_difference",
+        "new_observation", "main_difference", "shared_assumption", "weakening_finding",
     ],
 }
 
@@ -499,6 +499,307 @@ SCENARIOS = [
                "knapweed inside the same marked 1 m² plot {c}."),
        controlled=["the location of the plot", "the month of the count", "the size of the plot"],
        unrelated="the number of ecologists on the team"),
+    # ---- second batch of scenarios (v2.1 bank growth) ----------------------
+    _S(id="titration", title="Acid Concentration and Titration",
+       summary="Volume of base solution needed to neutralize 25 mL of acid at several acid concentrations.",
+       x=("Acid concentration", "mol/L"), xs=[0.05, 0.10, 0.15, 0.20, 0.25, 0.30],
+       x_desc="the concentration of the acid", x_short="acid concentration",
+       y=("Volume of base", "mL"), y_desc="the volume of base needed", y_short="base volume",
+       shape="inc", dec=1,
+       params=lambda r: {"k": 25.0 / r.uniform(0.10, 0.20)},
+       fn=lambda x, p: p["k"] * x,
+       method=("Students placed 25 mL of an acid solution of known concentration in a flask with "
+               "a few drops of indicator {c} and added base solution from a burette, swirling, "
+               "until the indicator changed color. They recorded the volume of base added."),
+       controlled=["the volume of acid in the flask", "the indicator used",
+                   "the rate at which base was added"],
+       unrelated="the color of the flask",
+       cond=dict(var="the concentration of the base", labels=("0.10 M base", "0.20 M base"),
+                 phrases=("using a 0.10 M base solution", "using a 0.20 M base solution"),
+                 factor=(0.5, 0.5), numeric=True, mid="a 0.15 M base solution")),
+    _S(id="decay", title="Radioactive Decay",
+       summary="Counts per minute recorded from a radioactive sample at several times.",
+       x=("Time", "min"), xs=[0, 10, 20, 30, 40, 50, 60],
+       x_desc="the time since the first reading", x_short="time",
+       y=("Counts per minute", "counts/min"), y_desc="the count rate", y_short="count rate",
+       shape="dec", dec=0,
+       params=lambda r: {"N0": r.uniform(1600, 4000), "T": r.uniform(14, 26)},
+       fn=lambda x, p: p["N0"] * 2 ** (-x / p["T"]),
+       method=("Students placed a detector 5 cm from a small radioactive sample {c} and recorded "
+               "the number of counts in one minute at regular intervals. Background counts "
+               "measured with no sample present were subtracted from every reading."),
+       controlled=["the distance between the detector and the sample", "the counting time",
+                   "the detector used"],
+       unrelated="the color of the sample holder", zero_ok=False,
+       cond=dict(var="the sample used", labels=("Sample A", "Sample B"),
+                 phrases=("using Sample A", "using Sample B, a larger piece of the same material"),
+                 factor=(1.6, 2.4))),
+    _S(id="projectile", title="Launch Angle and Range",
+       summary="Horizontal distance traveled by a ball launched at several angles.",
+       x=("Launch angle", "°"), xs=[20, 30, 40, 50, 60, 70],
+       x_desc="the launch angle", x_short="launch angle",
+       y=("Range", "m"), y_desc="the horizontal distance the ball traveled", y_short="range",
+       shape="peak", dec=1,
+       params=lambda r: {"A": r.uniform(18, 40), "c": r.uniform(0.15, 0.35)},
+       fn=lambda x, p: p["A"] * math.sin(math.radians(2 * x)) * (1 - p["c"] * math.sin(math.radians(x))),
+       method=("Students used a spring launcher to fire the same ball at a set angle above the "
+               "horizontal {c}, always with the spring compressed by the same amount. They "
+               "measured the horizontal distance from the launcher to the landing point. Each "
+               "angle was fired three times and the average distance recorded."),
+       controlled=["the compression of the spring", "the ball used", "the launch height"],
+       unrelated="the color of the ball",
+       cond=dict(var="the ball used", labels=("foam ball", "rubber ball"),
+                 phrases=("using a light foam ball", "using a denser rubber ball of the same size"),
+                 factor=(1.2, 1.5))),
+    _S(id="ohm", title="Current and Voltage",
+       summary="Voltage across a resistor at several currents.",
+       x=("Current", "A"), xs=[0.1, 0.2, 0.3, 0.4, 0.5, 0.6],
+       x_desc="the current through the resistor", x_short="current",
+       y=("Voltage", "V"), y_desc="the voltage across the resistor", y_short="voltage",
+       shape="inc", dec=1,
+       params=lambda r: {"R": r.uniform(12, 40)},
+       fn=lambda x, p: p["R"] * x,
+       method=("Students connected a resistor {c} to a variable power supply and an ammeter. "
+               "They adjusted the supply to set the current to each test value and read the "
+               "voltage across the resistor with a voltmeter."),
+       controlled=["the resistor used", "the temperature of the circuit", "the meters used"],
+       unrelated="the color of the connecting wires",
+       cond=dict(var="the resistor used", labels=("Resistor 1", "Resistor 2"),
+                 phrases=("using Resistor 1", "using Resistor 2"), factor=(1.5, 2.5))),
+    _S(id="river", title="Rainfall and River Flow",
+       summary="Flow rate of a river measured the day after several amounts of rain.",
+       x=("Rainfall", "mm"), xs=[10, 20, 30, 40, 50, 60],
+       x_desc="the rainfall on the previous day", x_short="rainfall",
+       y=("Flow rate", "m³/s"), y_desc="the flow rate of the river", y_short="flow rate",
+       shape="inc", dec=1,
+       params=lambda r: {"a": r.uniform(4, 9), "b": r.uniform(0.15, 0.3), "c": r.uniform(0.004, 0.008)},
+       fn=lambda x, p: p["a"] + p["b"] * x + p["c"] * x * x,
+       method=("Hydrologists measured the flow rate of a river at a gauging station {c} the "
+               "morning after rainfall events of several sizes. Rainfall was recorded at a "
+               "weather station in the river's drainage basin."),
+       controlled=["the location of the gauging station", "the time of day of the measurement",
+                   "the method of measuring flow"],
+       unrelated="the name of the river",
+       cond=dict(var="the season", labels=("summer", "winter"),
+                 phrases=("during the summer, when the soil was dry",
+                          "during the winter, when the soil was already wet"),
+                 factor=(1.3, 1.7))),
+    _S(id="birdsong", title="Body Size and Song Pitch",
+       summary="Average pitch of the song of several songbird species of different body mass.",
+       x=("Body mass", "g"), xs=[10, 20, 30, 40, 50, 60],
+       x_desc="the body mass of the species", x_short="body mass",
+       y=("Song pitch", "kHz"), y_desc="the pitch of the song", y_short="song pitch",
+       shape="dec", dec=2,
+       params=lambda r: {"k": r.uniform(9, 16)},
+       fn=lambda x, p: p["k"] / x ** 0.4,
+       method=("Researchers recorded the songs of male birds of six species {c} and measured "
+               "the average pitch of each species' song. Body mass was taken as the average "
+               "for adult males of the species."),
+       controlled=["the recording equipment", "the time of day of the recordings",
+                   "the distance from the bird to the microphone"],
+       unrelated="the color of the birds' feathers",
+       cond=dict(var="the habitat", labels=("open grassland", "dense forest"),
+                 phrases=("living in open grassland", "living in dense forest"),
+                 factor=(0.70, 0.85))),
+    _S(id="glacier", title="Glacier Length Over Time",
+       summary="Length of a mountain glacier measured each summer.",
+       x=("Year", ""), xs_fn=lambda p: [p["y0"] + 2 * i for i in range(7)],
+       x_desc="the year of the survey", x_short="year",
+       y=("Glacier length", "km"), y_desc="the length of the glacier", y_short="glacier length",
+       shape="dec", dec=2,
+       params=lambda r: {"y0": r.randint(2000, 2010), "L0": r.uniform(8, 14),
+                         "a": r.uniform(0.04, 0.09), "b": r.uniform(0.002, 0.004)},
+       fn=lambda x, p: p["L0"] - p["a"] * (x - p["y0"]) - p["b"] * (x - p["y0"]) ** 2,
+       method=("Every second summer, surveyors measured the length of a mountain glacier from "
+               "a fixed marker to the end of the ice {c}."),
+       controlled=["the marker used as the starting point", "the season of the survey",
+                   "the surveying method"],
+       unrelated="the number of surveyors"),
+    _S(id="salinity", title="Ocean Salinity and Depth",
+       summary="Salinity of seawater measured at several depths at one station.",
+       x=("Depth", "m"), xs=[0, 100, 200, 300, 400, 500, 600],
+       x_desc="the depth below the surface", x_short="depth",
+       y=("Salinity", "g/kg"), y_desc="the salinity of the water", y_short="salinity",
+       shape="inc", dec=2,
+       params=lambda r: {"S0": r.uniform(32.0, 33.5), "Sm": r.uniform(34.6, 35.4), "k": r.uniform(150, 260)},
+       fn=lambda x, p: p["Sm"] - (p["Sm"] - p["S0"]) * math.exp(-x / p["k"]),
+       method=("From a research ship {c}, scientists lowered a probe that measures salinity on a "
+               "cable and recorded the salinity at several depths. All readings were taken "
+               "within one hour."),
+       controlled=["the location of the ship", "the probe used", "the time of day"],
+       unrelated="the color of the ship",
+       cond=dict(var="the distance from a river mouth", labels=("near river mouth", "open ocean"),
+                 phrases=("anchored 5 km from the mouth of a large river",
+                          "anchored 200 km offshore"),
+                 factor=(1.0, 1.0), offset=(0.8, 1.6))),
+    _S(id="glucose", title="Blood Glucose After a Meal",
+       summary="Blood glucose of a volunteer at several times after eating a meal.",
+       x=("Time after meal", "min"), xs=[15, 30, 45, 60, 90, 120, 150],
+       x_desc="the time after the meal", x_short="time",
+       y=("Blood glucose", "mg/dL"), y_desc="the blood glucose level", y_short="blood glucose",
+       shape="peak", dec=0,
+       params=lambda r: {"base": r.uniform(80, 95), "A": r.uniform(50, 80),
+                         "tp": r.choice([35, 40, 50, 55])},
+       fn=lambda x, p: p["base"] + p["A"] * (x / p["tp"]) * math.exp(1 - x / p["tp"]),
+       method=("A volunteer ate a measured meal {c} after fasting overnight. A small blood sample "
+               "was taken at set times afterward and its glucose concentration measured with "
+               "a glucose meter."),
+       controlled=["the length of the overnight fast", "the glucose meter used",
+                   "the volunteer's activity after the meal"],
+       unrelated="the color of the plate",
+       cond=dict(var="the type of meal", labels=("sugary drink", "whole-grain meal"),
+                 phrases=("consisting of a sugary drink",
+                          "consisting of whole-grain bread with the same number of calories"),
+                 pmod=lambda p, r: {**p, "A": p["A"] * r.uniform(0.45, 0.65)})),
+    _S(id="seismic", title="Earthquake Distance and Shaking",
+       summary="Maximum ground motion recorded by seismographs at several distances from an earthquake.",
+       x=("Distance from epicenter", "km"), xs=[50, 100, 150, 200, 250, 300],
+       x_desc="the distance from the epicenter", x_short="distance",
+       y=("Ground motion", "mm"), y_desc="the maximum ground motion", y_short="ground motion",
+       shape="dec", dec=2,
+       params=lambda r: {"A": r.uniform(900, 2200)},
+       fn=lambda x, p: p["A"] / x ** 1.5,
+       method=("Seismologists compared the maximum ground motion recorded by identical seismographs "
+               "at several distances from the epicenter of an earthquake {c}. All stations stood "
+               "on the same type of bedrock."),
+       controlled=["the type of seismograph", "the type of bedrock beneath each station",
+                   "the earthquake being recorded"],
+       unrelated="the color of the station buildings",
+       cond=dict(var="the earthquake recorded", labels=("Quake 1", "Quake 2"),
+                 phrases=("for Quake 1", "for Quake 2, a larger earthquake at the same location"),
+                 factor=(2.5, 3.5))),
+    _S(id="yeast", title="Sugar and Yeast Fermentation",
+       summary="Volume of carbon dioxide produced in 30 minutes by yeast given several amounts of sugar.",
+       x=("Sugar", "g"), xs=[0, 2, 4, 6, 8, 10],
+       x_desc="the mass of sugar", x_short="sugar mass",
+       y=("CO₂ produced", "mL"), y_desc="the volume of carbon dioxide produced", y_short="CO₂ volume",
+       shape="inc", dec=0,
+       params=lambda r: {"Vm": r.uniform(60, 110), "K": r.uniform(2.5, 5)},
+       fn=lambda x, p: p["Vm"] * x / (p["K"] + x),
+       method=("Students mixed 5 g of dry yeast with 100 mL of warm water and a measured mass of "
+               "sugar in a bottle {c}. A balloon over the bottle's mouth collected the gas, and "
+               "after 30 minutes the volume of carbon dioxide was measured."),
+       controlled=["the mass of yeast", "the volume of water", "the fermentation time"],
+       unrelated="the color of the balloon", zero_ok=True,
+       cond=dict(var="the water temperature", labels=("25°C", "35°C"),
+                 phrases=("at a water temperature of 25°C", "at a water temperature of 35°C"),
+                 factor=(1.4, 1.8), numeric=True, mid="a water temperature of 30°C")),
+    _S(id="mayfly", title="Dissolved Oxygen and Mayflies",
+       summary="Number of mayfly nymphs found in stream samples with several dissolved-oxygen levels.",
+       x=("Dissolved oxygen", "mg/L"), xs=[2, 4, 6, 8, 10, 12],
+       x_desc="the dissolved oxygen concentration", x_short="dissolved oxygen",
+       y=("Mayfly count", "nymphs"), y_desc="the number of mayfly nymphs", y_short="mayfly count",
+       shape="inc", dec=0,
+       params=lambda r: {"a": r.uniform(1, 4), "b": r.uniform(0.6, 1.4)},
+       fn=lambda x, p: p["a"] * x + p["b"] * x * x,
+       method=("Ecologists sampled streams with a range of dissolved-oxygen levels {c}, scooping "
+               "the same area of streambed with a net at each site and counting the mayfly "
+               "nymphs collected."),
+       controlled=["the area of streambed sampled", "the type of net", "the season of sampling"],
+       unrelated="the names of the streams",
+       cond=dict(var="the streambed type", labels=("gravel bed", "sand bed"),
+                 phrases=("at sites with gravel streambeds", "at sites with sandy streambeds"),
+                 factor=(0.45, 0.65))),
+    _S(id="turbine", title="Wind Speed and Turbine Power",
+       summary="Electrical power produced by a small wind turbine at several wind speeds.",
+       x=("Wind speed", "m/s"), xs=[3, 4, 5, 6, 7, 8],
+       x_desc="the wind speed", x_short="wind speed",
+       y=("Power output", "W"), y_desc="the power output of the turbine", y_short="power output",
+       shape="inc", dec=0,
+       params=lambda r: {"k": r.uniform(0.8, 1.6)},
+       fn=lambda x, p: p["k"] * x ** 3,
+       method=("Engineers mounted a small wind turbine {c} in a wind tunnel and measured its "
+               "electrical power output at several steady wind speeds. The turbine faced "
+               "directly into the wind in every trial."),
+       controlled=["the direction the turbine faced", "the electrical load connected",
+                   "the air temperature in the tunnel"],
+       unrelated="the color of the blades",
+       cond=dict(var="the blade length", labels=("short blades", "long blades"),
+                 phrases=("fitted with 0.5 m blades", "fitted with 0.7 m blades"),
+                 factor=(1.7, 2.1), numeric=True, mid="0.6 m blades")),
+    _S(id="bread", title="Proofing Temperature and Dough Rise",
+       summary="Height of bread dough after rising for one hour at several temperatures.",
+       x=("Temperature", "°C"), xs=[15, 20, 25, 30, 35, 40, 45],
+       x_desc="the proofing temperature", x_short="temperature",
+       y=("Dough height", "cm"), y_desc="the height of the dough", y_short="dough height",
+       shape="peak", dec=1,
+       params=lambda r: {"base": r.uniform(3, 5), "A": r.uniform(4, 7), "w": r.uniform(7, 10),
+                         "xp": r.choice([28, 31, 33, 36])},
+       fn=lambda x, p: p["base"] + p["A"] * math.exp(-((x - p["xp"]) / p["w"]) ** 2),
+       method=("Students prepared identical batches of bread dough {c} and placed each batch in a "
+               "measuring cylinder in an oven set to a fixed temperature. After one hour they "
+               "recorded the height of the dough."),
+       controlled=["the recipe for the dough", "the mass of dough in each cylinder",
+                   "the rising time"],
+       unrelated="the brand of the oven",
+       cond=dict(var="the amount of sugar in the dough", labels=("no added sugar", "10 g of sugar"),
+                 phrases=("with no sugar added", "with 10 g of sugar added to each batch"),
+                 factor=(1.15, 1.30), numeric=True, mid="5 g of sugar added to each batch")),
+    _S(id="heartrate", title="Exercise Intensity and Heart Rate",
+       summary="Heart rate of a volunteer walking or running on a treadmill at several speeds.",
+       x=("Treadmill speed", "km/h"), xs=[2, 4, 6, 8, 10, 12],
+       x_desc="the treadmill speed", x_short="speed",
+       y=("Heart rate", "beats/min"), y_desc="the heart rate", y_short="heart rate",
+       shape="inc", dec=0,
+       params=lambda r: {"h0": r.uniform(60, 75), "a": r.uniform(7, 11)},
+       fn=lambda x, p: p["h0"] + p["a"] * x,
+       method=("A volunteer {c} walked or ran on a treadmill at a set speed for 5 minutes, and "
+               "the heart rate at the end of the 5 minutes was recorded from a chest monitor. "
+               "The volunteer rested until the heart rate returned to normal before the next trial."),
+       controlled=["the duration of each trial", "the rest period between trials",
+                   "the incline of the treadmill"],
+       unrelated="the color of the volunteer's shoes",
+       cond=dict(var="the volunteer's training", labels=("before training", "after training"),
+                 phrases=("before beginning a training program",
+                          "after eight weeks of a running program"),
+                 factor=(0.84, 0.92))),
+    _S(id="oxygen", title="Water Temperature and Dissolved Oxygen",
+       summary="Amount of oxygen that dissolves in water at several temperatures.",
+       x=("Water temperature", "°C"), xs=[5, 10, 15, 20, 25, 30],
+       x_desc="the temperature of the water", x_short="water temperature",
+       y=("Dissolved oxygen", "mg/L"), y_desc="the dissolved oxygen concentration",
+       y_short="dissolved oxygen", shape="dec", dec=1,
+       params=lambda r: {"a": r.uniform(13.8, 15.2), "b": r.uniform(0.38, 0.45), "c": r.uniform(0.006, 0.009)},
+       fn=lambda x, p: p["a"] - p["b"] * x + p["c"] * x * x,
+       method=("Students bubbled air through a beaker of water {c} held at a set temperature "
+               "until no more oxygen would dissolve, then measured the dissolved oxygen with "
+               "an oxygen probe."),
+       controlled=["the volume of water", "the air pressure in the room", "the probe used"],
+       unrelated="the shape of the beaker",
+       cond=dict(var="the salt content of the water", labels=("fresh water", "sea water"),
+                 phrases=("using fresh water", "using sea water"), factor=(0.78, 0.86))),
+    _S(id="cricket", title="Temperature and Cricket Chirps",
+       summary="Number of chirps per minute made by a cricket at several air temperatures.",
+       x=("Air temperature", "°C"), xs=[15, 18, 21, 24, 27, 30],
+       x_desc="the air temperature", x_short="temperature",
+       y=("Chirps per minute", "chirps/min"), y_desc="the chirping rate", y_short="chirp rate",
+       shape="inc", dec=0,
+       params=lambda r: {"a": r.uniform(6, 8), "b": r.uniform(-45, -25)},
+       fn=lambda x, p: p["a"] * x + p["b"],
+       method=("Students kept a cricket in a ventilated container inside a chamber {c} whose "
+               "temperature could be set. After the cricket had been at each temperature for "
+               "20 minutes, they counted its chirps for one minute."),
+       controlled=["the cricket used", "the time allowed at each temperature",
+                   "the lighting in the chamber"],
+       unrelated="the color of the container",
+       cond=dict(var="the cricket species", labels=("Species A", "Species B"),
+                 phrases=("using a cricket of Species A", "using a cricket of Species B"),
+                 factor=(1.2, 1.5))),
+    _S(id="tread", title="Distance Driven and Tire Wear",
+       summary="Tread depth of a car tire after several distances driven.",
+       x=("Distance driven", "km"), xs=[0, 10000, 20000, 30000, 40000, 50000],
+       x_desc="the distance driven", x_short="distance driven",
+       y=("Tread depth", "mm"), y_desc="the tread depth", y_short="tread depth",
+       shape="dec", dec=1,
+       params=lambda r: {"d0": r.uniform(7.5, 9.0), "a": r.uniform(0.00008, 0.00012)},
+       fn=lambda x, p: p["d0"] - p["a"] * x,
+       method=("A testing company fitted new tires of one model to the same car {c} and measured "
+               "the tread depth with a gauge after each 10,000 km of driving on a fixed route."),
+       controlled=["the car used", "the driving route", "the gauge used"],
+       unrelated="the color of the car",
+       cond=dict(var="the road surface", labels=("paved roads", "gravel roads"),
+                 phrases=("on paved roads", "on gravel roads"),
+                 pmod=lambda p, r: {**p, "a": p["a"] * r.uniform(1.6, 2.2)})),
 ]
 
 
@@ -578,7 +879,7 @@ def _range_phrase(scen):
 
 
 def _xstr(x):
-    return str(int(x)) if float(x).is_integer() else str(x)
+    return str(int(x)) if float(x).is_integer() else f"{round(float(x), 4):g}"
 
 
 def _strict(vals, up: bool) -> bool:
@@ -820,6 +1121,18 @@ def dr_lookup_value(rng, difficulty):
                f"Correct. Find the row for {_vu(x, xu)} and read across to the "
                f"{col['header']} column.")
     distractors = []
+    nb = [j for j in (i - 1, i + 1) if 0 <= j < n]
+    if len(nb) == 2:
+        avg = (col["vals"][nb[0]] + col["vals"][nb[1]]) / 2
+        distractors.append((_vu(f"{avg:.{ds['dec'] + 1}f}", yu),
+                            f"This averages the rows above and below ({_vu(ds['xstrs'][nb[0]], xu)} and "
+                            f"{_vu(ds['xstrs'][nb[1]], xu)}) instead of reading the row for {_vu(x, xu)}."))
+    else:
+        j = nb[0]
+        avg = (col["vals"][i] + col["vals"][j]) / 2
+        distractors.append((_vu(f"{avg:.{ds['dec'] + 1}f}", yu),
+                            f"This averages the row for {_vu(x, xu)} with its neighbour at "
+                            f"{_vu(ds['xstrs'][j], xu)} instead of reading the row itself."))
     if i > 0:
         distractors.append((_vu(col["strs"][i - 1], yu),
                             f"This is the value in the row above, for {_vu(ds['xstrs'][i - 1], xu)}."))
@@ -925,9 +1238,14 @@ def dr_extreme(rng, difficulty):
                f"Correct. The {word} value in the {col['header']} column is "
                f"{_vu(col['strs'][i], col['unit'])}, in the row for {_vu(ds['xstrs'][i], xu)}.")
     opp = vals.index((min if want_max else max)(vals))
+    others = [j for j in range(len(vals)) if j not in (i, opp)]
+    t1, t2 = others[0], others[-1]
     distractors = [(_vu(ds["xstrs"][opp], xu),
                     f"This is where {col['desc']} was {'least' if want_max else 'greatest'}, "
-                    f"the opposite extreme.")]
+                    f"the opposite extreme."),
+                   (f"{_vu(ds['xstrs'][t1], xu)} and {_vu(ds['xstrs'][t2], xu)}, which are tied",
+                    f"The values there ({col['strs'][t1]} and {col['strs'][t2]}) are neither equal nor "
+                    f"the {word}.")]
     for j in sorted(range(len(vals)), key=lambda j: abs(j - i)):
         if j not in (i, opp) and len(distractors) < 3:
             distractors.append((_vu(ds["xstrs"][j], xu),
@@ -964,7 +1282,8 @@ def dr_inverse_lookup(rng, difficulty):
     correct = (_vu(ds["xstrs"][i], xu),
                f"Correct. Find {v} in the {col['header']} column and read the "
                f"{scen['x_short']} in the same row.")
-    distractors = []
+    distractors = [("Cannot be determined from Table 1",
+                    f"The table does list {v}; read the {scen['x_short']} in that row.")]
     for j in sorted(range(len(ds["xs"])), key=lambda j: abs(j - i)):
         if j != i and len(distractors) < 3:
             distractors.append((_vu(ds["xstrs"][j], xu),
@@ -1002,6 +1321,11 @@ def dr_figure_read(rng, difficulty):
                f"Correct. The point plotted at {_vu(x, xu)} on the horizontal axis sits at "
                f"about {_vu(col['strs'][i], yu)} on the vertical axis.")
     distractors = []
+    j0 = i - 1 if i > 0 else i + 1
+    mid = (vals[i] + vals[j0]) / 2
+    distractors.append((_vu(f"{mid:.{ds['dec'] + 1}f}", yu),
+                        f"This is halfway between the point at {_vu(x, xu)} and its neighbour at "
+                        f"{_vu(ds['xstrs'][j0], xu)}, not the height of the point itself."))
     for j in sorted(range(n), key=lambda j: abs(j - i)):
         if j != i and len(distractors) < 3:
             distractors.append((_vu(col["strs"][j], yu),
@@ -1041,7 +1365,8 @@ def dr_difference(rng, difficulty):
     ])
     correct = (_vu(_fmt(d, dec), yu),
                f"Correct. |{col['strs'][j]} − {col['strs'][i]}| = {_fmt(d, dec)}.")
-    distractors = []
+    distractors = [(_vu("−" + _fmt(d, dec), yu),
+                    "This subtracts in the wrong order; the amount of the difference is positive.")]
     cands = []
     if j + 1 < n:
         cands.append((j + 1, i, f"This uses the row for {_vu(ds['xstrs'][j + 1], xu)} instead of {xj}."))
@@ -1093,8 +1418,8 @@ def dr_ratio(rng, difficulty):
         f"Based on Table 1, the ratio of {col['desc']} {aj} to that {ai} is closest to:",
     ])
     correct = (f"{r:.1f}", f"Correct. {col['strs'][j]} ÷ {col['strs'][i]} ≈ {r:.1f}.")
-    inv = round(vi / vj, 2)
-    distractors = [(f"{inv:.2f}", f"This divides the smaller value by the larger one "
+    inv = f"{vi / vj:.{max(2, len(f'{r:.1f}') - 1)}f}"
+    distractors = [(inv, f"This divides the smaller value by the larger one "
                                   f"({col['strs'][i]} ÷ {col['strs'][j]}); the question asks the reverse.")]
     diff = round(vj - vi, ds["dec"])
     distractors.append((_fmt(diff, ds["dec"]),
@@ -1159,12 +1484,25 @@ def _statements(ds, ci):
     return out
 
 
+def _statement_kind(text):
+    """Coarse form of a generated statement, used to pick keys evenly across forms
+    so the long comparative form is not the key disproportionately often."""
+    for key in ("was greatest", "was least", "more than twice", "was greater", "every increase",
+                "rose to a maximum", "difference between the two conditions", "At every",
+                "Under both conditions"):
+        if key in text:
+            return key
+    return "other"
+
+
 def _pick_statements(rng, cands, n_false=3):
     trues = [c for c in cands if c[1]]
     falses = [c for c in cands if not c[1]]
     if not trues or len(falses) < n_false:
         return None
-    t = rng.choice(trues)
+    kinds = sorted({_statement_kind(c[0]) for c in trues})
+    kind = rng.choice(kinds)
+    t = rng.choice([c for c in trues if _statement_kind(c[0]) == kind])
     rng.shuffle(falses)
     chosen, seen = [], {t[0]}
     for f in falses:
@@ -1226,7 +1564,9 @@ def dr_condition_compare(rng, difficulty):
                f"Correct. At {x}: {hi['label']} {hi['strs'][i]} versus {lo['label']} "
                f"{lo['strs'][i]}, a difference of {_fmt(d, dec)}.")
     distractors = [(f"{_cap_first(lo['label'])}, by {_vu(_fmt(d, dec), yu)}",
-                    f"The difference is right, but {lo['label']} gave the smaller value at {x}.")]
+                    f"The difference is right, but {lo['label']} gave the smaller value at {x}."),
+                   (f"Neither; both conditions gave the same {a['short']} at {x}",
+                    f"The two columns differ at {x}: {hi['strs'][i]} versus {lo['strs'][i]}.")]
     for j in (i + 1, i - 1, i + 2, i - 2):
         if 0 <= j < n:
             dj = round(abs(a["vals"][j] - b["vals"][j]), dec)
@@ -1273,11 +1613,13 @@ def dr_count_above(rng, difficulty):
         f"{col['desc']} {word} than {thr_s}?",
         f"In how many rows of Table 1 is {col['desc']} {word} than {thr_s}?",
     ])
+    if count == 0:
+        return None
     correct = (str(count), f"Correct. Exactly {count} entries in the {col['header']} column are "
                            f"{word} than {thr_s}.")
-    distractors = []
+    distractors = [("None of the rows", f"At least one entry is {word} than {thr_s}; count them.")]
     for c in (count + 1, count - 1, n - count, count + 2, n):
-        if 0 <= c <= n and c != count and str(c) not in [d[0] for d in distractors]:
+        if 1 <= c <= n and c != count and str(c) not in [d[0] for d in distractors]:
             why = (f"This counts the entries {'less' if above else 'greater'} than {thr_s} instead."
                    if c == n - count else "Recount the column carefully; this is off by one or more.")
             distractors.append((str(c), why))
@@ -1401,11 +1743,13 @@ def dr_percent_change(rng, difficulty):
         return f"{sign}{abs(v)}%" if sign else f"{abs(v)}%"
     correct = (ps(pct), f"Correct. ({col['strs'][j]} − {col['strs'][i]}) ÷ {col['strs'][i]} × 100 "
                         f"≈ {abs(pct)}%.")
+    abs_change = _fmt(round(abs(vj - vi), ds["dec"]), ds["dec"])
     distractors = [
         (ps(wrong_base), f"This divides by the final value ({col['strs'][j]}) instead of the "
                          f"starting value ({col['strs'][i]})." if abs(round((vj - vi) / vj * 100)) <= 250
          else f"This uses the row for {_vu(ds['xstrs'][j - 1], xu)} instead of {xj}."),
-        (ps(half), "This is half the actual percent change; recheck the arithmetic."),
+        (f"{sign}{abs_change} {col['unit']}".strip(),
+         f"This is the absolute change in {col['short']}, not a percent of the starting value."),
         (ps(dbl), "This is double the actual percent change; recheck the arithmetic."),
     ]
     expl = (f"Percent change = (final − initial) ÷ initial × 100 = ({col['strs'][j]} − "
@@ -1448,7 +1792,10 @@ def dr_cross_condition_lookup(rng, difficulty):
                f"{_vu(ds['xstrs'][i], xu)}; the {dst['label']} entry in that row is {dst['strs'][i]}.")
     distractors = [(_vu(src["strs"][i], yu),
                     f"This is the {src['label']} value in that row; the question asks for "
-                    f"the {dst['label']} value.")]
+                    f"the {dst['label']} value."),
+                   (_vu(f"{(src['vals'][i] + dst['vals'][i]) / 2:.{ds['dec'] + 1}f}", yu),
+                    f"This averages the two conditions in that row instead of reading the "
+                    f"{dst['label']} value.")]
     for j in sorted(range(n), key=lambda j: abs(j - i)):
         if j != i and len(distractors) < 3:
             distractors.append((_vu(dst["strs"][j], yu),
@@ -1487,7 +1834,8 @@ def dr_average(rng, difficulty):
     ])
     correct = (_vu(_fmt(avg, dec), yu),
                f"Correct. ({' + '.join(col['strs'][i:i + 3])}) ÷ 3 ≈ {_fmt(avg, dec)}.")
-    distractors = []
+    distractors = [(_vu(f"{(seg[0] + seg[2]) / 2:.{dec + 1}f}", yu),
+                    "This averages only the first and last of the three values.")]
     if i + 3 < n:
         a2 = round(sum(col["vals"][i + 1:i + 4]) / 3, dec)
         distractors.append((_vu(_fmt(a2, dec), yu),
@@ -1498,9 +1846,6 @@ def dr_average(rng, difficulty):
         distractors.append((_vu(_fmt(a3, dec), yu),
                             f"This averages the rows from {_vu(ds['xstrs'][i - 1], xu)} to "
                             f"{_vu(ds['xstrs'][i + 1], xu)} instead."))
-    two = round((seg[0] + seg[2]) / 2, dec)
-    distractors.append((_vu(_fmt(two, dec), yu),
-                        "This averages only the first and last of the three values."))
     tot = round(sum(seg), dec)
     distractors.append((_vu(_fmt(tot, dec), yu), "This is the sum of the three values, not their mean."))
     expl = (f"Add the three entries ({', '.join(col['strs'][i:i + 3])}) and divide by 3: "
@@ -1536,7 +1881,8 @@ def dr_figure_biggest_step(rng, difficulty):
         return f"{_vu(ds['xstrs'][j], xu)} and {_vu(ds['xstrs'][j + 1], xu)}"
     correct = (pair(k), f"Correct. The points at {pair(k)} are the farthest apart vertically "
                         f"({_fmt(m, ds['dec'])} {col['unit']}).".replace(" )", ")"))
-    distractors = []
+    distractors = [("The points are evenly spaced vertically, so no interval stands out",
+                    f"The vertical gaps range from {_fmt(min(steps), ds['dec'])} to {_fmt(m, ds['dec'])}.")]
     for j in sorted(range(len(steps)), key=lambda j: -steps[j]):
         if j != k and len(distractors) < 3:
             distractors.append((pair(j), f"The vertical change between these points is only "
@@ -1658,7 +2004,7 @@ def tr_interpolate_range(rng, difficulty):
     xa, xb = ds["xs"][i], ds["xs"][i + 1]
     xm = (xa + xb) / 2
     if not float(xm).is_integer():
-        xm = round(xm, 1)
+        xm = round(xm, 3)
     xu, yu = ds["xunit"], col["unit"]
     lo, hi = sorted([col["vals"][i], col["vals"][i + 1]])
     lo_s, hi_s = _fmt(lo, ds["dec"]), _fmt(hi, ds["dec"])
@@ -1824,6 +2170,8 @@ def tr_interpolate_value(rng, difficulty):
                f"{_vu(ds['xstrs'][i + 1], xu)}, so the value should be about that far from "
                f"{col['strs'][i]} toward {col['strs'][i + 1]}.")
     distractors = [
+        (f"Cannot be determined without a trial at exactly {_vu(xm_s, xu)}",
+         "The steady trend between the two bracketing rows allows a close estimate."),
         (_vu(col["strs"][i], yu), f"This is the value for {_vu(ds['xstrs'][i], xu)}; the question asks "
                                   f"about a {scen['x_short']} beyond that row."),
         (_vu(col["strs"][i + 1], yu), f"This is the value for {_vu(ds['xstrs'][i + 1], xu)}, not the "
@@ -1876,15 +2224,12 @@ def tr_x_for_target(rng, difficulty):
         return f"{_vu(ds['xstrs'][j], xu)} and {_vu(ds['xstrs'][j + 1], xu)}"
     correct = (pair(i), f"Correct. {ts} lies between {col['strs'][i]} (at {_vu(ds['xstrs'][i], xu)}) "
                         f"and {col['strs'][i + 1]} (at {_vu(ds['xstrs'][i + 1], xu)}).")
-    distractors = []
+    distractors = [(f"beyond {_vu(ds['xstrs'][-1], xu)}, outside the range tested",
+                    f"{ts} is already bracketed by two listed rows, so no extrapolation is needed.")]
     for j in sorted(range(n - 1), key=lambda j: abs(j - i)):
         if j != i and len(distractors) < 3:
             distractors.append((pair(j), f"Over this range the values run from {col['strs'][j]} to "
                                          f"{col['strs'][j + 1]}, which does not include {ts}."))
-    if len(distractors) < 3:
-        step = ds["xs"][1] - ds["xs"][0]
-        distractors.append((f"{_vu(ds['xstrs'][-1], xu)} and {_vu(_xstr(ds['xs'][-1] + step), xu)}",
-                            f"This is beyond the table, but {ts} is already bracketed by two listed rows."))
     expl = (f"Find the two consecutive rows whose values bracket {ts}: {col['strs'][i]} and "
             f"{col['strs'][i + 1]}, at {pair(i)}.")
     return _emit(rng, prompt, correct, distractors, subskill="interpolation",
@@ -1925,7 +2270,7 @@ def _bucket(r):
 @_retry
 def tr_doubling(rng, difficulty):
     scen = _pick_scenario(rng, lambda s: len(s["series"]) == 1 and s["shape"] != "peak"
-                          and s["xs"][0] > 0)
+                          and s["x_short"] != "year" and s["xs"][0] > 0)
     ds = build(rng, scen, n=_n_rows(rng, difficulty))
     if ds is None:
         return None
@@ -1986,7 +2331,9 @@ def tr_biggest_step(rng, difficulty):
         return f"{_vu(ds['xstrs'][j], xu)} and {_vu(ds['xstrs'][j + 1], xu)}"
     correct = (pair(k), f"Correct. The change here is {_vu(_fmt(m, ds['dec']), yu)}, larger than any "
                         f"other consecutive change.")
-    distractors = []
+    distractors = [("The change was the same between every pair of rows",
+                    f"The consecutive changes range from {_fmt(min(steps), ds['dec'])} to "
+                    f"{_fmt(m, ds['dec'])}; they are not equal.")]
     for j in sorted(range(len(steps)), key=lambda j: -steps[j]):
         if j != k and len(distractors) < 3:
             distractors.append((pair(j), f"The change here is only {_vu(_fmt(steps[j], ds['dec']), yu)}."))
@@ -2029,7 +2376,10 @@ def tr_extrapolate_value(rng, difficulty):
     correct = (_vu(_fmt(pred, dec), yu),
                f"Correct. The last change was {ds_}; adding it again to {col['strs'][-1]} "
                f"gives {_fmt(pred, dec)}.")
+    lo_s, hi_s = sorted([col["strs"][-2], col["strs"][-1]], key=float)
     distractors = [
+        (f"between {_vu(lo_s, yu)} and {_vu(hi_s, yu)}",
+         "This stays inside the measured range, but the trend carries the next value beyond the last row."),
         (_vu(col["strs"][-1], yu), "This assumes no further change, but the trend continues."),
         (_vu(_fmt(round(vals[-1] + d / 2, dec), dec), yu),
          "This adds only half of the last change; the step size is the same as before."),
@@ -2076,7 +2426,8 @@ def tr_crossing(rng, difficulty):
                    f"Correct. In {ds['xstrs'][k]}, {b['name']} ({b['strs'][k]}) exceeds {a['name']} "
                    f"({a['strs'][k]}) for the first time; the row before has {b['strs'][k - 1]} versus "
                    f"{a['strs'][k - 1]}.")
-        distractors = []
+        distractors = [(f"In none of the {scen['x_short']}s shown in Table 1",
+                        f"{b['name']} does exceed {a['name']} within the table, starting in {ds['xstrs'][k]}.")]
         for j in sorted(range(n), key=lambda j: abs(j - k)):
             if j != k and len(distractors) < 3:
                 if j < k:
@@ -2103,7 +2454,8 @@ def tr_crossing(rng, difficulty):
         correct = (_vu(ds["xstrs"][c], xu),
                    f"Correct. In {ds['xstrs'][c]} the values are {a['strs'][c]} and {b['strs'][c]}, "
                    f"a gap of only {_fmt(m, ds['dec'])}.")
-        distractors = []
+        distractors = [("Cannot be determined from Table 1",
+                        "Subtracting the two columns in each row shows exactly where the gap is smallest.")]
         for j in sorted(range(n), key=lambda j: gaps[j]):
             if j != c and len(distractors) < 3:
                 distractors.append((_vu(ds["xstrs"][j], xu),
@@ -2153,7 +2505,8 @@ def tr_reach_threshold(rng, difficulty):
     correct = (_vu(_xstr(xk), xu),
                f"Correct. Each step of {_xstep(ds, step)} changes the value by {ds_}; "
                f"{k} more steps are needed to go from {col['strs'][-1]} to {_fmt(target, dec)}.")
-    distractors = []
+    distractors = [(f"It would never {word} {ts} if the trend continued",
+                    f"Continuing the change of {ds_} per step reaches {_fmt(target, dec)} after {k} steps.")]
     for kk in (k - 1, k + 1, 2 * k, k + 2):
         xx = xs[-1] + kk * step
         if kk >= 1 and _xstr(xx) != _xstr(xk) and len(distractors) < 3:
@@ -2198,6 +2551,9 @@ def tr_condition_trend_compare(rng, difficulty):
                f"Correct. {big['label']}: {_fmt(dbig, dec)}; {small['label']}: {_fmt(dsmall, dec)}; "
                f"the difference is {_fmt(gap, dec)}.")
     distractors = [
+        (f"Neither; both conditions changed by the same total amount",
+         f"The totals differ: {_fmt(dbig, dec)} for {big['label']} versus {_fmt(dsmall, dec)} for "
+         f"{small['label']}."),
         (f"{_cap_first(small['label'])}, by {_vu(_fmt(gap, dec), yu)}",
          f"The amount is right, but the larger overall change was for {big['label']}."),
         (f"{_cap_first(big['label'])}, by {_vu(_fmt(dbig, dec), yu)}",
@@ -2223,7 +2579,7 @@ ED_TAGS = ["science", "experimental-design"]
 
 def _ed_dataset(rng, difficulty, *, need_cond=False, pred=None, cond="cond"):
     def ok(s):
-        if len(s["series"]) != 1:
+        if len(s["series"]) != 1 or s["x_short"] == "year":
             return False
         if need_cond and not s.get("cond" if cond == "cond" else "null_cond"):
             return False
@@ -2700,13 +3056,787 @@ def ed_predict_between_conditions(rng, difficulty):
 
 
 # --------------------------------------------------------------------------- #
+# Second-batch families (v2.1 bank growth)
+# --------------------------------------------------------------------------- #
+_CONVERSIONS = {
+    "cm": [("mm", 10), ("m", 0.01)], "m": [("cm", 100), ("km", 0.001)],
+    "g": [("kg", 0.001), ("mg", 1000)], "s": [("ms", 1000)], "min": [("s", 60)],
+    "mL": [("L", 0.001)], "kPa": [("Pa", 1000)], "W": [("kW", 0.001)],
+    "km": [("m", 1000)], "mm": [("cm", 0.1)], "kHz": [("Hz", 1000)],
+    "V": [("mV", 1000)], "A": [("mA", 1000)], "h": [("min", 60)],
+}
+
+
+def _plain(v):
+    """Number without trailing zeros or scientific notation."""
+    s = f"{v:.6f}".rstrip("0").rstrip(".")
+    return s if s not in ("", "-0") else "0"
+
+
+def _sig(v, n=3):
+    if v == 0:
+        return "0"
+    s = f"{v:.{n}g}"
+    return _plain(float(s)) if "e" in s else s
+
+
+def _per_unit(ds):
+    xu = ds["xunit"]
+    if ds["scen"]["x_short"] == "year":
+        return "per year"
+    if xu == "pH":
+        return "per pH unit"
+    return f"per {xu}"
+
+
+@_retry
+def dr_unit_convert(rng, difficulty):
+    scen = _pick_scenario(rng, lambda s: s["series"][0]["unit"] in _CONVERSIONS)
+    ds = build(rng, scen, n=_n_rows(rng, difficulty))
+    if ds is None:
+        return None
+    col = ds["cols"][0]
+    i = rng.randrange(len(ds["xs"]))
+    v = col["vals"][i]
+    new_unit, mult = rng.choice(_CONVERSIONS[col["unit"]])
+    conv = v * mult
+    x, xu, yu = ds["xstrs"][i], ds["xunit"], col["unit"]
+    prompt = rng.choice([
+        f"According to Table 1, {col['desc']} {_at(ds, x)}, expressed in {new_unit}, was:",
+        f"Based on Table 1, what was {col['desc']} {_at(ds, x)} when converted to {new_unit}?",
+    ])
+    correct = (f"{_plain(conv)} {new_unit}",
+               f"Correct. {col['strs'][i]} {yu} × {_plain(mult)} = {_plain(conv)} {new_unit}.")
+    distractors = [
+        (f"{col['strs'][i]} {new_unit}", f"This keeps the number from the table but changes only the "
+                                         f"unit label; {yu} must be converted to {new_unit}."),
+        (f"{_plain(v / mult)} {new_unit}", "This converts in the wrong direction (divides instead of "
+                                           "multiplying, or the reverse)."),
+        (f"{_plain(conv * 10)} {new_unit}", "This is off by a factor of 10; recheck the conversion factor."),
+    ]
+    expl = (f"Read {col['strs'][i]} {yu} from the table, then convert: 1 {yu} = {_plain(mult)} "
+            f"{new_unit}, so {col['strs'][i]} × {_plain(mult)} = {_plain(conv)} {new_unit}.")
+    return _emit(rng, prompt, correct, distractors, subskill="table_lookup",
+                 explanation=expl, qtype=QT_TABLE, est=55, tags=DR_TAGS + ["units"],
+                 stimulus=table_stimulus(ds),
+                 verify=_spec("convert", x=x, col=1, mult=_plain(mult)))
+
+
+_GRAPH_TEXT = {
+    "inc_const": "a straight line rising from left to right",
+    "inc_slow": "a curve rising from left to right that becomes less steep",
+    "inc_acc": "a curve rising from left to right that becomes steeper and steeper",
+    "dec_const": "a straight line falling from left to right",
+    "dec_slow": "a curve falling from left to right that flattens out",
+    "dec_acc": "a curve falling from left to right that becomes steeper and steeper",
+    "peak": "a curve that rises to a high point and then falls",
+}
+
+
+@_retry
+def dr_graph_shape(rng, difficulty):
+    scen = _pick_scenario(rng)
+    ds = build(rng, scen, n=_n_rows(rng, difficulty))
+    if ds is None:
+        return None
+    ci = rng.randrange(len(ds["cols"]))
+    col = ds["cols"][ci]
+    kind = _classify(col["vals"], ds["dec"])
+    if kind is None:
+        return None
+    prompt = rng.choice([
+        f"If {col['desc']} were plotted on the vertical axis against {scen['x_desc']} on the "
+        f"horizontal axis, which of the following best describes the resulting graph of the data "
+        f"in Table 1?",
+        f"Which description best matches a graph of {col['short']} versus {scen['x_short']} drawn "
+        f"from Table 1?",
+    ])
+    diffs = [round(b - a, ds["dec"]) for a, b in zip(col["vals"], col["vals"][1:])]
+    dtxt = ", ".join(_neg(_fmt(d, ds["dec"])) for d in diffs)
+    correct = (_GRAPH_TEXT[kind], f"Correct. The row-to-row changes ({dtxt}) give exactly this shape.")
+    base = kind.split("_")[0]
+    why = {k: ("The values would have to fall; they rise." if k.startswith("dec") and base == "inc" else
+               "The values would have to rise; they fall." if k.startswith("inc") and base == "dec" else
+               "The values never reverse direction." if k == "peak" else
+               "The sizes of the row-to-row changes do not fit this shape.")
+           for k in _GRAPH_TEXT}
+    if base == "peak":
+        why = {k: "The values rise and then fall, so the graph must turn over." for k in _GRAPH_TEXT}
+    same = [k for k in _GRAPH_TEXT if k != kind and k.startswith(base)]
+    opp = [k for k in _GRAPH_TEXT if k != kind and not k.startswith(base) and k != "peak"]
+    rng.shuffle(same)
+    rng.shuffle(opp)
+    keys = (same[:2] + opp[:1]) if base != "peak" else opp[:3]
+    distractors = [(_GRAPH_TEXT[k], why[k]) for k in keys]
+    expl = (f"The changes between consecutive rows are {dtxt}; plotted, {col['desc']} forms "
+            f"{_GRAPH_TEXT[kind]}.")
+    return _emit(rng, prompt, correct, distractors, subskill="figure_reading",
+                 explanation=expl, qtype=QT_TABLE, est=60, tags=DR_TAGS + ["graph-shape"],
+                 stimulus=table_stimulus(ds),
+                 verify=_spec("shape", col=ci + 1, expect=kind))
+
+
+@_retry
+def dr_two_condition_count(rng, difficulty):
+    scen = _pick_scenario(rng, lambda s: s.get("cond"))
+    ds = build(rng, scen, cond="cond", n=_n_rows(rng, difficulty))
+    if ds is None:
+        return None
+    a, b = ds["cols"]
+    n = len(ds["xs"])
+    dec, yu = ds["dec"], a["unit"]
+    srt_a, srt_b = sorted(a["vals"]), sorted(b["vals"])
+    ka, kb = rng.randrange(n - 1), rng.randrange(n - 1)
+    ta = round((srt_a[ka] + srt_a[ka + 1]) / 2, dec + 1)
+    tb = round((srt_b[kb] + srt_b[kb + 1]) / 2, dec + 1)
+    if ta in a["vals"] or tb in b["vals"]:
+        return None
+    op_a, op_b = rng.choice(["gt", "lt"]), rng.choice(["gt", "lt"])
+    def test(v, t, op):
+        return v > t if op == "gt" else v < t
+    count = sum(1 for i in range(n) if test(a["vals"][i], ta, op_a) and test(b["vals"][i], tb, op_b))
+    only_a = sum(1 for i in range(n) if test(a["vals"][i], ta, op_a))
+    if count == 0 or count == n or only_a == count:
+        return None
+    w = {"gt": "greater than", "lt": "less than"}
+    ta_s, tb_s = _vu(_plain(ta), yu), _vu(_plain(tb), yu)
+    prompt = rng.choice([
+        f"For how many of the values of {scen['x_short']} in Table 1 was {a['desc']} {w[op_a]} "
+        f"{ta_s} for {a['label']} AND {w[op_b]} {tb_s} for {b['label']}?",
+        f"In how many rows of Table 1 is the {a['label']} value {w[op_a]} {ta_s} while the "
+        f"{b['label']} value is {w[op_b]} {tb_s}?",
+    ])
+    correct = (str(count), f"Correct. Exactly {count} rows satisfy both conditions at once.")
+    distractors = [(str(only_a), f"This counts rows meeting only the {a['label']} condition "
+                                 f"({w[op_a]} {ta_s}), ignoring the second condition."),
+                   ("None of the rows", "At least one row meets both conditions; check each row.")]
+    for c in (count + 1, count - 1, n - count, n):
+        if 1 <= c <= n and str(c) not in [d[0] for d in distractors] + [str(count)]:
+            distractors.append((str(c), "Check each row against both conditions; this count is wrong."))
+    expl = (f"Go row by row: a row counts only if its {a['label']} value is {w[op_a]} {ta_s} and its "
+            f"{b['label']} value is {w[op_b]} {tb_s}. {count} rows pass both tests.")
+    return _emit(rng, prompt, correct, distractors, subskill="consistent_statement",
+                 explanation=expl, qtype=QT_TABLE, est=75, tags=DR_TAGS + ["conditions", "count"],
+                 stimulus=table_stimulus(ds),
+                 verify=_spec("count2", opa=op_a, ta=ta, opb=op_b, tb=tb))
+
+
+@_retry
+def dr_condition_average(rng, difficulty):
+    scen = _pick_scenario(rng, lambda s: s.get("cond"))
+    ds = build(rng, scen, cond="cond", n=_n_rows(rng, difficulty))
+    if ds is None:
+        return None
+    a, b = ds["cols"]
+    n = len(ds["xs"])
+    i = rng.randrange(n)
+    dec, xu, yu = ds["dec"], ds["xunit"], a["unit"]
+    avg = round((a["vals"][i] + b["vals"][i]) / 2, dec)
+    x = ds["xstrs"][i]
+    prompt = rng.choice([
+        f"According to Table 1, the average of the two conditions' values of {a['desc']} "
+        f"{_at(ds, x)} is closest to:",
+        f"Based on Table 1, {_at(ds, x)}, the mean of {a['desc']} for {a['label']} and for "
+        f"{b['label']} is approximately:",
+    ])
+    correct = (_vu(_fmt(avg, dec), yu),
+               f"Correct. ({a['strs'][i]} + {b['strs'][i]}) ÷ 2 = {_fmt(avg, dec)}.")
+    tot = round(a["vals"][i] + b["vals"][i], dec)
+    j = i + 1 if i + 1 < n else i - 1
+    avg2 = (a["vals"][j] + b["vals"][j]) / 2
+    distractors = [(_vu(f"{avg2:.{dec + 1}f}", yu),
+                    f"This averages the row for {_vu(ds['xstrs'][j], xu)} instead of {x}."),
+                   (_vu(_fmt(tot, dec), yu), "This is the sum of the two values, not their average."),
+                   (_vu(a["strs"][i], yu), f"This is the {a['label']} value alone."),
+                   (_vu(b["strs"][i], yu), f"This is the {b['label']} value alone.")]
+    expl = (f"Add the two values in the {x} row ({a['strs'][i]} and {b['strs'][i]}) and divide by 2: "
+            f"{_fmt(avg, dec)} {yu}.".strip())
+    return _emit(rng, prompt, correct, distractors, subskill="compare_entries",
+                 explanation=expl, qtype=QT_TABLE, est=65, tags=DR_TAGS + ["conditions", "average"],
+                 stimulus=table_stimulus(ds), verify=_spec("condavg", x=x))
+
+
+@_retry
+def dr_condition_gap_extreme(rng, difficulty):
+    scen = _pick_scenario(rng, lambda s: s.get("cond"))
+    ds = build(rng, scen, cond="cond", n=_n_rows(rng, difficulty))
+    if ds is None:
+        return None
+    a, b = ds["cols"]
+    n = len(ds["xs"])
+    gaps = [round(abs(p - q), ds["dec"]) for p, q in zip(a["vals"], b["vals"])]
+    want_max = rng.random() < 0.6
+    target = (max if want_max else min)(gaps)
+    if gaps.count(target) != 1:
+        return None
+    k = gaps.index(target)
+    xu, yu = ds["xunit"], a["unit"]
+    word = "greatest" if want_max else "smallest"
+    prompt = rng.choice([
+        f"According to Table 1, the difference between {a['desc']} for {a['label']} and for "
+        f"{b['label']} was {word} at which {scen['x_short']}?",
+        f"At which {scen['x_short']} in Table 1 do the two conditions differ by the {word} amount?",
+    ])
+    correct = (_vu(ds["xstrs"][k], xu),
+               f"Correct. Here the gap is {_vu(_fmt(target, ds['dec']), yu)}, the {word} in the table.")
+    distractors = [(f"The gap is the same at every {scen['x_short']}",
+                    f"The gaps range from {_fmt(min(gaps), ds['dec'])} to {_fmt(max(gaps), ds['dec'])}; "
+                    f"they are not equal.")]
+    for j in sorted(range(n), key=lambda j: (-gaps[j] if want_max else gaps[j])):
+        if j != k and len(distractors) < 3:
+            distractors.append((_vu(ds["xstrs"][j], xu),
+                                f"The gap here is {_vu(_fmt(gaps[j], ds['dec']), yu)}, which is not the "
+                                f"{word}."))
+    expl = (f"Subtract the two condition columns in each row: {', '.join(_fmt(g, ds['dec']) for g in gaps)}. "
+            f"The {word} difference is at {_vu(ds['xstrs'][k], xu)}.")
+    return _emit(rng, prompt, correct, distractors, subskill="compare_entries",
+                 explanation=expl, qtype=QT_TABLE, est=75, tags=DR_TAGS + ["conditions", "extreme"],
+                 stimulus=table_stimulus(ds),
+                 verify=_spec("gap_extreme", mode="max" if want_max else "min"))
+
+
+@_retry
+def dr_max_minus_min(rng, difficulty):
+    scen = _pick_scenario(rng, lambda s: s.get("cond"))
+    ds = build(rng, scen, cond="cond", n=_n_rows(rng, difficulty))
+    if ds is None:
+        return None
+    a, b = ds["cols"]
+    hi_col, lo_col = (a, b) if rng.random() < 0.5 else (b, a)
+    dec, yu = ds["dec"], a["unit"]
+    hi, lo = max(hi_col["vals"]), min(lo_col["vals"])
+    d = round(hi - lo, dec)
+    if d <= 0:
+        return None
+    prompt = rng.choice([
+        f"According to Table 1, the greatest value of {a['desc']} for {hi_col['label']} exceeds the "
+        f"least value for {lo_col['label']} by:",
+        f"Based on Table 1, what is the difference between the largest {a['short']} recorded for "
+        f"{hi_col['label']} and the smallest recorded for {lo_col['label']}?",
+    ])
+    correct = (_vu(_fmt(d, dec), yu), f"Correct. {_fmt(hi, dec)} − {_fmt(lo, dec)} = {_fmt(d, dec)}.")
+    cands = [
+        (round((hi + lo) / 2, dec + 1), "This averages the two values instead of subtracting them."),
+        (round(max(hi_col["vals"]) - min(hi_col["vals"]), dec),
+         f"This is the range within the {hi_col['label']} column alone."),
+        (round(max(lo_col["vals"]) - min(lo_col["vals"]), dec),
+         f"This is the range within the {lo_col['label']} column alone."),
+        (round(abs(max(lo_col["vals"]) - min(hi_col["vals"])), dec),
+         "This swaps the two conditions (greatest of the wrong column minus least of the other)."),
+        (round(abs(hi - max(lo_col["vals"])), dec),
+         f"This subtracts the greatest {lo_col['label']} value, not the least."),
+        (round(abs(min(hi_col["vals"]) - lo), dec),
+         f"This uses the least {hi_col['label']} value instead of the greatest."),
+    ]
+    distractors, seen = [], {_fmt(d, dec)}
+    for v, why in cands:
+        t = _fmt(v, dec + 1) if "averages" in why else _fmt(v, dec)
+        if v > 0 and t not in seen:
+            seen.add(t)
+            distractors.append((_vu(t, yu), why))
+    expl = (f"Greatest {hi_col['label']} value: {_fmt(hi, dec)}. Least {lo_col['label']} value: "
+            f"{_fmt(lo, dec)}. Difference: {_fmt(d, dec)} {yu}.".strip())
+    return _emit(rng, prompt, correct, distractors, subskill="compare_entries",
+                 explanation=expl, qtype=QT_TABLE, est=80, tags=DR_TAGS + ["conditions", "extreme"],
+                 stimulus=table_stimulus(ds),
+                 verify=_spec("maxmin", hi=2 if hi_col is b else 1, lo=2 if lo_col is b else 1))
+
+
+@_retry
+def tr_rate_of_change(rng, difficulty):
+    scen = _pick_scenario(rng)
+    ds = build(rng, scen, n=_n_rows(rng, difficulty))
+    if ds is None:
+        return None
+    ci = rng.randrange(len(ds["cols"]))
+    col = ds["cols"][ci]
+    n = len(ds["xs"])
+    i = rng.randrange(n - 1)
+    j = i + rng.choice([1, 1, 2]) if i + 2 < n else i + 1
+    dx = ds["xs"][j] - ds["xs"][i]
+    dy = col["vals"][j] - col["vals"][i]
+    if dy == 0:
+        return None
+    rate = dy / dx
+    rs = _sig(abs(rate))
+    per = _per_unit(ds)
+    yu = col["unit"]
+    xi, xj = _vu(ds["xstrs"][i], ds["xunit"]), _vu(ds["xstrs"][j], ds["xunit"])
+    word = "increase" if dy > 0 else "decrease"
+    prompt = rng.choice([
+        f"According to Table 1, between {xi} and {xj}, {col['desc']} changed at an average rate "
+        f"closest to:",
+        f"Based on Table 1, what was the average rate of {word} in {col['desc']} as "
+        f"{scen['x_short']} went from {xi} to {xj}?",
+    ])
+    def opt(v):
+        return f"{v} {yu} {per}".replace("  ", " ") if yu else f"{v} {per}"
+    correct = (opt(rs), f"Correct. Change in {col['short']} ÷ change in {scen['x_short']} = "
+                        f"{_neg(_fmt(abs(dy), ds['dec']))} ÷ {_xstr(dx)} ≈ {rs}.")
+    distractors = [
+        (f"{_sig(abs(dy))} {yu} over the whole interval".replace("  ", " "),
+         f"This is the total change in {col['short']}, not divided by the change in {scen['x_short']}."),
+        (opt(_sig(abs(rate) * 2)), "This is twice the rate; recheck the division."),
+        (opt(_sig(abs(rate) / 2)), "This is half the rate; recheck the division."),
+    ]
+    if abs(rate) > 0:
+        distractors.append((opt(_sig(dx / abs(dy))), "This divides the change in x by the change in y, "
+                                                     "the inverse of a rate."))
+    expl = (f"Rate = Δ{col['short']} ÷ Δ{scen['x_short']} = ({col['strs'][j]} − {col['strs'][i]}) ÷ "
+            f"({ds['xstrs'][j]} − {ds['xstrs'][i]}) ≈ {rs} {yu} {per}.".replace("  ", " "))
+    return _emit(rng, prompt, correct, distractors, subskill="trend_shape",
+                 explanation=expl, qtype=QT_TABLE, est=70, tags=TR_TAGS + ["rate"],
+                 stimulus=table_stimulus(ds),
+                 verify=_spec("rate", x1=ds["xstrs"][i], x2=ds["xstrs"][j], col=ci + 1))
+
+
+@_retry
+def tr_peak_x(rng, difficulty):
+    scen = _pick_scenario(rng, lambda s: s["shape"] == "peak")
+    ds = build(rng, scen, n=_n_rows(rng, difficulty))
+    if ds is None:
+        return None
+    col = ds["cols"][0]
+    vals = col["vals"]
+    k = vals.index(max(vals))
+    xu = ds["xunit"]
+    prompt = rng.choice([
+        f"According to Table 1, {col['desc']} increased as {scen['x_desc']} increased up to which "
+        f"value, after which it decreased?",
+        f"Based on Table 1, the trend in {col['desc']} reversed direction at approximately which "
+        f"{scen['x_short']}?",
+        f"At which {scen['x_short']} in Table 1 did {col['desc']} reach its maximum before beginning "
+        f"to decline?",
+    ])
+    correct = (_vu(ds["xstrs"][k], xu),
+               f"Correct. {_cap_first(col['desc'])} rises to {_vu(col['strs'][k], col['unit'])} here "
+               f"and falls in the next row.")
+    distractors = [("The trend never reversed within the range tested",
+                    f"The values rise to {col['strs'][k]} and then fall, so the trend does reverse.")]
+    for j in sorted(range(len(vals)), key=lambda j: abs(j - k)):
+        if j != k and len(distractors) < 3:
+            side = "still rising" if j < k else "already falling"
+            distractors.append((_vu(ds["xstrs"][j], xu),
+                                f"At this {scen['x_short']} the values were {side}, not at the turning point."))
+    expl = (f"The values rise down the column until {_vu(ds['xstrs'][k], xu)} "
+            f"({col['strs'][k]}) and fall after it, so that is where the trend reverses.")
+    return _emit(rng, prompt, correct, distractors, subskill="trend_shape",
+                 explanation=expl, qtype=QT_TABLE, est=55, tags=TR_TAGS + ["peak"],
+                 stimulus=table_stimulus(ds), verify=_spec("extreme", mode="max", col=1))
+
+
+@_retry
+def tr_percent_across_table(rng, difficulty):
+    scen = _pick_scenario(rng, lambda s: s["shape"] != "peak")
+    ds = build(rng, scen, n=_n_rows(rng, difficulty))
+    if ds is None:
+        return None
+    ci = rng.randrange(len(ds["cols"]))
+    col = ds["cols"][ci]
+    if col["shape"] == "peak":
+        return None
+    vi, vj = col["vals"][0], col["vals"][-1]
+    if vi <= 0:
+        return None
+    pct = round((vj - vi) / vi * 100)
+    if abs(pct) < 10:
+        return None
+    x0, x1 = _vu(ds["xstrs"][0], ds["xunit"]), _vu(ds["xstrs"][-1], ds["xunit"])
+    word = "increased" if pct > 0 else "decreased"
+    prompt = rng.choice([
+        f"Over the entire range of {scen['x_short']} shown in Table 1 ({x0} to {x1}), {col['desc']} "
+        f"{word} by approximately what percent?",
+        f"According to Table 1, from the first row to the last, {col['desc']} {word} by about:",
+    ])
+    abs_change = round(abs(vj - vi), ds["dec"])
+    wrong_base = round(abs(vj - vi) / vj * 100) if vj > 0 else abs(pct) * 3
+    cands = {abs(pct) * 2: "This is double the actual percent change.",
+             wrong_base: f"This divides the change by the final value ({col['strs'][-1]}) instead of "
+                         f"the starting value ({col['strs'][0]}).",
+             round(abs(pct) / 2): "This is half the actual percent change."}
+    distractors = [(f"{v}%", why) for v, why in cands.items() if v != abs(pct) and v > 0]
+    distractors.insert(0, (f"{_fmt(abs_change, ds['dec'])} {col['unit']}".strip(),
+                           f"This is the absolute change in {col['short']}, not a percent of the "
+                           f"starting value."))
+    correct = (f"{abs(pct)}%", f"Correct. |{col['strs'][-1]} − {col['strs'][0]}| ÷ {col['strs'][0]} × 100 "
+                               f"≈ {abs(pct)}%.")
+    expl = (f"Percent change = (last − first) ÷ first × 100 = ({col['strs'][-1]} − {col['strs'][0]}) ÷ "
+            f"{col['strs'][0]} × 100 ≈ {abs(pct)}% {word.replace('ed', 'e')}.")
+    return _emit(rng, prompt, correct, distractors, subskill="trend_shape",
+                 explanation=expl, qtype=QT_TABLE, est=75, tags=TR_TAGS + ["percent"],
+                 stimulus=table_stimulus(ds),
+                 verify=_spec("pct", x1=ds["xstrs"][0], x2=ds["xstrs"][-1], col=ci + 1))
+
+
+@_retry
+def tr_compare_slopes(rng, difficulty):
+    two = rng.random() < 0.5
+    scen = _pick_scenario(rng, lambda s: (len(s["series"]) == 2) if two else bool(s.get("cond")))
+    ds = build(rng, scen, cond=None if two else "cond", n=_n_rows(rng, difficulty))
+    if ds is None:
+        return None
+    a, b = ds["cols"]
+    n = len(ds["xs"])
+    i = rng.randrange(n - 1)
+    j = min(n - 1, i + rng.choice([1, 2]))
+    da, db = abs(a["vals"][j] - a["vals"][i]), abs(b["vals"][j] - b["vals"][i])
+    if da == 0 or db == 0:
+        return None
+    num, den = (a, b) if da > db else (b, a)
+    r = round(max(da, db) / min(da, db), 1)
+    if r < 1.3 or r > 15:
+        return None
+    def name(c):
+        return f"{c['desc']} for {c['label']}" if c["label"] else c["desc"]
+    xi, xj = _vu(ds["xstrs"][i], ds["xunit"]), _vu(ds["xstrs"][j], ds["xunit"])
+    prompt = rng.choice([
+        f"Between {xi} and {xj}, the rate of change of {name(num)} was approximately how many "
+        f"times the rate of change of {name(den)}?",
+        f"According to Table 1, over the interval from {xi} to {xj}, {name(num)} changed about how "
+        f"many times as fast as {name(den)}?",
+    ])
+    correct = (f"{r:.1f}", f"Correct. Both rates share the same Δ{scen['x_short']}, so compare the "
+                           f"changes: {_fmt(max(da, db), ds['dec'])} ÷ {_fmt(min(da, db), ds['dec'])} ≈ {r:.1f}.")
+    inv = f"{min(da, db) / max(da, db):.{max(2, len(f'{r:.1f}') - 1)}f}"
+    distractors = [(inv, "This is the inverse ratio (slower rate divided by faster rate)."),
+                   (f"{round(r * 2, 1):.1f}", "This doubles the ratio; recheck the division."),
+                   (f"{_fmt(round(max(da, db) - min(da, db), ds['dec']), ds['dec'])}",
+                    "This is the difference between the two changes, not their ratio.")]
+    expl = (f"Over the same change in {scen['x_short']}, {name(num)} changed by "
+            f"{_fmt(max(da, db), ds['dec'])} and {name(den)} by {_fmt(min(da, db), ds['dec'])}; "
+            f"the ratio of the rates is about {r:.1f}.")
+    return _emit(rng, prompt, correct, distractors, subskill="series_crossing",
+                 explanation=expl, qtype=QT_TABLE, est=80, tags=TR_TAGS + ["slopes"],
+                 stimulus=table_stimulus(ds),
+                 verify=_spec("slopes", x1=ds["xstrs"][i], x2=ds["xstrs"][j],
+                              num=2 if num is b else 1, den=2 if den is b else 1))
+
+
+@_retry
+def tr_rate_compare_intervals(rng, difficulty):
+    scen = _pick_scenario(rng, lambda s: len(s["series"]) == 1 and s["shape"] != "peak")
+    ds = build(rng, scen, n=rng.randint(5, 6))
+    if ds is None:
+        return None
+    col = ds["cols"][0]
+    xs, vals, dec = ds["xs"], col["vals"], ds["dec"]
+    n = len(xs)
+    # two non-overlapping consecutive-row intervals
+    i, k = sorted(rng.sample(range(n - 1), 2))
+    if k == i + 0:
+        return None
+    r1 = abs(vals[i + 1] - vals[i]) / (xs[i + 1] - xs[i])
+    r2 = abs(vals[k + 1] - vals[k]) / (xs[k + 1] - xs[k])
+    if r1 == 0 or r2 == 0:
+        return None
+    big, small = ((i, r1), (k, r2)) if r1 > r2 else ((k, r2), (i, r1))
+    ratio = round(big[1] / small[1], 1)
+    if ratio < 1.5 or ratio > 20:
+        return None
+    xu = ds["xunit"]
+    def iv(p):
+        return f"{_vu(ds['xstrs'][p], xu)} to {_vu(ds['xstrs'][p + 1], xu)}"
+    prompt = rng.choice([
+        f"According to Table 1, the rate of change of {col['desc']} from {iv(big[0])} was "
+        f"approximately how many times its rate of change from {iv(small[0])}?",
+        f"Compare the two intervals in Table 1. {_cap_first(col['desc'])} changed about how many "
+        f"times as fast between {iv(big[0])} as between {iv(small[0])}?",
+    ])
+    correct = (f"{ratio:.1f}", f"Correct. {_sig(big[1])} ÷ {_sig(small[1])} ≈ {ratio:.1f}.")
+    inv = f"{small[1] / big[1]:.{max(2, len(f'{ratio:.1f}') - 1)}f}"
+    distractors = [(inv, "This is the inverse ratio (slower interval over faster)."),
+                   (f"{round(ratio * 2, 1):.1f}", "This doubles the ratio; recheck the division."),
+                   (f"{_fmt(round(abs(vals[big[0] + 1] - vals[big[0]]), dec), dec)}",
+                    f"This is the change in {col['short']} over the faster interval, not a ratio of rates.")]
+    expl = (f"Rate over {iv(big[0])}: {_sig(big[1])} {col['unit']} {_per_unit(ds)}; over {iv(small[0])}: "
+            f"{_sig(small[1])}. Dividing gives about {ratio:.1f}.".replace("  ", " "))
+    return _emit(rng, prompt, correct, distractors, subskill="trend_shape",
+                 explanation=expl, qtype=QT_TABLE, est=90, tags=TR_TAGS + ["rate", "intervals"],
+                 stimulus=table_stimulus(ds),
+                 verify=_spec("ratecmp", a=ds["xstrs"][big[0]], b=ds["xstrs"][small[0]], col=1))
+
+
+@_retry
+def tr_extrapolate_crossing(rng, difficulty):
+    scen = _pick_scenario(rng, lambda s: len(s["series"]) == 2)
+    ds = build(rng, scen, n=rng.randint(4, 5))
+    if ds is None:
+        return None
+    a, b = ds["cols"]
+    n = len(ds["xs"])
+    if not all(p > q for p, q in zip(a["vals"], b["vals"])):
+        return None
+    xs = ds["xs"]
+    step = xs[-1] - xs[-2]
+    da, db = a["vals"][-1] - a["vals"][-2], b["vals"][-1] - b["vals"][-2]
+    if db <= da:
+        return None
+    k = 1
+    while a["vals"][-1] + k * da >= b["vals"][-1] + k * db:
+        k += 1
+        if k > 12:
+            return None
+    if k < 2:
+        return None
+    xk = xs[-1] + k * step
+    xu = ds["xunit"]
+    prompt = rng.choice([
+        f"Suppose both trends in Table 1 continue at the same rates as between the last two rows. "
+        f"{_cap_first(b['desc'])} would first exceed {a['desc']} in which {scen['x_short']}?",
+        f"If the changes shown in the last two rows of Table 1 continue each {scen['x_short']}, "
+        f"{b['short']} will first be greater than {a['short']} in:",
+    ])
+    correct = (_vu(_xstr(xk), xu),
+               f"Correct. Each step {a['name']} changes by {_neg(_fmt(da, ds['dec']))} and {b['name']} by "
+               f"{_neg(_fmt(db, ds['dec']))}; after {k} steps {b['name']} is ahead for the first time.")
+    distractors = [(f"{_cap_first(b['short'])} would never exceed {a['short']}",
+                    f"{b['name']} gains on {a['name']} every step, so it must eventually pass it.")]
+    for kk in (k - 1, k + 1, 2 * k, k + 2):
+        xx = xs[-1] + kk * step
+        if kk >= 1 and _xstr(xx) != _xstr(xk) and len(distractors) < 3:
+            va, vb = a["vals"][-1] + kk * da, b["vals"][-1] + kk * db
+            why = (f"After {kk} step{'s' if kk != 1 else ''}: {a['name']} ≈ {_fmt(va, ds['dec'])}, "
+                   f"{b['name']} ≈ {_fmt(vb, ds['dec'])}; " +
+                   ("the crossing has already happened." if kk > k else f"{b['name']} is still behind."))
+            distractors.append((_vu(_xstr(xx), xu), why))
+    expl = (f"Continue both columns: {a['name']} {a['strs'][-1]} → … (changing {_neg(_fmt(da, ds['dec']))} "
+            f"per step) and {b['name']} {b['strs'][-1]} → … (changing {_neg(_fmt(db, ds['dec']))} per step). "
+            f"{b['name']} first passes {a['name']} after {k} steps, in {_vu(_xstr(xk), xu)}.")
+    return _emit(rng, prompt, correct, distractors, subskill="series_crossing",
+                 explanation=expl, qtype=QT_TABLE, est=95, tags=TR_TAGS + ["crossing", "extrapolate"],
+                 stimulus=table_stimulus(ds), verify=_spec("extrap_cross"))
+
+
+_UNIT_POOL = ["kg", "L", "s", "°C", "mm", "N", "J", "km/h", "mol", "cm²", "Hz", "mg",
+              "µmol/min", "counts/min", "beats/min", "g/kg", "mg/dL", "bubbles/min"]
+
+
+@_retry
+def ed_dependent_unit(rng, difficulty):
+    ds = _ed_dataset(rng, difficulty, pred=lambda s: s["series"][0]["unit"] not in ("", "pH")
+                     and s["x"][1] not in ("", "pH") and s["x"][1] != s["series"][0]["unit"])
+    if ds is None:
+        return None
+    scen = ds["scen"]
+    ser = scen["series"][0]
+    yu, xu = ser["unit"], scen["x"][1]
+    prompt = rng.choice([
+        f"In Experiment 1, {ser['desc']} was recorded in which of the following units?",
+        f"According to the description of Experiment 1, the dependent variable was measured in:",
+    ])
+    correct = (yu, f"Correct. The column for {ser['name']} is labeled in {yu}.")
+    distractors = [(xu, f"{xu} is the unit of {scen['x_desc']}, the independent variable.")]
+    pool = [u for u in _UNIT_POOL if u not in (xu, yu)]
+    rng.shuffle(pool)
+    longest = max(pool, key=len)
+    pool.remove(longest)
+    for u in (longest, pool[0]):
+        distractors.append((u, f"{u} does not appear anywhere in the experiment's results."))
+    expl = (f"The results list {ser['desc']} with the unit {yu}; {xu} belongs to {scen['x_short']}, "
+            f"the variable the experimenters set.")
+    return _emit(rng, prompt, correct, distractors, subskill="identify_variables",
+                 explanation=expl, qtype=QT_TABLE, est=40, tags=ED_TAGS + ["units"],
+                 stimulus=experiment_table(ds), verify=_spec("unit", col=1))
+
+
+@_retry
+def ed_control_trial(rng, difficulty):
+    ds = _ed_dataset(rng, difficulty, pred=lambda s: s["zero_ok"])
+    if ds is None or ds["xs"][0] != 0:
+        return None
+    scen = ds["scen"]
+    ser = scen["series"][0]
+    xu = ds["xunit"]
+    prompt = rng.choice([
+        "Which trial in Experiment 1 served as the control?",
+        "In Experiment 1, which of the following trials was the control trial?",
+        f"To judge the effect of {scen['x_desc']}, the experimenters compared each trial with a "
+        f"control. Which trial was the control?",
+    ])
+    correct = (f"The trial at {_vu('0', xu)}, which received none of the treatment being tested",
+               "Correct. The trial with none of the treatment shows the baseline that every other "
+               "trial is compared against.")
+    distractors = [
+        (f"The trial at the greatest {scen['x_short']}, {_vu(ds['xstrs'][-1], xu)}, which received "
+         f"the most treatment",
+         "The largest dose is a test condition, not the baseline."),
+        (f"The trial that produced the greatest {ser['short']}",
+         "A control is defined by its treatment (none), not by the size of its result."),
+        (f"The trial at {_vu(ds['xstrs'][len(ds['xs']) // 2], xu)}, in the middle of the tested "
+         f"range of {scen['x_short']}",
+         "A middle value still applies the treatment; it is not a baseline."),
+    ]
+    expl = (f"A control receives none of the treatment: here, the trial with {scen['x_short']} of "
+            f"{_vu('0', xu)}.")
+    return _emit(rng, prompt, correct, distractors, subskill="control_purpose",
+                 explanation=expl, qtype=QT_TABLE, est=45, tags=ED_TAGS + ["control"],
+                 stimulus=experiment_table(ds), verify=_spec("control_zero"))
+
+
+@_retry
+def ed_why_range(rng, difficulty):
+    ds = _ed_dataset(rng, difficulty)
+    if ds is None:
+        return None
+    scen = ds["scen"]
+    ser = scen["series"][0]
+    n = len(ds["xs"])
+    prompt = rng.choice([
+        f"The experimenters tested {n} different values of {scen['x_desc']} rather than just two. "
+        f"The most likely reason was to:",
+        f"Why did the experimenters most likely measure {ser['desc']} at {n} values of "
+        f"{scen['x_short']} spread across a range, instead of at only the lowest and highest values?",
+    ])
+    correct = (f"Show how {ser['desc']} changes across the whole range, not just at its two ends",
+               "Correct. Two points can only show a difference; several points show the shape of "
+               "the relationship.")
+    distractors = [
+        (f"Keep {ser['desc']} the same from one trial to the next so that the trials could be compared",
+         "The dependent variable is measured, not held constant; it is expected to change."),
+        (f"Remove the need to hold {scen['controlled'][0]} constant during the trials",
+         "Testing more values does not replace controlling other variables."),
+        (f"Make each individual measurement of {ser['desc']} more precise than it would otherwise be",
+         "The precision of a single measurement depends on the instrument and repetition, not on "
+         "how many values of the independent variable are tested."),
+    ]
+    expl = (f"Measuring at several values of {scen['x_short']} lets the experimenters see the "
+            f"pattern of the relationship, not just whether the two ends differ.")
+    return _emit(rng, prompt, correct, distractors, subskill="design_change",
+                 explanation=expl, qtype=QT_PASSAGE, est=60, tags=ED_TAGS + ["design"],
+                 stimulus=experiment_passage(ds))
+
+
+@_retry
+def ed_reliability(rng, difficulty):
+    ds = _ed_dataset(rng, difficulty)
+    if ds is None:
+        return None
+    scen = ds["scen"]
+    ser = scen["series"][0]
+    counts = ser["unit"] in ("colonies", "nymphs", "%", "")
+    prompt = rng.choice([
+        "Which of the following changes to Experiment 1 would most improve the reliability of its results?",
+        f"If the experimenters wanted their measurements of {ser['desc']} to be more reliable, they "
+        f"should most likely:",
+    ])
+    if counts:
+        correct = (f"Count several more samples at each {scen['x_short']} and average the counts",
+                   "Correct. A larger sample reduces the effect of chance variation among individual samples.")
+    else:
+        correct = (f"Repeat each trial several more times at each {scen['x_short']} and average the results",
+                   "Correct. Averaging more repeated trials reduces the effect of random error.")
+    distractors = [
+        (f"Test fewer values of {scen['x_short']} so that each individual trial can be done more quickly",
+         "Fewer values give less information and do nothing to reduce random error."),
+        (f"Allow {scen['controlled'][0]} to vary freely from one trial to the next",
+         "Letting a controlled variable vary adds a confounding factor and makes results less reliable."),
+        (f"Record {ser['desc']} to fewer decimal places to simplify the table",
+         "Rounding discards information; it cannot make the results more trustworthy."),
+    ]
+    expl = ("Reliability improves when random variation is averaged out by more repetitions or "
+            "larger samples, while everything else is held constant.")
+    return _emit(rng, prompt, correct, distractors, subskill="design_change",
+                 explanation=expl, qtype=QT_PASSAGE, est=60, tags=ED_TAGS + ["reliability"],
+                 stimulus=experiment_passage(ds))
+
+
+@_retry
+def ed_procedure_flaw(rng, difficulty):
+    ds = _ed_dataset(rng, difficulty)
+    if ds is None:
+        return None
+    scen = ds["scen"]
+    ser = scen["series"][0]
+    k = rng.randrange(len(scen["controlled"]))
+    ctrl = scen["controlled"][k]
+    stim = experiment_passage(ds)
+    flaw = rng.choice([
+        f" Because of limited equipment, {ctrl} was different for each trial.",
+        f" The experimenters did not keep {ctrl} the same from one trial to the next.",
+    ])
+    text = stim["text"]
+    head, results = text.split("\nResults", 1)
+    stim["text"] = head + flaw + "\nResults" + results
+    prompt = rng.choice([
+        "Which of the following is the most serious flaw in the procedure of Experiment 1?",
+        "The design of Experiment 1 has a weakness. Which statement best describes it?",
+    ])
+    correct = (f"{_cap_first(ctrl)} changed between trials, confounding the effect of {scen['x_desc']}",
+               "Correct. A second factor that changes along with the independent variable "
+               "confounds the results.")
+    distractors = [
+        (f"{_cap_first(scen['x_desc'])} was deliberately changed from trial to trial instead of being "
+         f"held constant throughout",
+         "Changing the independent variable is the point of the experiment, not a flaw."),
+        (f"{_cap_first(ser['desc'])} was measured in every trial rather than only in the final trial "
+         f"of the series",
+         "The dependent variable must be measured in every trial."),
+        (f"Only a single value of {scen['x_desc']} was tested, so no trend could possibly be identified",
+         f"The results list {len(ds['xs'])} different values of {scen['x_short']}."),
+    ]
+    expl = (f"Good design changes only {scen['x_short']}. Because {ctrl} also changed, any difference in "
+            f"{ser['short']} could be due to either factor.")
+    return _emit(rng, prompt, correct, distractors, subskill="design_change",
+                 explanation=expl, qtype=QT_PASSAGE, est=80, tags=ED_TAGS + ["flaw"],
+                 stimulus=stim)
+
+
+@_retry
+def ed_unsupported_conclusion(rng, difficulty):
+    ds = _ed_dataset(rng, difficulty)
+    if ds is None:
+        return None
+    scen = ds["scen"]
+    col = ds["cols"][0]
+    trues = [c for c in _statements(ds, 0) if c[1] and len(c[0]) >= 56]
+    rng.shuffle(trues)
+    seen, supported = set(), []
+    for t in trues:
+        if t[0] not in seen:
+            supported.append(t)
+            seen.add(t[0])
+        if len(supported) == 3:
+            break
+    if len(supported) < 3:
+        return None
+    xmax = _vu(ds["xstrs"][-1], ds["xunit"])
+    shape = col["shape"]
+    ctrl = rng.choice(scen["controlled"])
+    options = [
+        (f"{_cap_first(col['desc'])} would keep {'increasing' if shape == 'inc' else 'decreasing' if shape == 'dec' else 'rising and falling'} "
+         f"beyond {xmax}.",
+         f"No trials were run beyond {xmax}, so the results cannot show what happens there."),
+        (f"{_cap_first(ctrl)} has no effect on {col['desc']}.",
+         f"{_cap_first(ctrl)} was held constant, so the experiment provides no evidence about its effect."),
+    ]
+    if scen.get("cond"):
+        options.append((f"{_cap_first(scen['cond']['var'])} does not affect {col['desc']}.",
+                        f"{_cap_first(scen['cond']['var'])} was not varied in Experiment 1, so nothing "
+                        f"can be concluded about it."))
+    unsupported = rng.choice(options)
+    prompt = rng.choice([
+        "Which of the following conclusions is NOT supported by the results of Experiment 1?",
+        "Based on Experiment 1 alone, which of the following statements goes beyond what the data can support?",
+    ])
+    correct = (unsupported[0], "Correct. " + unsupported[1])
+    distractors = [(t[0], "This statement is directly supported by the listed results.") for t in supported]
+    expl = (f"Three of the statements can be checked against the table and hold. \"{unsupported[0]}\" "
+            f"cannot: {unsupported[1][0].lower() + unsupported[1][1:]}")
+    return _emit(rng, prompt, correct, distractors, subskill="hypothesis_support",
+                 explanation=expl, qtype=QT_TABLE, est=85, tags=ED_TAGS + ["conclusion"],
+                 stimulus=experiment_table(ds), verify=_spec("unsupported"))
+
+
+# --------------------------------------------------------------------------- #
 # Conflicting viewpoints (authored; see VIEWPOINTS at the end of the file)
 # --------------------------------------------------------------------------- #
 CV_TAGS = ["science", "conflicting-viewpoints"]
 CV_SLOTS = ("claim", "common", "evidence", "new_obs", "difference")
+CV_EXTRA_SLOTS = ("assumption", "weaken")   # authored for a subset of pairs
 CV_SUBSKILL = {"claim": "scientist_claim", "common": "common_ground",
                "evidence": "supporting_evidence", "new_obs": "new_observation",
-               "difference": "main_difference"}
+               "difference": "main_difference", "assumption": "shared_assumption",
+               "weaken": "weakening_finding"}
 
 
 def _text_complexity(text):
@@ -2718,7 +3848,17 @@ def _text_complexity(text):
 
 
 def _pair_complexity(pair):
-    return _text_complexity(pair["text_a"]) + _text_complexity(pair["text_b"])
+    return (_text_complexity(pair["text_a"]) + _text_complexity(pair["text_b"])
+            + _text_complexity(pair.get("text_c", "")))
+
+
+def viewpoint_stimulus(pair):
+    """paired_passages stimulus; a third scientist rides along in text_b."""
+    text_b = "Scientist 2\n" + pair["text_b"]
+    if pair.get("text_c"):
+        text_b += "\n\nScientist 3\n" + pair["text_c"]
+    return {"type": "paired_passages", "title": pair["title"],
+            "text": "Scientist 1\n" + pair["text_a"], "text_b": text_b}
 
 
 def viewpoint_tiers():
@@ -2736,18 +3876,18 @@ def viewpoint_tiers():
 
 def _cv_question(rng, difficulty, slot):
     tiers = viewpoint_tiers()
-    pair = rng.choice(tiers[difficulty])
+    pool = [p for p in tiers[difficulty] if slot in p["questions"]]
+    pair = rng.choice(pool)
     q = pair["questions"][slot]
     prompt, options, ci, rats, expl = q
     order = list(range(len(options)))
     rng.shuffle(order)
     opts = [options[i] for i in order]
     rat = [rats[i] for i in order]
-    stim = {"type": "paired_passages", "title": pair["title"],
-            "text": "Scientist 1\n" + pair["text_a"], "text_b": "Scientist 2\n" + pair["text_b"]}
+    tags = CV_TAGS + [slot, "pair:" + pair["id"]] + (["three-viewpoints"] if pair.get("text_c") else [])
     return mc(prompt, opts, order.index(ci), rat, subskill=CV_SUBSKILL[slot],
-              qtype=QT_PASSAGE, explanation=expl, est=90, tags=CV_TAGS + [slot, "pair:" + pair["id"]],
-              stimulus=stim)
+              qtype=QT_PASSAGE, explanation=expl, est=95 if pair.get("text_c") else 90,
+              tags=tags, stimulus=viewpoint_stimulus(pair))
 
 
 def cv_scientist_claim(rng, difficulty):
@@ -2770,9 +3910,17 @@ def cv_main_difference(rng, difficulty):
     return _cv_question(rng, difficulty, "difference")
 
 
+def cv_shared_assumption(rng, difficulty):
+    return _cv_question(rng, difficulty, "assumption")
+
+
+def cv_weakening_finding(rng, difficulty):
+    return _cv_question(rng, difficulty, "weaken")
+
+
 for _fn in (cv_scientist_claim, cv_common_ground, cv_supporting_evidence,
-            cv_new_observation, cv_main_difference,
-            ed_control_purpose, ed_replication_purpose):
+            cv_new_observation, cv_main_difference, cv_shared_assumption, cv_weakening_finding,
+            ed_control_purpose, ed_replication_purpose, ed_control_trial):
     _fn.small_space = True
 
 
@@ -2781,33 +3929,39 @@ for _fn in (cv_scientist_claim, cv_common_ground, cv_supporting_evidence,
 # --------------------------------------------------------------------------- #
 FAMILIES = {
     "data_representation": {
-        "easy": [dr_lookup_value, dr_direction, dr_extreme, dr_inverse_lookup, dr_figure_read],
+        "easy": [dr_lookup_value, dr_direction, dr_extreme, dr_inverse_lookup, dr_figure_read,
+                 dr_unit_convert, dr_graph_shape],
         "medium": [dr_difference, dr_ratio, dr_consistent_statement, dr_condition_compare,
-                   dr_count_above],
+                   dr_count_above, dr_two_condition_count, dr_condition_average],
         "hard": [dr_condition_statement, dr_percent_change, dr_cross_condition_lookup,
-                 dr_average, dr_figure_biggest_step],
+                 dr_average, dr_figure_biggest_step, dr_condition_gap_extreme, dr_max_minus_min],
     },
     "trends_extrapolation": {
-        "easy": [tr_trend_shape, tr_interpolate_range, tr_beyond_direction, tr_figure_trend],
-        "medium": [tr_interpolate_value, tr_x_for_target, tr_doubling, tr_biggest_step],
+        "easy": [tr_trend_shape, tr_interpolate_range, tr_beyond_direction, tr_figure_trend,
+                 tr_rate_of_change, tr_peak_x],
+        "medium": [tr_interpolate_value, tr_x_for_target, tr_doubling, tr_biggest_step,
+                   tr_percent_across_table, tr_compare_slopes],
         "hard": [tr_extrapolate_value, tr_crossing, tr_reach_threshold,
-                 tr_condition_trend_compare],
+                 tr_condition_trend_compare, tr_rate_compare_intervals, tr_extrapolate_crossing],
     },
     "experimental_design": {
         "easy": [ed_independent_variable, ed_dependent_variable, ed_controlled_variable,
-                 ed_control_purpose],
+                 ed_control_purpose, ed_dependent_unit, ed_control_trial],
         "medium": [ed_experiment_difference, ed_hypothesis_support, ed_replication_purpose,
-                   ed_predict_trial],
+                   ed_predict_trial, ed_why_range, ed_reliability],
         "hard": [ed_design_change, ed_results_support_claim, ed_which_experiments,
-                 ed_predict_between_conditions],
+                 ed_predict_between_conditions, ed_procedure_flaw, ed_unsupported_conclusion],
     },
     "conflicting_viewpoints": {
         "easy": [cv_scientist_claim, cv_common_ground, cv_supporting_evidence,
-                 cv_new_observation, cv_main_difference],
+                 cv_new_observation, cv_main_difference, cv_shared_assumption,
+                 cv_weakening_finding],
         "medium": [cv_scientist_claim, cv_common_ground, cv_supporting_evidence,
-                   cv_new_observation, cv_main_difference],
+                   cv_new_observation, cv_main_difference, cv_shared_assumption,
+                   cv_weakening_finding],
         "hard": [cv_scientist_claim, cv_common_ground, cv_supporting_evidence,
-                 cv_new_observation, cv_main_difference],
+                 cv_new_observation, cv_main_difference, cv_shared_assumption,
+                 cv_weakening_finding],
     },
 }
 
@@ -2900,6 +4054,30 @@ VIEWPOINTS = [
                  "Both accept the iridium layer and differ only on its source.",
                  "Scientist 2 allows that an asteroid may have struck; the dispute is about what mattered most."],
                 "The core disagreement is sudden impact versus prolonged volcanism, not the existence of the layer or the climate change."),
+            "assumption": (
+                "Both scientists assume that:",
+                ["the extinction was triggered by a change in the environment rather than by competition among species.",
+                 "the iridium in the boundary layer was deposited slowly and gradually over a span of hundreds of thousands of years.",
+                 "the crater beneath the coast of Mexico formed before the volcanic eruptions began.",
+                 "dinosaurs were already extinct when the boundary clay layer formed."],
+                0,
+                ["Correct. Both name an environmental catastrophe (impact or eruptions); neither considers biological causes such as competition.",
+                 "Scientist 1 treats the layer as the record of a single instant.",
+                 "Neither scientist compares the timing of crater and eruptions.",
+                 "Both place the extinction at the boundary, not before it."],
+                "Each explanation is an environmental catastrophe, taking for granted that something in the physical world killed the dinosaurs."),
+            "weaken": (
+                "Which of the following findings, if true, would most weaken Scientist 1's viewpoint?",
+                ["Dating shows the crater beneath Mexico formed two million years before the iridium layer.",
+                 "The iridium-rich clay layer is found at sites on every continent, far from the crater.",
+                 "Fossils of plants that depend on sunlight disappear abruptly right at the boundary layer.",
+                 "Volcanic rocks in India turn out to contain very little iridium."],
+                0,
+                ["Correct. An impact two million years too early cannot be the cause of an extinction recorded at the boundary.",
+                 "A worldwide layer is Scientist 1's own evidence.",
+                 "Abrupt loss of plants fits Scientist 1's blocked-sunlight scenario.",
+                 "Little iridium in the lava undermines Scientist 2's alternative source, strengthening Scientist 1."],
+                "Scientist 1's argument depends on the crater and the layer being the same age; a mismatch removes the link."),
         },
     },
     {
@@ -2984,6 +4162,30 @@ VIEWPOINTS = [
                  "Scientist 1 does not deny the zander's presence; the dispute is about what matters.",
                  "Both acknowledge the summer blooms."],
                 "The disagreement is about the cause of the decline, not about whether it is happening."),
+            "assumption": (
+                "Which of the following is an assumption made by both scientists? Both assume that:",
+                ["the decline reflects a real loss of young perch rather than a change in how perch are counted.",
+                 "zander were deliberately released into Miller Lake by anglers about eight years ago.",
+                 "algae blooms occurred in Miller Lake for decades before the perch population began to decline.",
+                 "adult perch cannot move away from low-oxygen water."],
+                0,
+                ["Correct. Both treat the decline as real and tied to young perch; neither considers a counting artifact.",
+                 "Only Scientist 2 makes this claim.",
+                 "Only Scientist 2 makes this claim.",
+                 "Scientist 1 says adults can move to shallower water."],
+                "Both explanations center on the loss of young perch, taking the decline itself as genuine."),
+            "weaken": (
+                "Which of the following discoveries, if made, would most seriously undermine Scientist 1's explanation?",
+                ["Perch eggs and young fish are found only in shallow, well-oxygenated water, never near the bottom.",
+                 "Oxygen near the lake bottom in August is too low for most fish species to survive for more than a few hours.",
+                 "Fertilizer use on the upstream farms has doubled over the past decade.",
+                 "Dead algae are decomposed by bacteria that consume dissolved oxygen."],
+                0,
+                ["Correct. If young perch never occupy the low-oxygen zone, that zone cannot be what kills them.",
+                 "Low bottom oxygen is Scientist 1's own evidence.",
+                 "More fertilizer strengthens the runoff story.",
+                 "This is the mechanism Scientist 1 describes."],
+                "Scientist 1's mechanism requires young perch to be exposed to the low-oxygen water; evidence that they are not breaks it."),
         },
     },
     {
@@ -3151,6 +4353,30 @@ VIEWPOINTS = [
                  "Both invoke the bridge's natural frequency.",
                  "Both agree that walkers reacted to the motion."],
                 "Both accept the sway, the natural frequency and the walkers' reaction; they disagree on cause versus response."),
+            "assumption": (
+                "The arguments of both scientists depend on the assumption that:",
+                ["the sway was driven by a repeating push matching the bridge's natural frequency.",
+                 "the bridge was poorly built and structurally unsafe.",
+                 "the crowd on opening day was unusually large.",
+                 "wind speeds on the bridge's opening day were higher than on any other day that year."],
+                0,
+                ["Correct. Scientist 1's footsteps and Scientist 2's eddies both work by resonance; neither considers a one-time push or a structural failure.",
+                 "Neither scientist claims the bridge was unsafe.",
+                 "Only Scientist 1 discusses the crowd's size.",
+                 "Scientist 2 says only that the day was breezy."],
+                "Both explanations are resonance explanations; they differ about the source of the rhythmic force."),
+            "weaken": (
+                "Scientist 1's viewpoint would be most weakened by which of the following findings?",
+                ["Sensors show the sway reached full strength before any pedestrian had stepped onto the deck.",
+                 "Video shows the walkers widening their stance and stepping in time with the motion of the deck.",
+                 "The sway stopped shortly after the bridge was closed to pedestrians.",
+                 "The sway was never observed on days when fewer than fifty people were on the bridge at one time."],
+                0,
+                ["Correct. Motion that begins before anyone is on the bridge cannot be caused by walkers.",
+                 "Synchronized stepping is consistent with Scientist 1.",
+                 "Stopping when cleared supports Scientist 1.",
+                 "Dependence on crowd size supports Scientist 1."],
+                "Scientist 1's cause is the crowd; sway before the crowd arrived contradicts it."),
         },
     },
     {
@@ -3318,6 +4544,30 @@ VIEWPOINTS = [
                  "Scientist 1 does not dispute the presence of magnetite, only its importance.",
                  "Both accept that the sun moves; Scientist 1 even uses this to explain misdirected bees."],
                 "The disagreement is about the main cue, not about whether bees navigate or whether magnetite exists."),
+            "assumption": (
+                "Both scientists assume that:",
+                ["bees rely on a sensed external cue rather than on memorized landmarks.",
+                 "bees are unable to find their way home on cloudy days.",
+                 "the direction of the magnetic field at the hive changes from one day to the next.",
+                 "bees can see the sun through thick clouds."],
+                0,
+                ["Correct. Sun and sky for Scientist 1, the magnetic field for Scientist 2; neither considers that bees might rely on remembered landmarks.",
+                 "The scientists disagree about overcast days.",
+                 "Scientist 2 calls the field a fixed reference.",
+                 "Scientist 1 says bees use polarized light when the sun is hidden."],
+                "Both explanations involve a directional cue the bee senses; landmarks are not considered by either."),
+            "weaken": (
+                "Which of the following findings, if true, would most weaken Scientist 1's viewpoint?",
+                ["Bees whose view of the sky is blocked by a cap return home as reliably as bees with a clear view.",
+                 "Bees held in the dark for several hours fly off in a direction shifted by the amount the sun has moved.",
+                 "Bees communicate the direction of food relative to the sun.",
+                 "Bees often fail to return on days with no polarized light in the sky."],
+                0,
+                ["Correct. If blocking the sky does not impair homing, the sky cannot be the main cue.",
+                 "This is Scientist 1's own evidence.",
+                 "This is Scientist 1's own evidence.",
+                 "This is Scientist 1's own evidence."],
+                "Scientist 1's view requires the sky; normal navigation without it undermines the view."),
         },
     },
     {
@@ -3870,7 +5120,7 @@ VIEWPOINTS = [
             "evidence": (
                 "Which of the following findings, if true, would most strongly support Scientist 2's viewpoint?",
                 ["Soil matching that beneath the road began appearing in the storm drain two months before the collapse.",
-                 "The groundwater beneath the area is found to be slightly acidic, as is typical for limestone country.",
+                 "The groundwater beneath the area is found to be slightly acidic, as is typical for regions underlain by limestone.",
                  "Several large caverns are discovered in the limestone a few kilometers from the road.",
                  "The water main beneath the road was found to have been shut off for the entire past year."],
                 0,
@@ -3903,6 +5153,907 @@ VIEWPOINTS = [
                  "Scientist 2 does not dispute the chemistry, only its relevance here.",
                  "Scientist 1 does not deny the main exists; the dispute is about its role."],
                 "The disagreement concerns the process and timescale that created the void."),
+        },
+    },
+    # ---- second batch of viewpoint pairs (v2.1 bank growth) ----------------
+    {
+        "id": "coral", "title": "The Bleaching Reef",
+        "text_a": (
+            "The reef bleached because the water became too warm. Corals live with tiny "
+            "algae inside their tissues that supply most of their food and give them their "
+            "color. When water temperature stays more than about one degree above the "
+            "summer maximum for several weeks, the partnership breaks down: the coral "
+            "expels the algae and turns white. Satellite records show that the sea surface "
+            "over the reef was unusually warm for six weeks before the bleaching, and the "
+            "most heavily bleached patches were in shallow water, where the water warmed "
+            "most. Reefs far from any town or farm bleached in the same weeks, which only a "
+            "regional cause such as temperature can explain."),
+        "text_b": (
+            "The main cause was runoff from the land. Heavy rains in the months before the "
+            "bleaching carried soil, fertilizer, and sewage from the coast onto the reef. "
+            "Sediment clouds the water and settles on the corals, smothering them, while "
+            "nutrients feed seaweeds that overgrow the coral and bacteria that attack its "
+            "tissue. Water samples near the river mouth showed nutrient levels several "
+            "times higher than normal, and bleaching was most severe on the parts of the "
+            "reef closest to the river. Warm water can stress corals, but these corals had "
+            "survived warmer summers before. The difference this year was the condition of "
+            "the water, not its temperature alone."),
+        "questions": {
+            "claim": (
+                "With which of the following statements would Scientist 1 most likely agree?",
+                ["Corals turn white when they lose the algae living in their tissues.",
+                 "Nutrients carried by rivers are the main threat to the reef's corals.",
+                 "Bleaching was most severe on the parts of the reef nearest the river mouth.",
+                 "The reef's corals had survived warmer summers than this one before."],
+                0,
+                ["Correct. Scientist 1 explains bleaching as the coral expelling its algae.",
+                 "River nutrients are Scientist 2's explanation.",
+                 "This pattern is cited by Scientist 2.",
+                 "Scientist 2 makes this point to argue against temperature."],
+                "The mechanism of expelling algae is the core of Scientist 1's explanation."),
+            "common": (
+                "Both scientists would most likely agree that:",
+                ["conditions in the water around the reef changed before the bleaching.",
+                 "the most heavily bleached corals were those in the shallowest water.",
+                 "reefs far from any town bleached during the same weeks as this reef.",
+                 "the amount of sediment reaching the reef had no effect on the corals' health."],
+                0,
+                ["Correct. Scientist 1 cites warming; Scientist 2 cites runoff. Both describe changed water conditions before the event.",
+                 "Only Scientist 1 mentions shallow water.",
+                 "Only Scientist 1 cites distant reefs.",
+                 "Scientist 2 says sediment smothers corals; Scientist 1 does not deny it."],
+                "Each scientist describes a change in the water before the bleaching; they differ on which change mattered."),
+            "evidence": (
+                "Which of the following findings, if true, would most strongly support Scientist 2's viewpoint?",
+                ["Corals on a nearby reef that received no river runoff but the same warm water remained healthy.",
+                 "Bleaching on the reef began at exactly the moment the water temperature passed the summer maximum.",
+                 "Corals in the shallowest water were the first to turn white.",
+                 "Satellite images show the warm water covered the entire region."],
+                0,
+                ["Correct. Same warmth without runoff and no bleaching points to runoff as the decisive factor.",
+                 "Timing tied to temperature supports Scientist 1.",
+                 "Shallow water warms most, which fits Scientist 1's view.",
+                 "A region-wide warm spell is Scientist 1's evidence."],
+                "Scientist 2 needs to show that runoff, not warmth, made the difference; a warm but runoff-free healthy reef does that."),
+            "new_obs": (
+                "Suppose divers found that the parts of the reef in deep, cool water near the river mouth bleached as badly as the shallow parts. This finding would most likely:",
+                ["support Scientist 2's viewpoint and weaken Scientist 1's.",
+                 "support Scientist 1's viewpoint and weaken Scientist 2's.",
+                 "support both viewpoints about equally.",
+                 "weaken both viewpoints to the same degree."],
+                0,
+                ["Correct. Severe bleaching in cool water close to the river fits runoff, not temperature.",
+                 "Cool water bleaching badly contradicts the temperature explanation.",
+                 "The finding contradicts Scientist 1's prediction.",
+                 "The finding is consistent with Scientist 2's prediction."],
+                "Cool water removes the temperature cause, while nearness to the river supplies Scientist 2's cause."),
+            "difference": (
+                "The two viewpoints differ mainly about:",
+                ["whether temperature or water quality was the decisive cause.",
+                 "whether corals depend on algae that live inside their tissues.",
+                 "whether the reef actually bleached during the summer in question.",
+                 "whether heavy rains fell on the coast in the months before the bleaching."],
+                0,
+                ["Correct. Warm water versus runoff is the central dispute.",
+                 "Neither scientist disputes the coral-algae partnership.",
+                 "Both accept that the bleaching occurred.",
+                 "Scientist 1 does not dispute the rains, only their importance."],
+                "The disagreement is about the decisive cause, not about the event or the biology."),
+            "assumption": (
+                "Which of the following is an assumption made by both scientists? Both assume that:",
+                ["the bleaching was caused by the reef's environment rather than by a disease of the corals.",
+                 "the water over the reef was warmer during the bleaching year than in any previous summer on record.",
+                 "sediment from the river reached every part of the reef.",
+                 "the corals will not recover once they have bleached."],
+                0,
+                ["Correct. Each explanation names an environmental change; neither considers an internal disease of the coral.",
+                 "Scientist 2 says the corals had survived warmer summers.",
+                 "Only Scientist 2 discusses sediment, and only near the river.",
+                 "Neither scientist discusses recovery."],
+                "Both explanations look outside the coral for the cause, taking for granted that an environmental change is responsible."),
+            "weaken": (
+                "Which of the following discoveries, if made, would most seriously undermine Scientist 1's explanation?",
+                ["Records show the water over the reef never exceeded the summer maximum during the bleaching year.",
+                 "Water samples taken near the river mouth contain nutrient levels several times higher than normal.",
+                 "Reefs far from the coast bleached during the same weeks.",
+                 "Shallow corals bleached more severely than deeper corals."],
+                0,
+                ["Correct. Without the prolonged warmth, Scientist 1's cause is absent.",
+                 "Nutrient levels concern Scientist 2's view and do not undercut the temperature claim.",
+                 "Distant reefs bleaching is Scientist 1's own evidence.",
+                 "Shallow water warming most fits Scientist 1's view."],
+                "Scientist 1's explanation requires water staying above the summer maximum; records showing it never did remove that cause."),
+        },
+    },
+    {
+        "id": "monarch", "title": "The Missing Monarchs",
+        "text_a": (
+            "Monarch butterflies have declined because the plants their caterpillars eat "
+            "are disappearing. Monarch caterpillars feed only on milkweed, which once grew "
+            "between rows of corn and soybeans across the continent. Since farms began "
+            "planting crops that tolerate weed killers, milkweed has been sprayed out of "
+            "millions of hectares of farmland. Surveys show milkweed on farmland has fallen "
+            "by more than half, and the decline in monarchs tracks the loss closely. Fewer "
+            "plants mean fewer eggs laid and fewer caterpillars surviving to migrate. "
+            "Restoring milkweed along roadsides and field edges is the most direct way to "
+            "rebuild the population."),
+        "text_b": (
+            "The decline is driven by what happens in winter. Nearly the entire population "
+            "spends the cold months clustered in a few mountain forests, where dense fir "
+            "trees shelter them from frost and rain. Illegal logging has thinned those "
+            "forests, and butterflies in thinned stands freeze during winter storms at "
+            "several times the rate of those in intact forest. Counts of the winter "
+            "colonies show the sharpest drops in years with storms following logging. Even "
+            "with plenty of milkweed, a population that loses most of its adults each "
+            "winter cannot recover. Protecting the winter forests must come first."),
+        "text_c": (
+            "Neither milkweed loss nor logging explains the full pattern. Monarch numbers "
+            "fell fastest in regions where milkweed was still common, and some years with "
+            "mild winters still produced small spring populations. The missing factor is "
+            "insecticide. Seeds coated with long-lasting insecticides are now planted on "
+            "most cornfields, and the chemicals spread into nearby milkweed. Caterpillars "
+            "that eat treated milkweed grow slowly and die at higher rates, and adults "
+            "exposed to the chemicals lay fewer eggs. The decline began within a few years "
+            "of the coated seeds coming into wide use, which neither of the other "
+            "explanations accounts for."),
+        "questions": {
+            "claim": (
+                "Scientist 3 would most likely agree with which of the following statements?",
+                ["Monarch numbers have fallen even in some regions where milkweed remains common.",
+                 "Thinned winter forests are the main reason the population has declined.",
+                 "Restoring milkweed along roadsides is the most direct way to rebuild the population.",
+                 "Mild winters always produce large spring populations of monarchs."],
+                0,
+                ["Correct. Scientist 3 cites declines where milkweed was still common as evidence against Scientist 1.",
+                 "Logging is Scientist 2's explanation.",
+                 "This is Scientist 1's recommendation.",
+                 "Scientist 3 notes that some mild winters still produced small populations."],
+                "Scientist 3 uses declines in milkweed-rich regions to argue that something else is responsible."),
+            "common": (
+                "All three scientists would most likely agree that:",
+                ["the monarch population has fallen in recent years.",
+                 "milkweed loss on farmland is the main cause of the decline.",
+                 "insecticides carried into milkweed harm monarch caterpillars.",
+                 "winter storms in thinned forests kill most adult monarchs."],
+                0,
+                ["Correct. All three set out to explain the same decline.",
+                 "Only Scientist 1 makes milkweed the main cause.",
+                 "Only Scientist 3 cites insecticides.",
+                 "Only Scientist 2 emphasizes winter storms."],
+                "The decline itself is the shared starting point; its cause is disputed."),
+            "evidence": (
+                "Which of the following findings, if true, would most strongly support Scientist 2's viewpoint?",
+                ["Winter colonies in intact forest patches survived a severe storm that killed most butterflies in thinned patches nearby.",
+                 "Milkweed counts on farmland fell by more than half over the same years as the monarch decline.",
+                 "Caterpillars raised on milkweed collected from treated fields died at twice the rate of those raised on untreated plants.",
+                 "Regions with abundant milkweed saw monarch declines as steep as regions with little milkweed."],
+                0,
+                ["Correct. Survival that depends on forest condition during a storm is exactly Scientist 2's mechanism.",
+                 "This supports Scientist 1's milkweed explanation.",
+                 "This supports Scientist 3's insecticide explanation.",
+                 "This is Scientist 3's argument against Scientist 1."],
+                "Scientist 2's claim is that forest thinning raises winter mortality; a storm that kills butterflies only in thinned patches demonstrates it."),
+            "new_obs": (
+                "Suppose that, after milkweed was replanted widely across farmland, the number of monarch eggs and caterpillars rose sharply but the number of adults arriving at the winter forests the following year did not. This finding would most likely:",
+                ["weaken Scientist 1's viewpoint and support Scientist 2's.",
+                 "weaken Scientist 2's viewpoint and support Scientist 1's.",
+                 "support all three viewpoints about equally.",
+                 "weaken Scientist 3's viewpoint only."],
+                0,
+                ["Correct. More milkweed produced more caterpillars but no recovery, so milkweed was not the limiting factor; losses elsewhere, such as in winter, are implicated.",
+                 "The finding shows milkweed restoration did not rebuild the population, the opposite of Scientist 1's prediction.",
+                 "The finding contradicts Scientist 1's prediction.",
+                 "The finding says nothing specific about insecticides."],
+                "If caterpillars become abundant without adults recovering, the bottleneck lies after the caterpillar stage, which fits Scientist 2 better than Scientist 1."),
+            "difference": (
+                "Scientist 1 and Scientist 3 disagree mainly about:",
+                ["whether the quantity of milkweed or the chemicals in it limits the population.",
+                 "whether monarch caterpillars feed on milkweed.",
+                 "whether coated seeds are planted on most cornfields.",
+                 "whether monarch butterflies migrate each autumn to the same few mountain forests."],
+                0,
+                ["Correct. Scientist 1 blames the quantity of milkweed; Scientist 3 blames insecticide contamination of the milkweed that remains.",
+                 "Both accept that caterpillars eat milkweed.",
+                 "Scientist 1 does not dispute how seeds are planted.",
+                 "Neither disputes the migration."],
+                "Both tie the decline to milkweed in some way; the dispute is quantity versus contamination."),
+            "assumption": (
+                "Which of the following is an assumption shared by all three scientists?",
+                ["The decline has a cause that people could act on to help the population recover.",
+                 "The monarch population was larger in the past mainly because winters were colder then.",
+                 "Milkweed on farmland is free of insecticide residue.",
+                 "Logging of the winter forests has had no effect on the butterflies."],
+                0,
+                ["Correct. Each scientist proposes a human-caused factor and a remedy, taking for granted that the decline is reversible.",
+                 "No scientist claims colder winters helped the population.",
+                 "Scientist 3 argues the opposite.",
+                 "Scientist 2 argues the opposite; the others do not deny an effect."],
+                "All three name a human activity as the cause and imply that changing it would help, which assumes the decline can be reversed."),
+            "weaken": (
+                "Scientist 1's viewpoint would be most weakened by which of the following findings?",
+                ["Egg counts per milkweed plant rose as milkweed grew scarcer, so total egg numbers stayed about the same.",
+                 "Milkweed has disappeared from most of the farmland where it once grew.",
+                 "Winter colonies suffered their heaviest losses in the years when storms followed logging of the forests.",
+                 "Insecticide residues have been detected in milkweed near treated fields."],
+                0,
+                ["Correct. If total egg numbers held steady despite less milkweed, milkweed loss cannot explain fewer caterpillars.",
+                 "This is Scientist 1's own evidence.",
+                 "This supports Scientist 2 but does not directly contradict milkweed loss as a factor.",
+                 "This supports Scientist 3 but does not show milkweed quantity is irrelevant."],
+                "Scientist 1's argument runs from fewer plants to fewer eggs; steady total egg numbers break that chain."),
+        },
+    },
+    {
+        "id": "city", "title": "Why the City Was Abandoned",
+        "text_a": (
+            "The ancient city was abandoned because of a long drought. Layers of lake "
+            "sediment from the region show a sharp drop in rainfall lasting more than a "
+            "century, beginning just before the city's population began to fall. The city "
+            "depended on reservoirs filled by seasonal rains, and excavations show the "
+            "reservoirs were enlarged twice late in the city's history, a sign that water "
+            "was becoming scarce. Tree-ring records from the surrounding hills confirm "
+            "several decades of poor growth in the same period. Without reliable water, "
+            "crops failed, and the people left for river valleys where farming remained "
+            "possible."),
+        "text_b": (
+            "The city was undone by its own irrigation. For centuries farmers watered their "
+            "fields from canals, and in a hot climate much of that water evaporated, "
+            "leaving behind the salts it carried. Soil samples from the old fields contain "
+            "salt levels far too high for wheat, the city's main crop, and pollen records "
+            "show a late shift toward barley, which tolerates salt better. Written tablets "
+            "from the final decades record shrinking harvests on fields that still received "
+            "water. A drought may have added to the strain, but the fields were already "
+            "failing from salt before the dry period, and no amount of rain would have "
+            "washed it away quickly."),
+        "questions": {
+            "claim": (
+                "Which of the following claims is most consistent with Scientist 2's viewpoint?",
+                ["The city's farmers switched to barley because their fields had become salty.",
+                 "The city's reservoirs were enlarged because rainfall had become unreliable.",
+                 "Tree rings show several decades of poor growth during the city's final period.",
+                 "The city's fields failed only after the long drought began."],
+                0,
+                ["Correct. Scientist 2 cites the pollen shift to salt-tolerant barley as evidence of salinization.",
+                 "The reservoirs are Scientist 1's evidence.",
+                 "Tree rings are Scientist 1's evidence.",
+                 "Scientist 2 says the fields were failing before the dry period."],
+                "The shift to barley is Scientist 2's evidence that salt, not water shortage, was ruining the fields."),
+            "common": (
+                "Scientist 1 and Scientist 2 would both most likely agree that:",
+                ["the city's food supply declined before the city was abandoned.",
+                 "rainfall in the region dropped sharply for more than a century.",
+                 "salt accumulated in the fields because of irrigation.",
+                 "the people of the city moved to river valleys when they left."],
+                0,
+                ["Correct. Scientist 1 cites failed crops; Scientist 2 cites shrinking harvests. Both describe a failing food supply.",
+                 "Only Scientist 1 asserts the century-long drought; Scientist 2 allows only that a drought may have added strain.",
+                 "Only Scientist 2 makes this claim.",
+                 "Only Scientist 1 says where the people went."],
+                "Both explanations end with failing crops; they differ on why the crops failed."),
+            "evidence": (
+                "Which of the following findings, if true, would most strongly support Scientist 1's viewpoint?",
+                ["Unirrigated fields on the outskirts with low salt levels also went out of use during the dry period.",
+                 "Soil from the irrigated fields contains salt at levels that would kill wheat seedlings.",
+                 "Tablets from the city's final decades record poor harvests on fields that still received water from the canals.",
+                 "Pollen records show barley replacing wheat late in the city's history."],
+                0,
+                ["Correct. Fields with no salt problem being abandoned during the drought points to water shortage as the cause.",
+                 "High salt in the fields supports Scientist 2.",
+                 "Poor harvests on watered fields are Scientist 2's evidence that water was not the issue.",
+                 "The shift to barley supports the salinization explanation."],
+                "Scientist 1 needs evidence that water shortage alone ended farming; unirrigated, salt-free fields going out of use during the drought provides it."),
+            "new_obs": (
+                "Suppose new dating showed that the drought began fifty years after the city's population had already fallen by half. This finding would most likely:",
+                ["weaken Scientist 1's viewpoint.",
+                 "weaken Scientist 2's viewpoint.",
+                 "support Scientist 1's viewpoint.",
+                 "support both viewpoints equally."],
+                0,
+                ["Correct. A cause must come before its effect; a drought that began after the decline cannot have started it.",
+                 "Decline before the drought is consistent with Scientist 2's view that salt was already ruining the fields.",
+                 "The timing contradicts Scientist 1's sequence of events.",
+                 "The finding favors the salinization explanation."],
+                "Scientist 1 places the drought just before the decline; the new dating reverses that order."),
+            "difference": (
+                "The central disagreement between the two scientists concerns:",
+                ["whether lack of water or the state of the soil ended farming around the city.",
+                 "whether the people of the city depended on farming for most of their food supply.",
+                 "whether irrigation canals were used to water the fields.",
+                 "whether the city was eventually abandoned."],
+                0,
+                ["Correct. Drought versus salinization is the dispute.",
+                 "Both treat farming as the city's food source.",
+                 "Scientist 1 does not dispute the canals; the dispute is about their consequences.",
+                 "Both accept that the city was abandoned."],
+                "Both agree the fields failed and the city emptied; they disagree about what ruined the fields."),
+            "assumption": (
+                "The arguments of both scientists depend on the assumption that:",
+                ["the failure of the city's farmland was the main reason people left.",
+                 "the climate of the region has not changed since the city was abandoned.",
+                 "the city's rulers kept no written records of its harvests.",
+                 "wheat tolerates salty soil better than barley does."],
+                0,
+                ["Correct. Each explanation ends with failing crops and treats that as why the city emptied, without considering other reasons such as war or disease.",
+                 "Scientist 1 explicitly describes a climate change.",
+                 "Scientist 2 cites written tablets about harvests.",
+                 "Scientist 2 says the opposite."],
+                "Both link the abandonment directly to agriculture, taking for granted that crop failure, rather than some other event, drove people away."),
+            "weaken": (
+                "Which of the following findings, if true, would most weaken Scientist 1's viewpoint?",
+                ["The lake sediments used to reconstruct rainfall come from a basin with a different weather system.",
+                 "The reservoirs were enlarged twice late in the city's history.",
+                 "Salt levels in the old fields are far too high for wheat.",
+                 "Tree rings from the hills around the city show several decades of poor growth during the same period."],
+                0,
+                ["Correct. If the sediment record does not reflect the city's own rainfall, the main evidence for the drought no longer applies.",
+                 "The reservoir enlargement is Scientist 1's own evidence.",
+                 "High salt supports Scientist 2 but does not disprove a drought.",
+                 "Tree-ring evidence supports Scientist 1."],
+                "Scientist 1's drought rests on the sediment record; evidence that it reflects a different region undermines the foundation of the view."),
+        },
+    },
+    {
+        "id": "plankton", "title": "The Nightly Rise of Plankton",
+        "text_a": (
+            "Tiny animals called zooplankton spend the day hundreds of meters below the "
+            "surface and rise to feed near the top only after dark because they are "
+            "hiding from predators. The fish that eat them hunt by sight, so a plankton "
+            "animal near the sunlit surface in daytime is easily seen and eaten. In the "
+            "dark depths it is nearly invisible. Experiments in large tanks show that "
+            "plankton stay deeper when fish are present and rise earlier when fish are "
+            "removed, even if the light is unchanged. In lakes with no fish, the daily "
+            "migration is weak or absent. The pattern is a trade-off: the surface offers "
+            "food, but only the night makes it safe."),
+        "text_b": (
+            "The migration is a way of saving energy. Water near the surface is warm, and a "
+            "cold-blooded animal's body uses up energy faster in warm water. By feeding "
+            "briefly at the surface and then sinking into cold, deep water, a plankton "
+            "animal digests its food while burning fuel slowly, so it grows faster on the "
+            "same amount of food. Measurements show that plankton which migrate convert "
+            "food into body mass more efficiently than those that remain at the surface. "
+            "Predators may matter in some lakes, but the migration also occurs in the open "
+            "ocean where visual predators are scarce, and it follows the daily cycle of "
+            "light because light sets the animals' internal clock, not because light "
+            "reveals them."),
+        "questions": {
+            "claim": (
+                "Scientist 2 would most likely agree with which of the following statements?",
+                ["A plankton animal uses energy more slowly in cold water than in warm water.",
+                 "Plankton rise earlier in the evening when fish are removed from a tank.",
+                 "The daily migration is weak or absent in lakes that contain no fish.",
+                 "Plankton near the sunlit surface are easily seen and eaten by fish during the day."],
+                0,
+                ["Correct. Scientist 2's whole argument rests on slower energy use in cold, deep water.",
+                 "The tank experiment is Scientist 1's evidence.",
+                 "Fishless lakes are Scientist 1's evidence.",
+                 "Visibility to predators is Scientist 1's mechanism."],
+                "Slower metabolism in cold water is the foundation of the energy-saving explanation."),
+            "common": (
+                "Despite their disagreement, both scientists would accept that:",
+                ["zooplankton feed near the surface mainly at night.",
+                 "visual predators are scarce in the open ocean.",
+                 "the migration helps plankton convert food into body mass efficiently.",
+                 "plankton stay deeper when fish are present."],
+                0,
+                ["Correct. Both passages describe nighttime feeding at the surface as the behavior to be explained.",
+                 "Only Scientist 2 makes this claim.",
+                 "Only Scientist 2 makes this claim.",
+                 "Only Scientist 1 cites this experiment."],
+                "The nightly surface feeding is the shared observation; its purpose is disputed."),
+            "evidence": (
+                "Which of the following findings, if true, would most strongly support Scientist 2's viewpoint?",
+                ["In a fishless lake with a strong temperature difference between surface and depth, plankton migrate strongly.",
+                 "Plankton in tanks rise toward the surface sooner when fish are removed.",
+                 "Plankton in a lake stay deeper during the day in years when fish are abundant and rise sooner when fish are scarce.",
+                 "Plankton in a uniformly cold lake with many fish migrate strongly each night."],
+                0,
+                ["Correct. Migration without predators but with a temperature gradient fits energy saving, not predator avoidance.",
+                 "Response to fish supports Scientist 1.",
+                 "Response to fish abundance supports Scientist 1.",
+                 "Migration without a temperature gradient but with fish supports Scientist 1."],
+                "Scientist 2's mechanism needs a temperature difference, not predators; strong migration with the gradient but no fish is the cleanest support."),
+            "new_obs": (
+                "Suppose researchers found that in a lake where the deep water is as warm as the surface, plankton still migrate strongly, and that they stop migrating when all fish are removed. This finding would most likely:",
+                ["support Scientist 1's viewpoint and weaken Scientist 2's.",
+                 "support Scientist 2's viewpoint and weaken Scientist 1's.",
+                 "support both viewpoints about equally.",
+                 "weaken both viewpoints to the same degree."],
+                0,
+                ["Correct. No temperature benefit yet strong migration that depends on fish matches predator avoidance and contradicts energy saving.",
+                 "Without cold deep water there is no energy saving to explain the migration.",
+                 "The finding contradicts Scientist 2's mechanism.",
+                 "The finding fits Scientist 1's prediction."],
+                "Warm deep water removes Scientist 2's benefit, and the dependence on fish supplies Scientist 1's cause."),
+            "difference": (
+                "The two viewpoints differ mainly about:",
+                ["whether plankton migrate to avoid being eaten or to save energy.",
+                 "whether zooplankton are cold-blooded animals.",
+                 "whether light levels change over the course of a day.",
+                 "whether plankton are able to swim up and down through the water column."],
+                0,
+                ["Correct. Predator avoidance versus energy saving is the dispute.",
+                 "Neither disputes this.",
+                 "Both accept the daily light cycle.",
+                 "Both accept that plankton migrate."],
+                "The behavior is agreed; its function is what divides the scientists."),
+            "assumption": (
+                "Both scientists assume that:",
+                ["the daily migration benefits the plankton that perform it.",
+                 "fish are the only predators that eat zooplankton.",
+                 "surface water and deep water are always the same temperature.",
+                 "plankton can see the fish that hunt them."],
+                0,
+                ["Correct. Each scientist proposes a benefit, safety or efficiency, and neither considers that the behavior might be useless or harmful.",
+                 "Neither scientist claims fish are the only predators.",
+                 "Scientist 2 relies on a temperature difference.",
+                 "Neither scientist discusses what plankton can see."],
+                "Both treat the migration as an adaptation with a payoff; they differ only on what the payoff is."),
+            "weaken": (
+                "Which of the following discoveries, if made, would most seriously undermine Scientist 1's explanation?",
+                ["Plankton in a tank migrate on the same schedule with or without fish, as long as the deep water is colder.",
+                 "Fish that eat plankton hunt by sight and feed mostly during daylight.",
+                 "Plankton that remain at the surface all day are eaten at a much higher rate than those that migrate downward.",
+                 "The daily migration is strongest in clear lakes where sunlight penetrates deeply."],
+                0,
+                ["Correct. Migration that ignores the presence of fish but tracks temperature contradicts predator avoidance.",
+                 "Visual daytime predators fit Scientist 1's view.",
+                 "Higher predation at the surface supports Scientist 1.",
+                 "Deeper light penetration means greater exposure, consistent with Scientist 1."],
+                "Scientist 1's mechanism predicts a response to predators; migration unchanged by their absence undercuts it."),
+        },
+    },
+    {
+        "id": "mars", "title": "Where Mars's Water Went",
+        "text_a": (
+            "Mars once had rivers and lakes, and most of that water escaped to space. Early "
+            "in its history Mars lost its global magnetic field, which had shielded the "
+            "atmosphere from the stream of charged particles flowing from the Sun. Without "
+            "that shield, the particles stripped gas from the top of the atmosphere, and "
+            "the planet's weak gravity could not hold it back. As the air thinned, surface "
+            "water boiled or froze, and water vapor rising into the upper atmosphere was "
+            "broken apart by sunlight, with the light hydrogen escaping. A spacecraft "
+            "orbiting Mars today still measures hydrogen and oxygen leaking away, and the "
+            "ratio of heavy to light hydrogen in the remaining water shows that most of the "
+            "original water is gone."),
+        "text_b": (
+            "Most of the water never left; it is locked inside the crust. When water reacts "
+            "with volcanic rock, it becomes part of the minerals that form, such as clays. "
+            "Orbiting instruments have found such water-bearing minerals across large "
+            "areas of the Martian surface, and rovers have measured water bound in the "
+            "rocks they drill. Calculations of how much water those minerals can hold "
+            "suggest that the crust could contain an ocean's worth. Escape to space is "
+            "real but slow, and at the rates measured today it cannot account for the "
+            "amount of water the early rivers required. Mars dried out mainly because its "
+            "water was absorbed by the ground."),
+        "questions": {
+            "claim": (
+                "Scientist 1 would most likely agree with which of the following statements?",
+                ["The loss of Mars's magnetic field allowed its atmosphere to be stripped away.",
+                 "Most of the water from Mars's early rivers and lakes is now bound inside crustal minerals.",
+                 "Escape of gas to space is too slow to explain the loss of the early water.",
+                 "Water-bearing minerals are rare on the Martian surface."],
+                0,
+                ["Correct. Scientist 1 begins with the loss of the magnetic shield.",
+                 "Water in minerals is Scientist 2's explanation.",
+                 "This is Scientist 2's objection to Scientist 1.",
+                 "Scientist 2 says such minerals are widespread; Scientist 1 does not dispute it."],
+                "The loss of the magnetic field is the first step in Scientist 1's chain of events."),
+            "common": (
+                "Both scientists would most likely agree that:",
+                ["Mars once had far more liquid water on its surface than it has today.",
+                 "most of the water from Mars's early rivers and lakes escaped into space.",
+                 "the crust of Mars holds an ocean's worth of water.",
+                 "Mars still has a strong global magnetic field."],
+                0,
+                ["Correct. Both passages begin from the early rivers and lakes.",
+                 "Only Scientist 1 claims this.",
+                 "Only Scientist 2 claims this.",
+                 "Scientist 1 says the field was lost; Scientist 2 does not dispute it."],
+                "The early wet Mars is accepted by both; the fate of the water is disputed."),
+            "evidence": (
+                "Which of the following findings, if true, would most strongly support Scientist 1's viewpoint?",
+                ["The rate of hydrogen escape from Mars was hundreds of times higher in the past than it is today.",
+                 "Rover drilling finds water bound in rock at every site sampled.",
+                 "Clay minerals cover a larger fraction of the surface than previously mapped.",
+                 "The crust is found to be thicker, and able to hold far more water, than earlier estimates had suggested."],
+                0,
+                ["Correct. Much faster escape in the past answers Scientist 2's objection that escape is too slow.",
+                 "Widespread bound water supports Scientist 2.",
+                 "More clay supports Scientist 2.",
+                 "A larger crustal reservoir supports Scientist 2."],
+                "Scientist 2's main objection is that escape is too slow; evidence of much faster past escape removes it."),
+            "new_obs": (
+                "Suppose a new analysis showed that the water-bearing minerals on Mars formed from water that was already present in the volcanic rock when it erupted, not from surface water. This finding would most likely:",
+                ["weaken Scientist 2's viewpoint.",
+                 "weaken Scientist 1's viewpoint.",
+                 "support Scientist 2's viewpoint.",
+                 "support both viewpoints equally."],
+                0,
+                ["Correct. If the minerals did not absorb surface water, they cannot be where the rivers' water went.",
+                 "The finding does not concern escape to space.",
+                 "The finding removes the link between the minerals and the lost surface water.",
+                 "The finding bears only on Scientist 2's reservoir."],
+                "Scientist 2's reservoir only explains the missing rivers if the minerals absorbed surface water; the finding breaks that link."),
+            "difference": (
+                "The scientists disagree mainly about:",
+                ["whether the missing water left the planet or remains stored within it.",
+                 "whether Mars ever had rivers and lakes on its surface.",
+                 "whether Mars has weaker gravity than Earth.",
+                 "whether orbiting spacecraft can detect hydrogen leaving the top of the atmosphere."],
+                0,
+                ["Correct. Escape to space versus storage in the crust is the dispute.",
+                 "Both accept the early rivers.",
+                 "Neither disputes Mars's gravity.",
+                 "Scientist 2 accepts that escape is real, only that it is slow."],
+                "The dispute is the destination of the water, not the existence of the early rivers."),
+            "assumption": (
+                "Which of the following is an assumption made by both scientists? Both assume that:",
+                ["the amount of water in Mars's early rivers and lakes can be estimated reliably.",
+                 "Mars's magnetic field is as strong today as it was during the planet's first billion years.",
+                 "the minerals on the Martian surface contain no water at all.",
+                 "the Sun's output of charged particles has never changed."],
+                0,
+                ["Correct. Each argues about whether their mechanism accounts for the original amount of water, which presumes that amount is known.",
+                 "Scientist 1 says the field was lost.",
+                 "Scientist 2 says the opposite; Scientist 1 does not deny bound water.",
+                 "Neither scientist makes this claim."],
+                "Both compare their mechanism against the quantity of early water, taking that quantity as known."),
+            "weaken": (
+                "Scientist 1's viewpoint would be most weakened by which of the following findings?",
+                ["Martian water's heavy-to-light hydrogen ratio matches that of comet water that never lost hydrogen to space.",
+                 "An orbiter detects oxygen and hydrogen atoms streaming away from the top of the Martian atmosphere even today.",
+                 "Mars's crust is found to contain less bound water than Scientist 2 estimated.",
+                 "Rock samples show Mars's magnetic field disappeared early in the planet's history."],
+                0,
+                ["Correct. Scientist 1 uses the hydrogen ratio as evidence of massive escape; a ratio matching unprocessed comet water removes that evidence.",
+                 "Ongoing escape is Scientist 1's own evidence.",
+                 "Less crustal water weakens Scientist 2, not Scientist 1.",
+                 "Early loss of the field is part of Scientist 1's account."],
+                "The heavy-hydrogen enrichment is Scientist 1's sign that light hydrogen escaped; no enrichment means no such sign."),
+        },
+    },
+    {
+        "id": "stones", "title": "The Sliding Stones",
+        "text_a": (
+            "The rocks on the dry lake bed move because of wind on wet mud. After a rare "
+            "rain, a thin film of water turns the surface of the playa into slick clay. "
+            "Strong winds, which often exceed 100 km per hour across the flat basin, push "
+            "the rocks across this slippery surface, and the rocks leave the long trails "
+            "that puzzle visitors. The trails all point in the direction of the strongest "
+            "winds, and rocks of similar size on the same part of the playa travel the "
+            "same distance, which is what wind alone would produce. Rocks are found "
+            "sitting in shallow mud grooves exactly as wide as themselves, showing they "
+            "were pressed down into soft mud as they slid."),
+        "text_b": (
+            "Wind on wet mud cannot move rocks that weigh several kilograms; the drag is "
+            "far too small. The rocks move when thin sheets of ice form on shallow water "
+            "that floods the playa on cold winter nights. As the ice breaks up in the "
+            "morning sun, light winds push large floating panels of ice, and the rocks "
+            "frozen into them or shoved by them slide along. Ice explains why some trails "
+            "are parallel to one another, as if the rocks moved together, and why the "
+            "rocks move only in winter. Trails that turn sharply at the same point were "
+            "made by rocks carried by a single rotating panel of ice."),
+        "text_c": (
+            "The trails are made by flash floods. When heavy rain falls on the surrounding "
+            "mountains, a sheet of fast water sweeps across the playa, carrying mud and "
+            "small stones and dragging larger rocks along the bottom. The water drains "
+            "within hours, leaving the trails in the mud. Floods explain why the trails "
+            "start and stop abruptly and why loose gravel is sometimes found piled on the "
+            "downstream side of a rock. Both wind and ice would act on every rock on the "
+            "playa, yet only some rocks move each year, and those rocks are the ones that "
+            "lie in the shallow channels where floodwater flows fastest."),
+        "questions": {
+            "claim": (
+                "Scientist 2 would most likely agree with which of the following statements?",
+                ["Wind alone is too weak to move the heavier rocks across the wet mud.",
+                 "Rocks of similar size travel the same distance because wind pushes them equally.",
+                 "The rocks are dragged along the bottom of a sheet of fast-moving floodwater.",
+                 "Rocks that move each year are those lying in shallow channels."],
+                0,
+                ["Correct. Scientist 2 begins by rejecting wind as too weak.",
+                 "This is Scientist 1's argument.",
+                 "This is Scientist 3's mechanism.",
+                 "This is Scientist 3's observation."],
+                "Scientist 2's case opens with the claim that wind drag is far too small."),
+            "common": (
+                "All three scientists would most likely agree that:",
+                ["water must be present on the playa surface for the rocks to move.",
+                 "the rocks are moved by panels of floating ice.",
+                 "the trails all point in the direction of the strongest winds that cross the playa.",
+                 "every rock on the playa moves during each wet period."],
+                0,
+                ["Correct. Scientist 1 needs wet mud, Scientist 2 needs shallow water that freezes, Scientist 3 needs floodwater.",
+                 "Only Scientist 2 proposes ice.",
+                 "Only Scientist 1 makes this claim.",
+                 "Scientist 3 stresses that only some rocks move."],
+                "Each mechanism requires water on the surface, though in different forms."),
+            "evidence": (
+                "Which of the following findings, if true, would most strongly support Scientist 3's viewpoint?",
+                ["Rocks moved only while gauges on the playa recorded flowing water several centimeters deep.",
+                 "Rocks moved on a winter night when the playa was covered with a thin skin of ice.",
+                 "Trails formed during a windstorm that followed a light rain.",
+                 "Rocks resting on the highest, driest parts of the playa moved as far as rocks in low channels."],
+                0,
+                ["Correct. Movement coinciding with flowing water is exactly the flood mechanism.",
+                 "Movement with ice present supports Scientist 2.",
+                 "Wind after rain supports Scientist 1.",
+                 "Movement independent of channels argues against Scientist 3."],
+                "Scientist 3 needs flowing water during movement; gauge records of it provide direct support."),
+            "new_obs": (
+                "Suppose GPS trackers attached to the rocks recorded movement only on calm, sunny winter mornings with no rain in the preceding week, while a shallow pond covered the playa. This finding would most likely:",
+                ["support Scientist 2's viewpoint and weaken Scientists 1 and 3.",
+                 "support Scientist 1's viewpoint and weaken Scientists 2 and 3.",
+                 "support Scientist 3's viewpoint and weaken Scientists 1 and 2.",
+                 "support all three viewpoints about equally."],
+                0,
+                ["Correct. Calm conditions rule out strong wind, no recent rain rules out floods, and a pond on a winter morning is where ice would form and break up.",
+                 "Calm air removes Scientist 1's strong winds.",
+                 "No recent rain removes Scientist 3's floods.",
+                 "The conditions fit only the ice explanation."],
+                "The observed conditions remove the causes proposed by Scientists 1 and 3 and match the setting Scientist 2 describes."),
+            "difference": (
+                "Scientist 1 and Scientist 2 disagree mainly about:",
+                ["whether wind alone can supply enough force to move the rocks.",
+                 "whether rain ever falls on the dry lake bed.",
+                 "whether the rocks leave visible trails in the mud as they move across the playa.",
+                 "whether wind blows across the playa at all."],
+                0,
+                ["Correct. Scientist 1 says wind on slick mud is enough; Scientist 2 says it is far too weak and ice is needed.",
+                 "Both rely on water reaching the playa.",
+                 "Both accept the trails.",
+                 "Scientist 2 invokes light winds pushing ice."],
+                "The dispute is whether wind alone can do the work, not whether wind or water exist."),
+            "assumption": (
+                "Which of the following is an assumption shared by all three scientists?",
+                ["The rocks are moved by a natural process rather than by people or animals.",
+                 "The rocks move only during the summer months.",
+                 "Ice never forms on the surface of the playa.",
+                 "Every trail on the playa was made during a single event rather than over many years."],
+                0,
+                ["Correct. All three propose natural forces and none considers that visitors or animals moved the rocks.",
+                 "Scientist 2 argues for winter movement.",
+                 "Scientist 2's mechanism depends on ice forming.",
+                 "Scientist 3 says only some rocks move each year."],
+                "Each explanation is a natural mechanism; the possibility of human or animal interference is set aside by all three."),
+            "weaken": (
+                "Which of the following findings, if true, would most weaken Scientist 1's viewpoint?",
+                ["In wind-tunnel tests, 150 km/h winds fail to budge a 5 kg rock resting on wet playa clay.",
+                 "Trails on the playa point in the direction of the prevailing wind.",
+                 "The playa surface becomes slick after rain.",
+                 "Rocks are found sitting in grooves pressed into the mud exactly as wide as the rocks themselves."],
+                0,
+                ["Correct. If even very strong wind cannot move a rock on wet clay, wind alone cannot be the cause.",
+                 "Trail direction is Scientist 1's own evidence.",
+                 "Slick mud is part of Scientist 1's account.",
+                 "The grooves are Scientist 1's own evidence."],
+                "Scientist 1's mechanism is wind force on slick mud; a direct test showing wind cannot move the rocks contradicts it."),
+        },
+    },
+    {
+        "id": "methane", "title": "Methane Over the Marsh",
+        "text_a": (
+            "The methane detected over the marsh comes from microbes in the waterlogged "
+            "soil. In mud with no oxygen, certain microbes break down dead plant material "
+            "and release methane as a waste product, and the gas bubbles up through the "
+            "water. Methane levels over the marsh rise in late summer, when the mud is "
+            "warmest and the microbes are most active, and fall in winter. Samples of gas "
+            "from bubbles in the mud have the chemical signature typical of microbial "
+            "methane, with very little of the heavier gases found in natural gas. The "
+            "marsh releases more methane per hectare than nearby forest or farmland, as "
+            "wetlands do throughout the world."),
+        "text_b": (
+            "The excess methane comes from an aging natural-gas pipeline that crosses the "
+            "marsh. The highest methane readings are concentrated in a narrow band along "
+            "the pipeline route rather than spread evenly across the marsh, and they do "
+            "not fall off in winter the way microbial emissions would. Gas collected "
+            "directly above the pipeline contains ethane and propane, which microbes do "
+            "not produce. Microbial methane is real, but it was present long before "
+            "monitoring began, while the excess appeared only after the pipeline's "
+            "pressure was raised. Repairing the pipeline would remove most of the signal."),
+        "text_c": (
+            "A third source has been overlooked: ancient methane trapped in a layer of "
+            "frozen ground beneath the marsh. The frozen layer has been thawing from below "
+            "as the climate warms, releasing gas that formed thousands of years ago. This "
+            "old methane contains almost no radioactive carbon, unlike the fresh methane "
+            "that microbes make from recently living plants. Measurements of the marsh air "
+            "show a methane mixture that is older than microbial gas alone could explain. "
+            "Thaw releases are steady year-round and strongest where the frozen layer is "
+            "thinnest, which happens to be near the pipeline route, so the pipeline has "
+            "been blamed for a signal it did not create."),
+        "questions": {
+            "claim": (
+                "Scientist 2 would most likely agree with which of the following statements?",
+                ["The highest methane readings lie in a narrow band rather than across the whole marsh.",
+                 "Methane over the marsh is highest in late summer and falls to its lowest level in winter.",
+                 "The excess methane formed thousands of years ago from ancient plants.",
+                 "The methane in the marsh air contains almost no radioactive carbon."],
+                0,
+                ["Correct. Scientist 2 cites the narrow band along the pipeline route.",
+                 "The seasonal pattern is Scientist 1's evidence, and Scientist 2 disputes a winter drop.",
+                 "Ancient methane is Scientist 3's claim.",
+                 "The radiocarbon evidence belongs to Scientist 3."],
+                "The concentration of readings along the pipeline is Scientist 2's key observation."),
+            "common": (
+                "All three scientists would most likely agree that:",
+                ["microbes in the marsh mud produce some methane.",
+                 "the pipeline is the main source of the excess methane.",
+                 "methane levels over the marsh are highest in late summer.",
+                 "the frozen layer beneath the marsh is thawing."],
+                0,
+                ["Correct. Scientist 1 makes microbes the source; Scientists 2 and 3 both acknowledge microbial methane exists.",
+                 "Only Scientist 2 blames the pipeline; Scientist 3 explicitly disputes it.",
+                 "Scientist 2 says levels do not fall in winter.",
+                 "Only Scientist 3 proposes the thawing layer."],
+                "Microbial methane is conceded by all three; the dispute is about what accounts for the excess."),
+            "evidence": (
+                "Which of the following findings, if true, would most strongly support Scientist 3's viewpoint?",
+                ["Marsh-air methane has a radiocarbon age of several thousand years and contains no ethane.",
+                 "Methane readings along the route fall sharply within days after the pipeline is shut off for repairs.",
+                 "Methane bubbles rise from the mud most often on the warmest days of summer.",
+                 "Gas samples above the pipeline contain ethane and propane."],
+                0,
+                ["Correct. Old carbon with no ethane fits ancient, non-pipeline methane.",
+                 "A drop when the pipeline is shut off supports Scientist 2.",
+                 "Warm-weather bubbling supports Scientist 1.",
+                 "Ethane and propane are Scientist 2's pipeline signature."],
+                "Scientist 3 needs the methane to be old and not from natural gas; radiocarbon age without ethane shows both."),
+            "new_obs": (
+                "Suppose the pipeline was shut down and drained for three months, and methane levels in the narrow band along its route did not change at all. This finding would most likely:",
+                ["weaken Scientist 2's viewpoint.",
+                 "weaken Scientist 1's viewpoint.",
+                 "support Scientist 2's viewpoint.",
+                 "weaken all three viewpoints equally."],
+                0,
+                ["Correct. If removing the gas from the pipeline changes nothing, the pipeline cannot be the source of that band.",
+                 "Scientist 1's microbial source is not affected by the pipeline test.",
+                 "The finding contradicts Scientist 2's prediction.",
+                 "Only the pipeline explanation predicts a change."],
+                "Scientist 2 predicts that repairing the pipeline would remove most of the signal; an unchanged signal with the pipeline empty contradicts that."),
+            "difference": (
+                "Scientist 2 and Scientist 3 disagree mainly about:",
+                ["whether the methane along the pipeline route comes from the pipe or from the ground beneath it.",
+                 "whether microbes in the mud produce any methane.",
+                 "whether the highest methane readings are concentrated in a narrow band along the pipeline route.",
+                 "whether natural gas contains ethane and propane."],
+                0,
+                ["Correct. Both accept the band along the route; Scientist 2 attributes it to leaks, Scientist 3 to thawing ground that is thinnest there.",
+                 "Both concede microbial methane.",
+                 "Both accept this pattern.",
+                 "Neither disputes the composition of natural gas."],
+                "The two agree on where the methane is concentrated and disagree on why."),
+            "assumption": (
+                "Which of the following is an assumption shared by all three scientists?",
+                ["The chemical makeup of a methane sample can indicate where the methane came from.",
+                 "Methane released from the marsh has no measurable effect on the climate of the surrounding region.",
+                 "The pipeline has never leaked at any point along its route.",
+                 "Microbial activity in the mud is the same in every season."],
+                0,
+                ["Correct. Each scientist uses the composition of gas samples (heavier gases, radiocarbon) to argue for a source.",
+                 "No scientist makes this claim.",
+                 "Scientist 2 argues the opposite; the others do not claim this.",
+                 "Scientist 1 describes a seasonal cycle."],
+                "All three argue from the composition of the gas, which assumes composition reveals origin."),
+            "weaken": (
+                "Which of the following discoveries, if made, would most seriously undermine Scientist 1's explanation?",
+                ["Excess methane over the marsh is as high in midwinter, when the mud is frozen, as in late summer.",
+                 "Gas collected from bubbles rising through the mud has the chemical signature typical of microbial methane.",
+                 "The marsh releases more methane per hectare than nearby farmland.",
+                 "Microbes that produce methane are abundant in the marsh mud."],
+                0,
+                ["Correct. Microbial production should drop when the mud is frozen; an unchanged winter level points away from microbes.",
+                 "This is Scientist 1's own evidence.",
+                 "This is Scientist 1's own evidence.",
+                 "Abundant microbes support Scientist 1."],
+                "Scientist 1's explanation predicts a seasonal cycle; excess methane that ignores the seasons contradicts it."),
+        },
+    },
+    {
+        "id": "dieback", "title": "The Dying Pines",
+        "text_a": (
+            "The pines on the ridge are dying because of bark beetles. The beetles bore "
+            "through the bark and lay eggs, and their larvae eat the living layer beneath, "
+            "cutting off the flow of water and sugar. Every dead tree examined shows the "
+            "winding galleries the larvae leave, and traps caught ten times more beetles "
+            "this year than five years ago. Warm winters now let the beetles survive and "
+            "produce two generations in a summer instead of one. Healthy trees can drown "
+            "attacking beetles in resin, but a mass attack overwhelms even vigorous trees. "
+            "Removing infested trees before the beetles emerge is the way to protect the "
+            "rest of the stand."),
+        "text_b": (
+            "The underlying cause is drought. Rainfall on the ridge has been below average "
+            "for six of the past eight years, and the soil there is thin and holds little "
+            "water. A tree short of water cannot make enough resin to repel beetles, so the "
+            "insects succeed on trees that would normally resist them. Trees on the "
+            "well-watered lower slopes carry the same beetles yet remain mostly alive, and "
+            "tree rings from the dead pines show narrow growth for several years before "
+            "the beetles arrived. Beetles are the final blow, not the cause. Unless the "
+            "drought ends or the stand is thinned so that fewer trees compete for water, "
+            "removing infested trees will not save the others."),
+        "questions": {
+            "claim": (
+                "Which of the following claims is most consistent with Scientist 1's viewpoint?",
+                ["Warmer winters have allowed more beetles to survive and reproduce.",
+                 "Trees on the ridge were growing poorly for years before the beetles arrived.",
+                 "Thinning the stand to reduce competition for water would save the remaining trees.",
+                 "Pines on the well-watered lower slopes resist beetles because they make more resin."],
+                0,
+                ["Correct. Scientist 1 attributes the beetle surge to warm winters.",
+                 "The tree-ring evidence belongs to Scientist 2.",
+                 "This is Scientist 2's recommendation.",
+                 "This is Scientist 2's explanation."],
+                "The link between warm winters and beetle numbers is Scientist 1's explanation for the outbreak."),
+            "common": (
+                "Both scientists would most likely agree that:",
+                ["bark beetles are attacking the pines on the ridge.",
+                 "removing infested trees would protect the rest of the stand.",
+                 "rainfall on the ridge has been below average for most of the past eight years.",
+                 "the beetles are the underlying cause of the trees' death."],
+                0,
+                ["Correct. Both describe beetle attacks; Scientist 2 calls them the final blow.",
+                 "Scientist 2 says removal will not save the others.",
+                 "Only Scientist 1 omits this; Scientist 2 asserts it, and Scientist 1 does not mention rainfall.",
+                 "Scientist 2 calls drought the underlying cause."],
+                "The beetle attacks are common ground; whether they are cause or consequence is disputed."),
+            "evidence": (
+                "Which of the following findings, if true, would most strongly support Scientist 2's viewpoint?",
+                ["Ridge pines given extra water in summer survived beetle attacks at the same rate as lower-slope trees.",
+                 "Traps on the ridge caught ten times as many beetles this year as they did five years ago.",
+                 "Every dead tree examined contained beetle larvae galleries.",
+                 "Beetles on the ridge now produce two generations each summer instead of one because winters are warmer."],
+                0,
+                ["Correct. If water alone restores resistance, water shortage is what made the trees vulnerable.",
+                 "Beetle numbers support Scientist 1.",
+                 "Galleries show beetles were present, which both accept.",
+                 "Extra generations support Scientist 1's view of the outbreak."],
+                "Scientist 2's claim is that drought removes the trees' defenses; restoring water and restoring survival shows that directly."),
+            "new_obs": (
+                "Suppose a wet year ended the drought, and the following summer beetle numbers stayed high while the death rate of ridge pines fell to that of the lower slopes. This finding would most likely:",
+                ["support Scientist 2's viewpoint and weaken Scientist 1's.",
+                 "support Scientist 1's viewpoint and weaken Scientist 2's.",
+                 "support both viewpoints about equally.",
+                 "weaken both viewpoints to the same degree."],
+                0,
+                ["Correct. Deaths fell when water returned even though beetles remained, so water, not beetle numbers, controlled survival.",
+                 "High beetle numbers with few deaths contradicts Scientist 1's emphasis on the beetles.",
+                 "The finding contradicts Scientist 1's prediction.",
+                 "The finding matches Scientist 2's prediction."],
+                "Separating beetle numbers from tree deaths and tying deaths to water fits Scientist 2."),
+            "difference": (
+                "The two viewpoints differ mainly about:",
+                ["whether the beetles or the drought is the root cause of the trees' deaths.",
+                 "whether bark beetle larvae feed beneath the bark of pines.",
+                 "whether the pines on the ridge are dying.",
+                 "whether healthy trees can use resin to drown beetles that bore into their bark."],
+                0,
+                ["Correct. Beetles as cause versus beetles as final blow after drought is the dispute.",
+                 "Both accept this.",
+                 "Both accept the die-off.",
+                 "Both describe resin defense."],
+                "Both agree on the biology; they disagree on what ultimately caused the deaths."),
+            "assumption": (
+                "The arguments of both scientists depend on the assumption that:",
+                ["a pine's survival of a beetle attack depends on its condition and the number of attackers.",
+                 "beetles cannot survive winters on the ridge.",
+                 "the thin soil on the ridge holds just as much water as the deeper soil on the lower slopes.",
+                 "trees that die of drought show no sign of beetle damage."],
+                0,
+                ["Correct. Scientist 1 says mass attacks overwhelm even vigorous trees; Scientist 2 says water-short trees cannot resist. Both treat survival as a contest between defense and attack.",
+                 "Scientist 1 says warm winters let beetles survive.",
+                 "Scientist 2 says the ridge soil is thin.",
+                 "Scientist 2 says the dead trees were attacked by beetles."],
+                "Each explanation frames death as the outcome of tree defense against beetle pressure; they weight the two sides differently."),
+            "weaken": (
+                "Scientist 1's viewpoint would be most weakened by which of the following findings?",
+                ["Ridge pines removed before beetles emerged were replaced by new deaths at the same rate the next year.",
+                 "Beetle galleries are found beneath the bark of every dead pine.",
+                 "Warm winters have become more frequent on the ridge.",
+                 "Trees attacked by very large numbers of beetles die even when they are otherwise healthy and vigorous."],
+                0,
+                ["Correct. If removing infested trees does not slow the deaths, the beetles are not controlling the outcome, contrary to Scientist 1's view and remedy.",
+                 "Galleries are Scientist 1's own evidence.",
+                 "Warm winters are part of Scientist 1's account.",
+                 "Mass attacks overwhelming healthy trees is Scientist 1's claim."],
+                "Scientist 1's remedy follows from beetles being the cause; its failure undercuts that view."),
         },
     },
 ]

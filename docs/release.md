@@ -31,32 +31,28 @@ Workflows live in `.github/workflows/`:
 - **Releases:** attached to the GitHub Release for the tag, and as run artifacts
   (`release.yml`).
 
-## Cutting a private release
+## Cutting a release
 
-Before tagging, bump the version in **two places that must stay in sync**:
+Releases are cut **by GitHub Actions**, never by a hand-pushed tag (sandboxed
+environments such as cloud agent sessions cannot push tags). `release.yml`
+decides whether a run releases:
 
-- `version:` in `pubspec.yaml` (the `+N` build/versionCode must only increase).
-- `kAppVersion` in `lib/core/app_info.dart` (shown on the About screen and stamped
-  into backups). The content version on About is read from the bundle automatically.
+1. **Version bump on master (the normal path).** Bump the version in the two
+   places that must stay in sync — `version:` in `pubspec.yaml` (the `+N`
+   build/versionCode must only increase) and `kAppVersion` in
+   `lib/core/app_info.dart` — then merge to `master`. The workflow sees that
+   `v<version>` has no tag yet, builds the stable-signed APK, creates the tag on
+   that commit and publishes the GitHub Release with `zany-test-prep-v<version>.apk`
+   attached plus generated notes. A master push whose version already has a tag
+   does nothing.
+2. **Manual run.** Actions → Release → *Run workflow* with a `version` input (or
+   `gh workflow run release.yml -f version=v2.1.0 --ref master`): same result,
+   for re-cutting or releasing a non-master ref. The version check still
+   requires pubspec/kAppVersion to match the tag.
+3. **Tag push.** Pushing `vX.Y.Z` still works where tag pushes are allowed.
 
-```bash
-git tag v1.0.0
-git push origin v1.0.0
-```
-
-`release.yml` then builds the **stable-signed** release APK (using the signing
-secrets, see below) and creates a GitHub Release with a single tag-named asset,
-`zany-test-prep-v1.0.0.apk`, plus a generated changelog.
-
-**No tag push available?** (e.g. from an environment whose git proxy only allows
-branch pushes.) Run the Release workflow manually from the Actions tab — or
-`gh workflow run release.yml -f version=v1.0.0 --ref master` — with the
-`version` input set. The workflow builds the chosen ref, creates the tag on that
-commit and publishes the Release exactly as a tag push would.
-
-**Let CI do the release build — don't also upload one by hand.** Pushing the tag
-already triggers the workflow; a second manual `gh release create`/upload would add
-a duplicate (and possibly differently-signed) asset to the same release.
+**Let CI do the release build — don't also upload one by hand.** A second
+manual upload would add a duplicate (and possibly differently-signed) asset.
 
 The signing secrets are configured on the repo (`KEYSTORE_BASE64`, `KEY_ALIAS`,
 `KEY_PASSWORD`, `STORE_PASSWORD`), so CI signs with the same stable key as local

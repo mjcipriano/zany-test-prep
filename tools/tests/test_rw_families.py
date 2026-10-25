@@ -18,7 +18,25 @@ from content_gen import registry, rw_act, rw_extra, rw_gen, util
 from content_gen.teaching_rw_act import TEACHING_ACT
 
 MODULES = {"rw_gen": rw_gen, "rw_extra": rw_extra, "rw_act": rw_act}
-MIN_FAMILIES = {"rw_gen": 4, "rw_extra": 4, "rw_act": 3}
+MIN_FAMILIES = {"rw_gen": 6, "rw_extra": 7, "rw_act": 8}
+# Families added in the v2.1 "bigger banks" pass: every tier of every skill must
+# carry at least two of its skill's new forms.
+NEW_FAMILIES = {
+    "sentence_boundaries": {"bnd_mark_choice", "bnd_splice_repair", "bnd_fragment_clause"},
+    "subject_verb_agreement": {"sva_quantity", "sva_gerund", "sva_either_or"},
+    "punctuation": {"punct_hyphen", "punct_quotation", "punct_semicolon_list", "punct_dash_paren"},
+    "pronouns": {"pron_shift", "pron_vague", "pron_reflexive_compound"},
+    "modifiers": {"mod_only", "mod_passive_dangle", "mod_squinting"},
+    "transitions": {"trans_paragraph", "trans_delete", "trans_concession"},
+    "verb_tense": {"vt_conditional", "vt_future_perfect", "vt_reported"},
+    "parallel_structure": {"par_as_as", "par_infinitive_gerund", "par_correlative_verbs"},
+    "pronoun_antecedent": {"pa_collective", "pa_indefinite", "pa_distant"},
+    "quantitative_evidence": {"qe_percent_change", "qe_contradict_year", "qe_two_groups"},
+    "usage_idioms": {"ui_who_that", "ui_number_amount", "ui_wordy", "ui_compare_prep", "ui_double_negative"},
+}
+# Unique items a simulated practice-bank draw must reach per tier (SAT banks are
+# ~500 per tier plus the 24 lesson items; ACT banks ~200).
+MIN_CAPACITY = {"rw_gen": 600, "rw_extra": 600, "rw_act": 300}
 EXPECTED_SKILLS = {
     "rw_gen": {"sentence_boundaries", "subject_verb_agreement", "punctuation", "pronouns",
                "modifiers", "transitions"},
@@ -64,6 +82,39 @@ class FamilyTableTests(unittest.TestCase):
         for mname, mod in MODULES.items():
             probs = registry.validate_table(mod.FAMILIES, min_per_tier=MIN_FAMILIES[mname])
             self.assertEqual(probs, [], mname)
+
+    def test_new_forms_registered_in_every_tier(self):
+        for mname, mod in MODULES.items():
+            for skill, by_diff in mod.FAMILIES.items():
+                new = NEW_FAMILIES[skill]
+                for diff in registry.DIFFICULTIES:
+                    names = {registry.family_name(fn) for fn in by_diff[diff]}
+                    self.assertTrue(new <= names | (new - names) and len(new & names) >= 2,
+                                    f"{skill}/{diff}: only {sorted(new & names)} of the new forms registered")
+                    missing = new - {registry.family_name(fn) for d in registry.DIFFICULTIES for fn in by_diff[d]}
+                    self.assertEqual(missing, set(), f"{skill}: new forms never registered")
+
+    def test_bank_capacity_per_tier(self):
+        """Simulate the orchestrator's bank draw (random family, 12 tries, stop after
+        40 consecutive misses) and require enough unique items per tier."""
+        for mname, mod in MODULES.items():
+            need = MIN_CAPACITY[mname]
+            for skill, by_diff in mod.FAMILIES.items():
+                for diff in registry.DIFFICULTIES:
+                    fns = by_diff[diff]
+                    rng = random.Random(3)
+                    seen, fails = set(), 0
+                    while len(seen) < need and fails < 40:
+                        fn = rng.choice(fns)
+                        got = False
+                        for _ in range(12):
+                            k = util.item_signature(registry.run_family(fn, rng, diff))
+                            if k not in seen:
+                                seen.add(k)
+                                got = True
+                                break
+                        fails = 0 if got else fails + 1
+                    self.assertGreaterEqual(len(seen), need, f"{mname}.{skill}/{diff}: only {len(seen)} unique items")
 
     def test_every_family_yields_valid_bodies(self):
         for mname, mod in MODULES.items():
@@ -147,6 +198,21 @@ class FamilyTableTests(unittest.TestCase):
             self.assertFalse(c_share > 0.6 and d_share < 0.25,
                              f"{mname}.{fn.__name__}/{diff}: {c_share:.0%} of keys start with "
                              f"{word!r} but only {d_share:.0%} of distractors do")
+
+    def test_text_hygiene(self):
+        """No unsubstituted slots, doubled spaces, or lowercase sentence openers."""
+        for mname, skill, diff, fn in _all_families():
+            for b in helpers.sample_family(fn, diff, 30, seed=29):
+                texts = [b["prompt"]] + [c["text"] for c in b["choices"]] + [b["explanation"]]
+                for t in texts:
+                    self.assertNotIn("{", t, f"{mname}.{fn.__name__}: unsubstituted slot in {t!r}")
+                    flat = re.sub(r"\s*\n\s*", " ", t).strip()
+                    self.assertNotIn("  ", flat, f"{mname}.{fn.__name__}: double space in {t!r}")
+                body_text = b["prompt"].split("\n\n")[0]
+                for sentence in re.split(r"(?<=[.!?])\s+", body_text):
+                    sentence = sentence.strip().lstrip('"\'([')
+                    if sentence and sentence[0].isalpha() and not sentence.startswith("___"):
+                        self.assertTrue(sentence[0].isupper(), f"{mname}.{fn.__name__}: {sentence!r}")
 
     def test_rationales_mark_correct_choice(self):
         for mname, skill, diff, fn in _all_families():

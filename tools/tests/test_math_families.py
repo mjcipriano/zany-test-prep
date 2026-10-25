@@ -49,7 +49,7 @@ class FamilyTableTests(unittest.TestCase):
 
     def test_minimum_family_counts(self):
         for skill in SAT_SKILLS:
-            need = 3 if skill in SMALL_GEOMETRY else 4
+            need = 5 if skill in SMALL_GEOMETRY else 6
             for diff in helpers.DIFFICULTIES:
                 fns = TABLE[skill][diff]
                 self.assertGreaterEqual(len(fns), need, f"{skill}/{diff} has {len(fns)} families")
@@ -199,6 +199,63 @@ class CorrectnessTests(unittest.TestCase):
                     by = int(by) if by else 1
                     by = by if sign == "+" else -by
                     self.assertEqual(ax * x + by * y, int(c), b["prompt"])
+
+    def test_le_fraction_eq_easy(self):
+        for b in helpers.sample_family(math_gen.le_fraction_eq, "easy", 40, seed=11):
+            m = re.search(r"\(x ([+-]) (\d+)\)/(\d+) = (-?\d+)", _norm(b["prompt"]))
+            self.assertIsNotNone(m, b["prompt"])
+            sign, a, den, c = m.groups()
+            a = int(a) if sign == "+" else -int(a)
+            x = _num(self._correct_text(b))
+            self.assertEqual(Fraction(x + a, int(den)), Fraction(int(c)))
+
+    def test_le_rate_word_rate(self):
+        for diff in ("easy", "medium"):
+            for b in helpers.sample_family(math_gen.le_rate_word, diff, 30, seed=12):
+                nums = list(map(int, re.findall(r"\d+", b["prompt"])))
+                t1, v1, t2, v2 = nums[0], nums[1], nums[2], nums[3]
+                self.assertEqual(Fraction(v2 - v1, t2 - t1), _num(self._correct_text(b)))
+
+    def test_li_not_solution_is_not_a_solution(self):
+        for b in helpers.sample_family(math_gen.li_not_solution, "easy", 40, seed=13):
+            m = re.search(r"(\d+)x ([+-]) (\d+) ([<>≤≥]) (-?\d+)", _norm(b["prompt"]))
+            self.assertIsNotNone(m, b["prompt"])
+            a, sign, k, sym, c = m.groups()
+            a, k, c = int(a), int(k) if sign == "+" else -int(k), int(c)
+            ok = {"<": lambda v: v < c, "≤": lambda v: v <= c, ">": lambda v: v > c, "≥": lambda v: v >= c}[sym]
+            self.assertFalse(ok(a * _num(self._correct_text(b)) + k), b["prompt"])
+            for ch in b["choices"]:
+                if ch["id"] != b["correct_choice"]:
+                    self.assertTrue(ok(a * _num(ch["text"]) + k), b["prompt"])
+
+    def test_st_quartiles_iqr(self):
+        for b in helpers.sample_family(math_gen.st_quartiles, "medium", 30, seed=14):
+            data = sorted(map(int, re.findall(r"\d+", b["prompt"].split("data set")[1])))
+            n = len(data)
+            lo, hi = data[:n // 2], data[n // 2:]
+            q1 = Fraction(lo[n // 4 - 1] + lo[n // 4], 2)
+            q3 = Fraction(hi[n // 4 - 1] + hi[n // 4], 2)
+            self.assertEqual(q3 - q1, _num(self._correct_text(b)))
+
+    def test_rt_diagonal_easy(self):
+        for b in helpers.sample_family(math_gen.rt_diagonal, "easy", 30, seed=15):
+            a, k = map(int, re.findall(r"\d+", b["prompt"])[:2])
+            c = int(self._correct_text(b))
+            self.assertEqual(a * a + k * k, c * c)
+
+    def test_wp_interest_easy(self):
+        for b in helpers.sample_family(math_extra.wp_interest, "easy", 30, seed=16):
+            P = int(re.search(r"\$(\d+)", b["prompt"]).group(1))
+            r = int(re.search(r"(\d+)% simple", b["prompt"]).group(1))
+            t = int(re.search(r"after (\d+) year", b["prompt"]).group(1))
+            self.assertEqual(Fraction(P * r * t, 100), _num(self._correct_text(b)))
+
+    def test_ab_vertex_easy_minimum(self):
+        for b in helpers.sample_family(math_extra.ab_vertex, "easy", 30, seed=17):
+            m = re.search(r"\|x ([+-]) (\d+)\| ([+-]) (\d+)", _norm(b["prompt"]))
+            self.assertIsNotNone(m, b["prompt"])
+            k = int(m.group(4)) if m.group(3) == "+" else -int(m.group(4))
+            self.assertEqual(k, _num(self._correct_text(b)))
 
     def test_two_way_table_probabilities(self):
         for diff in helpers.DIFFICULTIES:

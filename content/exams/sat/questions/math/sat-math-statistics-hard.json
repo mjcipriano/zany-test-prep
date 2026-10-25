@@ -11,38 +11,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "mean_median_mode",
-    "prompt": "What is the mean (average) of the data set 34, 43, 11, 48, 56, 59, 8?",
+    "prompt": "The data set 15, 133, 26, 25, 26, 27, 18 lists the number of minutes 7 customers waited. Which of the following is true about the mean and the median of the data?",
     "choices": [
       {
         "id": "A",
-        "text": "51",
-        "rationale": "This is the range, not the mean."
-      },
-      {
-        "id": "B",
-        "text": "37",
+        "text": "The mean is greater than the median, because the value 133 pulls the mean up.",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "The mean and the median are equal, because the data are symmetric.",
+        "rationale": "The mean is 38.6 and the median is 26; they differ."
+      },
+      {
         "id": "C",
-        "text": "38",
-        "rationale": "Recheck the sum before dividing."
+        "text": "The mean is less than the median, because most values are below 133.",
+        "rationale": "A large outlier raises the mean above the median."
       },
       {
         "id": "D",
-        "text": "43",
-        "rationale": "This is the median, not the mean."
+        "text": "The median is greater than the mean, because the value 133 pulls the median up.",
+        "rationale": "The median is resistant to outliers; it is the middle value, 26."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Mean = sum ÷ count = 259 ÷ 7 = 37.",
-    "estimated_time_seconds": 75,
+    "correct_choice": "A",
+    "explanation": "Median = 26 (middle value); mean = 270/7 ≈ 38.6. The outlier 133 raises the mean.",
+    "estimated_time_seconds": 95,
     "tags": [
       "statistics",
-      "mean",
+      "outlier",
       "family:st_center_list"
     ],
-    "answer_verification": "mean=37"
+    "answer_verification": "mean=38.57 median=26"
   },
   {
     "question_id": "sat-math-statistics-hard-q02",
@@ -56,31 +56,31 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "spread",
-    "prompt": "A data set has the values 10, 11, 14, 23, 29, 32. If the value 62 is added to the data set, which of the following describes the effect on the mean and the standard deviation?",
+    "prompt": "A data set has the values 13, 14, 16, 27, 31, 34. If the value 72 is added to the data set, which of the following describes the effect on the mean and the standard deviation?",
     "choices": [
       {
         "id": "A",
-        "text": "The mean increases and the standard deviation is unchanged.",
-        "rationale": "Adding a distant value changes the spread."
-      },
-      {
-        "id": "B",
         "text": "Both the mean and the standard deviation increase.",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "The mean increases and the standard deviation decreases.",
+        "rationale": "A value far from the others increases the spread."
+      },
+      {
         "id": "C",
         "text": "The mean decreases and the standard deviation increases.",
-        "rationale": "62 is above the current mean 19.8, so the mean rises."
+        "rationale": "72 is above the current mean 22.5, so the mean rises."
       },
       {
         "id": "D",
-        "text": "The mean increases and the standard deviation decreases.",
-        "rationale": "A value far from the others increases the spread."
+        "text": "The mean increases and the standard deviation is unchanged.",
+        "rationale": "Adding a distant value changes the spread."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "The mean rises from 19.8 to 25.9 because 62 is above it, and the added value is far from the center, so the spread (standard deviation) grows.",
+    "correct_choice": "A",
+    "explanation": "The mean rises from 22.5 to 29.6 because 72 is above it, and the added value is far from the center, so the spread (standard deviation) grows.",
     "estimated_time_seconds": 90,
     "tags": [
       "statistics",
@@ -88,7 +88,7 @@
       "outlier",
       "family:st_spread"
     ],
-    "answer_verification": "mean 19.83->25.86"
+    "answer_verification": "mean 22.50->29.57"
   },
   {
     "question_id": "sat-math-statistics-hard-q03",
@@ -102,38 +102,38 @@
     "version": "1.0.0",
     "question_type": "multi_step_math",
     "subskill": "mean_median_mode",
-    "prompt": "In one class of 18 students the mean test score was 73, and in another class of 15 students the mean was 74. What is the mean score of all 33 students? (Round to the nearest tenth.)",
+    "prompt": "In one class of 25 students the mean test score was 62, and in another class of 10 students the mean was 65. What is the mean score of all 35 students? (Round to the nearest tenth.)",
     "choices": [
       {
         "id": "A",
-        "text": "73.7",
-        "rationale": "Weight each mean by its class size."
+        "text": "63.5",
+        "rationale": "Averaging the two means ignores the different class sizes."
       },
       {
         "id": "B",
-        "text": "74",
-        "rationale": "The combined mean lies between the two means."
-      },
-      {
-        "id": "C",
-        "text": "75",
+        "text": "64.4",
         "rationale": "Arithmetic slip; recompute the weighted total."
       },
       {
-        "id": "D",
-        "text": "73.5",
+        "id": "C",
+        "text": "62.9",
         "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "63.6",
+        "rationale": "Weight each mean by its class size."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Total points = 18·73 + 15·74 = 2424; divide by 33: 73.5.",
+    "correct_choice": "C",
+    "explanation": "Total points = 25·62 + 10·65 = 2200; divide by 35: 62.9.",
     "estimated_time_seconds": 100,
     "tags": [
       "statistics",
       "weighted-mean",
       "family:st_missing_value"
     ],
-    "answer_verification": "(18*73+15*74)/33=73.45"
+    "answer_verification": "(25*62+10*65)/35=62.86"
   },
   {
     "question_id": "sat-math-statistics-hard-q04",
@@ -147,602 +147,22 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 38 people. What is the mean pets per student? (Round to the nearest hundredth if necessary.)",
+    "prompt": "The table shows the results of a survey of 18 people. What is the mean goals per game? (Round to the nearest hundredth if necessary.)",
     "choices": [
       {
         "id": "A",
-        "text": "22.2",
-        "rationale": "Divide by the number of people, not the number of rows."
-      },
-      {
-        "id": "B",
-        "text": "2.92",
+        "text": "2.39",
         "rationale": "Correct."
       },
       {
-        "id": "C",
-        "text": "3",
-        "rationale": "Weight each value by its frequency; don't average the listed values."
-      },
-      {
-        "id": "D",
-        "text": "7.6",
+        "id": "B",
+        "text": "3.6",
         "rationale": "That is the mean frequency, not the mean value."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Mean = Σ(value × frequency)/N = 111/38 ≈ 2.92.",
-    "estimated_time_seconds": 100,
-    "tags": [
-      "statistics",
-      "table",
-      "mean",
-      "family:st_frequency_table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Survey results",
-        "headers": [
-          "Number of pets",
-          "Number of students"
-        ],
-        "rows": [
-          [
-            "1",
-            "8"
-          ],
-          [
-            "2",
-            "8"
-          ],
-          [
-            "3",
-            "8"
-          ],
-          [
-            "4",
-            "7"
-          ],
-          [
-            "5",
-            "7"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "111/38"
-  },
-  {
-    "question_id": "sat-math-statistics-hard-q05",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "statistics",
-    "lesson_id": "sat-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "mean_median_mode",
-    "prompt": "The data set 7, 16, 23, 26, 28, 32 has mean 22. If the greatest value is removed, what is the mean of the remaining values?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "132/5",
-        "rationale": "Subtract the removed value from the total as well."
-      },
-      {
-        "id": "B",
-        "text": "20",
-        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "16.67",
-        "rationale": "Divide by the new count, 5."
-      },
-      {
-        "id": "D",
-        "text": "22",
-        "rationale": "Removing an extreme value changes the mean."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Remove 32: new total 132 − 32 = 100, over 5 values: 20.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "statistics",
-      "mean",
-      "change",
-      "family:st_change_effect"
-    ],
-    "answer_verification": "val=20"
-  },
-  {
-    "question_id": "sat-math-statistics-hard-q06",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "statistics",
-    "lesson_id": "sat-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "student_produced",
-    "subskill": "mean_median_mode",
-    "prompt": "The mean of 6 numbers is 14. If 5 of the numbers are 7, 25, 17, 6, 27, what is the remaining number?",
-    "answer": {
-      "type": "numeric",
-      "value": 2,
-      "accepted": [
-        "2"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "14 × 6 − 82 = 2.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "statistics",
-      "grid-in",
-      "family:st_gridin"
-    ],
-    "answer_verification": "val=2"
-  },
-  {
-    "question_id": "sat-math-statistics-hard-q07",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "statistics",
-    "lesson_id": "sat-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "mean_median_mode",
-    "prompt": "The data set 102, 24, 28, 29, 26, 11, 24, 24, 22 lists the number of minutes 9 customers waited. Which of the following is true about the mean and the median of the data?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "The mean is less than the median, because most values are below 102.",
-        "rationale": "A large outlier raises the mean above the median."
-      },
-      {
-        "id": "B",
-        "text": "The mean and the median are equal, because the data are symmetric.",
-        "rationale": "The mean is 32.2 and the median is 24; they differ."
-      },
-      {
-        "id": "C",
-        "text": "The mean is greater than the median, because the value 102 pulls the mean up.",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "The median is greater than the mean, because the value 102 pulls the median up.",
-        "rationale": "The median is resistant to outliers; it is the middle value, 24."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "Median = 24 (middle value); mean = 290/9 ≈ 32.2. The outlier 102 raises the mean.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "statistics",
-      "outlier",
-      "family:st_center_list"
-    ],
-    "answer_verification": "mean=32.22 median=24"
-  },
-  {
-    "question_id": "sat-math-statistics-hard-q08",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "statistics",
-    "lesson_id": "sat-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "spread",
-    "prompt": "A data set has the values 10, 17, 29, 30, 37, 39. If the value 76 is added to the data set, which of the following describes the effect on the mean and the standard deviation?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "The mean increases and the standard deviation decreases.",
-        "rationale": "A value far from the others increases the spread."
-      },
-      {
-        "id": "B",
-        "text": "Both the mean and the standard deviation increase.",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "The mean increases and the standard deviation is unchanged.",
-        "rationale": "Adding a distant value changes the spread."
-      },
-      {
-        "id": "D",
-        "text": "The mean decreases and the standard deviation increases.",
-        "rationale": "76 is above the current mean 27.0, so the mean rises."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "The mean rises from 27.0 to 34.0 because 76 is above it, and the added value is far from the center, so the spread (standard deviation) grows.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "statistics",
-      "standard-deviation",
-      "outlier",
-      "family:st_spread"
-    ],
-    "answer_verification": "mean 27.00->34.00"
-  },
-  {
-    "question_id": "sat-math-statistics-hard-q09",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "statistics",
-    "lesson_id": "sat-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multi_step_math",
-    "subskill": "mean_median_mode",
-    "prompt": "In one class of 17 students the mean test score was 86, and in another class of 10 students the mean was 65. What is the mean score of all 27 students? (Round to the nearest tenth.)",
-    "choices": [
-      {
-        "id": "A",
-        "text": "75.5",
-        "rationale": "Averaging the two means ignores the different class sizes."
-      },
-      {
-        "id": "B",
-        "text": "78.2",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "79.7",
-        "rationale": "Arithmetic slip; recompute the weighted total."
-      },
-      {
-        "id": "D",
-        "text": "73",
-        "rationale": "Weight each mean by its class size."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Total points = 17·86 + 10·65 = 2112; divide by 27: 78.2.",
-    "estimated_time_seconds": 100,
-    "tags": [
-      "statistics",
-      "weighted-mean",
-      "family:st_missing_value"
-    ],
-    "answer_verification": "(17*86+10*65)/27=78.22"
-  },
-  {
-    "question_id": "sat-math-statistics-hard-q10",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "statistics",
-    "lesson_id": "sat-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 24 people. What is the mean pets per student? (Round to the nearest hundredth if necessary.)",
-    "choices": [
-      {
-        "id": "A",
-        "text": "2",
-        "rationale": "Weight each value by its frequency; don't average the listed values."
-      },
-      {
-        "id": "B",
-        "text": "6.6",
+        "text": "8.6",
         "rationale": "Divide by the number of people, not the number of rows."
-      },
-      {
-        "id": "C",
-        "text": "1.38",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "4.8",
-        "rationale": "That is the mean frequency, not the mean value."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "Mean = Σ(value × frequency)/N = 33/24 ≈ 1.38.",
-    "estimated_time_seconds": 100,
-    "tags": [
-      "statistics",
-      "table",
-      "mean",
-      "family:st_frequency_table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Survey results",
-        "headers": [
-          "Number of pets",
-          "Number of students"
-        ],
-        "rows": [
-          [
-            "0",
-            "7"
-          ],
-          [
-            "1",
-            "5"
-          ],
-          [
-            "2",
-            "9"
-          ],
-          [
-            "3",
-            "2"
-          ],
-          [
-            "4",
-            "1"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "33/24"
-  },
-  {
-    "question_id": "sat-math-statistics-hard-q11",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "statistics",
-    "lesson_id": "sat-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "mean_median_mode",
-    "prompt": "The data set 4, 11, 22, 32, 38, 43 has mean 25. If the least value is removed, what is the mean of the remaining values?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "24.33",
-        "rationale": "Divide by the new count, 5."
-      },
-      {
-        "id": "B",
-        "text": "146/5",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "30",
-        "rationale": "Subtract the removed value from the total as well."
-      },
-      {
-        "id": "D",
-        "text": "25",
-        "rationale": "Removing an extreme value changes the mean."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Remove 4: new total 150 − 4 = 146, over 5 values: 146/5.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "statistics",
-      "mean",
-      "change",
-      "family:st_change_effect"
-    ],
-    "answer_verification": "val=146/5"
-  },
-  {
-    "question_id": "sat-math-statistics-hard-q12",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "statistics",
-    "lesson_id": "sat-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "student_produced",
-    "subskill": "mean_median_mode",
-    "prompt": "The mean of 7 numbers is 22. If 6 of the numbers are 29, 6, 22, 6, 21, 22, what is the remaining number?",
-    "answer": {
-      "type": "numeric",
-      "value": 48,
-      "accepted": [
-        "48"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "22 × 7 − 106 = 48.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "statistics",
-      "grid-in",
-      "family:st_gridin"
-    ],
-    "answer_verification": "val=48"
-  },
-  {
-    "question_id": "sat-math-statistics-hard-q13",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "statistics",
-    "lesson_id": "sat-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "mean_median_mode",
-    "prompt": "The data set 25, 28, 29, 23, 91, 20, 19 lists the number of minutes 7 customers waited. Which of the following is true about the mean and the median of the data?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "The median is greater than the mean, because the value 91 pulls the median up.",
-        "rationale": "The median is resistant to outliers; it is the middle value, 25."
-      },
-      {
-        "id": "B",
-        "text": "The mean is greater than the median, because the value 91 pulls the mean up.",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "The mean is less than the median, because most values are below 91.",
-        "rationale": "A large outlier raises the mean above the median."
-      },
-      {
-        "id": "D",
-        "text": "The mean and the median are equal, because the data are symmetric.",
-        "rationale": "The mean is 33.6 and the median is 25; they differ."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Median = 25 (middle value); mean = 235/7 ≈ 33.6. The outlier 91 raises the mean.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "statistics",
-      "outlier",
-      "family:st_center_list"
-    ],
-    "answer_verification": "mean=33.57 median=25"
-  },
-  {
-    "question_id": "sat-math-statistics-hard-q14",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "statistics",
-    "lesson_id": "sat-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "spread",
-    "prompt": "A data set has the values 14, 22, 24, 25, 28, 31. If the value 55 is added to the data set, which of the following describes the effect on the mean and the standard deviation?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "The mean increases and the standard deviation is unchanged.",
-        "rationale": "Adding a distant value changes the spread."
-      },
-      {
-        "id": "B",
-        "text": "Both the mean and the standard deviation increase.",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "The mean increases and the standard deviation decreases.",
-        "rationale": "A value far from the others increases the spread."
-      },
-      {
-        "id": "D",
-        "text": "The mean decreases and the standard deviation increases.",
-        "rationale": "55 is above the current mean 24.0, so the mean rises."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "The mean rises from 24.0 to 28.4 because 55 is above it, and the added value is far from the center, so the spread (standard deviation) grows.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "statistics",
-      "standard-deviation",
-      "outlier",
-      "family:st_spread"
-    ],
-    "answer_verification": "mean 24.00->28.43"
-  },
-  {
-    "question_id": "sat-math-statistics-hard-q15",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "statistics",
-    "lesson_id": "sat-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multi_step_math",
-    "subskill": "mean_median_mode",
-    "prompt": "In one class of 12 students the mean test score was 86, and in another class of 25 students the mean was 87. What is the mean score of all 37 students? (Round to the nearest tenth.)",
-    "choices": [
-      {
-        "id": "A",
-        "text": "86.5",
-        "rationale": "Averaging the two means ignores the different class sizes."
-      },
-      {
-        "id": "B",
-        "text": "86.7",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "88.2",
-        "rationale": "Arithmetic slip; recompute the weighted total."
-      },
-      {
-        "id": "D",
-        "text": "86.9",
-        "rationale": "Weight each mean by its class size."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Total points = 12·86 + 25·87 = 3207; divide by 37: 86.7.",
-    "estimated_time_seconds": 100,
-    "tags": [
-      "statistics",
-      "weighted-mean",
-      "family:st_missing_value"
-    ],
-    "answer_verification": "(12*86+25*87)/37=86.68"
-  },
-  {
-    "question_id": "sat-math-statistics-hard-q16",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "statistics",
-    "lesson_id": "sat-math-statistics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 16 people. What is the mean goals per game? (Round to the nearest hundredth if necessary.)",
-    "choices": [
-      {
-        "id": "A",
-        "text": "9.2",
-        "rationale": "Divide by the number of people, not the number of rows."
-      },
-      {
-        "id": "B",
-        "text": "2.88",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "3.2",
-        "rationale": "That is the mean frequency, not the mean value."
       },
       {
         "id": "D",
@@ -750,8 +170,8 @@
         "rationale": "Weight each value by its frequency; don't average the listed values."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Mean = Σ(value × frequency)/N = 46/16 ≈ 2.88.",
+    "correct_choice": "A",
+    "explanation": "Mean = Σ(value × frequency)/N = 43/18 ≈ 2.39.",
     "estimated_time_seconds": 100,
     "tags": [
       "statistics",
@@ -770,19 +190,19 @@
         "rows": [
           [
             "1",
-            "3"
+            "5"
           ],
           [
             "2",
-            "1"
+            "7"
           ],
           [
             "3",
-            "9"
+            "2"
           ],
           [
             "4",
-            "1"
+            "2"
           ],
           [
             "5",
@@ -791,7 +211,631 @@
         ]
       }
     },
-    "answer_verification": "46/16"
+    "answer_verification": "43/18"
+  },
+  {
+    "question_id": "sat-math-statistics-hard-q05",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "statistics",
+    "lesson_id": "sat-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "mean_median_mode",
+    "prompt": "The data set 6, 19, 25, 26, 37, 37 has mean 25. If the greatest value is removed, what is the mean of the remaining values?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "18.83",
+        "rationale": "Divide by the new count, 5."
+      },
+      {
+        "id": "B",
+        "text": "30",
+        "rationale": "Subtract the removed value from the total as well."
+      },
+      {
+        "id": "C",
+        "text": "25",
+        "rationale": "Removing an extreme value changes the mean."
+      },
+      {
+        "id": "D",
+        "text": "113/5",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Remove 37: new total 150 − 37 = 113, over 5 values: 113/5.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "statistics",
+      "mean",
+      "change",
+      "family:st_change_effect"
+    ],
+    "answer_verification": "val=113/5"
+  },
+  {
+    "question_id": "sat-math-statistics-hard-q06",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "statistics",
+    "lesson_id": "sat-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "student_produced",
+    "subskill": "mean_median_mode",
+    "prompt": "The mean of 6 numbers is 19. If 5 of the numbers are 11, 16, 34, 33, 3, what is the remaining number?",
+    "answer": {
+      "type": "numeric",
+      "value": 17,
+      "accepted": [
+        "17"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "19 × 6 − 97 = 17.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "statistics",
+      "grid-in",
+      "family:st_gridin"
+    ],
+    "answer_verification": "val=17"
+  },
+  {
+    "question_id": "sat-math-statistics-hard-q07",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "statistics",
+    "lesson_id": "sat-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "spread",
+    "prompt": "The table shows how many responses in two groups took each value (Group A: 17 responses, Group B: 16). If every value in Group B were increased by 10, how would its mean and standard deviation change?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The mean would increase by 10 and the standard deviation would increase by a factor of 10.",
+        "rationale": "Only multiplying every value scales the standard deviation."
+      },
+      {
+        "id": "B",
+        "text": "The mean would increase by 10 and the standard deviation would not change.",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "The mean would not change and the standard deviation would increase by 10.",
+        "rationale": "Adding 10 to every value raises the mean by 10."
+      },
+      {
+        "id": "D",
+        "text": "Both the mean and the standard deviation would increase by 10.",
+        "rationale": "Shifting every value leaves the distances from the center unchanged."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Adding a constant to every data value shifts the mean by that constant but leaves the spread (standard deviation) unchanged.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "statistics",
+      "table",
+      "standard-deviation",
+      "family:st_compare_tables"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Number of responses by value",
+        "headers": [
+          "Value",
+          "Group A",
+          "Group B"
+        ],
+        "rows": [
+          [
+            "10",
+            "0",
+            "7"
+          ],
+          [
+            "20",
+            "4",
+            "2"
+          ],
+          [
+            "30",
+            "10",
+            "2"
+          ],
+          [
+            "40",
+            "3",
+            "1"
+          ],
+          [
+            "50",
+            "0",
+            "4"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "wide=B"
+  },
+  {
+    "question_id": "sat-math-statistics-hard-q08",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "statistics",
+    "lesson_id": "sat-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "mean_median_mode",
+    "prompt": "A data set of 7 values, 11, 15, 22, 26, 29, 30, 35, is extended by one value x. For what value of x will the mean of the new data set equal 30?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "30",
+        "rationale": "x must be well above the target mean to pull it up."
+      },
+      {
+        "id": "B",
+        "text": "240",
+        "rationale": "That is the required total, not x."
+      },
+      {
+        "id": "C",
+        "text": "72",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "42",
+        "rationale": "Use the new count 8."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "Required total = 30 × 8 = 240; x = 240 − 168 = 72.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "statistics",
+      "mean",
+      "family:st_outlier_effect"
+    ],
+    "answer_verification": "x=72"
+  },
+  {
+    "question_id": "sat-math-statistics-hard-q09",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "statistics",
+    "lesson_id": "sat-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "spread",
+    "prompt": "For the data set 7, 44, 53, 45, 3, 55, 25, 60, 20, 13, 24, 13, an outlier is defined as a value more than 1.5 times the interquartile range above the third quartile. What is the least integer value that would be considered an outlier if added to the set?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "86",
+        "rationale": "Multiply the IQR by 1.5, not 1."
+      },
+      {
+        "id": "B",
+        "text": "50",
+        "rationale": "Add 1.5 × IQR to Q3, not just 1."
+      },
+      {
+        "id": "C",
+        "text": "104",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "103",
+        "rationale": "The value must be strictly greater than the fence."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "Q1 = 13, Q3 = 49, IQR = 36; fence = 49 + 1.5·36 = 103; the least integer above it is 104.",
+    "estimated_time_seconds": 110,
+    "tags": [
+      "statistics",
+      "quartiles",
+      "family:st_quartiles"
+    ],
+    "answer_verification": "q1=13,q3=49"
+  },
+  {
+    "question_id": "sat-math-statistics-hard-q10",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "statistics",
+    "lesson_id": "sat-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "mean_median_mode",
+    "prompt": "The data set 19, 26, 30, 18, 89, 22, 17 lists the number of minutes 7 customers waited. Which of the following is true about the mean and the median of the data?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The median is greater than the mean, because the value 89 pulls the median up.",
+        "rationale": "The median is resistant to outliers; it is the middle value, 22."
+      },
+      {
+        "id": "B",
+        "text": "The mean is less than the median, because most values are below 89.",
+        "rationale": "A large outlier raises the mean above the median."
+      },
+      {
+        "id": "C",
+        "text": "The mean and the median are equal, because the data are symmetric.",
+        "rationale": "The mean is 31.6 and the median is 22; they differ."
+      },
+      {
+        "id": "D",
+        "text": "The mean is greater than the median, because the value 89 pulls the mean up.",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Median = 22 (middle value); mean = 221/7 ≈ 31.6. The outlier 89 raises the mean.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "statistics",
+      "outlier",
+      "family:st_center_list"
+    ],
+    "answer_verification": "mean=31.57 median=22"
+  },
+  {
+    "question_id": "sat-math-statistics-hard-q11",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "statistics",
+    "lesson_id": "sat-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "spread",
+    "prompt": "A data set has the values 13, 15, 17, 32, 33, 38. If the value 70 is added to the data set, which of the following describes the effect on the mean and the standard deviation?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The mean increases and the standard deviation is unchanged.",
+        "rationale": "Adding a distant value changes the spread."
+      },
+      {
+        "id": "B",
+        "text": "The mean decreases and the standard deviation increases.",
+        "rationale": "70 is above the current mean 24.7, so the mean rises."
+      },
+      {
+        "id": "C",
+        "text": "The mean increases and the standard deviation decreases.",
+        "rationale": "A value far from the others increases the spread."
+      },
+      {
+        "id": "D",
+        "text": "Both the mean and the standard deviation increase.",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "The mean rises from 24.7 to 31.1 because 70 is above it, and the added value is far from the center, so the spread (standard deviation) grows.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "statistics",
+      "standard-deviation",
+      "outlier",
+      "family:st_spread"
+    ],
+    "answer_verification": "mean 24.67->31.14"
+  },
+  {
+    "question_id": "sat-math-statistics-hard-q12",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "statistics",
+    "lesson_id": "sat-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multi_step_math",
+    "subskill": "mean_median_mode",
+    "prompt": "In one class of 11 students the mean test score was 73, and in another class of 27 students the mean was 72. What is the mean score of all 38 students? (Round to the nearest tenth.)",
+    "choices": [
+      {
+        "id": "A",
+        "text": "73.8",
+        "rationale": "Arithmetic slip; recompute the weighted total."
+      },
+      {
+        "id": "B",
+        "text": "72",
+        "rationale": "Weight each mean by its class size."
+      },
+      {
+        "id": "C",
+        "text": "72.5",
+        "rationale": "Averaging the two means ignores the different class sizes."
+      },
+      {
+        "id": "D",
+        "text": "72.3",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Total points = 11·73 + 27·72 = 2747; divide by 38: 72.3.",
+    "estimated_time_seconds": 100,
+    "tags": [
+      "statistics",
+      "weighted-mean",
+      "family:st_missing_value"
+    ],
+    "answer_verification": "(11*73+27*72)/38=72.29"
+  },
+  {
+    "question_id": "sat-math-statistics-hard-q13",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "statistics",
+    "lesson_id": "sat-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "mean_median_mode",
+    "prompt": "The table shows the results of a survey of 23 people. What is the mean siblings per child? (Round to the nearest hundredth if necessary.)",
+    "choices": [
+      {
+        "id": "A",
+        "text": "2",
+        "rationale": "Weight each value by its frequency; don't average the listed values."
+      },
+      {
+        "id": "B",
+        "text": "8.4",
+        "rationale": "Divide by the number of people, not the number of rows."
+      },
+      {
+        "id": "C",
+        "text": "4.6",
+        "rationale": "That is the mean frequency, not the mean value."
+      },
+      {
+        "id": "D",
+        "text": "1.83",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Mean = Σ(value × frequency)/N = 42/23 ≈ 1.83.",
+    "estimated_time_seconds": 100,
+    "tags": [
+      "statistics",
+      "table",
+      "mean",
+      "family:st_frequency_table"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Survey results",
+        "headers": [
+          "Siblings",
+          "Number of children"
+        ],
+        "rows": [
+          [
+            "0",
+            "3"
+          ],
+          [
+            "1",
+            "8"
+          ],
+          [
+            "2",
+            "5"
+          ],
+          [
+            "3",
+            "4"
+          ],
+          [
+            "4",
+            "3"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "42/23"
+  },
+  {
+    "question_id": "sat-math-statistics-hard-q14",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "statistics",
+    "lesson_id": "sat-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "mean_median_mode",
+    "prompt": "The data set 16, 17, 25, 29, 36, 39 has mean 27. If the greatest value is removed, what is the mean of the remaining values?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "41/2",
+        "rationale": "Divide by the new count, 5."
+      },
+      {
+        "id": "B",
+        "text": "123/5",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "162/5",
+        "rationale": "Subtract the removed value from the total as well."
+      },
+      {
+        "id": "D",
+        "text": "27",
+        "rationale": "Removing an extreme value changes the mean."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Remove 39: new total 162 − 39 = 123, over 5 values: 123/5.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "statistics",
+      "mean",
+      "change",
+      "family:st_change_effect"
+    ],
+    "answer_verification": "val=123/5"
+  },
+  {
+    "question_id": "sat-math-statistics-hard-q15",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "statistics",
+    "lesson_id": "sat-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "student_produced",
+    "subskill": "mean_median_mode",
+    "prompt": "The mean of 6 numbers is 25. If 5 of the numbers are 26, 36, 4, 9, 21, what is the remaining number?",
+    "answer": {
+      "type": "numeric",
+      "value": 54,
+      "accepted": [
+        "54"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "25 × 6 − 96 = 54.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "statistics",
+      "grid-in",
+      "family:st_gridin"
+    ],
+    "answer_verification": "val=54"
+  },
+  {
+    "question_id": "sat-math-statistics-hard-q16",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "statistics",
+    "lesson_id": "sat-math-statistics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "spread",
+    "prompt": "The table shows how many responses in two groups took each value (Group A: 12 responses, Group B: 16). If every value in Group B were increased by 10, how would its mean and standard deviation change?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The mean would increase by 10 and the standard deviation would increase by a factor of 10.",
+        "rationale": "Only multiplying every value scales the standard deviation."
+      },
+      {
+        "id": "B",
+        "text": "The mean would not change and the standard deviation would increase by 10.",
+        "rationale": "Adding 10 to every value raises the mean by 10."
+      },
+      {
+        "id": "C",
+        "text": "Both the mean and the standard deviation would increase by 10.",
+        "rationale": "Shifting every value leaves the distances from the center unchanged."
+      },
+      {
+        "id": "D",
+        "text": "The mean would increase by 10 and the standard deviation would not change.",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Adding a constant to every data value shifts the mean by that constant but leaves the spread (standard deviation) unchanged.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "statistics",
+      "table",
+      "standard-deviation",
+      "family:st_compare_tables"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Number of responses by value",
+        "headers": [
+          "Value",
+          "Group A",
+          "Group B"
+        ],
+        "rows": [
+          [
+            "10",
+            "0",
+            "7"
+          ],
+          [
+            "20",
+            "2",
+            "3"
+          ],
+          [
+            "30",
+            "7",
+            "0"
+          ],
+          [
+            "40",
+            "3",
+            "2"
+          ],
+          [
+            "50",
+            "0",
+            "4"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "wide=B"
   },
   {
     "question_id": "sat-math-statistics-hard-q17",
@@ -805,39 +849,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "mean_median_mode",
-    "prompt": "The data set 9, 10, 16, 32, 35, 36 has mean 23. If the greatest value is removed, what is the mean of the remaining values?",
+    "prompt": "A data set of 5 values, 19, 25, 28, 31, 37, is extended by one value x. For what value of x will the mean of the new data set equal 30?",
     "choices": [
       {
         "id": "A",
-        "text": "102/5",
-        "rationale": "Correct."
+        "text": "10",
+        "rationale": "Use the new count 6."
       },
       {
         "id": "B",
-        "text": "138/5",
-        "rationale": "Subtract the removed value from the total as well."
+        "text": "40",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "23",
-        "rationale": "Removing an extreme value changes the mean."
+        "text": "30",
+        "rationale": "x must be well above the target mean to pull it up."
       },
       {
         "id": "D",
-        "text": "17",
-        "rationale": "Divide by the new count, 5."
+        "text": "180",
+        "rationale": "That is the required total, not x."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Remove 36: new total 138 − 36 = 102, over 5 values: 102/5.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "B",
+    "explanation": "Required total = 30 × 6 = 180; x = 180 − 140 = 40.",
+    "estimated_time_seconds": 95,
     "tags": [
       "statistics",
       "mean",
-      "change",
-      "family:st_change_effect"
+      "family:st_outlier_effect"
     ],
-    "answer_verification": "val=102/5"
+    "answer_verification": "x=40"
   },
   {
     "question_id": "sat-math-statistics-hard-q18",
@@ -849,25 +892,40 @@
     "lesson_id": "sat-math-statistics-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "student_produced",
-    "subskill": "mean_median_mode",
-    "prompt": "The mean of 6 numbers is 22. If 5 of the numbers are 29, 12, 5, 20, 39, what is the remaining number?",
-    "answer": {
-      "type": "numeric",
-      "value": 27,
-      "accepted": [
-        "27"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "22 × 6 − 105 = 27.",
-    "estimated_time_seconds": 80,
+    "question_type": "multiple_choice",
+    "subskill": "spread",
+    "prompt": "For the data set 33, 27, 29, 23, 37, 57, 45, 17, 55, 30, 26, 42, an outlier is defined as a value more than 1.5 times the interquartile range above the third quartile. What is the least integer value that would be considered an outlier if added to the set?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "61",
+        "rationale": "Multiply the IQR by 1.5, not 1."
+      },
+      {
+        "id": "B",
+        "text": "70",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "69",
+        "rationale": "The value must be strictly greater than the fence."
+      },
+      {
+        "id": "D",
+        "text": "44",
+        "rationale": "Add 1.5 × IQR to Q3, not just 1."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Q1 = 53/2, Q3 = 87/2, IQR = 17; fence = 87/2 + 1.5·17 = 69; the least integer above it is 70.",
+    "estimated_time_seconds": 110,
     "tags": [
       "statistics",
-      "grid-in",
-      "family:st_gridin"
+      "quartiles",
+      "family:st_quartiles"
     ],
-    "answer_verification": "val=27"
+    "answer_verification": "q1=53/2,q3=87/2"
   },
   {
     "question_id": "sat-math-statistics-hard-q19",
@@ -881,38 +939,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "mean_median_mode",
-    "prompt": "The data set 12, 12, 98, 20, 26, 12, 16, 28, 21 lists the number of minutes 9 customers waited. Which of the following is true about the mean and the median of the data?",
+    "prompt": "The data set 21, 25, 20, 87, 10, 29, 13, 10, 22 lists the number of minutes 9 customers waited. Which of the following is true about the mean and the median of the data?",
     "choices": [
       {
         "id": "A",
-        "text": "The mean is less than the median, because most values are below 98.",
+        "text": "The mean is less than the median, because most values are below 87.",
         "rationale": "A large outlier raises the mean above the median."
       },
       {
         "id": "B",
-        "text": "The mean is greater than the median, because the value 98 pulls the mean up.",
-        "rationale": "Correct."
+        "text": "The mean and the median are equal, because the data are symmetric.",
+        "rationale": "The mean is 26.3 and the median is 21; they differ."
       },
       {
         "id": "C",
-        "text": "The median is greater than the mean, because the value 98 pulls the median up.",
-        "rationale": "The median is resistant to outliers; it is the middle value, 20."
+        "text": "The mean is greater than the median, because the value 87 pulls the mean up.",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "The mean and the median are equal, because the data are symmetric.",
-        "rationale": "The mean is 27.2 and the median is 20; they differ."
+        "text": "The median is greater than the mean, because the value 87 pulls the median up.",
+        "rationale": "The median is resistant to outliers; it is the middle value, 21."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Median = 20 (middle value); mean = 245/9 ≈ 27.2. The outlier 98 raises the mean.",
+    "correct_choice": "C",
+    "explanation": "Median = 21 (middle value); mean = 237/9 ≈ 26.3. The outlier 87 raises the mean.",
     "estimated_time_seconds": 95,
     "tags": [
       "statistics",
       "outlier",
       "family:st_center_list"
     ],
-    "answer_verification": "mean=27.22 median=20"
+    "answer_verification": "mean=26.33 median=21"
   },
   {
     "question_id": "sat-math-statistics-hard-q20",
@@ -926,31 +984,31 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "spread",
-    "prompt": "A data set has the values 16, 20, 28, 31, 33, 39. If the value 65 is added to the data set, which of the following describes the effect on the mean and the standard deviation?",
+    "prompt": "A data set has the values 18, 19, 21, 28, 29, 40. If the value 76 is added to the data set, which of the following describes the effect on the mean and the standard deviation?",
     "choices": [
       {
         "id": "A",
+        "text": "Both the mean and the standard deviation increase.",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "The mean decreases and the standard deviation increases.",
+        "rationale": "76 is above the current mean 25.8, so the mean rises."
+      },
+      {
+        "id": "C",
         "text": "The mean increases and the standard deviation decreases.",
         "rationale": "A value far from the others increases the spread."
       },
       {
-        "id": "B",
+        "id": "D",
         "text": "The mean increases and the standard deviation is unchanged.",
         "rationale": "Adding a distant value changes the spread."
-      },
-      {
-        "id": "C",
-        "text": "The mean decreases and the standard deviation increases.",
-        "rationale": "65 is above the current mean 27.8, so the mean rises."
-      },
-      {
-        "id": "D",
-        "text": "Both the mean and the standard deviation increase.",
-        "rationale": "Correct."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "The mean rises from 27.8 to 33.1 because 65 is above it, and the added value is far from the center, so the spread (standard deviation) grows.",
+    "correct_choice": "A",
+    "explanation": "The mean rises from 25.8 to 33.0 because 76 is above it, and the added value is far from the center, so the spread (standard deviation) grows.",
     "estimated_time_seconds": 90,
     "tags": [
       "statistics",
@@ -958,6 +1016,6 @@
       "outlier",
       "family:st_spread"
     ],
-    "answer_verification": "mean 27.83->33.14"
+    "answer_verification": "mean 25.83->33.00"
   }
 ]

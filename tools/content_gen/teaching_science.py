@@ -16,6 +16,8 @@ TEACHING_SCIENCE = {
             "Put a finger on the row and a finger on the column; read where they meet.",
             "For 'greatest' or 'least', scan one column top to bottom and mark the extreme.",
             "A difference or ratio needs two reads; write both numbers down before combining.",
+            "Converting units? Multiply by the factor and check the size makes sense (1.2 km is 1200 m, not 12).",
+            "'Which graph matches the table?' Look at the row-to-row changes: equal steps mean a straight line.",
         ],
         "worked_example": ("Table: 20 cm → 0.90 s, 40 cm → 1.27 s, 60 cm → 1.55 s. 'What was the "
                            "period at 40 cm?' Row 40 cm, column Period: 1.27 s. Not 1.55 s (that is "
@@ -67,6 +69,8 @@ TEACHING_SCIENCE = {
             "Extrapolation: continue the pattern of the last rows in the same direction.",
             "Steady, slowing, or accelerating? Compare the sizes of successive changes.",
             "If x doubles, divide the two y values to see what happened to y.",
+            "A rate of change is Δy ÷ Δx; to compare two series over the same interval, compare their Δy values.",
+            "Two series heading toward each other cross when the faster one catches up; continue both at their last rates.",
         ],
         "worked_example": ("Stretch: 100 g → 4.0 cm, 200 g → 8.0 cm, 300 g → 12.0 cm. At 250 g "
                            "the stretch is between 8.0 and 12.0, about 10.0 cm. At 400 g, continuing "
@@ -120,6 +124,8 @@ TEACHING_SCIENCE = {
             "A zero or untreated trial is a control for comparison.",
             "Experiments 1 and 2 usually differ in exactly one condition; find it.",
             "To test a new factor, vary only that factor and hold the old one fixed.",
+            "A flaw is anything that changed besides the independent variable; reliability comes from more repeats, not fewer rows.",
+            "A conclusion about values never tested, or about a variable held constant, is not supported by the data.",
         ],
         "worked_example": ("Students varied string length and timed the period, keeping bob "
                            "mass and release angle the same. Independent: length. Dependent: "
@@ -176,6 +182,8 @@ TEACHING_SCIENCE = {
             "Common ground is the shared observation, not either explanation.",
             "Supporting evidence confirms the mechanism that scientist proposed.",
             "A new observation weakens the view whose prediction it contradicts.",
+            "A shared assumption is something every scientist takes for granted without arguing for it.",
+            "With three scientists, sort each piece of evidence by which view it fits before reading the choices.",
         ],
         "worked_example": ("Scientist 1: impact caused the extinction (iridium layer, crater). "
                            "Scientist 2: volcanoes did (long eruptions, earlier declines). Both "

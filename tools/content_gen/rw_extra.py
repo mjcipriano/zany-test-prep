@@ -968,6 +968,9 @@ def qe_trend(rng, difficulty):
     else:
         start = rng.randint(120, 400)
         steps = [rng.choice([7, 9, 11, 15, 20]) for _ in range(n - 1)]
+    if unit == "percent":
+        start = rng.randint(10, 35)
+        steps = [max(2, st // 3) for st in steps]
     asc = [start]
     for st in steps:
         asc.append(asc[-1] + st)
@@ -1190,28 +1193,543 @@ def qe_support_point(rng, difficulty):
 
 
 # =========================================================================== #
+# v2.1 ADDITIONS — VERB TENSE
+# =========================================================================== #
+_COND = [
+    ("If I ___ you, I would take the earlier train.", "were", ["was", "am", "would be"],
+     "A wish or a situation contrary to fact uses the subjunctive 'were'."),
+    ("If the bridge ___ wider, trucks could use it.", "were", ["was", "is", "would be"],
+     "The bridge is not wider, so the contrary-to-fact subjunctive 'were' is required."),
+    ("The coach insisted that every player ___ on time.", "be", ["is", "was", "will be"],
+     "After verbs of demand such as 'insist that,' the base form (subjunctive) is used."),
+    ("The committee recommended that the museum ___ its hours.", "extend", ["extends", "extended", "will extend"],
+     "After 'recommend that,' the base form of the verb is used."),
+    ("If {N} ___ the deadline, the grant would already be approved.", "had met", ["met", "has met", "would meet"],
+     "A past condition that did not happen takes the past perfect ('had met') with 'would' in the main clause."),
+    ("If the ferry ___ on time, we would have caught the last bus.", "had left", ["left", "has left", "would leave"],
+     "An unreal past condition takes the past perfect."),
+    ("It is essential that the sample ___ frozen immediately.", "be", ["is", "was", "will be"],
+     "After 'it is essential that,' the subjunctive base form is used."),
+    ("If the river ___ to rise overnight, the lower road would close.", "were", ["was", "is", "will be"],
+     "A hypothetical future uses 'were to.'"),
+    ("The judge requested that the witness ___ her answer.", "repeat", ["repeats", "repeated", "will repeat"],
+     "After 'request that,' the base form is used."),
+    ("If {N} ___ here now, she would know what to do.", "were", ["was", "is", "had been"],
+     "A present situation contrary to fact uses 'were.'"),
+    ("The director demanded that the set ___ finished by Friday.", "be", ["is", "was", "will be"],
+     "After 'demand that,' the subjunctive base form 'be' is used."),
+    ("The board suggested that the museum ___ free on Sundays.", "be", ["is", "was", "will be"],
+     "After 'suggest that,' the base form is used."),
+    ("The rules require that each entry ___ original.", "be", ["is", "was", "will be"],
+     "After 'require that,' the base form is used."),
+    ("The guide asked that visitors ___ quiet in the nursery.", "remain", ["remains", "remained", "will remain"],
+     "After 'ask that,' the base form is used."),
+]
+
+
+@family(fill_in=True)
+def vt_conditional(rng, difficulty):
+    """Conditionals and the subjunctive (if I were, insist that he be, had met)."""
+    pool = _COND if difficulty != "easy" else [c for c in _COND if c[1] in ("were", "be")]
+    frame, right, wrongs, rule = rng.choice(pool)
+    name = rng.choice(_NAMES)
+    text = frame.format(N=name)
+    correct = (right, f"Correct. {rule}")
+    ds = [(w, f"'{w}' is the ordinary indicative form; this construction calls for '{right}'.") for w in wrongs]
+    if difficulty == "hard":
+        text = rng.choice(["As she later admitted, ", "Looking back, ", "Everyone agreed: "]) + soft_low(text)
+    return build(rng, fill(text, conv_stem(rng)), correct, ds, subskill="verb_tense",
+                 explanation=rule, tags=["conventions", "verb-tense", "subjunctive"])
+
+
+_FUT_PERF = [
+    ("By 2030, the lab", "publish", "its hundredth paper"),
+    ("By the time the ferry docks, the storm", "pass", "over the island"),
+    ("By next spring, the volunteers", "plant", "ten thousand trees"),
+    ("By the end of the tour, the choir", "sing", "in twelve cities"),
+    ("By noon tomorrow, the crew", "repair", "the last section of track"),
+    ("By the time you read this, the comet", "fade", "from view"),
+    ("By 2040, the glacier", "retreat", "another mile"),
+    ("By the final whistle, the goalkeeper", "face", "forty shots"),
+    ("By the time the exhibit opens, the curators", "label", "every case"),
+    ("By midnight, the bakers", "shape", "three hundred loaves"),
+    ("By the end of the decade, the town", "replace", "every wooden bridge"),
+    ("By the time the ferry returns, the tide", "turn", "twice"),
+]
+_FP_PP = {"publish": "published", "pass": "passed", "plant": "planted", "sing": "sung", "repair": "repaired",
+          "fade": "faded", "retreat": "retreated", "face": "faced", "label": "labeled", "shape": "shaped",
+          "replace": "replaced", "turn": "turned"}
+_FP_S3 = {"publish": "publishes", "pass": "passes", "plant": "plants", "sing": "sings", "repair": "repairs",
+          "fade": "fades", "retreat": "retreats", "face": "faces", "label": "labels", "shape": "shapes",
+          "replace": "replaces", "turn": "turns"}
+
+
+@family(fill_in=True, small_space=True)
+def vt_future_perfect(rng, difficulty):
+    """'By <future time>' + an action completed before it -> future perfect."""
+    lead, base, obj = rng.choice(_FUT_PERF)
+    pp, s3 = _FP_PP[base], _FP_S3[base]
+    plural = lead.split()[-1] in ("volunteers", "curators", "bakers")
+    correct = ("will have " + pp, "Correct. An action that will be complete before a future point takes the "
+                                  "future perfect: 'will have' + past participle.")
+    ds = [("will " + base, "The simple future does not show that the action is finished by the stated time."),
+          (("have " if plural else "has ") + pp, "The present perfect looks back from now, not from a future point."),
+          ("would have been " + pp, "'would have been' belongs to hypothetical statements, not a plain prediction.")]
+    if difficulty == "hard":
+        ds[1] = ("will have been " + base + "ing" if not base.endswith("e") else "will have been " + base[:-1] + "ing",
+                 "The progressive form stresses ongoing activity rather than completion by the deadline, "
+                 "which the sentence's total requires.")
+    text = f"{lead} ___ {obj}."
+    if difficulty != "easy":
+        text = text + " " + rng.choice(["The milestone has been long awaited.", "Few doubt the prediction.",
+                                        "The pace has been steady."])
+    return build(rng, fill(text, conv_stem(rng)), correct, ds, subskill="verb_tense",
+                 explanation="'By <a future time>' marks a deadline; use the future perfect for what will be done by then.",
+                 tags=["conventions", "verb-tense", "future-perfect"])
+
+
+_REPORTED = [
+    ("{N} said that the train", "was", "late", ["is", "will be", "being"], "past"),
+    ("The guide explained that the castle", "was built", "in 1210", ["is built", "builds", "has built"], "past"),
+    ("The forecaster warned that the storm", "would reach", "the coast by dawn", ["will reach", "reaches", "reaching"], "past"),
+    ("The curator told us that the mural", "had been", "restored twice", ["has been", "is", "being"], "past"),
+    ("{N} announced that the bakery", "would open", "a second shop", ["will open", "opens", "opening"], "past"),
+    ("The teacher reminded the class that water", "boils", "at 100 degrees Celsius", ["boiled", "would boil", "boiling"], "fact"),
+    ("The pilot reported that the runway", "was", "clear", ["is", "will be", "being"], "past"),
+    ("The mayor admitted that the budget", "had run", "out in March", ["has run", "runs", "running"], "past"),
+    ("The lecturer noted that light", "travels", "faster than sound", ["traveled", "would travel", "traveling"], "fact"),
+    ("The coach said that the team", "had practiced", "in silence all week", ["has practiced", "practices", "practicing"], "past"),
+]
+
+
+@family(fill_in=True)
+def vt_reported(rng, difficulty):
+    """Tense in reported speech: shift back after a past reporting verb; general truths stay present."""
+    pool = _REPORTED if difficulty != "easy" else [r for r in _REPORTED if r[4] == "past"]
+    lead, right, obj, wrongs, kind = rng.choice(pool)
+    name = rng.choice(_NAMES)
+    text = f"{lead.format(N=name)} ___ {obj}."
+    if kind == "past":
+        rule = ("After a past-tense reporting verb ('said', 'explained'), the reported verb shifts back "
+                "a tense as well.")
+        correct = (right, f"Correct. {rule}")
+        ds = [(w, f"'{w}' does not shift back to match the past reporting verb.") for w in wrongs]
+    else:
+        rule = "A general truth stays in the simple present even after a past reporting verb."
+        correct = (right, f"Correct. {rule}")
+        ds = [(w, f"'{w}' wrongly shifts a timeless fact out of the present tense.") for w in wrongs]
+    if difficulty == "hard":
+        text = text + " " + rng.choice(["Nobody questioned it.", "The remark was repeated later.",
+                                        "The claim turned out to be right."])
+    return build(rng, fill(text, conv_stem(rng)), correct, ds, subskill="verb_tense",
+                 explanation=rule, tags=["conventions", "verb-tense", "reported-speech"])
+
+
+# =========================================================================== #
+# v2.1 ADDITIONS — PARALLEL STRUCTURE
+# =========================================================================== #
+_AS_AS = [
+    ("{N} finds it as rewarding to teach as ___", "to perform", ["performing", "a performance", "when she performs"]),
+    ("The new bridge is as useful to cyclists as ___", "to drivers", ["driving", "the drivers' use", "for those who drive"]),
+    ("Reading the letters was as moving as ___", "hearing them read aloud", ["to hear them read aloud", "the readings aloud", "when they were read aloud"]),
+    ("The garden is as beautiful in October as ___", "in May", ["May", "it was in May's beauty", "during May's"]),
+    ("Learning to row is as demanding as ___", "learning to swim", ["to learn to swim", "swimming lessons", "when one learns to swim"]),
+    ("The ferry is as crowded on weekdays as ___", "on weekends", ["weekends", "it is crowded on weekends", "during the weekend's"]),
+    ("Restoring a clock is as much about patience as ___", "about skill", ["skill", "being skillful", "having skill is"]),
+    ("The choir sounds as rich in rehearsal as ___", "in performance", ["performing", "a performance", "when it performs"]),
+]
+
+
+@family(fill_in=True)
+def par_as_as(rng, difficulty):
+    """'as ... as' comparisons need matching forms on both sides."""
+    frame, right, wrongs = rng.choice(_AS_AS)
+    name = rng.choice(_NAMES)
+    text = frame.format(N=name) + "."
+    first_half = frame.split(" as ")[1] if " as " in frame else ""
+    correct = (right, f"Correct. '{right}' mirrors the form of the first half of the comparison.")
+    ds = [(wrongs[0], "This form does not match the phrase on the other side of 'as...as'."),
+          (wrongs[1], "A different kind of phrase breaks the parallel comparison."),
+          (wrongs[2], "A clause does not match the phrase on the other side of the comparison.")]
+    if difficulty != "easy":
+        text = rng.choice(["In the end, ", "As most people agree, ", "Surprisingly, "]) + soft_low(text)
+    if difficulty == "hard":
+        text = text + " " + rng.choice(["Few would argue otherwise.", "The comparison holds every year.",
+                                        "The point is often overlooked."])
+    return build(rng, fill(text, conv_stem(rng)), correct, ds, subskill="parallel_structure",
+                 explanation="The two halves of an 'as ... as' comparison must take the same grammatical form.",
+                 tags=["conventions", "parallelism", "as-as"], est=50)
+
+
+_INF_GER = [
+    ("The program teaches participants", ["to budget", "to cook", "to negotiate", "to plan meals"],
+     ["budgeting", "cooking", "negotiating", "planning meals"]),
+    ("Volunteers are expected", ["to arrive early", "to sign in", "to stay until closing", "to wear a badge"],
+     ["arriving early", "signing in", "staying until closing", "wearing a badge"]),
+    ("The residents enjoy", ["hiking", "fishing", "kayaking", "birdwatching"],
+     ["to hike", "to fish", "to kayak", "to birdwatch"]),
+    ("Her hobbies include", ["carving", "sketching", "baking", "gardening"],
+     ["to carve", "to sketch", "to bake", "to garden"]),
+    ("The guide reminded us", ["to carry water", "to watch the tide", "to stay on the path", "to respect the nests"],
+     ["carrying water", "watching the tide", "staying on the path", "respecting the nests"]),
+    ("The job mostly involves", ["answering calls", "filing reports", "greeting visitors", "updating the schedule"],
+     ["to answer calls", "to file reports", "to greet visitors", "to update the schedule"]),
+]
+
+
+@family(fill_in=True)
+def par_infinitive_gerund(rng, difficulty):
+    """Lists of infinitives vs. gerunds: match the form the lead verb takes."""
+    lead, good, bad = rng.choice(_INF_GER)
+    idx = rng.sample(range(4), 3)
+    a, b, c = (good[i] for i in idx)
+    c_bad = bad[idx[2]]
+    form = "infinitive" if good[0].startswith("to ") else "gerund"
+    correct = (c, f"Correct. The list uses {form}s, so the final item is a{'n' if form == 'infinitive' else ''} {form} too.")
+    noun_c = c.replace("to ", "", 1) if form == "infinitive" else c
+    ds = [(c_bad, f"This {'gerund' if form == 'infinitive' else 'infinitive'} breaks the series of {form}s."),
+          (f"{noun_c.split()[0]}s {' '.join(noun_c.split()[1:])}".strip(), "A finite verb breaks the series."),
+          (f"they {noun_c.split()[0]} {' '.join(noun_c.split()[1:])}".strip(), "A clause with its own subject breaks the series.")]
+    if difficulty != "easy":
+        ds[1] = (c.replace("to ", "and to ", 1) if form == "infinitive" else f"also {c}",
+                 "An extra connector inside the last item breaks the pattern of the series.")
+    text = f"{lead} {a}, {b}, and ___."
+    if difficulty == "hard":
+        text = text + " " + rng.choice(["The schedule rarely changes.", "Most people enjoy it.",
+                                        "The list is posted by the door."])
+    return build(rng, fill(text, conv_stem(rng)), correct, ds, subskill="parallel_structure",
+                 explanation="All items in a series after a lead verb must share one form: all infinitives or all gerunds.",
+                 tags=["conventions", "parallelism", "infinitive-gerund"], est=50)
+
+
+_CORR_VERBS = [
+    ("The committee will either approve the plan or ___", "reject it", ["rejecting it", "it will reject it", "to reject it"]),
+    ("The storm not only flooded the road but also ___", "toppled the old oak", ["toppling the old oak", "the old oak toppled", "to topple the old oak"]),
+    ("Visitors may neither touch the exhibits nor ___", "photograph them", ["photographing them", "they may photograph them", "to photograph them"]),
+    ("{N} both repaired the engine and ___", "repainted the hull", ["repainting the hull", "the hull was repainted", "to repaint the hull"]),
+    ("The new filter not only removes sediment but also ___", "improves the taste", ["improving the taste", "the taste improves", "to improve the taste"]),
+    ("The guide would rather walk the ridge than ___", "drive the valley road", ["driving the valley road", "she would drive the valley road", "to drive the valley road"]),
+    ("Each spring the farmers either plow the lower field or ___", "let it rest", ["letting it rest", "it is left to rest", "to let it rest"]),
+    ("The library will not only extend its hours but also ___", "add a second reading room", ["adding a second reading room", "a second reading room will be added", "to add a second reading room"]),
+    ("The ranger either closes the trail or ___", "posts a warning at the gate", ["posting a warning at the gate", "a warning is posted at the gate", "to post a warning at the gate"]),
+    ("{N} would rather repair the old canoe than ___", "buy a new one", ["buying a new one", "she would buy a new one", "to buy a new one"]),
+    ("The drought not only withered the corn but also ___", "dried the creek", ["drying the creek", "the creek dried", "to dry the creek"]),
+    ("The choir will both record an album and ___", "tour the coast", ["touring the coast", "a tour of the coast", "to tour the coast"]),
+]
+
+
+@family(fill_in=True, small_space=True)
+def par_correlative_verbs(rng, difficulty):
+    """Correlative pairs joining verb phrases."""
+    frame, right, wrongs = rng.choice(_CORR_VERBS)
+    name = rng.choice(_NAMES)
+    text = frame.format(N=name) + "."
+    correct = (right, f"Correct. '{right}' matches the verb phrase after the first half of the pair.")
+    ds = [(wrongs[0], "An -ing phrase does not match the verb phrase in the first half."),
+          (wrongs[1], "A full clause does not match the verb phrase in the first half."),
+          (wrongs[2], "An infinitive does not match the finite verb phrase in the first half.")]
+    if difficulty != "easy":
+        text = rng.choice(["As expected, ", "According to the minutes, ", "In the end, "]) + soft_low(text)
+    if difficulty == "hard":
+        text = text + " " + rng.choice(["The vote was unanimous.", "Nobody was surprised.", "The work took all summer."])
+    return build(rng, fill(text, conv_stem(rng)), correct, ds, subskill="parallel_structure",
+                 explanation=("With correlative pairs (either/or, not only/but also, neither/nor), the words "
+                              "after each half must have the same form."),
+                 tags=["conventions", "parallelism", "correlative-verbs"], est=50)
+
+
+# =========================================================================== #
+# v2.1 ADDITIONS — PRONOUN-ANTECEDENT
+# =========================================================================== #
+_PA_COLL = [("The jury", "verdict"), ("The committee", "recommendation"), ("The orchestra", "program"),
+            ("The team", "lineup"), ("The council", "budget"), ("The faculty", "schedule"),
+            ("The crew", "route"), ("The board", "decision"), ("The choir", "repertoire"), ("The cast", "bows")]
+
+
+@family(fill_in=True)
+def pa_collective(rng, difficulty):
+    """A collective noun acting as a unit takes 'it'/'its', even with 'members' nearby."""
+    ante, thing = rng.choice(_PA_COLL)
+    noun = ante.split()[1]
+    kind = rng.choice(["poss", "subj"])
+    members = rng.choice(["whose members rarely agree", "made up of twelve members",
+                          "which includes several newcomers", "despite its many members"])
+    if kind == "poss":
+        right, wrong = "its", "their"
+        pred = rng.choice([f"announced ___ {thing} at noon", f"revised ___ {thing} twice", f"defended ___ {thing}"])
+        ds = [(wrong, f"'{noun}' acts as a single unit here, so the possessive is 'its', not 'their'."),
+              ("it's", "'it's' means 'it is' and is not possessive."),
+              ("there", "'there' is not a possessive pronoun.")]
+    else:
+        right, wrong = "it", "they"
+        pred = rng.choice([f"when ___ announced the {thing}", f"before ___ revised the {thing}",
+                           f"after ___ approved the {thing}"])
+        ds = [(wrong, f"'{noun}' acts as one unit, so the subject pronoun is 'it'."),
+              ("them", "'them' is objective and cannot be the subject."),
+              ("one", "'one' does not refer back to the collective noun.")]
+    correct = (right, f"Correct. '{ante}' is a collective noun acting as one unit, so '{right}' agrees with it.")
+    if kind == "poss":
+        text = f"{ante} {pred}." if difficulty == "easy" else f"{ante}, {members}, {pred}."
+    else:
+        text = f"The reporters waited outside {pred.replace('___', '___')}" if False else \
+            f"The hall fell silent {pred}." if difficulty == "easy" else f"The hall, packed with reporters, fell silent {pred}."
+        text = text.replace("silent when", "silent when").replace(f"silent after", "silent after")
+        if difficulty != "easy":
+            text = text.replace(f"{ante}", f"{ante}, {members},") if ante in text else text
+        text = text.replace("___ announced", f"___ announced").replace("the hall", "the hall")
+        # make the antecedent explicit
+        text = f"{ante} met for nine hours. " + text if difficulty != "hard" else \
+            f"{ante}, {members}, met for nine hours. " + text
+    if difficulty == "hard" and kind == "poss":
+        text = text + " " + rng.choice(["The announcement surprised no one.", "Reporters had waited all day."])
+    return build(rng, fill(text, conv_stem(rng)), correct, ds, subskill="pronoun_antecedent",
+                 explanation=(f"A collective noun such as '{noun}' names one group acting together; "
+                              "the pronoun that refers to it is singular."),
+                 tags=["conventions", "pronoun-antecedent", "collective"])
+
+
+_PA_INDEF = [("Neither of the companies", "released ___ annual report"), ("Each of the branches", "updated ___ hours"),
+             ("One of the ferries", "changed ___ schedule"), ("Either of the proposals", "could win on ___ merits"),
+             ("Every one of the clinics", "posted ___ address at the gate"), ("Neither of the bridges", "has had ___ deck replaced"),
+             ("Each of the orchards", "sells ___ harvest at the market"), ("One of the museums", "reopened ___ east wing"),
+             ("Neither of the choirs", "has chosen ___ program"), ("Each of the ferries", "carries ___ own mechanic"),
+             ("One of the bakeries", "doubled ___ staff"), ("Every one of the lighthouses", "still has ___ original lens")]
+
+
+@family(fill_in=True)
+def pa_indefinite(rng, difficulty):
+    """Indefinite pronouns (each, neither, one of) are singular antecedents."""
+    ante, pred = rng.choice(_PA_INDEF)
+    head = ante.split()[0]
+    plural_noun = ante.split()[-1]
+    pred = pred + rng.choice(["", ", as the newsletter reports", ", to nobody's surprise"])
+    correct = ("its", f"Correct. '{head}' is singular, so the pronoun is 'its'; the plural '{plural_noun}' "
+                      "is the object of 'of', not the antecedent.")
+    ds = [("their", f"'their' agrees with '{plural_noun}', but the antecedent is the singular '{head}'."),
+          ("its'", "'its'' is not a word."),
+          ("it's", "'it's' means 'it is' and cannot show possession.")]
+    text = f"{ante} {pred}."
+    if difficulty == "medium":
+        text = rng.choice(["According to the newsletter, ", "As of this month, ", "To the surprise of many, "]) + low(text)
+    elif difficulty == "hard":
+        text = f"{ante}, {rng.choice(['after months of debate', 'along with its partners', 'despite the cost'])}, {pred}. " + \
+            rng.choice(["The decision drew little notice.", "Nobody noticed at first.", "The change was overdue."])
+    return build(rng, fill(text, conv_stem(rng)), correct, ds, subskill="pronoun_antecedent",
+                 explanation=f"Indefinite pronouns such as '{head.lower()}' are singular, whatever plural noun follows 'of'.",
+                 tags=["conventions", "pronoun-antecedent", "indefinite"])
+
+
+_PA_DISTANT = [
+    ("The lighthouse was built in 1874.", "For a century a keeper lived in the cottage beside it, trimming the wick each night.",
+     "Today ___ lamp switches on by itself at dusk", "its", "lighthouse"),
+    ("The three founders still meet every Friday.", "The company they started has grown to four hundred employees.",
+     "Even so, ___ keep the same corner table at the diner", "they", "founders"),
+    ("The orchestra toured six cities last spring.", "Critics in every city praised the young soloist.",
+     "By the final concert ___ members were exhausted but elated", "its", "orchestra"),
+    ("The divers mapped the sunken ferry over two summers.", "The wreck lies in forty feet of murky water.",
+     "By the second August ___ had photographed every deck", "they", "divers"),
+    ("The weather station has operated since 1952.", "Farmers in the valley check the readings before planting.",
+     "Every morning ___ instruments are inspected at six", "its", "station"),
+    ("The twin lighthouses guard the northern channel.", "Ships bound for the harbor pass between them.",
+     "On foggy nights ___ horns sound every thirty seconds", "their", "lighthouses"),
+    ("The bakery's starter is more than forty years old.", "Customers line up before the doors open.",
+     "The owners feed ___ every morning before dawn", "it", "starter"),
+    ("The volunteers arrived before sunrise.", "The beach was littered with debris from the storm.",
+     "Within an hour ___ had cleared the entire shoreline", "they", "volunteers"),
+]
+
+
+@family(fill_in=True, small_space=True)
+def pa_distant(rng, difficulty):
+    """The antecedent is two sentences back, with a closer noun of the other number as bait."""
+    s1, s2, s3, right, ante = rng.choice(_PA_DISTANT)
+    plural = right in ("their", "they")
+    num = "plural" if plural else "singular"
+    if right in ("its", "their"):
+        wrong = "their" if right == "its" else "its"
+        ds = [(wrong, f"'{wrong}' agrees with a nearer noun, but the pronoun refers to '{ante}', which is {num}."),
+              ("it's" if not plural else "they're", "A contraction cannot show possession."),
+              ("there", "'there' is not a possessive pronoun.")]
+    elif right in ("it", "they"):
+        wrong = "they" if right == "it" else "it"
+        ds = [(wrong, f"'{wrong}' matches a nearer noun, but the antecedent '{ante}' is {num}."),
+              ("them" if plural else "its", "This form cannot be the subject of the clause."),
+              ("one", "'one' does not refer back to the antecedent.")]
+    correct = (right, f"Correct. The pronoun refers to '{ante}' in the first sentence, which is {num}.")
+    text = f"{s1} {s2} {s3}." if difficulty != "easy" else f"{s1} {s3}."
+    if difficulty == "hard":
+        text = text + " " + rng.choice(["Visitors rarely notice.", "The routine never varies.", "Few people know this."])
+    return build(rng, fill(text, conv_stem(rng)), correct, ds, subskill="pronoun_antecedent",
+                 explanation=("Trace the pronoun back to the noun it really stands for, even when another "
+                              "noun sits closer to it."),
+                 tags=["conventions", "pronoun-antecedent", "distant"], est=55)
+
+
+# =========================================================================== #
+# v2.1 ADDITIONS — QUANTITATIVE EVIDENCE
+# =========================================================================== #
+@family(fill_in=False)
+def qe_percent_change(rng, difficulty):
+    """Percent change computed from two table values."""
+    label, plural, cats, measure, unit = rng.choice(_QE_CATS)
+    k = {"easy": 3, "medium": 4, "hard": 5}[difficulty]
+    names = rng.sample(cats, k)
+    y1, y2 = 2018 + rng.randint(0, 2), 2022 + rng.randint(0, 2)
+    rows = []
+    for nm in names:
+        v1 = rng.choice([20, 25, 40, 50, 60, 80])
+        pct = rng.choice([10, 20, 25, 50]) if difficulty != "hard" else rng.choice([10, 15, 20, 25, 30, 50])
+        v2 = v1 + v1 * pct // 100
+        if v1 * pct % 100:
+            v2 = v1 + round(v1 * pct / 100)
+        rows.append([nm, v1, v2])
+    i = rng.randrange(k)
+    nm, v1, v2 = rows[i]
+    pct = round((v2 - v1) / v1 * 100)
+    diff = v2 - v1
+    claim = f"A journalist writes that {nm} showed the kind of growth in {measure} the region hoped for."
+    tmpl = rng.choice([
+        lambda v: f"{nm} rose from {v1} to {v2} {unit}, an increase of about {v} percent.",
+        lambda v: f"From {y1} to {y2}, {nm} climbed from {v1} to {v2} {unit}, up roughly {v} percent.",
+        lambda v: f"{_poss(nm)} figure grew by about {v} percent, from {v1} to {v2} {unit}.",
+    ])
+    correct = (tmpl(pct), f"Correct. ({v2} − {v1}) ÷ {v1} = {pct}% growth.")
+    cands = [(diff, f"{diff} is the change in {unit}, not a percent; the percent change is {pct}%."),
+             (round(diff / v2 * 100), "This divides by the later value instead of the starting value."),
+             (pct * 2, f"The percent change is {pct}%, not double that."),
+             (pct + 10, f"The percent change is {pct}%; this figure is simply too high."),
+             (max(pct - 5, 1), f"The percent change is {pct}%; this figure is too low.")]
+    ds, seen = [], {pct}
+    for val, why in cands:
+        if val in seen:
+            continue
+        seen.add(val)
+        ds.append((tmpl(val), why))
+        if len(ds) == 3:
+            break
+    prompt = (f"{claim}\n\n" + rng.choice(["Which choice most accurately uses data from the table to support the statement?",
+                                           "Which statement about the table's data is accurate?"]))
+    return _qe_mc(rng, prompt, correct, ds,
+                  _qe_table(f"{cap(measure)} ({unit})", [label, str(y1), str(y2)], rows),
+                  "Percent change = (new − old) ÷ old × 100; compute it from the table's starting value.")
+
+
+@family(fill_in=False)
+def qe_contradict_year(rng, difficulty):
+    """Which year's data contradicts a 'rose every year' claim?"""
+    metric, place, unit, verb = rng.choice(_QE_TOPICS)
+    rising = verb in ("rose", "increased", "grew", "climbed")
+    n = {"easy": 4, "medium": 5, "hard": 6}[difficulty]
+    y0 = 2016 + rng.randint(0, 3)
+    years = [y0 + i for i in range(n)]
+    start = rng.randint(40, 120) if unit != "percent" else rng.randint(10, 35)
+    steps = [rng.choice([4, 6, 8, 10]) if unit != "percent" else rng.choice([2, 3, 4, 5]) for _ in range(n - 1)]
+    vals = [start]
+    for st in steps:
+        vals.append(vals[-1] + st)
+    if not rising:
+        vals = vals[::-1]
+    dip = rng.randrange(1, n)  # index of the year that reverses
+    rev = rng.choice([2, 3, 5])
+    vals[dip] = vals[dip - 1] - rev if rising else vals[dip - 1] + rev
+    # restore monotone after the dip relative to the dip value
+    for j in range(dip + 1, n):
+        vals[j] = max(vals[j], vals[j - 1] + 2) if rising else min(vals[j], vals[j - 1] - 2)
+    rows = [[y, v] for y, v in zip(years, vals)]
+    dir_word = "rose" if rising else "fell"
+    opp = "fell" if rising else "rose"
+    claim = f"A report claims that {metric.lower()} in {place} {dir_word} every single year from {years[0]} to {years[-1]}."
+    correct_text = rng.choice([
+        f"In {years[dip]} the value {opp} to {vals[dip]} {unit} from {vals[dip - 1]} {unit} the year before.",
+        f"The figure for {years[dip]} ({vals[dip]} {unit}) is {'lower' if rising else 'higher'} than the figure for {years[dip - 1]} ({vals[dip - 1]} {unit}).",
+    ])
+    correct = (correct_text, f"Correct. {years[dip]} breaks the pattern: the value {opp} that year.")
+    others = [i for i in range(1, n) if i != dip]
+    o1 = others[0]
+    o2 = others[-1]
+    ds = [(f"In {years[o1]} the value {dir_word} to {vals[o1]} {unit} from {vals[o1 - 1]} {unit}.",
+           "This year follows the claimed pattern, so it does not contradict the report."),
+          (f"The figure for {years[o2]} ({vals[o2]} {unit}) is {'higher' if rising else 'lower'} than the figure for {years[o2 - 1]} ({vals[o2 - 1]} {unit}).",
+           "This year follows the claimed pattern."),
+          (f"Over the whole period the value {dir_word} from {vals[0]} to {vals[-1]} {unit}.",
+           "The overall change is consistent with the claim; only a single year's reversal contradicts 'every year'.")]
+    prompt = (f"{claim}\n\n" + rng.choice(["Which choice uses data from the table to identify the year that contradicts the report?",
+                                           "Which finding from the table most directly contradicts the claim?"]))
+    return _qe_mc(rng, prompt, correct, ds,
+                  _qe_table(f"{metric} in {place} ({unit})", ["Year", metric], rows),
+                  "A claim about 'every year' is refuted by any single year that moves the other way.")
+
+
+@family(fill_in=False)
+def qe_two_groups(rng, difficulty):
+    """Two groups measured in two years; compare their changes."""
+    label, plural, cats, measure, unit = rng.choice(_QE_CATS)
+    a, b = rng.sample(cats, 2)
+    y1, y2 = 2017 + rng.randint(0, 2), 2022 + rng.randint(0, 2)
+    a1 = rng.randint(20, 50)
+    b1 = rng.randint(20, 50)
+    da = rng.choice([4, 6, 8, 10, 12])
+    db = rng.choice([1, 2, 3, -2, -4])
+    while abs(db) == da:
+        db = rng.choice([1, 2, 3, -2, -4])
+    a2, b2 = a1 + da, b1 + db
+    rows = [[str(y1), a1, b1], [str(y2), a2, b2]]
+    claim = f"A researcher argues that {a} improved far more than {b} in {measure} between {y1} and {y2}."
+    b_dir = "rose" if db > 0 else "fell"
+    correct_text = rng.choice([
+        f"{a} rose by {da} {unit} while {b} {b_dir} by {abs(db)} {unit}.",
+        f"{_poss(a)} figure climbed {da} {unit}; {_poss(b)} {b_dir} {abs(db)} {unit}.",
+        f"From {y1} to {y2}, {a} gained {da} {unit} and {b} {b_dir} {abs(db)} {unit}.",
+    ])
+    correct = (correct_text, "Correct. The changes are read directly from the two rows for each group.")
+    ds = [(f"{b} rose by {da} {unit} while {a} {b_dir} by {abs(db)} {unit}.", "This swaps the two groups."),
+          (f"{a} and {b} both rose by about {da} {unit}.", f"{b} changed by {db:+} {unit}, not {da}."),
+          (f"In {y2}, {a} recorded {a2} {unit} and {b} recorded {b2} {unit}, so {b} improved more.",
+           f"The {y2} values alone do not show change; {a} gained {da} and {b} {b_dir} by {abs(db)}.")]
+    if difficulty == "hard":
+        ds[1] = (f"{a} rose by {da} {unit} while {b} {b_dir} by {abs(db) + 3} {unit}.",
+                 f"{b} changed by {abs(db)} {unit}, not {abs(db) + 3}.")
+    prompt = f"{claim}\n\n{rng.choice(_QE_STEMS)}"
+    return _qe_mc(rng, prompt, correct, ds,
+                  _qe_table(f"{cap(measure)} ({unit})", ["Year", a, b], rows),
+                  "Compute each group's change from its own two values before comparing the two groups.")
+
+
+# =========================================================================== #
 # FAMILY TABLE + LEGACY DISPATCHERS
 # =========================================================================== #
 FAMILIES = {
     "verb_tense": {
-        "easy": [vt_time_cue, vt_irregular, vt_present_perfect, vt_passage, vt_sequence],
-        "medium": [vt_time_cue, vt_sequence, vt_irregular, vt_present_perfect, vt_passage, vt_clause_options],
-        "hard": [vt_time_cue, vt_sequence, vt_irregular, vt_present_perfect, vt_passage, vt_clause_options],
+        "easy": [vt_time_cue, vt_irregular, vt_present_perfect, vt_passage, vt_sequence,
+                 vt_conditional, vt_future_perfect, vt_reported],
+        "medium": [vt_time_cue, vt_sequence, vt_irregular, vt_present_perfect, vt_passage, vt_clause_options,
+                   vt_conditional, vt_future_perfect, vt_reported],
+        "hard": [vt_time_cue, vt_sequence, vt_irregular, vt_present_perfect, vt_passage, vt_clause_options,
+                 vt_conditional, vt_future_perfect, vt_reported],
     },
     "parallel_structure": {
-        "easy": [par_series, par_verb_series, par_correlative, par_whole_sentence, par_passage],
-        "medium": [par_series, par_correlative, par_comparison, par_verb_series, par_passage, par_whole_sentence],
-        "hard": [par_series, par_correlative, par_comparison, par_verb_series, par_passage, par_whole_sentence],
+        "easy": [par_series, par_verb_series, par_correlative, par_whole_sentence, par_passage,
+                 par_infinitive_gerund, par_correlative_verbs],
+        "medium": [par_series, par_correlative, par_comparison, par_verb_series, par_passage, par_whole_sentence,
+                   par_as_as, par_infinitive_gerund, par_correlative_verbs],
+        "hard": [par_series, par_correlative, par_comparison, par_verb_series, par_passage, par_whole_sentence,
+                 par_as_as, par_infinitive_gerund, par_correlative_verbs],
     },
     "pronoun_antecedent": {
-        "easy": [pa_possessive, pa_subject, pa_passage, pa_ambiguous, pa_whole_sentence],
-        "medium": [pa_possessive, pa_subject, pa_ambiguous, pa_passage, pa_whole_sentence],
-        "hard": [pa_possessive, pa_subject, pa_ambiguous, pa_passage, pa_whole_sentence],
+        "easy": [pa_possessive, pa_subject, pa_passage, pa_ambiguous, pa_whole_sentence,
+                 pa_collective, pa_indefinite, pa_distant],
+        "medium": [pa_possessive, pa_subject, pa_ambiguous, pa_passage, pa_whole_sentence,
+                   pa_collective, pa_indefinite, pa_distant],
+        "hard": [pa_possessive, pa_subject, pa_ambiguous, pa_passage, pa_whole_sentence,
+                 pa_collective, pa_indefinite, pa_distant],
     },
     "quantitative_evidence": {
-        "easy": [qe_trend, qe_category_max, qe_compare_two, qe_support_point, qe_undermine],
-        "medium": [qe_trend, qe_category_max, qe_compare_two, qe_undermine, qe_support_point],
-        "hard": [qe_trend, qe_category_max, qe_compare_two, qe_undermine, qe_support_point],
+        "easy": [qe_trend, qe_category_max, qe_compare_two, qe_support_point, qe_undermine,
+                 qe_percent_change, qe_contradict_year, qe_two_groups],
+        "medium": [qe_trend, qe_category_max, qe_compare_two, qe_undermine, qe_support_point,
+                   qe_percent_change, qe_contradict_year, qe_two_groups],
+        "hard": [qe_trend, qe_category_max, qe_compare_two, qe_undermine, qe_support_point,
+                 qe_percent_change, qe_contradict_year, qe_two_groups],
     },
 }
 

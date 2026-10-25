@@ -11,31 +11,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "extrapolation",
-    "prompt": "If the rate of photosynthesis kept changing at the same rate as it did between 500 µmol/m²/s and 600 µmol/m²/s, its value at a light intensity of 700 µmol/m²/s would be closest to:",
+    "prompt": "Suppose the trend between 10 km/h and 12 km/h continued at the same rate. The heart rate at a speed of 14 km/h would be closest to:",
     "choices": [
       {
         "id": "A",
-        "text": "23.0 bubbles/min",
-        "rationale": "Correct. The last change was 0.7; adding it again to 22.3 gives 23.0."
-      },
-      {
-        "id": "B",
-        "text": "23.7 bubbles/min",
-        "rationale": "This adds twice the last change; one more step should add it once."
-      },
-      {
-        "id": "C",
-        "text": "22.6 bubbles/min",
+        "text": "179 beats/min",
         "rationale": "This adds only half of the last change; the step size is the same as before."
       },
       {
-        "id": "D",
-        "text": "22.3 bubbles/min",
+        "id": "B",
+        "text": "171 beats/min",
         "rationale": "This assumes no further change, but the trend continues."
+      },
+      {
+        "id": "C",
+        "text": "187 beats/min",
+        "rationale": "Correct. The last change was 16; adding it again to 171 gives 187."
+      },
+      {
+        "id": "D",
+        "text": "between 155 beats/min and 171 beats/min",
+        "rationale": "This stays inside the measured range, but the trend carries the next value beyond the last row."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "The change between 500 µmol/m²/s and 600 µmol/m²/s is 22.3 − 21.6 = 0.7. One more step of 100 µmol/m²/s adds the same change: 22.3 + (0.7) = 23.0.",
+    "correct_choice": "C",
+    "explanation": "The change between 10 km/h and 12 km/h is 171 − 155 = 16. One more step of 2 km/h adds the same change: 171 + (16) = 187.",
     "estimated_time_seconds": 80,
     "tags": [
       "science",
@@ -45,38 +45,38 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Light and Photosynthesis",
+      "title": "Exercise Intensity and Heart Rate",
       "table": {
-        "caption": "Table 1. Rate of photosynthesis of a water plant at several light intensities.",
+        "caption": "Table 1. Heart rate of a volunteer walking or running on a treadmill at several speeds.",
         "headers": [
-          "Light intensity (µmol/m²/s)",
-          "Bubbles per minute (bubbles/min)"
+          "Treadmill speed (km/h)",
+          "Heart rate (beats/min)"
         ],
         "rows": [
           [
-            "200",
-            "17.1"
+            "4",
+            "105"
           ],
           [
-            "300",
-            "19.3"
+            "6",
+            "122"
           ],
           [
-            "400",
-            "20.7"
+            "8",
+            "138"
           ],
           [
-            "500",
-            "21.6"
+            "10",
+            "155"
           ],
           [
-            "600",
-            "22.3"
+            "12",
+            "171"
           ]
         ]
       }
     },
-    "answer_verification": "science:extrap;x=700;col=1"
+    "answer_verification": "science:extrap;x=14;col=1"
   },
   {
     "question_id": "act-science-trends-extrapolation-hard-q02",
@@ -90,31 +90,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "series_crossing",
-    "prompt": "According to Table 1, in which year were native grass count and knapweed count most nearly equal?",
+    "prompt": "According to Table 1, in which year were leopard frog count and bullfrog count most nearly equal?",
     "choices": [
       {
         "id": "A",
-        "text": "2015",
-        "rationale": "In 2015 the gap is 25, larger than in 2016."
+        "text": "2022",
+        "rationale": "In 2022 the gap is 40, larger than in 2023."
       },
       {
         "id": "B",
-        "text": "2016",
-        "rationale": "Correct. In 2016 the values are 46 and 45, a gap of only 1."
+        "text": "Cannot be determined from Table 1",
+        "rationale": "Subtracting the two columns in each row shows exactly where the gap is smallest."
       },
       {
         "id": "C",
-        "text": "2018",
-        "rationale": "In 2018 the gap is 47, larger than in 2016."
+        "text": "2023",
+        "rationale": "Correct. In 2023 the values are 143 and 140, a gap of only 3."
       },
       {
         "id": "D",
-        "text": "2017",
-        "rationale": "In 2017 the gap is 23, larger than in 2016."
+        "text": "2024",
+        "rationale": "In 2024 the gap is 34, larger than in 2023."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Find the difference between the two columns in each row; the smallest difference, 1, is in 2016.",
+    "correct_choice": "C",
+    "explanation": "Find the difference between the two columns in each row; the smallest difference, 3, is in 2023.",
     "estimated_time_seconds": 75,
     "tags": [
       "science",
@@ -124,44 +124,49 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Native and Invasive Plants",
+      "title": "Two Frog Species",
       "table": {
-        "caption": "Table 1. Stems of a native grass and of an invasive knapweed counted in a 1 m² plot each summer.",
+        "caption": "Table 1. Counts of two frog species in a pond in the years after bullfrogs first appeared there.",
         "headers": [
           "Year",
-          "Native grass stems",
-          "Knapweed stems"
+          "Leopard frogs",
+          "Bullfrogs"
         ],
         "rows": [
           [
-            "2013",
-            "88",
-            "15"
-          ],
-          [
-            "2014",
-            "74",
+            "2018",
+            "213",
             "25"
           ],
           [
-            "2015",
-            "60",
-            "35"
+            "2019",
+            "199",
+            "48"
           ],
           [
-            "2016",
-            "46",
-            "45"
+            "2020",
+            "185",
+            "71"
           ],
           [
-            "2017",
-            "32",
-            "55"
+            "2021",
+            "171",
+            "94"
           ],
           [
-            "2018",
-            "18",
-            "65"
+            "2022",
+            "157",
+            "117"
+          ],
+          [
+            "2023",
+            "143",
+            "140"
+          ],
+          [
+            "2024",
+            "129",
+            "163"
           ]
         ]
       }
@@ -180,31 +185,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "extrapolation",
-    "prompt": "If the rate of change shown in the last two rows of Table 1 continued, at approximately what slope angle would the mass of soil eroded reach 1137 g?",
+    "prompt": "If the rate of change shown in the last two rows of Table 1 continued, at approximately what altitude would the boiling point of the water fall to 82.9 °C?",
     "choices": [
       {
         "id": "A",
-        "text": "50°",
-        "rationale": "Correct. Each step of 5° changes the value by 144; 4 more steps are needed to go from 561 to 1137."
+        "text": "4500 m",
+        "rationale": "After 3 steps the value would be 84.6, not 82.9."
       },
       {
         "id": "B",
-        "text": "45°",
-        "rationale": "After 3 steps the value would be 993, not 1137."
+        "text": "It would never fall to 82.9 °C if the trend continued",
+        "rationale": "Continuing the change of −1.7 per step reaches 82.9 after 4 steps."
       },
       {
         "id": "C",
-        "text": "70°",
-        "rationale": "After 8 steps the value would be 1713, not 1137."
+        "text": "5000 m",
+        "rationale": "Correct. Each step of 500 m changes the value by −1.7; 4 more steps are needed to go from 89.7 to 82.9."
       },
       {
         "id": "D",
-        "text": "55°",
-        "rationale": "After 5 steps the value would be 1281, not 1137."
+        "text": "5500 m",
+        "rationale": "After 5 steps the value would be 81.2, not 82.9."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "The last change is 144 per 5°. From 561, reaching 1137 takes (1137 − 561) ÷ (144) = 4 steps, so slope angle ≈ 50°.",
+    "correct_choice": "C",
+    "explanation": "The last change is −1.7 per 500 m. From 89.7, reaching 82.9 takes (82.9 − 89.7) ÷ (−1.7) = 4 steps, so altitude ≈ 5000 m.",
     "estimated_time_seconds": 90,
     "tags": [
       "science",
@@ -214,42 +219,38 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Slope and Soil Erosion",
+      "title": "Altitude and Boiling Point",
       "table": {
-        "caption": "Table 1. Mass of soil washed from trays set at several slope angles.",
+        "caption": "Table 1. Boiling point of water measured at several altitudes.",
         "headers": [
-          "Slope angle (°)",
-          "Soil eroded (g)"
+          "Altitude (m)",
+          "Boiling point (°C)"
         ],
         "rows": [
           [
-            "5",
-            "43"
+            "1000",
+            "96.6"
           ],
           [
-            "10",
-            "107"
+            "1500",
+            "94.8"
           ],
           [
-            "15",
-            "190"
+            "2000",
+            "93.1"
           ],
           [
-            "20",
-            "294"
+            "2500",
+            "91.4"
           ],
           [
-            "25",
-            "417"
-          ],
-          [
-            "30",
-            "561"
+            "3000",
+            "89.7"
           ]
         ]
       }
     },
-    "answer_verification": "science:reach;v=1137;col=1"
+    "answer_verification": "science:reach;v=82.9;col=1"
   },
   {
     "question_id": "act-science-trends-extrapolation-hard-q04",
@@ -263,31 +264,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "trend_shape",
-    "prompt": "According to Table 1, the total increase in the mass of salt that dissolved from 0 °C to 80 °C was larger under which condition, and by how much?",
+    "prompt": "According to Table 1, the total decrease in the number of colonies from 5 µg/mL to 25 µg/mL was larger under which condition, and by how much?",
     "choices": [
       {
         "id": "A",
-        "text": "Salt A, by 135 g",
-        "rationale": "135 is the total change for Salt A, not the difference between the two conditions."
+        "text": "37°C, by 53 colonies",
+        "rationale": "Correct. 37°C: 169; 30°C: 116; the difference is 53."
       },
       {
         "id": "B",
-        "text": "Salt B, by 37 g",
-        "rationale": "The amount is right, but the larger overall change was for Salt A."
+        "text": "30°C, by 53 colonies",
+        "rationale": "The amount is right, but the larger overall change was for 37°C."
       },
       {
         "id": "C",
-        "text": "Salt B, by 98 g",
-        "rationale": "98 is the total change for Salt B, and that condition showed the smaller change."
+        "text": "Neither; both conditions changed by the same total amount",
+        "rationale": "The totals differ: 169 for 37°C versus 116 for 30°C."
       },
       {
         "id": "D",
-        "text": "Salt A, by 37 g",
-        "rationale": "Correct. Salt A: 135; Salt B: 98; the difference is 37."
+        "text": "37°C, by 169 colonies",
+        "rationale": "169 is the total change for 37°C, not the difference between the two conditions."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Total change for Salt A: |154 − 19| = 135; for Salt B: |112 − 14| = 98. Salt A is larger by 37 g.",
+    "correct_choice": "A",
+    "explanation": "Total change for 30°C: |7 − 123| = 116; for 37°C: |11 − 180| = 169. 37°C is larger by 53 colonies.",
     "estimated_time_seconds": 85,
     "tags": [
       "science",
@@ -297,39 +298,39 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Solubility and Temperature",
+      "title": "Antibiotic Dose and Bacterial Growth",
       "table": {
-        "caption": "Table 1. Mass of a salt that dissolves in 100 g of water at several temperatures. Results are shown for two conditions: Salt A and Salt B.",
+        "caption": "Table 1. Number of bacterial colonies on plates with several antibiotic concentrations. Results are shown for two conditions: 30°C and 37°C.",
         "headers": [
-          "Water temperature (°C)",
-          "Mass dissolved (g), Salt A",
-          "Mass dissolved (g), Salt B"
+          "Antibiotic concentration (µg/mL)",
+          "Colony count (colonies), 30°C",
+          "Colony count (colonies), 37°C"
         ],
         "rows": [
           [
-            "0",
-            "19",
-            "14"
+            "5",
+            "123",
+            "180"
+          ],
+          [
+            "10",
+            "61",
+            "89"
+          ],
+          [
+            "15",
+            "30",
+            "44"
           ],
           [
             "20",
-            "34",
-            "25"
+            "15",
+            "22"
           ],
           [
-            "40",
-            "61",
-            "45"
-          ],
-          [
-            "60",
-            "101",
-            "74"
-          ],
-          [
-            "80",
-            "154",
-            "112"
+            "25",
+            "7",
+            "11"
           ]
         ]
       }
@@ -347,73 +348,78 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "data_interpretation",
-    "subskill": "extrapolation",
-    "prompt": "If the period of the pendulum kept changing at the same rate as it did between 80 cm and 100 cm, its value at a string length of 120 cm would be closest to:",
+    "subskill": "trend_shape",
+    "prompt": "According to Table 1, the rate of change of the water temperature from 4 m to 6 m was approximately how many times its rate of change from 8 m to 10 m?",
     "choices": [
       {
         "id": "A",
-        "text": "2.42 s",
-        "rationale": "This adds twice the last change; one more step should add it once."
+        "text": "0.29",
+        "rationale": "This is the inverse ratio (slower interval over faster)."
       },
       {
         "id": "B",
-        "text": "2.00 s",
-        "rationale": "This assumes no further change, but the trend continues."
+        "text": "3.4",
+        "rationale": "Correct. 1.2 ÷ 0.35 ≈ 3.4."
       },
       {
         "id": "C",
-        "text": "2.10 s",
-        "rationale": "This adds only half of the last change; the step size is the same as before."
+        "text": "6.8",
+        "rationale": "This doubles the ratio; recheck the division."
       },
       {
         "id": "D",
-        "text": "2.21 s",
-        "rationale": "Correct. The last change was 0.21; adding it again to 2.00 gives 2.21."
+        "text": "2.4",
+        "rationale": "This is the change in temperature over the faster interval, not a ratio of rates."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "The change between 80 cm and 100 cm is 2.00 − 1.79 = 0.21. One more step of 20 cm adds the same change: 2.00 + (0.21) = 2.21.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "B",
+    "explanation": "Rate over 4 m to 6 m: 1.2 °C per m; over 8 m to 10 m: 0.35. Dividing gives about 3.4.",
+    "estimated_time_seconds": 90,
     "tags": [
       "science",
       "trends",
-      "extrapolate",
-      "family:tr_extrapolate_value"
+      "rate",
+      "intervals",
+      "family:tr_rate_compare_intervals"
     ],
     "stimulus": {
       "type": "table",
-      "title": "Pendulum Period",
+      "title": "Lake Temperature and Depth",
       "table": {
-        "caption": "Table 1. Period of a pendulum measured at several string lengths.",
+        "caption": "Table 1. Water temperature of a lake measured at several depths.",
         "headers": [
-          "Length of string (cm)",
-          "Period (s)"
+          "Depth (m)",
+          "Water temperature (°C)"
         ],
         "rows": [
           [
-            "20",
-            "0.90"
+            "2",
+            "16.2"
           ],
           [
-            "40",
-            "1.27"
+            "4",
+            "11.7"
           ],
           [
-            "60",
-            "1.55"
+            "6",
+            "9.3"
           ],
           [
-            "80",
-            "1.79"
+            "8",
+            "8.0"
           ],
           [
-            "100",
-            "2.00"
+            "10",
+            "7.3"
+          ],
+          [
+            "12",
+            "6.9"
           ]
         ]
       }
     },
-    "answer_verification": "science:extrap;x=120;col=1"
+    "answer_verification": "science:ratecmp;a=4;b=8;col=1"
   },
   {
     "question_id": "act-science-trends-extrapolation-hard-q06",
@@ -427,83 +433,74 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "series_crossing",
-    "prompt": "Based on Table 1, in which year was knapweed count first greater than native grass count?",
+    "prompt": "Suppose both trends in Table 1 continue at the same rates as between the last two rows. The percent of electricity from solar would first exceed the percent of electricity from coal in which year?",
     "choices": [
       {
         "id": "A",
-        "text": "2022",
-        "rationale": "In 2022, Knapweed stems (58) was still below Native grass stems (72)."
+        "text": "2020",
+        "rationale": "After 1 step: Coal ≈ 28, Solar ≈ 26; Solar is still behind."
       },
       {
         "id": "B",
-        "text": "2020",
-        "rationale": "In 2020, Knapweed stems (38) was still below Native grass stems (98)."
+        "text": "2021",
+        "rationale": "Correct. Each step Coal changes by −7 and Solar by 4; after 2 steps Solar is ahead for the first time."
       },
       {
         "id": "C",
-        "text": "2023",
-        "rationale": "Correct. In 2023, Knapweed stems (68) exceeds Native grass stems (59) for the first time; the row before has 58 versus 72."
+        "text": "2022",
+        "rationale": "After 3 steps: Coal ≈ 14, Solar ≈ 34; the crossing has already happened."
       },
       {
         "id": "D",
-        "text": "2021",
-        "rationale": "In 2021, Knapweed stems (48) was still below Native grass stems (85)."
+        "text": "Solar share would never exceed coal share",
+        "rationale": "Solar gains on Coal every step, so it must eventually pass it."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Compare the two columns row by row; 2023 is the first row where the Knapweed stems value is larger than the Native grass stems value.",
-    "estimated_time_seconds": 75,
+    "correct_choice": "B",
+    "explanation": "Continue both columns: Coal 35 → … (changing −7 per step) and Solar 22 → … (changing 4 per step). Solar first passes Coal after 2 steps, in 2021.",
+    "estimated_time_seconds": 95,
     "tags": [
       "science",
       "trends",
       "crossing",
-      "family:tr_crossing"
+      "extrapolate",
+      "family:tr_extrapolate_crossing"
     ],
     "stimulus": {
       "type": "table",
-      "title": "Native and Invasive Plants",
+      "title": "Electricity Sources",
       "table": {
-        "caption": "Table 1. Stems of a native grass and of an invasive knapweed counted in a 1 m² plot each summer.",
+        "caption": "Table 1. Percent of a region's electricity generated from coal and from solar power each year.",
         "headers": [
           "Year",
-          "Native grass stems",
-          "Knapweed stems"
+          "Coal (%)",
+          "Solar (%)"
         ],
         "rows": [
           [
+            "2016",
+            "56",
+            "10"
+          ],
+          [
+            "2017",
+            "49",
+            "14"
+          ],
+          [
             "2018",
-            "124",
+            "42",
             "18"
           ],
           [
             "2019",
-            "111",
-            "28"
-          ],
-          [
-            "2020",
-            "98",
-            "38"
-          ],
-          [
-            "2021",
-            "85",
-            "48"
-          ],
-          [
-            "2022",
-            "72",
-            "58"
-          ],
-          [
-            "2023",
-            "59",
-            "68"
+            "35",
+            "22"
           ]
         ]
       }
     },
-    "answer_verification": "science:first_exceed"
+    "answer_verification": "science:extrap_cross"
   },
   {
     "question_id": "act-science-trends-extrapolation-hard-q07",
@@ -517,78 +514,76 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "extrapolation",
-    "prompt": "Assume the percent of electricity from solar continues to change at the same rate as between 2015 and 2016. It would first reach 61% in approximately which year?",
+    "prompt": "If the boiling point of the water kept changing at the same rate as it did between 2000 m and 2500 m, its value at an altitude of 3000 m would be closest to:",
     "choices": [
       {
         "id": "A",
-        "text": "2018",
-        "rationale": "After 2 steps the value would be 54, not 61."
+        "text": "92.0 °C",
+        "rationale": "This assumes no further change, but the trend continues."
       },
       {
         "id": "B",
-        "text": "2022",
-        "rationale": "After 6 steps the value would be 82, not 61."
+        "text": "91.2 °C",
+        "rationale": "This adds only half of the last change; the step size is the same as before."
       },
       {
         "id": "C",
-        "text": "2020",
-        "rationale": "After 4 steps the value would be 68, not 61."
+        "text": "90.4 °C",
+        "rationale": "Correct. The last change was −1.6; adding it again to 92.0 gives 90.4."
       },
       {
         "id": "D",
-        "text": "2019",
-        "rationale": "Correct. Each step of 1 year changes the value by 7; 3 more steps are needed to go from 40 to 61."
+        "text": "between 92.0 °C and 93.6 °C",
+        "rationale": "This stays inside the measured range, but the trend carries the next value beyond the last row."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "The last change is 7 per 1 year. From 40, reaching 61 takes (61 − 40) ÷ (7) = 3 steps, so year ≈ 2019.",
-    "estimated_time_seconds": 90,
+    "correct_choice": "C",
+    "explanation": "The change between 2000 m and 2500 m is 92.0 − 93.6 = −1.6. One more step of 500 m adds the same change: 92.0 + (−1.6) = 90.4.",
+    "estimated_time_seconds": 80,
     "tags": [
       "science",
       "trends",
-      "threshold",
-      "family:tr_reach_threshold"
+      "extrapolate",
+      "family:tr_extrapolate_value"
     ],
     "stimulus": {
       "type": "table",
-      "title": "Electricity Sources",
+      "title": "Altitude and Boiling Point",
       "table": {
-        "caption": "Table 1. Percent of a region's electricity generated from coal and from solar power each year.",
+        "caption": "Table 1. Boiling point of water measured at several altitudes.",
         "headers": [
-          "Year",
-          "Coal (%)",
-          "Solar (%)"
+          "Altitude (m)",
+          "Boiling point (°C)"
         ],
         "rows": [
           [
-            "2012",
-            "52",
-            "12"
+            "0",
+            "100.0"
           ],
           [
-            "2013",
-            "46",
-            "19"
+            "500",
+            "98.4"
           ],
           [
-            "2014",
-            "40",
-            "26"
+            "1000",
+            "96.8"
           ],
           [
-            "2015",
-            "34",
-            "33"
+            "1500",
+            "95.2"
           ],
           [
-            "2016",
-            "28",
-            "40"
+            "2000",
+            "93.6"
+          ],
+          [
+            "2500",
+            "92.0"
           ]
         ]
       }
     },
-    "answer_verification": "science:reach;v=61;col=2"
+    "answer_verification": "science:extrap;x=3000;col=1"
   },
   {
     "question_id": "act-science-trends-extrapolation-hard-q08",
@@ -601,301 +596,38 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "data_interpretation",
-    "subskill": "trend_shape",
-    "prompt": "According to Table 1, the total decrease in the voltage of the battery from 0 h to 10 h was larger under which condition, and by how much?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "20°C, by 0.03 V",
-        "rationale": "Correct. 20°C: 0.52; 0°C: 0.49; the difference is 0.03."
-      },
-      {
-        "id": "B",
-        "text": "0°C, by 0.03 V",
-        "rationale": "The amount is right, but the larger overall change was for 20°C."
-      },
-      {
-        "id": "C",
-        "text": "0°C, by 0.49 V",
-        "rationale": "0.49 is the total change for 0°C, and that condition showed the smaller change."
-      },
-      {
-        "id": "D",
-        "text": "20°C, by 0.52 V",
-        "rationale": "0.52 is the total change for 20°C, not the difference between the two conditions."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "Total change for 20°C: |1.04 − 1.56| = 0.52; for 0°C: |0.96 − 1.45| = 0.49. 20°C is larger by 0.03 V.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "science",
-      "trends",
-      "conditions",
-      "family:tr_condition_trend_compare"
-    ],
-    "stimulus": {
-      "type": "table",
-      "title": "Battery Voltage Over Time",
-      "table": {
-        "caption": "Table 1. Voltage of a battery after several hours of powering a lamp. Results are shown for two conditions: 20°C and 0°C.",
-        "headers": [
-          "Time (h)",
-          "Voltage (V), 20°C",
-          "Voltage (V), 0°C"
-        ],
-        "rows": [
-          [
-            "0",
-            "1.56",
-            "1.45"
-          ],
-          [
-            "2",
-            "1.51",
-            "1.40"
-          ],
-          [
-            "4",
-            "1.43",
-            "1.33"
-          ],
-          [
-            "6",
-            "1.32",
-            "1.23"
-          ],
-          [
-            "8",
-            "1.19",
-            "1.11"
-          ],
-          [
-            "10",
-            "1.04",
-            "0.96"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "science:condtrend"
-  },
-  {
-    "question_id": "act-science-trends-extrapolation-hard-q09",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "science",
-    "section": "interpretation_of_data",
-    "skill": "trends_extrapolation",
-    "lesson_id": "act-science-trends-extrapolation-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "extrapolation",
-    "prompt": "Suppose the trend between 8 mg and 10 mg continued at the same rate. The time for the reaction to finish at a catalyst mass of 12 mg would be closest to:",
-    "choices": [
-      {
-        "id": "A",
-        "text": "33 s",
-        "rationale": "This assumes no further change, but the trend continues."
-      },
-      {
-        "id": "B",
-        "text": "23 s",
-        "rationale": "This adds twice the last change; one more step should add it once."
-      },
-      {
-        "id": "C",
-        "text": "30 s",
-        "rationale": "This adds only half of the last change; the step size is the same as before."
-      },
-      {
-        "id": "D",
-        "text": "28 s",
-        "rationale": "Correct. The last change was −5; adding it again to 33 gives 28."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "The change between 8 mg and 10 mg is 33 − 38 = −5. One more step of 2 mg adds the same change: 33 + (−5) = 28.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "science",
-      "trends",
-      "extrapolate",
-      "family:tr_extrapolate_value"
-    ],
-    "stimulus": {
-      "type": "table",
-      "title": "Catalyst and Reaction Time",
-      "table": {
-        "caption": "Table 1. Time for a reaction to finish with several masses of catalyst.",
-        "headers": [
-          "Mass of catalyst (mg)",
-          "Reaction time (s)"
-        ],
-        "rows": [
-          [
-            "0",
-            "211"
-          ],
-          [
-            "2",
-            "117"
-          ],
-          [
-            "4",
-            "71"
-          ],
-          [
-            "6",
-            "49"
-          ],
-          [
-            "8",
-            "38"
-          ],
-          [
-            "10",
-            "33"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "science:extrap;x=12;col=1"
-  },
-  {
-    "question_id": "act-science-trends-extrapolation-hard-q10",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "science",
-    "section": "interpretation_of_data",
-    "skill": "trends_extrapolation",
-    "lesson_id": "act-science-trends-extrapolation-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
     "subskill": "series_crossing",
-    "prompt": "According to Table 1, the percent of electricity from solar first exceeded the percent of electricity from coal in which year?",
+    "prompt": "According to Table 1, leopard frogs counted were first outnumbered by bullfrogs counted in which year?",
     "choices": [
       {
         "id": "A",
-        "text": "2020",
-        "rationale": "In 2020, Solar (29) was still below Coal (38)."
+        "text": "2022",
+        "rationale": "Correct. In 2022, Bullfrogs (135) exceeds Leopard frogs (128) for the first time; the row before has 111 versus 143."
       },
       {
         "id": "B",
         "text": "2021",
-        "rationale": "Correct. In 2021, Solar (35) exceeds Coal (31) for the first time; the row before has 29 versus 38."
+        "rationale": "In 2021, Bullfrogs (111) was still below Leopard frogs (143)."
       },
       {
         "id": "C",
-        "text": "2019",
-        "rationale": "In 2019, Solar (23) was still below Coal (45)."
+        "text": "In none of the years shown in Table 1",
+        "rationale": "Bullfrogs does exceed Leopard frogs within the table, starting in 2022."
       },
       {
         "id": "D",
-        "text": "2022",
-        "rationale": "Solar already exceeded Coal before 2022."
+        "text": "2023",
+        "rationale": "Bullfrogs already exceeded Leopard frogs before 2023."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Compare the two columns row by row; 2021 is the first row where the Solar value is larger than the Coal value.",
+    "correct_choice": "A",
+    "explanation": "Compare the two columns row by row; 2022 is the first row where the Bullfrogs value is larger than the Leopard frogs value.",
     "estimated_time_seconds": 75,
     "tags": [
       "science",
       "trends",
       "crossing",
       "family:tr_crossing"
-    ],
-    "stimulus": {
-      "type": "table",
-      "title": "Electricity Sources",
-      "table": {
-        "caption": "Table 1. Percent of a region's electricity generated from coal and from solar power each year.",
-        "headers": [
-          "Year",
-          "Coal (%)",
-          "Solar (%)"
-        ],
-        "rows": [
-          [
-            "2017",
-            "59",
-            "11"
-          ],
-          [
-            "2018",
-            "52",
-            "17"
-          ],
-          [
-            "2019",
-            "45",
-            "23"
-          ],
-          [
-            "2020",
-            "38",
-            "29"
-          ],
-          [
-            "2021",
-            "31",
-            "35"
-          ],
-          [
-            "2022",
-            "24",
-            "41"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "science:first_exceed"
-  },
-  {
-    "question_id": "act-science-trends-extrapolation-hard-q11",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "science",
-    "section": "interpretation_of_data",
-    "skill": "trends_extrapolation",
-    "lesson_id": "act-science-trends-extrapolation-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "extrapolation",
-    "prompt": "If the rate of change shown in the last two rows of Table 1 continued, in approximately which year would the number of bullfrogs counted reach 229?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "2025",
-        "rationale": "After 2 steps the value would be 206, not 229."
-      },
-      {
-        "id": "B",
-        "text": "2029",
-        "rationale": "After 6 steps the value would be 298, not 229."
-      },
-      {
-        "id": "C",
-        "text": "2027",
-        "rationale": "After 4 steps the value would be 252, not 229."
-      },
-      {
-        "id": "D",
-        "text": "2026",
-        "rationale": "Correct. Each step of 1 year changes the value by 23; 3 more steps are needed to go from 160 to 229."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "The last change is 23 per 1 year. From 160, reaching 229 takes (229 − 160) ÷ (23) = 3 steps, so year ≈ 2026.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "science",
-      "trends",
-      "threshold",
-      "family:tr_reach_threshold"
     ],
     "stimulus": {
       "type": "table",
@@ -910,38 +642,303 @@
         "rows": [
           [
             "2018",
-            "196",
-            "45"
+            "188",
+            "39"
           ],
           [
             "2019",
-            "179",
-            "68"
+            "173",
+            "63"
           ],
           [
             "2020",
-            "162",
-            "91"
+            "158",
+            "87"
           ],
           [
             "2021",
-            "145",
-            "114"
+            "143",
+            "111"
           ],
           [
             "2022",
             "128",
-            "137"
+            "135"
           ],
           [
             "2023",
-            "111",
-            "160"
+            "113",
+            "159"
+          ],
+          [
+            "2024",
+            "98",
+            "183"
           ]
         ]
       }
     },
-    "answer_verification": "science:reach;v=229;col=2"
+    "answer_verification": "science:first_exceed"
+  },
+  {
+    "question_id": "act-science-trends-extrapolation-hard-q09",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "science",
+    "section": "interpretation_of_data",
+    "skill": "trends_extrapolation",
+    "lesson_id": "act-science-trends-extrapolation-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "extrapolation",
+    "prompt": "Assume the percent of electricity from coal continues to change at the same rate as between 2015 and 2016. It would first fall to 19% in approximately which year?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "2019",
+        "rationale": "After 3 steps the value would be 14, not 19."
+      },
+      {
+        "id": "B",
+        "text": "2018",
+        "rationale": "Correct. Each step of 1 year changes the value by −5; 2 more steps are needed to go from 29 to 19."
+      },
+      {
+        "id": "C",
+        "text": "It would never fall to 19% if the trend continued",
+        "rationale": "Continuing the change of −5 per step reaches 19 after 2 steps."
+      },
+      {
+        "id": "D",
+        "text": "2017",
+        "rationale": "After 1 step the value would be 24, not 19."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "The last change is −5 per 1 year. From 29, reaching 19 takes (19 − 29) ÷ (−5) = 2 steps, so year ≈ 2018.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "science",
+      "trends",
+      "threshold",
+      "family:tr_reach_threshold"
+    ],
+    "stimulus": {
+      "type": "table",
+      "title": "Electricity Sources",
+      "table": {
+        "caption": "Table 1. Percent of a region's electricity generated from coal and from solar power each year.",
+        "headers": [
+          "Year",
+          "Coal (%)",
+          "Solar (%)"
+        ],
+        "rows": [
+          [
+            "2011",
+            "54",
+            "11"
+          ],
+          [
+            "2012",
+            "49",
+            "16"
+          ],
+          [
+            "2013",
+            "44",
+            "21"
+          ],
+          [
+            "2014",
+            "39",
+            "26"
+          ],
+          [
+            "2015",
+            "34",
+            "31"
+          ],
+          [
+            "2016",
+            "29",
+            "36"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "science:reach;v=19;col=1"
+  },
+  {
+    "question_id": "act-science-trends-extrapolation-hard-q10",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "science",
+    "section": "interpretation_of_data",
+    "skill": "trends_extrapolation",
+    "lesson_id": "act-science-trends-extrapolation-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "trend_shape",
+    "prompt": "Compare the overall change in the number of colonies between 0 µg/mL and 25 µg/mL under the two conditions in Table 1. Which condition showed the larger decrease, and by what amount?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "30°C, by 215 colonies",
+        "rationale": "The amount is right, but the larger overall change was for 37°C."
+      },
+      {
+        "id": "B",
+        "text": "Neither; both conditions changed by the same total amount",
+        "rationale": "The totals differ: 585 for 37°C versus 370 for 30°C."
+      },
+      {
+        "id": "C",
+        "text": "37°C, by 215 colonies",
+        "rationale": "Correct. 37°C: 585; 30°C: 370; the difference is 215."
+      },
+      {
+        "id": "D",
+        "text": "37°C, by 585 colonies",
+        "rationale": "585 is the total change for 37°C, not the difference between the two conditions."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "Total change for 30°C: |11 − 381| = 370; for 37°C: |18 − 603| = 585. 37°C is larger by 215 colonies.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "science",
+      "trends",
+      "conditions",
+      "family:tr_condition_trend_compare"
+    ],
+    "stimulus": {
+      "type": "table",
+      "title": "Antibiotic Dose and Bacterial Growth",
+      "table": {
+        "caption": "Table 1. Number of bacterial colonies on plates with several antibiotic concentrations. Results are shown for two conditions: 30°C and 37°C.",
+        "headers": [
+          "Antibiotic concentration (µg/mL)",
+          "Colony count (colonies), 30°C",
+          "Colony count (colonies), 37°C"
+        ],
+        "rows": [
+          [
+            "0",
+            "381",
+            "603"
+          ],
+          [
+            "5",
+            "188",
+            "298"
+          ],
+          [
+            "10",
+            "93",
+            "147"
+          ],
+          [
+            "15",
+            "46",
+            "73"
+          ],
+          [
+            "20",
+            "23",
+            "36"
+          ],
+          [
+            "25",
+            "11",
+            "18"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "science:condtrend"
+  },
+  {
+    "question_id": "act-science-trends-extrapolation-hard-q11",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "science",
+    "section": "interpretation_of_data",
+    "skill": "trends_extrapolation",
+    "lesson_id": "act-science-trends-extrapolation-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "trend_shape",
+    "prompt": "According to Table 1, the rate of change of the voltage of the battery from 4 h to 6 h was approximately how many times its rate of change from 0 h to 2 h?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "3.6",
+        "rationale": "This doubles the ratio; recheck the division."
+      },
+      {
+        "id": "B",
+        "text": "0.57",
+        "rationale": "This is the inverse ratio (slower interval over faster)."
+      },
+      {
+        "id": "C",
+        "text": "0.14",
+        "rationale": "This is the change in voltage over the faster interval, not a ratio of rates."
+      },
+      {
+        "id": "D",
+        "text": "1.8",
+        "rationale": "Correct. 0.07 ÷ 0.04 ≈ 1.8."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Rate over 4 h to 6 h: 0.07 V per h; over 0 h to 2 h: 0.04. Dividing gives about 1.8.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "science",
+      "trends",
+      "rate",
+      "intervals",
+      "family:tr_rate_compare_intervals"
+    ],
+    "stimulus": {
+      "type": "table",
+      "title": "Battery Voltage Over Time",
+      "table": {
+        "caption": "Table 1. Voltage of a battery after several hours of powering a lamp.",
+        "headers": [
+          "Time (h)",
+          "Voltage (V)"
+        ],
+        "rows": [
+          [
+            "0",
+            "1.56"
+          ],
+          [
+            "2",
+            "1.48"
+          ],
+          [
+            "4",
+            "1.37"
+          ],
+          [
+            "6",
+            "1.23"
+          ],
+          [
+            "8",
+            "1.05"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "science:ratecmp;a=4;b=0;col=1"
   },
   {
     "question_id": "act-science-trends-extrapolation-hard-q12",
@@ -954,83 +951,74 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "data_interpretation",
-    "subskill": "trend_shape",
-    "prompt": "Compare the overall change in the rate of heat loss between 0 cm and 10 cm under the two conditions in Table 1. Which condition showed the larger decrease, and by what amount?",
+    "subskill": "series_crossing",
+    "prompt": "If the changes shown in the last two rows of Table 1 continue each year, bullfrog count will first be greater than leopard frog count in:",
     "choices": [
       {
         "id": "A",
-        "text": "60°C inside, by 52 W",
-        "rationale": "The amount is right, but the larger overall change was for 80°C inside."
+        "text": "2022",
+        "rationale": "Correct. Each step Leopard frogs changes by −12 and Bullfrogs by 15; after 2 steps Bullfrogs is ahead for the first time."
       },
       {
         "id": "B",
-        "text": "60°C inside, by 120 W",
-        "rationale": "120 is the total change for 60°C inside, and that condition showed the smaller change."
+        "text": "2021",
+        "rationale": "After 1 step: Leopard frogs ≈ 126, Bullfrogs ≈ 124; Bullfrogs is still behind."
       },
       {
         "id": "C",
-        "text": "80°C inside, by 172 W",
-        "rationale": "172 is the total change for 80°C inside, not the difference between the two conditions."
+        "text": "2023",
+        "rationale": "After 3 steps: Leopard frogs ≈ 102, Bullfrogs ≈ 154; the crossing has already happened."
       },
       {
         "id": "D",
-        "text": "80°C inside, by 52 W",
-        "rationale": "Correct. 80°C inside: 172; 60°C inside: 120; the difference is 52."
+        "text": "Bullfrog count would never exceed leopard frog count",
+        "rationale": "Bullfrogs gains on Leopard frogs every step, so it must eventually pass it."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Total change for 60°C inside: |33 − 153| = 120; for 80°C inside: |47 − 219| = 172. 80°C inside is larger by 52 W.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "A",
+    "explanation": "Continue both columns: Leopard frogs 138 → … (changing −12 per step) and Bullfrogs 109 → … (changing 15 per step). Bullfrogs first passes Leopard frogs after 2 steps, in 2022.",
+    "estimated_time_seconds": 95,
     "tags": [
       "science",
       "trends",
-      "conditions",
-      "family:tr_condition_trend_compare"
+      "crossing",
+      "extrapolate",
+      "family:tr_extrapolate_crossing"
     ],
     "stimulus": {
       "type": "table",
-      "title": "Insulation and Heat Loss",
+      "title": "Two Frog Species",
       "table": {
-        "caption": "Table 1. Rate of heat loss from a heated box wrapped in several thicknesses of foam. Results are shown for two conditions: 60°C inside and 80°C inside.",
+        "caption": "Table 1. Counts of two frog species in a pond in the years after bullfrogs first appeared there.",
         "headers": [
-          "Foam thickness (cm)",
-          "Heat loss (W), 60°C inside",
-          "Heat loss (W), 80°C inside"
+          "Year",
+          "Leopard frogs",
+          "Bullfrogs"
         ],
         "rows": [
           [
-            "0",
-            "153",
-            "219"
+            "2017",
+            "174",
+            "64"
           ],
           [
-            "2",
-            "89",
-            "127"
+            "2018",
+            "162",
+            "79"
           ],
           [
-            "4",
-            "62",
-            "89"
+            "2019",
+            "150",
+            "94"
           ],
           [
-            "6",
-            "48",
-            "69"
-          ],
-          [
-            "8",
-            "39",
-            "56"
-          ],
-          [
-            "10",
-            "33",
-            "47"
+            "2020",
+            "138",
+            "109"
           ]
         ]
       }
     },
-    "answer_verification": "science:condtrend"
+    "answer_verification": "science:extrap_cross"
   }
 ]

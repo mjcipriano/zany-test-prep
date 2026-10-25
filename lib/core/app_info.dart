@@ -5,4 +5,4 @@
 /// pubspec.yaml when cutting a release (see docs/release.md).
 library;
 
-const String kAppVersion = '2.0.0';
+const String kAppVersion = '2.1.0';

@@ -172,6 +172,20 @@ _SVA_INTER_HARD = [
 ]
 
 
+def _ing(verb_phrase: str) -> str:
+    """-ing form of the first word of a plural-form verb phrase ('take' -> 'taking')."""
+    w = verb_phrase.split()[0]
+    if w in ("are", "were", "have", "has", "is", "was"):
+        return "being"
+    if w.endswith("ie"):
+        return w[:-2] + "ying"
+    if w.endswith("e") and not w.endswith("ee"):
+        return w[:-1] + "ing"
+    if len(w) > 2 and w[-1] in "tnpgm" and w[-2] in "aeiou" and w[-3] not in "aeiou" and w not in ("open",):
+        return w + w[-1] + "ing"
+    return w + "ing"
+
+
 def _sva_opts(plural, verbs, hard_tense=False):
     sing, plur, past, ing, tail = verbs
     right, wrong = (plur, sing) if plural else (sing, plur)
@@ -1187,6 +1201,10 @@ _SERIES = [
     ("The playlist mixes", ["jazz", "folk ballads", "early electronic music"], ""),
     ("The clinic treats", ["sprains", "minor burns", "seasonal allergies"], ""),
     ("The grant funds", ["new microscopes", "summer internships", "a visiting lecturer"], ""),
+    ("The ferry carries", ["cars", "bicycles", "the island's mail"], " every morning"),
+    ("The archive preserves", ["letters", "ledgers", "hand-drawn maps"], ""),
+    ("The bakery's shelves hold", ["rye loaves", "seeded rolls", "a single wheel of cheese"], ""),
+    ("The clinic's staff includes", ["two nurses", "a dentist", "a visiting pediatrician"], ""),
 ]
 
 
@@ -1230,6 +1248,10 @@ _NO_COMMA = [
     ("The apples from the upper orchard", "ripen", "a week earlier than the rest"),
     ("The old map in the lobby", "marks", "the location of the original well"),
     ("The violinist who joined last year", "performs", "the solo in the second movement"),
+    ("The ferry that leaves at dawn", "carries", "the island's mail"),
+    ("A thick fog over the harbor", "delayed", "the morning crossings"),
+    ("The bakers on the early shift", "shape", "three hundred loaves before six"),
+    ("The marker hidden in the tall grass", "dates", "from the first survey"),
 ]
 
 
@@ -1767,10 +1789,11 @@ def mod_whole_sentence(rng, difficulty):
     ds = [(f"{mod} {w1} {pred}.", f"Dangling modifier: '{mod[:-1]}' cannot logically describe '{w1}'."),
           (f"{mod} {w2} {pred}.", f"The opening phrase does not sensibly modify '{w2}'."),
           (f"{mod} {w3} {pred}.", f"The opening phrase does not sensibly modify '{w3}'.")]
-    if difficulty == "hard":
+    if difficulty == "hard" or (difficulty == "easy" and rng.random() < 0.5):
         ds[2] = (f"{mod} {_possessive(right)} {w2.split()[-1]} {pred}.",
                  f"The modifier must describe '{right}', not something that belongs to them.")
-    prompt = _MOD_STEM if difficulty == "easy" else (
+    prompt = rng.choice([_MOD_STEM, "Which choice places the noun that the opening phrase describes "
+                                    "directly after that phrase?"]) if difficulty == "easy" else (
         f"{lead}\n\nWhich choice gives the sentence that should come next, so that its "
         "introductory phrase modifies the correct noun?")
     return build(rng, prompt, correct, ds, subskill="modifiers",
@@ -1795,10 +1818,13 @@ def mod_blank_subject(rng, difficulty):
         ds[2] = (f"it was {right} who", "This rewrites the clause so that 'it' follows the "
                                         "modifier, leaving the phrase dangling.")
     text = f"{mod} ___ {pred}."
-    if difficulty == "medium":
+    if difficulty == "medium" or (difficulty == "easy" and rng.random() < 0.5):
         text = f"{lead} {text}"
     elif difficulty == "hard":
         text = f"{lead} {text} {close}"
+    if difficulty == "easy" and rng.random() < 0.5:
+        ds[2] = (f"{_possessive(right)} {w3.split()[-1]}",
+                 f"The possessive makes '{w3.split()[-1]}' the subject, which the modifier does not describe.")
     return build(rng, fill(text, conv_stem(rng)), correct, ds, subskill="modifiers",
                  explanation=(f"Ask who or what '{mod[:-1]}' describes: '{right}'. That noun must "
                               "immediately follow the opening phrase."),
@@ -1952,7 +1978,7 @@ def mod_passage(rng, difficulty):
     if difficulty == "easy":
         ds[1] = (f"{w2} {pred}", f"The opening phrase does not sensibly describe '{w2}'.")
         ds[2] = (f"{w3} {pred}", f"The opening phrase does not sensibly describe '{w3}'.")
-    text = f"{lead} {mod} ___. {close}"
+    text = f"{lead} {mod} ___. {close}" if not (difficulty == "easy" and rng.random() < 0.5) else f"{lead} {mod} ___."
     return build(rng, fill(text, conv_stem(rng)), correct, ds, subskill="modifiers",
                  explanation=("Read the opening phrase and ask who or what it describes; that noun "
                               "must be the subject that comes right after the comma."),
@@ -2226,38 +2252,1114 @@ def trans_sequence(rng, difficulty):
 
 
 # =========================================================================== #
+# v2.1 ADDITIONS — SENTENCE BOUNDARIES
+# =========================================================================== #
+_BND_MORE = [
+    ("The ferry runs only twice a day in winter", "islanders plan their errands carefully", "cause"),
+    ("The violinist broke a string during the finale", "she finished the piece on three strings", "contrast"),
+    ("The town repaved Main Street last spring", "the potholes are already returning", "contrast"),
+    ("The archive digitized its oldest maps", "scholars abroad can now consult them", "cause"),
+    ("The storm knocked out power for two days", "the bakery kept its wood oven running", "contrast"),
+    ("The garden club planted milkweed along the fence", "monarch butterflies returned within a month", "cause"),
+    ("The lecture hall seats three hundred", "the talk drew twice that many", "contrast"),
+    ("The river ferry was replaced by a bridge", "the old pilings still stand in the shallows", "addition"),
+    ("The choir rehearses in a converted barn", "the acoustics are surprisingly good", "addition"),
+    ("The telescope sits on a remote plateau", "astronomers travel for days to reach it", "cause"),
+    ("The bakery introduced a rye loaf in March", "it outsold every other bread by June", "cause"),
+    ("The marathon course climbs two long hills", "most runners slow dramatically after mile twenty", "cause"),
+    ("The museum's new wing cost twice the estimate", "attendance has more than doubled", "contrast"),
+    ("The clinic extended its evening hours", "fewer patients now use the emergency room", "cause"),
+    ("The lighthouse keeper retired in 1987", "a volunteer still climbs the stairs each night", "contrast"),
+    ("The robotics team practiced for six months", "its robot stalled in the first round", "contrast"),
+]
+_BND.extend(_BND_MORE)
+_BND_SUBJ_WORDS.update({"she": 1, "the potholes": 2, "scholars abroad": 2, "the bakery": 2,
+                        "monarch butterflies": 2, "the talk": 2, "the old pilings": 3,
+                        "the acoustics": 2, "astronomers": 1, "it": 1, "most runners": 2,
+                        "attendance": 1, "fewer patients": 2, "a volunteer": 2, "its robot": 2,
+                        "islanders": 1})
+
+
+@family(fill_in=True)
+def bnd_mark_choice(rng, difficulty):
+    """Semicolon vs. colon vs. dash vs. comma: only one mark fits the structure."""
+    if rng.random() < 0.5:
+        # a list follows a complete clause -> colon
+        lead, items = rng.choice(_BND_LISTS)
+        lst = ", ".join(items[:-1]) + f", and {items[-1]}"
+        first = items[0]
+        rest = lst[len(first):]
+        last = lead.split()[-1]
+        correct = (f"{last}: {first}", "Correct. A colon after a complete clause introduces a list.")
+        ds = [(f"{last}; {first}", "A semicolon must have an independent clause on each side."),
+              (f"{last} — {first}", "A dash can introduce a list only when the list is a short, "
+                                    "emphatic afterthought; here the formal introduction of a "
+                                    "numbered set calls for a colon.") if difficulty == "hard" else
+              (f"{last}, {first}", "A comma cannot introduce a list that has been announced by a "
+                                   "number ('three ...')."),
+              (f"{last}. {cap(first)}", "A period leaves the list standing alone as a fragment.")]
+        text = f"{' '.join(lead.split()[:-1])} ___{rest}."
+        expl = "A complete clause followed by an announced list takes a colon."
+    else:
+        a, b, rel = rng.choice(_BND)
+        adv = rng.choice(_BND_ADV[rel])
+        aw, bw = a.split(), b.split()
+        a_last, a_rest = aw[-1], " ".join(aw[:-1])
+        b_first, b_rest = bw[0], " ".join(bw[1:])
+        correct = (f"{a_last}; {adv}, {b_first}", f"Correct. Two independent clauses linked by the "
+                                                  f"conjunctive adverb '{adv}' take a semicolon.")
+        ds = [(f"{a_last}: {adv}, {b_first}", "A colon introduces an explanation or list; it does not "
+                                              "join clauses through a conjunctive adverb."),
+              (f"{a_last}, {adv}, {b_first}", "Comma splice: a conjunctive adverb cannot join clauses with commas."),
+              (f"{a_last} — {adv} — {b_first}", "Dashes set off an interruption; they cannot join two "
+                                                "independent clauses this way.")]
+        text = f"{a_rest} ___ {b_rest}."
+        expl = ("Two independent clauses joined by a conjunctive adverb need a semicolon before the "
+                "adverb; colons, commas, and dashes do not do that job.")
+    return build(rng, fill(text, conv_stem(rng)), correct, ds, subskill="clause_joining",
+                 explanation=expl, tags=["conventions", "boundaries", "mark-choice"], est=50)
+
+
+@family(fill_in=False)
+def bnd_splice_repair(rng, difficulty):
+    """Repair a comma splice; options are whole sentences, one uses the adverb correctly."""
+    a, b, rel = rng.choice(_BND)
+    adv = rng.choice(_BND_ADV[rel])
+    conj = _BND_CONJ[rel]
+    correct = (f"{a}; {adv}, {b}.", f"Correct. A semicolon joins the clauses and '{adv}' is set off by a comma.")
+    ds = [(f"{a}, {adv}, {b}.", "Comma splice: '" + adv + "' is an adverb, not a conjunction."),
+          (f"{a}, {adv}; {b}.", "The semicolon is in the wrong place; it must come before the adverb."),
+          (f"{a} {adv}, {b}.", "Run-on: nothing separates the two independent clauses.")]
+    if difficulty == "hard":
+        ds[2] = (f"{a}, {conj} {adv}, {b}.", f"'{conj}' and '{adv}' signal the same link; pairing them is redundant.")
+    if difficulty != "easy":
+        ds[0] = (f"{a}; {conj} {adv}, {b}.", f"A semicolon should not be followed by the conjunction '{conj}'.")
+    prompt = (f"{a}, {adv}, {b}.\n\nThe sentence above contains a comma splice. Which choice "
+              "corrects it while keeping the transition?")
+    return build(rng, prompt, correct, ds, subskill="clause_joining",
+                 explanation=("A conjunctive adverb such as '" + adv + "' needs a semicolon (or period) "
+                              "before it and a comma after it."),
+                 tags=["conventions", "boundaries", "splice-repair"], est=50)
+
+
+_BND_FRAG = [
+    ("Having reviewed the budget for a week,", "the committee approved it without changes",
+     "approving it without changes", "which the committee approved without changes",
+     "the committee approving it without changes"),
+    ("Built on a bluff above the harbor,", "the lighthouse is visible for twenty miles",
+     "visible for twenty miles", "which is visible for twenty miles",
+     "the lighthouse visible for twenty miles"),
+    ("After the last ferry had left,", "the island fell silent",
+     "the island falling silent", "which left the island silent",
+     "the silence of the island"),
+    ("Hoping to attract younger readers,", "the magazine redesigned its cover",
+     "redesigning its cover", "which redesigned its cover",
+     "the magazine redesigning its cover"),
+    ("Although the trail is short,", "it climbs nearly two thousand feet",
+     "climbing nearly two thousand feet", "which climbs nearly two thousand feet",
+     "its climb of nearly two thousand feet"),
+    ("Because the river had flooded the lower fields,", "the farmers planted on the ridge",
+     "the farmers planting on the ridge", "who planted on the ridge",
+     "planting on the ridge instead"),
+    ("Wrapped in a fog that lasted all morning,", "the harbor was nearly invisible",
+     "nearly invisible", "which was nearly invisible",
+     "the harbor nearly invisible"),
+    ("Once the mural was finished,", "the city held a small ceremony",
+     "the city holding a small ceremony", "which the city celebrated with a ceremony",
+     "a small ceremony by the city"),
+    ("Trained as a chemist,", "Rosa approaches cooking like an experiment",
+     "approaching cooking like an experiment", "who approaches cooking like an experiment",
+     "Rosa's approach to cooking as an experiment"),
+    ("While the orchestra tuned,", "the audience settled into its seats",
+     "the audience settling into its seats", "which settled the audience into its seats",
+     "the settling of the audience"),
+    ("Discovered in a flea market,", "the painting turned out to be worth a fortune",
+     "turning out to be worth a fortune", "which turned out to be worth a fortune",
+     "the painting worth a fortune"),
+    ("Even though the forecast promised sun,", "a thunderstorm rolled in by noon",
+     "a thunderstorm rolling in by noon", "which rolled in by noon",
+     "the arrival of a thunderstorm by noon"),
+]
+
+
+@family(fill_in=True)
+def bnd_fragment_clause(rng, difficulty):
+    """Fragment repair: the blank must hold a complete main clause."""
+    opening, main, w_ing, w_which, w_noun = rng.choice(_BND_FRAG)
+    correct = (main, "Correct. This supplies a subject and a finite verb, giving the sentence a main clause.")
+    ds = [(w_ing, "An -ing phrase has no finite verb, so the sentence remains a fragment."),
+          (w_which, "A 'which'/'who' clause is subordinate; the sentence still has no main clause."),
+          (w_noun, "A noun phrase alone cannot serve as the main clause.")]
+    text = f"{opening} ___."
+    if difficulty != "easy":
+        text = rng.choice(["Few people know the story. ", "The reason is simple. ",
+                           "The details are worth recalling. "]) + text
+    if difficulty == "hard":
+        text = text + " " + rng.choice(["Nobody objected.", "The decision was unanimous.",
+                                        "The story is still told today."])
+    stem = rng.choice(["Which choice completes the text so that it is a complete sentence?",
+                       conv_stem(rng)])
+    return build(rng, fill(text, stem), correct, ds, subskill="clause_joining",
+                 explanation=("The opening phrase is subordinate, so what follows the comma must be an "
+                              "independent clause with its own subject and verb."),
+                 tags=["conventions", "boundaries", "fragment"], est=50)
+
+
+# =========================================================================== #
+# v2.1 ADDITIONS — SUBJECT-VERB AGREEMENT
+# =========================================================================== #
+_SVA_OF.extend([
+    ("The price of the tickets", False, "t"), ("The flavor of the peppers", False, "t"),
+    ("The history of the islands", False, "t"), ("The manager of the stores", False, "p"),
+    ("The spokesperson for the unions", False, "p"), ("The pilot of the gliders", False, "p"),
+    ("The keys to the cabinet", True, "t"), ("The branches of the old oak", True, "t"),
+    ("The members of the council", True, "p"), ("The guards at the gate", True, "p"),
+    ("The photographs in the album", True, "t"), ("The ferries across the bay", True, "t"),
+])
+_SVA_QTY = [
+    ("Twenty dollars", "a fair price for the tour", "amount of money"),
+    ("Three hours", "not enough time for the climb", "span of time"),
+    ("Five miles", "a long way to walk in the heat", "distance"),
+    ("Ten percent of the budget", "set aside for repairs", "single share"),
+    ("Two cups of flour", "all the recipe requires", "quantity"),
+    ("Six weeks", "the usual wait for a permit", "span of time"),
+    ("Forty acres", "enough land for the orchard", "area"),
+    ("Half a ton of gravel", "needed for the path", "quantity"),
+    ("Thirty minutes", "plenty of time to reach the gate", "span of time"),
+    ("Two hundred pages", "a lot to read in one night", "quantity"),
+    ("Fifteen dollars", "the usual fee for the ferry", "amount of money"),
+    ("Three quarters of the orchard", "planted with apples", "single share"),
+    ("Nine innings", "the standard length of a game", "span"),
+    ("A thousand pounds of ice", "delivered every morning", "quantity"),
+]
+_SVA_TITLES = [
+    ("'Tales of the Harbor'", "a collection of twelve stories"),
+    ("'The Gardeners'", "the author's best-known play"),
+    ("The Hollow Hills", "a village of two hundred people"),
+    ("'Notes on Weather'", "assigned in every section of the course"),
+    ("Mathematics", "offered at eight in the morning"),
+    ("'Letters from the Mill'", "being reprinted this year"),
+    ("'Bridges of the North'", "the museum's most popular exhibit"),
+    ("The United Islands", "home to fewer than a thousand people"),
+    ("'Three Sisters'", "performed every spring by the drama club"),
+    ("Economics", "taught in the oldest building on campus"),
+]
+
+
+@family(fill_in=True)
+def sva_quantity(rng, difficulty):
+    """Amounts, titles, and plural-looking singulars take singular verbs."""
+    if difficulty == "easy" or rng.random() < 0.6:
+        subj, tail, kind = rng.choice(_SVA_QTY)
+        rule = f"'{subj}' names one {kind}, so it takes a singular verb"
+    else:
+        subj, tail = rng.choice(_SVA_TITLES)
+        rule = f"{subj} is a single title or name even though it looks plural, so the verb is singular"
+    pairs = {"easy": [("is", "are", "were"), ("was", "were", "are")],
+             "medium": [("is", "are", "were"), ("was", "were", "are"), ("has been", "have been", "being")],
+             "hard": [("was", "were", "are"), ("has been", "have been", "being"), ("is", "are", "were")]}[difficulty]
+    right, wrong, other = rng.choice(pairs)
+    correct = (right, f"Correct. {cap(rule)}.")
+    ds = [(wrong, "Agreement error: the subject is grammatically singular despite the plural word in it."),
+          (other, "This form is the wrong number or cannot serve as the main verb here."),
+          ("to be", "An infinitive cannot be the main verb.")]
+    text = f"{subj} ___ {tail}."
+    if difficulty == "hard":
+        text = rng.choice(["According to the guide, ", "As the clerk explained, ", "In the end, "]) + \
+            (low(text) if not subj.startswith("'") and subj not in ("Mathematics", "The Hollow Hills") else text)
+    return build(rng, fill(text, conv_stem(rng)), correct, ds, subskill="subject_verb_agreement",
+                 explanation=f"{cap(rule)}.", tags=["conventions", "agreement", "quantity-title"])
+
+
+_SVA_GERUND = [
+    ("Running marathons", "the runners", "requires", "require", "months of training"),
+    ("Collecting old maps", "the maps", "has become", "have become", "her favorite pastime"),
+    ("Restoring antique clocks", "the clocks", "demands", "demand", "patience and a steady hand"),
+    ("Reading the letters aloud", "the letters", "brings", "bring", "the history to life"),
+    ("Counting the nests each spring", "the nests", "takes", "take", "the volunteers a full week"),
+    ("Mapping the sea caves", "the caves", "was", "were", "the expedition's main goal"),
+    ("Baking the festival loaves", "the loaves", "begins", "begin", "before dawn"),
+    ("Grading the essays", "the essays", "keeps", "keep", "the teachers busy all weekend"),
+    ("Photographing the migrating cranes", "the cranes", "is", "are", "harder than it looks"),
+    ("Repairing the stone walls", "the walls", "falls", "fall", "to the oldest farmers"),
+    ("Translating the diaries", "the diaries", "has taken", "have taken", "three summers"),
+    ("Feeding the goats", "the goats", "starts", "start", "the day on the farm"),
+    ("Sorting the donated books", "the books", "occupies", "occupy", "most of the volunteers' morning"),
+    ("Tuning the organ's pipes", "the pipes", "requires", "require", "a specialist from the city"),
+    ("Painting the lighthouses", "the lighthouses", "was", "were", "once a summer job for sailors"),
+    ("Replanting the dunes", "the dunes", "protects", "protect", "the road behind them"),
+]
+
+
+@family(fill_in=True)
+def sva_gerund(rng, difficulty):
+    """A gerund phrase is a singular subject, whatever plural noun it contains."""
+    ger, bait, sing, plur, tail = rng.choice(_SVA_GERUND)
+    head = ger.split()[0]
+    correct = (sing, f"Correct. The subject is the gerund phrase '{ger}', a single activity, so the "
+                     f"verb is singular.")
+    ds = [(plur, f"Agreement error: '{bait.split()[-1]}' is not the subject; the activity '{head.lower()}' is."),
+          (_ing(plur), "This form cannot serve as the main verb."),
+          (f"to {plur.split()[0]}" if plur not in ("are", "were") else "to be",
+           "An infinitive cannot be the main verb here.")]
+    if difficulty == "easy":
+        text = f"{ger} ___ {tail}."
+    elif difficulty == "medium":
+        text = f"{ger}, {rng.choice(['as any volunteer will tell you', 'according to the guide', 'in most years'])}, ___ {tail}."
+    else:
+        pair = rng.choice(_SVA_GERUND)
+        text = f"{ger} and {low(pair[0])} ___ {tail}." if pair is not ger and rng.random() < 0.5 else \
+            f"{ger}, together with {low(pair[0]) if pair[0] != ger else 'everything else'}, ___ {tail}."
+        if " and " in text:
+            correct = (plur, "Correct. Two gerund phrases joined by 'and' form a plural subject.")
+            ds = [(sing, "Agreement error: two activities joined by 'and' make a plural subject."),
+                  ("being", "'being' cannot stand alone as the main verb."),
+                  (f"to {plur.split()[0]}" if plur not in ("are", "were") else "to be",
+                   "An infinitive cannot be the main verb here.")]
+    return build(rng, fill(text, conv_stem(rng)), correct, ds, subskill="subject_verb_agreement",
+                 explanation=("A gerund phrase ('-ing' activity) is one thing and takes a singular verb; "
+                              "two gerund phrases joined by 'and' take a plural verb."),
+                 tags=["conventions", "agreement", "gerund-subject"])
+
+
+_SVA_EO_P = [("the manager", "the clerks"), ("the coach", "the players"), ("the editor", "the reporters"),
+             ("the conductor", "the musicians"), ("the captain", "the rowers"), ("the mayor", "the council members")]
+_SVA_EO_T = [("the bridge", "the tunnels"), ("the mural", "the sculptures"), ("the engine", "the brakes"),
+             ("the lobby", "the hallways"), ("the budget", "the schedules"), ("the recipe", "the photographs")]
+
+
+@family(fill_in=True)
+def sva_either_or(rng, difficulty):
+    """either...or / neither...nor / not only...but also: agree with the nearer subject."""
+    cat = rng.choice(["p", "t"])
+    a, b = rng.choice(_SVA_EO_P if cat == "p" else _SVA_EO_T)
+    verbs = rng.choice(_SVA_VERBS_P if cat == "p" else _SVA_VERBS_T)
+    pair = rng.choice({"easy": ["either", "neither"], "medium": ["either", "neither", "not only"],
+                       "hard": ["either", "neither", "not only"]}[difficulty])
+    near_plural = rng.random() < 0.5
+    first, second = (a, b) if near_plural else (b, a)
+    frames = {"either": f"Either {first} or {second}", "neither": f"Neither {first} nor {second}",
+              "not only": f"Not only {first} but also {second}"}
+    subj = frames[pair]
+    correct, ds, right = _sva_opts(near_plural, verbs)
+    text = f"{subj} ___ {verbs[4]}."
+    if difficulty == "hard":
+        text = f"{subj}, " + rng.choice(["according to the report,", "as a rule,", "for better or worse,"]) + f" ___ {verbs[4]}."
+    nearer = second.split()[-1]
+    return build(rng, fill(text, conv_stem(rng)), correct, ds, subskill="subject_verb_agreement",
+                 explanation=(f"With '{pair}...', the verb agrees with the subject nearer to it "
+                              f"('{nearer}'), which is {'plural' if near_plural else 'singular'}: '{right}'."),
+                 tags=["conventions", "agreement", "proximity-rule"])
+
+
+# =========================================================================== #
+# v2.1 ADDITIONS — PUNCTUATION
+# =========================================================================== #
+_POSS_FRAMES.extend(["Everyone admired the {n} ___ garden",
+                     "Reporters described the {n} ___ response as swift",
+                     "The {n} ___ archive was opened to researchers last spring"])
+_SING_NOUNS.extend([("mayor", "mayor's"), ("village", "village's"), ("pilot", "pilot's"),
+                    ("library", "library's")])
+_PLUR_NOUNS.extend([("sailors", "sailors'"), ("farmers", "farmers'"), ("singers", "singers'")])
+
+_HYPHEN = [
+    ("a", "well-known", "author", "well known", "well-known-author"),
+    ("a", "twelve-year-old", "violinist", "twelve year old", "twelve-year old"),
+    ("a", "long-term", "plan", "long term", "long-term-plan"),
+    ("a", "state-of-the-art", "laboratory", "state of the art", "state-of-the art"),
+    ("a", "fast-moving", "storm", "fast moving", "fast-moving-storm"),
+    ("a", "high-speed", "rail line", "high speed", "high-speed-rail"),
+    ("a", "first-rate", "performance", "first rate", "first-rate-performance"),
+    ("a", "last-minute", "change", "last minute", "last-minute-change"),
+    ("a", "hard-won", "victory", "hard won", "hard-won-victory"),
+    ("a", "world-famous", "orchestra", "world famous", "world-famous-orchestra"),
+    ("an", "open-air", "market", "open air", "open-air-market"),
+    ("a", "part-time", "job", "part time", "part-time-job"),
+    ("a", "once-in-a-lifetime", "chance", "once in a lifetime", "once-in-a-lifetime-chance"),
+    ("a", "slow-moving", "river", "slow moving", "slow-moving-river"),
+    ("a", "nineteenth-century", "map", "nineteenth century", "nineteenth-century-map"),
+    ("a", "two-hour", "delay", "two hour", "two-hour-delay"),
+    ("a", "salt-crusted", "pier", "salt crusted", "salt-crusted-pier"),
+    ("a", "hand-carved", "canoe", "hand carved", "hand-carved-canoe"),
+]
+_HYPHEN_TAILS = ["drew a large crowd", "was announced yesterday", "surprised the critics",
+                 "is described in the report", "impressed the judges", "appears in the brochure"]
+
+
+@family(fill_in=True)
+def punct_hyphen(rng, difficulty):
+    """Compound adjectives before a noun are hyphenated."""
+    art, comp, noun, bare, overhyph = rng.choice(_HYPHEN)
+    tail = rng.choice(_HYPHEN_TAILS)
+    correct = (f"{comp} {noun}", f"Correct. '{comp}' works as a single adjective before '{noun}', so its "
+                                 "parts are joined with hyphens.")
+    ds = [(f"{bare} {noun}", "Without hyphens the words do not read as one compound adjective."),
+          (overhyph, "A hyphen must not attach the adjective to the noun it modifies."),
+          (f"{comp}, {noun}", "No comma separates a compound adjective from its noun.")]
+    if difficulty == "hard":
+        ds[2] = (f"{comp.replace('-', ' ', 1)} {noun}", "Every part of the compound must be hyphenated, "
+                                                         "not just the last pair.") if comp.count("-") > 1 else \
+                (f"{comp.replace('-', '- ')} {noun}", "A space after the hyphen breaks the compound apart.")
+    text = f"The newspaper praised {art} ___ that {tail}." if difficulty == "easy" else \
+        rng.choice([f"According to the brochure, {art} ___ {tail}.",
+                    f"Critics agree that {art} ___ {tail}.",
+                    f"Nobody expected {art} ___, but one {tail}."])
+    return build(rng, fill(text, conv_stem(rng)), correct, ds, subskill="punctuation",
+                 explanation="Hyphenate the words of a compound adjective that comes before its noun.",
+                 tags=["conventions", "punctuation", "hyphen"])
+
+
+_QUOTES = [
+    ("The results", "she said", "are final"), ("The bridge", "the engineer warned", "cannot bear heavy trucks"),
+    ("This recipe", "my grandmother insisted", "needs more salt"), ("The ferry", "the captain announced", "will leave at dawn"),
+    ("Our budget", "the mayor admitted", "is already spent"), ("The fog", "the guide explained", "lifts by noon"),
+    ("The map", "Omar said", "is a century old"), ("The exhibit", "the curator added", "closes on Sunday"),
+    ("The tide", "the harbormaster said", "turns at four"), ("Your essay", "the teacher wrote", "needs a stronger ending"),
+    ("The vote", "the chair declared", "is unanimous"), ("This loaf", "the baker promised", "will keep for a week"),
+    ("The comet", "Hana whispered", "is brighter than last night"), ("The road", "the ranger warned", "closes at dusk"),
+]
+
+
+@family(fill_in=True, small_space=True)
+def punct_quotation(rng, difficulty):
+    """Commas and periods go inside closing quotation marks; a split quotation needs two commas."""
+    first, attr, rest = rng.choice(_QUOTES)
+    if difficulty == "easy":
+        text = f'"{first} {rest}___ {attr}.'
+        correct = (',"', "Correct. The comma that separates the quotation from its attribution goes inside the closing quotation mark.")
+        ds = [('",', "In American English the comma goes inside the closing quotation mark, not after it."),
+              ('"', "A comma is needed to separate the quotation from the words that attribute it."),
+              ('."', "A period would end the sentence before the attribution, leaving a fragment.")]
+        expl = "Put the comma inside the closing quotation mark, before the attribution."
+    else:
+        text = f'"{first}___{rest}."'
+        correct = (f'," {attr}, "', f"Correct. An interrupting attribution ('{attr}') is set off by commas, "
+                                     "each placed inside the quotation marks it belongs with.")
+        ds = [(f'" {attr}, "', "A comma must come before the attribution, inside the first closing quotation mark."),
+              (f'," {attr} "', "A comma is needed after the attribution as well as before it."),
+              (f'," {attr}; "', "A semicolon cannot set off an attribution inside a quotation.")]
+        expl = "A quotation interrupted by an attribution takes a comma on each side of the attribution."
+    return build(rng, fill(text, conv_stem(rng)), correct, ds, subskill="punctuation",
+                 explanation=expl, tags=["conventions", "punctuation", "quotation"], est=50)
+
+
+_SEMI_LISTS = [
+    ("The tour stops in", [("Lyon", "France"), ("Turin", "Italy"), ("Basel", "Switzerland")]),
+    ("The panel includes", [("Lena Marsh", "a marine biologist"), ("Omar Haddad", "an architect"), ("Priya Sen", "a historian")]),
+    ("The orchestra will perform in", [("Portland", "Maine"), ("Austin", "Texas"), ("Boise", "Idaho")]),
+    ("The judges were", [("Rosa Ibarra", "a chef"), ("Victor Lane", "a baker"), ("Hana Sato", "a food writer")]),
+    ("The expedition visited", [("Tromsø", "Norway"), ("Nuuk", "Greenland"), ("Reykjavík", "Iceland")]),
+    ("The grant funds", [("new microscopes", "ordered in May"), ("a visiting lecturer", "arriving in fall"), ("two internships", "starting in June")]),
+    ("The festival honored", [("Mateo Ruiz", "a sculptor"), ("Wren Adler", "a poet"), ("Idris Bello", "a filmmaker")]),
+    ("The relay passed through", [("Dover", "Delaware"), ("Salem", "Oregon"), ("Helena", "Montana")]),
+    ("The museum acquired", [("a map", "drawn in 1790"), ("a ledger", "kept by the first mayor"), ("a quilt", "sewn by mill workers")]),
+    ("The crew included", [("Chloe Park", "the navigator"), ("Felix Moreau", "the cook"), ("Nadia Rahman", "the medic")]),
+]
+
+
+@family(fill_in=True, small_space=True)
+def punct_semicolon_list(rng, difficulty):
+    """Items that contain commas are separated by semicolons."""
+    lead, items = rng.choice(_SEMI_LISTS)
+    (a1, a2), (b1, b2), (c1, c2) = items
+    correct = (f"{a1}, {a2}; {b1}, {b2}; and {c1}, {c2}", "Correct. Because each item contains a comma, "
+                                                           "semicolons separate the items.")
+    ds = [(f"{a1}, {a2}, {b1}, {b2}, and {c1}, {c2}", "With commas everywhere, the reader cannot tell "
+                                                        "where one item ends and the next begins."),
+          (f"{a1}, {a2}; {b1}, {b2}; and, {c1}, {c2}", "No comma follows 'and' in a series."),
+          (f"{a1}; {a2}, {b1}; {b2}, and {c1}; {c2}", "The semicolons split items apart instead of separating them.")]
+    if difficulty == "hard":
+        ds[1] = (f"{a1}, {a2}; {b1}, {b2}, and {c1}, {c2}", "The separator must be consistent: the last "
+                                                             "item also needs a semicolon before 'and'.")
+    text = f"{lead} ___."
+    if difficulty != "easy":
+        text = rng.choice(["As the program notes, ", "According to the brochure, ", "This year, "]) + low(text)
+    return build(rng, fill(text, conv_stem(rng)), correct, ds, subskill="punctuation",
+                 explanation=("When list items themselves contain commas, separate the items with "
+                              "semicolons, including before the final 'and'."),
+                 tags=["conventions", "punctuation", "semicolon-list"], est=55)
+
+
+_DASH_PAREN = [
+    ("The three founders", "Lena, Omar, and Priya", "met in a college chemistry lab"),
+    ("Two of the bridges", "the oldest and the longest", "closed for repairs last spring"),
+    ("The main ingredients", "flour, butter, and sea salt", "cost almost nothing"),
+    ("Several instruments", "a cello, two violins, and a harp", "were donated to the school"),
+    ("The winning entries", "a mural, a short film, and a poem", "will tour the county"),
+    ("The three largest towns", "Harlan, Weston, and Mill Creek", "share a single hospital"),
+    ("Four of the volunteers", "Tessa, Bruno, Esme, and Gavin", "stayed until midnight"),
+    ("The oldest trees", "two oaks, an elm, and a beech", "predate the village"),
+    ("The band's instruments", "a fiddle, a banjo, and an upright bass", "fit in one small van"),
+    ("Several crops", "barley, oats, and rye", "survived the late frost"),
+    ("Three of the paintings", "the harbor scenes, the portrait, and the storm", "were sold at auction"),
+    ("The island's exports", "wool, honey, and smoked fish", "travel by ferry twice a week"),
+]
+
+
+@family(fill_in=True, small_space=True)
+def punct_dash_paren(rng, difficulty):
+    """An interruption that itself contains commas needs dashes (or parentheses), not commas."""
+    head, inner, pred = rng.choice(_DASH_PAREN)
+    use_paren = difficulty != "easy" and rng.random() < 0.4
+    if use_paren:
+        correct = (f" ({inner})", "Correct. Parentheses enclose the interruption and keep its internal commas "
+                                  "from confusing the reader.")
+        ds = [(f", {inner},", "Commas around an interruption that already contains commas leave the reader "
+                              "unable to see where the aside begins and ends."),
+              (f" ({inner},", "The closing parenthesis is missing."),
+              (f" ({inner}) which", "Adding 'which' turns the rest of the sentence into a relative clause "
+                                   "with no main verb.")]
+    else:
+        correct = (f" — {inner} —", "Correct. A pair of dashes sets off the interruption, whose internal "
+                                    "commas would be confusing between ordinary commas.")
+        ds = [(f", {inner},", "Commas around an interruption that already contains commas leave the reader "
+                              "unable to see where the aside begins and ends."),
+              (f" — {inner},", "The punctuation must match on both sides: dash with dash."),
+              (f" — {inner} — which", "Adding 'which' turns the rest of the sentence into a relative "
+                                     "clause with no main verb.")]
+    text = f"{head}___ {pred}."
+    if difficulty == "hard":
+        text = text + " " + rng.choice(["The story is well known locally.", "Few people remember the details.",
+                                        "A plaque marks the spot."])
+    return build(rng, fill(text, conv_stem(rng)), correct, ds, subskill="punctuation",
+                 explanation=("When an interrupting phrase contains its own commas, enclose it in a "
+                              "matched pair of dashes or parentheses so its boundaries stay clear."),
+                 tags=["conventions", "punctuation", "dash-paren"], est=50)
+
+
+# =========================================================================== #
+# v2.1 ADDITIONS — PRONOUNS
+# =========================================================================== #
+_SHIFT = [
+    ("If one wants to master the cello,", "must practice every day", "one"),
+    ("When you reach the summit,", "can see three states", "you"),
+    ("Once a person learns to sail,", "never forgets the feel of the wind", "he or she"),
+    ("If one reads the manual carefully,", "will find the answer on the first page", "one"),
+    ("When you plant tomatoes too early,", "risk losing them to frost", "you"),
+    ("If a visitor arrives after noon,", "will find the gates locked", "he or she"),
+    ("Once one has tasted the rye loaf,", "rarely goes back to white bread", "one"),
+    ("When you enter the archive,", "must sign the register", "you"),
+    ("If a student misses the deadline,", "forfeits the deposit", "he or she"),
+    ("When one volunteers at the shelter,", "learns patience quickly", "one"),
+    ("If you want the best seats,", "should arrive an hour early", "you"),
+    ("When a hiker reaches the ridge,", "can see the whole valley", "he or she"),
+    ("If one studies the tide tables,", "can predict the best time to launch", "one"),
+    ("When you taste the rye loaf,", "understand why the line is so long", "you"),
+    ("If a traveler misses the last ferry,", "must stay the night on the island", "he or she"),
+    ("Once one has learned the knots,", "never forgets them", "one"),
+]
+_SHIFT_WRONG = {"one": ["you", "they", "we"], "you": ["one", "they", "we"],
+                "he or she": ["you", "one", "they"]}
+
+
+@family(fill_in=True)
+def pron_shift(rng, difficulty):
+    """Keep the point of view consistent (one / you / a person)."""
+    lead, pred, right = rng.choice(_SHIFT)
+    wrongs = _SHIFT_WRONG[right]
+    rationale = {"you": "Shifting to 'you' changes the point of view established in the first clause.",
+                 "one": "Shifting to 'one' changes the point of view established in the first clause.",
+                 "they": "'they' does not match the singular, consistent point of view of the first clause.",
+                 "we": "'we' introduces a new point of view not used earlier."}
+    correct = (right, f"Correct. The first clause uses '{right}', so the second clause keeps the same point of view.")
+    ds = [(w, rationale[w]) for w in wrongs]
+    text = f"{lead} ___ {pred}."
+    if difficulty != "easy":
+        lead = rng.choice(["As the guide puts it, ", "Everyone agrees on one thing: ", "The rule is simple. "])
+        text = lead + (text if lead.endswith(". ") else low(text))
+    if difficulty == "hard":
+        text = text + " " + rng.choice(["There are no exceptions.", "The lesson is quickly learned.",
+                                        "Most people find this out the hard way."])
+    return build(rng, fill(text, conv_stem(rng)), correct, ds, subskill="pronouns",
+                 explanation="A sentence must not shift between 'one', 'you', and third-person pronouns.",
+                 tags=["conventions", "pronouns", "shift"])
+
+
+# (lead clause, clear noun phrase, tail shared by the vague versions)
+_VAGUE = [
+    ("The ferry was canceled and the road flooded", "a combination that stranded the island for two days",
+     "stranded the island for two days"),
+    ("The company cut prices and doubled its staff", "moves that paid off within a year", "paid off within a year"),
+    ("The orchestra lost its conductor and its hall in the same month", "two blows that nearly ended the season",
+     "nearly ended the season"),
+    ("The river rose and the levee held", "an outcome that surprised the engineers", "surprised the engineers"),
+    ("The bakery raised its prices and shortened its hours", "changes that cost it several regulars",
+     "cost it several regulars"),
+    ("The team practiced in silence for a week", "an experiment that the coach called a success",
+     "was something the coach called a success"),
+    ("The library closed on Mondays and opened later on Saturdays", "hours that confused many patrons",
+     "confused many patrons"),
+    ("The storm toppled the old oak and spared the barn", "the result the farmer still cannot explain",
+     "is something the farmer still cannot explain"),
+    ("The clinic added evening hours and hired two nurses", "steps that cut waiting times in half",
+     "cut waiting times in half"),
+    ("The mural was finished a week early and under budget", "news that delighted the council",
+     "delighted the council"),
+    ("The glacier retreated and the valley greened", "a shift that puzzled the first surveyors",
+     "puzzled the first surveyors"),
+    ("The team lost its first six games and then won nine straight", "a turnaround no one had predicted",
+     "was a turnaround no one had predicted"),
+]
+
+
+@family(fill_in=True)
+def pron_vague(rng, difficulty):
+    """Vague 'this' / 'which' with no single noun antecedent: supply a noun instead."""
+    lead, noun_phrase, tail = rng.choice(_VAGUE)
+    adv = rng.choice(["ultimately", "predictably", "unfortunately", "in the end,"])
+    correct = (noun_phrase, "Correct. Naming the idea with a noun gives the clause a clear antecedent.")
+    ds = [(f"which {adv} {tail}", "'which' has no single noun to refer to; it points vaguely at the whole "
+                                  "preceding clause."),
+          (f"this {adv} {tail}", "'this' has no clear antecedent and creates a comma splice."),
+          (f"it {adv} {tail}", "'it' has no clear antecedent, and the clause becomes a comma splice.")]
+    text = f"{lead}, ___."
+    if difficulty != "easy":
+        text = rng.choice(["Last winter, ", "In 2019, ", "That spring, "]) + low(text)
+    if difficulty == "hard":
+        text = text + " " + rng.choice(["Nobody had predicted it.", "The lesson was not lost on anyone.",
+                                        "The story is still told in town."])
+    return build(rng, fill(text, conv_stem(rng)), correct, ds, subskill="pronouns",
+                 explanation=("A pronoun must point to one specific noun; when it would refer to a whole "
+                              "idea, replace it with a noun phrase that names that idea."),
+                 tags=["conventions", "pronouns", "vague-reference"], est=50)
+
+
+_REFL_COMP = [
+    ("The director gave the award to {N} and ___", "object"),
+    ("The invitation was meant for {N} and ___", "object"),
+    ("The coach chose {N} and ___ to lead the drills", "object"),
+    ("Please return the keys to {N} or ___", "object"),
+    ("{N} and ___ will present the plan on Monday", "subject"),
+    ("Neither {N} nor ___ expected the storm", "subject"),
+]
+
+
+@family(fill_in=True)
+def pron_reflexive_compound(rng, difficulty):
+    """Reflexives misused in compound subjects and objects (him/her/us/them, not -self)."""
+    frame, role = rng.choice(_REFL_COMP)
+    key = rng.choice(["he", "she", "we", "they"])
+    subj, obj, poss, refl = _PRON_SETS[key]
+    name = rng.choice(NAMES)
+    text = frame.format(N=name) + "."
+    if role == "object":
+        correct = (obj, f"Correct. The pronoun is an object, so '{obj}' is needed; a reflexive is wrong "
+                        "because the subject is someone else.")
+        ds = [(refl, f"'{refl}' is reflexive; it needs '{subj}' as the subject of the same clause."),
+              (subj, f"'{subj}' is subjective case, but the pronoun is an object here."),
+              (poss if poss != obj else ("hers" if key == "she" else poss),
+               "A possessive cannot be the object here.")]
+        if poss == obj:
+            ds[2] = ("hers", "A possessive cannot be the object here.")
+    else:
+        correct = (subj, f"Correct. The pronoun is part of the subject, so the subjective '{subj}' is needed.")
+        ds = [(refl, "A reflexive pronoun can never be a subject."),
+              (obj, f"'{obj}' is objective case, but the pronoun is part of the subject."),
+              (poss if poss != obj else ("hers" if key == "she" else poss), "A possessive cannot be the subject.")]
+        if poss == obj:
+            ds[2] = ("hers", "A possessive cannot be the subject.")
+    if difficulty != "easy":
+        text = rng.choice(["In the end, ", "To nobody's surprise, ", "As planned, "]) + soft_low(text)
+    if difficulty == "hard":
+        text = text + " " + rng.choice(["No one objected.", "The announcement came on Friday.",
+                                        "The decision was final."])
+    return build(rng, fill(text, conv_stem(rng)), correct, ds, subskill="pronouns",
+                 explanation=("A reflexive pronoun ('himself', 'ourselves') is used only when the subject "
+                              "acts on itself; in a compound subject or object, use the plain subjective or "
+                              "objective form."),
+                 tags=["conventions", "pronouns", "reflexive-compound"])
+
+
+# =========================================================================== #
+# v2.1 ADDITIONS — MODIFIERS
+# =========================================================================== #
+_MODIFIERS.extend([
+    ("Soaked by the sudden downpour,", "the hikers", "the trail", "the map", "the afternoon",
+     "took shelter under a ledge", "The forecast had promised sun.", "The rain stopped within an hour."),
+    ("Restored by local volunteers,", "the carousel", "the children", "the park", "the summer",
+     "reopened in June", "The carousel had sat idle for a decade.", "Lines formed on the first day."),
+    ("Known for her patience,", "the teacher", "the lesson", "the classroom", "the bell",
+     "waited for every hand to go down", "The class was unusually restless.", "The quiet lasted the rest of the hour."),
+    ("Forged from a single piece of iron,", "the gate", "the blacksmith", "the garden", "the century",
+     "has never needed repair", "The estate dates from the 1700s.", "It still swings without a sound."),
+    ("Tired of the long commute,", "Samir", "the train", "the office", "the schedule",
+     "moved closer to the city", "The trip took ninety minutes each way.", "He now walks to work."),
+    ("Praised by every critic,", "the novel", "the author", "the readers", "the prize",
+     "sold out its first printing in a week", "The publisher had printed only a few thousand copies.", "A second printing followed."),
+    ("Left in the sun all afternoon,", "the chocolate", "the picnic", "the children", "the basket",
+     "melted into a puddle", "Nobody had thought to pack a cooler.", "The sandwiches survived."),
+    ("Written in haste,", "the letter", "the clerk", "the office", "the deadline",
+     "contained three spelling errors", "The deadline fell on a Friday.", "The errors were caught the next morning."),
+    ("Warned about the ice,", "the drivers", "the road", "the bridge", "the night",
+     "slowed to a crawl", "A cold front had arrived at dusk.", "No accidents were reported."),
+    ("Fed twice a day,", "the goats", "the farmer", "the barn", "the winter",
+     "grew fat by spring", "The hay came from the upper field.", "The kids were born in April."),
+    ("Carved from a single log,", "the canoe", "the carver", "the river", "the village",
+     "weighs less than fifty pounds", "The log came from a fallen cedar.", "It has crossed the lake many times."),
+    ("Alarmed by the smoke,", "the neighbors", "the fire", "the kitchen", "the alarm",
+     "called the fire department", "The smoke turned out to be burnt toast.", "Everyone laughed about it later."),
+    ("Delayed by fog,", "the ferries", "the passengers", "the harbor", "the schedule",
+     "ran two hours late", "A thick fog settled over the bay at dawn.", "The last boat left after dark."),
+    ("Hoping to attract younger readers,", "the magazine", "the readers", "the cover", "the newsstand",
+     "redesigned its cover", "Sales had slipped for three years.", "Subscriptions rose that fall."),
+    ("Perched on the cliff,", "the lighthouse", "the sailors", "the waves", "the storm",
+     "can be seen for twenty miles", "The cliff rises three hundred feet above the surf.", "Its lamp still turns each night."),
+    ("Weakened by years of flooding,", "the old pier", "the fishermen", "the harbor", "the town",
+     "was finally torn down", "The pier had stood since 1902.", "A new one opened the next summer."),
+    ("Grateful for the rain,", "the farmers", "the fields", "the crops", "the forecast",
+     "postponed the irrigation", "The spring had been the driest in decades.", "The barley recovered within weeks."),
+    ("Stacked to the ceiling,", "the boxes", "the movers", "the hallway", "the afternoon",
+     "blocked the only window", "The archive had run out of shelf space.", "Volunteers sorted them over the winter."),
+    ("Famous for its sourdough,", "the bakery", "the customers", "the street", "the morning",
+     "sells out by ten", "The shop has stood on Elm Street since 1962.", "Regulars arrive before the doors open."),
+    ("Nervous before the audition,", "Chloe", "the violin", "the judges", "the hall",
+     "practiced the opening bars one more time", "The audition was held in the old concert hall.", "She won the seat."),
+    ("Hidden by tall grass,", "the stone marker", "the hikers", "the trail", "the summer",
+     "went unnoticed for years", "The marker dates from the first survey of the valley.", "A ranger found it last July."),
+    ("Rebuilt after the fire,", "the barn", "the farmer", "the horses", "the winter",
+     "now has a metal roof", "Lightning struck the old barn in August.", "The horses moved back in by spring."),
+    ("Impressed by the design,", "the judges", "the bridge", "the drawings", "the ceremony",
+     "awarded first prize to the students", "The competition drew entries from six schools.", "The bridge will be built next year."),
+])
+_MOD_OPENINGS.extend([
+    ("Worried about the forecast", "With the forecast being a worry to them",
+     "Being that the forecast was worrying", "They worried about the forecast",
+     "the organizers moved the concert indoors"),
+    ("Praised by every critic", "Having praised it, every critic",
+     "With every critic's praise of it", "Every critic praised it",
+     "the novel sold out in a week"),
+    ("Fed twice a day", "Being fed by the farmer twice a day by him",
+     "With twice-daily feedings from the farmer", "The farmer fed them twice a day",
+     "the goats grew fat by spring"),
+    ("Alarmed by the smoke", "Because the smoke was alarming to them",
+     "With smoke alarming them", "The smoke alarmed them",
+     "the neighbors called the fire department"),
+    ("Known for her patience", "With her patience being well known",
+     "Being that she was known for patience", "She was known for her patience",
+     "the teacher waited for the room to settle"),
+    ("Carved from a single log", "Having carved it from a single log",
+     "With its carving from a single log by the maker", "The maker carved it from a single log",
+     "the canoe weighs less than fifty pounds"),
+    ("Delayed by fog", "With fog delaying them for hours",
+     "Being that there was fog that morning", "Fog delayed them for hours",
+     "the ferries ran two hours late"),
+    ("Perched on the cliff", "With its perch being on the cliff",
+     "Having been perched there by its builders", "Its builders perched it on the cliff",
+     "the lighthouse can be seen for twenty miles"),
+    ("Nervous before the audition", "With her nerves before the audition",
+     "Being that she was nervous", "She was nervous before the audition",
+     "Chloe practiced the opening bars once more"),
+    ("Impressed by the design", "Having impressed them with the design",
+     "With the design being impressive to them", "The design impressed them",
+     "the judges awarded first prize to the students"),
+    ("Rebuilt after the fire", "After the farmer rebuilt it following the fire",
+     "With its rebuilding after the fire by the farmer", "The farmer rebuilt it after the fire",
+     "the barn now has a metal roof"),
+    ("Grateful for the rain", "With gratitude for the rain being theirs",
+     "Being that the rain was welcome", "The rain was welcome to them",
+     "the farmers postponed the irrigation"),
+])
+
+_ONLY = [
+    ("Of the ten questions on the quiz, Maya answered three.", "In other words, Maya ___ three questions.",
+     "answered only", "only answered", "answered three only of the", "only three answered"),
+    ("The museum opens on Saturdays and no other day.", "That is, the museum ___ on Saturdays.",
+     "opens only", "only opens", "opens on only", "only Saturdays opens"),
+    ("The recipe calls for one egg, not two.", "Put another way, the recipe ___ one egg.",
+     "calls for only", "only calls for", "calls only for", "only one calls for"),
+    ("Nearly every seat was taken; a handful were empty.", "In other words, the hall was ___ full.",
+     "almost", "almost not", "fully almost", "nearly not"),
+    ("The ferry crosses to the island and nowhere else.", "That is, the ferry ___ to the island.",
+     "crosses only", "only crosses", "crosses to only", "only to crosses"),
+    ("Of the five bridges, two are open to trucks.", "In other words, ___ two bridges are open to trucks.",
+     "only", "two only", "only to", "just only"),
+    ("The lab's budget covers equipment, but nothing else.", "Put simply, the budget ___ equipment.",
+     "covers only", "only covers", "covers only for", "only equipment covers"),
+    ("Theo has read the first chapter and no more.", "In other words, Theo has ___ the first chapter.",
+     "read only", "only read", "read only of", "only of read"),
+    ("The bakery sells rye bread on Fridays and on no other day.", "That is, the bakery ___ on Fridays.",
+     "sells rye bread only", "only sells rye bread", "sells only rye bread", "only on sells rye bread"),
+    ("Two of the twelve divers reached the lower deck.", "Put another way, ___ two divers reached the lower deck.",
+     "only", "two only", "only of", "just only"),
+    ("The telescope can be used by staff and by nobody else.", "In other words, the telescope ___ by staff.",
+     "can be used only", "only can be used", "can only be used by only", "can be used by only staff"),
+    ("Nearly all the tickets were sold; a dozen remained.", "That is, the concert was ___ sold out.",
+     "almost", "almost not", "nearly not", "not almost"),
+]
+
+
+@family(fill_in=True, small_space=True)
+def mod_only(rng, difficulty):
+    """Place 'only'/'almost' next to the word it limits (meaning fixed by a context sentence)."""
+    context, frame, right, w1, w2, w3 = rng.choice(_ONLY)
+    correct = (right, "Correct. The limiting word sits directly before the word it limits, matching "
+                      "the meaning of the first sentence.")
+    ds = [(w1, "Placed here, the limiting word modifies the verb, suggesting that nothing else was done."),
+          (w2, "This placement is unidiomatic and does not express the intended limit."),
+          (w3, "This word order is ungrammatical.")]
+    text = f"{context} {frame}"
+    if difficulty == "hard":
+        text = text + " " + rng.choice(["The distinction matters.", "Nobody disputes the figure.",
+                                        "The point is easy to miss."])
+    stem = rng.choice(["Which choice completes the second sentence so that it matches the meaning of the first?",
+                       conv_stem(rng)])
+    return build(rng, fill(text, stem), correct, ds, subskill="modifiers",
+                 explanation=("Words like 'only' and 'almost' limit whatever comes right after them; put "
+                              "them directly before the word the meaning calls for."),
+                 tags=["conventions", "modifiers", "only-placement"], est=50)
+
+
+_PASSIVE_DANGLE = [
+    ("Having finished the exam,", "the students handed in their papers",
+     "the papers were handed in by the students", "the papers were collected",
+     "their papers having been handed in"),
+    ("After reviewing the evidence,", "the jury reached a verdict",
+     "a verdict was reached by the jury", "a verdict was announced",
+     "the verdict was reached"),
+    ("To reach the summit before noon,", "the climbers left camp at four",
+     "camp was left at four by the climbers", "an early start was needed",
+     "the camp was abandoned at four"),
+    ("While repairing the roof,", "the carpenter found a wasp nest",
+     "a wasp nest was found by the carpenter", "a wasp nest was discovered",
+     "there was a wasp nest found"),
+    ("Hoping to save money,", "the family canceled the trip",
+     "the trip was canceled by the family", "the trip was called off",
+     "the cancellation of the trip was decided"),
+    ("Before entering the archive,", "visitors must sign the register",
+     "the register must be signed by visitors", "the register must be signed",
+     "signing the register is required"),
+    ("Using a borrowed telescope,", "Hana spotted the comet first",
+     "the comet was spotted first by Hana", "the comet was seen first",
+     "the first sighting of the comet was Hana's"),
+    ("After tasting the sauce,", "the chef added more salt",
+     "more salt was added by the chef", "more salt was needed",
+     "the sauce was given more salt"),
+    ("Upon hearing the alarm,", "the crew secured the hatches",
+     "the hatches were secured by the crew", "the hatches were closed",
+     "securing the hatches was done by the crew"),
+    ("While walking the dog,", "Omar noticed the broken streetlight",
+     "the broken streetlight was noticed by Omar", "the streetlight was found broken",
+     "the broken streetlight came to Omar's attention"),
+    ("After checking the tide tables,", "the captain delayed the crossing",
+     "the crossing was delayed by the captain", "the crossing was postponed",
+     "a delay of the crossing was decided"),
+    ("Having mapped the caves,", "the divers published their survey",
+     "the survey was published by the divers", "the survey was released",
+     "the publication of the survey followed"),
+    ("To protect the seedlings,", "the gardeners covered the beds",
+     "the beds were covered by the gardeners", "the beds were covered",
+     "covers were placed on the beds"),
+    ("While tuning the organ,", "the technician found a cracked pipe",
+     "a cracked pipe was found by the technician", "a cracked pipe was discovered",
+     "there was a cracked pipe found"),
+]
+
+
+@family(fill_in=True, small_space=True)
+def mod_passive_dangle(rng, difficulty):
+    """Passive main clauses leave an opening modifier dangling; options are whole clauses."""
+    opening, right, w_by, w_agentless, w_other = rng.choice(_PASSIVE_DANGLE)
+    doer = right.split()[0] if not right.startswith("the ") else " ".join(right.split()[:2])
+    correct = (right, f"Correct. '{doer}' is the one who {opening.strip(',').lower()}, and it sits right after the modifier.")
+    ds = [(w_by, "The passive puts the wrong noun next to the modifier, so the phrase dangles."),
+          (w_agentless, "With no doer named, the opening phrase has nothing it can logically describe."),
+          (w_other, "This rewording still fails to place the doer of the opening action next to the phrase.")]
+    text = f"{opening} ___."
+    if difficulty != "easy":
+        text = rng.choice(["The rest of the story is short. ", "Here is what happened next. ",
+                           "The sequence was simple. "]) + text
+    if difficulty == "hard":
+        text = text + " " + rng.choice(["No one was surprised.", "The rest followed quickly.",
+                                        "It was over in minutes."])
+    return build(rng, fill(text, conv_stem(rng)), correct, ds, subskill="modifiers",
+                 explanation=("Rewriting the main clause in the passive moves the doer away from the opening "
+                              "phrase, which then dangles; keep the doer as the subject."),
+                 tags=["conventions", "modifiers", "passive-dangling"], est=55)
+
+
+_SQUINT = [
+    ("Riding a bicycle", "quickly", "improves fitness", "the benefit comes fast",
+     "Riding a bicycle improves fitness quickly.", "Riding a bicycle quickly improves fitness.",
+     "Quickly riding a bicycle improves fitness.", "Riding quickly a bicycle improves fitness."),
+    ("Students who review their notes", "often", "pass the exam", "the reviewing is frequent",
+     "Students who often review their notes pass the exam.", "Students who review their notes often pass the exam.",
+     "Students who review their notes pass often the exam.", "Often students who review their notes pass the exam."),
+    ("The coach told the players", "on Friday", "to rest", "the resting is on Friday",
+     "The coach told the players to rest on Friday.", "The coach told the players on Friday to rest.",
+     "On Friday the coach told the players to rest.", "The coach on Friday told the players to rest."),
+    ("Walking the trail", "slowly", "reveals its beauty", "the walking is slow",
+     "Walking the trail slowly reveals its beauty.", "Walking the trail reveals its beauty slowly.",
+     "Slowly walking the trail reveals its beauty.", "Walking slowly the trail reveals its beauty."),
+    ("The manager said", "on Monday", "the store would close", "the closing is on Monday",
+     "The manager said the store would close on Monday.", "The manager said on Monday the store would close.",
+     "On Monday the manager said the store would close.", "The manager on Monday said the store would close."),
+    ("Teachers who grade essays", "carefully", "help their students", "the grading is careful",
+     "Teachers who carefully grade essays help their students.", "Teachers who grade essays carefully help their students.",
+     "Teachers who grade essays help carefully their students.", "Carefully teachers who grade essays help their students."),
+    ("Nina promised", "after the concert", "to call", "the calling is after the concert",
+     "Nina promised to call after the concert.", "Nina promised after the concert to call.",
+     "After the concert Nina promised to call.", "Nina after the concert promised to call."),
+    ("Drinking coffee", "in the evening", "disturbs sleep", "the coffee is drunk in the evening",
+     "Drinking coffee in the evening disturbs sleep.", "Drinking coffee disturbs sleep in the evening.",
+     "In the evening drinking coffee disturbs sleep.", "Drinking in the evening coffee disturbs sleep."),
+]
+
+
+@family(fill_in=False, small_space=True)
+def mod_squinting(rng, difficulty):
+    """A squinting modifier; the intended meaning is stated and only one sentence conveys it."""
+    base, mod, rest, intent, good, squint, other, bad = rng.choice(_SQUINT)
+    correct = (good, f"Correct. '{mod}' sits where it can modify only the intended idea ({intent}).")
+    ds = [(squint, f"Placed between two verbs, '{mod}' 'squints': it could modify either one."),
+          (other, f"This placement makes '{mod}' modify the wrong part of the sentence."),
+          (bad, "This word order is awkward or ungrammatical.")]
+    prompt = (f"A writer wants to say that {intent}.\n\n"
+              + rng.choice(["Which choice places the modifier so that the sentence has only that meaning?",
+                            "Which version of the sentence expresses that meaning unambiguously?"]))
+    return build(rng, prompt, correct, ds, subskill="modifiers",
+                 explanation=("A modifier placed between two things it could describe is ambiguous; move "
+                              "it next to the one word or phrase it should modify."),
+                 tags=["conventions", "modifiers", "squinting"], est=55)
+
+
+# =========================================================================== #
+# v2.1 ADDITIONS — TRANSITIONS
+# =========================================================================== #
+_TRANS_ITEMS.extend([
+    ("The clinic added evening hours in March.", "fewer patients now visit the emergency room.", "cause"),
+    ("The tunnel shortens the drive by an hour.", "most trucks still use the mountain road.", "contrast"),
+    ("The robot's arm jammed in the first round.", "the team finished in the top ten.", "contrast"),
+    ("The lighthouse was automated decades ago.", "its lens is cleaned by hand every spring.", "addition"),
+    ("The bakery's rye loaf sold out by noon.", "the owners doubled the batch the next day.", "cause"),
+    ("The archive's letters were scanned last year.", "researchers in three countries have already cited them.", "cause"),
+    ("The marsh lost half its area after 1990.", "bird counts have risen since the grasses were replanted.", "contrast"),
+    ("The telescope's mirror was replaced in 2021.", "its resolution doubled.", "cause"),
+    ("Many desert plants store water in their stems.", "the barrel cactus can hold a gallon.", "example"),
+    ("The orchestra rehearsed the finale a dozen times.", "the performance still ran long.", "contrast"),
+    ("The choir auditioned new members in September.", "it added a second rehearsal night.", "sequence"),
+    ("Kite festivals draw crowds in many coastal towns.", "the one in Harlan fills every hotel.", "example"),
+    ("The ferry company added a third boat.", "weekend crossings carry twice as many bicycles.", "cause"),
+    ("The mill employed half the town in the 1950s.", "it closed in 1983.", "contrast"),
+    ("The new filter removes nearly all the sediment.", "the water still tastes faintly of iron.", "contrast"),
+    ("The glacier has retreated a mile since 1950.", "scientists expect the trend to continue.", "addition"),
+])
+
+# (paragraph 1, paragraph 2 without its opening transition, relation)
+_TRANS_PARA = [
+    ("For most of the twentieth century, the harbor town depended on a single cannery. The plant employed "
+     "nearly half the adults in town, and its whistle set the rhythm of every day.",
+     "the cannery closed in 2003, and the town had to reinvent itself. Today its warehouses hold cafés, "
+     "a climbing gym, and a bicycle repair shop.", "contrast"),
+    ("Desert tortoises spend most of the year underground. Their burrows stay cool through the hottest "
+     "afternoons and hold warmth on winter nights.",
+     "dozens of other species shelter in those burrows as well. Biologists call the tortoise an engineer "
+     "of its ecosystem.", "cause"),
+    ("The school garden began as a single raised bed behind the cafeteria. Each spring a new class added "
+     "another bed, and by the fifth year the beds filled the whole courtyard.",
+     "the garden now supplies the cafeteria with salad greens from April to October. A greenhouse is "
+     "planned for next year.", "cause"),
+    ("Early radio operators had to master Morse code. The code is slow by modern standards, and learning "
+     "it took months of nightly practice.",
+     "it can be sent with almost any equipment, even a flashlight. Amateur operators still practice it "
+     "today for exactly that reason.", "contrast"),
+    ("The clock tower's mechanism dates from 1884. It must be wound by hand twice a week, a job that "
+     "takes a volunteer up two hundred stairs.",
+     "the tower keeps time to within a few seconds a month. The volunteer who winds it has done so for "
+     "thirty years.", "contrast"),
+    ("Lichens grow on bare rock where little else survives. They release weak acids that slowly break the "
+     "rock's surface into grains.",
+     "they help create the first thin layer of soil on new ground. Mosses and grasses follow within a few "
+     "decades.", "cause"),
+    ("Vanilla comes from the pod of an orchid. Outside its native range, the orchid has no natural "
+     "pollinator, and its flowers open for only a single day.",
+     "farmers must pollinate each flower by hand during that one day. This is one reason real vanilla "
+     "costs so much.", "cause"),
+    ("The library's photograph archive was nearly lost in a flood. Volunteers dried each print by hand "
+     "over a long winter.",
+     "they scanned every image so that the collection could be viewed online. The digital archive now "
+     "receives thousands of visits a month.", "addition"),
+    ("The new stadium was designed to use as little water as possible. Rain is collected from the roof and "
+     "stored in tanks beneath the stands.",
+     "the field is irrigated with recycled water from the concession stands. Water use has fallen by half "
+     "since the stadium opened.", "addition"),
+    ("Many migrating birds travel at night, navigating by the stars. Bright city lights can draw them off "
+     "course and into windows.",
+     "several cities now dim their skylines during peak migration. Early counts suggest far fewer "
+     "collisions.", "cause"),
+    ("Amara's grandmother kept bees behind the house and let Amara help with the harvest every August. "
+     "By ten, Amara could lift a frame without gloves.",
+     "she started a hive of her own at fourteen. She now sells honey at the Saturday market.", "sequence"),
+    ("The city's oldest bridge was built for horse carts. Engineers reinforced it twice last century, "
+     "adding steel beneath the original stone.",
+     "heavy trucks are still banned from crossing it. A second bridge now carries most freight.", "contrast"),
+]
+
+
+@family(fill_in=True, small_space=True)
+def trans_paragraph(rng, difficulty):
+    """Transition opening a second paragraph."""
+    p1, p2, rel = rng.choice(_TRANS_PARA)
+    word = rng.choice(_TRANS_BANK[rel])
+    used = {word.lower()}
+    ds = _trans_distractors(rng, rel, difficulty, used)
+    correct = (word, f"Correct. The second paragraph stands in {_TRANS_REL_NAMES[rel]} to the first.")
+    text = f"{p1}\n\n___, {p2}"
+    stem = rng.choice(["Which transition most logically begins the second paragraph?",
+                       "Which choice completes the text with the most logical transition?"])
+    # keep the stem as the final paragraph: the paragraph break inside the text is fine
+    return build(rng, fill(text, stem), correct, ds, subskill="logical_transitions", qtype="multiple_choice",
+                 explanation=(f"Compare the main idea of each paragraph: the second expresses "
+                              f"{_TRANS_REL_NAMES[rel]} relative to the first."),
+                 tags=["expression", "transitions", "paragraph"], est=70)
+
+
+# (sentence 1, sentence 2 that simply continues with no logical connector)
+_TRANS_DELETE = [
+    ("The bakery opens at six.", "The first customers are usually fishermen heading to the docks."),
+    ("The trail begins behind the ranger station.", "A wooden sign marks the first turn."),
+    ("The museum's new wing holds the textile collection.", "A tapestry of woven silk hangs at the far end."),
+    ("Nadia restores antique clocks in a small workshop.", "She keeps a drawer of spare parts sorted by century."),
+    ("The orchestra toured three cities over spring break.", "Recordings of the concerts are posted online."),
+    ("The coral nursery sits in a shallow lagoon.", "Divers check the frames twice a month."),
+    ("The city archive holds thousands of letters from the 1890s.", "Volunteers transcribe them one page at a time."),
+    ("The kite festival takes place on the first Saturday in June.", "Prizes go to the largest kite and the most unusual design."),
+    ("The robotics club meets after school on Tuesdays.", "Its next competition is in March."),
+    ("The lighthouse was built in 1874.", "A keeper's cottage stands beside it."),
+    ("The ferry crosses to the island four times a day.", "Tickets are sold at a booth on the pier."),
+    ("The olive grove covers the hillside above the village.", "Farmers harvest the fruit by hand with long rakes."),
+]
+_DELETE_TEXT = "DELETE it"
+
+
+@family(fill_in=False, small_space=True)
+def trans_delete(rng, difficulty):
+    """Decide whether a bracketed transition should be kept, replaced, or deleted."""
+    delete_case = rng.random() < 0.5
+    if delete_case:
+        s1, s2 = rng.choice(_TRANS_DELETE)
+        shown = rng.choice(["Therefore", "However", "Consequently"] if difficulty == "easy"
+                           else ["Therefore", "However", "For example", "Consequently", "Nevertheless"])
+        others = [w for r in _TRANS_BANK for w in _TRANS_BANK[r] if w != shown]
+        rng.shuffle(others)
+        correct = (_DELETE_TEXT, "Correct. The second sentence simply adds a detail; no cause, contrast, or "
+                                 "example is being signaled, so any transition word is misleading.")
+        ds = []
+        for w in others[:3]:
+            rel = [r for r in _TRANS_BANK if w in _TRANS_BANK[r]][0]
+            ds.append((f"{w},", f"'{w}' signals {_TRANS_REL_NAMES[rel]}, a relationship the two sentences do not have."))
+        expl = ("Transitions must signal a real relationship between ideas; when the second sentence merely "
+                "continues the description, no transition is needed.")
+    else:
+        s1, s2, rel = rng.choice(_TRANS_ITEMS)
+        word = rng.choice(_TRANS_BANK[rel])
+        shown = rng.choice([w for r in _TRANS_BANK if r != rel for w in _TRANS_BANK[r]])
+        used = {word.lower(), shown.lower()}
+        ds = _trans_distractors(rng, rel, difficulty, used, fmt=lambda w: f"{w},")[:2]
+        ds.append((_DELETE_TEXT, f"Deleting the transition hides the {_TRANS_REL_NAMES[rel]} between the sentences."))
+        correct = (f"{word},", f"Correct. The second sentence expresses {_TRANS_REL_NAMES[rel]}, which '{word}' signals.")
+        expl = (f"The second sentence stands in {_TRANS_REL_NAMES[rel]} to the first, so a transition that "
+                "signals that relationship should be kept.")
+    prompt = (f"{s1} [{shown},] {low(s2)}\n\nThe writer is considering the bracketed transition. "
+              "Which choice is best?")
+    return build(rng, prompt, correct, ds, subskill="logical_transitions", qtype="multiple_choice",
+                 explanation=expl, tags=["expression", "transitions", "delete"], est=55)
+
+
+_CONCESSION = [
+    ("the trail is short", "it climbs nearly two thousand feet"),
+    ("the museum is free", "it relies entirely on donations"),
+    ("the recipe looks simple", "the sauce took three attempts to get right"),
+    ("the novel received glowing reviews", "sales were disappointing"),
+    ("the team lost its first six games", "it finished with a winning record"),
+    ("the lighthouse was automated in 1987", "a keeper still lives on the island"),
+    ("the glacier has retreated a mile", "the valley below is greener than ever"),
+    ("the forecast called for clear skies", "a thunderstorm rolled in by noon"),
+    ("the bakery doubled its staff", "the lines grew even longer"),
+    ("the tunnel shortens the drive by an hour", "most trucks still use the mountain road"),
+]
+
+
+@family(fill_in=True)
+def trans_concession(rng, difficulty):
+    """Concession (although/even though) vs. contrast adverbs (however) and wrong logic."""
+    a, b = rng.choice(_CONCESSION)
+    if difficulty == "easy" or rng.random() < 0.5:
+        word = rng.choice(["Although", "Even though", "Though", "While"])
+        correct = (word, f"Correct. '{word}' concedes the first point and lets the main clause contrast with it.")
+        ds = [("However", "'However' is a conjunctive adverb; it cannot introduce a dependent clause "
+                          "joined with a comma."),
+              ("Because", "'Because' claims a cause-and-effect link that the ideas do not have."),
+              ("In spite of", "'In spite of' must be followed by a noun phrase, not a full clause.")]
+        text = f"___ {a}, {b}."
+        expl = "A concession clause begins with a subordinator such as 'although'; 'however' cannot do that job."
+    else:
+        word = rng.choice(["however", "nevertheless", "even so", "still"])
+        correct = (word, f"Correct. After a semicolon, the adverb '{word}' signals the contrast between two "
+                         "independent clauses.")
+        ds = [("although", "'although' makes the second clause dependent, which cannot follow a semicolon."),
+              ("therefore", "'therefore' signals a result, but the second idea contrasts with the first."),
+              ("for example", "'for example' signals an illustration, not a contrast.")]
+        text = f"{cap(a)}; ___, {b}."
+        expl = ("Two independent clauses joined by a semicolon take a contrast adverb; a subordinator like "
+                "'although' cannot follow a semicolon.")
+    if difficulty == "hard":
+        text = rng.choice(["Few visitors expect it. ", "The numbers tell the story. ", "The paradox is real. "]) + text
+    return build(rng, fill(text, rng.choice(_TRANS_STEMS)), correct, ds, subskill="logical_transitions",
+                 qtype="multiple_choice", explanation=expl,
+                 tags=["expression", "transitions", "concession"], est=50)
+
+
+# =========================================================================== #
 # FAMILY TABLE + LEGACY DISPATCHERS
 # =========================================================================== #
 FAMILIES = {
     "sentence_boundaries": {
-        "easy": [bnd_join_whole, bnd_blank_junction, bnd_dependent, bnd_passage, bnd_conjunctive_adverb],
-        "medium": [bnd_join_whole, bnd_blank_junction, bnd_conjunctive_adverb, bnd_colon, bnd_passage, bnd_dependent],
-        "hard": [bnd_join_whole, bnd_blank_junction, bnd_conjunctive_adverb, bnd_colon, bnd_passage, bnd_dependent],
+        "easy": [bnd_join_whole, bnd_blank_junction, bnd_dependent, bnd_passage, bnd_conjunctive_adverb,
+                 bnd_fragment_clause, bnd_mark_choice, bnd_splice_repair],
+        "medium": [bnd_join_whole, bnd_blank_junction, bnd_conjunctive_adverb, bnd_colon, bnd_passage, bnd_dependent,
+                   bnd_fragment_clause, bnd_mark_choice, bnd_splice_repair],
+        "hard": [bnd_join_whole, bnd_blank_junction, bnd_conjunctive_adverb, bnd_colon, bnd_passage, bnd_dependent,
+                 bnd_fragment_clause, bnd_mark_choice, bnd_splice_repair],
     },
     "subject_verb_agreement": {
-        "easy": [sva_of_phrase, sva_compound, sva_indefinite, sva_inverted, sva_passage, sva_collective],
-        "medium": [sva_of_phrase, sva_compound, sva_indefinite, sva_inverted, sva_relative, sva_collective, sva_passage],
-        "hard": [sva_of_phrase, sva_compound, sva_indefinite, sva_inverted, sva_relative, sva_collective, sva_passage, sva_clause_options],
+        "easy": [sva_of_phrase, sva_compound, sva_indefinite, sva_inverted, sva_passage, sva_collective,
+                 sva_gerund, sva_quantity],
+        "medium": [sva_of_phrase, sva_compound, sva_indefinite, sva_inverted, sva_relative, sva_collective, sva_passage,
+                   sva_quantity, sva_gerund, sva_either_or],
+        "hard": [sva_of_phrase, sva_compound, sva_indefinite, sva_inverted, sva_relative, sva_collective, sva_passage,
+                 sva_clause_options, sva_either_or, sva_quantity, sva_gerund],
     },
     "punctuation": {
-        "easy": [punct_possessive, punct_its, punct_series, punct_no_comma, punct_nonrestrictive],
-        "medium": [punct_possessive, punct_its, punct_nonrestrictive, punct_series, punct_passage, punct_paired],
-        "hard": [punct_possessive, punct_its, punct_nonrestrictive, punct_paired, punct_passage, punct_no_comma, punct_series],
+        "easy": [punct_possessive, punct_its, punct_series, punct_no_comma, punct_nonrestrictive,
+                 punct_hyphen, punct_quotation, punct_semicolon_list],
+        "medium": [punct_possessive, punct_its, punct_nonrestrictive, punct_series, punct_passage, punct_paired,
+                   punct_hyphen, punct_quotation, punct_semicolon_list, punct_dash_paren],
+        "hard": [punct_possessive, punct_its, punct_nonrestrictive, punct_paired, punct_passage, punct_no_comma, punct_series,
+                 punct_hyphen, punct_quotation, punct_semicolon_list, punct_dash_paren],
     },
     "pronouns": {
-        "easy": [pron_compound, pron_who_whom, pron_reflexive, pron_preposition, pron_passage],
-        "medium": [pron_compound, pron_who_whom, pron_preposition, pron_reflexive, pron_passage],
-        "hard": [pron_compound, pron_who_whom, pron_preposition, pron_reflexive, pron_passage, pron_clause_options],
+        "easy": [pron_compound, pron_who_whom, pron_reflexive, pron_preposition, pron_passage,
+                 pron_shift, pron_reflexive_compound],
+        "medium": [pron_compound, pron_who_whom, pron_preposition, pron_reflexive, pron_passage,
+                   pron_shift, pron_vague, pron_reflexive_compound],
+        "hard": [pron_compound, pron_who_whom, pron_preposition, pron_reflexive, pron_passage, pron_clause_options,
+                 pron_shift, pron_vague, pron_reflexive_compound],
     },
     "modifiers": {
-        "easy": [mod_whole_sentence, mod_blank_subject, mod_opening_phrase, mod_passage],
-        "medium": [mod_whole_sentence, mod_blank_subject, mod_opening_phrase, mod_misplaced, mod_passage],
-        "hard": [mod_whole_sentence, mod_blank_subject, mod_opening_phrase, mod_misplaced, mod_passage],
+        "easy": [mod_whole_sentence, mod_blank_subject, mod_opening_phrase, mod_passage,
+                 mod_only, mod_passive_dangle],
+        "medium": [mod_whole_sentence, mod_blank_subject, mod_opening_phrase, mod_misplaced, mod_passage,
+                   mod_only, mod_passive_dangle, mod_squinting],
+        "hard": [mod_whole_sentence, mod_blank_subject, mod_opening_phrase, mod_misplaced, mod_passage,
+                 mod_only, mod_passive_dangle, mod_squinting],
     },
     "transitions": {
-        "easy": [trans_blank, trans_opener, trans_sentence_options, trans_sequence, trans_passage],
-        "medium": [trans_blank, trans_opener, trans_sentence_options, trans_passage, trans_sequence],
-        "hard": [trans_blank, trans_opener, trans_sentence_options, trans_passage, trans_sequence],
+        "easy": [trans_blank, trans_opener, trans_sentence_options, trans_sequence, trans_passage,
+                 trans_paragraph, trans_concession],
+        "medium": [trans_blank, trans_opener, trans_sentence_options, trans_passage, trans_sequence,
+                   trans_paragraph, trans_delete, trans_concession],
+        "hard": [trans_blank, trans_opener, trans_sentence_options, trans_passage, trans_sequence,
+                 trans_paragraph, trans_delete, trans_concession],
     },
 }
 

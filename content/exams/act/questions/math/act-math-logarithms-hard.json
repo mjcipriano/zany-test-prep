@@ -11,43 +11,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "evaluate",
-    "prompt": "What is the value of log_3(27) + log_3(9)?",
+    "prompt": "What is the value of log_3(27)?",
     "choices": [
       {
         "id": "A",
-        "text": "243",
-        "rationale": "That is the argument, not the logarithm."
+        "text": "3",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "6",
+        "text": "2",
         "rationale": "Logs of a product add; logs of a quotient subtract (exponents, not multiply/divide)."
       },
       {
         "id": "C",
-        "text": "11",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "D",
         "text": "1",
         "rationale": "Check the operation."
       },
       {
+        "id": "D",
+        "text": "4",
+        "rationale": "Arithmetic slip."
+      },
+      {
         "id": "E",
-        "text": "5",
-        "rationale": "Correct."
+        "text": "27",
+        "rationale": "That is the argument, not the logarithm."
       }
     ],
-    "correct_choice": "E",
-    "explanation": "log_3(27) = 3 and log_3(9) = 2; 3 + 2 = 5.",
+    "correct_choice": "A",
+    "explanation": "27 = 3^3, so the logarithm is 3.",
     "estimated_time_seconds": 85,
     "tags": [
       "logarithms",
       "evaluate",
       "family:lg_evaluate"
     ],
-    "answer_verification": "val=5"
+    "answer_verification": "val=3"
   },
   {
     "question_id": "act-math-logarithms-hard-q02",
@@ -61,43 +61,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "convert_forms",
-    "prompt": "If log_9(y) = 5, which of the following gives y?",
+    "prompt": "Which of the following is equivalent to 27^(2/3) = 9?",
     "choices": [
       {
         "id": "A",
-        "text": "y = 9·5",
-        "rationale": "A logarithm is an exponent."
+        "text": "log_27(9) = 27",
+        "rationale": "The log is the exponent 2/3."
       },
       {
         "id": "B",
-        "text": "y = 5/9",
-        "rationale": "Rewrite as a power: y = 9^5."
+        "text": "log_27(9) = 2/3",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "y = 5^9",
-        "rationale": "The log's base is the base of the power."
+        "text": "log_27(2/3) = 9",
+        "rationale": "The argument is 9."
       },
       {
         "id": "D",
-        "text": "y = 9^(1/5)",
-        "rationale": "The exponent is 5, not 1/5."
+        "text": "log_9(27) = 2/3",
+        "rationale": "The base of the power is the base of the log."
       },
       {
         "id": "E",
-        "text": "y = 9^5",
-        "rationale": "Correct."
+        "text": "log_27(9) = 3/2",
+        "rationale": "The log equals the exponent 2/3, not its reciprocal."
       }
     ],
-    "correct_choice": "E",
-    "explanation": "log_9(y) = 5 means 9^5 = y.",
+    "correct_choice": "B",
+    "explanation": "b^y = x ⇔ log_b(x) = y, so log_27(9) = 2/3.",
     "estimated_time_seconds": 85,
     "tags": [
       "logarithms",
       "convert",
       "family:lg_convert"
     ],
-    "answer_verification": "y = 9^5"
+    "answer_verification": "log_27(9) = 2/3"
   },
   {
     "question_id": "act-math-logarithms-hard-q03",
@@ -111,43 +111,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "properties",
-    "prompt": "Which of the following is equivalent to log(y^4/n^4) for positive y and n?",
+    "prompt": "Which of the following is equivalent to log_5(m^3/a^2) for positive m and a?",
     "choices": [
       {
         "id": "A",
-        "text": "4·log(y) + 4·log(n)",
-        "rationale": "A quotient gives a difference of logs."
+        "text": "(3/2)·log_5(m/a)",
+        "rationale": "Each exponent applies to its own log."
       },
       {
         "id": "B",
-        "text": "4·log(y) − 4·log(n)",
-        "rationale": "Correct."
+        "text": "3·log_5(m) / (2·log_5(a))",
+        "rationale": "Quotient inside becomes subtraction outside, not division."
       },
       {
         "id": "C",
-        "text": "4·log(n) − 4·log(y)",
+        "text": "2·log_5(a) − 3·log_5(m)",
         "rationale": "Numerator minus denominator."
       },
       {
         "id": "D",
-        "text": "(4/4)·log(y/n)",
-        "rationale": "Each exponent applies to its own log."
+        "text": "3·log_5(m) + 2·log_5(a)",
+        "rationale": "A quotient gives a difference of logs."
       },
       {
         "id": "E",
-        "text": "4·log(y) / (4·log(n))",
-        "rationale": "Quotient inside becomes subtraction outside, not division."
+        "text": "3·log_5(m) − 2·log_5(a)",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "log(p^k/q^j) = log(p^k) − log(q^j) = 4·log(y) − 4·log(n).",
+    "correct_choice": "E",
+    "explanation": "log(p^k/q^j) = log(p^k) − log(q^j) = 3·log_5(m) − 2·log_5(a).",
     "estimated_time_seconds": 90,
     "tags": [
       "logarithms",
       "properties",
       "family:lg_properties"
     ],
-    "answer_verification": "4·log(y) − 4·log(n)"
+    "answer_verification": "3·log_5(m) − 2·log_5(a)"
   },
   {
     "question_id": "act-math-logarithms-hard-q04",
@@ -161,43 +161,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "solve_exponential",
-    "prompt": "Which of the following is the solution to 8^x = 13?",
+    "prompt": "What is the solution to 27^(3x) = 9?",
     "choices": [
       {
         "id": "A",
-        "text": "x = log(13) − log(8)",
-        "rationale": "Divide the logs; don't subtract."
+        "text": "9/2",
+        "rationale": "This inverts the exponent ratio."
       },
       {
         "id": "B",
-        "text": "x = log(13/8)",
-        "rationale": "x = log c ÷ log b, not log(c ÷ b)."
+        "text": "2/9",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "x = log(8)/log(13)",
-        "rationale": "Taking logs gives x·log(8) = log(13), so x = log(13)/log(8)."
+        "text": "1/3",
+        "rationale": "x is an exponent, not a quotient."
       },
       {
         "id": "D",
-        "text": "x = 13/8",
-        "rationale": "x is an exponent; use logarithms."
+        "text": "2/3",
+        "rationale": "Account for 27 = 3^3."
       },
       {
         "id": "E",
-        "text": "x = log(13)/log(8)",
-        "rationale": "Correct."
+        "text": "11/9",
+        "rationale": "Arithmetic slip."
       }
     ],
-    "correct_choice": "E",
-    "explanation": "Take the log of both sides: x·log 8 = log 13, so x = log(13)/log(8).",
+    "correct_choice": "B",
+    "explanation": "Write both sides with base 3: 3^(9x) = 3^2, so x = 2/9.",
     "estimated_time_seconds": 90,
     "tags": [
       "logarithms",
       "solve",
       "family:lg_solve"
     ],
-    "answer_verification": "x = log(13)/log(8)"
+    "answer_verification": "x=2/9"
   },
   {
     "question_id": "act-math-logarithms-hard-q05",
@@ -210,44 +210,44 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "evaluate",
-    "prompt": "What is the value of log_10(100) + log_10(10)?",
+    "subskill": "solve_exponential",
+    "prompt": "An account earning 2% interest compounded annually grows from $8000 to $8000(1.02)^t after t years. Which expression gives the number of years needed for the account to reach $40000?",
     "choices": [
       {
         "id": "A",
-        "text": "4",
-        "rationale": "Arithmetic slip."
+        "text": "t = log(5·1.02)",
+        "rationale": "Divide the logs; don't multiply the arguments."
       },
       {
         "id": "B",
-        "text": "1",
-        "rationale": "Check the operation."
+        "text": "t = 5/1.02",
+        "rationale": "t is an exponent; use logarithms."
       },
       {
         "id": "C",
-        "text": "2",
-        "rationale": "Logs of a product add; logs of a quotient subtract (exponents, not multiply/divide)."
+        "text": "t = log(1.02)/log(5)",
+        "rationale": "Solve (1.02)^t = 5 by taking logs: t·log(1.02) = log 5."
       },
       {
         "id": "D",
-        "text": "3",
-        "rationale": "Correct."
+        "text": "t = log(40000)/log(1.02)",
+        "rationale": "First divide both sides by 8000 to get (1.02)^t = 5."
       },
       {
         "id": "E",
-        "text": "1000",
-        "rationale": "That is the argument, not the logarithm."
+        "text": "t = log(5)/log(1.02)",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "log_10(100) = 2 and log_10(10) = 1; 2 + 1 = 3.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "E",
+    "explanation": "8000(1.02)^t = 40000 → (1.02)^t = 5 → t·log(1.02) = log 5 → t = log(5)/log(1.02).",
+    "estimated_time_seconds": 100,
     "tags": [
       "logarithms",
-      "evaluate",
-      "family:lg_evaluate"
+      "word-problem",
+      "family:lg_word"
     ],
-    "answer_verification": "val=3"
+    "answer_verification": "t = log(5)/log(1.02)"
   },
   {
     "question_id": "act-math-logarithms-hard-q06",
@@ -260,44 +260,44 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "convert_forms",
-    "prompt": "Which of the following is equivalent to 8^(2/3) = 4?",
+    "subskill": "solve_exponential",
+    "prompt": "Which of the following is the solution to e^(4x + 2) = 4?",
     "choices": [
       {
         "id": "A",
-        "text": "log_8(4) = 2/3",
-        "rationale": "Correct."
+        "text": "x = (ln(4) + 2)/4",
+        "rationale": "Subtract 2 after taking ln; the sign is wrong."
       },
       {
         "id": "B",
-        "text": "log_8(4) = 8",
-        "rationale": "The log is the exponent 2/3."
+        "text": "x = (ln(4) − 2)/4",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "log_8(2/3) = 4",
-        "rationale": "The argument is 4."
+        "text": "x = 4·ln(4) − 2",
+        "rationale": "Divide by 4; don't multiply."
       },
       {
         "id": "D",
-        "text": "log_8(4) = 3/2",
-        "rationale": "The log equals the exponent 2/3, not its reciprocal."
+        "text": "x = ln(4)/4 + 2",
+        "rationale": "Divide the whole expression ln(4) − (2) by 4."
       },
       {
         "id": "E",
-        "text": "log_4(8) = 2/3",
-        "rationale": "The base of the power is the base of the log."
+        "text": "x = ln(4 − 2)/4",
+        "rationale": "ln applies to 4 alone; move 2 afterward."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "b^y = x ⇔ log_b(x) = y, so log_8(4) = 2/3.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "B",
+    "explanation": "ln both sides: 4x + 2 = ln(4), so x = (ln(4) − 2)/4.",
+    "estimated_time_seconds": 90,
     "tags": [
       "logarithms",
-      "convert",
-      "family:lg_convert"
+      "natural",
+      "family:lg_natural"
     ],
-    "answer_verification": "log_8(4) = 2/3"
+    "answer_verification": "x = (ln(4) − 2)/4"
   },
   {
     "question_id": "act-math-logarithms-hard-q07",
@@ -310,44 +310,44 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "properties",
-    "prompt": "Which of the following is equivalent to log_3(x^3/n^2) for positive x and n?",
+    "subskill": "evaluate",
+    "prompt": "What is the value of log_2(8/2)?",
     "choices": [
       {
         "id": "A",
-        "text": "3·log_3(x) + 2·log_3(n)",
-        "rationale": "A quotient gives a difference of logs."
+        "text": "12",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
       },
       {
         "id": "B",
-        "text": "2·log_3(n) − 3·log_3(x)",
-        "rationale": "Numerator minus denominator."
-      },
-      {
-        "id": "C",
-        "text": "3·log_3(x) − 2·log_3(n)",
+        "text": "2",
         "rationale": "Correct."
       },
       {
+        "id": "C",
+        "text": "-3",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      },
+      {
         "id": "D",
-        "text": "(3/2)·log_3(x/n)",
-        "rationale": "Each exponent applies to its own log."
+        "text": "3",
+        "rationale": "Logs of a product add; logs of a quotient subtract (exponents, not multiply/divide)."
       },
       {
         "id": "E",
-        "text": "3·log_3(x) / (2·log_3(n))",
-        "rationale": "Quotient inside becomes subtraction outside, not division."
+        "text": "4",
+        "rationale": "Check the operation."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "log(p^k/q^j) = log(p^k) − log(q^j) = 3·log_3(x) − 2·log_3(n).",
-    "estimated_time_seconds": 90,
+    "correct_choice": "B",
+    "explanation": "8/2 = 2^2, so the logarithm is 2.",
+    "estimated_time_seconds": 85,
     "tags": [
       "logarithms",
-      "properties",
-      "family:lg_properties"
+      "evaluate",
+      "family:lg_evaluate"
     ],
-    "answer_verification": "3·log_3(x) − 2·log_3(n)"
+    "answer_verification": "val=2"
   },
   {
     "question_id": "act-math-logarithms-hard-q08",
@@ -360,44 +360,44 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "solve_exponential",
-    "prompt": "Which of the following is the solution to 5^x = 11?",
+    "subskill": "convert_forms",
+    "prompt": "Which of the following is equivalent to 32^(2/5) = 4?",
     "choices": [
       {
         "id": "A",
-        "text": "x = log(11/5)",
-        "rationale": "x = log c ÷ log b, not log(c ÷ b)."
+        "text": "log_32(2/5) = 4",
+        "rationale": "The argument is 4."
       },
       {
         "id": "B",
-        "text": "x = log(11)/log(5)",
-        "rationale": "Correct."
+        "text": "log_32(4) = 32",
+        "rationale": "The log is the exponent 2/5."
       },
       {
         "id": "C",
-        "text": "x = log(5)/log(11)",
-        "rationale": "Taking logs gives x·log(5) = log(11), so x = log(11)/log(5)."
+        "text": "log_4(32) = 2/5",
+        "rationale": "The base of the power is the base of the log."
       },
       {
         "id": "D",
-        "text": "x = log(11) − log(5)",
-        "rationale": "Divide the logs; don't subtract."
+        "text": "log_32(4) = 5/2",
+        "rationale": "The log equals the exponent 2/5, not its reciprocal."
       },
       {
         "id": "E",
-        "text": "x = 11/5",
-        "rationale": "x is an exponent; use logarithms."
+        "text": "log_32(4) = 2/5",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Take the log of both sides: x·log 5 = log 11, so x = log(11)/log(5).",
-    "estimated_time_seconds": 90,
+    "correct_choice": "E",
+    "explanation": "b^y = x ⇔ log_b(x) = y, so log_32(4) = 2/5.",
+    "estimated_time_seconds": 85,
     "tags": [
       "logarithms",
-      "solve",
-      "family:lg_solve"
+      "convert",
+      "family:lg_convert"
     ],
-    "answer_verification": "x = log(11)/log(5)"
+    "answer_verification": "log_32(4) = 2/5"
   },
   {
     "question_id": "act-math-logarithms-hard-q09",
@@ -410,44 +410,44 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "evaluate",
-    "prompt": "What is the value of log_5(78125)?",
+    "subskill": "properties",
+    "prompt": "Which of the following is equivalent to log(a^2/x^3) for positive a and x?",
     "choices": [
       {
         "id": "A",
-        "text": "7",
-        "rationale": "Correct."
+        "text": "2·log(a) / (3·log(x))",
+        "rationale": "Quotient inside becomes subtraction outside, not division."
       },
       {
         "id": "B",
-        "text": "12",
-        "rationale": "Logs of a product add; logs of a quotient subtract (exponents, not multiply/divide)."
+        "text": "(2/3)·log(a/x)",
+        "rationale": "Each exponent applies to its own log."
       },
       {
         "id": "C",
-        "text": "8",
-        "rationale": "Arithmetic slip."
+        "text": "2·log(a) + 3·log(x)",
+        "rationale": "A quotient gives a difference of logs."
       },
       {
         "id": "D",
-        "text": "1",
-        "rationale": "Check the operation."
+        "text": "3·log(x) − 2·log(a)",
+        "rationale": "Numerator minus denominator."
       },
       {
         "id": "E",
-        "text": "78125",
-        "rationale": "That is the argument, not the logarithm."
+        "text": "2·log(a) − 3·log(x)",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "78125 = 5^7, so the logarithm is 7.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "E",
+    "explanation": "log(p^k/q^j) = log(p^k) − log(q^j) = 2·log(a) − 3·log(x).",
+    "estimated_time_seconds": 90,
     "tags": [
       "logarithms",
-      "evaluate",
-      "family:lg_evaluate"
+      "properties",
+      "family:lg_properties"
     ],
-    "answer_verification": "val=7"
+    "answer_verification": "2·log(a) − 3·log(x)"
   },
   {
     "question_id": "act-math-logarithms-hard-q10",
@@ -460,44 +460,44 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "convert_forms",
-    "prompt": "Which of the following is equivalent to 9^(3/2) = 27?",
+    "subskill": "solve_exponential",
+    "prompt": "Which of the following is the solution to 3^x = 26?",
     "choices": [
       {
         "id": "A",
-        "text": "log_27(9) = 3/2",
-        "rationale": "The base of the power is the base of the log."
+        "text": "x = log(3)/log(26)",
+        "rationale": "Taking logs gives x·log(3) = log(26), so x = log(26)/log(3)."
       },
       {
         "id": "B",
-        "text": "log_9(27) = 2/3",
-        "rationale": "The log equals the exponent 3/2, not its reciprocal."
+        "text": "x = log(26) − log(3)",
+        "rationale": "Divide the logs; don't subtract."
       },
       {
         "id": "C",
-        "text": "log_9(27) = 3/2",
-        "rationale": "Correct."
+        "text": "x = log(26/3)",
+        "rationale": "x = log c ÷ log b, not log(c ÷ b)."
       },
       {
         "id": "D",
-        "text": "log_9(3/2) = 27",
-        "rationale": "The argument is 27."
+        "text": "x = 26/3",
+        "rationale": "x is an exponent; use logarithms."
       },
       {
         "id": "E",
-        "text": "log_9(27) = 9",
-        "rationale": "The log is the exponent 3/2."
+        "text": "x = log(26)/log(3)",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "b^y = x ⇔ log_b(x) = y, so log_9(27) = 3/2.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "E",
+    "explanation": "Take the log of both sides: x·log 3 = log 26, so x = log(26)/log(3).",
+    "estimated_time_seconds": 90,
     "tags": [
       "logarithms",
-      "convert",
-      "family:lg_convert"
+      "solve",
+      "family:lg_solve"
     ],
-    "answer_verification": "log_9(27) = 3/2"
+    "answer_verification": "x = log(26)/log(3)"
   },
   {
     "question_id": "act-math-logarithms-hard-q11",
@@ -510,44 +510,44 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "properties",
-    "prompt": "Which of the following is equivalent to log_5(m^5/a^3) for positive m and a?",
+    "subskill": "solve_exponential",
+    "prompt": "An account earning 7% interest compounded annually grows from $8000 to $8000(1.07)^t after t years. Which expression gives the number of years needed for the account to reach $40000?",
     "choices": [
       {
         "id": "A",
-        "text": "5·log_5(m) − 3·log_5(a)",
-        "rationale": "Correct."
+        "text": "t = log(1.07)/log(5)",
+        "rationale": "Solve (1.07)^t = 5 by taking logs: t·log(1.07) = log 5."
       },
       {
         "id": "B",
-        "text": "5·log_5(m) + 3·log_5(a)",
-        "rationale": "A quotient gives a difference of logs."
+        "text": "t = 5/1.07",
+        "rationale": "t is an exponent; use logarithms."
       },
       {
         "id": "C",
-        "text": "3·log_5(a) − 5·log_5(m)",
-        "rationale": "Numerator minus denominator."
+        "text": "t = log(5)/log(1.07)",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "(5/3)·log_5(m/a)",
-        "rationale": "Each exponent applies to its own log."
+        "text": "t = log(40000)/log(1.07)",
+        "rationale": "First divide both sides by 8000 to get (1.07)^t = 5."
       },
       {
         "id": "E",
-        "text": "5·log_5(m) / (3·log_5(a))",
-        "rationale": "Quotient inside becomes subtraction outside, not division."
+        "text": "t = log(5·1.07)",
+        "rationale": "Divide the logs; don't multiply the arguments."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "log(p^k/q^j) = log(p^k) − log(q^j) = 5·log_5(m) − 3·log_5(a).",
-    "estimated_time_seconds": 90,
+    "correct_choice": "C",
+    "explanation": "8000(1.07)^t = 40000 → (1.07)^t = 5 → t·log(1.07) = log 5 → t = log(5)/log(1.07).",
+    "estimated_time_seconds": 100,
     "tags": [
       "logarithms",
-      "properties",
-      "family:lg_properties"
+      "word-problem",
+      "family:lg_word"
     ],
-    "answer_verification": "5·log_5(m) − 3·log_5(a)"
+    "answer_verification": "t = log(5)/log(1.07)"
   },
   {
     "question_id": "act-math-logarithms-hard-q12",
@@ -561,43 +561,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "solve_exponential",
-    "prompt": "What is the solution to log_6(x) + log_6(3) = log_6(24)?",
+    "prompt": "Which of the following is the solution to e^(2x + 6) = 27?",
     "choices": [
       {
         "id": "A",
-        "text": "9",
-        "rationale": "Arithmetic slip."
+        "text": "x = ln(27)/2 + 6",
+        "rationale": "Divide the whole expression ln(27) − (6) by 2."
       },
       {
         "id": "B",
-        "text": "21",
-        "rationale": "Logs add when arguments multiply: 3x = 24."
+        "text": "x = ln(27 − 6)/2",
+        "rationale": "ln applies to 27 alone; move 6 afterward."
       },
       {
         "id": "C",
-        "text": "72",
-        "rationale": "Divide by 3; don't multiply."
-      },
-      {
-        "id": "D",
-        "text": "8",
+        "text": "x = (ln(27) − 6)/2",
         "rationale": "Correct."
       },
       {
+        "id": "D",
+        "text": "x = 2·ln(27) − 6",
+        "rationale": "Divide by 2; don't multiply."
+      },
+      {
         "id": "E",
-        "text": "24",
-        "rationale": "Divide by 3."
+        "text": "x = (ln(27) + 6)/2",
+        "rationale": "Subtract 6 after taking ln; the sign is wrong."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "log_6(x) + log_6(3) = log_6(3x), so 3x = 24 and x = 8.",
+    "correct_choice": "C",
+    "explanation": "ln both sides: 2x + 6 = ln(27), so x = (ln(27) − 6)/2.",
     "estimated_time_seconds": 90,
     "tags": [
       "logarithms",
-      "solve",
-      "family:lg_solve"
+      "natural",
+      "family:lg_natural"
     ],
-    "answer_verification": "x=8"
+    "answer_verification": "x = (ln(27) − 6)/2"
   },
   {
     "question_id": "act-math-logarithms-hard-q13",
@@ -611,36 +611,36 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "evaluate",
-    "prompt": "What is the value of log_10(1000) − log_10(100)?",
+    "prompt": "What is the value of log_10(1000/100)?",
     "choices": [
       {
         "id": "A",
-        "text": "1",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "2",
-        "rationale": "Arithmetic slip."
-      },
-      {
-        "id": "C",
-        "text": "3/2",
-        "rationale": "Logs of a product add; logs of a quotient subtract (exponents, not multiply/divide)."
-      },
-      {
-        "id": "D",
         "text": "10",
         "rationale": "That is the argument, not the logarithm."
       },
       {
-        "id": "E",
+        "id": "B",
+        "text": "3/2",
+        "rationale": "Logs of a product add; logs of a quotient subtract (exponents, not multiply/divide)."
+      },
+      {
+        "id": "C",
+        "text": "2",
+        "rationale": "Arithmetic slip."
+      },
+      {
+        "id": "D",
         "text": "5",
         "rationale": "Check the operation."
+      },
+      {
+        "id": "E",
+        "text": "1",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "log_10(1000) = 3 and log_10(100) = 2; 3 − 2 = 1.",
+    "correct_choice": "E",
+    "explanation": "1000/100 = 10^1, so the logarithm is 1.",
     "estimated_time_seconds": 85,
     "tags": [
       "logarithms",
@@ -661,43 +661,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "convert_forms",
-    "prompt": "Which of the following is equivalent to 4^(3/2) = 8?",
+    "prompt": "If log_4(y) = 4, which of the following gives y?",
     "choices": [
       {
         "id": "A",
-        "text": "log_8(4) = 3/2",
-        "rationale": "The base of the power is the base of the log."
+        "text": "y = 4^(1/4)",
+        "rationale": "The exponent is 4, not 1/4."
       },
       {
         "id": "B",
-        "text": "log_4(8) = 3/2",
-        "rationale": "Correct."
+        "text": "y = 4/4",
+        "rationale": "Rewrite as a power: y = 4^4."
       },
       {
         "id": "C",
-        "text": "log_4(3/2) = 8",
-        "rationale": "The argument is 8."
+        "text": "y = 4^4",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "log_4(8) = 2/3",
-        "rationale": "The log equals the exponent 3/2, not its reciprocal."
-      },
-      {
-        "id": "E",
-        "text": "log_4(8) = 4",
-        "rationale": "The log is the exponent 3/2."
+        "text": "y = 4·4",
+        "rationale": "A logarithm is an exponent."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "b^y = x ⇔ log_b(x) = y, so log_4(8) = 3/2.",
+    "correct_choice": "C",
+    "explanation": "log_4(y) = 4 means 4^4 = y.",
     "estimated_time_seconds": 85,
     "tags": [
       "logarithms",
       "convert",
       "family:lg_convert"
     ],
-    "answer_verification": "log_4(8) = 3/2"
+    "answer_verification": "y = 4^4"
   },
   {
     "question_id": "act-math-logarithms-hard-q15",
@@ -711,43 +706,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "properties",
-    "prompt": "Which of the following is equivalent to log_2(a^5/m^4) for positive a and m?",
+    "prompt": "Which of the following is equivalent to log(n^5/m^4) for positive n and m?",
     "choices": [
       {
         "id": "A",
-        "text": "(5/4)·log_2(a/m)",
-        "rationale": "Each exponent applies to its own log."
-      },
-      {
-        "id": "B",
-        "text": "5·log_2(a) − 4·log_2(m)",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "5·log_2(a) + 4·log_2(m)",
+        "text": "5·log(n) + 4·log(m)",
         "rationale": "A quotient gives a difference of logs."
       },
       {
-        "id": "D",
-        "text": "5·log_2(a) / (4·log_2(m))",
+        "id": "B",
+        "text": "(5/4)·log(n/m)",
+        "rationale": "Each exponent applies to its own log."
+      },
+      {
+        "id": "C",
+        "text": "5·log(n) / (4·log(m))",
         "rationale": "Quotient inside becomes subtraction outside, not division."
       },
       {
+        "id": "D",
+        "text": "5·log(n) − 4·log(m)",
+        "rationale": "Correct."
+      },
+      {
         "id": "E",
-        "text": "4·log_2(m) − 5·log_2(a)",
+        "text": "4·log(m) − 5·log(n)",
         "rationale": "Numerator minus denominator."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "log(p^k/q^j) = log(p^k) − log(q^j) = 5·log_2(a) − 4·log_2(m).",
+    "correct_choice": "D",
+    "explanation": "log(p^k/q^j) = log(p^k) − log(q^j) = 5·log(n) − 4·log(m).",
     "estimated_time_seconds": 90,
     "tags": [
       "logarithms",
       "properties",
       "family:lg_properties"
     ],
-    "answer_verification": "5·log_2(a) − 4·log_2(m)"
+    "answer_verification": "5·log(n) − 4·log(m)"
   },
   {
     "question_id": "act-math-logarithms-hard-q16",
@@ -761,43 +756,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "solve_exponential",
-    "prompt": "What is the solution to 4^x = 32?",
+    "prompt": "Which of the following is the solution to 5^x = 11?",
     "choices": [
       {
         "id": "A",
-        "text": "5/2",
-        "rationale": "Correct."
+        "text": "x = 11/5",
+        "rationale": "x is an exponent; use logarithms."
       },
       {
         "id": "B",
-        "text": "7/2",
-        "rationale": "Arithmetic slip."
+        "text": "x = log(11)/log(5)",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "5",
-        "rationale": "Account for 4 = 2^2."
+        "text": "x = log(11/5)",
+        "rationale": "x = log c ÷ log b, not log(c ÷ b)."
       },
       {
         "id": "D",
-        "text": "8",
-        "rationale": "x is an exponent, not a quotient."
+        "text": "x = log(11) − log(5)",
+        "rationale": "Divide the logs; don't subtract."
       },
       {
         "id": "E",
-        "text": "2/5",
-        "rationale": "This inverts the exponent ratio."
+        "text": "x = log(5)/log(11)",
+        "rationale": "Taking logs gives x·log(5) = log(11), so x = log(11)/log(5)."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Write both sides with base 2: 2^(2x) = 2^5, so x = 5/2.",
+    "correct_choice": "B",
+    "explanation": "Take the log of both sides: x·log 5 = log 11, so x = log(11)/log(5).",
     "estimated_time_seconds": 90,
     "tags": [
       "logarithms",
       "solve",
       "family:lg_solve"
     ],
-    "answer_verification": "x=5/2"
+    "answer_verification": "x = log(11)/log(5)"
   },
   {
     "question_id": "act-math-logarithms-hard-q17",
@@ -810,44 +805,44 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "evaluate",
-    "prompt": "What is the value of log_5(25/5)?",
+    "subskill": "solve_exponential",
+    "prompt": "An account earning 9% interest compounded annually grows from $500 to $500(1.09)^t after t years. Which expression gives the number of years needed for the account to reach $2500?",
     "choices": [
       {
         "id": "A",
-        "text": "3",
-        "rationale": "Check the operation."
+        "text": "t = log(2500)/log(1.09)",
+        "rationale": "First divide both sides by 500 to get (1.09)^t = 5."
       },
       {
         "id": "B",
-        "text": "2",
-        "rationale": "Logs of a product add; logs of a quotient subtract (exponents, not multiply/divide)."
+        "text": "t = 5/1.09",
+        "rationale": "t is an exponent; use logarithms."
       },
       {
         "id": "C",
-        "text": "5",
-        "rationale": "That is the argument, not the logarithm."
-      },
-      {
-        "id": "D",
-        "text": "1",
+        "text": "t = log(5)/log(1.09)",
         "rationale": "Correct."
       },
       {
+        "id": "D",
+        "text": "t = log(5·1.09)",
+        "rationale": "Divide the logs; don't multiply the arguments."
+      },
+      {
         "id": "E",
-        "text": "11",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "t = log(1.09)/log(5)",
+        "rationale": "Solve (1.09)^t = 5 by taking logs: t·log(1.09) = log 5."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "25/5 = 5^1, so the logarithm is 1.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "C",
+    "explanation": "500(1.09)^t = 2500 → (1.09)^t = 5 → t·log(1.09) = log 5 → t = log(5)/log(1.09).",
+    "estimated_time_seconds": 100,
     "tags": [
       "logarithms",
-      "evaluate",
-      "family:lg_evaluate"
+      "word-problem",
+      "family:lg_word"
     ],
-    "answer_verification": "val=1"
+    "answer_verification": "t = log(5)/log(1.09)"
   },
   {
     "question_id": "act-math-logarithms-hard-q18",
@@ -860,44 +855,44 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "convert_forms",
-    "prompt": "Which of the following is equivalent to 32^(2/5) = 4?",
+    "subskill": "solve_exponential",
+    "prompt": "Which of the following is the solution to e^(5x − 5) = 40?",
     "choices": [
       {
         "id": "A",
-        "text": "log_32(4) = 5/2",
-        "rationale": "The log equals the exponent 2/5, not its reciprocal."
+        "text": "x = 5·ln(40) + 5",
+        "rationale": "Divide by 5; don't multiply."
       },
       {
         "id": "B",
-        "text": "log_32(2/5) = 4",
-        "rationale": "The argument is 4."
+        "text": "x = ln(40)/5 − 5",
+        "rationale": "Divide the whole expression ln(40) − (−5) by 5."
       },
       {
         "id": "C",
-        "text": "log_32(4) = 32",
-        "rationale": "The log is the exponent 2/5."
+        "text": "x = (ln(40) − 5)/5",
+        "rationale": "Subtract −5 after taking ln; the sign is wrong."
       },
       {
         "id": "D",
-        "text": "log_4(32) = 2/5",
-        "rationale": "The base of the power is the base of the log."
+        "text": "x = (ln(40) + 5)/5",
+        "rationale": "Correct."
       },
       {
         "id": "E",
-        "text": "log_32(4) = 2/5",
-        "rationale": "Correct."
+        "text": "x = ln(40 + 5)/5",
+        "rationale": "ln applies to 40 alone; move −5 afterward."
       }
     ],
-    "correct_choice": "E",
-    "explanation": "b^y = x ⇔ log_b(x) = y, so log_32(4) = 2/5.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "D",
+    "explanation": "ln both sides: 5x − 5 = ln(40), so x = (ln(40) + 5)/5.",
+    "estimated_time_seconds": 90,
     "tags": [
       "logarithms",
-      "convert",
-      "family:lg_convert"
+      "natural",
+      "family:lg_natural"
     ],
-    "answer_verification": "log_32(4) = 2/5"
+    "answer_verification": "x = (ln(40) + 5)/5"
   },
   {
     "question_id": "act-math-logarithms-hard-q19",
@@ -910,44 +905,44 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "properties",
-    "prompt": "Which of the following is equivalent to 2·log_5(x) + log_5(y) − log_5(x) for positive x and y?",
+    "subskill": "evaluate",
+    "prompt": "What is the value of log_10(1000) + log_10(100)?",
     "choices": [
       {
         "id": "A",
-        "text": "1·log_5(xy)",
-        "rationale": "Only x carries the exponent 1."
+        "text": "1",
+        "rationale": "Check the operation."
       },
       {
         "id": "B",
-        "text": "log_5(x^1 + y)",
-        "rationale": "Adding logs multiplies the arguments."
+        "text": "4",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
       },
       {
         "id": "C",
-        "text": "log_5(x^2·y)",
-        "rationale": "The −log(x) term divides by x, lowering the exponent."
+        "text": "6",
+        "rationale": "Logs of a product add; logs of a quotient subtract (exponents, not multiply/divide)."
       },
       {
         "id": "D",
-        "text": "log_5(x^2 + y − x)",
-        "rationale": "Sums of logs become products, not sums of arguments."
+        "text": "100000",
+        "rationale": "That is the argument, not the logarithm."
       },
       {
         "id": "E",
-        "text": "log_5(xy)",
+        "text": "5",
         "rationale": "Correct."
       }
     ],
     "correct_choice": "E",
-    "explanation": "Combine: 2·log p − log p = 1·log p = log(p^1); adding log q gives log_5(xy).",
-    "estimated_time_seconds": 90,
+    "explanation": "log_10(1000) = 3 and log_10(100) = 2; 3 + 2 = 5.",
+    "estimated_time_seconds": 85,
     "tags": [
       "logarithms",
-      "properties",
-      "family:lg_properties"
+      "evaluate",
+      "family:lg_evaluate"
     ],
-    "answer_verification": "log_5(xy)"
+    "answer_verification": "val=5"
   },
   {
     "question_id": "act-math-logarithms-hard-q20",
@@ -960,43 +955,43 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "solve_exponential",
-    "prompt": "What is the solution to 8^x = 16?",
+    "subskill": "convert_forms",
+    "prompt": "If log_4(y) = 6, which of the following gives y?",
     "choices": [
       {
         "id": "A",
-        "text": "7/3",
-        "rationale": "Arithmetic slip."
+        "text": "y = 6/4",
+        "rationale": "Rewrite as a power: y = 4^6."
       },
       {
         "id": "B",
-        "text": "4/3",
-        "rationale": "Correct."
+        "text": "y = 6^4",
+        "rationale": "The log's base is the base of the power."
       },
       {
         "id": "C",
-        "text": "4",
-        "rationale": "Account for 8 = 2^3."
+        "text": "y = 4^6",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "2",
-        "rationale": "x is an exponent, not a quotient."
+        "text": "y = 4^(1/6)",
+        "rationale": "The exponent is 6, not 1/6."
       },
       {
         "id": "E",
-        "text": "3/4",
-        "rationale": "This inverts the exponent ratio."
+        "text": "y = 4·6",
+        "rationale": "A logarithm is an exponent."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Write both sides with base 2: 2^(3x) = 2^4, so x = 4/3.",
-    "estimated_time_seconds": 90,
+    "correct_choice": "C",
+    "explanation": "log_4(y) = 6 means 4^6 = y.",
+    "estimated_time_seconds": 85,
     "tags": [
       "logarithms",
-      "solve",
-      "family:lg_solve"
+      "convert",
+      "family:lg_convert"
     ],
-    "answer_verification": "x=4/3"
+    "answer_verification": "y = 4^6"
   }
 ]

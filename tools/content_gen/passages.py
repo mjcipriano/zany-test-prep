@@ -1481,3 +1481,6 @@ def build_cross_text(rng: random.Random):
 from .passages_extra import PASSAGES2, PAIRED2  # noqa: E402
 PASSAGES.extend(PASSAGES2)
 PAIRED.extend(PAIRED2)
+from .passages_more import PASSAGES3, PAIRED3  # noqa: E402
+PASSAGES.extend(PASSAGES3)
+PAIRED.extend(PAIRED3)

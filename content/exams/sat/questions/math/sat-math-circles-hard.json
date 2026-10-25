@@ -11,31 +11,31 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "circumference_area",
-    "prompt": "The circle shown has diameter 34. What is its circumference, in terms of π?",
+    "prompt": "The circle shown has diameter 76. What is its area, in terms of π?",
     "choices": [
       {
         "id": "A",
-        "text": "289π",
-        "rationale": "That is the area coefficient."
+        "text": "5776π",
+        "rationale": "Use the radius (38), not the diameter, in πr²."
       },
       {
         "id": "B",
-        "text": "68π",
-        "rationale": "Circumference is πd or 2πr, not 2πd."
+        "text": "1444π",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "17π",
-        "rationale": "Circumference is 2πr, not πr."
+        "text": "76π",
+        "rationale": "That would be πd, which is not a formula for area."
       },
       {
         "id": "D",
-        "text": "34π",
-        "rationale": "Correct."
+        "text": "38π",
+        "rationale": "Area uses r²."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Circumference = πd = π·34 = 34π (equivalently 2πr with r = 17).",
+    "correct_choice": "B",
+    "explanation": "Radius = 76/2 = 38; area = π·38² = 1444π.",
     "estimated_time_seconds": 80,
     "tags": [
       "geometry",
@@ -48,11 +48,11 @@
         "kind": "circle",
         "caption": "Circle",
         "labels": {
-          "d": "34"
+          "d": "76"
         }
       }
     },
-    "answer_verification": "34π"
+    "answer_verification": "1444π"
   },
   {
     "question_id": "sat-math-circles-hard-q02",
@@ -66,38 +66,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "circumference_area",
-    "prompt": "The circumference of a circle is 24π. What is its area, in terms of π?",
+    "prompt": "A circle has an area of 2116π. What is its circumference, in terms of π?",
     "choices": [
       {
         "id": "A",
-        "text": "576π",
-        "rationale": "Use r, not the diameter, in πr²."
+        "text": "46π",
+        "rationale": "Circumference is 2πr."
       },
       {
         "id": "B",
-        "text": "24π",
-        "rationale": "That is the circumference again."
+        "text": "184π",
+        "rationale": "Circumference is 2πr, not 4πr."
       },
       {
         "id": "C",
-        "text": "144π",
+        "text": "92π",
         "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "12π",
-        "rationale": "Area uses r²."
+        "text": "2116π",
+        "rationale": "That is the area again."
       }
     ],
     "correct_choice": "C",
-    "explanation": "2πr = 24π → r = 12; area = π·12² = 144π.",
+    "explanation": "πr² = 2116π → r = 46; circumference = 2π·46 = 92π.",
     "estimated_time_seconds": 85,
     "tags": [
       "geometry",
       "circle",
       "family:ci_reverse"
     ],
-    "answer_verification": "144π"
+    "answer_verification": "92π"
   },
   {
     "question_id": "sat-math-circles-hard-q03",
@@ -111,31 +111,31 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "arc_sector",
-    "prompt": "In the circle shown, the radius is 36 and the shaded sector has a central angle of 40°. What is the area of the sector, in terms of π?",
+    "prompt": "In the circle shown, the radius is 40 and the shaded sector has a central angle of 45°. What is the area of the sector, in terms of π?",
     "choices": [
       {
         "id": "A",
-        "text": "36π",
+        "text": "40π",
         "rationale": "Use πr² (not πr) before taking the fraction."
       },
       {
         "id": "B",
-        "text": "1296π",
-        "rationale": "This is the whole circle's area, not the sector."
-      },
-      {
-        "id": "C",
-        "text": "144π",
+        "text": "200π",
         "rationale": "Correct."
       },
       {
-        "id": "D",
-        "text": "8π",
+        "id": "C",
+        "text": "10π",
         "rationale": "That's the arc length, not the sector area."
+      },
+      {
+        "id": "D",
+        "text": "1600π",
+        "rationale": "This is the whole circle's area, not the sector."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Sector area = (θ/360)·πr² = (40/360)·π·36² = 144π.",
+    "correct_choice": "B",
+    "explanation": "Sector area = (θ/360)·πr² = (45/360)·π·40² = 200π.",
     "estimated_time_seconds": 95,
     "tags": [
       "geometry",
@@ -149,13 +149,13 @@
         "kind": "circle",
         "caption": "Circle",
         "labels": {
-          "r": "36",
-          "angle": "40°"
+          "r": "40",
+          "angle": "45°"
         },
-        "sector": 40
+        "sector": 45
       }
     },
-    "answer_verification": "144π"
+    "answer_verification": "200π"
   },
   {
     "question_id": "sat-math-circles-hard-q04",
@@ -167,41 +167,41 @@
     "lesson_id": "sat-math-circles-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "multi_step_math",
     "subskill": "circumference_area",
-    "prompt": "Which equation represents the circle in the xy-plane with center (8, −9) and radius 9?",
+    "prompt": "The equation x² + y² + 12x + 16y − 44 = 0 represents a circle in the xy-plane. What is the radius of the circle?",
     "choices": [
       {
         "id": "A",
-        "text": "(x + 9)² + (y − 8)² = 81",
-        "rationale": "The x-term uses the x-coordinate of the center."
-      },
-      {
-        "id": "B",
-        "text": "(x − 8)² + (y + 9)² = 9",
-        "rationale": "The right side is r², not r."
-      },
-      {
-        "id": "C",
-        "text": "(x − 8)² + (y + 9)² = 81",
+        "text": "12",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "14",
+        "rationale": "Complete the square for both x and y."
+      },
+      {
+        "id": "C",
+        "text": "44",
+        "rationale": "The constant term is not the radius; complete the square."
+      },
+      {
         "id": "D",
-        "text": "(x + 8)² + (y − 9)² = 81",
-        "rationale": "The signs inside the parentheses are opposite to the center's coordinates."
+        "text": "144",
+        "rationale": "That is r²; take the square root."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Standard form: (x − h)² + (y − k)² = r² with h = 8, k = −9, r² = 81.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "A",
+    "explanation": "Complete the square: (x + 6)² + (y + 8)² = 36 + 64 − (−44) = 144, so r = 12.",
+    "estimated_time_seconds": 110,
     "tags": [
       "geometry",
       "circle",
       "equation",
       "family:ci_equation"
     ],
-    "answer_verification": "(x − 8)² + (y + 9)² = 81"
+    "answer_verification": "r=12"
   },
   {
     "question_id": "sat-math-circles-hard-q05",
@@ -215,48 +215,39 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "circumference_area",
-    "prompt": "The circle shown has diameter 46. What is its area, in terms of π?",
+    "prompt": "Two tangent segments from a point P to a circle with center O each have length 105, and the circle's radius is 36. What is the perimeter of the kite with vertices P, O, and the two points of tangency?",
     "choices": [
       {
         "id": "A",
-        "text": "46π",
-        "rationale": "That would be πd, which is not a formula for area."
-      },
-      {
-        "id": "B",
-        "text": "2116π",
-        "rationale": "Use the radius (23), not the diameter, in πr²."
-      },
-      {
-        "id": "C",
-        "text": "529π",
+        "text": "282",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "504",
+        "rationale": "Diagonals are not part of the perimeter."
+      },
+      {
+        "id": "C",
+        "text": "252",
+        "rationale": "The distance from P to the center is a diagonal, not a side."
+      },
+      {
         "id": "D",
-        "text": "23π",
-        "rationale": "Area uses r²."
+        "text": "210",
+        "rationale": "Include the two radii."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Radius = 46/2 = 23; area = π·23² = 529π.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "A",
+    "explanation": "The quadrilateral has two radii (36 each) and two tangent segments (105 each): perimeter 2·36 + 2·105 = 282.",
+    "estimated_time_seconds": 100,
     "tags": [
       "geometry",
       "circle",
-      "family:ci_basic"
+      "tangent",
+      "family:ci_tangent"
     ],
-    "stimulus": {
-      "type": "figure",
-      "figure": {
-        "kind": "circle",
-        "caption": "Circle",
-        "labels": {
-          "d": "46"
-        }
-      }
-    },
-    "answer_verification": "529π"
+    "answer_verification": "triple 36,105,111"
   },
   {
     "question_id": "sat-math-circles-hard-q06",
@@ -269,39 +260,40 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "circumference_area",
-    "prompt": "A circle has an area of 529π. What is its circumference, in terms of π?",
+    "subskill": "arc_sector",
+    "prompt": "In a circle, an inscribed angle measures 42°. What is the measure of the central angle that intercepts the same arc?",
     "choices": [
       {
         "id": "A",
-        "text": "529π",
-        "rationale": "That is the area again."
-      },
-      {
-        "id": "B",
-        "text": "92π",
-        "rationale": "Circumference is 2πr, not 4πr."
-      },
-      {
-        "id": "C",
-        "text": "46π",
+        "text": "84",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "138",
+        "rationale": "They are not supplementary."
+      },
+      {
+        "id": "C",
+        "text": "21",
+        "rationale": "Double, don't halve."
+      },
+      {
         "id": "D",
-        "text": "23π",
-        "rationale": "Circumference is 2πr."
+        "text": "42",
+        "rationale": "The central angle is twice the inscribed angle."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "πr² = 529π → r = 23; circumference = 2π·23 = 46π.",
+    "correct_choice": "A",
+    "explanation": "The central angle is twice the inscribed angle on the same arc: 2·42 = 84°.",
     "estimated_time_seconds": 85,
     "tags": [
       "geometry",
       "circle",
-      "family:ci_reverse"
+      "inscribed",
+      "family:ci_inscribed_angle"
     ],
-    "answer_verification": "46π"
+    "answer_verification": "val=84"
   },
   {
     "question_id": "sat-math-circles-hard-q07",
@@ -315,51 +307,39 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "arc_sector",
-    "prompt": "In the circle shown, the radius is 27 and the shaded sector has a central angle of 40°. What is the area of the sector, in terms of π?",
+    "prompt": "In a circle of radius 45, a 90° sector is drawn and the triangle formed by the two radii and the chord is shaded. What is the area of the part of the sector that is NOT shaded, in terms of π?",
     "choices": [
       {
         "id": "A",
-        "text": "729π",
-        "rationale": "This is the whole circle's area, not the sector."
+        "text": "2025π − 2025/2",
+        "rationale": "A quarter circle has area ¼πR²."
       },
       {
         "id": "B",
-        "text": "81π",
+        "text": "2025/4π − 2025/2",
         "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "6π",
-        "rationale": "That's the arc length, not the sector area."
+        "text": "2025/2 − 2025/4π",
+        "rationale": "Subtract the triangle from the sector, not the reverse."
       },
       {
         "id": "D",
-        "text": "27π",
-        "rationale": "Use πr² (not πr) before taking the fraction."
+        "text": "2025/4π − 2025",
+        "rationale": "The triangle's area is ½·R·R, not R²."
       }
     ],
     "correct_choice": "B",
-    "explanation": "Sector area = (θ/360)·πr² = (40/360)·π·27² = 81π.",
-    "estimated_time_seconds": 95,
+    "explanation": "Quarter circle ¼π·45² = 2025/4π; triangle ½·45·45 = 2025/2; region = 2025/4π − 2025/2.",
+    "estimated_time_seconds": 100,
     "tags": [
       "geometry",
       "circle",
-      "sector",
-      "family:ci_arc_sector"
+      "segment",
+      "family:ci_ring"
     ],
-    "stimulus": {
-      "type": "figure",
-      "figure": {
-        "kind": "circle",
-        "caption": "Circle",
-        "labels": {
-          "r": "27",
-          "angle": "40°"
-        },
-        "sector": 40
-      }
-    },
-    "answer_verification": "81π"
+    "answer_verification": "2025/4π − 2025/2"
   },
   {
     "question_id": "sat-math-circles-hard-q08",
@@ -371,40 +351,49 @@
     "lesson_id": "sat-math-circles-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multi_step_math",
+    "question_type": "multiple_choice",
     "subskill": "circumference_area",
-    "prompt": "The equation x² + y² + 2x − 8y − 47 = 0 represents a circle in the xy-plane. What is the radius of the circle?",
+    "prompt": "The circle shown has diameter 14. What is its circumference, in terms of π?",
     "choices": [
       {
         "id": "A",
-        "text": "47",
-        "rationale": "The constant term is not the radius; complete the square."
-      },
-      {
-        "id": "B",
-        "text": "8",
+        "text": "14π",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "7π",
+        "rationale": "Circumference is 2πr, not πr."
+      },
+      {
         "id": "C",
-        "text": "5",
-        "rationale": "Complete the square for both x and y."
+        "text": "49π",
+        "rationale": "That is the area coefficient."
       },
       {
         "id": "D",
-        "text": "64",
-        "rationale": "That is r²; take the square root."
+        "text": "28π",
+        "rationale": "Circumference is πd or 2πr, not 2πd."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Complete the square: (x + 1)² + (y − 4)² = 1 + 16 − (−47) = 64, so r = 8.",
-    "estimated_time_seconds": 110,
+    "correct_choice": "A",
+    "explanation": "Circumference = πd = π·14 = 14π (equivalently 2πr with r = 7).",
+    "estimated_time_seconds": 80,
     "tags": [
       "geometry",
       "circle",
-      "equation",
-      "family:ci_equation"
+      "family:ci_basic"
     ],
-    "answer_verification": "r=8"
+    "stimulus": {
+      "type": "figure",
+      "figure": {
+        "kind": "circle",
+        "caption": "Circle",
+        "labels": {
+          "d": "14"
+        }
+      }
+    },
+    "answer_verification": "14π"
   }
 ]

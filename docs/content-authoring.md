@@ -68,9 +68,9 @@ Generator modules:
   main-idea, inference, structure/purpose, words-in-context and evidence questions,
   plus paired passages for cross-text items. Shared by both exams.
 - **Science** (`science_gen.py`, ACT only): data-representation, trends/extrapolation
-  and experimental-design items computed from a library of templated experiments
-  (tables with real numbers), plus authored Scientist 1 / Scientist 2 conflicting
-  viewpoints.
+  and experimental-design items computed from a library of 40 templated experiments
+  (tables with real numbers), plus 21 authored conflicting-viewpoint sets (some with
+  three scientists).
 - **Teaching** (`teaching.py` + `teaching_*_act.py`, `teaching_science.py`): the
   multi-screen mini-lesson shown before each lesson's questions.
 

@@ -59,7 +59,7 @@ class ActFamilyTableTests(unittest.TestCase):
         for skill in ACT_SKILLS:
             for diff in helpers.DIFFICULTIES:
                 fns = TABLE[skill][diff]
-                self.assertGreaterEqual(len(fns), 3, f"{skill}/{diff}")
+                self.assertGreaterEqual(len(fns), 6, f"{skill}/{diff}")
                 names = [registry.family_name(fn) for fn in fns]
                 self.assertEqual(len(names), len(set(names)))
 
@@ -162,6 +162,35 @@ class ActCorrectnessTests(unittest.TestCase):
         for b in helpers.sample_family(math_act.cx_conjugate_modulus, "medium", 40, seed=5):
             a, b2 = map(int, re.search(r"a=(-?\d+),b=(-?\d+)|\|(-?\d+)\+(-?\d+)i\|", b["answer_verification"]).group(0).replace("|", "").replace("i", "").split("+"))
             self.assertEqual(a * a + b2 * b2, int(_correct_text(b)) ** 2)
+
+    def test_ap_diagonals(self):
+        for diff in ("easy", "medium"):
+            for b in helpers.sample_family(math_act.ap_diagonals, diff, 30, seed=7):
+                names = {"quadrilateral": 4, "pentagon": 5, "hexagon": 6, "heptagon": 7, "octagon": 8, "nonagon": 9, "decagon": 10, "dodecagon": 12}
+                m = re.search(r"with (\d+) sides", b["prompt"])
+                n = int(m.group(1)) if m else next(v for k, v in names.items() if k in b["prompt"])
+                self.assertEqual(n * (n - 3) // 2, int(_correct_text(b)))
+
+    def test_np_counting_sum(self):
+        for b in helpers.sample_family(math_act.np_counting, "medium", 30, seed=8):
+            n = max(map(int, re.findall(r"\d+", b["prompt"])))
+            self.assertEqual(n * (n + 1) // 2, int(_correct_text(b)))
+
+    def test_cg_parallel_distance_easy(self):
+        for b in helpers.sample_family(math_act.cg_parallel_distance, "easy", 30, seed=9):
+            b1, b2 = map(int, re.findall(r"[xy] = (-?\d+)", b["prompt"].replace("−", "-")))
+            self.assertEqual(abs(b1 - b2), int(_correct_text(b)))
+
+    def test_lg_word_ph(self):
+        for b in helpers.sample_family(math_act.lg_word, "easy", 40, seed=10):
+            k = int(re.search(r"10\^\(?−?(\d+)\)?", b["prompt"]).group(1))
+            val = int(_correct_text(b))
+            self.assertEqual(val, k if "pH" in b["prompt"] else 10 * k)
+
+    def test_cx_conj_product_easy(self):
+        for b in helpers.sample_family(math_act.cx_conj_product, "easy", 30, seed=11):
+            a, bb = map(int, re.search(r"a=(-?\d+),b=(-?\d+)", b["answer_verification"]).groups())
+            self.assertEqual(a * a + bb * bb, int(_correct_text(b)))
 
     def test_ap_triangle_easy(self):
         for b in helpers.sample_family(math_act.ap_triangle, "easy", 40, seed=6):

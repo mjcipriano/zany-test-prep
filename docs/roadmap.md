@@ -17,13 +17,11 @@
   voiceover yet.
 - **Single-file persistence.** State is JSON in `shared_preferences`. This is robust at
   the current scale (hundreds of entries) but is not a query-able database.
-- **Content breadth.** SAT: 117 curated lessons + practice bank (24,171 questions);
-  ACT: 147 lessons + bank (16,617 questions). Every generated skill mixes several
+- **Content breadth.** SAT: 117 curated lessons + practice bank (31,177 questions);
+  ACT: 147 lessons + bank (21,645 questions). Every generated skill mixes several
   question families per difficulty. Passage-based reading comprehension is authored
-  (32 passages + 16 paired sets, shared by both exams), so heavy passage-reading-only
-  practice cycles sooner than math, grammar or science; ACT Reading has 180 items.
-- **Reading option lengths.** The authored passage questions skew toward a longer
-  correct option; the validator reports the share so it can be driven down over time.
+  (69 passages + 29 paired sets, shared by both exams), so heavy passage-reading-only
+  practice still cycles sooner than math, grammar or science; ACT Reading has 360 items.
 - **Android-first.** iOS/web/desktop targets are scaffolded and the code is
   cross-platform, but only Android is built/tested in CI.
 
