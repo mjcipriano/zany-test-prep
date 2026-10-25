@@ -85,26 +85,45 @@ SectionRoute routeFor(int correct, int total, AdaptiveSpec spec) {
 /// once its route is known ([buildModule] with `route:`), from the harder or
 /// easier mix. Adaptive modules are ordered easy → hard, like the real test.
 ///
+/// Long passage sets (questions sharing a `passage-set:` tag) are dealt whole
+/// and first, in their authored order, into linear modules, so the ACT Reading
+/// module is built like the real one: four passages with nine questions each.
+/// Sets that do not fit the remaining room are left for later modules; single
+/// questions fill the rest. Adaptive (difficulty-mixed) modules use singles
+/// only, since a set spans several difficulties.
+///
 /// All randomness comes from the injected [Random] (shuffled once, up front),
 /// so the same seed, pool and routes always produce the same test. No
 /// question is used twice in one test; a module is simply shorter when its
 /// domain runs out.
 class TestAssembler {
   TestAssembler(Iterable<Question> questions, TimedTestPlan plan, Random rng) {
+    final sets = <String, Map<String, List<Question>>>{};
     for (final q in questions) {
-      _pool.putIfAbsent(q.domain, () => []).add(q);
+      final setId = q.passageSetId;
+      if (setId == null) {
+        _pool.putIfAbsent(q.domain, () => []).add(q);
+      } else {
+        sets.putIfAbsent(q.domain, () => {}).putIfAbsent(setId, () => []).add(q);
+      }
     }
     for (final list in _pool.values) {
       list.shuffle(rng);
     }
+    for (final e in sets.entries) {
+      _sets[e.key] = e.value.values.toList()..shuffle(rng);
+    }
     // Drop modules whose domain has no questions at all (domain absent).
+    bool has(String d) =>
+        (_pool[d]?.isNotEmpty ?? false) || (_sets[d]?.isNotEmpty ?? false);
     this.plan = plan.only([
       for (var i = 0; i < plan.modules.length; i++)
-        if (_pool[plan.modules[i].domain]?.isNotEmpty ?? false) i,
+        if (has(plan.modules[i].domain)) i,
     ]);
   }
 
   final Map<String, List<Question>> _pool = {};
+  final Map<String, List<List<Question>>> _sets = {};
   final Set<String> _used = {};
 
   /// The plan actually being taken (modules for absent domains removed).
@@ -144,7 +163,17 @@ class TestAssembler {
     }
 
     if (mix == null) {
-      take(src, m.count);
+      final queue = _sets[m.domain] ?? <List<Question>>[];
+      for (var i = 0; i < queue.length && picked.length < m.count;) {
+        if (queue[i].length <= m.count - picked.length) {
+          final set = queue.removeAt(i);
+          _used.addAll(set.map((q) => q.id));
+          picked.addAll(set);
+        } else {
+          i++;
+        }
+      }
+      take(src, m.count - picked.length);
       return picked;
     }
     Iterable<Question> of(Difficulty d) => src.where((q) => q.difficulty == d);
@@ -245,3 +274,32 @@ bool isAnsweredCorrectly(Question q, String? answer) =>
       choiceId: q.type.isStudentProduced ? null : answer,
       produced: q.type.isStudentProduced ? answer : null,
     );
+
+/// Deals every module of a linear (non-adaptive) [modules] list from
+/// [questions] in one go — [TestAssembler] with adaptivity off. Used for the
+/// ACT and by tests; passage sets are dealt whole (see [TestAssembler]).
+List<List<Question>> dealLinearModules(
+  Iterable<Question> questions,
+  List<TestModule> modules,
+  Random rng,
+) {
+  final plan = TimedTestPlan(
+    modules: modules,
+    adaptive: const AdaptiveSpec(enabled: false),
+  );
+  final assembler = TestAssembler(questions, plan, rng);
+  // Modules for absent domains were dropped from assembler.plan; keep the
+  // caller's indexing by returning an empty module for them.
+  final out = <List<Question>>[];
+  var j = 0;
+  for (final m in modules) {
+    if (j < assembler.plan.modules.length &&
+        identical(assembler.plan.modules[j], m)) {
+      out.add(assembler.buildModule(j));
+      j++;
+    } else {
+      out.add(const []);
+    }
+  }
+  return out;
+}
