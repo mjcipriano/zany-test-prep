@@ -1121,6 +1121,18 @@ def dr_lookup_value(rng, difficulty):
                f"Correct. Find the row for {_vu(x, xu)} and read across to the "
                f"{col['header']} column.")
     distractors = []
+    nb = [j for j in (i - 1, i + 1) if 0 <= j < n]
+    if len(nb) == 2:
+        avg = (col["vals"][nb[0]] + col["vals"][nb[1]]) / 2
+        distractors.append((_vu(f"{avg:.{ds['dec'] + 1}f}", yu),
+                            f"This averages the rows above and below ({_vu(ds['xstrs'][nb[0]], xu)} and "
+                            f"{_vu(ds['xstrs'][nb[1]], xu)}) instead of reading the row for {_vu(x, xu)}."))
+    else:
+        j = nb[0]
+        avg = (col["vals"][i] + col["vals"][j]) / 2
+        distractors.append((_vu(f"{avg:.{ds['dec'] + 1}f}", yu),
+                            f"This averages the row for {_vu(x, xu)} with its neighbour at "
+                            f"{_vu(ds['xstrs'][j], xu)} instead of reading the row itself."))
     if i > 0:
         distractors.append((_vu(col["strs"][i - 1], yu),
                             f"This is the value in the row above, for {_vu(ds['xstrs'][i - 1], xu)}."))
@@ -1226,9 +1238,14 @@ def dr_extreme(rng, difficulty):
                f"Correct. The {word} value in the {col['header']} column is "
                f"{_vu(col['strs'][i], col['unit'])}, in the row for {_vu(ds['xstrs'][i], xu)}.")
     opp = vals.index((min if want_max else max)(vals))
+    others = [j for j in range(len(vals)) if j not in (i, opp)]
+    t1, t2 = others[0], others[-1]
     distractors = [(_vu(ds["xstrs"][opp], xu),
                     f"This is where {col['desc']} was {'least' if want_max else 'greatest'}, "
-                    f"the opposite extreme.")]
+                    f"the opposite extreme."),
+                   (f"{_vu(ds['xstrs'][t1], xu)} and {_vu(ds['xstrs'][t2], xu)}, which are tied",
+                    f"The values there ({col['strs'][t1]} and {col['strs'][t2]}) are neither equal nor "
+                    f"the {word}.")]
     for j in sorted(range(len(vals)), key=lambda j: abs(j - i)):
         if j not in (i, opp) and len(distractors) < 3:
             distractors.append((_vu(ds["xstrs"][j], xu),
@@ -1265,7 +1282,8 @@ def dr_inverse_lookup(rng, difficulty):
     correct = (_vu(ds["xstrs"][i], xu),
                f"Correct. Find {v} in the {col['header']} column and read the "
                f"{scen['x_short']} in the same row.")
-    distractors = []
+    distractors = [("Cannot be determined from Table 1",
+                    f"The table does list {v}; read the {scen['x_short']} in that row.")]
     for j in sorted(range(len(ds["xs"])), key=lambda j: abs(j - i)):
         if j != i and len(distractors) < 3:
             distractors.append((_vu(ds["xstrs"][j], xu),
@@ -1303,6 +1321,11 @@ def dr_figure_read(rng, difficulty):
                f"Correct. The point plotted at {_vu(x, xu)} on the horizontal axis sits at "
                f"about {_vu(col['strs'][i], yu)} on the vertical axis.")
     distractors = []
+    j0 = i - 1 if i > 0 else i + 1
+    mid = (vals[i] + vals[j0]) / 2
+    distractors.append((_vu(f"{mid:.{ds['dec'] + 1}f}", yu),
+                        f"This is halfway between the point at {_vu(x, xu)} and its neighbour at "
+                        f"{_vu(ds['xstrs'][j0], xu)}, not the height of the point itself."))
     for j in sorted(range(n), key=lambda j: abs(j - i)):
         if j != i and len(distractors) < 3:
             distractors.append((_vu(col["strs"][j], yu),
@@ -1342,7 +1365,8 @@ def dr_difference(rng, difficulty):
     ])
     correct = (_vu(_fmt(d, dec), yu),
                f"Correct. |{col['strs'][j]} − {col['strs'][i]}| = {_fmt(d, dec)}.")
-    distractors = []
+    distractors = [(_vu("−" + _fmt(d, dec), yu),
+                    "This subtracts in the wrong order; the amount of the difference is positive.")]
     cands = []
     if j + 1 < n:
         cands.append((j + 1, i, f"This uses the row for {_vu(ds['xstrs'][j + 1], xu)} instead of {xj}."))
@@ -1394,8 +1418,8 @@ def dr_ratio(rng, difficulty):
         f"Based on Table 1, the ratio of {col['desc']} {aj} to that {ai} is closest to:",
     ])
     correct = (f"{r:.1f}", f"Correct. {col['strs'][j]} ÷ {col['strs'][i]} ≈ {r:.1f}.")
-    inv = round(vi / vj, 1) if vi / vj >= 0.15 else round(vi / vj, 2)
-    distractors = [(_plain(inv), f"This divides the smaller value by the larger one "
+    inv = f"{vi / vj:.{max(2, len(f'{r:.1f}') - 1)}f}"
+    distractors = [(inv, f"This divides the smaller value by the larger one "
                                   f"({col['strs'][i]} ÷ {col['strs'][j]}); the question asks the reverse.")]
     diff = round(vj - vi, ds["dec"])
     distractors.append((_fmt(diff, ds["dec"]),
@@ -1460,12 +1484,25 @@ def _statements(ds, ci):
     return out
 
 
+def _statement_kind(text):
+    """Coarse form of a generated statement, used to pick keys evenly across forms
+    so the long comparative form is not the key disproportionately often."""
+    for key in ("was greatest", "was least", "more than twice", "was greater", "every increase",
+                "rose to a maximum", "difference between the two conditions", "At every",
+                "Under both conditions"):
+        if key in text:
+            return key
+    return "other"
+
+
 def _pick_statements(rng, cands, n_false=3):
     trues = [c for c in cands if c[1]]
     falses = [c for c in cands if not c[1]]
     if not trues or len(falses) < n_false:
         return None
-    t = rng.choice(trues)
+    kinds = sorted({_statement_kind(c[0]) for c in trues})
+    kind = rng.choice(kinds)
+    t = rng.choice([c for c in trues if _statement_kind(c[0]) == kind])
     rng.shuffle(falses)
     chosen, seen = [], {t[0]}
     for f in falses:
@@ -1527,7 +1564,9 @@ def dr_condition_compare(rng, difficulty):
                f"Correct. At {x}: {hi['label']} {hi['strs'][i]} versus {lo['label']} "
                f"{lo['strs'][i]}, a difference of {_fmt(d, dec)}.")
     distractors = [(f"{_cap_first(lo['label'])}, by {_vu(_fmt(d, dec), yu)}",
-                    f"The difference is right, but {lo['label']} gave the smaller value at {x}.")]
+                    f"The difference is right, but {lo['label']} gave the smaller value at {x}."),
+                   (f"Neither; both conditions gave the same {a['short']} at {x}",
+                    f"The two columns differ at {x}: {hi['strs'][i]} versus {lo['strs'][i]}.")]
     for j in (i + 1, i - 1, i + 2, i - 2):
         if 0 <= j < n:
             dj = round(abs(a["vals"][j] - b["vals"][j]), dec)
@@ -1574,11 +1613,13 @@ def dr_count_above(rng, difficulty):
         f"{col['desc']} {word} than {thr_s}?",
         f"In how many rows of Table 1 is {col['desc']} {word} than {thr_s}?",
     ])
+    if count == 0:
+        return None
     correct = (str(count), f"Correct. Exactly {count} entries in the {col['header']} column are "
                            f"{word} than {thr_s}.")
-    distractors = []
+    distractors = [("None of the rows", f"At least one entry is {word} than {thr_s}; count them.")]
     for c in (count + 1, count - 1, n - count, count + 2, n):
-        if 0 <= c <= n and c != count and str(c) not in [d[0] for d in distractors]:
+        if 1 <= c <= n and c != count and str(c) not in [d[0] for d in distractors]:
             why = (f"This counts the entries {'less' if above else 'greater'} than {thr_s} instead."
                    if c == n - count else "Recount the column carefully; this is off by one or more.")
             distractors.append((str(c), why))
@@ -1702,11 +1743,13 @@ def dr_percent_change(rng, difficulty):
         return f"{sign}{abs(v)}%" if sign else f"{abs(v)}%"
     correct = (ps(pct), f"Correct. ({col['strs'][j]} − {col['strs'][i]}) ÷ {col['strs'][i]} × 100 "
                         f"≈ {abs(pct)}%.")
+    abs_change = _fmt(round(abs(vj - vi), ds["dec"]), ds["dec"])
     distractors = [
         (ps(wrong_base), f"This divides by the final value ({col['strs'][j]}) instead of the "
                          f"starting value ({col['strs'][i]})." if abs(round((vj - vi) / vj * 100)) <= 250
          else f"This uses the row for {_vu(ds['xstrs'][j - 1], xu)} instead of {xj}."),
-        (ps(half), "This is half the actual percent change; recheck the arithmetic."),
+        (f"{sign}{abs_change} {col['unit']}".strip(),
+         f"This is the absolute change in {col['short']}, not a percent of the starting value."),
         (ps(dbl), "This is double the actual percent change; recheck the arithmetic."),
     ]
     expl = (f"Percent change = (final − initial) ÷ initial × 100 = ({col['strs'][j]} − "
@@ -1749,7 +1792,10 @@ def dr_cross_condition_lookup(rng, difficulty):
                f"{_vu(ds['xstrs'][i], xu)}; the {dst['label']} entry in that row is {dst['strs'][i]}.")
     distractors = [(_vu(src["strs"][i], yu),
                     f"This is the {src['label']} value in that row; the question asks for "
-                    f"the {dst['label']} value.")]
+                    f"the {dst['label']} value."),
+                   (_vu(f"{(src['vals'][i] + dst['vals'][i]) / 2:.{ds['dec'] + 1}f}", yu),
+                    f"This averages the two conditions in that row instead of reading the "
+                    f"{dst['label']} value.")]
     for j in sorted(range(n), key=lambda j: abs(j - i)):
         if j != i and len(distractors) < 3:
             distractors.append((_vu(dst["strs"][j], yu),
@@ -1788,7 +1834,8 @@ def dr_average(rng, difficulty):
     ])
     correct = (_vu(_fmt(avg, dec), yu),
                f"Correct. ({' + '.join(col['strs'][i:i + 3])}) ÷ 3 ≈ {_fmt(avg, dec)}.")
-    distractors = []
+    distractors = [(_vu(f"{(seg[0] + seg[2]) / 2:.{dec + 1}f}", yu),
+                    "This averages only the first and last of the three values.")]
     if i + 3 < n:
         a2 = round(sum(col["vals"][i + 1:i + 4]) / 3, dec)
         distractors.append((_vu(_fmt(a2, dec), yu),
@@ -1799,9 +1846,6 @@ def dr_average(rng, difficulty):
         distractors.append((_vu(_fmt(a3, dec), yu),
                             f"This averages the rows from {_vu(ds['xstrs'][i - 1], xu)} to "
                             f"{_vu(ds['xstrs'][i + 1], xu)} instead."))
-    two = round((seg[0] + seg[2]) / 2, dec)
-    distractors.append((_vu(_fmt(two, dec), yu),
-                        "This averages only the first and last of the three values."))
     tot = round(sum(seg), dec)
     distractors.append((_vu(_fmt(tot, dec), yu), "This is the sum of the three values, not their mean."))
     expl = (f"Add the three entries ({', '.join(col['strs'][i:i + 3])}) and divide by 3: "
@@ -1837,7 +1881,8 @@ def dr_figure_biggest_step(rng, difficulty):
         return f"{_vu(ds['xstrs'][j], xu)} and {_vu(ds['xstrs'][j + 1], xu)}"
     correct = (pair(k), f"Correct. The points at {pair(k)} are the farthest apart vertically "
                         f"({_fmt(m, ds['dec'])} {col['unit']}).".replace(" )", ")"))
-    distractors = []
+    distractors = [("The points are evenly spaced vertically, so no interval stands out",
+                    f"The vertical gaps range from {_fmt(min(steps), ds['dec'])} to {_fmt(m, ds['dec'])}.")]
     for j in sorted(range(len(steps)), key=lambda j: -steps[j]):
         if j != k and len(distractors) < 3:
             distractors.append((pair(j), f"The vertical change between these points is only "
@@ -2125,6 +2170,8 @@ def tr_interpolate_value(rng, difficulty):
                f"{_vu(ds['xstrs'][i + 1], xu)}, so the value should be about that far from "
                f"{col['strs'][i]} toward {col['strs'][i + 1]}.")
     distractors = [
+        (f"Cannot be determined without a trial at exactly {_vu(xm_s, xu)}",
+         "The steady trend between the two bracketing rows allows a close estimate."),
         (_vu(col["strs"][i], yu), f"This is the value for {_vu(ds['xstrs'][i], xu)}; the question asks "
                                   f"about a {scen['x_short']} beyond that row."),
         (_vu(col["strs"][i + 1], yu), f"This is the value for {_vu(ds['xstrs'][i + 1], xu)}, not the "
@@ -2177,15 +2224,12 @@ def tr_x_for_target(rng, difficulty):
         return f"{_vu(ds['xstrs'][j], xu)} and {_vu(ds['xstrs'][j + 1], xu)}"
     correct = (pair(i), f"Correct. {ts} lies between {col['strs'][i]} (at {_vu(ds['xstrs'][i], xu)}) "
                         f"and {col['strs'][i + 1]} (at {_vu(ds['xstrs'][i + 1], xu)}).")
-    distractors = []
+    distractors = [(f"beyond {_vu(ds['xstrs'][-1], xu)}, outside the range tested",
+                    f"{ts} is already bracketed by two listed rows, so no extrapolation is needed.")]
     for j in sorted(range(n - 1), key=lambda j: abs(j - i)):
         if j != i and len(distractors) < 3:
             distractors.append((pair(j), f"Over this range the values run from {col['strs'][j]} to "
                                          f"{col['strs'][j + 1]}, which does not include {ts}."))
-    if len(distractors) < 3:
-        step = ds["xs"][1] - ds["xs"][0]
-        distractors.append((f"{_vu(ds['xstrs'][-1], xu)} and {_vu(_xstr(ds['xs'][-1] + step), xu)}",
-                            f"This is beyond the table, but {ts} is already bracketed by two listed rows."))
     expl = (f"Find the two consecutive rows whose values bracket {ts}: {col['strs'][i]} and "
             f"{col['strs'][i + 1]}, at {pair(i)}.")
     return _emit(rng, prompt, correct, distractors, subskill="interpolation",
@@ -2287,7 +2331,9 @@ def tr_biggest_step(rng, difficulty):
         return f"{_vu(ds['xstrs'][j], xu)} and {_vu(ds['xstrs'][j + 1], xu)}"
     correct = (pair(k), f"Correct. The change here is {_vu(_fmt(m, ds['dec']), yu)}, larger than any "
                         f"other consecutive change.")
-    distractors = []
+    distractors = [("The change was the same between every pair of rows",
+                    f"The consecutive changes range from {_fmt(min(steps), ds['dec'])} to "
+                    f"{_fmt(m, ds['dec'])}; they are not equal.")]
     for j in sorted(range(len(steps)), key=lambda j: -steps[j]):
         if j != k and len(distractors) < 3:
             distractors.append((pair(j), f"The change here is only {_vu(_fmt(steps[j], ds['dec']), yu)}."))
@@ -2330,7 +2376,10 @@ def tr_extrapolate_value(rng, difficulty):
     correct = (_vu(_fmt(pred, dec), yu),
                f"Correct. The last change was {ds_}; adding it again to {col['strs'][-1]} "
                f"gives {_fmt(pred, dec)}.")
+    lo_s, hi_s = sorted([col["strs"][-2], col["strs"][-1]], key=float)
     distractors = [
+        (f"between {_vu(lo_s, yu)} and {_vu(hi_s, yu)}",
+         "This stays inside the measured range, but the trend carries the next value beyond the last row."),
         (_vu(col["strs"][-1], yu), "This assumes no further change, but the trend continues."),
         (_vu(_fmt(round(vals[-1] + d / 2, dec), dec), yu),
          "This adds only half of the last change; the step size is the same as before."),
@@ -2377,7 +2426,8 @@ def tr_crossing(rng, difficulty):
                    f"Correct. In {ds['xstrs'][k]}, {b['name']} ({b['strs'][k]}) exceeds {a['name']} "
                    f"({a['strs'][k]}) for the first time; the row before has {b['strs'][k - 1]} versus "
                    f"{a['strs'][k - 1]}.")
-        distractors = []
+        distractors = [(f"In none of the {scen['x_short']}s shown in Table 1",
+                        f"{b['name']} does exceed {a['name']} within the table, starting in {ds['xstrs'][k]}.")]
         for j in sorted(range(n), key=lambda j: abs(j - k)):
             if j != k and len(distractors) < 3:
                 if j < k:
@@ -2404,7 +2454,8 @@ def tr_crossing(rng, difficulty):
         correct = (_vu(ds["xstrs"][c], xu),
                    f"Correct. In {ds['xstrs'][c]} the values are {a['strs'][c]} and {b['strs'][c]}, "
                    f"a gap of only {_fmt(m, ds['dec'])}.")
-        distractors = []
+        distractors = [("Cannot be determined from Table 1",
+                        "Subtracting the two columns in each row shows exactly where the gap is smallest.")]
         for j in sorted(range(n), key=lambda j: gaps[j]):
             if j != c and len(distractors) < 3:
                 distractors.append((_vu(ds["xstrs"][j], xu),
@@ -2454,7 +2505,8 @@ def tr_reach_threshold(rng, difficulty):
     correct = (_vu(_xstr(xk), xu),
                f"Correct. Each step of {_xstep(ds, step)} changes the value by {ds_}; "
                f"{k} more steps are needed to go from {col['strs'][-1]} to {_fmt(target, dec)}.")
-    distractors = []
+    distractors = [(f"It would never {word} {ts} if the trend continued",
+                    f"Continuing the change of {ds_} per step reaches {_fmt(target, dec)} after {k} steps.")]
     for kk in (k - 1, k + 1, 2 * k, k + 2):
         xx = xs[-1] + kk * step
         if kk >= 1 and _xstr(xx) != _xstr(xk) and len(distractors) < 3:
@@ -2499,6 +2551,9 @@ def tr_condition_trend_compare(rng, difficulty):
                f"Correct. {big['label']}: {_fmt(dbig, dec)}; {small['label']}: {_fmt(dsmall, dec)}; "
                f"the difference is {_fmt(gap, dec)}.")
     distractors = [
+        (f"Neither; both conditions changed by the same total amount",
+         f"The totals differ: {_fmt(dbig, dec)} for {big['label']} versus {_fmt(dsmall, dec)} for "
+         f"{small['label']}."),
         (f"{_cap_first(small['label'])}, by {_vu(_fmt(gap, dec), yu)}",
          f"The amount is right, but the larger overall change was for {big['label']}."),
         (f"{_cap_first(big['label'])}, by {_vu(_fmt(dbig, dec), yu)}",
@@ -3153,9 +3208,10 @@ def dr_two_condition_count(rng, difficulty):
     ])
     correct = (str(count), f"Correct. Exactly {count} rows satisfy both conditions at once.")
     distractors = [(str(only_a), f"This counts rows meeting only the {a['label']} condition "
-                                 f"({w[op_a]} {ta_s}), ignoring the second condition.")]
+                                 f"({w[op_a]} {ta_s}), ignoring the second condition."),
+                   ("None of the rows", "At least one row meets both conditions; check each row.")]
     for c in (count + 1, count - 1, n - count, n):
-        if 0 <= c <= n and str(c) not in [d[0] for d in distractors] + [str(count)]:
+        if 1 <= c <= n and str(c) not in [d[0] for d in distractors] + [str(count)]:
             distractors.append((str(c), "Check each row against both conditions; this count is wrong."))
     expl = (f"Go row by row: a row counts only if its {a['label']} value is {w[op_a]} {ta_s} and its "
             f"{b['label']} value is {w[op_b]} {tb_s}. {count} rows pass both tests.")
@@ -3186,13 +3242,13 @@ def dr_condition_average(rng, difficulty):
     correct = (_vu(_fmt(avg, dec), yu),
                f"Correct. ({a['strs'][i]} + {b['strs'][i]}) ÷ 2 = {_fmt(avg, dec)}.")
     tot = round(a["vals"][i] + b["vals"][i], dec)
-    distractors = [(_vu(_fmt(tot, dec), yu), "This is the sum of the two values, not their average."),
+    j = i + 1 if i + 1 < n else i - 1
+    avg2 = (a["vals"][j] + b["vals"][j]) / 2
+    distractors = [(_vu(f"{avg2:.{dec + 1}f}", yu),
+                    f"This averages the row for {_vu(ds['xstrs'][j], xu)} instead of {x}."),
+                   (_vu(_fmt(tot, dec), yu), "This is the sum of the two values, not their average."),
                    (_vu(a["strs"][i], yu), f"This is the {a['label']} value alone."),
                    (_vu(b["strs"][i], yu), f"This is the {b['label']} value alone.")]
-    j = i + 1 if i + 1 < n else i - 1
-    avg2 = round((a["vals"][j] + b["vals"][j]) / 2, dec)
-    distractors.append((_vu(_fmt(avg2, dec), yu),
-                        f"This averages the row for {_vu(ds['xstrs'][j], xu)} instead."))
     expl = (f"Add the two values in the {x} row ({a['strs'][i]} and {b['strs'][i]}) and divide by 2: "
             f"{_fmt(avg, dec)} {yu}.".strip())
     return _emit(rng, prompt, correct, distractors, subskill="compare_entries",
@@ -3223,7 +3279,9 @@ def dr_condition_gap_extreme(rng, difficulty):
     ])
     correct = (_vu(ds["xstrs"][k], xu),
                f"Correct. Here the gap is {_vu(_fmt(target, ds['dec']), yu)}, the {word} in the table.")
-    distractors = []
+    distractors = [(f"The gap is the same at every {scen['x_short']}",
+                    f"The gaps range from {_fmt(min(gaps), ds['dec'])} to {_fmt(max(gaps), ds['dec'])}; "
+                    f"they are not equal.")]
     for j in sorted(range(n), key=lambda j: (-gaps[j] if want_max else gaps[j])):
         if j != k and len(distractors) < 3:
             distractors.append((_vu(ds["xstrs"][j], xu),
@@ -3258,6 +3316,7 @@ def dr_max_minus_min(rng, difficulty):
     ])
     correct = (_vu(_fmt(d, dec), yu), f"Correct. {_fmt(hi, dec)} − {_fmt(lo, dec)} = {_fmt(d, dec)}.")
     cands = [
+        (round((hi + lo) / 2, dec + 1), "This averages the two values instead of subtracting them."),
         (round(max(hi_col["vals"]) - min(hi_col["vals"]), dec),
          f"This is the range within the {hi_col['label']} column alone."),
         (round(max(lo_col["vals"]) - min(lo_col["vals"]), dec),
@@ -3271,7 +3330,7 @@ def dr_max_minus_min(rng, difficulty):
     ]
     distractors, seen = [], {_fmt(d, dec)}
     for v, why in cands:
-        t = _fmt(v, dec)
+        t = _fmt(v, dec + 1) if "averages" in why else _fmt(v, dec)
         if v > 0 and t not in seen:
             seen.add(t)
             distractors.append((_vu(t, yu), why))
@@ -3315,8 +3374,8 @@ def tr_rate_of_change(rng, difficulty):
     correct = (opt(rs), f"Correct. Change in {col['short']} ÷ change in {scen['x_short']} = "
                         f"{_neg(_fmt(abs(dy), ds['dec']))} ÷ {_xstr(dx)} ≈ {rs}.")
     distractors = [
-        (opt(_sig(abs(dy))), f"This is the total change in {col['short']}, not divided by the change "
-                             f"in {scen['x_short']}."),
+        (f"{_sig(abs(dy))} {yu} over the whole interval".replace("  ", " "),
+         f"This is the total change in {col['short']}, not divided by the change in {scen['x_short']}."),
         (opt(_sig(abs(rate) * 2)), "This is twice the rate; recheck the division."),
         (opt(_sig(abs(rate) / 2)), "This is half the rate; recheck the division."),
     ]
@@ -3346,11 +3405,14 @@ def tr_peak_x(rng, difficulty):
         f"value, after which it decreased?",
         f"Based on Table 1, the trend in {col['desc']} reversed direction at approximately which "
         f"{scen['x_short']}?",
+        f"At which {scen['x_short']} in Table 1 did {col['desc']} reach its maximum before beginning "
+        f"to decline?",
     ])
     correct = (_vu(ds["xstrs"][k], xu),
                f"Correct. {_cap_first(col['desc'])} rises to {_vu(col['strs'][k], col['unit'])} here "
                f"and falls in the next row.")
-    distractors = []
+    distractors = [("The trend never reversed within the range tested",
+                    f"The values rise to {col['strs'][k]} and then fall, so the trend does reverse.")]
     for j in sorted(range(len(vals)), key=lambda j: abs(j - k)):
         if j != k and len(distractors) < 3:
             side = "still rising" if j < k else "already falling"
@@ -3393,9 +3455,9 @@ def tr_percent_across_table(rng, difficulty):
                          f"the starting value ({col['strs'][0]}).",
              round(abs(pct) / 2): "This is half the actual percent change."}
     distractors = [(f"{v}%", why) for v, why in cands.items() if v != abs(pct) and v > 0]
-    distractors.append((f"{_fmt(abs_change, ds['dec'])}%",
-                        f"This is the absolute change ({_fmt(abs_change, ds['dec'])} {col['unit']}) "
-                        f"written as a percent; divide by the starting value first.".replace("  ", " ")))
+    distractors.insert(0, (f"{_fmt(abs_change, ds['dec'])} {col['unit']}".strip(),
+                           f"This is the absolute change in {col['short']}, not a percent of the "
+                           f"starting value."))
     correct = (f"{abs(pct)}%", f"Correct. |{col['strs'][-1]} − {col['strs'][0]}| ÷ {col['strs'][0]} × 100 "
                                f"≈ {abs(pct)}%.")
     expl = (f"Percent change = (last − first) ÷ first × 100 = ({col['strs'][-1]} − {col['strs'][0]}) ÷ "
@@ -3435,7 +3497,7 @@ def tr_compare_slopes(rng, difficulty):
     ])
     correct = (f"{r:.1f}", f"Correct. Both rates share the same Δ{scen['x_short']}, so compare the "
                            f"changes: {_fmt(max(da, db), ds['dec'])} ÷ {_fmt(min(da, db), ds['dec'])} ≈ {r:.1f}.")
-    inv = _plain(round(min(da, db) / max(da, db), 1 if min(da, db) / max(da, db) >= 0.15 else 2))
+    inv = f"{min(da, db) / max(da, db):.{max(2, len(f'{r:.1f}') - 1)}f}"
     distractors = [(inv, "This is the inverse ratio (slower rate divided by faster rate)."),
                    (f"{round(r * 2, 1):.1f}", "This doubles the ratio; recheck the division."),
                    (f"{_fmt(round(max(da, db) - min(da, db), ds['dec']), ds['dec'])}",
@@ -3481,7 +3543,7 @@ def tr_rate_compare_intervals(rng, difficulty):
         f"times as fast between {iv(big[0])} as between {iv(small[0])}?",
     ])
     correct = (f"{ratio:.1f}", f"Correct. {_sig(big[1])} ÷ {_sig(small[1])} ≈ {ratio:.1f}.")
-    inv = _plain(round(small[1] / big[1], 1 if small[1] / big[1] >= 0.15 else 2))
+    inv = f"{small[1] / big[1]:.{max(2, len(f'{ratio:.1f}') - 1)}f}"
     distractors = [(inv, "This is the inverse ratio (slower interval over faster)."),
                    (f"{round(ratio * 2, 1):.1f}", "This doubles the ratio; recheck the division."),
                    (f"{_fmt(round(abs(vals[big[0] + 1] - vals[big[0]]), dec), dec)}",
@@ -3527,7 +3589,8 @@ def tr_extrapolate_crossing(rng, difficulty):
     correct = (_vu(_xstr(xk), xu),
                f"Correct. Each step {a['name']} changes by {_neg(_fmt(da, ds['dec']))} and {b['name']} by "
                f"{_neg(_fmt(db, ds['dec']))}; after {k} steps {b['name']} is ahead for the first time.")
-    distractors = []
+    distractors = [(f"{_cap_first(b['short'])} would never exceed {a['short']}",
+                    f"{b['name']} gains on {a['name']} every step, so it must eventually pass it.")]
     for kk in (k - 1, k + 1, 2 * k, k + 2):
         xx = xs[-1] + kk * step
         if kk >= 1 and _xstr(xx) != _xstr(xk) and len(distractors) < 3:
@@ -3544,7 +3607,8 @@ def tr_extrapolate_crossing(rng, difficulty):
                  stimulus=table_stimulus(ds), verify=_spec("extrap_cross"))
 
 
-_UNIT_POOL = ["kg", "L", "s", "°C", "mm", "N", "J", "km/h", "mol", "cm²", "Hz", "mg"]
+_UNIT_POOL = ["kg", "L", "s", "°C", "mm", "N", "J", "km/h", "mol", "cm²", "Hz", "mg",
+              "µmol/min", "counts/min", "beats/min", "g/kg", "mg/dL", "bubbles/min"]
 
 
 @_retry
@@ -3564,7 +3628,9 @@ def ed_dependent_unit(rng, difficulty):
     distractors = [(xu, f"{xu} is the unit of {scen['x_desc']}, the independent variable.")]
     pool = [u for u in _UNIT_POOL if u not in (xu, yu)]
     rng.shuffle(pool)
-    for u in pool[:2]:
+    longest = max(pool, key=len)
+    pool.remove(longest)
+    for u in (longest, pool[0]):
         distractors.append((u, f"{u} does not appear anywhere in the experiment's results."))
     expl = (f"The results list {ser['desc']} with the unit {yu}; {xu} belongs to {scen['x_short']}, "
             f"the variable the experimenters set.")
@@ -3722,7 +3788,7 @@ def ed_unsupported_conclusion(rng, difficulty):
         return None
     scen = ds["scen"]
     col = ds["cols"][0]
-    trues = [c for c in _statements(ds, 0) if c[1] and len(c[0]) >= 48]
+    trues = [c for c in _statements(ds, 0) if c[1] and len(c[0]) >= 56]
     rng.shuffle(trues)
     seen, supported = set(), []
     for t in trues:

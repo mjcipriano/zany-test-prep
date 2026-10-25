@@ -61,6 +61,10 @@ def _table(body):
     return xs, cols, labels, decs
 
 
+def _correct_raw(body):
+    return next(c["text"] for c in body["choices"] if c["id"] == body["correct_choice"])
+
+
 def _correct(body):
     """Keyed choice text, with the 'pH ' value prefix dropped so x values compare as numbers."""
     text = next(c["text"] for c in body["choices"] if c["id"] == body["correct_choice"])
@@ -130,6 +134,17 @@ class ScienceFamilyTableTests(unittest.TestCase):
                 if max(b["choices"], key=lambda c: len(c["text"]))["id"] == b["correct_choice"])
             self.assertLess(longest / len(bodies), 0.7,
                             f"{skill}/{diff}/{registry.family_name(fn)}: longest-correct {longest}/120")
+
+    def test_aggregate_longest_share_is_low(self):
+        """Domain-wide 'correct is the longest option' share, counting ties the way
+        tools/validate_content.py does, stays at or below 40% across all families."""
+        hits = total = 0
+        for skill, diff, fn in _all_families():
+            for b in helpers.sample_family(fn, diff, 120, seed=41):
+                longest = max(len(c["text"]) for c in b["choices"])
+                hits += len(_correct_raw(b)) == longest
+                total += 1
+        self.assertLessEqual(hits / total, 0.40, f"aggregate longest share {hits / total:.3f}")
 
     def test_correct_position_varies(self):
         for skill, diff, fn in _all_families():
@@ -456,6 +471,8 @@ class ScienceCorrectnessTests(unittest.TestCase):
     def _statement_truth(text, xs, cols, labels):
         """Independently evaluate the simple comparative statements the families emit."""
         text = text.replace("pH ", "")
+        if len(cols) > 1 and not any(labels):
+            return None   # two-series table: statements may concern either series
 
         def col_for(label):
             return cols[labels.index(label)] if label in labels else cols[0]
