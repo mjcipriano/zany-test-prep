@@ -299,3 +299,30 @@ class LegacyDispatcherTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class RareDrawRegressionTests(unittest.TestCase):
+    """Families that once crashed on rare draws (too few distinct distractors):
+    q_intercepts when the axis of symmetry is x = 0, and le_line_equation when
+    the slope equals the intercept. Hammer them at both option counts."""
+
+    def test_rare_draws_never_crash(self):
+        import random
+        from content_gen import math_gen, registry, util
+        targets = [("quadratics", "q_intercepts"), ("linear_equations", "le_line_equation")]
+        try:
+            for opt in (4, 5):
+                util.set_option_count(opt)
+                for skill, name in targets:
+                    for diff, fns in math_gen.FAMILIES[skill].items():
+                        fn = next((f for f in fns if f.__name__ == name), None)
+                        if fn is None:
+                            continue
+                        for seed in range(2500):
+                            body = registry.run_family(fn, random.Random(seed), diff)
+                            # Some forms (e.g. "how many x-intercepts?") only have
+                            # four sensible answers, so 4 choices is fine at 5.
+                            n = len(body["choices"])
+                            self.assertTrue(4 <= n <= opt, f"{name}/{diff}/{seed}: {n} choices")
+        finally:
+            util.set_option_count(4)
