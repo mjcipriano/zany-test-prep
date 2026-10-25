@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../design/theme.dart';
 import 'app_controller.dart';
+import 'notification_route_handler.dart';
 import 'router.dart';
 
 /// Root widget. Themes the app from the stored profile and wires the router.
@@ -51,6 +52,11 @@ class ZanyTestPrepApp extends ConsumerWidget {
       darkTheme: AppTheme.dark(),
       themeMode: themeMode,
       routerConfig: router,
+      // Tapped reminder notifications open Home or Quick Practice.
+      builder: (context, child) => NotificationRouteHandler(
+        router: router,
+        child: child ?? const SizedBox.shrink(),
+      ),
     );
   }
 }

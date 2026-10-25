@@ -126,7 +126,10 @@ void main() {
         count: 36,
         minutes: 40,
       );
-      final dealt = dealLinearModules(bundle.questions, [module, module], Random(3));
+      final dealt = dealLinearModules(bundle.questions, [
+        module,
+        module,
+      ], Random(3));
       expect(dealt[0], hasLength(36));
       // Module 1: exactly four sets, each contiguous and in authored order.
       final ids = setsIn(dealt[0]);

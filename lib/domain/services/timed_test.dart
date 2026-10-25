@@ -104,7 +104,10 @@ class TestAssembler {
       if (setId == null) {
         _pool.putIfAbsent(q.domain, () => []).add(q);
       } else {
-        sets.putIfAbsent(q.domain, () => {}).putIfAbsent(setId, () => []).add(q);
+        sets
+            .putIfAbsent(q.domain, () => {})
+            .putIfAbsent(setId, () => [])
+            .add(q);
       }
     }
     for (final list in _pool.values) {

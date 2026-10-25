@@ -3,12 +3,15 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../app/app_controller.dart';
+import '../../core/notifications/reminder_scheduler.dart';
 import '../../design/theme.dart';
 import '../../design/widgets.dart';
 import '../../domain/models/exam.dart';
+import '../../domain/models/reminder_settings.dart';
+import '../settings/reminders_section.dart';
 
 /// Multi-step onboarding: welcome -> offline -> exam -> plan (daily goal +
-/// optional test date) -> placement check offer.
+/// optional test date + optional daily reminder) -> placement check offer.
 ///
 /// The last step offers the short placement check ("Take the quick check",
 /// which finishes onboarding and opens `/diagnostic`) or skips it ("Start
@@ -26,6 +29,8 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   String _examId = kDefaultExamId;
   int _goalMinutes = 10;
   DateTime? _targetDate;
+  ReminderSettings _reminders = const ReminderSettings();
+  bool _reminderBlocked = false;
   bool _submitting = false;
 
   static const _pageCount = 5;
@@ -59,6 +64,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
             examId: _examId,
             dailyGoalMinutes: _goalMinutes,
             targetTestDate: _targetDate,
+            reminders: _reminders,
           );
       // Router redirects to /home once onboarded flips to true; the check
       // replaces that with the placement quiz for the chosen exam.
@@ -70,6 +76,26 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
         context,
       ).showSnackBar(SnackBar(content: Text('Could not load that exam: $e')));
     }
+  }
+
+  /// Turning the reminder on asks for the notification permission right
+  /// away; if it's denied the offer stays off and explains how to allow it.
+  Future<void> _setReminder(bool on) async {
+    if (!on) {
+      setState(() {
+        _reminders = _reminders.copyWith(enabled: false);
+        _reminderBlocked = false;
+      });
+      return;
+    }
+    final granted = await ref
+        .read(notificationGatewayProvider)
+        .requestPermission();
+    if (!mounted) return;
+    setState(() {
+      _reminders = _reminders.copyWith(enabled: granted);
+      _reminderBlocked = !granted;
+    });
   }
 
   ExamInfo? _examInfo(List<ExamInfo> exams) {
@@ -132,6 +158,14 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                     onSelect: (m) => setState(() => _goalMinutes = m),
                     date: _targetDate,
                     onPickDate: (d) => setState(() => _targetDate = d),
+                    reminderOffer: ReminderOffer(
+                      settings: _reminders,
+                      blocked: _reminderBlocked,
+                      onToggle: _setReminder,
+                      onTime: (m) => setState(
+                        () => _reminders = _reminders.copyWith(minutesOfDay: m),
+                      ),
+                    ),
                   ),
                   _PlacementStep(exam: _examInfo(exams)),
                 ],
@@ -256,11 +290,13 @@ class _GoalStep extends StatelessWidget {
     required this.onSelect,
     required this.date,
     required this.onPickDate,
+    required this.reminderOffer,
   });
   final int selected;
   final ValueChanged<int> onSelect;
   final DateTime? date;
   final ValueChanged<DateTime?> onPickDate;
+  final Widget reminderOffer;
 
   @override
   Widget build(BuildContext context) {
@@ -290,6 +326,8 @@ class _GoalStep extends StatelessWidget {
             ),
           Gap.s,
           _DatePicker(date: date, onPick: onPickDate),
+          Gap.m,
+          reminderOffer,
         ],
       ),
     );
@@ -498,6 +536,79 @@ class _ChoiceTile extends StatelessWidget {
                 : Icons.radio_button_unchecked_rounded,
             color: selected ? scheme.primary : scheme.outline,
           ),
+        ],
+      ),
+    );
+  }
+}
+
+/// The onboarding offer of a daily study reminder (off by default).
+class ReminderOffer extends StatelessWidget {
+  const ReminderOffer({
+    super.key,
+    required this.settings,
+    required this.blocked,
+    required this.onToggle,
+    required this.onTime,
+  });
+
+  final ReminderSettings settings;
+
+  /// The notification permission was denied.
+  final bool blocked;
+  final ValueChanged<bool> onToggle;
+  final ValueChanged<int> onTime;
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    return AppCard(
+      color: settings.enabled
+          ? scheme.primaryContainer
+          : scheme.surfaceContainerHigh,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SwitchListTile(
+            contentPadding: EdgeInsets.zero,
+            secondary: const Icon(Icons.notifications_active_rounded),
+            title: const Text(
+              'Want a daily reminder?',
+              style: TextStyle(fontWeight: FontWeight.w800),
+            ),
+            subtitle: const Text(
+              'A friendly daily ping, plus a heads-up if your streak is '
+              'at risk. Change it anytime in Settings.',
+            ),
+            value: settings.enabled,
+            onChanged: onToggle,
+          ),
+          if (settings.enabled)
+            Row(
+              children: [
+                const Icon(Icons.schedule_rounded),
+                Gap.s,
+                const Expanded(child: Text('Remind me at')),
+                OutlinedButton(
+                  key: const ValueKey('onboarding-reminder-time'),
+                  // The theme's full-width button size doesn't fit in a Row.
+                  style: OutlinedButton.styleFrom(
+                    minimumSize: const Size(96, 44),
+                  ),
+                  onPressed: () async {
+                    final m = await pickReminderTime(
+                      context,
+                      settings.minutesOfDay,
+                    );
+                    if (m != null) onTime(m);
+                  },
+                  child: Text(
+                    formatReminderTime(context, settings.minutesOfDay),
+                  ),
+                ),
+              ],
+            ),
+          if (blocked) ...[Gap.s, const NotificationsBlockedNote()],
         ],
       ),
     );

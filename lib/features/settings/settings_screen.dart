@@ -6,6 +6,7 @@ import '../../app/app_controller.dart';
 import '../../design/theme.dart';
 import '../../design/widgets.dart';
 import 'cheat_tap.dart';
+import 'reminders_section.dart';
 
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
@@ -105,6 +106,9 @@ class SettingsScreen extends ConsumerWidget {
               ],
             ),
           ),
+          Gap.m,
+          const SectionLabel('Reminders'),
+          const AppCard(child: RemindersSection()),
           Gap.m,
           const SectionLabel('Preferences'),
           AppCard(
