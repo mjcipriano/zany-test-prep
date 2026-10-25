@@ -46,9 +46,14 @@ class RewardsService {
   List<EquippedLayer> equippedLayers(GameState g, AvatarCatalog catalog) {
     final base = selectedAvatar(g, catalog);
     final layers = <EquippedLayer>[if (base != null) EquippedLayer(null, base)];
+    final builtIn = base?.builtInSlots ?? const <String>[];
     g.equipped.forEach((slot, id) {
       final a = catalog[id];
-      if (a != null) layers.add(EquippedLayer(slot, a));
+      // The avatar's own art already wears this slot (a cap, glasses): keep
+      // the item equipped but don't stack a second one on top.
+      if (a != null && !builtIn.contains(slot)) {
+        layers.add(EquippedLayer(slot, a));
+      }
     });
     layers.sort((a, b) => a.asset.renderZ.compareTo(b.asset.renderZ));
     return layers;

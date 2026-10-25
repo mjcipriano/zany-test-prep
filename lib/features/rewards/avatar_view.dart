@@ -65,7 +65,12 @@ Rect? faceFitRect(CatalogAsset asset, FaceRig? rig, double size) {
   final point = rig.points[fit.anchor];
   final ref = rig.widths[fit.widthRef];
   if (point == null || ref == null) return null;
-  final w = ref * fit.width * size;
+  var unit = ref * fit.width;
+  final floorRef = rig.widths[fit.widthFloorRef];
+  if (floorRef != null && fit.widthFloor != null) {
+    unit = math.max(unit, floorRef * fit.widthFloor!);
+  }
+  final w = unit * size;
   final h = w / aspect;
   return Rect.fromLTWH(
     point.x * size - fit.spriteAnchor.x * w,
@@ -122,6 +127,22 @@ double sceneScale(List<EquippedLayer> layers) {
   }
   final s = math.min(1 / (1 + top), 1 / (1 + 2 * side));
   return s.clamp(kMinSceneScale, 1.0);
+}
+
+/// "Hat hair": the y (in a [size] frame) above which the avatar is hidden —
+/// the hair that would be squashed under an equipped hat — or 0 when nothing
+/// clips. Each fitted item with `clipAvatarAbove: f` hides the avatar above
+/// `top + f × height` of its rect; the lowest such line wins.
+double avatarClipTop(List<EquippedLayer> layers, double size) {
+  final rig = avatarRig(layers);
+  var line = 0.0;
+  for (final layer in layers) {
+    final f = layer.asset.fit?.clipAvatarAbove;
+    if (f == null || rig == null) continue;
+    final r = faceFitRect(layer.asset, rig, size);
+    if (r != null) line = math.max(line, r.top + f * r.height);
+  }
+  return line;
 }
 
 /// The face rig of the avatar layer in [layers], if any.
@@ -225,8 +246,21 @@ class _AvatarPreviewState extends State<AvatarPreview>
   Widget _positioned(EquippedLayer layer) {
     final a = layer.asset;
     final size = widget.size;
-    // The avatar (and any base layer) fills the whole frame.
-    if (a.isAvatar) return Positioned.fill(child: AssetImage512(a));
+    // The avatar (and any base layer) fills the whole frame, minus any hair
+    // that would be under an equipped hat.
+    if (a.isAvatar) {
+      final clipTop = avatarClipTop(widget.layers, size);
+      final image = AssetImage512(a);
+      return Positioned.fill(
+        child: clipTop <= 0
+            ? image
+            : ClipRect(
+                key: const Key('avatar-hat-hair-clip'),
+                clipper: _ClipAbove(clipTop),
+                child: image,
+              ),
+      );
+    }
     final r = fittedRect(a, layer.slot, size, rig: avatarRig(widget.layers));
     if (!a.isSide) {
       return Positioned.fromRect(rect: r, child: AssetImage512(a));
@@ -244,6 +278,19 @@ class _AvatarPreviewState extends State<AvatarPreview>
       child: SideCompanionLayer(asset: a, glow: glow),
     );
   }
+}
+
+/// Clips away everything above [top] (used for "hat hair").
+class _ClipAbove extends CustomClipper<Rect> {
+  const _ClipAbove(this.top);
+  final double top;
+
+  @override
+  Rect getClip(Size size) =>
+      Rect.fromLTRB(0, top.clamp(0, size.height), size.width, size.height);
+
+  @override
+  bool shouldReclip(_ClipAbove oldClipper) => oldClipper.top != top;
 }
 
 /// Glow tint for a side companion, or null for ordinary ones. Epic/legendary
