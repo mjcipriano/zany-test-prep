@@ -160,6 +160,18 @@ class ValidatorTests(unittest.TestCase):
         self.assertIn("domain 'ghost' is not in skills.yaml", msgs)
         self.assertIn("unknown domain 'nope'", msgs)
 
+    def test_adaptive_route_threshold_must_be_a_fraction(self):
+        for bad, ok in ((1.5, False), ("high", False), (0.6, True)):
+            toy = ToyExam()
+            (toy.exam_dir / "exam.yaml").write_text(yaml.safe_dump({
+                "exam_id": "toy", "exam_name": "TOY", "content_version": "1.0.0",
+                "domains": ["math"],
+                "timed_test": {"adaptive": {"route_threshold": bad},
+                               "modules": [{"name": "M", "domain": "math", "count": 1, "minutes": 1}]}}))
+            rep = toy.write().validate()
+            hit = any("route_threshold" in e for e in rep.errors)
+            self.assertEqual(hit, not ok, bad)
+
     def test_position_tell_is_an_error(self):
         toy = ToyExam()
         for qs in toy.questions.values():

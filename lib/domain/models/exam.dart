@@ -1,3 +1,5 @@
+import 'safe_json.dart';
+
 /// Top-level exam descriptor (from exam.yaml, embedded in the content bundle).
 ///
 /// Everything exam-specific the app needs — how a full-length timed test is
@@ -52,6 +54,9 @@ class Exam {
         .toList();
     final timed = json['timed_test'];
     final scoring = json['scoring'];
+    final scoringSpec = scoring is Map
+        ? ScoringSpec.fromJson(scoring.cast<String, dynamic>())
+        : const ScoringSpec();
     return Exam(
       id: json['exam_id'] as String,
       name: json['exam_name'] as String,
@@ -64,11 +69,17 @@ class Exam {
       tagline: (json['tagline'] as String? ?? '').trim(),
       contentFingerprint: (json['content_fingerprint'] as String? ?? '').trim(),
       timedTest: timed is Map
-          ? TimedTestPlan.fromJson(timed.cast<String, dynamic>(), domains)
+          ? TimedTestPlan.fromJson(
+              timed.cast<String, dynamic>(),
+              domains,
+              // Bundles built before `timed_test.adaptive` existed: the SAT
+              // scale implies the Digital SAT's multistage design.
+              defaultAdaptive: scoringSpec.scale == ScoreScale.sat1600
+                  ? const AdaptiveSpec(enabled: true)
+                  : const AdaptiveSpec(),
+            )
           : TimedTestPlan.defaultFor(domains),
-      scoring: scoring is Map
-          ? ScoringSpec.fromJson(scoring.cast<String, dynamic>())
-          : const ScoringSpec(),
+      scoring: scoringSpec,
     );
   }
 }
@@ -132,12 +143,61 @@ class TestModule {
   );
 }
 
+/// Multistage-adaptive settings for the timed test (Digital SAT style).
+///
+/// When [enabled], the first module of each domain is a *routing* module of
+/// mixed difficulty; every later module of that domain is assembled after the
+/// routing module is submitted, from a harder set when the routing accuracy is
+/// at least [routeThreshold] and an easier set otherwise. exam.yaml:
+///
+/// ```yaml
+/// timed_test:
+///   adaptive: { route_threshold: 0.6 }   # or `adaptive: true` / `false`
+/// ```
+class AdaptiveSpec {
+  const AdaptiveSpec({
+    this.enabled = false,
+    this.routeThreshold = kDefaultRouteThreshold,
+  });
+
+  /// Module-1 accuracy (0..1) needed for the harder module 2. Roughly what an
+  /// above-average (~1100+) student gets right on a mixed-difficulty module.
+  static const kDefaultRouteThreshold = 0.6;
+
+  final bool enabled;
+  final double routeThreshold;
+
+  /// Accepts `true`/`false` or a map with `enabled` and `route_threshold`.
+  /// Anything else yields [fallback]. The threshold is clamped to 0..1.
+  factory AdaptiveSpec.fromJson(Object? json, {AdaptiveSpec? fallback}) {
+    if (json is bool) return AdaptiveSpec(enabled: json);
+    if (json is Map) {
+      final m = json.cast<String, dynamic>();
+      return AdaptiveSpec(
+        enabled: asBool(m['enabled'], true),
+        routeThreshold: asDouble(
+          m['route_threshold'],
+          kDefaultRouteThreshold,
+        ).clamp(0.0, 1.0),
+      );
+    }
+    return fallback ?? const AdaptiveSpec();
+  }
+}
+
 /// The timed-test layout. [intro] is the explanatory blurb on the start page.
 class TimedTestPlan {
-  const TimedTestPlan({this.modules = const [], this.intro = ''});
+  const TimedTestPlan({
+    this.modules = const [],
+    this.intro = '',
+    this.adaptive = const AdaptiveSpec(),
+  });
 
   final List<TestModule> modules;
   final String intro;
+
+  /// Multistage routing between a domain's modules (off = linear, like ACT).
+  final AdaptiveSpec adaptive;
 
   bool get isEmpty => modules.isEmpty;
 
@@ -153,10 +213,36 @@ class TimedTestPlan {
     return seen;
   }
 
+  int _firstOfDomain(int i) =>
+      modules.indexWhere((m) => m.domain == modules[i].domain);
+
+  /// True when module [i] decides the route for later modules of its domain
+  /// (adaptive plans only: the first of two or more modules in a domain).
+  bool isRoutingModule(int i) =>
+      adaptive.enabled &&
+      _firstOfDomain(i) == i &&
+      modules.skip(i + 1).any((m) => m.domain == modules[i].domain);
+
+  /// The index of the routing module that module [i] is routed by, or null
+  /// when [i] is not adaptive (linear plans, routing modules, lone modules).
+  int? routedBy(int i) {
+    if (!adaptive.enabled) return null;
+    final first = _firstOfDomain(i);
+    return first == i ? null : first;
+  }
+
+  /// This plan restricted to the module indices in [keep] (in order).
+  TimedTestPlan only(Iterable<int> keep) => TimedTestPlan(
+    modules: [for (final i in keep) modules[i]],
+    intro: intro,
+    adaptive: adaptive,
+  );
+
   factory TimedTestPlan.fromJson(
     Map<String, dynamic> json,
-    List<String> examDomains,
-  ) {
+    List<String> examDomains, {
+    AdaptiveSpec defaultAdaptive = const AdaptiveSpec(),
+  }) {
     final raw = json['modules'];
     final modules = raw is List
         ? raw
@@ -168,6 +254,10 @@ class TimedTestPlan {
     return TimedTestPlan(
       modules: modules,
       intro: (json['intro'] as String? ?? '').trim(),
+      adaptive: AdaptiveSpec.fromJson(
+        json['adaptive'],
+        fallback: defaultAdaptive,
+      ),
     );
   }
 
