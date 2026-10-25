@@ -2232,3 +2232,529 @@ PASSAGES3 = [
              "This describes the result."],
             "The trade-off sentence is the direct explanation."),
     },
+    {
+        "id": "free_sample", "title": "The Price of a Gift",
+        "text": (
+            "Grocery stores do not give away cubes of cheese on toothpicks out of "
+            "generosity. The practice exploits one of the most reliable regularities in "
+            "human behavior: a person who receives something, even something trivial and "
+            "unrequested, feels obliged to give something back. In one field experiment, "
+            "waiters who left a single mint with the bill saw tips rise by about three "
+            "percent. Two mints raised tips by fourteen percent. The most striking result "
+            "came when the waiter left one mint, began to walk away, then turned back and "
+            "offered a second 'for you especially.' Tips rose by twenty-three percent, "
+            "though the customers received exactly what the two-mint group had received. "
+            "The difference lay in the apparent intention. A gift that seems personal "
+            "creates a larger debt than one that seems routine. The obligation operates "
+            "below the level of argument; customers who were later told about the "
+            "experiment generally insisted the mints had not affected them. "
+            "Anthropologists have documented the same pull in societies with no "
+            "restaurants and no mints. The gift, it seems, has always come with a "
+            "string."),
+        "main_idea": (
+            "Which choice best states the main idea of the text?",
+            ["Restaurants can reliably increase their tips by instructing waiters to leave exactly two mints with every bill they present.",
+             "Receiving a gift, especially one that seems personal, creates an obligation that shapes behavior without people's awareness.",
+             "Customers who are told about experiments on tipping become more generous because they appreciate the researchers' honesty.",
+             "Grocery stores give away free samples primarily because shoppers are more likely to buy products they have already tasted."],
+            1,
+            ["Two mints were not the most effective condition, and the passage is about the general principle.",
+             "Correct. The experiment, the role of apparent intention, and the unconscious nature of the pull all support this.",
+             "Informed customers denied any effect; generosity is not mentioned.",
+             "Tasting is not the explanation the text gives; reciprocity is."],
+            "Reciprocity, intensified by perceived intention and operating unconsciously, is the thesis."),
+        "inference": (
+            "The text suggests that the 'for you especially' group tipped more than the two-mint group because",
+            ["the second mint appeared to reflect a personal decision rather than a policy",
+             "they received a greater number of mints than the two-mint group had received",
+             "the waiter spent more time at their table than at the other tables",
+             "they had been informed about the experiment before the meal began"],
+            0,
+            ["Correct. 'The difference lay in the apparent intention'; the gift seemed personal.",
+             "The text says they received 'exactly what the two-mint group had received.'",
+             "Time at the table is not mentioned.",
+             "Customers were told afterward, not before."],
+            "Perceived personal intention enlarged the sense of debt."),
+        "structure": (
+            "The reference to anthropologists in the second-to-last sentence serves to",
+            ["introduce evidence that contradicts the results of the restaurant experiment",
+             "explain why some societies developed without restaurants",
+             "suggest that the pattern is not limited to one setting or culture",
+             "shift the discussion to the history of mints as a confection"],
+            2,
+            ["The anthropological evidence agrees with the experiment.",
+             "The absence of restaurants is incidental.",
+             "Correct. 'The same pull' appears in very different societies, showing generality.",
+             "Mints are not the topic."],
+            "The sentence broadens the finding beyond restaurants."),
+        "wic": (
+            "As used in the text, the word “exploits” most nearly means",
+            ["treats unfairly", "performs heroically", "explores in detail", "makes use of"],
+            3,
+            ["The sense is strategic use, not mistreatment.",
+             "Heroism is irrelevant.",
+             "Exploration is not meant.",
+             "Correct. The practice takes advantage of a behavioral regularity."],
+            "'Exploits' here means takes advantage of."),
+        "evidence": (
+            "Which detail best supports the claim that the obligation operates 'below the level of argument'?",
+            ["Customers who learned of the experiment insisted the mints had not influenced them.",
+             "Two mints raised tips by fourteen percent compared with the control group.",
+             "Grocery stores give away cheese on toothpicks to shoppers.",
+             "Anthropologists have documented the same pull in other societies."],
+            0,
+            ["Correct. Denying an effect that the data show demonstrates it operates unconsciously.",
+             "This shows the effect's size, not its unconscious nature.",
+             "This is an example of the practice.",
+             "This shows generality, not unconsciousness."],
+            "The denial by affected customers is the evidence."),
+    },
+    {
+        "id": "lichen_rock", "title": "First on the Stone",
+        "text": (
+            "On a fresh lava flow or a boulder newly exposed by a retreating glacier, the "
+            "first living thing to arrive is usually something most people would not "
+            "notice: a gray or orange crust, flat as paint, called a lichen. A lichen is "
+            "not one organism but two. A fungus provides the structure and anchors itself "
+            "to bare rock; algae living inside it carry out photosynthesis and supply "
+            "sugars to both. Neither partner could survive alone on stone, but together "
+            "they can live where there is no soil at all. Over decades the lichen "
+            "secretes weak acids that etch the rock surface, and its own dead layers mix "
+            "with windblown dust to form the first thin smear of soil. Mosses follow, "
+            "then grasses, then shrubs whose roots pry the rock apart further. The lichen "
+            "is long gone by the time trees arrive, shaded out by the forest it made "
+            "possible. Ecologists call it a pioneer species, and like many pioneers it "
+            "does not get to enjoy what it built."),
+        "main_idea": (
+            "Which choice best states the main idea of the text?",
+            ["Lichens are the only organisms capable of surviving on bare rock, and they persist there long after forests have grown.",
+             "Mosses and grasses are more important than lichens in creating soil because they arrive earlier on newly exposed rock.",
+             "Lichens, a fungus-algae partnership, begin the process that turns bare rock into soil for other life.",
+             "Fungi can survive on bare stone without any partner because they extract nutrients directly from the rock."],
+            2,
+            ["Lichens are shaded out once trees arrive.",
+             "Lichens arrive first, before mosses and grasses.",
+             "Correct. The passage explains the partnership and the lichen's role in starting soil formation.",
+             "The text says neither partner could survive alone."],
+            "The lichen as soil-making pioneer is the thesis."),
+        "inference": (
+            "It can reasonably be inferred that the fungus benefits from its partnership with algae by",
+            ["receiving the sugars that the algae produce",
+             "gaining protection from windblown dust",
+             "obtaining the weak acids needed to etch rock",
+             "being shaded from direct sunlight on the stone"],
+            0,
+            ["Correct. The algae 'supply sugars to both.'",
+             "Dust is a soil ingredient, not a threat.",
+             "The lichen secretes acids; they are not supplied by the algae.",
+             "Shading is what eventually kills the lichen."],
+            "Sugars from photosynthesis are the fungus's gain."),
+        "structure": (
+            "The author describes the lichen as not getting 'to enjoy what it built' in order to",
+            ["argue that lichens deserve more protection than forests",
+             "end with a reflective note on the irony of the pioneer's fate",
+             "explain the chemical process by which acids etch stone",
+             "introduce the next stage of forest growth after trees"],
+            1,
+            ["No protection argument is made.",
+             "Correct. The closing remark reflects on how the lichen is displaced by what it enabled.",
+             "The chemistry came earlier.",
+             "The passage ends there."],
+            "The ending is a reflective flourish."),
+        "wic": (
+            "As used in the text, the word “smear” most nearly means",
+            ["thin layer", "false accusation", "dirty mark", "medical sample"],
+            0,
+            ["Correct. The first soil is a thin coating on the rock.",
+             "No accusation is involved.",
+             "Dirtiness is not the sense.",
+             "The medical sense does not apply."],
+            "A 'thin smear of soil' is a thin layer."),
+        "evidence": (
+            "Which detail best supports the claim that lichens create soil?",
+            ["Their dead layers mix with windblown dust to form the first soil.",
+             "They are flat as paint and gray or orange in color.",
+             "Neither partner could survive alone on bare stone.",
+             "Shrubs' roots pry the rock apart further."],
+            0,
+            ["Correct. This describes the lichen's direct contribution to soil.",
+             "Appearance is irrelevant to soil.",
+             "This is about the partnership, not soil.",
+             "This is a later stage, not the lichen's role."],
+            "Dead lichen plus dust is the first soil."),
+    },
+    {
+        "id": "blank_coast", "title": "The Unfinished Coast",
+        "text": (
+            "My master, Mr. Hallam, had drawn maps for the Admiralty for thirty years, and "
+            "in all that time, he told me, he had never once drawn a line he had not been "
+            "given reason to believe. I was nineteen and thought this a modest ambition. "
+            "It was my task that winter to copy the surveys sent back from the northern "
+            "voyage, and I came to a stretch of coast where the ship's log simply stopped: "
+            "fog for nine days, then open sea. The chart before me showed a gap. I "
+            "proposed to close it with a gentle curve, as any sensible coast would run. "
+            "Mr. Hallam took the pen from my hand. 'A sailor who trusts that curve,' he "
+            "said, 'will put his ship on rocks we have not seen, and he will do it in the "
+            "dark, and he will do it because you were tidy.' He left the gap. I have "
+            "since drawn a great many maps, and some of them have gaps, and I have come "
+            "to think of the gaps as the most honest lines on them."),
+        "main_idea": (
+            "Which choice best states the main idea of the text?",
+            ["A mapmaker's refusal to invent a coastline taught the narrator that honesty about ignorance outweighs a finished look.",
+             "The narrator's master was so cautious in his work that he failed to complete most of the charts the Admiralty had commissioned from him.",
+             "A northern voyage failed to survey a stretch of coast because of nine days of fog, forcing the Admiralty to send a second expedition.",
+             "The narrator came to believe that a map with gaps is useless to sailors and should never be issued by the Admiralty."],
+            0,
+            ["Correct. Hallam leaves the gap, and the narrator comes to see gaps as 'the most honest lines.'",
+             "Nothing suggests Hallam failed to complete charts.",
+             "No second expedition is mentioned; the fog is the occasion, not the subject.",
+             "The narrator values gaps, not rejects them."],
+            "Honesty about what is unknown is the lesson."),
+        "inference": (
+            "The narrator's remark that he 'thought this a modest ambition' suggests that at nineteen he",
+            ["shared Hallam's conviction about the importance of accuracy in charts",
+             "believed Hallam should have been promoted to a higher post long before",
+             "doubted that Hallam had really worked for the Admiralty for thirty years",
+             "underestimated how demanding Hallam's standard of honesty actually was"],
+            3,
+            ["He proposes to invent a curve, so he did not yet share the conviction.",
+             "Promotion is not mentioned.",
+             "He does not doubt Hallam's history.",
+             "Correct. Calling it 'modest' shows he did not yet grasp its difficulty, as the episode then proves."],
+            "The later lesson reveals the remark's youthful misjudgment."),
+        "structure": (
+            "Hallam's speech functions in the text to",
+            ["reveal that Hallam himself had once put a ship on rocks through carelessness",
+             "make vivid the real consequences of the narrator's seemingly harmless proposal",
+             "demonstrate that Hallam was unreasonably harsh toward his young apprentices",
+             "explain the proper technique for drawing an accurate coastline on a chart"],
+            1,
+            ["No such confession is made.",
+             "Correct. The sailor on the rocks 'in the dark' shows what a tidy curve could cost.",
+             "The speech is firm but the narrator credits the lesson.",
+             "No technique is explained."],
+            "The speech turns a drafting habit into a matter of life and death."),
+        "wic": (
+            "As used in the text, the word “tidy” most nearly means",
+            ["orderly in personal habits", "considerable in amount", "eager for neatness", "clean and well washed"],
+            2,
+            ["Personal habits are not at issue.",
+             "Quantity is irrelevant.",
+             "Correct. The narrator wanted the chart to look complete and neat.",
+             "Cleanliness is not meant."],
+            "Hallam accuses the narrator of valuing neatness over truth."),
+        "evidence": (
+            "Which quotation best supports the idea that the narrator's view of maps changed permanently?",
+            ["'I have come to think of the gaps as the most honest lines on them'",
+             "'It was my task that winter to copy the surveys sent back from the northern voyage'",
+             "'I was nineteen and thought this a modest ambition'",
+             "'Mr. Hallam took the pen from my hand'"],
+            0,
+            ["Correct. The present-tense reflection shows a lasting change.",
+             "This describes the task.",
+             "This describes the earlier, unchanged view.",
+             "This is the moment of intervention, not its lasting effect."],
+            "The closing reflection states the enduring change."),
+    },
+    {
+        "id": "hot_hand", "title": "Streaks",
+        "text": (
+            "Basketball fans share a conviction: a player who has made several shots in a "
+            "row is 'hot' and more likely to make the next one. In the 1980s, researchers "
+            "examined thousands of shots from professional games and reported that the "
+            "conviction was an illusion. A player's chance of making a shot after a "
+            "string of hits was no higher than after a string of misses. Streaks were "
+            "simply what randomness looks like, the way a fair coin produces runs of "
+            "heads. The finding became a textbook example of how people see patterns in "
+            "noise. Then, three decades later, two economists noticed a subtle flaw. If "
+            "you select, from a random sequence, the shots that follow three hits, the "
+            "remaining pool is slightly depleted of hits, so the expected success rate in "
+            "that selected pool is actually below the player's overall average. Measured "
+            "against the correct baseline, the original data showed a modest hot hand "
+            "after all—a few percentage points, not the dramatic effect fans imagine, "
+            "but real. The textbook example of a bias turned out to contain a bias of its "
+            "own."),
+        "main_idea": (
+            "Which choice best states the main idea of the text?",
+            ["Basketball players who have made several shots in a row are far more likely to make their next shot than fans realize.",
+             "A famous finding that shooting streaks are illusory was itself undermined by a statistical error, revealing a small real effect.",
+             "Researchers in the 1980s proved beyond any doubt that streaks in basketball are the product of pure randomness.",
+             "Economists have shown that the hot hand is a much larger effect than coaches and fans have traditionally believed."],
+            1,
+            ["The effect is 'a few percentage points,' smaller than fans imagine.",
+             "Correct. The passage recounts the original finding, the flaw, and the modest real effect.",
+             "The finding was later overturned.",
+             "The effect is smaller, not larger, than fans believe."],
+            "The reversal of a famous finding is the story."),
+        "inference": (
+            "Based on the text, the original researchers' error was that they",
+            ["compared streak shots to a baseline that their selection method had biased downward",
+             "examined too few shots to detect any effect at all",
+             "relied on the impressions of fans and coaches rather than on records of actual professional games",
+             "failed to account for differences in skill between individual players"],
+            0,
+            ["Correct. Selecting shots after three hits depletes the pool of hits, lowering the expected rate.",
+             "They examined thousands of shots.",
+             "They used records of professional games.",
+             "Player skill is not the flaw identified."],
+            "The selection effect on the baseline is the flaw."),
+        "structure": (
+            "The author's final sentence serves to",
+            ["introduce a third study of the hot hand",
+             "argue that textbooks should be rewritten",
+             "highlight the irony of the episode",
+             "restate the original 1980s finding"],
+            2,
+            ["No third study follows.",
+             "No such argument is made.",
+             "Correct. A famous example of bias containing its own bias is the irony.",
+             "The sentence comments on the reversal, not the original finding."],
+            "The sentence is an ironic capstone."),
+        "wic": (
+            "As used in the text, the word “depleted” most nearly means",
+            ["exhausted from effort", "emptied completely", "lowered in value", "reduced in supply"],
+            3,
+            ["Fatigue is irrelevant.",
+             "The pool is 'slightly' depleted, not emptied.",
+             "Value is not the sense.",
+             "Correct. The remaining pool has fewer hits than average."],
+            "'Depleted of hits' means having fewer hits."),
+        "evidence": (
+            "Which detail best supports the claim that the hot hand is real but small?",
+            ["The corrected analysis showed an effect of a few percentage points.",
+             "A fair coin produces runs of heads.",
+             "Fans believe a player who has made several shots is hot.",
+             "The finding became a textbook example of seeing patterns in noise."],
+            0,
+            ["Correct. 'A few percentage points ... but real' is the size and reality of the effect.",
+             "This illustrates randomness, not the effect.",
+             "This is belief, not evidence.",
+             "This concerns the original finding's reputation."],
+            "The few-percentage-points detail is the evidence."),
+    },
+    {
+        "id": "pencil_lead", "title": "Not Lead at All",
+        "text": (
+            "The 'lead' in a pencil has never been lead. The substance is graphite, a soft "
+            "form of carbon, and the confusion dates to the 1560s, when a storm in "
+            "northern England uprooted a tree and exposed a deposit of shiny black "
+            "mineral beneath it. Shepherds used it to mark their sheep; they assumed it "
+            "was a kind of lead and called it so. The deposit turned out to be unusually "
+            "pure, and for two centuries it was the only known source of graphite solid "
+            "enough to be cut into sticks. The mine was guarded, flooded between "
+            "diggings, and its output smuggled, since the mineral was also useful for "
+            "lining the molds in which cannonballs were cast. The modern pencil arrived "
+            "when a French inventor, cut off from English graphite by war, ground up "
+            "impure graphite, mixed it with clay, and fired the mixture in a kiln. "
+            "Varying the clay changed the hardness. The product of a wartime shortage "
+            "became the standard, and the pure English deposit, no longer necessary, was "
+            "exhausted and forgotten."),
+        "main_idea": (
+            "Which choice best states the main idea of the text?",
+            ["Pencils were originally made from the metal lead until the dangers of lead poisoning became widely known in the 1560s.",
+             "The French inventor who mixed graphite with clay was attempting to improve the casting of cannonballs during a war.",
+             "The pencil's misnamed core has a history shaped by chance discovery, a guarded monopoly, and wartime invention.",
+             "English shepherds in the sixteenth century were the first people to use graphite for writing and drawing on paper."],
+            2,
+            ["The text says the lead 'has never been lead.'",
+             "The inventor was making pencils, not cannonballs.",
+             "Correct. The passage follows graphite from the storm to the mine to the clay process.",
+             "Shepherds marked sheep; paper writing is not mentioned."],
+            "The history of the pencil core is the thread."),
+        "inference": (
+            "The text suggests that the English mine was guarded mainly because",
+            ["its graphite had military as well as civilian uses",
+             "pencils had become extremely valuable luxury items",
+             "the shepherds who found it refused to share the deposit",
+             "the mine was in constant danger of flooding"],
+            0,
+            ["Correct. The mineral lined cannonball molds, which explains the guarding and smuggling.",
+             "Pencil prices are not mentioned.",
+             "The shepherds are not said to control the mine.",
+             "Flooding was done deliberately as a security measure."],
+            "Military usefulness explains the security."),
+        "structure": (
+            "The text is organized primarily as",
+            ["a comparison between English and French methods of making pencils",
+             "a chronological account of how an everyday object came to be",
+             "an argument that graphite should be renamed to avoid confusion",
+             "a description of the chemical differences between lead and graphite"],
+            1,
+            ["The French method appears only as a stage in the story.",
+             "Correct. The passage proceeds from the 1560s through two centuries to the modern pencil.",
+             "No renaming is proposed.",
+             "Chemistry is mentioned only in passing."],
+            "The passage is a history."),
+        "wic": (
+            "As used in the text, the phrase “cut off from” most nearly means",
+            ["severed physically from", "interrupted while speaking about", "denied access to", "excluded from an inheritance of"],
+            2,
+            ["No physical severing is meant.",
+             "Speech is irrelevant.",
+             "Correct. War prevented the inventor from obtaining English graphite.",
+             "Inheritance is irrelevant."],
+            "To be cut off from a supply is to be unable to get it."),
+        "evidence": (
+            "Which quotation best supports the claim that the French method made the English deposit unnecessary?",
+            ["'the pure English deposit, no longer necessary, was exhausted and forgotten'",
+             "'The deposit turned out to be unusually pure, and for two centuries it was the only known source'",
+             "'The mine was guarded, flooded between diggings, and its output smuggled'",
+             "'ground up impure graphite, mixed it with clay, and fired the mixture in a kiln'"],
+            0,
+            ["Correct. This states the consequence directly.",
+             "This describes the deposit's earlier importance.",
+             "This describes security, not obsolescence.",
+             "This describes the method without stating its effect on the English mine."],
+            "The 'no longer necessary' clause is the direct support."),
+    },
+    {
+        "id": "hot_streets", "title": "Islands of Heat",
+        "text": (
+            "On a summer night, the center of a large city can be as much as seven "
+            "degrees Celsius warmer than the farmland an hour's drive away. "
+            "Meteorologists call the phenomenon an urban heat island, and its causes are "
+            "not mysterious. Asphalt and dark roofing absorb sunlight by day and release "
+            "the heat slowly after dark. Buildings block the wind that would carry warmth "
+            "away. Pavement sheds rain into drains instead of letting it soak into soil, "
+            "so the city loses the cooling that evaporation from damp ground would "
+            "provide. Engines and air conditioners add their own exhaust heat. What is "
+            "less obvious is how unevenly the burden falls. In one city's survey, "
+            "neighborhoods with the fewest trees were on average four degrees warmer "
+            "than those with the most, and those neighborhoods were, almost without "
+            "exception, the poorest. Planting trees is slow, but studies of streets that "
+            "received them suggest that a mature canopy can erase much of the difference, "
+            "and that the shade arrives, for once, exactly where it is needed most."),
+        "main_idea": (
+            "Which choice best states the main idea of the text?",
+            ["Urban heat islands are caused mainly by the exhaust from engines and air conditioners, which raise temperatures by seven degrees.",
+             "Meteorologists remain uncertain about why city centers are warmer at night than the surrounding countryside is.",
+             "Planting trees in cities is too slow a process to have any measurable effect on summer temperatures in poor neighborhoods.",
+             "Cities are hotter than their surroundings for known reasons, and the excess heat falls hardest on neighborhoods with few trees."],
+            3,
+            ["Exhaust is one of several causes, and seven degrees is the total difference.",
+             "The text says the causes 'are not mysterious.'",
+             "Studies suggest a mature canopy can erase much of the difference.",
+             "Correct. The passage lists the causes and then turns to the uneven burden and the tree remedy."],
+            "Causes plus inequity is the structure of the passage."),
+        "inference": (
+            "The text suggests that rain falling on a city is less cooling than rain falling on farmland because",
+            ["on pavement it runs into drains before it can evaporate from the ground",
+             "city air is too warm for the rain to reach the ground",
+             "buildings block the rain from reaching most of the streets",
+             "drains carry the water to reservoirs where it is heated"],
+            0,
+            ["Correct. Pavement 'sheds rain into drains,' losing the cooling of evaporation from soil.",
+             "Rain reaches the ground; the issue is where it goes.",
+             "Buildings block wind, not rain.",
+             "Reservoirs are not mentioned."],
+            "Lost evaporation from drained pavement is the mechanism."),
+        "structure": (
+            "The sentence beginning 'What is less obvious' marks a shift from",
+            ["describing summer conditions to describing winter conditions",
+             "explaining the causes of the heat island to examining its uneven effects",
+             "the author's own observations to the findings of meteorologists",
+             "a discussion of large cities to a discussion of small towns"],
+            1,
+            ["Winter is never discussed.",
+             "Correct. After the list of causes, the text turns to who bears the heat.",
+             "Meteorologists were cited earlier.",
+             "Small towns are not discussed."],
+            "The sentence pivots from cause to distribution."),
+        "wic": (
+            "As used in the text, the word “sheds” most nearly means",
+            ["loses hair or skin", "stores in a small building", "gives off light", "diverts away"],
+            3,
+            ["The biological sense does not apply.",
+             "The building sense is irrelevant.",
+             "Light is not involved.",
+             "Correct. Pavement channels rain off into drains."],
+            "To shed rain is to carry it off."),
+        "evidence": (
+            "Which detail best supports the claim that the burden of heat falls unevenly?",
+            ["Neighborhoods with the fewest trees were four degrees warmer and almost always the poorest.",
+             "Asphalt and dark roofing absorb sunlight by day and release it slowly at night.",
+             "City centers can be seven degrees warmer than farmland an hour's drive away.",
+             "A mature canopy can erase much of the temperature difference between neighborhoods."],
+            0,
+            ["Correct. The temperature gap aligned with poverty is the unevenness.",
+             "This is a cause, not distribution.",
+             "This is the overall city-country gap, not the gap within the city.",
+             "This is the remedy, not the problem."],
+            "The tree-poverty-temperature correlation is the evidence."),
+    },
+    {
+        "id": "the_clock", "title": "Division",
+        "text": (
+            "'You take the clock,' Dana said. 'You always liked it.' 'I never liked it,' "
+            "said Ben. 'I wound it because nobody else would.' They were sitting on the "
+            "floor of their mother's apartment with the lists between them, hers typed, "
+            "his on the back of an envelope. It was the fourth hour. They had agreed "
+            "easily on the furniture, which neither wanted, and the photographs, which "
+            "they would scan and share, and had come, as they had both known they would, "
+            "to the small things: the clock, the chipped blue bowl, the cheap ring their "
+            "mother had worn in place of the good one she kept in a drawer. 'Then I'll "
+            "take it,' Dana said, and wrote it down, and Ben watched her write and felt, "
+            "absurdly, that something had been taken from him. 'Or we could sell it,' she "
+            "said, not looking up. 'No,' he said, too quickly, and they both heard it. "
+            "She crossed it off her list. He picked up the clock. It was heavier than he "
+            "remembered."),
+        "main_idea": (
+            "Which choice best describes the central concern of the text?",
+            ["Two siblings discover, while dividing their mother's belongings, that their attachments are stronger than they had admitted.",
+             "Two siblings argue bitterly over a valuable clock, and the dispute reveals a long-standing rivalry between them that dates to childhood.",
+             "Two siblings efficiently divide their mother's possessions by assigning each item to whichever of them has the better claim to it.",
+             "A brother agrees to sell his mother's clock because he has never liked it and has no use for it in his own apartment."],
+            0,
+            ["Correct. Ben's 'No,' said 'too quickly,' exposes an attachment he had denied.",
+             "There is no bitterness and no rivalry; the clock is called cheap-era 'small things,' not valuable.",
+             "The small things are exactly where easy division fails.",
+             "He refuses to sell it."],
+            "Unacknowledged attachment surfacing is the heart of the scene."),
+        "inference": (
+            "Ben's reaction when Dana writes down the clock most strongly suggests that",
+            ["he believes Dana is taking more than her fair share of the belongings",
+             "he intends to sell the clock and keep the money for himself",
+             "he wants the clock more than he has acknowledged, even to himself",
+             "he is relieved to be free of the duty of winding it"],
+            2,
+            ["Fairness is not raised.",
+             "He refuses to sell it.",
+             "Correct. He feels 'absurdly, that something had been taken from him' after denying he liked it.",
+             "Relief is the opposite of what he feels."],
+            "The sense of loss contradicts his stated indifference."),
+        "structure": (
+            "The description of the two lists, 'hers typed, his on the back of an envelope,' serves to",
+            ["show that Dana is more attached to the belongings than Ben is",
+             "suggest a contrast in the siblings' approaches to the task",
+             "explain why the division has taken four hours",
+             "reveal that Ben has not taken the task seriously"],
+            1,
+            ["Attachment is not what the lists indicate.",
+             "Correct. The detail quietly contrasts Dana's organization with Ben's improvisation.",
+             "The lists do not explain the duration.",
+             "Ben's reaction to the clock shows he is deeply invested."],
+            "The lists characterize the two siblings."),
+        "wic": (
+            "As used in the text, the word “absurdly” most nearly means",
+            ["in a comical manner", "loudly and dramatically", "with deliberate exaggeration", "in a way that defied reason"],
+            3,
+            ["Nothing is comic here.",
+             "The feeling is silent.",
+             "The feeling is involuntary, not exaggerated.",
+             "Correct. Ben knows the feeling makes no sense, since Dana offered him the clock."],
+            "'Absurdly' marks the feeling as irrational."),
+        "evidence": (
+            "Which quotation best supports the idea that the siblings had anticipated difficulty with the smaller items?",
+            ["'had come, as they had both known they would, to the small things'",
+             "'They had agreed easily on the furniture, which neither wanted'",
+             "'It was the fourth hour'",
+             "'It was heavier than he remembered'"],
+            0,
+            ["Correct. 'As they had both known they would' shows the anticipation.",
+             "This describes the easy part.",
+             "This shows duration, not anticipation.",
+             "This is Ben's final perception."],
+            "The clause about knowing is the direct evidence."),
+    },
+]
+

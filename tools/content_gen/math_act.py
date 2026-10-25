@@ -1618,6 +1618,9 @@ def ap_diagonals(rng, d):
     return _numeric_mc(rng, prompt, val, ds, subskill="polygon_angles", explanation=expl, tags=["geometry", "polygon", "diagonals"], est=70 if d != "hard" else 95, verify=f"n={n}")
 
 
+ap_diagonals.small_space = True
+
+
 def ap_angle_chase(rng, d):
     """Angles around a point / on a line in ratios; bisectors."""
     if d == "easy":
@@ -1688,6 +1691,8 @@ def sq_geometric_word(rng, d):
 def sq_pattern(rng, d):
     """Figure/toothpick patterns and explicit formulas."""
     a, dd = rng.randint(3, 10), rng.randint(2, 6)
+    if a == dd:
+        a += 1
     obj = rng.choice(["toothpicks", "tiles", "dots", "blocks"])
     if d == "easy":
         n = rng.randint(5, 12)

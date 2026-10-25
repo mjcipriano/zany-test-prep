@@ -6169,15 +6169,18 @@ def rt_similar(rng, d):
 
 def rt_diagonal(rng, d):
     """Diagonals of rectangles, squares, and boxes."""
-    a, b, c = _pyth_triple(rng, 50)
+    a, b, c = _pyth_triple(rng, 120)
+    if rng.random() < 0.5:
+        a, b = b, a
     if d == "easy":
         prompt = rng.choice([f"A rectangle is {a} by {b}. What is the length of its diagonal?", f"A rectangular field measures {a} meters by {b} meters. How long, in meters, is a straight path from one corner to the opposite corner?"])
         val = c
         expl = f"The diagonal is the hypotenuse of a right triangle with legs {a} and {b}: √({a}² + {b}²) = {c}."
         ds = [(a + b, "Use the Pythagorean theorem."), (c - 1, "Arithmetic slip."), ((a + b) // 2 if (a + b) % 2 == 0 else a + b + 1, "The diagonal is not the average of the sides."), (a * b, "Don't multiply the sides.")]
     elif d == "medium":
-        dgl = rng.choice([v for v in range(2, 20)])
-        prompt = rng.choice([f"A square has a diagonal of length {dgl}√2. What is the area of the square?", f"The diagonal of a square is {dgl}√2 units long. What is the perimeter of the square?"])
+        dgl = rng.choice([v for v in range(2, 50)])
+        prompt = rng.choice([f"A square has a diagonal of length {dgl}√2. What is the area of the square?", f"The diagonal of a square is {dgl}√2 units long. What is the perimeter of the square?",
+                             f"A square tile has a diagonal of {dgl}√2 centimeters. What is the area of the tile, in square centimeters?"])
         if "area" in prompt:
             val = dgl * dgl
             expl = f"Side = diagonal/√2 = {dgl}; area = {dgl}² = {val}."
