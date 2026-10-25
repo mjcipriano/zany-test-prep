@@ -30,7 +30,7 @@ void main() {
     expect(find.text('Personalize your plan'), findsOneWidget);
     await tester.tap(find.text('Take it'));
     await tester.pumpAndSettle();
-    expect(find.textContaining('Diagnostic'), findsOneWidget);
+    expect(find.textContaining('Placement check'), findsOneWidget);
     expect(find.text('Next'), findsOneWidget);
   });
 

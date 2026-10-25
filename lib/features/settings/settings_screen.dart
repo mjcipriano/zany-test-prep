@@ -66,6 +66,17 @@ class SettingsScreen extends ConsumerWidget {
                 const Divider(height: 1),
                 ListTile(
                   contentPadding: EdgeInsets.zero,
+                  leading: const Icon(Icons.explore_rounded),
+                  title: const Text('Placement check'),
+                  subtitle: const Text(
+                    'Retake the 3-minute check to re-tune recommendations',
+                  ),
+                  trailing: const Icon(Icons.chevron_right_rounded),
+                  onTap: () => context.push('/diagnostic'),
+                ),
+                const Divider(height: 1),
+                ListTile(
+                  contentPadding: EdgeInsets.zero,
                   leading: const Icon(Icons.event_rounded),
                   title: const Text('Target test date'),
                   subtitle: Text(

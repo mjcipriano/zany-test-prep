@@ -60,7 +60,12 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/practice/:mode',
         builder: (context, state) => PracticeScreen(
-          mode: state.pathParameters['mode'] == 'all' ? 'all' : 'unlocked',
+          mode: switch (state.pathParameters['mode']) {
+            'all' => 'all',
+            'smart' => 'smart',
+            _ => 'unlocked',
+          },
+          focusSkill: state.uri.queryParameters['skill'],
         ),
       ),
       GoRoute(

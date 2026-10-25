@@ -65,11 +65,12 @@ class Badges {
     return n;
   }
 
-  /// Number of skills whose mastery is at or above [threshold].
+  /// Number of skills whose mastery is at or above [threshold]. Placement-check
+  /// estimates ([SkillMastery.seeded]) don't count until practiced for real.
   static int _skillsAtLeast(AppProgress p, double threshold) {
     var n = 0;
     for (final sm in p.skillMastery.values) {
-      if (sm.mastery >= threshold) n++;
+      if (!sm.seeded && sm.mastery >= threshold) n++;
     }
     return n;
   }
@@ -93,7 +94,8 @@ class Badges {
   }
 
   /// Distinct skills the learner has practiced (have any mastery tracked).
-  static int _distinctSkillsPracticed(AppProgress p) => p.skillMastery.length;
+  static int _distinctSkillsPracticed(AppProgress p) =>
+      p.skillMastery.values.where((sm) => !sm.seeded).length;
 
   static final List<BadgeDef> all = [
     // -------------------------------------------------------------------

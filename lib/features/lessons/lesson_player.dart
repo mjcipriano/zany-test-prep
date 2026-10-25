@@ -33,6 +33,7 @@ class LessonPlayer extends ConsumerStatefulWidget {
     this.isReview = false,
     this.resumeFrom,
     this.onProgress,
+    this.onAnswered,
   });
 
   final String title;
@@ -48,6 +49,11 @@ class LessonPlayer extends ConsumerStatefulWidget {
   /// Called with the attempt so far whenever it changes (quiz started, answer
   /// checked, moved on). Null means progress is not saved (reviews).
   final ValueChanged<LessonAttempt>? onProgress;
+
+  /// Called after each answer is checked, with its index. Adaptive sessions
+  /// (Smart practice) use it to re-pick later entries of [questions] in place;
+  /// the player reads the list fresh for every question.
+  final void Function(int index, AnswerResult result)? onAnswered;
 
   @override
   ConsumerState<LessonPlayer> createState() => _LessonPlayerState();
@@ -194,6 +200,7 @@ class _LessonPlayerState extends ConsumerState<LessonPlayer> {
         produced: produced ? _textController.text : null,
       ),
     );
+    widget.onAnswered?.call(_index, _results.last);
     _feedbackEffects(correct);
     setState(() {
       _answered = true;

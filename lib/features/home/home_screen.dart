@@ -9,6 +9,7 @@ import '../../domain/models/content_bundle.dart';
 import '../../domain/models/lesson.dart';
 import '../../domain/models/progress.dart';
 import '../../domain/services/leveling.dart';
+import '../../domain/services/recommendation_engine.dart';
 import '../../domain/services/review_engine.dart';
 import '../../domain/services/streak_engine.dart';
 import '../../domain/services/unlock_engine.dart';
@@ -43,6 +44,11 @@ class HomeScreen extends ConsumerWidget {
     final suggested = unlock.suggestNext(bundle, progress);
     const review = ReviewEngine();
     final reviewCount = review.dueCount(progress, bundle: bundle);
+    final recommendation = const RecommendationEngine().recommend(
+      bundle,
+      progress,
+      now: DateTime.now(),
+    );
 
     return Scaffold(
       appBar: AppBar(
@@ -139,8 +145,8 @@ class HomeScreen extends ConsumerWidget {
                     ),
                     Gap.xs,
                     const Text(
-                      'Take a 2-minute diagnostic so we can find your strengths '
-                      'and what to study first.',
+                      'Take a 3-minute placement check so we can find your '
+                      'strengths and what to study first.',
                     ),
                     Gap.s,
                     Row(
@@ -164,6 +170,10 @@ class HomeScreen extends ConsumerWidget {
                 ),
               ),
             ),
+          if (recommendation != null) ...[
+            RecommendedCard(recommendation: recommendation, bundle: bundle),
+            Gap.s,
+          ],
           if (suggested != null)
             _ContinueCard(
               lesson: suggested,
@@ -187,6 +197,26 @@ class HomeScreen extends ConsumerWidget {
                   icon: Icons.insights_rounded,
                   label: 'Skills',
                   onTap: () => context.push('/skills'),
+                ),
+              ),
+            ],
+          ),
+          Gap.s,
+          Row(
+            children: [
+              Expanded(
+                child: _QuickAction(
+                  icon: Icons.auto_awesome_rounded,
+                  label: 'Smart Practice',
+                  onTap: () => context.push('/practice/smart'),
+                ),
+              ),
+              Gap.s,
+              Expanded(
+                child: _QuickAction(
+                  icon: Icons.explore_rounded,
+                  label: 'Placement check',
+                  onTap: () => context.push('/diagnostic'),
                 ),
               ),
             ],
@@ -341,6 +371,98 @@ class _StatsHeader extends StatelessWidget {
   }
 }
 
+/// "Recommended for you": the [RecommendationEngine]'s single pick with a
+/// one-line reason ("Weakest: Linear equations", "3 reviews due").
+class RecommendedCard extends StatelessWidget {
+  const RecommendedCard({
+    super.key,
+    required this.recommendation,
+    required this.bundle,
+  });
+
+  final Recommendation recommendation;
+  final ContentBundle bundle;
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    final r = recommendation;
+    final (IconData icon, String title) = switch (r.kind) {
+      RecommendationKind.review => (
+        Icons.refresh_rounded,
+        'Review your misses',
+      ),
+      RecommendationKind.lesson => (
+        Icons.play_arrow_rounded,
+        bundle.lesson(r.lessonId ?? '')?.title ?? 'Start a new skill',
+      ),
+      RecommendationKind.practice => (
+        Icons.auto_awesome_rounded,
+        'Smart practice',
+      ),
+    };
+    final reasonIcon = switch (r.reason) {
+      RecommendationReason.reviewsDue => Icons.history_rounded,
+      RecommendationReason.weakest => Icons.trending_up_rounded,
+      RecommendationReason.newSkill => Icons.fiber_new_rounded,
+    };
+    return AppCard(
+      key: const Key('recommended-card'),
+      color: scheme.secondaryContainer,
+      onTap: () => context.push(r.route),
+      child: Row(
+        children: [
+          CircleAvatar(
+            radius: 26,
+            backgroundColor: scheme.secondary,
+            child: Icon(icon, color: scheme.onSecondary),
+          ),
+          Gap.m,
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Recommended for you',
+                  style: TextStyle(color: scheme.onSecondaryContainer),
+                ),
+                Text(
+                  title,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w800,
+                    fontSize: 18,
+                  ),
+                ),
+                Row(
+                  children: [
+                    Icon(
+                      reasonIcon,
+                      size: 16,
+                      color: scheme.onSecondaryContainer,
+                    ),
+                    const SizedBox(width: 4),
+                    Flexible(
+                      child: Text(
+                        r.label,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          color: scheme.onSecondaryContainer,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          const Icon(Icons.chevron_right_rounded),
+        ],
+      ),
+    );
+  }
+}
+
 class _ContinueCard extends StatelessWidget {
   const _ContinueCard({
     required this.lesson,
@@ -420,15 +542,21 @@ class _QuickAction extends StatelessWidget {
           children: [
             Icon(icon, color: scheme.primary),
             Gap.s,
-            Flexible(
-              child: Text(
-                label,
-                overflow: TextOverflow.ellipsis,
-                style: const TextStyle(fontWeight: FontWeight.w700),
+            Expanded(
+              // Shrink long labels ("Quick Practice") to fit 360dp phones
+              // rather than ellipsizing them.
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  label,
+                  maxLines: 1,
+                  style: const TextStyle(fontWeight: FontWeight.w700),
+                ),
               ),
             ),
             if (badge != null) ...[
-              const Spacer(),
+              Gap.s,
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                 decoration: BoxDecoration(
