@@ -415,34 +415,42 @@ class _TimedTestScreenState extends ConsumerState<TimedTestScreen> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Text(
-              'Jump to a question',
-              style: TextStyle(fontWeight: FontWeight.w800),
+            Semantics(
+              header: true,
+              child: const Text(
+                'Jump to a question',
+                style: TextStyle(fontWeight: FontWeight.w800),
+              ),
             ),
             Gap.s,
-            Wrap(
-              spacing: 8,
-              runSpacing: 8,
-              children: [
-                for (var i = 0; i < _qs.length; i++)
-                  _NavChip(
-                    number: i + 1,
-                    answered: _answers.containsKey(_qs[i].id),
-                    flagged: _flagged.contains(_qs[i].id),
-                    current: i == _q,
-                    onTap: () {
-                      Navigator.pop(ctx);
-                      if (_question.type.isStudentProduced &&
-                          _text.text.trim().isNotEmpty) {
-                        _record(_text.text.trim());
-                      }
-                      setState(() {
-                        _q = i;
-                        _syncText();
-                      });
-                    },
-                  ),
-              ],
+            // Scrolls when long modules or large text outgrow the sheet.
+            Flexible(
+              child: SingleChildScrollView(
+                child: Wrap(
+                  spacing: 8,
+                  runSpacing: 8,
+                  children: [
+                    for (var i = 0; i < _qs.length; i++)
+                      _NavChip(
+                        number: i + 1,
+                        answered: _answers.containsKey(_qs[i].id),
+                        flagged: _flagged.contains(_qs[i].id),
+                        current: i == _q,
+                        onTap: () {
+                          Navigator.pop(ctx);
+                          if (_question.type.isStudentProduced &&
+                              _text.text.trim().isNotEmpty) {
+                            _record(_text.text.trim());
+                          }
+                          setState(() {
+                            _q = i;
+                            _syncText();
+                          });
+                        },
+                      ),
+                  ],
+                ),
+              ),
             ),
             Gap.m,
             FilledButton(
@@ -554,6 +562,7 @@ class _NavChip extends StatelessWidget {
         : answered
         ? scheme.primaryContainer
         : scheme.surfaceContainerHighest;
+    final side = max(48.0, MediaQuery.textScalerOf(context).scale(14) + 24);
     final state = [
       if (current) 'current',
       answered ? 'answered' : 'not answered',
@@ -568,7 +577,9 @@ class _NavChip extends StatelessWidget {
         onTap: onTap,
         borderRadius: BorderRadius.circular(8),
         child: Container(
-          constraints: const BoxConstraints(minWidth: 48, minHeight: 48),
+          // At least 48dp (touch target), growing with large text.
+          width: side,
+          height: side,
           alignment: Alignment.center,
           decoration: BoxDecoration(
             color: bg,

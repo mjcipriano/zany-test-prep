@@ -69,6 +69,9 @@ MemoryStore a11yStore({
   return store;
 }
 
+/// A fresh install (onboarding not done yet).
+MemoryStore a11yOnboardingStore() => MemoryStore();
+
 /// Pumps the whole app on a 360x780 phone at [textScale].
 Future<void> pumpPhone(
   WidgetTester tester, {
@@ -123,6 +126,65 @@ Future<void> startQuiz(WidgetTester tester) async {
     await tester.tap(find.text('Start'));
     await tester.pumpAndSettle();
   }
+}
+
+/// Scrolls every vertical scrollable on screen to its end and back, so
+/// lazily built rows are laid out (and any overflow in them is reported).
+Future<void> scrollThrough(WidgetTester tester) async {
+  final states = tester
+      .stateList<ScrollableState>(find.byType(Scrollable))
+      .toList();
+  for (final s in states) {
+    if (!s.mounted || s.position.axis != Axis.vertical) continue;
+    final max = s.position.maxScrollExtent;
+    for (var y = 0.0; y <= max; y += 300) {
+      s.position.jumpTo(y);
+      await tester.pump();
+    }
+    if (s.mounted) s.position.jumpTo(0);
+    await tester.pump();
+  }
+}
+
+/// Scrolls the question until choice "A" is on screen and taps it. Returns
+/// false when the question has no choices (a grid-in).
+Future<bool> tapChoiceA(WidgetTester tester) async {
+  if (find.byType(TextField).evaluate().isNotEmpty) return false;
+  final scrollable = find.byType(Scrollable).first;
+  for (
+    var i = 0;
+    i < 40 && find.text('A').hitTestable().evaluate().isEmpty;
+    i++
+  ) {
+    await tester.drag(scrollable, const Offset(0, -150));
+    await tester.pumpAndSettle();
+  }
+  await tester.tap(find.text('A').hitTestable().first);
+  await tester.pumpAndSettle();
+  return true;
+}
+
+/// Answers the visible lesson question (choice A, or "1" for a grid-in) and
+/// taps Check.
+Future<void> answerAndCheck(WidgetTester tester) async {
+  if (!await tapChoiceA(tester)) {
+    await tester.enterText(find.byType(TextField).first, '1');
+    await tester.pump();
+  }
+  await tester.tap(find.text('Check'));
+  await tester.pumpAndSettle();
+}
+
+/// Opens the practice test and begins its first module.
+Future<void> beginTimedTest(WidgetTester tester) async {
+  await openRoute(tester, '/test');
+  await tester.scrollUntilVisible(
+    find.text('Begin test'),
+    200,
+    scrollable: find.byType(Scrollable).first,
+  );
+  await tester.tap(find.text('Begin test'));
+  await tester.pumpAndSettle();
 }
 
 String get _fontDir {
