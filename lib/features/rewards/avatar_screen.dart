@@ -289,6 +289,12 @@ String _slotLabel(String slot) => switch (slot) {
   _ => slot.replaceAll('_', ' '),
 };
 
+String _slotNoun(String slot) => switch (slot) {
+  'headwear' => 'a hat',
+  'eyewear' => 'glasses',
+  _ => 'one',
+};
+
 class _ItemRow extends ConsumerWidget {
   const _ItemRow({super.key, required this.item, required this.equippedSlot});
   final CatalogAsset item;
@@ -301,7 +307,21 @@ class _ItemRow extends ConsumerWidget {
     final controller = ref.read(appControllerProvider.notifier);
     // For an equipped side asset, show its current position; otherwise the
     // category (e.g. "headwear", "floating props").
-    final subtitle = _equipped && item.isSide
+    final data = ref.watch(appControllerProvider).valueOrNull;
+    final avatar = data == null
+        ? null
+        : ref
+              .read(rewardsServiceProvider)
+              .selectedAvatar(data.progress.game, data.catalog);
+    // The selected avatar's art may already wear this slot (a cap, glasses):
+    // the item stays equipped but is hidden on this avatar.
+    final hiddenByArt =
+        avatar != null &&
+        item.primarySlot != null &&
+        avatar.builtInSlots.contains(item.primarySlot);
+    final subtitle = hiddenByArt
+        ? '${avatar.name} already wears ${_slotNoun(item.primarySlot!)}'
+        : _equipped && item.isSide
         ? _slotLabel(equippedSlot!)
         : item.category.replaceAll('_', ' ');
     return Padding(

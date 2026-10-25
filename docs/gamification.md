@@ -148,7 +148,7 @@ zoom, equipped items listed underneath. Reached from the **Rewards** hub
 ### Avatar content pack
 
 Avatar/item/pet content comes from the external dataset repo
-`mjcipriano/zany-test-prep-avatars` (release **v3.1.0**), vendored under
+`mjcipriano/zany-test-prep-avatars` (release **v3.2.1**), vendored under
 `assets/avatar/` by `tools/sync_avatars.py`. The JSON catalog
 (`assets/avatar/manifest/avatar_catalog.json`) is the single source of truth and
 lists all 756 assets. The **full pack is bundled** (110 avatars, 376 items, 270 pets;
@@ -186,6 +186,13 @@ every fitted item on every avatar (masks below the eyes and over the mouth, glas
 centred on the eyes, earrings at ear height, nothing far outside the frame). The rigs
 are measured in the pack repo (`scripts/measure_face_rigs.py`, MediaPipe) and the fits
 come from `data/item_fit.json` there; see the pack's README_INTEGRATION.md.
+
+**Built-in items.** Some avatars' art already wears glasses (or a hat). The pack lists
+those slots in `built_in_slots` (`CatalogAsset.builtInSlots`); `equippedLayers` skips
+items equipped in such a slot, so a second pair is never stacked on top, and the
+customizer row explains "<avatar> already wears glasses". The item stays equipped and
+shows again on other avatars. Hat data from pack 3.2 (`width_floor` to cover big hair,
+`clip_avatar_above` to hide hair under the hat) is read too, ready for when hats return.
 
 **Side slots.** Pets and floating props share four side slots
 (`side_left_1/2`, `side_right_1/2`). Equipping fills the first free one; the

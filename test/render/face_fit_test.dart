@@ -130,7 +130,7 @@ void main() {
             0,
             size,
             size,
-          ).inflate(0.15 * size);
+          ).inflate(0.25 * size);
           expect(
             frame.contains(r.topLeft) && frame.contains(r.bottomRight),
             isTrue,
@@ -151,6 +151,73 @@ void main() {
       expect(hood.renderZ, greaterThan(-20)); // still above back auras
       expect(cap.renderZ, greaterThan(base.zIndex));
     });
+  });
+
+  group('hats and hair', () {
+    test('hats grow to cover big hair', () {
+      final cap = item('item_001_classic_cap');
+      final short = avatar('avatar_basic_001_nova_learner').faceRig!;
+      final curly = avatar('avatar_basic_008_kiki_quest').faceRig!;
+      final wShort = fittedRect(cap, 'headwear', 1, rig: short).width;
+      final wCurly = fittedRect(cap, 'headwear', 1, rig: curly).width;
+      expect(wCurly, greaterThan(wShort * 1.2));
+      expect(wCurly, greaterThanOrEqualTo(curly.widths['hair']!));
+    });
+
+    test('a cap hides the hair above its crown; crowns and hoods do not', () {
+      final cap = item('item_001_classic_cap');
+      final crown = item('item_030_galaxy_hood'); // drawn as a gem crown
+      final hood = item('item_016_calculator_cap'); // drawn as a hood
+      for (final a in catalog.avatars) {
+        final rig = a.faceRig!;
+        final r = fittedRect(cap, 'headwear', size, rig: rig);
+        final line = avatarClipTop([
+          EquippedLayer(null, a),
+          EquippedLayer('headwear', cap),
+        ], size);
+        expect(line, greaterThan(r.top), reason: a.id);
+        expect(line, lessThan(r.top + r.height / 2), reason: a.id);
+        expect(line, lessThan(rig.points['brow']!.y * size), reason: a.id);
+        for (final other in [crown, hood]) {
+          expect(
+            avatarClipTop([
+              EquippedLayer(null, a),
+              EquippedLayer('headwear', other),
+            ], size),
+            0,
+          );
+        }
+      }
+    });
+
+    test('avatars whose art wears a hat or glasses hide that slot', () {
+      final capped = avatar('avatar_advanced_034_vocab_knight'); // beanie
+      final specs = avatar('avatar_advanced_007_algebra_dragon'); // glasses
+      expect(capped.builtInSlots, ['headwear']);
+      expect(specs.builtInSlots, ['eyewear']);
+      expect(
+        catalog.avatars.where((a) => a.builtInSlots.isNotEmpty).length,
+        13,
+      );
+    });
+  });
+
+  testWidgets('a cap clips the hair above it in the preview', (tester) async {
+    final a = avatar('avatar_basic_008_kiki_quest');
+    Future<void> pump(List<EquippedLayer> layers) => tester.pumpWidget(
+      MaterialApp(
+        home: Center(
+          child: AvatarPreview(layers: layers, size: size, animate: false),
+        ),
+      ),
+    );
+    await pump([EquippedLayer(null, a)]);
+    expect(find.byKey(const Key('avatar-hat-hair-clip')), findsNothing);
+    await pump([
+      EquippedLayer(null, a),
+      EquippedLayer('headwear', item('item_001_classic_cap')),
+    ]);
+    expect(find.byKey(const Key('avatar-hat-hair-clip')), findsOneWidget);
   });
 
   group('faceFitRect maths', () {

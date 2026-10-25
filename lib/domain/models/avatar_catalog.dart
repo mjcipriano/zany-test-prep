@@ -102,6 +102,9 @@ class ItemFit {
     required this.widthRef,
     required this.width,
     this.behind = false,
+    this.widthFloorRef,
+    this.widthFloor,
+    this.clipAvatarAbove,
   });
 
   final String kind;
@@ -110,6 +113,15 @@ class ItemFit {
   final String widthRef;
   final double width;
   final bool behind;
+
+  /// Hats are at least [widthFloor] × the rig's [widthFloorRef] width (the
+  /// `hair` width) so they cover big hair instead of perching on it.
+  final String? widthFloorRef;
+  final double? widthFloor;
+
+  /// "Hat hair": hide the avatar above `top + clipAvatarAbove × height` of this
+  /// item — the hair that would be squashed under the hat.
+  final double? clipAvatarAbove;
 
   static ItemFit? fromJson(Object? raw) {
     if (raw is! Map) return null;
@@ -127,6 +139,9 @@ class ItemFit {
       widthRef: widthRef,
       width: width.toDouble(),
       behind: j['behind'] == true,
+      widthFloorRef: (j['width_floor'] as Map?)?['ref']?.toString(),
+      widthFloor: ((j['width_floor'] as Map?)?['width'] as num?)?.toDouble(),
+      clipAvatarAbove: (j['clip_avatar_above'] as num?)?.toDouble(),
     );
   }
 }
@@ -194,6 +209,7 @@ class CatalogAsset {
     this.tags = const [],
     this.faceRig,
     this.fit,
+    this.builtInSlots = const [],
   });
 
   final String id;
@@ -232,6 +248,10 @@ class CatalogAsset {
 
   /// Head/face/ear items only: how the item hangs on an avatar's [FaceRig].
   final ItemFit? fit;
+
+  /// Avatars only: worn slots the art already fills (it wears a cap or
+  /// glasses). Items equipped in these slots are hidden on this avatar.
+  final List<String> builtInSlots;
 
   /// Draw order: items fitted [ItemFit.behind] the avatar (hoods, the headset)
   /// sit just behind it — in front of auras and frames, under the avatar.
@@ -328,6 +348,9 @@ class CatalogAsset {
           .toList(),
       faceRig: FaceRig.fromJson(j['face_rig']),
       fit: ItemFit.fromJson(j['fit']),
+      builtInSlots: ((j['built_in_slots'] as List?) ?? const [])
+          .map((e) => e.toString())
+          .toList(),
     );
   }
 }
