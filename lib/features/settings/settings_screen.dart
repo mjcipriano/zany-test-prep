@@ -175,7 +175,7 @@ class SettingsScreen extends ConsumerWidget {
                     contentPadding: EdgeInsets.zero,
                     leading: const Icon(Icons.dataset_rounded),
                     title: const Text('Content version'),
-                    trailing: Text(data.bundle.exam.contentVersion),
+                    trailing: Text(data.bundle.exam.contentLabel),
                   ),
                 ),
               ],

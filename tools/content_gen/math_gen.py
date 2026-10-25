@@ -5315,7 +5315,11 @@ def q_intercepts(rng, d):
             prompt = f"A parabola in the xy-plane has x-intercepts at x = {_m(r1)} and x = {_m(r2)}. What is the equation of its axis of symmetry?"
             mid = Fraction(r1 + r2, 2)
             correct = f"x = {num_str(mid)}"
-            ds = [(f"x = {num_str(mid * 2)}", "The axis is halfway between the intercepts: divide by 2."), (f"y = {num_str(mid)}", "The axis of symmetry of y = ax² + … is a vertical line x = h."), (f"x = {num_str(-mid)}" if mid else f"x = {num_str(mid + 1)}", "Sign slip."), (f"x = {num_str(Fraction(r2 - r1, 2))}", "Average the intercepts; don't halve their difference.")]
+            ds = [(f"x = {num_str(mid * 2)}", "The axis is halfway between the intercepts: divide by 2."), (f"y = {num_str(mid)}", "The axis of symmetry of y = ax² + … is a vertical line x = h."), (f"x = {num_str(-mid)}" if mid else f"x = {num_str(mid + 1)}", "Sign slip."), (f"x = {num_str(Fraction(r2 - r1, 2))}", "Average the intercepts; don't halve their difference."),
+                  # The intercepts themselves are never the midpoint, so these
+                  # keep enough distinct options even when the axis is x = 0.
+                  (f"x = {_m(r1)}", "That is one x-intercept; the axis is midway between the two."),
+                  (f"x = {_m(r2)}", "That is one x-intercept; the axis is midway between the two.")]
             expl = f"The axis of symmetry passes midway between the x-intercepts: x = ({_m(r1)} + {_m(r2)})/2 = {num_str(mid)}."
             return _text_mc(rng, prompt, correct, ds, subskill="vertex", explanation=expl, tags=["quadratics", "intercepts", "symmetry"], est=85, verify=correct)
         if kind == "vertex_from_intercepts":

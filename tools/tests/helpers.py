@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import json
 import random
+import zlib
 import re
 import sys
 from pathlib import Path
@@ -111,7 +112,9 @@ def check_family_table(testcase, table, *, samples=25, min_families=1):
     for skill, by_diff in table.items():
         for diff in DIFFICULTIES:
             for fn in by_diff.get(diff, []):
-                bodies = sample_family(fn, diff, samples, seed=hash((skill, diff)) & 0xFFFF)
+                # crc32, not hash(): str hashes are randomised per process, which
+                # made each test run exercise different draws (flaky failures).
+                bodies = sample_family(fn, diff, samples, seed=zlib.crc32(f"{skill}/{diff}".encode()) & 0xFFFF)
                 for i, b in enumerate(bodies):
                     assert_valid_body(testcase, b, f"{skill}/{diff}/{registry.family_name(fn)}#{i}")
                     testcase.assertIn(f"family:{registry.family_name(fn)}", b["tags"])

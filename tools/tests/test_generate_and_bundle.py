@@ -176,3 +176,63 @@ class BundleToolTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class ContentVersionLockTests(unittest.TestCase):
+    """build_bundle.py must refuse content changes without a content_version bump."""
+
+    def setUp(self):
+        self.tmp = Path(tempfile.mkdtemp())
+        self.exam_dir = self.tmp / "toy"
+        self.exam_dir.mkdir()
+        (self.exam_dir / "exam.yaml").write_text(
+            'exam_id: toy\n# a comment that must survive\ncontent_version: "2.1.0"   # note\n')
+
+    def tearDown(self):
+        import shutil
+        shutil.rmtree(self.tmp, ignore_errors=True)
+
+    def _bundle(self, prompt="p1", version="2.1.0"):
+        return {"schema_version": 1, "exam": {"exam_id": "toy", "content_version": version},
+                "skills": {"domains": []}, "lessons": [], "questions": [{"prompt": prompt}]}
+
+    def test_fingerprint_ignores_version_but_tracks_content(self):
+        fp = bundle_tool.content_fingerprint
+        self.assertEqual(fp(self._bundle(version="1.0.0")), fp(self._bundle(version="9.9.9")))
+        self.assertNotEqual(fp(self._bundle("p1")), fp(self._bundle("p2")))
+        b = self._bundle()
+        b["exam"]["content_fingerprint"] = "anything"
+        self.assertEqual(fp(b), fp(self._bundle()))
+
+    def test_bump_version(self):
+        self.assertEqual(bundle_tool.bump_version("2.1.0"), "2.2.0")
+        self.assertEqual(bundle_tool.bump_version("2.1.3", "patch"), "2.1.4")
+        self.assertEqual(bundle_tool.bump_version("2.1.3", "major"), "3.0.0")
+
+    def test_lock_lifecycle(self):
+        rec = bundle_tool.reconcile_lock
+        fp1 = bundle_tool.content_fingerprint(self._bundle("p1"))
+        fp2 = bundle_tool.content_fingerprint(self._bundle("p2"))
+        self.assertEqual(rec(self.exam_dir, "2.1.0", fp1), ("2.1.0", "created"))
+        self.assertEqual(rec(self.exam_dir, "2.1.0", fp1), ("2.1.0", "unchanged"))
+        # Content changed, version not bumped: refused, lock untouched.
+        with self.assertRaises(bundle_tool.ContentVersionError):
+            rec(self.exam_dir, "2.1.0", fp2)
+        lock = json.loads((self.exam_dir / "content.lock.json").read_text())
+        self.assertEqual(lock, {"content_version": "2.1.0", "fingerprint": fp1})
+        # --bump edits exam.yaml (keeping comments) and records the new state.
+        self.assertEqual(rec(self.exam_dir, "2.1.0", fp2, bump=True), ("2.2.0", "bumped"))
+        text = (self.exam_dir / "exam.yaml").read_text()
+        self.assertIn('content_version: "2.2.0"   # note', text)
+        self.assertIn("# a comment that must survive", text)
+        # A manual bump with new content is simply recorded.
+        fp3 = bundle_tool.content_fingerprint(self._bundle("p3"))
+        self.assertEqual(rec(self.exam_dir, "2.3.0", fp3), ("2.3.0", "recorded"))
+
+    def test_real_exams_are_locked_and_current(self):
+        for exam_dir in bundle_tool.exam_dirs():
+            lock = json.loads((exam_dir / "content.lock.json").read_text())
+            bundle = bundle_tool.build_exam(exam_dir.name)
+            self.assertEqual(lock["fingerprint"], bundle["exam"]["content_fingerprint"],
+                             f"{exam_dir.name}: content changed; run build_bundle.py --bump")
+            self.assertEqual(lock["content_version"], str(bundle["exam"]["content_version"]))

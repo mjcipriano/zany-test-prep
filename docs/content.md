@@ -39,7 +39,7 @@ exam_name: "SAT"
 display_name: "Digital SAT"
 tagline: "Reading, Writing & Math"   # shown in the exam picker
 enabled: true            # only enabled exams are surfaced in the UI / bundle list
-content_version: "1.0.0"
+content_version: "2.1.0"  # bumped whenever content changes; build_bundle.py enforces it
 domains: [reading_writing, math]
 difficulties: [easy, medium, hard]
 question_types: [multiple_choice, student_produced, passage_reading,

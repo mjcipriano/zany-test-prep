@@ -75,6 +75,26 @@ void main() {
     });
   });
 
+  group('content version label', () {
+    test('shows the version plus a short fingerprint', () {
+      final exam = Exam.fromJson({
+        'exam_id': 'sat',
+        'exam_name': 'SAT',
+        'content_version': '2.1.0',
+        'content_fingerprint': '413ec7ff14db4aac',
+      });
+      expect(exam.contentVersion, '2.1.0');
+      expect(exam.contentFingerprint, '413ec7ff14db4aac');
+      expect(exam.contentLabel, '2.1.0 · 413ec7f');
+    });
+
+    test('falls back to the bare version for older bundles', () {
+      final exam = Exam.fromJson({'exam_id': 'x', 'exam_name': 'X'});
+      expect(exam.contentVersion, '1.0.0');
+      expect(exam.contentLabel, '1.0.0');
+    });
+  });
+
   group('ExamInfo.fromJson', () {
     test('accepts a bare id (legacy exams.json)', () {
       final info = ExamInfo.fromJson('sat');

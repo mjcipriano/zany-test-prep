@@ -41,7 +41,7 @@ class AboutScreen extends ConsumerWidget {
                         vertical: 12,
                       ),
                       child: Text(
-                        'Content ${data.bundle.exam.contentVersion}',
+                        '${data.bundle.exam.name} content ${data.bundle.exam.contentLabel}',
                         style: Theme.of(context).textTheme.bodySmall,
                       ),
                     ),

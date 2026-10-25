@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
@@ -12,6 +13,16 @@ void main() {
     final bundle = await repo.loadBundle('sat');
 
     expect(bundle.exam.id, 'sat');
+    // Content is versioned: the bundle's version and fingerprint must match
+    // content/exams/sat/content.lock.json (tools/build_bundle.py keeps them in sync).
+    final lock =
+        jsonDecode(
+              File('content/exams/sat/content.lock.json').readAsStringSync(),
+            )
+            as Map<String, dynamic>;
+    expect(bundle.exam.contentVersion, lock['content_version']);
+    expect(bundle.exam.contentFingerprint, lock['fingerprint']);
+    expect(bundle.exam.contentVersion, isNot('1.0.0'));
     expect(bundle.lessons.length, greaterThanOrEqualTo(50));
     expect(bundle.questions.length, greaterThanOrEqualTo(1000));
 

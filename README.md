@@ -92,8 +92,9 @@ python tools/validate_content.py
 # Regenerate the canonical content JSON under content/exams/{sat,act}/
 python tools/generate_content.py            # or --exam act
 
-# Rebuild the app asset bundles (assets/content/*.bundle.json + exams.json)
-python tools/build_bundle.py
+# Rebuild the app asset bundles (assets/content/*.bundle.json + exams.json);
+# --bump raises content_version for any exam whose content changed
+python tools/build_bundle.py --bump
 
 # Python tooling + generator tests
 python -m unittest discover -s tools/tests -t .

@@ -42,7 +42,7 @@ void main() {
     await tester.tap(find.text('About this app'));
     await tester.pumpAndSettle();
 
-    final version = find.textContaining('Content ');
+    final version = find.textContaining(RegExp(r'^(SAT|ACT) content \d'));
     expect(version, findsOneWidget);
     final before = _xp(tester);
 
@@ -89,7 +89,7 @@ void main() {
     await _openSettings(tester);
     await tester.tap(find.text('About this app'));
     await tester.pumpAndSettle();
-    final version = find.textContaining('Content ');
+    final version = find.textContaining(RegExp(r'^(SAT|ACT) content \d'));
     final before = _xp(tester);
     for (var i = 0; i < kCheatTaps; i++) {
       // Press, wobble 30 px (enough for the list to claim a drag), release.
