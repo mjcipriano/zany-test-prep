@@ -115,7 +115,7 @@ def downscale_png(data: bytes, max_side: int) -> bytes:
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("--tag", default="v3.0.0", help="release tag/ref to pull")
+    ap.add_argument("--tag", default="v3.1.0", help="release tag/ref to pull")
     ap.add_argument("--local", help="path to a local checkout of the pack repo "
                                     "(copies files instead of downloading)")
     ap.add_argument("--max-side", type=int, default=384,

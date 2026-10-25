@@ -130,18 +130,29 @@ enough are banked (otherwise it resets and keeps them for a smaller future miss)
 (`xpBoostDay`); `GameService` multiplies that day's earnings while it's active.
 
 **Store** (`/store`) — spend `availableXp` on avatars, items, pets, or extra streak
-freezes. **Customizer** (`/avatar`) — pick an owned avatar and equip owned
-items/pets; the preview stacks layers by `zIndex`. Reached from the **Rewards** hub
+freezes. The Items tab has a scrolling row of **category chips** with counts (Hats,
+Glasses, Face, Ears, Neck, Badges, Auras, Frames, Floating); under "All" the grid is
+grouped into sections by category. The Pets tab has a **search box** (name or species,
+e.g. "fox") instead, since a pet's category is its rarity. Both have multi-select
+**rarity chips**, a **sort** menu (Cheapest, Priciest, Rarest first, A–Z) and **Hide
+owned** / **Affordable** toggles; a "Showing N of M · Clear" line and an empty state
+with **Clear filters**. The logic is pure Dart in `domain/services/catalog_filter.dart`
+(`CatalogFilter`); the bar is `features/rewards/catalog_filter_bar.dart`.
+**Customizer** (`/avatar`) — pick an owned avatar and equip owned items/pets; the
+same filter bar (with an **Equipped** toggle) appears once a list has 6+ entries.
+**Tap the avatar** (customizer or Rewards hub) to open it **full screen**
+(`avatar_fullscreen.dart`): as large as the screen allows, pinch or double-tap to
+zoom, equipped items listed underneath. Reached from the **Rewards** hub
 (`/rewards`), linked off the stats page and a home-screen gift button.
 
 ### Avatar content pack
 
 Avatar/item/pet content comes from the external dataset repo
-`mjcipriano/zany-test-prep-avatars` (release **v3.0.0**), vendored under
+`mjcipriano/zany-test-prep-avatars` (release **v3.1.0**), vendored under
 `assets/avatar/` by `tools/sync_avatars.py`. The JSON catalog
 (`assets/avatar/manifest/avatar_catalog.json`) is the single source of truth and
-lists all 412 assets. The **full pack is bundled** (110 avatars, 272 items, 30 pets;
-~51 MB) so everything works offline. To pull a newer pack release, re-run the script
+lists all 756 assets. The **full pack is bundled** (110 avatars, 376 items, 270 pets;
+~22 MB as WebP) so everything works offline. To pull a newer pack release, re-run the script
 (`tools/sync_avatars.py --tag <ver> --full`) — nothing hardcodes asset lists, so the
 store/customizer expand automatically. (Jacket/top overlays are filtered out via
 `kExcludedItemCategories` because they don't fit the varied avatar torsos.)
@@ -154,6 +165,23 @@ side pet/prop into the side slot it's equipped in (side assets provide per-slot
 targets via `targets_by_slot`). Layers render back-to-front by `z_index` (negative z
 — e.g. a background frame — sits behind the avatar). Render/pixel tests live in
 `test/render/overlap_test.dart`.
+
+**Face fit (`face_fit_v1`, pack v3.1.0).** The avatars' heads sit at different
+heights and sizes (eye lines vary by ~7% of the frame, face widths by ~1.4×), so one
+box per slot put masks over some avatars' eyes and earrings on cheeks. Every avatar
+now carries a measured `face_rig` (`FaceRig`: named points such as `eyes`, `brow`,
+`nose_bridge`, `mouth`, `ear_l/ear_r`, plus reference widths `face`, `eyes`, `mouth`,
+`ears`), and every head, face and ear item carries a `fit` (`ItemFit`: which rig point
+it hangs on, which point of the sprite goes there, and its width as a multiple of a rig
+width). `faceFitRect` places those items on the wearer's own face; `fittedRect` falls
+back to the target box when either side lacks the data. Hoods and the headset are
+`behind` items (`renderZ` = `kBehindAvatarZ`, under the avatar but above auras), and
+`sceneScale` shrinks the whole scene a little (bottom-anchored, never below 0.8) when a
+tall hat would otherwise be cut off at the top. `test/render/face_fit_test.dart` places
+every fitted item on every avatar (masks below the eyes and over the mouth, glasses
+centred on the eyes, earrings at ear height, nothing far outside the frame). The rigs
+are measured in the pack repo (`scripts/measure_face_rigs.py`, MediaPipe) and the fits
+come from `data/item_fit.json` there; see the pack's README_INTEGRATION.md.
 
 **Side slots.** Pets and floating props share four side slots
 (`side_left_1/2`, `side_right_1/2`). Equipping fills the first free one; the

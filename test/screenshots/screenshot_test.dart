@@ -84,6 +84,20 @@ Future<void> _pump(WidgetTester tester, MemoryStore store) async {
 
 Future<void> _shoot(WidgetTester tester, String name) async {
   await tester.pumpAndSettle();
+  // Decode every image on screen first (store tiles, avatar art), otherwise the
+  // capture shows empty tiles where the art has not loaded yet.
+  final providers = {
+    for (final img in tester.widgetList<Image>(find.byType(Image))) img.image,
+  };
+  if (providers.isNotEmpty) {
+    await tester.runAsync(() async {
+      final ctx = _boundaryKey.currentContext!;
+      for (final p in providers) {
+        await precacheImage(p, ctx);
+      }
+    });
+    await tester.pumpAndSettle();
+  }
   await tester.runAsync(() async {
     final boundary =
         _boundaryKey.currentContext!.findRenderObject()

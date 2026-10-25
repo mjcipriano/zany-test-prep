@@ -26,7 +26,7 @@ publishes the GitHub Release (see docs/release.md). Never push tags by hand — 
 sessions cannot, and the workflow does it for you. The avatar pack repo works the same
 way (`pubspec.yaml` version there → `vX.Y.Z` tag + release on merge).
 
-## Latest state (v2.1.3)
+## Latest state (v2.2.0)
 
 - **Two exams.** SAT and ACT. Onboarding offers every exam listed in
   `assets/content/exams.json`; Settings → Exam switches (XP/streak/rewards carry
@@ -46,18 +46,31 @@ way (`pubspec.yaml` version there → `vX.Y.Z` tag + release on merge).
   writing (`rw_gen.py`, `rw_extra.py`, ACT usage `rw_act.py`), reading passages
   (`passages*.py`, shared: 69 passages + 29 paired sets), science (`science_gen.py`: 40
   computed experiment scenarios + 21 authored viewpoint sets), teaching cards (`teaching*.py`).
-- **Avatar & pets:** pack `mjcipriano/zany-test-prep-avatars` **v3.0.0** vendored by
+- **Avatar & pets:** pack `mjcipriano/zany-test-prep-avatars` **v3.1.0** vendored by
   `tools/sync_avatars.py --full` (sprites downscaled to 384 px; `--local <checkout>`
   copies from disk). Pets level up while equipped (`PetEngine`) and evolve through
   Base → Shiny → Radiant stages (`RewardsService.evolvePet`); the store sells base
-  stages only. `AvatarPreview` fits sprites to their aspect ratio, rests headwear on a
-  brow line (`kHeadwearBrimLine`, except `floating` items), adds shadows/glow and an
-  idle float. Layout is guarded by `test/render/catalog_geometry_test.dart` (whole
-  catalog) and the pixel tests in `test/render/overlap_test.dart`.
-- **Quality:** `flutter analyze` clean; `dart format` clean; Flutter suite 198
+  stages only. `AvatarPreview` places head/face/ear items on each avatar's measured
+  face (`face_fit_v1`: `FaceRig` + `ItemFit`, `faceFitRect`), draws hoods/headset
+  behind the avatar, shrinks the scene when a tall hat would be clipped
+  (`sceneScale`), and falls back to target boxes (headwear on `kHeadwearBrimLine`)
+  for items without fit data; adds shadows/glow and an idle float. Tapping the
+  avatar opens it full screen (`avatar_fullscreen.dart`). Store and customizer
+  filter by category/rarity, search pets, and sort (`CatalogFilter`). Layout is
+  guarded by `test/render/face_fit_test.dart` (every fitted item on every avatar),
+  `test/render/catalog_geometry_test.dart` (whole catalog, fallback boxes) and the
+  pixel tests in `test/render/overlap_test.dart`.
+- **Quality:** `flutter analyze` clean; `dart format` clean; Flutter suite 257
   tests; Python tooling suite (`python -m unittest discover -s tools/tests -t .`) covers
   the registry, plans, orchestrator, validator, bundler and every generator family. CI
   runs all of it plus the validator for every exam and the bundle-freshness check.
+- **2.2.0:** avatar pack v3.1.0 (`face_fit_v1`): masks, earrings/earbuds, hats and
+  glasses fitted to each avatar's measured face (they used one box per slot and
+  misaligned on most avatars); stray lines removed from 24 glasses sprites and 10
+  avatars; earring pairs re-laid in proportion; 19 glasses renamed to match their art.
+  Full-screen avatar view (tap the avatar). Store/customizer category chips (grouped
+  "All" view), rarity chips, pet search, sort, Hide owned/Affordable/Equipped toggles.
+  Home app bar no longer overflows on 360dp phones.
 - **2.1.3:** content is versioned for real: `content_version` was stuck at 1.0.0;
   both exams are now 2.1.0, `build_bundle.py` fingerprints content into
   `content/exams/<exam>/content.lock.json` and fails (or `--bump`s) when content changes
@@ -97,15 +110,17 @@ flutter build apk --release               # release APK -> build/app/outputs/flu
 - `lib/app/` — `AppController` (Riverpod AsyncNotifier; bootstrap/lessons/review/profile/
   exam switch/rewards/pets/backup), `router.dart` (GoRouter), `app.dart`.
 - `lib/domain/models/` — exam (timed test + scoring), skill/lesson/question/content_bundle,
-  profile, progress (per-exam mastery keys, pet XP), avatar_catalog (evolution, variants),
+  profile, progress (per-exam mastery keys, pet XP), avatar_catalog (evolution, variants, face rig + item fit),
   backup, reward.
 - `lib/domain/services/` — answer_checker, leveling, streak, mastery, unlock, review,
   scoring, badges, game_service (applies a session: XP, streak, mastery, review, pets),
-  rewards_service (chests, store, equip, pets/evolution), reward_engine, pet_engine.
+  rewards_service (chests, store, equip, pets/evolution), reward_engine, pet_engine,
+  catalog_filter (store/customizer filtering and sorting).
 - `lib/data/` — `KeyValueStore` (shared_preferences + memory), content/progress/avatar repos.
 - `lib/features/` — onboarding (exam picker), home (one path per domain), lessons,
   practice (balanced sampling), review, diagnostic, test (timed test per exam),
-  progress (dashboard/skills), rewards (hub, chest, store, customizer + companions),
+  progress (dashboard/skills), rewards (hub, chest, store with category/rarity filters, customizer + companions,
+  full-screen avatar),
   settings (exam switch, backup, about).
 - Canonical content in `content/exams/{sat,act}/`; runtime bundles in `assets/content/`.
 - Docs: README + docs/ (architecture, content, content-authoring, gamification,
