@@ -217,6 +217,18 @@ def _table(caption, headers, rows):
                                        "rows": [[str(x) for x in r] for r in rows]}}
 
 
+def _dec(v):
+    """A terminating Fraction as a plain decimal (81/4 -> "20.25"); else num_str."""
+    if isinstance(v, Fraction) and v.denominator != 1:
+        d = v.denominator
+        for p in (2, 5):
+            while d % p == 0:
+                d //= p
+        if d == 1:
+            return f"{float(v):g}" if abs(v) < 10 ** 6 else num_str(v)
+    return num_str(v)
+
+
 def _money(v):
     if isinstance(v, Fraction):
         v = float(v)
@@ -1631,6 +1643,11 @@ def fn_undefined(rng, d):
               (a, "The numerator's constant doesn't make f undefined."),
               (0, "f(0) is a perfectly good value here.")]
     else:
+        if b == a:
+            # (x + a)/(x + a) is never 0 (x = −a is a hole), so use x − a below.
+            # The distractor values dedupe to the same set as before, so the
+            # random stream (and every later item) is unchanged.
+            b = -a
         prompt = (f"The function f is defined by f(x) = (x {_pm(a)})/(x {_pm(b)}). For what "
                   f"value of x is f(x) = 0?")
         val = -a
@@ -2009,10 +2026,12 @@ def ex_rules(rng, d):
                 m = rng.randint(3, 6)
             exp = m * n
             prompt = f"Which of the following is equal to ({base}^{m})^{n}?"
-            ds = _pow_distractors(rng, base, exp, [
-                (f"{base}^{m + n}", "A power of a power multiplies the exponents, not adds them."),
-                (f"{base * n}^{m}", "The base is unchanged by an outer exponent."),
-                (f"{base}^{m ** n}", "Multiply the exponents; don't raise one to the other.")])
+            specs = [(f"{base}^{m + n}", "A power of a power multiplies the exponents, not adds them."),
+                     (f"{base * n}^{m}", "The base is unchanged by an outer exponent."),
+                     (f"{base}^{m ** n}", "Multiply the exponents; don't raise one to the other.")]
+            # (2^5)^2: "4^5" is also 2^10, so it can't be a distractor.
+            specs = [sp for sp in specs if sp[0] != f"{base * n}^{m}" or (base * n) ** m != base ** exp]
+            ds = _pow_distractors(rng, base, exp, specs)
             expl = f"A power raised to a power multiplies exponents: ({base}^{m})^{n} = {base}^{exp}."
     else:
         m, n = rng.randint(2, 5), rng.randint(2, 4)
@@ -2381,7 +2400,9 @@ def poly_factor(rng, d):
         a = rng.randint(2, 7)
         b = rng.choice([v for v in range(-9, 10) if v and math.gcd(abs(v), a) == 1])
         expr = _poly_str([g * a, g * b, 0])
-        prompt = f"Which of the following is equivalent to {expr}?"
+        # Several choices (e.g. x(12x + 21)) are *equivalent*; only one is the
+        # complete factorization, so that is what the stem asks for.
+        prompt = f"Which of the following is the completely factored form of {expr}?"
         correct = f"{g}x({_lin(a, b)})"
         ds = [(f"{g}({_lin(a, b)})", "x is also a common factor of both terms."),
               (f"x({_lin(g * a, g * b)})", "Factor out the common numerical factor {0} as well.".format(g)),
@@ -2508,18 +2529,29 @@ def poly_product_coeff(rng, d):
 # --------------------------------------------------------------------------- #
 def rp_percent_of(rng, d):
     """What is P% of N (easy); 'a is what percent of b' (medium); successive % (hard)."""
+    easy_fmt = num_str
     if d == "easy":
         whole = rng.randint(20, 90) * 5
         pct = rng.choice([5, 10, 15, 20, 25, 30, 40, 60, 75, 80])
-        val = whole * pct // 100
+        val = Fraction(whole * pct, 100)
+        if val.denominator == 1:
+            val = int(val)  # keep ints as ints (distractor padding treats them differently)
         ctx = rng.choice([f"What is {pct}% of {whole}?",
                           f"A store has {whole} items in stock, and {pct}% of them are on sale. How many items are on sale?",
                           f"Of the {whole} students at a school, {pct}% ride the bus. How many students ride the bus?"])
-        expl = f"{pct}% of {whole} = ({pct}/100)·{whole} = {val}."
+        if isinstance(val, Fraction):
+            # 5% of 405 is 20.25: not a count of items/students, so ask it plainly
+            # and key the exact value (it used to be truncated to 20).
+            ctx = f"What is {pct}% of {whole}?"
+            easy_fmt = _dec
+        expl = f"{pct}% of {whole} = ({pct}/100)·{whole} = {easy_fmt(val)}."
         ds = [(whole * pct, "You forgot to divide by 100."),
               (whole - val, "This is the remaining part, not the part asked for."),
               (Fraction(whole, pct), "Multiply by the percent over 100; don't divide by the percent."),
               (val + whole // 20 if whole // 20 else val + 1, "Arithmetic slip; recompute (pct/100)·whole.")]
+        if easy_fmt is _dec and Fraction(whole, pct) == val:
+            # At 10%, whole ÷ pct IS the answer; offer a different slip instead.
+            ds[2] = (val * 10, "Divide by 100, not by 10.")
         prompt = ctx
     elif d == "medium":
         whole = rng.randint(8, 40) * 5
@@ -2543,12 +2575,14 @@ def rp_percent_of(rng, d):
         P = rng.randint(4, 40) * 10
         d1 = rng.choice([10, 20, 25, 30, 40, 50])
         d2 = rng.choice([10, 20, 25, 50])
-        after1 = P * (100 - d1) // 100
+        after1 = Fraction(P * (100 - d1), 100)  # 370 at 25% off is 277.5, not 277
+        if after1.denominator == 1:
+            after1 = int(after1)
         val = Fraction(after1 * (100 - d2), 100)
         prompt = (f"A jacket priced at ${P} is marked down {d1}%, and a week later the sale "
                   f"price is reduced by an additional {d2}%. What is the final price, in dollars?")
-        expl = (f"First markdown: {P}·(1 − {d1}/100) = {after1}. Second: {after1}·(1 − {d2}/100) = "
-                f"{num_str(val)}.")
+        expl = (f"First markdown: {P}·(1 − {d1}/100) = {_dec(after1)}. Second: {_dec(after1)}·(1 − {d2}/100) = "
+                f"{_dec(val)}.")
         ds = [(Fraction(P * (100 - d1 - d2), 100), "Successive discounts don't simply add; apply the second to the reduced price."),
               (after1, "That is the price after only the first markdown."),
               (Fraction(P * (100 - d2), 100), "Apply both discounts, in order."),
@@ -2557,7 +2591,7 @@ def rp_percent_of(rng, d):
                            tags=["percent", "successive"], fmt=lambda v: _money(v), est=95,
                            qtype="multi_step_math", verify=f"final={num_str(val)}")
     return _numeric_mc(rng, prompt, val, ds, subskill="percent_change", explanation=expl,
-                       tags=["percent"], est=65, verify=f"{pct}% of {whole}={val}")
+                       tags=["percent"], est=65, fmt=easy_fmt, verify=f"{pct}% of {whole}={easy_fmt(val)}")
 
 
 def rp_percent_change(rng, d):
@@ -2735,9 +2769,9 @@ def rp_gridin(rng, d):
     if d == "easy":
         whole = rng.randint(20, 90) * 5
         pct = rng.choice([5, 10, 15, 20, 25, 30, 40, 60, 75, 80])
-        val = whole * pct // 100
+        val = Fraction(whole * pct, 100)  # exact: 25% of 275 is 68.75, not 68
         prompt = f"What is {pct}% of {whole}?"
-        expl = f"({pct}/100)·{whole} = {val}."
+        expl = f"({pct}/100)·{whole} = {_dec(val)}."
     elif d == "medium":
         old = rng.randint(2, 50) * 20
         pct = rng.choice([5, 10, 15, 20, 25, 30, 40, 50])
@@ -2753,7 +2787,7 @@ def rp_gridin(rng, d):
         val = original
         expl = f"{new} = original × (1 − {pct}/100), so original = {new}/{(100 - pct) / 100} = {original}."
     return _spr_num(prompt, val, subskill="percent_change", explanation=expl,
-                    tags=["percent", "grid-in"], est=75, verify=f"val={val}")
+                    tags=["percent", "grid-in"], est=75, verify=f"val={num_str(val)}")
 
 
 rp_gridin.sat_only = True
@@ -2969,7 +3003,8 @@ def pr_recipe(rng, d):
     x = Fraction(v0 * (c1 - c0), 100 - c1)
     prompt = (f"A {v0}-liter solution is {c0}% acid. How many liters of pure acid must be "
               f"added to make the solution {c1}% acid?")
-    expl = (f"Acid: {c0}% of {v0} = {c0 * v0 // 100} L. Adding x liters: ({c0 * v0 // 100} + x)/({v0} + x) "
+    acid = f"{c0 * v0 / 100:g}"
+    expl = (f"Acid: {c0}% of {v0} = {acid} L. Adding x liters: ({acid} + x)/({v0} + x) "
             f"= {c1}/100, so x = {num_str(x)}.")
     ds = [(Fraction(v0 * (c1 - c0), 100), "The added acid also increases the total volume."),
           (Fraction(v0 * c1, 100) - Fraction(v0 * c0, 100), "Account for the change in total volume."),
@@ -3599,6 +3634,10 @@ def st_change_effect(rng, d):
               (Fraction(s, n - 1), "Subtract the removed value from the total as well."),
               (Fraction(sum(rest), n - 1) + (1 if which == "least" else -1), "Arithmetic slip; recompute the new total.")]
     fmt = lambda v: num_str(round(float(v), 2)) if isinstance(v, Fraction) and v.denominator not in (1, 2, 4, 5, 10) else num_str(v)
+    if fmt(val) != num_str(val):
+        # The key is shown rounded (94/3 -> 31.33), so the stem must ask for that.
+        prompt += " (Round to the nearest hundredth.)"
+        expl += f" ≈ {fmt(val)}."
     return _numeric_mc(rng, prompt, val, ds, subskill="mean_median_mode", explanation=expl,
                        tags=["statistics", "mean", "change"], est=85, fmt=fmt,
                        verify=f"val={num_str(val)}")
@@ -3787,11 +3826,13 @@ def pb_expected(rng, d):
     if d == "easy":
         n = rng.choice([50, 100, 150, 200, 250, 300, 400, 500, 600, 750, 800, 1000, 1200, 1500, 2000])
         pct = rng.choice([4, 5, 6, 8, 10, 12, 15, 18, 20, 22, 25, 30, 35, 40, 45, 60, 65, 75, 80])
-        val = n * pct // 100
+        exact = Fraction(n * pct, 100)
+        val = math.floor(exact + Fraction(1, 2))  # "about how many": nearest whole (337.5 -> 338)
         prompt = (f"A survey found that {pct}% of a town's residents use public transit. If {n} "
                   f"residents are selected at random, about how many would be expected to use "
                   f"public transit?")
-        expl = f"Expected count = probability × sample size = {pct}/100 × {n} = {val}."
+        expl = f"Expected count = probability × sample size = {pct}/100 × {n} = {_dec(exact)}"
+        expl += "." if exact == val else f", or about {val}."
         ds = [(n - val, "That is the expected number who do NOT use transit."),
               (pct, "Multiply the percent by the sample size."),
               (n * pct, "Divide by 100 when using a percent."),
@@ -5001,8 +5042,25 @@ def li_not_solution(rng, d):
     sol = (f"x {sym} {_m(x0)}" if d != "hard" else f"{_m(lo)} ≤ x < {_m(hi)}")
     expl = f"Solving gives {sol}. The value {_m(bad)} does not satisfy this, while the other choices do."
     ds = [(x, f"x = {_m(x)} satisfies {sol}.") for x in picks]
+
+    def pad_with_solutions(ds, n):
+        # A narrow interval has too few integer solutions; generic near-miss
+        # padding could add a second non-solution, so top up with halves that
+        # do satisfy the inequality. The generic padding still runs (result
+        # discarded) so the exam's random stream, and every later item, is
+        # unchanged.
+        pad_numeric_distractors(rng, bad, list(ds), n)
+        have = {t for t, _ in ds}
+        for k in range(1, 40):
+            x = Fraction(x0 - 10, 1) + Fraction(k, 2)
+            if len(ds) >= n:
+                break
+            if x.denominator == 2 and ok(x) and num_str(x) not in have:
+                ds.append((num_str(x), f"x = {num_str(x)} satisfies {sol}."))
+        return ds
     return _numeric_mc(rng, prompt, bad, ds, subskill="one_variable", explanation=expl,
-                       tags=["algebra", "inequality", "not-solution"], est=80, verify=f"solution {sol.replace(chr(8722), '-')}; not {bad}")
+                       tags=["algebra", "inequality", "not-solution"], est=80, pad=pad_with_solutions,
+                       verify=f"solution {sol.replace(chr(8722), '-')}; not {bad}")
 
 
 def li_compound(rng, d):
@@ -5798,6 +5856,10 @@ def st_outlier_effect(rng, d):
         expl = f"New mean = ({s} + {out})/{n + 1} = {num_str(new_mean)}; increase = {num_str(new_mean)} − {mean} = {num_str(val)}."
         ds = [(out - mean, "The outlier's excess is shared among all {0} values.".format(n + 1)), (Fraction(out, n + 1), "Compute the new mean, then subtract the old mean."), (new_mean, "That is the new mean, not the increase."), (Fraction(out - mean, n), "Divide by the new count {0}.".format(n + 1))]
         fmt = lambda v: num_str(round(float(v), 2))
+        if fmt(val) != num_str(val):
+            # The key is shown rounded (43/6 -> 7.17), so the stem must ask for that.
+            prompt += " (Round to the nearest hundredth.)"
+            expl += f" ≈ {fmt(val)}."
         return _numeric_mc(rng, prompt, val, ds, subskill="mean_median_mode", explanation=expl, tags=["statistics", "outlier"], est=90, fmt=fmt, verify=f"inc={num_str(val)}")
     prompt = f"A data set of {n} values, {shown}, is extended by one value x. For what value of x will the mean of the new data set equal {mean + rng.randint(2, 6)}?"
     target = int(prompt.split("equal ")[1].rstrip("?"))

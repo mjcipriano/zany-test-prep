@@ -1124,10 +1124,13 @@ def dr_lookup_value(rng, difficulty):
     nb = [j for j in (i - 1, i + 1) if 0 <= j < n]
     if len(nb) == 2:
         avg = (col["vals"][nb[0]] + col["vals"][nb[1]]) / 2
+    # On a linear column the neighbours' average IS the right value (98.0 vs
+    # 98): only offer it as a distractor when it differs.
+    if len(nb) == 2 and abs(avg - col["vals"][i]) > 1e-9:
         distractors.append((_vu(f"{avg:.{ds['dec'] + 1}f}", yu),
                             f"This averages the rows above and below ({_vu(ds['xstrs'][nb[0]], xu)} and "
                             f"{_vu(ds['xstrs'][nb[1]], xu)}) instead of reading the row for {_vu(x, xu)}."))
-    else:
+    elif len(nb) == 1:
         j = nb[0]
         avg = (col["vals"][i] + col["vals"][j]) / 2
         distractors.append((_vu(f"{avg:.{ds['dec'] + 1}f}", yu),
