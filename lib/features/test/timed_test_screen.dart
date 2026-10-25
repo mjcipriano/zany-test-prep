@@ -22,27 +22,50 @@ enum _Phase { intro, module, breakScreen, results }
 /// exam.yaml: SAT = 2 Reading & Writing + 2 Math modules; ACT = English, Math,
 /// Reading, Science). Each module draws fresh questions from its domain; a
 /// module is simply shorter when the domain runs out of questions.
+///
+/// Long passage sets (questions sharing a `passage-set:` tag) are dealt whole
+/// and first, in their authored order, so the ACT Reading module is built like
+/// the real one: four passages with nine questions each. Sets that do not fit
+/// the remaining room are left for later modules; single questions fill the rest.
 List<List<Question>> dealTestModules(
   ContentBundle bundle,
   List<TestModule> modules,
   Random rng,
 ) {
-  final byDomain = <String, List<Question>>{};
+  final singles = <String, List<Question>>{};
+  final sets = <String, Map<String, List<Question>>>{};
   for (final q in bundle.questions) {
-    byDomain.putIfAbsent(q.domain, () => []).add(q);
+    final setId = q.passageSetId;
+    if (setId == null) {
+      singles.putIfAbsent(q.domain, () => []).add(q);
+    } else {
+      sets.putIfAbsent(q.domain, () => {}).putIfAbsent(setId, () => []).add(q);
+    }
   }
-  for (final list in byDomain.values) {
+  for (final list in singles.values) {
     list.shuffle(rng);
   }
+  final setQueues = {
+    for (final e in sets.entries) e.key: e.value.values.toList()..shuffle(rng),
+  };
   final cursor = <String, int>{};
   return [
     for (final m in modules)
       () {
-        final src = byDomain[m.domain] ?? const <Question>[];
+        final out = <Question>[];
+        final queue = setQueues[m.domain] ?? <List<Question>>[];
+        for (var i = 0; i < queue.length && out.length < m.count;) {
+          if (queue[i].length <= m.count - out.length) {
+            out.addAll(queue.removeAt(i));
+          } else {
+            i++;
+          }
+        }
+        final src = singles[m.domain] ?? const <Question>[];
         final start = (cursor[m.domain] ?? 0).clamp(0, src.length);
-        final end = (start + m.count).clamp(0, src.length);
+        final end = (start + m.count - out.length).clamp(0, src.length);
         cursor[m.domain] = end;
-        return src.sublist(start, end);
+        return [...out, ...src.sublist(start, end)];
       }(),
   ];
 }

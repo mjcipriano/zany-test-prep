@@ -70,6 +70,9 @@ class ExamPlan:
     accept_body: Callable[[dict, str], bool] = lambda body, domain: True
     # minimum items per lesson (schema requires 8)
     min_lesson_items: int = 8
+    # emit the long passage sets (passages_long) into the practice bank, one
+    # file per set, each item filed under the reading skill it trains
+    long_passage_sets: bool = False
 
     def option_count_for(self, domain: str) -> int:
         return self.option_count.get(domain, self.default_option_count)
@@ -297,6 +300,7 @@ ACT_PLAN = ExamPlan(
     transforms=[act_no_change],
     exclude_family=_act_exclude,
     accept_body=_act_accept,
+    long_passage_sets=True,
 )
 
 PLANS = {"sat": SAT_PLAN, "act": ACT_PLAN}

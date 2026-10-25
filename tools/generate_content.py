@@ -256,6 +256,34 @@ class Builder:
                     idx += 1
                 if qs:
                     self.bank_files[f"{lid}-bank"] = (domain, qs)
+        if self.plan.long_passage_sets:
+            self.build_passage_set_bank()
+
+    def build_passage_set_bank(self):
+        """One bank file per long passage set (passages_long), questions kept in
+        authored order and filed under the reading skill each one trains (the
+        lesson of that skill at the set's difficulty). Uses its own seeded RNG so
+        adding sets never reshuffles the rest of the bank."""
+        from content_gen import passages_long
+        rng = random.Random(self.plan.seed + 1)
+        lesson_ids = {lesson["lesson_id"] for lesson in self.lessons}
+        util.set_option_count(self.plan.option_count_for("reading"))
+        for pset in passages_long.build_passage_sets(rng):
+            qs, domain = [], None
+            for i, (skill, body) in enumerate(pset["questions"], 1):
+                domain, _ = self.skill_index[skill]
+                lid = self.lesson_id(SkillSpec(skill), pset["difficulty"])
+                if lid not in lesson_ids:
+                    raise RuntimeError(f"passage set {pset['id']}: no lesson {lid} to file it under")
+                for tf in self.plan.transforms:
+                    body = tf(body, domain, rng)
+                sig = item_signature(body)
+                if sig in self.seen:
+                    raise RuntimeError(f"passage set {pset['id']}: duplicate item #{i}")
+                self.seen.add(sig)
+                stem = f"{self.plan.exam_id}-{self.plan.domain_slug[domain]}-passage-{pset['id']}"
+                qs.append(self.finalize(body, skill, lid, f"{stem}-q{i:02d}", pset["difficulty"]))
+            self.bank_files[stem] = (domain, qs)
 
     # ---- output ----------------------------------------------------------
     def write(self):
