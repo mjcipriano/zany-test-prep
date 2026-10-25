@@ -1632,11 +1632,13 @@ def ap_angle_chase(rng, d):
         expl = f"Angles on a straight line sum to 180°: 180 − {a} − {b} = {c}°."
         ds = [(360 - a - b, "A straight angle is 180°, not 360°."), (a + b, "Subtract from 180."), (abs(a - b) if abs(a - b) != c else c + 10, "Subtract both from 180."), (c + 5, "Arithmetic slip.")]
     elif d == "medium":
-        p, q, r = rng.choice([(1, 2, 3), (2, 3, 4), (1, 3, 5), (2, 3, 7), (3, 4, 5), (1, 1, 2), (2, 2, 5), (1, 2, 6), (3, 5, 7), (4, 5, 9)])
+        triples = [(p, q, r) for p in range(1, 12) for q in range(p, 14) for r in range(q + 1, 20)
+                   if 360 % (p + q + r) == 0 and math.gcd(math.gcd(p, q), r) == 1 and p + q + r <= 36]
+        p, q, r = rng.choice(triples)
         k = 360 // (p + q + r)
-        if k * (p + q + r) != 360:
-            return ap_angle_chase(rng, d)
-        prompt = f"Three angles with a common vertex fill the full turn around that vertex, and their measures are in the ratio {p}:{q}:{r}. What is the measure of the largest angle?"
+        prompt = rng.choice([f"Three angles with a common vertex fill the full turn around that vertex, and their measures are in the ratio {p}:{q}:{r}. What is the measure of the largest angle?",
+                             f"Three angles meet at a point and together measure 360°. If their measures are in the ratio {p}:{q}:{r}, what is the measure of the largest angle?",
+                             f"The angles around a point are in the ratio {p}:{q}:{r}. What is the measure, in degrees, of the largest of the three angles?"])
         val = r * k
         expl = f"{p + q + r}x = 360 → x = {k}; largest = {r}·{k} = {val}°."
         ds = [(p * k, "That is the smallest angle."), (q * k, "That is the middle angle."), (r * 180 // (p + q + r), "Angles around a point sum to 360°, not 180°."), (k, "That is x, the common factor.")]
@@ -1748,7 +1750,7 @@ def lg_word(rng, d):
             prompt = f"Sound intensity relates to loudness by L = 10·log(I/I₀). How many times more intense is a {10 * b}-decibel sound than a {10 * a}-decibel sound?"
             val = 10 ** (b - a)
             expl = f"I/I₀ = 10^(L/10): 10^{b}/10^{a} = 10^{b - a} = {val}."
-        ds = [(b - a, "A difference of {0} on a log scale is a factor of 10^{0}.".format(b - a)), (10 * (b - a), "Each unit is a factor of 10, so the factor is 10^{0}, not 10·{0}.".format(b - a)), (Fraction(b, a), "The scale is logarithmic; don't divide the readings."), (10 ** (b - a + 1), "The exponent is the difference {0} − {1} = {2}.".format(b, a, b - a))]
+        ds = [(10 ** (b - a + 1), "The exponent is the difference {0} − {1} = {2}.".format(b, a, b - a)), (b - a, "A difference of {0} on a log scale is a factor of 10^{0}.".format(b - a)), (10 * (b - a), "Each unit is a factor of 10, so the factor is 10^{0}, not 10·{0}.".format(b - a)), (Fraction(b, a), "The scale is logarithmic; don't divide the readings.")]
     else:
         P = rng.choice([500, 1000, 1500, 2000, 2500, 4000, 5000, 8000])
         r = rng.choice([2, 3, 4, 5, 6, 7, 8, 9, 10, 12])

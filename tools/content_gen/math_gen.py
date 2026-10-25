@@ -4021,8 +4021,9 @@ def av_volume(rng, d):
         expl = f"Volume of a cube = edge³ = {s}³ = {val}."
         fig = {"type": "figure", "figure": {"kind": "box", "caption": "Cube",
                "labels": {"l": str(s), "w": str(s), "h": str(s)}}}
-        ds = [(s * s, "That is the area of one face."),
+        ds = [(s ** 3 + s * s, "Arithmetic slip; recompute s·s·s."),
               (6 * s * s, "That is the surface area."),
+              (s * s, "That is the area of one face."),
               (3 * s, "Multiply the three edges; don't add."),
               (12 * s, "That is the total edge length.")]
     elif d == "medium":
@@ -4099,10 +4100,10 @@ def av_composite(rng, d):
             prompt = (f"Every dimension of a {shape} is multiplied by {k}. The volume of the new "
                       f"{shape} is how many times the volume of the original?")
             expl = f"Volume depends on the cube of the lengths, so it scales by {k}³ = {val}."
-            ds = [(k * k, "The square applies to area; volume uses the cube."),
+            ds = [(k ** 3 + k, "Arithmetic slip."),
+                  (k * k, "The square applies to area; volume uses the cube."),
                   (k, "Volume scales by the cube of the length factor."),
-                  (3 * k, "Scale factor cubed, not tripled."),
-                  (k ** 3 + k, "Arithmetic slip.")]
+                  (3 * k, "Scale factor cubed, not tripled.")]
     return _numeric_mc(rng, prompt, val, ds, subskill="area" if d != "medium" else "volume",
                        explanation=expl, tags=["geometry", "composite"], est=85, verify=f"val={val}")
 
@@ -5053,8 +5054,8 @@ def li_interpret(rng, d):
         expl = f"{p}{var} is the variable cost, so {var} counts the {unit}: {correct}."
     elif d == "medium":
         prompt = f"{setup} The inequality {ineq} models the situation. Which of the following is the best interpretation of the number {f}?"
-        correct = f"the fixed cost, in dollars, that is paid regardless of the number of {unit}"
-        ds = [(f"the cost, in dollars, for each additional {unit[:-1]}", f"That describes the coefficient {p}."), (f"the greatest number of {unit} that can be afforded", f"That would be found by solving; it is {nmax}."), (f"the total amount, in dollars, that can be spent", f"That is the right side, {B}."), (f"the number of {unit} that cost ${f} in all", "The constant is a dollar amount, not a count.")]
+        correct = f"the fixed cost, in dollars, paid regardless of the number of {unit}"
+        ds = [(f"the additional cost, in dollars, for each {unit[:-1]} beyond the first", f"That describes the coefficient {p}."), (f"the greatest number of {unit} that can be afforded within the budget", f"That would be found by solving; it is {nmax}."), (f"the total amount, in dollars, that can be spent on the whole event", f"That is the right side, {B}."), (f"the number of {unit} whose combined cost is exactly ${f}", "The constant is a dollar amount, not a count.")]
         expl = f"The constant term is paid once no matter how many {unit}: {correct}."
     else:
         prompt = f"{setup} Based on the inequality {ineq}, what is the greatest number of {unit} possible?"
@@ -5375,7 +5376,7 @@ def ex_radical_ops(rng, d):
     num, den = a // g, k // g
     prompt = f"Which of the following is equivalent to {a}/√{k}?"
     correct = (f"{num}√{k}/{den}" if den != 1 else f"{num}√{k}") if num != 1 else (f"√{k}/{den}" if den != 1 else f"√{k}")
-    ds = [(f"{a}√{k}", "Multiplying top and bottom by √{0} leaves {0} in the denominator.".format(k)), (f"{a}/{k}", "√{0} is not {0}.".format(k)), (f"√{k}/{a}", "This inverts the fraction."), (f"{a}√{k}/{k * k}" if num != a or den != k * k else f"{a}√{k}/{k + 1}", "The denominator becomes √{0}·√{0} = {0}, not {1}.".format(k, k * k))]
+    ds = [(f"{a}√{k}/{k * k}" if num != a or den != k * k else f"{a}√{k}/{k + 1}", "The denominator becomes √{0}·√{0} = {0}, not {1}.".format(k, k * k)), (f"{a}√{k}", "Multiplying top and bottom by √{0} leaves {0} in the denominator.".format(k)), (f"{a}/{k}", "√{0} is not {0}.".format(k)), (f"√{k}/{a}", "This inverts the fraction.")]
     expl = f"Multiply numerator and denominator by √{k}: {a}√{k}/{k} = {correct}."
     return _text_mc(rng, prompt, correct, ds, subskill="radical_simplify", explanation=expl, tags=["radicals", "rationalize"], est=85, verify=correct)
 

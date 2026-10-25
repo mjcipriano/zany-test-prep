@@ -1365,11 +1365,11 @@ def ex_identify_type(rng, d):
                            f"A town's population is {n0} and {'grows' if up else 'shrinks'} by {pct}% per year",
                            f"A machine worth ${n0} {'gains' if up else 'loses'} {pct}% of its value each year"])
         prompt = f"{desc}. Which statement best describes the quantity over time?"
-        correct = f"It changes exponentially, because it is multiplied by {f:g} each year."
-        ds = [(f"It changes linearly, because it changes by {n0 * pct // 100} each year.", "A percent change is proportional to the current amount, so the yearly change is not constant."),
-              (f"It changes exponentially, because it changes by {n0 * pct // 100} each year.", "Exponential change is a constant factor, not a constant amount."),
-              (f"It changes linearly, because the percent is the same each year.", "A constant percent is a constant multiplier, which is exponential."),
-              (f"It does not change, because {pct}% is small.", "Any nonzero percent change compounds over time.")]
+        correct = f"It changes exponentially: it is multiplied by {f:g} each year."
+        ds = [(f"It changes linearly: it changes by exactly {n0 * pct // 100} every year.", "A percent change is proportional to the current amount, so the yearly change is not constant."),
+              (f"It changes exponentially: it changes by exactly {n0 * pct // 100} every year.", "Exponential change is a constant factor, not a constant amount."),
+              (f"It changes linearly: the same percent is applied every year.", "A constant percent is a constant multiplier, which is exponential."),
+              (f"It stays essentially constant, because {pct}% is a small change.", "Any nonzero percent change compounds over time.")]
         expl = f"A {pct}% {'increase' if up else 'decrease'} multiplies by {f:g} every year, so the model is exponential."
     else:
         xs = [0, 1, 2, 3]
