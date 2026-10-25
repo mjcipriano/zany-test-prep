@@ -21,7 +21,7 @@ Tier = Tuple[str, int]
 STD3: Tuple[Tier, ...] = (("easy", 20), ("medium", 20), ("hard", 20))
 SMALL3: Tuple[Tier, ...] = (("easy", 8), ("medium", 8), ("hard", 8))
 CONV3: Tuple[Tier, ...] = (("easy", 24), ("medium", 24), ("hard", 24))
-READ3: Tuple[Tier, ...] = (("easy", 8), ("medium", 8), ("hard", 8))
+READ3: Tuple[Tier, ...] = (("easy", 14), ("medium", 14), ("hard", 14))  # 69 authored passages
 MID3: Tuple[Tier, ...] = (("easy", 16), ("medium", 16), ("hard", 16))
 SYN3: Tuple[Tier, ...] = (("easy", 11), ("medium", 11), ("hard", 11))
 SCI3: Tuple[Tier, ...] = (("easy", 12), ("medium", 12), ("hard", 12))
@@ -203,7 +203,7 @@ ACT_MATH = [
     SkillSpec("ratios_percentages_units"), SkillSpec("proportions"),
 ]
 
-READ10: Tuple[Tier, ...] = (("easy", 10), ("medium", 10), ("hard", 10))
+READ10: Tuple[Tier, ...] = (("easy", 20), ("medium", 20), ("hard", 20))  # ACT: 69 passages, 73 cross-text items
 
 ACT_READING = [
     SkillSpec("main_idea", "reading", "main_idea", READ10),
