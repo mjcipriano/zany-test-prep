@@ -51,6 +51,20 @@ decides whether a run releases:
    requires pubspec/kAppVersion to match the tag.
 3. **Tag push.** Pushing `vX.Y.Z` still works where tag pushes are allowed.
 
+**Every release APK is checked before it is published.** The workflow runs the
+SDK's `zipalign -c` and `apksigner verify` (APK Signature Scheme v2 with the
+stable key), dumps the manifest with `aapt2`, and fails if the APK exceeds
+120 MB. It attaches `zany-test-prep-vX.Y.Z.apk.sha256` next to the APK so a
+phone download can be checked.
+
+**APK size.** Avatar art is vendored as WebP (lossy colour, lossless alpha) by
+`tools/sync_avatars.py`, which keeps the universal APK around 75 MB. Before that
+it was 152 MB, and phone downloads failed with "problem parsing the package".
+
+**Android developer verification.** `ownership-proof.yml` builds the signed
+"proof of ownership" APK that the Android Developer Console asks for when you
+register the package name. See [install.md](install.md).
+
 **Let CI do the release build — don't also upload one by hand.** A second
 manual upload would add a duplicate (and possibly differently-signed) asset.
 

@@ -117,6 +117,15 @@ flutter build apk --debug
 > bundle and fails if the committed `assets/content/` is stale, so always run
 > `python tools/build_bundle.py` and commit the result after changing content.
 
+## Installing on a phone
+
+Download the latest APK from
+[Releases](https://github.com/mjcipriano/zany-test-prep/releases/latest), let the
+download finish completely, then open it from **Files → Downloads**. See
+[docs/install.md](docs/install.md) for step-by-step instructions, an ADB
+alternative, troubleshooting (*"problem parsing the package"*), and the Android
+developer verification plan.
+
 ## Building & shipping an APK
 
 - **Local build:** `flutter build apk --release` produces
@@ -172,6 +181,7 @@ flutter build apk --debug
 | [docs/gamification.md](docs/gamification.md) | XP, levels, streaks, daily goals, mastery, review, badges, crowns — with formulas |
 | [docs/content-authoring.md](docs/content-authoring.md) | Question families, per-exam plans, adding a new exam (AP), the workflow |
 | [docs/release.md](docs/release.md) | GitHub Actions workflows, cutting a private release, signing secrets |
+| [docs/install.md](docs/install.md) | Installing the APK, troubleshooting, Android developer verification |
 | [docs/roadmap.md](docs/roadmap.md) | Known limitations and the future roadmap |
 
 ## Privacy

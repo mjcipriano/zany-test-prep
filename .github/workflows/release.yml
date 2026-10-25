@@ -168,10 +168,41 @@ jobs:
           if-no-files-found: ignore
           retention-days: 30
 
-      # Name the APK after the tag for a clean, unambiguous release asset.
+      # Refuse to publish an APK Android could fail to parse or verify: check
+      # the signature (v2+ scheme, stable key), the manifest, zip alignment,
+      # and the size, using the runner's Android SDK build-tools.
+      - name: Verify the APK
+        run: |
+          set -euo pipefail
+          APK=build/app/outputs/flutter-apk/app-release.apk
+          BT="$(ls -d "$ANDROID_HOME"/build-tools/* | sort -V | tail -n1)"
+          echo "Using build-tools: $BT"
+          "$BT/zipalign" -c -P 16 -v 4 "$APK" > /dev/null
+          "$BT/apksigner" verify --verbose --print-certs "$APK" | tee apksigner.txt
+          grep -q "Verified using v2 scheme (APK Signature Scheme v2): true" apksigner.txt
+          "$BT/aapt2" dump badging "$APK" | grep -E "^package:|sdkVersion|targetSdkVersion" | tee badging.txt
+          size=$(stat -c %s "$APK")
+          echo "APK size: $((size / 1024 / 1024)) MB"
+          # Phones struggle to download very large files completely; keep the
+          # universal APK comfortably small.
+          if [ "$size" -gt $((120 * 1024 * 1024)) ]; then
+            echo "::error::APK is $((size / 1024 / 1024)) MB (> 120 MB); shrink assets before releasing"; exit 1
+          fi
+          {
+            echo "### APK check"
+            echo "- size: $((size / 1024 / 1024)) MB"
+            echo "- $(grep -m1 '^package:' badging.txt)"
+            echo "- signer: $(grep -m1 'certificate SHA-256 digest' apksigner.txt)"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      # Name the APK after the tag for a clean, unambiguous release asset, and
+      # publish its SHA-256 so a phone download can be checked for completeness.
       - name: Stage tag-named APK
         if: env.RELEASE_TAG != ''
-        run: cp build/app/outputs/flutter-apk/app-release.apk "zany-test-prep-${RELEASE_TAG}.apk"
+        run: |
+          cp build/app/outputs/flutter-apk/app-release.apk "zany-test-prep-${RELEASE_TAG}.apk"
+          sha256sum "zany-test-prep-${RELEASE_TAG}.apk" > "zany-test-prep-${RELEASE_TAG}.apk.sha256"
+          cat "zany-test-prep-${RELEASE_TAG}.apk.sha256"
 
       # Create the tag on the built commit if it does not exist yet (annotated,
       # pushed with the workflow token), then publish the Release with the
@@ -197,4 +228,11 @@ jobs:
           target_commitish: ${{ github.sha }}
           name: ${{ env.RELEASE_TAG }}
           generate_release_notes: true
-          files: zany-test-prep-${{ env.RELEASE_TAG }}.apk
+          body: |
+            **Install on Android:** download `zany-test-prep-${{ env.RELEASE_TAG }}.apk`, wait for
+            the download to finish completely, then open it from your Downloads and allow
+            installing from that app when asked. Full instructions and troubleshooting:
+            [docs/install.md](https://github.com/${{ github.repository }}/blob/${{ github.sha }}/docs/install.md).
+          files: |
+            zany-test-prep-${{ env.RELEASE_TAG }}.apk
+            zany-test-prep-${{ env.RELEASE_TAG }}.apk.sha256
