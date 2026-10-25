@@ -50,7 +50,7 @@ SUBSKILLS = {
     ],
     "conflicting_viewpoints": [
         "scientist_claim", "common_ground", "supporting_evidence",
-        "new_observation", "main_difference",
+        "new_observation", "main_difference", "shared_assumption", "weakening_finding",
     ],
 }
 
@@ -688,7 +688,7 @@ SCENARIOS = [
        summary="Number of mayfly nymphs found in stream samples with several dissolved-oxygen levels.",
        x=("Dissolved oxygen", "mg/L"), xs=[2, 4, 6, 8, 10, 12],
        x_desc="the dissolved oxygen concentration", x_short="dissolved oxygen",
-       y=("Mayfly nymphs", "nymphs"), y_desc="the number of mayfly nymphs", y_short="mayfly count",
+       y=("Mayfly count", "nymphs"), y_desc="the number of mayfly nymphs", y_short="mayfly count",
        shape="inc", dec=0,
        params=lambda r: {"a": r.uniform(1, 4), "b": r.uniform(0.6, 1.4)},
        fn=lambda x, p: p["a"] * x + p["b"] * x * x,
@@ -3585,7 +3585,7 @@ def ed_control_trial(rng, difficulty):
         "Which trial in Experiment 1 served as the control?",
         "In Experiment 1, which of the following trials was the control trial?",
         f"To judge the effect of {scen['x_desc']}, the experimenters compared each trial with a "
-        f"control. The control was the trial:",
+        f"control. Which trial was the control?",
     ])
     correct = (f"The trial at {_vu('0', xu)}, which received none of the treatment being tested",
                "Correct. The trial with none of the treatment shows the baseline that every other "
@@ -3766,9 +3766,11 @@ def ed_unsupported_conclusion(rng, difficulty):
 # --------------------------------------------------------------------------- #
 CV_TAGS = ["science", "conflicting-viewpoints"]
 CV_SLOTS = ("claim", "common", "evidence", "new_obs", "difference")
+CV_EXTRA_SLOTS = ("assumption", "weaken")   # authored for a subset of pairs
 CV_SUBSKILL = {"claim": "scientist_claim", "common": "common_ground",
                "evidence": "supporting_evidence", "new_obs": "new_observation",
-               "difference": "main_difference"}
+               "difference": "main_difference", "assumption": "shared_assumption",
+               "weaken": "weakening_finding"}
 
 
 def _text_complexity(text):
@@ -3780,7 +3782,17 @@ def _text_complexity(text):
 
 
 def _pair_complexity(pair):
-    return _text_complexity(pair["text_a"]) + _text_complexity(pair["text_b"])
+    return (_text_complexity(pair["text_a"]) + _text_complexity(pair["text_b"])
+            + _text_complexity(pair.get("text_c", "")))
+
+
+def viewpoint_stimulus(pair):
+    """paired_passages stimulus; a third scientist rides along in text_b."""
+    text_b = "Scientist 2\n" + pair["text_b"]
+    if pair.get("text_c"):
+        text_b += "\n\nScientist 3\n" + pair["text_c"]
+    return {"type": "paired_passages", "title": pair["title"],
+            "text": "Scientist 1\n" + pair["text_a"], "text_b": text_b}
 
 
 def viewpoint_tiers():
@@ -3798,18 +3810,18 @@ def viewpoint_tiers():
 
 def _cv_question(rng, difficulty, slot):
     tiers = viewpoint_tiers()
-    pair = rng.choice(tiers[difficulty])
+    pool = [p for p in tiers[difficulty] if slot in p["questions"]]
+    pair = rng.choice(pool)
     q = pair["questions"][slot]
     prompt, options, ci, rats, expl = q
     order = list(range(len(options)))
     rng.shuffle(order)
     opts = [options[i] for i in order]
     rat = [rats[i] for i in order]
-    stim = {"type": "paired_passages", "title": pair["title"],
-            "text": "Scientist 1\n" + pair["text_a"], "text_b": "Scientist 2\n" + pair["text_b"]}
+    tags = CV_TAGS + [slot, "pair:" + pair["id"]] + (["three-viewpoints"] if pair.get("text_c") else [])
     return mc(prompt, opts, order.index(ci), rat, subskill=CV_SUBSKILL[slot],
-              qtype=QT_PASSAGE, explanation=expl, est=90, tags=CV_TAGS + [slot, "pair:" + pair["id"]],
-              stimulus=stim)
+              qtype=QT_PASSAGE, explanation=expl, est=95 if pair.get("text_c") else 90,
+              tags=tags, stimulus=viewpoint_stimulus(pair))
 
 
 def cv_scientist_claim(rng, difficulty):
@@ -3832,8 +3844,16 @@ def cv_main_difference(rng, difficulty):
     return _cv_question(rng, difficulty, "difference")
 
 
+def cv_shared_assumption(rng, difficulty):
+    return _cv_question(rng, difficulty, "assumption")
+
+
+def cv_weakening_finding(rng, difficulty):
+    return _cv_question(rng, difficulty, "weaken")
+
+
 for _fn in (cv_scientist_claim, cv_common_ground, cv_supporting_evidence,
-            cv_new_observation, cv_main_difference,
+            cv_new_observation, cv_main_difference, cv_shared_assumption, cv_weakening_finding,
             ed_control_purpose, ed_replication_purpose, ed_control_trial):
     _fn.small_space = True
 
@@ -3868,11 +3888,14 @@ FAMILIES = {
     },
     "conflicting_viewpoints": {
         "easy": [cv_scientist_claim, cv_common_ground, cv_supporting_evidence,
-                 cv_new_observation, cv_main_difference],
+                 cv_new_observation, cv_main_difference, cv_shared_assumption,
+                 cv_weakening_finding],
         "medium": [cv_scientist_claim, cv_common_ground, cv_supporting_evidence,
-                   cv_new_observation, cv_main_difference],
+                   cv_new_observation, cv_main_difference, cv_shared_assumption,
+                   cv_weakening_finding],
         "hard": [cv_scientist_claim, cv_common_ground, cv_supporting_evidence,
-                 cv_new_observation, cv_main_difference],
+                 cv_new_observation, cv_main_difference, cv_shared_assumption,
+                 cv_weakening_finding],
     },
 }
 
@@ -3965,6 +3988,30 @@ VIEWPOINTS = [
                  "Both accept the iridium layer and differ only on its source.",
                  "Scientist 2 allows that an asteroid may have struck; the dispute is about what mattered most."],
                 "The core disagreement is sudden impact versus prolonged volcanism, not the existence of the layer or the climate change."),
+            "assumption": (
+                "Both scientists assume that:",
+                ["the extinction was triggered by a change in the environment rather than by competition among species.",
+                 "the iridium in the boundary layer was deposited slowly and gradually over a span of hundreds of thousands of years.",
+                 "the crater beneath the coast of Mexico formed before the volcanic eruptions began.",
+                 "dinosaurs were already extinct when the boundary clay layer formed."],
+                0,
+                ["Correct. Both name an environmental catastrophe (impact or eruptions); neither considers biological causes such as competition.",
+                 "Scientist 1 treats the layer as the record of a single instant.",
+                 "Neither scientist compares the timing of crater and eruptions.",
+                 "Both place the extinction at the boundary, not before it."],
+                "Each explanation is an environmental catastrophe, taking for granted that something in the physical world killed the dinosaurs."),
+            "weaken": (
+                "Which of the following findings, if true, would most weaken Scientist 1's viewpoint?",
+                ["Dating shows the crater beneath Mexico formed two million years before the iridium layer.",
+                 "The iridium-rich clay layer is found at sites on every continent, far from the crater.",
+                 "Fossils of plants that depend on sunlight disappear abruptly right at the boundary layer.",
+                 "Volcanic rocks in India turn out to contain very little iridium."],
+                0,
+                ["Correct. An impact two million years too early cannot be the cause of an extinction recorded at the boundary.",
+                 "A worldwide layer is Scientist 1's own evidence.",
+                 "Abrupt loss of plants fits Scientist 1's blocked-sunlight scenario.",
+                 "Little iridium in the lava undermines Scientist 2's alternative source, strengthening Scientist 1."],
+                "Scientist 1's argument depends on the crater and the layer being the same age; a mismatch removes the link."),
         },
     },
     {
@@ -4049,6 +4096,30 @@ VIEWPOINTS = [
                  "Scientist 1 does not deny the zander's presence; the dispute is about what matters.",
                  "Both acknowledge the summer blooms."],
                 "The disagreement is about the cause of the decline, not about whether it is happening."),
+            "assumption": (
+                "Which of the following is an assumption made by both scientists? Both assume that:",
+                ["the decline reflects a real loss of young perch rather than a change in how perch are counted.",
+                 "zander were deliberately released into Miller Lake by anglers about eight years ago.",
+                 "algae blooms occurred in Miller Lake for decades before the perch population began to decline.",
+                 "adult perch cannot move away from low-oxygen water."],
+                0,
+                ["Correct. Both treat the decline as real and tied to young perch; neither considers a counting artifact.",
+                 "Only Scientist 2 makes this claim.",
+                 "Only Scientist 2 makes this claim.",
+                 "Scientist 1 says adults can move to shallower water."],
+                "Both explanations center on the loss of young perch, taking the decline itself as genuine."),
+            "weaken": (
+                "Which of the following discoveries, if made, would most seriously undermine Scientist 1's explanation?",
+                ["Perch eggs and young fish are found only in shallow, well-oxygenated water, never near the bottom.",
+                 "Oxygen near the lake bottom in August is too low for most fish species to survive for more than a few hours.",
+                 "Fertilizer use on the upstream farms has doubled over the past decade.",
+                 "Dead algae are decomposed by bacteria that consume dissolved oxygen."],
+                0,
+                ["Correct. If young perch never occupy the low-oxygen zone, that zone cannot be what kills them.",
+                 "Low bottom oxygen is Scientist 1's own evidence.",
+                 "More fertilizer strengthens the runoff story.",
+                 "This is the mechanism Scientist 1 describes."],
+                "Scientist 1's mechanism requires young perch to be exposed to the low-oxygen water; evidence that they are not breaks it."),
         },
     },
     {
@@ -4216,6 +4287,30 @@ VIEWPOINTS = [
                  "Both invoke the bridge's natural frequency.",
                  "Both agree that walkers reacted to the motion."],
                 "Both accept the sway, the natural frequency and the walkers' reaction; they disagree on cause versus response."),
+            "assumption": (
+                "The arguments of both scientists depend on the assumption that:",
+                ["the sway was driven by a repeating push matching the bridge's natural frequency.",
+                 "the bridge was poorly built and structurally unsafe.",
+                 "the crowd on opening day was unusually large.",
+                 "wind speeds on the bridge's opening day were higher than on any other day that year."],
+                0,
+                ["Correct. Scientist 1's footsteps and Scientist 2's eddies both work by resonance; neither considers a one-time push or a structural failure.",
+                 "Neither scientist claims the bridge was unsafe.",
+                 "Only Scientist 1 discusses the crowd's size.",
+                 "Scientist 2 says only that the day was breezy."],
+                "Both explanations are resonance explanations; they differ about the source of the rhythmic force."),
+            "weaken": (
+                "Scientist 1's viewpoint would be most weakened by which of the following findings?",
+                ["Sensors show the sway reached full strength before any pedestrian had stepped onto the deck.",
+                 "Video shows the walkers widening their stance and stepping in time with the motion of the deck.",
+                 "The sway stopped shortly after the bridge was closed to pedestrians.",
+                 "The sway was never observed on days when fewer than fifty people were on the bridge at one time."],
+                0,
+                ["Correct. Motion that begins before anyone is on the bridge cannot be caused by walkers.",
+                 "Synchronized stepping is consistent with Scientist 1.",
+                 "Stopping when cleared supports Scientist 1.",
+                 "Dependence on crowd size supports Scientist 1."],
+                "Scientist 1's cause is the crowd; sway before the crowd arrived contradicts it."),
         },
     },
     {
@@ -4383,6 +4478,30 @@ VIEWPOINTS = [
                  "Scientist 1 does not dispute the presence of magnetite, only its importance.",
                  "Both accept that the sun moves; Scientist 1 even uses this to explain misdirected bees."],
                 "The disagreement is about the main cue, not about whether bees navigate or whether magnetite exists."),
+            "assumption": (
+                "Both scientists assume that:",
+                ["bees rely on a sensed external cue rather than on memorized landmarks.",
+                 "bees are unable to find their way home on cloudy days.",
+                 "the direction of the magnetic field at the hive changes from one day to the next.",
+                 "bees can see the sun through thick clouds."],
+                0,
+                ["Correct. Sun and sky for Scientist 1, the magnetic field for Scientist 2; neither considers that bees might rely on remembered landmarks.",
+                 "The scientists disagree about overcast days.",
+                 "Scientist 2 calls the field a fixed reference.",
+                 "Scientist 1 says bees use polarized light when the sun is hidden."],
+                "Both explanations involve a directional cue the bee senses; landmarks are not considered by either."),
+            "weaken": (
+                "Which of the following findings, if true, would most weaken Scientist 1's viewpoint?",
+                ["Bees whose view of the sky is blocked by a cap return home as reliably as bees with a clear view.",
+                 "Bees held in the dark for several hours fly off in a direction shifted by the amount the sun has moved.",
+                 "Bees communicate the direction of food relative to the sun.",
+                 "Bees often fail to return on days with no polarized light in the sky."],
+                0,
+                ["Correct. If blocking the sky does not impair homing, the sky cannot be the main cue.",
+                 "This is Scientist 1's own evidence.",
+                 "This is Scientist 1's own evidence.",
+                 "This is Scientist 1's own evidence."],
+                "Scientist 1's view requires the sky; normal navigation without it undermines the view."),
         },
     },
     {
@@ -4935,7 +5054,7 @@ VIEWPOINTS = [
             "evidence": (
                 "Which of the following findings, if true, would most strongly support Scientist 2's viewpoint?",
                 ["Soil matching that beneath the road began appearing in the storm drain two months before the collapse.",
-                 "The groundwater beneath the area is found to be slightly acidic, as is typical for limestone country.",
+                 "The groundwater beneath the area is found to be slightly acidic, as is typical for regions underlain by limestone.",
                  "Several large caverns are discovered in the limestone a few kilometers from the road.",
                  "The water main beneath the road was found to have been shut off for the entire past year."],
                 0,
@@ -5008,10 +5127,10 @@ VIEWPOINTS = [
                 "The mechanism of expelling algae is the core of Scientist 1's explanation."),
             "common": (
                 "Both scientists would most likely agree that:",
-                ["conditions in the water around the reef changed in the months before the bleaching.",
+                ["conditions in the water around the reef changed before the bleaching.",
                  "the most heavily bleached corals were those in the shallowest water.",
                  "reefs far from any town bleached during the same weeks as this reef.",
-                 "the amount of sediment reaching the reef had no effect on the corals."],
+                 "the amount of sediment reaching the reef had no effect on the corals' health."],
                 0,
                 ["Correct. Scientist 1 cites warming; Scientist 2 cites runoff. Both describe changed water conditions before the event.",
                  "Only Scientist 1 mentions shallow water.",
@@ -5021,7 +5140,7 @@ VIEWPOINTS = [
             "evidence": (
                 "Which of the following findings, if true, would most strongly support Scientist 2's viewpoint?",
                 ["Corals on a nearby reef that received no river runoff but the same warm water remained healthy.",
-                 "Bleaching on the reef began exactly when the water temperature passed the summer maximum.",
+                 "Bleaching on the reef began at exactly the moment the water temperature passed the summer maximum.",
                  "Corals in the shallowest water were the first to turn white.",
                  "Satellite images show the warm water covered the entire region."],
                 0,
@@ -5044,7 +5163,7 @@ VIEWPOINTS = [
                 "Cool water removes the temperature cause, while nearness to the river supplies Scientist 2's cause."),
             "difference": (
                 "The two viewpoints differ mainly about:",
-                ["whether temperature or water quality was the decisive cause of the bleaching.",
+                ["whether temperature or water quality was the decisive cause.",
                  "whether corals depend on algae that live inside their tissues.",
                  "whether the reef actually bleached during the summer in question.",
                  "whether heavy rains fell on the coast in the months before the bleaching."],
@@ -5055,9 +5174,9 @@ VIEWPOINTS = [
                  "Scientist 1 does not dispute the rains, only their importance."],
                 "The disagreement is about the decisive cause, not about the event or the biology."),
             "assumption": (
-                "Both scientists assume that:",
-                ["the bleaching was caused by a change in the reef's environment rather than by a disease of the corals themselves.",
-                 "the water over the reef was warmer than in any previous summer.",
+                "Which of the following is an assumption made by both scientists? Both assume that:",
+                ["the bleaching was caused by the reef's environment rather than by a disease of the corals.",
+                 "the water over the reef was warmer during the bleaching year than in any previous summer on record.",
                  "sediment from the river reached every part of the reef.",
                  "the corals will not recover once they have bleached."],
                 0,
@@ -5067,9 +5186,9 @@ VIEWPOINTS = [
                  "Neither scientist discusses recovery."],
                 "Both explanations look outside the coral for the cause, taking for granted that an environmental change is responsible."),
             "weaken": (
-                "Which of the following findings, if true, would most weaken Scientist 1's viewpoint?",
-                ["Temperature records show the water over the reef never exceeded the summer maximum during the bleaching year.",
-                 "Water samples near the river mouth contain unusually high nutrient levels.",
+                "Which of the following discoveries, if made, would most seriously undermine Scientist 1's explanation?",
+                ["Records show the water over the reef never exceeded the summer maximum during the bleaching year.",
+                 "Water samples taken near the river mouth contain nutrient levels several times higher than normal.",
                  "Reefs far from the coast bleached during the same weeks.",
                  "Shallow corals bleached more severely than deeper corals."],
                 0,
@@ -5140,7 +5259,7 @@ VIEWPOINTS = [
                 "Which of the following findings, if true, would most strongly support Scientist 2's viewpoint?",
                 ["Winter colonies in intact forest patches survived a severe storm that killed most butterflies in thinned patches nearby.",
                  "Milkweed counts on farmland fell by more than half over the same years as the monarch decline.",
-                 "Caterpillars raised on milkweed from treated fields died at twice the rate of those raised on untreated plants.",
+                 "Caterpillars raised on milkweed collected from treated fields died at twice the rate of those raised on untreated plants.",
                  "Regions with abundant milkweed saw monarch declines as steep as regions with little milkweed."],
                 0,
                 ["Correct. Survival that depends on forest condition during a storm is exactly Scientist 2's mechanism.",
@@ -5162,10 +5281,10 @@ VIEWPOINTS = [
                 "If caterpillars become abundant without adults recovering, the bottleneck lies after the caterpillar stage, which fits Scientist 2 better than Scientist 1."),
             "difference": (
                 "Scientist 1 and Scientist 3 disagree mainly about:",
-                ["whether the amount of milkweed or the chemicals in it limits the monarch population.",
+                ["whether the quantity of milkweed or the chemicals in it limits the population.",
                  "whether monarch caterpillars feed on milkweed.",
                  "whether coated seeds are planted on most cornfields.",
-                 "whether monarch butterflies migrate to winter forests."],
+                 "whether monarch butterflies migrate each autumn to the same few mountain forests."],
                 0,
                 ["Correct. Scientist 1 blames the quantity of milkweed; Scientist 3 blames insecticide contamination of the milkweed that remains.",
                  "Both accept that caterpillars eat milkweed.",
@@ -5175,7 +5294,7 @@ VIEWPOINTS = [
             "assumption": (
                 "Which of the following is an assumption shared by all three scientists?",
                 ["The decline has a cause that people could act on to help the population recover.",
-                 "The monarch population was larger in the past because winters were colder.",
+                 "The monarch population was larger in the past mainly because winters were colder then.",
                  "Milkweed on farmland is free of insecticide residue.",
                  "Logging of the winter forests has had no effect on the butterflies."],
                 0,
@@ -5185,10 +5304,10 @@ VIEWPOINTS = [
                  "Scientist 2 argues the opposite; the others do not deny an effect."],
                 "All three name a human activity as the cause and imply that changing it would help, which assumes the decline can be reversed."),
             "weaken": (
-                "Which of the following findings, if true, would most weaken Scientist 1's viewpoint?",
-                ["Monarch egg counts per milkweed plant have risen as milkweed became scarcer, so that total egg numbers stayed about the same.",
+                "Scientist 1's viewpoint would be most weakened by which of the following findings?",
+                ["Egg counts per milkweed plant rose as milkweed grew scarcer, so total egg numbers stayed about the same.",
                  "Milkweed has disappeared from most of the farmland where it once grew.",
-                 "Winter colonies suffered heavy losses in the years with storms after logging.",
+                 "Winter colonies suffered their heaviest losses in the years when storms followed logging of the forests.",
                  "Insecticide residues have been detected in milkweed near treated fields."],
                 0,
                 ["Correct. If total egg numbers held steady despite less milkweed, milkweed loss cannot explain fewer caterpillars.",
@@ -5247,9 +5366,9 @@ VIEWPOINTS = [
                 "Both explanations end with failing crops; they differ on why the crops failed."),
             "evidence": (
                 "Which of the following findings, if true, would most strongly support Scientist 1's viewpoint?",
-                ["Fields on the outskirts that were never irrigated and had low salt levels also stopped being farmed during the dry period.",
+                ["Unirrigated fields on the outskirts with low salt levels also went out of use during the dry period.",
                  "Soil from the irrigated fields contains salt at levels that would kill wheat seedlings.",
-                 "Tablets from the final decades record poor harvests on fields that still received canal water.",
+                 "Tablets from the city's final decades record poor harvests on fields that still received water from the canals.",
                  "Pollen records show barley replacing wheat late in the city's history."],
                 0,
                 ["Correct. Fields with no salt problem being abandoned during the drought points to water shortage as the cause.",
@@ -5271,8 +5390,8 @@ VIEWPOINTS = [
                 "Scientist 1 places the drought just before the decline; the new dating reverses that order."),
             "difference": (
                 "The central disagreement between the two scientists concerns:",
-                ["whether lack of water or the condition of the soil ended farming around the city.",
-                 "whether the city's people depended on farming for their food.",
+                ["whether lack of water or the state of the soil ended farming around the city.",
+                 "whether the people of the city depended on farming for most of their food supply.",
                  "whether irrigation canals were used to water the fields.",
                  "whether the city was eventually abandoned."],
                 0,
@@ -5282,7 +5401,7 @@ VIEWPOINTS = [
                  "Both accept that the city was abandoned."],
                 "Both agree the fields failed and the city emptied; they disagree about what ruined the fields."),
             "assumption": (
-                "Both scientists assume that:",
+                "The arguments of both scientists depend on the assumption that:",
                 ["the failure of the city's farmland was the main reason people left.",
                  "the climate of the region has not changed since the city was abandoned.",
                  "the city's rulers kept no written records of its harvests.",
@@ -5295,10 +5414,10 @@ VIEWPOINTS = [
                 "Both link the abandonment directly to agriculture, taking for granted that crop failure, rather than some other event, drove people away."),
             "weaken": (
                 "Which of the following findings, if true, would most weaken Scientist 1's viewpoint?",
-                ["The lake sediments used to reconstruct rainfall came from a basin fed by a different weather system than the city's.",
+                ["The lake sediments used to reconstruct rainfall come from a basin with a different weather system.",
                  "The reservoirs were enlarged twice late in the city's history.",
                  "Salt levels in the old fields are far too high for wheat.",
-                 "Tree rings from the surrounding hills show decades of poor growth."],
+                 "Tree rings from the hills around the city show several decades of poor growth during the same period."],
                 0,
                 ["Correct. If the sediment record does not reflect the city's own rainfall, the main evidence for the drought no longer applies.",
                  "The reservoir enlargement is Scientist 1's own evidence.",
@@ -5336,7 +5455,7 @@ VIEWPOINTS = [
                 ["A plankton animal uses energy more slowly in cold water than in warm water.",
                  "Plankton rise earlier in the evening when fish are removed from a tank.",
                  "The daily migration is weak or absent in lakes that contain no fish.",
-                 "Plankton near the sunlit surface are easily seen and eaten during the day."],
+                 "Plankton near the sunlit surface are easily seen and eaten by fish during the day."],
                 0,
                 ["Correct. Scientist 2's whole argument rests on slower energy use in cold, deep water.",
                  "The tank experiment is Scientist 1's evidence.",
@@ -5357,9 +5476,9 @@ VIEWPOINTS = [
                 "The nightly surface feeding is the shared observation; its purpose is disputed."),
             "evidence": (
                 "Which of the following findings, if true, would most strongly support Scientist 2's viewpoint?",
-                ["In a lake with no fish but a strong temperature difference between surface and depth, plankton migrate just as strongly as in lakes with fish.",
+                ["In a fishless lake with a strong temperature difference between surface and depth, plankton migrate strongly.",
                  "Plankton in tanks rise toward the surface sooner when fish are removed.",
-                 "Plankton in a lake stay deeper during the day in years when fish are abundant.",
+                 "Plankton in a lake stay deeper during the day in years when fish are abundant and rise sooner when fish are scarce.",
                  "Plankton in a uniformly cold lake with many fish migrate strongly each night."],
                 0,
                 ["Correct. Migration without predators but with a temperature gradient fits energy saving, not predator avoidance.",
@@ -5384,7 +5503,7 @@ VIEWPOINTS = [
                 ["whether plankton migrate to avoid being eaten or to save energy.",
                  "whether zooplankton are cold-blooded animals.",
                  "whether light levels change over the course of a day.",
-                 "whether plankton are able to move up and down in the water."],
+                 "whether plankton are able to swim up and down through the water column."],
                 0,
                 ["Correct. Predator avoidance versus energy saving is the dispute.",
                  "Neither disputes this.",
@@ -5404,10 +5523,10 @@ VIEWPOINTS = [
                  "Neither scientist discusses what plankton can see."],
                 "Both treat the migration as an adaptation with a payoff; they differ only on what the payoff is."),
             "weaken": (
-                "Which of the following findings, if true, would most weaken Scientist 1's viewpoint?",
-                ["Plankton in a tank migrate on the same schedule whether or not fish are present, as long as the deep water is colder.",
+                "Which of the following discoveries, if made, would most seriously undermine Scientist 1's explanation?",
+                ["Plankton in a tank migrate on the same schedule with or without fish, as long as the deep water is colder.",
                  "Fish that eat plankton hunt by sight and feed mostly during daylight.",
-                 "Plankton remaining at the surface all day are eaten at a higher rate than those that migrate.",
+                 "Plankton that remain at the surface all day are eaten at a much higher rate than those that migrate downward.",
                  "The daily migration is strongest in clear lakes where sunlight penetrates deeply."],
                 0,
                 ["Correct. Migration that ignores the presence of fish but tracks temperature contradicts predator avoidance.",
@@ -5444,7 +5563,7 @@ VIEWPOINTS = [
             "claim": (
                 "Scientist 1 would most likely agree with which of the following statements?",
                 ["The loss of Mars's magnetic field allowed its atmosphere to be stripped away.",
-                 "Most of the water from Mars's early rivers is now bound in crustal minerals.",
+                 "Most of the water from Mars's early rivers and lakes is now bound inside crustal minerals.",
                  "Escape of gas to space is too slow to explain the loss of the early water.",
                  "Water-bearing minerals are rare on the Martian surface."],
                 0,
@@ -5456,7 +5575,7 @@ VIEWPOINTS = [
             "common": (
                 "Both scientists would most likely agree that:",
                 ["Mars once had far more liquid water on its surface than it has today.",
-                 "most of Mars's early water escaped into space.",
+                 "most of the water from Mars's early rivers and lakes escaped into space.",
                  "the crust of Mars holds an ocean's worth of water.",
                  "Mars still has a strong global magnetic field."],
                 0,
@@ -5467,10 +5586,10 @@ VIEWPOINTS = [
                 "The early wet Mars is accepted by both; the fate of the water is disputed."),
             "evidence": (
                 "Which of the following findings, if true, would most strongly support Scientist 1's viewpoint?",
-                ["Measurements show the rate of hydrogen escape from Mars was hundreds of times higher in the past than it is today.",
+                ["The rate of hydrogen escape from Mars was hundreds of times higher in the past than it is today.",
                  "Rover drilling finds water bound in rock at every site sampled.",
                  "Clay minerals cover a larger fraction of the surface than previously mapped.",
-                 "The crust is found to be thicker, and able to hold more water, than earlier estimates suggested."],
+                 "The crust is found to be thicker, and able to hold far more water, than earlier estimates had suggested."],
                 0,
                 ["Correct. Much faster escape in the past answers Scientist 2's objection that escape is too slow.",
                  "Widespread bound water supports Scientist 2.",
@@ -5494,7 +5613,7 @@ VIEWPOINTS = [
                 ["whether the missing water left the planet or remains stored within it.",
                  "whether Mars ever had rivers and lakes on its surface.",
                  "whether Mars has weaker gravity than Earth.",
-                 "whether spacecraft can detect hydrogen leaving the planet."],
+                 "whether orbiting spacecraft can detect hydrogen leaving the top of the atmosphere."],
                 0,
                 ["Correct. Escape to space versus storage in the crust is the dispute.",
                  "Both accept the early rivers.",
@@ -5502,9 +5621,9 @@ VIEWPOINTS = [
                  "Scientist 2 accepts that escape is real, only that it is slow."],
                 "The dispute is the destination of the water, not the existence of the early rivers."),
             "assumption": (
-                "Both scientists assume that:",
+                "Which of the following is an assumption made by both scientists? Both assume that:",
                 ["the amount of water in Mars's early rivers and lakes can be estimated reliably.",
-                 "Mars's magnetic field is as strong today as it was early in its history.",
+                 "Mars's magnetic field is as strong today as it was during the planet's first billion years.",
                  "the minerals on the Martian surface contain no water at all.",
                  "the Sun's output of charged particles has never changed."],
                 0,
@@ -5514,9 +5633,9 @@ VIEWPOINTS = [
                  "Neither scientist makes this claim."],
                 "Both compare their mechanism against the quantity of early water, taking that quantity as known."),
             "weaken": (
-                "Which of the following findings, if true, would most weaken Scientist 1's viewpoint?",
-                ["The ratio of heavy to light hydrogen in Martian water is found to be the same as in water from comets that never lost hydrogen to space.",
-                 "An orbiter detects oxygen and hydrogen streaming away from the top of the atmosphere.",
+                "Scientist 1's viewpoint would be most weakened by which of the following findings?",
+                ["Martian water's heavy-to-light hydrogen ratio matches that of comet water that never lost hydrogen to space.",
+                 "An orbiter detects oxygen and hydrogen atoms streaming away from the top of the Martian atmosphere even today.",
                  "Mars's crust is found to contain less bound water than Scientist 2 estimated.",
                  "Rock samples show Mars's magnetic field disappeared early in the planet's history."],
                 0,
@@ -5574,7 +5693,7 @@ VIEWPOINTS = [
                 "All three scientists would most likely agree that:",
                 ["water must be present on the playa surface for the rocks to move.",
                  "the rocks are moved by panels of floating ice.",
-                 "the trails all point in the direction of the strongest winds.",
+                 "the trails all point in the direction of the strongest winds that cross the playa.",
                  "every rock on the playa moves during each wet period."],
                 0,
                 ["Correct. Scientist 1 needs wet mud, Scientist 2 needs shallow water that freezes, Scientist 3 needs floodwater.",
@@ -5584,7 +5703,7 @@ VIEWPOINTS = [
                 "Each mechanism requires water on the surface, though in different forms."),
             "evidence": (
                 "Which of the following findings, if true, would most strongly support Scientist 3's viewpoint?",
-                ["Rocks moved only during a period when gauges on the playa recorded flowing water several centimeters deep.",
+                ["Rocks moved only while gauges on the playa recorded flowing water several centimeters deep.",
                  "Rocks moved on a winter night when the playa was covered with a thin skin of ice.",
                  "Trails formed during a windstorm that followed a light rain.",
                  "Rocks resting on the highest, driest parts of the playa moved as far as rocks in low channels."],
@@ -5608,9 +5727,9 @@ VIEWPOINTS = [
                 "The observed conditions remove the causes proposed by Scientists 1 and 3 and match the setting Scientist 2 describes."),
             "difference": (
                 "Scientist 1 and Scientist 2 disagree mainly about:",
-                ["whether wind acting on the rocks directly can supply enough force to move them.",
+                ["whether wind alone can supply enough force to move the rocks.",
                  "whether rain ever falls on the dry lake bed.",
-                 "whether the rocks leave trails in the mud as they move.",
+                 "whether the rocks leave visible trails in the mud as they move across the playa.",
                  "whether wind blows across the playa at all."],
                 0,
                 ["Correct. Scientist 1 says wind on slick mud is enough; Scientist 2 says it is far too weak and ice is needed.",
@@ -5623,7 +5742,7 @@ VIEWPOINTS = [
                 ["The rocks are moved by a natural process rather than by people or animals.",
                  "The rocks move only during the summer months.",
                  "Ice never forms on the surface of the playa.",
-                 "Every trail on the playa was made by the same event."],
+                 "Every trail on the playa was made during a single event rather than over many years."],
                 0,
                 ["Correct. All three propose natural forces and none considers that visitors or animals moved the rocks.",
                  "Scientist 2 argues for winter movement.",
@@ -5632,10 +5751,10 @@ VIEWPOINTS = [
                 "Each explanation is a natural mechanism; the possibility of human or animal interference is set aside by all three."),
             "weaken": (
                 "Which of the following findings, if true, would most weaken Scientist 1's viewpoint?",
-                ["In wind-tunnel tests, winds of 150 km per hour fail to budge a 5 kg rock resting on wet playa clay.",
+                ["In wind-tunnel tests, 150 km/h winds fail to budge a 5 kg rock resting on wet playa clay.",
                  "Trails on the playa point in the direction of the prevailing wind.",
                  "The playa surface becomes slick after rain.",
-                 "Rocks sit in grooves pressed into the mud as wide as the rocks themselves."],
+                 "Rocks are found sitting in grooves pressed into the mud exactly as wide as the rocks themselves."],
                 0,
                 ["Correct. If even very strong wind cannot move a rock on wet clay, wind alone cannot be the cause.",
                  "Trail direction is Scientist 1's own evidence.",
@@ -5679,7 +5798,7 @@ VIEWPOINTS = [
             "claim": (
                 "Scientist 2 would most likely agree with which of the following statements?",
                 ["The highest methane readings lie in a narrow band rather than across the whole marsh.",
-                 "Methane over the marsh is highest in late summer and lowest in winter.",
+                 "Methane over the marsh is highest in late summer and falls to its lowest level in winter.",
                  "The excess methane formed thousands of years ago from ancient plants.",
                  "The methane in the marsh air contains almost no radioactive carbon."],
                 0,
@@ -5702,8 +5821,8 @@ VIEWPOINTS = [
                 "Microbial methane is conceded by all three; the dispute is about what accounts for the excess."),
             "evidence": (
                 "Which of the following findings, if true, would most strongly support Scientist 3's viewpoint?",
-                ["Methane collected from the marsh air has a radiocarbon age of several thousand years and contains no ethane.",
-                 "Methane readings fall sharply after the pipeline is shut off for repairs.",
+                ["Marsh-air methane has a radiocarbon age of several thousand years and contains no ethane.",
+                 "Methane readings along the route fall sharply within days after the pipeline is shut off for repairs.",
                  "Methane bubbles rise from the mud most often on the warmest days of summer.",
                  "Gas samples above the pipeline contain ethane and propane."],
                 0,
@@ -5726,9 +5845,9 @@ VIEWPOINTS = [
                 "Scientist 2 predicts that repairing the pipeline would remove most of the signal; an unchanged signal with the pipeline empty contradicts that."),
             "difference": (
                 "Scientist 2 and Scientist 3 disagree mainly about:",
-                ["whether the methane concentrated along the pipeline route comes from the pipeline or from the ground beneath it.",
+                ["whether the methane along the pipeline route comes from the pipe or from the ground beneath it.",
                  "whether microbes in the mud produce any methane.",
-                 "whether methane readings are concentrated along the pipeline route.",
+                 "whether the highest methane readings are concentrated in a narrow band along the pipeline route.",
                  "whether natural gas contains ethane and propane."],
                 0,
                 ["Correct. Both accept the band along the route; Scientist 2 attributes it to leaks, Scientist 3 to thawing ground that is thinnest there.",
@@ -5739,7 +5858,7 @@ VIEWPOINTS = [
             "assumption": (
                 "Which of the following is an assumption shared by all three scientists?",
                 ["The chemical makeup of a methane sample can indicate where the methane came from.",
-                 "Methane released from the marsh has no effect on the climate.",
+                 "Methane released from the marsh has no measurable effect on the climate of the surrounding region.",
                  "The pipeline has never leaked at any point along its route.",
                  "Microbial activity in the mud is the same in every season."],
                 0,
@@ -5749,9 +5868,9 @@ VIEWPOINTS = [
                  "Scientist 1 describes a seasonal cycle."],
                 "All three argue from the composition of the gas, which assumes composition reveals origin."),
             "weaken": (
-                "Which of the following findings, if true, would most weaken Scientist 1's viewpoint?",
-                ["The excess methane over the marsh is just as high in midwinter, when the mud is frozen, as in late summer.",
-                 "Gas from mud bubbles has the chemical signature of microbial methane.",
+                "Which of the following discoveries, if made, would most seriously undermine Scientist 1's explanation?",
+                ["Excess methane over the marsh is as high in midwinter, when the mud is frozen, as in late summer.",
+                 "Gas collected from bubbles rising through the mud has the chemical signature typical of microbial methane.",
                  "The marsh releases more methane per hectare than nearby farmland.",
                  "Microbes that produce methane are abundant in the marsh mud."],
                 0,
@@ -5811,10 +5930,10 @@ VIEWPOINTS = [
                 "The beetle attacks are common ground; whether they are cause or consequence is disputed."),
             "evidence": (
                 "Which of the following findings, if true, would most strongly support Scientist 2's viewpoint?",
-                ["Ridge pines given extra water during the summer survived beetle attacks at the same rate as lower-slope trees.",
-                 "Traps caught ten times as many beetles this year as five years ago.",
+                ["Ridge pines given extra water in summer survived beetle attacks at the same rate as lower-slope trees.",
+                 "Traps on the ridge caught ten times as many beetles this year as they did five years ago.",
                  "Every dead tree examined contained beetle larvae galleries.",
-                 "Beetles now produce two generations each summer instead of one."],
+                 "Beetles on the ridge now produce two generations each summer instead of one because winters are warmer."],
                 0,
                 ["Correct. If water alone restores resistance, water shortage is what made the trees vulnerable.",
                  "Beetle numbers support Scientist 1.",
@@ -5838,7 +5957,7 @@ VIEWPOINTS = [
                 ["whether the beetles or the drought is the root cause of the trees' deaths.",
                  "whether bark beetle larvae feed beneath the bark of pines.",
                  "whether the pines on the ridge are dying.",
-                 "whether healthy trees can use resin to defend against beetles."],
+                 "whether healthy trees can use resin to drown beetles that bore into their bark."],
                 0,
                 ["Correct. Beetles as cause versus beetles as final blow after drought is the dispute.",
                  "Both accept this.",
@@ -5846,10 +5965,10 @@ VIEWPOINTS = [
                  "Both describe resin defense."],
                 "Both agree on the biology; they disagree on what ultimately caused the deaths."),
             "assumption": (
-                "Both scientists assume that:",
-                ["a pine's ability to survive a beetle attack depends on the tree's condition and the number of attackers.",
+                "The arguments of both scientists depend on the assumption that:",
+                ["a pine's survival of a beetle attack depends on its condition and the number of attackers.",
                  "beetles cannot survive winters on the ridge.",
-                 "the soil on the ridge holds as much water as the soil on the lower slopes.",
+                 "the thin soil on the ridge holds just as much water as the deeper soil on the lower slopes.",
                  "trees that die of drought show no sign of beetle damage."],
                 0,
                 ["Correct. Scientist 1 says mass attacks overwhelm even vigorous trees; Scientist 2 says water-short trees cannot resist. Both treat survival as a contest between defense and attack.",
@@ -5858,11 +5977,11 @@ VIEWPOINTS = [
                  "Scientist 2 says the dead trees were attacked by beetles."],
                 "Each explanation frames death as the outcome of tree defense against beetle pressure; they weight the two sides differently."),
             "weaken": (
-                "Which of the following findings, if true, would most weaken Scientist 1's viewpoint?",
-                ["Ridge pines removed before any beetles emerged were replaced by new deaths at the same rate the following year.",
+                "Scientist 1's viewpoint would be most weakened by which of the following findings?",
+                ["Ridge pines removed before beetles emerged were replaced by new deaths at the same rate the next year.",
                  "Beetle galleries are found beneath the bark of every dead pine.",
                  "Warm winters have become more frequent on the ridge.",
-                 "Trees attacked by large numbers of beetles die even when healthy."],
+                 "Trees attacked by very large numbers of beetles die even when they are otherwise healthy and vigorous."],
                 0,
                 ["Correct. If removing infested trees does not slow the deaths, the beetles are not controlling the outcome, contrary to Scientist 1's view and remedy.",
                  "Galleries are Scientist 1's own evidence.",
