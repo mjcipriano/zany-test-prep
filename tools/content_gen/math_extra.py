@@ -113,15 +113,16 @@ def wp_two_numbers(rng, d):
 def wp_consecutive(rng, d):
     """Consecutive integers."""
     if d == "easy":
-        n = rng.randint(3, 60)
+        n = rng.randint(3, 150)
         s = 3 * n + 3
-        prompt = f"The sum of three consecutive integers is {s}. What is the largest of the three integers?"
+        prompt = rng.choice([f"The sum of three consecutive integers is {s}. What is the largest of the three integers?",
+                             f"Three consecutive integers have a sum of {s}. What is the greatest of them?"])
         val = n + 2
         expl = f"n + (n + 1) + (n + 2) = {s} → 3n = {s - 3} → n = {n}; the largest is {n + 2}."
         ds = [(n, "That is the smallest of the three."), (n + 1, "That is the middle integer."),
               (s // 3 + 2 + 1, "Arithmetic slip."), (s // 3, "That is the middle value, not the largest.")]
     elif d == "medium":
-        n = rng.randint(2, 70) * 2
+        n = rng.randint(2, 150) * 2
         s = 3 * n + 6
         prompt = f"The sum of three consecutive even integers is {s}. What is the smallest of the integers?"
         val = n
@@ -129,7 +130,7 @@ def wp_consecutive(rng, d):
         ds = [(n + 2, "That is the middle integer."), (n + 4, "That is the largest."),
               (Fraction(s - 3, 3), "Consecutive even integers differ by 2, not 1."), (s // 3, "That is the middle value.")]
     else:
-        n = rng.randint(3, 60) * 2 + 1
+        n = rng.randint(3, 120) * 2 + 1
         s2 = n * n + (n + 2) ** 2
         prompt = f"The sum of the squares of two consecutive odd integers is {s2}. What is the larger integer, if both are positive?"
         val = n + 2
@@ -295,7 +296,7 @@ def wp_gridin(rng, d):
         val = small
         expl = f"2n + {diff} = {big + small} → n = {small}."
     else:
-        mult, small = rng.randint(2, 5), rng.randint(6, 25)
+        mult, small = rng.randint(2, 7), rng.randint(6, 60)
         big = mult * small
         prompt = f"Two numbers have a sum of {big + small}. The larger is {mult} times the smaller. What is the larger number?"
         val = big
@@ -574,9 +575,9 @@ def ex_model(rng, d):
     """Choose the function that models the situation (text options)."""
     thing, per = rng.choice(_EXP_CTX)
     if d == "easy":
-        n0 = rng.choice([5, 10, 20, 50, 100, 200, 300])
-        r = rng.choice([2, 3])
-        verb = {2: "doubles", 3: "triples"}[r] + f" every {per}"
+        n0 = rng.choice([5, 8, 10, 12, 15, 20, 25, 30, 40, 50, 60, 75, 80, 100, 120, 150, 200, 250, 300, 400, 500])
+        r = rng.choice([2, 3, 4])
+        verb = {2: "doubles", 3: "triples", 4: "quadruples"}[r] + f" every {per}"
         prompt = f"A population of {n0} {thing} {verb}. Which expression gives the population after t {per}s?"
         correct = f"{n0}·{r}^t"
         ds = [(f"{n0}·{r}·t", "This models linear change (a fixed amount each period), not repeated multiplication."),
@@ -685,9 +686,9 @@ def ex_periods(rng, d):
                            tags=["advanced-math", "exponential", "half-life"], est=90, verify=f"{n0}/2^{n}")
     # hard: which table shows exponential growth (text), with table stimulus of one data set
     kind = rng.choice(["exp", "lin"])
-    r = rng.choice([2, 3])
-    a = rng.choice([2, 3, 4, 5, 10])
-    m = rng.randint(3, 12)
+    r = rng.choice([2, 3, 4, 5])
+    a = rng.choice([1, 2, 3, 4, 5, 6, 8, 10, 12, 15, 20])
+    m = rng.randint(3, 25)
     xs = [0, 1, 2, 3]
     ys = [a * r ** x for x in xs] if kind == "exp" else [a + m * x for x in xs]
     stim = _table("Values of f", ["x", "f(x)"], [[x, y] for x, y in zip(xs, ys)])
@@ -722,7 +723,7 @@ def ex_gridin(rng, d):
         val = n0 * r ** h
         expl = f"{n0} × {r}^{h} = {val}."
     elif d == "medium":
-        r, h, final = rng.choice([2, 3, 4]), rng.randint(2, 4), rng.randint(2, 25)
+        r, h, final = rng.choice([2, 3, 4, 5]), rng.randint(2, 4), rng.randint(2, 60)
         n0 = final * r ** h
         prompt = f"A quantity of {n0} is divided by {r} every day. What is the quantity after {h} days?"
         val = final
@@ -1158,3 +1159,375 @@ absolute_value = _dispatch(FAMILIES, "absolute_value")
 exponential_growth = _dispatch(FAMILIES, "exponential")
 two_way_tables = _dispatch(FAMILIES, "two_way_tables")
 line_of_best_fit = _dispatch(FAMILIES, "scatterplots")
+
+
+# =========================================================================== #
+# Bank-growth families (v2.1)
+# =========================================================================== #
+# ---- word_problems ---------------------------------------------------------- #
+def wp_interest(rng, d):
+    """Simple interest I = Prt: find interest, rate, or compare accounts."""
+    P = rng.randint(5, 80) * 100
+    r = rng.choice([2, 3, 4, 5, 6, 8])
+    t = rng.randint(1, 6)
+    I = P * r * t // 100
+    name = rng.choice(NAMES)
+    if d == "easy":
+        prompt = f"{name} deposits ${P} in an account that earns {r}% simple interest per year. How much interest, in dollars, is earned after {t} years?"
+        val = I
+        expl = f"I = Prt = {P} × {r}/100 × {t} = {I}."
+        ds = [(P * r // 100, "That is one year's interest; multiply by {0} years.".format(t)), (P + I, "That is the total balance, not the interest."), (P * r * t, "Divide by 100 when using a percent."), (I + P * r // 100, "Arithmetic slip.")]
+    elif d == "medium":
+        prompt = f"{name} invested ${P} at a simple annual interest rate and earned ${I} in interest over {t} years. What was the annual interest rate, as a percent?"
+        val = r
+        expl = f"I = Prt → {I} = {P}·r·{t} → r = {I}/({P}·{t}) = {r / 100} = {r}%."
+        ds = [(r * t, "Divide by the number of years as well."), (Fraction(I * 100, P) if Fraction(I * 100, P) != r else r + 1, "Divide by t = {0} too.".format(t)), (r + 1, "Arithmetic slip."), (Fraction(r, t), "Multiply, don't divide, by the years when isolating r.")]
+        return _numeric_mc(rng, prompt, val, ds, subskill="model_and_solve", explanation=expl, tags=["algebra", "word-problem", "interest"], est=90, fmt=lambda v: f"{num_str(v)}%", verify=f"r={r}%")
+    else:
+        r2 = rng.choice([v for v in (2, 3, 4, 5, 6, 8) if v != r])
+        # same interest: P r t = P2 r2 t -> P2 = P r / r2 ; choose P so integer
+        P = r2 * rng.randint(5, 40) * 10
+        P2 = P * r // r2
+        I = P * r * t // 100
+        prompt = (f"{name} earns the same amount of simple interest from two accounts over {t} years. The first holds ${P} at {r}% per year. "
+                  f"If the second account earns {r2}% per year, how much, in dollars, is in the second account?")
+        val = P2
+        expl = f"Interest from the first: {P}·{r / 100}·{t} = {I}. Then P₂·{r2 / 100}·{t} = {I} → P₂ = {P2}."
+        ds = [(P, "The rates differ, so the principals must differ."), (P * r2 // r if (P * r2) % r == 0 else P2 + 100, "Divide by the second rate, not multiply by it."), (I, "That is the interest, not the principal."), (P2 + 50, "Arithmetic slip.")]
+        return _numeric_mc(rng, prompt, val, ds, subskill="model_and_solve", explanation=expl, qtype="multi_step_math", tags=["algebra", "word-problem", "interest"], est=100, verify=f"P2={P2}")
+    return _numeric_mc(rng, prompt, val, ds, subskill="model_and_solve", explanation=expl, tags=["algebra", "word-problem", "interest"], est=80, verify=f"I={I}")
+
+
+def wp_meeting(rng, d):
+    """Two movers: catching up, meeting, or head start."""
+    a, b = rng.sample(NAMES, 2)
+    if d == "easy":
+        r1, r2 = rng.randint(40, 70), rng.randint(40, 70)
+        if r1 == r2:
+            r2 += 5
+        t = rng.randint(2, 6)
+        D = (r1 + r2) * t
+        prompt = f"{a} and {b} start {D} miles apart and drive toward each other, at {r1} and {r2} miles per hour. After how many hours do they meet?"
+        val = t
+        expl = f"Closing speed = {r1} + {r2} = {r1 + r2} mph; {D} ÷ {r1 + r2} = {t} hours."
+        ds = [(Fraction(D, abs(r1 - r2)), "Toward each other: add the speeds."), (Fraction(D, max(r1, r2)), "Both drivers close the gap."), (t + 1, "Arithmetic slip."), (Fraction(D, r1 + r2) * 2, "Divide by the combined speed once.")]
+    elif d == "medium":
+        r1 = rng.randint(3, 8)
+        r2 = r1 + rng.randint(2, 6)
+        head = rng.randint(1, 4)
+        t = r1 * head // (r2 - r1) if (r1 * head) % (r2 - r1) == 0 else None
+        if t is None or t < 1:
+            return wp_meeting(rng, d)
+        prompt = f"{a} starts walking at {r1} miles per hour. {head} hour{'s' if head > 1 else ''} later, {b} starts cycling along the same route at {r2} miles per hour. How many hours after {b} starts does {b} catch up to {a}?"
+        val = t
+        expl = f"{a}'s lead is {r1}·{head} = {r1 * head} miles; the gap closes at {r2} − {r1} = {r2 - r1} mph: {r1 * head}/{r2 - r1} = {t} hours."
+        ds = [(t + head, f"That counts from when {a} started, not {b}."), (Fraction(r1 * head, r2 + r1), "Same direction: subtract the speeds."), (head, "That is the head start, not the catch-up time."), (t + 1, "Arithmetic slip.")]
+    else:
+        r1, r2 = rng.randint(30, 60), rng.randint(30, 60)
+        if r1 == r2:
+            r2 += 10
+        t = rng.randint(2, 5)
+        D = (r1 + r2) * t
+        prompt = f"Two trains leave stations {D} miles apart at the same time and travel toward each other on parallel tracks at {r1} and {r2} miles per hour. How many miles from the first train's station do they pass each other?"
+        val = r1 * t
+        expl = f"They meet after {D}/({r1} + {r2}) = {t} hours; the first train has gone {r1}·{t} = {val} miles."
+        ds = [(r2 * t, "That is the distance from the second station."), (t, "That is the time, not a distance."), (D // 2, "They meet at the midpoint only if the speeds are equal."), (val + r1, "Arithmetic slip.")]
+    return _numeric_mc(rng, prompt, val, ds, subskill="model_and_solve", explanation=expl, qtype="multi_step_math",
+                       tags=["algebra", "word-problem", "rate"], est=100, verify=f"val={val}")
+
+
+# ---- absolute_value ------------------------------------------------------- #
+def ab_vertex(rng, d):
+    """Vertex / extreme value of y = a|x − h| + k."""
+    h = rng.choice([v for v in range(-12, 13) if v])
+    k = rng.choice([v for v in range(-15, 16) if v])
+    a = 1 if d == "easy" else rng.choice([-3, -2, -1, 2, 3])
+    rule = ("" if a == 1 else "−" if a == -1 else _m(a)) + f"|x {_pm(-h)}| {_pm(k)}"
+    if d == "easy":
+        prompt = f"The function f is defined by f(x) = {rule}. What is the minimum value of f(x)?"
+        val = k
+        expl = f"|x {_pm(-h)}| is at least 0, with equality at x = {_m(h)}; so the minimum is {_m(k)}."
+        ds = [(h, "That is the x-value where the minimum occurs."), (-k, "The constant keeps its sign."), (-h, "x − h = 0 when x = h."), (abs(k) if abs(k) != k else k + 1, "The minimum can be negative.")]
+    elif d == "medium":
+        which = rng.choice(["x", "value"])
+        word = "minimum" if a > 0 else "maximum"
+        if which == "x":
+            prompt = f"For what value of x does f(x) = {rule} reach its {word} value?"
+            val = h
+            expl = f"The absolute value is 0 exactly when x {_pm(-h)} = 0, i.e. x = {_m(h)}."
+            ds = [(-h, "Set x − h = 0; the sign flips from what is written."), (k, "That is the {0} value, not where it occurs.".format(word)), (-k, "That is the opposite of the {0} value.".format(word)), (h + k, "Don't add the two constants.")]
+        else:
+            prompt = f"What is the {word} value of f(x) = {rule}?"
+            val = k
+            expl = f"{_m(a)}|x {_pm(-h)}| is {'at least' if a > 0 else 'at most'} 0, so f(x) is {'at least' if a > 0 else 'at most'} {_m(k)}."
+            ds = [(h, "That is where the {0} occurs.".format(word)), (-k, "The constant keeps its sign."), (a * h + k, "Don't multiply a by h."), (a + k, "The {0} is k alone.".format(word))]
+    else:
+        # f(x) = a|x - h| + k ; find x-intercept count or intercept values
+        kk = -a * rng.randint(1, 6)   # k opposite sign to a -> two x-intercepts
+        rule = ("" if a == 1 else "−" if a == -1 else _m(a)) + f"|x {_pm(-h)}| {_pm(kk)}"
+        w = -kk // a if (-kk) % a == 0 else None
+        if w is None:
+            return ab_vertex(rng, d)
+        x1, x2 = h - w, h + w
+        prompt = f"The graph of y = {rule} in the xy-plane crosses the x-axis at two points. What is the sum of the x-coordinates of these points?"
+        val = x1 + x2
+        expl = f"Set y = 0: |x {_pm(-h)}| = {w}, so x = {_m(x1)} or x = {_m(x2)}; their sum is {_m(val)}."
+        ds = [(x2, "That is one intercept, not the sum."), (2 * w, "The intercepts are symmetric about x = {0}, so the sum is 2·{0}.".format(_m(h))), (x2 - x1, "That is the distance between the intercepts."), (-val if val else val + 1, "Sign slip.")]
+    return _numeric_mc(rng, prompt, val, ds, subskill="solve_equations", explanation=expl,
+                       tags=["algebra", "absolute-value", "graph"], est=80 if d != "hard" else 95, verify=f"h={h},k={k}")
+
+
+def ab_distance_form(rng, d):
+    """Distance between numbers; write an interval as an absolute-value inequality."""
+    if d == "easy":
+        a, b = rng.randint(-30, 30), rng.randint(-30, 30)
+        if a == b:
+            b += 7
+        prompt = rng.choice([f"On a number line, what is the distance between the points {_m(a)} and {_m(b)}?",
+                             f"The temperature changed from {_m(a)}° to {_m(b)}°. By how many degrees did it change (as a positive number)?"])
+        val = abs(a - b)
+        expl = f"Distance = |{_m(a)} − ({_m(b)})| = |{_m(a - b)}| = {val}."
+        ds = [(a - b if a - b != val else b - a, "Distance is never negative; take the absolute value."), (abs(a + b) if abs(a + b) != val else val + 3, "Subtract the coordinates; don't add them."), (abs(a) + abs(b) if abs(a) + abs(b) != val else val + 5, "|a − b| is not |a| + |b| in general."), (val + 1, "Arithmetic slip.")]
+        return _numeric_mc(rng, prompt, val, ds, subskill="solve_equations", explanation=expl, tags=["algebra", "absolute-value", "distance"], est=65, verify=f"|{a}-{b}|={val}")
+    lo = rng.randint(-20, 20)
+    w = rng.choice([2, 4, 6, 8, 10, 12, 14, 16]) if d == "medium" else rng.choice([1, 3, 5, 7, 9, 11, 13])
+    hi = lo + w
+    mid, rad = Fraction(lo + hi, 2), Fraction(w, 2)
+    sym = rng.choice(["≤", "<"])
+    prompt = rng.choice([f"Which absolute-value inequality has the solution set {_m(lo)} {sym} x {sym} {_m(hi)}?",
+                         f"The acceptable values of x are those with {_m(lo)} {sym} x {sym} {_m(hi)}. Which inequality represents this?"])
+    correct = f"|x {_pm(-mid)}| {sym} {num_str(rad)}"
+    ds = [(f"|x {_pm(mid)}| {sym} {num_str(rad)}", "The center is {0}, so the expression is x − ({0}).".format(num_str(mid))),
+          (f"|x {_pm(-mid)}| {sym} {num_str(2 * rad)}", "The radius is half the width of the interval."),
+          (f"|x {_pm(-lo)}| {sym} {num_str(2 * rad)}", "Center the inequality at the midpoint, not the endpoint."),
+          (f"|x {_pm(-mid)}| {'≥' if sym == '≤' else '>'} {num_str(rad)}", "This describes values outside the interval.")]
+    expl = f"The interval is centered at ({_m(lo)} + {_m(hi)})/2 = {num_str(mid)} with half-width {num_str(rad)}: {correct}."
+    return _text_mc(rng, prompt, correct, ds, subskill="solve_equations", explanation=expl, tags=["algebra", "absolute-value", "interval"], est=85, verify=correct)
+
+
+# ---- exponential ------------------------------------------------------------ #
+def ex_compound(rng, d):
+    """Compound interest / growth with a formula to evaluate."""
+    P = rng.choice([500, 800, 1000, 1200, 1500, 2000, 2500, 3000, 4000, 5000, 6000, 8000, 10000])
+    name = rng.choice(NAMES)
+    if d == "easy":
+        r = rng.choice([2, 3, 4, 5, 6, 8, 10])
+        t = rng.choice([1, 2])
+        A = P * Fraction(100 + r, 100) ** t
+        prompt = f"{name} deposits ${P} in an account that earns {r}% interest, compounded annually. What is the balance, in dollars, after {t} year{'s' if t > 1 else ''}?"
+        val = round(float(A), 2)
+        expl = f"A = P(1 + r)^t = {P}(1.{r:02d})^{t} = {float(A):.2f}."
+        ds = [(round(P * (1 + r / 100 * t), 2), "Compound interest multiplies each year; it doesn't add the same amount." if t > 1 else "Arithmetic slip."), (round(P * r / 100 * t, 2), "That is only the interest earned, not the balance."), (round(P * (1 + r / 100) ** (t + 1), 2), "That is one year too many."), (round(P * (r / 100) ** t, 2), "Multiply by (1 + r), not r.")]
+    elif d == "medium":
+        r = rng.choice([2, 3, 4, 5, 6, 8, 10, 12])
+        t = rng.randint(2, 4)
+        prompt = f"An investment of ${P} grows by {r}% per year, compounded annually. Which expression gives the value, in dollars, of the investment after {t} years?"
+        correct = f"{P}(1.{r:02d})^{t}"
+        ds = [(f"{P}(0.{r:02d})^{t}", "The growth factor is 1 + r, not r."), (f"{P}(1 + {t}·0.{r:02d})", "Compound growth is repeated multiplication, not repeated addition."), (f"{P}·{t}·1.{r:02d}", "The number of years is an exponent."), (f"{P}(1.{r:02d})·{t}", "Raise the factor to the power {0}.".format(t))]
+        expl = f"Each year multiplies the value by 1 + {r}/100 = 1.{r:02d}; after {t} years: {correct}."
+        return _text_mc(rng, prompt, correct, ds, subskill="growth_decay", explanation=expl, tags=["advanced-math", "exponential", "compound"], est=80, verify=correct)
+    else:
+        r = rng.choice([4, 6, 8, 12])
+        n = rng.choice([2, 4, 12])
+        t = rng.randint(1, 3)
+        prompt = (f"${P} is invested at an annual rate of {r}%, compounded {'semiannually' if n == 2 else 'quarterly' if n == 4 else 'monthly'}. "
+                  f"Which expression gives the value, in dollars, after {t} years?")
+        correct = f"{P}(1 + 0.{r:02d}/{n})^({n}·{t})" if t > 1 else f"{P}(1 + 0.{r:02d}/{n})^{n}"
+        ds = [(f"{P}(1 + 0.{r:02d})^{t}" if t > 1 else f"{P}(1 + 0.{r:02d})^1", "That compounds once a year; divide the rate by {0} and multiply the exponent by {0}.".format(n)),
+              (f"{P}(1 + 0.{r:02d}/{n})^{t}", "The exponent counts compounding periods: {0}·{1}.".format(n, t)),
+              (f"{P}(1 + 0.{r:02d}·{n})^({n}·{t})" if t > 1 else f"{P}(1 + 0.{r:02d}·{n})^{n}", "Divide the annual rate by the number of periods; don't multiply."),
+              (f"{P}(1 + 0.{r:02d}/{n})·{n}·{t}", "The number of periods is an exponent.")]
+        expl = f"A = P(1 + r/n)^(nt) with r = 0.{r:02d}, n = {n}, t = {t}: {correct}."
+        return _text_mc(rng, prompt, correct, ds, subskill="growth_decay", explanation=expl, tags=["advanced-math", "exponential", "compound"], est=95, verify=correct)
+    return _numeric_mc(rng, prompt, val, ds, subskill="growth_decay", explanation=expl, tags=["advanced-math", "exponential", "compound"], est=85, fmt=lambda v: _money(v), verify=f"A={float(A):.2f}")
+
+
+def ex_identify_type(rng, d):
+    """Identify growth/decay/linear from equations or descriptions (text options)."""
+    n0 = rng.choice([50, 100, 200, 250, 400, 500, 800, 1000, 1500])
+    if d == "easy":
+        want = rng.choice(["exponential growth", "exponential decay"])
+        g = rng.choice([1.02, 1.05, 1.1, 1.25, 1.5, 2, 3])
+        dc = rng.choice([0.5, 0.75, 0.8, 0.9, 0.95, 0.98])
+        m = rng.randint(2, 30)
+        exp_g, exp_d = f"f(t) = {n0}({g:g})^t", f"f(t) = {n0}({dc:g})^t"
+        lin_g, lin_d = f"f(t) = {n0} + {m}t", f"f(t) = {n0} − {m}t"
+        correct = exp_g if want == "exponential growth" else exp_d
+        ds = [(exp_d if want == "exponential growth" else exp_g, "A base {0} 1 gives exponential {1}.".format("less than" if want == "exponential growth" else "greater than", "decay" if want == "exponential growth" else "growth")),
+              (lin_g, "Adding a fixed amount each period is linear growth."), (lin_d, "Subtracting a fixed amount each period is linear decay."), (f"f(t) = {n0}t^2", "A power of t is not exponential.")]
+        prompt = f"Which of the following functions models {want}?"
+        expl = f"Exponential functions have t in the exponent; the base {'above' if want == 'exponential growth' else 'below'} 1 gives {want}: {correct}."
+    elif d == "medium":
+        pct = rng.choice([3, 5, 8, 10, 12, 15, 20, 25])
+        up = rng.random() < 0.5
+        f = (100 + pct) / 100 if up else (100 - pct) / 100
+        desc = rng.choice([f"The number of trees in a forest is {n0} and {'increases' if up else 'decreases'} by {pct}% each year",
+                           f"A town's population is {n0} and {'grows' if up else 'shrinks'} by {pct}% per year",
+                           f"A machine worth ${n0} {'gains' if up else 'loses'} {pct}% of its value each year"])
+        prompt = f"{desc}. Which statement best describes the quantity over time?"
+        correct = f"It changes exponentially, because it is multiplied by {f:g} each year."
+        ds = [(f"It changes linearly, because it changes by {n0 * pct // 100} each year.", "A percent change is proportional to the current amount, so the yearly change is not constant."),
+              (f"It changes exponentially, because it changes by {n0 * pct // 100} each year.", "Exponential change is a constant factor, not a constant amount."),
+              (f"It changes linearly, because the percent is the same each year.", "A constant percent is a constant multiplier, which is exponential."),
+              (f"It does not change, because {pct}% is small.", "Any nonzero percent change compounds over time.")]
+        expl = f"A {pct}% {'increase' if up else 'decrease'} multiplies by {f:g} every year, so the model is exponential."
+    else:
+        xs = [0, 1, 2, 3]
+        kind = rng.choice(["exp", "lin"])
+        r = rng.choice([2, 3, 4, Fraction(1, 2)])
+        a = rng.choice([4, 8, 16, 32, 64, 5, 10, 20, 40, 80]) if r != Fraction(1, 2) else rng.choice([64, 80, 96, 128, 160, 200, 320])
+        m = rng.randint(3, 25)
+        ys = [a * r ** x for x in xs] if kind == "exp" else [a + m * x for x in xs]
+        shown = ", ".join(num_str(v) for v in ys)
+        prompt = f"A quantity is measured at times t = 0, 1, 2, 3 and takes the values {shown}. Which function best models the quantity Q(t)?"
+        if kind == "exp":
+            correct = f"Q(t) = {a}({num_str(r)})^t"
+            ds = [(f"Q(t) = {a} + {num_str(ys[1] - ys[0])}t", "The differences are not constant, so the model is not linear."), (f"Q(t) = {a}({num_str(r)})t", "t belongs in the exponent."), (f"Q(t) = {num_str(ys[1])}({num_str(r)})^t", "Q(0) = {0}, so the coefficient is {0}.".format(a)), (f"Q(t) = {a}({num_str(1 / r)})^t", "The ratio of consecutive values is {0}.".format(num_str(r)))]
+            expl = f"Consecutive values have constant ratio {num_str(r)}, so Q(t) = {a}·({num_str(r)})^t."
+        else:
+            correct = f"Q(t) = {a} + {m}t"
+            ds = [(f"Q(t) = {a}({num_str(Fraction(ys[1], ys[0]))})^t", "The ratios are not constant, so the model is not exponential."), (f"Q(t) = {m} + {a}t", "The starting value is {0} and the rate is {1}.".format(a, m)), (f"Q(t) = {a} − {m}t", "The values increase."), (f"Q(t) = {ys[1]} + {m}t", "Q(0) = {0}.".format(a))]
+            expl = f"Consecutive values differ by a constant {m}, so Q(t) = {a} + {m}t."
+    return _text_mc(rng, prompt, correct, ds, subskill="growth_decay", explanation=expl, tags=["advanced-math", "exponential", "identify"], est=85, verify=correct)
+
+
+# ---- two_way_tables --------------------------------------------------------- #
+def tw_build(rng, d):
+    """Reconstruct a two-way table from a description; find a cell / total / probability."""
+    rcat = rng.choice([("seniors", "juniors"), ("employees", "managers"), ("cats", "dogs"), ("morning classes", "afternoon classes")])
+    yes = rng.choice(["voted yes", "attended the workshop", "were adopted", "were full"])
+    a, b, c, e = (rng.randint(5, 60) for _ in range(4))
+    total = a + b + c + e
+    desc = (f"Of the {total} {rcat[0]} and {rcat[1]} surveyed, {a + b} were {rcat[0]}. {a} of the {rcat[0]} and {c} of the {rcat[1]} {yes}.")
+    if d == "easy":
+        prompt = f"{desc} How many of the {rcat[1]} did NOT meet the condition ({yes})?"
+        val = e
+        expl = f"{rcat[1].capitalize()}: {total} − {a + b} = {c + e}; of those, {c} did, so {c + e} − {c} = {e} did not."
+        ds = [(b, f"That is the number of {rcat[0]} who did not."), (c, f"That is the number of {rcat[1]} who did."), (c + e, f"That is all the {rcat[1]}."), (e + 1, "Arithmetic slip.")]
+    elif d == "medium":
+        prompt = f"{desc} If one of the surveyed is chosen at random, what is the probability that it is one of the {rcat[1]} who {yes}?"
+        val = Fraction(c, total)
+        expl = f"{c} of the {total} fit both conditions: {num_str(val)}."
+        ds = [(Fraction(c, c + e), "Divide by the grand total, not the {0} total.".format(rcat[1])), (Fraction(a + c, total), "That counts the {0} who {1} as well.".format(rcat[0], yes)), (Fraction(c, a + c), "That conditions on the condition, not the whole group."), (Fraction(e, total), "That is the probability of a {0} who did not.".format(rcat[1][:-1]))]
+    else:
+        prompt = f"{desc} Given that a randomly chosen respondent did NOT meet the condition ({yes}), what is the probability that the respondent is one of the {rcat[0]}?"
+        val = Fraction(b, b + e)
+        expl = f"Those who did not: {b} {rcat[0]} + {e} {rcat[1]} = {b + e}; of them {b} are {rcat[0]}: {num_str(val)}."
+        ds = [(Fraction(b, total), "Condition on the 'did not' group, not everyone."), (Fraction(b, a + b), "Condition on the 'did not' group, not on the {0}.".format(rcat[0])), (Fraction(e, b + e), "That is the probability of a {0}.".format(rcat[1][:-1])), (Fraction(a, a + c), "That conditions on those who DID meet the condition.")]
+    return _numeric_mc(rng, prompt, val, ds, subskill="conditional_probability", explanation=expl, qtype="multi_step_math",
+                       tags=["data", "table", "build"], est=100, verify=f"cells {a},{b},{c},{e}")
+
+
+def tw_relative_freq(rng, d):
+    """Relative-frequency (decimal) two-way tables."""
+    rcat, ccat, a, b, c, e, total, _ = _two_way(rng)
+    # scale to a 'nice' total
+    total = rng.choice([50, 100, 200, 250, 400, 500])
+    pa = rng.choice([0.1, 0.12, 0.15, 0.18, 0.2, 0.24, 0.25, 0.3])
+    pb = rng.choice([0.1, 0.12, 0.15, 0.2, 0.22, 0.25, 0.3])
+    pc = rng.choice([0.1, 0.14, 0.15, 0.2, 0.25])
+    pe = round(1 - pa - pb - pc, 2)
+    if pe <= 0.04:
+        return tw_relative_freq(rng, d)
+    rows = [[rcat[0], f"{pa:.2f}", f"{pb:.2f}", f"{pa + pb:.2f}"], [rcat[1], f"{pc:.2f}", f"{pe:.2f}", f"{pc + pe:.2f}"], ["Total", f"{pa + pc:.2f}", f"{pb + pe:.2f}", "1.00"]]
+    stim = _table(f"Relative frequencies (n = {total})", ["", ccat[0], ccat[1], "Total"], rows)
+    if d == "easy":
+        prompt = f"The table shows relative frequencies for {total} responses. How many responses were “{rcat[0]}” and “{ccat[1]}”?"
+        val = round(pb * total)
+        expl = f"{pb:.2f} × {total} = {val}."
+        ds = [(round(pa * total), "That is the other cell in the row."), (round((pa + pb) * total), "That is the whole row."), (round(pb * 100), "Multiply by the total {0}, not 100.".format(total)), (round(pe * total), "That is the other cell in the column.")]
+    elif d == "medium":
+        prompt = f"The table shows relative frequencies for {total} responses. How many responses in total were “{ccat[0]}”?"
+        val = round((pa + pc) * total)
+        expl = f"Column total {pa + pc:.2f} × {total} = {val}."
+        ds = [(round((pa + pb) * total), "That is a row total."), (round(pa * total), "That is one cell only."), (round((pb + pe) * total), "That is the other column."), (round((pa + pc) * 100), "Multiply by {0}.".format(total))]
+    else:
+        prompt = f"The table shows relative frequencies for {total} responses. Given that a response is “{rcat[1]}”, what is the probability that it is “{ccat[0]}”? (Round to the nearest hundredth.)"
+        val = round(pc / (pc + pe), 2)
+        expl = f"P({ccat[0]} | {rcat[1]}) = {pc:.2f}/({pc:.2f} + {pe:.2f}) = {val:.2f}."
+        ds = [(round(pc, 2), "Divide by the row's relative frequency to condition on it."), (round(pc / (pa + pc), 2), "Condition on the row, not the column."), (round(pe / (pc + pe), 2), "That is the probability of the other column."), (round(val + 0.1, 2), "Arithmetic slip.")]
+    return _numeric_mc(rng, prompt, val, ds, subskill="conditional_probability", explanation=expl, qtype="data_interpretation",
+                       tags=["data", "table", "relative-frequency"], est=90, stimulus=stim, verify=f"{pa},{pb},{pc},{pe}")
+
+
+# ---- scatterplots ------------------------------------------------------------ #
+def sp_outlier_point(rng, d):
+    """Which data point is farthest from / closest to the line of best fit (text options)."""
+    m = rng.choice([v for v in range(-6, 7) if v])
+    b = rng.randint(0, 30)
+    xs = sorted(rng.sample(range(1, 14), 5))
+    res = rng.sample([-5, -3, -2, -1, 1, 2, 3, 5], 5)
+    big = rng.choice([8, 9, 10, 11, 12]) * rng.choice([-1, 1])
+    i = rng.randrange(5)
+    res[i] = big
+    pts = [[x, m * x + b + r] for x, r in zip(xs, res)]
+    fig = {"type": "figure", "figure": {"kind": "scatter", "caption": "Scatterplot with line of best fit", "points": pts, "line": {"m": m, "b": b}, "xlabel": "x"}}
+    eq = f"y = {_lin(m, b)}"
+    if d == "easy":
+        prompt = f"The scatterplot shows five data points and the line of best fit {eq}. Which data point is farthest from the line?"
+        correct = f"({pts[i][0]}, {_m(pts[i][1])})"
+        ds = [(f"({p[0]}, {_m(p[1])})", f"Its y-value is {abs(r)} from the line's prediction, less than {abs(big)}.") for p, r in zip(pts, res) if p is not pts[i]]
+        expl = f"Compare each point with the line: at x = {pts[i][0]} the line predicts {_m(m * pts[i][0] + b)}, and the point is {abs(big)} away, the largest gap."
+    elif d == "medium":
+        j = min(range(5), key=lambda k: abs(res[k]))
+        prompt = f"The line of best fit for the scatterplot is {eq}. For which data point is the actual y-value closest to the value predicted by the line?"
+        correct = f"({pts[j][0]}, {_m(pts[j][1])})"
+        ds = [(f"({p[0]}, {_m(p[1])})", f"Its y-value differs from the prediction by {abs(r)}, more than {abs(res[j])}.") for p, r in zip(pts, res) if p is not pts[j]]
+        expl = f"At x = {pts[j][0]} the line predicts {_m(m * pts[j][0] + b)}; the point is only {abs(res[j])} away, the smallest gap."
+    else:
+        prompt = f"The line of best fit for the scatterplot is {eq}. If the point ({pts[i][0]}, {_m(pts[i][1])}) were removed and the line refit, how would the slope most likely change?"
+        above = big > 0
+        right = xs.index(pts[i][0]) >= 3
+        # outlier above on the right pulls slope up; removing it lowers slope
+        if (above and right) or (not above and not right):
+            correct = "The slope would decrease."
+            why = f"The outlier is {'above' if above else 'below'} the line on the {'right' if right else 'left'}, which tilts the line upward; removing it lowers the slope."
+        else:
+            correct = "The slope would increase."
+            why = f"The outlier is {'above' if above else 'below'} the line on the {'right' if right else 'left'}, which tilts the line downward; removing it raises the slope."
+        other = "The slope would increase." if correct.endswith("decrease.") else "The slope would decrease."
+        ds = [(other, "Think about which way the outlier pulls the line."), ("The slope would not change, because one point cannot affect the line.", "Every point affects a least-squares line."), ("The slope would become 0.", "The remaining points still show a clear trend."), ("The slope would change sign.", "The other points keep the same direction of association.")]
+        expl = why
+        return _text_mc(rng, prompt, correct, ds, subskill="model_interpret", explanation=expl, qtype="data_interpretation", tags=["data", "scatterplot", "outlier"], est=95, stimulus=fig, verify=f"outlier ({pts[i][0]},{pts[i][1]})")
+    return _text_mc(rng, prompt, correct, ds, subskill="model_interpret", explanation=expl, qtype="data_interpretation", tags=["data", "scatterplot", "residual"], est=85, stimulus=fig, verify=f"res={res}")
+
+
+def sp_line_from_points(rng, d):
+    """Line of best fit passes through two given points -> slope / equation / prediction."""
+    m = rng.choice([v for v in range(-8, 9) if v])
+    b = rng.randint(0, 40)
+    x1 = rng.randint(1, 6)
+    x2 = x1 + rng.randint(2, 8)
+    y1, y2 = m * x1 + b, m * x2 + b
+    pts, fig = _scatter(rng, m, b)
+    if d == "easy":
+        prompt = f"The line of best fit for the scatterplot passes through the points ({x1}, {_m(y1)}) and ({x2}, {_m(y2)}). What is the slope of the line?"
+        val = m
+        expl = f"Slope = ({_m(y2)} − ({_m(y1)}))/({x2} − {x1}) = {_m(y2 - y1)}/{x2 - x1} = {_m(m)}."
+        ds = [(Fraction(x2 - x1, y2 - y1) if y2 != y1 else m + 1, "Rise over run, not run over rise."), (-m, "Sign slip."), (y2 - y1, "Divide by the change in x."), (Fraction(y2, x2), "Use the change between the two points.")]
+        return _numeric_mc(rng, prompt, val, ds, subskill="model_interpret", explanation=expl, qtype="data_interpretation", tags=["data", "scatterplot", "slope"], est=80, stimulus=fig, verify=f"m={m}")
+    if d == "medium":
+        prompt = f"The line of best fit for the scatterplot passes through ({x1}, {_m(y1)}) and ({x2}, {_m(y2)}). Which equation represents the line?"
+        correct = f"y = {_lin(m, b)}"
+        ds = [(f"y = {_lin(-m, b)}", "Check the sign of the slope."), (f"y = {_lin(m, y1)}", f"{_m(y1)} is y at x = {x1}, not at x = 0."), (f"y = {_lin(b, m)}" if b != m else f"y = {_lin(m, b + 5)}", "The slope and intercept are swapped." if b != m else "Recheck the intercept."), (f"y = {_lin(y2 - y1, b)}" if y2 - y1 != m else f"y = {_lin(m, b - 3)}", "Divide the change in y by the change in x.")]
+        expl = f"Slope {_m(m)}; then {_m(y1)} = {_m(m)}·{x1} + b gives b = {_m(b)}: {correct}."
+        return _text_mc(rng, prompt, correct, ds, subskill="model_interpret", explanation=expl, qtype="data_interpretation", tags=["data", "scatterplot", "equation"], est=90, stimulus=fig, verify=f"y={m}x+{b}")
+    k = x2 + rng.randint(3, 10)
+    prompt = f"The line of best fit for the scatterplot passes through ({x1}, {_m(y1)}) and ({x2}, {_m(y2)}). Based on the line, what value of y is predicted when x = {k}?"
+    val = m * k + b
+    expl = f"Slope {_m(m)} and intercept {_m(b)} give y = {_lin(m, b)}; at x = {k}, y = {_m(val)}."
+    ds = [(m * k, "Include the intercept."), (y2 + (k - x2), "Each unit of x changes y by {0}, not 1.".format(_m(m))), (-m * k + b, "Sign slip on the slope."), (val + m, "Arithmetic slip.")]
+    return _numeric_mc(rng, prompt, val, ds, subskill="model_interpret", explanation=expl, qtype="data_interpretation", tags=["data", "scatterplot", "predict"], est=95, qtype_override=None) if False else \
+        _numeric_mc(rng, prompt, val, ds, subskill="model_interpret", explanation=expl, qtype="multi_step_math", tags=["data", "scatterplot", "predict"], est=95, stimulus=fig, verify=f"y={val}")
+
+
+_NEW_EXTRA = {
+    "word_problems": [wp_interest, wp_meeting],
+    "absolute_value": [ab_vertex, ab_distance_form],
+    "exponential": [ex_compound, ex_identify_type],
+    "two_way_tables": [tw_build, tw_relative_freq],
+    "scatterplots": [sp_outlier_point, sp_line_from_points],
+}
+for _skill, _fns in _NEW_EXTRA.items():
+    for _d in ("easy", "medium", "hard"):
+        FAMILIES[_skill][_d].extend(_fns)

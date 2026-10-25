@@ -26,6 +26,9 @@ SUBSKILLS = {
     "usage_idioms": ["confused_words", "idiomatic_prepositions", "comparatives",
                      "precision_redundancy"],
 }
+# v2.1: confused_words also covers whether/if, number/amount, who/that and double
+# negatives; idiomatic_prepositions covers prepositions after comparison words;
+# precision_redundancy covers wordy-to-precise substitutions.
 
 _ACT_STEMS = [
     "Which choice completes the text so that it conforms to the conventions of Standard English?",
@@ -617,11 +620,275 @@ def ui_passage(rng, difficulty):
                  tags=["usage", "passage"], est=50)
 
 
+# --------------------------------------------------------------------------- #
+# v2.1 ADDITIONS
+# --------------------------------------------------------------------------- #
+_CONF.extend([
+    ("The council has not decided ___ to extend the deadline.", "whether",
+     [("if", "'if' introduces a condition; a choice between alternatives takes 'whether'."),
+      ("weather", "'weather' refers to the climate."),
+      ("whether or not if", "This piles up connectors and is ungrammatical.")],
+     "'Whether' introduces alternatives ('whether to extend or not').", "easy"),
+    ("Please let us know ___ you can attend the ceremony.", "whether",
+     [("if or not", "'if or not' is not standard; 'whether or not' is."),
+      ("weather", "'weather' refers to the climate."),
+      ("that whether", "Two connectors cannot be stacked here.")],
+     "'Whether' is the standard choice before an alternative ('can attend or cannot').", "medium"),
+    ("The ___ of volunteers doubled after the article appeared.", "number",
+     [("amount", "'amount' is for things that cannot be counted; volunteers are counted, so 'number'."),
+      ("quantity", "'quantity' is used for measured material, not people."),
+      ("numbers", "The singular 'number' is needed after 'the ___ of'.")],
+     "Countable nouns take 'number of'.", "easy"),
+    ("A surprising ___ of rain fell in a single afternoon.", "amount",
+     [("number", "'number' is for countable things; rain is measured, so 'amount'."),
+      ("quantities", "The plural is wrong after 'a surprising'."),
+      ("sum", "'sum' refers to money or a total of numbers.")],
+     "Uncountable nouns like 'rain' take 'amount of'.", "medium"),
+    ("The engineer ___ designed the dam retired last year.", "who",
+     [("which", "'which' refers to things, not people."),
+      ("whom", "'whom' is objective, but the pronoun is the subject of 'designed'."),
+      ("what", "'what' cannot introduce a clause describing a person here.")],
+     "Use 'who' for people.", "easy"),
+    ("The bridge ___ spans the gorge was finished in 1902.", "that",
+     [("who", "'who' refers to people, not things."),
+      ("whom", "'whom' refers to people and is objective."),
+      ("what", "'what' cannot introduce a relative clause here.")],
+     "Use 'that' or 'which' for things; 'who' is reserved for people.", "easy"),
+    ("The crew could ___ see the buoy through the fog.", "hardly",
+     [("not hardly", "'not hardly' is a double negative."),
+      ("hardly not", "'hardly' is already negative; adding 'not' creates a double negative."),
+      ("scarcely not", "'scarcely not' is a double negative.")],
+     "'Hardly' is itself negative, so it is not paired with 'not'.", "medium"),
+    ("The clinic does not have ___ appointments left this week.", "any",
+     [("no", "'does not have no' is a double negative."),
+      ("none", "'none' cannot modify 'appointments' here, and it doubles the negative."),
+      ("no more of", "This is both a double negative and unidiomatic.")],
+     "After a negative verb, use 'any', not 'no'.", "medium"),
+    ("Nobody on the committee ___ the proposal before the vote.", "had read",
+     [("hadn't read", "'Nobody ... hadn't' is a double negative."),
+      ("had not never read", "'not never' is a double negative."),
+      ("hadn't never read", "This stacks two negatives.")],
+     "'Nobody' is already negative; the verb must stay positive.", "hard"),
+    ("The new policy is quite different ___ the one it replaced.", "from",
+     [("than", "'different than' is nonstandard in careful writing; 'different from' is the idiom."),
+      ("to", "'different to' is not standard American English."),
+      ("with", "'different with' is not idiomatic.")],
+     "'Different from' is the standard comparison idiom.", "medium"),
+    ("Compared ___ last year's harvest, this year's is small.", "with",
+     [("than", "'compared than' is not idiomatic."),
+      ("of", "'compared of' is not idiomatic."),
+      ("by", "'compared by' changes the meaning (who did the comparing).")],
+     "'Compared with' (or 'compared to') is the idiom.", "medium"),
+    ("The new sauce is superior ___ the old recipe in every way.", "to",
+     [("than", "'superior' is not a comparative with 'than'; it takes 'to'."),
+      ("over", "'superior over' is not idiomatic."),
+      ("from", "'superior from' is not idiomatic.")],
+     "'Superior to' and 'inferior to' take 'to'.", "hard"),
+    ("The results differ sharply ___ those reported in 2019.", "from",
+     [("than", "'differ than' is not idiomatic; 'differ from' is."),
+      ("to", "'differ to' is not standard."),
+      ("against", "'differ against' is not idiomatic.")],
+     "'Differ from' is the idiom.", "hard"),
+])
+
+_WORDY = [
+    ("___ the storm, the ferry stayed in port.", "Because of",
+     [("Due to the fact of", "This phrase is padded; 'because of' says the same thing in two words."),
+      ("In light of the fact that there was", "Wordy and awkward."),
+      ("On account of the reason of", "Redundant and unidiomatic.")]),
+    ("The committee will meet ___ to review the plan.", "tomorrow",
+     [("at a later point in time tomorrow", "'At a later point in time' adds nothing to 'tomorrow'."),
+      ("in the near future of tomorrow", "Padded and unidiomatic."),
+      ("tomorrow at some point in time", "'At some point in time' is empty filler.")]),
+    ("___ the trail is closed, hikers must use the ridge road.", "If",
+     [("In the event that", "'In the event that' is a wordy substitute for 'if'."),
+      ("Under circumstances in which", "Wordy and stiff."),
+      ("Should it be the case that", "Padded phrasing for a simple condition.")]),
+    ("The library ___ its hours during exam week.", "extends",
+     [("makes an extension of", "A noun phrase where a single verb does the job."),
+      ("has a policy of extending", "Padded; the simple verb is clearer."),
+      ("is in the practice of extending", "Wordy and indirect.")]),
+    ("The report ___ three risks.", "identifies",
+     [("makes an identification of", "A padded noun phrase for a simple verb."),
+      ("serves to identify", "'serves to' adds nothing."),
+      ("is identifying the existence of", "Wordy and vague.")]),
+    ("___, the harvest was small.", "This year",
+     [("At this point in time this year", "'At this point in time' is filler."),
+      ("In the current year that we are in", "Redundant."),
+      ("During the course of this present year", "Padded.")]),
+    ("The mayor spoke ___ about the budget.", "briefly",
+     [("for a short period of time", "Five words where one adverb will do."),
+      ("in a brief manner of speaking", "'Manner of speaking' is filler."),
+      ("in a way that was brief", "Wordy.")]),
+    ("The divers ___ the wreck twice a month.", "inspect",
+     [("conduct an inspection of", "A padded noun phrase for a simple verb."),
+      ("make it a point to carry out inspections of", "Wordy."),
+      ("are responsible for the inspecting of", "Indirect and wordy.")]),
+    ("___ the price, the tickets sold out.", "Despite",
+     [("In spite of the fact of", "'Despite' says it in one word."),
+      ("Regardless of the fact that there was", "Wordy and ungrammatical here."),
+      ("Notwithstanding the consideration of", "Stiff and padded.")]),
+    ("The band ___ for two hours.", "rehearsed",
+     [("held a rehearsal session lasting", "A padded noun phrase for a simple verb."),
+      ("engaged in the activity of rehearsing", "Wordy."),
+      ("did some rehearsing over a period of", "Vague and padded.")]),
+]
+
+
+@family(fill_in=True, small_space=True)
+def ui_wordy(rng, difficulty):
+    """Replace a padded phrase with the precise short form."""
+    text, right, wrongs = rng.choice(_WORDY)
+    correct = (right, f"Correct. '{right}' states the idea directly, without filler.")
+    if difficulty != "easy" and not text.startswith("___"):
+        text = rng.choice(["As the minutes note, ", "In the end, ", "As usual, "]) + low(text)
+    if difficulty == "hard":
+        text = text + " " + rng.choice(["Nobody minded.", "The reason was never explained.", "It was over quickly."])
+    stem = rng.choice(["Which choice expresses the idea most concisely?",
+                       "Which choice completes the sentence without wordiness?"])
+    return build(rng, fill(text, stem), correct, wrongs, subskill="precision_redundancy",
+                 explanation="Prefer the direct word or phrase; padding such as 'due to the fact that' adds length, not meaning.",
+                 tags=["usage", "wordiness", "concision"], est=45)
+
+
+_WHO_THAT = [
+    ("the engineer", "designed the dam", "p"), ("the violinist", "won the audition", "p"),
+    ("the baker", "opened the second shop", "p"), ("the guide", "led us through the caves", "p"),
+    ("the bridge", "spans the gorge", "t"), ("the recipe", "calls for rye flour", "t"),
+    ("the mural", "covers the north wall", "t"), ("the ferry", "crosses to the island", "t"),
+    ("the historian", "catalogued the letters", "p"), ("the telescope", "sits on the plateau", "t"),
+]
+
+
+@family(fill_in=True)
+def ui_who_that(rng, difficulty):
+    """'who' for people; 'that'/'which' for things."""
+    noun, act, cat = rng.choice(_WHO_THAT)
+    name = rng.choice(NAMES)
+    frames = [f"{name} thanked {noun} ___ {act}.", f"Everyone remembers {noun} ___ {act}.",
+              f"The article profiles {noun} ___ {act}."] if cat == "p" else \
+             [f"{name} photographed {noun} ___ {act}.", f"Everyone remembers {noun} ___ {act}.",
+              f"The article describes {noun} ___ {act}."]
+    text = rng.choice(frames)
+    if cat == "p":
+        correct = ("who", f"Correct. '{noun}' is a person, so 'who' introduces the clause.")
+        ds = [("which", "'which' refers to things, not people."),
+              ("whom", "'whom' is objective, but the pronoun is the subject of the clause."),
+              ("what", "'what' cannot introduce a relative clause here.")]
+    else:
+        correct = ("that", f"Correct. '{noun}' is a thing, so 'that' introduces the clause.")
+        ds = [("who", "'who' refers to people, not things."),
+              ("whom", "'whom' refers to people and is objective."),
+              ("what", "'what' cannot introduce a relative clause here.")]
+    if difficulty != "easy":
+        text = rng.choice(["As it happens, ", "By all accounts, ", "In the end, "]) + soft_low(text)
+    if difficulty == "hard":
+        text = text + " " + rng.choice(["The story is well known.", "Few people know the details.", "A plaque marks the spot."])
+    return build(rng, fill(text, _stem(rng)), correct, ds, subskill="confused_words",
+                 explanation="Use 'who' for people and 'that' or 'which' for things.",
+                 tags=["usage", "who-that"])
+
+
+_CMP_PREP = [
+    ("The study compares the new vaccine ___ the older formula.", "with", ["than", "against of", "by"]),
+    ("The guide contrasted the limestone caves ___ the lava tubes to the south.", "with", ["than", "to from", "by"]),
+    ("Her second novel differs ___ her first in almost every way.", "from", ["than", "to", "against"]),
+    ("The copy is identical ___ the original in every detail.", "to", ["with", "than", "as"]),
+    ("The brick oven is superior ___ the gas oven for bread.", "to", ["than", "over", "from"]),
+    ("The valley's climate is similar ___ that of the coast.", "to", ["with", "than", "as"]),
+    ("Nothing in the archive is comparable ___ the 1890 letters.", "to", ["than", "with of", "against"]),
+    ("The new route is preferable ___ the old one in winter.", "to", ["than", "over", "from"]),
+    ("The sketch bears little resemblance ___ the finished mural.", "to", ["with", "of", "than"]),
+    ("Measured ___ last year's total, the harvest was small.", "against", ["than", "to of", "by of"]),
+]
+
+
+@family(fill_in=True)
+def ui_compare_prep(rng, difficulty):
+    """Prepositions after verbs and adjectives of comparison."""
+    text, right, wrongs = rng.choice(_CMP_PREP)
+    correct = (right, f"Correct. This expression of comparison takes '{right}'.")
+    ds = [(w, f"'{w}' does not form the standard comparison idiom here.") for w in wrongs]
+    if difficulty != "easy":
+        text = rng.choice(["According to the report, ", "As the guide explained, ", "In short, "]) + low(text)
+    if difficulty == "hard":
+        text = text + " " + rng.choice(["The difference is striking.", "Few would disagree.", "The point is rarely disputed."])
+    return build(rng, fill(text, _stem(rng)), correct, ds, subskill="idiomatic_prepositions",
+                 explanation="Comparison words carry fixed prepositions: compare with, differ from, identical to, superior to.",
+                 tags=["usage", "idiom", "comparison-preposition"])
+
+
+_DOUBLE_NEG = [
+    ("The crew could ___ see the buoy through the fog.", "hardly", ["not hardly", "hardly not", "scarcely not"]),
+    ("The clinic does not have ___ appointments left this week.", "any", ["no", "none", "no more of"]),
+    ("{N} has ___ been to the island.", "never", ["not never", "never not", "not ever never"]),
+    ("There was ___ anyone left in the hall by midnight.", "scarcely", ["not scarcely", "scarcely not", "hardly not"]),
+    ("The guide did not say ___ about the closed trail.", "anything", ["nothing", "nothing at all", "none of nothing"]),
+    ("We could not find the key ___.", "anywhere", ["nowhere", "not nowhere", "nowheres"]),
+    ("The ferry ___ runs late in winter.", "rarely", ["doesn't rarely", "rarely doesn't", "not rarely"]),
+    ("Nobody ___ the second letter.", "had seen", ["hadn't seen", "had not never seen", "hadn't never seen"]),
+]
+
+
+@family(fill_in=True)
+def ui_double_negative(rng, difficulty):
+    """Avoid double negatives (hardly, never, any vs. no)."""
+    text, right, wrongs = rng.choice(_DOUBLE_NEG)
+    name = rng.choice(NAMES)
+    text = text.format(N=name)
+    correct = (right, "Correct. A single negative expresses the meaning; adding another would cancel or muddle it.")
+    ds = [(w, f"'{w}' creates a double negative.") for w in wrongs]
+    if difficulty != "easy":
+        text = rng.choice(["As it turned out, ", "By all accounts, ", "That night, "]) + soft_low(text)
+    if difficulty == "hard":
+        text = text + " " + rng.choice(["Nobody was surprised.", "The search was called off.", "The silence was total."])
+    return build(rng, fill(text, _stem(rng)), correct, ds, subskill="confused_words",
+                 explanation=("Words like 'hardly', 'never', and 'nobody' are already negative; pair them with "
+                              "positive forms ('any', 'anything'), not with 'no' or 'not'."),
+                 tags=["usage", "double-negative"])
+
+
+_NUM_AMT = [
+    ("The ___ of visitors doubled after the bridge opened.", "number", "visitors"),
+    ("A large ___ of sand washed onto the road overnight.", "amount", "sand"),
+    ("The ___ of applicants surprised the committee.", "number", "applicants"),
+    ("The ___ of water in the reservoir fell by a third.", "amount", "water"),
+    ("A small ___ of coins was found under the floor.", "number", "coins"),
+    ("The ___ of sunlight the garden receives varies by season.", "amount", "sunlight"),
+    ("The ___ of bridges in the county has not changed since 1950.", "number", "bridges"),
+    ("The ___ of flour in the recipe can be halved.", "amount", "flour"),
+    ("The ___ of volunteers grew every year.", "number", "volunteers"),
+    ("A surprising ___ of rain fell in a single afternoon.", "amount", "rain"),
+]
+
+
+@family(fill_in=True)
+def ui_number_amount(rng, difficulty):
+    """number (countable) vs. amount (uncountable), with fewer/less companions."""
+    text, right, noun = rng.choice(_NUM_AMT)
+    countable = right == "number"
+    correct = (right, f"Correct. '{noun}' is {'counted' if countable else 'measured, not counted'}, so '{right}' is the word.")
+    ds = [("amount" if countable else "number", f"'{'amount' if countable else 'number'}' is for "
+                                                 f"{'things that cannot be counted' if countable else 'things that are counted'}; '{noun}' is not."),
+          ("quantity" if countable else "sum", "This word does not fit the kind of thing being described."),
+          ("numbers" if countable else "amounts", "The singular is needed after 'the ___ of'.")]
+    if difficulty != "easy":
+        text = rng.choice(["According to the survey, ", "As the ranger noted, ", "Last year, "]) + low(text)
+    if difficulty == "hard":
+        text = text + " " + rng.choice(["The trend continues.", "No one could explain it.", "The figure is now posted online."])
+    return build(rng, fill(text, _stem(rng)), correct, ds, subskill="confused_words",
+                 explanation="'Number' goes with things you count; 'amount' goes with things you measure.",
+                 tags=["usage", "number-amount"])
+
+
 FAMILIES = {
     "usage_idioms": {
-        "easy": [ui_confused, ui_preposition, ui_comparative, ui_redundancy, ui_passage],
-        "medium": [ui_confused, ui_preposition, ui_comparative, ui_precision, ui_redundancy, ui_prep_passage, ui_passage],
-        "hard": [ui_confused, ui_preposition, ui_precision, ui_comparative, ui_redundancy, ui_prep_passage, ui_passage],
+        "easy": [ui_confused, ui_preposition, ui_comparative, ui_redundancy, ui_passage,
+                 ui_who_that, ui_number_amount, ui_wordy],
+        "medium": [ui_confused, ui_preposition, ui_comparative, ui_precision, ui_redundancy, ui_prep_passage, ui_passage,
+                   ui_who_that, ui_number_amount, ui_compare_prep, ui_double_negative, ui_wordy],
+        "hard": [ui_confused, ui_preposition, ui_precision, ui_comparative, ui_redundancy, ui_prep_passage, ui_passage,
+                 ui_compare_prep, ui_double_negative, ui_wordy, ui_number_amount],
     },
 }
 

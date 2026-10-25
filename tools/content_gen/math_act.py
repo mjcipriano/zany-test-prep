@@ -137,7 +137,7 @@ def np_primes_factors(rng, d):
                             tags=["number", "primes"], est=70, verify=correct)
         sub = "primes"
     elif d == "medium":
-        n = rng.choice([12, 16, 18, 20, 24, 28, 30, 32, 36, 40, 42, 45, 48, 50, 54, 56, 60, 63, 64, 72, 75, 80, 84, 90, 96, 100])
+        n = rng.choice([v for v in range(12, 200) if len(_factors(v)) >= 6])
         val = len(_factors(n))
         prompt = rng.choice([f"How many positive integers are factors of {n}?",
                              f"How many positive divisors does {n} have?"])
@@ -320,7 +320,8 @@ def np_scientific(rng, d):
 def np_fdp(rng, d):
     """Fraction / decimal / percent conversions and comparisons."""
     if d == "easy":
-        n, dn = rng.choice([(1, 2), (1, 4), (3, 4), (1, 5), (2, 5), (3, 5), (4, 5), (1, 8), (3, 8), (5, 8), (7, 8), (1, 10), (3, 10), (7, 10), (9, 10), (1, 20), (3, 20), (7, 20), (9, 20), (1, 25), (3, 25), (11, 25), (13, 50), (1, 50)])
+        n, dn = rng.choice([(1, 2), (1, 4), (3, 4), (1, 5), (2, 5), (3, 5), (4, 5), (1, 8), (3, 8), (5, 8), (7, 8), (1, 10), (3, 10), (7, 10), (9, 10), (1, 20), (3, 20), (7, 20), (9, 20), (1, 25), (3, 25), (11, 25), (13, 50), (1, 50),
+                            (11, 20), (13, 20), (17, 20), (19, 20), (2, 25), (4, 25), (6, 25), (7, 25), (8, 25), (9, 25), (12, 25), (14, 25), (16, 25), (18, 25), (21, 25), (3, 50), (7, 50), (9, 50), (11, 50), (17, 50), (19, 50), (21, 50), (23, 50), (1, 16), (3, 16), (5, 16), (7, 16), (9, 16), (11, 16), (1, 40), (3, 40), (7, 40), (9, 40)])
         f = Fraction(n, dn)
         mode = rng.choice(["f2d", "f2p", "d2f", "p2f"])
         dec = float(f)
@@ -1014,8 +1015,8 @@ def sq_which_term(rng, d):
 def lg_evaluate(rng, d):
     """Evaluate log_b(x): integer (easy), fractional/negative (medium), expression (hard)."""
     if d == "easy":
-        b = rng.choice([2, 3, 4, 5, 6, 7, 10])
-        e = rng.randint(1, 6 if b <= 3 else 4 if b <= 5 else 3)
+        b = rng.choice([2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 15, 20])
+        e = rng.randint(1, 8 if b <= 3 else 5 if b <= 5 else 3)
         x = b ** e
         prompt = rng.choice([f"What is the value of log_{b}({x})?", f"log_{b} {x} = ?",
                              f"What is log_{b}({x})?"]) if b != 10 else rng.choice([f"What is the value of log({x})? (log denotes the base-10 logarithm.)", f"What is log₁₀({x})?"])
@@ -1141,7 +1142,7 @@ def lg_properties(rng, d):
             expl = f"log({pb}/{pa}) = log {pb} − log {pa} ≈ {b} − {a} = {val}."
             ds = [(round(b / a, 2), "Logs of a quotient subtract."), (round(a + b, 2), "Addition is for a product."), (round(a - b, 2), "Numerator minus denominator."), (round(b - a + 0.1, 2), "Arithmetic slip.")]
         elif kind == "pow":
-            k = rng.randint(2, 4)
+            k = rng.randint(2, 6)
             prompt = f"If log {pa} ≈ {a}, what is the approximate value of log {pa ** k}?"
             val = round(k * a, 2)
             expl = f"{pa ** k} = {pa}^{k}, so log {pa ** k} = {k}·log {pa} ≈ {val}."
@@ -1174,7 +1175,7 @@ def lg_solve(rng, d):
     """Solve exponential / logarithmic equations."""
     b = rng.choice([2, 3, 4, 5, 6, 7, 8, 9, 10, 12])
     if d == "easy":
-        e = rng.randint(2, 6 if b <= 3 else 3)
+        e = rng.randint(2, 8 if b <= 3 else 4 if b <= 6 else 3)
         prompt = rng.choice([f"What is the solution to the equation {b}^x = {b ** e}?",
                              f"If {b}^x = {b ** e}, what is the value of x?",
                              f"For what value of x does {b}^x equal {b ** e}?"])
@@ -1262,9 +1263,9 @@ def cx_powers(rng, d):
     """Powers of i."""
     cycle = {0: "1", 1: "i", 2: "−1", 3: "−i"}
     if d == "easy":
-        n = rng.randint(2, 24)
+        n = rng.randint(2, 40)
     elif d == "medium":
-        n = rng.randint(25, 99)
+        n = rng.randint(41, 160)
     else:
         n = rng.randint(100, 999)
     val = cycle[n % 4]
@@ -1305,10 +1306,11 @@ def cx_add_sub(rng, d):
         ds = [(_cx(a - c, b + e) if (a - c, b + e) != (re, im) else _cx(re + 1, im), "Distribute the minus sign to the imaginary part too."), (_cx(a + c, b + e) if (a + c, b + e) != (re, im) else _cx(re, im + 2), "This adds."), (_cx(c - a, e - b) if (c - a, e - b) != (re, im) else _cx(re + 3, im), "The order of subtraction is reversed."), (_cx(a - c, -(b - e)) if im else _cx(re + 2, im), "Check the sign of the imaginary part.")]
         expl = f"({_m(a)} − {_m(c)}) + ({_m(b)} − {_m(e)})i = {correct}."
     else:
-        k = rng.randint(2, 7)
-        r = rng.choice([2, 3, 5, 6, 7, 10, 11, 13])
+        k = rng.randint(2, 12)
+        r = rng.choice([2, 3, 5, 6, 7, 10, 11, 13, 14, 15, 17, 19, 21, 22, 23])
         n = k * k * r
-        prompt = f"Which of the following is equivalent to √(−{n})?"
+        prompt = rng.choice([f"Which of the following is equivalent to √(−{n})?",
+                             f"For i = √(−1), which expression equals √(−{n})?"])
         correct = f"{k}i√{r}"
         ds = [(f"−{k}√{r}", "√(−n) is imaginary, not negative."), (f"{k}√{r}", "The negative under the root produces a factor of i."), (f"{n}i", "Simplify the radical: √{0} = {1}√{2}.".format(n, k, r)), (f"{r}i√{k}", "The perfect-square factor {0} comes out as {1}.".format(k * k, k))]
         expl = f"√(−{n}) = √(−1)·√{n} = i·{k}√{r} = {correct}."
@@ -1420,3 +1422,432 @@ angles_polygons = _dispatch(FAMILIES, "angles_polygons")
 sequences = _dispatch(FAMILIES, "sequences")
 logarithms = _dispatch(FAMILIES, "logarithms")
 complex_numbers = _dispatch(FAMILIES, "complex_numbers")
+
+
+# =========================================================================== #
+# Bank-growth families (v2.1)
+# =========================================================================== #
+# ---- number_properties ------------------------------------------------------ #
+def np_counting(rng, d):
+    """Count multiples in a range; sum of consecutive integers; digit problems."""
+    if d == "easy":
+        k = rng.choice([3, 4, 5, 6, 7, 8, 9, 11, 12, 15])
+        lo, hi = rng.randint(1, 60), rng.randint(100, 400)
+        val = hi // k - (lo - 1) // k
+        prompt = rng.choice([f"How many multiples of {k} are there between {lo} and {hi}, inclusive?",
+                             f"How many integers from {lo} to {hi}, inclusive, are divisible by {k}?"])
+        expl = f"Multiples of {k} up to {hi}: {hi // k}; up to {lo - 1}: {(lo - 1) // k}. Difference: {val}."
+        ds = [(val + 1, "Check whether the endpoints are multiples."), (val - 1, "Check whether the endpoints are multiples."), ((hi - lo) // k, "Count by subtracting the multiples below {0} from those up to {1}.".format(lo, hi)), (hi // k, "That counts multiples from 1, not from {0}.".format(lo))]
+    elif d == "medium":
+        n = rng.randint(10, 60)
+        prompt = rng.choice([f"What is the sum of the integers from 1 to {n}, inclusive?",
+                             f"What is the sum of all positive integers less than or equal to {n}?"])
+        val = n * (n + 1) // 2
+        expl = f"Sum = n(n + 1)/2 = {n}·{n + 1}/2 = {val}."
+        ds = [(n * n, "Use n(n + 1)/2, not n²."), (n * (n + 1), "Divide by 2."), (n * (n - 1) // 2, "Use n + 1, not n − 1."), (val + n, "Arithmetic slip.")]
+    else:
+        lo, hi = rng.randint(10, 40), rng.randint(60, 120)
+        k = rng.choice([3, 4, 5, 6, 7, 8, 9])
+        mults = [x for x in range(lo, hi + 1) if x % k == 0]
+        val = sum(mults)
+        prompt = f"What is the sum of all the multiples of {k} between {lo} and {hi}, inclusive?"
+        expl = f"The multiples are {mults[0]}, {mults[1]}, …, {mults[-1]} ({len(mults)} terms); sum = {len(mults)}·({mults[0]} + {mults[-1]})/2 = {val}."
+        ds = [(len(mults), "That is how many multiples there are, not their sum."), (val + k, "Check the last multiple."), (val - mults[0], "Include the first multiple."), (len(mults) * (mults[0] + mults[-1]), "Divide by 2 after multiplying by the count.")]
+    return _numeric_mc(rng, prompt, val, ds, subskill="integer_reasoning", explanation=expl, tags=["number", "counting"], est=75 if d == "easy" else 90, verify=f"val={val}")
+
+
+def np_fraction_word(rng, d):
+    """Fraction-of-a-fraction and fraction word problems."""
+    name = rng.choice(NAMES)
+    if d == "easy":
+        p, q = rng.choice([(1, 2), (1, 3), (2, 3), (1, 4), (3, 4), (2, 5), (3, 5), (5, 6), (3, 8), (5, 8)])
+        n = q * rng.randint(4, 30)
+        val = p * n // q
+        prompt = rng.choice([f"{name} has {n} stickers and gives away {p}/{q} of them. How many stickers does {name} give away?",
+                             f"A tank holds {n} gallons and is {p}/{q} full. How many gallons are in the tank?"])
+        expl = f"{p}/{q} of {n} = {p}·{n}/{q} = {val}."
+        ds = [(n - val, "That is the remaining part."), (n * q // p if n * q % p == 0 else val + q, "Multiply by the fraction; don't divide by it."), (Fraction(n, q), "That is 1/{0} of the amount; multiply by {1}.".format(q, p)), (val + p, "Arithmetic slip.")]
+    elif d == "medium":
+        p1, q1 = rng.choice([(1, 2), (2, 3), (3, 4), (1, 3), (3, 5)])
+        p2, q2 = rng.choice([(1, 2), (1, 3), (2, 5), (1, 4), (3, 4)])
+        n = q1 * q2 * rng.randint(2, 12)
+        first = p1 * n // q1
+        val = p2 * first // q2
+        prompt = f"Of the {n} students at a camp, {p1}/{q1} are in the swimming program. Of those swimmers, {p2}/{q2} are beginners. How many students are beginner swimmers?"
+        expl = f"Swimmers: {p1}/{q1} × {n} = {first}. Beginners: {p2}/{q2} × {first} = {val}."
+        ds = [(first, "That is all the swimmers."), (p2 * n // q2, "The second fraction applies to the swimmers, not all students."), (first - val, "That is the number of non-beginner swimmers."), (val + p2, "Arithmetic slip.")]
+    else:
+        p, q = rng.choice([(1, 3), (2, 5), (3, 7), (1, 4), (3, 8), (2, 7), (4, 9)])
+        rest_frac = Fraction(1, 1) - Fraction(p, q)
+        k = rng.randint(2, 5)
+        unit = rng.choice([15, 20, 24, 30, 36, 40, 48, 60, 72, 90])
+        total = unit * q
+        left = rest_frac * total
+        # after spending p/q, spends a further fixed amount m, left with L
+        m = rng.randint(5, int(left) - 5)
+        L = int(left) - m
+        prompt = f"{name} spent {p}/{q} of a paycheck on rent and then ${m} on groceries, leaving ${L}. How much, in dollars, was the paycheck?"
+        val = total
+        expl = f"After rent, {num_str(rest_frac)} of the paycheck remains: {num_str(rest_frac)}P − {m} = {L} → P = {total}."
+        ds = [(int(left), "That is the amount left after rent, not the whole paycheck."), ((L + m) * q // p, "The remaining part is {0} of the paycheck, not {1}/{2}.".format(num_str(rest_frac), p, q)), (L + m, "That is the amount after rent; divide by {0}.".format(num_str(rest_frac))), (total + unit, "Arithmetic slip.")]
+    return _numeric_mc(rng, prompt, val, ds, subskill="fraction_decimal_percent", explanation=expl, tags=["number", "fractions", "word-problem"], est=80 if d != "hard" else 100, qtype="multi_step_math" if d != "easy" else "multiple_choice", verify=f"val={val}")
+
+
+# ---- coordinate_geometry ---------------------------------------------------- #
+def cg_parallel_distance(rng, d):
+    """Distance between parallel lines (horizontal/vertical, then slanted with 3-4-5 slopes)."""
+    if d == "easy":
+        b1 = rng.randint(-20, 20)
+        b2 = b1 + rng.choice([v for v in range(-15, 16) if v])
+        if rng.random() < 0.5:
+            prompt = f"In the standard (x, y) coordinate plane, what is the distance between the lines y = {_m(b1)} and y = {_m(b2)}?"
+            expl = f"Horizontal lines; the distance is |{_m(b1)} − ({_m(b2)})| = {abs(b1 - b2)}."
+        else:
+            prompt = f"In the standard (x, y) coordinate plane, what is the distance between the lines x = {_m(b1)} and x = {_m(b2)}?"
+            expl = f"Vertical lines; the distance is |{_m(b1)} − ({_m(b2)})| = {abs(b1 - b2)}."
+        val = abs(b1 - b2)
+        ds = [(b1 + b2 if b1 + b2 != val else val + 3, "Subtract the constants; don't add."), (abs(b1 - b2) // 2 if val % 2 == 0 and val > 2 else val + 2, "The distance is the full gap."), (val + 1, "Arithmetic slip."), (b1 - b2 if b1 - b2 != val else b2 - b1, "Distance is positive.")]
+    else:
+        p, q = rng.choice([(3, 4), (4, 3)]) if d == "medium" else rng.choice([(3, 4), (4, 3), (5, 12), (12, 5), (8, 15), (15, 8)])
+        c = math.isqrt(p * p + q * q)
+        m = Fraction(p, q)
+        k = rng.randint(1, 8)
+        gap = k * c                 # |b1 - b2| = k c -> distance = k c / sqrt(1+m^2) = k c * q / c = k q
+        b1 = rng.randint(-10, 10)
+        b2 = b1 + rng.choice([-1, 1]) * gap
+        val = k * q
+        prompt = f"In the standard (x, y) coordinate plane, what is the distance between the parallel lines y = ({num_str(m)})x {_pm(b1)} and y = ({num_str(m)})x {_pm(b2)}?"
+        expl = f"Distance = |b₁ − b₂|/√(1 + m²) = {gap}/√(1 + ({num_str(m)})²) = {gap}/({c}/{q}) = {val}."
+        ds = [(gap, "That is the vertical gap; divide by √(1 + m²)."), (Fraction(gap, c), "√(1 + m²) = {0}/{1}, not {0}.".format(c, q)), (k * p, "Use the denominator of the slope, not the numerator, after simplifying."), (val + k, "Arithmetic slip.")]
+    return _numeric_mc(rng, prompt, val, ds, subskill="parallel_perpendicular", explanation=expl, tags=["coordinate", "distance", "parallel"], est=70 if d == "easy" else 100, verify=f"val={val}")
+
+
+def cg_area_coords(rng, d):
+    """Area of a figure from vertex coordinates."""
+    if d == "easy":
+        x1, y1 = rng.randint(-8, 4), rng.randint(-8, 4)
+        w, h = rng.randint(2, 12), rng.randint(2, 12)
+        prompt = f"A rectangle in the standard (x, y) coordinate plane has vertices at {_pt(x1, y1)}, {_pt(x1 + w, y1)}, {_pt(x1 + w, y1 + h)}, and {_pt(x1, y1 + h)}. What is its area?"
+        val = w * h
+        expl = f"Width = {x1 + w} − ({_m(x1)}) = {w}; height = {y1 + h} − ({_m(y1)}) = {h}; area = {w}·{h} = {val}."
+        ds = [(2 * (w + h), "That is the perimeter."), (w + h, "Multiply the side lengths."), (w * h // 2, "A rectangle's area is not halved."), ((x1 + w) * (y1 + h) if (x1 + w) * (y1 + h) != val else val + w, "Use the side lengths (differences of coordinates), not the coordinates themselves.")]
+    elif d == "medium":
+        x1, y1 = rng.randint(-8, 4), rng.randint(-8, 4)
+        a, b = rng.randint(2, 14), rng.randint(2, 14)
+        if (a * b) % 2:
+            b += 1
+        prompt = f"A triangle in the standard (x, y) coordinate plane has vertices {_pt(x1, y1)}, {_pt(x1 + a, y1)}, and {_pt(x1, y1 + b)}. What is its area?"
+        val = a * b // 2
+        expl = f"The legs are horizontal ({a}) and vertical ({b}): area = ½·{a}·{b} = {val}."
+        ds = [(a * b, "Multiply by ½ for a triangle."), (a + b + math.isqrt(a * a + b * b), "That is roughly the perimeter."), ((a + b) // 2, "Multiply the legs; don't add."), (val + a, "Arithmetic slip.")]
+    else:
+        # shoelace for a triangle with general vertices (integer area guaranteed by choosing coordinates)
+        x1, y1 = rng.randint(-6, 6), rng.randint(-6, 6)
+        x2, y2 = x1 + rng.randint(2, 8), y1 + rng.choice([v for v in range(-5, 6)])
+        x3, y3 = x1 + rng.choice([v for v in range(-4, 5)]), y1 + rng.randint(2, 8)
+        twice = abs(x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2))
+        if twice == 0 or twice % 2:
+            return cg_area_coords(rng, d)
+        val = twice // 2
+        prompt = f"What is the area of the triangle in the standard (x, y) coordinate plane with vertices {_pt(x1, y1)}, {_pt(x2, y2)}, and {_pt(x3, y3)}?"
+        expl = f"Use the shoelace formula: ½|x₁(y₂ − y₃) + x₂(y₃ − y₁) + x₃(y₁ − y₂)| = ½·{twice} = {val}."
+        ds = [(twice, "Take half of the shoelace sum."), ((x2 - x1) * (y3 - y1) // 2 if (x2 - x1) * (y3 - y1) // 2 != val else val + 2, "The triangle is not a right triangle with those legs."), (val + 1, "Arithmetic slip."), ((x2 - x1) * (y3 - y1), "The enclosing box is larger than the triangle.")]
+    return _numeric_mc(rng, prompt, val, ds, subskill="distance_midpoint", explanation=expl, tags=["coordinate", "area"], est=80 if d != "hard" else 105, verify=f"area={val}")
+
+
+def cg_transform(rng, d):
+    """Reflections and translations of points (text options)."""
+    x, y = rng.choice([v for v in range(-9, 10) if v]), rng.choice([v for v in range(-9, 10) if v])
+    if d == "easy":
+        axis = rng.choice(["x-axis", "y-axis"])
+        nx, ny = (x, -y) if axis == "x-axis" else (-x, y)
+        prompt = f"The point {_pt(x, y)} is reflected across the {axis}. What are the coordinates of its image?"
+        correct = _pt(nx, ny)
+        ds = [(_pt(-x, -y), "That reflects across both axes (a 180° rotation)."), (_pt(-nx, -ny) if (nx, ny) != (x, y) else _pt(y, x), "Reflecting across the {0} changes the sign of the {1}-coordinate only.".format(axis, "y" if axis == "x-axis" else "x")), (_pt(y, x) if x != y else _pt(x + 1, y), "Coordinates are not swapped by an axis reflection."), (_pt(x, y), "The image is a different point unless the point lies on the axis.")]
+        expl = f"Reflecting across the {axis} negates the {'y' if axis == 'x-axis' else 'x'}-coordinate: {correct}."
+    elif d == "medium":
+        dx, dy = rng.choice([v for v in range(-8, 9) if v]), rng.choice([v for v in range(-8, 9) if v])
+        prompt = f"The point {_pt(x, y)} is translated {abs(dx)} unit{'s' if abs(dx) != 1 else ''} {'right' if dx > 0 else 'left'} and {abs(dy)} unit{'s' if abs(dy) != 1 else ''} {'up' if dy > 0 else 'down'}. What are the coordinates of the image?"
+        correct = _pt(x + dx, y + dy)
+        ds = [(_pt(x - dx, y - dy), "The directions are reversed."), (_pt(x + dy, y + dx) if dx != dy else _pt(x + dx, y - dy), "Horizontal moves change x; vertical moves change y."), (_pt(x + dx, y - dy), "Check the vertical direction."), (_pt(x - dx, y + dy), "Check the horizontal direction.")]
+        expl = f"Add {_m(dx)} to x and {_m(dy)} to y: {correct}."
+    else:
+        kind = rng.choice(["y=x", "origin", "rot90"])
+        if kind == "y=x":
+            correct = _pt(y, x)
+            prompt = f"The point {_pt(x, y)} is reflected across the line y = x. What are the coordinates of its image?"
+            expl = "Reflecting across y = x swaps the coordinates."
+            ds = [(_pt(-y, -x), "Swapping is all that happens; the signs don't change."), (_pt(x, -y), "That is a reflection across the x-axis."), (_pt(-x, y), "That is a reflection across the y-axis."), (_pt(-x, -y), "That is a reflection through the origin.")]
+        elif kind == "origin":
+            correct = _pt(-x, -y)
+            prompt = f"The point {_pt(x, y)} is rotated 180° about the origin. What are the coordinates of its image?"
+            expl = "A 180° rotation about the origin negates both coordinates."
+            ds = [(_pt(x, -y), "Both coordinates change sign."), (_pt(-x, y), "Both coordinates change sign."), (_pt(y, x), "A 180° rotation doesn't swap coordinates."), (_pt(-y, x), "That is a 90° rotation.")]
+        else:
+            correct = _pt(-y, x)
+            prompt = f"The point {_pt(x, y)} is rotated 90° counterclockwise about the origin. What are the coordinates of its image?"
+            expl = "A 90° counterclockwise rotation maps (x, y) to (−y, x)."
+            ds = [(_pt(y, -x), "That is a 90° clockwise rotation."), (_pt(-x, -y), "That is a 180° rotation."), (_pt(y, x), "That is a reflection across y = x."), (_pt(-x, y), "That is a reflection across the y-axis.")]
+        if x == y or x == -y:
+            return cg_transform(rng, d)
+    return _text_mc(rng, prompt, correct, ds, subskill="points_on_lines", explanation=expl, tags=["coordinate", "transformation"], est=70 if d != "hard" else 85, verify=correct)
+
+
+# ---- angles_polygons ---------------------------------------------------------- #
+def ap_diagonals(rng, d):
+    """Number of diagonals of a polygon and related counting."""
+    names = {4: "quadrilateral", 5: "pentagon", 6: "hexagon", 7: "heptagon", 8: "octagon", 9: "nonagon", 10: "decagon", 12: "dodecagon"}
+    if d == "easy":
+        n = rng.choice([5, 6, 7, 8])
+        val = n * (n - 3) // 2
+        prompt = rng.choice([f"How many diagonals does a {names[n]} have?", f"How many diagonals can be drawn in a convex polygon with {n} sides?"])
+        expl = f"Each of the {n} vertices connects to {n - 3} others by a diagonal; each diagonal is counted twice: {n}·{n - 3}/2 = {val}."
+        ds = [(n * (n - 3), "Each diagonal joins two vertices, so divide by 2."), (n - 3, "That is the number of diagonals from one vertex."), (n * (n - 1) // 2, "That counts the sides as well as the diagonals."), (val + n, "Arithmetic slip.")]
+    elif d == "medium":
+        n = rng.choice([9, 10, 11, 12, 14, 15, 16, 18, 20])
+        val = n * (n - 3) // 2
+        prompt = f"How many diagonals does a convex polygon with {n} sides have?"
+        expl = f"Diagonals = n(n − 3)/2 = {n}·{n - 3}/2 = {val}."
+        ds = [(n * (n - 3), "Divide by 2."), (n * (n - 1) // 2 - n + n, "Subtract the {0} sides from the number of segments joining vertices.".format(n)) if False else (n * (n - 1) // 2, "That counts sides too; subtract {0}.".format(n)), (n - 3, "That is the diagonals from a single vertex."), (val - n, "Arithmetic slip.")]
+    else:
+        n = rng.choice([6, 7, 8, 9, 10, 11, 12, 13, 14, 15])
+        val = n
+        prompt = f"A convex polygon has {n * (n - 3) // 2} diagonals. How many sides does it have?"
+        expl = f"Solve n(n − 3)/2 = {n * (n - 3) // 2}: n² − 3n − {n * (n - 3)} = 0 → (n − {n})(n + {n - 3}) = 0 → n = {n}."
+        ds = [(n - 3, "That is n − 3, the diagonals per vertex."), (n + 1, "Check: {0}·{1}/2 ≠ {2}.".format(n + 1, n - 2, n * (n - 3) // 2)), (n * (n - 3) // 2 // 2 if n * (n - 3) // 4 != n else n + 2, "Solve n(n − 3)/2 = diagonals; don't halve the count."), (n - 1, "Check: {0}·{1}/2 ≠ {2}.".format(n - 1, n - 4, n * (n - 3) // 2))]
+    return _numeric_mc(rng, prompt, val, ds, subskill="polygon_angles", explanation=expl, tags=["geometry", "polygon", "diagonals"], est=70 if d != "hard" else 95, verify=f"n={n}")
+
+
+def ap_angle_chase(rng, d):
+    """Angles around a point / on a line in ratios; bisectors."""
+    if d == "easy":
+        a = rng.randint(20, 150)
+        b = rng.randint(20, 180 - a - 10)
+        c = 180 - a - b
+        prompt = f"Three angles together form a straight line. Two of them measure {a}° and {b}°. What is the measure of the third angle?"
+        val = c
+        expl = f"Angles on a straight line sum to 180°: 180 − {a} − {b} = {c}°."
+        ds = [(360 - a - b, "A straight angle is 180°, not 360°."), (a + b, "Subtract from 180."), (abs(a - b) if abs(a - b) != c else c + 10, "Subtract both from 180."), (c + 5, "Arithmetic slip.")]
+    elif d == "medium":
+        p, q, r = rng.choice([(1, 2, 3), (2, 3, 4), (1, 3, 5), (2, 3, 7), (3, 4, 5), (1, 1, 2), (2, 2, 5), (1, 2, 6), (3, 5, 7), (4, 5, 9)])
+        k = 360 // (p + q + r)
+        if k * (p + q + r) != 360:
+            return ap_angle_chase(rng, d)
+        prompt = f"Three angles with a common vertex fill the full turn around that vertex, and their measures are in the ratio {p}:{q}:{r}. What is the measure of the largest angle?"
+        val = r * k
+        expl = f"{p + q + r}x = 360 → x = {k}; largest = {r}·{k} = {val}°."
+        ds = [(p * k, "That is the smallest angle."), (q * k, "That is the middle angle."), (r * 180 // (p + q + r), "Angles around a point sum to 360°, not 180°."), (k, "That is x, the common factor.")]
+    else:
+        a = rng.randint(30, 150)
+        x = rng.randint(10, 40)
+        k = rng.randint(2, 4)
+        c = a - k * x if a - k * x > 0 else None
+        if c is None or c == 0:
+            return ap_angle_chase(rng, d)
+        prompt = f"Ray OB lies inside angle AOC, which measures {a}°. If angle AOB measures ({k}x + {c})° and angle BOC measures x°, what is the measure of angle BOC?"
+        val = x
+        expl = f"({k}x + {c}) + x = {a} → {k + 1}x = {a - c} → x = {x}; angle BOC = {x}°."
+        ds = [(k * x + c, "That is angle AOB."), (Fraction(a - c, k), "Both angles contain x; the coefficient is {0}.".format(k + 1)), (a - x, "That is angle AOB, not BOC."), (x + 2, "Arithmetic slip.")]
+    return _numeric_mc(rng, prompt, val, ds, subskill="parallel_lines" if d != "hard" else "triangle_angles", explanation=expl, tags=["geometry", "angles", "chase"], est=70 if d == "easy" else 90, verify=f"val={val}")
+
+
+# ---- sequences -------------------------------------------------------------- #
+def sq_geometric_word(rng, d):
+    """Geometric sequences and series in context."""
+    name = rng.choice(NAMES)
+    if d == "easy":
+        a1 = rng.choice([2, 3, 4, 5, 6, 8, 10, 12, 16, 20, 25])
+        r = rng.choice([2, 3, 4])
+        n = rng.randint(4, 6)
+        word = {2: "doubles", 3: "triples", 4: "quadruples"}[r]
+        prompt = rng.choice([f"A chain message is sent to {a1} people, and the number of people who receive it {word} each day. How many people receive it on day {n}?",
+                             f"A colony starts with {a1} bacteria and {word} every hour. How many bacteria are there at the start of the {_ordinal(n)} hour?"])
+        val = a1 * r ** (n - 1)
+        expl = f"Geometric with a₁ = {a1}, r = {r}: a_{n} = {a1}·{r}^{n - 1} = {val}."
+        ds = [(a1 * r ** n, "Use the exponent n − 1 = {0}.".format(n - 1)), (a1 * r * (n - 1), "The number multiplies each day; it doesn't add."), (a1 * r ** (n - 2), "That is one step too few."), (a1 * (r ** n - 1) // (r - 1), "That is the total over all days, not the amount on day {0}.".format(n))]
+    elif d == "medium":
+        a1 = rng.choice([1, 2, 3, 4, 5, 10])
+        r = rng.choice([2, 3])
+        n = rng.randint(4, 7)
+        val = a1 * (r ** n - 1) // (r - 1)
+        prompt = rng.choice([f"{name} saves ${a1} in the first week and {'doubles' if r == 2 else 'triples'} the amount saved each week. How much, in dollars, has {name} saved in total after {n} weeks?",
+                             f"A tournament starts with {a1} match{'es' if a1 > 1 else ''} in round 1, and each round has {r} times as many matches as the previous round. How many matches are played in the first {n} rounds combined?"])
+        expl = f"S_n = a₁(rⁿ − 1)/(r − 1) = {a1}({r}^{n} − 1)/{r - 1} = {val}."
+        ds = [(a1 * r ** (n - 1), "That is the amount in week {0} alone.".format(n)), (a1 * (r ** (n - 1) - 1) // (r - 1), "That sums only {0} terms.".format(n - 1)), (a1 * r ** n, "That is the next term, not the sum."), (val + a1, "Arithmetic slip.")]
+    else:
+        a1 = rng.choice([8, 10, 12, 16, 20, 24, 30, 36, 40, 48, 60, 80, 90, 100])
+        r = rng.choice([Fraction(1, 2), Fraction(1, 3), Fraction(2, 3), Fraction(3, 4), Fraction(1, 4), Fraction(3, 5), Fraction(4, 5)])
+        val = a1 / (1 - r)
+        prompt = rng.choice([f"A ball is dropped and its first bounce rises {a1} centimeters; each later bounce rises {num_str(r)} as high as the previous one. What is the total of all the bounce heights, in centimeters?",
+                             f"A pendulum's first swing covers {a1} centimeters, and each swing covers {num_str(r)} of the distance of the previous swing. What is the total distance, in centimeters, covered by all the swings?"])
+        expl = f"Infinite geometric series with |r| < 1: S = a₁/(1 − r) = {a1}/(1 − {num_str(r)}) = {num_str(val)}."
+        ds = [(a1 * (1 - r), "Divide by 1 − r; don't multiply."), (Fraction(a1, r), "The denominator is 1 − r, not r."), (a1 + a1 * r, "That is only the first two swings."), (val + a1, "Arithmetic slip.")]
+    return _numeric_mc(rng, prompt, val, ds, subskill="series" if d != "easy" else "geometric", explanation=expl, tags=["sequences", "geometric", "word-problem"], est=85 if d == "easy" else 100, verify=f"val={num_str(val)}")
+
+
+def sq_pattern(rng, d):
+    """Figure/toothpick patterns and explicit formulas."""
+    a, dd = rng.randint(3, 10), rng.randint(2, 6)
+    obj = rng.choice(["toothpicks", "tiles", "dots", "blocks"])
+    if d == "easy":
+        n = rng.randint(5, 12)
+        prompt = f"In a pattern, figure 1 uses {a} {obj}, figure 2 uses {a + dd}, figure 3 uses {a + 2 * dd}, and each figure uses {dd} more than the one before. How many {obj} does figure {n} use?"
+        val = a + (n - 1) * dd
+        expl = f"Figure n uses {a} + (n − 1)·{dd}; figure {n} uses {a} + {n - 1}·{dd} = {val}."
+        ds = [(a + n * dd, "Figure 1 already has {0}, so there are n − 1 additions.".format(a)), (n * dd, "Start from {0} {1}.".format(a, obj)), (a + (n - 2) * dd, "That is figure {0}.".format(n - 1)), (a * n, "Add {0} each time; don't multiply.".format(dd))]
+    elif d == "medium":
+        prompt = f"In a pattern, figure 1 uses {a} {obj} and each figure after the first uses {dd} more {obj} than the previous figure. Which expression gives the number of {obj} in figure n?"
+        correct = f"{dd}n + {a - dd}" if a - dd > 0 else (f"{dd}n − {dd - a}" if a - dd < 0 else f"{dd}n")
+        ds = [(f"{dd}n + {a}", "Check n = 1: this gives {0}, not {1}.".format(dd + a, a)), (f"{a}n + {dd}", "The rate of change is {0}, so {0} multiplies n.".format(dd)), (f"{a} + {dd}n" if a - dd != 0 else f"{a}n", "Check n = 1: this gives {0}, not {1}.".format(a + dd, a)), (f"{dd}(n − 1)", "Add the first figure's {0} {1}.".format(a, obj))]
+        expl = f"Arithmetic pattern: {a} + (n − 1)·{dd} = {correct}."
+        return _text_mc(rng, prompt, correct, ds, subskill="arithmetic", explanation=expl, tags=["sequences", "pattern"], est=85, verify=correct)
+    else:
+        total_n = rng.randint(6, 15)
+        prompt = f"In a pattern, figure 1 uses {a} {obj} and each later figure uses {dd} more than the previous one. How many {obj} are needed to build figures 1 through {total_n} all together?"
+        last = a + (total_n - 1) * dd
+        val = total_n * (a + last) // 2
+        expl = f"Figure {total_n} uses {last}; total = {total_n}({a} + {last})/2 = {val}."
+        ds = [(last, "That is figure {0} alone.".format(total_n)), (total_n * last, "Average the first and last figures before multiplying."), (total_n * (a + last), "Divide by 2."), (val + a, "Arithmetic slip.")]
+    return _numeric_mc(rng, prompt, val, ds, subskill="arithmetic" if d == "easy" else "series", explanation=expl, tags=["sequences", "pattern"], est=80 if d == "easy" else 100, verify=f"val={val}")
+
+
+# ---- logarithms ------------------------------------------------------------- #
+def lg_word(rng, d):
+    """Logarithms in context: pH, decibels, Richter scale."""
+    if d == "easy":
+        k = rng.randint(2, 9)
+        prompt = rng.choice([f"The pH of a solution is given by pH = −log[H⁺], where [H⁺] is the hydrogen ion concentration. What is the pH of a solution with [H⁺] = 10^(−{k})?",
+                             f"The loudness of a sound, in decibels, is L = 10·log(I/I₀). What is the loudness of a sound with I/I₀ = 10^{k}?"])
+        if prompt.startswith("The pH"):
+            val = k
+            expl = f"pH = −log(10^(−{k})) = −(−{k}) = {k}."
+            ds = [(-k, "The negative signs cancel."), (10 ** k if k <= 4 else k * 10, "The log of 10^(−k) is −k."), (k + 1, "Arithmetic slip."), (Fraction(1, k), "log(10^n) = n.")]
+        else:
+            val = 10 * k
+            expl = f"L = 10·log(10^{k}) = 10·{k} = {val} decibels."
+            ds = [(k, "Multiply by 10."), (10 ** k if k <= 4 else 10 * k + 10, "log(10^k) = k, then multiply by 10."), (10 * k + 10, "Arithmetic slip."), (k * k, "Multiply by 10, not by k.")]
+    elif d == "medium":
+        a, b = sorted(rng.sample(range(2, 9), 2))
+        kind = rng.choice(["pH", "richter", "db"])
+        if kind == "pH":
+            prompt = f"Solution A has a pH of {a} and solution B has a pH of {b}. Since pH = −log[H⁺], how many times greater is the hydrogen ion concentration of solution A than that of solution B?"
+            val = 10 ** (b - a)
+            expl = f"[H⁺] = 10^(−pH); ratio = 10^(−{a})/10^(−{b}) = 10^{b - a} = {val}."
+        elif kind == "richter":
+            prompt = f"On the Richter scale, each whole-number increase in magnitude corresponds to a tenfold increase in amplitude: M = log(A/A₀). How many times greater is the amplitude of a magnitude-{b} earthquake than that of a magnitude-{a} earthquake?"
+            val = 10 ** (b - a)
+            expl = f"Ratio = 10^{b}/10^{a} = 10^{b - a} = {val}."
+        else:
+            prompt = f"Sound intensity relates to loudness by L = 10·log(I/I₀). How many times more intense is a {10 * b}-decibel sound than a {10 * a}-decibel sound?"
+            val = 10 ** (b - a)
+            expl = f"I/I₀ = 10^(L/10): 10^{b}/10^{a} = 10^{b - a} = {val}."
+        ds = [(b - a, "A difference of {0} on a log scale is a factor of 10^{0}.".format(b - a)), (10 * (b - a), "Each unit is a factor of 10, so the factor is 10^{0}, not 10·{0}.".format(b - a)), (Fraction(b, a), "The scale is logarithmic; don't divide the readings."), (10 ** (b - a + 1), "The exponent is the difference {0} − {1} = {2}.".format(b, a, b - a))]
+    else:
+        P = rng.choice([1000, 2000, 5000])
+        r = rng.choice([4, 5, 6, 8, 10])
+        t = rng.randint(5, 20)
+        prompt = (f"An account earning {r}% interest compounded annually grows from ${P} to ${P}(1.{r:02d})^t after t years. "
+                  f"Which expression gives the number of years needed for the account to reach ${P * 2}?")
+        correct = f"t = log(2)/log(1.{r:02d})"
+        ds = [(f"t = log(1.{r:02d})/log(2)", "Solve (1.{0})^t = 2 by taking logs: t·log(1.{0}) = log 2.".format(f"{r:02d}")), (f"t = 2/1.{r:02d}", "t is an exponent; use logarithms."), (f"t = log(2·1.{r:02d})", "Divide the logs; don't multiply the arguments."), (f"t = log({P * 2})/log(1.{r:02d})", "First divide both sides by {0} to get (1.{1})^t = 2.".format(P, f"{r:02d}"))]
+        expl = f"{P}(1.{r:02d})^t = {P * 2} → (1.{r:02d})^t = 2 → t·log(1.{r:02d}) = log 2 → {correct}."
+        return _text_mc(rng, prompt, correct, ds, subskill="solve_exponential", explanation=expl, tags=["logarithms", "word-problem"], est=100, verify=correct)
+    return _numeric_mc(rng, prompt, val, ds, subskill="evaluate", explanation=expl, tags=["logarithms", "word-problem"], est=80 if d == "easy" else 95, verify=f"val={val}")
+
+
+def lg_natural(rng, d):
+    """Natural logs and e: ln(e^k), e^(ln k), solving e^x = c (expressions)."""
+    k = rng.randint(2, 12)
+    if d == "easy":
+        if rng.random() < 0.5:
+            prompt = f"What is the value of ln(e^{k})?"
+            val = k
+            expl = f"ln and e^x are inverses: ln(e^{k}) = {k}."
+            ds = [(1, "ln(e) = 1, but ln(e^k) = k."), (k * 2, "The logarithm returns the exponent."), (0, "ln(1) = 0, not ln(e^k)."), (k + 1, "Arithmetic slip.")]
+        else:
+            prompt = f"What is the value of e^(ln {k})?"
+            val = k
+            expl = f"e^x and ln are inverses: e^(ln {k}) = {k}."
+            ds = [(1, "e^(ln k) = k, not 1."), (k * k, "The functions cancel exactly."), (0, "ln of a positive number is defined; the result is k."), (k - 1, "Arithmetic slip.")]
+        return _numeric_mc(rng, prompt, val, ds, subskill="evaluate", explanation=expl, tags=["logarithms", "natural"], est=65, verify=f"val={val}")
+    if d == "medium":
+        c = rng.choice([v for v in range(2, 40)])
+        prompt = f"Which of the following is the solution to e^x = {c}?"
+        correct = f"x = ln({c})"
+        ds = [(f"x = e^{c}", "Apply ln to both sides, not e^x."), (f"x = {c}/e", "x is an exponent; use ln."), (f"x = log({c})", "The base is e, so use the natural log (ln), not log base 10."), (f"x = ln({c})/ln(e²)", "ln(e) = 1, so the division is unnecessary.")]
+        expl = f"Take ln of both sides: ln(e^x) = x = ln({c})."
+        return _text_mc(rng, prompt, correct, ds, subskill="solve_exponential", explanation=expl, tags=["logarithms", "natural"], est=75, verify=correct)
+    a = rng.randint(2, 9)
+    b = rng.choice([v for v in range(-9, 10) if v])
+    c = rng.randint(2, 50)
+    prompt = f"Which of the following is the solution to e^({a}x {_pm(b)}) = {c}?"
+    correct = f"x = (ln({c}) {_pm(-b)})/{a}"
+    ds = [(f"x = (ln({c}) {_pm(b)})/{a}", "Subtract {0} after taking ln; the sign is wrong.".format(_m(b))), (f"x = ln({c} {_pm(-b)})/{a}", "ln applies to {0} alone; move {1} afterward.".format(c, _m(b))), (f"x = ln({c})/{a} {_pm(b)}", "Divide the whole expression ln({0}) − ({1}) by {2}.".format(c, _m(b), a)), (f"x = {a}·ln({c}) {_pm(-b)}", "Divide by {0}; don't multiply.".format(a))]
+    expl = f"ln both sides: {a}x {_pm(b)} = ln({c}), so x = (ln({c}) {_pm(-b)})/{a}."
+    return _text_mc(rng, prompt, correct, ds, subskill="solve_exponential", explanation=expl, tags=["logarithms", "natural"], est=90, verify=correct)
+
+
+# ---- complex_numbers ---------------------------------------------------------- #
+def cx_conj_product(rng, d):
+    """(a + bi)(a − bi), |z|², and the real/imaginary parts of products."""
+    a, b = rng.choice([v for v in range(-9, 10) if v]), rng.choice([v for v in range(-9, 10) if v])
+    if d == "easy":
+        prompt = f"What is the product ({_cx(a, b)})({_cx(a, -b)})?"
+        val = a * a + b * b
+        expl = f"(a + bi)(a − bi) = a² + b² = {a * a} + {b * b} = {val}."
+        ds = [(a * a - b * b, "i² = −1 turns −b²i² into +b²."), (_cx(a * a + b * b, 2 * a * b), "The imaginary terms cancel.") if False else (a * a, "Include the b² term."), (-val, "The product is positive."), (val + 1, "Arithmetic slip.")]
+    elif d == "medium":
+        c, e = rng.choice([v for v in range(-7, 8) if v]), rng.choice([v for v in range(-7, 8) if v])
+        which = rng.choice(["real", "imaginary"])
+        re, im = a * c - b * e, a * e + b * c
+        prompt = f"What is the {which} part of the product ({_cx(a, b)})({_cx(c, e)})?"
+        val = re if which == "real" else im
+        expl = f"({_cx(a, b)})({_cx(c, e)}) = ({_m(a * c)} − ({_m(b * e)})) + ({_m(a * e)} + ({_m(b * c)}))i = {_cx(re, im)}; the {which} part is {_m(val)}."
+        ds = [(im if which == "real" else re, f"That is the {'imaginary' if which == 'real' else 'real'} part."), (a * c + b * e if which == "real" else a * e - b * c, "Watch the sign from i² = −1." if which == "real" else "Add the outer and inner products."), (a * c if which == "real" else a * e, "Include both contributing terms."), (-val if val else val + 1, "Sign slip.")]
+    else:
+        prompt = f"If z = {_cx(a, b)}, what is the value of z·z̄ − |z|², where z̄ is the conjugate of z?"
+        val = 0
+        expl = f"z·z̄ = a² + b² = {a * a + b * b} and |z|² = a² + b² = {a * a + b * b}; the difference is 0."
+        ds = [(a * a + b * b, "z·z̄ and |z|² are equal, so they cancel."), (2 * (a * a + b * b), "z·z̄ equals |z|², not −|z|²."), (2 * a * b, "No cross term survives."), (a * a - b * b, "|z|² = a² + b², and z·z̄ is the same.")]
+    return _numeric_mc(rng, prompt, val, ds, subskill="conjugate_modulus", explanation=expl, tags=["complex", "conjugate"], est=75 if d != "hard" else 90, verify=f"a={a},b={b},val={val}")
+
+
+def cx_quadratic(rng, d):
+    """Complex solutions of quadratics."""
+    if d == "easy":
+        k = rng.choice([1, 4, 9, 16, 25, 36, 49, 64, 81, 100])
+        s = math.isqrt(k)
+        prompt = f"What are the solutions to the equation x² + {k} = 0?"
+        correct = f"x = ±{s}i" if s != 1 else "x = ±i"
+        ds = [(f"x = ±{s}", f"x² = −{k} has no real solutions; the square root of −1 is i."), (f"x = ±{k}i", "Take the square root of {0}.".format(k)), (f"x = {s}i" if s != 1 else "x = i", "There are two solutions, ±."), (f"x = ±√{k}i" if s != 1 else "x = ±2i", "Simplify √{0} = {1}.".format(k, s) if s != 1 else "√1 = 1.")]
+        expl = f"x² = −{k}, so x = ±√(−{k}) = ±{s}i."
+    elif d == "medium":
+        k, r = rng.choice([(2, 2), (3, 2), (2, 3), (5, 2), (2, 5), (3, 3), (6, 2), (2, 7), (3, 5), (4, 3)])
+        n = k * k * r
+        prompt = f"What are the solutions to x² + {n} = 0?"
+        correct = f"x = ±{k}i√{r}"
+        ds = [(f"x = ±{k}√{r}", "The solutions are imaginary."), (f"x = ±{n}i", "Take the square root of {0}.".format(n)), (f"x = ±i√{n}", "Simplify the radical: √{0} = {1}√{2}.".format(n, k, r)), (f"x = ±{r}i√{k}", "The perfect-square factor {0} comes out as {1}.".format(k * k, k))]
+        expl = f"x² = −{n}, so x = ±i√{n} = ±{k}i√{r}."
+    else:
+        p = rng.choice([v for v in range(-6, 7) if v])
+        q = rng.randint(1, 6)
+        # roots p ± qi -> x^2 - 2p x + (p^2 + q^2)
+        b, c = -2 * p, p * p + q * q
+        prompt = f"What are the solutions to the equation {_poly_str([1, b, c])} = 0?"
+        correct = f"x = {_m(p)} ± {q}i" if q != 1 else f"x = {_m(p)} ± i"
+        ds = [(f"x = {_m(-p)} ± {q}i" if q != 1 else f"x = {_m(-p)} ± i", "x = −b/(2a) ± …: the real part is {0}.".format(_m(p))), (f"x = {_m(p)} ± {q}", "The discriminant is negative, so the solutions are complex."), (f"x = {_m(p)} ± {2 * q}i", "Divide the √ of the discriminant by 2a = 2."), (f"x = {_m(2 * p)} ± {q}i", "Divide −b by 2a = 2.")]
+        expl = f"Discriminant b² − 4ac = {b * b} − {4 * c} = {b * b - 4 * c} = −{4 * q * q}; x = ({_m(-b)} ± {2 * q}i)/2 = {correct[4:]}."
+    return _text_mc(rng, prompt, correct, ds, subskill="arithmetic", explanation=expl, tags=["complex", "quadratic"], est=80 if d != "hard" else 100, verify=correct)
+
+
+_NEW_ACT = {
+    "number_properties": [np_counting, np_fraction_word],
+    "coordinate_geometry": [cg_parallel_distance, cg_area_coords, cg_transform],
+    "angles_polygons": [ap_diagonals, ap_angle_chase],
+    "sequences": [sq_geometric_word, sq_pattern],
+    "logarithms": [lg_word, lg_natural],
+    "complex_numbers": [cx_conj_product, cx_quadratic],
+}
+for _skill, _fns in _NEW_ACT.items():
+    for _d in ("easy", "medium", "hard"):
+        FAMILIES[_skill][_d].extend(_fns)
