@@ -11,42 +11,42 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "A bag contains 7 red, 14 green, and 6 black marbles. If one of the marbles is selected at random, what is the probability that it is not black?",
+    "prompt": "A bag contains 6 white, 2 green, and 6 purple tokens. If one of the tokens is selected at random, what is the probability that it is green or white?",
     "choices": [
       {
         "id": "A",
-        "text": "2/3",
-        "rationale": "The colours are not equally likely."
+        "text": "3/7",
+        "rationale": "This is the probability of the third colour."
       },
       {
         "id": "B",
-        "text": "7/2",
-        "rationale": "Keep the total in the denominator."
+        "text": "1/7",
+        "rationale": "This counts only the green tokens."
       },
       {
         "id": "C",
-        "text": "2/7",
-        "rationale": "Compare favourable to total, not to the rest."
+        "text": "3/49",
+        "rationale": "'Or' with disjoint outcomes adds probabilities; it doesn't multiply."
       },
       {
         "id": "D",
-        "text": "7/9",
+        "text": "4/7",
         "rationale": "Correct."
       },
       {
         "id": "E",
-        "text": "2/9",
-        "rationale": "This is the probability of drawing black."
+        "text": "4/3",
+        "rationale": "Use the total in the denominator."
       }
     ],
     "correct_choice": "D",
-    "explanation": "P(not black) = 1 − 6/27 = 7/9.",
+    "explanation": "P(green or white) = (2 + 6)/14 = 4/7.",
     "estimated_time_seconds": 90,
     "tags": [
       "probability",
       "family:pb_single"
     ],
-    "answer_verification": "P=7/9"
+    "answer_verification": "P=4/7"
   },
   {
     "question_id": "act-math-probability-medium-q02",
@@ -60,43 +60,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "Two events are independent. The probability that the first spinner lands on red is 1/4, and the probability that the second spinner lands on blue is 1/6. What is the probability that both events occur?",
+    "prompt": "Two events are independent. The probability that it rains on Saturday is 1/5, and the probability that it rains on Sunday is 3/5. What is the probability that both events occur?",
     "choices": [
       {
         "id": "A",
-        "text": "1/24",
+        "text": "3/25",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "1/5",
-        "rationale": "Multiply numerators and denominators separately."
-      },
-      {
-        "id": "C",
-        "text": "1/4",
+        "text": "3/5",
         "rationale": "Both must happen, so the probability is less than either alone."
       },
       {
+        "id": "C",
+        "text": "17/25",
+        "rationale": "That is P(at least one), not P(both)."
+      },
+      {
         "id": "D",
-        "text": "5/12",
-        "rationale": "'Both' means multiply the probabilities, not add."
+        "text": "2/5",
+        "rationale": "Multiply numerators and denominators separately."
       },
       {
         "id": "E",
-        "text": "3/8",
-        "rationale": "That is P(at least one), not P(both)."
+        "text": "4/5",
+        "rationale": "'Both' means multiply the probabilities, not add."
       }
     ],
     "correct_choice": "A",
-    "explanation": "For independent events, P(both) = 1/4 × 1/6 = 1/24.",
+    "explanation": "For independent events, P(both) = 1/5 × 3/5 = 3/25.",
     "estimated_time_seconds": 85,
     "tags": [
       "probability",
       "independent",
       "family:pb_compound"
     ],
-    "answer_verification": "P=1/24"
+    "answer_verification": "P=3/25"
   },
   {
     "question_id": "act-math-probability-medium-q03",
@@ -110,43 +110,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "The probability that a randomly chosen part from a production line is defective is 3/5. If 60 parts are produced, how many are expected to be defective?",
+    "prompt": "The probability that a randomly chosen part from a production line is defective is 3/5. If 160 parts are produced, how many are expected to be defective?",
     "choices": [
       {
         "id": "A",
-        "text": "24",
-        "rationale": "That is the expected number of good parts."
-      },
-      {
-        "id": "B",
-        "text": "36",
+        "text": "96",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "64",
+        "rationale": "That is the expected number of good parts."
+      },
+      {
         "id": "C",
-        "text": "38",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "128",
+        "rationale": "Multiply 32 by the numerator 3."
       },
       {
         "id": "D",
-        "text": "48",
-        "rationale": "Multiply 12 by the numerator 3."
+        "text": "101",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
       },
       {
         "id": "E",
-        "text": "20",
+        "text": "54",
         "rationale": "Multiply by the probability, not by its reciprocal."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "3/5 × 60 = 36.",
+    "correct_choice": "A",
+    "explanation": "3/5 × 160 = 96.",
     "estimated_time_seconds": 80,
     "tags": [
       "probability",
       "expected",
       "family:pb_expected"
     ],
-    "answer_verification": "val=36"
+    "answer_verification": "val=96"
   },
   {
     "question_id": "act-math-probability-medium-q04",
@@ -160,729 +160,36 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "two_way_tables",
-    "prompt": "The table summarizes 100 responses. If one response is selected at random, what is the probability that it is from the Adults group and in the Yes category?",
+    "prompt": "The table summarizes 113 responses. If one response is selected at random, what is the probability that it is from the Online group and in the Passed category?",
     "choices": [
       {
         "id": "A",
-        "text": "16/25",
-        "rationale": "'And' means the single cell, not the union."
-      },
-      {
-        "id": "B",
-        "text": "13/23",
-        "rationale": "This conditions on the row instead of using the grand total."
-      },
-      {
-        "id": "C",
-        "text": "13/50",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "23/50",
-        "rationale": "That is the whole row, not the single cell."
-      },
-      {
-        "id": "E",
-        "text": "13/22",
-        "rationale": "This conditions on the column instead of the grand total."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "The single cell holds 26 of the 100 responses: 13/50.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "probability",
-      "table",
-      "family:pb_table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Survey results",
-        "headers": [
-          "",
-          "Yes",
-          "No",
-          "Total"
-        ],
-        "rows": [
-          [
-            "Adults",
-            "26",
-            "20",
-            "46"
-          ],
-          [
-            "Children",
-            "18",
-            "36",
-            "54"
-          ],
-          [
-            "Total",
-            "44",
-            "56",
-            "100"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "P=13/50"
-  },
-  {
-    "question_id": "act-math-probability-medium-q05",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "probability",
-    "lesson_id": "act-math-probability-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "simple_probability",
-    "prompt": "A bag contains 10 red, 10 purple, and 2 orange beads. If one of the beads is selected at random, what is the probability that it is not purple?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "5/6",
-        "rationale": "Compare favourable to total, not to the rest."
-      },
-      {
-        "id": "B",
-        "text": "5/11",
-        "rationale": "This is the probability of drawing purple."
-      },
-      {
-        "id": "C",
-        "text": "6/5",
-        "rationale": "Keep the total in the denominator."
-      },
-      {
-        "id": "D",
-        "text": "6/11",
-        "rationale": "Correct."
-      },
-      {
-        "id": "E",
-        "text": "2/3",
-        "rationale": "The colours are not equally likely."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "P(not purple) = 1 − 10/22 = 6/11.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "probability",
-      "family:pb_single"
-    ],
-    "answer_verification": "P=6/11"
-  },
-  {
-    "question_id": "act-math-probability-medium-q06",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "probability",
-    "lesson_id": "act-math-probability-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "simple_probability",
-    "prompt": "Two events are independent. The probability that the first spinner lands on red is 1/6, and the probability that the second spinner lands on blue is 1/4. What is the probability that both events occur?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "1/5",
-        "rationale": "Multiply numerators and denominators separately."
-      },
-      {
-        "id": "B",
-        "text": "3/8",
-        "rationale": "That is P(at least one), not P(both)."
-      },
-      {
-        "id": "C",
-        "text": "1/24",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "1/4",
-        "rationale": "Both must happen, so the probability is less than either alone."
-      },
-      {
-        "id": "E",
-        "text": "5/12",
-        "rationale": "'Both' means multiply the probabilities, not add."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "For independent events, P(both) = 1/6 × 1/4 = 1/24.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "probability",
-      "independent",
-      "family:pb_compound"
-    ],
-    "answer_verification": "P=1/24"
-  },
-  {
-    "question_id": "act-math-probability-medium-q07",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "probability",
-    "lesson_id": "act-math-probability-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "simple_probability",
-    "prompt": "The probability that a randomly chosen part from a production line is defective is 5/12. If 252 parts are produced, how many are expected to be defective?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "105",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "51",
-        "rationale": "Multiply by the probability, not by its reciprocal."
-      },
-      {
-        "id": "C",
-        "text": "231",
-        "rationale": "Multiply 21 by the numerator 5."
-      },
-      {
-        "id": "D",
-        "text": "126",
-        "rationale": "Arithmetic slip; recompute 5/12 of 252."
-      },
-      {
-        "id": "E",
-        "text": "147",
-        "rationale": "That is the expected number of good parts."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "5/12 × 252 = 105.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "probability",
-      "expected",
-      "family:pb_expected"
-    ],
-    "answer_verification": "val=105"
-  },
-  {
-    "question_id": "act-math-probability-medium-q08",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "probability",
-    "lesson_id": "act-math-probability-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "two_way_tables",
-    "prompt": "The table summarizes 57 responses. If one response is selected at random, what is the probability that it is from the Adults group and in the Yes category?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "12/19",
-        "rationale": "'And' means the single cell, not the union."
-      },
-      {
-        "id": "B",
-        "text": "12/31",
+        "text": "13/27",
         "rationale": "This conditions on the column instead of the grand total."
       },
       {
-        "id": "C",
-        "text": "12/17",
-        "rationale": "This conditions on the row instead of using the grand total."
-      },
-      {
-        "id": "D",
-        "text": "17/57",
-        "rationale": "That is the whole row, not the single cell."
-      },
-      {
-        "id": "E",
-        "text": "4/19",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "E",
-    "explanation": "The single cell holds 12 of the 57 responses: 4/19.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "probability",
-      "table",
-      "family:pb_table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Survey results",
-        "headers": [
-          "",
-          "Yes",
-          "No",
-          "Total"
-        ],
-        "rows": [
-          [
-            "Adults",
-            "12",
-            "5",
-            "17"
-          ],
-          [
-            "Children",
-            "19",
-            "21",
-            "40"
-          ],
-          [
-            "Total",
-            "31",
-            "26",
-            "57"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "P=4/19"
-  },
-  {
-    "question_id": "act-math-probability-medium-q09",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "probability",
-    "lesson_id": "act-math-probability-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "simple_probability",
-    "prompt": "A bag contains 9 red, 5 orange, and 7 yellow balls. If one of the balls is selected at random, what is the probability that it is not red?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "3/4",
-        "rationale": "Compare favourable to total, not to the rest."
-      },
-      {
         "id": "B",
-        "text": "4/7",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "2/3",
-        "rationale": "The colours are not equally likely."
-      },
-      {
-        "id": "D",
-        "text": "3/7",
-        "rationale": "This is the probability of drawing red."
-      },
-      {
-        "id": "E",
-        "text": "4/3",
-        "rationale": "Keep the total in the denominator."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "P(not red) = 1 − 9/21 = 4/7.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "probability",
-      "family:pb_single"
-    ],
-    "answer_verification": "P=4/7"
-  },
-  {
-    "question_id": "act-math-probability-medium-q10",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "probability",
-    "lesson_id": "act-math-probability-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "simple_probability",
-    "prompt": "Two events are independent. The probability that the first spinner lands on red is 1/4, and the probability that the second spinner lands on blue is 3/5. What is the probability that both events occur?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "3/5",
-        "rationale": "Both must happen, so the probability is less than either alone."
-      },
-      {
-        "id": "B",
-        "text": "7/10",
-        "rationale": "That is P(at least one), not P(both)."
-      },
-      {
-        "id": "C",
-        "text": "4/9",
-        "rationale": "Multiply numerators and denominators separately."
-      },
-      {
-        "id": "D",
-        "text": "17/20",
-        "rationale": "'Both' means multiply the probabilities, not add."
-      },
-      {
-        "id": "E",
-        "text": "3/20",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "E",
-    "explanation": "For independent events, P(both) = 1/4 × 3/5 = 3/20.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "probability",
-      "independent",
-      "family:pb_compound"
-    ],
-    "answer_verification": "P=3/20"
-  },
-  {
-    "question_id": "act-math-probability-medium-q11",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "probability",
-    "lesson_id": "act-math-probability-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "simple_probability",
-    "prompt": "The probability that a randomly chosen part from a production line is defective is 5/12. If 216 parts are produced, how many are expected to be defective?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "126",
-        "rationale": "That is the expected number of good parts."
-      },
-      {
-        "id": "B",
-        "text": "44",
-        "rationale": "Multiply by the probability, not by its reciprocal."
-      },
-      {
-        "id": "C",
-        "text": "90",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "108",
-        "rationale": "Arithmetic slip; recompute 5/12 of 216."
-      },
-      {
-        "id": "E",
-        "text": "198",
-        "rationale": "Multiply 18 by the numerator 5."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "5/12 × 216 = 90.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "probability",
-      "expected",
-      "family:pb_expected"
-    ],
-    "answer_verification": "val=90"
-  },
-  {
-    "question_id": "act-math-probability-medium-q12",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "probability",
-    "lesson_id": "act-math-probability-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "two_way_tables",
-    "prompt": "The table summarizes 120 responses. If one response is selected at random, what is the probability that it is from the Morning group and in the Yes category?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "31/40",
+        "text": "90/113",
         "rationale": "'And' means the single cell, not the union."
       },
       {
-        "id": "B",
-        "text": "2/3",
-        "rationale": "That is the whole row, not the single cell."
-      },
-      {
         "id": "C",
-        "text": "7/24",
+        "text": "39/113",
         "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "7/16",
+        "text": "13/16",
         "rationale": "This conditions on the row instead of using the grand total."
       },
       {
         "id": "E",
-        "text": "35/48",
-        "rationale": "This conditions on the column instead of the grand total."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "The single cell holds 35 of the 120 responses: 7/24.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "probability",
-      "table",
-      "family:pb_table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Survey results",
-        "headers": [
-          "",
-          "Yes",
-          "No",
-          "Total"
-        ],
-        "rows": [
-          [
-            "Morning",
-            "35",
-            "45",
-            "80"
-          ],
-          [
-            "Afternoon",
-            "13",
-            "27",
-            "40"
-          ],
-          [
-            "Total",
-            "48",
-            "72",
-            "120"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "P=7/24"
-  },
-  {
-    "question_id": "act-math-probability-medium-q13",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "probability",
-    "lesson_id": "act-math-probability-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "simple_probability",
-    "prompt": "A bag contains 6 black, 10 purple, and 12 blue beads. If one of the beads is selected at random, what is the probability that it is not purple?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "2/3",
-        "rationale": "The colours are not equally likely."
-      },
-      {
-        "id": "B",
-        "text": "9/5",
-        "rationale": "Keep the total in the denominator."
-      },
-      {
-        "id": "C",
-        "text": "9/14",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "5/9",
-        "rationale": "Compare favourable to total, not to the rest."
-      },
-      {
-        "id": "E",
-        "text": "5/14",
-        "rationale": "This is the probability of drawing purple."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "P(not purple) = 1 − 10/28 = 9/14.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "probability",
-      "family:pb_single"
-    ],
-    "answer_verification": "P=9/14"
-  },
-  {
-    "question_id": "act-math-probability-medium-q14",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "probability",
-    "lesson_id": "act-math-probability-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "simple_probability",
-    "prompt": "Two events are independent. The probability that the first machine passes inspection is 1/5, and the probability that the second machine passes inspection is 1/3. What is the probability that both events occur?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "1/15",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "8/15",
-        "rationale": "'Both' means multiply the probabilities, not add."
-      },
-      {
-        "id": "C",
-        "text": "1/4",
-        "rationale": "Multiply numerators and denominators separately."
-      },
-      {
-        "id": "D",
-        "text": "1/3",
-        "rationale": "Both must happen, so the probability is less than either alone."
-      },
-      {
-        "id": "E",
-        "text": "7/15",
-        "rationale": "That is P(at least one), not P(both)."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "For independent events, P(both) = 1/5 × 1/3 = 1/15.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "probability",
-      "independent",
-      "family:pb_compound"
-    ],
-    "answer_verification": "P=1/15"
-  },
-  {
-    "question_id": "act-math-probability-medium-q15",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "probability",
-    "lesson_id": "act-math-probability-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "simple_probability",
-    "prompt": "The probability that a randomly chosen part from a production line is defective is 1/4. If 56 parts are produced, how many are expected to be defective?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "28",
-        "rationale": "Arithmetic slip; recompute 1/4 of 56."
-      },
-      {
-        "id": "B",
-        "text": "42",
-        "rationale": "That is the expected number of good parts."
-      },
-      {
-        "id": "C",
-        "text": "56",
-        "rationale": "Multiply by the probability, not by its reciprocal."
-      },
-      {
-        "id": "D",
-        "text": "14",
-        "rationale": "Correct."
-      },
-      {
-        "id": "E",
-        "text": "18",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "1/4 × 56 = 14.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "probability",
-      "expected",
-      "family:pb_expected"
-    ],
-    "answer_verification": "val=14"
-  },
-  {
-    "question_id": "act-math-probability-medium-q16",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "probability",
-    "lesson_id": "act-math-probability-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "two_way_tables",
-    "prompt": "The table summarizes 92 responses. If one response is selected at random, what is the probability that it is from the Freshmen group and in the Passed category?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "31/92",
+        "text": "48/113",
         "rationale": "That is the whole row, not the single cell."
-      },
-      {
-        "id": "B",
-        "text": "23/31",
-        "rationale": "This conditions on the row instead of using the grand total."
-      },
-      {
-        "id": "C",
-        "text": "33/46",
-        "rationale": "'And' means the single cell, not the union."
-      },
-      {
-        "id": "D",
-        "text": "23/58",
-        "rationale": "This conditions on the column instead of the grand total."
-      },
-      {
-        "id": "E",
-        "text": "1/4",
-        "rationale": "Correct."
       }
     ],
-    "correct_choice": "E",
-    "explanation": "The single cell holds 23 of the 92 responses: 1/4.",
+    "correct_choice": "C",
+    "explanation": "The single cell holds 39 of the 113 responses: 39/113.",
     "estimated_time_seconds": 90,
     "tags": [
       "probability",
@@ -901,30 +208,81 @@
         ],
         "rows": [
           [
-            "Freshmen",
-            "23",
-            "8",
-            "31"
+            "Online",
+            "39",
+            "9",
+            "48"
           ],
           [
-            "Sophomores",
-            "35",
-            "26",
-            "61"
+            "In store",
+            "42",
+            "23",
+            "65"
           ],
           [
             "Total",
-            "58",
-            "34",
-            "92"
+            "81",
+            "32",
+            "113"
           ]
         ]
       }
     },
-    "answer_verification": "P=1/4"
+    "answer_verification": "P=39/113"
   },
   {
-    "question_id": "act-math-probability-medium-q17",
+    "question_id": "act-math-probability-medium-q05",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "probability",
+    "lesson_id": "act-math-probability-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multi_step_math",
+    "subskill": "simple_probability",
+    "prompt": "In a group of 50 visitors, 29 saw the exhibit, 32 bought a ticket online, and 26 do both. If one of the visitors is chosen at random, what is the probability that this person does neither?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "13/25",
+        "rationale": "That is the probability of doing both."
+      },
+      {
+        "id": "B",
+        "text": "3/10",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "7/10",
+        "rationale": "That is the probability of doing at least one."
+      },
+      {
+        "id": "D",
+        "text": "41/50",
+        "rationale": "Those who do both were subtracted twice; add 26 back."
+      },
+      {
+        "id": "E",
+        "text": "5/8",
+        "rationale": "Divide by the whole group."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Either or both: 29 + 32 − 26 = 35; neither: 50 − 35 = 15; probability 3/10.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "probability",
+      "conditional",
+      "word-problem",
+      "family:pb_conditional_words"
+    ],
+    "answer_verification": "total=50,a=29,b=32,both=26"
+  },
+  {
+    "question_id": "act-math-probability-medium-q06",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -935,45 +293,145 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "A bag contains 13 white, 4 purple, and 9 orange marbles. If one of the marbles is selected at random, what is the probability that it is not orange?",
+    "prompt": "A point is chosen at random inside a rectangle that is 8 by 20. A smaller rectangle 2 by 19 lies inside it. What is the probability that the point lies inside the smaller rectangle?",
     "choices": [
       {
         "id": "A",
-        "text": "2/3",
-        "rationale": "The colours are not equally likely."
+        "text": "19/80",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "9/26",
-        "rationale": "This is the probability of drawing orange."
+        "text": "3/4",
+        "rationale": "Use areas, not perimeters."
       },
       {
         "id": "C",
-        "text": "17/26",
+        "text": "19/40",
+        "rationale": "Arithmetic slip."
+      },
+      {
+        "id": "D",
+        "text": "1/4",
+        "rationale": "Use both dimensions (areas)."
+      },
+      {
+        "id": "E",
+        "text": "61/80",
+        "rationale": "That is the probability of landing OUTSIDE the small rectangle."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Probability = area of small/area of large = 38/160 = 19/80.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "probability",
+      "geometric",
+      "family:pb_geometric"
+    ],
+    "answer_verification": "P=19/80"
+  },
+  {
+    "question_id": "act-math-probability-medium-q07",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "probability",
+    "lesson_id": "act-math-probability-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "simple_probability",
+    "prompt": "A meal consists of one of 5 appetizers, one of 3 main courses, and one of 4 desserts. If a meal is chosen at random, what is the probability that it includes a particular appetizer and a particular dessert?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "1/60",
+        "rationale": "Any of the 3 main courses works, so 3 meals qualify."
+      },
+      {
+        "id": "B",
+        "text": "9/20",
+        "rationale": "Independent choices multiply: (1/5)(1/4)."
+      },
+      {
+        "id": "C",
+        "text": "1/20",
         "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "9/17",
+        "text": "1/5",
+        "rationale": "The dessert choice matters too."
+      },
+      {
+        "id": "E",
+        "text": "3/20",
+        "rationale": "Multiply, don't add, the favorable counts."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "There are 60 meals in all; those with the given appetizer and dessert number 3 (one per main course): 3/60 = 1/20.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "probability",
+      "counting",
+      "family:pb_counting"
+    ],
+    "answer_verification": "val=1/20"
+  },
+  {
+    "question_id": "act-math-probability-medium-q08",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "probability",
+    "lesson_id": "act-math-probability-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "simple_probability",
+    "prompt": "A bag contains 11 green, 3 white, and 12 yellow chips. If one of the chips is selected at random, what is the probability that it is not green?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "15/26",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "2/3",
+        "rationale": "The colours are not equally likely."
+      },
+      {
+        "id": "C",
+        "text": "15/11",
+        "rationale": "Keep the total in the denominator."
+      },
+      {
+        "id": "D",
+        "text": "11/15",
         "rationale": "Compare favourable to total, not to the rest."
       },
       {
         "id": "E",
-        "text": "17/9",
-        "rationale": "Keep the total in the denominator."
+        "text": "11/26",
+        "rationale": "This is the probability of drawing green."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "P(not orange) = 1 − 9/26 = 17/26.",
+    "correct_choice": "A",
+    "explanation": "P(not green) = 1 − 11/26 = 15/26.",
     "estimated_time_seconds": 90,
     "tags": [
       "probability",
       "family:pb_single"
     ],
-    "answer_verification": "P=17/26"
+    "answer_verification": "P=15/26"
   },
   {
-    "question_id": "act-math-probability-medium-q18",
+    "question_id": "act-math-probability-medium-q09",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -984,46 +442,46 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "Two events are independent. The probability that it rains on Saturday is 1/6, and the probability that it rains on Sunday is 3/5. What is the probability that both events occur?",
+    "prompt": "Two events are independent. The probability that the first spinner lands on red is 1/4, and the probability that the second spinner lands on blue is 2/3. What is the probability that both events occur?",
     "choices": [
       {
         "id": "A",
-        "text": "1/10",
+        "text": "1/6",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "2/3",
+        "text": "3/4",
         "rationale": "That is P(at least one), not P(both)."
       },
       {
         "id": "C",
-        "text": "3/5",
-        "rationale": "Both must happen, so the probability is less than either alone."
+        "text": "3/7",
+        "rationale": "Multiply numerators and denominators separately."
       },
       {
         "id": "D",
-        "text": "23/30",
-        "rationale": "'Both' means multiply the probabilities, not add."
+        "text": "2/3",
+        "rationale": "Both must happen, so the probability is less than either alone."
       },
       {
         "id": "E",
-        "text": "4/11",
-        "rationale": "Multiply numerators and denominators separately."
+        "text": "11/12",
+        "rationale": "'Both' means multiply the probabilities, not add."
       }
     ],
     "correct_choice": "A",
-    "explanation": "For independent events, P(both) = 1/6 × 3/5 = 1/10.",
+    "explanation": "For independent events, P(both) = 1/4 × 2/3 = 1/6.",
     "estimated_time_seconds": 85,
     "tags": [
       "probability",
       "independent",
       "family:pb_compound"
     ],
-    "answer_verification": "P=1/10"
+    "answer_verification": "P=1/6"
   },
   {
-    "question_id": "act-math-probability-medium-q19",
+    "question_id": "act-math-probability-medium-q10",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1034,46 +492,46 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "The probability that a randomly chosen part from a production line is defective is 2/3. If 48 parts are produced, how many are expected to be defective?",
+    "prompt": "The probability that a randomly chosen part from a production line is defective is 1/4. If 96 parts are produced, how many are expected to be defective?",
     "choices": [
       {
         "id": "A",
-        "text": "27",
+        "text": "28",
         "rationale": "This comes from a small arithmetic slip; recompute carefully."
       },
       {
         "id": "B",
-        "text": "48",
-        "rationale": "Multiply 16 by the numerator 2."
+        "text": "96",
+        "rationale": "Multiply by the probability, not by its reciprocal."
       },
       {
         "id": "C",
-        "text": "32",
+        "text": "24",
         "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "24",
-        "rationale": "Multiply by the probability, not by its reciprocal."
+        "text": "48",
+        "rationale": "Arithmetic slip; recompute 1/4 of 96."
       },
       {
         "id": "E",
-        "text": "16",
+        "text": "72",
         "rationale": "That is the expected number of good parts."
       }
     ],
     "correct_choice": "C",
-    "explanation": "2/3 × 48 = 32.",
+    "explanation": "1/4 × 96 = 24.",
     "estimated_time_seconds": 80,
     "tags": [
       "probability",
       "expected",
       "family:pb_expected"
     ],
-    "answer_verification": "val=32"
+    "answer_verification": "val=24"
   },
   {
-    "question_id": "act-math-probability-medium-q20",
+    "question_id": "act-math-probability-medium-q11",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1084,36 +542,36 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "two_way_tables",
-    "prompt": "The table summarizes 93 responses. If one response is selected at random, what is the probability that it is from the Adults group and in the Prefers tea category?",
+    "prompt": "The table summarizes 135 responses. If one response is selected at random, what is the probability that it is from the Freshmen group and in the Prefers tea category?",
     "choices": [
       {
         "id": "A",
-        "text": "22/93",
-        "rationale": "Correct."
+        "text": "56/135",
+        "rationale": "That is the whole row, not the single cell."
       },
       {
         "id": "B",
-        "text": "22/47",
-        "rationale": "This conditions on the row instead of using the grand total."
-      },
-      {
-        "id": "C",
-        "text": "79/93",
-        "rationale": "'And' means the single cell, not the union."
-      },
-      {
-        "id": "D",
-        "text": "11/27",
+        "text": "11/23",
         "rationale": "This conditions on the column instead of the grand total."
       },
       {
+        "id": "C",
+        "text": "11/45",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "33/56",
+        "rationale": "This conditions on the row instead of using the grand total."
+      },
+      {
         "id": "E",
-        "text": "47/93",
-        "rationale": "That is the whole row, not the single cell."
+        "text": "92/135",
+        "rationale": "'And' means the single cell, not the union."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "The single cell holds 22 of the 93 responses: 22/93.",
+    "correct_choice": "C",
+    "explanation": "The single cell holds 33 of the 135 responses: 11/45.",
     "estimated_time_seconds": 90,
     "tags": [
       "probability",
@@ -1132,26 +590,509 @@
         ],
         "rows": [
           [
-            "Adults",
-            "22",
-            "25",
-            "47"
+            "Freshmen",
+            "33",
+            "23",
+            "56"
           ],
           [
-            "Children",
-            "32",
-            "14",
-            "46"
+            "Sophomores",
+            "36",
+            "43",
+            "79"
           ],
           [
             "Total",
-            "54",
-            "39",
-            "93"
+            "69",
+            "66",
+            "135"
           ]
         ]
       }
     },
-    "answer_verification": "P=22/93"
+    "answer_verification": "P=11/45"
+  },
+  {
+    "question_id": "act-math-probability-medium-q12",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "probability",
+    "lesson_id": "act-math-probability-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multi_step_math",
+    "subskill": "simple_probability",
+    "prompt": "In a group of 60 students, 41 play a sport, 20 play an instrument, and 14 do both. If one of the students is chosen at random, what is the probability that this person does neither?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "9/20",
+        "rationale": "Those who do both were subtracted twice; add 14 back."
+      },
+      {
+        "id": "B",
+        "text": "13/60",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "47/60",
+        "rationale": "That is the probability of doing at least one."
+      },
+      {
+        "id": "D",
+        "text": "13/46",
+        "rationale": "Divide by the whole group."
+      },
+      {
+        "id": "E",
+        "text": "7/30",
+        "rationale": "That is the probability of doing both."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Either or both: 41 + 20 − 14 = 47; neither: 60 − 47 = 13; probability 13/60.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "probability",
+      "conditional",
+      "word-problem",
+      "family:pb_conditional_words"
+    ],
+    "answer_verification": "total=60,a=41,b=20,both=14"
+  },
+  {
+    "question_id": "act-math-probability-medium-q13",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "probability",
+    "lesson_id": "act-math-probability-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "simple_probability",
+    "prompt": "A point is chosen at random inside a rectangle that is 19 by 10. A smaller rectangle 13 by 4 lies inside it. What is the probability that the point lies inside the smaller rectangle?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "26/95",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "69/95",
+        "rationale": "That is the probability of landing OUTSIDE the small rectangle."
+      },
+      {
+        "id": "C",
+        "text": "17/29",
+        "rationale": "Use areas, not perimeters."
+      },
+      {
+        "id": "D",
+        "text": "13/19",
+        "rationale": "Use both dimensions (areas)."
+      },
+      {
+        "id": "E",
+        "text": "52/95",
+        "rationale": "Arithmetic slip."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Probability = area of small/area of large = 52/190 = 26/95.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "probability",
+      "geometric",
+      "family:pb_geometric"
+    ],
+    "answer_verification": "P=26/95"
+  },
+  {
+    "question_id": "act-math-probability-medium-q14",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "probability",
+    "lesson_id": "act-math-probability-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "simple_probability",
+    "prompt": "A meal consists of one of 2 appetizers, one of 4 main courses, and one of 4 desserts. If a meal is chosen at random, what is the probability that it includes a particular appetizer and a particular dessert?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "3/4",
+        "rationale": "Independent choices multiply: (1/2)(1/4)."
+      },
+      {
+        "id": "B",
+        "text": "1/32",
+        "rationale": "Any of the 4 main courses works, so 4 meals qualify."
+      },
+      {
+        "id": "C",
+        "text": "1/2",
+        "rationale": "The dessert choice matters too."
+      },
+      {
+        "id": "D",
+        "text": "3/16",
+        "rationale": "Multiply, don't add, the favorable counts."
+      },
+      {
+        "id": "E",
+        "text": "1/8",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "E",
+    "explanation": "There are 32 meals in all; those with the given appetizer and dessert number 4 (one per main course): 4/32 = 1/8.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "probability",
+      "counting",
+      "family:pb_counting"
+    ],
+    "answer_verification": "val=1/8"
+  },
+  {
+    "question_id": "act-math-probability-medium-q15",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "probability",
+    "lesson_id": "act-math-probability-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "simple_probability",
+    "prompt": "A bag contains 3 blue, 3 white, and 14 purple beads. If one of the beads is selected at random, what is the probability that it is not white?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "17/3",
+        "rationale": "Keep the total in the denominator."
+      },
+      {
+        "id": "B",
+        "text": "17/20",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "2/3",
+        "rationale": "The colours are not equally likely."
+      },
+      {
+        "id": "D",
+        "text": "3/17",
+        "rationale": "Compare favourable to total, not to the rest."
+      },
+      {
+        "id": "E",
+        "text": "3/20",
+        "rationale": "This is the probability of drawing white."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "P(not white) = 1 − 3/20 = 17/20.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "probability",
+      "family:pb_single"
+    ],
+    "answer_verification": "P=17/20"
+  },
+  {
+    "question_id": "act-math-probability-medium-q16",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "probability",
+    "lesson_id": "act-math-probability-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "simple_probability",
+    "prompt": "Two events are independent. The probability that it rains on Saturday is 1/6, and the probability that it rains on Sunday is 1/2. What is the probability that both events occur?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "1/2",
+        "rationale": "Both must happen, so the probability is less than either alone."
+      },
+      {
+        "id": "B",
+        "text": "1/4",
+        "rationale": "Multiply numerators and denominators separately."
+      },
+      {
+        "id": "C",
+        "text": "7/12",
+        "rationale": "That is P(at least one), not P(both)."
+      },
+      {
+        "id": "D",
+        "text": "2/3",
+        "rationale": "'Both' means multiply the probabilities, not add."
+      },
+      {
+        "id": "E",
+        "text": "1/12",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "E",
+    "explanation": "For independent events, P(both) = 1/6 × 1/2 = 1/12.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "probability",
+      "independent",
+      "family:pb_compound"
+    ],
+    "answer_verification": "P=1/12"
+  },
+  {
+    "question_id": "act-math-probability-medium-q17",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "probability",
+    "lesson_id": "act-math-probability-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "simple_probability",
+    "prompt": "The probability that a randomly chosen part from a production line is defective is 2/3. If 81 parts are produced, how many are expected to be defective?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "41",
+        "rationale": "Multiply by the probability, not by its reciprocal."
+      },
+      {
+        "id": "B",
+        "text": "54",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "27",
+        "rationale": "That is the expected number of good parts."
+      },
+      {
+        "id": "D",
+        "text": "81",
+        "rationale": "Multiply 27 by the numerator 2."
+      },
+      {
+        "id": "E",
+        "text": "58",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "2/3 × 81 = 54.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "probability",
+      "expected",
+      "family:pb_expected"
+    ],
+    "answer_verification": "val=54"
+  },
+  {
+    "question_id": "act-math-probability-medium-q18",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "probability",
+    "lesson_id": "act-math-probability-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "two_way_tables",
+    "prompt": "The table summarizes 68 responses. If one response is selected at random, what is the probability that it is from the Online group and in the Prefers tea category?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "25/34",
+        "rationale": "'And' means the single cell, not the union."
+      },
+      {
+        "id": "B",
+        "text": "4/17",
+        "rationale": "That is the whole row, not the single cell."
+      },
+      {
+        "id": "C",
+        "text": "2/17",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "1/2",
+        "rationale": "This conditions on the row instead of using the grand total."
+      },
+      {
+        "id": "E",
+        "text": "4/21",
+        "rationale": "This conditions on the column instead of the grand total."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "The single cell holds 8 of the 68 responses: 2/17.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "probability",
+      "table",
+      "family:pb_table"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Survey results",
+        "headers": [
+          "",
+          "Prefers tea",
+          "Prefers coffee",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Online",
+            "8",
+            "8",
+            "16"
+          ],
+          [
+            "In store",
+            "34",
+            "18",
+            "52"
+          ],
+          [
+            "Total",
+            "42",
+            "26",
+            "68"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "P=2/17"
+  },
+  {
+    "question_id": "act-math-probability-medium-q19",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "probability",
+    "lesson_id": "act-math-probability-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multi_step_math",
+    "subskill": "simple_probability",
+    "prompt": "In a group of 100 visitors, 46 saw the exhibit, 70 bought a ticket online, and 33 do both. If one of the visitors is chosen at random, what is the probability that this person does neither?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "17/100",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "17/67",
+        "rationale": "Divide by the whole group."
+      },
+      {
+        "id": "C",
+        "text": "83/100",
+        "rationale": "That is the probability of doing at least one."
+      },
+      {
+        "id": "D",
+        "text": "1/2",
+        "rationale": "Those who do both were subtracted twice; add 33 back."
+      },
+      {
+        "id": "E",
+        "text": "33/100",
+        "rationale": "That is the probability of doing both."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Either or both: 46 + 70 − 33 = 83; neither: 100 − 83 = 17; probability 17/100.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "probability",
+      "conditional",
+      "word-problem",
+      "family:pb_conditional_words"
+    ],
+    "answer_verification": "total=100,a=46,b=70,both=33"
+  },
+  {
+    "question_id": "act-math-probability-medium-q20",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "probability",
+    "lesson_id": "act-math-probability-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "simple_probability",
+    "prompt": "A point is chosen at random inside a rectangle that is 9 by 10. A smaller rectangle 5 by 4 lies inside it. What is the probability that the point lies inside the smaller rectangle?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "5/9",
+        "rationale": "Use both dimensions (areas)."
+      },
+      {
+        "id": "B",
+        "text": "7/9",
+        "rationale": "That is the probability of landing OUTSIDE the small rectangle."
+      },
+      {
+        "id": "C",
+        "text": "4/9",
+        "rationale": "Arithmetic slip."
+      },
+      {
+        "id": "D",
+        "text": "2/9",
+        "rationale": "Correct."
+      },
+      {
+        "id": "E",
+        "text": "9/19",
+        "rationale": "Use areas, not perimeters."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Probability = area of small/area of large = 20/90 = 2/9.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "probability",
+      "geometric",
+      "family:pb_geometric"
+    ],
+    "answer_verification": "P=2/9"
   }
 ]

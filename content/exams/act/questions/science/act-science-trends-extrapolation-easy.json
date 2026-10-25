@@ -11,31 +11,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "trend_shape",
-    "prompt": "Based on Table 1, which statement best describes the trend in the stretch of the spring over the range of mass tested?",
+    "prompt": "According to Table 1, as the distance from the epicenter increased, the maximum ground motion:",
     "choices": [
       {
         "id": "A",
-        "text": "increased, by larger and larger amounts",
-        "rationale": "The increases do not get steadily larger down the column."
+        "text": "decreased by approximately the same amount for each step in distance",
+        "rationale": "The decreases from row to row are not all about the same size."
       },
       {
         "id": "B",
-        "text": "increased, but by smaller and smaller amounts",
-        "rationale": "The increases do not get steadily smaller down the column."
+        "text": "decreased, by larger and larger amounts",
+        "rationale": "The decreases do not get steadily larger down the column."
       },
       {
         "id": "C",
-        "text": "decreased by approximately the same amount for each step in mass",
-        "rationale": "The values rise down the column; they never decrease."
+        "text": "increased, by larger and larger amounts",
+        "rationale": "The values fall down the column; they never increase."
       },
       {
         "id": "D",
-        "text": "increased by approximately the same amount for each step in mass",
-        "rationale": "Correct. The row-to-row changes are 2.7, 2.6, 2.6, 2.7, which fits this description."
+        "text": "decreased, but by smaller and smaller amounts",
+        "rationale": "Correct. The row-to-row changes are 0.80, 0.33, 0.18, 0.10, which fits this description."
       }
     ],
     "correct_choice": "D",
-    "explanation": "Compute the change between consecutive rows (2.7, 2.6, 2.6, 2.7). The stretch of the spring increased by approximately the same amount for each step in mass.",
+    "explanation": "Compute the change between consecutive rows (0.80, 0.33, 0.18, 0.10). The maximum ground motion decreased, but by smaller and smaller amounts.",
     "estimated_time_seconds": 60,
     "tags": [
       "science",
@@ -45,38 +45,38 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Spring Stretch",
+      "title": "Earthquake Distance and Shaking",
       "table": {
-        "caption": "Table 1. Stretch of a spring when several masses are hung from it.",
+        "caption": "Table 1. Maximum ground motion recorded by seismographs at several distances from an earthquake.",
         "headers": [
-          "Mass (g)",
-          "Stretch (cm)"
+          "Distance from epicenter (km)",
+          "Ground motion (mm)"
         ],
         "rows": [
           [
-            "50",
-            "2.6"
-          ],
-          [
             "100",
-            "5.3"
+            "1.75"
           ],
           [
             "150",
-            "7.9"
+            "0.95"
           ],
           [
             "200",
-            "10.5"
+            "0.62"
           ],
           [
             "250",
-            "13.2"
+            "0.44"
+          ],
+          [
+            "300",
+            "0.34"
           ]
         ]
       }
     },
-    "answer_verification": "science:shape;col=1;expect=inc_const"
+    "answer_verification": "science:shape;col=1;expect=dec_slow"
   },
   {
     "question_id": "act-science-trends-extrapolation-easy-q02",
@@ -90,31 +90,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "interpolation",
-    "prompt": "Suppose a trial had been run at a time of 7 h. Based on Table 1, the voltage of the battery would most likely have been:",
+    "prompt": "Based on the trend in Table 1, if the current through the resistor had been 0.55 A, the voltage across the resistor would most likely have been:",
     "choices": [
       {
         "id": "A",
-        "text": "above every listed value, greater than 1.41 V",
-        "rationale": "This is above every value in the table; the trend has no reason to jump there."
-      },
-      {
-        "id": "B",
-        "text": "between 0.89 V and 1.10 V",
-        "rationale": "This is the interval for time between 8 h and 10 h."
-      },
-      {
-        "id": "C",
-        "text": "below every listed value, less than 0.89 V",
+        "text": "below every listed value, less than 4.9 V",
         "rationale": "This is below every value in the table; the trend has no reason to jump there."
       },
       {
+        "id": "B",
+        "text": "between 12.2 V and 14.6 V",
+        "rationale": "Correct. 0.55 A lies between 0.5 A and 0.6 A, whose values are 12.2 and 14.6."
+      },
+      {
+        "id": "C",
+        "text": "between 9.7 V and 12.2 V",
+        "rationale": "This is the interval for current between 0.4 A and 0.5 A."
+      },
+      {
         "id": "D",
-        "text": "between 1.10 V and 1.28 V",
-        "rationale": "Correct. 7 h lies between 6 h and 8 h, whose values are 1.10 and 1.28."
+        "text": "above every listed value, greater than 14.6 V",
+        "rationale": "This is above every value in the table; the trend has no reason to jump there."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "7 h falls between the rows for 6 h and 8 h; since the values change steadily, the result should fall between 1.10 and 1.28 V.",
+    "correct_choice": "B",
+    "explanation": "0.55 A falls between the rows for 0.5 A and 0.6 A; since the values change steadily, the result should fall between 12.2 and 14.6 V.",
     "estimated_time_seconds": 60,
     "tags": [
       "science",
@@ -124,34 +124,38 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Battery Voltage Over Time",
+      "title": "Current and Voltage",
       "table": {
-        "caption": "Table 1. Voltage of a battery after several hours of powering a lamp.",
+        "caption": "Table 1. Voltage across a resistor at several currents.",
         "headers": [
-          "Time (h)",
+          "Current (A)",
           "Voltage (V)"
         ],
         "rows": [
           [
-            "4",
-            "1.41"
+            "0.2",
+            "4.9"
           ],
           [
-            "6",
-            "1.28"
+            "0.3",
+            "7.3"
           ],
           [
-            "8",
-            "1.10"
+            "0.4",
+            "9.7"
           ],
           [
-            "10",
-            "0.89"
+            "0.5",
+            "12.2"
+          ],
+          [
+            "0.6",
+            "14.6"
           ]
         ]
       }
     },
-    "answer_verification": "science:interp_range;x=7;col=1"
+    "answer_verification": "science:interp_range;x=0.55;col=1"
   },
   {
     "question_id": "act-science-trends-extrapolation-easy-q03",
@@ -165,31 +169,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "extrapolation",
-    "prompt": "Based on Table 1, if a trial were run at an insulation thickness of 10 cm, the rate of heat loss would most likely be:",
+    "prompt": "Based on Table 1, if a trial were run at a sugar mass of 10 g, the volume of carbon dioxide produced would most likely be:",
     "choices": [
       {
         "id": "A",
-        "text": "greater than 66 W",
-        "rationale": "This is above the very first value; the data fall, not rise."
-      },
-      {
-        "id": "B",
-        "text": "between 34 W and 66 W",
+        "text": "between 25 mL and 45 mL",
         "rationale": "These are values from earlier rows; the trend has already moved past them."
       },
       {
+        "id": "B",
+        "text": "less than 25 mL",
+        "rationale": "This is below the very first value; the data rise, not fall."
+      },
+      {
         "id": "C",
-        "text": "less than 28 W",
-        "rationale": "Correct. The values fall with every row, so the next value should be below the last one, 28 W."
+        "text": "between 45 mL and 50 mL",
+        "rationale": "This would require the trend to reverse and fall back below the last value."
       },
       {
         "id": "D",
-        "text": "between 28 W and 34 W",
-        "rationale": "This would require the trend to reverse and climb back above the last value."
+        "text": "greater than 50 mL",
+        "rationale": "Correct. The values rise with every row, so the next value should exceed the last one, 50 mL."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Every step in insulation thickness lowered the rate of heat loss, so one more step beyond 8 cm should give a value less than 28 W.",
+    "correct_choice": "D",
+    "explanation": "Every step in sugar mass raised the volume of carbon dioxide produced, so one more step beyond 8 g should give a value greater than 50 mL.",
     "estimated_time_seconds": 55,
     "tags": [
       "science",
@@ -199,34 +203,34 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Insulation and Heat Loss",
+      "title": "Sugar and Yeast Fermentation",
       "table": {
-        "caption": "Table 1. Rate of heat loss from a heated box wrapped in several thicknesses of foam.",
+        "caption": "Table 1. Volume of carbon dioxide produced in 30 minutes by yeast given several amounts of sugar.",
         "headers": [
-          "Foam thickness (cm)",
-          "Heat loss (W)"
+          "Sugar (g)",
+          "CO₂ produced (mL)"
         ],
         "rows": [
           [
             "2",
-            "66"
+            "25"
           ],
           [
             "4",
-            "45"
+            "38"
           ],
           [
             "6",
-            "34"
+            "45"
           ],
           [
             "8",
-            "28"
+            "50"
           ]
         ]
       }
     },
-    "answer_verification": "science:beyond;col=1;expect=lt"
+    "answer_verification": "science:beyond;col=1;expect=gt"
   },
   {
     "question_id": "act-science-trends-extrapolation-easy-q04",
@@ -240,12 +244,12 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "trend_shape",
-    "prompt": "According to Figure 1, as the length of the string increases, the period of the pendulum:",
+    "prompt": "Which of the following best describes the relationship between speed and heart rate shown in Figure 1?",
     "choices": [
       {
         "id": "A",
-        "text": "stays about the same",
-        "rationale": "The points change height clearly from left to right."
+        "text": "decreases",
+        "rationale": "The points would have to fall from left to right; they do not."
       },
       {
         "id": "B",
@@ -254,17 +258,17 @@
       },
       {
         "id": "C",
-        "text": "decreases, then increases",
-        "rationale": "The points would have to fall and then rise; they do not."
+        "text": "increases, then decreases",
+        "rationale": "The points keep climbing to the rightmost one; they never turn down."
       },
       {
         "id": "D",
-        "text": "increases, then decreases",
-        "rationale": "The points keep climbing to the rightmost one; they never turn down."
+        "text": "decreases, then increases",
+        "rationale": "The points would have to fall and then rise; they do not."
       }
     ],
     "correct_choice": "B",
-    "explanation": "Follow the points from left (small string length) to right (large string length): the period of the pendulum increases.",
+    "explanation": "Follow the points from left (small speed) to right (large speed): the heart rate increases.",
     "estimated_time_seconds": 45,
     "tags": [
       "science",
@@ -274,37 +278,33 @@
     ],
     "stimulus": {
       "type": "figure",
-      "title": "Pendulum Period",
+      "title": "Exercise Intensity and Heart Rate",
       "figure": {
         "kind": "scatter",
         "points": [
           [
-            20.0,
-            0.89
+            6.0,
+            132.0
           ],
           [
-            40.0,
-            1.26
+            8.0,
+            151.0
           ],
           [
-            60.0,
-            1.54
+            10.0,
+            171.0
           ],
           [
-            80.0,
-            1.78
-          ],
-          [
-            100.0,
-            1.99
+            12.0,
+            191.0
           ]
         ],
-        "xlabel": "Length of string (cm)",
-        "ylabel": "Period (s)",
-        "caption": "Figure 1. Period (s) (vertical axis) versus Length of string (cm) (horizontal axis). Each point is one trial.",
+        "xlabel": "Treadmill speed (km/h)",
+        "ylabel": "Heart rate (beats/min)",
+        "caption": "Figure 1. Heart rate (beats/min) (vertical axis) versus Treadmill speed (km/h) (horizontal axis). Each point is one trial.",
         "line": {
-          "m": 0.0136,
-          "b": 0.676
+          "m": 9.85,
+          "b": 72.6
         }
       }
     },
@@ -322,37 +322,585 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "trend_shape",
-    "prompt": "According to Table 1, as the fertilizer concentration increased, the height of the seedlings:",
+    "prompt": "According to Table 1, between 25 °C and 30 °C, the height of the dough changed at an average rate closest to:",
     "choices": [
       {
         "id": "A",
-        "text": "decreased, by larger and larger amounts",
-        "rationale": "The decreases do not get steadily larger down the column."
+        "text": "2.3 cm per °C",
+        "rationale": "This is the total change in dough height, not divided by the change in temperature."
       },
       {
         "id": "B",
-        "text": "increased by approximately the same amount for each step in fertilizer concentration",
-        "rationale": "The increases from row to row are not all about the same size."
+        "text": "0.46 cm per °C",
+        "rationale": "Correct. Change in dough height ÷ change in temperature = 2.3 ÷ 5 ≈ 0.46."
       },
       {
         "id": "C",
-        "text": "increased to a maximum and then decreased",
-        "rationale": "Correct. The row-to-row changes are 5.9, 3.8, 1.5, 0.7, which fits this description."
+        "text": "0.23 cm per °C",
+        "rationale": "This is half the rate; recheck the division."
       },
       {
         "id": "D",
+        "text": "0.92 cm per °C",
+        "rationale": "This is twice the rate; recheck the division."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Rate = Δdough height ÷ Δtemperature = (7.6 − 5.3) ÷ (30 − 25) ≈ 0.46 cm per °C.",
+    "estimated_time_seconds": 70,
+    "tags": [
+      "science",
+      "trends",
+      "rate",
+      "family:tr_rate_of_change"
+    ],
+    "stimulus": {
+      "type": "table",
+      "title": "Proofing Temperature and Dough Rise",
+      "table": {
+        "caption": "Table 1. Height of bread dough after rising for one hour at several temperatures.",
+        "headers": [
+          "Temperature (°C)",
+          "Dough height (cm)"
+        ],
+        "rows": [
+          [
+            "25",
+            "5.3"
+          ],
+          [
+            "30",
+            "7.6"
+          ],
+          [
+            "35",
+            "9.5"
+          ],
+          [
+            "40",
+            "8.6"
+          ],
+          [
+            "45",
+            "6.1"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "science:rate;x1=25;x2=30;col=1"
+  },
+  {
+    "question_id": "act-science-trends-extrapolation-easy-q06",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "science",
+    "section": "interpretation_of_data",
+    "skill": "trends_extrapolation",
+    "lesson_id": "act-science-trends-extrapolation-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "trend_shape",
+    "prompt": "Based on Table 1, the trend in the horizontal distance the ball traveled reversed direction at approximately which launch angle?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "20°",
+        "rationale": "At this launch angle the values were still rising, not at the turning point."
+      },
+      {
+        "id": "B",
+        "text": "30°",
+        "rationale": "At this launch angle the values were still rising, not at the turning point."
+      },
+      {
+        "id": "C",
+        "text": "50°",
+        "rationale": "At this launch angle the values were already falling, not at the turning point."
+      },
+      {
+        "id": "D",
+        "text": "40°",
+        "rationale": "Correct. The horizontal distance the ball traveled rises to 18.9 m here and falls in the next row."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "The values rise down the column until 40° (18.9) and fall after it, so that is where the trend reverses.",
+    "estimated_time_seconds": 55,
+    "tags": [
+      "science",
+      "trends",
+      "peak",
+      "family:tr_peak_x"
+    ],
+    "stimulus": {
+      "type": "table",
+      "title": "Launch Angle and Range",
+      "table": {
+        "caption": "Table 1. Horizontal distance traveled by a ball launched at several angles.",
+        "headers": [
+          "Launch angle (°)",
+          "Range (m)"
+        ],
+        "rows": [
+          [
+            "20",
+            "13.7"
+          ],
+          [
+            "30",
+            "17.5"
+          ],
+          [
+            "40",
+            "18.9"
+          ],
+          [
+            "50",
+            "18.0"
+          ],
+          [
+            "60",
+            "15.3"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "science:extreme;mode=max;col=1"
+  },
+  {
+    "question_id": "act-science-trends-extrapolation-easy-q07",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "science",
+    "section": "interpretation_of_data",
+    "skill": "trends_extrapolation",
+    "lesson_id": "act-science-trends-extrapolation-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "trend_shape",
+    "prompt": "Which of the following best describes how the stopping distance changed as the speed of the car increased from 20 km/h to 100 km/h?",
+    "choices": [
+      {
+        "id": "A",
         "text": "increased, but by smaller and smaller amounts",
         "rationale": "The increases do not get steadily smaller down the column."
+      },
+      {
+        "id": "B",
+        "text": "decreased by approximately the same amount for each step in speed",
+        "rationale": "The values rise down the column; they never decrease."
+      },
+      {
+        "id": "C",
+        "text": "increased, by larger and larger amounts",
+        "rationale": "Correct. The row-to-row changes are 13.1, 19.0, 25.0, 30.8, which fits this description."
+      },
+      {
+        "id": "D",
+        "text": "increased by approximately the same amount for each step in speed",
+        "rationale": "The increases from row to row are not all about the same size."
       }
     ],
     "correct_choice": "C",
-    "explanation": "Compute the change between consecutive rows (5.9, 3.8, 1.5, 0.7). The height of the seedlings increased to a maximum and then decreased.",
+    "explanation": "Compute the change between consecutive rows (13.1, 19.0, 25.0, 30.8). The stopping distance increased, by larger and larger amounts.",
     "estimated_time_seconds": 60,
     "tags": [
       "science",
       "trends",
       "shape",
       "family:tr_trend_shape"
+    ],
+    "stimulus": {
+      "type": "table",
+      "title": "Speed and Stopping Distance",
+      "table": {
+        "caption": "Table 1. Distance needed for a car to stop from several speeds.",
+        "headers": [
+          "Speed (km/h)",
+          "Stopping distance (m)"
+        ],
+        "rows": [
+          [
+            "20",
+            "7.3"
+          ],
+          [
+            "40",
+            "20.4"
+          ],
+          [
+            "60",
+            "39.4"
+          ],
+          [
+            "80",
+            "64.4"
+          ],
+          [
+            "100",
+            "95.2"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "science:shape;col=1;expect=inc_acc"
+  },
+  {
+    "question_id": "act-science-trends-extrapolation-easy-q08",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "science",
+    "section": "interpretation_of_data",
+    "skill": "trends_extrapolation",
+    "lesson_id": "act-science-trends-extrapolation-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "interpolation",
+    "prompt": "Suppose a trial had been run at an antibiotic concentration of 12.5 µg/mL. Based on Table 1, the number of colonies would most likely have been:",
+    "choices": [
+      {
+        "id": "A",
+        "text": "above every listed value, greater than 275 colonies",
+        "rationale": "This is above every value in the table; the trend has no reason to jump there."
+      },
+      {
+        "id": "B",
+        "text": "between 23 colonies and 52 colonies",
+        "rationale": "Correct. 12.5 µg/mL lies between 10 µg/mL and 15 µg/mL, whose values are 23 and 52."
+      },
+      {
+        "id": "C",
+        "text": "below every listed value, less than 23 colonies",
+        "rationale": "This is below every value in the table; the trend has no reason to jump there."
+      },
+      {
+        "id": "D",
+        "text": "between 52 colonies and 120 colonies",
+        "rationale": "This is the interval for antibiotic concentration between 5 µg/mL and 10 µg/mL."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "12.5 µg/mL falls between the rows for 10 µg/mL and 15 µg/mL; since the values change steadily, the result should fall between 23 and 52 colonies.",
+    "estimated_time_seconds": 60,
+    "tags": [
+      "science",
+      "trends",
+      "interpolate",
+      "family:tr_interpolate_range"
+    ],
+    "stimulus": {
+      "type": "table",
+      "title": "Antibiotic Dose and Bacterial Growth",
+      "table": {
+        "caption": "Table 1. Number of bacterial colonies on plates with several antibiotic concentrations.",
+        "headers": [
+          "Antibiotic concentration (µg/mL)",
+          "Colony count (colonies)"
+        ],
+        "rows": [
+          [
+            "0",
+            "275"
+          ],
+          [
+            "5",
+            "120"
+          ],
+          [
+            "10",
+            "52"
+          ],
+          [
+            "15",
+            "23"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "science:interp_range;x=12.5;col=1"
+  },
+  {
+    "question_id": "act-science-trends-extrapolation-easy-q09",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "science",
+    "section": "interpretation_of_data",
+    "skill": "trends_extrapolation",
+    "lesson_id": "act-science-trends-extrapolation-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "extrapolation",
+    "prompt": "Based on Table 1, if a trial were run at a depth of 600 m, the salinity of the water would most likely be:",
+    "choices": [
+      {
+        "id": "A",
+        "text": "between 34.32 g/kg and 34.44 g/kg",
+        "rationale": "This would require the trend to reverse and fall back below the last value."
+      },
+      {
+        "id": "B",
+        "text": "less than 33.29 g/kg",
+        "rationale": "This is below the very first value; the data rise, not fall."
+      },
+      {
+        "id": "C",
+        "text": "between 33.29 g/kg and 34.32 g/kg",
+        "rationale": "These are values from earlier rows; the trend has already moved past them."
+      },
+      {
+        "id": "D",
+        "text": "greater than 34.44 g/kg",
+        "rationale": "Correct. The values rise with every row, so the next value should exceed the last one, 34.44 g/kg."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Every step in depth raised the salinity of the water, so one more step beyond 500 m should give a value greater than 34.44 g/kg.",
+    "estimated_time_seconds": 55,
+    "tags": [
+      "science",
+      "trends",
+      "extrapolate",
+      "family:tr_beyond_direction"
+    ],
+    "stimulus": {
+      "type": "table",
+      "title": "Ocean Salinity and Depth",
+      "table": {
+        "caption": "Table 1. Salinity of seawater measured at several depths at one station.",
+        "headers": [
+          "Depth (m)",
+          "Salinity (g/kg)"
+        ],
+        "rows": [
+          [
+            "100",
+            "33.29"
+          ],
+          [
+            "200",
+            "33.81"
+          ],
+          [
+            "300",
+            "34.13"
+          ],
+          [
+            "400",
+            "34.32"
+          ],
+          [
+            "500",
+            "34.44"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "science:beyond;col=1;expect=gt"
+  },
+  {
+    "question_id": "act-science-trends-extrapolation-easy-q10",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "science",
+    "section": "interpretation_of_data",
+    "skill": "trends_extrapolation",
+    "lesson_id": "act-science-trends-extrapolation-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "trend_shape",
+    "prompt": "According to Figure 1, as the temperature of the water increases, the mass of salt that dissolved:",
+    "choices": [
+      {
+        "id": "A",
+        "text": "decreases",
+        "rationale": "The points would have to fall from left to right; they do not."
+      },
+      {
+        "id": "B",
+        "text": "stays about the same",
+        "rationale": "The points change height clearly from left to right."
+      },
+      {
+        "id": "C",
+        "text": "increases",
+        "rationale": "Correct. Reading the points from left to right shows this pattern."
+      },
+      {
+        "id": "D",
+        "text": "decreases, then increases",
+        "rationale": "The points would have to fall and then rise; they do not."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "Follow the points from left (small water temperature) to right (large water temperature): the mass of salt that dissolved increases.",
+    "estimated_time_seconds": 45,
+    "tags": [
+      "science",
+      "trends",
+      "figure",
+      "family:tr_figure_trend"
+    ],
+    "stimulus": {
+      "type": "figure",
+      "title": "Solubility and Temperature",
+      "figure": {
+        "kind": "scatter",
+        "points": [
+          [
+            20.0,
+            29.0
+          ],
+          [
+            40.0,
+            56.0
+          ],
+          [
+            60.0,
+            96.0
+          ],
+          [
+            80.0,
+            149.0
+          ]
+        ],
+        "xlabel": "Water temperature (°C)",
+        "ylabel": "Mass dissolved (g)",
+        "caption": "Figure 1. Mass dissolved (g) (vertical axis) versus Water temperature (°C) (horizontal axis). Each point is one trial.",
+        "line": {
+          "m": 2.0,
+          "b": -17.5
+        }
+      }
+    },
+    "answer_verification": "science:fig_trend;expect=inc"
+  },
+  {
+    "question_id": "act-science-trends-extrapolation-easy-q11",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "science",
+    "section": "interpretation_of_data",
+    "skill": "trends_extrapolation",
+    "lesson_id": "act-science-trends-extrapolation-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "trend_shape",
+    "prompt": "Based on Table 1, what was the average rate of increase in the flow rate of the river as rainfall went from 30 mm to 40 mm?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "0.83 m³/s per mm",
+        "rationale": "Correct. Change in flow rate ÷ change in rainfall = 8.3 ÷ 10 ≈ 0.83."
+      },
+      {
+        "id": "B",
+        "text": "0.415 m³/s per mm",
+        "rationale": "This is half the rate; recheck the division."
+      },
+      {
+        "id": "C",
+        "text": "8.3 m³/s per mm",
+        "rationale": "This is the total change in flow rate, not divided by the change in rainfall."
+      },
+      {
+        "id": "D",
+        "text": "1.66 m³/s per mm",
+        "rationale": "This is twice the rate; recheck the division."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Rate = Δflow rate ÷ Δrainfall = (28.7 − 20.4) ÷ (40 − 30) ≈ 0.83 m³/s per mm.",
+    "estimated_time_seconds": 70,
+    "tags": [
+      "science",
+      "trends",
+      "rate",
+      "family:tr_rate_of_change"
+    ],
+    "stimulus": {
+      "type": "table",
+      "title": "Rainfall and River Flow",
+      "table": {
+        "caption": "Table 1. Flow rate of a river measured the day after several amounts of rain.",
+        "headers": [
+          "Rainfall (mm)",
+          "Flow rate (m³/s)"
+        ],
+        "rows": [
+          [
+            "20",
+            "13.6"
+          ],
+          [
+            "30",
+            "20.4"
+          ],
+          [
+            "40",
+            "28.7"
+          ],
+          [
+            "50",
+            "38.7"
+          ],
+          [
+            "60",
+            "50.3"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "science:rate;x1=30;x2=40;col=1"
+  },
+  {
+    "question_id": "act-science-trends-extrapolation-easy-q12",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "science",
+    "section": "interpretation_of_data",
+    "skill": "trends_extrapolation",
+    "lesson_id": "act-science-trends-extrapolation-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "trend_shape",
+    "prompt": "According to Table 1, the height of the seedlings increased as the fertilizer concentration increased up to which value, after which it decreased?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "10 g/L",
+        "rationale": "At this fertilizer concentration the values were still rising, not at the turning point."
+      },
+      {
+        "id": "B",
+        "text": "15 g/L",
+        "rationale": "Correct. The height of the seedlings rises to 21.2 cm here and falls in the next row."
+      },
+      {
+        "id": "C",
+        "text": "20 g/L",
+        "rationale": "At this fertilizer concentration the values were already falling, not at the turning point."
+      },
+      {
+        "id": "D",
+        "text": "5 g/L",
+        "rationale": "At this fertilizer concentration the values were still rising, not at the turning point."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "The values rise down the column until 15 g/L (21.2) and fall after it, so that is where the trend reverses.",
+    "estimated_time_seconds": 55,
+    "tags": [
+      "science",
+      "trends",
+      "peak",
+      "family:tr_peak_x"
     ],
     "stimulus": {
       "type": "table",
@@ -366,570 +914,27 @@
         "rows": [
           [
             "0",
-            "12.7"
+            "13.4"
           ],
           [
             "5",
-            "18.6"
+            "18.4"
           ],
           [
             "10",
-            "22.4"
+            "21.0"
           ],
           [
             "15",
-            "23.9"
+            "21.2"
           ],
           [
             "20",
-            "23.2"
+            "19.1"
           ]
         ]
       }
     },
-    "answer_verification": "science:shape;col=1;expect=peak"
-  },
-  {
-    "question_id": "act-science-trends-extrapolation-easy-q06",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "science",
-    "section": "interpretation_of_data",
-    "skill": "trends_extrapolation",
-    "lesson_id": "act-science-trends-extrapolation-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "interpolation",
-    "prompt": "Suppose a trial had been run at an insulation thickness of 5 cm. Based on Table 1, the rate of heat loss would most likely have been:",
-    "choices": [
-      {
-        "id": "A",
-        "text": "between 40 W and 53 W",
-        "rationale": "Correct. 5 cm lies between 4 cm and 6 cm, whose values are 40 and 53."
-      },
-      {
-        "id": "B",
-        "text": "above every listed value, greater than 78 W",
-        "rationale": "This is above every value in the table; the trend has no reason to jump there."
-      },
-      {
-        "id": "C",
-        "text": "between 33 W and 40 W",
-        "rationale": "This is the interval for insulation thickness between 6 cm and 8 cm."
-      },
-      {
-        "id": "D",
-        "text": "below every listed value, less than 27 W",
-        "rationale": "This is below every value in the table; the trend has no reason to jump there."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "5 cm falls between the rows for 4 cm and 6 cm; since the values change steadily, the result should fall between 40 and 53 W.",
-    "estimated_time_seconds": 60,
-    "tags": [
-      "science",
-      "trends",
-      "interpolate",
-      "family:tr_interpolate_range"
-    ],
-    "stimulus": {
-      "type": "table",
-      "title": "Insulation and Heat Loss",
-      "table": {
-        "caption": "Table 1. Rate of heat loss from a heated box wrapped in several thicknesses of foam.",
-        "headers": [
-          "Foam thickness (cm)",
-          "Heat loss (W)"
-        ],
-        "rows": [
-          [
-            "2",
-            "78"
-          ],
-          [
-            "4",
-            "53"
-          ],
-          [
-            "6",
-            "40"
-          ],
-          [
-            "8",
-            "33"
-          ],
-          [
-            "10",
-            "27"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "science:interp_range;x=5;col=1"
-  },
-  {
-    "question_id": "act-science-trends-extrapolation-easy-q07",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "science",
-    "section": "interpretation_of_data",
-    "skill": "trends_extrapolation",
-    "lesson_id": "act-science-trends-extrapolation-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "extrapolation",
-    "prompt": "Based on Table 1, if a trial were run at a slope angle of 30°, the mass of soil eroded would most likely be:",
-    "choices": [
-      {
-        "id": "A",
-        "text": "between 257 g and 364 g",
-        "rationale": "This would require the trend to reverse and fall back below the last value."
-      },
-      {
-        "id": "B",
-        "text": "between 39 g and 257 g",
-        "rationale": "These are values from earlier rows; the trend has already moved past them."
-      },
-      {
-        "id": "C",
-        "text": "less than 39 g",
-        "rationale": "This is below the very first value; the data rise, not fall."
-      },
-      {
-        "id": "D",
-        "text": "greater than 364 g",
-        "rationale": "Correct. The values rise with every row, so the next value should exceed the last one, 364 g."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Every step in slope angle raised the mass of soil eroded, so one more step beyond 25° should give a value greater than 364 g.",
-    "estimated_time_seconds": 55,
-    "tags": [
-      "science",
-      "trends",
-      "extrapolate",
-      "family:tr_beyond_direction"
-    ],
-    "stimulus": {
-      "type": "table",
-      "title": "Slope and Soil Erosion",
-      "table": {
-        "caption": "Table 1. Mass of soil washed from trays set at several slope angles.",
-        "headers": [
-          "Slope angle (°)",
-          "Soil eroded (g)"
-        ],
-        "rows": [
-          [
-            "5",
-            "39"
-          ],
-          [
-            "10",
-            "94"
-          ],
-          [
-            "15",
-            "167"
-          ],
-          [
-            "20",
-            "257"
-          ],
-          [
-            "25",
-            "364"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "science:beyond;col=1;expect=gt"
-  },
-  {
-    "question_id": "act-science-trends-extrapolation-easy-q08",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "science",
-    "section": "interpretation_of_data",
-    "skill": "trends_extrapolation",
-    "lesson_id": "act-science-trends-extrapolation-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "trend_shape",
-    "prompt": "According to Figure 1, as the distance from the speaker increases, the sound intensity:",
-    "choices": [
-      {
-        "id": "A",
-        "text": "increases, then decreases",
-        "rationale": "The points would have to rise and then fall; they do not reverse."
-      },
-      {
-        "id": "B",
-        "text": "decreases, then increases",
-        "rationale": "The points keep falling to the rightmost one; they never turn up."
-      },
-      {
-        "id": "C",
-        "text": "stays about the same",
-        "rationale": "The points change height clearly from left to right."
-      },
-      {
-        "id": "D",
-        "text": "decreases",
-        "rationale": "Correct. Reading the points from left to right shows this pattern."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Follow the points from left (small distance) to right (large distance): the sound intensity decreases.",
-    "estimated_time_seconds": 45,
-    "tags": [
-      "science",
-      "trends",
-      "figure",
-      "family:tr_figure_trend"
-    ],
-    "stimulus": {
-      "type": "figure",
-      "title": "Distance and Sound Intensity",
-      "figure": {
-        "kind": "scatter",
-        "points": [
-          [
-            1.0,
-            105.7
-          ],
-          [
-            2.0,
-            26.4
-          ],
-          [
-            3.0,
-            11.7
-          ],
-          [
-            4.0,
-            6.6
-          ]
-        ],
-        "xlabel": "Distance (m)",
-        "ylabel": "Intensity (µW/m²)",
-        "caption": "Figure 1. Intensity (µW/m²) (vertical axis) versus Distance (m) (horizontal axis). Each point is one trial.",
-        "line": {
-          "m": -31.2,
-          "b": 115.6
-        }
-      }
-    },
-    "answer_verification": "science:fig_trend;expect=dec"
-  },
-  {
-    "question_id": "act-science-trends-extrapolation-easy-q09",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "science",
-    "section": "interpretation_of_data",
-    "skill": "trends_extrapolation",
-    "lesson_id": "act-science-trends-extrapolation-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "trend_shape",
-    "prompt": "Which of the following best describes how the tire pressure changed as the air temperature increased from 0 °C to 40 °C?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "increased by approximately the same amount for each step in temperature",
-        "rationale": "Correct. The row-to-row changes are 7.0, 7.0, 7.1, 7.0, which fits this description."
-      },
-      {
-        "id": "B",
-        "text": "decreased by approximately the same amount for each step in temperature",
-        "rationale": "The values rise down the column; they never decrease."
-      },
-      {
-        "id": "C",
-        "text": "increased, but by smaller and smaller amounts",
-        "rationale": "The increases do not get steadily smaller down the column."
-      },
-      {
-        "id": "D",
-        "text": "increased, by larger and larger amounts",
-        "rationale": "The increases do not get steadily larger down the column."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "Compute the change between consecutive rows (7.0, 7.0, 7.1, 7.0). The tire pressure increased by approximately the same amount for each step in temperature.",
-    "estimated_time_seconds": 60,
-    "tags": [
-      "science",
-      "trends",
-      "shape",
-      "family:tr_trend_shape"
-    ],
-    "stimulus": {
-      "type": "table",
-      "title": "Temperature and Tire Pressure",
-      "table": {
-        "caption": "Table 1. Pressure in a sealed tire at several air temperatures.",
-        "headers": [
-          "Air temperature (°C)",
-          "Pressure (kPa)"
-        ],
-        "rows": [
-          [
-            "0",
-            "192.1"
-          ],
-          [
-            "10",
-            "199.1"
-          ],
-          [
-            "20",
-            "206.1"
-          ],
-          [
-            "30",
-            "213.2"
-          ],
-          [
-            "40",
-            "220.2"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "science:shape;col=1;expect=inc_const"
-  },
-  {
-    "question_id": "act-science-trends-extrapolation-easy-q10",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "science",
-    "section": "interpretation_of_data",
-    "skill": "trends_extrapolation",
-    "lesson_id": "act-science-trends-extrapolation-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "interpolation",
-    "prompt": "Based on the trend in Table 1, if the air temperature had been 35 °C, the tire pressure would most likely have been:",
-    "choices": [
-      {
-        "id": "A",
-        "text": "between 246.1 kPa and 253.9 kPa",
-        "rationale": "This is the interval for temperature between 40 °C and 50 °C."
-      },
-      {
-        "id": "B",
-        "text": "between 238.2 kPa and 246.1 kPa",
-        "rationale": "Correct. 35 °C lies between 30 °C and 40 °C, whose values are 238.2 and 246.1."
-      },
-      {
-        "id": "C",
-        "text": "below every listed value, less than 230.4 kPa",
-        "rationale": "This is below every value in the table; the trend has no reason to jump there."
-      },
-      {
-        "id": "D",
-        "text": "above every listed value, greater than 253.9 kPa",
-        "rationale": "This is above every value in the table; the trend has no reason to jump there."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "35 °C falls between the rows for 30 °C and 40 °C; since the values change steadily, the result should fall between 238.2 and 246.1 kPa.",
-    "estimated_time_seconds": 60,
-    "tags": [
-      "science",
-      "trends",
-      "interpolate",
-      "family:tr_interpolate_range"
-    ],
-    "stimulus": {
-      "type": "table",
-      "title": "Temperature and Tire Pressure",
-      "table": {
-        "caption": "Table 1. Pressure in a sealed tire at several air temperatures.",
-        "headers": [
-          "Air temperature (°C)",
-          "Pressure (kPa)"
-        ],
-        "rows": [
-          [
-            "20",
-            "230.4"
-          ],
-          [
-            "30",
-            "238.2"
-          ],
-          [
-            "40",
-            "246.1"
-          ],
-          [
-            "50",
-            "253.9"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "science:interp_range;x=35;col=1"
-  },
-  {
-    "question_id": "act-science-trends-extrapolation-easy-q11",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "science",
-    "section": "interpretation_of_data",
-    "skill": "trends_extrapolation",
-    "lesson_id": "act-science-trends-extrapolation-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "extrapolation",
-    "prompt": "Based on Table 1, if a trial were run at a mass of 350 g, the stretch of the spring would most likely be:",
-    "choices": [
-      {
-        "id": "A",
-        "text": "greater than 17.8 cm",
-        "rationale": "Correct. The values rise with every row, so the next value should exceed the last one, 17.8 cm."
-      },
-      {
-        "id": "B",
-        "text": "between 5.9 cm and 14.8 cm",
-        "rationale": "These are values from earlier rows; the trend has already moved past them."
-      },
-      {
-        "id": "C",
-        "text": "between 14.8 cm and 17.8 cm",
-        "rationale": "This would require the trend to reverse and fall back below the last value."
-      },
-      {
-        "id": "D",
-        "text": "less than 5.9 cm",
-        "rationale": "This is below the very first value; the data rise, not fall."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "Every step in mass raised the stretch of the spring, so one more step beyond 300 g should give a value greater than 17.8 cm.",
-    "estimated_time_seconds": 55,
-    "tags": [
-      "science",
-      "trends",
-      "extrapolate",
-      "family:tr_beyond_direction"
-    ],
-    "stimulus": {
-      "type": "table",
-      "title": "Spring Stretch",
-      "table": {
-        "caption": "Table 1. Stretch of a spring when several masses are hung from it.",
-        "headers": [
-          "Mass (g)",
-          "Stretch (cm)"
-        ],
-        "rows": [
-          [
-            "100",
-            "5.9"
-          ],
-          [
-            "150",
-            "8.9"
-          ],
-          [
-            "200",
-            "11.9"
-          ],
-          [
-            "250",
-            "14.8"
-          ],
-          [
-            "300",
-            "17.8"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "science:beyond;col=1;expect=gt"
-  },
-  {
-    "question_id": "act-science-trends-extrapolation-easy-q12",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "science",
-    "section": "interpretation_of_data",
-    "skill": "trends_extrapolation",
-    "lesson_id": "act-science-trends-extrapolation-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "trend_shape",
-    "prompt": "According to Figure 1, as the pH of the solution increases, the activity of the enzyme:",
-    "choices": [
-      {
-        "id": "A",
-        "text": "increases",
-        "rationale": "The points would have to climb from left to right; they do not."
-      },
-      {
-        "id": "B",
-        "text": "decreases",
-        "rationale": "The points would have to fall from left to right; they do not."
-      },
-      {
-        "id": "C",
-        "text": "increases, then decreases",
-        "rationale": "Correct. Reading the points from left to right shows this pattern."
-      },
-      {
-        "id": "D",
-        "text": "decreases, then increases",
-        "rationale": "The points would have to fall and then rise; they do not."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "Follow the points from left (small pH) to right (large pH): the activity of the enzyme increases, then decreases.",
-    "estimated_time_seconds": 45,
-    "tags": [
-      "science",
-      "trends",
-      "figure",
-      "family:tr_figure_trend"
-    ],
-    "stimulus": {
-      "type": "figure",
-      "title": "Enzyme Activity and pH",
-      "figure": {
-        "kind": "scatter",
-        "points": [
-          [
-            4.0,
-            11.0
-          ],
-          [
-            5.0,
-            44.0
-          ],
-          [
-            6.0,
-            82.0
-          ],
-          [
-            7.0,
-            70.0
-          ]
-        ],
-        "xlabel": "pH",
-        "ylabel": "Enzyme activity (µmol/min)",
-        "caption": "Figure 1. Enzyme activity (µmol/min) (vertical axis) versus pH (horizontal axis). Each point is one trial."
-      }
-    },
-    "answer_verification": "science:fig_trend;expect=peak"
+    "answer_verification": "science:extreme;mode=max;col=1"
   }
 ]

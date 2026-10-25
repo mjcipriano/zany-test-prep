@@ -11,38 +11,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "A population of 136 subscribers to a newsletter halves every month. How many will there be after 3 months?",
+    "prompt": "A population of 297 subscribers to a newsletter is cut to one-third every month. How many will there be after 3 months?",
     "choices": [
       {
         "id": "A",
-        "text": "22",
-        "rationale": "This divides once by r×time instead of repeatedly."
+        "text": "12",
+        "rationale": "This goes one period too far."
       },
       {
         "id": "B",
-        "text": "17",
-        "rationale": "Correct."
+        "text": "33",
+        "rationale": "This divides once by r×time instead of repeatedly."
       },
       {
         "id": "C",
-        "text": "34",
-        "rationale": "This stops one period too early."
+        "text": "288",
+        "rationale": "This subtracts instead of repeatedly dividing."
       },
       {
         "id": "D",
-        "text": "130",
-        "rationale": "This subtracts instead of repeatedly dividing."
+        "text": "11",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Divide by 2 each month: 136 ÷ 2^3 = 17.",
+    "correct_choice": "D",
+    "explanation": "Divide by 3 each month: 297 ÷ 3^3 = 11.",
     "estimated_time_seconds": 80,
     "tags": [
       "advanced-math",
       "exponential",
       "family:ex_value"
     ],
-    "answer_verification": "val=17"
+    "answer_verification": "val=11"
   },
   {
     "question_id": "sat-math-exponential-medium-q02",
@@ -56,31 +56,31 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "The value of a car is $250 and increases by 15% each year. Which function gives the value V after t years?",
+    "prompt": "A town's population is 1000 and decreases by 3% per year. Which function gives the value V after t years?",
     "choices": [
       {
         "id": "A",
-        "text": "V(t) = 250(0.85)^t",
-        "rationale": "A 15% increase means a factor of 1.15, not 0.85."
-      },
-      {
-        "id": "B",
-        "text": "V(t) = 250(1.15)^t",
+        "text": "V(t) = 1000(0.97)^t",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "V(t) = 1000(1.03)^t",
+        "rationale": "A 3% decrease means a factor of 0.97, not 1.03."
+      },
+      {
         "id": "C",
-        "text": "V(t) = 250(0.15)^t",
+        "text": "V(t) = 1000(0.03)^t",
         "rationale": "The factor is 1 ± the rate, not the rate alone."
       },
       {
         "id": "D",
-        "text": "V(t) = 250 + 37.5t",
+        "text": "V(t) = 1000 − 30t",
         "rationale": "Percent change compounds (exponential), it doesn't add a fixed amount each year."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "A 15% increase per year multiplies by 1.15 each year: V(t) = 250(1.15)^t.",
+    "correct_choice": "A",
+    "explanation": "A 3% decrease per year multiplies by 0.97 each year: V(t) = 1000(0.97)^t.",
     "estimated_time_seconds": 90,
     "tags": [
       "advanced-math",
@@ -88,7 +88,7 @@
       "model",
       "family:ex_model"
     ],
-    "answer_verification": "model V(t) = 250(1.15)^t"
+    "answer_verification": "model V(t) = 1000(0.97)^t"
   },
   {
     "question_id": "sat-math-exponential-medium-q03",
@@ -102,31 +102,31 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "The function f(t) = 150(1.08)^t models the mass, in grams, of a substance t hours after it was first measured. By what percent does the quantity increase each hour?",
+    "prompt": "The function f(t) = 1000(0.92)^t models the value, in dollars, of a collectible t years after it was first measured. By what percent does the quantity decrease each year?",
     "choices": [
       {
         "id": "A",
-        "text": "92%",
-        "rationale": "Compare the factor to 1 (100%)."
-      },
-      {
-        "id": "B",
-        "text": "108%",
-        "rationale": "108% is the factor as a percent; the change is the part above or below 100%."
-      },
-      {
-        "id": "C",
         "text": "8%",
         "rationale": "Correct."
       },
       {
-        "id": "D",
+        "id": "B",
         "text": "16%",
-        "rationale": "Arithmetic slip; 1.08 − 1 = ±0.08."
+        "rationale": "Arithmetic slip; 0.92 − 1 = ±0.08."
+      },
+      {
+        "id": "C",
+        "text": "92%",
+        "rationale": "92% is the factor as a percent; the change is the part above or below 100%."
+      },
+      {
+        "id": "D",
+        "text": "108%",
+        "rationale": "Compare the factor to 1 (100%)."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "The factor 1.08 = 1 + 0.08, so the quantity grows by 8% per hour.",
+    "correct_choice": "A",
+    "explanation": "The factor 0.92 = 1 − 0.08, so the quantity shrinks by 8% per year.",
     "estimated_time_seconds": 80,
     "tags": [
       "advanced-math",
@@ -148,31 +148,31 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "A radioactive sample has a half-life of 50 days: every 50 days, half of it decays. If the sample starts at 48 grams, how many grams remain after 150 days?",
+    "prompt": "A radioactive sample has a half-life of 6 days: every 6 days, half of it decays. If the sample starts at 400 grams, how many grams remain after 12 days?",
     "choices": [
       {
         "id": "A",
-        "text": "3",
-        "rationale": "Each half-life halves what remains; it doesn't subtract a fixed amount."
+        "text": "199/2",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
       },
       {
         "id": "B",
-        "text": "24",
+        "text": "200",
         "rationale": "That is after one half-life only."
       },
       {
         "id": "C",
-        "text": "6",
-        "rationale": "Correct."
+        "text": "50",
+        "rationale": "Each half-life halves what remains; it doesn't subtract a fixed amount."
       },
       {
         "id": "D",
-        "text": "8",
-        "rationale": "Divide by 2 repeatedly (3 times), not by 2·3."
+        "text": "100",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "150 days is 3 half-lives; 48 ÷ 2^3 = 6 grams.",
+    "correct_choice": "D",
+    "explanation": "12 days is 2 half-lives; 400 ÷ 2^2 = 100 grams.",
     "estimated_time_seconds": 90,
     "tags": [
       "advanced-math",
@@ -180,7 +180,7 @@
       "half-life",
       "family:ex_periods"
     ],
-    "answer_verification": "48/2^3"
+    "answer_verification": "400/2^2"
   },
   {
     "question_id": "sat-math-exponential-medium-q05",
@@ -194,16 +194,16 @@
     "version": "1.0.0",
     "question_type": "student_produced",
     "subskill": "growth_decay",
-    "prompt": "A quantity of 64 is divided by 2 every day. What is the quantity after 2 days?",
+    "prompt": "A quantity of 128 is divided by 4 every day. What is the quantity after 3 days?",
     "answer": {
       "type": "numeric",
-      "value": 16,
+      "value": 2,
       "accepted": [
-        "16"
+        "2"
       ],
       "tolerance": 0.0
     },
-    "explanation": "64 ÷ 2^2 = 16.",
+    "explanation": "128 ÷ 4^3 = 2.",
     "estimated_time_seconds": 85,
     "tags": [
       "advanced-math",
@@ -211,7 +211,7 @@
       "grid-in",
       "family:ex_gridin"
     ],
-    "answer_verification": "val=16"
+    "answer_verification": "val=2"
   },
   {
     "question_id": "sat-math-exponential-medium-q06",
@@ -225,38 +225,39 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "A population of 45 cells in a sample is cut to one-third every hour. How many will there be after 2 hours?",
+    "prompt": "An investment of $2500 grows by 4% per year, compounded annually. Which expression gives the value, in dollars, of the investment after 4 years?",
     "choices": [
       {
         "id": "A",
-        "text": "15",
-        "rationale": "This stops one period too early."
+        "text": "2500·4·1.04",
+        "rationale": "The number of years is an exponent."
       },
       {
         "id": "B",
-        "text": "39",
-        "rationale": "This subtracts instead of repeatedly dividing."
+        "text": "2500(0.04)^4",
+        "rationale": "The growth factor is 1 + r, not r."
       },
       {
         "id": "C",
-        "text": "5",
-        "rationale": "Correct."
+        "text": "2500(1 + 4·0.04)",
+        "rationale": "Compound growth is repeated multiplication, not repeated addition."
       },
       {
         "id": "D",
-        "text": "7",
-        "rationale": "This divides once by r×time instead of repeatedly."
+        "text": "2500(1.04)^4",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Divide by 3 each hour: 45 ÷ 3^2 = 5.",
+    "correct_choice": "D",
+    "explanation": "Each year multiplies the value by 1 + 4/100 = 1.04; after 4 years: 2500(1.04)^4.",
     "estimated_time_seconds": 80,
     "tags": [
       "advanced-math",
       "exponential",
-      "family:ex_value"
+      "compound",
+      "family:ex_compound"
     ],
-    "answer_verification": "val=5"
+    "answer_verification": "2500(1.04)^4"
   },
   {
     "question_id": "sat-math-exponential-medium-q07",
@@ -270,39 +271,39 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "A town's population is 250 and increases by 6% per year. Which function gives the value V after t years?",
+    "prompt": "A machine worth $250 loses 8% of its value each year. Which statement best describes the quantity over time?",
     "choices": [
       {
         "id": "A",
-        "text": "V(t) = 250 + 15t",
-        "rationale": "Percent change compounds (exponential), it doesn't add a fixed amount each year."
-      },
-      {
-        "id": "B",
-        "text": "V(t) = 250(0.94)^t",
-        "rationale": "A 6% increase means a factor of 1.06, not 0.94."
-      },
-      {
-        "id": "C",
-        "text": "V(t) = 250(1.06)^t",
+        "text": "It changes exponentially: it is multiplied by 0.92 each year.",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "It changes linearly: it changes by exactly 20 every year.",
+        "rationale": "A percent change is proportional to the current amount, so the yearly change is not constant."
+      },
+      {
+        "id": "C",
+        "text": "It changes exponentially: it changes by exactly 20 every year.",
+        "rationale": "Exponential change is a constant factor, not a constant amount."
+      },
+      {
         "id": "D",
-        "text": "V(t) = 250(0.06)^t",
-        "rationale": "The factor is 1 ± the rate, not the rate alone."
+        "text": "It changes linearly: the same percent is applied every year.",
+        "rationale": "A constant percent is a constant multiplier, which is exponential."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "A 6% increase per year multiplies by 1.06 each year: V(t) = 250(1.06)^t.",
-    "estimated_time_seconds": 90,
+    "correct_choice": "A",
+    "explanation": "A 8% decrease multiplies by 0.92 every year, so the model is exponential.",
+    "estimated_time_seconds": 85,
     "tags": [
       "advanced-math",
       "exponential",
-      "model",
-      "family:ex_model"
+      "identify",
+      "family:ex_identify_type"
     ],
-    "answer_verification": "model V(t) = 250(1.06)^t"
+    "answer_verification": "It changes exponentially: it is multiplied by 0.92 each year."
   },
   {
     "question_id": "sat-math-exponential-medium-q08",
@@ -316,39 +317,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "The function f(t) = 1200(1.08)^t models the number of members of a club t months after it was first measured. By what percent does the quantity increase each month?",
+    "prompt": "A population of 1536 cells in a sample is cut to one-quarter every hour. How many will there be after 3 hours?",
     "choices": [
       {
         "id": "A",
-        "text": "92%",
-        "rationale": "Compare the factor to 1 (100%)."
+        "text": "96",
+        "rationale": "This stops one period too early."
       },
       {
         "id": "B",
-        "text": "16%",
-        "rationale": "Arithmetic slip; 1.08 − 1 = ±0.08."
+        "text": "1524",
+        "rationale": "This subtracts instead of repeatedly dividing."
       },
       {
         "id": "C",
-        "text": "108%",
-        "rationale": "108% is the factor as a percent; the change is the part above or below 100%."
+        "text": "24",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "8%",
-        "rationale": "Correct."
+        "text": "128",
+        "rationale": "This divides once by r×time instead of repeatedly."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "The factor 1.08 = 1 + 0.08, so the quantity grows by 8% per month.",
+    "correct_choice": "C",
+    "explanation": "Divide by 4 each hour: 1536 ÷ 4^3 = 24.",
     "estimated_time_seconds": 80,
     "tags": [
       "advanced-math",
       "exponential",
-      "interpret",
-      "family:ex_interpret"
+      "family:ex_value"
     ],
-    "answer_verification": "rate=8%"
+    "answer_verification": "val=24"
   },
   {
     "question_id": "sat-math-exponential-medium-q09",
@@ -362,39 +362,39 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "A radioactive sample has a half-life of 20 hours: every 20 hours, half of it decays. If the sample starts at 40 grams, how many grams remain after 40 hours?",
+    "prompt": "The value of a car is $1000 and increases by 6% each year. Which function gives the value V after t years?",
     "choices": [
       {
         "id": "A",
-        "text": "10",
-        "rationale": "Correct."
+        "text": "V(t) = 1000(0.06)^t",
+        "rationale": "The factor is 1 ± the rate, not the rate alone."
       },
       {
         "id": "B",
-        "text": "20",
-        "rationale": "That is after one half-life only."
+        "text": "V(t) = 1000(0.94)^t",
+        "rationale": "A 6% increase means a factor of 1.06, not 0.94."
       },
       {
         "id": "C",
-        "text": "25/3",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "V(t) = 1000 + 60t",
+        "rationale": "Percent change compounds (exponential), it doesn't add a fixed amount each year."
       },
       {
         "id": "D",
-        "text": "5",
-        "rationale": "Each half-life halves what remains; it doesn't subtract a fixed amount."
+        "text": "V(t) = 1000(1.06)^t",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "40 hours is 2 half-lives; 40 ÷ 2^2 = 10 grams.",
+    "correct_choice": "D",
+    "explanation": "A 6% increase per year multiplies by 1.06 each year: V(t) = 1000(1.06)^t.",
     "estimated_time_seconds": 90,
     "tags": [
       "advanced-math",
       "exponential",
-      "half-life",
-      "family:ex_periods"
+      "model",
+      "family:ex_model"
     ],
-    "answer_verification": "40/2^2"
+    "answer_verification": "model V(t) = 1000(1.06)^t"
   },
   {
     "question_id": "sat-math-exponential-medium-q10",
@@ -406,26 +406,41 @@
     "lesson_id": "sat-math-exponential-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "student_produced",
+    "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "A quantity of 640 is divided by 4 every day. What is the quantity after 3 days?",
-    "answer": {
-      "type": "numeric",
-      "value": 10,
-      "accepted": [
-        "10"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "640 ÷ 4^3 = 10.",
-    "estimated_time_seconds": 85,
+    "prompt": "The function f(t) = 2000(1.05)^t models the mass, in grams, of a substance t hours after it was first measured. By what percent does the quantity increase each hour?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "95%",
+        "rationale": "Compare the factor to 1 (100%)."
+      },
+      {
+        "id": "B",
+        "text": "5%",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "10%",
+        "rationale": "Arithmetic slip; 1.05 − 1 = ±0.05."
+      },
+      {
+        "id": "D",
+        "text": "105%",
+        "rationale": "105% is the factor as a percent; the change is the part above or below 100%."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "The factor 1.05 = 1 + 0.05, so the quantity grows by 5% per hour.",
+    "estimated_time_seconds": 80,
     "tags": [
       "advanced-math",
       "exponential",
-      "grid-in",
-      "family:ex_gridin"
+      "interpret",
+      "family:ex_interpret"
     ],
-    "answer_verification": "val=10"
+    "answer_verification": "rate=5%"
   },
   {
     "question_id": "sat-math-exponential-medium-q11",
@@ -439,7 +454,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "A population of 192 views of a video is cut to one-quarter every day. How many will there be after 3 days?",
+    "prompt": "A radioactive sample has a half-life of 4 hours: every 4 hours, half of it decays. If the sample starts at 48 grams, how many grams remain after 16 hours?",
     "choices": [
       {
         "id": "A",
@@ -448,29 +463,30 @@
       },
       {
         "id": "B",
-        "text": "12",
-        "rationale": "This stops one period too early."
+        "text": "24",
+        "rationale": "That is after one half-life only."
       },
       {
         "id": "C",
-        "text": "16",
-        "rationale": "This divides once by r×time instead of repeatedly."
+        "text": "3/2",
+        "rationale": "Each half-life halves what remains; it doesn't subtract a fixed amount."
       },
       {
         "id": "D",
-        "text": "180",
-        "rationale": "This subtracts instead of repeatedly dividing."
+        "text": "6",
+        "rationale": "Divide by 2 repeatedly (4 times), not by 2·4."
       }
     ],
     "correct_choice": "A",
-    "explanation": "Divide by 4 each day: 192 ÷ 4^3 = 3.",
-    "estimated_time_seconds": 80,
+    "explanation": "16 hours is 4 half-lives; 48 ÷ 2^4 = 3 grams.",
+    "estimated_time_seconds": 90,
     "tags": [
       "advanced-math",
       "exponential",
-      "family:ex_value"
+      "half-life",
+      "family:ex_periods"
     ],
-    "answer_verification": "val=3"
+    "answer_verification": "48/2^4"
   },
   {
     "question_id": "sat-math-exponential-medium-q12",
@@ -482,41 +498,26 @@
     "lesson_id": "sat-math-exponential-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "student_produced",
     "subskill": "growth_decay",
-    "prompt": "A town's population is 500 and decreases by 20% per year. Which function gives the value V after t years?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "V(t) = 500(0.8)^t",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "V(t) = 500 − 100t",
-        "rationale": "Percent change compounds (exponential), it doesn't add a fixed amount each year."
-      },
-      {
-        "id": "C",
-        "text": "V(t) = 500(0.2)^t",
-        "rationale": "The factor is 1 ± the rate, not the rate alone."
-      },
-      {
-        "id": "D",
-        "text": "V(t) = 500(1.2)^t",
-        "rationale": "A 20% decrease means a factor of 0.8, not 1.2."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "A 20% decrease per year multiplies by 0.8 each year: V(t) = 500(0.8)^t.",
-    "estimated_time_seconds": 90,
+    "prompt": "A quantity of 472 is divided by 2 every day. What is the quantity after 3 days?",
+    "answer": {
+      "type": "numeric",
+      "value": 59,
+      "accepted": [
+        "59"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "472 ÷ 2^3 = 59.",
+    "estimated_time_seconds": 85,
     "tags": [
       "advanced-math",
       "exponential",
-      "model",
-      "family:ex_model"
+      "grid-in",
+      "family:ex_gridin"
     ],
-    "answer_verification": "model V(t) = 500(0.8)^t"
+    "answer_verification": "val=59"
   },
   {
     "question_id": "sat-math-exponential-medium-q13",
@@ -530,39 +531,39 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "The function f(t) = 50(0.8)^t models the number of fish in a lake t years after it was first measured. By what percent does the quantity decrease each year?",
+    "prompt": "An investment of $6000 grows by 8% per year, compounded annually. Which expression gives the value, in dollars, of the investment after 2 years?",
     "choices": [
       {
         "id": "A",
-        "text": "20%",
+        "text": "6000(1.08)^2",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "40%",
-        "rationale": "Arithmetic slip; 0.8 − 1 = ±0.2."
+        "text": "6000·2·1.08",
+        "rationale": "The number of years is an exponent."
       },
       {
         "id": "C",
-        "text": "120%",
-        "rationale": "Compare the factor to 1 (100%)."
+        "text": "6000(0.08)^2",
+        "rationale": "The growth factor is 1 + r, not r."
       },
       {
         "id": "D",
-        "text": "80%",
-        "rationale": "80% is the factor as a percent; the change is the part above or below 100%."
+        "text": "6000(1 + 2·0.08)",
+        "rationale": "Compound growth is repeated multiplication, not repeated addition."
       }
     ],
     "correct_choice": "A",
-    "explanation": "The factor 0.8 = 1 − 0.2, so the quantity shrinks by 20% per year.",
+    "explanation": "Each year multiplies the value by 1 + 8/100 = 1.08; after 2 years: 6000(1.08)^2.",
     "estimated_time_seconds": 80,
     "tags": [
       "advanced-math",
       "exponential",
-      "interpret",
-      "family:ex_interpret"
+      "compound",
+      "family:ex_compound"
     ],
-    "answer_verification": "rate=20%"
+    "answer_verification": "6000(1.08)^2"
   },
   {
     "question_id": "sat-math-exponential-medium-q14",
@@ -576,39 +577,39 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "A radioactive sample has a half-life of 25 days: every 25 days, half of it decays. If the sample starts at 80 grams, how many grams remain after 75 days?",
+    "prompt": "The number of trees in a forest is 200 and increases by 12% each year. Which statement best describes the quantity over time?",
     "choices": [
       {
         "id": "A",
-        "text": "5",
-        "rationale": "Each half-life halves what remains; it doesn't subtract a fixed amount."
-      },
-      {
-        "id": "B",
-        "text": "40",
-        "rationale": "That is after one half-life only."
-      },
-      {
-        "id": "C",
-        "text": "10",
+        "text": "It changes exponentially: it is multiplied by 1.12 each year.",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "It changes linearly: the same percent is applied every year.",
+        "rationale": "A constant percent is a constant multiplier, which is exponential."
+      },
+      {
+        "id": "C",
+        "text": "It changes linearly: it changes by exactly 24 every year.",
+        "rationale": "A percent change is proportional to the current amount, so the yearly change is not constant."
+      },
+      {
         "id": "D",
-        "text": "40/3",
-        "rationale": "Divide by 2 repeatedly (3 times), not by 2·3."
+        "text": "It changes exponentially: it changes by exactly 24 every year.",
+        "rationale": "Exponential change is a constant factor, not a constant amount."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "75 days is 3 half-lives; 80 ÷ 2^3 = 10 grams.",
-    "estimated_time_seconds": 90,
+    "correct_choice": "A",
+    "explanation": "A 12% increase multiplies by 1.12 every year, so the model is exponential.",
+    "estimated_time_seconds": 85,
     "tags": [
       "advanced-math",
       "exponential",
-      "half-life",
-      "family:ex_periods"
+      "identify",
+      "family:ex_identify_type"
     ],
-    "answer_verification": "80/2^3"
+    "answer_verification": "It changes exponentially: it is multiplied by 1.12 each year."
   },
   {
     "question_id": "sat-math-exponential-medium-q15",
@@ -620,26 +621,40 @@
     "lesson_id": "sat-math-exponential-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "student_produced",
+    "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "A quantity of 320 is divided by 4 every day. What is the quantity after 2 days?",
-    "answer": {
-      "type": "numeric",
-      "value": 20,
-      "accepted": [
-        "20"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "320 ÷ 4^2 = 20.",
-    "estimated_time_seconds": 85,
+    "prompt": "A population of 352 fruit flies in a jar is cut to one-quarter every week. How many will there be after 2 weeks?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "344",
+        "rationale": "This subtracts instead of repeatedly dividing."
+      },
+      {
+        "id": "B",
+        "text": "44",
+        "rationale": "This divides once by r×time instead of repeatedly."
+      },
+      {
+        "id": "C",
+        "text": "88",
+        "rationale": "This stops one period too early."
+      },
+      {
+        "id": "D",
+        "text": "22",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Divide by 4 each week: 352 ÷ 4^2 = 22.",
+    "estimated_time_seconds": 80,
     "tags": [
       "advanced-math",
       "exponential",
-      "grid-in",
-      "family:ex_gridin"
+      "family:ex_value"
     ],
-    "answer_verification": "val=20"
+    "answer_verification": "val=22"
   },
   {
     "question_id": "sat-math-exponential-medium-q16",
@@ -653,38 +668,39 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "A population of 1152 bacteria in a culture is cut to one-quarter every hour. How many will there be after 3 hours?",
+    "prompt": "The value of a car is $1500 and increases by 15% each year. Which function gives the value V after t years?",
     "choices": [
       {
         "id": "A",
-        "text": "18",
-        "rationale": "Correct."
+        "text": "V(t) = 1500(0.15)^t",
+        "rationale": "The factor is 1 ± the rate, not the rate alone."
       },
       {
         "id": "B",
-        "text": "96",
-        "rationale": "This divides once by r×time instead of repeatedly."
+        "text": "V(t) = 1500(0.85)^t",
+        "rationale": "A 15% increase means a factor of 1.15, not 0.85."
       },
       {
         "id": "C",
-        "text": "72",
-        "rationale": "This stops one period too early."
+        "text": "V(t) = 1500 + 225t",
+        "rationale": "Percent change compounds (exponential), it doesn't add a fixed amount each year."
       },
       {
         "id": "D",
-        "text": "1140",
-        "rationale": "This subtracts instead of repeatedly dividing."
+        "text": "V(t) = 1500(1.15)^t",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Divide by 4 each hour: 1152 ÷ 4^3 = 18.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "D",
+    "explanation": "A 15% increase per year multiplies by 1.15 each year: V(t) = 1500(1.15)^t.",
+    "estimated_time_seconds": 90,
     "tags": [
       "advanced-math",
       "exponential",
-      "family:ex_value"
+      "model",
+      "family:ex_model"
     ],
-    "answer_verification": "val=18"
+    "answer_verification": "model V(t) = 1500(1.15)^t"
   },
   {
     "question_id": "sat-math-exponential-medium-q17",
@@ -698,39 +714,39 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "An investment of $500 decreases by 12% each year. Which function gives the value V after t years?",
+    "prompt": "The function f(t) = 120(1.3)^t models the number of fish in a lake t years after it was first measured. By what percent does the quantity increase each year?",
     "choices": [
       {
         "id": "A",
-        "text": "V(t) = 500(0.12)^t",
-        "rationale": "The factor is 1 ± the rate, not the rate alone."
+        "text": "60%",
+        "rationale": "Arithmetic slip; 1.3 − 1 = ±0.3."
       },
       {
         "id": "B",
-        "text": "V(t) = 500 − 60t",
-        "rationale": "Percent change compounds (exponential), it doesn't add a fixed amount each year."
+        "text": "70%",
+        "rationale": "Compare the factor to 1 (100%)."
       },
       {
         "id": "C",
-        "text": "V(t) = 500(1.12)^t",
-        "rationale": "A 12% decrease means a factor of 0.88, not 1.12."
+        "text": "130%",
+        "rationale": "130% is the factor as a percent; the change is the part above or below 100%."
       },
       {
         "id": "D",
-        "text": "V(t) = 500(0.88)^t",
+        "text": "30%",
         "rationale": "Correct."
       }
     ],
     "correct_choice": "D",
-    "explanation": "A 12% decrease per year multiplies by 0.88 each year: V(t) = 500(0.88)^t.",
-    "estimated_time_seconds": 90,
+    "explanation": "The factor 1.3 = 1 + 0.3, so the quantity grows by 30% per year.",
+    "estimated_time_seconds": 80,
     "tags": [
       "advanced-math",
       "exponential",
-      "model",
-      "family:ex_model"
+      "interpret",
+      "family:ex_interpret"
     ],
-    "answer_verification": "model V(t) = 500(0.88)^t"
+    "answer_verification": "rate=30%"
   },
   {
     "question_id": "sat-math-exponential-medium-q18",
@@ -744,39 +760,39 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "The function f(t) = 500(1.08)^t models the number of fish in a lake t years after it was first measured. By what percent does the quantity increase each year?",
+    "prompt": "A radioactive sample has a half-life of 20 days: every 20 days, half of it decays. If the sample starts at 80 grams, how many grams remain after 60 days?",
     "choices": [
       {
         "id": "A",
-        "text": "108%",
-        "rationale": "108% is the factor as a percent; the change is the part above or below 100%."
+        "text": "10",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "92%",
-        "rationale": "Compare the factor to 1 (100%)."
+        "text": "5",
+        "rationale": "Each half-life halves what remains; it doesn't subtract a fixed amount."
       },
       {
         "id": "C",
-        "text": "16%",
-        "rationale": "Arithmetic slip; 1.08 − 1 = ±0.08."
+        "text": "40",
+        "rationale": "That is after one half-life only."
       },
       {
         "id": "D",
-        "text": "8%",
-        "rationale": "Correct."
+        "text": "40/3",
+        "rationale": "Divide by 2 repeatedly (3 times), not by 2·3."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "The factor 1.08 = 1 + 0.08, so the quantity grows by 8% per year.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "A",
+    "explanation": "60 days is 3 half-lives; 80 ÷ 2^3 = 10 grams.",
+    "estimated_time_seconds": 90,
     "tags": [
       "advanced-math",
       "exponential",
-      "interpret",
-      "family:ex_interpret"
+      "half-life",
+      "family:ex_periods"
     ],
-    "answer_verification": "rate=8%"
+    "answer_verification": "80/2^3"
   },
   {
     "question_id": "sat-math-exponential-medium-q19",
@@ -788,41 +804,26 @@
     "lesson_id": "sat-math-exponential-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "student_produced",
     "subskill": "growth_decay",
-    "prompt": "A radioactive sample has a half-life of 3 years: every 3 years, half of it decays. If the sample starts at 800 grams, how many grams remain after 6 years?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "100",
-        "rationale": "Each half-life halves what remains; it doesn't subtract a fixed amount."
-      },
-      {
-        "id": "B",
-        "text": "403/2",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "C",
-        "text": "200",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "400",
-        "rationale": "That is after one half-life only."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "6 years is 2 half-lives; 800 ÷ 2^2 = 200 grams.",
-    "estimated_time_seconds": 90,
+    "prompt": "A quantity of 320 is divided by 2 every day. What is the quantity after 3 days?",
+    "answer": {
+      "type": "numeric",
+      "value": 40,
+      "accepted": [
+        "40"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "320 ÷ 2^3 = 40.",
+    "estimated_time_seconds": 85,
     "tags": [
       "advanced-math",
       "exponential",
-      "half-life",
-      "family:ex_periods"
+      "grid-in",
+      "family:ex_gridin"
     ],
-    "answer_verification": "800/2^2"
+    "answer_verification": "val=40"
   },
   {
     "question_id": "sat-math-exponential-medium-q20",
@@ -834,25 +835,40 @@
     "lesson_id": "sat-math-exponential-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "student_produced",
+    "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "A quantity of 567 is divided by 3 every day. What is the quantity after 4 days?",
-    "answer": {
-      "type": "numeric",
-      "value": 7,
-      "accepted": [
-        "7"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "567 ÷ 3^4 = 7.",
-    "estimated_time_seconds": 85,
+    "prompt": "An investment of $1000 grows by 4% per year, compounded annually. Which expression gives the value, in dollars, of the investment after 2 years?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "1000(1.04)^2",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "1000(1 + 2·0.04)",
+        "rationale": "Compound growth is repeated multiplication, not repeated addition."
+      },
+      {
+        "id": "C",
+        "text": "1000(0.04)^2",
+        "rationale": "The growth factor is 1 + r, not r."
+      },
+      {
+        "id": "D",
+        "text": "1000·2·1.04",
+        "rationale": "The number of years is an exponent."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Each year multiplies the value by 1 + 4/100 = 1.04; after 2 years: 1000(1.04)^2.",
+    "estimated_time_seconds": 80,
     "tags": [
       "advanced-math",
       "exponential",
-      "grid-in",
-      "family:ex_gridin"
+      "compound",
+      "family:ex_compound"
     ],
-    "answer_verification": "val=7"
+    "answer_verification": "1000(1.04)^2"
   }
 ]

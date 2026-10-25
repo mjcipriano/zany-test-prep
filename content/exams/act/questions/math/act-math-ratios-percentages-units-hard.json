@@ -11,43 +11,43 @@
     "version": "1.0.0",
     "question_type": "multi_step_math",
     "subskill": "percent_change",
-    "prompt": "A jacket priced at $80 is marked down 20%, and a week later the sale price is reduced by an additional 50%. What is the final price, in dollars?",
+    "prompt": "A jacket priced at $110 is marked down 50%, and a week later the sale price is reduced by an additional 50%. What is the final price, in dollars?",
     "choices": [
       {
         "id": "A",
-        "text": "$56",
-        "rationale": "That is the total of the two percents applied to the original, not a price."
+        "text": "$0",
+        "rationale": "Successive discounts don't simply add; apply the second to the reduced price."
       },
       {
         "id": "B",
-        "text": "$32",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "$64",
+        "text": "$55",
         "rationale": "That is the price after only the first markdown."
       },
       {
+        "id": "C",
+        "text": "$25",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      },
+      {
         "id": "D",
-        "text": "$40",
-        "rationale": "Apply both discounts, in order."
+        "text": "$110",
+        "rationale": "That is the total of the two percents applied to the original, not a price."
       },
       {
         "id": "E",
-        "text": "$24",
-        "rationale": "Successive discounts don't simply add; apply the second to the reduced price."
+        "text": "$27.50",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "First markdown: 80·(1 − 20/100) = 64. Second: 64·(1 − 50/100) = 32.",
+    "correct_choice": "E",
+    "explanation": "First markdown: 110·(1 − 50/100) = 55. Second: 55·(1 − 50/100) = 55/2.",
     "estimated_time_seconds": 95,
     "tags": [
       "percent",
       "successive",
       "family:rp_percent_of"
     ],
-    "answer_verification": "final=32"
+    "answer_verification": "final=55/2"
   },
   {
     "question_id": "act-math-ratios-percentages-units-hard-q02",
@@ -61,43 +61,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "percent_change",
-    "prompt": "After a 40% increase, a quantity is 756. What was the original value?",
+    "prompt": "A coat is on sale for $135, which is 25% less than its original price. What was the original price, in dollars?",
     "choices": [
       {
         "id": "A",
-        "text": "1058",
-        "rationale": "This applies the increase to the new value instead of reversing it."
+        "text": "135",
+        "rationale": "This is the value after the change, not the original."
       },
       {
         "id": "B",
-        "text": "550",
-        "rationale": "Arithmetic slip; recheck the division."
-      },
-      {
-        "id": "C",
-        "text": "454",
-        "rationale": "Divide by the factor; don't apply the opposite percent to the new value."
-      },
-      {
-        "id": "D",
-        "text": "540",
+        "text": "180",
         "rationale": "Correct."
       },
       {
+        "id": "C",
+        "text": "102",
+        "rationale": "This applies the decrease to the new value instead of reversing it."
+      },
+      {
+        "id": "D",
+        "text": "168",
+        "rationale": "Divide by the factor; don't apply the opposite percent to the new value."
+      },
+      {
         "id": "E",
-        "text": "756",
-        "rationale": "This is the value after the change, not the original."
+        "text": "190",
+        "rationale": "Arithmetic slip; recheck the division."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "new = original × (1 + 40/100), so original = 756 ÷ (1 + 40/100) = 540.",
+    "correct_choice": "B",
+    "explanation": "new = original × (1 − 25/100), so original = 135 ÷ (1 − 25/100) = 180.",
     "estimated_time_seconds": 90,
     "tags": [
       "percent",
       "reverse",
       "family:rp_percent_change"
     ],
-    "answer_verification": "val=540"
+    "answer_verification": "val=180"
   },
   {
     "question_id": "act-math-ratios-percentages-units-hard-q03",
@@ -111,42 +111,42 @@
     "version": "1.0.0",
     "question_type": "multi_step_math",
     "subskill": "unit_rate",
-    "prompt": "A collection of animals at a shelter has 120 cats and 192 dogs. How many cats must be added so that the ratio of cats to dogs becomes 133:192?",
+    "prompt": "A collection of animals at a shelter has 60 cats and 40 dogs. How many cats must be added so that the ratio of cats to dogs becomes 7:4?",
     "choices": [
       {
         "id": "A",
-        "text": "15",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "70",
+        "rationale": "That is the new total of cats, not the number added."
       },
       {
         "id": "B",
-        "text": "18",
+        "text": "13",
         "rationale": "Arithmetic slip; recompute the new count minus the old."
       },
       {
         "id": "C",
-        "text": "133",
-        "rationale": "That is the new total of cats, not the number added."
+        "text": "7",
+        "rationale": "Scale the ratio to the actual count of dogs first."
       },
       {
         "id": "D",
-        "text": "13",
-        "rationale": "Correct."
+        "text": "8",
+        "rationale": "Keep dogs fixed and solve for the new cats count."
       },
       {
         "id": "E",
-        "text": "5",
-        "rationale": "Keep dogs fixed and solve for the new cats count."
+        "text": "10",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "The dogs stay at 192, so cats must become 133·(192/192) = 133; that is 133 − 120 = 13 more.",
+    "correct_choice": "E",
+    "explanation": "The dogs stay at 40, so cats must become 7·(40/4) = 70; that is 70 − 60 = 10 more.",
     "estimated_time_seconds": 100,
     "tags": [
       "ratio",
       "family:rp_ratio"
     ],
-    "answer_verification": "add=13"
+    "answer_verification": "add=10"
   },
   {
     "question_id": "act-math-ratios-percentages-units-hard-q04",
@@ -160,42 +160,42 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "unit_rate",
-    "prompt": "A machine fills 56 bottles per minute. At this rate, how many bottles does it fill in 4 hours and 30 minutes?",
+    "prompt": "A car travels at 47 miles per hour. How many feet does it travel in one second? (1 mile = 5,280 feet.) Round to the nearest tenth.",
     "choices": [
       {
         "id": "A",
-        "text": "15120",
-        "rationale": "Correct."
+        "text": "69.9",
+        "rationale": "Arithmetic slip; recompute."
       },
       {
         "id": "B",
-        "text": "16240",
-        "rationale": "30 minutes is half an hour, not 0.5 × 100."
+        "text": "32",
+        "rationale": "Multiply by feet per mile and divide by seconds per hour."
       },
       {
         "id": "C",
-        "text": "13440",
-        "rationale": "Include the extra 30 minutes."
+        "text": "68.9",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "1904",
-        "rationale": "Convert the time entirely to minutes before multiplying."
+        "text": "0.01",
+        "rationale": "Convert miles to feet as well."
       },
       {
         "id": "E",
-        "text": "15150",
-        "rationale": "Multiply the rate by the whole number of minutes."
+        "text": "4136",
+        "rationale": "Divide by 3600 seconds per hour, not 60."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "4 h 30 min = 270 minutes; 56 × 270 = 15120 bottles.",
+    "correct_choice": "C",
+    "explanation": "47 mi/h × 5280 ft/mi ÷ 3600 s/h = 68.9 ft/s.",
     "estimated_time_seconds": 90,
     "tags": [
       "units",
       "family:rp_units"
     ],
-    "answer_verification": "val=15120"
+    "answer_verification": "val=68.9"
   },
   {
     "question_id": "act-math-ratios-percentages-units-hard-q05",
@@ -209,43 +209,43 @@
     "version": "1.0.0",
     "question_type": "multi_step_math",
     "subskill": "percent_change",
-    "prompt": "A jacket priced at $390 is marked down 20%, and a week later the sale price is reduced by an additional 25%. What is the final price, in dollars?",
+    "prompt": "A coat with a list price of $150 is on sale for 15% off, and a 8% sales tax is applied to the sale price. What is the final cost, in dollars?",
     "choices": [
       {
         "id": "A",
-        "text": "$234",
-        "rationale": "Correct."
+        "text": "$127.50",
+        "rationale": "That is the sale price before tax."
       },
       {
         "id": "B",
-        "text": "$175.50",
-        "rationale": "That is the total of the two percents applied to the original, not a price."
+        "text": "$139.50",
+        "rationale": "Apply the tax to the sale price; percents don't simply combine."
       },
       {
         "id": "C",
-        "text": "$214.50",
-        "rationale": "Successive discounts don't simply add; apply the second to the reduced price."
+        "text": "$117.30",
+        "rationale": "Tax is added, not subtracted."
       },
       {
         "id": "D",
-        "text": "$312",
-        "rationale": "That is the price after only the first markdown."
+        "text": "$162",
+        "rationale": "Apply the discount first."
       },
       {
         "id": "E",
-        "text": "$292.50",
-        "rationale": "Apply both discounts, in order."
+        "text": "$137.70",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "First markdown: 390·(1 − 20/100) = 312. Second: 312·(1 − 25/100) = 234.",
+    "correct_choice": "E",
+    "explanation": "Sale price: 150 × 17/20 = 255/2; with tax × 27/25: 1377/10.",
     "estimated_time_seconds": 95,
     "tags": [
       "percent",
-      "successive",
-      "family:rp_percent_of"
+      "money",
+      "family:rp_tax_tip"
     ],
-    "answer_verification": "final=234"
+    "answer_verification": "val=1377/10"
   },
   {
     "question_id": "act-math-ratios-percentages-units-hard-q06",
@@ -257,45 +257,45 @@
     "lesson_id": "act-math-ratios-percentages-units-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "percent_change",
-    "prompt": "After a 20% increase, a quantity is 96. What was the original value?",
+    "question_type": "multi_step_math",
+    "subskill": "unit_rate",
+    "prompt": "A 10-liter package of trail mix costs $4.60 and a 40-liter package costs $14.80. How much more, in dollars per liter, does the more expensive package cost per liter?",
     "choices": [
       {
         "id": "A",
-        "text": "96",
-        "rationale": "This is the value after the change, not the original."
+        "text": "$0.37",
+        "rationale": "That is one unit price, not the difference."
       },
       {
         "id": "B",
-        "text": "115",
-        "rationale": "This applies the increase to the new value instead of reversing it."
+        "text": "$0.46",
+        "rationale": "That is one unit price, not the difference."
       },
       {
         "id": "C",
-        "text": "77",
-        "rationale": "Divide by the factor; don't apply the opposite percent to the new value."
+        "text": "$10.20",
+        "rationale": "Compare prices per liter, not package prices."
       },
       {
         "id": "D",
-        "text": "80",
-        "rationale": "Correct."
+        "text": "$0.18",
+        "rationale": "Arithmetic slip."
       },
       {
         "id": "E",
-        "text": "90",
-        "rationale": "Arithmetic slip; recheck the division."
+        "text": "$0.09",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "new = original × (1 + 20/100), so original = 96 ÷ (1 + 20/100) = 80.",
-    "estimated_time_seconds": 90,
+    "correct_choice": "E",
+    "explanation": "Unit prices: $0.46 and $0.37; the difference is $0.09.",
+    "estimated_time_seconds": 100,
     "tags": [
-      "percent",
-      "reverse",
-      "family:rp_percent_change"
+      "ratio",
+      "unit-price",
+      "family:rp_best_deal"
     ],
-    "answer_verification": "val=80"
+    "answer_verification": "diff=9/100"
   },
   {
     "question_id": "act-math-ratios-percentages-units-hard-q07",
@@ -308,43 +308,44 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multi_step_math",
-    "subskill": "unit_rate",
-    "prompt": "A collection of animals at a shelter has 104 cats and 26 dogs. How many cats must be added so that the ratio of cats to dogs becomes 109:26?",
+    "subskill": "percent_change",
+    "prompt": "A jacket priced at $340 is marked down 30%, and a week later the sale price is reduced by an additional 50%. What is the final price, in dollars?",
     "choices": [
       {
         "id": "A",
-        "text": "11",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "$170",
+        "rationale": "Apply both discounts, in order."
       },
       {
         "id": "B",
-        "text": "4",
-        "rationale": "Keep dogs fixed and solve for the new cats count."
-      },
-      {
-        "id": "C",
-        "text": "109",
-        "rationale": "That is the new total of cats, not the number added."
-      },
-      {
-        "id": "D",
-        "text": "5",
+        "text": "$119",
         "rationale": "Correct."
       },
       {
+        "id": "C",
+        "text": "$272",
+        "rationale": "That is the total of the two percents applied to the original, not a price."
+      },
+      {
+        "id": "D",
+        "text": "$238",
+        "rationale": "That is the price after only the first markdown."
+      },
+      {
         "id": "E",
-        "text": "9",
-        "rationale": "Arithmetic slip; recompute the new count minus the old."
+        "text": "$68",
+        "rationale": "Successive discounts don't simply add; apply the second to the reduced price."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "The dogs stay at 26, so cats must become 109·(26/26) = 109; that is 109 − 104 = 5 more.",
-    "estimated_time_seconds": 100,
+    "correct_choice": "B",
+    "explanation": "First markdown: 340·(1 − 30/100) = 238. Second: 238·(1 − 50/100) = 119.",
+    "estimated_time_seconds": 95,
     "tags": [
-      "ratio",
-      "family:rp_ratio"
+      "percent",
+      "successive",
+      "family:rp_percent_of"
     ],
-    "answer_verification": "add=5"
+    "answer_verification": "final=119"
   },
   {
     "question_id": "act-math-ratios-percentages-units-hard-q08",
@@ -357,43 +358,44 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "unit_rate",
-    "prompt": "A car travels at 28 miles per hour. How many feet does it travel in one second? (1 mile = 5,280 feet.) Round to the nearest tenth.",
+    "subskill": "percent_change",
+    "prompt": "After a 30% decrease, a quantity is 322. What was the original value?",
     "choices": [
       {
         "id": "A",
-        "text": "19.1",
-        "rationale": "Multiply by feet per mile and divide by seconds per hour."
+        "text": "460",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "2464",
-        "rationale": "Divide by 3600 seconds per hour, not 60."
+        "text": "418",
+        "rationale": "Divide by the factor; don't apply the opposite percent to the new value."
       },
       {
         "id": "C",
-        "text": "42.1",
-        "rationale": "Arithmetic slip; recompute."
+        "text": "322",
+        "rationale": "This is the value after the change, not the original."
       },
       {
         "id": "D",
-        "text": "0.01",
-        "rationale": "Convert miles to feet as well."
+        "text": "470",
+        "rationale": "Arithmetic slip; recheck the division."
       },
       {
         "id": "E",
-        "text": "41.1",
-        "rationale": "Correct."
+        "text": "226",
+        "rationale": "This applies the decrease to the new value instead of reversing it."
       }
     ],
-    "correct_choice": "E",
-    "explanation": "28 mi/h × 5280 ft/mi ÷ 3600 s/h = 41.1 ft/s.",
+    "correct_choice": "A",
+    "explanation": "new = original × (1 − 30/100), so original = 322 ÷ (1 − 30/100) = 460.",
     "estimated_time_seconds": 90,
     "tags": [
-      "units",
-      "family:rp_units"
+      "percent",
+      "reverse",
+      "family:rp_percent_change"
     ],
-    "answer_verification": "val=41.1"
+    "answer_verification": "val=460"
   },
   {
     "question_id": "act-math-ratios-percentages-units-hard-q09",
@@ -406,44 +408,43 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multi_step_math",
-    "subskill": "percent_change",
-    "prompt": "A jacket priced at $330 is marked down 25%, and a week later the sale price is reduced by an additional 10%. What is the final price, in dollars?",
+    "subskill": "unit_rate",
+    "prompt": "A collection of books on a shelf has 90 fiction and 126 nonfiction. How many fiction must be added so that the ratio of fiction to nonfiction becomes 1:1?",
     "choices": [
       {
         "id": "A",
-        "text": "$247",
-        "rationale": "That is the price after only the first markdown."
-      },
-      {
-        "id": "B",
-        "text": "$297",
-        "rationale": "Apply both discounts, in order."
-      },
-      {
-        "id": "C",
-        "text": "$222.30",
+        "text": "36",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "126",
+        "rationale": "That is the new total of fiction, not the number added."
+      },
+      {
+        "id": "C",
+        "text": "41",
+        "rationale": "Arithmetic slip; recompute the new count minus the old."
+      },
+      {
         "id": "D",
-        "text": "$214.50",
-        "rationale": "Successive discounts don't simply add; apply the second to the reduced price."
+        "text": "1",
+        "rationale": "Scale the ratio to the actual count of nonfiction first."
       },
       {
         "id": "E",
-        "text": "$115.50",
-        "rationale": "That is the total of the two percents applied to the original, not a price."
+        "text": "29",
+        "rationale": "Keep nonfiction fixed and solve for the new fiction count."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "First markdown: 330·(1 − 25/100) = 247. Second: 247·(1 − 10/100) = 2223/10.",
-    "estimated_time_seconds": 95,
+    "correct_choice": "A",
+    "explanation": "The nonfiction stay at 126, so fiction must become 1·(126/1) = 126; that is 126 − 90 = 36 more.",
+    "estimated_time_seconds": 100,
     "tags": [
-      "percent",
-      "successive",
-      "family:rp_percent_of"
+      "ratio",
+      "family:rp_ratio"
     ],
-    "answer_verification": "final=2223/10"
+    "answer_verification": "add=36"
   },
   {
     "question_id": "act-math-ratios-percentages-units-hard-q10",
@@ -456,44 +457,43 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "percent_change",
-    "prompt": "A coat is on sale for $35, which is 75% less than its original price. What was the original price, in dollars?",
+    "subskill": "unit_rate",
+    "prompt": "A car travels at 22 miles per hour. How many feet does it travel in one second? (1 mile = 5,280 feet.) Round to the nearest tenth.",
     "choices": [
       {
         "id": "A",
-        "text": "61",
-        "rationale": "Divide by the factor; don't apply the opposite percent to the new value."
+        "text": "1936",
+        "rationale": "Divide by 3600 seconds per hour, not 60."
       },
       {
         "id": "B",
-        "text": "140",
+        "text": "32.3",
         "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "35",
-        "rationale": "This is the value after the change, not the original."
+        "text": "33.3",
+        "rationale": "Arithmetic slip; recompute."
       },
       {
         "id": "D",
-        "text": "150",
-        "rationale": "Arithmetic slip; recheck the division."
+        "text": "15",
+        "rationale": "Multiply by feet per mile and divide by seconds per hour."
       },
       {
         "id": "E",
-        "text": "9",
-        "rationale": "This applies the decrease to the new value instead of reversing it."
+        "text": "0.01",
+        "rationale": "Convert miles to feet as well."
       }
     ],
     "correct_choice": "B",
-    "explanation": "new = original × (1 − 75/100), so original = 35 ÷ (1 − 75/100) = 140.",
+    "explanation": "22 mi/h × 5280 ft/mi ÷ 3600 s/h = 32.3 ft/s.",
     "estimated_time_seconds": 90,
     "tags": [
-      "percent",
-      "reverse",
-      "family:rp_percent_change"
+      "units",
+      "family:rp_units"
     ],
-    "answer_verification": "val=140"
+    "answer_verification": "val=32.3"
   },
   {
     "question_id": "act-math-ratios-percentages-units-hard-q11",
@@ -506,43 +506,44 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multi_step_math",
-    "subskill": "unit_rate",
-    "prompt": "A collection of books on a shelf has 119 fiction and 51 nonfiction. How many fiction must be added so that the ratio of fiction to nonfiction becomes 43:17?",
+    "subskill": "percent_change",
+    "prompt": "A coat with a list price of $135 is on sale for 15% off, and a 5% sales tax is applied to the sale price. What is the final cost, in dollars?",
     "choices": [
       {
         "id": "A",
-        "text": "7",
-        "rationale": "Keep nonfiction fixed and solve for the new fiction count."
-      },
-      {
-        "id": "B",
-        "text": "43",
-        "rationale": "Scale the ratio to the actual count of nonfiction first."
-      },
-      {
-        "id": "C",
-        "text": "17",
-        "rationale": "Arithmetic slip; recompute the new count minus the old."
-      },
-      {
-        "id": "D",
-        "text": "10",
+        "text": "$120.49",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "$121.50",
+        "rationale": "Apply the tax to the sale price; percents don't simply combine."
+      },
+      {
+        "id": "C",
+        "text": "$109.01",
+        "rationale": "Tax is added, not subtracted."
+      },
+      {
+        "id": "D",
+        "text": "$114.75",
+        "rationale": "That is the sale price before tax."
+      },
+      {
         "id": "E",
-        "text": "129",
-        "rationale": "That is the new total of fiction, not the number added."
+        "text": "$141.75",
+        "rationale": "Apply the discount first."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "The nonfiction stay at 51, so fiction must become 43·(51/17) = 129; that is 129 − 119 = 10 more.",
-    "estimated_time_seconds": 100,
+    "correct_choice": "A",
+    "explanation": "Sale price: 135 × 17/20 = 459/4; with tax × 21/20: 9639/80.",
+    "estimated_time_seconds": 95,
     "tags": [
-      "ratio",
-      "family:rp_ratio"
+      "percent",
+      "money",
+      "family:rp_tax_tip"
     ],
-    "answer_verification": "add=10"
+    "answer_verification": "val=9639/80"
   },
   {
     "question_id": "act-math-ratios-percentages-units-hard-q12",
@@ -554,44 +555,45 @@
     "lesson_id": "act-math-ratios-percentages-units-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "multi_step_math",
     "subskill": "unit_rate",
-    "prompt": "A machine fills 88 bottles per minute. At this rate, how many bottles does it fill in 2 hours and 30 minutes?",
+    "prompt": "A 40-liter package of rice costs $32.40 and a 6-liter package costs $4.14. How much more, in dollars per liter, does the more expensive package cost per liter?",
     "choices": [
       {
         "id": "A",
-        "text": "13200",
-        "rationale": "Correct."
+        "text": "$28.26",
+        "rationale": "Compare prices per liter, not package prices."
       },
       {
         "id": "B",
-        "text": "2816",
-        "rationale": "Convert the time entirely to minutes before multiplying."
+        "text": "$0.12",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "10560",
-        "rationale": "Include the extra 30 minutes."
+        "text": "$0.24",
+        "rationale": "Arithmetic slip."
       },
       {
         "id": "D",
-        "text": "13230",
-        "rationale": "Multiply the rate by the whole number of minutes."
+        "text": "$0.69",
+        "rationale": "That is one unit price, not the difference."
       },
       {
         "id": "E",
-        "text": "14960",
-        "rationale": "30 minutes is half an hour, not 0.5 × 100."
+        "text": "$0.81",
+        "rationale": "That is one unit price, not the difference."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "2 h 30 min = 150 minutes; 88 × 150 = 13200 bottles.",
-    "estimated_time_seconds": 90,
+    "correct_choice": "B",
+    "explanation": "Unit prices: $0.81 and $0.69; the difference is $0.12.",
+    "estimated_time_seconds": 100,
     "tags": [
-      "units",
-      "family:rp_units"
+      "ratio",
+      "unit-price",
+      "family:rp_best_deal"
     ],
-    "answer_verification": "val=13200"
+    "answer_verification": "diff=3/25"
   },
   {
     "question_id": "act-math-ratios-percentages-units-hard-q13",
@@ -605,43 +607,43 @@
     "version": "1.0.0",
     "question_type": "multi_step_math",
     "subskill": "percent_change",
-    "prompt": "A jacket priced at $310 is marked down 10%, and a week later the sale price is reduced by an additional 25%. What is the final price, in dollars?",
+    "prompt": "A jacket priced at $40 is marked down 30%, and a week later the sale price is reduced by an additional 25%. What is the final price, in dollars?",
     "choices": [
       {
         "id": "A",
-        "text": "$279",
-        "rationale": "That is the price after only the first markdown."
-      },
-      {
-        "id": "B",
-        "text": "$201.50",
+        "text": "$18",
         "rationale": "Successive discounts don't simply add; apply the second to the reduced price."
       },
       {
-        "id": "C",
-        "text": "$108.50",
+        "id": "B",
+        "text": "$22",
         "rationale": "That is the total of the two percents applied to the original, not a price."
       },
       {
-        "id": "D",
-        "text": "$232.50",
+        "id": "C",
+        "text": "$30",
         "rationale": "Apply both discounts, in order."
       },
       {
-        "id": "E",
-        "text": "$209.25",
+        "id": "D",
+        "text": "$21",
         "rationale": "Correct."
+      },
+      {
+        "id": "E",
+        "text": "$28",
+        "rationale": "That is the price after only the first markdown."
       }
     ],
-    "correct_choice": "E",
-    "explanation": "First markdown: 310·(1 − 10/100) = 279. Second: 279·(1 − 25/100) = 837/4.",
+    "correct_choice": "D",
+    "explanation": "First markdown: 40·(1 − 30/100) = 28. Second: 28·(1 − 25/100) = 21.",
     "estimated_time_seconds": 95,
     "tags": [
       "percent",
       "successive",
       "family:rp_percent_of"
     ],
-    "answer_verification": "final=837/4"
+    "answer_verification": "final=21"
   },
   {
     "question_id": "act-math-ratios-percentages-units-hard-q14",
@@ -655,43 +657,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "percent_change",
-    "prompt": "After a 5% raise, an employee earns $315 per week. What was the weekly pay before the raise, in dollars?",
+    "prompt": "After a 15% decrease, a quantity is 459. What was the original value?",
     "choices": [
       {
         "id": "A",
-        "text": "330",
-        "rationale": "This applies the increase to the new value instead of reversing it."
+        "text": "550",
+        "rationale": "Arithmetic slip; recheck the division."
       },
       {
         "id": "B",
-        "text": "297",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "527",
+        "rationale": "Divide by the factor; don't apply the opposite percent to the new value."
       },
       {
         "id": "C",
-        "text": "315",
-        "rationale": "This is the value after the change, not the original."
-      },
-      {
-        "id": "D",
-        "text": "300",
+        "text": "540",
         "rationale": "Correct."
       },
       {
+        "id": "D",
+        "text": "459",
+        "rationale": "This is the value after the change, not the original."
+      },
+      {
         "id": "E",
-        "text": "310",
-        "rationale": "Arithmetic slip; recheck the division."
+        "text": "391",
+        "rationale": "This applies the decrease to the new value instead of reversing it."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "new = original × (1 + 5/100), so original = 315 ÷ (1 + 5/100) = 300.",
+    "correct_choice": "C",
+    "explanation": "new = original × (1 − 15/100), so original = 459 ÷ (1 − 15/100) = 540.",
     "estimated_time_seconds": 90,
     "tags": [
       "percent",
       "reverse",
       "family:rp_percent_change"
     ],
-    "answer_verification": "val=300"
+    "answer_verification": "val=540"
   },
   {
     "question_id": "act-math-ratios-percentages-units-hard-q15",
@@ -705,42 +707,42 @@
     "version": "1.0.0",
     "question_type": "multi_step_math",
     "subskill": "unit_rate",
-    "prompt": "A collection of animals at a shelter has 175 cats and 75 dogs. How many cats must be added so that the ratio of cats to dogs becomes 13:5?",
+    "prompt": "A collection of books on a shelf has 30 fiction and 18 nonfiction. How many fiction must be added so that the ratio of fiction to nonfiction becomes 23:9?",
     "choices": [
       {
         "id": "A",
-        "text": "13",
-        "rationale": "Scale the ratio to the actual count of dogs first."
-      },
-      {
-        "id": "B",
-        "text": "27",
-        "rationale": "Arithmetic slip; recompute the new count minus the old."
-      },
-      {
-        "id": "C",
-        "text": "20",
+        "text": "16",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "46",
+        "rationale": "That is the new total of fiction, not the number added."
+      },
+      {
+        "id": "C",
+        "text": "13",
+        "rationale": "Keep nonfiction fixed and solve for the new fiction count."
+      },
+      {
         "id": "D",
-        "text": "17",
-        "rationale": "Keep dogs fixed and solve for the new cats count."
+        "text": "21",
+        "rationale": "Arithmetic slip; recompute the new count minus the old."
       },
       {
         "id": "E",
-        "text": "195",
-        "rationale": "That is the new total of cats, not the number added."
+        "text": "23",
+        "rationale": "Scale the ratio to the actual count of nonfiction first."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "The dogs stay at 75, so cats must become 13·(75/5) = 195; that is 195 − 175 = 20 more.",
+    "correct_choice": "A",
+    "explanation": "The nonfiction stay at 18, so fiction must become 23·(18/9) = 46; that is 46 − 30 = 16 more.",
     "estimated_time_seconds": 100,
     "tags": [
       "ratio",
       "family:rp_ratio"
     ],
-    "answer_verification": "add=20"
+    "answer_verification": "add=16"
   },
   {
     "question_id": "act-math-ratios-percentages-units-hard-q16",
@@ -754,42 +756,42 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "unit_rate",
-    "prompt": "A machine fills 63 bottles per minute. At this rate, how many bottles does it fill in 7 hours and 30 minutes?",
+    "prompt": "A car travels at 89 miles per hour. How many feet does it travel in one second? (1 mile = 5,280 feet.) Round to the nearest tenth.",
     "choices": [
       {
         "id": "A",
-        "text": "29610",
-        "rationale": "30 minutes is half an hour, not 0.5 × 100."
-      },
-      {
-        "id": "B",
-        "text": "26460",
-        "rationale": "Include the extra 30 minutes."
-      },
-      {
-        "id": "C",
-        "text": "2331",
-        "rationale": "Convert the time entirely to minutes before multiplying."
-      },
-      {
-        "id": "D",
-        "text": "28350",
+        "text": "130.5",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "131.5",
+        "rationale": "Arithmetic slip; recompute."
+      },
+      {
+        "id": "C",
+        "text": "7832",
+        "rationale": "Divide by 3600 seconds per hour, not 60."
+      },
+      {
+        "id": "D",
+        "text": "60.7",
+        "rationale": "Multiply by feet per mile and divide by seconds per hour."
+      },
+      {
         "id": "E",
-        "text": "28380",
-        "rationale": "Multiply the rate by the whole number of minutes."
+        "text": "0.02",
+        "rationale": "Convert miles to feet as well."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "7 h 30 min = 450 minutes; 63 × 450 = 28350 bottles.",
+    "correct_choice": "A",
+    "explanation": "89 mi/h × 5280 ft/mi ÷ 3600 s/h = 130.5 ft/s.",
     "estimated_time_seconds": 90,
     "tags": [
       "units",
       "family:rp_units"
     ],
-    "answer_verification": "val=28350"
+    "answer_verification": "val=130.5"
   },
   {
     "question_id": "act-math-ratios-percentages-units-hard-q17",
@@ -803,43 +805,43 @@
     "version": "1.0.0",
     "question_type": "multi_step_math",
     "subskill": "percent_change",
-    "prompt": "A jacket priced at $320 is marked down 10%, and a week later the sale price is reduced by an additional 50%. What is the final price, in dollars?",
+    "prompt": "A coat with a list price of $160 is on sale for 30% off, and a 8% sales tax is applied to the sale price. What is the final cost, in dollars?",
     "choices": [
       {
         "id": "A",
-        "text": "$128",
-        "rationale": "Successive discounts don't simply add; apply the second to the reduced price."
+        "text": "$124.80",
+        "rationale": "Apply the tax to the sale price; percents don't simply combine."
       },
       {
         "id": "B",
-        "text": "$144",
-        "rationale": "Correct."
+        "text": "$112",
+        "rationale": "That is the sale price before tax."
       },
       {
         "id": "C",
-        "text": "$160",
-        "rationale": "Apply both discounts, in order."
+        "text": "$172.80",
+        "rationale": "Apply the discount first."
       },
       {
         "id": "D",
-        "text": "$288",
-        "rationale": "That is the price after only the first markdown."
+        "text": "$103.04",
+        "rationale": "Tax is added, not subtracted."
       },
       {
         "id": "E",
-        "text": "$192",
-        "rationale": "That is the total of the two percents applied to the original, not a price."
+        "text": "$120.96",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "First markdown: 320·(1 − 10/100) = 288. Second: 288·(1 − 50/100) = 144.",
+    "correct_choice": "E",
+    "explanation": "Sale price: 160 × 7/10 = 112; with tax × 27/25: 3024/25.",
     "estimated_time_seconds": 95,
     "tags": [
       "percent",
-      "successive",
-      "family:rp_percent_of"
+      "money",
+      "family:rp_tax_tip"
     ],
-    "answer_verification": "final=144"
+    "answer_verification": "val=3024/25"
   },
   {
     "question_id": "act-math-ratios-percentages-units-hard-q18",
@@ -851,45 +853,45 @@
     "lesson_id": "act-math-ratios-percentages-units-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "percent_change",
-    "prompt": "After a 15% increase, a quantity is 414. What was the original value?",
+    "question_type": "multi_step_math",
+    "subskill": "unit_rate",
+    "prompt": "A 48-pound package of trail mix costs $39.84 and a 32-pound package costs $27.52. How much more, in dollars per pound, does the more expensive package cost per pound?",
     "choices": [
       {
         "id": "A",
-        "text": "414",
-        "rationale": "This is the value after the change, not the original."
+        "text": "$12.32",
+        "rationale": "Compare prices per pound, not package prices."
       },
       {
         "id": "B",
-        "text": "476",
-        "rationale": "This applies the increase to the new value instead of reversing it."
+        "text": "$0.83",
+        "rationale": "That is one unit price, not the difference."
       },
       {
         "id": "C",
-        "text": "352",
-        "rationale": "Divide by the factor; don't apply the opposite percent to the new value."
+        "text": "$0.86",
+        "rationale": "That is one unit price, not the difference."
       },
       {
         "id": "D",
-        "text": "360",
-        "rationale": "Correct."
+        "text": "$0.06",
+        "rationale": "Arithmetic slip."
       },
       {
         "id": "E",
-        "text": "370",
-        "rationale": "Arithmetic slip; recheck the division."
+        "text": "$0.03",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "new = original × (1 + 15/100), so original = 414 ÷ (1 + 15/100) = 360.",
-    "estimated_time_seconds": 90,
+    "correct_choice": "E",
+    "explanation": "Unit prices: $0.83 and $0.86; the difference is $0.03.",
+    "estimated_time_seconds": 100,
     "tags": [
-      "percent",
-      "reverse",
-      "family:rp_percent_change"
+      "ratio",
+      "unit-price",
+      "family:rp_best_deal"
     ],
-    "answer_verification": "val=360"
+    "answer_verification": "diff=3/100"
   },
   {
     "question_id": "act-math-ratios-percentages-units-hard-q19",
@@ -902,43 +904,44 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multi_step_math",
-    "subskill": "unit_rate",
-    "prompt": "A collection of marbles in a bag has 13 red and 52 blue. How many red must be added so that the ratio of red to blue becomes 23:52?",
+    "subskill": "percent_change",
+    "prompt": "A jacket priced at $220 is marked down 20%, and a week later the sale price is reduced by an additional 10%. What is the final price, in dollars?",
     "choices": [
       {
         "id": "A",
-        "text": "9",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "$158.40",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "6",
-        "rationale": "Keep blue fixed and solve for the new red count."
+        "text": "$176",
+        "rationale": "That is the price after only the first markdown."
       },
       {
         "id": "C",
-        "text": "11",
-        "rationale": "Arithmetic slip; recompute the new count minus the old."
+        "text": "$154",
+        "rationale": "Successive discounts don't simply add; apply the second to the reduced price."
       },
       {
         "id": "D",
-        "text": "23",
-        "rationale": "That is the new total of red, not the number added."
+        "text": "$198",
+        "rationale": "Apply both discounts, in order."
       },
       {
         "id": "E",
-        "text": "10",
-        "rationale": "Correct."
+        "text": "$66",
+        "rationale": "That is the total of the two percents applied to the original, not a price."
       }
     ],
-    "correct_choice": "E",
-    "explanation": "The blue stay at 52, so red must become 23·(52/52) = 23; that is 23 − 13 = 10 more.",
-    "estimated_time_seconds": 100,
+    "correct_choice": "A",
+    "explanation": "First markdown: 220·(1 − 20/100) = 176. Second: 176·(1 − 10/100) = 792/5.",
+    "estimated_time_seconds": 95,
     "tags": [
-      "ratio",
-      "family:rp_ratio"
+      "percent",
+      "successive",
+      "family:rp_percent_of"
     ],
-    "answer_verification": "add=10"
+    "answer_verification": "final=792/5"
   },
   {
     "question_id": "act-math-ratios-percentages-units-hard-q20",
@@ -951,42 +954,43 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "unit_rate",
-    "prompt": "A car travels at 79 miles per hour. How many feet does it travel in one second? (1 mile = 5,280 feet.) Round to the nearest tenth.",
+    "subskill": "percent_change",
+    "prompt": "A coat is on sale for $350, which is 30% less than its original price. What was the original price, in dollars?",
     "choices": [
       {
         "id": "A",
-        "text": "0.02",
-        "rationale": "Convert miles to feet as well."
+        "text": "455",
+        "rationale": "Divide by the factor; don't apply the opposite percent to the new value."
       },
       {
         "id": "B",
-        "text": "116.9",
-        "rationale": "Arithmetic slip; recompute."
+        "text": "510",
+        "rationale": "Arithmetic slip; recheck the division."
       },
       {
         "id": "C",
-        "text": "6952",
-        "rationale": "Divide by 3600 seconds per hour, not 60."
+        "text": "350",
+        "rationale": "This is the value after the change, not the original."
       },
       {
         "id": "D",
-        "text": "115.9",
-        "rationale": "Correct."
+        "text": "245",
+        "rationale": "This applies the decrease to the new value instead of reversing it."
       },
       {
         "id": "E",
-        "text": "53.9",
-        "rationale": "Multiply by feet per mile and divide by seconds per hour."
+        "text": "500",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "79 mi/h × 5280 ft/mi ÷ 3600 s/h = 115.9 ft/s.",
+    "correct_choice": "E",
+    "explanation": "new = original × (1 − 30/100), so original = 350 ÷ (1 − 30/100) = 500.",
     "estimated_time_seconds": 90,
     "tags": [
-      "units",
-      "family:rp_units"
+      "percent",
+      "reverse",
+      "family:rp_percent_change"
     ],
-    "answer_verification": "val=115.9"
+    "answer_verification": "val=500"
   }
 ]

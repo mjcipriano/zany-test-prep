@@ -11,37 +11,37 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "A bag contains 11 black, 3 green, and 3 blue beads. If one of the beads is selected at random, what is the probability that it is not green?",
+    "prompt": "A bag contains 7 orange, 7 blue, and 12 green marbles. If one of the marbles is selected at random, what is the probability that it is blue or green?",
     "choices": [
       {
         "id": "A",
-        "text": "14/3",
-        "rationale": "Keep the total in the denominator."
+        "text": "7/26",
+        "rationale": "This counts only the blue marbles."
       },
       {
         "id": "B",
-        "text": "3/14",
-        "rationale": "Compare favourable to total, not to the rest."
+        "text": "21/169",
+        "rationale": "'Or' with disjoint outcomes adds probabilities; it doesn't multiply."
       },
       {
         "id": "C",
-        "text": "3/17",
-        "rationale": "This is the probability of drawing green."
+        "text": "19/26",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "14/17",
-        "rationale": "Correct."
+        "text": "19/7",
+        "rationale": "Use the total in the denominator."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "P(not green) = 1 − 3/17 = 14/17.",
+    "correct_choice": "C",
+    "explanation": "P(blue or green) = (7 + 12)/26 = 19/26.",
     "estimated_time_seconds": 90,
     "tags": [
       "probability",
       "family:pb_single"
     ],
-    "answer_verification": "P=14/17"
+    "answer_verification": "P=19/26"
   },
   {
     "question_id": "sat-math-probability-medium-q02",
@@ -55,38 +55,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "Two events are independent. The probability that the first spinner lands on red is 1/6, and the probability that the second spinner lands on blue is 3/4. What is the probability that both events occur?",
+    "prompt": "Two events are independent. The probability that the first machine passes inspection is 1/2, and the probability that the second machine passes inspection is 1/2. What is the probability that both events occur?",
     "choices": [
       {
         "id": "A",
-        "text": "11/12",
-        "rationale": "'Both' means multiply the probabilities, not add."
-      },
-      {
-        "id": "B",
-        "text": "2/5",
+        "text": "1/2",
         "rationale": "Multiply numerators and denominators separately."
       },
       {
+        "id": "B",
+        "text": "3/4",
+        "rationale": "That is P(at least one), not P(both)."
+      },
+      {
         "id": "C",
-        "text": "1/8",
+        "text": "1/4",
         "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "19/24",
-        "rationale": "That is P(at least one), not P(both)."
+        "text": "1/12",
+        "rationale": "'Both' means multiply the probabilities, not add."
       }
     ],
     "correct_choice": "C",
-    "explanation": "For independent events, P(both) = 1/6 × 3/4 = 1/8.",
+    "explanation": "For independent events, P(both) = 1/2 × 1/2 = 1/4.",
     "estimated_time_seconds": 85,
     "tags": [
       "probability",
       "independent",
       "family:pb_compound"
     ],
-    "answer_verification": "P=1/8"
+    "answer_verification": "P=1/4"
   },
   {
     "question_id": "sat-math-probability-medium-q03",
@@ -100,38 +100,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "The probability that a randomly chosen part from a production line is defective is 3/8. If 160 parts are produced, how many are expected to be defective?",
+    "prompt": "The probability that a randomly chosen part from a production line is defective is 3/5. If 145 parts are produced, how many are expected to be defective?",
     "choices": [
       {
         "id": "A",
-        "text": "60",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "100",
+        "text": "58",
         "rationale": "That is the expected number of good parts."
       },
       {
+        "id": "B",
+        "text": "116",
+        "rationale": "Multiply 29 by the numerator 3."
+      },
+      {
         "id": "C",
-        "text": "140",
-        "rationale": "Multiply 20 by the numerator 3."
+        "text": "49",
+        "rationale": "Multiply by the probability, not by its reciprocal."
       },
       {
         "id": "D",
-        "text": "54",
-        "rationale": "Multiply by the probability, not by its reciprocal."
+        "text": "87",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "3/8 × 160 = 60.",
+    "correct_choice": "D",
+    "explanation": "3/5 × 145 = 87.",
     "estimated_time_seconds": 80,
     "tags": [
       "probability",
       "expected",
       "family:pb_expected"
     ],
-    "answer_verification": "val=60"
+    "answer_verification": "val=87"
   },
   {
     "question_id": "sat-math-probability-medium-q04",
@@ -145,31 +145,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "two_way_tables",
-    "prompt": "The table summarizes 105 responses. If one response is selected at random, what is the probability that it is from the Adults group and in the Passed category?",
+    "prompt": "The table summarizes 120 responses. If one response is selected at random, what is the probability that it is from the Online group and in the Passed category?",
     "choices": [
       {
         "id": "A",
-        "text": "35/73",
+        "text": "28/67",
         "rationale": "This conditions on the column instead of the grand total."
       },
       {
         "id": "B",
-        "text": "35/62",
-        "rationale": "This conditions on the row instead of using the grand total."
-      },
-      {
-        "id": "C",
-        "text": "62/105",
+        "text": "59/120",
         "rationale": "That is the whole row, not the single cell."
       },
       {
+        "id": "C",
+        "text": "28/59",
+        "rationale": "This conditions on the row instead of using the grand total."
+      },
+      {
         "id": "D",
-        "text": "1/3",
+        "text": "7/30",
         "rationale": "Correct."
       }
     ],
     "correct_choice": "D",
-    "explanation": "The single cell holds 35 of the 105 responses: 1/3.",
+    "explanation": "The single cell holds 28 of the 120 responses: 7/30.",
     "estimated_time_seconds": 90,
     "tags": [
       "probability",
@@ -188,27 +188,27 @@
         ],
         "rows": [
           [
-            "Adults",
-            "35",
-            "27",
-            "62"
+            "Online",
+            "28",
+            "31",
+            "59"
           ],
           [
-            "Children",
-            "38",
-            "5",
-            "43"
+            "In store",
+            "39",
+            "22",
+            "61"
           ],
           [
             "Total",
-            "73",
-            "32",
-            "105"
+            "67",
+            "53",
+            "120"
           ]
         ]
       }
     },
-    "answer_verification": "P=1/3"
+    "answer_verification": "P=7/30"
   },
   {
     "question_id": "sat-math-probability-medium-q05",
@@ -222,24 +222,23 @@
     "version": "1.0.0",
     "question_type": "student_produced",
     "subskill": "simple_probability",
-    "prompt": "A bag contains 12 black, 9 white, and 3 green tokens. If one of the tokens is chosen at random, what is the probability that it is not black?",
+    "prompt": "A bag contains 9 red, 2 green, and 12 yellow chips. If one of the chips is chosen at random, what is the probability that it is not yellow?",
     "answer": {
       "type": "numeric",
-      "value": 0.5,
+      "value": 0.4782608695652174,
       "accepted": [
-        "1/2",
-        "0.5"
+        "11/23"
       ],
       "tolerance": 0.0
     },
-    "explanation": "1 − 12/24 = 1/2.",
+    "explanation": "1 − 12/23 = 11/23.",
     "estimated_time_seconds": 80,
     "tags": [
       "probability",
       "grid-in",
       "family:pb_gridin"
     ],
-    "answer_verification": "val=1/2"
+    "answer_verification": "val=11/23"
   },
   {
     "question_id": "sat-math-probability-medium-q06",
@@ -251,39 +250,41 @@
     "lesson_id": "sat-math-probability-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "multi_step_math",
     "subskill": "simple_probability",
-    "prompt": "A bag contains 8 green, 13 red, and 4 blue marbles. If one of the marbles is selected at random, what is the probability that it is not green?",
+    "prompt": "In a group of 100 employees, 44 work remotely, 9 have a company laptop, and 5 do both. If one of the employees is chosen at random, what is the probability that this person does neither?",
     "choices": [
       {
         "id": "A",
-        "text": "8/17",
-        "rationale": "Compare favourable to total, not to the rest."
+        "text": "1/20",
+        "rationale": "That is the probability of doing both."
       },
       {
         "id": "B",
-        "text": "8/25",
-        "rationale": "This is the probability of drawing green."
+        "text": "13/25",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "17/8",
-        "rationale": "Keep the total in the denominator."
+        "text": "12/25",
+        "rationale": "That is the probability of doing at least one."
       },
       {
         "id": "D",
-        "text": "17/25",
-        "rationale": "Correct."
+        "text": "47/100",
+        "rationale": "Those who do both were subtracted twice; add 5 back."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "P(not green) = 1 − 8/25 = 17/25.",
-    "estimated_time_seconds": 90,
+    "correct_choice": "B",
+    "explanation": "Either or both: 44 + 9 − 5 = 48; neither: 100 − 48 = 52; probability 13/25.",
+    "estimated_time_seconds": 95,
     "tags": [
       "probability",
-      "family:pb_single"
+      "conditional",
+      "word-problem",
+      "family:pb_conditional_words"
     ],
-    "answer_verification": "P=17/25"
+    "answer_verification": "total=100,a=44,b=9,both=5"
   },
   {
     "question_id": "sat-math-probability-medium-q07",
@@ -297,38 +298,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "Two events are independent. The probability that the first machine passes inspection is 3/4, and the probability that the second machine passes inspection is 3/5. What is the probability that both events occur?",
+    "prompt": "A point is chosen at random inside a rectangle that is 11 by 17. A smaller rectangle 3 by 15 lies inside it. What is the probability that the point lies inside the smaller rectangle?",
     "choices": [
       {
         "id": "A",
-        "text": "2/3",
-        "rationale": "Multiply numerators and denominators separately."
+        "text": "142/187",
+        "rationale": "That is the probability of landing OUTSIDE the small rectangle."
       },
       {
         "id": "B",
-        "text": "9/20",
-        "rationale": "Correct."
+        "text": "3/11",
+        "rationale": "Use both dimensions (areas)."
       },
       {
         "id": "C",
-        "text": "9/10",
-        "rationale": "That is P(at least one), not P(both)."
+        "text": "45/187",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "13/30",
-        "rationale": "'Both' means multiply the probabilities, not add."
+        "text": "9/14",
+        "rationale": "Use areas, not perimeters."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "For independent events, P(both) = 3/4 × 3/5 = 9/20.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "C",
+    "explanation": "Probability = area of small/area of large = 45/187 = 45/187.",
+    "estimated_time_seconds": 90,
     "tags": [
       "probability",
-      "independent",
-      "family:pb_compound"
+      "geometric",
+      "family:pb_geometric"
     ],
-    "answer_verification": "P=9/20"
+    "answer_verification": "P=45/187"
   },
   {
     "question_id": "sat-math-probability-medium-q08",
@@ -342,38 +343,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "The probability that a randomly chosen part from a production line is defective is 2/5. If 80 parts are produced, how many are expected to be defective?",
+    "prompt": "A meal consists of one of 6 appetizers, one of 6 main courses, and one of 4 desserts. If a meal is chosen at random, what is the probability that it includes a particular appetizer and a particular dessert?",
     "choices": [
       {
         "id": "A",
-        "text": "40",
-        "rationale": "Multiply by the probability, not by its reciprocal."
+        "text": "1/144",
+        "rationale": "Any of the 6 main courses works, so 6 meals qualify."
       },
       {
         "id": "B",
-        "text": "32",
-        "rationale": "Correct."
+        "text": "1/6",
+        "rationale": "The dessert choice matters too."
       },
       {
         "id": "C",
-        "text": "48",
-        "rationale": "That is the expected number of good parts."
+        "text": "1/24",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "64",
-        "rationale": "Multiply 16 by the numerator 2."
+        "text": "5/12",
+        "rationale": "Independent choices multiply: (1/6)(1/4)."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "2/5 × 80 = 32.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "C",
+    "explanation": "There are 144 meals in all; those with the given appetizer and dessert number 6 (one per main course): 6/144 = 1/24.",
+    "estimated_time_seconds": 95,
     "tags": [
       "probability",
-      "expected",
-      "family:pb_expected"
+      "counting",
+      "family:pb_counting"
     ],
-    "answer_verification": "val=32"
+    "answer_verification": "val=1/24"
   },
   {
     "question_id": "sat-math-probability-medium-q09",
@@ -385,72 +386,39 @@
     "lesson_id": "sat-math-probability-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "two_way_tables",
-    "prompt": "The table summarizes 129 responses. If one response is selected at random, what is the probability that it is from the Adults group and in the Prefers tea category?",
+    "question_type": "multiple_choice",
+    "subskill": "simple_probability",
+    "prompt": "A bag contains 2 black, 14 blue, and 12 green balls. If one of the balls is selected at random, what is the probability that it is green or blue?",
     "choices": [
       {
         "id": "A",
-        "text": "24/65",
-        "rationale": "This conditions on the row instead of using the grand total."
+        "text": "3/7",
+        "rationale": "This counts only the green balls."
       },
       {
         "id": "B",
-        "text": "24/59",
-        "rationale": "This conditions on the column instead of the grand total."
+        "text": "13/14",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "65/129",
-        "rationale": "That is the whole row, not the single cell."
+        "text": "1/14",
+        "rationale": "This is the probability of the third colour."
       },
       {
         "id": "D",
-        "text": "8/43",
-        "rationale": "Correct."
+        "text": "3/14",
+        "rationale": "'Or' with disjoint outcomes adds probabilities; it doesn't multiply."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "The single cell holds 24 of the 129 responses: 8/43.",
+    "correct_choice": "B",
+    "explanation": "P(green or blue) = (12 + 14)/28 = 13/14.",
     "estimated_time_seconds": 90,
     "tags": [
       "probability",
-      "table",
-      "family:pb_table"
+      "family:pb_single"
     ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Survey results",
-        "headers": [
-          "",
-          "Prefers tea",
-          "Prefers coffee",
-          "Total"
-        ],
-        "rows": [
-          [
-            "Adults",
-            "24",
-            "41",
-            "65"
-          ],
-          [
-            "Children",
-            "35",
-            "29",
-            "64"
-          ],
-          [
-            "Total",
-            "59",
-            "70",
-            "129"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "P=8/43"
+    "answer_verification": "P=13/14"
   },
   {
     "question_id": "sat-math-probability-medium-q10",
@@ -462,25 +430,40 @@
     "lesson_id": "sat-math-probability-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "student_produced",
+    "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "A bag contains 4 red, 8 white, and 14 yellow balls. If one of the balls is chosen at random, what is the probability that it is not white?",
-    "answer": {
-      "type": "numeric",
-      "value": 0.6923076923076923,
-      "accepted": [
-        "9/13"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "1 − 8/26 = 9/13.",
-    "estimated_time_seconds": 80,
+    "prompt": "Two events are independent. The probability that a coin lands heads is 1/2, and the probability that a die shows a 6 is 1/6. What is the probability that both events occur?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "2/3",
+        "rationale": "'Both' means multiply the probabilities, not add."
+      },
+      {
+        "id": "B",
+        "text": "1/12",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "1/4",
+        "rationale": "Multiply numerators and denominators separately."
+      },
+      {
+        "id": "D",
+        "text": "7/12",
+        "rationale": "That is P(at least one), not P(both)."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "For independent events, P(both) = 1/2 × 1/6 = 1/12.",
+    "estimated_time_seconds": 85,
     "tags": [
       "probability",
-      "grid-in",
-      "family:pb_gridin"
+      "independent",
+      "family:pb_compound"
     ],
-    "answer_verification": "val=9/13"
+    "answer_verification": "P=1/12"
   },
   {
     "question_id": "sat-math-probability-medium-q11",
@@ -494,130 +477,41 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "A bag contains 2 orange, 5 red, and 5 green balls. If one of the balls is selected at random, what is the probability that it is green or orange?",
+    "prompt": "The probability that a randomly chosen part from a production line is defective is 1/6. If 78 parts are produced, how many are expected to be defective?",
     "choices": [
       {
         "id": "A",
-        "text": "5/72",
-        "rationale": "'Or' with disjoint outcomes adds probabilities; it doesn't multiply."
-      },
-      {
-        "id": "B",
-        "text": "5/12",
-        "rationale": "This counts only the green balls."
-      },
-      {
-        "id": "C",
-        "text": "7/5",
-        "rationale": "Use the total in the denominator."
-      },
-      {
-        "id": "D",
-        "text": "7/12",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "P(green or orange) = (5 + 2)/12 = 7/12.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "probability",
-      "family:pb_single"
-    ],
-    "answer_verification": "P=7/12"
-  },
-  {
-    "question_id": "sat-math-probability-medium-q12",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "probability",
-    "lesson_id": "sat-math-probability-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "simple_probability",
-    "prompt": "Two events are independent. The probability that it rains on Saturday is 2/3, and the probability that it rains on Sunday is 2/3. What is the probability that both events occur?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "4/9",
+        "text": "13",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "8/9",
-        "rationale": "That is P(at least one), not P(both)."
+        "text": "26",
+        "rationale": "Arithmetic slip; recompute 1/6 of 78."
       },
       {
         "id": "C",
-        "text": "5/12",
-        "rationale": "'Both' means multiply the probabilities, not add."
+        "text": "65",
+        "rationale": "That is the expected number of good parts."
       },
       {
         "id": "D",
-        "text": "2/3",
-        "rationale": "Multiply numerators and denominators separately."
+        "text": "78",
+        "rationale": "Multiply by the probability, not by its reciprocal."
       }
     ],
     "correct_choice": "A",
-    "explanation": "For independent events, P(both) = 2/3 × 2/3 = 4/9.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "probability",
-      "independent",
-      "family:pb_compound"
-    ],
-    "answer_verification": "P=4/9"
-  },
-  {
-    "question_id": "sat-math-probability-medium-q13",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "probability",
-    "lesson_id": "sat-math-probability-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "simple_probability",
-    "prompt": "The probability that a randomly chosen part from a production line is defective is 1/4. If 136 parts are produced, how many are expected to be defective?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "136",
-        "rationale": "Multiply by the probability, not by its reciprocal."
-      },
-      {
-        "id": "B",
-        "text": "68",
-        "rationale": "Arithmetic slip; recompute 1/4 of 136."
-      },
-      {
-        "id": "C",
-        "text": "34",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "102",
-        "rationale": "That is the expected number of good parts."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "1/4 × 136 = 34.",
+    "explanation": "1/6 × 78 = 13.",
     "estimated_time_seconds": 80,
     "tags": [
       "probability",
       "expected",
       "family:pb_expected"
     ],
-    "answer_verification": "val=34"
+    "answer_verification": "val=13"
   },
   {
-    "question_id": "sat-math-probability-medium-q14",
+    "question_id": "sat-math-probability-medium-q12",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -637,17 +531,17 @@
       },
       {
         "id": "B",
-        "text": "14/39",
+        "text": "14/59",
         "rationale": "This conditions on the row instead of using the grand total."
       },
       {
         "id": "C",
-        "text": "13/36",
+        "text": "59/108",
         "rationale": "That is the whole row, not the single cell."
       },
       {
         "id": "D",
-        "text": "14/55",
+        "text": "7/27",
         "rationale": "This conditions on the column instead of the grand total."
       }
     ],
@@ -673,25 +567,101 @@
           [
             "Adults",
             "14",
-            "25",
-            "39"
+            "45",
+            "59"
           ],
           [
             "Children",
-            "41",
-            "28",
-            "69"
+            "40",
+            "9",
+            "49"
           ],
           [
             "Total",
-            "55",
-            "53",
+            "54",
+            "54",
             "108"
           ]
         ]
       }
     },
     "answer_verification": "P=7/54"
+  },
+  {
+    "question_id": "sat-math-probability-medium-q13",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "probability",
+    "lesson_id": "sat-math-probability-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "student_produced",
+    "subskill": "simple_probability",
+    "prompt": "A bag contains 12 red, 10 yellow, and 8 green tokens. If one of the tokens is chosen at random, what is the probability that it is not green?",
+    "answer": {
+      "type": "numeric",
+      "value": 0.7333333333333333,
+      "accepted": [
+        "11/15"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "1 − 8/30 = 11/15.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "probability",
+      "grid-in",
+      "family:pb_gridin"
+    ],
+    "answer_verification": "val=11/15"
+  },
+  {
+    "question_id": "sat-math-probability-medium-q14",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "probability",
+    "lesson_id": "sat-math-probability-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multi_step_math",
+    "subskill": "simple_probability",
+    "prompt": "In a group of 80 customers, 46 bought coffee, 58 bought a pastry, and 35 do both. If one of the customers is chosen at random, what is the probability that this person does neither?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "11/80",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "23/40",
+        "rationale": "Those who do both were subtracted twice; add 35 back."
+      },
+      {
+        "id": "C",
+        "text": "69/80",
+        "rationale": "That is the probability of doing at least one."
+      },
+      {
+        "id": "D",
+        "text": "7/16",
+        "rationale": "That is the probability of doing both."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Either or both: 46 + 58 − 35 = 69; neither: 80 − 69 = 11; probability 11/80.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "probability",
+      "conditional",
+      "word-problem",
+      "family:pb_conditional_words"
+    ],
+    "answer_verification": "total=80,a=46,b=58,both=35"
   },
   {
     "question_id": "sat-math-probability-medium-q15",
@@ -703,25 +673,40 @@
     "lesson_id": "sat-math-probability-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "student_produced",
+    "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "A bag contains 12 black, 6 orange, and 5 purple marbles. If one of the marbles is chosen at random, what is the probability that it is not black?",
-    "answer": {
-      "type": "numeric",
-      "value": 0.4782608695652174,
-      "accepted": [
-        "11/23"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "1 − 12/23 = 11/23.",
-    "estimated_time_seconds": 80,
+    "prompt": "A point is chosen at random inside a rectangle that is 15 by 20. A smaller rectangle 14 by 4 lies inside it. What is the probability that the point lies inside the smaller rectangle?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "14/75",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "61/75",
+        "rationale": "That is the probability of landing OUTSIDE the small rectangle."
+      },
+      {
+        "id": "C",
+        "text": "14/15",
+        "rationale": "Use both dimensions (areas)."
+      },
+      {
+        "id": "D",
+        "text": "18/35",
+        "rationale": "Use areas, not perimeters."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Probability = area of small/area of large = 56/300 = 14/75.",
+    "estimated_time_seconds": 90,
     "tags": [
       "probability",
-      "grid-in",
-      "family:pb_gridin"
+      "geometric",
+      "family:pb_geometric"
     ],
-    "answer_verification": "val=11/23"
+    "answer_verification": "P=14/75"
   },
   {
     "question_id": "sat-math-probability-medium-q16",
@@ -735,37 +720,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "A bag contains 10 orange, 14 yellow, and 3 green tokens. If one of the tokens is selected at random, what is the probability that it is yellow or orange?",
+    "prompt": "A meal consists of one of 2 appetizers, one of 5 main courses, and one of 4 desserts. If a meal is chosen at random, what is the probability that it includes a particular appetizer and a particular dessert?",
     "choices": [
       {
         "id": "A",
-        "text": "140/729",
-        "rationale": "'Or' with disjoint outcomes adds probabilities; it doesn't multiply."
+        "text": "1/40",
+        "rationale": "Any of the 5 main courses works, so 5 meals qualify."
       },
       {
         "id": "B",
-        "text": "1/9",
-        "rationale": "This is the probability of the third colour."
+        "text": "3/4",
+        "rationale": "Independent choices multiply: (1/2)(1/4)."
       },
       {
         "id": "C",
-        "text": "14/27",
-        "rationale": "This counts only the yellow tokens."
+        "text": "1/2",
+        "rationale": "The dessert choice matters too."
       },
       {
         "id": "D",
-        "text": "8/9",
+        "text": "1/8",
         "rationale": "Correct."
       }
     ],
     "correct_choice": "D",
-    "explanation": "P(yellow or orange) = (14 + 10)/27 = 8/9.",
-    "estimated_time_seconds": 90,
+    "explanation": "There are 40 meals in all; those with the given appetizer and dessert number 5 (one per main course): 5/40 = 1/8.",
+    "estimated_time_seconds": 95,
     "tags": [
       "probability",
-      "family:pb_single"
+      "counting",
+      "family:pb_counting"
     ],
-    "answer_verification": "P=8/9"
+    "answer_verification": "val=1/8"
   },
   {
     "question_id": "sat-math-probability-medium-q17",
@@ -779,38 +765,37 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "Two events are independent. The probability that the first spinner lands on red is 2/3, and the probability that the second spinner lands on blue is 3/4. What is the probability that both events occur?",
+    "prompt": "A bag contains 13 orange, 4 red, and 5 black beads. If one of the beads is selected at random, what is the probability that it is red or black?",
     "choices": [
       {
         "id": "A",
-        "text": "5/7",
-        "rationale": "Multiply numerators and denominators separately."
+        "text": "2/11",
+        "rationale": "This counts only the red beads."
       },
       {
         "id": "B",
-        "text": "1/2",
-        "rationale": "Correct."
+        "text": "5/121",
+        "rationale": "'Or' with disjoint outcomes adds probabilities; it doesn't multiply."
       },
       {
         "id": "C",
-        "text": "3/4",
-        "rationale": "Both must happen, so the probability is less than either alone."
+        "text": "9/22",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "11/12",
-        "rationale": "That is P(at least one), not P(both)."
+        "text": "13/22",
+        "rationale": "This is the probability of the third colour."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "For independent events, P(both) = 2/3 × 3/4 = 1/2.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "C",
+    "explanation": "P(red or black) = (4 + 5)/22 = 9/22.",
+    "estimated_time_seconds": 90,
     "tags": [
       "probability",
-      "independent",
-      "family:pb_compound"
+      "family:pb_single"
     ],
-    "answer_verification": "P=1/2"
+    "answer_verification": "P=9/22"
   },
   {
     "question_id": "sat-math-probability-medium-q18",
@@ -824,38 +809,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "The probability that a randomly chosen part from a production line is defective is 3/5. If 130 parts are produced, how many are expected to be defective?",
+    "prompt": "Two events are independent. The probability that the first spinner lands on red is 1/2, and the probability that the second spinner lands on blue is 3/5. What is the probability that both events occur?",
     "choices": [
       {
         "id": "A",
-        "text": "78",
-        "rationale": "Correct."
+        "text": "4/5",
+        "rationale": "That is P(at least one), not P(both)."
       },
       {
         "id": "B",
-        "text": "44",
-        "rationale": "Multiply by the probability, not by its reciprocal."
+        "text": "3/10",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "104",
-        "rationale": "Multiply 26 by the numerator 3."
+        "text": "4/7",
+        "rationale": "Multiply numerators and denominators separately."
       },
       {
         "id": "D",
-        "text": "52",
-        "rationale": "That is the expected number of good parts."
+        "text": "11/60",
+        "rationale": "'Both' means multiply the probabilities, not add."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "3/5 × 130 = 78.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "B",
+    "explanation": "For independent events, P(both) = 1/2 × 3/5 = 3/10.",
+    "estimated_time_seconds": 85,
     "tags": [
       "probability",
-      "expected",
-      "family:pb_expected"
+      "independent",
+      "family:pb_compound"
     ],
-    "answer_verification": "val=78"
+    "answer_verification": "P=3/10"
   },
   {
     "question_id": "sat-math-probability-medium-q19",
@@ -867,33 +852,78 @@
     "lesson_id": "sat-math-probability-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "two_way_tables",
-    "prompt": "The table summarizes 107 responses. If one response is selected at random, what is the probability that it is from the Online group and in the Prefers tea category?",
+    "question_type": "multiple_choice",
+    "subskill": "simple_probability",
+    "prompt": "The probability that a randomly chosen part from a production line is defective is 1/4. If 80 parts are produced, how many are expected to be defective?",
     "choices": [
       {
         "id": "A",
-        "text": "61/107",
+        "text": "80",
+        "rationale": "Multiply by the probability, not by its reciprocal."
+      },
+      {
+        "id": "B",
+        "text": "20",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "60",
+        "rationale": "That is the expected number of good parts."
+      },
+      {
+        "id": "D",
+        "text": "40",
+        "rationale": "Arithmetic slip; recompute 1/4 of 80."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "1/4 × 80 = 20.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "probability",
+      "expected",
+      "family:pb_expected"
+    ],
+    "answer_verification": "val=20"
+  },
+  {
+    "question_id": "sat-math-probability-medium-q20",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "probability",
+    "lesson_id": "sat-math-probability-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "two_way_tables",
+    "prompt": "The table summarizes 124 responses. If one response is selected at random, what is the probability that it is from the Adults group and in the Prefers tea category?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "69/124",
         "rationale": "That is the whole row, not the single cell."
       },
       {
         "id": "B",
-        "text": "19/46",
+        "text": "24/35",
         "rationale": "This conditions on the column instead of the grand total."
       },
       {
         "id": "C",
-        "text": "19/107",
+        "text": "6/31",
         "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "19/61",
+        "text": "8/23",
         "rationale": "This conditions on the row instead of using the grand total."
       }
     ],
     "correct_choice": "C",
-    "explanation": "The single cell holds 19 of the 107 responses: 19/107.",
+    "explanation": "The single cell holds 24 of the 124 responses: 6/31.",
     "estimated_time_seconds": 90,
     "tags": [
       "probability",
@@ -912,56 +942,26 @@
         ],
         "rows": [
           [
-            "Online",
-            "19",
-            "42",
-            "61"
+            "Adults",
+            "24",
+            "45",
+            "69"
           ],
           [
-            "In store",
-            "27",
-            "19",
-            "46"
+            "Children",
+            "11",
+            "44",
+            "55"
           ],
           [
             "Total",
-            "46",
-            "61",
-            "107"
+            "35",
+            "89",
+            "124"
           ]
         ]
       }
     },
-    "answer_verification": "P=19/107"
-  },
-  {
-    "question_id": "sat-math-probability-medium-q20",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "probability",
-    "lesson_id": "sat-math-probability-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "student_produced",
-    "subskill": "simple_probability",
-    "prompt": "A bag contains 10 white, 7 yellow, and 7 blue beads. If one of the beads is chosen at random, what is the probability that it is not blue?",
-    "answer": {
-      "type": "numeric",
-      "value": 0.7083333333333334,
-      "accepted": [
-        "17/24"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "1 − 7/24 = 17/24.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "probability",
-      "grid-in",
-      "family:pb_gridin"
-    ],
-    "answer_verification": "val=17/24"
+    "answer_verification": "P=6/31"
   }
 ]

@@ -11,37 +11,37 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "In a survey, 20% of respondents own a bicycle, 10% own a scooter, and 5% own both. If a respondent is selected at random, what is the probability that the respondent owns a bicycle or a scooter (or both)?",
+    "prompt": "In a survey, 58% of respondents own a bicycle, 32% own a scooter, and 4% own both. If a respondent is selected at random, what is the probability that the respondent owns a bicycle or a scooter (or both)?",
     "choices": [
       {
         "id": "A",
-        "text": "3/10",
-        "rationale": "Subtract the overlap; it was counted twice."
-      },
-      {
-        "id": "B",
-        "text": "7/20",
+        "text": "47/50",
         "rationale": "The overlap is subtracted, not added."
       },
       {
+        "id": "B",
+        "text": "1/25",
+        "rationale": "That is P(both), not P(either)."
+      },
+      {
         "id": "C",
-        "text": "1/4",
+        "text": "43/50",
         "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "1/20",
-        "rationale": "That is P(both), not P(either)."
+        "text": "9/10",
+        "rationale": "Subtract the overlap; it was counted twice."
       }
     ],
     "correct_choice": "C",
-    "explanation": "P(A or B) = P(A) + P(B) − P(A and B) = (20 + 10 − 5)/100 = 1/4.",
+    "explanation": "P(A or B) = P(A) + P(B) − P(A and B) = (58 + 32 − 4)/100 = 43/50.",
     "estimated_time_seconds": 90,
     "tags": [
       "probability",
       "family:pb_single"
     ],
-    "answer_verification": "P=1/4"
+    "answer_verification": "P=43/50"
   },
   {
     "question_id": "sat-math-probability-hard-q02",
@@ -55,38 +55,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "A bag contains 4 green, 8 yellow, and 3 blue beads. Two beads are drawn at random without replacement. What is the probability that the first is yellow and the second is blue?",
+    "prompt": "A bag contains 3 purple, 3 white, and 7 orange tokens. Two tokens are drawn at random without replacement. What is the probability that the first is purple and the second is white?",
     "choices": [
       {
         "id": "A",
-        "text": "4/35",
+        "text": "3/52",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "8/75",
-        "rationale": "The second draw is from 14 beads, not 15."
+        "text": "1/26",
+        "rationale": "The white count doesn't drop after drawing a purple."
       },
       {
         "id": "C",
-        "text": "11/15",
+        "text": "6/13",
         "rationale": "'And' for two draws multiplies; it doesn't add."
       },
       {
         "id": "D",
-        "text": "8/105",
-        "rationale": "The blue count doesn't drop after drawing a yellow."
+        "text": "9/169",
+        "rationale": "The second draw is from 12 tokens, not 13."
       }
     ],
     "correct_choice": "A",
-    "explanation": "P = 8/15 × 3/14 = 4/35.",
+    "explanation": "P = 3/13 × 3/12 = 3/52.",
     "estimated_time_seconds": 100,
     "tags": [
       "probability",
       "without-replacement",
       "family:pb_compound"
     ],
-    "answer_verification": "P=4/35"
+    "answer_verification": "P=3/52"
   },
   {
     "question_id": "sat-math-probability-hard-q03",
@@ -100,38 +100,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "In a random sample of 400 light bulbs from a factory, 36 were defective. Based on the sample, approximately how many defective bulbs would be expected in a shipment of 1000 bulbs?",
+    "prompt": "In a random sample of 300 light bulbs from a factory, 21 were defective. Based on the sample, approximately how many defective bulbs would be expected in a shipment of 1000 bulbs?",
     "choices": [
       {
         "id": "A",
-        "text": "360",
-        "rationale": "Divide by the sample size 400, not by 100."
+        "text": "70",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "180",
-        "rationale": "Use the fraction defective (k/n), not n/k."
+        "text": "210",
+        "rationale": "Divide by the sample size 300, not by 100."
       },
       {
         "id": "C",
-        "text": "36",
+        "text": "21",
         "rationale": "That is the number defective in the sample, not the shipment."
       },
       {
         "id": "D",
-        "text": "90",
-        "rationale": "Correct."
+        "text": "140",
+        "rationale": "Use the fraction defective (k/n), not n/k."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Sample rate = 36/400 = 9/100; × 1000 = 90.",
+    "correct_choice": "A",
+    "explanation": "Sample rate = 21/300 = 7/100; × 1000 = 70.",
     "estimated_time_seconds": 80,
     "tags": [
       "probability",
       "expected",
       "family:pb_expected"
     ],
-    "answer_verification": "val=90"
+    "answer_verification": "val=70"
   },
   {
     "question_id": "sat-math-probability-hard-q04",
@@ -145,272 +145,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "two_way_tables",
-    "prompt": "The table summarizes 84 responses. If a response in the Prefers tea category is selected at random, what is the probability that it is from the Online group?",
+    "prompt": "The table summarizes 90 responses. If a response in the Yes category is selected at random, what is the probability that it is from the Online group?",
     "choices": [
       {
         "id": "A",
-        "text": "13/54",
-        "rationale": "Condition on the column, not the row."
+        "text": "23/90",
+        "rationale": "Condition on the column total, not the grand total."
       },
       {
         "id": "B",
-        "text": "12/25",
+        "text": "1/2",
+        "rationale": "Condition on the column, not the row."
+      },
+      {
+        "id": "C",
+        "text": "21/44",
         "rationale": "That is the probability of the In store group within the column."
       },
       {
-        "id": "C",
-        "text": "13/84",
-        "rationale": "Condition on the column total, not the grand total."
-      },
-      {
         "id": "D",
-        "text": "13/25",
+        "text": "23/44",
         "rationale": "Correct."
       }
     ],
     "correct_choice": "D",
-    "explanation": "Restrict to the Prefers tea column (25 responses); 13 are Online: 13/25.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "probability",
-      "table",
-      "family:pb_table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Survey results",
-        "headers": [
-          "",
-          "Prefers tea",
-          "Prefers coffee",
-          "Total"
-        ],
-        "rows": [
-          [
-            "Online",
-            "13",
-            "41",
-            "54"
-          ],
-          [
-            "In store",
-            "12",
-            "18",
-            "30"
-          ],
-          [
-            "Total",
-            "25",
-            "59",
-            "84"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "P=13/25"
-  },
-  {
-    "question_id": "sat-math-probability-hard-q05",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "probability",
-    "lesson_id": "sat-math-probability-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "student_produced",
-    "subskill": "simple_probability",
-    "prompt": "The probability that a randomly selected customer uses a coupon is 5%. Of 80 customers, how many are expected to use a coupon?",
-    "answer": {
-      "type": "numeric",
-      "value": 4,
-      "accepted": [
-        "4"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "5/100 × 80 = 4.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "probability",
-      "grid-in",
-      "family:pb_gridin"
-    ],
-    "answer_verification": "val=4"
-  },
-  {
-    "question_id": "sat-math-probability-hard-q06",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "probability",
-    "lesson_id": "sat-math-probability-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "simple_probability",
-    "prompt": "In a survey, 35% of respondents own a bicycle, 15% own a scooter, and 10% own both. If a respondent is selected at random, what is the probability that the respondent owns a bicycle or a scooter (or both)?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "1/10",
-        "rationale": "That is P(both), not P(either)."
-      },
-      {
-        "id": "B",
-        "text": "2/5",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "1/2",
-        "rationale": "Subtract the overlap; it was counted twice."
-      },
-      {
-        "id": "D",
-        "text": "3/5",
-        "rationale": "The overlap is subtracted, not added."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "P(A or B) = P(A) + P(B) − P(A and B) = (35 + 15 − 10)/100 = 2/5.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "probability",
-      "family:pb_single"
-    ],
-    "answer_verification": "P=2/5"
-  },
-  {
-    "question_id": "sat-math-probability-hard-q07",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "probability",
-    "lesson_id": "sat-math-probability-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "simple_probability",
-    "prompt": "A bag contains 10 yellow, 5 blue, and 3 orange balls. Two balls are drawn at random without replacement. What is the probability that the first is yellow and the second is blue?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "25/162",
-        "rationale": "The second draw is from 17 balls, not 18."
-      },
-      {
-        "id": "B",
-        "text": "25/153",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "5/6",
-        "rationale": "'And' for two draws multiplies; it doesn't add."
-      },
-      {
-        "id": "D",
-        "text": "20/153",
-        "rationale": "The blue count doesn't drop after drawing a yellow."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "P = 10/18 × 5/17 = 25/153.",
-    "estimated_time_seconds": 100,
-    "tags": [
-      "probability",
-      "without-replacement",
-      "family:pb_compound"
-    ],
-    "answer_verification": "P=25/153"
-  },
-  {
-    "question_id": "sat-math-probability-hard-q08",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "probability",
-    "lesson_id": "sat-math-probability-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "simple_probability",
-    "prompt": "In a random sample of 200 light bulbs from a factory, 14 were defective. Based on the sample, approximately how many defective bulbs would be expected in a shipment of 1500 bulbs?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "120",
-        "rationale": "Arithmetic slip; recompute k/n × 1500."
-      },
-      {
-        "id": "B",
-        "text": "210",
-        "rationale": "Use the fraction defective (k/n), not n/k."
-      },
-      {
-        "id": "C",
-        "text": "14",
-        "rationale": "That is the number defective in the sample, not the shipment."
-      },
-      {
-        "id": "D",
-        "text": "105",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Sample rate = 14/200 = 7/100; × 1500 = 105.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "probability",
-      "expected",
-      "family:pb_expected"
-    ],
-    "answer_verification": "val=105"
-  },
-  {
-    "question_id": "sat-math-probability-hard-q09",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "probability",
-    "lesson_id": "sat-math-probability-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "two_way_tables",
-    "prompt": "The table summarizes 122 responses. If a response in the Yes category is selected at random, what is the probability that it is from the Adults group?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "43/122",
-        "rationale": "Condition on the column total, not the grand total."
-      },
-      {
-        "id": "B",
-        "text": "43/74",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "43/72",
-        "rationale": "Condition on the column, not the row."
-      },
-      {
-        "id": "D",
-        "text": "31/74",
-        "rationale": "That is the probability of the Children group within the column."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Restrict to the Yes column (74 responses); 43 are Adults: 43/74.",
+    "explanation": "Restrict to the Yes column (44 responses); 23 are Online: 23/44.",
     "estimated_time_seconds": 90,
     "tags": [
       "probability",
@@ -429,27 +188,237 @@
         ],
         "rows": [
           [
-            "Adults",
-            "43",
-            "29",
-            "72"
+            "Online",
+            "23",
+            "23",
+            "46"
           ],
           [
-            "Children",
-            "31",
-            "19",
-            "50"
+            "In store",
+            "21",
+            "23",
+            "44"
           ],
           [
             "Total",
-            "74",
-            "48",
-            "122"
+            "44",
+            "46",
+            "90"
           ]
         ]
       }
     },
-    "answer_verification": "P=43/74"
+    "answer_verification": "P=23/44"
+  },
+  {
+    "question_id": "sat-math-probability-hard-q05",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "probability",
+    "lesson_id": "sat-math-probability-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "student_produced",
+    "subskill": "simple_probability",
+    "prompt": "The probability that a randomly selected customer uses a coupon is 4%. Of 500 customers, how many are expected to use a coupon?",
+    "answer": {
+      "type": "numeric",
+      "value": 20,
+      "accepted": [
+        "20"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "4/100 × 500 = 20.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "probability",
+      "grid-in",
+      "family:pb_gridin"
+    ],
+    "answer_verification": "val=20"
+  },
+  {
+    "question_id": "sat-math-probability-hard-q06",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "probability",
+    "lesson_id": "sat-math-probability-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multi_step_math",
+    "subskill": "simple_probability",
+    "prompt": "In a group of 60 students, 32 play a sport, 6 play an instrument, and 2 do both. If one of the students who do NOT play a sport is chosen at random, what is the probability that this person plays an instrument?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "3/14",
+        "rationale": "Those who do both are in the other group; subtract them."
+      },
+      {
+        "id": "B",
+        "text": "1/15",
+        "rationale": "Condition on the 28 who do not play a sport."
+      },
+      {
+        "id": "C",
+        "text": "1/14",
+        "rationale": "Those who do both DO play a sport."
+      },
+      {
+        "id": "D",
+        "text": "1/7",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Those who do not play a sport: 60 − 32 = 28; of them, 6 − 2 = 4 play an instrument: 1/7.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "probability",
+      "conditional",
+      "word-problem",
+      "family:pb_conditional_words"
+    ],
+    "answer_verification": "total=60,a=32,b=6,both=2"
+  },
+  {
+    "question_id": "sat-math-probability-hard-q07",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "probability",
+    "lesson_id": "sat-math-probability-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "simple_probability",
+    "prompt": "A square is inscribed in a circle of radius 5. If a point is chosen at random inside the circle, what is the probability that it lies inside the square, in terms of π?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "π/4",
+        "rationale": "That is the probability for a circle inscribed in a square."
+      },
+      {
+        "id": "B",
+        "text": "1/2",
+        "rationale": "The circle's area involves π."
+      },
+      {
+        "id": "C",
+        "text": "4/π",
+        "rationale": "The probability must be less than 1."
+      },
+      {
+        "id": "D",
+        "text": "2/π",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "The square's diagonal is 2·5 = 10, so its area is 50; circle area 25π; ratio = 2/π.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "probability",
+      "geometric",
+      "family:pb_geometric"
+    ],
+    "answer_verification": "square_in_circle 2/π"
+  },
+  {
+    "question_id": "sat-math-probability-hard-q08",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "probability",
+    "lesson_id": "sat-math-probability-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "simple_probability",
+    "prompt": "What is the probability that the two numbers showing on a pair of fair dice add to 11?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "1/18",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "1/11",
+        "rationale": "The 11 possible sums are not equally likely."
+      },
+      {
+        "id": "C",
+        "text": "1/6",
+        "rationale": "There are 36 outcomes, not 12."
+      },
+      {
+        "id": "D",
+        "text": "1/36",
+        "rationale": "More than one pair of numbers adds to 11."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "There are 36 equally likely outcomes; 2 of them have sum 11: 2/36 = 1/18.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "probability",
+      "counting",
+      "family:pb_counting"
+    ],
+    "answer_verification": "val=1/18"
+  },
+  {
+    "question_id": "sat-math-probability-hard-q09",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "probability",
+    "lesson_id": "sat-math-probability-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "simple_probability",
+    "prompt": "In a survey, 24% of respondents own a bicycle, 20% own a scooter, and 8% own both. If a respondent is selected at random, what is the probability that the respondent owns a bicycle or a scooter (or both)?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "11/25",
+        "rationale": "Subtract the overlap; it was counted twice."
+      },
+      {
+        "id": "B",
+        "text": "13/25",
+        "rationale": "The overlap is subtracted, not added."
+      },
+      {
+        "id": "C",
+        "text": "9/25",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "2/25",
+        "rationale": "That is P(both), not P(either)."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "P(A or B) = P(A) + P(B) − P(A and B) = (24 + 20 − 8)/100 = 9/25.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "probability",
+      "family:pb_single"
+    ],
+    "answer_verification": "P=9/25"
   },
   {
     "question_id": "sat-math-probability-hard-q10",
@@ -461,25 +430,40 @@
     "lesson_id": "sat-math-probability-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "student_produced",
+    "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "The probability that a randomly selected customer uses a coupon is 20%. Of 60 customers, how many are expected to use a coupon?",
-    "answer": {
-      "type": "numeric",
-      "value": 12,
-      "accepted": [
-        "12"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "20/100 × 60 = 12.",
-    "estimated_time_seconds": 80,
+    "prompt": "A bag contains 14 black, 6 blue, and 6 green chips. Two chips are drawn at random without replacement. What is the probability that both are black?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "7/13",
+        "rationale": "This is the probability for a single draw."
+      },
+      {
+        "id": "B",
+        "text": "7/25",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "7/26",
+        "rationale": "Reduce the total by one on the second draw as well."
+      },
+      {
+        "id": "D",
+        "text": "49/169",
+        "rationale": "Without replacement, the second draw has one fewer black and one fewer total."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "P(both black) = 14/26 × 13/25 = 7/25.",
+    "estimated_time_seconds": 100,
     "tags": [
       "probability",
-      "grid-in",
-      "family:pb_gridin"
+      "without-replacement",
+      "family:pb_compound"
     ],
-    "answer_verification": "val=12"
+    "answer_verification": "P=7/25"
   },
   {
     "question_id": "sat-math-probability-hard-q11",
@@ -493,37 +477,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "In a survey, 45% of respondents own a bicycle, 30% own a scooter, and 10% own both. If a respondent is selected at random, what is the probability that the respondent owns a bicycle or a scooter (or both)?",
+    "prompt": "In a random sample of 200 light bulbs from a factory, 12 were defective. Based on the sample, approximately how many defective bulbs would be expected in a shipment of 5000 bulbs?",
     "choices": [
       {
         "id": "A",
-        "text": "17/20",
-        "rationale": "The overlap is subtracted, not added."
+        "text": "600",
+        "rationale": "Use the fraction defective (k/n), not n/k."
       },
       {
         "id": "B",
-        "text": "3/4",
-        "rationale": "Subtract the overlap; it was counted twice."
+        "text": "12",
+        "rationale": "That is the number defective in the sample, not the shipment."
       },
       {
         "id": "C",
-        "text": "13/20",
+        "text": "300",
         "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "1/10",
-        "rationale": "That is P(both), not P(either)."
+        "text": "350",
+        "rationale": "Arithmetic slip; recompute k/n × 5000."
       }
     ],
     "correct_choice": "C",
-    "explanation": "P(A or B) = P(A) + P(B) − P(A and B) = (45 + 30 − 10)/100 = 13/20.",
-    "estimated_time_seconds": 90,
+    "explanation": "Sample rate = 12/200 = 3/50; × 5000 = 300.",
+    "estimated_time_seconds": 80,
     "tags": [
       "probability",
-      "family:pb_single"
+      "expected",
+      "family:pb_expected"
     ],
-    "answer_verification": "P=13/20"
+    "answer_verification": "val=300"
   },
   {
     "question_id": "sat-math-probability-hard-q12",
@@ -535,40 +520,72 @@
     "lesson_id": "sat-math-probability-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "simple_probability",
-    "prompt": "A bag contains 11 green, 13 white, and 8 black balls. Two balls are drawn at random without replacement. What is the probability that both are green?",
+    "question_type": "data_interpretation",
+    "subskill": "two_way_tables",
+    "prompt": "The table summarizes 118 responses. If a response in the Yes category is selected at random, what is the probability that it is from the Online group?",
     "choices": [
       {
         "id": "A",
-        "text": "55/512",
-        "rationale": "Reduce the total by one on the second draw as well."
+        "text": "47/118",
+        "rationale": "That is the probability of the column itself."
       },
       {
         "id": "B",
-        "text": "121/1024",
-        "rationale": "Without replacement, the second draw has one fewer green and one fewer total."
+        "text": "6/59",
+        "rationale": "Condition on the column total, not the grand total."
       },
       {
         "id": "C",
-        "text": "11/32",
-        "rationale": "This is the probability for a single draw."
+        "text": "35/47",
+        "rationale": "That is the probability of the In store group within the column."
       },
       {
         "id": "D",
-        "text": "55/496",
+        "text": "12/47",
         "rationale": "Correct."
       }
     ],
     "correct_choice": "D",
-    "explanation": "P(both green) = 11/32 × 10/31 = 55/496.",
-    "estimated_time_seconds": 100,
+    "explanation": "Restrict to the Yes column (47 responses); 12 are Online: 12/47.",
+    "estimated_time_seconds": 90,
     "tags": [
       "probability",
-      "without-replacement",
-      "family:pb_compound"
+      "table",
+      "family:pb_table"
     ],
-    "answer_verification": "P=55/496"
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Survey results",
+        "headers": [
+          "",
+          "Yes",
+          "No",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Online",
+            "12",
+            "35",
+            "47"
+          ],
+          [
+            "In store",
+            "35",
+            "36",
+            "71"
+          ],
+          [
+            "Total",
+            "47",
+            "71",
+            "118"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "P=12/47"
   },
   {
     "question_id": "sat-math-probability-hard-q13",
@@ -580,40 +597,25 @@
     "lesson_id": "sat-math-probability-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "student_produced",
     "subskill": "simple_probability",
-    "prompt": "In a random sample of 300 light bulbs from a factory, 21 were defective. Based on the sample, approximately how many defective bulbs would be expected in a shipment of 5000 bulbs?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "21",
-        "rationale": "That is the number defective in the sample, not the shipment."
-      },
-      {
-        "id": "B",
-        "text": "350",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "700",
-        "rationale": "Use the fraction defective (k/n), not n/k."
-      },
-      {
-        "id": "D",
-        "text": "1050",
-        "rationale": "Divide by the sample size 300, not by 100."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Sample rate = 21/300 = 7/100; × 5000 = 350.",
+    "prompt": "The probability that a randomly selected customer uses a coupon is 35%. Of 80 customers, how many are expected to use a coupon?",
+    "answer": {
+      "type": "numeric",
+      "value": 28,
+      "accepted": [
+        "28"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "35/100 × 80 = 28.",
     "estimated_time_seconds": 80,
     "tags": [
       "probability",
-      "expected",
-      "family:pb_expected"
+      "grid-in",
+      "family:pb_gridin"
     ],
-    "answer_verification": "val=350"
+    "answer_verification": "val=28"
   },
   {
     "question_id": "sat-math-probability-hard-q14",
@@ -625,33 +627,303 @@
     "lesson_id": "sat-math-probability-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "two_way_tables",
-    "prompt": "The table summarizes 102 responses. If a response in the Prefers tea category is selected at random, what is the probability that it is from the Online group?",
+    "question_type": "multi_step_math",
+    "subskill": "simple_probability",
+    "prompt": "In a group of 60 customers, 21 bought coffee, 36 bought a pastry, and 4 do both. If one of the customers who do NOT bought coffee is chosen at random, what is the probability that this person bought a pastry?",
     "choices": [
       {
         "id": "A",
-        "text": "20/41",
-        "rationale": "That is the probability of the In store group within the column."
+        "text": "4/39",
+        "rationale": "Those who do both DO bought coffee."
       },
       {
         "id": "B",
-        "text": "21/40",
-        "rationale": "Condition on the column, not the row."
+        "text": "8/15",
+        "rationale": "Condition on the 39 who do not bought coffee."
       },
       {
         "id": "C",
-        "text": "21/41",
+        "text": "32/39",
         "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "7/34",
-        "rationale": "Condition on the column total, not the grand total."
+        "text": "12/13",
+        "rationale": "Those who do both are in the other group; subtract them."
       }
     ],
     "correct_choice": "C",
-    "explanation": "Restrict to the Prefers tea column (41 responses); 21 are Online: 21/41.",
+    "explanation": "Those who do not bought coffee: 60 − 21 = 39; of them, 36 − 4 = 32 bought a pastry: 32/39.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "probability",
+      "conditional",
+      "word-problem",
+      "family:pb_conditional_words"
+    ],
+    "answer_verification": "total=60,a=21,b=36,both=4"
+  },
+  {
+    "question_id": "sat-math-probability-hard-q15",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "probability",
+    "lesson_id": "sat-math-probability-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "simple_probability",
+    "prompt": "A square is inscribed in a circle of radius 4. If a point is chosen at random inside the circle, what is the probability that it lies inside the square, in terms of π?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "4/π",
+        "rationale": "The probability must be less than 1."
+      },
+      {
+        "id": "B",
+        "text": "2/π",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "π/4",
+        "rationale": "That is the probability for a circle inscribed in a square."
+      },
+      {
+        "id": "D",
+        "text": "1/2",
+        "rationale": "The circle's area involves π."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "The square's diagonal is 2·4 = 8, so its area is 32; circle area 16π; ratio = 2/π.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "probability",
+      "geometric",
+      "family:pb_geometric"
+    ],
+    "answer_verification": "square_in_circle 2/π"
+  },
+  {
+    "question_id": "sat-math-probability-hard-q16",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "probability",
+    "lesson_id": "sat-math-probability-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "simple_probability",
+    "prompt": "What is the probability that the two numbers showing on a pair of fair dice add to 6?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "1/36",
+        "rationale": "More than one pair of numbers adds to 6."
+      },
+      {
+        "id": "B",
+        "text": "1/11",
+        "rationale": "The 11 possible sums are not equally likely."
+      },
+      {
+        "id": "C",
+        "text": "5/36",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "5/12",
+        "rationale": "There are 36 outcomes, not 12."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "There are 36 equally likely outcomes; 5 of them have sum 6: 5/36 = 5/36.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "probability",
+      "counting",
+      "family:pb_counting"
+    ],
+    "answer_verification": "val=5/36"
+  },
+  {
+    "question_id": "sat-math-probability-hard-q17",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "probability",
+    "lesson_id": "sat-math-probability-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "simple_probability",
+    "prompt": "In a survey, 26% of respondents own a bicycle, 40% own a scooter, and 15% own both. If a respondent is selected at random, what is the probability that the respondent owns a bicycle or a scooter (or both)?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "51/100",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "81/100",
+        "rationale": "The overlap is subtracted, not added."
+      },
+      {
+        "id": "C",
+        "text": "3/20",
+        "rationale": "That is P(both), not P(either)."
+      },
+      {
+        "id": "D",
+        "text": "33/50",
+        "rationale": "Subtract the overlap; it was counted twice."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "P(A or B) = P(A) + P(B) − P(A and B) = (26 + 40 − 15)/100 = 51/100.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "probability",
+      "family:pb_single"
+    ],
+    "answer_verification": "P=51/100"
+  },
+  {
+    "question_id": "sat-math-probability-hard-q18",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "probability",
+    "lesson_id": "sat-math-probability-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "simple_probability",
+    "prompt": "A bag contains 14 blue, 5 yellow, and 6 green beads. Two beads are drawn at random without replacement. What is the probability that both are yellow?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "4/125",
+        "rationale": "Reduce the total by one on the second draw as well."
+      },
+      {
+        "id": "B",
+        "text": "1/25",
+        "rationale": "Without replacement, the second draw has one fewer yellow and one fewer total."
+      },
+      {
+        "id": "C",
+        "text": "1/5",
+        "rationale": "This is the probability for a single draw."
+      },
+      {
+        "id": "D",
+        "text": "1/30",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "P(both yellow) = 5/25 × 4/24 = 1/30.",
+    "estimated_time_seconds": 100,
+    "tags": [
+      "probability",
+      "without-replacement",
+      "family:pb_compound"
+    ],
+    "answer_verification": "P=1/30"
+  },
+  {
+    "question_id": "sat-math-probability-hard-q19",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "probability",
+    "lesson_id": "sat-math-probability-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "simple_probability",
+    "prompt": "In a random sample of 800 light bulbs from a factory, 88 were defective. Based on the sample, approximately how many defective bulbs would be expected in a shipment of 1000 bulbs?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "110",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "220",
+        "rationale": "Use the fraction defective (k/n), not n/k."
+      },
+      {
+        "id": "C",
+        "text": "880",
+        "rationale": "Divide by the sample size 800, not by 100."
+      },
+      {
+        "id": "D",
+        "text": "88",
+        "rationale": "That is the number defective in the sample, not the shipment."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Sample rate = 88/800 = 11/100; × 1000 = 110.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "probability",
+      "expected",
+      "family:pb_expected"
+    ],
+    "answer_verification": "val=110"
+  },
+  {
+    "question_id": "sat-math-probability-hard-q20",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "probability",
+    "lesson_id": "sat-math-probability-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "two_way_tables",
+    "prompt": "The table summarizes 103 responses. If a response in the Prefers tea category is selected at random, what is the probability that it is from the Online group?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "10/53",
+        "rationale": "Condition on the column, not the row."
+      },
+      {
+        "id": "B",
+        "text": "2/5",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "10/103",
+        "rationale": "Condition on the column total, not the grand total."
+      },
+      {
+        "id": "D",
+        "text": "3/5",
+        "rationale": "That is the probability of the In store group within the column."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Restrict to the Prefers tea column (25 responses); 10 are Online: 2/5.",
     "estimated_time_seconds": 90,
     "tags": [
       "probability",
@@ -671,296 +943,25 @@
         "rows": [
           [
             "Online",
-            "21",
-            "19",
-            "40"
+            "10",
+            "43",
+            "53"
           ],
           [
             "In store",
-            "20",
-            "42",
-            "62"
+            "15",
+            "35",
+            "50"
           ],
           [
             "Total",
-            "41",
-            "61",
-            "102"
+            "25",
+            "78",
+            "103"
           ]
         ]
       }
     },
-    "answer_verification": "P=21/41"
-  },
-  {
-    "question_id": "sat-math-probability-hard-q15",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "probability",
-    "lesson_id": "sat-math-probability-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "student_produced",
-    "subskill": "simple_probability",
-    "prompt": "The probability that a randomly selected customer uses a coupon is 25%. Of 80 customers, how many are expected to use a coupon?",
-    "answer": {
-      "type": "numeric",
-      "value": 20,
-      "accepted": [
-        "20"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "25/100 × 80 = 20.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "probability",
-      "grid-in",
-      "family:pb_gridin"
-    ],
-    "answer_verification": "val=20"
-  },
-  {
-    "question_id": "sat-math-probability-hard-q16",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "probability",
-    "lesson_id": "sat-math-probability-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "simple_probability",
-    "prompt": "In a survey, 30% of respondents own a bicycle, 20% own a scooter, and 5% own both. If a respondent is selected at random, what is the probability that the respondent owns a bicycle or a scooter (or both)?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "11/20",
-        "rationale": "The overlap is subtracted, not added."
-      },
-      {
-        "id": "B",
-        "text": "9/20",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "1/20",
-        "rationale": "That is P(both), not P(either)."
-      },
-      {
-        "id": "D",
-        "text": "1/2",
-        "rationale": "Subtract the overlap; it was counted twice."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "P(A or B) = P(A) + P(B) − P(A and B) = (30 + 20 − 5)/100 = 9/20.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "probability",
-      "family:pb_single"
-    ],
-    "answer_verification": "P=9/20"
-  },
-  {
-    "question_id": "sat-math-probability-hard-q17",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "probability",
-    "lesson_id": "sat-math-probability-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "simple_probability",
-    "prompt": "A bag contains 10 purple, 14 orange, and 4 red chips. Two chips are drawn at random without replacement. What is the probability that the first is purple and the second is red?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "1/2",
-        "rationale": "'And' for two draws multiplies; it doesn't add."
-      },
-      {
-        "id": "B",
-        "text": "5/98",
-        "rationale": "The second draw is from 27 chips, not 28."
-      },
-      {
-        "id": "C",
-        "text": "10/189",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "5/126",
-        "rationale": "The red count doesn't drop after drawing a purple."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "P = 10/28 × 4/27 = 10/189.",
-    "estimated_time_seconds": 100,
-    "tags": [
-      "probability",
-      "without-replacement",
-      "family:pb_compound"
-    ],
-    "answer_verification": "P=10/189"
-  },
-  {
-    "question_id": "sat-math-probability-hard-q18",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "probability",
-    "lesson_id": "sat-math-probability-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "simple_probability",
-    "prompt": "In a random sample of 200 light bulbs from a factory, 6 were defective. Based on the sample, approximately how many defective bulbs would be expected in a shipment of 3000 bulbs?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "180",
-        "rationale": "Use the fraction defective (k/n), not n/k."
-      },
-      {
-        "id": "B",
-        "text": "120",
-        "rationale": "Arithmetic slip; recompute k/n × 3000."
-      },
-      {
-        "id": "C",
-        "text": "6",
-        "rationale": "That is the number defective in the sample, not the shipment."
-      },
-      {
-        "id": "D",
-        "text": "90",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Sample rate = 6/200 = 3/100; × 3000 = 90.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "probability",
-      "expected",
-      "family:pb_expected"
-    ],
-    "answer_verification": "val=90"
-  },
-  {
-    "question_id": "sat-math-probability-hard-q19",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "probability",
-    "lesson_id": "sat-math-probability-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "two_way_tables",
-    "prompt": "The table summarizes 77 responses. If a response in the Passed category is selected at random, what is the probability that it is from the Online group?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "6/37",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "31/37",
-        "rationale": "That is the probability of the In store group within the column."
-      },
-      {
-        "id": "C",
-        "text": "6/77",
-        "rationale": "Condition on the column total, not the grand total."
-      },
-      {
-        "id": "D",
-        "text": "6/29",
-        "rationale": "Condition on the column, not the row."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "Restrict to the Passed column (37 responses); 6 are Online: 6/37.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "probability",
-      "table",
-      "family:pb_table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Survey results",
-        "headers": [
-          "",
-          "Passed",
-          "Failed",
-          "Total"
-        ],
-        "rows": [
-          [
-            "Online",
-            "6",
-            "23",
-            "29"
-          ],
-          [
-            "In store",
-            "31",
-            "17",
-            "48"
-          ],
-          [
-            "Total",
-            "37",
-            "40",
-            "77"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "P=6/37"
-  },
-  {
-    "question_id": "sat-math-probability-hard-q20",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "probability",
-    "lesson_id": "sat-math-probability-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "student_produced",
-    "subskill": "simple_probability",
-    "prompt": "The probability that a randomly selected customer uses a coupon is 25%. Of 40 customers, how many are expected to use a coupon?",
-    "answer": {
-      "type": "numeric",
-      "value": 10,
-      "accepted": [
-        "10"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "25/100 × 40 = 10.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "probability",
-      "grid-in",
-      "family:pb_gridin"
-    ],
-    "answer_verification": "val=10"
+    "answer_verification": "P=2/5"
   }
 ]
