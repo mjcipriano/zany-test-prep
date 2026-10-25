@@ -20,7 +20,11 @@ Everything project-specific is isolated:
 
 Work on short-lived feature branches off `master`, then merge into `master` yourself
 (no PR gate required for this internal project). Keep `master` green. Push to save.
-Tag `vX.Y.Z` to cut a release (CI builds + attaches the APK, see docs/release.md).
+**Releases are cut by CI:** bump `version:` in pubspec.yaml and `kAppVersion`, merge
+to `master`, and the Release workflow builds the APK, creates the `vX.Y.Z` tag and
+publishes the GitHub Release (see docs/release.md). Never push tags by hand — sandboxed
+sessions cannot, and the workflow does it for you. The avatar pack repo works the same
+way (`pubspec.yaml` version there → `vX.Y.Z` tag + release on merge).
 
 ## Latest state (v2.0.0)
 
