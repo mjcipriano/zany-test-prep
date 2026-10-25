@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/semantics.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -128,6 +129,13 @@ class _TimedTestScreenState extends ConsumerState<TimedTestScreen> {
     _timer = Timer.periodic(const Duration(seconds: 1), (t) {
       if (!mounted) return;
       setState(() => _remaining -= 1);
+      // Screen readers get two heads-ups, never a per-second countdown.
+      if (_remaining == 5 * 60 || _remaining == 60) {
+        SemanticsService.announce(
+          '${remainingTimeLabel(_remaining)} left in this section',
+          Directionality.of(context),
+        );
+      }
       if (_remaining <= 0) {
         t.cancel();
         _endModule();
@@ -298,19 +306,8 @@ class _TimedTestScreenState extends ConsumerState<TimedTestScreen> {
         automaticallyImplyLeading: false,
         title: Text(m.name, style: const TextStyle(fontSize: 15)),
         actions: [
-          Center(
-            child: Padding(
-              padding: const EdgeInsets.only(right: 12),
-              child: Text(
-                '$mm:$ss',
-                style: TextStyle(
-                  fontWeight: FontWeight.w800,
-                  fontSize: 18,
-                  color: low ? AppTheme.incorrect : null,
-                ),
-              ),
-            ),
-          ),
+          _TimerChip(remaining: _remaining, low: low, mm: mm, ss: ss),
+          const SizedBox(width: 4),
         ],
       ),
       body: SafeArea(
@@ -320,20 +317,22 @@ class _TimedTestScreenState extends ConsumerState<TimedTestScreen> {
               padding: const EdgeInsets.fromLTRB(20, 4, 20, 0),
               child: Row(
                 children: [
-                  Text(
-                    'Question ${_q + 1} of ${_qs.length}',
-                    style: const TextStyle(fontWeight: FontWeight.w700),
+                  Expanded(
+                    child: Text(
+                      'Question ${_q + 1} of ${_qs.length}',
+                      style: const TextStyle(fontWeight: FontWeight.w700),
+                    ),
                   ),
-                  const Spacer(),
                   IconButton(
-                    tooltip: 'Flag',
+                    tooltip: 'Flag for review',
+                    isSelected: _flagged.contains(_question.id),
                     icon: Icon(
                       _flagged.contains(_question.id)
                           ? Icons.flag_rounded
                           : Icons.flag_outlined,
                     ),
                     color: _flagged.contains(_question.id)
-                        ? AppTheme.streak
+                        ? AppColors.of(context).streak
                         : null,
                     onPressed: () => setState(() {
                       final id = _question.id;
@@ -555,23 +554,115 @@ class _NavChip extends StatelessWidget {
         : answered
         ? scheme.primaryContainer
         : scheme.surfaceContainerHighest;
-    return InkWell(
+    final state = [
+      if (current) 'current',
+      answered ? 'answered' : 'not answered',
+      if (flagged) 'flagged',
+    ].join(', ');
+    return Semantics(
+      button: true,
+      label: 'Question $number, $state',
+      excludeSemantics: true,
       onTap: onTap,
-      borderRadius: BorderRadius.circular(8),
-      child: Container(
-        width: 40,
-        height: 40,
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          color: bg,
-          borderRadius: BorderRadius.circular(8),
-          border: flagged ? Border.all(color: AppTheme.streak, width: 2) : null,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(8),
+        child: Container(
+          constraints: const BoxConstraints(minWidth: 48, minHeight: 48),
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            color: bg,
+            borderRadius: BorderRadius.circular(8),
+            border: flagged
+                ? Border.all(color: AppColors.of(context).streak, width: 2)
+                : null,
+          ),
+          child: Text(
+            '$number',
+            style: TextStyle(
+              fontWeight: FontWeight.w700,
+              color: current
+                  ? scheme.onPrimary
+                  : answered
+                  ? scheme.onPrimaryContainer
+                  : scheme.onSurface,
+            ),
+          ),
         ),
-        child: Text(
-          '$number',
-          style: TextStyle(
-            fontWeight: FontWeight.w700,
-            color: current ? scheme.onPrimary : null,
+      ),
+    );
+  }
+}
+
+/// "12 minutes 5 seconds" (or "45 seconds") for screen readers.
+String remainingTimeLabel(int seconds) {
+  final s = seconds < 0 ? 0 : seconds;
+  final m = s ~/ 60, r = s % 60;
+  String unit(int n, String w) => '$n $w${n == 1 ? '' : 's'}';
+  if (m == 0) return unit(r, 'second');
+  if (r == 0) return unit(m, 'minute');
+  return '${unit(m, 'minute')} ${unit(r, 'second')}';
+}
+
+/// The module countdown. Its text ticks every second, so it is hidden from
+/// screen readers (a focused, ever-changing label would be re-read
+/// constantly); instead the chip is a button whose label is the time
+/// rounded to the minute, and activating it announces the exact time left.
+class _TimerChip extends StatelessWidget {
+  const _TimerChip({
+    required this.remaining,
+    required this.low,
+    required this.mm,
+    required this.ss,
+  });
+
+  final int remaining;
+  final bool low;
+  final String mm;
+  final String ss;
+
+  @override
+  Widget build(BuildContext context) {
+    final minutes = (remaining / 60).ceil();
+    final color = low ? AppColors.of(context).incorrect : null;
+    void announce() => SemanticsService.announce(
+      '${remainingTimeLabel(remaining)} left',
+      Directionality.of(context),
+    );
+    return Semantics(
+      key: const Key('test-timer'),
+      button: true,
+      label: remaining <= 60
+          ? 'Time remaining: under a minute'
+          : 'Time remaining: about $minutes minutes',
+      hint: 'Announces the exact time left',
+      excludeSemantics: true,
+      onTap: announce,
+      child: InkWell(
+        onTap: announce,
+        borderRadius: BorderRadius.circular(12),
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(minHeight: 48, minWidth: 48),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                // Low time is shown by an icon too, not only by colour.
+                if (low) ...[
+                  Icon(Icons.hourglass_bottom_rounded, size: 18, color: color),
+                  const SizedBox(width: 2),
+                ],
+                Text(
+                  '$mm:$ss',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w800,
+                    fontSize: 18,
+                    color: color,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

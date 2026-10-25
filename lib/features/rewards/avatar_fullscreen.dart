@@ -119,7 +119,10 @@ class _AvatarFullScreenState extends State<AvatarFullScreen> {
                               backgroundColor: rarityColor(a.rarity),
                               radius: 6,
                             ),
-                            label: Text(a.name),
+                            label: Text(
+                              a.name,
+                              semanticsLabel: '${a.name}, ${a.rarity}',
+                            ),
                           ),
                       ],
                     ),
@@ -150,7 +153,10 @@ class TappableAvatarPreview extends StatelessWidget {
     final scheme = Theme.of(context).colorScheme;
     return Semantics(
       button: true,
-      label: 'View avatar full screen',
+      label: avatarDescription(layers),
+      hint: 'Opens full screen',
+      excludeSemantics: true,
+      onTap: () => showAvatarFullScreen(context, layers),
       child: GestureDetector(
         behavior: HitTestBehavior.opaque,
         onTap: () => showAvatarFullScreen(context, layers),

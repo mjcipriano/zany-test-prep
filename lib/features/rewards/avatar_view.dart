@@ -16,16 +16,27 @@ bool get kAvatarAnimationsEnabled =>
 /// Renders a single catalog asset's PNG, falling back to a rarity-tinted tile
 /// when the art isn't bundled (only starter avatars ship by default; run
 /// tools/sync_avatars.py --full to vendor the rest).
+///
+/// The art is hidden from screen readers unless a [semanticLabel] is given:
+/// every place that shows it also shows (or speaks) the asset's name.
 class AssetImage512 extends StatelessWidget {
-  const AssetImage512(this.asset, {super.key, this.fit = BoxFit.contain});
+  const AssetImage512(
+    this.asset, {
+    super.key,
+    this.fit = BoxFit.contain,
+    this.semanticLabel,
+  });
 
   final CatalogAsset asset;
   final BoxFit fit;
+  final String? semanticLabel;
 
   @override
   Widget build(BuildContext context) {
     return Image.asset(
       asset.previewAssetPath,
+      semanticLabel: semanticLabel,
+      excludeFromSemantics: semanticLabel == null,
       fit: fit,
       // Sprites are vendored at a fixed size and drawn scaled; high-quality
       // sampling keeps outlines crisp at every preview size.
@@ -153,6 +164,27 @@ FaceRig? avatarRig(List<EquippedLayer> layers) {
   return null;
 }
 
+/// A spoken description of an equipped loadout, e.g. "Your avatar: Nova
+/// Learner wearing Round Glasses and Silver Studs, with Study Cap Fox".
+String avatarDescription(List<EquippedLayer> layers) {
+  String list(List<String> names) => names.length <= 1
+      ? names.join()
+      : '${names.sublist(0, names.length - 1).join(', ')} and ${names.last}';
+  final avatar = layers.where((l) => l.asset.isAvatar).firstOrNull?.asset;
+  final worn = [
+    for (final l in layers)
+      if (!l.asset.isAvatar && !l.asset.isSide) l.asset.name,
+  ];
+  final side = [
+    for (final l in layers)
+      if (!l.asset.isAvatar && l.asset.isSide) l.asset.name,
+  ];
+  final b = StringBuffer('Your avatar: ${avatar?.name ?? 'no avatar chosen'}');
+  if (worn.isNotEmpty) b.write(' wearing ${list(worn)}');
+  if (side.isNotEmpty) b.write(', with ${list(side)}');
+  return b.toString();
+}
+
 /// Composes the equipped loadout (avatar + items/pets) into a single preview.
 ///
 /// PNGs are tightly trimmed sprites, so each layer is *placed* into its target
@@ -161,7 +193,8 @@ FaceRig? avatarRig(List<EquippedLayer> layers) {
 /// equipped in. Layers are drawn back-to-front by z-index (negative z, e.g. a
 /// background frame, sits behind the avatar). Side companions get a soft
 /// drop shadow, a rarity glow for epic/legendary/evolved pets, and — when
-/// [animate] is on — a gentle idle float so they feel alive.
+/// [animate] is on and the system does not ask to reduce motion — a gentle
+/// idle float so they feel alive. Screen readers hear [avatarDescription].
 class AvatarPreview extends StatefulWidget {
   const AvatarPreview({
     super.key,
@@ -185,9 +218,12 @@ class _AvatarPreviewState extends State<AvatarPreview>
     with SingleTickerProviderStateMixin {
   AnimationController? _idle;
 
+  bool _reduceMotion = false;
+
   @override
-  void initState() {
-    super.initState();
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _reduceMotion = MediaQuery.maybeDisableAnimationsOf(context) ?? false;
     _syncAnimation();
   }
 
@@ -198,7 +234,7 @@ class _AvatarPreviewState extends State<AvatarPreview>
   }
 
   void _syncAnimation() {
-    if (widget.animate) {
+    if (widget.animate && !_reduceMotion) {
       _idle ??= AnimationController(
         vsync: this,
         duration: const Duration(milliseconds: 2600),
@@ -239,8 +275,14 @@ class _AvatarPreviewState extends State<AvatarPreview>
       ),
     );
     final idle = _idle;
-    if (idle == null) return frame;
-    return AnimatedBuilder(animation: idle, builder: (_, __) => frame);
+    return Semantics(
+      image: true,
+      label: avatarDescription(widget.layers),
+      excludeSemantics: true,
+      child: idle == null
+          ? frame
+          : AnimatedBuilder(animation: idle, builder: (_, __) => frame),
+    );
   }
 
   Widget _positioned(EquippedLayer layer) {

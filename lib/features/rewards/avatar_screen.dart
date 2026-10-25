@@ -59,6 +59,7 @@ class AvatarScreen extends ConsumerWidget {
             icon: const Icon(Icons.storefront_rounded),
             label: const Text('Store'),
           ),
+          const SizedBox(width: 4),
         ],
       ),
       body: ListView(
@@ -263,18 +264,25 @@ class _PickTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
-    return GestureDetector(
+    return Semantics(
+      button: true,
+      selected: selected,
+      label: asset.name,
+      excludeSemantics: true,
       onTap: onTap,
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
-          border: Border.all(
-            color: selected ? scheme.primary : Colors.transparent,
-            width: 3,
+      child: GestureDetector(
+        onTap: onTap,
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(
+              color: selected ? scheme.primary : Colors.transparent,
+              width: 3,
+            ),
           ),
+          clipBehavior: Clip.antiAlias,
+          child: AssetImage512(asset),
         ),
-        clipBehavior: Clip.antiAlias,
-        child: AssetImage512(asset),
       ),
     );
   }
@@ -353,7 +361,7 @@ class _ItemRow extends ConsumerWidget {
             // Side assets get a "move" control to cycle through the 4 slots.
             if (_equipped && item.isSide)
               IconButton(
-                tooltip: 'Move to next slot',
+                tooltip: 'Move ${item.name} to the next spot',
                 onPressed: () => controller.cycleSideSlot(item.id),
                 icon: const Icon(Icons.open_with_rounded),
               ),
@@ -365,13 +373,13 @@ class _ItemRow extends ConsumerWidget {
                   minimumSize: const Size(88, 40),
                 ),
                 onPressed: () => controller.unequipAsset(item.id),
-                child: const Text('Remove'),
+                child: Text('Remove', semanticsLabel: 'Remove ${item.name}'),
               )
             else
               FilledButton.tonal(
                 style: FilledButton.styleFrom(minimumSize: const Size(88, 40)),
                 onPressed: () => controller.equipItem(item.id),
-                child: const Text('Equip'),
+                child: Text('Equip', semanticsLabel: 'Equip ${item.name}'),
               ),
           ],
         ),
@@ -451,7 +459,7 @@ class _CompanionRow extends ConsumerWidget {
                 ),
                 if (equipped)
                   IconButton(
-                    tooltip: 'Move to next slot',
+                    tooltip: 'Move ${pet.name} to the next spot',
                     onPressed: () => controller.cycleSideSlot(pet.id),
                     icon: const Icon(Icons.open_with_rounded),
                   ),
@@ -461,7 +469,7 @@ class _CompanionRow extends ConsumerWidget {
                       minimumSize: const Size(88, 40),
                     ),
                     onPressed: () => controller.unequipAsset(pet.id),
-                    child: const Text('Remove'),
+                    child: Text('Remove', semanticsLabel: 'Remove ${pet.name}'),
                   )
                 else
                   FilledButton.tonal(
@@ -469,7 +477,7 @@ class _CompanionRow extends ConsumerWidget {
                       minimumSize: const Size(88, 40),
                     ),
                     onPressed: () => controller.equipItem(pet.id),
-                    child: const Text('Equip'),
+                    child: Text('Equip', semanticsLabel: 'Equip ${pet.name}'),
                   ),
               ],
             ),
@@ -481,6 +489,7 @@ class _CompanionRow extends ConsumerWidget {
                     value: engine.progressInLevel(xp),
                     color: glow ?? scheme.primary,
                     height: 8,
+                    semanticLabel: '${pet.name} pet XP',
                   ),
                 ),
                 const SizedBox(width: 8),
