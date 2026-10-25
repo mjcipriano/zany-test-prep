@@ -44,7 +44,9 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   void _next() {
     if (_page < _pageCount - 1) {
       _controller.nextPage(
-        duration: const Duration(milliseconds: 350),
+        duration: (MediaQuery.maybeDisableAnimationsOf(context) ?? false)
+            ? const Duration(milliseconds: 1)
+            : const Duration(milliseconds: 350),
         curve: Curves.easeOutCubic,
       );
     } else {
@@ -119,25 +121,33 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-              child: Row(
-                children: List.generate(_pageCount, (i) {
-                  final active = i <= _page;
-                  return Expanded(
-                    child: AnimatedContainer(
-                      duration: const Duration(milliseconds: 250),
-                      height: 6,
-                      margin: const EdgeInsets.symmetric(horizontal: 3),
-                      decoration: BoxDecoration(
-                        color: active
-                            ? Theme.of(context).colorScheme.primary
-                            : Theme.of(
-                                context,
-                              ).colorScheme.surfaceContainerHighest,
-                        borderRadius: BorderRadius.circular(3),
+              child: Semantics(
+                label: 'Step ${_page + 1} of $_pageCount',
+                excludeSemantics: true,
+                child: Row(
+                  children: List.generate(_pageCount, (i) {
+                    final active = i <= _page;
+                    return Expanded(
+                      child: AnimatedContainer(
+                        duration:
+                            (MediaQuery.maybeDisableAnimationsOf(context) ??
+                                false)
+                            ? Duration.zero
+                            : const Duration(milliseconds: 250),
+                        height: 6,
+                        margin: const EdgeInsets.symmetric(horizontal: 3),
+                        decoration: BoxDecoration(
+                          color: active
+                              ? Theme.of(context).colorScheme.primary
+                              : Theme.of(
+                                  context,
+                                ).colorScheme.surfaceContainerHighest,
+                          borderRadius: BorderRadius.circular(3),
+                        ),
                       ),
-                    ),
-                  );
-                }),
+                    );
+                  }),
+                ),
               ),
             ),
             Expanded(
@@ -468,7 +478,11 @@ class _StepScaffold extends StatelessWidget {
               color: accent.withValues(alpha: 0.15),
               shape: BoxShape.circle,
             ),
-            child: Icon(icon, size: 48, color: accent),
+            child: Icon(
+              icon,
+              size: 48,
+              color: AppColors.of(context).textOn(accent, minRatio: 3),
+            ),
           ),
           Gap.l,
           Text(
@@ -507,36 +521,41 @@ class _ChoiceTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
-    return AppCard(
-      onTap: onTap,
-      color: selected ? scheme.primaryContainer : scheme.surfaceContainerHigh,
-      child: Row(
-        children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  label,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w800,
-                    fontSize: 16,
+    // Announced as a selectable option ("SAT, selected").
+    return Semantics(
+      selected: selected,
+      inMutuallyExclusiveGroup: true,
+      child: AppCard(
+        onTap: onTap,
+        color: selected ? scheme.primaryContainer : scheme.surfaceContainerHigh,
+        child: Row(
+          children: [
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    label,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w800,
+                      fontSize: 16,
+                    ),
                   ),
-                ),
-                Text(
-                  subtitle,
-                  style: TextStyle(color: scheme.onSurfaceVariant),
-                ),
-              ],
+                  Text(
+                    subtitle,
+                    style: TextStyle(color: scheme.onSurfaceVariant),
+                  ),
+                ],
+              ),
             ),
-          ),
-          Icon(
-            selected
-                ? Icons.check_circle_rounded
-                : Icons.radio_button_unchecked_rounded,
-            color: selected ? scheme.primary : scheme.outline,
-          ),
-        ],
+            Icon(
+              selected
+                  ? Icons.check_circle_rounded
+                  : Icons.radio_button_unchecked_rounded,
+              color: selected ? scheme.primary : scheme.outline,
+            ),
+          ],
+        ),
       ),
     );
   }

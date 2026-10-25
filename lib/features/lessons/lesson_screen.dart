@@ -156,6 +156,7 @@ class LessonResumePrompt extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(12, 8, 12, 0),
                 child: IconButton(
+                  tooltip: 'Close',
                   icon: const Icon(Icons.close_rounded),
                   onPressed: () => context.pop(),
                 ),

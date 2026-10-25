@@ -132,11 +132,19 @@ class _DiagnosticScreenState extends ConsumerState<DiagnosticScreen> {
                 icon: const Icon(Icons.close_rounded),
                 onPressed: () => context.go('/home'),
               ),
-              Expanded(child: ProgressBar(value: (_index + 1) / total)),
+              Expanded(
+                child: ProgressBar(
+                  value: (_index + 1) / total,
+                  semanticLabel: 'Placement check progress',
+                  semanticValue: 'Question ${_index + 1} of $total',
+                ),
+              ),
               const SizedBox(width: 12),
-              Text(
-                '${_index + 1}/$total',
-                style: const TextStyle(fontWeight: FontWeight.w700),
+              ExcludeSemantics(
+                child: Text(
+                  '${_index + 1}/$total',
+                  style: const TextStyle(fontWeight: FontWeight.w700),
+                ),
               ),
             ],
           ),
@@ -223,7 +231,9 @@ class DiagnosticSummaryView extends StatelessWidget {
               Center(
                 child: Column(
                   children: [
-                    const Text('🧭', style: TextStyle(fontSize: 40)),
+                    const ExcludeSemantics(
+                      child: Text('🧭', style: TextStyle(fontSize: 40)),
+                    ),
                     Text(
                       'Your starting point',
                       style: theme.textTheme.headlineSmall?.copyWith(
@@ -253,9 +263,10 @@ class DiagnosticSummaryView extends StatelessWidget {
                           children: [
                             SizedBox(
                               width: 120,
+                              // Wraps rather than truncating at large
+                              // text sizes.
                               child: Text(
                                 bundle.domainName(d.domain),
-                                overflow: TextOverflow.ellipsis,
                                 style: const TextStyle(
                                   fontWeight: FontWeight.w700,
                                 ),
@@ -263,6 +274,9 @@ class DiagnosticSummaryView extends StatelessWidget {
                             ),
                             Expanded(
                               child: ProgressBar(
+                                semanticLabel: bundle.domainName(d.domain),
+                                semanticValue:
+                                    '${d.correct} of ${d.total} right',
                                 value: d.total == 0 ? 0 : d.correct / d.total,
                                 color: AppTheme.domainColor(
                                   bundle.domainIndex(d.domain),
@@ -341,14 +355,14 @@ class _SkillGroup extends StatelessWidget {
         children: [
           Row(
             children: [
-              Icon(icon, color: color),
+              Icon(icon, color: AppColors.of(context).textOn(color)),
               Gap.s,
               Text(
                 title,
                 style: TextStyle(
                   fontWeight: FontWeight.w800,
                   fontSize: 16,
-                  color: color,
+                  color: AppColors.of(context).textOn(color),
                 ),
               ),
             ],
