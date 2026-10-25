@@ -10,7 +10,7 @@ import '../helpers/pump_app.dart';
 
 // Real catalog asset ids (assets/avatar/manifest/avatar_catalog.json), one per
 // worn category plus a side pet.
-const _hat = 'item_001_classic_cap'; // "Classic Cap" (headwear)
+const _hat = 'item_249_silver_studs'; // "Silver Studs" (ear_accessory)
 const _glasses = 'item_041_round_glasses'; // "Round Glasses" (eyewear)
 const _mask = 'item_071_simple_mask'; // "Simple Mask" (face_accessory)
 const _pet = 'pet_fox_study_cap_001'; // "Study Cap Fox" (side slots)
@@ -45,7 +45,7 @@ void main() {
 
     // The rows render (no layout crash) — all owned items appear with an Equip
     // button each.
-    expect(find.text('Classic Cap'), findsOneWidget);
+    expect(find.text('Silver Studs'), findsOneWidget);
     expect(find.text('Round Glasses'), findsOneWidget);
     expect(find.text('Simple Mask'), findsOneWidget);
     expect(find.text('Study Cap Fox'), findsOneWidget);

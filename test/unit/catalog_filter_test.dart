@@ -116,7 +116,7 @@ void main() {
     test('category counts are faceted on the other filters', () {
       final items = _catalog.items;
       final filter = const CatalogFilter(
-        category: 'headwear',
+        category: 'neck_accessory',
       ).toggleRarity('legendary');
       final counts = filter.categoryCounts(items);
       // The selected category does not narrow its own counts...
@@ -135,10 +135,10 @@ void main() {
       final rarities = filter.rarityCounts(items);
       expect(rarities.keys.first, 'common'); // ordered common -> legendary
       expect(rarities['legendary'], greaterThan(0));
-      expect(rarities['common'], 0); // no common hats
+      expect(rarities['common'], 0); // no common necklaces
       expect(
         rarities.values.fold(0, (a, b) => a + b),
-        items.where((a) => a.category == 'headwear').length,
+        items.where((a) => a.category == 'neck_accessory').length,
       );
     });
 

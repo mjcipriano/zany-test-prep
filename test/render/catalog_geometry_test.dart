@@ -19,7 +19,7 @@ void main() {
             ).readAsStringSync(),
           )
           as Map<String, dynamic>;
-  final catalog = AvatarCatalog.fromJson(raw);
+  final catalog = AvatarCatalog.fromJson(raw, includeRetired: true);
   const size = 512.0;
 
   Rect region(String name) {

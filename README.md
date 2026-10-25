@@ -42,8 +42,9 @@ no network.
 ### Avatar customization & pet companions
 
 Meet the daily goal to earn chests, spend XP in the store, then dress up a
-customizable avatar from the vendored art pack (110 avatars, 376 items including
-104 Prism variants, 90 pet lines). Hats, glasses, masks and earrings are fitted to each avatar's own face (every
+customizable avatar from the vendored art pack (110 avatars, 272 items including
+64 Prism variants, 90 pet lines; hats are hidden for now until their art is
+redrawn). Glasses, masks and earrings are fitted to each avatar's own face (every
 avatar's eyes, nose and ears are measured), and the four side slots hold pets and
 floating props. Tap the avatar to see it full screen. The store and customizer
 filter by item type and rarity, and sort by price, rarity or name.
@@ -51,9 +52,9 @@ filter by item type and rarity, and sort by price, rarity or name.
 (270 pet sprites in all); evolved stages are earned, never bought. Here's one
 avatar built up layer by layer, plus a couple of other looks:
 
-| Starter | + Headwear | + Eyewear | + Scarf & badge |
+| Starter | + Earrings | + Glasses | + Scarf & badge |
 | --- | --- | --- | --- |
-| ![Starter](docs/screenshots/avatars/01_base.png) | ![Headwear](docs/screenshots/avatars/02_headwear.png) | ![Eyewear](docs/screenshots/avatars/03_eyewear.png) | ![Scarf & badge](docs/screenshots/avatars/04_badge_scarf.png) |
+| ![Starter](docs/screenshots/avatars/01_base.png) | ![Earrings](docs/screenshots/avatars/02_earrings.png) | ![Eyewear](docs/screenshots/avatars/03_eyewear.png) | ![Scarf & badge](docs/screenshots/avatars/04_badge_scarf.png) |
 
 | Full look + pet | Another avatar | Two side slots |
 | --- | --- | --- |

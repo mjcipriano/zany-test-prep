@@ -16,6 +16,7 @@ final AvatarCatalog _catalog = AvatarCatalog.fromJson(
         File('assets/avatar/manifest/avatar_catalog.json').readAsStringSync(),
       )
       as Map<String, dynamic>,
+  includeRetired: true,
 );
 
 /// Renders a single trimmed sprite into a [size]² transparent frame using the

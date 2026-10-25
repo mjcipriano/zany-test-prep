@@ -16,6 +16,7 @@ void main() {
           File('assets/avatar/manifest/avatar_catalog.json').readAsStringSync(),
         )
         as Map<String, dynamic>,
+    includeRetired: true,
   );
   const size = 512.0;
   final fitted = catalog.items.where((i) => i.fit != null).toList();
