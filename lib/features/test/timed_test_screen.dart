@@ -7,62 +7,48 @@ import 'package:go_router/go_router.dart';
 
 import '../../app/app_controller.dart';
 import '../../design/theme.dart';
-import '../../design/widgets.dart';
 import '../../domain/models/content_bundle.dart';
 import '../../domain/models/exam.dart';
 import '../../domain/models/question.dart';
-import '../../domain/services/answer_checker.dart';
 import '../../domain/services/game_service.dart';
 import '../../domain/services/scoring.dart';
+import '../../domain/services/timed_test.dart';
 import '../lessons/question_view.dart';
+import 'test_result_views.dart';
 
 enum _Phase { intro, module, breakScreen, results }
 
-/// Deals [bundle]'s questions into the exam's timed-test modules (from
-/// exam.yaml: SAT = 2 Reading & Writing + 2 Math modules; ACT = English, Math,
-/// Reading, Science). Each module draws fresh questions from its domain; a
-/// module is simply shorter when the domain runs out of questions.
-List<List<Question>> dealTestModules(
-  ContentBundle bundle,
-  List<TestModule> modules,
-  Random rng,
-) {
-  final byDomain = <String, List<Question>>{};
-  for (final q in bundle.questions) {
-    byDomain.putIfAbsent(q.domain, () => []).add(q);
-  }
-  for (final list in byDomain.values) {
-    list.shuffle(rng);
-  }
-  final cursor = <String, int>{};
-  return [
-    for (final m in modules)
-      () {
-        final src = byDomain[m.domain] ?? const <Question>[];
-        final start = (cursor[m.domain] ?? 0).clamp(0, src.length);
-        final end = (start + m.count).clamp(0, src.length);
-        cursor[m.domain] = end;
-        return src.sublist(start, end);
-      }(),
-  ];
-}
-
 /// Full timed practice test with per-module timers, flag/navigate, and an
 /// estimated section + total/composite score on the exam's own scale.
+///
+/// Module layout comes from the bundle (exam.yaml `timed_test`). On an
+/// adaptive plan (the Digital SAT) each section's first module is a mixed
+/// routing module and the second module is assembled only after the first is
+/// submitted — harder or easier depending on the routing accuracy; see
+/// [TestAssembler]. Linear plans (the ACT) are dealt at random per domain.
 class TimedTestScreen extends ConsumerStatefulWidget {
-  const TimedTestScreen({super.key});
+  const TimedTestScreen({super.key, this.random, this.plan});
+
+  /// Source of all question-selection randomness (inject a seeded one in
+  /// tests). Defaults to a fresh [Random].
+  final Random? random;
+
+  /// Overrides the bundle's timed-test layout (tests use tiny modules).
+  final TimedTestPlan? plan;
 
   @override
   ConsumerState<TimedTestScreen> createState() => _TimedTestScreenState();
 }
 
 class _TimedTestScreenState extends ConsumerState<TimedTestScreen> {
-  static const _checker = AnswerChecker();
-
   _Phase _phase = _Phase.intro;
-  late List<TestModule> _modules;
-  late List<List<Question>> _moduleQs; // questions per module
+  late TestAssembler _assembler;
+  // Questions per module; null until the module is assembled (routed modules
+  // wait for their routing module's result).
+  late List<List<Question>?> _moduleQs;
+  final Map<String, SectionRoute> _routes = {}; // domain -> route taken
   int _moduleIndex = 0;
+  int? _nextIndex; // the module the transition screen leads to
   int _q = 0;
   final Map<String, String> _answers = {}; // questionId -> choiceId or text
   final Set<String> _flagged = {};
@@ -70,6 +56,7 @@ class _TimedTestScreenState extends ConsumerState<TimedTestScreen> {
   int _remaining = 0;
   Timer? _timer;
   bool _ending = false; // the current module is being closed/scored
+  TimedTestReport? _report;
 
   @override
   void dispose() {
@@ -83,16 +70,49 @@ class _TimedTestScreenState extends ConsumerState<TimedTestScreen> {
 
   Exam get _exam => _bundle.exam;
 
+  TimedTestPlan get _sourcePlan => widget.plan ?? _exam.timedTest;
+
+  TimedTestPlan get _plan => _assembler.plan;
+
+  List<TestModule> get _modules => _plan.modules;
+
   void _buildTest() {
-    _modules = _exam.timedTest.modules;
-    _moduleQs = dealTestModules(_bundle, _modules, Random());
-    // Drop modules that received no questions at all (domain absent).
-    final keep = <int>[
-      for (var i = 0; i < _modules.length; i++)
-        if (_moduleQs[i].isNotEmpty) i,
-    ];
-    _modules = [for (final i in keep) _modules[i]];
-    _moduleQs = [for (final i in keep) _moduleQs[i]];
+    _assembler = TestAssembler(
+      _bundle.questions,
+      _sourcePlan,
+      widget.random ?? Random(),
+    );
+    _routes.clear();
+    _moduleQs = List<List<Question>?>.filled(_modules.length, null);
+  }
+
+  /// Assembles module [i] if needed (routing it first when it is adaptive)
+  /// and returns its questions.
+  List<Question> _prepare(int i) {
+    final ready = _moduleQs[i];
+    if (ready != null) return ready;
+    var route = SectionRoute.linear;
+    final by = _plan.routedBy(i);
+    if (by != null) {
+      final routing = _prepare(by);
+      route = _routes.putIfAbsent(
+        _modules[i].domain,
+        () => routeFor(
+          routing.where((q) => isAnsweredCorrectly(q, _answers[q.id])).length,
+          routing.length,
+          _plan.adaptive,
+        ),
+      );
+    }
+    return _moduleQs[i] = _assembler.buildModule(i, route: route);
+  }
+
+  /// The next module after [from] that actually has questions, or null.
+  int? _nextPlayable(int from) {
+    for (var j = from + 1; j < _modules.length; j++) {
+      if (_prepare(j).isNotEmpty) return j;
+    }
+    return null;
   }
 
   void _startModule(int i) {
@@ -115,7 +135,7 @@ class _TimedTestScreenState extends ConsumerState<TimedTestScreen> {
     });
   }
 
-  List<Question> get _qs => _moduleQs[_moduleIndex];
+  List<Question> get _qs => _moduleQs[_moduleIndex]!;
   Question get _question => _qs[_q];
 
   void _syncText() {
@@ -146,8 +166,14 @@ class _TimedTestScreenState extends ConsumerState<TimedTestScreen> {
     if (_question.type.isStudentProduced && _text.text.trim().isNotEmpty) {
       _record(_text.text.trim());
     }
-    if (_moduleIndex < _modules.length - 1) {
-      setState(() => _phase = _Phase.breakScreen);
+    // Routing happens here: the next module is assembled from this one's
+    // answers before the student sees the transition screen.
+    final next = _nextPlayable(_moduleIndex);
+    if (next != null) {
+      setState(() {
+        _nextIndex = next;
+        _phase = _Phase.breakScreen;
+      });
     } else {
       _finish();
     }
@@ -155,24 +181,29 @@ class _TimedTestScreenState extends ConsumerState<TimedTestScreen> {
 
   Future<void> _finish() async {
     _timer?.cancel();
+    final modules = [
+      for (final m in _moduleQs)
+        if (m != null) m,
+    ];
     // Score everything and apply XP/mastery/review.
-    final results = <AnswerResult>[];
-    for (final mod in _moduleQs) {
-      for (final q in mod) {
-        final ans = _answers[q.id];
-        final correct =
-            ans != null &&
-            _checker.isCorrect(
-              q,
-              choiceId: q.type.isStudentProduced ? null : ans,
-              produced: q.type.isStudentProduced ? ans : null,
-            );
-        results.add(AnswerResult(question: q, correct: correct));
-      }
-    }
+    final results = [
+      for (final q in modules.expand((m) => m))
+        AnswerResult(
+          question: q,
+          correct: isAnsweredCorrectly(q, _answers[q.id]),
+        ),
+    ];
+    _report = TimedTestReport.score(
+      modules: modules,
+      answers: _answers,
+      routes: _routes,
+      scoring: ExamScoring(_exam.scoring),
+      domainOrder: _bundle.domainIds,
+    );
     await ref
         .read(appControllerProvider.notifier)
         .completeReview(results: results);
+    if (!mounted) return;
     setState(() => _phase = _Phase.results);
   }
 
@@ -192,7 +223,7 @@ class _TimedTestScreenState extends ConsumerState<TimedTestScreen> {
 
   Widget _intro() {
     final exam = _exam;
-    final plan = exam.timedTest;
+    final plan = _sourcePlan;
     final intro = plan.intro.isNotEmpty
         ? plan.intro
         : 'This mirrors the ${exam.displayName}: ${plan.modules.length} timed '
@@ -209,9 +240,11 @@ class _TimedTestScreenState extends ConsumerState<TimedTestScreen> {
           ),
           Gap.s,
           Text(
-            '$intro You can flag questions and move back and forth within a '
-            'section, but not between sections. There is no feedback until the '
-            'end.',
+            '$intro${plan.adaptive.enabled ? ' Like the real test, the second '
+                      'module of each section adapts to how you did on the '
+                      'first.' : ''} You can flag questions and move back and '
+            'forth within a module, but not between modules. There is no '
+            'feedback until the end.',
           ),
           Gap.m,
           for (final m in plan.modules)
@@ -239,8 +272,9 @@ class _TimedTestScreenState extends ConsumerState<TimedTestScreen> {
                 ? null
                 : () {
                     _buildTest();
-                    if (_moduleQs.isEmpty) return;
-                    _startModule(0);
+                    final first = _nextPlayable(-1);
+                    if (first == null) return;
+                    _startModule(first);
                   },
             child: const Text('Begin test'),
           ),
@@ -453,150 +487,48 @@ class _TimedTestScreenState extends ConsumerState<TimedTestScreen> {
   }
 
   Widget _break() {
-    return Scaffold(
-      body: Center(
-        child: Padding(
-          padding: kPagePadding,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Icon(Icons.coffee_rounded, size: 56),
-              Gap.m,
-              Text(
-                'Section complete',
-                style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                  fontWeight: FontWeight.w800,
-                ),
-              ),
-              Gap.s,
-              Text(
-                'Next up: ${_modules[_moduleIndex + 1].name}',
-                textAlign: TextAlign.center,
-              ),
-              Gap.l,
-              FilledButton(
-                onPressed: () => _startModule(_moduleIndex + 1),
-                child: const Text('Start next section'),
-              ),
-            ],
-          ),
-        ),
-      ),
+    final done = _modules[_moduleIndex];
+    final next = _modules[_nextIndex!];
+    final newSection = next.domain != done.domain;
+    final String note;
+    if (newSection) {
+      note = _plan.adaptive.enabled
+          ? 'That section is done. On test day you get a 10-minute break '
+                'here — stretch, breathe, then start when you are ready.'
+          : 'Nice work. Take a breather, then start when you are ready.';
+    } else if (_plan.routedBy(_nextIndex!) != null) {
+      // Like the real test, never reveal which way the student was routed.
+      note =
+          'Your answers are locked in. The next module is put together '
+          'based on how this one went, just like on the real test.';
+    } else {
+      note = 'Your answers are locked in. Start when you are ready.';
+    }
+    return ModuleTransitionView(
+      title: newSection ? 'Section complete' : 'Module complete',
+      note: note,
+      completed: _nextIndex!,
+      totalModules: _modules.length,
+      nextName: next.name,
+      nextCount: _moduleQs[_nextIndex!]!.length,
+      nextMinutes: next.minutes,
+      startLabel: newSection ? 'Start next section' : 'Start next module',
+      onStart: () => _startModule(_nextIndex!),
     );
   }
 
-  int _correctIn(String domain) {
-    var c = 0;
-    for (final mod in _moduleQs) {
-      for (final q in mod) {
-        if (q.domain != domain) continue;
-        final ans = _answers[q.id];
-        if (ans != null &&
-            _checker.isCorrect(
-              q,
-              choiceId: q.type.isStudentProduced ? null : ans,
-              produced: q.type.isStudentProduced ? ans : null,
-            )) {
-          c++;
-        }
-      }
-    }
-    return c;
-  }
-
-  int _totalIn(String domain) =>
-      _moduleQs.expand((m) => m).where((q) => q.domain == domain).length;
-
   Widget _results() {
     final bundle = _bundle;
-    final scoring = ExamScoring(bundle.exam.scoring);
-    final domains = [
-      for (final d in bundle.domainIds)
-        if (_totalIn(d) > 0) d,
-    ];
-    final sectionScores = {
-      for (final d in domains)
-        d: scoring.sectionScore(_correctIn(d), _totalIn(d)),
-    };
-    final composite = scoring.composite(sectionScores);
-    final compositeDomains = scoring.compositeDomains(domains);
-    final scheme = Theme.of(context).colorScheme;
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Test results'),
-        automaticallyImplyLeading: false,
+    return TestResultsView(
+      report: _report!,
+      scoring: ExamScoring(bundle.exam.scoring),
+      compositeLabel: bundle.exam.scoring.compositeLabel,
+      adaptive: _plan.adaptive.enabled,
+      domainName: bundle.domainName,
+      domainColor: (d) => AppTheme.domainColor(
+        bundle.domainIndex(d) < 0 ? 0 : bundle.domainIndex(d),
       ),
-      body: ListView(
-        padding: kPagePadding,
-        children: [
-          Gap.m,
-          AppCard(
-            color: scheme.primaryContainer,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  bundle.exam.scoring.compositeLabel,
-                  style: const TextStyle(fontWeight: FontWeight.w700),
-                ),
-                Text(
-                  scoring.formatSection(composite),
-                  style: const TextStyle(
-                    fontSize: 44,
-                    fontWeight: FontWeight.w900,
-                  ),
-                ),
-                Text(
-                  '${scoring.compositeCaption(domains)} — an estimate based on '
-                  'raw correct answers.',
-                ),
-                if (compositeDomains.length < domains.length)
-                  Padding(
-                    padding: const EdgeInsets.only(top: 4),
-                    child: Text(
-                      'Composite counts: '
-                      '${compositeDomains.map(bundle.domainName).join(', ')}.',
-                      style: Theme.of(context).textTheme.bodySmall,
-                    ),
-                  ),
-              ],
-            ),
-          ),
-          Gap.m,
-          Wrap(
-            spacing: 8,
-            runSpacing: 8,
-            children: [
-              for (final (i, d) in domains.indexed)
-                SizedBox(
-                  width:
-                      (MediaQuery.of(context).size.width -
-                          kPagePadding.horizontal -
-                          8) /
-                      2,
-                  child: _ScoreCard(
-                    label: bundle.domainName(d),
-                    score: scoring.formatSection(sectionScores[d]!),
-                    detail: '${_correctIn(d)} / ${_totalIn(d)} correct',
-                    color: AppTheme.domainColor(
-                      bundle.domainIndex(d) < 0 ? i : bundle.domainIndex(d),
-                    ),
-                  ),
-                ),
-            ],
-          ),
-          Gap.l,
-          const Text(
-            'Your answers also updated your XP, skill mastery, and review queue. '
-            'Missed questions were added to spaced review.',
-          ),
-          Gap.l,
-          FilledButton(
-            onPressed: () => context.go('/home'),
-            child: const Text('Back to home'),
-          ),
-        ],
-      ),
+      onDone: () => context.go('/home'),
     );
   }
 }
@@ -645,34 +577,4 @@ class _NavChip extends StatelessWidget {
       ),
     );
   }
-}
-
-class _ScoreCard extends StatelessWidget {
-  const _ScoreCard({
-    required this.label,
-    required this.score,
-    required this.detail,
-    required this.color,
-  });
-  final String label;
-  final String score;
-  final String detail;
-  final Color color;
-
-  @override
-  Widget build(BuildContext context) => AppCard(
-    color: color.withValues(alpha: 0.12),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(label, style: const TextStyle(fontWeight: FontWeight.w700)),
-        Gap.xs,
-        Text(
-          score,
-          style: const TextStyle(fontSize: 28, fontWeight: FontWeight.w900),
-        ),
-        Text(detail, style: Theme.of(context).textTheme.bodySmall),
-      ],
-    ),
-  );
 }

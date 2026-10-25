@@ -111,6 +111,11 @@ def validate_exam(exam_id, rep: Report):
     for m in (exam.get("timed_test") or {}).get("modules", []):
         if m.get("domain") not in domain_ids:
             rep.err(f"timed_test module {m.get('name')!r} uses unknown domain {m.get('domain')!r}")
+    adaptive = (exam.get("timed_test") or {}).get("adaptive")
+    if isinstance(adaptive, dict) and "route_threshold" in adaptive:
+        t = adaptive["route_threshold"]
+        if isinstance(t, bool) or not isinstance(t, (int, float)) or not 0 < t <= 1:
+            rep.err(f"timed_test.adaptive.route_threshold must be a number in (0, 1], got {t!r}")
 
     # --- schemas ---
     q_schema = load_json(SCHEMAS / "question.schema.json")
