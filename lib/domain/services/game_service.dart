@@ -221,6 +221,7 @@ class GameService {
         difficulty: q.difficulty,
         isReview: r.isReview,
       );
+      m.notePracticed(todayKey);
 
       review.onAnswered(
         progress: progress,

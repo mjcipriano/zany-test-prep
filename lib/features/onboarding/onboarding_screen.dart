@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../app/app_controller.dart';
 import '../../design/theme.dart';
 import '../../design/widgets.dart';
 import '../../domain/models/exam.dart';
 
-/// Multi-step onboarding: welcome -> offline -> exam -> goal -> date -> finish.
+/// Multi-step onboarding: welcome -> offline -> exam -> plan (daily goal +
+/// optional test date) -> placement check offer.
+///
+/// The last step offers the short placement check ("Take the quick check",
+/// which finishes onboarding and opens `/diagnostic`) or skips it ("Start
+/// learning"; Home keeps offering it until taken or dismissed).
 class OnboardingScreen extends ConsumerStatefulWidget {
   const OnboardingScreen({super.key});
 
@@ -41,7 +47,10 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
     }
   }
 
-  Future<void> _finish() async {
+  Future<void> _finish({bool takeCheck = false}) async {
+    // Captured up front: this screen is unmounted as soon as the router sees
+    // onboarding complete.
+    final router = GoRouter.of(context);
     setState(() => _submitting = true);
     try {
       await ref
@@ -51,7 +60,9 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
             dailyGoalMinutes: _goalMinutes,
             targetTestDate: _targetDate,
           );
-      // Router redirects to /home once onboarded flips to true.
+      // Router redirects to /home once onboarded flips to true; the check
+      // replaces that with the placement quiz for the chosen exam.
+      if (takeCheck) router.go('/diagnostic');
     } catch (e) {
       if (!mounted) return;
       setState(() => _submitting = false);
@@ -59,6 +70,13 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
         context,
       ).showSnackBar(SnackBar(content: Text('Could not load that exam: $e')));
     }
+  }
+
+  ExamInfo? _examInfo(List<ExamInfo> exams) {
+    for (final e in exams) {
+      if (e.id == _examId) return e;
+    }
+    return null;
   }
 
   @override
@@ -112,28 +130,38 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                   _GoalStep(
                     selected: _goalMinutes,
                     onSelect: (m) => setState(() => _goalMinutes = m),
-                  ),
-                  _DateStep(
                     date: _targetDate,
-                    onPick: (d) => setState(() => _targetDate = d),
+                    onPickDate: (d) => setState(() => _targetDate = d),
                   ),
+                  _PlacementStep(exam: _examInfo(exams)),
                 ],
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(20),
-              child: FilledButton(
-                onPressed: _submitting ? null : _next,
-                child: _submitting
-                    ? const SizedBox(
-                        height: 22,
-                        width: 22,
-                        child: CircularProgressIndicator(strokeWidth: 2),
-                      )
-                    : Text(
-                        _page == _pageCount - 1 ? 'Start learning' : 'Continue',
-                      ),
-              ),
+              child: _page == _pageCount - 1
+                  ? Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        FilledButton.icon(
+                          onPressed: _submitting
+                              ? null
+                              : () => _finish(takeCheck: true),
+                          icon: const Icon(Icons.explore_rounded),
+                          label: const Text('Take the quick check'),
+                        ),
+                        Gap.s,
+                        OutlinedButton(
+                          onPressed: _submitting ? null : _finish,
+                          child: const Text('Start learning'),
+                        ),
+                      ],
+                    )
+                  : FilledButton(
+                      onPressed: _submitting ? null : _next,
+                      child: const Text('Continue'),
+                    ),
             ),
           ],
         ),
@@ -223,9 +251,16 @@ class _ExamStep extends StatelessWidget {
 }
 
 class _GoalStep extends StatelessWidget {
-  const _GoalStep({required this.selected, required this.onSelect});
+  const _GoalStep({
+    required this.selected,
+    required this.onSelect,
+    required this.date,
+    required this.onPickDate,
+  });
   final int selected;
   final ValueChanged<int> onSelect;
+  final DateTime? date;
+  final ValueChanged<DateTime?> onPickDate;
 
   @override
   Widget build(BuildContext context) {
@@ -237,6 +272,7 @@ class _GoalStep extends StatelessWidget {
           'this anytime in Settings.',
       accent: AppTheme.streak,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           for (final m in const [5, 10, 15])
             Padding(
@@ -252,49 +288,113 @@ class _GoalStep extends StatelessWidget {
                 onTap: () => onSelect(m),
               ),
             ),
+          Gap.s,
+          _DatePicker(date: date, onPick: onPickDate),
         ],
       ),
     );
   }
 }
 
-class _DateStep extends StatelessWidget {
-  const _DateStep({required this.date, required this.onPick});
+/// Optional target test date (part of the daily-goal step).
+class _DatePicker extends StatelessWidget {
+  const _DatePicker({required this.date, required this.onPick});
   final DateTime? date;
   final ValueChanged<DateTime?> onPick;
 
   @override
   Widget build(BuildContext context) {
-    return _StepScaffold(
-      icon: Icons.event_rounded,
-      title: 'When is your test?',
-      body: 'Set a target test date to stay motivated — or skip it for now.',
-      accent: Theme.of(context).colorScheme.tertiary,
-      child: Column(
-        children: [
-          OutlinedButton.icon(
-            onPressed: () async {
-              final now = DateTime.now();
-              final picked = await showDatePicker(
-                context: context,
-                initialDate: date ?? now.add(const Duration(days: 60)),
-                firstDate: now,
-                lastDate: now.add(const Duration(days: 365 * 2)),
-              );
-              if (picked != null) onPick(picked);
-            },
-            icon: const Icon(Icons.calendar_today_rounded),
-            label: Text(
-              date == null
-                  ? 'Pick a date'
-                  : '${date!.year}-${date!.month.toString().padLeft(2, '0')}-${date!.day.toString().padLeft(2, '0')}',
-            ),
+    final d = date;
+    return Row(
+      children: [
+        Expanded(
+          child: Text(
+            'Test date (optional)',
+            style: Theme.of(
+              context,
+            ).textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w800),
           ),
-          if (date != null)
-            TextButton(
-              onPressed: () => onPick(null),
-              child: const Text('Clear date'),
-            ),
+        ),
+        TextButton.icon(
+          onPressed: () async {
+            final now = DateTime.now();
+            final picked = await showDatePicker(
+              context: context,
+              initialDate: d ?? now.add(const Duration(days: 60)),
+              firstDate: now,
+              lastDate: now.add(const Duration(days: 365 * 2)),
+            );
+            if (picked != null) onPick(picked);
+          },
+          icon: const Icon(Icons.calendar_today_rounded, size: 18),
+          label: Text(
+            d == null
+                ? 'Pick a date'
+                : '${d.year}-${d.month.toString().padLeft(2, '0')}-${d.day.toString().padLeft(2, '0')}',
+          ),
+        ),
+        if (d != null)
+          IconButton(
+            tooltip: 'Clear date',
+            onPressed: () => onPick(null),
+            icon: const Icon(Icons.close_rounded, size: 18),
+          ),
+      ],
+    );
+  }
+}
+
+/// The last step: offers the short placement check for the chosen exam.
+class _PlacementStep extends StatelessWidget {
+  const _PlacementStep({required this.exam});
+  final ExamInfo? exam;
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    final name = exam?.name ?? 'your exam';
+    return _StepScaffold(
+      icon: Icons.explore_rounded,
+      title: 'Find your starting point',
+      body:
+          'Answer 12 quick questions from across the $name so we can see '
+          'what you already know and recommend what to study first.',
+      accent: scheme.tertiary,
+      child: const Column(
+        children: [
+          _Bullet(icon: Icons.timer_outlined, text: 'About 3 minutes'),
+          _Bullet(
+            icon: Icons.sentiment_satisfied_alt_rounded,
+            text: 'No XP at stake and no penalties: just your best guess',
+          ),
+          _Bullet(
+            icon: Icons.skip_next_rounded,
+            text: 'Optional: skip it now and take it later from Home',
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _Bullet extends StatelessWidget {
+  const _Bullet({required this.icon, required this.text});
+  final IconData icon;
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Icon(icon, color: scheme.tertiary, size: 22),
+          Gap.s,
+          Expanded(
+            child: Text(text, style: Theme.of(context).textTheme.bodyLarge),
+          ),
         ],
       ),
     );

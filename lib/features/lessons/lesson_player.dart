@@ -26,6 +26,7 @@ class LessonPlayer extends ConsumerStatefulWidget {
     required this.onComplete,
     this.teachingCard,
     this.isReview = false,
+    this.onAnswered,
   });
 
   final String title;
@@ -33,6 +34,11 @@ class LessonPlayer extends ConsumerStatefulWidget {
   final TeachingCard? teachingCard;
   final bool isReview;
   final Future<LessonOutcome> Function(List<AnswerResult>) onComplete;
+
+  /// Called after each answer is checked, with its index. Adaptive sessions
+  /// (Smart practice) use it to re-pick later entries of [questions] in place;
+  /// the player reads the list fresh for every question.
+  final void Function(int index, AnswerResult result)? onAnswered;
 
   @override
   ConsumerState<LessonPlayer> createState() => _LessonPlayerState();
@@ -121,6 +127,7 @@ class _LessonPlayerState extends ConsumerState<LessonPlayer> {
         responseMs: DateTime.now().difference(_questionStart).inMilliseconds,
       ),
     );
+    widget.onAnswered?.call(_index, _results.last);
     _feedbackEffects(correct);
     setState(() {
       _answered = true;

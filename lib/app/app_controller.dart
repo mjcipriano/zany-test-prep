@@ -16,6 +16,7 @@ import '../domain/models/profile.dart';
 import '../domain/models/progress.dart';
 import '../domain/models/reward.dart';
 import '../domain/services/badges.dart';
+import '../domain/services/diagnostic_engine.dart';
 import '../domain/services/game_service.dart';
 import '../domain/services/rewards_service.dart';
 
@@ -253,15 +254,11 @@ class AppController extends AsyncNotifier<AppData> {
     );
   }
 
-  /// Seeds per-skill mastery from a diagnostic and marks it done.
+  /// Seeds per-skill mastery estimates from the placement check and marks it
+  /// done (see [DiagnosticEngine.seed]). Grants no XP, streak or chest.
   Future<void> applyDiagnostic({required List<AnswerResult> results}) async {
     final data = _data;
-    for (final r in results) {
-      data.progress.mastery(masteryKeyFor(r.question)).mastery = r.correct
-          ? 60
-          : 25;
-    }
-    data.progress.game.markDiagnosticDone(data.bundle.exam.id);
+    const DiagnosticEngine().seed(data.progress, data.bundle, results);
     await _repo.saveProgress(data.progress);
     state = AsyncData(data.bump());
   }
