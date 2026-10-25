@@ -43,8 +43,10 @@ no network.
 
 Meet the daily goal to earn chests, spend XP in the store, then dress up a
 customizable avatar from the vendored art pack (110 avatars, 376 items including
-104 Prism variants, 90 pet lines). Worn items snap to the right body region (hats
-rest on the brow line), and the four side slots hold pets and floating props.
+104 Prism variants, 90 pet lines). Hats, glasses, masks and earrings are fitted to each avatar's own face (every
+avatar's eyes, nose and ears are measured), and the four side slots hold pets and
+floating props. Tap the avatar to see it full screen. The store and customizer
+filter by item type and rarity, and sort by price, rarity or name.
 **Pets level up while equipped** and evolve from Base to Shiny to Radiant forms
 (270 pet sprites in all); evolved stages are earned, never bought. Here's one
 avatar built up layer by layer, plus a couple of other looks:

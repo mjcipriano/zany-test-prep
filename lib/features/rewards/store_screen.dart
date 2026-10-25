@@ -7,8 +7,10 @@ import '../../design/theme.dart';
 import '../../design/widgets.dart';
 import '../../domain/models/avatar_catalog.dart';
 import '../../domain/models/progress.dart';
+import '../../domain/services/catalog_filter.dart';
 import '../../domain/services/rewards_service.dart';
 import 'avatar_view.dart';
+import 'catalog_filter_bar.dart';
 
 /// Spend XP on avatars, items, pets, and streak freezes.
 class StoreScreen extends ConsumerWidget {
@@ -41,23 +43,24 @@ class StoreScreen extends ConsumerWidget {
         ),
         body: TabBarView(
           children: [
-            _StoreGrid(assets: _sorted(catalog.avatars)),
+            _StoreGrid(assets: catalog.avatars, noun: 'avatars'),
             _StoreGrid(
-              assets: _sorted(catalog.items),
+              assets: catalog.items,
+              noun: 'items',
               header: const _StreakFreezeCard(),
+              mode: _FilterMode.items,
             ),
             _StoreGrid(
-              assets: _sorted(catalog.basePets),
+              assets: catalog.basePets,
+              noun: 'pets',
               header: const _PetHint(),
+              mode: _FilterMode.pets,
             ),
           ],
         ),
       ),
     );
   }
-
-  static List<CatalogAsset> _sorted(List<CatalogAsset> a) =>
-      [...a]..sort((x, y) => x.xpCost.compareTo(y.xpCost));
 }
 
 class _PetHint extends StatelessWidget {
@@ -89,47 +92,187 @@ class _XpChip extends StatelessWidget {
       StatPill(icon: Icons.bolt_rounded, value: '$xp', color: AppTheme.xpGold);
 }
 
-class _StoreGrid extends ConsumerWidget {
-  const _StoreGrid({required this.assets, this.header});
+/// Which filter controls a store tab shows.
+enum _FilterMode {
+  /// No filter bar (the avatars tab): just sorted by price.
+  none,
+
+  /// Category chips, rarity chips, sort, Hide owned / Affordable; the "All"
+  /// view is grouped into category sections.
+  items,
+
+  /// Name/species search, rarity chips, sort, Hide owned / Affordable.
+  pets,
+}
+
+class _StoreGrid extends ConsumerStatefulWidget {
+  const _StoreGrid({
+    required this.assets,
+    required this.noun,
+    this.header,
+    this.mode = _FilterMode.none,
+  });
+
   final List<CatalogAsset> assets;
+
+  /// Plural noun for counts and the empty state ("items", "pets").
+  final String noun;
   final Widget? header;
+  final _FilterMode mode;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<_StoreGrid> createState() => _StoreGridState();
+}
+
+class _StoreGridState extends ConsumerState<_StoreGrid>
+    with AutomaticKeepAliveClientMixin {
+  CatalogFilter _filter = const CatalogFilter();
+
+  // Keep each tab's filters (and scroll position) when switching tabs.
+  @override
+  bool get wantKeepAlive => true;
+
+  static const _gridDelegate = SliverGridDelegateWithMaxCrossAxisExtent(
+    maxCrossAxisExtent: 200,
+    mainAxisSpacing: 12,
+    crossAxisSpacing: 12,
+    childAspectRatio: 0.74,
+  );
+
+  void _set(CatalogFilter f) => setState(() => _filter = f);
+
+  @override
+  Widget build(BuildContext context) {
+    super.build(context);
     final data = ref.watch(appControllerProvider).valueOrNull!;
     final rewards = ref.read(rewardsServiceProvider);
     final g = data.progress.game;
+    final status = CatalogStatus(
+      isOwned: (a) => rewards.isOwned(g, a),
+      canAfford: (a) => rewards.canAfford(g, a.xpCost),
+    );
+    final filtering = widget.mode != _FilterMode.none;
+    final filter = filtering ? _filter : const CatalogFilter();
+    final shown = filter.apply(widget.assets, status: status);
+    final grouped = widget.mode == _FilterMode.items && filter.category == null;
 
-    return ListView(
-      padding: kPagePadding,
-      children: [
-        if (header != null) ...[header!, Gap.m],
-        GridView.builder(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-            maxCrossAxisExtent: 200,
-            mainAxisSpacing: 12,
-            crossAxisSpacing: 12,
-            childAspectRatio: 0.74,
+    Widget grid(List<CatalogAsset> assets) => SliverPadding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      sliver: SliverGrid.builder(
+        gridDelegate: _gridDelegate,
+        itemCount: assets.length,
+        itemBuilder: (context, i) {
+          final asset = assets[i];
+          return _StoreTile(
+            key: ValueKey('store-tile-${asset.id}'),
+            asset: asset,
+            owned: rewards.isOwned(g, asset),
+            affordable: rewards.canAfford(g, asset.xpCost),
+          );
+        },
+      ),
+    );
+
+    return CustomScrollView(
+      slivers: [
+        if (widget.header != null)
+          SliverPadding(
+            padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+            sliver: SliverToBoxAdapter(child: widget.header),
           ),
-          itemCount: assets.length,
-          itemBuilder: (context, i) {
-            final asset = assets[i];
-            return _StoreTile(
-              asset: asset,
-              owned: rewards.isOwned(g, asset),
-              affordable: rewards.canAfford(g, asset.xpCost),
-            );
-          },
+        SliverToBoxAdapter(
+          child: SizedBox(height: widget.header == null ? 20 : 16),
         ),
+        if (filtering) ...[
+          SliverToBoxAdapter(
+            child: CatalogFilterBar(
+              assets: widget.assets,
+              filter: _filter,
+              onChanged: _set,
+              status: status,
+              showCategories: widget.mode == _FilterMode.items,
+              showSearch: widget.mode == _FilterMode.pets,
+              searchHint: 'Search pets — fox, cat, dragon…',
+              toggles: const [
+                CatalogToggle.hideOwned,
+                CatalogToggle.affordableOnly,
+              ],
+            ),
+          ),
+          SliverPadding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            sliver: SliverToBoxAdapter(
+              child: CatalogResultsLine(
+                shown: shown.length,
+                total: widget.assets.length,
+                noun: widget.noun,
+                filtered: _filter.hasActiveFilters,
+                onClear: () => _set(_filter.cleared()),
+              ),
+            ),
+          ),
+        ],
+        if (shown.isEmpty && filtering)
+          SliverToBoxAdapter(
+            child: CatalogEmptyState(
+              noun: widget.noun,
+              onClear: () => _set(_filter.cleared()),
+            ),
+          )
+        else if (grouped)
+          for (final section in groupByCategory(shown)) ...[
+            SliverPadding(
+              padding: const EdgeInsets.fromLTRB(20, 8, 20, 0),
+              sliver: SliverToBoxAdapter(
+                child: _SectionHeader(
+                  category: section.key,
+                  count: section.value.length,
+                ),
+              ),
+            ),
+            grid(section.value),
+          ]
+        else
+          grid(shown),
+        const SliverToBoxAdapter(child: SizedBox(height: 20)),
       ],
+    );
+  }
+}
+
+/// "🎓 HATS · 12" above a category section of the items grid.
+class _SectionHeader extends StatelessWidget {
+  const _SectionHeader({required this.category, required this.count});
+  final String category;
+  final int count;
+
+  @override
+  Widget build(BuildContext context) {
+    final muted = Theme.of(context).colorScheme.onSurfaceVariant;
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 4),
+      child: Row(
+        children: [
+          Icon(categoryIcon(category), size: 18, color: muted),
+          const SizedBox(width: 8),
+          Expanded(
+            child: SectionLabel(
+              categoryLabel(category),
+              trailing: Text(
+                '$count',
+                style: TextStyle(color: muted, fontWeight: FontWeight.w700),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
 
 class _StoreTile extends ConsumerWidget {
   const _StoreTile({
+    super.key,
     required this.asset,
     required this.owned,
     required this.affordable,

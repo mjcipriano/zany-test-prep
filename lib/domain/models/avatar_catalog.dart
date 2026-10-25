@@ -15,6 +15,10 @@ library;
 /// out of the store, customizer, and chest drops.
 const Set<String> kExcludedItemCategories = {'jacket_overlay'};
 
+/// z of items drawn behind the avatar: under the avatar (0), above back auras
+/// (-20) and background frames (-40).
+const int kBehindAvatarZ = -10;
+
 /// A normalized placement box (fractions of the 512 composition frame): where a
 /// trimmed sprite's center goes ([cx],[cy]) and the max box it may occupy
 /// ([w],[h], fit with contain). This is the pack's `target_box_v1` contract.
@@ -35,6 +39,88 @@ class TargetBox {
     (j['w'] as num?)?.toDouble() ?? 1.0,
     (j['h'] as num?)?.toDouble() ?? 1.0,
   );
+}
+
+/// A point in the normalised 512 composition frame (0..1 on both axes).
+class FramePoint {
+  const FramePoint(this.x, this.y);
+  final double x;
+  final double y;
+
+  factory FramePoint.fromJson(Map<String, dynamic> j) => FramePoint(
+    (j['x'] as num?)?.toDouble() ?? 0.5,
+    (j['y'] as num?)?.toDouble() ?? 0.5,
+  );
+}
+
+/// An avatar's measured face (pack contract `face_fit_v1`): named points
+/// (`eyes`, `brow`, `nose_bridge`, `mouth`, `ear_l`, …) and reference widths
+/// (`face`, `eyes`, `mouth`, `ears`), all normalised to the 512 frame. Each
+/// avatar's head sits at its own height and size, so worn face/head items are
+/// placed on this rig instead of one fixed box per slot.
+class FaceRig {
+  const FaceRig({required this.points, required this.widths});
+
+  final Map<String, FramePoint> points;
+  final Map<String, double> widths;
+
+  static FaceRig? fromJson(Object? raw) {
+    if (raw is! Map) return null;
+    final points = <String, FramePoint>{
+      for (final e in ((raw['points'] as Map?) ?? const {}).entries)
+        if (e.value is Map)
+          e.key.toString(): FramePoint.fromJson(
+            (e.value as Map).cast<String, dynamic>(),
+          ),
+    };
+    final widths = <String, double>{
+      for (final e in ((raw['widths'] as Map?) ?? const {}).entries)
+        if (e.value is num) e.key.toString(): (e.value as num).toDouble(),
+    };
+    if (points.isEmpty || widths.isEmpty) return null;
+    return FaceRig(points: points, widths: widths);
+  }
+}
+
+/// Where a worn item hangs on a [FaceRig] (pack contract `face_fit_v1`): the
+/// sprite point [spriteAnchor] (0..1 of the sprite) lands on the rig point
+/// [anchor], and the sprite is [width] × the rig's [widthRef] width wide.
+/// [behind] items (hoods, the headset) draw under the avatar.
+class ItemFit {
+  const ItemFit({
+    required this.kind,
+    required this.anchor,
+    required this.spriteAnchor,
+    required this.widthRef,
+    required this.width,
+    this.behind = false,
+  });
+
+  final String kind;
+  final String anchor;
+  final FramePoint spriteAnchor;
+  final String widthRef;
+  final double width;
+  final bool behind;
+
+  static ItemFit? fromJson(Object? raw) {
+    if (raw is! Map) return null;
+    final j = raw.cast<String, dynamic>();
+    final anchor = j['anchor'], widthRef = j['width_ref'], width = j['width'];
+    if (anchor is! String || widthRef is! String || width is! num) return null;
+    return ItemFit(
+      kind: (j['kind'] ?? '').toString(),
+      anchor: anchor,
+      spriteAnchor: j['sprite_anchor'] is Map
+          ? FramePoint.fromJson(
+              (j['sprite_anchor'] as Map).cast<String, dynamic>(),
+            )
+          : const FramePoint(0.5, 0.5),
+      widthRef: widthRef,
+      width: width.toDouble(),
+      behind: j['behind'] == true,
+    );
+  }
 }
 
 /// A pet's place in its evolution line (pack contract `pet_evolution_v1`).
@@ -98,6 +184,8 @@ class CatalogAsset {
     this.spriteWidth = 0,
     this.spriteHeight = 0,
     this.tags = const [],
+    this.faceRig,
+    this.fit,
   });
 
   final String id;
@@ -130,6 +218,16 @@ class CatalogAsset {
   final int spriteWidth;
   final int spriteHeight;
   final List<String> tags;
+
+  /// Avatars only: the measured face that worn items are fitted to.
+  final FaceRig? faceRig;
+
+  /// Head/face/ear items only: how the item hangs on an avatar's [FaceRig].
+  final ItemFit? fit;
+
+  /// Draw order: items fitted [ItemFit.behind] the avatar (hoods, the headset)
+  /// sit just behind it — in front of auras and frames, under the avatar.
+  int get renderZ => (fit?.behind ?? false) ? kBehindAvatarZ : zIndex;
 
   /// Sprite aspect ratio (width / height), or null when unknown.
   double? get spriteAspect =>
@@ -220,6 +318,8 @@ class CatalogAsset {
       tags: ((j['tags'] as List?) ?? const [])
           .map((e) => e.toString())
           .toList(),
+      faceRig: FaceRig.fromJson(j['face_rig']),
+      fit: ItemFit.fromJson(j['fit']),
     );
   }
 }

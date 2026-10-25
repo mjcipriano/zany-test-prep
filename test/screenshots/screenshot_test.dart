@@ -84,6 +84,20 @@ Future<void> _pump(WidgetTester tester, MemoryStore store) async {
 
 Future<void> _shoot(WidgetTester tester, String name) async {
   await tester.pumpAndSettle();
+  // Decode every image on screen first (store tiles, avatar art), otherwise the
+  // capture shows empty tiles where the art has not loaded yet.
+  final providers = {
+    for (final img in tester.widgetList<Image>(find.byType(Image))) img.image,
+  };
+  if (providers.isNotEmpty) {
+    await tester.runAsync(() async {
+      final ctx = _boundaryKey.currentContext!;
+      for (final p in providers) {
+        await precacheImage(p, ctx);
+      }
+    });
+    await tester.pumpAndSettle();
+  }
   await tester.runAsync(() async {
     final boundary =
         _boundaryKey.currentContext!.findRenderObject()
@@ -277,11 +291,11 @@ void main() {
       'pet_fox_study_cap_001', // side pet
     };
     const paths = [
-      'assets/avatar/avatars/starter/avatar_basic_001_nova_learner.png',
-      'assets/avatar/items/headwear/item_001_classic_cap.png',
-      'assets/avatar/items/eyewear/item_041_round_glasses.png',
-      'assets/avatar/items/face_accessory/item_071_simple_mask.png',
-      'assets/avatar/pets/common/pet_fox_study_cap_001.png',
+      'assets/avatar/avatars/starter/avatar_basic_001_nova_learner.webp',
+      'assets/avatar/items/headwear/item_001_classic_cap.webp',
+      'assets/avatar/items/eyewear/item_041_round_glasses.webp',
+      'assets/avatar/items/face_accessory/item_071_simple_mask.webp',
+      'assets/avatar/pets/common/pet_fox_study_cap_001.webp',
     ];
 
     final store = MemoryStore();
