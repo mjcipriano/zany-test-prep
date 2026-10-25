@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../app/app_controller.dart';
 import '../../design/theme.dart';
 import '../../design/widgets.dart';
+import 'cheat_tap.dart';
 
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
@@ -168,11 +169,14 @@ class SettingsScreen extends ConsumerWidget {
                   onTap: () => context.push('/about'),
                 ),
                 const Divider(height: 1),
-                ListTile(
-                  contentPadding: EdgeInsets.zero,
-                  leading: const Icon(Icons.dataset_rounded),
-                  title: const Text('Content version'),
-                  trailing: Text(data.bundle.exam.contentVersion),
+                // The same hidden cheat as on the About screen.
+                CheatTapTarget(
+                  child: ListTile(
+                    contentPadding: EdgeInsets.zero,
+                    leading: const Icon(Icons.dataset_rounded),
+                    title: const Text('Content version'),
+                    trailing: Text(data.bundle.exam.contentVersion),
+                  ),
                 ),
               ],
             ),
