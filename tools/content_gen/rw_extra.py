@@ -717,7 +717,7 @@ _PA_BAIT_LONG = {"plural": ["along with several partner organizations that joine
                  # used after PLURAL antecedents (often people): no "which"/"it" clauses,
                  # which would need a singular thing to attach to ("The members, which...")
                  "singular": ["after a long meeting with the regional director",
-                              "following a vote by the national federation",
+                              "despite a short delay",
                               "under the guidance of a single veteran coach"]}
 
 
@@ -797,13 +797,22 @@ def pa_subject(rng, difficulty):
                  tags=["conventions", "pronoun-antecedent", "subject-pronoun"])
 
 
+# (frame, predicate, which person is meant, follow-up sentence that tells the
+# reader who the writer means). A pronoun in the blank would be ambiguous; the
+# follow-up settles the INTENDED referent so the one name offered is clearly it.
 _PA_AMBIG = [
-    ("When {A} handed {B} the report,", "noticed a typo on the first page", "B"),
-    ("After {A} called {B} about the schedule,", "agreed to switch shifts", "B"),
-    ("Before {A} interviewed {B},", "reviewed the application twice", "A"),
-    ("Although {A} had coached {B} for years,", "never mentioned the award", "A"),
-    ("Once {A} emailed {B} the directions,", "left for the airport", "B"),
-    ("While {A} was tutoring {B},", "kept checking the clock", "B"),
+    ("When {A} handed {B} the report,", "noticed a typo on the first page", "B",
+     "{T}, the newer of the two, was the one reading it."),
+    ("After {A} called {B} about the schedule,", "agreed to switch shifts", "B",
+     "{T} had been the one asked to switch."),
+    ("Before {A} interviewed {B},", "reviewed the application twice", "A",
+     "As the interviewer, {T} wanted to be prepared."),
+    ("Although {A} had coached {B} for years,", "never mentioned the award", "A",
+     "As the coach, {T} preferred to stay out of the spotlight."),
+    ("Once {A} emailed {B} the directions,", "left for the airport", "B",
+     "{T} was the one with a flight to catch."),
+    ("While {A} was tutoring {B},", "kept checking the clock", "B",
+     "As the student, {T} was eager for the session to end."),
 ]
 
 
@@ -814,7 +823,7 @@ _UNISEX_NAMES = {"Sora", "Wren", "Yuki"}
 @family(fill_in=True)
 def pa_ambiguous(rng, difficulty):
     """Two possible antecedents: the clear choice repeats the noun."""
-    frame, pred, who = rng.choice(_PA_AMBIG)
+    frame, pred, who, follow = rng.choice(_PA_AMBIG)
     # Both people must take the same pronoun, or "he"/"she" alone would settle
     # the reference (the old filter re-drew the pronoun for every name, so it
     # paired e.g. Oscar with Maya and the keyed "repeat the name" wasn't better).
@@ -830,11 +839,9 @@ def pa_ambiguous(rng, difficulty):
     ds = [(s, f"'{s}' could refer to either {a} or {b}, so the reference is ambiguous."),
           (f"{s} {r}", f"Even with the emphatic '{r}', '{s}' could still be either {a} or {b}."),
           (o, f"'{o}' is objective case and cannot be the subject of the clause.")]
-    if difficulty == "hard":
-        text = text + " " + rng.choice(["The matter was dropped.", "Neither mentioned it again.",
-                                        "The mistake was fixed by noon."])
-    elif difficulty == "medium":
+    if difficulty == "medium":
         text = rng.choice(["Later that week, ", "On Monday, ", "That afternoon, "]) + low(text)
+    text = text + " " + follow.format(T=target)
     return build(rng, fill(text, conv_stem(rng)), correct, ds, subskill="pronoun_antecedent",
                  explanation=("A pronoun must point to exactly one antecedent; when two nouns could "
                               "be its referent, repeat the intended noun instead."),
@@ -1458,9 +1465,12 @@ def par_correlative_verbs(rng, difficulty):
 # =========================================================================== #
 # v2.1 ADDITIONS — PRONOUN-ANTECEDENT
 # =========================================================================== #
+# Bodies that act as one unit (vote, announce, approve). "Cast", "crew" and
+# "faculty" are left out: their members usually act individually ("their
+# bows"), and plural "they" is standard there too.
 _PA_COLL = [("The jury", "verdict"), ("The committee", "recommendation"), ("The orchestra", "program"),
-            ("The team", "lineup"), ("The council", "budget"), ("The faculty", "schedule"),
-            ("The crew", "route"), ("The board", "decision"), ("The choir", "repertoire"), ("The cast", "bows")]
+            ("The team", "lineup"), ("The council", "budget"), ("The board", "decision"),
+            ("The choir", "repertoire")]
 
 
 @family(fill_in=True)
@@ -1469,8 +1479,10 @@ def pa_collective(rng, difficulty):
     ante, thing = rng.choice(_PA_COLL)
     noun = ante.split()[1]
     kind = rng.choice(["poss", "subj"])
-    members = rng.choice(["whose members rarely agree", "made up of twelve members",
-                          "which includes several newcomers", "despite its many members"])
+    # each interrupter keeps the group acting as ONE body (the old "whose members
+    # rarely agree" invited a plural reading)
+    members = rng.choice(["voting as a single body", "acting as one group",
+                          "speaking with one voice", "deciding as a single body"])
     if kind == "poss":
         right, wrong = "its", "their"
         pred = rng.choice([f"announced ___ {thing} at noon", f"revised ___ {thing} twice", f"defended ___ {thing}"])
@@ -1486,14 +1498,13 @@ def pa_collective(rng, difficulty):
               ("one", "'one' does not refer back to the collective noun.")]
     correct = (right, f"Correct. '{ante}' is a collective noun acting as one unit, so '{right}' agrees with it.")
     if kind == "poss":
-        text = f"{ante} {pred}." if difficulty == "easy" else f"{ante}, {members}, {pred}."
+        text = f"{ante} as a whole {pred}." if difficulty == "easy" else f"{ante}, {members}, {pred}."
     else:
         # No other singular/plural noun may sit near the blank: "The hall fell silent
         # when ___ announced..." let "it" mean the hall (and "they" the reporters).
         when = rng.choice(["Shortly before midnight,", "Late that evening,", "At last,"])
         clause = pred.split(" ", 1)[1]  # "___ announced the verdict"
-        lead = f"{ante} met for nine hours." if difficulty != "hard" else \
-            f"{ante}, {members}, met for nine hours."
+        lead = f"{ante}, {members}, met for nine hours."
         text = f"{lead} {when} {clause}."
     if difficulty == "hard" and kind == "poss":
         text = text + " " + rng.choice(["The announcement surprised no one.", "Reporters had waited all day."])

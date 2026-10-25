@@ -2000,8 +2000,9 @@ def mod_passage(rng, difficulty):
 # TRANSITIONS
 # =========================================================================== #
 _TRANS_BANK = {
-    "contrast": ["However", "Nevertheless", "By contrast", "On the other hand", "Still",
-                 "Even so", "In spite of this"],
+    # Concession words only: "By contrast"/"On the other hand" compare two subjects
+    # and read oddly for "expected X; Y happened" items (audit phase 3, round 2).
+    "contrast": ["However", "Nevertheless", "Still", "Even so", "In spite of this"],
     "cause": ["Therefore", "As a result", "Consequently", "Thus", "For this reason", "Hence"],
     "addition": ["Moreover", "In addition", "Furthermore", "Additionally", "What is more"],
     "example": ["For example", "For instance", "To illustrate", "Specifically"],
@@ -2009,7 +2010,7 @@ _TRANS_BANK = {
     "emphasis": ["Indeed", "In fact", "Above all"],
 }
 _TRANS_ITEMS = [
-    ("The new policy promised faster service.", "wait times actually grew longer in the first month.", "contrast"),
+    ("The new policy promised faster service.", "wait times grew longer in the first month.", "contrast"),
     ("Sea otters eat large numbers of sea urchins.", "kelp forests thrive where otters are present.", "cause"),
     ("The biography is meticulously researched.", "it is written in lively, accessible prose.", "addition"),
     ("Some metals expand significantly when heated.", "bridges are built with expansion joints.", "cause"),
@@ -2060,7 +2061,8 @@ _TRANS_ITEMS = [
 # offering those made two choices defensible (answer-key audit, phase 3).
 # Nothing is keyed "emphasis": "Indeed"/"In fact" fit too many additions.
 _TRANS_DISTRACTOR_RELS = {
-    "contrast": ["addition", "cause", "emphasis", "example"],
+    # no emphasis: "In fact" also means "actually, contrary to expectation"
+    "contrast": ["addition", "cause", "example"],
     "cause": ["contrast", "example"],
     "addition": ["contrast", "sequence"],
     "example": ["contrast", "sequence"],
@@ -2175,7 +2177,7 @@ _TRANS_PASS = [
      "it can be sent with almost any equipment, even a flashlight.", "contrast",
      "Amateur operators still practice it today."),
     ("The city's oldest bridge was built for horse carts.", "Engineers reinforced it twice last century.",
-     "heavy trucks are still banned from crossing it.", "contrast",
+     "heavy trucks are banned from crossing it.", "contrast",
      "A second bridge now carries most freight."),
     ("Amara's grandmother kept bees behind the house.", "Amara helped with the harvest each August.",
      "she started a hive of her own at fourteen.", "sequence",
@@ -2189,8 +2191,8 @@ _TRANS_PASS = [
     ("Many migrating birds travel at night.", "Bright city lights can draw them off course.",
      "several cities now dim their skylines during peak migration.", "cause",
      "Early counts suggest fewer collisions."),
-    ("The clock tower's mechanism dates from 1884.", "It must be wound by hand twice a week.",
-     "the tower keeps time to within a few seconds a month.", "contrast",
+    ("The clock tower's mechanism dates from 1884.", "Its worn gears must be wound by hand twice a week.",
+     "the old mechanism keeps time to within a few seconds a month.", "contrast",
      "A volunteer has climbed the stairs to wind it for thirty years."),
     ("The new stadium was designed to use less water.", "Rain is collected from the roof.",
      "the field is irrigated with recycled water from the concession stands.", "addition",
@@ -2768,8 +2770,9 @@ _SHIFT = [
 ]
 # Never offer "they" beside a keyed "he or she": singular "they" is standard
 # for "a visitor", so both would be right. "I" is an unambiguous shift instead.
+# Nor "one" beside "he or she": both can refer back to "a person" (generic "one").
 _SHIFT_WRONG = {"one": ["you", "I", "we"], "you": ["one", "I", "we"],
-                "he or she": ["you", "one", "we"]}
+                "he or she": ["you", "I", "we"]}
 
 
 @family(fill_in=True)
@@ -3155,7 +3158,7 @@ def mod_squinting(rng, difficulty):
 # =========================================================================== #
 _TRANS_ITEMS.extend([
     ("The clinic added evening hours in March.", "fewer patients now visit the emergency room.", "cause"),
-    ("The tunnel shortens the drive by an hour.", "most trucks still use the mountain road.", "contrast"),
+    ("The tunnel shortens the drive by an hour.", "most trucks keep using the mountain road.", "contrast"),
     ("The robot's arm jammed in the first round.", "the team finished in the top ten.", "contrast"),
     ("The lighthouse was automated decades ago.", "its lens is cleaned by hand every spring.", "contrast"),
     ("The bakery's rye loaf sold out by noon.", "the owners doubled the batch the next day.", "cause"),
@@ -3163,12 +3166,12 @@ _TRANS_ITEMS.extend([
     ("The marsh lost half its area after 1990.", "bird counts have risen since the grasses were replanted.", "contrast"),
     ("The telescope's mirror was replaced in 2021.", "its resolution doubled.", "cause"),
     ("Many desert plants store water in their stems.", "the barrel cactus can hold a gallon.", "example"),
-    ("The orchestra rehearsed the finale a dozen times.", "the performance still ran long.", "contrast"),
+    ("The orchestra rehearsed the finale a dozen times.", "the performance ran long.", "contrast"),
     ("The choir auditioned new members in September.", "it added a second rehearsal night.", "sequence"),
     ("Kite festivals draw crowds in many coastal towns.", "the one in Harlan fills every hotel.", "example"),
     ("The ferry company added a third boat.", "weekend crossings carry twice as many bicycles.", "cause"),
     ("The mill employed half the town in the 1950s.", "it closed in 1983.", "contrast"),
-    ("The new filter removes nearly all the sediment.", "the water still tastes faintly of iron.", "contrast"),
+    ("The new filter removes nearly all the sediment.", "the water tastes faintly of iron.", "contrast"),
     ("The glacier has retreated a mile since 1950.", "it has thinned by nearly two hundred feet.", "addition"),
 ])
 
@@ -3190,9 +3193,10 @@ _TRANS_PARA = [
      "it took months of nightly practice.",
      "it can be sent with almost any equipment, even a flashlight. Amateur operators still practice it "
      "today for exactly that reason.", "contrast"),
-    ("The clock tower's mechanism dates from 1884. It must be wound by hand twice a week, a job that "
+    ("The clock tower's mechanism dates from 1884, and its gears are worn smooth with age. It must be "
+     "wound by hand twice a week, a job that "
      "takes a volunteer up two hundred stairs.",
-     "the tower keeps time to within a few seconds a month. The volunteer who winds it has done so for "
+     "the old mechanism keeps time to within a few seconds a month. The volunteer who winds it has done so for "
      "thirty years.", "contrast"),
     ("Lichens grow on bare rock where little else survives. They release weak acids that slowly break the "
      "rock's surface into grains.",
@@ -3219,7 +3223,7 @@ _TRANS_PARA = [
      "she started a hive of her own at fourteen. She now sells honey at the Saturday market.", "sequence"),
     ("The city's oldest bridge was built for horse carts. Engineers reinforced it twice last century, "
      "adding steel beneath the original stone.",
-     "heavy trucks are still banned from crossing it. A second bridge now carries most freight.", "contrast"),
+     "heavy trucks are banned from crossing it. A second bridge now carries most freight.", "contrast"),
 ]
 
 
@@ -3243,18 +3247,18 @@ def trans_paragraph(rng, difficulty):
 
 # (sentence 1, sentence 2 that simply continues with no logical connector)
 _TRANS_DELETE = [
-    ("The bakery opens at six.", "The first customers are usually fishermen heading to the docks."),
+    ("The bakery sits on Harbor Street.", "A blue awning shades its front window."),
     ("The trail begins behind the ranger station.", "A wooden sign marks the first turn."),
     ("The museum's new wing holds the textile collection.", "A tapestry of woven silk hangs at the far end."),
-    ("Nadia restores antique clocks in a small workshop.", "She keeps a drawer of spare parts sorted by century."),
+    ("Nadia restores antique clocks in a small workshop.", "The workshop has a single window facing the river."),
     ("The orchestra toured three cities over spring break.", "Recordings of the concerts are posted online."),
     ("The coral nursery sits in a shallow lagoon.", "Divers check the frames twice a month."),
-    ("The city archive holds thousands of letters from the 1890s.", "Volunteers transcribe them one page at a time."),
+    ("The city archive holds thousands of letters from the 1890s.", "The letters are stored in acid-free boxes."),
     ("The kite festival takes place on the first Saturday in June.", "Prizes go to the largest kite and the most unusual design."),
     ("The robotics club meets after school on Tuesdays.", "Its next competition is in March."),
     ("The lighthouse was built in 1874.", "A keeper's cottage stands beside it."),
     ("The ferry crosses to the island four times a day.", "Tickets are sold at a booth on the pier."),
-    ("The olive grove covers the hillside above the village.", "Farmers harvest the fruit by hand with long rakes."),
+    ("The olive grove covers the hillside above the village.", "Its oldest trees were planted more than two centuries ago."),
 ]
 _DELETE_TEXT = "DELETE it"
 
@@ -3266,10 +3270,11 @@ def trans_delete(rng, difficulty):
     if delete_case:
         s1, s2 = rng.choice(_TRANS_DELETE)
         shown = rng.choice(["Therefore", "However", "Consequently"] if difficulty == "easy"
-                           else ["Therefore", "However", "For example", "Consequently", "Nevertheless"])
+                           else ["Therefore", "However", "As a result", "Consequently", "Nevertheless"])
         # Only relations a plain continuation clearly lacks: an addition word
-        # ("Moreover") or a sequence word ("Next") could arguably stay.
-        others = [w for r in ("contrast", "cause", "example") for w in _TRANS_BANK[r] if w != shown]
+        # ("Moreover"), a sequence word ("Next") or an example marker ("For instance,
+        # a tapestry hangs...") could arguably stay.
+        others = [w for r in ("contrast", "cause") for w in _TRANS_BANK[r] if w != shown]
         rng.shuffle(others)
         correct = (_DELETE_TEXT, "Correct. The second sentence simply adds a detail; no cause, contrast, or "
                                  "example is being signaled, so any transition word is misleading.")

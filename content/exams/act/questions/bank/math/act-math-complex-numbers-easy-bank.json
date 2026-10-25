@@ -11,43 +11,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "conjugate_modulus",
-    "prompt": "What is the product (−8 + 5i)(−8 − 5i)?",
+    "prompt": "What is the complex conjugate of 5 + 6i?",
     "choices": [
       {
         "id": "A",
-        "text": "90",
-        "rationale": "Arithmetic slip."
-      },
-      {
-        "id": "B",
-        "text": "-89",
-        "rationale": "The product is positive."
-      },
-      {
-        "id": "C",
-        "text": "89",
+        "text": "5 − 6i",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "−5 − 6i",
+        "rationale": "Only the imaginary part changes sign."
+      },
+      {
+        "id": "C",
+        "text": "−5 + 6i",
+        "rationale": "The conjugate changes the sign of the IMAGINARY part only."
+      },
+      {
         "id": "D",
-        "text": "39",
-        "rationale": "i² = −1 turns −b²i² into +b²."
+        "text": "6 + 5i",
+        "rationale": "The real and imaginary parts don't swap."
       },
       {
         "id": "E",
-        "text": "64",
-        "rationale": "Include the b² term."
+        "text": "5 + 6i",
+        "rationale": "The conjugate must differ in the sign of the imaginary part."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "(a + bi)(a − bi) = a² + b² = 64 + 25 = 89.",
-    "estimated_time_seconds": 75,
+    "correct_choice": "A",
+    "explanation": "The conjugate of a + bi is a − bi: 5 − 6i.",
+    "estimated_time_seconds": 60,
     "tags": [
       "complex",
       "conjugate",
-      "family:cx_conj_product"
+      "family:cx_conjugate_modulus"
     ],
-    "answer_verification": "a=-8,b=5,val=89"
+    "answer_verification": "5 − 6i"
   },
   {
     "question_id": "act-math-complex-numbers-easy-b0002",
@@ -60,44 +60,44 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "arithmetic",
-    "prompt": "Which of the following gives all solutions to x² + 361 = 0?",
+    "subskill": "powers_of_i",
+    "prompt": "What is the value of i^35, where i = √(−1)?",
     "choices": [
       {
         "id": "A",
-        "text": "x = ±20i",
-        "rationale": "Check: (20i)² = −400, not −361."
+        "text": "i",
+        "rationale": "Reduce the exponent modulo 4: i^35 = i^3."
       },
       {
         "id": "B",
-        "text": "x = ±19i",
-        "rationale": "Correct."
+        "text": "−1",
+        "rationale": "Reduce the exponent modulo 4: i^35 = i^3."
       },
       {
         "id": "C",
-        "text": "x = ±361i",
-        "rationale": "Take the square root of 361."
+        "text": "−i",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "x = ±19",
-        "rationale": "x² = −361 has no real solutions; the square root of −1 is i."
+        "text": "0",
+        "rationale": "No power of i is 0."
       },
       {
         "id": "E",
-        "text": "x = 19i",
-        "rationale": "There are two solutions, ±."
+        "text": "1",
+        "rationale": "Reduce the exponent modulo 4: i^35 = i^3."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "x² = −361, so x = ±√(−361) = ±19i.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "C",
+    "explanation": "Powers of i cycle every 4: i, −1, −i, 1. Since 35 = 4·8 + 3, i^35 = i^3 = −i.",
+    "estimated_time_seconds": 65,
     "tags": [
       "complex",
-      "quadratic",
-      "family:cx_quadratic"
+      "powers-of-i",
+      "family:cx_powers"
     ],
-    "answer_verification": "x = ±19i"
+    "answer_verification": "i^35=−i"
   },
   {
     "question_id": "act-math-complex-numbers-easy-b0003",
@@ -110,44 +110,44 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "powers_of_i",
-    "prompt": "If i² = −1, what is i^5?",
+    "subskill": "arithmetic",
+    "prompt": "What is the product −5i · (−5 + i)?",
     "choices": [
       {
         "id": "A",
-        "text": "−1",
-        "rationale": "Reduce the exponent modulo 4: i^5 = i^1."
+        "text": "25 + 5i",
+        "rationale": "Distribute carefully: ki·a = kai and ki·bi = −kb."
       },
       {
         "id": "B",
-        "text": "i",
-        "rationale": "Correct."
+        "text": "5 − 25i",
+        "rationale": "Check the sign of the imaginary part."
       },
       {
         "id": "C",
-        "text": "−i",
-        "rationale": "Reduce the exponent modulo 4: i^5 = i^1."
+        "text": "25 − 5i",
+        "rationale": "Multiply through by i: the imaginary term becomes real (with i² = −1)."
       },
       {
         "id": "D",
-        "text": "1",
-        "rationale": "Reduce the exponent modulo 4: i^5 = i^1."
+        "text": "−5 + 25i",
+        "rationale": "i·i = −1, so the real part gets a minus sign."
       },
       {
         "id": "E",
-        "text": "0",
-        "rationale": "No power of i is 0."
+        "text": "5 + 25i",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Powers of i cycle every 4: i, −1, −i, 1. Since 5 = 4·1 + 1, i^5 = i^1 = i.",
-    "estimated_time_seconds": 65,
+    "correct_choice": "E",
+    "explanation": "−5i·−5 = 25i and −5i·1i = −5i² = 5; total 5 + 25i.",
+    "estimated_time_seconds": 75,
     "tags": [
       "complex",
-      "powers-of-i",
-      "family:cx_powers"
+      "multiply",
+      "family:cx_multiply"
     ],
-    "answer_verification": "i^5=i"
+    "answer_verification": "5 + 25i"
   },
   {
     "question_id": "act-math-complex-numbers-easy-b0004",
@@ -160,44 +160,44 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "arithmetic",
-    "prompt": "What is the product 6i · (1 − 4i)?",
+    "subskill": "conjugate_modulus",
+    "prompt": "What is the product (−1 − 5i)(−1 + 5i)?",
     "choices": [
       {
         "id": "A",
-        "text": "24 − 6i",
-        "rationale": "Check the sign of the imaginary part."
+        "text": "26",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "−24 + 6i",
-        "rationale": "i·i = −1, so the real part gets a minus sign."
+        "text": "-24",
+        "rationale": "i² = −1 turns −b²i² into +b²."
       },
       {
         "id": "C",
-        "text": "6 − 24i",
-        "rationale": "Multiply through by i: the imaginary term becomes real (with i² = −1)."
+        "text": "27",
+        "rationale": "Arithmetic slip."
       },
       {
         "id": "D",
-        "text": "6 + 24i",
-        "rationale": "Distribute carefully: ki·a = kai and ki·bi = −kb."
+        "text": "-26",
+        "rationale": "The product is positive."
       },
       {
         "id": "E",
-        "text": "24 + 6i",
-        "rationale": "Correct."
+        "text": "1",
+        "rationale": "Include the b² term."
       }
     ],
-    "correct_choice": "E",
-    "explanation": "6i·1 = 6i and 6i·−4i = −24i² = 24; total 24 + 6i.",
+    "correct_choice": "A",
+    "explanation": "(a + bi)(a − bi) = a² + b² = 1 + 25 = 26.",
     "estimated_time_seconds": 75,
     "tags": [
       "complex",
-      "multiply",
-      "family:cx_multiply"
+      "conjugate",
+      "family:cx_conj_product"
     ],
-    "answer_verification": "24 + 6i"
+    "answer_verification": "a=-1,b=-5,val=26"
   },
   {
     "question_id": "act-math-complex-numbers-easy-b0005",
@@ -210,44 +210,39 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "arithmetic",
-    "prompt": "What is the sum (−8 + 7i) + (9 − 8i)?",
+    "subskill": "conjugate_modulus",
+    "prompt": "What is the complex conjugate of −8 − 8i?",
     "choices": [
       {
         "id": "A",
-        "text": "−17 + 15i",
-        "rationale": "This subtracts."
+        "text": "8 + 8i",
+        "rationale": "Only the imaginary part changes sign."
       },
       {
         "id": "B",
-        "text": "1 − 56i",
-        "rationale": "Add the imaginary coefficients; don't multiply them."
+        "text": "−8 − 8i",
+        "rationale": "The real and imaginary parts don't swap."
       },
       {
         "id": "C",
-        "text": "1 − i",
+        "text": "−8 + 8i",
         "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "1 + i",
-        "rationale": "Check the sign of the imaginary part."
-      },
-      {
-        "id": "E",
-        "text": "0",
-        "rationale": "Real and imaginary parts stay separate."
+        "text": "8 − 8i",
+        "rationale": "The conjugate changes the sign of the IMAGINARY part only."
       }
     ],
     "correct_choice": "C",
-    "explanation": "Add real parts: −8 + 9 = 1; add imaginary parts: 7 + −8 = −1. Result: 1 − i.",
-    "estimated_time_seconds": 70,
+    "explanation": "The conjugate of a + bi is a − bi: −8 + 8i.",
+    "estimated_time_seconds": 60,
     "tags": [
       "complex",
-      "add-subtract",
-      "family:cx_add_sub"
+      "conjugate",
+      "family:cx_conjugate_modulus"
     ],
-    "answer_verification": "1 − i"
+    "answer_verification": "−8 + 8i"
   },
   {
     "question_id": "act-math-complex-numbers-easy-b0006",
@@ -260,44 +255,44 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "arithmetic",
-    "prompt": "What is the sum (−1 − 8i) + (3 − 7i)?",
+    "subskill": "conjugate_modulus",
+    "prompt": "Which of the following is the conjugate of 9 + i?",
     "choices": [
       {
         "id": "A",
-        "text": "−13",
-        "rationale": "Real and imaginary parts stay separate."
+        "text": "−9 + i",
+        "rationale": "The conjugate changes the sign of the IMAGINARY part only."
       },
       {
         "id": "B",
-        "text": "2 − 15i",
-        "rationale": "Correct."
+        "text": "9 + i",
+        "rationale": "The conjugate must differ in the sign of the imaginary part."
       },
       {
         "id": "C",
-        "text": "2 + 15i",
-        "rationale": "Check the sign of the imaginary part."
+        "text": "−9 − i",
+        "rationale": "Only the imaginary part changes sign."
       },
       {
         "id": "D",
-        "text": "−4 − i",
-        "rationale": "This subtracts."
+        "text": "9 − i",
+        "rationale": "Correct."
       },
       {
         "id": "E",
-        "text": "2 + 56i",
-        "rationale": "Add the imaginary coefficients; don't multiply them."
+        "text": "1 + 9i",
+        "rationale": "The real and imaginary parts don't swap."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Add real parts: −1 + 3 = 2; add imaginary parts: −8 + −7 = −15. Result: 2 − 15i.",
-    "estimated_time_seconds": 70,
+    "correct_choice": "D",
+    "explanation": "The conjugate of a + bi is a − bi: 9 − i.",
+    "estimated_time_seconds": 60,
     "tags": [
       "complex",
-      "add-subtract",
-      "family:cx_add_sub"
+      "conjugate",
+      "family:cx_conjugate_modulus"
     ],
-    "answer_verification": "2 − 15i"
+    "answer_verification": "9 − i"
   },
   {
     "question_id": "act-math-complex-numbers-easy-b0007",
@@ -310,44 +305,44 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "arithmetic",
-    "prompt": "In the complex numbers, what are the solutions to x² = −144?",
+    "subskill": "powers_of_i",
+    "prompt": "Which of the following is equal to i^4?",
     "choices": [
       {
         "id": "A",
-        "text": "x = ±12",
-        "rationale": "x² = −144 has no real solutions; the square root of −1 is i."
+        "text": "−1",
+        "rationale": "Reduce the exponent modulo 4: i^4 = i^0."
       },
       {
         "id": "B",
-        "text": "x = ±13i",
-        "rationale": "Check: (13i)² = −169, not −144."
+        "text": "i",
+        "rationale": "Reduce the exponent modulo 4: i^4 = i^0."
       },
       {
         "id": "C",
-        "text": "x = ±12i",
-        "rationale": "Correct."
+        "text": "0",
+        "rationale": "No power of i is 0."
       },
       {
         "id": "D",
-        "text": "x = ±144i",
-        "rationale": "Take the square root of 144."
+        "text": "−i",
+        "rationale": "Reduce the exponent modulo 4: i^4 = i^0."
       },
       {
         "id": "E",
-        "text": "x = 12i",
-        "rationale": "There are two solutions, ±."
+        "text": "1",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "x² = −144, so x = ±√(−144) = ±12i.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "E",
+    "explanation": "Powers of i cycle every 4: i, −1, −i, 1. Since 4 = 4·1 + 0, i^4 = i^0 = 1.",
+    "estimated_time_seconds": 65,
     "tags": [
       "complex",
-      "quadratic",
-      "family:cx_quadratic"
+      "powers-of-i",
+      "family:cx_powers"
     ],
-    "answer_verification": "x = ±12i"
+    "answer_verification": "i^4=1"
   },
   {
     "question_id": "act-math-complex-numbers-easy-b0008",
@@ -361,43 +356,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "arithmetic",
-    "prompt": "What are the solutions to the equation x² + 196 = 0?",
+    "prompt": "What is the product −5i · (−7 + i)?",
     "choices": [
       {
         "id": "A",
-        "text": "x = ±14",
-        "rationale": "x² = −196 has no real solutions; the square root of −1 is i."
-      },
-      {
-        "id": "B",
-        "text": "x = ±14i",
+        "text": "5 + 35i",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "35 + 5i",
+        "rationale": "Distribute carefully: ki·a = kai and ki·bi = −kb."
+      },
+      {
         "id": "C",
-        "text": "x = ±196i",
-        "rationale": "Take the square root of 196."
+        "text": "35 − 5i",
+        "rationale": "Multiply through by i: the imaginary term becomes real (with i² = −1)."
       },
       {
         "id": "D",
-        "text": "x = ±15i",
-        "rationale": "Check: (15i)² = −225, not −196."
+        "text": "−5 + 35i",
+        "rationale": "i·i = −1, so the real part gets a minus sign."
       },
       {
         "id": "E",
-        "text": "x = 14i",
-        "rationale": "There are two solutions, ±."
+        "text": "5 − 35i",
+        "rationale": "Check the sign of the imaginary part."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "x² = −196, so x = ±√(−196) = ±14i.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "A",
+    "explanation": "−5i·−7 = 35i and −5i·1i = −5i² = 5; total 5 + 35i.",
+    "estimated_time_seconds": 75,
     "tags": [
       "complex",
-      "quadratic",
-      "family:cx_quadratic"
+      "multiply",
+      "family:cx_multiply"
     ],
-    "answer_verification": "x = ±14i"
+    "answer_verification": "5 + 35i"
   },
   {
     "question_id": "act-math-complex-numbers-easy-b0009",
@@ -411,27 +406,27 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "conjugate_modulus",
-    "prompt": "What is the product (−7 + 6i)(−7 − 6i)?",
+    "prompt": "What is the product (−7 + 5i)(−7 − 5i)?",
     "choices": [
       {
         "id": "A",
-        "text": "-85",
-        "rationale": "The product is positive."
+        "text": "24",
+        "rationale": "i² = −1 turns −b²i² into +b²."
       },
       {
         "id": "B",
-        "text": "86",
-        "rationale": "Arithmetic slip."
+        "text": "-74",
+        "rationale": "The product is positive."
       },
       {
         "id": "C",
-        "text": "85",
+        "text": "74",
         "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "13",
-        "rationale": "i² = −1 turns −b²i² into +b²."
+        "text": "75",
+        "rationale": "Arithmetic slip."
       },
       {
         "id": "E",
@@ -440,14 +435,14 @@
       }
     ],
     "correct_choice": "C",
-    "explanation": "(a + bi)(a − bi) = a² + b² = 49 + 36 = 85.",
+    "explanation": "(a + bi)(a − bi) = a² + b² = 49 + 25 = 74.",
     "estimated_time_seconds": 75,
     "tags": [
       "complex",
       "conjugate",
       "family:cx_conj_product"
     ],
-    "answer_verification": "a=-7,b=6,val=85"
+    "answer_verification": "a=-7,b=5,val=74"
   },
   {
     "question_id": "act-math-complex-numbers-easy-b0010",
@@ -461,1041 +456,46 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "arithmetic",
-    "prompt": "Which of the following gives all solutions to x² + 225 = 0?",
+    "prompt": "What is the sum (−8 + 6i) + (6 + 2i)?",
     "choices": [
       {
         "id": "A",
-        "text": "x = ±15",
-        "rationale": "x² = −225 has no real solutions; the square root of −1 is i."
+        "text": "6",
+        "rationale": "Real and imaginary parts stay separate."
       },
       {
         "id": "B",
-        "text": "x = ±15i",
-        "rationale": "Correct."
+        "text": "−2 + 12i",
+        "rationale": "Add the imaginary coefficients; don't multiply them."
       },
       {
         "id": "C",
-        "text": "x = ±225i",
-        "rationale": "Take the square root of 225."
+        "text": "−14 + 4i",
+        "rationale": "This subtracts."
       },
       {
         "id": "D",
-        "text": "x = 15i",
-        "rationale": "There are two solutions, ±."
+        "text": "−2 + 8i",
+        "rationale": "Correct."
       },
       {
         "id": "E",
-        "text": "x = ±16i",
-        "rationale": "Check: (16i)² = −256, not −225."
+        "text": "−2 − 8i",
+        "rationale": "Check the sign of the imaginary part."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "x² = −225, so x = ±√(−225) = ±15i.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "D",
+    "explanation": "Add real parts: −8 + 6 = −2; add imaginary parts: 6 + 2 = 8. Result: −2 + 8i.",
+    "estimated_time_seconds": 70,
     "tags": [
       "complex",
-      "quadratic",
-      "family:cx_quadratic"
+      "add-subtract",
+      "family:cx_add_sub"
     ],
-    "answer_verification": "x = ±15i"
+    "answer_verification": "−2 + 8i"
   },
   {
     "question_id": "act-math-complex-numbers-easy-b0011",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "number_and_quantity",
-    "skill": "complex_numbers",
-    "lesson_id": "act-math-complex-numbers-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "conjugate_modulus",
-    "prompt": "What is the product (−7 + 3i)(−7 − 3i)?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-58",
-        "rationale": "The product is positive."
-      },
-      {
-        "id": "B",
-        "text": "58",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "59",
-        "rationale": "Arithmetic slip."
-      },
-      {
-        "id": "D",
-        "text": "49",
-        "rationale": "Include the b² term."
-      },
-      {
-        "id": "E",
-        "text": "40",
-        "rationale": "i² = −1 turns −b²i² into +b²."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "(a + bi)(a − bi) = a² + b² = 49 + 9 = 58.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "complex",
-      "conjugate",
-      "family:cx_conj_product"
-    ],
-    "answer_verification": "a=-7,b=3,val=58"
-  },
-  {
-    "question_id": "act-math-complex-numbers-easy-b0012",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "number_and_quantity",
-    "skill": "complex_numbers",
-    "lesson_id": "act-math-complex-numbers-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "conjugate_modulus",
-    "prompt": "What is the product (7 − 8i)(7 + 8i)?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-113",
-        "rationale": "The product is positive."
-      },
-      {
-        "id": "B",
-        "text": "113",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "114",
-        "rationale": "Arithmetic slip."
-      },
-      {
-        "id": "D",
-        "text": "49",
-        "rationale": "Include the b² term."
-      },
-      {
-        "id": "E",
-        "text": "-15",
-        "rationale": "i² = −1 turns −b²i² into +b²."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "(a + bi)(a − bi) = a² + b² = 49 + 64 = 113.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "complex",
-      "conjugate",
-      "family:cx_conj_product"
-    ],
-    "answer_verification": "a=7,b=-8,val=113"
-  },
-  {
-    "question_id": "act-math-complex-numbers-easy-b0013",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "number_and_quantity",
-    "skill": "complex_numbers",
-    "lesson_id": "act-math-complex-numbers-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "conjugate_modulus",
-    "prompt": "What is the product (−8 + 3i)(−8 − 3i)?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "55",
-        "rationale": "i² = −1 turns −b²i² into +b²."
-      },
-      {
-        "id": "B",
-        "text": "-73",
-        "rationale": "The product is positive."
-      },
-      {
-        "id": "C",
-        "text": "73",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "64",
-        "rationale": "Include the b² term."
-      },
-      {
-        "id": "E",
-        "text": "74",
-        "rationale": "Arithmetic slip."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "(a + bi)(a − bi) = a² + b² = 64 + 9 = 73.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "complex",
-      "conjugate",
-      "family:cx_conj_product"
-    ],
-    "answer_verification": "a=-8,b=3,val=73"
-  },
-  {
-    "question_id": "act-math-complex-numbers-easy-b0014",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "number_and_quantity",
-    "skill": "complex_numbers",
-    "lesson_id": "act-math-complex-numbers-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "arithmetic",
-    "prompt": "What is the sum (7 + 3i) + (5 + 5i)?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "12 − 8i",
-        "rationale": "Check the sign of the imaginary part."
-      },
-      {
-        "id": "B",
-        "text": "20",
-        "rationale": "Real and imaginary parts stay separate."
-      },
-      {
-        "id": "C",
-        "text": "2 − 2i",
-        "rationale": "This subtracts."
-      },
-      {
-        "id": "D",
-        "text": "12 + 8i",
-        "rationale": "Correct."
-      },
-      {
-        "id": "E",
-        "text": "12 + 15i",
-        "rationale": "Add the imaginary coefficients; don't multiply them."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Add real parts: 7 + 5 = 12; add imaginary parts: 3 + 5 = 8. Result: 12 + 8i.",
-    "estimated_time_seconds": 70,
-    "tags": [
-      "complex",
-      "add-subtract",
-      "family:cx_add_sub"
-    ],
-    "answer_verification": "12 + 8i"
-  },
-  {
-    "question_id": "act-math-complex-numbers-easy-b0015",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "number_and_quantity",
-    "skill": "complex_numbers",
-    "lesson_id": "act-math-complex-numbers-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "conjugate_modulus",
-    "prompt": "Which of the following is the conjugate of −9 + 8i?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "8 − 9i",
-        "rationale": "The real and imaginary parts don't swap."
-      },
-      {
-        "id": "B",
-        "text": "−9 − 8i",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "−9 + 8i",
-        "rationale": "The conjugate must differ in the sign of the imaginary part."
-      },
-      {
-        "id": "D",
-        "text": "9 + 8i",
-        "rationale": "The conjugate changes the sign of the IMAGINARY part only."
-      },
-      {
-        "id": "E",
-        "text": "9 − 8i",
-        "rationale": "Only the imaginary part changes sign."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "The conjugate of a + bi is a − bi: −9 − 8i.",
-    "estimated_time_seconds": 60,
-    "tags": [
-      "complex",
-      "conjugate",
-      "family:cx_conjugate_modulus"
-    ],
-    "answer_verification": "−9 − 8i"
-  },
-  {
-    "question_id": "act-math-complex-numbers-easy-b0016",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "number_and_quantity",
-    "skill": "complex_numbers",
-    "lesson_id": "act-math-complex-numbers-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "arithmetic",
-    "prompt": "What is the product −3i · (−4 − 7i)?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "12 − 21i",
-        "rationale": "Distribute carefully: ki·a = kai and ki·bi = −kb."
-      },
-      {
-        "id": "B",
-        "text": "−21 + 12i",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "−21 − 12i",
-        "rationale": "Check the sign of the imaginary part."
-      },
-      {
-        "id": "D",
-        "text": "12 + 21i",
-        "rationale": "Multiply through by i: the imaginary term becomes real (with i² = −1)."
-      },
-      {
-        "id": "E",
-        "text": "21 + 12i",
-        "rationale": "i·i = −1, so the real part gets a minus sign."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "−3i·−4 = 12i and −3i·−7i = 21i² = −21; total −21 + 12i.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "complex",
-      "multiply",
-      "family:cx_multiply"
-    ],
-    "answer_verification": "−21 + 12i"
-  },
-  {
-    "question_id": "act-math-complex-numbers-easy-b0017",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "number_and_quantity",
-    "skill": "complex_numbers",
-    "lesson_id": "act-math-complex-numbers-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "conjugate_modulus",
-    "prompt": "What is the complex conjugate of 5 − 5i?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "5 + 5i",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "−5 − 5i",
-        "rationale": "The conjugate changes the sign of the IMAGINARY part only."
-      },
-      {
-        "id": "C",
-        "text": "5 − 5i",
-        "rationale": "The conjugate must differ in the sign of the imaginary part."
-      },
-      {
-        "id": "D",
-        "text": "−5 + 5i",
-        "rationale": "Only the imaginary part changes sign."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "The conjugate of a + bi is a − bi: 5 + 5i.",
-    "estimated_time_seconds": 60,
-    "tags": [
-      "complex",
-      "conjugate",
-      "family:cx_conjugate_modulus"
-    ],
-    "answer_verification": "5 + 5i"
-  },
-  {
-    "question_id": "act-math-complex-numbers-easy-b0018",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "number_and_quantity",
-    "skill": "complex_numbers",
-    "lesson_id": "act-math-complex-numbers-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "conjugate_modulus",
-    "prompt": "Which of the following is the conjugate of 3 − 6i?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "3 + 6i",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "−3 + 6i",
-        "rationale": "Only the imaginary part changes sign."
-      },
-      {
-        "id": "C",
-        "text": "−6 + 3i",
-        "rationale": "The real and imaginary parts don't swap."
-      },
-      {
-        "id": "D",
-        "text": "−3 − 6i",
-        "rationale": "The conjugate changes the sign of the IMAGINARY part only."
-      },
-      {
-        "id": "E",
-        "text": "3 − 6i",
-        "rationale": "The conjugate must differ in the sign of the imaginary part."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "The conjugate of a + bi is a − bi: 3 + 6i.",
-    "estimated_time_seconds": 60,
-    "tags": [
-      "complex",
-      "conjugate",
-      "family:cx_conjugate_modulus"
-    ],
-    "answer_verification": "3 + 6i"
-  },
-  {
-    "question_id": "act-math-complex-numbers-easy-b0019",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "number_and_quantity",
-    "skill": "complex_numbers",
-    "lesson_id": "act-math-complex-numbers-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "conjugate_modulus",
-    "prompt": "Which of the following is the conjugate of 4 − i?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "−1 + 4i",
-        "rationale": "The real and imaginary parts don't swap."
-      },
-      {
-        "id": "B",
-        "text": "4 − i",
-        "rationale": "The conjugate must differ in the sign of the imaginary part."
-      },
-      {
-        "id": "C",
-        "text": "−4 − i",
-        "rationale": "The conjugate changes the sign of the IMAGINARY part only."
-      },
-      {
-        "id": "D",
-        "text": "4 + i",
-        "rationale": "Correct."
-      },
-      {
-        "id": "E",
-        "text": "−4 + i",
-        "rationale": "Only the imaginary part changes sign."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "The conjugate of a + bi is a − bi: 4 + i.",
-    "estimated_time_seconds": 60,
-    "tags": [
-      "complex",
-      "conjugate",
-      "family:cx_conjugate_modulus"
-    ],
-    "answer_verification": "4 + i"
-  },
-  {
-    "question_id": "act-math-complex-numbers-easy-b0020",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "number_and_quantity",
-    "skill": "complex_numbers",
-    "lesson_id": "act-math-complex-numbers-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "arithmetic",
-    "prompt": "What is the sum (4 − 6i) + (−9 − 2i)?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "−5 − 8i",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "−13",
-        "rationale": "Real and imaginary parts stay separate."
-      },
-      {
-        "id": "C",
-        "text": "13 − 4i",
-        "rationale": "This subtracts."
-      },
-      {
-        "id": "D",
-        "text": "−5 + 12i",
-        "rationale": "Add the imaginary coefficients; don't multiply them."
-      },
-      {
-        "id": "E",
-        "text": "−5 + 8i",
-        "rationale": "Check the sign of the imaginary part."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "Add real parts: 4 + −9 = −5; add imaginary parts: −6 + −2 = −8. Result: −5 − 8i.",
-    "estimated_time_seconds": 70,
-    "tags": [
-      "complex",
-      "add-subtract",
-      "family:cx_add_sub"
-    ],
-    "answer_verification": "−5 − 8i"
-  },
-  {
-    "question_id": "act-math-complex-numbers-easy-b0021",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "number_and_quantity",
-    "skill": "complex_numbers",
-    "lesson_id": "act-math-complex-numbers-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "arithmetic",
-    "prompt": "What is the product 3i · (5 + 4i)?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "−12 + 15i",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "15 − 12i",
-        "rationale": "Distribute carefully: ki·a = kai and ki·bi = −kb."
-      },
-      {
-        "id": "C",
-        "text": "15 + 12i",
-        "rationale": "Multiply through by i: the imaginary term becomes real (with i² = −1)."
-      },
-      {
-        "id": "D",
-        "text": "12 + 15i",
-        "rationale": "i·i = −1, so the real part gets a minus sign."
-      },
-      {
-        "id": "E",
-        "text": "−12 − 15i",
-        "rationale": "Check the sign of the imaginary part."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "3i·5 = 15i and 3i·4i = 12i² = −12; total −12 + 15i.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "complex",
-      "multiply",
-      "family:cx_multiply"
-    ],
-    "answer_verification": "−12 + 15i"
-  },
-  {
-    "question_id": "act-math-complex-numbers-easy-b0022",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "number_and_quantity",
-    "skill": "complex_numbers",
-    "lesson_id": "act-math-complex-numbers-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "arithmetic",
-    "prompt": "What is the product 5i · (4 − i)?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "5 − 20i",
-        "rationale": "Check the sign of the imaginary part."
-      },
-      {
-        "id": "B",
-        "text": "20 − 5i",
-        "rationale": "Multiply through by i: the imaginary term becomes real (with i² = −1)."
-      },
-      {
-        "id": "C",
-        "text": "5 + 20i",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "20 + 5i",
-        "rationale": "Distribute carefully: ki·a = kai and ki·bi = −kb."
-      },
-      {
-        "id": "E",
-        "text": "−5 + 20i",
-        "rationale": "i·i = −1, so the real part gets a minus sign."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "5i·4 = 20i and 5i·−1i = −5i² = 5; total 5 + 20i.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "complex",
-      "multiply",
-      "family:cx_multiply"
-    ],
-    "answer_verification": "5 + 20i"
-  },
-  {
-    "question_id": "act-math-complex-numbers-easy-b0023",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "number_and_quantity",
-    "skill": "complex_numbers",
-    "lesson_id": "act-math-complex-numbers-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "conjugate_modulus",
-    "prompt": "Which of the following is the conjugate of 1 − 4i?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "−1 − 4i",
-        "rationale": "The conjugate changes the sign of the IMAGINARY part only."
-      },
-      {
-        "id": "B",
-        "text": "−1 + 4i",
-        "rationale": "Only the imaginary part changes sign."
-      },
-      {
-        "id": "C",
-        "text": "−4 + i",
-        "rationale": "The real and imaginary parts don't swap."
-      },
-      {
-        "id": "D",
-        "text": "1 − 4i",
-        "rationale": "The conjugate must differ in the sign of the imaginary part."
-      },
-      {
-        "id": "E",
-        "text": "1 + 4i",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "E",
-    "explanation": "The conjugate of a + bi is a − bi: 1 + 4i.",
-    "estimated_time_seconds": 60,
-    "tags": [
-      "complex",
-      "conjugate",
-      "family:cx_conjugate_modulus"
-    ],
-    "answer_verification": "1 + 4i"
-  },
-  {
-    "question_id": "act-math-complex-numbers-easy-b0024",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "number_and_quantity",
-    "skill": "complex_numbers",
-    "lesson_id": "act-math-complex-numbers-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "conjugate_modulus",
-    "prompt": "What is the product (2 − i)(2 + i)?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "5",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "6",
-        "rationale": "Arithmetic slip."
-      },
-      {
-        "id": "C",
-        "text": "-5",
-        "rationale": "The product is positive."
-      },
-      {
-        "id": "D",
-        "text": "4",
-        "rationale": "Include the b² term."
-      },
-      {
-        "id": "E",
-        "text": "3",
-        "rationale": "i² = −1 turns −b²i² into +b²."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "(a + bi)(a − bi) = a² + b² = 4 + 1 = 5.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "complex",
-      "conjugate",
-      "family:cx_conj_product"
-    ],
-    "answer_verification": "a=2,b=-1,val=5"
-  },
-  {
-    "question_id": "act-math-complex-numbers-easy-b0025",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "number_and_quantity",
-    "skill": "complex_numbers",
-    "lesson_id": "act-math-complex-numbers-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "arithmetic",
-    "prompt": "In the complex numbers, what are the solutions to x² = −121?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "x = ±11",
-        "rationale": "x² = −121 has no real solutions; the square root of −1 is i."
-      },
-      {
-        "id": "B",
-        "text": "x = ±121i",
-        "rationale": "Take the square root of 121."
-      },
-      {
-        "id": "C",
-        "text": "x = 11i",
-        "rationale": "There are two solutions, ±."
-      },
-      {
-        "id": "D",
-        "text": "x = ±12i",
-        "rationale": "Check: (12i)² = −144, not −121."
-      },
-      {
-        "id": "E",
-        "text": "x = ±11i",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "E",
-    "explanation": "x² = −121, so x = ±√(−121) = ±11i.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "complex",
-      "quadratic",
-      "family:cx_quadratic"
-    ],
-    "answer_verification": "x = ±11i"
-  },
-  {
-    "question_id": "act-math-complex-numbers-easy-b0026",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "number_and_quantity",
-    "skill": "complex_numbers",
-    "lesson_id": "act-math-complex-numbers-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "powers_of_i",
-    "prompt": "If i² = −1, what is i^29?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "i",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "−i",
-        "rationale": "Reduce the exponent modulo 4: i^29 = i^1."
-      },
-      {
-        "id": "C",
-        "text": "1",
-        "rationale": "Reduce the exponent modulo 4: i^29 = i^1."
-      },
-      {
-        "id": "D",
-        "text": "−1",
-        "rationale": "Reduce the exponent modulo 4: i^29 = i^1."
-      },
-      {
-        "id": "E",
-        "text": "0",
-        "rationale": "No power of i is 0."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "Powers of i cycle every 4: i, −1, −i, 1. Since 29 = 4·7 + 1, i^29 = i^1 = i.",
-    "estimated_time_seconds": 65,
-    "tags": [
-      "complex",
-      "powers-of-i",
-      "family:cx_powers"
-    ],
-    "answer_verification": "i^29=i"
-  },
-  {
-    "question_id": "act-math-complex-numbers-easy-b0027",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "number_and_quantity",
-    "skill": "complex_numbers",
-    "lesson_id": "act-math-complex-numbers-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "powers_of_i",
-    "prompt": "What is the value of i^3, where i = √(−1)?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "−1",
-        "rationale": "Reduce the exponent modulo 4: i^3 = i^3."
-      },
-      {
-        "id": "B",
-        "text": "1",
-        "rationale": "Reduce the exponent modulo 4: i^3 = i^3."
-      },
-      {
-        "id": "C",
-        "text": "i",
-        "rationale": "Reduce the exponent modulo 4: i^3 = i^3."
-      },
-      {
-        "id": "D",
-        "text": "0",
-        "rationale": "No power of i is 0."
-      },
-      {
-        "id": "E",
-        "text": "−i",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "E",
-    "explanation": "Powers of i cycle every 4: i, −1, −i, 1. Since 3 = 4·0 + 3, i^3 = i^3 = −i.",
-    "estimated_time_seconds": 65,
-    "tags": [
-      "complex",
-      "powers-of-i",
-      "family:cx_powers"
-    ],
-    "answer_verification": "i^3=−i"
-  },
-  {
-    "question_id": "act-math-complex-numbers-easy-b0028",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "number_and_quantity",
-    "skill": "complex_numbers",
-    "lesson_id": "act-math-complex-numbers-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "powers_of_i",
-    "prompt": "If i² = −1, what is i^9?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "0",
-        "rationale": "No power of i is 0."
-      },
-      {
-        "id": "B",
-        "text": "i",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "−1",
-        "rationale": "Reduce the exponent modulo 4: i^9 = i^1."
-      },
-      {
-        "id": "D",
-        "text": "−i",
-        "rationale": "Reduce the exponent modulo 4: i^9 = i^1."
-      },
-      {
-        "id": "E",
-        "text": "1",
-        "rationale": "Reduce the exponent modulo 4: i^9 = i^1."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Powers of i cycle every 4: i, −1, −i, 1. Since 9 = 4·2 + 1, i^9 = i^1 = i.",
-    "estimated_time_seconds": 65,
-    "tags": [
-      "complex",
-      "powers-of-i",
-      "family:cx_powers"
-    ],
-    "answer_verification": "i^9=i"
-  },
-  {
-    "question_id": "act-math-complex-numbers-easy-b0029",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "number_and_quantity",
-    "skill": "complex_numbers",
-    "lesson_id": "act-math-complex-numbers-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "conjugate_modulus",
-    "prompt": "What is the complex conjugate of 2 + i?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "1 + 2i",
-        "rationale": "The real and imaginary parts don't swap."
-      },
-      {
-        "id": "B",
-        "text": "2 + i",
-        "rationale": "The conjugate must differ in the sign of the imaginary part."
-      },
-      {
-        "id": "C",
-        "text": "−2 − i",
-        "rationale": "Only the imaginary part changes sign."
-      },
-      {
-        "id": "D",
-        "text": "−2 + i",
-        "rationale": "The conjugate changes the sign of the IMAGINARY part only."
-      },
-      {
-        "id": "E",
-        "text": "2 − i",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "E",
-    "explanation": "The conjugate of a + bi is a − bi: 2 − i.",
-    "estimated_time_seconds": 60,
-    "tags": [
-      "complex",
-      "conjugate",
-      "family:cx_conjugate_modulus"
-    ],
-    "answer_verification": "2 − i"
-  },
-  {
-    "question_id": "act-math-complex-numbers-easy-b0030",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "number_and_quantity",
-    "skill": "complex_numbers",
-    "lesson_id": "act-math-complex-numbers-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "arithmetic",
-    "prompt": "In the complex numbers, what are the solutions to x² = −225?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "x = 15i",
-        "rationale": "There are two solutions, ±."
-      },
-      {
-        "id": "B",
-        "text": "x = ±15",
-        "rationale": "x² = −225 has no real solutions; the square root of −1 is i."
-      },
-      {
-        "id": "C",
-        "text": "x = ±16i",
-        "rationale": "Check: (16i)² = −256, not −225."
-      },
-      {
-        "id": "D",
-        "text": "x = ±15i",
-        "rationale": "Correct."
-      },
-      {
-        "id": "E",
-        "text": "x = ±225i",
-        "rationale": "Take the square root of 225."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "x² = −225, so x = ±√(−225) = ±15i.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "complex",
-      "quadratic",
-      "family:cx_quadratic"
-    ],
-    "answer_verification": "x = ±15i"
-  },
-  {
-    "question_id": "act-math-complex-numbers-easy-b0031",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1545,7 +545,7 @@
     "answer_verification": "a=6,b=-3,val=45"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0032",
+    "question_id": "act-math-complex-numbers-easy-b0012",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1595,7 +595,7 @@
     "answer_verification": "x = ±12i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0033",
+    "question_id": "act-math-complex-numbers-easy-b0013",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1645,7 +645,7 @@
     "answer_verification": "−6 + 3i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0034",
+    "question_id": "act-math-complex-numbers-easy-b0014",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1695,7 +695,7 @@
     "answer_verification": "−6 + 7i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0035",
+    "question_id": "act-math-complex-numbers-easy-b0015",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1745,7 +745,7 @@
     "answer_verification": "−4 − 2i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0036",
+    "question_id": "act-math-complex-numbers-easy-b0016",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1756,46 +756,46 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "arithmetic",
-    "prompt": "Which of the following gives all solutions to x² + 9 = 0?",
+    "prompt": "Which of the following gives all solutions to x² + 225 = 0?",
     "choices": [
       {
         "id": "A",
-        "text": "x = ±3",
-        "rationale": "x² = −9 has no real solutions; the square root of −1 is i."
+        "text": "x = ±16i",
+        "rationale": "Check: (16i)² = −256, not −225."
       },
       {
         "id": "B",
-        "text": "x = ±3i",
-        "rationale": "Correct."
+        "text": "x = ±15",
+        "rationale": "x² = −225 has no real solutions; the square root of −1 is i."
       },
       {
         "id": "C",
-        "text": "x = 3i",
+        "text": "x = 15i",
         "rationale": "There are two solutions, ±."
       },
       {
         "id": "D",
-        "text": "x = ±9i",
-        "rationale": "Take the square root of 9."
+        "text": "x = ±225i",
+        "rationale": "Take the square root of 225."
       },
       {
         "id": "E",
-        "text": "x = ±4i",
-        "rationale": "Check: (4i)² = −16, not −9."
+        "text": "x = ±15i",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "x² = −9, so x = ±√(−9) = ±3i.",
+    "correct_choice": "E",
+    "explanation": "x² = −225, so x = ±√(−225) = ±15i.",
     "estimated_time_seconds": 80,
     "tags": [
       "complex",
       "quadratic",
       "family:cx_quadratic"
     ],
-    "answer_verification": "x = ±3i"
+    "answer_verification": "x = ±15i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0037",
+    "question_id": "act-math-complex-numbers-easy-b0017",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1805,47 +805,47 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "arithmetic",
-    "prompt": "What is the product 3i · (6 − i)?",
+    "subskill": "powers_of_i",
+    "prompt": "If i² = −1, what is i^35?",
     "choices": [
       {
         "id": "A",
-        "text": "−3 + 18i",
-        "rationale": "i·i = −1, so the real part gets a minus sign."
+        "text": "0",
+        "rationale": "No power of i is 0."
       },
       {
         "id": "B",
-        "text": "3 − 18i",
-        "rationale": "Check the sign of the imaginary part."
+        "text": "−1",
+        "rationale": "Reduce the exponent modulo 4: i^35 = i^3."
       },
       {
         "id": "C",
-        "text": "18 − 3i",
-        "rationale": "Multiply through by i: the imaginary term becomes real (with i² = −1)."
+        "text": "1",
+        "rationale": "Reduce the exponent modulo 4: i^35 = i^3."
       },
       {
         "id": "D",
-        "text": "3 + 18i",
-        "rationale": "Correct."
+        "text": "i",
+        "rationale": "Reduce the exponent modulo 4: i^35 = i^3."
       },
       {
         "id": "E",
-        "text": "18 + 3i",
-        "rationale": "Distribute carefully: ki·a = kai and ki·bi = −kb."
+        "text": "−i",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "3i·6 = 18i and 3i·−1i = −3i² = 3; total 3 + 18i.",
-    "estimated_time_seconds": 75,
+    "correct_choice": "E",
+    "explanation": "Powers of i cycle every 4: i, −1, −i, 1. Since 35 = 4·8 + 3, i^35 = i^3 = −i.",
+    "estimated_time_seconds": 65,
     "tags": [
       "complex",
-      "multiply",
-      "family:cx_multiply"
+      "powers-of-i",
+      "family:cx_powers"
     ],
-    "answer_verification": "3 + 18i"
+    "answer_verification": "i^35=−i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0038",
+    "question_id": "act-math-complex-numbers-easy-b0018",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1855,47 +855,97 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "arithmetic",
-    "prompt": "What is the product −4i · (−2 − 6i)?",
+    "subskill": "conjugate_modulus",
+    "prompt": "What is the product (−7 + 9i)(−7 − 9i)?",
     "choices": [
       {
         "id": "A",
-        "text": "8 + 24i",
-        "rationale": "Multiply through by i: the imaginary term becomes real (with i² = −1)."
+        "text": "130",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "−24 − 8i",
-        "rationale": "Check the sign of the imaginary part."
+        "text": "49",
+        "rationale": "Include the b² term."
       },
       {
         "id": "C",
-        "text": "24 + 8i",
-        "rationale": "i·i = −1, so the real part gets a minus sign."
+        "text": "-130",
+        "rationale": "The product is positive."
       },
       {
         "id": "D",
-        "text": "−24 + 8i",
+        "text": "-32",
+        "rationale": "i² = −1 turns −b²i² into +b²."
+      },
+      {
+        "id": "E",
+        "text": "131",
+        "rationale": "Arithmetic slip."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "(a + bi)(a − bi) = a² + b² = 49 + 81 = 130.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "complex",
+      "conjugate",
+      "family:cx_conj_product"
+    ],
+    "answer_verification": "a=-7,b=9,val=130"
+  },
+  {
+    "question_id": "act-math-complex-numbers-easy-b0019",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "number_and_quantity",
+    "skill": "complex_numbers",
+    "lesson_id": "act-math-complex-numbers-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "powers_of_i",
+    "prompt": "Which of the following is equal to i^5?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "−1",
+        "rationale": "Reduce the exponent modulo 4: i^5 = i^1."
+      },
+      {
+        "id": "B",
+        "text": "−i",
+        "rationale": "Reduce the exponent modulo 4: i^5 = i^1."
+      },
+      {
+        "id": "C",
+        "text": "0",
+        "rationale": "No power of i is 0."
+      },
+      {
+        "id": "D",
+        "text": "i",
         "rationale": "Correct."
       },
       {
         "id": "E",
-        "text": "8 − 24i",
-        "rationale": "Distribute carefully: ki·a = kai and ki·bi = −kb."
+        "text": "1",
+        "rationale": "Reduce the exponent modulo 4: i^5 = i^1."
       }
     ],
     "correct_choice": "D",
-    "explanation": "−4i·−2 = 8i and −4i·−6i = 24i² = −24; total −24 + 8i.",
-    "estimated_time_seconds": 75,
+    "explanation": "Powers of i cycle every 4: i, −1, −i, 1. Since 5 = 4·1 + 1, i^5 = i^1 = i.",
+    "estimated_time_seconds": 65,
     "tags": [
       "complex",
-      "multiply",
-      "family:cx_multiply"
+      "powers-of-i",
+      "family:cx_powers"
     ],
-    "answer_verification": "−24 + 8i"
+    "answer_verification": "i^5=i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0039",
+    "question_id": "act-math-complex-numbers-easy-b0020",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1945,7 +995,7 @@
     "answer_verification": "−24 − 12i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0040",
+    "question_id": "act-math-complex-numbers-easy-b0021",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1956,226 +1006,31 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "powers_of_i",
-    "prompt": "Which of the following is equal to i^12?",
+    "prompt": "If i² = −1, what is i^5?",
     "choices": [
       {
         "id": "A",
         "text": "i",
-        "rationale": "Reduce the exponent modulo 4: i^12 = i^0."
-      },
-      {
-        "id": "B",
-        "text": "−i",
-        "rationale": "Reduce the exponent modulo 4: i^12 = i^0."
-      },
-      {
-        "id": "C",
-        "text": "1",
         "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "0",
-        "rationale": "No power of i is 0."
-      },
-      {
-        "id": "E",
-        "text": "−1",
-        "rationale": "Reduce the exponent modulo 4: i^12 = i^0."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "Powers of i cycle every 4: i, −1, −i, 1. Since 12 = 4·3 + 0, i^12 = i^0 = 1.",
-    "estimated_time_seconds": 65,
-    "tags": [
-      "complex",
-      "powers-of-i",
-      "family:cx_powers"
-    ],
-    "answer_verification": "i^12=1"
-  },
-  {
-    "question_id": "act-math-complex-numbers-easy-b0041",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "number_and_quantity",
-    "skill": "complex_numbers",
-    "lesson_id": "act-math-complex-numbers-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "powers_of_i",
-    "prompt": "What is the value of i^19, where i = √(−1)?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "−1",
-        "rationale": "Reduce the exponent modulo 4: i^19 = i^3."
       },
       {
         "id": "B",
         "text": "1",
-        "rationale": "Reduce the exponent modulo 4: i^19 = i^3."
-      },
-      {
-        "id": "C",
-        "text": "−i",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "0",
-        "rationale": "No power of i is 0."
-      },
-      {
-        "id": "E",
-        "text": "i",
-        "rationale": "Reduce the exponent modulo 4: i^19 = i^3."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "Powers of i cycle every 4: i, −1, −i, 1. Since 19 = 4·4 + 3, i^19 = i^3 = −i.",
-    "estimated_time_seconds": 65,
-    "tags": [
-      "complex",
-      "powers-of-i",
-      "family:cx_powers"
-    ],
-    "answer_verification": "i^19=−i"
-  },
-  {
-    "question_id": "act-math-complex-numbers-easy-b0042",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "number_and_quantity",
-    "skill": "complex_numbers",
-    "lesson_id": "act-math-complex-numbers-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "arithmetic",
-    "prompt": "What is the product 2i · (6 − 4i)?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "8 + 12i",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "−8 + 12i",
-        "rationale": "i·i = −1, so the real part gets a minus sign."
-      },
-      {
-        "id": "C",
-        "text": "12 − 8i",
-        "rationale": "Multiply through by i: the imaginary term becomes real (with i² = −1)."
-      },
-      {
-        "id": "D",
-        "text": "8 − 12i",
-        "rationale": "Check the sign of the imaginary part."
-      },
-      {
-        "id": "E",
-        "text": "12 + 8i",
-        "rationale": "Distribute carefully: ki·a = kai and ki·bi = −kb."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "2i·6 = 12i and 2i·−4i = −8i² = 8; total 8 + 12i.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "complex",
-      "multiply",
-      "family:cx_multiply"
-    ],
-    "answer_verification": "8 + 12i"
-  },
-  {
-    "question_id": "act-math-complex-numbers-easy-b0043",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "number_and_quantity",
-    "skill": "complex_numbers",
-    "lesson_id": "act-math-complex-numbers-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "conjugate_modulus",
-    "prompt": "What is the complex conjugate of 2 − 2i?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "−2 + 2i",
-        "rationale": "Only the imaginary part changes sign."
-      },
-      {
-        "id": "B",
-        "text": "2 − 2i",
-        "rationale": "The conjugate must differ in the sign of the imaginary part."
-      },
-      {
-        "id": "C",
-        "text": "2 + 2i",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "−2 − 2i",
-        "rationale": "The conjugate changes the sign of the IMAGINARY part only."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "The conjugate of a + bi is a − bi: 2 + 2i.",
-    "estimated_time_seconds": 60,
-    "tags": [
-      "complex",
-      "conjugate",
-      "family:cx_conjugate_modulus"
-    ],
-    "answer_verification": "2 + 2i"
-  },
-  {
-    "question_id": "act-math-complex-numbers-easy-b0044",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "number_and_quantity",
-    "skill": "complex_numbers",
-    "lesson_id": "act-math-complex-numbers-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "powers_of_i",
-    "prompt": "What is the value of i^5, where i = √(−1)?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "i",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "−1",
         "rationale": "Reduce the exponent modulo 4: i^5 = i^1."
       },
       {
         "id": "C",
+        "text": "−1",
+        "rationale": "Reduce the exponent modulo 4: i^5 = i^1."
+      },
+      {
+        "id": "D",
         "text": "0",
         "rationale": "No power of i is 0."
       },
       {
-        "id": "D",
-        "text": "−i",
-        "rationale": "Reduce the exponent modulo 4: i^5 = i^1."
-      },
-      {
         "id": "E",
-        "text": "1",
+        "text": "−i",
         "rationale": "Reduce the exponent modulo 4: i^5 = i^1."
       }
     ],
@@ -2190,7 +1045,207 @@
     "answer_verification": "i^5=i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0045",
+    "question_id": "act-math-complex-numbers-easy-b0022",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "number_and_quantity",
+    "skill": "complex_numbers",
+    "lesson_id": "act-math-complex-numbers-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "arithmetic",
+    "prompt": "What is the sum (3 + 3i) + (−3 − 9i)?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "−6",
+        "rationale": "Real and imaginary parts stay separate."
+      },
+      {
+        "id": "B",
+        "text": "−27i",
+        "rationale": "Add the imaginary coefficients; don't multiply them."
+      },
+      {
+        "id": "C",
+        "text": "6i",
+        "rationale": "Check the sign of the imaginary part."
+      },
+      {
+        "id": "D",
+        "text": "6 + 12i",
+        "rationale": "This subtracts."
+      },
+      {
+        "id": "E",
+        "text": "−6i",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "E",
+    "explanation": "Add real parts: 3 + −3 = 0; add imaginary parts: 3 + −9 = −6. Result: −6i.",
+    "estimated_time_seconds": 70,
+    "tags": [
+      "complex",
+      "add-subtract",
+      "family:cx_add_sub"
+    ],
+    "answer_verification": "−6i"
+  },
+  {
+    "question_id": "act-math-complex-numbers-easy-b0023",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "number_and_quantity",
+    "skill": "complex_numbers",
+    "lesson_id": "act-math-complex-numbers-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "arithmetic",
+    "prompt": "What is the product −3i · (−6 − 2i)?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "−6 + 18i",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "18 − 6i",
+        "rationale": "Distribute carefully: ki·a = kai and ki·bi = −kb."
+      },
+      {
+        "id": "C",
+        "text": "−6 − 18i",
+        "rationale": "Check the sign of the imaginary part."
+      },
+      {
+        "id": "D",
+        "text": "18 + 6i",
+        "rationale": "Multiply through by i: the imaginary term becomes real (with i² = −1)."
+      },
+      {
+        "id": "E",
+        "text": "6 + 18i",
+        "rationale": "i·i = −1, so the real part gets a minus sign."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "−3i·−6 = 18i and −3i·−2i = 6i² = −6; total −6 + 18i.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "complex",
+      "multiply",
+      "family:cx_multiply"
+    ],
+    "answer_verification": "−6 + 18i"
+  },
+  {
+    "question_id": "act-math-complex-numbers-easy-b0024",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "number_and_quantity",
+    "skill": "complex_numbers",
+    "lesson_id": "act-math-complex-numbers-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "arithmetic",
+    "prompt": "In the complex numbers, what are the solutions to x² = −169?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "x = 13i",
+        "rationale": "There are two solutions, ±."
+      },
+      {
+        "id": "B",
+        "text": "x = ±14i",
+        "rationale": "Check: (14i)² = −196, not −169."
+      },
+      {
+        "id": "C",
+        "text": "x = ±13i",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "x = ±13",
+        "rationale": "x² = −169 has no real solutions; the square root of −1 is i."
+      },
+      {
+        "id": "E",
+        "text": "x = ±169i",
+        "rationale": "Take the square root of 169."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "x² = −169, so x = ±√(−169) = ±13i.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "complex",
+      "quadratic",
+      "family:cx_quadratic"
+    ],
+    "answer_verification": "x = ±13i"
+  },
+  {
+    "question_id": "act-math-complex-numbers-easy-b0025",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "number_and_quantity",
+    "skill": "complex_numbers",
+    "lesson_id": "act-math-complex-numbers-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "arithmetic",
+    "prompt": "What is the sum (7 − 8i) + (−8 − 4i)?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "−1 − 12i",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "15 − 4i",
+        "rationale": "This subtracts."
+      },
+      {
+        "id": "C",
+        "text": "−1 + 12i",
+        "rationale": "Check the sign of the imaginary part."
+      },
+      {
+        "id": "D",
+        "text": "−13",
+        "rationale": "Real and imaginary parts stay separate."
+      },
+      {
+        "id": "E",
+        "text": "−1 + 32i",
+        "rationale": "Add the imaginary coefficients; don't multiply them."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Add real parts: 7 + −8 = −1; add imaginary parts: −8 + −4 = −12. Result: −1 − 12i.",
+    "estimated_time_seconds": 70,
+    "tags": [
+      "complex",
+      "add-subtract",
+      "family:cx_add_sub"
+    ],
+    "answer_verification": "−1 − 12i"
+  },
+  {
+    "question_id": "act-math-complex-numbers-easy-b0026",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2240,7 +1295,7 @@
     "answer_verification": "−14 − 2i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0046",
+    "question_id": "act-math-complex-numbers-easy-b0027",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2290,7 +1345,7 @@
     "answer_verification": "2"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0047",
+    "question_id": "act-math-complex-numbers-easy-b0028",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2340,7 +1395,7 @@
     "answer_verification": "3 + 7i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0048",
+    "question_id": "act-math-complex-numbers-easy-b0029",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2390,7 +1445,7 @@
     "answer_verification": "i^10=−1"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0049",
+    "question_id": "act-math-complex-numbers-easy-b0030",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2440,7 +1495,7 @@
     "answer_verification": "10 − 30i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0050",
+    "question_id": "act-math-complex-numbers-easy-b0031",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2485,7 +1540,7 @@
     "answer_verification": "−5 − 5i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0051",
+    "question_id": "act-math-complex-numbers-easy-b0032",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2496,22 +1551,22 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "powers_of_i",
-    "prompt": "What is the value of i^34, where i = √(−1)?",
+    "prompt": "What is the value of i^19, where i = √(−1)?",
     "choices": [
       {
         "id": "A",
-        "text": "−1",
+        "text": "−i",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "−i",
-        "rationale": "Reduce the exponent modulo 4: i^34 = i^2."
+        "text": "1",
+        "rationale": "Reduce the exponent modulo 4: i^19 = i^3."
       },
       {
         "id": "C",
-        "text": "1",
-        "rationale": "Reduce the exponent modulo 4: i^34 = i^2."
+        "text": "−1",
+        "rationale": "Reduce the exponent modulo 4: i^19 = i^3."
       },
       {
         "id": "D",
@@ -2521,21 +1576,21 @@
       {
         "id": "E",
         "text": "i",
-        "rationale": "Reduce the exponent modulo 4: i^34 = i^2."
+        "rationale": "Reduce the exponent modulo 4: i^19 = i^3."
       }
     ],
     "correct_choice": "A",
-    "explanation": "Powers of i cycle every 4: i, −1, −i, 1. Since 34 = 4·8 + 2, i^34 = i^2 = −1.",
+    "explanation": "Powers of i cycle every 4: i, −1, −i, 1. Since 19 = 4·4 + 3, i^19 = i^3 = −i.",
     "estimated_time_seconds": 65,
     "tags": [
       "complex",
       "powers-of-i",
       "family:cx_powers"
     ],
-    "answer_verification": "i^34=−1"
+    "answer_verification": "i^19=−i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0052",
+    "question_id": "act-math-complex-numbers-easy-b0033",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2546,46 +1601,96 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "conjugate_modulus",
-    "prompt": "Which of the following is the conjugate of 5 − 6i?",
+    "prompt": "What is the product (−4 + 2i)(−4 − 2i)?",
     "choices": [
       {
         "id": "A",
-        "text": "5 + 6i",
+        "text": "20",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "5 − 6i",
-        "rationale": "The conjugate must differ in the sign of the imaginary part."
+        "text": "21",
+        "rationale": "Arithmetic slip."
       },
       {
         "id": "C",
-        "text": "−6 + 5i",
-        "rationale": "The real and imaginary parts don't swap."
+        "text": "12",
+        "rationale": "i² = −1 turns −b²i² into +b²."
       },
       {
         "id": "D",
-        "text": "−5 + 6i",
-        "rationale": "Only the imaginary part changes sign."
+        "text": "-20",
+        "rationale": "The product is positive."
       },
       {
         "id": "E",
-        "text": "−5 − 6i",
-        "rationale": "The conjugate changes the sign of the IMAGINARY part only."
+        "text": "16",
+        "rationale": "Include the b² term."
       }
     ],
     "correct_choice": "A",
-    "explanation": "The conjugate of a + bi is a − bi: 5 + 6i.",
-    "estimated_time_seconds": 60,
+    "explanation": "(a + bi)(a − bi) = a² + b² = 16 + 4 = 20.",
+    "estimated_time_seconds": 75,
     "tags": [
       "complex",
       "conjugate",
-      "family:cx_conjugate_modulus"
+      "family:cx_conj_product"
     ],
-    "answer_verification": "5 + 6i"
+    "answer_verification": "a=-4,b=2,val=20"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0053",
+    "question_id": "act-math-complex-numbers-easy-b0034",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "number_and_quantity",
+    "skill": "complex_numbers",
+    "lesson_id": "act-math-complex-numbers-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "arithmetic",
+    "prompt": "What are the solutions to the equation x² + 196 = 0?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "x = ±14i",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "x = ±196i",
+        "rationale": "Take the square root of 196."
+      },
+      {
+        "id": "C",
+        "text": "x = ±15i",
+        "rationale": "Check: (15i)² = −225, not −196."
+      },
+      {
+        "id": "D",
+        "text": "x = ±14",
+        "rationale": "x² = −196 has no real solutions; the square root of −1 is i."
+      },
+      {
+        "id": "E",
+        "text": "x = 14i",
+        "rationale": "There are two solutions, ±."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "x² = −196, so x = ±√(−196) = ±14i.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "complex",
+      "quadratic",
+      "family:cx_quadratic"
+    ],
+    "answer_verification": "x = ±14i"
+  },
+  {
+    "question_id": "act-math-complex-numbers-easy-b0035",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2635,7 +1740,7 @@
     "answer_verification": "3 − 2i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0054",
+    "question_id": "act-math-complex-numbers-easy-b0036",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2685,7 +1790,7 @@
     "answer_verification": "4 − 2i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0055",
+    "question_id": "act-math-complex-numbers-easy-b0037",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2735,7 +1840,7 @@
     "answer_verification": "−1 + 2i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0056",
+    "question_id": "act-math-complex-numbers-easy-b0038",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2785,7 +1890,57 @@
     "answer_verification": "−3 − 15i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0057",
+    "question_id": "act-math-complex-numbers-easy-b0039",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "number_and_quantity",
+    "skill": "complex_numbers",
+    "lesson_id": "act-math-complex-numbers-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "arithmetic",
+    "prompt": "In the complex numbers, what are the solutions to x² = −144?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "x = ±12",
+        "rationale": "x² = −144 has no real solutions; the square root of −1 is i."
+      },
+      {
+        "id": "B",
+        "text": "x = 12i",
+        "rationale": "There are two solutions, ±."
+      },
+      {
+        "id": "C",
+        "text": "x = ±12i",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "x = ±144i",
+        "rationale": "Take the square root of 144."
+      },
+      {
+        "id": "E",
+        "text": "x = ±13i",
+        "rationale": "Check: (13i)² = −169, not −144."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "x² = −144, so x = ±√(−144) = ±12i.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "complex",
+      "quadratic",
+      "family:cx_quadratic"
+    ],
+    "answer_verification": "x = ±12i"
+  },
+  {
+    "question_id": "act-math-complex-numbers-easy-b0040",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2835,7 +1990,7 @@
     "answer_verification": "x = ±11i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0058",
+    "question_id": "act-math-complex-numbers-easy-b0041",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2885,7 +2040,7 @@
     "answer_verification": "a=3,b=-6,val=45"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0059",
+    "question_id": "act-math-complex-numbers-easy-b0042",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2935,7 +2090,7 @@
     "answer_verification": "a=-1,b=8,val=65"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0060",
+    "question_id": "act-math-complex-numbers-easy-b0043",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2985,7 +2140,7 @@
     "answer_verification": "4 + 6i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0061",
+    "question_id": "act-math-complex-numbers-easy-b0044",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3035,7 +2190,7 @@
     "answer_verification": "−2 − 4i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0062",
+    "question_id": "act-math-complex-numbers-easy-b0045",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3085,7 +2240,7 @@
     "answer_verification": "−7 − i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0063",
+    "question_id": "act-math-complex-numbers-easy-b0046",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3135,7 +2290,7 @@
     "answer_verification": "x = ±10i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0064",
+    "question_id": "act-math-complex-numbers-easy-b0047",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3185,7 +2340,7 @@
     "answer_verification": "i^2=−1"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0065",
+    "question_id": "act-math-complex-numbers-easy-b0048",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3235,7 +2390,7 @@
     "answer_verification": "x = ±4i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0066",
+    "question_id": "act-math-complex-numbers-easy-b0049",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3285,7 +2440,7 @@
     "answer_verification": "8 − 24i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0067",
+    "question_id": "act-math-complex-numbers-easy-b0050",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3335,7 +2490,7 @@
     "answer_verification": "a=-8,b=-7,val=113"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0068",
+    "question_id": "act-math-complex-numbers-easy-b0051",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3385,7 +2540,7 @@
     "answer_verification": "a=9,b=6,val=117"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0069",
+    "question_id": "act-math-complex-numbers-easy-b0052",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3435,7 +2590,7 @@
     "answer_verification": "−30 + 24i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0070",
+    "question_id": "act-math-complex-numbers-easy-b0053",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3485,7 +2640,7 @@
     "answer_verification": "2 − 4i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0071",
+    "question_id": "act-math-complex-numbers-easy-b0054",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3535,7 +2690,7 @@
     "answer_verification": "i^23=−i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0072",
+    "question_id": "act-math-complex-numbers-easy-b0055",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3546,35 +2701,35 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "arithmetic",
-    "prompt": "Which of the following gives all solutions to x² + 121 = 0?",
+    "prompt": "In the complex numbers, what are the solutions to x² = −121?",
     "choices": [
       {
         "id": "A",
-        "text": "x = ±121i",
-        "rationale": "Take the square root of 121."
-      },
-      {
-        "id": "B",
-        "text": "x = ±11",
-        "rationale": "x² = −121 has no real solutions; the square root of −1 is i."
-      },
-      {
-        "id": "C",
-        "text": "x = 11i",
-        "rationale": "There are two solutions, ±."
-      },
-      {
-        "id": "D",
         "text": "x = ±12i",
         "rationale": "Check: (12i)² = −144, not −121."
       },
       {
-        "id": "E",
+        "id": "B",
         "text": "x = ±11i",
         "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "x = ±121i",
+        "rationale": "Take the square root of 121."
+      },
+      {
+        "id": "D",
+        "text": "x = 11i",
+        "rationale": "There are two solutions, ±."
+      },
+      {
+        "id": "E",
+        "text": "x = ±11",
+        "rationale": "x² = −121 has no real solutions; the square root of −1 is i."
       }
     ],
-    "correct_choice": "E",
+    "correct_choice": "B",
     "explanation": "x² = −121, so x = ±√(−121) = ±11i.",
     "estimated_time_seconds": 80,
     "tags": [
@@ -3585,57 +2740,7 @@
     "answer_verification": "x = ±11i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0073",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "number_and_quantity",
-    "skill": "complex_numbers",
-    "lesson_id": "act-math-complex-numbers-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "conjugate_modulus",
-    "prompt": "What is the product (3 + 2i)(3 − 2i)?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "14",
-        "rationale": "Arithmetic slip."
-      },
-      {
-        "id": "B",
-        "text": "-13",
-        "rationale": "The product is positive."
-      },
-      {
-        "id": "C",
-        "text": "5",
-        "rationale": "i² = −1 turns −b²i² into +b²."
-      },
-      {
-        "id": "D",
-        "text": "13",
-        "rationale": "Correct."
-      },
-      {
-        "id": "E",
-        "text": "9",
-        "rationale": "Include the b² term."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "(a + bi)(a − bi) = a² + b² = 9 + 4 = 13.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "complex",
-      "conjugate",
-      "family:cx_conj_product"
-    ],
-    "answer_verification": "a=3,b=2,val=13"
-  },
-  {
-    "question_id": "act-math-complex-numbers-easy-b0074",
+    "question_id": "act-math-complex-numbers-easy-b0056",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3646,46 +2751,96 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "arithmetic",
-    "prompt": "Which of the following gives all solutions to x² + 196 = 0?",
+    "prompt": "What is the product 2i · (3 − 7i)?",
     "choices": [
       {
         "id": "A",
-        "text": "x = ±14i",
+        "text": "14 + 6i",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "x = ±196i",
-        "rationale": "Take the square root of 196."
+        "text": "14 − 6i",
+        "rationale": "Check the sign of the imaginary part."
       },
       {
         "id": "C",
-        "text": "x = 14i",
-        "rationale": "There are two solutions, ±."
+        "text": "−14 + 6i",
+        "rationale": "i·i = −1, so the real part gets a minus sign."
       },
       {
         "id": "D",
-        "text": "x = ±14",
-        "rationale": "x² = −196 has no real solutions; the square root of −1 is i."
+        "text": "6 − 14i",
+        "rationale": "Multiply through by i: the imaginary term becomes real (with i² = −1)."
       },
       {
         "id": "E",
-        "text": "x = ±15i",
-        "rationale": "Check: (15i)² = −225, not −196."
+        "text": "6 + 14i",
+        "rationale": "Distribute carefully: ki·a = kai and ki·bi = −kb."
       }
     ],
     "correct_choice": "A",
-    "explanation": "x² = −196, so x = ±√(−196) = ±14i.",
-    "estimated_time_seconds": 80,
+    "explanation": "2i·3 = 6i and 2i·−7i = −14i² = 14; total 14 + 6i.",
+    "estimated_time_seconds": 75,
     "tags": [
       "complex",
-      "quadratic",
-      "family:cx_quadratic"
+      "multiply",
+      "family:cx_multiply"
     ],
-    "answer_verification": "x = ±14i"
+    "answer_verification": "14 + 6i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0075",
+    "question_id": "act-math-complex-numbers-easy-b0057",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "number_and_quantity",
+    "skill": "complex_numbers",
+    "lesson_id": "act-math-complex-numbers-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "powers_of_i",
+    "prompt": "What is the value of i^26, where i = √(−1)?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "−1",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "i",
+        "rationale": "Reduce the exponent modulo 4: i^26 = i^2."
+      },
+      {
+        "id": "C",
+        "text": "0",
+        "rationale": "No power of i is 0."
+      },
+      {
+        "id": "D",
+        "text": "1",
+        "rationale": "Reduce the exponent modulo 4: i^26 = i^2."
+      },
+      {
+        "id": "E",
+        "text": "−i",
+        "rationale": "Reduce the exponent modulo 4: i^26 = i^2."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Powers of i cycle every 4: i, −1, −i, 1. Since 26 = 4·6 + 2, i^26 = i^2 = −1.",
+    "estimated_time_seconds": 65,
+    "tags": [
+      "complex",
+      "powers-of-i",
+      "family:cx_powers"
+    ],
+    "answer_verification": "i^26=−1"
+  },
+  {
+    "question_id": "act-math-complex-numbers-easy-b0058",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3735,7 +2890,7 @@
     "answer_verification": "4 + 20i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0076",
+    "question_id": "act-math-complex-numbers-easy-b0059",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3785,7 +2940,7 @@
     "answer_verification": "i^3=−i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0077",
+    "question_id": "act-math-complex-numbers-easy-b0060",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3835,7 +2990,7 @@
     "answer_verification": "8 − 2i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0078",
+    "question_id": "act-math-complex-numbers-easy-b0061",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3885,7 +3040,7 @@
     "answer_verification": "3 − 18i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0079",
+    "question_id": "act-math-complex-numbers-easy-b0062",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3896,46 +3051,146 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "arithmetic",
-    "prompt": "What are the solutions to the equation x² + 81 = 0?",
+    "prompt": "Which of the following gives all solutions to x² + 9 = 0?",
     "choices": [
       {
         "id": "A",
-        "text": "x = 9i",
+        "text": "x = 3i",
         "rationale": "There are two solutions, ±."
       },
       {
         "id": "B",
         "text": "x = ±9i",
-        "rationale": "Correct."
+        "rationale": "Take the square root of 9."
       },
       {
         "id": "C",
-        "text": "x = ±10i",
-        "rationale": "Check: (10i)² = −100, not −81."
+        "text": "x = ±3i",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "x = ±9",
-        "rationale": "x² = −81 has no real solutions; the square root of −1 is i."
+        "text": "x = ±3",
+        "rationale": "x² = −9 has no real solutions; the square root of −1 is i."
       },
       {
         "id": "E",
-        "text": "x = ±81i",
-        "rationale": "Take the square root of 81."
+        "text": "x = ±4i",
+        "rationale": "Check: (4i)² = −16, not −9."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "x² = −81, so x = ±√(−81) = ±9i.",
+    "correct_choice": "C",
+    "explanation": "x² = −9, so x = ±√(−9) = ±3i.",
     "estimated_time_seconds": 80,
     "tags": [
       "complex",
       "quadratic",
       "family:cx_quadratic"
     ],
-    "answer_verification": "x = ±9i"
+    "answer_verification": "x = ±3i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0080",
+    "question_id": "act-math-complex-numbers-easy-b0063",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "number_and_quantity",
+    "skill": "complex_numbers",
+    "lesson_id": "act-math-complex-numbers-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "arithmetic",
+    "prompt": "What is the product −6i · (−7 − 2i)?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "−12 − 42i",
+        "rationale": "Check the sign of the imaginary part."
+      },
+      {
+        "id": "B",
+        "text": "−12 + 42i",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "12 + 42i",
+        "rationale": "i·i = −1, so the real part gets a minus sign."
+      },
+      {
+        "id": "D",
+        "text": "42 + 12i",
+        "rationale": "Multiply through by i: the imaginary term becomes real (with i² = −1)."
+      },
+      {
+        "id": "E",
+        "text": "42 − 12i",
+        "rationale": "Distribute carefully: ki·a = kai and ki·bi = −kb."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "−6i·−7 = 42i and −6i·−2i = 12i² = −12; total −12 + 42i.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "complex",
+      "multiply",
+      "family:cx_multiply"
+    ],
+    "answer_verification": "−12 + 42i"
+  },
+  {
+    "question_id": "act-math-complex-numbers-easy-b0064",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "number_and_quantity",
+    "skill": "complex_numbers",
+    "lesson_id": "act-math-complex-numbers-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "arithmetic",
+    "prompt": "What is the sum (3 − i) + (8 − 7i)?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "11 + 7i",
+        "rationale": "Add the imaginary coefficients; don't multiply them."
+      },
+      {
+        "id": "B",
+        "text": "3",
+        "rationale": "Real and imaginary parts stay separate."
+      },
+      {
+        "id": "C",
+        "text": "−5 + 6i",
+        "rationale": "This subtracts."
+      },
+      {
+        "id": "D",
+        "text": "11 + 8i",
+        "rationale": "Check the sign of the imaginary part."
+      },
+      {
+        "id": "E",
+        "text": "11 − 8i",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "E",
+    "explanation": "Add real parts: 3 + 8 = 11; add imaginary parts: −1 + −7 = −8. Result: 11 − 8i.",
+    "estimated_time_seconds": 70,
+    "tags": [
+      "complex",
+      "add-subtract",
+      "family:cx_add_sub"
+    ],
+    "answer_verification": "11 − 8i"
+  },
+  {
+    "question_id": "act-math-complex-numbers-easy-b0065",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3946,146 +3201,46 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "conjugate_modulus",
-    "prompt": "What is the product (2 + i)(2 − i)?",
+    "prompt": "What is the product (−5 − 2i)(−5 + 2i)?",
     "choices": [
       {
         "id": "A",
-        "text": "6",
-        "rationale": "Arithmetic slip."
-      },
-      {
-        "id": "B",
-        "text": "-5",
-        "rationale": "The product is positive."
-      },
-      {
-        "id": "C",
-        "text": "4",
+        "text": "25",
         "rationale": "Include the b² term."
       },
       {
-        "id": "D",
-        "text": "3",
+        "id": "B",
+        "text": "21",
         "rationale": "i² = −1 turns −b²i² into +b²."
       },
       {
-        "id": "E",
-        "text": "5",
+        "id": "C",
+        "text": "-29",
+        "rationale": "The product is positive."
+      },
+      {
+        "id": "D",
+        "text": "29",
         "rationale": "Correct."
+      },
+      {
+        "id": "E",
+        "text": "30",
+        "rationale": "Arithmetic slip."
       }
     ],
-    "correct_choice": "E",
-    "explanation": "(a + bi)(a − bi) = a² + b² = 4 + 1 = 5.",
+    "correct_choice": "D",
+    "explanation": "(a + bi)(a − bi) = a² + b² = 25 + 4 = 29.",
     "estimated_time_seconds": 75,
     "tags": [
       "complex",
       "conjugate",
       "family:cx_conj_product"
     ],
-    "answer_verification": "a=2,b=1,val=5"
+    "answer_verification": "a=-5,b=-2,val=29"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0081",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "number_and_quantity",
-    "skill": "complex_numbers",
-    "lesson_id": "act-math-complex-numbers-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "arithmetic",
-    "prompt": "What is the product −5i · (2 + 7i)?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "−35 − 10i",
-        "rationale": "i·i = −1, so the real part gets a minus sign."
-      },
-      {
-        "id": "B",
-        "text": "35 + 10i",
-        "rationale": "Check the sign of the imaginary part."
-      },
-      {
-        "id": "C",
-        "text": "−10 − 35i",
-        "rationale": "Multiply through by i: the imaginary term becomes real (with i² = −1)."
-      },
-      {
-        "id": "D",
-        "text": "−10 + 35i",
-        "rationale": "Distribute carefully: ki·a = kai and ki·bi = −kb."
-      },
-      {
-        "id": "E",
-        "text": "35 − 10i",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "E",
-    "explanation": "−5i·2 = −10i and −5i·7i = −35i² = 35; total 35 − 10i.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "complex",
-      "multiply",
-      "family:cx_multiply"
-    ],
-    "answer_verification": "35 − 10i"
-  },
-  {
-    "question_id": "act-math-complex-numbers-easy-b0082",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "number_and_quantity",
-    "skill": "complex_numbers",
-    "lesson_id": "act-math-complex-numbers-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "arithmetic",
-    "prompt": "Which of the following gives all solutions to x² + 64 = 0?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "x = ±64i",
-        "rationale": "Take the square root of 64."
-      },
-      {
-        "id": "B",
-        "text": "x = ±8",
-        "rationale": "x² = −64 has no real solutions; the square root of −1 is i."
-      },
-      {
-        "id": "C",
-        "text": "x = 8i",
-        "rationale": "There are two solutions, ±."
-      },
-      {
-        "id": "D",
-        "text": "x = ±8i",
-        "rationale": "Correct."
-      },
-      {
-        "id": "E",
-        "text": "x = ±9i",
-        "rationale": "Check: (9i)² = −81, not −64."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "x² = −64, so x = ±√(−64) = ±8i.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "complex",
-      "quadratic",
-      "family:cx_quadratic"
-    ],
-    "answer_verification": "x = ±8i"
-  },
-  {
-    "question_id": "act-math-complex-numbers-easy-b0083",
+    "question_id": "act-math-complex-numbers-easy-b0066",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4135,7 +3290,7 @@
     "answer_verification": "i^6=−1"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0084",
+    "question_id": "act-math-complex-numbers-easy-b0067",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4185,7 +3340,7 @@
     "answer_verification": "x = ±18i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0085",
+    "question_id": "act-math-complex-numbers-easy-b0068",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4235,7 +3390,7 @@
     "answer_verification": "a=-3,b=-9,val=90"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0086",
+    "question_id": "act-math-complex-numbers-easy-b0069",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4246,46 +3401,46 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "arithmetic",
-    "prompt": "Which of the following gives all solutions to x² + 1 = 0?",
+    "prompt": "What are the solutions to the equation x² + 361 = 0?",
     "choices": [
       {
         "id": "A",
-        "text": "x = i",
+        "text": "x = 19i",
         "rationale": "There are two solutions, ±."
       },
       {
         "id": "B",
-        "text": "x = ±1",
-        "rationale": "x² = −1 has no real solutions; the square root of −1 is i."
+        "text": "x = ±361i",
+        "rationale": "Take the square root of 361."
       },
       {
         "id": "C",
-        "text": "x = ±2i",
-        "rationale": "Check: (2i)² = −4, not −1."
+        "text": "x = ±20i",
+        "rationale": "Check: (20i)² = −400, not −361."
       },
       {
         "id": "D",
-        "text": "x = ±i",
+        "text": "x = ±19i",
         "rationale": "Correct."
       },
       {
         "id": "E",
-        "text": "x = ±3i",
-        "rationale": "Take the square root of 1."
+        "text": "x = ±19",
+        "rationale": "x² = −361 has no real solutions; the square root of −1 is i."
       }
     ],
     "correct_choice": "D",
-    "explanation": "x² = −1, so x = ±√(−1) = ±1i.",
+    "explanation": "x² = −361, so x = ±√(−361) = ±19i.",
     "estimated_time_seconds": 80,
     "tags": [
       "complex",
       "quadratic",
       "family:cx_quadratic"
     ],
-    "answer_verification": "x = ±i"
+    "answer_verification": "x = ±19i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0087",
+    "question_id": "act-math-complex-numbers-easy-b0070",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4296,146 +3451,46 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "conjugate_modulus",
-    "prompt": "What is the product (−8 − 5i)(−8 + 5i)?",
+    "prompt": "What is the complex conjugate of −8 − 3i?",
     "choices": [
       {
         "id": "A",
-        "text": "-89",
-        "rationale": "The product is positive."
+        "text": "8 − 3i",
+        "rationale": "The conjugate changes the sign of the IMAGINARY part only."
       },
       {
         "id": "B",
-        "text": "64",
-        "rationale": "Include the b² term."
-      },
-      {
-        "id": "C",
-        "text": "39",
-        "rationale": "i² = −1 turns −b²i² into +b²."
-      },
-      {
-        "id": "D",
-        "text": "89",
-        "rationale": "Correct."
-      },
-      {
-        "id": "E",
-        "text": "90",
-        "rationale": "Arithmetic slip."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "(a + bi)(a − bi) = a² + b² = 64 + 25 = 89.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "complex",
-      "conjugate",
-      "family:cx_conj_product"
-    ],
-    "answer_verification": "a=-8,b=-5,val=89"
-  },
-  {
-    "question_id": "act-math-complex-numbers-easy-b0088",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "number_and_quantity",
-    "skill": "complex_numbers",
-    "lesson_id": "act-math-complex-numbers-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "conjugate_modulus",
-    "prompt": "Which of the following is the conjugate of −9 − 7i?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "−9 − 7i",
-        "rationale": "The conjugate must differ in the sign of the imaginary part."
-      },
-      {
-        "id": "B",
-        "text": "9 + 7i",
-        "rationale": "Only the imaginary part changes sign."
-      },
-      {
-        "id": "C",
-        "text": "−9 + 7i",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "−7 − 9i",
+        "text": "−3 − 8i",
         "rationale": "The real and imaginary parts don't swap."
       },
       {
+        "id": "C",
+        "text": "−8 − 3i",
+        "rationale": "The conjugate must differ in the sign of the imaginary part."
+      },
+      {
+        "id": "D",
+        "text": "8 + 3i",
+        "rationale": "Only the imaginary part changes sign."
+      },
+      {
         "id": "E",
-        "text": "9 − 7i",
-        "rationale": "The conjugate changes the sign of the IMAGINARY part only."
+        "text": "−8 + 3i",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "The conjugate of a + bi is a − bi: −9 + 7i.",
+    "correct_choice": "E",
+    "explanation": "The conjugate of a + bi is a − bi: −8 + 3i.",
     "estimated_time_seconds": 60,
     "tags": [
       "complex",
       "conjugate",
       "family:cx_conjugate_modulus"
     ],
-    "answer_verification": "−9 + 7i"
+    "answer_verification": "−8 + 3i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0089",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "number_and_quantity",
-    "skill": "complex_numbers",
-    "lesson_id": "act-math-complex-numbers-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "powers_of_i",
-    "prompt": "What is the value of i^15, where i = √(−1)?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "1",
-        "rationale": "Reduce the exponent modulo 4: i^15 = i^3."
-      },
-      {
-        "id": "B",
-        "text": "−1",
-        "rationale": "Reduce the exponent modulo 4: i^15 = i^3."
-      },
-      {
-        "id": "C",
-        "text": "0",
-        "rationale": "No power of i is 0."
-      },
-      {
-        "id": "D",
-        "text": "i",
-        "rationale": "Reduce the exponent modulo 4: i^15 = i^3."
-      },
-      {
-        "id": "E",
-        "text": "−i",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "E",
-    "explanation": "Powers of i cycle every 4: i, −1, −i, 1. Since 15 = 4·3 + 3, i^15 = i^3 = −i.",
-    "estimated_time_seconds": 65,
-    "tags": [
-      "complex",
-      "powers-of-i",
-      "family:cx_powers"
-    ],
-    "answer_verification": "i^15=−i"
-  },
-  {
-    "question_id": "act-math-complex-numbers-easy-b0090",
+    "question_id": "act-math-complex-numbers-easy-b0071",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4485,7 +3540,7 @@
     "answer_verification": "14 − 3i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0091",
+    "question_id": "act-math-complex-numbers-easy-b0072",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4496,46 +3551,46 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "conjugate_modulus",
-    "prompt": "What is the complex conjugate of −2 − i?",
+    "prompt": "Which of the following is the conjugate of 1 + 4i?",
     "choices": [
       {
         "id": "A",
-        "text": "−1 − 2i",
-        "rationale": "The real and imaginary parts don't swap."
+        "text": "−1 + 4i",
+        "rationale": "The conjugate changes the sign of the IMAGINARY part only."
       },
       {
         "id": "B",
-        "text": "2 + i",
+        "text": "−1 − 4i",
         "rationale": "Only the imaginary part changes sign."
       },
       {
         "id": "C",
-        "text": "2 − i",
-        "rationale": "The conjugate changes the sign of the IMAGINARY part only."
-      },
-      {
-        "id": "D",
-        "text": "−2 − i",
+        "text": "1 + 4i",
         "rationale": "The conjugate must differ in the sign of the imaginary part."
       },
       {
-        "id": "E",
-        "text": "−2 + i",
+        "id": "D",
+        "text": "1 − 4i",
         "rationale": "Correct."
+      },
+      {
+        "id": "E",
+        "text": "4 + i",
+        "rationale": "The real and imaginary parts don't swap."
       }
     ],
-    "correct_choice": "E",
-    "explanation": "The conjugate of a + bi is a − bi: −2 + i.",
+    "correct_choice": "D",
+    "explanation": "The conjugate of a + bi is a − bi: 1 − 4i.",
     "estimated_time_seconds": 60,
     "tags": [
       "complex",
       "conjugate",
       "family:cx_conjugate_modulus"
     ],
-    "answer_verification": "−2 + i"
+    "answer_verification": "1 − 4i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0092",
+    "question_id": "act-math-complex-numbers-easy-b0073",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4546,41 +3601,96 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "arithmetic",
-    "prompt": "What is the product −3i · (4 − 4i)?",
+    "prompt": "In the complex numbers, what are the solutions to x² = −64?",
     "choices": [
       {
         "id": "A",
-        "text": "−12 − 12i",
+        "text": "x = ±64i",
+        "rationale": "Take the square root of 64."
+      },
+      {
+        "id": "B",
+        "text": "x = ±9i",
+        "rationale": "Check: (9i)² = −81, not −64."
+      },
+      {
+        "id": "C",
+        "text": "x = 8i",
+        "rationale": "There are two solutions, ±."
+      },
+      {
+        "id": "D",
+        "text": "x = ±8i",
+        "rationale": "Correct."
+      },
+      {
+        "id": "E",
+        "text": "x = ±8",
+        "rationale": "x² = −64 has no real solutions; the square root of −1 is i."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "x² = −64, so x = ±√(−64) = ±8i.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "complex",
+      "quadratic",
+      "family:cx_quadratic"
+    ],
+    "answer_verification": "x = ±8i"
+  },
+  {
+    "question_id": "act-math-complex-numbers-easy-b0074",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "number_and_quantity",
+    "skill": "complex_numbers",
+    "lesson_id": "act-math-complex-numbers-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "arithmetic",
+    "prompt": "What is the product 3i · (7 − 3i)?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "9 + 21i",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "−12 − 11i",
-        "rationale": "Distribute carefully: ki·a = kai and ki·bi = −kb."
+        "text": "9 − 21i",
+        "rationale": "Check the sign of the imaginary part."
       },
       {
         "id": "C",
-        "text": "−12 + 12i",
+        "text": "21 − 9i",
         "rationale": "Multiply through by i: the imaginary term becomes real (with i² = −1)."
       },
       {
         "id": "D",
-        "text": "12 − 12i",
+        "text": "21 + 9i",
+        "rationale": "Distribute carefully: ki·a = kai and ki·bi = −kb."
+      },
+      {
+        "id": "E",
+        "text": "−9 + 21i",
         "rationale": "i·i = −1, so the real part gets a minus sign."
       }
     ],
     "correct_choice": "A",
-    "explanation": "−3i·4 = −12i and −3i·−4i = 12i² = −12; total −12 − 12i.",
+    "explanation": "3i·7 = 21i and 3i·−3i = −9i² = 9; total 9 + 21i.",
     "estimated_time_seconds": 75,
     "tags": [
       "complex",
       "multiply",
       "family:cx_multiply"
     ],
-    "answer_verification": "−12 − 12i"
+    "answer_verification": "9 + 21i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0093",
+    "question_id": "act-math-complex-numbers-easy-b0075",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4630,7 +3740,7 @@
     "answer_verification": "a=-5,b=5,val=50"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0094",
+    "question_id": "act-math-complex-numbers-easy-b0076",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4680,7 +3790,7 @@
     "answer_verification": "−14 − 6i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0095",
+    "question_id": "act-math-complex-numbers-easy-b0077",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4730,7 +3840,7 @@
     "answer_verification": "10 − 12i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0096",
+    "question_id": "act-math-complex-numbers-easy-b0078",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4780,7 +3890,7 @@
     "answer_verification": "i^36=1"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0097",
+    "question_id": "act-math-complex-numbers-easy-b0079",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4830,7 +3940,7 @@
     "answer_verification": "x = ±7i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0098",
+    "question_id": "act-math-complex-numbers-easy-b0080",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4880,7 +3990,7 @@
     "answer_verification": "x = ±9i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0099",
+    "question_id": "act-math-complex-numbers-easy-b0081",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4930,7 +4040,7 @@
     "answer_verification": "2 + i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0100",
+    "question_id": "act-math-complex-numbers-easy-b0082",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4980,7 +4090,7 @@
     "answer_verification": "14 + 10i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0101",
+    "question_id": "act-math-complex-numbers-easy-b0083",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5030,7 +4140,7 @@
     "answer_verification": "−3 + 10i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0102",
+    "question_id": "act-math-complex-numbers-easy-b0084",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5080,7 +4190,7 @@
     "answer_verification": "a=-1,b=-6,val=37"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0103",
+    "question_id": "act-math-complex-numbers-easy-b0085",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5130,7 +4240,7 @@
     "answer_verification": "6 − 18i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0104",
+    "question_id": "act-math-complex-numbers-easy-b0086",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5180,7 +4290,7 @@
     "answer_verification": "a=8,b=6,val=100"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0105",
+    "question_id": "act-math-complex-numbers-easy-b0087",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5230,7 +4340,7 @@
     "answer_verification": "i^25=i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0106",
+    "question_id": "act-math-complex-numbers-easy-b0088",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5280,7 +4390,7 @@
     "answer_verification": "−10 − i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0107",
+    "question_id": "act-math-complex-numbers-easy-b0089",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5330,7 +4440,7 @@
     "answer_verification": "a=1,b=7,val=50"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0108",
+    "question_id": "act-math-complex-numbers-easy-b0090",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5380,7 +4490,7 @@
     "answer_verification": "−12 + 9i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0109",
+    "question_id": "act-math-complex-numbers-easy-b0091",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5430,7 +4540,7 @@
     "answer_verification": "x = ±8i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0110",
+    "question_id": "act-math-complex-numbers-easy-b0092",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5480,7 +4590,7 @@
     "answer_verification": "5 − 9i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0111",
+    "question_id": "act-math-complex-numbers-easy-b0093",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5530,7 +4640,7 @@
     "answer_verification": "−12 + 2i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0112",
+    "question_id": "act-math-complex-numbers-easy-b0094",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5580,7 +4690,7 @@
     "answer_verification": "2 − 4i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0113",
+    "question_id": "act-math-complex-numbers-easy-b0095",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5630,7 +4740,7 @@
     "answer_verification": "a=-2,b=-9,val=85"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0114",
+    "question_id": "act-math-complex-numbers-easy-b0096",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5680,7 +4790,7 @@
     "answer_verification": "x = ±16i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0115",
+    "question_id": "act-math-complex-numbers-easy-b0097",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5730,7 +4840,7 @@
     "answer_verification": "x = ±16i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0116",
+    "question_id": "act-math-complex-numbers-easy-b0098",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5780,7 +4890,7 @@
     "answer_verification": "a=-5,b=9,val=106"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0117",
+    "question_id": "act-math-complex-numbers-easy-b0099",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5825,7 +4935,7 @@
     "answer_verification": "24 − 24i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0118",
+    "question_id": "act-math-complex-numbers-easy-b0100",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5875,7 +4985,57 @@
     "answer_verification": "−20 − 5i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0119",
+    "question_id": "act-math-complex-numbers-easy-b0101",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "number_and_quantity",
+    "skill": "complex_numbers",
+    "lesson_id": "act-math-complex-numbers-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "arithmetic",
+    "prompt": "What are the solutions to the equation x² + 400 = 0?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "x = ±400i",
+        "rationale": "Take the square root of 400."
+      },
+      {
+        "id": "B",
+        "text": "x = ±20",
+        "rationale": "x² = −400 has no real solutions; the square root of −1 is i."
+      },
+      {
+        "id": "C",
+        "text": "x = 20i",
+        "rationale": "There are two solutions, ±."
+      },
+      {
+        "id": "D",
+        "text": "x = ±20i",
+        "rationale": "Correct."
+      },
+      {
+        "id": "E",
+        "text": "x = ±21i",
+        "rationale": "Check: (21i)² = −441, not −400."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "x² = −400, so x = ±√(−400) = ±20i.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "complex",
+      "quadratic",
+      "family:cx_quadratic"
+    ],
+    "answer_verification": "x = ±20i"
+  },
+  {
+    "question_id": "act-math-complex-numbers-easy-b0102",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5925,7 +5085,7 @@
     "answer_verification": "x = ±17i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0120",
+    "question_id": "act-math-complex-numbers-easy-b0103",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5975,7 +5135,7 @@
     "answer_verification": "−4 − 6i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0121",
+    "question_id": "act-math-complex-numbers-easy-b0104",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6025,7 +5185,7 @@
     "answer_verification": "1 − 15i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0122",
+    "question_id": "act-math-complex-numbers-easy-b0105",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6075,7 +5235,7 @@
     "answer_verification": "−4 + 12i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0123",
+    "question_id": "act-math-complex-numbers-easy-b0106",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6125,7 +5285,7 @@
     "answer_verification": "a=-8,b=4,val=80"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0124",
+    "question_id": "act-math-complex-numbers-easy-b0107",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6175,7 +5335,7 @@
     "answer_verification": "6"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0125",
+    "question_id": "act-math-complex-numbers-easy-b0108",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6225,7 +5385,7 @@
     "answer_verification": "6i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0126",
+    "question_id": "act-math-complex-numbers-easy-b0109",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6275,7 +5435,7 @@
     "answer_verification": "−7 + i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0127",
+    "question_id": "act-math-complex-numbers-easy-b0110",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6325,7 +5485,7 @@
     "answer_verification": "−6 − 7i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0128",
+    "question_id": "act-math-complex-numbers-easy-b0111",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6375,7 +5535,7 @@
     "answer_verification": "−9 − 13i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0129",
+    "question_id": "act-math-complex-numbers-easy-b0112",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6425,7 +5585,7 @@
     "answer_verification": "a=-9,b=-7,val=130"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0130",
+    "question_id": "act-math-complex-numbers-easy-b0113",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6436,96 +5596,46 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "arithmetic",
-    "prompt": "What are the solutions to the equation x² + 225 = 0?",
+    "prompt": "Which of the following gives all solutions to x² + 361 = 0?",
     "choices": [
       {
         "id": "A",
-        "text": "x = 15i",
-        "rationale": "There are two solutions, ±."
+        "text": "x = ±361i",
+        "rationale": "Take the square root of 361."
       },
       {
         "id": "B",
-        "text": "x = ±225i",
-        "rationale": "Take the square root of 225."
+        "text": "x = ±19i",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "x = ±16i",
-        "rationale": "Check: (16i)² = −256, not −225."
+        "text": "x = ±20i",
+        "rationale": "Check: (20i)² = −400, not −361."
       },
       {
         "id": "D",
-        "text": "x = ±15",
-        "rationale": "x² = −225 has no real solutions; the square root of −1 is i."
+        "text": "x = 19i",
+        "rationale": "There are two solutions, ±."
       },
       {
         "id": "E",
-        "text": "x = ±15i",
-        "rationale": "Correct."
+        "text": "x = ±19",
+        "rationale": "x² = −361 has no real solutions; the square root of −1 is i."
       }
     ],
-    "correct_choice": "E",
-    "explanation": "x² = −225, so x = ±√(−225) = ±15i.",
+    "correct_choice": "B",
+    "explanation": "x² = −361, so x = ±√(−361) = ±19i.",
     "estimated_time_seconds": 80,
     "tags": [
       "complex",
       "quadratic",
       "family:cx_quadratic"
     ],
-    "answer_verification": "x = ±15i"
+    "answer_verification": "x = ±19i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0131",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "number_and_quantity",
-    "skill": "complex_numbers",
-    "lesson_id": "act-math-complex-numbers-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "conjugate_modulus",
-    "prompt": "What is the product (8 − 2i)(8 + 2i)?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "68",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "-68",
-        "rationale": "The product is positive."
-      },
-      {
-        "id": "C",
-        "text": "69",
-        "rationale": "Arithmetic slip."
-      },
-      {
-        "id": "D",
-        "text": "60",
-        "rationale": "i² = −1 turns −b²i² into +b²."
-      },
-      {
-        "id": "E",
-        "text": "64",
-        "rationale": "Include the b² term."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "(a + bi)(a − bi) = a² + b² = 64 + 4 = 68.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "complex",
-      "conjugate",
-      "family:cx_conj_product"
-    ],
-    "answer_verification": "a=8,b=-2,val=68"
-  },
-  {
-    "question_id": "act-math-complex-numbers-easy-b0132",
+    "question_id": "act-math-complex-numbers-easy-b0114",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6536,41 +5646,41 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "arithmetic",
-    "prompt": "What is the product 4i · (−1 + i)?",
+    "prompt": "What is the product −2i · (−1 − i)?",
     "choices": [
       {
         "id": "A",
-        "text": "−4 + 4i",
-        "rationale": "Multiply through by i: the imaginary term becomes real (with i² = −1)."
+        "text": "2 − 2i",
+        "rationale": "Distribute carefully: ki·a = kai and ki·bi = −kb."
       },
       {
         "id": "B",
-        "text": "−4 − 4i",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "4 − 4i",
+        "text": "2 + 2i",
         "rationale": "i·i = −1, so the real part gets a minus sign."
       },
       {
+        "id": "C",
+        "text": "−2 + 2i",
+        "rationale": "Correct."
+      },
+      {
         "id": "D",
-        "text": "−4 − 3i",
-        "rationale": "Distribute carefully: ki·a = kai and ki·bi = −kb."
+        "text": "−2 − 2i",
+        "rationale": "Check the sign of the imaginary part."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "4i·−1 = −4i and 4i·1i = 4i² = −4; total −4 − 4i.",
+    "correct_choice": "C",
+    "explanation": "−2i·−1 = 2i and −2i·−1i = 2i² = −2; total −2 + 2i.",
     "estimated_time_seconds": 75,
     "tags": [
       "complex",
       "multiply",
       "family:cx_multiply"
     ],
-    "answer_verification": "−4 − 4i"
+    "answer_verification": "−2 + 2i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0133",
+    "question_id": "act-math-complex-numbers-easy-b0115",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6581,46 +5691,46 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "arithmetic",
-    "prompt": "Which of the following gives all solutions to x² + 169 = 0?",
+    "prompt": "What is the sum (1 − 7i) + (5 − 2i)?",
     "choices": [
       {
         "id": "A",
-        "text": "x = ±14i",
-        "rationale": "Check: (14i)² = −196, not −169."
-      },
-      {
-        "id": "B",
-        "text": "x = ±169i",
-        "rationale": "Take the square root of 169."
-      },
-      {
-        "id": "C",
-        "text": "x = ±13",
-        "rationale": "x² = −169 has no real solutions; the square root of −1 is i."
-      },
-      {
-        "id": "D",
-        "text": "x = ±13i",
+        "text": "6 − 9i",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "−3",
+        "rationale": "Real and imaginary parts stay separate."
+      },
+      {
+        "id": "C",
+        "text": "6 + 9i",
+        "rationale": "Check the sign of the imaginary part."
+      },
+      {
+        "id": "D",
+        "text": "6 + 14i",
+        "rationale": "Add the imaginary coefficients; don't multiply them."
+      },
+      {
         "id": "E",
-        "text": "x = 13i",
-        "rationale": "There are two solutions, ±."
+        "text": "−4 − 5i",
+        "rationale": "This subtracts."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "x² = −169, so x = ±√(−169) = ±13i.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "A",
+    "explanation": "Add real parts: 1 + 5 = 6; add imaginary parts: −7 + −2 = −9. Result: 6 − 9i.",
+    "estimated_time_seconds": 70,
     "tags": [
       "complex",
-      "quadratic",
-      "family:cx_quadratic"
+      "add-subtract",
+      "family:cx_add_sub"
     ],
-    "answer_verification": "x = ±13i"
+    "answer_verification": "6 − 9i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0134",
+    "question_id": "act-math-complex-numbers-easy-b0116",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6631,96 +5741,46 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "arithmetic",
-    "prompt": "In the complex numbers, what are the solutions to x² = −361?",
+    "prompt": "What is the sum (−8 − 5i) + (−9 − 2i)?",
     "choices": [
       {
         "id": "A",
-        "text": "x = ±20i",
-        "rationale": "Check: (20i)² = −400, not −361."
+        "text": "1 − 3i",
+        "rationale": "This subtracts."
       },
       {
         "id": "B",
-        "text": "x = ±361i",
-        "rationale": "Take the square root of 361."
-      },
-      {
-        "id": "C",
-        "text": "x = ±19i",
+        "text": "−17 − 7i",
         "rationale": "Correct."
       },
       {
-        "id": "D",
-        "text": "x = 19i",
-        "rationale": "There are two solutions, ±."
-      },
-      {
-        "id": "E",
-        "text": "x = ±19",
-        "rationale": "x² = −361 has no real solutions; the square root of −1 is i."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "x² = −361, so x = ±√(−361) = ±19i.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "complex",
-      "quadratic",
-      "family:cx_quadratic"
-    ],
-    "answer_verification": "x = ±19i"
-  },
-  {
-    "question_id": "act-math-complex-numbers-easy-b0135",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "number_and_quantity",
-    "skill": "complex_numbers",
-    "lesson_id": "act-math-complex-numbers-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "arithmetic",
-    "prompt": "What are the solutions to the equation x² + 361 = 0?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "x = 19i",
-        "rationale": "There are two solutions, ±."
-      },
-      {
-        "id": "B",
-        "text": "x = ±19",
-        "rationale": "x² = −361 has no real solutions; the square root of −1 is i."
-      },
-      {
         "id": "C",
-        "text": "x = ±19i",
-        "rationale": "Correct."
+        "text": "−24",
+        "rationale": "Real and imaginary parts stay separate."
       },
       {
         "id": "D",
-        "text": "x = ±361i",
-        "rationale": "Take the square root of 361."
+        "text": "−17 + 10i",
+        "rationale": "Add the imaginary coefficients; don't multiply them."
       },
       {
         "id": "E",
-        "text": "x = ±20i",
-        "rationale": "Check: (20i)² = −400, not −361."
+        "text": "−17 + 7i",
+        "rationale": "Check the sign of the imaginary part."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "x² = −361, so x = ±√(−361) = ±19i.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "B",
+    "explanation": "Add real parts: −8 + −9 = −17; add imaginary parts: −5 + −2 = −7. Result: −17 − 7i.",
+    "estimated_time_seconds": 70,
     "tags": [
       "complex",
-      "quadratic",
-      "family:cx_quadratic"
+      "add-subtract",
+      "family:cx_add_sub"
     ],
-    "answer_verification": "x = ±19i"
+    "answer_verification": "−17 − 7i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0136",
+    "question_id": "act-math-complex-numbers-easy-b0117",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6731,46 +5791,46 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "conjugate_modulus",
-    "prompt": "What is the product (7 − 7i)(7 + 7i)?",
+    "prompt": "What is the product (5 + 2i)(5 − 2i)?",
     "choices": [
       {
         "id": "A",
-        "text": "0",
-        "rationale": "i² = −1 turns −b²i² into +b²."
+        "text": "25",
+        "rationale": "Include the b² term."
       },
       {
         "id": "B",
-        "text": "98",
-        "rationale": "Correct."
+        "text": "21",
+        "rationale": "i² = −1 turns −b²i² into +b²."
       },
       {
         "id": "C",
-        "text": "-98",
-        "rationale": "The product is positive."
+        "text": "29",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "99",
+        "text": "30",
         "rationale": "Arithmetic slip."
       },
       {
         "id": "E",
-        "text": "49",
-        "rationale": "Include the b² term."
+        "text": "-29",
+        "rationale": "The product is positive."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "(a + bi)(a − bi) = a² + b² = 49 + 49 = 98.",
+    "correct_choice": "C",
+    "explanation": "(a + bi)(a − bi) = a² + b² = 25 + 4 = 29.",
     "estimated_time_seconds": 75,
     "tags": [
       "complex",
       "conjugate",
       "family:cx_conj_product"
     ],
-    "answer_verification": "a=7,b=-7,val=98"
+    "answer_verification": "a=5,b=2,val=29"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0137",
+    "question_id": "act-math-complex-numbers-easy-b0118",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6780,47 +5840,247 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "arithmetic",
-    "prompt": "What is the sum (−6 + 8i) + (−7 − 4i)?",
+    "subskill": "conjugate_modulus",
+    "prompt": "What is the complex conjugate of 7 + 4i?",
     "choices": [
       {
         "id": "A",
-        "text": "−13 + 4i",
+        "text": "−7 − 4i",
+        "rationale": "Only the imaginary part changes sign."
+      },
+      {
+        "id": "B",
+        "text": "−7 + 4i",
+        "rationale": "The conjugate changes the sign of the IMAGINARY part only."
+      },
+      {
+        "id": "C",
+        "text": "7 − 4i",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "7 + 4i",
+        "rationale": "The conjugate must differ in the sign of the imaginary part."
+      },
+      {
+        "id": "E",
+        "text": "4 + 7i",
+        "rationale": "The real and imaginary parts don't swap."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "The conjugate of a + bi is a − bi: 7 − 4i.",
+    "estimated_time_seconds": 60,
+    "tags": [
+      "complex",
+      "conjugate",
+      "family:cx_conjugate_modulus"
+    ],
+    "answer_verification": "7 − 4i"
+  },
+  {
+    "question_id": "act-math-complex-numbers-easy-b0119",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "number_and_quantity",
+    "skill": "complex_numbers",
+    "lesson_id": "act-math-complex-numbers-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "conjugate_modulus",
+    "prompt": "Which of the following is the conjugate of 1 − 3i?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "1 − 3i",
+        "rationale": "The conjugate must differ in the sign of the imaginary part."
+      },
+      {
+        "id": "B",
+        "text": "−3 + i",
+        "rationale": "The real and imaginary parts don't swap."
+      },
+      {
+        "id": "C",
+        "text": "−1 + 3i",
+        "rationale": "Only the imaginary part changes sign."
+      },
+      {
+        "id": "D",
+        "text": "1 + 3i",
+        "rationale": "Correct."
+      },
+      {
+        "id": "E",
+        "text": "−1 − 3i",
+        "rationale": "The conjugate changes the sign of the IMAGINARY part only."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "The conjugate of a + bi is a − bi: 1 + 3i.",
+    "estimated_time_seconds": 60,
+    "tags": [
+      "complex",
+      "conjugate",
+      "family:cx_conjugate_modulus"
+    ],
+    "answer_verification": "1 + 3i"
+  },
+  {
+    "question_id": "act-math-complex-numbers-easy-b0120",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "number_and_quantity",
+    "skill": "complex_numbers",
+    "lesson_id": "act-math-complex-numbers-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "conjugate_modulus",
+    "prompt": "What is the product (8 + i)(8 − i)?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "66",
+        "rationale": "Arithmetic slip."
+      },
+      {
+        "id": "B",
+        "text": "63",
+        "rationale": "i² = −1 turns −b²i² into +b²."
+      },
+      {
+        "id": "C",
+        "text": "-65",
+        "rationale": "The product is positive."
+      },
+      {
+        "id": "D",
+        "text": "64",
+        "rationale": "Include the b² term."
+      },
+      {
+        "id": "E",
+        "text": "65",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "E",
+    "explanation": "(a + bi)(a − bi) = a² + b² = 64 + 1 = 65.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "complex",
+      "conjugate",
+      "family:cx_conj_product"
+    ],
+    "answer_verification": "a=8,b=1,val=65"
+  },
+  {
+    "question_id": "act-math-complex-numbers-easy-b0121",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "number_and_quantity",
+    "skill": "complex_numbers",
+    "lesson_id": "act-math-complex-numbers-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "powers_of_i",
+    "prompt": "Which of the following is equal to i^23?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "1",
+        "rationale": "Reduce the exponent modulo 4: i^23 = i^3."
+      },
+      {
+        "id": "B",
+        "text": "0",
+        "rationale": "No power of i is 0."
+      },
+      {
+        "id": "C",
+        "text": "−1",
+        "rationale": "Reduce the exponent modulo 4: i^23 = i^3."
+      },
+      {
+        "id": "D",
+        "text": "−i",
+        "rationale": "Correct."
+      },
+      {
+        "id": "E",
+        "text": "i",
+        "rationale": "Reduce the exponent modulo 4: i^23 = i^3."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Powers of i cycle every 4: i, −1, −i, 1. Since 23 = 4·5 + 3, i^23 = i^3 = −i.",
+    "estimated_time_seconds": 65,
+    "tags": [
+      "complex",
+      "powers-of-i",
+      "family:cx_powers"
+    ],
+    "answer_verification": "i^23=−i"
+  },
+  {
+    "question_id": "act-math-complex-numbers-easy-b0122",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "number_and_quantity",
+    "skill": "complex_numbers",
+    "lesson_id": "act-math-complex-numbers-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "conjugate_modulus",
+    "prompt": "What is the product (−7 − 4i)(−7 + 4i)?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "65",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "−13 − 4i",
-        "rationale": "Check the sign of the imaginary part."
+        "text": "66",
+        "rationale": "Arithmetic slip."
       },
       {
         "id": "C",
-        "text": "1 + 12i",
-        "rationale": "This subtracts."
+        "text": "49",
+        "rationale": "Include the b² term."
       },
       {
         "id": "D",
-        "text": "−13 − 32i",
-        "rationale": "Add the imaginary coefficients; don't multiply them."
+        "text": "33",
+        "rationale": "i² = −1 turns −b²i² into +b²."
       },
       {
         "id": "E",
-        "text": "−9",
-        "rationale": "Real and imaginary parts stay separate."
+        "text": "-65",
+        "rationale": "The product is positive."
       }
     ],
     "correct_choice": "A",
-    "explanation": "Add real parts: −6 + −7 = −13; add imaginary parts: 8 + −4 = 4. Result: −13 + 4i.",
-    "estimated_time_seconds": 70,
+    "explanation": "(a + bi)(a − bi) = a² + b² = 49 + 16 = 65.",
+    "estimated_time_seconds": 75,
     "tags": [
       "complex",
-      "add-subtract",
-      "family:cx_add_sub"
+      "conjugate",
+      "family:cx_conj_product"
     ],
-    "answer_verification": "−13 + 4i"
+    "answer_verification": "a=-7,b=-4,val=65"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0138",
+    "question_id": "act-math-complex-numbers-easy-b0123",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6870,7 +6130,7 @@
     "answer_verification": "i^12=1"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0139",
+    "question_id": "act-math-complex-numbers-easy-b0124",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6920,7 +6180,7 @@
     "answer_verification": "−10 − 20i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0140",
+    "question_id": "act-math-complex-numbers-easy-b0125",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6931,12 +6191,12 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "powers_of_i",
-    "prompt": "Which of the following is equal to i^18?",
+    "prompt": "If i² = −1, what is i^4?",
     "choices": [
       {
         "id": "A",
-        "text": "1",
-        "rationale": "Reduce the exponent modulo 4: i^18 = i^2."
+        "text": "−i",
+        "rationale": "Reduce the exponent modulo 4: i^4 = i^0."
       },
       {
         "id": "B",
@@ -6945,82 +6205,32 @@
       },
       {
         "id": "C",
-        "text": "−1",
+        "text": "1",
         "rationale": "Correct."
       },
       {
         "id": "D",
         "text": "i",
-        "rationale": "Reduce the exponent modulo 4: i^18 = i^2."
+        "rationale": "Reduce the exponent modulo 4: i^4 = i^0."
       },
       {
         "id": "E",
-        "text": "−i",
-        "rationale": "Reduce the exponent modulo 4: i^18 = i^2."
+        "text": "−1",
+        "rationale": "Reduce the exponent modulo 4: i^4 = i^0."
       }
     ],
     "correct_choice": "C",
-    "explanation": "Powers of i cycle every 4: i, −1, −i, 1. Since 18 = 4·4 + 2, i^18 = i^2 = −1.",
+    "explanation": "Powers of i cycle every 4: i, −1, −i, 1. Since 4 = 4·1 + 0, i^4 = i^0 = 1.",
     "estimated_time_seconds": 65,
     "tags": [
       "complex",
       "powers-of-i",
       "family:cx_powers"
     ],
-    "answer_verification": "i^18=−1"
+    "answer_verification": "i^4=1"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0141",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "number_and_quantity",
-    "skill": "complex_numbers",
-    "lesson_id": "act-math-complex-numbers-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "powers_of_i",
-    "prompt": "If i² = −1, what is i^30?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "−i",
-        "rationale": "Reduce the exponent modulo 4: i^30 = i^2."
-      },
-      {
-        "id": "B",
-        "text": "−1",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "i",
-        "rationale": "Reduce the exponent modulo 4: i^30 = i^2."
-      },
-      {
-        "id": "D",
-        "text": "0",
-        "rationale": "No power of i is 0."
-      },
-      {
-        "id": "E",
-        "text": "1",
-        "rationale": "Reduce the exponent modulo 4: i^30 = i^2."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Powers of i cycle every 4: i, −1, −i, 1. Since 30 = 4·7 + 2, i^30 = i^2 = −1.",
-    "estimated_time_seconds": 65,
-    "tags": [
-      "complex",
-      "powers-of-i",
-      "family:cx_powers"
-    ],
-    "answer_verification": "i^30=−1"
-  },
-  {
-    "question_id": "act-math-complex-numbers-easy-b0142",
+    "question_id": "act-math-complex-numbers-easy-b0126",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7070,7 +6280,7 @@
     "answer_verification": "a=-2,b=-1,val=5"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0143",
+    "question_id": "act-math-complex-numbers-easy-b0127",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7120,7 +6330,7 @@
     "answer_verification": "−9 + 6i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0144",
+    "question_id": "act-math-complex-numbers-easy-b0128",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7170,7 +6380,7 @@
     "answer_verification": "i^11=−i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0145",
+    "question_id": "act-math-complex-numbers-easy-b0129",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7220,7 +6430,7 @@
     "answer_verification": "−6 + 14i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0146",
+    "question_id": "act-math-complex-numbers-easy-b0130",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7270,7 +6480,7 @@
     "answer_verification": "−7 + 8i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0147",
+    "question_id": "act-math-complex-numbers-easy-b0131",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7320,7 +6530,7 @@
     "answer_verification": "i^4=1"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0148",
+    "question_id": "act-math-complex-numbers-easy-b0132",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7365,7 +6575,7 @@
     "answer_verification": "4 + 4i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0149",
+    "question_id": "act-math-complex-numbers-easy-b0133",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7410,7 +6620,7 @@
     "answer_verification": "−35 + 35i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0150",
+    "question_id": "act-math-complex-numbers-easy-b0134",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7421,35 +6631,85 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "powers_of_i",
-    "prompt": "What is the value of i^7, where i = √(−1)?",
+    "prompt": "What is the value of i^15, where i = √(−1)?",
     "choices": [
       {
         "id": "A",
         "text": "1",
-        "rationale": "Reduce the exponent modulo 4: i^7 = i^3."
+        "rationale": "Reduce the exponent modulo 4: i^15 = i^3."
       },
       {
         "id": "B",
-        "text": "i",
-        "rationale": "Reduce the exponent modulo 4: i^7 = i^3."
+        "text": "0",
+        "rationale": "No power of i is 0."
       },
       {
         "id": "C",
+        "text": "−1",
+        "rationale": "Reduce the exponent modulo 4: i^15 = i^3."
+      },
+      {
+        "id": "D",
+        "text": "i",
+        "rationale": "Reduce the exponent modulo 4: i^15 = i^3."
+      },
+      {
+        "id": "E",
+        "text": "−i",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "E",
+    "explanation": "Powers of i cycle every 4: i, −1, −i, 1. Since 15 = 4·3 + 3, i^15 = i^3 = −i.",
+    "estimated_time_seconds": 65,
+    "tags": [
+      "complex",
+      "powers-of-i",
+      "family:cx_powers"
+    ],
+    "answer_verification": "i^15=−i"
+  },
+  {
+    "question_id": "act-math-complex-numbers-easy-b0135",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "number_and_quantity",
+    "skill": "complex_numbers",
+    "lesson_id": "act-math-complex-numbers-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "powers_of_i",
+    "prompt": "Which of the following is equal to i^7?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "0",
+        "rationale": "No power of i is 0."
+      },
+      {
+        "id": "B",
         "text": "−i",
         "rationale": "Correct."
       },
       {
+        "id": "C",
+        "text": "i",
+        "rationale": "Reduce the exponent modulo 4: i^7 = i^3."
+      },
+      {
         "id": "D",
-        "text": "−1",
+        "text": "1",
         "rationale": "Reduce the exponent modulo 4: i^7 = i^3."
       },
       {
         "id": "E",
-        "text": "0",
-        "rationale": "No power of i is 0."
+        "text": "−1",
+        "rationale": "Reduce the exponent modulo 4: i^7 = i^3."
       }
     ],
-    "correct_choice": "C",
+    "correct_choice": "B",
     "explanation": "Powers of i cycle every 4: i, −1, −i, 1. Since 7 = 4·1 + 3, i^7 = i^3 = −i.",
     "estimated_time_seconds": 65,
     "tags": [
@@ -7460,7 +6720,7 @@
     "answer_verification": "i^7=−i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0151",
+    "question_id": "act-math-complex-numbers-easy-b0136",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7510,7 +6770,7 @@
     "answer_verification": "14 + 8i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0152",
+    "question_id": "act-math-complex-numbers-easy-b0137",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7560,7 +6820,7 @@
     "answer_verification": "i^18=−1"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0153",
+    "question_id": "act-math-complex-numbers-easy-b0138",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7610,7 +6870,7 @@
     "answer_verification": "i^24=1"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0154",
+    "question_id": "act-math-complex-numbers-easy-b0139",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7660,7 +6920,7 @@
     "answer_verification": "−6 − 8i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0155",
+    "question_id": "act-math-complex-numbers-easy-b0140",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7710,7 +6970,7 @@
     "answer_verification": "6 − 12i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0156",
+    "question_id": "act-math-complex-numbers-easy-b0141",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7760,7 +7020,7 @@
     "answer_verification": "−3 + 12i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0157",
+    "question_id": "act-math-complex-numbers-easy-b0142",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7810,7 +7070,7 @@
     "answer_verification": "x = ±4i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0158",
+    "question_id": "act-math-complex-numbers-easy-b0143",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7860,7 +7120,7 @@
     "answer_verification": "−4 + 2i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0159",
+    "question_id": "act-math-complex-numbers-easy-b0144",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7910,7 +7170,7 @@
     "answer_verification": "−i"
   },
   {
-    "question_id": "act-math-complex-numbers-easy-b0160",
+    "question_id": "act-math-complex-numbers-easy-b0145",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7958,5 +7218,750 @@
       "family:cx_powers"
     ],
     "answer_verification": "i^23=−i"
+  },
+  {
+    "question_id": "act-math-complex-numbers-easy-b0146",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "number_and_quantity",
+    "skill": "complex_numbers",
+    "lesson_id": "act-math-complex-numbers-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "conjugate_modulus",
+    "prompt": "What is the product (8 + 3i)(8 − 3i)?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "64",
+        "rationale": "Include the b² term."
+      },
+      {
+        "id": "B",
+        "text": "73",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "74",
+        "rationale": "Arithmetic slip."
+      },
+      {
+        "id": "D",
+        "text": "-73",
+        "rationale": "The product is positive."
+      },
+      {
+        "id": "E",
+        "text": "55",
+        "rationale": "i² = −1 turns −b²i² into +b²."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "(a + bi)(a − bi) = a² + b² = 64 + 9 = 73.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "complex",
+      "conjugate",
+      "family:cx_conj_product"
+    ],
+    "answer_verification": "a=8,b=3,val=73"
+  },
+  {
+    "question_id": "act-math-complex-numbers-easy-b0147",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "number_and_quantity",
+    "skill": "complex_numbers",
+    "lesson_id": "act-math-complex-numbers-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "arithmetic",
+    "prompt": "Which of the following gives all solutions to x² + 324 = 0?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "x = ±324i",
+        "rationale": "Take the square root of 324."
+      },
+      {
+        "id": "B",
+        "text": "x = ±18i",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "x = ±19i",
+        "rationale": "Check: (19i)² = −361, not −324."
+      },
+      {
+        "id": "D",
+        "text": "x = ±18",
+        "rationale": "x² = −324 has no real solutions; the square root of −1 is i."
+      },
+      {
+        "id": "E",
+        "text": "x = 18i",
+        "rationale": "There are two solutions, ±."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "x² = −324, so x = ±√(−324) = ±18i.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "complex",
+      "quadratic",
+      "family:cx_quadratic"
+    ],
+    "answer_verification": "x = ±18i"
+  },
+  {
+    "question_id": "act-math-complex-numbers-easy-b0148",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "number_and_quantity",
+    "skill": "complex_numbers",
+    "lesson_id": "act-math-complex-numbers-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "powers_of_i",
+    "prompt": "If i² = −1, what is i^13?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "−1",
+        "rationale": "Reduce the exponent modulo 4: i^13 = i^1."
+      },
+      {
+        "id": "B",
+        "text": "−i",
+        "rationale": "Reduce the exponent modulo 4: i^13 = i^1."
+      },
+      {
+        "id": "C",
+        "text": "0",
+        "rationale": "No power of i is 0."
+      },
+      {
+        "id": "D",
+        "text": "i",
+        "rationale": "Correct."
+      },
+      {
+        "id": "E",
+        "text": "1",
+        "rationale": "Reduce the exponent modulo 4: i^13 = i^1."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Powers of i cycle every 4: i, −1, −i, 1. Since 13 = 4·3 + 1, i^13 = i^1 = i.",
+    "estimated_time_seconds": 65,
+    "tags": [
+      "complex",
+      "powers-of-i",
+      "family:cx_powers"
+    ],
+    "answer_verification": "i^13=i"
+  },
+  {
+    "question_id": "act-math-complex-numbers-easy-b0149",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "number_and_quantity",
+    "skill": "complex_numbers",
+    "lesson_id": "act-math-complex-numbers-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "powers_of_i",
+    "prompt": "If i² = −1, what is i^38?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "i",
+        "rationale": "Reduce the exponent modulo 4: i^38 = i^2."
+      },
+      {
+        "id": "B",
+        "text": "1",
+        "rationale": "Reduce the exponent modulo 4: i^38 = i^2."
+      },
+      {
+        "id": "C",
+        "text": "−i",
+        "rationale": "Reduce the exponent modulo 4: i^38 = i^2."
+      },
+      {
+        "id": "D",
+        "text": "−1",
+        "rationale": "Correct."
+      },
+      {
+        "id": "E",
+        "text": "0",
+        "rationale": "No power of i is 0."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Powers of i cycle every 4: i, −1, −i, 1. Since 38 = 4·9 + 2, i^38 = i^2 = −1.",
+    "estimated_time_seconds": 65,
+    "tags": [
+      "complex",
+      "powers-of-i",
+      "family:cx_powers"
+    ],
+    "answer_verification": "i^38=−1"
+  },
+  {
+    "question_id": "act-math-complex-numbers-easy-b0150",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "number_and_quantity",
+    "skill": "complex_numbers",
+    "lesson_id": "act-math-complex-numbers-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "conjugate_modulus",
+    "prompt": "What is the complex conjugate of 2 + 6i?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "−2 − 6i",
+        "rationale": "Only the imaginary part changes sign."
+      },
+      {
+        "id": "B",
+        "text": "−2 + 6i",
+        "rationale": "The conjugate changes the sign of the IMAGINARY part only."
+      },
+      {
+        "id": "C",
+        "text": "2 + 6i",
+        "rationale": "The conjugate must differ in the sign of the imaginary part."
+      },
+      {
+        "id": "D",
+        "text": "2 − 6i",
+        "rationale": "Correct."
+      },
+      {
+        "id": "E",
+        "text": "6 + 2i",
+        "rationale": "The real and imaginary parts don't swap."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "The conjugate of a + bi is a − bi: 2 − 6i.",
+    "estimated_time_seconds": 60,
+    "tags": [
+      "complex",
+      "conjugate",
+      "family:cx_conjugate_modulus"
+    ],
+    "answer_verification": "2 − 6i"
+  },
+  {
+    "question_id": "act-math-complex-numbers-easy-b0151",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "number_and_quantity",
+    "skill": "complex_numbers",
+    "lesson_id": "act-math-complex-numbers-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "arithmetic",
+    "prompt": "What is the sum (6 − 4i) + (−8 + 4i)?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "−2",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "−2 − 16i",
+        "rationale": "Add the imaginary coefficients; don't multiply them."
+      },
+      {
+        "id": "C",
+        "text": "−2 + 3i",
+        "rationale": "Real and imaginary parts stay separate."
+      },
+      {
+        "id": "D",
+        "text": "14 − 8i",
+        "rationale": "This subtracts."
+      },
+      {
+        "id": "E",
+        "text": "0",
+        "rationale": "Check the sign of the imaginary part."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Add real parts: 6 + −8 = −2; add imaginary parts: −4 + 4 = 0. Result: −2.",
+    "estimated_time_seconds": 70,
+    "tags": [
+      "complex",
+      "add-subtract",
+      "family:cx_add_sub"
+    ],
+    "answer_verification": "−2"
+  },
+  {
+    "question_id": "act-math-complex-numbers-easy-b0152",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "number_and_quantity",
+    "skill": "complex_numbers",
+    "lesson_id": "act-math-complex-numbers-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "powers_of_i",
+    "prompt": "If i² = −1, what is i^9?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "1",
+        "rationale": "Reduce the exponent modulo 4: i^9 = i^1."
+      },
+      {
+        "id": "B",
+        "text": "−1",
+        "rationale": "Reduce the exponent modulo 4: i^9 = i^1."
+      },
+      {
+        "id": "C",
+        "text": "−i",
+        "rationale": "Reduce the exponent modulo 4: i^9 = i^1."
+      },
+      {
+        "id": "D",
+        "text": "i",
+        "rationale": "Correct."
+      },
+      {
+        "id": "E",
+        "text": "0",
+        "rationale": "No power of i is 0."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Powers of i cycle every 4: i, −1, −i, 1. Since 9 = 4·2 + 1, i^9 = i^1 = i.",
+    "estimated_time_seconds": 65,
+    "tags": [
+      "complex",
+      "powers-of-i",
+      "family:cx_powers"
+    ],
+    "answer_verification": "i^9=i"
+  },
+  {
+    "question_id": "act-math-complex-numbers-easy-b0153",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "number_and_quantity",
+    "skill": "complex_numbers",
+    "lesson_id": "act-math-complex-numbers-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "powers_of_i",
+    "prompt": "Which of the following is equal to i^17?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "−i",
+        "rationale": "Reduce the exponent modulo 4: i^17 = i^1."
+      },
+      {
+        "id": "B",
+        "text": "1",
+        "rationale": "Reduce the exponent modulo 4: i^17 = i^1."
+      },
+      {
+        "id": "C",
+        "text": "i",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "0",
+        "rationale": "No power of i is 0."
+      },
+      {
+        "id": "E",
+        "text": "−1",
+        "rationale": "Reduce the exponent modulo 4: i^17 = i^1."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "Powers of i cycle every 4: i, −1, −i, 1. Since 17 = 4·4 + 1, i^17 = i^1 = i.",
+    "estimated_time_seconds": 65,
+    "tags": [
+      "complex",
+      "powers-of-i",
+      "family:cx_powers"
+    ],
+    "answer_verification": "i^17=i"
+  },
+  {
+    "question_id": "act-math-complex-numbers-easy-b0154",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "number_and_quantity",
+    "skill": "complex_numbers",
+    "lesson_id": "act-math-complex-numbers-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "arithmetic",
+    "prompt": "What is the product −2i · (−6 + 7i)?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "12 − 14i",
+        "rationale": "Multiply through by i: the imaginary term becomes real (with i² = −1)."
+      },
+      {
+        "id": "B",
+        "text": "14 − 12i",
+        "rationale": "Check the sign of the imaginary part."
+      },
+      {
+        "id": "C",
+        "text": "12 + 14i",
+        "rationale": "Distribute carefully: ki·a = kai and ki·bi = −kb."
+      },
+      {
+        "id": "D",
+        "text": "−14 + 12i",
+        "rationale": "i·i = −1, so the real part gets a minus sign."
+      },
+      {
+        "id": "E",
+        "text": "14 + 12i",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "E",
+    "explanation": "−2i·−6 = 12i and −2i·7i = −14i² = 14; total 14 + 12i.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "complex",
+      "multiply",
+      "family:cx_multiply"
+    ],
+    "answer_verification": "14 + 12i"
+  },
+  {
+    "question_id": "act-math-complex-numbers-easy-b0155",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "number_and_quantity",
+    "skill": "complex_numbers",
+    "lesson_id": "act-math-complex-numbers-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "arithmetic",
+    "prompt": "What is the sum (1 − 2i) + (−8 + 5i)?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "−7 − 10i",
+        "rationale": "Add the imaginary coefficients; don't multiply them."
+      },
+      {
+        "id": "B",
+        "text": "−7 + 3i",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "−7 − 3i",
+        "rationale": "Check the sign of the imaginary part."
+      },
+      {
+        "id": "D",
+        "text": "9 − 7i",
+        "rationale": "This subtracts."
+      },
+      {
+        "id": "E",
+        "text": "−4",
+        "rationale": "Real and imaginary parts stay separate."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Add real parts: 1 + −8 = −7; add imaginary parts: −2 + 5 = 3. Result: −7 + 3i.",
+    "estimated_time_seconds": 70,
+    "tags": [
+      "complex",
+      "add-subtract",
+      "family:cx_add_sub"
+    ],
+    "answer_verification": "−7 + 3i"
+  },
+  {
+    "question_id": "act-math-complex-numbers-easy-b0156",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "number_and_quantity",
+    "skill": "complex_numbers",
+    "lesson_id": "act-math-complex-numbers-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "arithmetic",
+    "prompt": "What is the product 4i · (2 − 6i)?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "24 + 8i",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "8 + 24i",
+        "rationale": "Distribute carefully: ki·a = kai and ki·bi = −kb."
+      },
+      {
+        "id": "C",
+        "text": "24 − 8i",
+        "rationale": "Check the sign of the imaginary part."
+      },
+      {
+        "id": "D",
+        "text": "−24 + 8i",
+        "rationale": "i·i = −1, so the real part gets a minus sign."
+      },
+      {
+        "id": "E",
+        "text": "8 − 24i",
+        "rationale": "Multiply through by i: the imaginary term becomes real (with i² = −1)."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "4i·2 = 8i and 4i·−6i = −24i² = 24; total 24 + 8i.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "complex",
+      "multiply",
+      "family:cx_multiply"
+    ],
+    "answer_verification": "24 + 8i"
+  },
+  {
+    "question_id": "act-math-complex-numbers-easy-b0157",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "number_and_quantity",
+    "skill": "complex_numbers",
+    "lesson_id": "act-math-complex-numbers-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "conjugate_modulus",
+    "prompt": "What is the complex conjugate of 6 − 7i?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "6 + 7i",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "−6 + 7i",
+        "rationale": "Only the imaginary part changes sign."
+      },
+      {
+        "id": "C",
+        "text": "−7 + 6i",
+        "rationale": "The real and imaginary parts don't swap."
+      },
+      {
+        "id": "D",
+        "text": "6 − 7i",
+        "rationale": "The conjugate must differ in the sign of the imaginary part."
+      },
+      {
+        "id": "E",
+        "text": "−6 − 7i",
+        "rationale": "The conjugate changes the sign of the IMAGINARY part only."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "The conjugate of a + bi is a − bi: 6 + 7i.",
+    "estimated_time_seconds": 60,
+    "tags": [
+      "complex",
+      "conjugate",
+      "family:cx_conjugate_modulus"
+    ],
+    "answer_verification": "6 + 7i"
+  },
+  {
+    "question_id": "act-math-complex-numbers-easy-b0158",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "number_and_quantity",
+    "skill": "complex_numbers",
+    "lesson_id": "act-math-complex-numbers-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "powers_of_i",
+    "prompt": "What is the value of i^34, where i = √(−1)?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "0",
+        "rationale": "No power of i is 0."
+      },
+      {
+        "id": "B",
+        "text": "1",
+        "rationale": "Reduce the exponent modulo 4: i^34 = i^2."
+      },
+      {
+        "id": "C",
+        "text": "−1",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "−i",
+        "rationale": "Reduce the exponent modulo 4: i^34 = i^2."
+      },
+      {
+        "id": "E",
+        "text": "i",
+        "rationale": "Reduce the exponent modulo 4: i^34 = i^2."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "Powers of i cycle every 4: i, −1, −i, 1. Since 34 = 4·8 + 2, i^34 = i^2 = −1.",
+    "estimated_time_seconds": 65,
+    "tags": [
+      "complex",
+      "powers-of-i",
+      "family:cx_powers"
+    ],
+    "answer_verification": "i^34=−1"
+  },
+  {
+    "question_id": "act-math-complex-numbers-easy-b0159",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "number_and_quantity",
+    "skill": "complex_numbers",
+    "lesson_id": "act-math-complex-numbers-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "powers_of_i",
+    "prompt": "What is the value of i^17, where i = √(−1)?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "0",
+        "rationale": "No power of i is 0."
+      },
+      {
+        "id": "B",
+        "text": "i",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "1",
+        "rationale": "Reduce the exponent modulo 4: i^17 = i^1."
+      },
+      {
+        "id": "D",
+        "text": "−i",
+        "rationale": "Reduce the exponent modulo 4: i^17 = i^1."
+      },
+      {
+        "id": "E",
+        "text": "−1",
+        "rationale": "Reduce the exponent modulo 4: i^17 = i^1."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Powers of i cycle every 4: i, −1, −i, 1. Since 17 = 4·4 + 1, i^17 = i^1 = i.",
+    "estimated_time_seconds": 65,
+    "tags": [
+      "complex",
+      "powers-of-i",
+      "family:cx_powers"
+    ],
+    "answer_verification": "i^17=i"
+  },
+  {
+    "question_id": "act-math-complex-numbers-easy-b0160",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "number_and_quantity",
+    "skill": "complex_numbers",
+    "lesson_id": "act-math-complex-numbers-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "conjugate_modulus",
+    "prompt": "What is the complex conjugate of −4 − 4i?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "4 − 4i",
+        "rationale": "The conjugate changes the sign of the IMAGINARY part only."
+      },
+      {
+        "id": "B",
+        "text": "4 + 4i",
+        "rationale": "Only the imaginary part changes sign."
+      },
+      {
+        "id": "C",
+        "text": "−4 + 4i",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "−4 − 4i",
+        "rationale": "The real and imaginary parts don't swap."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "The conjugate of a + bi is a − bi: −4 + 4i.",
+    "estimated_time_seconds": 60,
+    "tags": [
+      "complex",
+      "conjugate",
+      "family:cx_conjugate_modulus"
+    ],
+    "answer_verification": "−4 + 4i"
   }
 ]

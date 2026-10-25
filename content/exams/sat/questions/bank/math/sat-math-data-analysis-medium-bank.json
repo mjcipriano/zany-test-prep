@@ -11,71 +11,77 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "Based on the table, what is the mean number of tickets per day?",
+    "prompt": "The table shows millimeters of rain for 5 months split into home and away (608 in all). For which month does home exceed away by the greatest amount?",
     "choices": [
       {
         "id": "A",
-        "text": "11",
-        "rationale": "This is the range, not the mean."
+        "text": "Jan",
+        "rationale": "Jan: home − away = 8, not the greatest."
       },
       {
         "id": "B",
-        "text": "215",
-        "rationale": "This is the total; divide by the number of days."
-      },
-      {
-        "id": "C",
-        "text": "43",
+        "text": "May",
         "rationale": "Correct."
       },
       {
+        "id": "C",
+        "text": "Feb",
+        "rationale": "Feb: home − away = 19, not the greatest."
+      },
+      {
         "id": "D",
-        "text": "48",
-        "rationale": "This is the largest value, not the average."
+        "text": "Mar",
+        "rationale": "Mar: home − away = −39, not the greatest."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Mean = total ÷ count = 215 ÷ 5 = 43.",
+    "correct_choice": "B",
+    "explanation": "Compute home − away for each row; May gives 25, the greatest.",
     "estimated_time_seconds": 85,
     "tags": [
       "data",
       "table",
-      "mean",
-      "family:da_mean_from_table"
+      "two-series",
+      "family:da_two_series"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Daily ticket sales",
+        "caption": "Monthly rainfall by home and away",
         "headers": [
-          "Day",
-          "Tickets sold"
+          "Month",
+          "Home",
+          "Away"
         ],
         "rows": [
           [
-            "Mon",
-            "37"
+            "Jan",
+            "76",
+            "68"
           ],
           [
-            "Tue",
-            "44"
+            "Feb",
+            "55",
+            "36"
           ],
           [
-            "Wed",
-            "48"
+            "Mar",
+            "41",
+            "80"
           ],
           [
-            "Thu",
-            "46"
+            "Apr",
+            "58",
+            "63"
           ],
           [
-            "Fri",
-            "40"
+            "May",
+            "78",
+            "53"
           ]
         ]
       }
     },
-    "answer_verification": "mean=43"
+    "answer_verification": "May"
   },
   {
     "question_id": "sat-math-data-analysis-medium-b0002",
@@ -89,148 +95,80 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "Based on the table, what is the mean number of centimeters per plant?",
+    "prompt": "The table shows the number of points for 5 teams in 2022 and 2023 (a total of 197 in 2022 and 201 in 2023). Which team had the greatest decrease in points from 2022 to 2023?",
     "choices": [
       {
         "id": "A",
-        "text": "31",
+        "text": "Bears",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "42",
-        "rationale": "This is the range, not the mean."
+        "text": "Hawks",
+        "rationale": "Hawks changed by 10, which is not the greatest decrease."
       },
       {
         "id": "C",
-        "text": "53",
-        "rationale": "This is the largest value, not the average."
+        "text": "Lynx",
+        "rationale": "Lynx changed by 20, which is not the greatest decrease."
       },
       {
         "id": "D",
-        "text": "155",
-        "rationale": "This is the total; divide by the number of plants."
+        "text": "Otters",
+        "rationale": "Otters changed by 8, which is not the greatest decrease."
       }
     ],
     "correct_choice": "A",
-    "explanation": "Mean = total ÷ count = 155 ÷ 5 = 31.",
-    "estimated_time_seconds": 85,
+    "explanation": "Bears went from 62 to 42, a decrease of 20, the largest drop.",
+    "estimated_time_seconds": 100,
     "tags": [
       "data",
       "table",
-      "mean",
-      "family:da_mean_from_table"
+      "compare",
+      "family:da_two_year"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Plant heights",
+        "caption": "Points scored, 2022 and 2023",
         "headers": [
-          "Plant",
-          "Height (cm)"
+          "Team",
+          "2022",
+          "2023"
         ],
         "rows": [
           [
-            "A",
-            "11"
+            "Hawks",
+            "35",
+            "45"
           ],
           [
-            "B",
-            "25"
+            "Bears",
+            "62",
+            "42"
           ],
           [
-            "C",
-            "50"
+            "Otters",
+            "37",
+            "45"
           ],
           [
-            "D",
-            "53"
-          ],
-          [
-            "E",
-            "16"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "mean=31"
-  },
-  {
-    "question_id": "sat-math-data-analysis-medium-b0003",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "data_analysis",
-    "lesson_id": "sat-math-data-analysis-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "graphs",
-    "prompt": "The table shows a constant rate. At this rate, what is the distance when the first column is 21?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "231",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "32",
-        "rationale": "Multiply the rate by 21; don't add."
-      },
-      {
-        "id": "C",
-        "text": "111",
-        "rationale": "Each unit adds 11, not 1."
-      },
-      {
-        "id": "D",
-        "text": "2079",
-        "rationale": "Use the unit rate, not the last table value."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "Rate = 44/4 = 11; 11 × 21 = 231.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "data",
-      "table",
-      "rate",
-      "family:da_rate_table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Recorded values",
-        "headers": [
-          "Time (hours)",
-          "Distance (miles)"
-        ],
-        "rows": [
-          [
-            "4",
+            "Lynx",
+            "24",
             "44"
           ],
           [
-            "6",
-            "66"
-          ],
-          [
-            "7",
-            "77"
-          ],
-          [
-            "9",
-            "99"
+            "Wolves",
+            "39",
+            "25"
           ]
         ]
       }
     },
-    "answer_verification": "r=11,val=231"
+    "answer_verification": "Bears"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0004",
+    "question_id": "sat-math-data-analysis-medium-b0003",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -245,27 +183,27 @@
     "choices": [
       {
         "id": "A",
-        "text": "47",
-        "rationale": "This is the range, not the mean."
+        "text": "33",
+        "rationale": "This is the largest value, not the average."
       },
       {
         "id": "B",
-        "text": "205",
+        "text": "130",
         "rationale": "This is the total; divide by the number of stores."
       },
       {
         "id": "C",
-        "text": "60",
-        "rationale": "This is the largest value, not the average."
+        "text": "26",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "41",
-        "rationale": "Correct."
+        "text": "16",
+        "rationale": "This is the range, not the mean."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Mean = total ÷ count = 205 ÷ 5 = 41.",
+    "correct_choice": "C",
+    "explanation": "Mean = total ÷ count = 130 ÷ 5 = 26.",
     "estimated_time_seconds": 85,
     "tags": [
       "data",
@@ -284,435 +222,31 @@
         "rows": [
           [
             "North",
-            "13"
+            "17"
           ],
           [
             "South",
-            "55"
+            "31"
           ],
           [
             "East",
-            "43"
+            "33"
           ],
           [
             "West",
-            "34"
+            "26"
           ],
           [
             "Central",
-            "60"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "mean=41"
-  },
-  {
-    "question_id": "sat-math-data-analysis-medium-b0005",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "data_analysis",
-    "lesson_id": "sat-math-data-analysis-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "tables",
-    "prompt": "The table groups 19 students by score. In which interval does the median score lie?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "20–29",
-        "rationale": "The cumulative count reaches the middle position (19 values → position 10) in a different interval."
-      },
-      {
-        "id": "B",
-        "text": "30–39",
-        "rationale": "The cumulative count reaches the middle position (19 values → position 10) in a different interval."
-      },
-      {
-        "id": "C",
-        "text": "40–49",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "50–59",
-        "rationale": "The cumulative count reaches the middle position (19 values → position 10) in a different interval."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "The median is the tenth value of 19; cumulative frequencies reach that position in the 40–49 interval.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "data",
-      "table",
-      "histogram",
-      "median",
-      "family:da_interval_table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Frequency table",
-        "headers": [
-          "Score",
-          "Number of students"
-        ],
-        "rows": [
-          [
-            "20–29",
-            "2"
-          ],
-          [
-            "30–39",
-            "7"
-          ],
-          [
-            "40–49",
-            "2"
-          ],
-          [
-            "50–59",
-            "2"
-          ],
-          [
-            "60–69",
-            "6"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "median interval 40–49"
-  },
-  {
-    "question_id": "sat-math-data-analysis-medium-b0006",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "data_analysis",
-    "lesson_id": "sat-math-data-analysis-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "tables",
-    "prompt": "The table shows bikes for 5 stores split into morning and afternoon (480 in all). For which store does morning exceed afternoon by the greatest amount?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "North",
-        "rationale": "North: morning − afternoon = −27, not the greatest."
-      },
-      {
-        "id": "B",
-        "text": "East",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "West",
-        "rationale": "West: morning − afternoon = −20, not the greatest."
-      },
-      {
-        "id": "D",
-        "text": "South",
-        "rationale": "South: morning − afternoon = 7, not the greatest."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Compute morning − afternoon for each row; East gives 28, the greatest.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "data",
-      "table",
-      "two-series",
-      "family:da_two_series"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Bike sales by store by morning and afternoon",
-        "headers": [
-          "Store",
-          "Morning",
-          "Afternoon"
-        ],
-        "rows": [
-          [
-            "North",
-            "14",
-            "41"
-          ],
-          [
-            "South",
-            "49",
-            "42"
-          ],
-          [
-            "East",
-            "60",
-            "32"
-          ],
-          [
-            "West",
-            "51",
-            "71"
-          ],
-          [
-            "Central",
-            "61",
-            "59"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "East"
-  },
-  {
-    "question_id": "sat-math-data-analysis-medium-b0007",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "data_analysis",
-    "lesson_id": "sat-math-data-analysis-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "tables",
-    "prompt": "The table shows centimeters for 5 plants split into girls and boys (601 in all). For which plant does girls exceed boys by the greatest amount?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "B",
-        "rationale": "B: girls − boys = 25, not the greatest."
-      },
-      {
-        "id": "B",
-        "text": "A",
-        "rationale": "A: girls − boys = −5, not the greatest."
-      },
-      {
-        "id": "C",
-        "text": "E",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "C",
-        "rationale": "C: girls − boys = −8, not the greatest."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "Compute girls − boys for each row; E gives 57, the greatest.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "data",
-      "table",
-      "two-series",
-      "family:da_two_series"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Plant heights by girls and boys",
-        "headers": [
-          "Plant",
-          "Girls",
-          "Boys"
-        ],
-        "rows": [
-          [
-            "A",
-            "58",
-            "63"
-          ],
-          [
-            "B",
-            "78",
-            "53"
-          ],
-          [
-            "C",
-            "68",
-            "76"
-          ],
-          [
-            "D",
-            "36",
-            "66"
-          ],
-          [
-            "E",
-            "80",
             "23"
           ]
         ]
       }
     },
-    "answer_verification": "E"
+    "answer_verification": "mean=26"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0008",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "data_analysis",
-    "lesson_id": "sat-math-data-analysis-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "tables",
-    "prompt": "Based on the table, approximately what percent of the total bikes were recorded for South?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "7%",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "8%",
-        "rationale": "Divide by the total of all rows, not the other rows."
-      },
-      {
-        "id": "C",
-        "text": "93%",
-        "rationale": "That is the percent for all the other rows."
-      },
-      {
-        "id": "D",
-        "text": "15%",
-        "rationale": "That is the count, not a percent."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "15/203 × 100 ≈ 7%.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "data",
-      "table",
-      "percent",
-      "family:da_read"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Bike sales by store",
-        "headers": [
-          "Store",
-          "Bikes sold"
-        ],
-        "rows": [
-          [
-            "North",
-            "45"
-          ],
-          [
-            "South",
-            "15"
-          ],
-          [
-            "East",
-            "43"
-          ],
-          [
-            "West",
-            "55"
-          ],
-          [
-            "Central",
-            "45"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "15/203"
-  },
-  {
-    "question_id": "sat-math-data-analysis-medium-b0009",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "data_analysis",
-    "lesson_id": "sat-math-data-analysis-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "tables",
-    "prompt": "The table groups 29 commuters by minutes. In which interval does the median minutes lie?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "10–19",
-        "rationale": "The cumulative count reaches the middle position (29 values → position 15) in a different interval."
-      },
-      {
-        "id": "B",
-        "text": "40–49",
-        "rationale": "The cumulative count reaches the middle position (29 values → position 15) in a different interval."
-      },
-      {
-        "id": "C",
-        "text": "30–39",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "20–29",
-        "rationale": "The cumulative count reaches the middle position (29 values → position 15) in a different interval."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "The median is the 15th value of 29; cumulative frequencies reach that position in the 30–39 interval.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "data",
-      "table",
-      "histogram",
-      "median",
-      "family:da_interval_table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Frequency table",
-        "headers": [
-          "Minutes",
-          "Number of commuters"
-        ],
-        "rows": [
-          [
-            "10–19",
-            "6"
-          ],
-          [
-            "20–29",
-            "3"
-          ],
-          [
-            "30–39",
-            "7"
-          ],
-          [
-            "40–49",
-            "7"
-          ],
-          [
-            "50–59",
-            "6"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "median interval 30–39"
-  },
-  {
-    "question_id": "sat-math-data-analysis-medium-b0010",
+    "question_id": "sat-math-data-analysis-medium-b0004",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -786,7 +320,7 @@
     "answer_verification": "r=11,val=209"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0011",
+    "question_id": "sat-math-data-analysis-medium-b0005",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -864,7 +398,7 @@
     "answer_verification": "mean=43"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0012",
+    "question_id": "sat-math-data-analysis-medium-b0006",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -948,7 +482,7 @@
     "answer_verification": "A"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0013",
+    "question_id": "sat-math-data-analysis-medium-b0007",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1022,7 +556,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0014",
+    "question_id": "sat-math-data-analysis-medium-b0008",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1100,7 +634,7 @@
     "answer_verification": "31/144"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0015",
+    "question_id": "sat-math-data-analysis-medium-b0009",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1174,7 +708,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0016",
+    "question_id": "sat-math-data-analysis-medium-b0010",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1258,7 +792,7 @@
     "answer_verification": "East"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0017",
+    "question_id": "sat-math-data-analysis-medium-b0011",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1336,7 +870,7 @@
     "answer_verification": "mean=41"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0018",
+    "question_id": "sat-math-data-analysis-medium-b0012",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1410,7 +944,7 @@
     "answer_verification": "r=45,val=585"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0019",
+    "question_id": "sat-math-data-analysis-medium-b0013",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1488,7 +1022,7 @@
     "answer_verification": "mean=39"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0020",
+    "question_id": "sat-math-data-analysis-medium-b0014",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1566,7 +1100,7 @@
     "answer_verification": "mean=28"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0021",
+    "question_id": "sat-math-data-analysis-medium-b0015",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1650,7 +1184,7 @@
     "answer_verification": "Fri"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0022",
+    "question_id": "sat-math-data-analysis-medium-b0016",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1728,7 +1262,7 @@
     "answer_verification": "60/162"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0023",
+    "question_id": "sat-math-data-analysis-medium-b0017",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1807,7 +1341,7 @@
     "answer_verification": "median interval 10–14"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0024",
+    "question_id": "sat-math-data-analysis-medium-b0018",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1881,7 +1415,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0025",
+    "question_id": "sat-math-data-analysis-medium-b0019",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1955,7 +1489,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0026",
+    "question_id": "sat-math-data-analysis-medium-b0020",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2034,7 +1568,7 @@
     "answer_verification": "median interval 110–114"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0027",
+    "question_id": "sat-math-data-analysis-medium-b0021",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2118,7 +1652,7 @@
     "answer_verification": "Mar"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0028",
+    "question_id": "sat-math-data-analysis-medium-b0022",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2192,7 +1726,7 @@
     "answer_verification": "r=15,val=180"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0029",
+    "question_id": "sat-math-data-analysis-medium-b0023",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2270,7 +1804,7 @@
     "answer_verification": "mean=31"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0030",
+    "question_id": "sat-math-data-analysis-medium-b0024",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2348,7 +1882,7 @@
     "answer_verification": "mean=42"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0031",
+    "question_id": "sat-math-data-analysis-medium-b0025",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2427,7 +1961,7 @@
     "answer_verification": "median interval 30–39"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0032",
+    "question_id": "sat-math-data-analysis-medium-b0026",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2505,7 +2039,7 @@
     "answer_verification": "33/143"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0033",
+    "question_id": "sat-math-data-analysis-medium-b0027",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2579,7 +2113,7 @@
     "answer_verification": "r=3,val=54"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0034",
+    "question_id": "sat-math-data-analysis-medium-b0028",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2657,7 +2191,7 @@
     "answer_verification": "mean=40"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0035",
+    "question_id": "sat-math-data-analysis-medium-b0029",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2735,7 +2269,7 @@
     "answer_verification": "49/198"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0036",
+    "question_id": "sat-math-data-analysis-medium-b0030",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2814,7 +2348,7 @@
     "answer_verification": "median interval 60–64"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0037",
+    "question_id": "sat-math-data-analysis-medium-b0031",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2888,7 +2422,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0038",
+    "question_id": "sat-math-data-analysis-medium-b0032",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2962,7 +2496,7 @@
     "answer_verification": "r=8,val=152"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0039",
+    "question_id": "sat-math-data-analysis-medium-b0033",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3046,7 +2580,7 @@
     "answer_verification": "Lynx"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0040",
+    "question_id": "sat-math-data-analysis-medium-b0034",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3130,7 +2664,7 @@
     "answer_verification": "D"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0041",
+    "question_id": "sat-math-data-analysis-medium-b0035",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3208,7 +2742,7 @@
     "answer_verification": "mean=35"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0042",
+    "question_id": "sat-math-data-analysis-medium-b0036",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3282,7 +2816,7 @@
     "answer_verification": "r=35,val=595"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0043",
+    "question_id": "sat-math-data-analysis-medium-b0037",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3366,7 +2900,7 @@
     "answer_verification": "Feb"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0044",
+    "question_id": "sat-math-data-analysis-medium-b0038",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3445,7 +2979,7 @@
     "answer_verification": "median interval 30–34"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0045",
+    "question_id": "sat-math-data-analysis-medium-b0039",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3523,7 +3057,7 @@
     "answer_verification": "mean=37"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0046",
+    "question_id": "sat-math-data-analysis-medium-b0040",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3601,7 +3135,7 @@
     "answer_verification": "13/176"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0047",
+    "question_id": "sat-math-data-analysis-medium-b0041",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3685,7 +3219,7 @@
     "answer_verification": "North"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0048",
+    "question_id": "sat-math-data-analysis-medium-b0042",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3759,7 +3293,7 @@
     "answer_verification": "r=12,val=156"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0049",
+    "question_id": "sat-math-data-analysis-medium-b0043",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3837,7 +3371,7 @@
     "answer_verification": "50/175"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0050",
+    "question_id": "sat-math-data-analysis-medium-b0044",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3915,7 +3449,7 @@
     "answer_verification": "mean=42"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0051",
+    "question_id": "sat-math-data-analysis-medium-b0045",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3994,7 +3528,7 @@
     "answer_verification": "median interval 20–29"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0052",
+    "question_id": "sat-math-data-analysis-medium-b0046",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4073,7 +3607,7 @@
     "answer_verification": "median interval 40–49"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0053",
+    "question_id": "sat-math-data-analysis-medium-b0047",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4157,7 +3691,7 @@
     "answer_verification": "East"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0054",
+    "question_id": "sat-math-data-analysis-medium-b0048",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4235,7 +3769,7 @@
     "answer_verification": "mean=36"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0055",
+    "question_id": "sat-math-data-analysis-medium-b0049",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4309,7 +3843,7 @@
     "answer_verification": "r=5,val=75"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0056",
+    "question_id": "sat-math-data-analysis-medium-b0050",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4383,7 +3917,7 @@
     "answer_verification": "r=10,val=130"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0057",
+    "question_id": "sat-math-data-analysis-medium-b0051",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4457,7 +3991,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0058",
+    "question_id": "sat-math-data-analysis-medium-b0052",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4535,7 +4069,7 @@
     "answer_verification": "20/194"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0059",
+    "question_id": "sat-math-data-analysis-medium-b0053",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4609,7 +4143,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0060",
+    "question_id": "sat-math-data-analysis-medium-b0054",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4687,7 +4221,7 @@
     "answer_verification": "54/188"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0061",
+    "question_id": "sat-math-data-analysis-medium-b0055",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4765,7 +4299,7 @@
     "answer_verification": "mean=38"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0062",
+    "question_id": "sat-math-data-analysis-medium-b0056",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4843,7 +4377,7 @@
     "answer_verification": "24/201"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0063",
+    "question_id": "sat-math-data-analysis-medium-b0057",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4922,7 +4456,7 @@
     "answer_verification": "median interval 50–69"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0064",
+    "question_id": "sat-math-data-analysis-medium-b0058",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5006,7 +4540,7 @@
     "answer_verification": "May"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0065",
+    "question_id": "sat-math-data-analysis-medium-b0059",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5090,7 +4624,7 @@
     "answer_verification": "Wolves"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0066",
+    "question_id": "sat-math-data-analysis-medium-b0060",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5174,7 +4708,7 @@
     "answer_verification": "Apr"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0067",
+    "question_id": "sat-math-data-analysis-medium-b0061",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5258,7 +4792,7 @@
     "answer_verification": "A"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0068",
+    "question_id": "sat-math-data-analysis-medium-b0062",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5342,7 +4876,7 @@
     "answer_verification": "D"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0069",
+    "question_id": "sat-math-data-analysis-medium-b0063",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5426,7 +4960,7 @@
     "answer_verification": "West"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0070",
+    "question_id": "sat-math-data-analysis-medium-b0064",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5504,7 +5038,7 @@
     "answer_verification": "29/168"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0071",
+    "question_id": "sat-math-data-analysis-medium-b0065",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5583,7 +5117,7 @@
     "answer_verification": "median interval 70–79"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0072",
+    "question_id": "sat-math-data-analysis-medium-b0066",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5667,7 +5201,7 @@
     "answer_verification": "Bears"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0073",
+    "question_id": "sat-math-data-analysis-medium-b0067",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5745,7 +5279,7 @@
     "answer_verification": "37/200"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0074",
+    "question_id": "sat-math-data-analysis-medium-b0068",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5823,7 +5357,7 @@
     "answer_verification": "mean=42"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0075",
+    "question_id": "sat-math-data-analysis-medium-b0069",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5901,7 +5435,7 @@
     "answer_verification": "mean=38"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0076",
+    "question_id": "sat-math-data-analysis-medium-b0070",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5985,7 +5519,7 @@
     "answer_verification": "B"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0077",
+    "question_id": "sat-math-data-analysis-medium-b0071",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6069,7 +5603,7 @@
     "answer_verification": "Central"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0078",
+    "question_id": "sat-math-data-analysis-medium-b0072",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6148,7 +5682,7 @@
     "answer_verification": "median interval 50–69"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0079",
+    "question_id": "sat-math-data-analysis-medium-b0073",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6226,7 +5760,7 @@
     "answer_verification": "11/122"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0080",
+    "question_id": "sat-math-data-analysis-medium-b0074",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6304,7 +5838,7 @@
     "answer_verification": "mean=28"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0081",
+    "question_id": "sat-math-data-analysis-medium-b0075",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6382,7 +5916,7 @@
     "answer_verification": "mean=34"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0082",
+    "question_id": "sat-math-data-analysis-medium-b0076",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6461,7 +5995,7 @@
     "answer_verification": "median interval 40–49"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0083",
+    "question_id": "sat-math-data-analysis-medium-b0077",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6539,7 +6073,7 @@
     "answer_verification": "33/170"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0084",
+    "question_id": "sat-math-data-analysis-medium-b0078",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6617,7 +6151,7 @@
     "answer_verification": "mean=43"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0085",
+    "question_id": "sat-math-data-analysis-medium-b0079",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6695,7 +6229,7 @@
     "answer_verification": "mean=44"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0086",
+    "question_id": "sat-math-data-analysis-medium-b0080",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6774,7 +6308,7 @@
     "answer_verification": "median interval 120–129"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0087",
+    "question_id": "sat-math-data-analysis-medium-b0081",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6852,7 +6386,7 @@
     "answer_verification": "mean=19"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0088",
+    "question_id": "sat-math-data-analysis-medium-b0082",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6930,7 +6464,7 @@
     "answer_verification": "mean=48"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0089",
+    "question_id": "sat-math-data-analysis-medium-b0083",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7008,7 +6542,7 @@
     "answer_verification": "32/178"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0090",
+    "question_id": "sat-math-data-analysis-medium-b0084",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7086,7 +6620,7 @@
     "answer_verification": "50/205"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0091",
+    "question_id": "sat-math-data-analysis-medium-b0085",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7170,7 +6704,7 @@
     "answer_verification": "South"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0092",
+    "question_id": "sat-math-data-analysis-medium-b0086",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7249,7 +6783,7 @@
     "answer_verification": "median interval 20–29"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0093",
+    "question_id": "sat-math-data-analysis-medium-b0087",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7333,7 +6867,7 @@
     "answer_verification": "Bears"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0094",
+    "question_id": "sat-math-data-analysis-medium-b0088",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7411,7 +6945,7 @@
     "answer_verification": "mean=42"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0095",
+    "question_id": "sat-math-data-analysis-medium-b0089",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7495,7 +7029,7 @@
     "answer_verification": "Mar"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0096",
+    "question_id": "sat-math-data-analysis-medium-b0090",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7573,7 +7107,7 @@
     "answer_verification": "mean=28"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0097",
+    "question_id": "sat-math-data-analysis-medium-b0091",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7657,7 +7191,7 @@
     "answer_verification": "A"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0098",
+    "question_id": "sat-math-data-analysis-medium-b0092",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7735,7 +7269,7 @@
     "answer_verification": "mean=32"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0099",
+    "question_id": "sat-math-data-analysis-medium-b0093",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7809,7 +7343,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0100",
+    "question_id": "sat-math-data-analysis-medium-b0094",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7893,7 +7427,7 @@
     "answer_verification": "Lynx"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0101",
+    "question_id": "sat-math-data-analysis-medium-b0095",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7967,7 +7501,7 @@
     "answer_verification": "r=7,val=119"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0102",
+    "question_id": "sat-math-data-analysis-medium-b0096",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8045,7 +7579,7 @@
     "answer_verification": "37/164"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0103",
+    "question_id": "sat-math-data-analysis-medium-b0097",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8123,7 +7657,7 @@
     "answer_verification": "51/202"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0104",
+    "question_id": "sat-math-data-analysis-medium-b0098",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8201,7 +7735,7 @@
     "answer_verification": "mean=44"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0105",
+    "question_id": "sat-math-data-analysis-medium-b0099",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8279,7 +7813,7 @@
     "answer_verification": "mean=36"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0106",
+    "question_id": "sat-math-data-analysis-medium-b0100",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8363,7 +7897,7 @@
     "answer_verification": "B"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0107",
+    "question_id": "sat-math-data-analysis-medium-b0101",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8437,7 +7971,7 @@
     "answer_verification": "r=50,val=700"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0108",
+    "question_id": "sat-math-data-analysis-medium-b0102",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8516,7 +8050,7 @@
     "answer_verification": "median interval 20–24"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0109",
+    "question_id": "sat-math-data-analysis-medium-b0103",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8600,7 +8134,7 @@
     "answer_verification": "Jan"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0110",
+    "question_id": "sat-math-data-analysis-medium-b0104",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8684,7 +8218,7 @@
     "answer_verification": "Hawks"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0111",
+    "question_id": "sat-math-data-analysis-medium-b0105",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8758,7 +8292,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0112",
+    "question_id": "sat-math-data-analysis-medium-b0106",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8842,7 +8376,7 @@
     "answer_verification": "South"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0113",
+    "question_id": "sat-math-data-analysis-medium-b0107",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8916,7 +8450,7 @@
     "answer_verification": "r=13,val=195"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0114",
+    "question_id": "sat-math-data-analysis-medium-b0108",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9000,7 +8534,7 @@
     "answer_verification": "A"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0115",
+    "question_id": "sat-math-data-analysis-medium-b0109",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9079,7 +8613,7 @@
     "answer_verification": "median interval 90–109"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0116",
+    "question_id": "sat-math-data-analysis-medium-b0110",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9158,7 +8692,7 @@
     "answer_verification": "median interval 70–89"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0117",
+    "question_id": "sat-math-data-analysis-medium-b0111",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9242,7 +8776,7 @@
     "answer_verification": "East"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0118",
+    "question_id": "sat-math-data-analysis-medium-b0112",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9320,7 +8854,7 @@
     "answer_verification": "mean=29"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0119",
+    "question_id": "sat-math-data-analysis-medium-b0113",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9398,7 +8932,7 @@
     "answer_verification": "mean=35"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0120",
+    "question_id": "sat-math-data-analysis-medium-b0114",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9476,7 +9010,7 @@
     "answer_verification": "mean=40"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0121",
+    "question_id": "sat-math-data-analysis-medium-b0115",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9560,7 +9094,7 @@
     "answer_verification": "D"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0122",
+    "question_id": "sat-math-data-analysis-medium-b0116",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9634,7 +9168,7 @@
     "answer_verification": "r=65,val=1105"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0123",
+    "question_id": "sat-math-data-analysis-medium-b0117",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9718,7 +9252,7 @@
     "answer_verification": "North"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0124",
+    "question_id": "sat-math-data-analysis-medium-b0118",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9796,7 +9330,7 @@
     "answer_verification": "16/158"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0125",
+    "question_id": "sat-math-data-analysis-medium-b0119",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9875,7 +9409,7 @@
     "answer_verification": "median interval 60–69"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0126",
+    "question_id": "sat-math-data-analysis-medium-b0120",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9949,7 +9483,7 @@
     "answer_verification": "r=60,val=1080"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0127",
+    "question_id": "sat-math-data-analysis-medium-b0121",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10027,7 +9561,7 @@
     "answer_verification": "mean=23"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0128",
+    "question_id": "sat-math-data-analysis-medium-b0122",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10111,7 +9645,7 @@
     "answer_verification": "Hawks"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0129",
+    "question_id": "sat-math-data-analysis-medium-b0123",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10195,7 +9729,7 @@
     "answer_verification": "Central"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0130",
+    "question_id": "sat-math-data-analysis-medium-b0124",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10273,7 +9807,7 @@
     "answer_verification": "mean=34"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0131",
+    "question_id": "sat-math-data-analysis-medium-b0125",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10347,7 +9881,7 @@
     "answer_verification": "r=3,val=69"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0132",
+    "question_id": "sat-math-data-analysis-medium-b0126",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10421,7 +9955,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0133",
+    "question_id": "sat-math-data-analysis-medium-b0127",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10499,7 +10033,7 @@
     "answer_verification": "mean=41"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0134",
+    "question_id": "sat-math-data-analysis-medium-b0128",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10577,7 +10111,7 @@
     "answer_verification": "17/174"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0135",
+    "question_id": "sat-math-data-analysis-medium-b0129",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10656,7 +10190,7 @@
     "answer_verification": "median interval 120–129"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0136",
+    "question_id": "sat-math-data-analysis-medium-b0130",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10734,7 +10268,7 @@
     "answer_verification": "23/167"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0137",
+    "question_id": "sat-math-data-analysis-medium-b0131",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10808,7 +10342,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0138",
+    "question_id": "sat-math-data-analysis-medium-b0132",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10887,7 +10421,7 @@
     "answer_verification": "median interval 90–109"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0139",
+    "question_id": "sat-math-data-analysis-medium-b0133",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10961,7 +10495,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0140",
+    "question_id": "sat-math-data-analysis-medium-b0134",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11045,7 +10579,7 @@
     "answer_verification": "Lynx"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0141",
+    "question_id": "sat-math-data-analysis-medium-b0135",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11119,7 +10653,7 @@
     "answer_verification": "r=6,val=96"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0142",
+    "question_id": "sat-math-data-analysis-medium-b0136",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11193,7 +10727,7 @@
     "answer_verification": "r=70,val=1470"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0143",
+    "question_id": "sat-math-data-analysis-medium-b0137",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11277,7 +10811,7 @@
     "answer_verification": "West"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0144",
+    "question_id": "sat-math-data-analysis-medium-b0138",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11355,7 +10889,7 @@
     "answer_verification": "11/182"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0145",
+    "question_id": "sat-math-data-analysis-medium-b0139",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11433,7 +10967,7 @@
     "answer_verification": "mean=30"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0146",
+    "question_id": "sat-math-data-analysis-medium-b0140",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11517,7 +11051,7 @@
     "answer_verification": "D"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0147",
+    "question_id": "sat-math-data-analysis-medium-b0141",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11595,7 +11129,7 @@
     "answer_verification": "mean=37"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0148",
+    "question_id": "sat-math-data-analysis-medium-b0142",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11674,7 +11208,7 @@
     "answer_verification": "median interval 50–69"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0149",
+    "question_id": "sat-math-data-analysis-medium-b0143",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11753,7 +11287,7 @@
     "answer_verification": "median interval 80–89"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0150",
+    "question_id": "sat-math-data-analysis-medium-b0144",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11827,7 +11361,7 @@
     "answer_verification": "r=2,val=36"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0151",
+    "question_id": "sat-math-data-analysis-medium-b0145",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11901,7 +11435,7 @@
     "answer_verification": "r=70,val=1120"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0152",
+    "question_id": "sat-math-data-analysis-medium-b0146",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11979,7 +11513,7 @@
     "answer_verification": "mean=41"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0153",
+    "question_id": "sat-math-data-analysis-medium-b0147",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12057,7 +11591,7 @@
     "answer_verification": "mean=36"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0154",
+    "question_id": "sat-math-data-analysis-medium-b0148",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12135,7 +11669,7 @@
     "answer_verification": "21/129"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0155",
+    "question_id": "sat-math-data-analysis-medium-b0149",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12209,7 +11743,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0156",
+    "question_id": "sat-math-data-analysis-medium-b0150",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12288,7 +11822,7 @@
     "answer_verification": "median interval 90–109"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0157",
+    "question_id": "sat-math-data-analysis-medium-b0151",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12362,7 +11896,7 @@
     "answer_verification": "r=5,val=80"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0158",
+    "question_id": "sat-math-data-analysis-medium-b0152",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12446,7 +11980,7 @@
     "answer_verification": "Thu"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0159",
+    "question_id": "sat-math-data-analysis-medium-b0153",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12520,7 +12054,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0160",
+    "question_id": "sat-math-data-analysis-medium-b0154",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12598,7 +12132,7 @@
     "answer_verification": "mean=45"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0161",
+    "question_id": "sat-math-data-analysis-medium-b0155",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12676,7 +12210,7 @@
     "answer_verification": "mean=34"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0162",
+    "question_id": "sat-math-data-analysis-medium-b0156",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12754,7 +12288,7 @@
     "answer_verification": "mean=32"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0163",
+    "question_id": "sat-math-data-analysis-medium-b0157",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12828,7 +12362,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0164",
+    "question_id": "sat-math-data-analysis-medium-b0158",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12906,7 +12440,7 @@
     "answer_verification": "21/208"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0165",
+    "question_id": "sat-math-data-analysis-medium-b0159",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12990,7 +12524,7 @@
     "answer_verification": "Wolves"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0166",
+    "question_id": "sat-math-data-analysis-medium-b0160",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -13068,7 +12602,7 @@
     "answer_verification": "mean=43"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0167",
+    "question_id": "sat-math-data-analysis-medium-b0161",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -13142,7 +12676,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0168",
+    "question_id": "sat-math-data-analysis-medium-b0162",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -13216,7 +12750,7 @@
     "answer_verification": "r=60,val=1140"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0169",
+    "question_id": "sat-math-data-analysis-medium-b0163",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -13290,7 +12824,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0170",
+    "question_id": "sat-math-data-analysis-medium-b0164",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -13374,7 +12908,7 @@
     "answer_verification": "Wolves"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0171",
+    "question_id": "sat-math-data-analysis-medium-b0165",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -13458,7 +12992,7 @@
     "answer_verification": "Mon"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0172",
+    "question_id": "sat-math-data-analysis-medium-b0166",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -13537,7 +13071,7 @@
     "answer_verification": "median interval 40–49"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0173",
+    "question_id": "sat-math-data-analysis-medium-b0167",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -13616,7 +13150,7 @@
     "answer_verification": "median interval 60–79"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0174",
+    "question_id": "sat-math-data-analysis-medium-b0168",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -13700,7 +13234,7 @@
     "answer_verification": "Thu"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0175",
+    "question_id": "sat-math-data-analysis-medium-b0169",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -13778,7 +13312,7 @@
     "answer_verification": "mean=35"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0176",
+    "question_id": "sat-math-data-analysis-medium-b0170",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -13852,7 +13386,7 @@
     "answer_verification": "r=35,val=385"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0177",
+    "question_id": "sat-math-data-analysis-medium-b0171",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -13936,7 +13470,7 @@
     "answer_verification": "West"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0178",
+    "question_id": "sat-math-data-analysis-medium-b0172",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -14020,7 +13554,7 @@
     "answer_verification": "Otters"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0179",
+    "question_id": "sat-math-data-analysis-medium-b0173",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -14094,7 +13628,7 @@
     "answer_verification": "r=10,val=240"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0180",
+    "question_id": "sat-math-data-analysis-medium-b0174",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -14178,7 +13712,7 @@
     "answer_verification": "A"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0181",
+    "question_id": "sat-math-data-analysis-medium-b0175",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -14262,7 +13796,7 @@
     "answer_verification": "Lynx"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0182",
+    "question_id": "sat-math-data-analysis-medium-b0176",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -14346,7 +13880,7 @@
     "answer_verification": "South"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0183",
+    "question_id": "sat-math-data-analysis-medium-b0177",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -14430,7 +13964,7 @@
     "answer_verification": "West"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0184",
+    "question_id": "sat-math-data-analysis-medium-b0178",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -14508,7 +14042,7 @@
     "answer_verification": "mean=33"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0185",
+    "question_id": "sat-math-data-analysis-medium-b0179",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -14587,7 +14121,7 @@
     "answer_verification": "median interval 60–64"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0186",
+    "question_id": "sat-math-data-analysis-medium-b0180",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -14666,7 +14200,7 @@
     "answer_verification": "median interval 25–29"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0187",
+    "question_id": "sat-math-data-analysis-medium-b0181",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -14745,7 +14279,7 @@
     "answer_verification": "median interval 15–19"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0188",
+    "question_id": "sat-math-data-analysis-medium-b0182",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -14824,7 +14358,7 @@
     "answer_verification": "median interval 140–159"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0189",
+    "question_id": "sat-math-data-analysis-medium-b0183",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -14908,7 +14442,7 @@
     "answer_verification": "Thu"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0190",
+    "question_id": "sat-math-data-analysis-medium-b0184",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -14986,7 +14520,7 @@
     "answer_verification": "28/185"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0191",
+    "question_id": "sat-math-data-analysis-medium-b0185",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -15070,7 +14604,7 @@
     "answer_verification": "South"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0192",
+    "question_id": "sat-math-data-analysis-medium-b0186",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -15144,7 +14678,7 @@
     "answer_verification": "r=20,val=320"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0193",
+    "question_id": "sat-math-data-analysis-medium-b0187",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -15222,7 +14756,7 @@
     "answer_verification": "38/183"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0194",
+    "question_id": "sat-math-data-analysis-medium-b0188",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -15296,7 +14830,7 @@
     "answer_verification": "r=8,val=120"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0195",
+    "question_id": "sat-math-data-analysis-medium-b0189",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -15380,7 +14914,7 @@
     "answer_verification": "D"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0196",
+    "question_id": "sat-math-data-analysis-medium-b0190",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -15464,7 +14998,7 @@
     "answer_verification": "West"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0197",
+    "question_id": "sat-math-data-analysis-medium-b0191",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -15548,7 +15082,7 @@
     "answer_verification": "West"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0198",
+    "question_id": "sat-math-data-analysis-medium-b0192",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -15632,7 +15166,7 @@
     "answer_verification": "B"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0199",
+    "question_id": "sat-math-data-analysis-medium-b0193",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -15716,7 +15250,7 @@
     "answer_verification": "Feb"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0200",
+    "question_id": "sat-math-data-analysis-medium-b0194",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -15790,7 +15324,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0201",
+    "question_id": "sat-math-data-analysis-medium-b0195",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -15868,7 +15402,7 @@
     "answer_verification": "10/133"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0202",
+    "question_id": "sat-math-data-analysis-medium-b0196",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -15946,7 +15480,7 @@
     "answer_verification": "21/167"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0203",
+    "question_id": "sat-math-data-analysis-medium-b0197",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -16024,7 +15558,7 @@
     "answer_verification": "10/195"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0204",
+    "question_id": "sat-math-data-analysis-medium-b0198",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -16102,7 +15636,7 @@
     "answer_verification": "mean=37"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0205",
+    "question_id": "sat-math-data-analysis-medium-b0199",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -16181,7 +15715,7 @@
     "answer_verification": "median interval 115–119"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0206",
+    "question_id": "sat-math-data-analysis-medium-b0200",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -16265,7 +15799,7 @@
     "answer_verification": "May"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0207",
+    "question_id": "sat-math-data-analysis-medium-b0201",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -16343,7 +15877,7 @@
     "answer_verification": "19/139"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0208",
+    "question_id": "sat-math-data-analysis-medium-b0202",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -16417,7 +15951,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0209",
+    "question_id": "sat-math-data-analysis-medium-b0203",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -16491,7 +16025,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0210",
+    "question_id": "sat-math-data-analysis-medium-b0204",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -16570,7 +16104,7 @@
     "answer_verification": "median interval 5–9"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0211",
+    "question_id": "sat-math-data-analysis-medium-b0205",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -16654,7 +16188,7 @@
     "answer_verification": "Wolves"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0212",
+    "question_id": "sat-math-data-analysis-medium-b0206",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -16728,7 +16262,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0213",
+    "question_id": "sat-math-data-analysis-medium-b0207",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -16806,7 +16340,7 @@
     "answer_verification": "27/148"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0214",
+    "question_id": "sat-math-data-analysis-medium-b0208",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -16880,7 +16414,7 @@
     "answer_verification": "r=8,val=192"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0215",
+    "question_id": "sat-math-data-analysis-medium-b0209",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -16958,7 +16492,7 @@
     "answer_verification": "mean=36"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0216",
+    "question_id": "sat-math-data-analysis-medium-b0210",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -17037,7 +16571,7 @@
     "answer_verification": "median interval 60–64"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0217",
+    "question_id": "sat-math-data-analysis-medium-b0211",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -17116,7 +16650,7 @@
     "answer_verification": "median interval 110–119"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0218",
+    "question_id": "sat-math-data-analysis-medium-b0212",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -17200,7 +16734,7 @@
     "answer_verification": "Mon"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0219",
+    "question_id": "sat-math-data-analysis-medium-b0213",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -17284,7 +16818,7 @@
     "answer_verification": "Tue"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0220",
+    "question_id": "sat-math-data-analysis-medium-b0214",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -17368,7 +16902,7 @@
     "answer_verification": "Hawks"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0221",
+    "question_id": "sat-math-data-analysis-medium-b0215",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -17446,7 +16980,7 @@
     "answer_verification": "mean=41"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0222",
+    "question_id": "sat-math-data-analysis-medium-b0216",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -17524,7 +17058,7 @@
     "answer_verification": "44/207"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0223",
+    "question_id": "sat-math-data-analysis-medium-b0217",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -17602,7 +17136,7 @@
     "answer_verification": "mean=44"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0224",
+    "question_id": "sat-math-data-analysis-medium-b0218",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -17680,7 +17214,7 @@
     "answer_verification": "24/203"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0225",
+    "question_id": "sat-math-data-analysis-medium-b0219",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -17754,7 +17288,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0226",
+    "question_id": "sat-math-data-analysis-medium-b0220",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -17828,7 +17362,7 @@
     "answer_verification": "r=20,val=460"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0227",
+    "question_id": "sat-math-data-analysis-medium-b0221",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -17907,7 +17441,7 @@
     "answer_verification": "median interval 20–29"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0228",
+    "question_id": "sat-math-data-analysis-medium-b0222",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -17986,7 +17520,7 @@
     "answer_verification": "median interval 70–79"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0229",
+    "question_id": "sat-math-data-analysis-medium-b0223",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -18060,7 +17594,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0230",
+    "question_id": "sat-math-data-analysis-medium-b0224",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -18144,7 +17678,7 @@
     "answer_verification": "B"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0231",
+    "question_id": "sat-math-data-analysis-medium-b0225",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -18228,7 +17762,7 @@
     "answer_verification": "A"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0232",
+    "question_id": "sat-math-data-analysis-medium-b0226",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -18302,7 +17836,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0233",
+    "question_id": "sat-math-data-analysis-medium-b0227",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -18376,7 +17910,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0234",
+    "question_id": "sat-math-data-analysis-medium-b0228",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -18454,7 +17988,7 @@
     "answer_verification": "60/130"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0235",
+    "question_id": "sat-math-data-analysis-medium-b0229",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -18538,7 +18072,7 @@
     "answer_verification": "Mon"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0236",
+    "question_id": "sat-math-data-analysis-medium-b0230",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -18616,7 +18150,7 @@
     "answer_verification": "mean=48"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0237",
+    "question_id": "sat-math-data-analysis-medium-b0231",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -18694,7 +18228,7 @@
     "answer_verification": "10/135"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0238",
+    "question_id": "sat-math-data-analysis-medium-b0232",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -18778,7 +18312,7 @@
     "answer_verification": "D"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0239",
+    "question_id": "sat-math-data-analysis-medium-b0233",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -18862,7 +18396,7 @@
     "answer_verification": "East"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0240",
+    "question_id": "sat-math-data-analysis-medium-b0234",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -18940,7 +18474,7 @@
     "answer_verification": "mean=29"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0241",
+    "question_id": "sat-math-data-analysis-medium-b0235",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -19018,7 +18552,7 @@
     "answer_verification": "mean=29"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0242",
+    "question_id": "sat-math-data-analysis-medium-b0236",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -19092,7 +18626,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0243",
+    "question_id": "sat-math-data-analysis-medium-b0237",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -19170,7 +18704,7 @@
     "answer_verification": "20/153"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0244",
+    "question_id": "sat-math-data-analysis-medium-b0238",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -19244,7 +18778,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0245",
+    "question_id": "sat-math-data-analysis-medium-b0239",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -19318,7 +18852,7 @@
     "answer_verification": "r=35,val=455"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0246",
+    "question_id": "sat-math-data-analysis-medium-b0240",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -19402,7 +18936,7 @@
     "answer_verification": "Apr"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0247",
+    "question_id": "sat-math-data-analysis-medium-b0241",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -19486,7 +19020,7 @@
     "answer_verification": "West"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0248",
+    "question_id": "sat-math-data-analysis-medium-b0242",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -19570,7 +19104,7 @@
     "answer_verification": "North"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0249",
+    "question_id": "sat-math-data-analysis-medium-b0243",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -19648,7 +19182,7 @@
     "answer_verification": "46/204"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0250",
+    "question_id": "sat-math-data-analysis-medium-b0244",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -19722,7 +19256,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0251",
+    "question_id": "sat-math-data-analysis-medium-b0245",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -19796,7 +19330,7 @@
     "answer_verification": "r=5,val=120"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0252",
+    "question_id": "sat-math-data-analysis-medium-b0246",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -19875,7 +19409,7 @@
     "answer_verification": "median interval 105–109"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0253",
+    "question_id": "sat-math-data-analysis-medium-b0247",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -19959,7 +19493,7 @@
     "answer_verification": "D"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0254",
+    "question_id": "sat-math-data-analysis-medium-b0248",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -20043,7 +19577,7 @@
     "answer_verification": "C"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0255",
+    "question_id": "sat-math-data-analysis-medium-b0249",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -20121,7 +19655,7 @@
     "answer_verification": "mean=29"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0256",
+    "question_id": "sat-math-data-analysis-medium-b0250",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -20200,7 +19734,7 @@
     "answer_verification": "median interval 40–59"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0257",
+    "question_id": "sat-math-data-analysis-medium-b0251",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -20284,7 +19818,7 @@
     "answer_verification": "South"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0258",
+    "question_id": "sat-math-data-analysis-medium-b0252",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -20362,7 +19896,7 @@
     "answer_verification": "52/185"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0259",
+    "question_id": "sat-math-data-analysis-medium-b0253",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -20440,7 +19974,7 @@
     "answer_verification": "mean=33"
   },
   {
-    "question_id": "sat-math-data-analysis-medium-b0260",
+    "question_id": "sat-math-data-analysis-medium-b0254",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -20516,5 +20050,468 @@
       }
     },
     "answer_verification": "39/132"
+  },
+  {
+    "question_id": "sat-math-data-analysis-medium-b0255",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "data_analysis",
+    "lesson_id": "sat-math-data-analysis-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "graphs",
+    "prompt": "The table shows a constant rate. At this rate, what is the amount when the first column is 11?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "86",
+        "rationale": "Multiply the rate by 11; don't add."
+      },
+      {
+        "id": "B",
+        "text": "7425",
+        "rationale": "Use the unit rate, not the last table value."
+      },
+      {
+        "id": "C",
+        "text": "677",
+        "rationale": "Each unit adds 75, not 1."
+      },
+      {
+        "id": "D",
+        "text": "825",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Rate = 150/2 = 75; 75 × 11 = 825.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "data",
+      "table",
+      "rate",
+      "family:da_rate_table"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Recorded values",
+        "headers": [
+          "Minutes",
+          "Gallons pumped"
+        ],
+        "rows": [
+          [
+            "2",
+            "150"
+          ],
+          [
+            "7",
+            "525"
+          ],
+          [
+            "8",
+            "600"
+          ],
+          [
+            "9",
+            "675"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "r=75,val=825"
+  },
+  {
+    "question_id": "sat-math-data-analysis-medium-b0256",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "data_analysis",
+    "lesson_id": "sat-math-data-analysis-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "tables",
+    "prompt": "Based on the table, what is the mean number of tickets per day?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "57",
+        "rationale": "This is the largest value, not the average."
+      },
+      {
+        "id": "B",
+        "text": "31",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "155",
+        "rationale": "This is the total; divide by the number of days."
+      },
+      {
+        "id": "D",
+        "text": "44",
+        "rationale": "This is the range, not the mean."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Mean = total ÷ count = 155 ÷ 5 = 31.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "data",
+      "table",
+      "mean",
+      "family:da_mean_from_table"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Daily ticket sales",
+        "headers": [
+          "Day",
+          "Tickets sold"
+        ],
+        "rows": [
+          [
+            "Mon",
+            "28"
+          ],
+          [
+            "Tue",
+            "57"
+          ],
+          [
+            "Wed",
+            "13"
+          ],
+          [
+            "Thu",
+            "43"
+          ],
+          [
+            "Fri",
+            "14"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "mean=31"
+  },
+  {
+    "question_id": "sat-math-data-analysis-medium-b0257",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "data_analysis",
+    "lesson_id": "sat-math-data-analysis-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "tables",
+    "prompt": "The table shows the number of millimeters of rain for 5 months in 2023 and 2024 (a total of 275 in 2023 and 263 in 2024). Which month had the greatest decrease in millimeters of rain from 2023 to 2024?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Mar",
+        "rationale": "Mar changed by −6, which is not the greatest decrease."
+      },
+      {
+        "id": "B",
+        "text": "May",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "Jan",
+        "rationale": "Jan changed by −10, which is not the greatest decrease."
+      },
+      {
+        "id": "D",
+        "text": "Feb",
+        "rationale": "Feb changed by 8, which is not the greatest decrease."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "May went from 32 to 15, a decrease of 17, the largest drop.",
+    "estimated_time_seconds": 100,
+    "tags": [
+      "data",
+      "table",
+      "compare",
+      "family:da_two_year"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Monthly rainfall, 2023 and 2024",
+        "headers": [
+          "Month",
+          "2023",
+          "2024"
+        ],
+        "rows": [
+          [
+            "Jan",
+            "76",
+            "66"
+          ],
+          [
+            "Feb",
+            "46",
+            "54"
+          ],
+          [
+            "Mar",
+            "75",
+            "69"
+          ],
+          [
+            "Apr",
+            "46",
+            "59"
+          ],
+          [
+            "May",
+            "32",
+            "15"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "May"
+  },
+  {
+    "question_id": "sat-math-data-analysis-medium-b0258",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "data_analysis",
+    "lesson_id": "sat-math-data-analysis-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "tables",
+    "prompt": "The table shows the number of bikes recorded for 4 stores, 175 in all. Which of the following statements is supported by the data?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "West recorded 64 more bikes than North.",
+        "rationale": "The comparison is reversed."
+      },
+      {
+        "id": "B",
+        "text": "North recorded 64 more bikes than West.",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "The mean number of bikes is 80.",
+        "rationale": "The mean is 175/4 = 43.8."
+      },
+      {
+        "id": "D",
+        "text": "North recorded 96 more bikes than West.",
+        "rationale": "That is the sum, not the difference, of the two values."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "80 − 16 = 64.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "data",
+      "table",
+      "statement",
+      "family:da_statement"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Bike sales by store",
+        "headers": [
+          "Store",
+          "Bikes sold"
+        ],
+        "rows": [
+          [
+            "North",
+            "80"
+          ],
+          [
+            "South",
+            "62"
+          ],
+          [
+            "East",
+            "17"
+          ],
+          [
+            "West",
+            "16"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "statement"
+  },
+  {
+    "question_id": "sat-math-data-analysis-medium-b0259",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "data_analysis",
+    "lesson_id": "sat-math-data-analysis-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "tables",
+    "prompt": "The table shows the number of tickets recorded for 4 days, 204 in all. Which of the following statements is supported by the data?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Wed recorded 43 more tickets than Tue.",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "Wed recorded 107 more tickets than Tue.",
+        "rationale": "That is the sum, not the difference, of the two values."
+      },
+      {
+        "id": "C",
+        "text": "Tue recorded 43 more tickets than Wed.",
+        "rationale": "The comparison is reversed."
+      },
+      {
+        "id": "D",
+        "text": "The mean number of tickets is 75.",
+        "rationale": "The mean is 204/4 = 51.0."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "75 − 32 = 43.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "data",
+      "table",
+      "statement",
+      "family:da_statement"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Daily ticket sales",
+        "headers": [
+          "Day",
+          "Tickets sold"
+        ],
+        "rows": [
+          [
+            "Mon",
+            "51"
+          ],
+          [
+            "Tue",
+            "32"
+          ],
+          [
+            "Wed",
+            "75"
+          ],
+          [
+            "Thu",
+            "46"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "statement"
+  },
+  {
+    "question_id": "sat-math-data-analysis-medium-b0260",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "data_analysis",
+    "lesson_id": "sat-math-data-analysis-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "tables",
+    "prompt": "The table groups 42 commuters by minutes. In which interval does the median minutes lie?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "10–14",
+        "rationale": "The cumulative count reaches the middle position (42 values → position 21.5) in a different interval."
+      },
+      {
+        "id": "B",
+        "text": "25–29",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "15–19",
+        "rationale": "The cumulative count reaches the middle position (42 values → position 21.5) in a different interval."
+      },
+      {
+        "id": "D",
+        "text": "20–24",
+        "rationale": "The cumulative count reaches the middle position (42 values → position 21.5) in a different interval."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "The median is the middle value of 42; cumulative frequencies reach that position in the 25–29 interval.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "data",
+      "table",
+      "histogram",
+      "median",
+      "family:da_interval_table"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Frequency table",
+        "headers": [
+          "Minutes",
+          "Number of commuters"
+        ],
+        "rows": [
+          [
+            "10–14",
+            "4"
+          ],
+          [
+            "15–19",
+            "2"
+          ],
+          [
+            "20–24",
+            "12"
+          ],
+          [
+            "25–29",
+            "14"
+          ],
+          [
+            "30–34",
+            "10"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "median interval 25–29"
   }
 ]

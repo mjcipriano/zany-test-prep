@@ -5939,6 +5939,10 @@ def st_quartiles(rng, d):
         ds = [(data[-1] - data[0], "That is the range, not the interquartile range."), (q3, "Subtract Q1 from Q3."), (med, "That is the median."), (Fraction(data[-1] - data[0], 2), "The IQR is Q3 − Q1, not half the range.")]
     else:
         fence_hi = q3 + Fraction(3, 2) * (q3 - q1)
+        if fence_hi.denominator == 1:
+            # a cutoff that is itself an integer makes "more than" vs "at least"
+            # decide the answer; only use fences strictly between integers
+            return st_quartiles(rng, d)
         out = int(fence_hi) + rng.randint(5, 25)
         # Ask about the cutoff of THIS data set: "if added to the set" changed the
         # quartiles themselves, so the keyed fence was no longer the right one.

@@ -9,25 +9,40 @@
     "lesson_id": "sat-math-functions-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "student_produced",
+    "question_type": "multiple_choice",
     "subskill": "evaluate",
-    "prompt": "If f(x) = 8x − 7 and f(x) = 25, what is the value of x?",
-    "answer": {
-      "type": "numeric",
-      "value": 4,
-      "accepted": [
-        "4"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "8x = 32, so x = 4.",
+    "prompt": "Which of the following points lies on the graph of y = x² − 2 in the xy-plane?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "(−5, 26)",
+        "rationale": "At x = −5, y = 23, not 26."
+      },
+      {
+        "id": "B",
+        "text": "(5, 23)",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "(4, 12)",
+        "rationale": "At x = 4, y = 14, not 12."
+      },
+      {
+        "id": "D",
+        "text": "(1, 0)",
+        "rationale": "At x = 1, y = −1, not 0."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Substitute x = 5: y = (5)² − 2 = 23.",
     "estimated_time_seconds": 75,
     "tags": [
       "functions",
-      "grid-in",
-      "family:fn_gridin"
+      "graph",
+      "family:fn_graph_point"
     ],
-    "answer_verification": "val=4"
+    "answer_verification": "(5, 23)"
   },
   {
     "question_id": "sat-math-functions-medium-b0002",
@@ -41,38 +56,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "interpret",
-    "prompt": "If f(x) = x² + x − 8, what is the average rate of change of f between x = 1 and x = 4?",
+    "prompt": "The function h(t) = 32 + 3t gives the height, in centimeters, of a plant t weeks after it was planted. Which of the following is the best interpretation of h(0) = 32?",
     "choices": [
       {
         "id": "A",
-        "text": "3",
-        "rationale": "Use the change in f over the change in x, not f(x₂)/x₂."
+        "text": "the height of the plant when it was planted",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "18",
-        "rationale": "Divide by the change in x."
+        "text": "the growth, in centimeters, each week",
+        "rationale": "That describes the coefficient of the variable, the rate of change."
       },
       {
         "id": "C",
-        "text": "-6",
-        "rationale": "Sign slip."
+        "text": "the number of weeks until it reaches 32 cm",
+        "rationale": "That would be an input (a time or count) set equal to the output, which reverses the roles."
       },
       {
         "id": "D",
-        "text": "6",
-        "rationale": "Correct."
+        "text": "the total change in the output of the function over the first 32 units of input",
+        "rationale": "The constant term is a starting value, not a change over an interval."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "f(1) = −6 and f(4) = 12; average rate = (12 − (−6))/(4 − (1)) = 6.",
-    "estimated_time_seconds": 95,
+    "correct_choice": "A",
+    "explanation": "h(0) is the output when the input is 0, so 32 is the height of the plant when it was planted.",
+    "estimated_time_seconds": 85,
     "tags": [
       "functions",
-      "rate-of-change",
-      "family:fn_rate_of_change"
+      "interpret",
+      "family:fn_interpret"
     ],
-    "answer_verification": "rate=6"
+    "answer_verification": "interpret h(0)"
   },
   {
     "question_id": "sat-math-functions-medium-b0003",
@@ -84,72 +99,40 @@
     "lesson_id": "sat-math-functions-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "data_interpretation",
+    "question_type": "multiple_choice",
     "subskill": "evaluate",
-    "prompt": "The table gives values of the linear function f. What is the value of f(12)?",
+    "prompt": "For the function f defined by f(x) = 4x² + 6x − 3, what is f(−5)?",
     "choices": [
       {
         "id": "A",
-        "text": "-35",
-        "rationale": "Off by one step of the pattern."
+        "text": "-53",
+        "rationale": "This squares only the coefficient, not x."
       },
       {
         "id": "B",
-        "text": "-24",
-        "rationale": "Include the constant term b."
+        "text": "-133",
+        "rationale": "(−k)² is positive; don't carry the sign through the square."
       },
       {
         "id": "C",
-        "text": "1",
-        "rationale": "Multiply the slope by k; don't add."
+        "text": "127",
+        "rationale": "Watch the sign on the middle term."
       },
       {
         "id": "D",
-        "text": "-33",
+        "text": "67",
         "rationale": "Correct."
       }
     ],
     "correct_choice": "D",
-    "explanation": "The outputs change by −2 for each increase of 1 in x, so f(x) = −2x − 9 and f(12) = −33.",
+    "explanation": "f(−5) = 4·(−5)² + 6·(−5) − 3 = 100 − 30 − 3 = 67.",
     "estimated_time_seconds": 85,
     "tags": [
       "functions",
-      "table",
-      "family:fn_table"
+      "evaluate",
+      "family:fn_evaluate"
     ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Values of f",
-        "headers": [
-          "x",
-          "f(x)"
-        ],
-        "rows": [
-          [
-            "-3",
-            "-3"
-          ],
-          [
-            "-1",
-            "-7"
-          ],
-          [
-            "6",
-            "-21"
-          ],
-          [
-            "7",
-            "-23"
-          ],
-          [
-            "9",
-            "-27"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "val=-33"
+    "answer_verification": "f(-5)=67"
   },
   {
     "question_id": "sat-math-functions-medium-b0004",
@@ -163,38 +146,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = 5x + 15. For what value of x is f(x) = 0?",
+    "prompt": "The function f is defined by f(x) = (x + 6)/(x + 7). For what value of x is f(x) = 0?",
     "choices": [
       {
         "id": "A",
-        "text": "3",
-        "rationale": "Sign slip when moving the constant."
+        "text": "-7",
+        "rationale": "That makes the denominator 0, so f is undefined there."
       },
       {
         "id": "B",
-        "text": "-3",
-        "rationale": "Correct."
+        "text": "6",
+        "rationale": "Solve x + a = 0, so x = −a."
       },
       {
         "id": "C",
-        "text": "5",
-        "rationale": "The zero is −b/a, not the coefficient."
+        "text": "7",
+        "rationale": "The denominator's constant isn't the zero of f."
       },
       {
         "id": "D",
-        "text": "15",
-        "rationale": "That is f(0), the y-intercept, not the zero."
+        "text": "-6",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Set 5x + 15 = 0: 5x = −15, so x = −3.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "D",
+    "explanation": "A fraction is 0 when its numerator is 0 (and the denominator isn't): x + 6 = 0 gives x = −6.",
+    "estimated_time_seconds": 75,
     "tags": [
       "functions",
-      "solve",
-      "family:fn_solve_input"
+      "rational",
+      "family:fn_undefined"
     ],
-    "answer_verification": "x=-3"
+    "answer_verification": "x=-6"
   },
   {
     "question_id": "sat-math-functions-medium-b0005",
@@ -206,78 +189,33 @@
     "lesson_id": "sat-math-functions-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = (x + 9)/(x − 4). For what value of x is f(x) undefined?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "9",
-        "rationale": "The numerator's constant doesn't make f undefined."
-      },
-      {
-        "id": "B",
-        "text": "4",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "-4",
-        "rationale": "Solve x + b = 0, so x = −b."
-      },
-      {
-        "id": "D",
-        "text": "-9",
-        "rationale": "That makes the numerator 0, so f(x) = 0 there; the function is defined."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "A fraction is undefined when its denominator is 0: x − 4 = 0 gives x = 4.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "functions",
-      "rational",
-      "family:fn_undefined"
-    ],
-    "answer_verification": "x=4"
-  },
-  {
-    "question_id": "sat-math-functions-medium-b0006",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "functions",
-    "lesson_id": "sat-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "evaluate",
-    "prompt": "The table gives values of the linear function f. What is the value of f(−1)?",
+    "prompt": "The table gives values of the linear function f. What is the value of f(3)?",
     "choices": [
       {
         "id": "A",
-        "text": "-4",
+        "text": "20",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "-5",
+        "text": "12",
         "rationale": "Include the constant term b."
       },
       {
         "id": "C",
-        "text": "1",
-        "rationale": "Off by one step of the pattern."
+        "text": "15",
+        "rationale": "Multiply the slope by k; don't add."
       },
       {
         "id": "D",
-        "text": "5",
-        "rationale": "Multiply the slope by k; don't add."
+        "text": "24",
+        "rationale": "Off by one step of the pattern."
       }
     ],
     "correct_choice": "A",
-    "explanation": "The outputs change by 5 for each increase of 1 in x, so f(x) = 5x + 1 and f(−1) = −4.",
+    "explanation": "The outputs change by 4 for each increase of 1 in x, so f(x) = 4x + 8 and f(3) = 20.",
     "estimated_time_seconds": 85,
     "tags": [
       "functions",
@@ -295,28 +233,73 @@
         "rows": [
           [
             "-4",
-            "-19"
+            "-8"
           ],
           [
             "-3",
-            "-14"
+            "-4"
           ],
           [
-            "0",
-            "1"
+            "2",
+            "16"
           ],
           [
-            "6",
-            "31"
+            "5",
+            "28"
           ],
           [
-            "9",
-            "46"
+            "8",
+            "40"
           ]
         ]
       }
     },
-    "answer_verification": "val=-4"
+    "answer_verification": "val=20"
+  },
+  {
+    "question_id": "sat-math-functions-medium-b0006",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "functions",
+    "lesson_id": "sat-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "interpret",
+    "prompt": "The function h(t) = 449 + 15t gives the height, in centimeters, of a plant t weeks after it was planted. Which of the following is the best interpretation of h(0) = 449?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "the number of weeks until it reaches 449 cm",
+        "rationale": "That would be an input (a time or count) set equal to the output, which reverses the roles."
+      },
+      {
+        "id": "B",
+        "text": "the total change in the output of the function over the first 449 units of input",
+        "rationale": "The constant term is a starting value, not a change over an interval."
+      },
+      {
+        "id": "C",
+        "text": "the growth, in centimeters, each week",
+        "rationale": "That describes the coefficient of the variable, the rate of change."
+      },
+      {
+        "id": "D",
+        "text": "the height of the plant when it was planted",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "h(0) is the output when the input is 0, so 449 is the height of the plant when it was planted.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "functions",
+      "interpret",
+      "family:fn_interpret"
+    ],
+    "answer_verification": "interpret h(0)"
   },
   {
     "question_id": "sat-math-functions-medium-b0007",
@@ -330,38 +313,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = (x + 3)/(x − 6). For what value of x is f(x) = 0?",
+    "prompt": "The function h(t) = 139 + 24t gives the height, in centimeters, of a plant t weeks after it was planted. Which of the following is the best interpretation of h(0) = 139?",
     "choices": [
       {
         "id": "A",
-        "text": "6",
-        "rationale": "That makes the denominator 0, so f is undefined there."
-      },
-      {
-        "id": "B",
-        "text": "-6",
-        "rationale": "The denominator's constant isn't the zero of f."
-      },
-      {
-        "id": "C",
-        "text": "-3",
+        "text": "the height of the plant when it was planted",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "the number of weeks until it reaches 139 cm",
+        "rationale": "That would be an input (a time or count) set equal to the output, which reverses the roles."
+      },
+      {
+        "id": "C",
+        "text": "the total change in the output of the function over the first 139 units of input",
+        "rationale": "The constant term is a starting value, not a change over an interval."
+      },
+      {
         "id": "D",
-        "text": "3",
-        "rationale": "Solve x + a = 0, so x = −a."
+        "text": "the growth, in centimeters, each week",
+        "rationale": "That describes the coefficient of the variable, the rate of change."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "A fraction is 0 when its numerator is 0 (and the denominator isn't): x + 3 = 0 gives x = −3.",
-    "estimated_time_seconds": 75,
+    "correct_choice": "A",
+    "explanation": "h(0) is the output when the input is 0, so 139 is the height of the plant when it was planted.",
+    "estimated_time_seconds": 85,
     "tags": [
       "functions",
-      "rational",
-      "family:fn_undefined"
+      "interpret",
+      "family:fn_interpret"
     ],
-    "answer_verification": "x=-3"
+    "answer_verification": "interpret h(0)"
   },
   {
     "question_id": "sat-math-functions-medium-b0008",
@@ -373,33 +356,123 @@
     "lesson_id": "sat-math-functions-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "evaluate",
-    "prompt": "The table gives values of the linear function f. What is the value of f(11)?",
+    "question_type": "multiple_choice",
+    "subskill": "interpret",
+    "prompt": "The function C(n) = 12n + 295 gives the cost, in dollars, of printing n posters. Which of the following is the best interpretation of C(0) = 295?",
     "choices": [
       {
         "id": "A",
-        "text": "1",
-        "rationale": "Multiply the slope by k; don't add."
+        "text": "the cost per poster",
+        "rationale": "That describes the coefficient of the variable, the rate of change."
       },
       {
         "id": "B",
-        "text": "-40",
-        "rationale": "Correct."
+        "text": "the number of posters that cost $295",
+        "rationale": "That would be an input (a time or count) set equal to the output, which reverses the roles."
       },
       {
         "id": "C",
-        "text": "-33",
+        "text": "the cost before any posters are printed",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "the total change in the output of the function over the first 295 units of input",
+        "rationale": "The constant term is a starting value, not a change over an interval."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "C(0) is the output when the input is 0, so 295 is the cost before any posters are printed.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "functions",
+      "interpret",
+      "family:fn_interpret"
+    ],
+    "answer_verification": "interpret C(0)"
+  },
+  {
+    "question_id": "sat-math-functions-medium-b0009",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "functions",
+    "lesson_id": "sat-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "interpret",
+    "prompt": "The function f is defined by f(x) = x² + 3x − 6. What is the average rate of change of f over the interval from x = 3 to x = 6?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "8",
+        "rationale": "Use the change in f over the change in x, not f(x₂)/x₂."
+      },
+      {
+        "id": "B",
+        "text": "-12",
+        "rationale": "Sign slip."
+      },
+      {
+        "id": "C",
+        "text": "12",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "36",
+        "rationale": "Divide by the change in x."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "f(3) = 12 and f(6) = 48; average rate = (48 − (12))/(6 − (3)) = 12.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "functions",
+      "rate-of-change",
+      "family:fn_rate_of_change"
+    ],
+    "answer_verification": "rate=12"
+  },
+  {
+    "question_id": "sat-math-functions-medium-b0010",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "functions",
+    "lesson_id": "sat-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "evaluate",
+    "prompt": "The table gives values of the linear function f. What is the value of f(−4)?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "17",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "12",
+        "rationale": "Off by one step of the pattern."
+      },
+      {
+        "id": "C",
+        "text": "20",
         "rationale": "Include the constant term b."
       },
       {
         "id": "D",
-        "text": "-43",
-        "rationale": "Off by one step of the pattern."
+        "text": "-12",
+        "rationale": "Multiply the slope by k; don't add."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "The outputs change by −3 for each increase of 1 in x, so f(x) = −3x − 7 and f(11) = −40.",
+    "correct_choice": "A",
+    "explanation": "The outputs change by −5 for each increase of 1 in x, so f(x) = −5x − 3 and f(−4) = 17.",
     "estimated_time_seconds": 85,
     "tags": [
       "functions",
@@ -416,89 +489,29 @@
         ],
         "rows": [
           [
-            "-4",
-            "5"
-          ],
-          [
             "-1",
-            "-4"
+            "2"
           ],
           [
             "0",
-            "-7"
+            "-3"
           ],
           [
             "1",
-            "-10"
+            "-8"
           ],
           [
-            "8",
-            "-31"
+            "5",
+            "-28"
+          ],
+          [
+            "9",
+            "-48"
           ]
         ]
       }
     },
-    "answer_verification": "val=-40"
-  },
-  {
-    "question_id": "sat-math-functions-medium-b0009",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "functions",
-    "lesson_id": "sat-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "student_produced",
-    "subskill": "evaluate",
-    "prompt": "If f(x) = 6x + 4 and f(x) = 88, what is the value of x?",
-    "answer": {
-      "type": "numeric",
-      "value": 14,
-      "accepted": [
-        "14"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "6x = 84, so x = 14.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "functions",
-      "grid-in",
-      "family:fn_gridin"
-    ],
-    "answer_verification": "val=14"
-  },
-  {
-    "question_id": "sat-math-functions-medium-b0010",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "functions",
-    "lesson_id": "sat-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "student_produced",
-    "subskill": "evaluate",
-    "prompt": "If f(x) = 2x − 6 and f(x) = 14, what is the value of x?",
-    "answer": {
-      "type": "numeric",
-      "value": 10,
-      "accepted": [
-        "10"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "2x = 20, so x = 10.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "functions",
-      "grid-in",
-      "family:fn_gridin"
-    ],
-    "answer_verification": "val=10"
+    "answer_verification": "val=17"
   },
   {
     "question_id": "sat-math-functions-medium-b0011",
@@ -512,38 +525,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = (x + 9)/(x + 8). For what value of x is f(x) = 0?",
+    "prompt": "What is the zero of the function f(x) = 9x − 36?",
     "choices": [
       {
         "id": "A",
-        "text": "8",
-        "rationale": "The denominator's constant isn't the zero of f."
-      },
-      {
-        "id": "B",
-        "text": "-9",
+        "text": "4",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "-4",
+        "rationale": "Sign slip when moving the constant."
+      },
+      {
         "id": "C",
-        "text": "-8",
-        "rationale": "That makes the denominator 0, so f is undefined there."
+        "text": "9",
+        "rationale": "The zero is −b/a, not the coefficient."
       },
       {
         "id": "D",
-        "text": "9",
-        "rationale": "Solve x + a = 0, so x = −a."
+        "text": "-36",
+        "rationale": "That is f(0), the y-intercept, not the zero."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "A fraction is 0 when its numerator is 0 (and the denominator isn't): x + 9 = 0 gives x = −9.",
-    "estimated_time_seconds": 75,
+    "correct_choice": "A",
+    "explanation": "Set 9x − 36 = 0: 9x = 36, so x = 4.",
+    "estimated_time_seconds": 80,
     "tags": [
       "functions",
-      "rational",
-      "family:fn_undefined"
+      "solve",
+      "family:fn_solve_input"
     ],
-    "answer_verification": "x=-9"
+    "answer_verification": "x=4"
   },
   {
     "question_id": "sat-math-functions-medium-b0012",
@@ -557,38 +570,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = 8x + 24. For what value of x is f(x) = 0?",
+    "prompt": "What is the zero of the function f(x) = 8x + 40?",
     "choices": [
       {
         "id": "A",
-        "text": "-3",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "3",
-        "rationale": "Sign slip when moving the constant."
-      },
-      {
-        "id": "C",
-        "text": "24",
+        "text": "40",
         "rationale": "That is f(0), the y-intercept, not the zero."
       },
       {
-        "id": "D",
+        "id": "B",
         "text": "8",
         "rationale": "The zero is −b/a, not the coefficient."
+      },
+      {
+        "id": "C",
+        "text": "5",
+        "rationale": "Sign slip when moving the constant."
+      },
+      {
+        "id": "D",
+        "text": "-5",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Set 8x + 24 = 0: 8x = −24, so x = −3.",
+    "correct_choice": "D",
+    "explanation": "Set 8x + 40 = 0: 8x = −40, so x = −5.",
     "estimated_time_seconds": 80,
     "tags": [
       "functions",
       "solve",
       "family:fn_solve_input"
     ],
-    "answer_verification": "x=-3"
+    "answer_verification": "x=-5"
   },
   {
     "question_id": "sat-math-functions-medium-b0013",
@@ -602,38 +615,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "evaluate",
-    "prompt": "Which of the following points lies on the graph of y = x² + 9 in the xy-plane?",
+    "prompt": "The function f is defined by f(x) = 5x² − 7x − 9. What is the value of f(1)?",
     "choices": [
       {
         "id": "A",
-        "text": "(0, 9)",
-        "rationale": "Correct."
+        "text": "3",
+        "rationale": "Watch the sign on the middle term."
       },
       {
         "id": "B",
-        "text": "(2, 16)",
-        "rationale": "At x = 2, y = 13, not 16."
+        "text": "-21",
+        "rationale": "(−k)² is positive; don't carry the sign through the square."
       },
       {
         "id": "C",
-        "text": "(5, 36)",
-        "rationale": "At x = 5, y = 34, not 36."
+        "text": "-11",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "(1, 13)",
-        "rationale": "At x = 1, y = 10, not 13."
+        "text": "-6",
+        "rationale": "Arithmetic slip in squaring; recompute (k)²."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Substitute x = 0: y = (0)² + 9 = 9.",
-    "estimated_time_seconds": 75,
+    "correct_choice": "C",
+    "explanation": "f(1) = 5·(1)² − 7·(1) − 9 = 5 − 7 − 9 = −11.",
+    "estimated_time_seconds": 85,
     "tags": [
       "functions",
-      "graph",
-      "family:fn_graph_point"
+      "evaluate",
+      "family:fn_evaluate"
     ],
-    "answer_verification": "(0, 9)"
+    "answer_verification": "f(1)=-11"
   },
   {
     "question_id": "sat-math-functions-medium-b0014",
@@ -645,422 +658,43 @@
     "lesson_id": "sat-math-functions-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "multi_step_math",
-    "subskill": "evaluate",
-    "prompt": "The functions f and g are defined by f(x) = 4x + 8 and g(x) = 3x − 3. What is the value of f(g(0))?",
+    "question_type": "multiple_choice",
+    "subskill": "interpret",
+    "prompt": "The function h(t) = 152 + 20t gives the height, in centimeters, of a plant t weeks after it was planted. Which of the following is the best interpretation of h(0) = 152?",
     "choices": [
       {
         "id": "A",
-        "text": "-24",
-        "rationale": "Composition is not multiplication."
+        "text": "the number of weeks until it reaches 152 cm",
+        "rationale": "That would be an input (a time or count) set equal to the output, which reverses the roles."
       },
       {
         "id": "B",
-        "text": "-3",
-        "rationale": "That is g(k); now apply f."
+        "text": "the total change in the output of the function over the first 152 units of input",
+        "rationale": "The constant term is a starting value, not a change over an interval."
       },
       {
         "id": "C",
-        "text": "21",
-        "rationale": "This computes g(f(k)); evaluate g first."
+        "text": "the height of the plant when it was planted",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "-4",
-        "rationale": "Correct."
+        "text": "the growth, in centimeters, each week",
+        "rationale": "That describes the coefficient of the variable, the rate of change."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "First g(0) = 3(0) − 3 = −3. Then f(−3) = 4·(−3) + 8 = −4.",
-    "estimated_time_seconds": 95,
+    "correct_choice": "C",
+    "explanation": "h(0) is the output when the input is 0, so 152 is the height of the plant when it was planted.",
+    "estimated_time_seconds": 85,
     "tags": [
       "functions",
-      "composition",
-      "family:fn_compose_transform"
+      "interpret",
+      "family:fn_interpret"
     ],
-    "answer_verification": "val=-4"
+    "answer_verification": "interpret h(0)"
   },
   {
     "question_id": "sat-math-functions-medium-b0015",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "functions",
-    "lesson_id": "sat-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "interpret",
-    "prompt": "If f(x) = x² − 6x + 8, what is the average rate of change of f between x = −1 and x = 1?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-12",
-        "rationale": "Divide by the change in x."
-      },
-      {
-        "id": "B",
-        "text": "-6",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "6",
-        "rationale": "Sign slip."
-      },
-      {
-        "id": "D",
-        "text": "3",
-        "rationale": "Use the change in f over the change in x, not f(x₂)/x₂."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "f(−1) = 15 and f(1) = 3; average rate = (3 − (15))/(1 − (−1)) = -6.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "functions",
-      "rate-of-change",
-      "family:fn_rate_of_change"
-    ],
-    "answer_verification": "rate=-6"
-  },
-  {
-    "question_id": "sat-math-functions-medium-b0016",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "functions",
-    "lesson_id": "sat-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "interpret",
-    "prompt": "What is the zero of the function f(x) = 9x − 9?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "1",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "-1",
-        "rationale": "Sign slip when moving the constant."
-      },
-      {
-        "id": "C",
-        "text": "9",
-        "rationale": "The zero is −b/a, not the coefficient."
-      },
-      {
-        "id": "D",
-        "text": "-9",
-        "rationale": "That is f(0), the y-intercept, not the zero."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "Set 9x − 9 = 0: 9x = 9, so x = 1.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "functions",
-      "solve",
-      "family:fn_solve_input"
-    ],
-    "answer_verification": "x=1"
-  },
-  {
-    "question_id": "sat-math-functions-medium-b0017",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "functions",
-    "lesson_id": "sat-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "evaluate",
-    "prompt": "Which of the following points lies on the graph of y = x² + 2 in the xy-plane?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "(0, 2)",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "(3, 9)",
-        "rationale": "At x = 3, y = 11, not 9."
-      },
-      {
-        "id": "C",
-        "text": "(−1, 0)",
-        "rationale": "At x = −1, y = 3, not 0."
-      },
-      {
-        "id": "D",
-        "text": "(−2, 8)",
-        "rationale": "At x = −2, y = 6, not 8."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "Substitute x = 0: y = (0)² + 2 = 2.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "functions",
-      "graph",
-      "family:fn_graph_point"
-    ],
-    "answer_verification": "(0, 2)"
-  },
-  {
-    "question_id": "sat-math-functions-medium-b0018",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "functions",
-    "lesson_id": "sat-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "evaluate",
-    "prompt": "The table gives values of the linear function f. What is the value of f(4)?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "14",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "12",
-        "rationale": "Include the constant term b."
-      },
-      {
-        "id": "C",
-        "text": "17",
-        "rationale": "Off by one step of the pattern."
-      },
-      {
-        "id": "D",
-        "text": "9",
-        "rationale": "Multiply the slope by k; don't add."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "The outputs change by 3 for each increase of 1 in x, so f(x) = 3x + 2 and f(4) = 14.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "functions",
-      "table",
-      "family:fn_table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Values of f",
-        "headers": [
-          "x",
-          "f(x)"
-        ],
-        "rows": [
-          [
-            "-4",
-            "-10"
-          ],
-          [
-            "0",
-            "2"
-          ],
-          [
-            "3",
-            "11"
-          ],
-          [
-            "6",
-            "20"
-          ],
-          [
-            "8",
-            "26"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "val=14"
-  },
-  {
-    "question_id": "sat-math-functions-medium-b0019",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "functions",
-    "lesson_id": "sat-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "interpret",
-    "prompt": "If f(x) = x² + x − 1, what is the average rate of change of f between x = 2 and x = 8?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-11",
-        "rationale": "Sign slip."
-      },
-      {
-        "id": "B",
-        "text": "11",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "71/8",
-        "rationale": "Use the change in f over the change in x, not f(x₂)/x₂."
-      },
-      {
-        "id": "D",
-        "text": "66",
-        "rationale": "Divide by the change in x."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "f(2) = 5 and f(8) = 71; average rate = (71 − (5))/(8 − (2)) = 11.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "functions",
-      "rate-of-change",
-      "family:fn_rate_of_change"
-    ],
-    "answer_verification": "rate=11"
-  },
-  {
-    "question_id": "sat-math-functions-medium-b0020",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "functions",
-    "lesson_id": "sat-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "evaluate",
-    "prompt": "The table gives values of the linear function f. What is the value of f(14)?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "67",
-        "rationale": "Off by one step of the pattern."
-      },
-      {
-        "id": "B",
-        "text": "62",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "11",
-        "rationale": "Multiply the slope by k; don't add."
-      },
-      {
-        "id": "D",
-        "text": "70",
-        "rationale": "Include the constant term b."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "The outputs change by 5 for each increase of 1 in x, so f(x) = 5x − 8 and f(14) = 62.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "functions",
-      "table",
-      "family:fn_table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Values of f",
-        "headers": [
-          "x",
-          "f(x)"
-        ],
-        "rows": [
-          [
-            "-3",
-            "-23"
-          ],
-          [
-            "-1",
-            "-13"
-          ],
-          [
-            "0",
-            "-8"
-          ],
-          [
-            "6",
-            "22"
-          ],
-          [
-            "9",
-            "37"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "val=62"
-  },
-  {
-    "question_id": "sat-math-functions-medium-b0021",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "functions",
-    "lesson_id": "sat-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = x² + 5x − 9. What is the average rate of change of f over the interval from x = −2 to x = 3?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-6",
-        "rationale": "Sign slip."
-      },
-      {
-        "id": "B",
-        "text": "30",
-        "rationale": "Divide by the change in x."
-      },
-      {
-        "id": "C",
-        "text": "5",
-        "rationale": "Use the change in f over the change in x, not f(x₂)/x₂."
-      },
-      {
-        "id": "D",
-        "text": "6",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "f(−2) = −15 and f(3) = 15; average rate = (15 − (−15))/(3 − (−2)) = 6.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "functions",
-      "rate-of-change",
-      "family:fn_rate_of_change"
-    ],
-    "answer_verification": "rate=6"
-  },
-  {
-    "question_id": "sat-math-functions-medium-b0022",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1075,82 +709,37 @@
     "choices": [
       {
         "id": "A",
-        "text": "(−1, −2)",
-        "rationale": "At x = −1, y = 0, not −2."
-      },
-      {
-        "id": "B",
-        "text": "(4, 14)",
-        "rationale": "At x = 4, y = 15, not 14."
-      },
-      {
-        "id": "C",
-        "text": "(0, −1)",
+        "text": "(1, 0)",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "(3, 11)",
+        "rationale": "At x = 3, y = 8, not 11."
+      },
+      {
+        "id": "C",
+        "text": "(−5, 27)",
+        "rationale": "At x = −5, y = 24, not 27."
+      },
+      {
         "id": "D",
-        "text": "(3, 10)",
-        "rationale": "At x = 3, y = 8, not 10."
+        "text": "(−3, 7)",
+        "rationale": "At x = −3, y = 8, not 7."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Substitute x = 0: y = (0)² − 1 = −1.",
+    "correct_choice": "A",
+    "explanation": "Substitute x = 1: y = (1)² − 1 = 0.",
     "estimated_time_seconds": 75,
     "tags": [
       "functions",
       "graph",
       "family:fn_graph_point"
     ],
-    "answer_verification": "(0, −1)"
+    "answer_verification": "(1, 0)"
   },
   {
-    "question_id": "sat-math-functions-medium-b0023",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "functions",
-    "lesson_id": "sat-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "evaluate",
-    "prompt": "Which of the following points lies on the graph of y = x² + 8 in the xy-plane?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "(2, 12)",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "(4, 27)",
-        "rationale": "At x = 4, y = 24, not 27."
-      },
-      {
-        "id": "C",
-        "text": "(3, 14)",
-        "rationale": "At x = 3, y = 17, not 14."
-      },
-      {
-        "id": "D",
-        "text": "(−1, 10)",
-        "rationale": "At x = −1, y = 9, not 10."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "Substitute x = 2: y = (2)² + 8 = 12.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "functions",
-      "graph",
-      "family:fn_graph_point"
-    ],
-    "answer_verification": "(2, 12)"
-  },
-  {
-    "question_id": "sat-math-functions-medium-b0024",
+    "question_id": "sat-math-functions-medium-b0016",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1161,1250 +750,31 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = 8x − 8. For what value of x is f(x) = 0?",
+    "prompt": "The function f is defined by f(x) = (x + 4)/(x + 7). For what value of x is f(x) undefined?",
     "choices": [
       {
         "id": "A",
-        "text": "1",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "-1",
-        "rationale": "Sign slip when moving the constant."
-      },
-      {
-        "id": "C",
-        "text": "-8",
-        "rationale": "That is f(0), the y-intercept, not the zero."
-      },
-      {
-        "id": "D",
-        "text": "8",
-        "rationale": "The zero is −b/a, not the coefficient."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "Set 8x − 8 = 0: 8x = 8, so x = 1.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "functions",
-      "solve",
-      "family:fn_solve_input"
-    ],
-    "answer_verification": "x=1"
-  },
-  {
-    "question_id": "sat-math-functions-medium-b0025",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "functions",
-    "lesson_id": "sat-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = (x + 7)/(x − 7). For what value of x is f(x) undefined?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-7",
+        "text": "-4",
         "rationale": "That makes the numerator 0, so f(x) = 0 there; the function is defined."
       },
       {
         "id": "B",
-        "text": "7",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "0",
-        "rationale": "f(0) is a perfectly good value here."
-      },
-      {
-        "id": "D",
-        "text": "-3",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "A fraction is undefined when its denominator is 0: x − 7 = 0 gives x = 7.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "functions",
-      "rational",
-      "family:fn_undefined"
-    ],
-    "answer_verification": "x=7"
-  },
-  {
-    "question_id": "sat-math-functions-medium-b0026",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "functions",
-    "lesson_id": "sat-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multi_step_math",
-    "subskill": "evaluate",
-    "prompt": "The functions f and g are defined by f(x) = 6x − 4 and g(x) = 3x − 2. What is the value of f(g(3))?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "40",
-        "rationale": "This computes g(f(k)); evaluate g first."
-      },
-      {
-        "id": "B",
-        "text": "38",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "7",
-        "rationale": "That is g(k); now apply f."
-      },
-      {
-        "id": "D",
-        "text": "98",
-        "rationale": "Composition is not multiplication."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "First g(3) = 3(3) − 2 = 7. Then f(7) = 6·(7) − 4 = 38.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "functions",
-      "composition",
-      "family:fn_compose_transform"
-    ],
-    "answer_verification": "val=38"
-  },
-  {
-    "question_id": "sat-math-functions-medium-b0027",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "functions",
-    "lesson_id": "sat-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = x² − 5x + 1. What is the average rate of change of f over the interval from x = 1 to x = 2?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "2",
-        "rationale": "Sign slip."
-      },
-      {
-        "id": "B",
-        "text": "-4",
-        "rationale": "Average rate of change is not the average of the outputs."
-      },
-      {
-        "id": "C",
-        "text": "-5/2",
-        "rationale": "Use the change in f over the change in x, not f(x₂)/x₂."
-      },
-      {
-        "id": "D",
-        "text": "-2",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "f(1) = −3 and f(2) = −5; average rate = (−5 − (−3))/(2 − (1)) = -2.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "functions",
-      "rate-of-change",
-      "family:fn_rate_of_change"
-    ],
-    "answer_verification": "rate=-2"
-  },
-  {
-    "question_id": "sat-math-functions-medium-b0028",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "functions",
-    "lesson_id": "sat-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "interpret",
-    "prompt": "If f(x) = x² + x − 7, what is the average rate of change of f between x = 2 and x = 6?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "36",
-        "rationale": "Divide by the change in x."
-      },
-      {
-        "id": "B",
-        "text": "9",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "35/6",
-        "rationale": "Use the change in f over the change in x, not f(x₂)/x₂."
-      },
-      {
-        "id": "D",
-        "text": "-9",
-        "rationale": "Sign slip."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "f(2) = −1 and f(6) = 35; average rate = (35 − (−1))/(6 − (2)) = 9.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "functions",
-      "rate-of-change",
-      "family:fn_rate_of_change"
-    ],
-    "answer_verification": "rate=9"
-  },
-  {
-    "question_id": "sat-math-functions-medium-b0029",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "functions",
-    "lesson_id": "sat-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "evaluate",
-    "prompt": "The table gives values of the linear function f. What is the value of f(13)?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-13",
-        "rationale": "Include the constant term b."
-      },
-      {
-        "id": "B",
-        "text": "-19",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "-20",
-        "rationale": "Off by one step of the pattern."
-      },
-      {
-        "id": "D",
-        "text": "6",
-        "rationale": "Multiply the slope by k; don't add."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "The outputs change by −1 for each increase of 1 in x, so f(x) = −x − 6 and f(13) = −19.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "functions",
-      "table",
-      "family:fn_table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Values of f",
-        "headers": [
-          "x",
-          "f(x)"
-        ],
-        "rows": [
-          [
-            "0",
-            "-6"
-          ],
-          [
-            "4",
-            "-10"
-          ],
-          [
-            "5",
-            "-11"
-          ],
-          [
-            "7",
-            "-13"
-          ],
-          [
-            "9",
-            "-15"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "val=-19"
-  },
-  {
-    "question_id": "sat-math-functions-medium-b0030",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "functions",
-    "lesson_id": "sat-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = 5x − 25. For what value of x is f(x) = 0?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "1/5",
-        "rationale": "This inverts the division."
-      },
-      {
-        "id": "B",
-        "text": "-25",
-        "rationale": "That is f(0), the y-intercept, not the zero."
-      },
-      {
-        "id": "C",
-        "text": "-5",
-        "rationale": "Sign slip when moving the constant."
-      },
-      {
-        "id": "D",
-        "text": "5",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Set 5x − 25 = 0: 5x = 25, so x = 5.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "functions",
-      "solve",
-      "family:fn_solve_input"
-    ],
-    "answer_verification": "x=5"
-  },
-  {
-    "question_id": "sat-math-functions-medium-b0031",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "functions",
-    "lesson_id": "sat-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "interpret",
-    "prompt": "What is the zero of the function f(x) = 3x − 6?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "3",
-        "rationale": "The zero is −b/a, not the coefficient."
-      },
-      {
-        "id": "B",
-        "text": "2",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "-2",
-        "rationale": "Sign slip when moving the constant."
-      },
-      {
-        "id": "D",
-        "text": "-6",
-        "rationale": "That is f(0), the y-intercept, not the zero."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Set 3x − 6 = 0: 3x = 6, so x = 2.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "functions",
-      "solve",
-      "family:fn_solve_input"
-    ],
-    "answer_verification": "x=2"
-  },
-  {
-    "question_id": "sat-math-functions-medium-b0032",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "functions",
-    "lesson_id": "sat-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "student_produced",
-    "subskill": "evaluate",
-    "prompt": "If f(x) = 2x + 11 and f(x) = 21, what is the value of x?",
-    "answer": {
-      "type": "numeric",
-      "value": 5,
-      "accepted": [
-        "5"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "2x = 10, so x = 5.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "functions",
-      "grid-in",
-      "family:fn_gridin"
-    ],
-    "answer_verification": "val=5"
-  },
-  {
-    "question_id": "sat-math-functions-medium-b0033",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "functions",
-    "lesson_id": "sat-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "student_produced",
-    "subskill": "evaluate",
-    "prompt": "If f(x) = 5x + 7 and f(x) = 52, what is the value of x?",
-    "answer": {
-      "type": "numeric",
-      "value": 9,
-      "accepted": [
-        "9"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "5x = 45, so x = 9.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "functions",
-      "grid-in",
-      "family:fn_gridin"
-    ],
-    "answer_verification": "val=9"
-  },
-  {
-    "question_id": "sat-math-functions-medium-b0034",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "functions",
-    "lesson_id": "sat-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "interpret",
-    "prompt": "The function h(t) = 120 + 21t gives the height, in centimeters, of a plant t weeks after it was planted. Which of the following is the best interpretation of h(0) = 120?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "the total change in the output of the function over the first 120 units of input",
-        "rationale": "The constant term is a starting value, not a change over an interval."
-      },
-      {
-        "id": "B",
-        "text": "the height of the plant when it was planted",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "the growth, in centimeters, each week",
-        "rationale": "That describes the coefficient of the variable, the rate of change."
-      },
-      {
-        "id": "D",
-        "text": "the number of weeks until it reaches 120 cm",
-        "rationale": "That would be an input (a time or count) set equal to the output, which reverses the roles."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "h(0) is the output when the input is 0, so 120 is the height of the plant when it was planted.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "functions",
-      "interpret",
-      "family:fn_interpret"
-    ],
-    "answer_verification": "interpret h(0)"
-  },
-  {
-    "question_id": "sat-math-functions-medium-b0035",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "functions",
-    "lesson_id": "sat-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "evaluate",
-    "prompt": "For the function f defined by f(x) = 6x² + 9x + 5, what is f(−2)?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-37",
-        "rationale": "(−k)² is positive; don't carry the sign through the square."
-      },
-      {
-        "id": "B",
-        "text": "-25",
-        "rationale": "This squares only the coefficient, not x."
-      },
-      {
-        "id": "C",
-        "text": "11",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "47",
-        "rationale": "Watch the sign on the middle term."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "f(−2) = 6·(−2)² + 9·(−2) + 5 = 24 − 18 + 5 = 11.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "functions",
-      "evaluate",
-      "family:fn_evaluate"
-    ],
-    "answer_verification": "f(-2)=11"
-  },
-  {
-    "question_id": "sat-math-functions-medium-b0036",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "functions",
-    "lesson_id": "sat-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = x² + 2x − 8. What is the average rate of change of f over the interval from x = −1 to x = 0?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "2",
-        "rationale": "Use the change in f over the change in x, not f(x₂)/x₂."
-      },
-      {
-        "id": "B",
-        "text": "1",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "-17/2",
-        "rationale": "Average rate of change is not the average of the outputs."
-      },
-      {
-        "id": "D",
-        "text": "-1",
-        "rationale": "Sign slip."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "f(−1) = −9 and f(0) = −8; average rate = (−8 − (−9))/(0 − (−1)) = 1.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "functions",
-      "rate-of-change",
-      "family:fn_rate_of_change"
-    ],
-    "answer_verification": "rate=1"
-  },
-  {
-    "question_id": "sat-math-functions-medium-b0037",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "functions",
-    "lesson_id": "sat-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = x² − 5x + 1. What is the average rate of change of f over the interval from x = −1 to x = 5?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-1",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "-6",
-        "rationale": "Divide by the change in x."
-      },
-      {
-        "id": "C",
-        "text": "1",
-        "rationale": "Sign slip."
-      },
-      {
-        "id": "D",
-        "text": "1/5",
-        "rationale": "Use the change in f over the change in x, not f(x₂)/x₂."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "f(−1) = 7 and f(5) = 1; average rate = (1 − (7))/(5 − (−1)) = -1.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "functions",
-      "rate-of-change",
-      "family:fn_rate_of_change"
-    ],
-    "answer_verification": "rate=-1"
-  },
-  {
-    "question_id": "sat-math-functions-medium-b0038",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "functions",
-    "lesson_id": "sat-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "evaluate",
-    "prompt": "The table gives values of the linear function f. What is the value of f(11)?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-66",
-        "rationale": "Include the constant term b."
-      },
-      {
-        "id": "B",
-        "text": "-69",
-        "rationale": "Off by one step of the pattern."
-      },
-      {
-        "id": "C",
-        "text": "8",
-        "rationale": "Multiply the slope by k; don't add."
-      },
-      {
-        "id": "D",
-        "text": "-63",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "The outputs change by −6 for each increase of 1 in x, so f(x) = −6x + 3 and f(11) = −63.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "functions",
-      "table",
-      "family:fn_table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Values of f",
-        "headers": [
-          "x",
-          "f(x)"
-        ],
-        "rows": [
-          [
-            "-4",
-            "27"
-          ],
-          [
-            "-2",
-            "15"
-          ],
-          [
-            "5",
-            "-27"
-          ],
-          [
-            "7",
-            "-39"
-          ],
-          [
-            "8",
-            "-45"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "val=-63"
-  },
-  {
-    "question_id": "sat-math-functions-medium-b0039",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "functions",
-    "lesson_id": "sat-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "student_produced",
-    "subskill": "evaluate",
-    "prompt": "If f(x) = 7x − 3 and f(x) = 74, what is the value of x?",
-    "answer": {
-      "type": "numeric",
-      "value": 11,
-      "accepted": [
-        "11"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "7x = 77, so x = 11.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "functions",
-      "grid-in",
-      "family:fn_gridin"
-    ],
-    "answer_verification": "val=11"
-  },
-  {
-    "question_id": "sat-math-functions-medium-b0040",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "functions",
-    "lesson_id": "sat-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "student_produced",
-    "subskill": "evaluate",
-    "prompt": "If f(x) = 2x + 9 and f(x) = 15, what is the value of x?",
-    "answer": {
-      "type": "numeric",
-      "value": 3,
-      "accepted": [
-        "3"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "2x = 6, so x = 3.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "functions",
-      "grid-in",
-      "family:fn_gridin"
-    ],
-    "answer_verification": "val=3"
-  },
-  {
-    "question_id": "sat-math-functions-medium-b0041",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "functions",
-    "lesson_id": "sat-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "student_produced",
-    "subskill": "evaluate",
-    "prompt": "If f(x) = 6x + 10 and f(x) = 82, what is the value of x?",
-    "answer": {
-      "type": "numeric",
-      "value": 12,
-      "accepted": [
-        "12"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "6x = 72, so x = 12.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "functions",
-      "grid-in",
-      "family:fn_gridin"
-    ],
-    "answer_verification": "val=12"
-  },
-  {
-    "question_id": "sat-math-functions-medium-b0042",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "functions",
-    "lesson_id": "sat-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multi_step_math",
-    "subskill": "evaluate",
-    "prompt": "The functions f and g are defined by f(x) = 5x + 7 and g(x) = 5x + 3. What is the value of f(g(0))?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "3",
-        "rationale": "That is g(k); now apply f."
-      },
-      {
-        "id": "B",
-        "text": "22",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "38",
-        "rationale": "This computes g(f(k)); evaluate g first."
-      },
-      {
-        "id": "D",
-        "text": "21",
-        "rationale": "Composition is not multiplication."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "First g(0) = 5(0) + 3 = 3. Then f(3) = 5·(3) + 7 = 22.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "functions",
-      "composition",
-      "family:fn_compose_transform"
-    ],
-    "answer_verification": "val=22"
-  },
-  {
-    "question_id": "sat-math-functions-medium-b0043",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "functions",
-    "lesson_id": "sat-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multi_step_math",
-    "subskill": "evaluate",
-    "prompt": "The functions f and g are defined by f(x) = 3x + 7 and g(x) = 4x + 3. What is the value of f(g(−2))?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-4",
-        "rationale": "Composition is not addition."
-      },
-      {
-        "id": "B",
-        "text": "-5",
-        "rationale": "Composition is not multiplication."
-      },
-      {
-        "id": "C",
-        "text": "-8",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "7",
-        "rationale": "This computes g(f(k)); evaluate g first."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "First g(−2) = 4(−2) + 3 = −5. Then f(−5) = 3·(−5) + 7 = −8.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "functions",
-      "composition",
-      "family:fn_compose_transform"
-    ],
-    "answer_verification": "val=-8"
-  },
-  {
-    "question_id": "sat-math-functions-medium-b0044",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "functions",
-    "lesson_id": "sat-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "interpret",
-    "prompt": "The function p(t) = 203 − 10t gives the amount of water, in gallons, remaining in a tank t minutes after a valve opens. Which of the following is the best interpretation of p(0) = 203?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "the total change in the output of the function over the first 203 units of input",
-        "rationale": "The constant term is a starting value, not a change over an interval."
-      },
-      {
-        "id": "B",
-        "text": "the number of gallons drained each minute",
-        "rationale": "That describes the coefficient of the variable, the rate of change."
-      },
-      {
-        "id": "C",
-        "text": "the amount of water in the tank when the valve opens",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "the number of minutes until the tank is empty",
-        "rationale": "That would be an input (a time or count) set equal to the output, which reverses the roles."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "p(0) is the output when the input is 0, so 203 is the amount of water in the tank when the valve opens.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "functions",
-      "interpret",
-      "family:fn_interpret"
-    ],
-    "answer_verification": "interpret p(0)"
-  },
-  {
-    "question_id": "sat-math-functions-medium-b0045",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "functions",
-    "lesson_id": "sat-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "interpret",
-    "prompt": "The function p(t) = 256 − 11t gives the amount of water, in gallons, remaining in a tank t minutes after a valve opens. Which of the following is the best interpretation of p(0) = 256?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "the number of gallons drained each minute",
-        "rationale": "That describes the coefficient of the variable, the rate of change."
-      },
-      {
-        "id": "B",
-        "text": "the total change in the output of the function over the first 256 units of input",
-        "rationale": "The constant term is a starting value, not a change over an interval."
-      },
-      {
-        "id": "C",
-        "text": "the amount of water in the tank when the valve opens",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "the number of minutes until the tank is empty",
-        "rationale": "That would be an input (a time or count) set equal to the output, which reverses the roles."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "p(0) is the output when the input is 0, so 256 is the amount of water in the tank when the valve opens.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "functions",
-      "interpret",
-      "family:fn_interpret"
-    ],
-    "answer_verification": "interpret p(0)"
-  },
-  {
-    "question_id": "sat-math-functions-medium-b0046",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "functions",
-    "lesson_id": "sat-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = (x + 7)/(x + 4). For what value of x is f(x) undefined?",
-    "choices": [
-      {
-        "id": "A",
         "text": "-7",
-        "rationale": "That makes the numerator 0, so f(x) = 0 there; the function is defined."
-      },
-      {
-        "id": "B",
-        "text": "-4",
         "rationale": "Correct."
       },
       {
         "id": "C",
         "text": "4",
-        "rationale": "Solve x + b = 0, so x = −b."
-      },
-      {
-        "id": "D",
-        "text": "7",
         "rationale": "The numerator's constant doesn't make f undefined."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "A fraction is undefined when its denominator is 0: x + 4 = 0 gives x = −4.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "functions",
-      "rational",
-      "family:fn_undefined"
-    ],
-    "answer_verification": "x=-4"
-  },
-  {
-    "question_id": "sat-math-functions-medium-b0047",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "functions",
-    "lesson_id": "sat-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "student_produced",
-    "subskill": "evaluate",
-    "prompt": "If f(x) = 3x + 3 and f(x) = 24, what is the value of x?",
-    "answer": {
-      "type": "numeric",
-      "value": 7,
-      "accepted": [
-        "7"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "3x = 21, so x = 7.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "functions",
-      "grid-in",
-      "family:fn_gridin"
-    ],
-    "answer_verification": "val=7"
-  },
-  {
-    "question_id": "sat-math-functions-medium-b0048",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "functions",
-    "lesson_id": "sat-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "evaluate",
-    "prompt": "The function f is defined by f(x) = 6x² − 5x − 11. What is the value of f(4)?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "105",
-        "rationale": "Watch the sign on the middle term."
-      },
-      {
-        "id": "B",
-        "text": "-127",
-        "rationale": "(−k)² is positive; don't carry the sign through the square."
-      },
-      {
-        "id": "C",
-        "text": "-7",
-        "rationale": "This squares only the coefficient, not x."
       },
       {
         "id": "D",
-        "text": "65",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "f(4) = 6·(4)² − 5·(4) − 11 = 96 − 20 − 11 = 65.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "functions",
-      "evaluate",
-      "family:fn_evaluate"
-    ],
-    "answer_verification": "f(4)=65"
-  },
-  {
-    "question_id": "sat-math-functions-medium-b0049",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "functions",
-    "lesson_id": "sat-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = x² + 3x + 10. What is the average rate of change of f over the interval from x = −5 to x = 0?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-10",
-        "rationale": "Divide by the change in x."
-      },
-      {
-        "id": "B",
-        "text": "-2",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "2",
-        "rationale": "Sign slip."
-      },
-      {
-        "id": "D",
-        "text": "-1",
-        "rationale": "Use the change in f over the change in x, not f(x₂)/x₂."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "f(−5) = 20 and f(0) = 10; average rate = (10 − (20))/(0 − (−5)) = -2.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "functions",
-      "rate-of-change",
-      "family:fn_rate_of_change"
-    ],
-    "answer_verification": "rate=-2"
-  },
-  {
-    "question_id": "sat-math-functions-medium-b0050",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "functions",
-    "lesson_id": "sat-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "student_produced",
-    "subskill": "evaluate",
-    "prompt": "If f(x) = 4x + 5 and f(x) = 33, what is the value of x?",
-    "answer": {
-      "type": "numeric",
-      "value": 7,
-      "accepted": [
-        "7"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "4x = 28, so x = 7.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "functions",
-      "grid-in",
-      "family:fn_gridin"
-    ],
-    "answer_verification": "val=7"
-  },
-  {
-    "question_id": "sat-math-functions-medium-b0051",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "functions",
-    "lesson_id": "sat-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "interpret",
-    "prompt": "The function C(n) = 19n + 420 gives the cost, in dollars, of printing n posters. Which of the following is the best interpretation of C(0) = 420?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "the total change in the output of the function over the first 420 units of input",
-        "rationale": "The constant term is a starting value, not a change over an interval."
-      },
-      {
-        "id": "B",
-        "text": "the number of posters that cost $420",
-        "rationale": "That would be an input (a time or count) set equal to the output, which reverses the roles."
-      },
-      {
-        "id": "C",
-        "text": "the cost per poster",
-        "rationale": "That describes the coefficient of the variable, the rate of change."
-      },
-      {
-        "id": "D",
-        "text": "the cost before any posters are printed",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "C(0) is the output when the input is 0, so 420 is the cost before any posters are printed.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "functions",
-      "interpret",
-      "family:fn_interpret"
-    ],
-    "answer_verification": "interpret C(0)"
-  },
-  {
-    "question_id": "sat-math-functions-medium-b0052",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "functions",
-    "lesson_id": "sat-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = (x + 7)/(x − 1). For what value of x is f(x) = 0?",
-    "choices": [
-      {
-        "id": "A",
         "text": "7",
-        "rationale": "Solve x + a = 0, so x = −a."
-      },
-      {
-        "id": "B",
-        "text": "-7",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "-1",
-        "rationale": "The denominator's constant isn't the zero of f."
-      },
-      {
-        "id": "D",
-        "text": "1",
-        "rationale": "That makes the denominator 0, so f is undefined there."
+        "rationale": "Solve x + b = 0, so x = −b."
       }
     ],
     "correct_choice": "B",
-    "explanation": "A fraction is 0 when its numerator is 0 (and the denominator isn't): x + 7 = 0 gives x = −7.",
+    "explanation": "A fraction is undefined when its denominator is 0: x + 7 = 0 gives x = −7.",
     "estimated_time_seconds": 75,
     "tags": [
       "functions",
@@ -2414,7 +784,7 @@
     "answer_verification": "x=-7"
   },
   {
-    "question_id": "sat-math-functions-medium-b0053",
+    "question_id": "sat-math-functions-medium-b0017",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2425,41 +795,41 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "evaluate",
-    "prompt": "Which of the following points lies on the graph of y = x² + 1 in the xy-plane?",
+    "prompt": "For the function f defined by f(x) = 2x² − 4x − 1, what is f(3)?",
     "choices": [
       {
         "id": "A",
-        "text": "(5, 28)",
-        "rationale": "At x = 5, y = 26, not 28."
+        "text": "-31",
+        "rationale": "(−k)² is positive; don't carry the sign through the square."
       },
       {
         "id": "B",
-        "text": "(−3, 12)",
-        "rationale": "At x = −3, y = 10, not 12."
-      },
-      {
-        "id": "C",
-        "text": "(−5, 26)",
+        "text": "5",
         "rationale": "Correct."
       },
       {
+        "id": "C",
+        "text": "-7",
+        "rationale": "This squares only the coefficient, not x."
+      },
+      {
         "id": "D",
-        "text": "(−2, 7)",
-        "rationale": "At x = −2, y = 5, not 7."
+        "text": "29",
+        "rationale": "Watch the sign on the middle term."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Substitute x = −5: y = (−5)² + 1 = 26.",
-    "estimated_time_seconds": 75,
+    "correct_choice": "B",
+    "explanation": "f(3) = 2·(3)² − 4·(3) − 1 = 18 − 12 − 1 = 5.",
+    "estimated_time_seconds": 85,
     "tags": [
       "functions",
-      "graph",
-      "family:fn_graph_point"
+      "evaluate",
+      "family:fn_evaluate"
     ],
-    "answer_verification": "(−5, 26)"
+    "answer_verification": "f(3)=5"
   },
   {
-    "question_id": "sat-math-functions-medium-b0054",
+    "question_id": "sat-math-functions-medium-b0018",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2470,41 +840,41 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = (x + 2)/(x − 2). For what value of x is f(x) = 0?",
+    "prompt": "The function f is defined by f(x) = 7x + 35. For what value of x is f(x) = 0?",
     "choices": [
       {
         "id": "A",
-        "text": "3",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "7",
+        "rationale": "The zero is −b/a, not the coefficient."
       },
       {
         "id": "B",
-        "text": "2",
-        "rationale": "That makes the denominator 0, so f is undefined there."
+        "text": "35",
+        "rationale": "That is f(0), the y-intercept, not the zero."
       },
       {
         "id": "C",
-        "text": "-2",
+        "text": "-5",
         "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "0",
-        "rationale": "f(0) equals a/b, which isn't 0."
+        "text": "5",
+        "rationale": "Sign slip when moving the constant."
       }
     ],
     "correct_choice": "C",
-    "explanation": "A fraction is 0 when its numerator is 0 (and the denominator isn't): x + 2 = 0 gives x = −2.",
-    "estimated_time_seconds": 75,
+    "explanation": "Set 7x + 35 = 0: 7x = −35, so x = −5.",
+    "estimated_time_seconds": 80,
     "tags": [
       "functions",
-      "rational",
-      "family:fn_undefined"
+      "solve",
+      "family:fn_solve_input"
     ],
-    "answer_verification": "x=-2"
+    "answer_verification": "x=-5"
   },
   {
-    "question_id": "sat-math-functions-medium-b0055",
+    "question_id": "sat-math-functions-medium-b0019",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2549,7 +919,7 @@
     "answer_verification": "interpret C(0)"
   },
   {
-    "question_id": "sat-math-functions-medium-b0056",
+    "question_id": "sat-math-functions-medium-b0020",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2594,7 +964,7 @@
     "answer_verification": "val=-30"
   },
   {
-    "question_id": "sat-math-functions-medium-b0057",
+    "question_id": "sat-math-functions-medium-b0021",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2639,7 +1009,7 @@
     "answer_verification": "(2, 5)"
   },
   {
-    "question_id": "sat-math-functions-medium-b0058",
+    "question_id": "sat-math-functions-medium-b0022",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2684,7 +1054,7 @@
     "answer_verification": "(1, −5)"
   },
   {
-    "question_id": "sat-math-functions-medium-b0059",
+    "question_id": "sat-math-functions-medium-b0023",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2729,7 +1099,7 @@
     "answer_verification": "rate=15"
   },
   {
-    "question_id": "sat-math-functions-medium-b0060",
+    "question_id": "sat-math-functions-medium-b0024",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2774,7 +1144,7 @@
     "answer_verification": "rate=-14"
   },
   {
-    "question_id": "sat-math-functions-medium-b0061",
+    "question_id": "sat-math-functions-medium-b0025",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2819,7 +1189,7 @@
     "answer_verification": "val=8"
   },
   {
-    "question_id": "sat-math-functions-medium-b0062",
+    "question_id": "sat-math-functions-medium-b0026",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2864,7 +1234,7 @@
     "answer_verification": "(−4, 18)"
   },
   {
-    "question_id": "sat-math-functions-medium-b0063",
+    "question_id": "sat-math-functions-medium-b0027",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2909,7 +1279,7 @@
     "answer_verification": "x=-4"
   },
   {
-    "question_id": "sat-math-functions-medium-b0064",
+    "question_id": "sat-math-functions-medium-b0028",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2954,7 +1324,7 @@
     "answer_verification": "f(-2)=-12"
   },
   {
-    "question_id": "sat-math-functions-medium-b0065",
+    "question_id": "sat-math-functions-medium-b0029",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2999,7 +1369,7 @@
     "answer_verification": "val=-52"
   },
   {
-    "question_id": "sat-math-functions-medium-b0066",
+    "question_id": "sat-math-functions-medium-b0030",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3044,7 +1414,7 @@
     "answer_verification": "interpret C(0)"
   },
   {
-    "question_id": "sat-math-functions-medium-b0067",
+    "question_id": "sat-math-functions-medium-b0031",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3089,7 +1459,7 @@
     "answer_verification": "x=8"
   },
   {
-    "question_id": "sat-math-functions-medium-b0068",
+    "question_id": "sat-math-functions-medium-b0032",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3134,7 +1504,7 @@
     "answer_verification": "val=11"
   },
   {
-    "question_id": "sat-math-functions-medium-b0069",
+    "question_id": "sat-math-functions-medium-b0033",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3179,7 +1549,7 @@
     "answer_verification": "val=-29"
   },
   {
-    "question_id": "sat-math-functions-medium-b0070",
+    "question_id": "sat-math-functions-medium-b0034",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3224,7 +1594,7 @@
     "answer_verification": "x=-5"
   },
   {
-    "question_id": "sat-math-functions-medium-b0071",
+    "question_id": "sat-math-functions-medium-b0035",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3269,7 +1639,7 @@
     "answer_verification": "(4, 23)"
   },
   {
-    "question_id": "sat-math-functions-medium-b0072",
+    "question_id": "sat-math-functions-medium-b0036",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3314,7 +1684,7 @@
     "answer_verification": "val=-21"
   },
   {
-    "question_id": "sat-math-functions-medium-b0073",
+    "question_id": "sat-math-functions-medium-b0037",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3359,7 +1729,7 @@
     "answer_verification": "(0, −9)"
   },
   {
-    "question_id": "sat-math-functions-medium-b0074",
+    "question_id": "sat-math-functions-medium-b0038",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3404,7 +1774,7 @@
     "answer_verification": "interpret p(0)"
   },
   {
-    "question_id": "sat-math-functions-medium-b0075",
+    "question_id": "sat-math-functions-medium-b0039",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3434,7 +1804,7 @@
     "answer_verification": "val=3"
   },
   {
-    "question_id": "sat-math-functions-medium-b0076",
+    "question_id": "sat-math-functions-medium-b0040",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3464,7 +1834,7 @@
     "answer_verification": "val=5"
   },
   {
-    "question_id": "sat-math-functions-medium-b0077",
+    "question_id": "sat-math-functions-medium-b0041",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3509,7 +1879,7 @@
     "answer_verification": "f(0)=-6"
   },
   {
-    "question_id": "sat-math-functions-medium-b0078",
+    "question_id": "sat-math-functions-medium-b0042",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3539,7 +1909,7 @@
     "answer_verification": "val=5"
   },
   {
-    "question_id": "sat-math-functions-medium-b0079",
+    "question_id": "sat-math-functions-medium-b0043",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3569,7 +1939,7 @@
     "answer_verification": "val=1"
   },
   {
-    "question_id": "sat-math-functions-medium-b0080",
+    "question_id": "sat-math-functions-medium-b0044",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3614,7 +1984,7 @@
     "answer_verification": "x=-6"
   },
   {
-    "question_id": "sat-math-functions-medium-b0081",
+    "question_id": "sat-math-functions-medium-b0045",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3659,7 +2029,7 @@
     "answer_verification": "x=-6"
   },
   {
-    "question_id": "sat-math-functions-medium-b0082",
+    "question_id": "sat-math-functions-medium-b0046",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3704,7 +2074,7 @@
     "answer_verification": "x=6"
   },
   {
-    "question_id": "sat-math-functions-medium-b0083",
+    "question_id": "sat-math-functions-medium-b0047",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3749,7 +2119,7 @@
     "answer_verification": "x=-9"
   },
   {
-    "question_id": "sat-math-functions-medium-b0084",
+    "question_id": "sat-math-functions-medium-b0048",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3794,7 +2164,7 @@
     "answer_verification": "x=-4"
   },
   {
-    "question_id": "sat-math-functions-medium-b0085",
+    "question_id": "sat-math-functions-medium-b0049",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3839,7 +2209,7 @@
     "answer_verification": "interpret p(0)"
   },
   {
-    "question_id": "sat-math-functions-medium-b0086",
+    "question_id": "sat-math-functions-medium-b0050",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3884,7 +2254,7 @@
     "answer_verification": "x=-9"
   },
   {
-    "question_id": "sat-math-functions-medium-b0087",
+    "question_id": "sat-math-functions-medium-b0051",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3929,7 +2299,7 @@
     "answer_verification": "x=-6"
   },
   {
-    "question_id": "sat-math-functions-medium-b0088",
+    "question_id": "sat-math-functions-medium-b0052",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3974,7 +2344,7 @@
     "answer_verification": "interpret h(0)"
   },
   {
-    "question_id": "sat-math-functions-medium-b0089",
+    "question_id": "sat-math-functions-medium-b0053",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4019,7 +2389,7 @@
     "answer_verification": "val=-53"
   },
   {
-    "question_id": "sat-math-functions-medium-b0090",
+    "question_id": "sat-math-functions-medium-b0054",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4096,7 +2466,7 @@
     "answer_verification": "val=51"
   },
   {
-    "question_id": "sat-math-functions-medium-b0091",
+    "question_id": "sat-math-functions-medium-b0055",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4141,7 +2511,7 @@
     "answer_verification": "val=-3"
   },
   {
-    "question_id": "sat-math-functions-medium-b0092",
+    "question_id": "sat-math-functions-medium-b0056",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4186,7 +2556,7 @@
     "answer_verification": "interpret C(0)"
   },
   {
-    "question_id": "sat-math-functions-medium-b0093",
+    "question_id": "sat-math-functions-medium-b0057",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4231,7 +2601,7 @@
     "answer_verification": "interpret h(0)"
   },
   {
-    "question_id": "sat-math-functions-medium-b0094",
+    "question_id": "sat-math-functions-medium-b0058",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4276,7 +2646,7 @@
     "answer_verification": "rate=-2"
   },
   {
-    "question_id": "sat-math-functions-medium-b0095",
+    "question_id": "sat-math-functions-medium-b0059",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4321,7 +2691,7 @@
     "answer_verification": "(−2, −4)"
   },
   {
-    "question_id": "sat-math-functions-medium-b0096",
+    "question_id": "sat-math-functions-medium-b0060",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4366,7 +2736,7 @@
     "answer_verification": "val=1"
   },
   {
-    "question_id": "sat-math-functions-medium-b0097",
+    "question_id": "sat-math-functions-medium-b0061",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4396,7 +2766,7 @@
     "answer_verification": "val=6"
   },
   {
-    "question_id": "sat-math-functions-medium-b0098",
+    "question_id": "sat-math-functions-medium-b0062",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4441,7 +2811,7 @@
     "answer_verification": "(2, 11)"
   },
   {
-    "question_id": "sat-math-functions-medium-b0099",
+    "question_id": "sat-math-functions-medium-b0063",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4486,7 +2856,7 @@
     "answer_verification": "(5, 24)"
   },
   {
-    "question_id": "sat-math-functions-medium-b0100",
+    "question_id": "sat-math-functions-medium-b0064",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4516,7 +2886,7 @@
     "answer_verification": "val=7"
   },
   {
-    "question_id": "sat-math-functions-medium-b0101",
+    "question_id": "sat-math-functions-medium-b0065",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4561,7 +2931,7 @@
     "answer_verification": "f(-5)=136"
   },
   {
-    "question_id": "sat-math-functions-medium-b0102",
+    "question_id": "sat-math-functions-medium-b0066",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4606,7 +2976,7 @@
     "answer_verification": "interpret C(0)"
   },
   {
-    "question_id": "sat-math-functions-medium-b0103",
+    "question_id": "sat-math-functions-medium-b0067",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4651,7 +3021,7 @@
     "answer_verification": "val=-50"
   },
   {
-    "question_id": "sat-math-functions-medium-b0104",
+    "question_id": "sat-math-functions-medium-b0068",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4696,7 +3066,7 @@
     "answer_verification": "x=-4"
   },
   {
-    "question_id": "sat-math-functions-medium-b0105",
+    "question_id": "sat-math-functions-medium-b0069",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4741,7 +3111,7 @@
     "answer_verification": "val=-21"
   },
   {
-    "question_id": "sat-math-functions-medium-b0106",
+    "question_id": "sat-math-functions-medium-b0070",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4771,7 +3141,7 @@
     "answer_verification": "val=12"
   },
   {
-    "question_id": "sat-math-functions-medium-b0107",
+    "question_id": "sat-math-functions-medium-b0071",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4816,7 +3186,7 @@
     "answer_verification": "rate=10"
   },
   {
-    "question_id": "sat-math-functions-medium-b0108",
+    "question_id": "sat-math-functions-medium-b0072",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4861,7 +3231,7 @@
     "answer_verification": "x=-2"
   },
   {
-    "question_id": "sat-math-functions-medium-b0109",
+    "question_id": "sat-math-functions-medium-b0073",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4906,7 +3276,7 @@
     "answer_verification": "x=2"
   },
   {
-    "question_id": "sat-math-functions-medium-b0110",
+    "question_id": "sat-math-functions-medium-b0074",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4936,7 +3306,7 @@
     "answer_verification": "val=9"
   },
   {
-    "question_id": "sat-math-functions-medium-b0111",
+    "question_id": "sat-math-functions-medium-b0075",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5013,7 +3383,7 @@
     "answer_verification": "val=-24"
   },
   {
-    "question_id": "sat-math-functions-medium-b0112",
+    "question_id": "sat-math-functions-medium-b0076",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5058,7 +3428,7 @@
     "answer_verification": "x=-4"
   },
   {
-    "question_id": "sat-math-functions-medium-b0113",
+    "question_id": "sat-math-functions-medium-b0077",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5103,7 +3473,7 @@
     "answer_verification": "rate=-6"
   },
   {
-    "question_id": "sat-math-functions-medium-b0114",
+    "question_id": "sat-math-functions-medium-b0078",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5148,7 +3518,7 @@
     "answer_verification": "x=-9"
   },
   {
-    "question_id": "sat-math-functions-medium-b0115",
+    "question_id": "sat-math-functions-medium-b0079",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5193,7 +3563,7 @@
     "answer_verification": "x=-5"
   },
   {
-    "question_id": "sat-math-functions-medium-b0116",
+    "question_id": "sat-math-functions-medium-b0080",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5238,7 +3608,7 @@
     "answer_verification": "f(6)=192"
   },
   {
-    "question_id": "sat-math-functions-medium-b0117",
+    "question_id": "sat-math-functions-medium-b0081",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5315,7 +3685,7 @@
     "answer_verification": "val=35"
   },
   {
-    "question_id": "sat-math-functions-medium-b0118",
+    "question_id": "sat-math-functions-medium-b0082",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5360,7 +3730,7 @@
     "answer_verification": "interpret C(0)"
   },
   {
-    "question_id": "sat-math-functions-medium-b0119",
+    "question_id": "sat-math-functions-medium-b0083",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5405,7 +3775,7 @@
     "answer_verification": "x=2"
   },
   {
-    "question_id": "sat-math-functions-medium-b0120",
+    "question_id": "sat-math-functions-medium-b0084",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5435,7 +3805,7 @@
     "answer_verification": "val=11"
   },
   {
-    "question_id": "sat-math-functions-medium-b0121",
+    "question_id": "sat-math-functions-medium-b0085",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5465,7 +3835,7 @@
     "answer_verification": "val=1"
   },
   {
-    "question_id": "sat-math-functions-medium-b0122",
+    "question_id": "sat-math-functions-medium-b0086",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5510,7 +3880,7 @@
     "answer_verification": "interpret p(0)"
   },
   {
-    "question_id": "sat-math-functions-medium-b0123",
+    "question_id": "sat-math-functions-medium-b0087",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5555,7 +3925,7 @@
     "answer_verification": "x=5"
   },
   {
-    "question_id": "sat-math-functions-medium-b0124",
+    "question_id": "sat-math-functions-medium-b0088",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5600,7 +3970,7 @@
     "answer_verification": "x=2"
   },
   {
-    "question_id": "sat-math-functions-medium-b0125",
+    "question_id": "sat-math-functions-medium-b0089",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5645,7 +4015,7 @@
     "answer_verification": "f(-5)=24"
   },
   {
-    "question_id": "sat-math-functions-medium-b0126",
+    "question_id": "sat-math-functions-medium-b0090",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5690,7 +4060,7 @@
     "answer_verification": "val=-23"
   },
   {
-    "question_id": "sat-math-functions-medium-b0127",
+    "question_id": "sat-math-functions-medium-b0091",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5735,7 +4105,7 @@
     "answer_verification": "(2, 11)"
   },
   {
-    "question_id": "sat-math-functions-medium-b0128",
+    "question_id": "sat-math-functions-medium-b0092",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5780,7 +4150,7 @@
     "answer_verification": "x=2"
   },
   {
-    "question_id": "sat-math-functions-medium-b0129",
+    "question_id": "sat-math-functions-medium-b0093",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5825,7 +4195,7 @@
     "answer_verification": "rate=10"
   },
   {
-    "question_id": "sat-math-functions-medium-b0130",
+    "question_id": "sat-math-functions-medium-b0094",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5870,7 +4240,7 @@
     "answer_verification": "interpret C(0)"
   },
   {
-    "question_id": "sat-math-functions-medium-b0131",
+    "question_id": "sat-math-functions-medium-b0095",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5915,7 +4285,7 @@
     "answer_verification": "rate=3"
   },
   {
-    "question_id": "sat-math-functions-medium-b0132",
+    "question_id": "sat-math-functions-medium-b0096",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5960,7 +4330,7 @@
     "answer_verification": "interpret p(0)"
   },
   {
-    "question_id": "sat-math-functions-medium-b0133",
+    "question_id": "sat-math-functions-medium-b0097",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6005,7 +4375,7 @@
     "answer_verification": "rate=13"
   },
   {
-    "question_id": "sat-math-functions-medium-b0134",
+    "question_id": "sat-math-functions-medium-b0098",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6050,7 +4420,7 @@
     "answer_verification": "interpret p(0)"
   },
   {
-    "question_id": "sat-math-functions-medium-b0135",
+    "question_id": "sat-math-functions-medium-b0099",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6095,7 +4465,7 @@
     "answer_verification": "val=26"
   },
   {
-    "question_id": "sat-math-functions-medium-b0136",
+    "question_id": "sat-math-functions-medium-b0100",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6172,7 +4542,7 @@
     "answer_verification": "val=30"
   },
   {
-    "question_id": "sat-math-functions-medium-b0137",
+    "question_id": "sat-math-functions-medium-b0101",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6217,7 +4587,7 @@
     "answer_verification": "x=6"
   },
   {
-    "question_id": "sat-math-functions-medium-b0138",
+    "question_id": "sat-math-functions-medium-b0102",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6247,7 +4617,7 @@
     "answer_verification": "val=3"
   },
   {
-    "question_id": "sat-math-functions-medium-b0139",
+    "question_id": "sat-math-functions-medium-b0103",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6292,7 +4662,7 @@
     "answer_verification": "f(-2)=16"
   },
   {
-    "question_id": "sat-math-functions-medium-b0140",
+    "question_id": "sat-math-functions-medium-b0104",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6369,7 +4739,7 @@
     "answer_verification": "val=15"
   },
   {
-    "question_id": "sat-math-functions-medium-b0141",
+    "question_id": "sat-math-functions-medium-b0105",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6414,7 +4784,7 @@
     "answer_verification": "rate=-6"
   },
   {
-    "question_id": "sat-math-functions-medium-b0142",
+    "question_id": "sat-math-functions-medium-b0106",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6459,7 +4829,7 @@
     "answer_verification": "x=7"
   },
   {
-    "question_id": "sat-math-functions-medium-b0143",
+    "question_id": "sat-math-functions-medium-b0107",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6504,7 +4874,7 @@
     "answer_verification": "rate=11"
   },
   {
-    "question_id": "sat-math-functions-medium-b0144",
+    "question_id": "sat-math-functions-medium-b0108",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6549,7 +4919,7 @@
     "answer_verification": "interpret h(0)"
   },
   {
-    "question_id": "sat-math-functions-medium-b0145",
+    "question_id": "sat-math-functions-medium-b0109",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6594,7 +4964,7 @@
     "answer_verification": "f(5)=83"
   },
   {
-    "question_id": "sat-math-functions-medium-b0146",
+    "question_id": "sat-math-functions-medium-b0110",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6639,7 +5009,7 @@
     "answer_verification": "x=-6"
   },
   {
-    "question_id": "sat-math-functions-medium-b0147",
+    "question_id": "sat-math-functions-medium-b0111",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6684,7 +5054,7 @@
     "answer_verification": "interpret p(0)"
   },
   {
-    "question_id": "sat-math-functions-medium-b0148",
+    "question_id": "sat-math-functions-medium-b0112",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6729,7 +5099,7 @@
     "answer_verification": "rate=-13"
   },
   {
-    "question_id": "sat-math-functions-medium-b0149",
+    "question_id": "sat-math-functions-medium-b0113",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6774,7 +5144,7 @@
     "answer_verification": "val=73"
   },
   {
-    "question_id": "sat-math-functions-medium-b0150",
+    "question_id": "sat-math-functions-medium-b0114",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6819,7 +5189,7 @@
     "answer_verification": "f(-2)=-15"
   },
   {
-    "question_id": "sat-math-functions-medium-b0151",
+    "question_id": "sat-math-functions-medium-b0115",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6864,7 +5234,7 @@
     "answer_verification": "val=45"
   },
   {
-    "question_id": "sat-math-functions-medium-b0152",
+    "question_id": "sat-math-functions-medium-b0116",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6909,7 +5279,7 @@
     "answer_verification": "(−2, 2)"
   },
   {
-    "question_id": "sat-math-functions-medium-b0153",
+    "question_id": "sat-math-functions-medium-b0117",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6939,7 +5309,7 @@
     "answer_verification": "val=13"
   },
   {
-    "question_id": "sat-math-functions-medium-b0154",
+    "question_id": "sat-math-functions-medium-b0118",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6984,7 +5354,7 @@
     "answer_verification": "rate=-8"
   },
   {
-    "question_id": "sat-math-functions-medium-b0155",
+    "question_id": "sat-math-functions-medium-b0119",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7029,7 +5399,7 @@
     "answer_verification": "f(3)=23"
   },
   {
-    "question_id": "sat-math-functions-medium-b0156",
+    "question_id": "sat-math-functions-medium-b0120",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7074,7 +5444,7 @@
     "answer_verification": "x=-5"
   },
   {
-    "question_id": "sat-math-functions-medium-b0157",
+    "question_id": "sat-math-functions-medium-b0121",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7151,7 +5521,7 @@
     "answer_verification": "val=-1"
   },
   {
-    "question_id": "sat-math-functions-medium-b0158",
+    "question_id": "sat-math-functions-medium-b0122",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7196,7 +5566,7 @@
     "answer_verification": "val=55"
   },
   {
-    "question_id": "sat-math-functions-medium-b0159",
+    "question_id": "sat-math-functions-medium-b0123",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7226,7 +5596,7 @@
     "answer_verification": "val=11"
   },
   {
-    "question_id": "sat-math-functions-medium-b0160",
+    "question_id": "sat-math-functions-medium-b0124",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7303,7 +5673,7 @@
     "answer_verification": "val=57"
   },
   {
-    "question_id": "sat-math-functions-medium-b0161",
+    "question_id": "sat-math-functions-medium-b0125",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7333,7 +5703,7 @@
     "answer_verification": "val=2"
   },
   {
-    "question_id": "sat-math-functions-medium-b0162",
+    "question_id": "sat-math-functions-medium-b0126",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7363,7 +5733,7 @@
     "answer_verification": "val=7"
   },
   {
-    "question_id": "sat-math-functions-medium-b0163",
+    "question_id": "sat-math-functions-medium-b0127",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7408,7 +5778,7 @@
     "answer_verification": "x=3"
   },
   {
-    "question_id": "sat-math-functions-medium-b0164",
+    "question_id": "sat-math-functions-medium-b0128",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7419,30 +5789,30 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = (x + 2)/(x + 8). For what value of x is f(x) undefined?",
+    "prompt": "The function f is defined by f(x) = (x + 1)/(x + 8). For what value of x is f(x) undefined?",
     "choices": [
       {
         "id": "A",
-        "text": "-8",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "-2",
-        "rationale": "That makes the numerator 0, so f(x) = 0 there; the function is defined."
-      },
-      {
-        "id": "C",
         "text": "8",
         "rationale": "Solve x + b = 0, so x = −b."
       },
       {
-        "id": "D",
-        "text": "2",
+        "id": "B",
+        "text": "-8",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "1",
         "rationale": "The numerator's constant doesn't make f undefined."
+      },
+      {
+        "id": "D",
+        "text": "-1",
+        "rationale": "That makes the numerator 0, so f(x) = 0 there; the function is defined."
       }
     ],
-    "correct_choice": "A",
+    "correct_choice": "B",
     "explanation": "A fraction is undefined when its denominator is 0: x + 8 = 0 gives x = −8.",
     "estimated_time_seconds": 75,
     "tags": [
@@ -7453,7 +5823,7 @@
     "answer_verification": "x=-8"
   },
   {
-    "question_id": "sat-math-functions-medium-b0165",
+    "question_id": "sat-math-functions-medium-b0129",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7464,7 +5834,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "evaluate",
-    "prompt": "If f(x) = 5x² − x − 1, what is f(−3)?",
+    "prompt": "The function f is defined by f(x) = 6x² − 9x + 2. What is the value of f(5)?",
     "choices": [
       {
         "id": "A",
@@ -7473,32 +5843,109 @@
       },
       {
         "id": "B",
-        "text": "41",
+        "text": "197",
         "rationale": "Watch the sign on the middle term."
       },
       {
         "id": "C",
-        "text": "-43",
-        "rationale": "(−k)² is positive; don't carry the sign through the square."
+        "text": "107",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "47",
-        "rationale": "Correct."
+        "text": "-193",
+        "rationale": "(−k)² is positive; don't carry the sign through the square."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "f(−3) = 5·(−3)² − 1·(−3) − 1 = 45 + 3 − 1 = 47.",
+    "correct_choice": "C",
+    "explanation": "f(5) = 6·(5)² − 9·(5) + 2 = 150 − 45 + 2 = 107.",
     "estimated_time_seconds": 85,
     "tags": [
       "functions",
       "evaluate",
       "family:fn_evaluate"
     ],
-    "answer_verification": "f(-3)=47"
+    "answer_verification": "f(5)=107"
   },
   {
-    "question_id": "sat-math-functions-medium-b0166",
+    "question_id": "sat-math-functions-medium-b0130",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "functions",
+    "lesson_id": "sat-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "evaluate",
+    "prompt": "The table gives values of the linear function f. What is the value of f(6)?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "3",
+        "rationale": "Off by one step of the pattern."
+      },
+      {
+        "id": "B",
+        "text": "-3",
+        "rationale": "Multiply the slope by k; don't add."
+      },
+      {
+        "id": "C",
+        "text": "12",
+        "rationale": "Include the constant term b."
+      },
+      {
+        "id": "D",
+        "text": "1",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "The outputs change by 2 for each increase of 1 in x, so f(x) = 2x − 11 and f(6) = 1.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "functions",
+      "table",
+      "family:fn_table"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Values of f",
+        "headers": [
+          "x",
+          "f(x)"
+        ],
+        "rows": [
+          [
+            "0",
+            "-11"
+          ],
+          [
+            "3",
+            "-5"
+          ],
+          [
+            "4",
+            "-3"
+          ],
+          [
+            "8",
+            "5"
+          ],
+          [
+            "9",
+            "7"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "val=1"
+  },
+  {
+    "question_id": "sat-math-functions-medium-b0131",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7509,131 +5956,41 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = x² + 4x + 2. What is the average rate of change of f over the interval from x = 5 to x = 6?",
+    "prompt": "The function C(n) = 4n + 343 gives the cost, in dollars, of printing n posters. Which of the following is the best interpretation of C(0) = 343?",
     "choices": [
       {
         "id": "A",
-        "text": "-15",
-        "rationale": "Sign slip."
+        "text": "the total change in the output of the function over the first 343 units of input",
+        "rationale": "The constant term is a starting value, not a change over an interval."
       },
       {
         "id": "B",
-        "text": "109/2",
-        "rationale": "Average rate of change is not the average of the outputs."
+        "text": "the cost per poster",
+        "rationale": "That describes the coefficient of the variable, the rate of change."
       },
       {
         "id": "C",
-        "text": "15",
+        "text": "the cost before any posters are printed",
         "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "31/3",
-        "rationale": "Use the change in f over the change in x, not f(x₂)/x₂."
+        "text": "the number of posters that cost $343",
+        "rationale": "That would be an input (a time or count) set equal to the output, which reverses the roles."
       }
     ],
     "correct_choice": "C",
-    "explanation": "f(5) = 47 and f(6) = 62; average rate = (62 − (47))/(6 − (5)) = 15.",
-    "estimated_time_seconds": 95,
+    "explanation": "C(0) is the output when the input is 0, so 343 is the cost before any posters are printed.",
+    "estimated_time_seconds": 85,
     "tags": [
       "functions",
-      "rate-of-change",
-      "family:fn_rate_of_change"
+      "interpret",
+      "family:fn_interpret"
     ],
-    "answer_verification": "rate=15"
+    "answer_verification": "interpret C(0)"
   },
   {
-    "question_id": "sat-math-functions-medium-b0167",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "functions",
-    "lesson_id": "sat-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "interpret",
-    "prompt": "If f(x) = x² + 4x − 1, what is the average rate of change of f between x = 3 and x = 9?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "116/9",
-        "rationale": "Use the change in f over the change in x, not f(x₂)/x₂."
-      },
-      {
-        "id": "B",
-        "text": "-16",
-        "rationale": "Sign slip."
-      },
-      {
-        "id": "C",
-        "text": "96",
-        "rationale": "Divide by the change in x."
-      },
-      {
-        "id": "D",
-        "text": "16",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "f(3) = 20 and f(9) = 116; average rate = (116 − (20))/(9 − (3)) = 16.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "functions",
-      "rate-of-change",
-      "family:fn_rate_of_change"
-    ],
-    "answer_verification": "rate=16"
-  },
-  {
-    "question_id": "sat-math-functions-medium-b0168",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "functions",
-    "lesson_id": "sat-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "interpret",
-    "prompt": "If f(x) = x² − x − 8, what is the average rate of change of f between x = −1 and x = 2?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-3",
-        "rationale": "Use the change in f over the change in x, not f(x₂)/x₂."
-      },
-      {
-        "id": "B",
-        "text": "-6",
-        "rationale": "Average rate of change is not the average of the outputs."
-      },
-      {
-        "id": "C",
-        "text": "1",
-        "rationale": "Sign slip."
-      },
-      {
-        "id": "D",
-        "text": "0",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "f(−1) = −6 and f(2) = −6; average rate = (−6 − (−6))/(2 − (−1)) = 0.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "functions",
-      "rate-of-change",
-      "family:fn_rate_of_change"
-    ],
-    "answer_verification": "rate=0"
-  },
-  {
-    "question_id": "sat-math-functions-medium-b0169",
+    "question_id": "sat-math-functions-medium-b0132",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7678,7 +6035,7 @@
     "answer_verification": "f(-2)=15"
   },
   {
-    "question_id": "sat-math-functions-medium-b0170",
+    "question_id": "sat-math-functions-medium-b0133",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7723,7 +6080,7 @@
     "answer_verification": "rate=-10"
   },
   {
-    "question_id": "sat-math-functions-medium-b0171",
+    "question_id": "sat-math-functions-medium-b0134",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7768,7 +6125,7 @@
     "answer_verification": "x=-1"
   },
   {
-    "question_id": "sat-math-functions-medium-b0172",
+    "question_id": "sat-math-functions-medium-b0135",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7813,7 +6170,7 @@
     "answer_verification": "val=11"
   },
   {
-    "question_id": "sat-math-functions-medium-b0173",
+    "question_id": "sat-math-functions-medium-b0136",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7858,7 +6215,7 @@
     "answer_verification": "x=4"
   },
   {
-    "question_id": "sat-math-functions-medium-b0174",
+    "question_id": "sat-math-functions-medium-b0137",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7903,7 +6260,7 @@
     "answer_verification": "val=97"
   },
   {
-    "question_id": "sat-math-functions-medium-b0175",
+    "question_id": "sat-math-functions-medium-b0138",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7948,7 +6305,7 @@
     "answer_verification": "rate=-3"
   },
   {
-    "question_id": "sat-math-functions-medium-b0176",
+    "question_id": "sat-math-functions-medium-b0139",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7978,7 +6335,7 @@
     "answer_verification": "val=10"
   },
   {
-    "question_id": "sat-math-functions-medium-b0177",
+    "question_id": "sat-math-functions-medium-b0140",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8023,7 +6380,7 @@
     "answer_verification": "interpret p(0)"
   },
   {
-    "question_id": "sat-math-functions-medium-b0178",
+    "question_id": "sat-math-functions-medium-b0141",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8068,7 +6425,7 @@
     "answer_verification": "interpret h(0)"
   },
   {
-    "question_id": "sat-math-functions-medium-b0179",
+    "question_id": "sat-math-functions-medium-b0142",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8113,7 +6470,7 @@
     "answer_verification": "interpret C(0)"
   },
   {
-    "question_id": "sat-math-functions-medium-b0180",
+    "question_id": "sat-math-functions-medium-b0143",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8158,7 +6515,7 @@
     "answer_verification": "interpret h(0)"
   },
   {
-    "question_id": "sat-math-functions-medium-b0181",
+    "question_id": "sat-math-functions-medium-b0144",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8203,7 +6560,7 @@
     "answer_verification": "(−1, −3)"
   },
   {
-    "question_id": "sat-math-functions-medium-b0182",
+    "question_id": "sat-math-functions-medium-b0145",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8248,7 +6605,7 @@
     "answer_verification": "x=-6"
   },
   {
-    "question_id": "sat-math-functions-medium-b0183",
+    "question_id": "sat-math-functions-medium-b0146",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8293,7 +6650,7 @@
     "answer_verification": "f(0)=4"
   },
   {
-    "question_id": "sat-math-functions-medium-b0184",
+    "question_id": "sat-math-functions-medium-b0147",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8323,7 +6680,7 @@
     "answer_verification": "val=15"
   },
   {
-    "question_id": "sat-math-functions-medium-b0185",
+    "question_id": "sat-math-functions-medium-b0148",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8368,7 +6725,7 @@
     "answer_verification": "rate=3"
   },
   {
-    "question_id": "sat-math-functions-medium-b0186",
+    "question_id": "sat-math-functions-medium-b0149",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8413,7 +6770,7 @@
     "answer_verification": "rate=5"
   },
   {
-    "question_id": "sat-math-functions-medium-b0187",
+    "question_id": "sat-math-functions-medium-b0150",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8458,7 +6815,7 @@
     "answer_verification": "interpret C(0)"
   },
   {
-    "question_id": "sat-math-functions-medium-b0188",
+    "question_id": "sat-math-functions-medium-b0151",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8503,7 +6860,7 @@
     "answer_verification": "rate=1"
   },
   {
-    "question_id": "sat-math-functions-medium-b0189",
+    "question_id": "sat-math-functions-medium-b0152",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8580,7 +6937,7 @@
     "answer_verification": "val=32"
   },
   {
-    "question_id": "sat-math-functions-medium-b0190",
+    "question_id": "sat-math-functions-medium-b0153",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8625,7 +6982,7 @@
     "answer_verification": "interpret C(0)"
   },
   {
-    "question_id": "sat-math-functions-medium-b0191",
+    "question_id": "sat-math-functions-medium-b0154",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8702,7 +7059,7 @@
     "answer_verification": "val=-26"
   },
   {
-    "question_id": "sat-math-functions-medium-b0192",
+    "question_id": "sat-math-functions-medium-b0155",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8747,7 +7104,7 @@
     "answer_verification": "(5, 20)"
   },
   {
-    "question_id": "sat-math-functions-medium-b0193",
+    "question_id": "sat-math-functions-medium-b0156",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8792,7 +7149,7 @@
     "answer_verification": "rate=1"
   },
   {
-    "question_id": "sat-math-functions-medium-b0194",
+    "question_id": "sat-math-functions-medium-b0157",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8837,7 +7194,7 @@
     "answer_verification": "(−3, 10)"
   },
   {
-    "question_id": "sat-math-functions-medium-b0195",
+    "question_id": "sat-math-functions-medium-b0158",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8867,7 +7224,7 @@
     "answer_verification": "val=5"
   },
   {
-    "question_id": "sat-math-functions-medium-b0196",
+    "question_id": "sat-math-functions-medium-b0159",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8912,7 +7269,7 @@
     "answer_verification": "val=67"
   },
   {
-    "question_id": "sat-math-functions-medium-b0197",
+    "question_id": "sat-math-functions-medium-b0160",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8957,7 +7314,7 @@
     "answer_verification": "f(-1)=12"
   },
   {
-    "question_id": "sat-math-functions-medium-b0198",
+    "question_id": "sat-math-functions-medium-b0161",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8987,7 +7344,7 @@
     "answer_verification": "val=4"
   },
   {
-    "question_id": "sat-math-functions-medium-b0199",
+    "question_id": "sat-math-functions-medium-b0162",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9032,7 +7389,7 @@
     "answer_verification": "f(1)=3"
   },
   {
-    "question_id": "sat-math-functions-medium-b0200",
+    "question_id": "sat-math-functions-medium-b0163",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9109,7 +7466,7 @@
     "answer_verification": "val=-9"
   },
   {
-    "question_id": "sat-math-functions-medium-b0201",
+    "question_id": "sat-math-functions-medium-b0164",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9154,7 +7511,7 @@
     "answer_verification": "interpret p(0)"
   },
   {
-    "question_id": "sat-math-functions-medium-b0202",
+    "question_id": "sat-math-functions-medium-b0165",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9199,7 +7556,7 @@
     "answer_verification": "(3, 11)"
   },
   {
-    "question_id": "sat-math-functions-medium-b0203",
+    "question_id": "sat-math-functions-medium-b0166",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9244,7 +7601,7 @@
     "answer_verification": "x=-6"
   },
   {
-    "question_id": "sat-math-functions-medium-b0204",
+    "question_id": "sat-math-functions-medium-b0167",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9321,7 +7678,7 @@
     "answer_verification": "val=-41"
   },
   {
-    "question_id": "sat-math-functions-medium-b0205",
+    "question_id": "sat-math-functions-medium-b0168",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9366,7 +7723,7 @@
     "answer_verification": "val=2"
   },
   {
-    "question_id": "sat-math-functions-medium-b0206",
+    "question_id": "sat-math-functions-medium-b0169",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9411,7 +7768,7 @@
     "answer_verification": "interpret C(0)"
   },
   {
-    "question_id": "sat-math-functions-medium-b0207",
+    "question_id": "sat-math-functions-medium-b0170",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9456,7 +7813,7 @@
     "answer_verification": "(−1, −3)"
   },
   {
-    "question_id": "sat-math-functions-medium-b0208",
+    "question_id": "sat-math-functions-medium-b0171",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9501,7 +7858,7 @@
     "answer_verification": "x=8"
   },
   {
-    "question_id": "sat-math-functions-medium-b0209",
+    "question_id": "sat-math-functions-medium-b0172",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9546,7 +7903,7 @@
     "answer_verification": "x=-1"
   },
   {
-    "question_id": "sat-math-functions-medium-b0210",
+    "question_id": "sat-math-functions-medium-b0173",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9591,7 +7948,7 @@
     "answer_verification": "val=-35"
   },
   {
-    "question_id": "sat-math-functions-medium-b0211",
+    "question_id": "sat-math-functions-medium-b0174",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9668,7 +8025,7 @@
     "answer_verification": "val=-14"
   },
   {
-    "question_id": "sat-math-functions-medium-b0212",
+    "question_id": "sat-math-functions-medium-b0175",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9713,7 +8070,7 @@
     "answer_verification": "f(0)=4"
   },
   {
-    "question_id": "sat-math-functions-medium-b0213",
+    "question_id": "sat-math-functions-medium-b0176",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9758,7 +8115,7 @@
     "answer_verification": "val=36"
   },
   {
-    "question_id": "sat-math-functions-medium-b0214",
+    "question_id": "sat-math-functions-medium-b0177",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9788,7 +8145,7 @@
     "answer_verification": "val=3"
   },
   {
-    "question_id": "sat-math-functions-medium-b0215",
+    "question_id": "sat-math-functions-medium-b0178",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9818,7 +8175,7 @@
     "answer_verification": "val=11"
   },
   {
-    "question_id": "sat-math-functions-medium-b0216",
+    "question_id": "sat-math-functions-medium-b0179",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9848,7 +8205,7 @@
     "answer_verification": "val=5"
   },
   {
-    "question_id": "sat-math-functions-medium-b0217",
+    "question_id": "sat-math-functions-medium-b0180",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9893,7 +8250,7 @@
     "answer_verification": "f(2)=12"
   },
   {
-    "question_id": "sat-math-functions-medium-b0218",
+    "question_id": "sat-math-functions-medium-b0181",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9938,7 +8295,7 @@
     "answer_verification": "rate=-4"
   },
   {
-    "question_id": "sat-math-functions-medium-b0219",
+    "question_id": "sat-math-functions-medium-b0182",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9983,7 +8340,7 @@
     "answer_verification": "interpret h(0)"
   },
   {
-    "question_id": "sat-math-functions-medium-b0220",
+    "question_id": "sat-math-functions-medium-b0183",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10028,7 +8385,7 @@
     "answer_verification": "rate=10"
   },
   {
-    "question_id": "sat-math-functions-medium-b0221",
+    "question_id": "sat-math-functions-medium-b0184",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10105,7 +8462,7 @@
     "answer_verification": "val=-16"
   },
   {
-    "question_id": "sat-math-functions-medium-b0222",
+    "question_id": "sat-math-functions-medium-b0185",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10150,7 +8507,7 @@
     "answer_verification": "interpret h(0)"
   },
   {
-    "question_id": "sat-math-functions-medium-b0223",
+    "question_id": "sat-math-functions-medium-b0186",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10195,7 +8552,7 @@
     "answer_verification": "f(0)=-5"
   },
   {
-    "question_id": "sat-math-functions-medium-b0224",
+    "question_id": "sat-math-functions-medium-b0187",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10225,7 +8582,7 @@
     "answer_verification": "val=12"
   },
   {
-    "question_id": "sat-math-functions-medium-b0225",
+    "question_id": "sat-math-functions-medium-b0188",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10270,7 +8627,7 @@
     "answer_verification": "x=4"
   },
   {
-    "question_id": "sat-math-functions-medium-b0226",
+    "question_id": "sat-math-functions-medium-b0189",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10300,7 +8657,7 @@
     "answer_verification": "val=5"
   },
   {
-    "question_id": "sat-math-functions-medium-b0227",
+    "question_id": "sat-math-functions-medium-b0190",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10345,7 +8702,7 @@
     "answer_verification": "x=7"
   },
   {
-    "question_id": "sat-math-functions-medium-b0228",
+    "question_id": "sat-math-functions-medium-b0191",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10390,7 +8747,7 @@
     "answer_verification": "x=-9"
   },
   {
-    "question_id": "sat-math-functions-medium-b0229",
+    "question_id": "sat-math-functions-medium-b0192",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10435,7 +8792,7 @@
     "answer_verification": "x=5"
   },
   {
-    "question_id": "sat-math-functions-medium-b0230",
+    "question_id": "sat-math-functions-medium-b0193",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10512,7 +8869,7 @@
     "answer_verification": "val=58"
   },
   {
-    "question_id": "sat-math-functions-medium-b0231",
+    "question_id": "sat-math-functions-medium-b0194",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10557,7 +8914,7 @@
     "answer_verification": "rate=-11"
   },
   {
-    "question_id": "sat-math-functions-medium-b0232",
+    "question_id": "sat-math-functions-medium-b0195",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10602,7 +8959,7 @@
     "answer_verification": "x=-5"
   },
   {
-    "question_id": "sat-math-functions-medium-b0233",
+    "question_id": "sat-math-functions-medium-b0196",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10647,7 +9004,7 @@
     "answer_verification": "f(-3)=53"
   },
   {
-    "question_id": "sat-math-functions-medium-b0234",
+    "question_id": "sat-math-functions-medium-b0197",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10692,7 +9049,7 @@
     "answer_verification": "f(6)=58"
   },
   {
-    "question_id": "sat-math-functions-medium-b0235",
+    "question_id": "sat-math-functions-medium-b0198",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10737,7 +9094,7 @@
     "answer_verification": "interpret h(0)"
   },
   {
-    "question_id": "sat-math-functions-medium-b0236",
+    "question_id": "sat-math-functions-medium-b0199",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10767,7 +9124,7 @@
     "answer_verification": "val=10"
   },
   {
-    "question_id": "sat-math-functions-medium-b0237",
+    "question_id": "sat-math-functions-medium-b0200",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10812,7 +9169,7 @@
     "answer_verification": "x=5"
   },
   {
-    "question_id": "sat-math-functions-medium-b0238",
+    "question_id": "sat-math-functions-medium-b0201",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10857,7 +9214,7 @@
     "answer_verification": "val=44"
   },
   {
-    "question_id": "sat-math-functions-medium-b0239",
+    "question_id": "sat-math-functions-medium-b0202",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10902,7 +9259,7 @@
     "answer_verification": "rate=-11"
   },
   {
-    "question_id": "sat-math-functions-medium-b0240",
+    "question_id": "sat-math-functions-medium-b0203",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10947,7 +9304,7 @@
     "answer_verification": "(1, 5)"
   },
   {
-    "question_id": "sat-math-functions-medium-b0241",
+    "question_id": "sat-math-functions-medium-b0204",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10992,7 +9349,7 @@
     "answer_verification": "f(-5)=-5"
   },
   {
-    "question_id": "sat-math-functions-medium-b0242",
+    "question_id": "sat-math-functions-medium-b0205",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11037,7 +9394,7 @@
     "answer_verification": "f(-4)=56"
   },
   {
-    "question_id": "sat-math-functions-medium-b0243",
+    "question_id": "sat-math-functions-medium-b0206",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11048,86 +9405,41 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = (x + 6)/(x + 9). For what value of x is f(x) undefined?",
+    "prompt": "The function f is defined by f(x) = (x + 5)/(x − 3). For what value of x is f(x) undefined?",
     "choices": [
       {
         "id": "A",
-        "text": "9",
-        "rationale": "Solve x + b = 0, so x = −b."
-      },
-      {
-        "id": "B",
-        "text": "-9",
+        "text": "3",
         "rationale": "Correct."
       },
       {
-        "id": "C",
-        "text": "6",
+        "id": "B",
+        "text": "5",
         "rationale": "The numerator's constant doesn't make f undefined."
       },
       {
-        "id": "D",
-        "text": "-6",
+        "id": "C",
+        "text": "-5",
         "rationale": "That makes the numerator 0, so f(x) = 0 there; the function is defined."
+      },
+      {
+        "id": "D",
+        "text": "-3",
+        "rationale": "Solve x + b = 0, so x = −b."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "A fraction is undefined when its denominator is 0: x + 9 = 0 gives x = −9.",
+    "correct_choice": "A",
+    "explanation": "A fraction is undefined when its denominator is 0: x − 3 = 0 gives x = 3.",
     "estimated_time_seconds": 75,
     "tags": [
       "functions",
       "rational",
       "family:fn_undefined"
     ],
-    "answer_verification": "x=-9"
+    "answer_verification": "x=3"
   },
   {
-    "question_id": "sat-math-functions-medium-b0244",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "functions",
-    "lesson_id": "sat-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "interpret",
-    "prompt": "The function p(t) = 231 − 6t gives the amount of water, in gallons, remaining in a tank t minutes after a valve opens. Which of the following is the best interpretation of p(0) = 231?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "the amount of water in the tank when the valve opens",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "the number of gallons drained each minute",
-        "rationale": "That describes the coefficient of the variable, the rate of change."
-      },
-      {
-        "id": "C",
-        "text": "the total change in the output of the function over the first 231 units of input",
-        "rationale": "The constant term is a starting value, not a change over an interval."
-      },
-      {
-        "id": "D",
-        "text": "the number of minutes until the tank is empty",
-        "rationale": "That would be an input (a time or count) set equal to the output, which reverses the roles."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "p(0) is the output when the input is 0, so 231 is the amount of water in the tank when the valve opens.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "functions",
-      "interpret",
-      "family:fn_interpret"
-    ],
-    "answer_verification": "interpret p(0)"
-  },
-  {
-    "question_id": "sat-math-functions-medium-b0245",
+    "question_id": "sat-math-functions-medium-b0207",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11172,7 +9484,7 @@
     "answer_verification": "interpret h(0)"
   },
   {
-    "question_id": "sat-math-functions-medium-b0246",
+    "question_id": "sat-math-functions-medium-b0208",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11217,7 +9529,7 @@
     "answer_verification": "(2, 12)"
   },
   {
-    "question_id": "sat-math-functions-medium-b0247",
+    "question_id": "sat-math-functions-medium-b0209",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11262,7 +9574,7 @@
     "answer_verification": "x=-1"
   },
   {
-    "question_id": "sat-math-functions-medium-b0248",
+    "question_id": "sat-math-functions-medium-b0210",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11307,7 +9619,7 @@
     "answer_verification": "f(0)=12"
   },
   {
-    "question_id": "sat-math-functions-medium-b0249",
+    "question_id": "sat-math-functions-medium-b0211",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11337,7 +9649,7 @@
     "answer_verification": "val=10"
   },
   {
-    "question_id": "sat-math-functions-medium-b0250",
+    "question_id": "sat-math-functions-medium-b0212",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11382,7 +9694,7 @@
     "answer_verification": "x=3"
   },
   {
-    "question_id": "sat-math-functions-medium-b0251",
+    "question_id": "sat-math-functions-medium-b0213",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11427,7 +9739,7 @@
     "answer_verification": "val=27"
   },
   {
-    "question_id": "sat-math-functions-medium-b0252",
+    "question_id": "sat-math-functions-medium-b0214",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11472,7 +9784,7 @@
     "answer_verification": "x=-1"
   },
   {
-    "question_id": "sat-math-functions-medium-b0253",
+    "question_id": "sat-math-functions-medium-b0215",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11517,7 +9829,7 @@
     "answer_verification": "interpret p(0)"
   },
   {
-    "question_id": "sat-math-functions-medium-b0254",
+    "question_id": "sat-math-functions-medium-b0216",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11562,7 +9874,7 @@
     "answer_verification": "x=-9"
   },
   {
-    "question_id": "sat-math-functions-medium-b0255",
+    "question_id": "sat-math-functions-medium-b0217",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11607,7 +9919,7 @@
     "answer_verification": "x=1"
   },
   {
-    "question_id": "sat-math-functions-medium-b0256",
+    "question_id": "sat-math-functions-medium-b0218",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11652,7 +9964,7 @@
     "answer_verification": "(−5, 24)"
   },
   {
-    "question_id": "sat-math-functions-medium-b0257",
+    "question_id": "sat-math-functions-medium-b0219",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11697,7 +10009,7 @@
     "answer_verification": "rate=1"
   },
   {
-    "question_id": "sat-math-functions-medium-b0258",
+    "question_id": "sat-math-functions-medium-b0220",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11774,7 +10086,7 @@
     "answer_verification": "val=14"
   },
   {
-    "question_id": "sat-math-functions-medium-b0259",
+    "question_id": "sat-math-functions-medium-b0221",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11804,7 +10116,7 @@
     "answer_verification": "val=15"
   },
   {
-    "question_id": "sat-math-functions-medium-b0260",
+    "question_id": "sat-math-functions-medium-b0222",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11847,5 +10159,1749 @@
       "family:fn_interpret"
     ],
     "answer_verification": "interpret C(0)"
+  },
+  {
+    "question_id": "sat-math-functions-medium-b0223",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "functions",
+    "lesson_id": "sat-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "interpret",
+    "prompt": "The function f is defined by f(x) = x² + 6x − 10. What is the average rate of change of f over the interval from x = 4 to x = 6?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "31/3",
+        "rationale": "Use the change in f over the change in x, not f(x₂)/x₂."
+      },
+      {
+        "id": "B",
+        "text": "32",
+        "rationale": "Divide by the change in x."
+      },
+      {
+        "id": "C",
+        "text": "16",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "-16",
+        "rationale": "Sign slip."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "f(4) = 30 and f(6) = 62; average rate = (62 − (30))/(6 − (4)) = 16.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "functions",
+      "rate-of-change",
+      "family:fn_rate_of_change"
+    ],
+    "answer_verification": "rate=16"
+  },
+  {
+    "question_id": "sat-math-functions-medium-b0224",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "functions",
+    "lesson_id": "sat-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "interpret",
+    "prompt": "If f(x) = x² + 4x, what is the average rate of change of f between x = −5 and x = −1?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-2",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "-8",
+        "rationale": "Divide by the change in x."
+      },
+      {
+        "id": "C",
+        "text": "2",
+        "rationale": "Sign slip."
+      },
+      {
+        "id": "D",
+        "text": "3",
+        "rationale": "Use the change in f over the change in x, not f(x₂)/x₂."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "f(−5) = 5 and f(−1) = −3; average rate = (−3 − (5))/(−1 − (−5)) = -2.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "functions",
+      "rate-of-change",
+      "family:fn_rate_of_change"
+    ],
+    "answer_verification": "rate=-2"
+  },
+  {
+    "question_id": "sat-math-functions-medium-b0225",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "functions",
+    "lesson_id": "sat-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "interpret",
+    "prompt": "The function f is defined by f(x) = 2x + 4. For what value of x is f(x) = 0?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-1/2",
+        "rationale": "This inverts the division."
+      },
+      {
+        "id": "B",
+        "text": "2",
+        "rationale": "Sign slip when moving the constant."
+      },
+      {
+        "id": "C",
+        "text": "-2",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "4",
+        "rationale": "That is f(0), the y-intercept, not the zero."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "Set 2x + 4 = 0: 2x = −4, so x = −2.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "functions",
+      "solve",
+      "family:fn_solve_input"
+    ],
+    "answer_verification": "x=-2"
+  },
+  {
+    "question_id": "sat-math-functions-medium-b0226",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "functions",
+    "lesson_id": "sat-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "interpret",
+    "prompt": "The function f is defined by f(x) = (x + 9)/(x + 2). For what value of x is f(x) = 0?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-2",
+        "rationale": "That makes the denominator 0, so f is undefined there."
+      },
+      {
+        "id": "B",
+        "text": "-9",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "2",
+        "rationale": "The denominator's constant isn't the zero of f."
+      },
+      {
+        "id": "D",
+        "text": "9",
+        "rationale": "Solve x + a = 0, so x = −a."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "A fraction is 0 when its numerator is 0 (and the denominator isn't): x + 9 = 0 gives x = −9.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "functions",
+      "rational",
+      "family:fn_undefined"
+    ],
+    "answer_verification": "x=-9"
+  },
+  {
+    "question_id": "sat-math-functions-medium-b0227",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "functions",
+    "lesson_id": "sat-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multi_step_math",
+    "subskill": "evaluate",
+    "prompt": "The functions f and g are defined by f(x) = 5x − 3 and g(x) = 4x. What is the value of f(g(4))?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "68",
+        "rationale": "This computes g(f(k)); evaluate g first."
+      },
+      {
+        "id": "B",
+        "text": "272",
+        "rationale": "Composition is not multiplication."
+      },
+      {
+        "id": "C",
+        "text": "16",
+        "rationale": "That is g(k); now apply f."
+      },
+      {
+        "id": "D",
+        "text": "77",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "First g(4) = 4(4) + 0 = 16. Then f(16) = 5·(16) − 3 = 77.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "functions",
+      "composition",
+      "family:fn_compose_transform"
+    ],
+    "answer_verification": "val=77"
+  },
+  {
+    "question_id": "sat-math-functions-medium-b0228",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "functions",
+    "lesson_id": "sat-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multi_step_math",
+    "subskill": "evaluate",
+    "prompt": "The functions f and g are defined by f(x) = 5x + 6 and g(x) = 4x − 5. What is the value of f(g(5))?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "15",
+        "rationale": "That is g(k); now apply f."
+      },
+      {
+        "id": "B",
+        "text": "81",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "465",
+        "rationale": "Composition is not multiplication."
+      },
+      {
+        "id": "D",
+        "text": "119",
+        "rationale": "This computes g(f(k)); evaluate g first."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "First g(5) = 4(5) − 5 = 15. Then f(15) = 5·(15) + 6 = 81.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "functions",
+      "composition",
+      "family:fn_compose_transform"
+    ],
+    "answer_verification": "val=81"
+  },
+  {
+    "question_id": "sat-math-functions-medium-b0229",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "functions",
+    "lesson_id": "sat-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "interpret",
+    "prompt": "The function f is defined by f(x) = (x + 6)/(x − 4). For what value of x is f(x) undefined?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "4",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "6",
+        "rationale": "The numerator's constant doesn't make f undefined."
+      },
+      {
+        "id": "C",
+        "text": "-4",
+        "rationale": "Solve x + b = 0, so x = −b."
+      },
+      {
+        "id": "D",
+        "text": "-6",
+        "rationale": "That makes the numerator 0, so f(x) = 0 there; the function is defined."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "A fraction is undefined when its denominator is 0: x − 4 = 0 gives x = 4.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "functions",
+      "rational",
+      "family:fn_undefined"
+    ],
+    "answer_verification": "x=4"
+  },
+  {
+    "question_id": "sat-math-functions-medium-b0230",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "functions",
+    "lesson_id": "sat-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "interpret",
+    "prompt": "The function f is defined by f(x) = (x + 1)/(x − 7). For what value of x is f(x) undefined?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "1",
+        "rationale": "The numerator's constant doesn't make f undefined."
+      },
+      {
+        "id": "B",
+        "text": "-1",
+        "rationale": "That makes the numerator 0, so f(x) = 0 there; the function is defined."
+      },
+      {
+        "id": "C",
+        "text": "7",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "-7",
+        "rationale": "Solve x + b = 0, so x = −b."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "A fraction is undefined when its denominator is 0: x − 7 = 0 gives x = 7.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "functions",
+      "rational",
+      "family:fn_undefined"
+    ],
+    "answer_verification": "x=7"
+  },
+  {
+    "question_id": "sat-math-functions-medium-b0231",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "functions",
+    "lesson_id": "sat-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "evaluate",
+    "prompt": "The table gives values of the linear function f. What is the value of f(−6)?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "10",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "6",
+        "rationale": "Include the constant term b."
+      },
+      {
+        "id": "C",
+        "text": "-3",
+        "rationale": "Multiply the slope by k; don't add."
+      },
+      {
+        "id": "D",
+        "text": "9",
+        "rationale": "Off by one step of the pattern."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "The outputs change by −1 for each increase of 1 in x, so f(x) = −x + 4 and f(−6) = 10.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "functions",
+      "table",
+      "family:fn_table"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Values of f",
+        "headers": [
+          "x",
+          "f(x)"
+        ],
+        "rows": [
+          [
+            "-3",
+            "7"
+          ],
+          [
+            "2",
+            "2"
+          ],
+          [
+            "3",
+            "1"
+          ],
+          [
+            "4",
+            "0"
+          ],
+          [
+            "8",
+            "-4"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "val=10"
+  },
+  {
+    "question_id": "sat-math-functions-medium-b0232",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "functions",
+    "lesson_id": "sat-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "interpret",
+    "prompt": "The function f is defined by f(x) = x² + 5x + 7. What is the average rate of change of f over the interval from x = 3 to x = 4?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-12",
+        "rationale": "Sign slip."
+      },
+      {
+        "id": "B",
+        "text": "43/4",
+        "rationale": "Use the change in f over the change in x, not f(x₂)/x₂."
+      },
+      {
+        "id": "C",
+        "text": "37",
+        "rationale": "Average rate of change is not the average of the outputs."
+      },
+      {
+        "id": "D",
+        "text": "12",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "f(3) = 31 and f(4) = 43; average rate = (43 − (31))/(4 − (3)) = 12.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "functions",
+      "rate-of-change",
+      "family:fn_rate_of_change"
+    ],
+    "answer_verification": "rate=12"
+  },
+  {
+    "question_id": "sat-math-functions-medium-b0233",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "functions",
+    "lesson_id": "sat-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "interpret",
+    "prompt": "The function C(n) = 15n + 468 gives the cost, in dollars, of printing n posters. Which of the following is the best interpretation of C(0) = 468?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "the number of posters that cost $468",
+        "rationale": "That would be an input (a time or count) set equal to the output, which reverses the roles."
+      },
+      {
+        "id": "B",
+        "text": "the cost per poster",
+        "rationale": "That describes the coefficient of the variable, the rate of change."
+      },
+      {
+        "id": "C",
+        "text": "the cost before any posters are printed",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "the total change in the output of the function over the first 468 units of input",
+        "rationale": "The constant term is a starting value, not a change over an interval."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "C(0) is the output when the input is 0, so 468 is the cost before any posters are printed.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "functions",
+      "interpret",
+      "family:fn_interpret"
+    ],
+    "answer_verification": "interpret C(0)"
+  },
+  {
+    "question_id": "sat-math-functions-medium-b0234",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "functions",
+    "lesson_id": "sat-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "interpret",
+    "prompt": "The function f is defined by f(x) = 5x + 20. For what value of x is f(x) = 0?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "5",
+        "rationale": "The zero is −b/a, not the coefficient."
+      },
+      {
+        "id": "B",
+        "text": "-4",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "4",
+        "rationale": "Sign slip when moving the constant."
+      },
+      {
+        "id": "D",
+        "text": "20",
+        "rationale": "That is f(0), the y-intercept, not the zero."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Set 5x + 20 = 0: 5x = −20, so x = −4.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "functions",
+      "solve",
+      "family:fn_solve_input"
+    ],
+    "answer_verification": "x=-4"
+  },
+  {
+    "question_id": "sat-math-functions-medium-b0235",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "functions",
+    "lesson_id": "sat-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "interpret",
+    "prompt": "The function h(t) = 442 + 3t gives the height, in centimeters, of a plant t weeks after it was planted. Which of the following is the best interpretation of h(0) = 442?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "the total change in the output of the function over the first 442 units of input",
+        "rationale": "The constant term is a starting value, not a change over an interval."
+      },
+      {
+        "id": "B",
+        "text": "the height of the plant when it was planted",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "the growth, in centimeters, each week",
+        "rationale": "That describes the coefficient of the variable, the rate of change."
+      },
+      {
+        "id": "D",
+        "text": "the number of weeks until it reaches 442 cm",
+        "rationale": "That would be an input (a time or count) set equal to the output, which reverses the roles."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "h(0) is the output when the input is 0, so 442 is the height of the plant when it was planted.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "functions",
+      "interpret",
+      "family:fn_interpret"
+    ],
+    "answer_verification": "interpret h(0)"
+  },
+  {
+    "question_id": "sat-math-functions-medium-b0236",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "functions",
+    "lesson_id": "sat-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "evaluate",
+    "prompt": "The table gives values of the linear function f. What is the value of f(−6)?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-24",
+        "rationale": "Multiply the slope by k; don't add."
+      },
+      {
+        "id": "B",
+        "text": "24",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "36",
+        "rationale": "Include the constant term b."
+      },
+      {
+        "id": "D",
+        "text": "18",
+        "rationale": "Off by one step of the pattern."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "The outputs change by −6 for each increase of 1 in x, so f(x) = −6x − 12 and f(−6) = 24.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "functions",
+      "table",
+      "family:fn_table"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Values of f",
+        "headers": [
+          "x",
+          "f(x)"
+        ],
+        "rows": [
+          [
+            "2",
+            "-24"
+          ],
+          [
+            "3",
+            "-30"
+          ],
+          [
+            "4",
+            "-36"
+          ],
+          [
+            "8",
+            "-60"
+          ],
+          [
+            "9",
+            "-66"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "val=24"
+  },
+  {
+    "question_id": "sat-math-functions-medium-b0237",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "functions",
+    "lesson_id": "sat-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "interpret",
+    "prompt": "What is the zero of the function f(x) = 6x − 18?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-18",
+        "rationale": "That is f(0), the y-intercept, not the zero."
+      },
+      {
+        "id": "B",
+        "text": "6",
+        "rationale": "The zero is −b/a, not the coefficient."
+      },
+      {
+        "id": "C",
+        "text": "-3",
+        "rationale": "Sign slip when moving the constant."
+      },
+      {
+        "id": "D",
+        "text": "3",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Set 6x − 18 = 0: 6x = 18, so x = 3.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "functions",
+      "solve",
+      "family:fn_solve_input"
+    ],
+    "answer_verification": "x=3"
+  },
+  {
+    "question_id": "sat-math-functions-medium-b0238",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "functions",
+    "lesson_id": "sat-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multi_step_math",
+    "subskill": "evaluate",
+    "prompt": "The functions f and g are defined by f(x) = 2x + 6 and g(x) = 5x + 6. What is the value of f(g(−2))?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-2",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "-8",
+        "rationale": "Composition is not multiplication."
+      },
+      {
+        "id": "C",
+        "text": "-4",
+        "rationale": "That is g(k); now apply f."
+      },
+      {
+        "id": "D",
+        "text": "16",
+        "rationale": "This computes g(f(k)); evaluate g first."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "First g(−2) = 5(−2) + 6 = −4. Then f(−4) = 2·(−4) + 6 = −2.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "functions",
+      "composition",
+      "family:fn_compose_transform"
+    ],
+    "answer_verification": "val=-2"
+  },
+  {
+    "question_id": "sat-math-functions-medium-b0239",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "functions",
+    "lesson_id": "sat-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "interpret",
+    "prompt": "If f(x) = x² − x + 5, what is the average rate of change of f between x = 3 and x = 6?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "8",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "-8",
+        "rationale": "Sign slip."
+      },
+      {
+        "id": "C",
+        "text": "24",
+        "rationale": "Divide by the change in x."
+      },
+      {
+        "id": "D",
+        "text": "35/6",
+        "rationale": "Use the change in f over the change in x, not f(x₂)/x₂."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "f(3) = 11 and f(6) = 35; average rate = (35 − (11))/(6 − (3)) = 8.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "functions",
+      "rate-of-change",
+      "family:fn_rate_of_change"
+    ],
+    "answer_verification": "rate=8"
+  },
+  {
+    "question_id": "sat-math-functions-medium-b0240",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "functions",
+    "lesson_id": "sat-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multi_step_math",
+    "subskill": "evaluate",
+    "prompt": "The functions f and g are defined by f(x) = 4x + 1 and g(x) = 4x + 2. What is the value of f(g(1))?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "30",
+        "rationale": "Composition is not multiplication."
+      },
+      {
+        "id": "B",
+        "text": "6",
+        "rationale": "That is g(k); now apply f."
+      },
+      {
+        "id": "C",
+        "text": "22",
+        "rationale": "This computes g(f(k)); evaluate g first."
+      },
+      {
+        "id": "D",
+        "text": "25",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "First g(1) = 4(1) + 2 = 6. Then f(6) = 4·(6) + 1 = 25.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "functions",
+      "composition",
+      "family:fn_compose_transform"
+    ],
+    "answer_verification": "val=25"
+  },
+  {
+    "question_id": "sat-math-functions-medium-b0241",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "functions",
+    "lesson_id": "sat-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multi_step_math",
+    "subskill": "evaluate",
+    "prompt": "The functions f and g are defined by f(x) = 5x + 8 and g(x) = 4x + 5. What is the value of f(g(3))?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "93",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "17",
+        "rationale": "That is g(k); now apply f."
+      },
+      {
+        "id": "C",
+        "text": "97",
+        "rationale": "This computes g(f(k)); evaluate g first."
+      },
+      {
+        "id": "D",
+        "text": "391",
+        "rationale": "Composition is not multiplication."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "First g(3) = 4(3) + 5 = 17. Then f(17) = 5·(17) + 8 = 93.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "functions",
+      "composition",
+      "family:fn_compose_transform"
+    ],
+    "answer_verification": "val=93"
+  },
+  {
+    "question_id": "sat-math-functions-medium-b0242",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "functions",
+    "lesson_id": "sat-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "interpret",
+    "prompt": "The function f is defined by f(x) = x² − 4x − 5. What is the average rate of change of f over the interval from x = 3 to x = 6?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "5",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "15",
+        "rationale": "Divide by the change in x."
+      },
+      {
+        "id": "C",
+        "text": "-5",
+        "rationale": "Sign slip."
+      },
+      {
+        "id": "D",
+        "text": "7/6",
+        "rationale": "Use the change in f over the change in x, not f(x₂)/x₂."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "f(3) = −8 and f(6) = 7; average rate = (7 − (−8))/(6 − (3)) = 5.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "functions",
+      "rate-of-change",
+      "family:fn_rate_of_change"
+    ],
+    "answer_verification": "rate=5"
+  },
+  {
+    "question_id": "sat-math-functions-medium-b0243",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "functions",
+    "lesson_id": "sat-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "interpret",
+    "prompt": "What is the zero of the function f(x) = 7x + 28?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-4",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "28",
+        "rationale": "That is f(0), the y-intercept, not the zero."
+      },
+      {
+        "id": "C",
+        "text": "4",
+        "rationale": "Sign slip when moving the constant."
+      },
+      {
+        "id": "D",
+        "text": "7",
+        "rationale": "The zero is −b/a, not the coefficient."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Set 7x + 28 = 0: 7x = −28, so x = −4.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "functions",
+      "solve",
+      "family:fn_solve_input"
+    ],
+    "answer_verification": "x=-4"
+  },
+  {
+    "question_id": "sat-math-functions-medium-b0244",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "functions",
+    "lesson_id": "sat-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "student_produced",
+    "subskill": "evaluate",
+    "prompt": "If f(x) = 6x + 10 and f(x) = 82, what is the value of x?",
+    "answer": {
+      "type": "numeric",
+      "value": 12,
+      "accepted": [
+        "12"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "6x = 72, so x = 12.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "functions",
+      "grid-in",
+      "family:fn_gridin"
+    ],
+    "answer_verification": "val=12"
+  },
+  {
+    "question_id": "sat-math-functions-medium-b0245",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "functions",
+    "lesson_id": "sat-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "evaluate",
+    "prompt": "For the function f defined by f(x) = 5x² + 9x + 4, what is f(6)?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "130",
+        "rationale": "Watch the sign on the middle term."
+      },
+      {
+        "id": "B",
+        "text": "-122",
+        "rationale": "(−k)² is positive; don't carry the sign through the square."
+      },
+      {
+        "id": "C",
+        "text": "238",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "88",
+        "rationale": "This squares only the coefficient, not x."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "f(6) = 5·(6)² + 9·(6) + 4 = 180 + 54 + 4 = 238.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "functions",
+      "evaluate",
+      "family:fn_evaluate"
+    ],
+    "answer_verification": "f(6)=238"
+  },
+  {
+    "question_id": "sat-math-functions-medium-b0246",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "functions",
+    "lesson_id": "sat-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "evaluate",
+    "prompt": "Which of the following points lies on the graph of y = x² + 6 in the xy-plane?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "(−4, 22)",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "(1, 9)",
+        "rationale": "At x = 1, y = 7, not 9."
+      },
+      {
+        "id": "C",
+        "text": "(3, 18)",
+        "rationale": "At x = 3, y = 15, not 18."
+      },
+      {
+        "id": "D",
+        "text": "(2, 13)",
+        "rationale": "At x = 2, y = 10, not 13."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Substitute x = −4: y = (−4)² + 6 = 22.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "functions",
+      "graph",
+      "family:fn_graph_point"
+    ],
+    "answer_verification": "(−4, 22)"
+  },
+  {
+    "question_id": "sat-math-functions-medium-b0247",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "functions",
+    "lesson_id": "sat-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "evaluate",
+    "prompt": "The function f is defined by f(x) = 3x² − 4x + 8. What is the value of f(2)?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-12",
+        "rationale": "(−k)² is positive; don't carry the sign through the square."
+      },
+      {
+        "id": "B",
+        "text": "12",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "28",
+        "rationale": "Watch the sign on the middle term."
+      },
+      {
+        "id": "D",
+        "text": "6",
+        "rationale": "This squares only the coefficient, not x."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "f(2) = 3·(2)² − 4·(2) + 8 = 12 − 8 + 8 = 12.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "functions",
+      "evaluate",
+      "family:fn_evaluate"
+    ],
+    "answer_verification": "f(2)=12"
+  },
+  {
+    "question_id": "sat-math-functions-medium-b0248",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "functions",
+    "lesson_id": "sat-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multi_step_math",
+    "subskill": "evaluate",
+    "prompt": "The functions f and g are defined by f(x) = 3x − 4 and g(x) = 3x + 4. What is the value of f(g(−2))?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-26",
+        "rationale": "This computes g(f(k)); evaluate g first."
+      },
+      {
+        "id": "B",
+        "text": "-10",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "20",
+        "rationale": "Composition is not multiplication."
+      },
+      {
+        "id": "D",
+        "text": "-2",
+        "rationale": "That is g(k); now apply f."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "First g(−2) = 3(−2) + 4 = −2. Then f(−2) = 3·(−2) − 4 = −10.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "functions",
+      "composition",
+      "family:fn_compose_transform"
+    ],
+    "answer_verification": "val=-10"
+  },
+  {
+    "question_id": "sat-math-functions-medium-b0249",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "functions",
+    "lesson_id": "sat-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "interpret",
+    "prompt": "The function h(t) = 434 + 21t gives the height, in centimeters, of a plant t weeks after it was planted. Which of the following is the best interpretation of h(0) = 434?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "the total change in the output of the function over the first 434 units of input",
+        "rationale": "The constant term is a starting value, not a change over an interval."
+      },
+      {
+        "id": "B",
+        "text": "the number of weeks until it reaches 434 cm",
+        "rationale": "That would be an input (a time or count) set equal to the output, which reverses the roles."
+      },
+      {
+        "id": "C",
+        "text": "the height of the plant when it was planted",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "the growth, in centimeters, each week",
+        "rationale": "That describes the coefficient of the variable, the rate of change."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "h(0) is the output when the input is 0, so 434 is the height of the plant when it was planted.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "functions",
+      "interpret",
+      "family:fn_interpret"
+    ],
+    "answer_verification": "interpret h(0)"
+  },
+  {
+    "question_id": "sat-math-functions-medium-b0250",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "functions",
+    "lesson_id": "sat-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "interpret",
+    "prompt": "The function f is defined by f(x) = (x + 7)/(x + 3). For what value of x is f(x) undefined?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-7",
+        "rationale": "That makes the numerator 0, so f(x) = 0 there; the function is defined."
+      },
+      {
+        "id": "B",
+        "text": "3",
+        "rationale": "Solve x + b = 0, so x = −b."
+      },
+      {
+        "id": "C",
+        "text": "7",
+        "rationale": "The numerator's constant doesn't make f undefined."
+      },
+      {
+        "id": "D",
+        "text": "-3",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "A fraction is undefined when its denominator is 0: x + 3 = 0 gives x = −3.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "functions",
+      "rational",
+      "family:fn_undefined"
+    ],
+    "answer_verification": "x=-3"
+  },
+  {
+    "question_id": "sat-math-functions-medium-b0251",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "functions",
+    "lesson_id": "sat-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multi_step_math",
+    "subskill": "evaluate",
+    "prompt": "The functions f and g are defined by f(x) = 2x + 1 and g(x) = 2x − 6. What is the value of f(g(4))?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "18",
+        "rationale": "Composition is not multiplication."
+      },
+      {
+        "id": "B",
+        "text": "5",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "2",
+        "rationale": "That is g(k); now apply f."
+      },
+      {
+        "id": "D",
+        "text": "12",
+        "rationale": "This computes g(f(k)); evaluate g first."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "First g(4) = 2(4) − 6 = 2. Then f(2) = 2·(2) + 1 = 5.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "functions",
+      "composition",
+      "family:fn_compose_transform"
+    ],
+    "answer_verification": "val=5"
+  },
+  {
+    "question_id": "sat-math-functions-medium-b0252",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "functions",
+    "lesson_id": "sat-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "interpret",
+    "prompt": "The function f is defined by f(x) = (x + 8)/(x − 3). For what value of x is f(x) = 0?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-3",
+        "rationale": "The denominator's constant isn't the zero of f."
+      },
+      {
+        "id": "B",
+        "text": "-8",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "3",
+        "rationale": "That makes the denominator 0, so f is undefined there."
+      },
+      {
+        "id": "D",
+        "text": "8",
+        "rationale": "Solve x + a = 0, so x = −a."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "A fraction is 0 when its numerator is 0 (and the denominator isn't): x + 8 = 0 gives x = −8.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "functions",
+      "rational",
+      "family:fn_undefined"
+    ],
+    "answer_verification": "x=-8"
+  },
+  {
+    "question_id": "sat-math-functions-medium-b0253",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "functions",
+    "lesson_id": "sat-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "interpret",
+    "prompt": "The function f is defined by f(x) = x² + x − 5. What is the average rate of change of f over the interval from x = 3 to x = 6?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "37/6",
+        "rationale": "Use the change in f over the change in x, not f(x₂)/x₂."
+      },
+      {
+        "id": "B",
+        "text": "10",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "30",
+        "rationale": "Divide by the change in x."
+      },
+      {
+        "id": "D",
+        "text": "-10",
+        "rationale": "Sign slip."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "f(3) = 7 and f(6) = 37; average rate = (37 − (7))/(6 − (3)) = 10.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "functions",
+      "rate-of-change",
+      "family:fn_rate_of_change"
+    ],
+    "answer_verification": "rate=10"
+  },
+  {
+    "question_id": "sat-math-functions-medium-b0254",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "functions",
+    "lesson_id": "sat-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "interpret",
+    "prompt": "What is the zero of the function f(x) = 4x − 20?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "5",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "4",
+        "rationale": "The zero is −b/a, not the coefficient."
+      },
+      {
+        "id": "C",
+        "text": "-5",
+        "rationale": "Sign slip when moving the constant."
+      },
+      {
+        "id": "D",
+        "text": "-20",
+        "rationale": "That is f(0), the y-intercept, not the zero."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Set 4x − 20 = 0: 4x = 20, so x = 5.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "functions",
+      "solve",
+      "family:fn_solve_input"
+    ],
+    "answer_verification": "x=5"
+  },
+  {
+    "question_id": "sat-math-functions-medium-b0255",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "functions",
+    "lesson_id": "sat-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "student_produced",
+    "subskill": "evaluate",
+    "prompt": "If f(x) = 5x and f(x) = 45, what is the value of x?",
+    "answer": {
+      "type": "numeric",
+      "value": 9,
+      "accepted": [
+        "9"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "5x = 45, so x = 9.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "functions",
+      "grid-in",
+      "family:fn_gridin"
+    ],
+    "answer_verification": "val=9"
+  },
+  {
+    "question_id": "sat-math-functions-medium-b0256",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "functions",
+    "lesson_id": "sat-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "interpret",
+    "prompt": "The function f is defined by f(x) = 4x − 16. For what value of x is f(x) = 0?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "1/4",
+        "rationale": "This inverts the division."
+      },
+      {
+        "id": "B",
+        "text": "-16",
+        "rationale": "That is f(0), the y-intercept, not the zero."
+      },
+      {
+        "id": "C",
+        "text": "-4",
+        "rationale": "Sign slip when moving the constant."
+      },
+      {
+        "id": "D",
+        "text": "4",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Set 4x − 16 = 0: 4x = 16, so x = 4.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "functions",
+      "solve",
+      "family:fn_solve_input"
+    ],
+    "answer_verification": "x=4"
+  },
+  {
+    "question_id": "sat-math-functions-medium-b0257",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "functions",
+    "lesson_id": "sat-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "evaluate",
+    "prompt": "Which of the following points lies on the graph of y = x² − 6 in the xy-plane?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "(−2, −3)",
+        "rationale": "At x = −2, y = −2, not −3."
+      },
+      {
+        "id": "B",
+        "text": "(−1, −2)",
+        "rationale": "At x = −1, y = −5, not −2."
+      },
+      {
+        "id": "C",
+        "text": "(2, −3)",
+        "rationale": "At x = 2, y = −2, not −3."
+      },
+      {
+        "id": "D",
+        "text": "(−4, 10)",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Substitute x = −4: y = (−4)² − 6 = 10.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "functions",
+      "graph",
+      "family:fn_graph_point"
+    ],
+    "answer_verification": "(−4, 10)"
+  },
+  {
+    "question_id": "sat-math-functions-medium-b0258",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "functions",
+    "lesson_id": "sat-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "evaluate",
+    "prompt": "Which of the following points lies on the graph of y = x² − 5 in the xy-plane?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "(4, 14)",
+        "rationale": "At x = 4, y = 11, not 14."
+      },
+      {
+        "id": "B",
+        "text": "(−3, 4)",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "(−2, 2)",
+        "rationale": "At x = −2, y = −1, not 2."
+      },
+      {
+        "id": "D",
+        "text": "(3, 7)",
+        "rationale": "At x = 3, y = 4, not 7."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Substitute x = −3: y = (−3)² − 5 = 4.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "functions",
+      "graph",
+      "family:fn_graph_point"
+    ],
+    "answer_verification": "(−3, 4)"
+  },
+  {
+    "question_id": "sat-math-functions-medium-b0259",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "functions",
+    "lesson_id": "sat-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "interpret",
+    "prompt": "The function f is defined by f(x) = (x + 5)/(x + 8). For what value of x is f(x) undefined?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-8",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "-5",
+        "rationale": "That makes the numerator 0, so f(x) = 0 there; the function is defined."
+      },
+      {
+        "id": "C",
+        "text": "8",
+        "rationale": "Solve x + b = 0, so x = −b."
+      },
+      {
+        "id": "D",
+        "text": "5",
+        "rationale": "The numerator's constant doesn't make f undefined."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "A fraction is undefined when its denominator is 0: x + 8 = 0 gives x = −8.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "functions",
+      "rational",
+      "family:fn_undefined"
+    ],
+    "answer_verification": "x=-8"
+  },
+  {
+    "question_id": "sat-math-functions-medium-b0260",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "functions",
+    "lesson_id": "sat-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multi_step_math",
+    "subskill": "evaluate",
+    "prompt": "The functions f and g are defined by f(x) = 6x + 5 and g(x) = 3x − 4. What is the value of f(g(−3))?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-73",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "-43",
+        "rationale": "This computes g(f(k)); evaluate g first."
+      },
+      {
+        "id": "C",
+        "text": "169",
+        "rationale": "Composition is not multiplication."
+      },
+      {
+        "id": "D",
+        "text": "-13",
+        "rationale": "That is g(k); now apply f."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "First g(−3) = 3(−3) − 4 = −13. Then f(−13) = 6·(−13) + 5 = −73.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "functions",
+      "composition",
+      "family:fn_compose_transform"
+    ],
+    "answer_verification": "val=-73"
   }
 ]

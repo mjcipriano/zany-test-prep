@@ -10,73 +10,83 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "data_interpretation",
-    "subskill": "graphs",
-    "prompt": "The values in the table follow a linear relationship. Which equation gives the second quantity y in terms of the first quantity x?",
+    "subskill": "tables",
+    "prompt": "The table shows the number of centimeters for 5 plants in 2021 and 2022 (a total of 249 in 2021 and 282 in 2022). Which plant had the greatest percent increase in centimeters from 2021 to 2022?",
     "choices": [
       {
         "id": "A",
-        "text": "y = 10x + 14",
+        "text": "A",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "y = 20x + 14",
-        "rationale": "Divide the change in y by the change in x to get the rate."
+        "text": "B",
+        "rationale": "B changed by about 29%, the largest raw increase but not the largest percent increase."
       },
       {
         "id": "C",
-        "text": "y = 10x",
-        "rationale": "The relationship has a nonzero starting value; check x = 0."
+        "text": "C",
+        "rationale": "C changed by about 33%."
       },
       {
         "id": "D",
-        "text": "y = 10x + 24",
-        "rationale": "24 is y when x = 1, not when x = 0."
+        "text": "E",
+        "rationale": "E changed by about −41%."
       },
       {
         "id": "E",
-        "text": "y = 14x + 10",
-        "rationale": "The slope and the constant are swapped."
+        "text": "D",
+        "rationale": "D changed by about −13%."
       }
     ],
     "correct_choice": "A",
-    "explanation": "Between rows, y changes by 10 per unit of x, so the rate is 10; then 24 = 10·1 + b gives b = 14.",
+    "explanation": "Percent change = (new − old)/old; A: 20/52 ≈ 38%, the greatest.",
     "estimated_time_seconds": 100,
     "tags": [
       "data",
       "table",
-      "linear",
-      "family:da_rate_table"
+      "compare",
+      "family:da_two_year"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Recorded values",
+        "caption": "Plant heights, 2021 and 2022",
         "headers": [
-          "Time (hours)",
-          "Distance (miles)"
+          "Plant",
+          "2021",
+          "2022"
         ],
         "rows": [
           [
-            "1",
-            "24"
+            "A",
+            "52",
+            "72"
           ],
           [
-            "3",
-            "44"
+            "B",
+            "72",
+            "93"
           ],
           [
-            "5",
-            "64"
+            "C",
+            "39",
+            "52"
           ],
           [
-            "6",
-            "74"
+            "D",
+            "52",
+            "45"
+          ],
+          [
+            "E",
+            "34",
+            "20"
           ]
         ]
       }
     },
-    "answer_verification": "y=10x+14"
+    "answer_verification": "A"
   },
   {
     "question_id": "act-math-data-analysis-hard-b0002",
@@ -90,82 +100,76 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "The table shows the number of tickets for 5 days in 2023 and 2024 (a total of 268 in 2023 and 241 in 2024). Which day had the greatest percent increase in tickets from 2023 to 2024?",
+    "prompt": "Based on the table, what is the ratio of millimeters of rain for May to millimeters of rain for Apr?",
     "choices": [
       {
         "id": "A",
-        "text": "Thu",
-        "rationale": "Thu changed by about −3%."
+        "text": "37/12",
+        "rationale": "The ratio is in the wrong order."
       },
       {
         "id": "B",
-        "text": "Mon",
-        "rationale": "Mon changed by about −49%."
+        "text": "12/133",
+        "rationale": "That compares May to the total, not to Apr."
       },
       {
         "id": "C",
-        "text": "Tue",
-        "rationale": "Tue changed by about −36%."
+        "text": "6/19",
+        "rationale": "Read the correct rows."
       },
       {
         "id": "D",
-        "text": "Wed",
-        "rationale": "Correct."
+        "text": "-25/37",
+        "rationale": "A ratio is a quotient, not a difference over a value."
       },
       {
         "id": "E",
-        "text": "Fri",
-        "rationale": "Fri changed by about −11%."
+        "text": "12/37",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Percent change = (new − old)/old; Wed: 17/46 ≈ 37%, the greatest.",
-    "estimated_time_seconds": 100,
+    "correct_choice": "E",
+    "explanation": "12:37 = 12:37, i.e. 12/37.",
+    "estimated_time_seconds": 85,
     "tags": [
       "data",
       "table",
-      "compare",
-      "family:da_two_year"
+      "ratio",
+      "family:da_read"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Daily ticket sales, 2023 and 2024",
+        "caption": "Monthly rainfall",
         "headers": [
-          "Day",
-          "2023",
-          "2024"
+          "Month",
+          "Rainfall (mm)"
         ],
         "rows": [
           [
-            "Mon",
-            "41",
-            "21"
+            "Jan",
+            "12"
           ],
           [
-            "Tue",
-            "42",
-            "27"
+            "Feb",
+            "25"
           ],
           [
-            "Wed",
-            "46",
-            "63"
+            "Mar",
+            "47"
           ],
           [
-            "Thu",
-            "75",
-            "73"
+            "Apr",
+            "37"
           ],
           [
-            "Fri",
-            "64",
-            "57"
+            "May",
+            "12"
           ]
         ]
       }
     },
-    "answer_verification": "Wed"
+    "answer_verification": "12/37"
   },
   {
     "question_id": "act-math-data-analysis-hard-b0003",
@@ -178,73 +182,77 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "data_interpretation",
-    "subskill": "graphs",
-    "prompt": "The values in the table follow a linear relationship. Which equation gives the second quantity y in terms of the first quantity x?",
+    "subskill": "tables",
+    "prompt": "Based on the table, how many more millimeters of rain than the mean per month were recorded for Mar?",
     "choices": [
       {
         "id": "A",
-        "text": "y = 9x + 16",
-        "rationale": "Correct."
+        "text": "34",
+        "rationale": "That is the mean, not the amount above it."
       },
       {
         "id": "B",
-        "text": "y = 18x + 16",
-        "rationale": "Divide the change in y by the change in x to get the rate."
+        "text": "57",
+        "rationale": "That is the value itself, not its excess over the mean."
       },
       {
         "id": "C",
-        "text": "y = 9x + 25",
-        "rationale": "25 is y when x = 1, not when x = 0."
+        "text": "23",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "y = 16x + 9",
-        "rationale": "The slope and the constant are swapped."
+        "text": "24",
+        "rationale": "Arithmetic slip; recompute the mean."
       },
       {
         "id": "E",
-        "text": "y = 9x",
-        "rationale": "The relationship has a nonzero starting value; check x = 0."
+        "text": "46",
+        "rationale": "This compares to the least value, not the mean."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Between rows, y changes by 9 per unit of x, so the rate is 9; then 25 = 9·1 + b gives b = 16.",
+    "correct_choice": "C",
+    "explanation": "Mean = 170 ÷ 5 = 34; 57 − 34 = 23.",
     "estimated_time_seconds": 100,
     "tags": [
       "data",
       "table",
-      "linear",
-      "family:da_rate_table"
+      "mean",
+      "family:da_mean_from_table"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Recorded values",
+        "caption": "Monthly rainfall",
         "headers": [
-          "Minutes",
-          "Gallons pumped"
+          "Month",
+          "Rainfall (mm)"
         ],
         "rows": [
           [
-            "1",
-            "25"
+            "Jan",
+            "11"
           ],
           [
-            "3",
-            "43"
+            "Feb",
+            "55"
           ],
           [
-            "5",
-            "61"
+            "Mar",
+            "57"
           ],
           [
-            "8",
-            "88"
+            "Apr",
+            "16"
+          ],
+          [
+            "May",
+            "31"
           ]
         ]
       }
     },
-    "answer_verification": "y=9x+16"
+    "answer_verification": "mean=34;val=23"
   },
   {
     "question_id": "act-math-data-analysis-hard-b0004",
@@ -258,799 +266,36 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "The table shows centimeters for 5 plants split into home and away (409 in all). Approximately what percent of all the centimeters were home?",
+    "prompt": "The table groups 44 items by price (dollars). Approximately what percent of the items fall in the 90–99 interval?",
     "choices": [
       {
         "id": "A",
-        "text": "149%",
-        "rationale": "That is a count, not a percent."
-      },
-      {
-        "id": "B",
-        "text": "44%",
-        "rationale": "Arithmetic slip."
-      },
-      {
-        "id": "C",
-        "text": "64%",
-        "rationale": "That is the away share."
-      },
-      {
-        "id": "D",
-        "text": "36%",
-        "rationale": "Correct."
-      },
-      {
-        "id": "E",
-        "text": "57%",
-        "rationale": "Divide by the grand total, not the other column."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "149/(149 + 260) × 100 ≈ 36%.",
-    "estimated_time_seconds": 100,
-    "tags": [
-      "data",
-      "table",
-      "two-series",
-      "family:da_two_series"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Plant heights by home and away",
-        "headers": [
-          "Plant",
-          "Home",
-          "Away"
-        ],
-        "rows": [
-          [
-            "A",
-            "65",
-            "73"
-          ],
-          [
-            "B",
-            "14",
-            "34"
-          ],
-          [
-            "C",
-            "13",
-            "61"
-          ],
-          [
-            "D",
-            "30",
-            "70"
-          ],
-          [
-            "E",
-            "27",
-            "22"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "s1=149,s2=260"
-  },
-  {
-    "question_id": "act-math-data-analysis-hard-b0005",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "data_analysis",
-    "lesson_id": "act-math-data-analysis-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "tables",
-    "prompt": "The table shows the number of points for 5 teams in 2023 and 2024 (a total of 193 in 2023 and 197 in 2024). Which team had the greatest percent increase in points from 2023 to 2024?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "Wolves",
-        "rationale": "Wolves changed by about −16%."
-      },
-      {
-        "id": "B",
-        "text": "Lynx",
-        "rationale": "Lynx changed by about −45%."
-      },
-      {
-        "id": "C",
-        "text": "Otters",
-        "rationale": "Otters changed by about −2%."
-      },
-      {
-        "id": "D",
-        "text": "Hawks",
-        "rationale": "Correct."
-      },
-      {
-        "id": "E",
-        "text": "Bears",
-        "rationale": "Bears changed by about 24%."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Percent change = (new − old)/old; Hawks: 15/22 ≈ 68%, the greatest.",
-    "estimated_time_seconds": 100,
-    "tags": [
-      "data",
-      "table",
-      "compare",
-      "family:da_two_year"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Points scored, 2023 and 2024",
-        "headers": [
-          "Team",
-          "2023",
-          "2024"
-        ],
-        "rows": [
-          [
-            "Hawks",
-            "22",
-            "37"
-          ],
-          [
-            "Bears",
-            "37",
-            "46"
-          ],
-          [
-            "Otters",
-            "57",
-            "56"
-          ],
-          [
-            "Lynx",
-            "22",
-            "12"
-          ],
-          [
-            "Wolves",
-            "55",
-            "46"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "Hawks"
-  },
-  {
-    "question_id": "act-math-data-analysis-hard-b0006",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "data_analysis",
-    "lesson_id": "act-math-data-analysis-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "graphs",
-    "prompt": "The values in the table follow a linear relationship. Which equation gives the second quantity y in terms of the first quantity x?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "y = 8x + 13",
-        "rationale": "Divide the change in y by the change in x to get the rate."
-      },
-      {
-        "id": "B",
-        "text": "y = 13x + 2",
-        "rationale": "The slope and the constant are swapped."
-      },
-      {
-        "id": "C",
-        "text": "y = 2x + 13",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "y = 2x",
-        "rationale": "The relationship has a nonzero starting value; check x = 0."
-      },
-      {
-        "id": "E",
-        "text": "y = 2x + 15",
-        "rationale": "15 is y when x = 1, not when x = 0."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "Between rows, y changes by 2 per unit of x, so the rate is 2; then 15 = 2·1 + b gives b = 13.",
-    "estimated_time_seconds": 100,
-    "tags": [
-      "data",
-      "table",
-      "linear",
-      "family:da_rate_table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Recorded values",
-        "headers": [
-          "Minutes",
-          "Gallons pumped"
-        ],
-        "rows": [
-          [
-            "1",
-            "15"
-          ],
-          [
-            "5",
-            "23"
-          ],
-          [
-            "6",
-            "25"
-          ],
-          [
-            "8",
-            "29"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "y=2x+13"
-  },
-  {
-    "question_id": "act-math-data-analysis-hard-b0007",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "data_analysis",
-    "lesson_id": "act-math-data-analysis-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "graphs",
-    "prompt": "The values in the table follow a linear relationship. Which equation gives the second quantity y in terms of the first quantity x?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "y = 31x + 34",
-        "rationale": "Divide the change in y by the change in x to get the rate."
-      },
-      {
-        "id": "B",
-        "text": "y = 30x + 34",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "y = 30x + 94",
-        "rationale": "94 is y when x = 2, not when x = 0."
-      },
-      {
-        "id": "D",
-        "text": "y = 34x + 30",
-        "rationale": "The slope and the constant are swapped."
-      },
-      {
-        "id": "E",
-        "text": "y = 30x",
-        "rationale": "The relationship has a nonzero starting value; check x = 0."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Between rows, y changes by 30 per unit of x, so the rate is 30; then 94 = 30·2 + b gives b = 34.",
-    "estimated_time_seconds": 100,
-    "tags": [
-      "data",
-      "table",
-      "linear",
-      "family:da_rate_table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Recorded values",
-        "headers": [
-          "Time (hours)",
-          "Distance (miles)"
-        ],
-        "rows": [
-          [
-            "2",
-            "94"
-          ],
-          [
-            "3",
-            "124"
-          ],
-          [
-            "6",
-            "214"
-          ],
-          [
-            "8",
-            "274"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "y=30x+34"
-  },
-  {
-    "question_id": "act-math-data-analysis-hard-b0008",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "data_analysis",
-    "lesson_id": "act-math-data-analysis-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "tables",
-    "prompt": "The table shows millimeters of rain for 5 months split into year 1 and year 2 (421 in all). How much greater is the mean year 1 value than the mean year 2 value? (A negative answer means it is smaller.)",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-3.8",
+        "text": "20%",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "-19",
-        "rationale": "Divide the difference in totals by 5."
-      },
-      {
-        "id": "C",
-        "text": "3.8",
-        "rationale": "The order of subtraction is reversed."
-      },
-      {
-        "id": "D",
-        "text": "40.2",
-        "rationale": "That is the mean of one column, not the difference."
-      },
-      {
-        "id": "E",
-        "text": "-1.9",
-        "rationale": "Divide by n = 5, not 2n."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "Mean year 1 = 201/5, mean year 2 = 220/5; difference = (201 − 220)/5 = -19/5.",
-    "estimated_time_seconds": 100,
-    "tags": [
-      "data",
-      "table",
-      "two-series",
-      "family:da_two_series"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Monthly rainfall by year 1 and year 2",
-        "headers": [
-          "Month",
-          "Year 1",
-          "Year 2"
-        ],
-        "rows": [
-          [
-            "Jan",
-            "54",
-            "60"
-          ],
-          [
-            "Feb",
-            "11",
-            "70"
-          ],
-          [
-            "Mar",
-            "61",
-            "21"
-          ],
-          [
-            "Apr",
-            "60",
-            "33"
-          ],
-          [
-            "May",
-            "15",
-            "36"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "s1=201,s2=220"
-  },
-  {
-    "question_id": "act-math-data-analysis-hard-b0009",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "data_analysis",
-    "lesson_id": "act-math-data-analysis-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "tables",
-    "prompt": "A sixth store is to be added to the table. How many bikes must it have so that the mean for all 6 stores is 38?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "63",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "228",
-        "rationale": "That is the required total, not the added value."
-      },
-      {
-        "id": "C",
-        "text": "38",
-        "rationale": "The new value must pull the mean up; it is larger than the target mean."
-      },
-      {
-        "id": "D",
-        "text": "25",
-        "rationale": "Use 6 rows after the addition, not 5."
-      },
-      {
-        "id": "E",
-        "text": "73",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "Needed total = 38 × 6 = 228; minus the current total 165 gives 63.",
-    "estimated_time_seconds": 100,
-    "tags": [
-      "data",
-      "table",
-      "mean",
-      "family:da_mean_from_table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Bike sales by store",
-        "headers": [
-          "Store",
-          "Bikes sold"
-        ],
-        "rows": [
-          [
-            "North",
-            "38"
-          ],
-          [
-            "South",
-            "19"
-          ],
-          [
-            "East",
-            "23"
-          ],
-          [
-            "West",
-            "25"
-          ],
-          [
-            "Central",
-            "60"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "mean=33;val=63"
-  },
-  {
-    "question_id": "act-math-data-analysis-hard-b0010",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "data_analysis",
-    "lesson_id": "act-math-data-analysis-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "tables",
-    "prompt": "The table shows the number of points recorded for 5 teams, 375 in all. Which of the following statements is supported by the data?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "The median number of points equals the mean.",
-        "rationale": "The median is 82 and the mean is 75.0."
-      },
-      {
-        "id": "B",
-        "text": "The range of the values is 39.",
-        "rationale": "The range is 86 − 49 = 37."
-      },
-      {
-        "id": "C",
-        "text": "Bears accounts for more than half of the total points.",
-        "rationale": "86 is less than half of 375."
-      },
-      {
-        "id": "D",
-        "text": "Exactly 3 of the teams recorded more points than the mean.",
-        "rationale": "Correct."
-      },
-      {
-        "id": "E",
-        "text": "Exactly 2 of the teams recorded more points than the mean.",
-        "rationale": "The mean is 75.0; count the values above it: 3."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "The mean is 375/5 = 75.0; the values above it are Hawks, Bears, Lynx (3 of them).",
-    "estimated_time_seconds": 105,
-    "tags": [
-      "data",
-      "table",
-      "statement",
-      "family:da_statement"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Points scored",
-        "headers": [
-          "Team",
-          "Points scored"
-        ],
-        "rows": [
-          [
-            "Hawks",
-            "85"
-          ],
-          [
-            "Bears",
-            "86"
-          ],
-          [
-            "Otters",
-            "73"
-          ],
-          [
-            "Lynx",
-            "82"
-          ],
-          [
-            "Wolves",
-            "49"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "statement"
-  },
-  {
-    "question_id": "act-math-data-analysis-hard-b0011",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "data_analysis",
-    "lesson_id": "act-math-data-analysis-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "tables",
-    "prompt": "Based on the table, what is the ratio of centimeters for B to centimeters for A?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-22/37",
-        "rationale": "A ratio is a quotient, not a difference over a value."
-      },
-      {
-        "id": "B",
-        "text": "15/206",
-        "rationale": "That compares B to the total, not to A."
-      },
-      {
-        "id": "C",
-        "text": "15/37",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "15/38",
-        "rationale": "Read the correct rows."
-      },
-      {
-        "id": "E",
-        "text": "37/15",
-        "rationale": "The ratio is in the wrong order."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "15:37 = 15:37, i.e. 15/37.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "data",
-      "table",
-      "ratio",
-      "family:da_read"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Plant heights",
-        "headers": [
-          "Plant",
-          "Height (cm)"
-        ],
-        "rows": [
-          [
-            "A",
-            "37"
-          ],
-          [
-            "B",
-            "15"
-          ],
-          [
-            "C",
-            "59"
-          ],
-          [
-            "D",
-            "58"
-          ],
-          [
-            "E",
-            "37"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "15/37"
-  },
-  {
-    "question_id": "act-math-data-analysis-hard-b0012",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "data_analysis",
-    "lesson_id": "act-math-data-analysis-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "tables",
-    "prompt": "The table shows the number of millimeters of rain for 5 months in 2022 and 2023 (a total of 317 in 2022 and 337 in 2023). Which month had the greatest percent increase in millimeters of rain from 2022 to 2023?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "May",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "Jan",
-        "rationale": "Jan changed by about −1%."
-      },
-      {
-        "id": "C",
-        "text": "Apr",
-        "rationale": "Apr changed by about 5%."
-      },
-      {
-        "id": "D",
-        "text": "Feb",
-        "rationale": "Feb changed by about −23%."
-      },
-      {
-        "id": "E",
-        "text": "Mar",
-        "rationale": "Mar changed by about 14%."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "Percent change = (new − old)/old; May: 22/51 ≈ 43%, the greatest.",
-    "estimated_time_seconds": 100,
-    "tags": [
-      "data",
-      "table",
-      "compare",
-      "family:da_two_year"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Monthly rainfall, 2022 and 2023",
-        "headers": [
-          "Month",
-          "2022",
-          "2023"
-        ],
-        "rows": [
-          [
-            "Jan",
-            "73",
-            "72"
-          ],
-          [
-            "Feb",
-            "60",
-            "46"
-          ],
-          [
-            "Mar",
-            "71",
-            "81"
-          ],
-          [
-            "Apr",
-            "62",
-            "65"
-          ],
-          [
-            "May",
-            "51",
-            "73"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "May"
-  },
-  {
-    "question_id": "act-math-data-analysis-hard-b0013",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "data_analysis",
-    "lesson_id": "act-math-data-analysis-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "tables",
-    "prompt": "The table groups 51 items by price (dollars). Approximately what percent of the items fall in the 50–59 interval?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "37%",
-        "rationale": "Arithmetic slip."
-      },
-      {
-        "id": "B",
-        "text": "14%",
-        "rationale": "That is the count, not a percent."
-      },
-      {
-        "id": "C",
-        "text": "86%",
+        "text": "100%",
         "rationale": "That is the cumulative percent up to this interval."
       },
       {
+        "id": "C",
+        "text": "9%",
+        "rationale": "That is the count, not a percent."
+      },
+      {
         "id": "D",
-        "text": "38%",
-        "rationale": "Divide by the total 51, not the rest."
+        "text": "30%",
+        "rationale": "Arithmetic slip."
       },
       {
         "id": "E",
-        "text": "27%",
-        "rationale": "Correct."
+        "text": "26%",
+        "rationale": "Divide by the total 44, not the rest."
       }
     ],
-    "correct_choice": "E",
-    "explanation": "14/51 × 100 ≈ 27%.",
+    "correct_choice": "A",
+    "explanation": "9/44 × 100 ≈ 20%.",
     "estimated_time_seconds": 90,
     "tags": [
       "data",
@@ -1069,32 +314,32 @@
         ],
         "rows": [
           [
-            "20–29",
-            "12"
-          ],
-          [
-            "30–39",
-            "11"
-          ],
-          [
-            "40–49",
-            "7"
-          ],
-          [
             "50–59",
-            "14"
+            "6"
           ],
           [
             "60–69",
+            "10"
+          ],
+          [
+            "70–79",
             "7"
+          ],
+          [
+            "80–89",
+            "12"
+          ],
+          [
+            "90–99",
+            "9"
           ]
         ]
       }
     },
-    "answer_verification": "14/51"
+    "answer_verification": "9/44"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0014",
+    "question_id": "act-math-data-analysis-hard-b0005",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1105,36 +350,125 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "The table groups 53 members by age. Approximately what percent of the members fall in the 110–114 interval?",
+    "prompt": "The table shows tickets for 5 days split into online and in store (512 in all). How much greater is the mean online value than the mean in store value? (A negative answer means it is smaller.)",
     "choices": [
       {
         "id": "A",
-        "text": "14%",
-        "rationale": "That is the count, not a percent."
+        "text": "1.6",
+        "rationale": "The order of subtraction is reversed."
       },
       {
         "id": "B",
-        "text": "21%",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "-8",
+        "rationale": "Divide the difference in totals by 5."
       },
       {
         "id": "C",
-        "text": "26%",
+        "text": "-1.6",
         "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "66%",
-        "rationale": "That is the cumulative percent up to this interval."
+        "text": "-0.8",
+        "rationale": "Divide by n = 5, not 2n."
       },
       {
         "id": "E",
-        "text": "36%",
-        "rationale": "Divide by the total 53, not the rest."
+        "text": "50.4",
+        "rationale": "That is the mean of one column, not the difference."
       }
     ],
     "correct_choice": "C",
-    "explanation": "14/53 × 100 ≈ 26%.",
+    "explanation": "Mean online = 252/5, mean in store = 260/5; difference = (252 − 260)/5 = -8/5.",
+    "estimated_time_seconds": 100,
+    "tags": [
+      "data",
+      "table",
+      "two-series",
+      "family:da_two_series"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Daily ticket sales by online and in store",
+        "headers": [
+          "Day",
+          "Online",
+          "In store"
+        ],
+        "rows": [
+          [
+            "Mon",
+            "52",
+            "66"
+          ],
+          [
+            "Tue",
+            "67",
+            "48"
+          ],
+          [
+            "Wed",
+            "35",
+            "25"
+          ],
+          [
+            "Thu",
+            "51",
+            "48"
+          ],
+          [
+            "Fri",
+            "47",
+            "73"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "s1=252,s2=260"
+  },
+  {
+    "question_id": "act-math-data-analysis-hard-b0006",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "data_analysis",
+    "lesson_id": "act-math-data-analysis-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "tables",
+    "prompt": "The table groups 33 items by price (dollars). Approximately what percent of the items fall in the 50–54 interval?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "8%",
+        "rationale": "That is the count, not a percent."
+      },
+      {
+        "id": "B",
+        "text": "32%",
+        "rationale": "Divide by the total 33, not the rest."
+      },
+      {
+        "id": "C",
+        "text": "24%",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "34%",
+        "rationale": "Arithmetic slip."
+      },
+      {
+        "id": "E",
+        "text": "31%",
+        "rationale": "That is the cumulative percent up to this interval."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "8/33 × 100 ≈ 24%.",
     "estimated_time_seconds": 90,
     "tags": [
       "data",
@@ -1148,116 +482,37 @@
       "table": {
         "caption": "Frequency table",
         "headers": [
-          "Age",
-          "Number of members"
+          "Price (dollars)",
+          "Number of items"
         ],
         "rows": [
           [
-            "100–104",
-            "14"
+            "50–54",
+            "8"
           ],
           [
-            "105–109",
+            "55–59",
             "7"
           ],
           [
-            "110–114",
-            "14"
+            "60–64",
+            "9"
           ],
           [
-            "115–119",
-            "12"
+            "65–69",
+            "7"
           ],
           [
-            "120–124",
-            "6"
+            "70–74",
+            "2"
           ]
         ]
       }
     },
-    "answer_verification": "14/53"
+    "answer_verification": "8/33"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0015",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "data_analysis",
-    "lesson_id": "act-math-data-analysis-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "graphs",
-    "prompt": "The values in the table follow a linear relationship. Which equation gives the second quantity y in terms of the first quantity x?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "y = 9x + 42",
-        "rationale": "42 is y when x = 1, not when x = 0."
-      },
-      {
-        "id": "B",
-        "text": "y = 33x + 9",
-        "rationale": "The slope and the constant are swapped."
-      },
-      {
-        "id": "C",
-        "text": "y = 18x + 33",
-        "rationale": "Divide the change in y by the change in x to get the rate."
-      },
-      {
-        "id": "D",
-        "text": "y = 9x + 33",
-        "rationale": "Correct."
-      },
-      {
-        "id": "E",
-        "text": "y = 9x",
-        "rationale": "The relationship has a nonzero starting value; check x = 0."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Between rows, y changes by 9 per unit of x, so the rate is 9; then 42 = 9·1 + b gives b = 33.",
-    "estimated_time_seconds": 100,
-    "tags": [
-      "data",
-      "table",
-      "linear",
-      "family:da_rate_table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Recorded values",
-        "headers": [
-          "Number of items",
-          "Cost (dollars)"
-        ],
-        "rows": [
-          [
-            "1",
-            "42"
-          ],
-          [
-            "3",
-            "60"
-          ],
-          [
-            "4",
-            "69"
-          ],
-          [
-            "7",
-            "96"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "y=9x+33"
-  },
-  {
-    "question_id": "act-math-data-analysis-hard-b0016",
+    "question_id": "act-math-data-analysis-hard-b0007",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1268,42 +523,42 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "Based on the table, what is the ratio of points for Wolves to points for Bears?",
+    "prompt": "A sixth team is to be added to the table. How many points must it have so that the mean for all 6 teams is 33?",
     "choices": [
       {
         "id": "A",
-        "text": "38/125",
-        "rationale": "That compares Wolves to the total, not to Bears."
+        "text": "33",
+        "rationale": "The new value must pull the mean up; it is larger than the target mean."
       },
       {
         "id": "B",
-        "text": "38/17",
-        "rationale": "Read the correct rows."
+        "text": "53",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "11/8",
-        "rationale": "A ratio is a quotient, not a difference over a value."
+        "text": "20",
+        "rationale": "Use 6 rows after the addition, not 5."
       },
       {
         "id": "D",
-        "text": "8/19",
-        "rationale": "The ratio is in the wrong order."
+        "text": "48",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
       },
       {
         "id": "E",
-        "text": "19/8",
-        "rationale": "Correct."
+        "text": "198",
+        "rationale": "That is the required total, not the added value."
       }
     ],
-    "correct_choice": "E",
-    "explanation": "38:16 = 19:8, i.e. 19/8.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "B",
+    "explanation": "Needed total = 33 × 6 = 198; minus the current total 145 gives 53.",
+    "estimated_time_seconds": 100,
     "tags": [
       "data",
       "table",
-      "ratio",
-      "family:da_read"
+      "mean",
+      "family:da_mean_from_table"
     ],
     "stimulus": {
       "type": "table",
@@ -1316,31 +571,31 @@
         "rows": [
           [
             "Hawks",
-            "37"
+            "48"
           ],
           [
             "Bears",
-            "16"
+            "19"
           ],
           [
             "Otters",
-            "14"
+            "10"
           ],
           [
             "Lynx",
-            "20"
+            "43"
           ],
           [
             "Wolves",
-            "38"
+            "25"
           ]
         ]
       }
     },
-    "answer_verification": "38/16"
+    "answer_verification": "mean=29;val=53"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0017",
+    "question_id": "act-math-data-analysis-hard-b0008",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1351,85 +606,79 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "The table shows tickets for 5 days split into home and away (367 in all). Approximately what percent of all the tickets were home?",
+    "prompt": "Based on the table, what is the ratio of tickets for Mon to tickets for Fri?",
     "choices": [
       {
         "id": "A",
-        "text": "57%",
-        "rationale": "Correct."
+        "text": "13/15",
+        "rationale": "The ratio is in the wrong order."
       },
       {
         "id": "B",
-        "text": "208%",
-        "rationale": "That is a count, not a percent."
+        "text": "15/13",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "43%",
-        "rationale": "That is the away share."
+        "text": "2/13",
+        "rationale": "A ratio is a quotient, not a difference over a value."
       },
       {
         "id": "D",
-        "text": "131%",
-        "rationale": "Divide by the grand total, not the other column."
+        "text": "60/187",
+        "rationale": "That compares Mon to the total, not to Fri."
       },
       {
         "id": "E",
-        "text": "65%",
-        "rationale": "Arithmetic slip."
+        "text": "60/53",
+        "rationale": "Read the correct rows."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "208/(208 + 159) × 100 ≈ 57%.",
-    "estimated_time_seconds": 100,
+    "correct_choice": "B",
+    "explanation": "60:52 = 15:13, i.e. 15/13.",
+    "estimated_time_seconds": 85,
     "tags": [
       "data",
       "table",
-      "two-series",
-      "family:da_two_series"
+      "ratio",
+      "family:da_read"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Daily ticket sales by home and away",
+        "caption": "Daily ticket sales",
         "headers": [
           "Day",
-          "Home",
-          "Away"
+          "Tickets sold"
         ],
         "rows": [
           [
             "Mon",
-            "67",
-            "32"
+            "60"
           ],
           [
             "Tue",
-            "59",
-            "67"
+            "21"
           ],
           [
             "Wed",
-            "32",
-            "22"
+            "38"
           ],
           [
             "Thu",
-            "25",
-            "14"
+            "16"
           ],
           [
             "Fri",
-            "25",
-            "24"
+            "52"
           ]
         ]
       }
     },
-    "answer_verification": "s1=208,s2=159"
+    "answer_verification": "60/52"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0018",
+    "question_id": "act-math-data-analysis-hard-b0009",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1440,119 +689,36 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "Based on the table, how many more centimeters than the mean per plant were recorded for E?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "28",
-        "rationale": "Arithmetic slip; recompute the mean."
-      },
-      {
-        "id": "B",
-        "text": "35",
-        "rationale": "That is the mean, not the amount above it."
-      },
-      {
-        "id": "C",
-        "text": "45",
-        "rationale": "This compares to the least value, not the mean."
-      },
-      {
-        "id": "D",
-        "text": "27",
-        "rationale": "Correct."
-      },
-      {
-        "id": "E",
-        "text": "62",
-        "rationale": "That is the value itself, not its excess over the mean."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Mean = 175 ÷ 5 = 35; 62 − 35 = 27.",
-    "estimated_time_seconds": 100,
-    "tags": [
-      "data",
-      "table",
-      "mean",
-      "family:da_mean_from_table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Plant heights",
-        "headers": [
-          "Plant",
-          "Height (cm)"
-        ],
-        "rows": [
-          [
-            "A",
-            "17"
-          ],
-          [
-            "B",
-            "36"
-          ],
-          [
-            "C",
-            "31"
-          ],
-          [
-            "D",
-            "29"
-          ],
-          [
-            "E",
-            "62"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "mean=35;val=27"
-  },
-  {
-    "question_id": "act-math-data-analysis-hard-b0019",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "data_analysis",
-    "lesson_id": "act-math-data-analysis-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "tables",
-    "prompt": "The table shows the number of points recorded for 5 teams, 277 in all. Which of the following statements is supported by the data?",
+    "prompt": "The table shows the number of points recorded for 5 teams, 252 in all. Which of the following statements is supported by the data?",
     "choices": [
       {
         "id": "A",
         "text": "Bears accounts for more than half of the total points.",
-        "rationale": "85 is less than half of 277."
+        "rationale": "82 is less than half of 252."
       },
       {
         "id": "B",
-        "text": "The range of the values is 69.",
-        "rationale": "The range is 85 − 22 = 63."
+        "text": "Exactly 3 of the teams recorded more points than the mean.",
+        "rationale": "Correct."
       },
       {
         "id": "C",
         "text": "The median number of points equals the mean.",
-        "rationale": "The median is 50 and the mean is 55.4."
+        "rationale": "The median is 53 and the mean is 50.4."
       },
       {
         "id": "D",
-        "text": "Exactly 3 of the teams recorded more points than the mean.",
-        "rationale": "The mean is 55.4; count the values above it: 2."
+        "text": "The range of the values is 63.",
+        "rationale": "The range is 82 − 24 = 58."
       },
       {
         "id": "E",
         "text": "Exactly 2 of the teams recorded more points than the mean.",
-        "rationale": "Correct."
+        "rationale": "The mean is 50.4; count the values above it: 3."
       }
     ],
-    "correct_choice": "E",
-    "explanation": "The mean is 277/5 = 55.4; the values above it are Hawks, Bears (2 of them).",
+    "correct_choice": "B",
+    "explanation": "The mean is 252/5 = 50.4; the values above it are Bears, Lynx, Wolves (3 of them).",
     "estimated_time_seconds": 105,
     "tags": [
       "data",
@@ -1571,23 +737,23 @@
         "rows": [
           [
             "Hawks",
-            "78"
+            "31"
           ],
           [
             "Bears",
-            "85"
+            "82"
           ],
           [
             "Otters",
-            "22"
+            "24"
           ],
           [
             "Lynx",
-            "42"
+            "62"
           ],
           [
             "Wolves",
-            "50"
+            "53"
           ]
         ]
       }
@@ -1595,7 +761,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0020",
+    "question_id": "act-math-data-analysis-hard-b0010",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1606,125 +772,42 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "Based on the table, what is the ratio of centimeters for B to centimeters for C?",
+    "prompt": "Based on the table, what is the ratio of tickets for Fri to tickets for Mon?",
     "choices": [
       {
         "id": "A",
-        "text": "9/35",
-        "rationale": "A ratio is a quotient, not a difference over a value."
-      },
-      {
-        "id": "B",
-        "text": "11/9",
-        "rationale": "Read the correct rows."
-      },
-      {
-        "id": "C",
-        "text": "35/44",
-        "rationale": "The ratio is in the wrong order."
-      },
-      {
-        "id": "D",
-        "text": "44/35",
+        "text": "11/12",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "12/11",
+        "rationale": "The ratio is in the wrong order."
+      },
+      {
+        "id": "C",
+        "text": "-1/12",
+        "rationale": "A ratio is a quotient, not a difference over a value."
+      },
+      {
+        "id": "D",
+        "text": "44/49",
+        "rationale": "Read the correct rows."
+      },
+      {
         "id": "E",
-        "text": "44/229",
-        "rationale": "That compares B to the total, not to C."
+        "text": "11/59",
+        "rationale": "That compares Fri to the total, not to Mon."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "44:35 = 44:35, i.e. 44/35.",
+    "correct_choice": "A",
+    "explanation": "44:48 = 11:12, i.e. 11/12.",
     "estimated_time_seconds": 85,
     "tags": [
       "data",
       "table",
       "ratio",
       "family:da_read"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Plant heights",
-        "headers": [
-          "Plant",
-          "Height (cm)"
-        ],
-        "rows": [
-          [
-            "A",
-            "38"
-          ],
-          [
-            "B",
-            "44"
-          ],
-          [
-            "C",
-            "35"
-          ],
-          [
-            "D",
-            "59"
-          ],
-          [
-            "E",
-            "53"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "44/35"
-  },
-  {
-    "question_id": "act-math-data-analysis-hard-b0021",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "data_analysis",
-    "lesson_id": "act-math-data-analysis-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "tables",
-    "prompt": "A sixth day is to be added to the table. How many tickets must it have so that the mean for all 6 days is 33?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "198",
-        "rationale": "That is the required total, not the added value."
-      },
-      {
-        "id": "B",
-        "text": "53",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "C",
-        "text": "30",
-        "rationale": "Use 6 rows after the addition, not 5."
-      },
-      {
-        "id": "D",
-        "text": "33",
-        "rationale": "The new value must pull the mean up; it is larger than the target mean."
-      },
-      {
-        "id": "E",
-        "text": "63",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "E",
-    "explanation": "Needed total = 33 × 6 = 198; minus the current total 135 gives 63.",
-    "estimated_time_seconds": 100,
-    "tags": [
-      "data",
-      "table",
-      "mean",
-      "family:da_mean_from_table"
     ],
     "stimulus": {
       "type": "table",
@@ -1737,31 +820,203 @@
         "rows": [
           [
             "Mon",
-            "32"
+            "48"
           ],
           [
             "Tue",
-            "26"
+            "50"
           ],
           [
             "Wed",
-            "34"
+            "53"
           ],
           [
             "Thu",
-            "24"
+            "41"
           ],
           [
             "Fri",
-            "19"
+            "44"
           ]
         ]
       }
     },
-    "answer_verification": "mean=27;val=63"
+    "answer_verification": "44/48"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0022",
+    "question_id": "act-math-data-analysis-hard-b0011",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "data_analysis",
+    "lesson_id": "act-math-data-analysis-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "tables",
+    "prompt": "Based on the table, what is the ratio of millimeters of rain for Apr to millimeters of rain for May?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-35/46",
+        "rationale": "A ratio is a quotient, not a difference over a value."
+      },
+      {
+        "id": "B",
+        "text": "11/46",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "11/47",
+        "rationale": "Read the correct rows."
+      },
+      {
+        "id": "D",
+        "text": "11/163",
+        "rationale": "That compares Apr to the total, not to May."
+      },
+      {
+        "id": "E",
+        "text": "46/11",
+        "rationale": "The ratio is in the wrong order."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "11:46 = 11:46, i.e. 11/46.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "data",
+      "table",
+      "ratio",
+      "family:da_read"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Monthly rainfall",
+        "headers": [
+          "Month",
+          "Rainfall (mm)"
+        ],
+        "rows": [
+          [
+            "Jan",
+            "46"
+          ],
+          [
+            "Feb",
+            "48"
+          ],
+          [
+            "Mar",
+            "12"
+          ],
+          [
+            "Apr",
+            "11"
+          ],
+          [
+            "May",
+            "46"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "11/46"
+  },
+  {
+    "question_id": "act-math-data-analysis-hard-b0012",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "data_analysis",
+    "lesson_id": "act-math-data-analysis-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "tables",
+    "prompt": "The table shows the number of points for 5 teams in 2022 and 2023 (a total of 210 in 2022 and 209 in 2023). Which team had the greatest percent increase in points from 2022 to 2023?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Hawks",
+        "rationale": "Hawks changed by about −3%."
+      },
+      {
+        "id": "B",
+        "text": "Bears",
+        "rationale": "Bears changed by about −41%."
+      },
+      {
+        "id": "C",
+        "text": "Otters",
+        "rationale": "Otters changed by about −48%."
+      },
+      {
+        "id": "D",
+        "text": "Wolves",
+        "rationale": "Wolves changed by about 17%."
+      },
+      {
+        "id": "E",
+        "text": "Lynx",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "E",
+    "explanation": "Percent change = (new − old)/old; Lynx: 25/73 ≈ 34%, the greatest.",
+    "estimated_time_seconds": 100,
+    "tags": [
+      "data",
+      "table",
+      "compare",
+      "family:da_two_year"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Points scored, 2022 and 2023",
+        "headers": [
+          "Team",
+          "2022",
+          "2023"
+        ],
+        "rows": [
+          [
+            "Hawks",
+            "32",
+            "31"
+          ],
+          [
+            "Bears",
+            "27",
+            "16"
+          ],
+          [
+            "Otters",
+            "42",
+            "22"
+          ],
+          [
+            "Lynx",
+            "73",
+            "98"
+          ],
+          [
+            "Wolves",
+            "36",
+            "42"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "Lynx"
+  },
+  {
+    "question_id": "act-math-data-analysis-hard-b0013",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1845,7 +1100,7 @@
     "answer_verification": "14/37"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0023",
+    "question_id": "act-math-data-analysis-hard-b0014",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1929,7 +1184,7 @@
     "answer_verification": "8/26"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0024",
+    "question_id": "act-math-data-analysis-hard-b0015",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2018,7 +1273,7 @@
     "answer_verification": "Wolves"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0025",
+    "question_id": "act-math-data-analysis-hard-b0016",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2102,7 +1357,7 @@
     "answer_verification": "10/45"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0026",
+    "question_id": "act-math-data-analysis-hard-b0017",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2185,7 +1440,7 @@
     "answer_verification": "mean=37;val=55"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0027",
+    "question_id": "act-math-data-analysis-hard-b0018",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2268,7 +1523,7 @@
     "answer_verification": "11/30"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0028",
+    "question_id": "act-math-data-analysis-hard-b0019",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2347,7 +1602,7 @@
     "answer_verification": "y=12x+35"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0029",
+    "question_id": "act-math-data-analysis-hard-b0020",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2426,7 +1681,7 @@
     "answer_verification": "y=65x+20"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0030",
+    "question_id": "act-math-data-analysis-hard-b0021",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2509,7 +1764,7 @@
     "answer_verification": "46/22"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0031",
+    "question_id": "act-math-data-analysis-hard-b0022",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2598,7 +1853,7 @@
     "answer_verification": "B"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0032",
+    "question_id": "act-math-data-analysis-hard-b0023",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2682,7 +1937,7 @@
     "answer_verification": "3/38"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0033",
+    "question_id": "act-math-data-analysis-hard-b0024",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2765,7 +2020,7 @@
     "answer_verification": "mean=35;val=19"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0034",
+    "question_id": "act-math-data-analysis-hard-b0025",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2848,7 +2103,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0035",
+    "question_id": "act-math-data-analysis-hard-b0026",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2927,7 +2182,7 @@
     "answer_verification": "y=8x+21"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0036",
+    "question_id": "act-math-data-analysis-hard-b0027",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3011,7 +2266,7 @@
     "answer_verification": "6/37"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0037",
+    "question_id": "act-math-data-analysis-hard-b0028",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3095,7 +2350,7 @@
     "answer_verification": "13/41"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0038",
+    "question_id": "act-math-data-analysis-hard-b0029",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3184,7 +2439,7 @@
     "answer_verification": "s1=129,s2=277"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0039",
+    "question_id": "act-math-data-analysis-hard-b0030",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3263,7 +2518,7 @@
     "answer_verification": "y=40x+19"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0040",
+    "question_id": "act-math-data-analysis-hard-b0031",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3346,7 +2601,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0041",
+    "question_id": "act-math-data-analysis-hard-b0032",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3425,7 +2680,7 @@
     "answer_verification": "y=15x+38"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0042",
+    "question_id": "act-math-data-analysis-hard-b0033",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3508,7 +2763,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0043",
+    "question_id": "act-math-data-analysis-hard-b0034",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3597,7 +2852,7 @@
     "answer_verification": "s1=195,s2=181"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0044",
+    "question_id": "act-math-data-analysis-hard-b0035",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3681,7 +2936,7 @@
     "answer_verification": "13/26"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0045",
+    "question_id": "act-math-data-analysis-hard-b0036",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3764,7 +3019,7 @@
     "answer_verification": "mean=31;val=17"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0046",
+    "question_id": "act-math-data-analysis-hard-b0037",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3853,7 +3108,7 @@
     "answer_verification": "Bears"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0047",
+    "question_id": "act-math-data-analysis-hard-b0038",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3942,7 +3197,7 @@
     "answer_verification": "s1=244,s2=273"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0048",
+    "question_id": "act-math-data-analysis-hard-b0039",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4025,7 +3280,7 @@
     "answer_verification": "mean=32;val=74"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0049",
+    "question_id": "act-math-data-analysis-hard-b0040",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4114,7 +3369,7 @@
     "answer_verification": "s1=127,s2=258"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0050",
+    "question_id": "act-math-data-analysis-hard-b0041",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4193,7 +3448,7 @@
     "answer_verification": "y=14x+38"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0051",
+    "question_id": "act-math-data-analysis-hard-b0042",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4282,7 +3537,7 @@
     "answer_verification": "s1=124,s2=260"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0052",
+    "question_id": "act-math-data-analysis-hard-b0043",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4361,7 +3616,7 @@
     "answer_verification": "y=45x+7"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0053",
+    "question_id": "act-math-data-analysis-hard-b0044",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4450,7 +3705,7 @@
     "answer_verification": "s1=203,s2=129"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0054",
+    "question_id": "act-math-data-analysis-hard-b0045",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4533,7 +3788,7 @@
     "answer_verification": "mean=32;val=62"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0055",
+    "question_id": "act-math-data-analysis-hard-b0046",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4616,7 +3871,7 @@
     "answer_verification": "54/43"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0056",
+    "question_id": "act-math-data-analysis-hard-b0047",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4705,7 +3960,7 @@
     "answer_verification": "May"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0057",
+    "question_id": "act-math-data-analysis-hard-b0048",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4789,7 +4044,7 @@
     "answer_verification": "8/31"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0058",
+    "question_id": "act-math-data-analysis-hard-b0049",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4872,7 +4127,7 @@
     "answer_verification": "34/34"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0059",
+    "question_id": "act-math-data-analysis-hard-b0050",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4961,7 +4216,7 @@
     "answer_verification": "Mon"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0060",
+    "question_id": "act-math-data-analysis-hard-b0051",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5040,7 +4295,7 @@
     "answer_verification": "y=4x+6"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0061",
+    "question_id": "act-math-data-analysis-hard-b0052",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5119,7 +4374,7 @@
     "answer_verification": "y=25x+36"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0062",
+    "question_id": "act-math-data-analysis-hard-b0053",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5198,7 +4453,7 @@
     "answer_verification": "y=15x+8"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0063",
+    "question_id": "act-math-data-analysis-hard-b0054",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5287,7 +4542,7 @@
     "answer_verification": "Mar"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0064",
+    "question_id": "act-math-data-analysis-hard-b0055",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5371,7 +4626,7 @@
     "answer_verification": "2/36"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0065",
+    "question_id": "act-math-data-analysis-hard-b0056",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5454,7 +4709,7 @@
     "answer_verification": "24/34"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0066",
+    "question_id": "act-math-data-analysis-hard-b0057",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5543,7 +4798,7 @@
     "answer_verification": "Hawks"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0067",
+    "question_id": "act-math-data-analysis-hard-b0058",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5632,7 +4887,7 @@
     "answer_verification": "s1=182,s2=198"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0068",
+    "question_id": "act-math-data-analysis-hard-b0059",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5715,7 +4970,7 @@
     "answer_verification": "mean=32;val=9"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0069",
+    "question_id": "act-math-data-analysis-hard-b0060",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5799,7 +5054,7 @@
     "answer_verification": "4/34"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0070",
+    "question_id": "act-math-data-analysis-hard-b0061",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5882,7 +5137,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0071",
+    "question_id": "act-math-data-analysis-hard-b0062",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5971,7 +5226,7 @@
     "answer_verification": "Tue"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0072",
+    "question_id": "act-math-data-analysis-hard-b0063",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6060,7 +5315,7 @@
     "answer_verification": "s1=193,s2=276"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0073",
+    "question_id": "act-math-data-analysis-hard-b0064",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6149,7 +5404,7 @@
     "answer_verification": "Wolves"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0074",
+    "question_id": "act-math-data-analysis-hard-b0065",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6232,7 +5487,7 @@
     "answer_verification": "mean=27;val=20"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0075",
+    "question_id": "act-math-data-analysis-hard-b0066",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6321,7 +5576,7 @@
     "answer_verification": "North"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0076",
+    "question_id": "act-math-data-analysis-hard-b0067",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6405,7 +5660,7 @@
     "answer_verification": "10/38"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0077",
+    "question_id": "act-math-data-analysis-hard-b0068",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6488,7 +5743,7 @@
     "answer_verification": "mean=30;val=48"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0078",
+    "question_id": "act-math-data-analysis-hard-b0069",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6571,7 +5826,7 @@
     "answer_verification": "44/40"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0079",
+    "question_id": "act-math-data-analysis-hard-b0070",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6654,7 +5909,7 @@
     "answer_verification": "43/20"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0080",
+    "question_id": "act-math-data-analysis-hard-b0071",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6738,7 +5993,7 @@
     "answer_verification": "5/29"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0081",
+    "question_id": "act-math-data-analysis-hard-b0072",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6821,7 +6076,7 @@
     "answer_verification": "31/10"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0082",
+    "question_id": "act-math-data-analysis-hard-b0073",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6904,7 +6159,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0083",
+    "question_id": "act-math-data-analysis-hard-b0074",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6987,7 +6242,7 @@
     "answer_verification": "mean=32;val=26"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0084",
+    "question_id": "act-math-data-analysis-hard-b0075",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7070,7 +6325,7 @@
     "answer_verification": "mean=33;val=24"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0085",
+    "question_id": "act-math-data-analysis-hard-b0076",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7153,7 +6408,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0086",
+    "question_id": "act-math-data-analysis-hard-b0077",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7242,7 +6497,7 @@
     "answer_verification": "Mon"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0087",
+    "question_id": "act-math-data-analysis-hard-b0078",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7325,7 +6580,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0088",
+    "question_id": "act-math-data-analysis-hard-b0079",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7414,7 +6669,7 @@
     "answer_verification": "s1=186,s2=258"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0089",
+    "question_id": "act-math-data-analysis-hard-b0080",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7497,7 +6752,7 @@
     "answer_verification": "29/56"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0090",
+    "question_id": "act-math-data-analysis-hard-b0081",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7576,7 +6831,7 @@
     "answer_verification": "y=25x+8"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0091",
+    "question_id": "act-math-data-analysis-hard-b0082",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7665,7 +6920,7 @@
     "answer_verification": "East"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0092",
+    "question_id": "act-math-data-analysis-hard-b0083",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7749,7 +7004,7 @@
     "answer_verification": "11/48"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0093",
+    "question_id": "act-math-data-analysis-hard-b0084",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7838,7 +7093,7 @@
     "answer_verification": "s1=261,s2=239"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0094",
+    "question_id": "act-math-data-analysis-hard-b0085",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7921,7 +7176,7 @@
     "answer_verification": "mean=17;val=59"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0095",
+    "question_id": "act-math-data-analysis-hard-b0086",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8010,7 +7265,7 @@
     "answer_verification": "s1=280,s2=248"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0096",
+    "question_id": "act-math-data-analysis-hard-b0087",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8093,7 +7348,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0097",
+    "question_id": "act-math-data-analysis-hard-b0088",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8176,7 +7431,7 @@
     "answer_verification": "54/37"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0098",
+    "question_id": "act-math-data-analysis-hard-b0089",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8259,7 +7514,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0099",
+    "question_id": "act-math-data-analysis-hard-b0090",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8338,7 +7593,7 @@
     "answer_verification": "y=14x+7"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0100",
+    "question_id": "act-math-data-analysis-hard-b0091",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8421,7 +7676,7 @@
     "answer_verification": "35/17"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0101",
+    "question_id": "act-math-data-analysis-hard-b0092",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8504,7 +7759,7 @@
     "answer_verification": "mean=43;val=14"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0102",
+    "question_id": "act-math-data-analysis-hard-b0093",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8593,7 +7848,7 @@
     "answer_verification": "s1=296,s2=264"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0103",
+    "question_id": "act-math-data-analysis-hard-b0094",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8676,7 +7931,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0104",
+    "question_id": "act-math-data-analysis-hard-b0095",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8759,7 +8014,7 @@
     "answer_verification": "58/15"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0105",
+    "question_id": "act-math-data-analysis-hard-b0096",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8843,7 +8098,7 @@
     "answer_verification": "6/28"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0106",
+    "question_id": "act-math-data-analysis-hard-b0097",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8926,7 +8181,7 @@
     "answer_verification": "mean=37;val=49"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0107",
+    "question_id": "act-math-data-analysis-hard-b0098",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -9009,7 +8264,7 @@
     "answer_verification": "mean=28;val=34"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0108",
+    "question_id": "act-math-data-analysis-hard-b0099",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -9088,7 +8343,7 @@
     "answer_verification": "y=10x+35"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0109",
+    "question_id": "act-math-data-analysis-hard-b0100",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -9177,7 +8432,7 @@
     "answer_verification": "s1=187,s2=223"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0110",
+    "question_id": "act-math-data-analysis-hard-b0101",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -9256,7 +8511,7 @@
     "answer_verification": "y=70x+39"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0111",
+    "question_id": "act-math-data-analysis-hard-b0102",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -9345,7 +8600,7 @@
     "answer_verification": "A"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0112",
+    "question_id": "act-math-data-analysis-hard-b0103",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -9434,7 +8689,7 @@
     "answer_verification": "s1=181,s2=231"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0113",
+    "question_id": "act-math-data-analysis-hard-b0104",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -9517,7 +8772,7 @@
     "answer_verification": "23/21"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0114",
+    "question_id": "act-math-data-analysis-hard-b0105",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -9606,7 +8861,7 @@
     "answer_verification": "South"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0115",
+    "question_id": "act-math-data-analysis-hard-b0106",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -9689,7 +8944,7 @@
     "answer_verification": "44/25"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0116",
+    "question_id": "act-math-data-analysis-hard-b0107",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -9778,7 +9033,7 @@
     "answer_verification": "Mar"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0117",
+    "question_id": "act-math-data-analysis-hard-b0108",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -9861,7 +9116,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0118",
+    "question_id": "act-math-data-analysis-hard-b0109",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -9944,7 +9199,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0119",
+    "question_id": "act-math-data-analysis-hard-b0110",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -10033,7 +9288,7 @@
     "answer_verification": "Jan"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0120",
+    "question_id": "act-math-data-analysis-hard-b0111",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -10116,7 +9371,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0121",
+    "question_id": "act-math-data-analysis-hard-b0112",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -10199,7 +9454,7 @@
     "answer_verification": "29/45"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0122",
+    "question_id": "act-math-data-analysis-hard-b0113",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -10282,7 +9537,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0123",
+    "question_id": "act-math-data-analysis-hard-b0114",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -10365,7 +9620,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0124",
+    "question_id": "act-math-data-analysis-hard-b0115",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -10449,7 +9704,7 @@
     "answer_verification": "11/37"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0125",
+    "question_id": "act-math-data-analysis-hard-b0116",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -10538,7 +9793,7 @@
     "answer_verification": "s1=312,s2=124"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0126",
+    "question_id": "act-math-data-analysis-hard-b0117",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -10622,7 +9877,7 @@
     "answer_verification": "11/43"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0127",
+    "question_id": "act-math-data-analysis-hard-b0118",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -10705,7 +9960,7 @@
     "answer_verification": "mean=23;val=20"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0128",
+    "question_id": "act-math-data-analysis-hard-b0119",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -10784,7 +10039,7 @@
     "answer_verification": "y=55x+28"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0129",
+    "question_id": "act-math-data-analysis-hard-b0120",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -10863,7 +10118,7 @@
     "answer_verification": "y=8x+7"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0130",
+    "question_id": "act-math-data-analysis-hard-b0121",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -10942,7 +10197,7 @@
     "answer_verification": "y=25x+15"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0131",
+    "question_id": "act-math-data-analysis-hard-b0122",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -11026,7 +10281,7 @@
     "answer_verification": "6/38"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0132",
+    "question_id": "act-math-data-analysis-hard-b0123",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -11105,7 +10360,7 @@
     "answer_verification": "y=13x+36"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0133",
+    "question_id": "act-math-data-analysis-hard-b0124",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -11194,7 +10449,7 @@
     "answer_verification": "s1=224,s2=164"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0134",
+    "question_id": "act-math-data-analysis-hard-b0125",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -11277,7 +10532,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0135",
+    "question_id": "act-math-data-analysis-hard-b0126",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -11360,7 +10615,7 @@
     "answer_verification": "38/56"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0136",
+    "question_id": "act-math-data-analysis-hard-b0127",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -11449,7 +10704,7 @@
     "answer_verification": "C"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0137",
+    "question_id": "act-math-data-analysis-hard-b0128",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -11532,7 +10787,7 @@
     "answer_verification": "56/32"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0138",
+    "question_id": "act-math-data-analysis-hard-b0129",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -11615,7 +10870,7 @@
     "answer_verification": "mean=37;val=24"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0139",
+    "question_id": "act-math-data-analysis-hard-b0130",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -11698,7 +10953,7 @@
     "answer_verification": "mean=35;val=47"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0140",
+    "question_id": "act-math-data-analysis-hard-b0131",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -11781,7 +11036,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0141",
+    "question_id": "act-math-data-analysis-hard-b0132",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -11860,7 +11115,7 @@
     "answer_verification": "y=3x+33"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0142",
+    "question_id": "act-math-data-analysis-hard-b0133",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -11939,7 +11194,7 @@
     "answer_verification": "y=60x+28"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0143",
+    "question_id": "act-math-data-analysis-hard-b0134",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -12022,7 +11277,7 @@
     "answer_verification": "mean=30;val=23"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0144",
+    "question_id": "act-math-data-analysis-hard-b0135",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -12101,7 +11356,7 @@
     "answer_verification": "y=55x+13"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0145",
+    "question_id": "act-math-data-analysis-hard-b0136",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -12190,7 +11445,7 @@
     "answer_verification": "Thu"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0146",
+    "question_id": "act-math-data-analysis-hard-b0137",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -12273,7 +11528,7 @@
     "answer_verification": "22/19"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0147",
+    "question_id": "act-math-data-analysis-hard-b0138",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -12356,7 +11611,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0148",
+    "question_id": "act-math-data-analysis-hard-b0139",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -12439,7 +11694,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0149",
+    "question_id": "act-math-data-analysis-hard-b0140",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -12523,7 +11778,7 @@
     "answer_verification": "12/29"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0150",
+    "question_id": "act-math-data-analysis-hard-b0141",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -12602,7 +11857,7 @@
     "answer_verification": "y=60x+6"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0151",
+    "question_id": "act-math-data-analysis-hard-b0142",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -12686,7 +11941,7 @@
     "answer_verification": "3/43"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0152",
+    "question_id": "act-math-data-analysis-hard-b0143",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -12769,7 +12024,7 @@
     "answer_verification": "mean=27;val=37"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0153",
+    "question_id": "act-math-data-analysis-hard-b0144",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -12848,7 +12103,7 @@
     "answer_verification": "y=45x+8"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0154",
+    "question_id": "act-math-data-analysis-hard-b0145",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -12932,7 +12187,7 @@
     "answer_verification": "2/38"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0155",
+    "question_id": "act-math-data-analysis-hard-b0146",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -13021,7 +12276,7 @@
     "answer_verification": "s1=215,s2=235"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0156",
+    "question_id": "act-math-data-analysis-hard-b0147",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -13105,7 +12360,7 @@
     "answer_verification": "2/37"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0157",
+    "question_id": "act-math-data-analysis-hard-b0148",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -13194,7 +12449,7 @@
     "answer_verification": "West"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0158",
+    "question_id": "act-math-data-analysis-hard-b0149",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -13277,7 +12532,7 @@
     "answer_verification": "25/36"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0159",
+    "question_id": "act-math-data-analysis-hard-b0150",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -13361,7 +12616,7 @@
     "answer_verification": "13/48"
   },
   {
-    "question_id": "act-math-data-analysis-hard-b0160",
+    "question_id": "act-math-data-analysis-hard-b0151",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -13448,5 +12703,759 @@
       }
     },
     "answer_verification": "s1=286,s2=205"
+  },
+  {
+    "question_id": "act-math-data-analysis-hard-b0152",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "data_analysis",
+    "lesson_id": "act-math-data-analysis-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "tables",
+    "prompt": "The table groups 36 commuters by minutes. Approximately what percent of the commuters fall in the 140–159 interval?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "64%",
+        "rationale": "That is the cumulative percent up to this interval."
+      },
+      {
+        "id": "B",
+        "text": "31%",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "41%",
+        "rationale": "Arithmetic slip."
+      },
+      {
+        "id": "D",
+        "text": "44%",
+        "rationale": "Divide by the total 36, not the rest."
+      },
+      {
+        "id": "E",
+        "text": "11%",
+        "rationale": "That is the count, not a percent."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "11/36 × 100 ≈ 31%.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "data",
+      "table",
+      "histogram",
+      "percent",
+      "family:da_interval_table"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Frequency table",
+        "headers": [
+          "Minutes",
+          "Number of commuters"
+        ],
+        "rows": [
+          [
+            "100–119",
+            "10"
+          ],
+          [
+            "120–139",
+            "2"
+          ],
+          [
+            "140–159",
+            "11"
+          ],
+          [
+            "160–179",
+            "10"
+          ],
+          [
+            "180–199",
+            "3"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "11/36"
+  },
+  {
+    "question_id": "act-math-data-analysis-hard-b0153",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "data_analysis",
+    "lesson_id": "act-math-data-analysis-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "tables",
+    "prompt": "The table shows the number of millimeters of rain for 5 months in 2023 and 2024 (a total of 251 in 2023 and 263 in 2024). Which month had the greatest percent increase in millimeters of rain from 2023 to 2024?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Mar",
+        "rationale": "Mar changed by about 36%."
+      },
+      {
+        "id": "B",
+        "text": "Feb",
+        "rationale": "Feb changed by about −36%."
+      },
+      {
+        "id": "C",
+        "text": "Apr",
+        "rationale": "Apr changed by about −17%."
+      },
+      {
+        "id": "D",
+        "text": "Jan",
+        "rationale": "Jan changed by about 19%."
+      },
+      {
+        "id": "E",
+        "text": "May",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "E",
+    "explanation": "Percent change = (new − old)/old; May: 23/23 ≈ 100%, the greatest.",
+    "estimated_time_seconds": 100,
+    "tags": [
+      "data",
+      "table",
+      "compare",
+      "family:da_two_year"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Monthly rainfall, 2023 and 2024",
+        "headers": [
+          "Month",
+          "2023",
+          "2024"
+        ],
+        "rows": [
+          [
+            "Jan",
+            "79",
+            "94"
+          ],
+          [
+            "Feb",
+            "64",
+            "41"
+          ],
+          [
+            "Mar",
+            "22",
+            "30"
+          ],
+          [
+            "Apr",
+            "63",
+            "52"
+          ],
+          [
+            "May",
+            "23",
+            "46"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "May"
+  },
+  {
+    "question_id": "act-math-data-analysis-hard-b0154",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "data_analysis",
+    "lesson_id": "act-math-data-analysis-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "graphs",
+    "prompt": "The values in the table follow a linear relationship. Which equation gives the second quantity y in terms of the first quantity x?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "y = 22x + 26",
+        "rationale": "Divide the change in y by the change in x to get the rate."
+      },
+      {
+        "id": "B",
+        "text": "y = 11x",
+        "rationale": "The relationship has a nonzero starting value; check x = 0."
+      },
+      {
+        "id": "C",
+        "text": "y = 26x + 11",
+        "rationale": "The slope and the constant are swapped."
+      },
+      {
+        "id": "D",
+        "text": "y = 11x + 26",
+        "rationale": "Correct."
+      },
+      {
+        "id": "E",
+        "text": "y = 11x + 59",
+        "rationale": "59 is y when x = 3, not when x = 0."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Between rows, y changes by 11 per unit of x, so the rate is 11; then 59 = 11·3 + b gives b = 26.",
+    "estimated_time_seconds": 100,
+    "tags": [
+      "data",
+      "table",
+      "linear",
+      "family:da_rate_table"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Recorded values",
+        "headers": [
+          "Minutes",
+          "Gallons pumped"
+        ],
+        "rows": [
+          [
+            "3",
+            "59"
+          ],
+          [
+            "5",
+            "81"
+          ],
+          [
+            "6",
+            "92"
+          ],
+          [
+            "8",
+            "114"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "y=11x+26"
+  },
+  {
+    "question_id": "act-math-data-analysis-hard-b0155",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "data_analysis",
+    "lesson_id": "act-math-data-analysis-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "graphs",
+    "prompt": "The values in the table follow a linear relationship. Which equation gives the second quantity y in terms of the first quantity x?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "y = 11x + 38",
+        "rationale": "38 is y when x = 3, not when x = 0."
+      },
+      {
+        "id": "B",
+        "text": "y = 5x + 11",
+        "rationale": "The slope and the constant are swapped."
+      },
+      {
+        "id": "C",
+        "text": "y = 33x + 5",
+        "rationale": "Divide the change in y by the change in x to get the rate."
+      },
+      {
+        "id": "D",
+        "text": "y = 11x + 5",
+        "rationale": "Correct."
+      },
+      {
+        "id": "E",
+        "text": "y = 11x",
+        "rationale": "The relationship has a nonzero starting value; check x = 0."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Between rows, y changes by 11 per unit of x, so the rate is 11; then 38 = 11·3 + b gives b = 5.",
+    "estimated_time_seconds": 100,
+    "tags": [
+      "data",
+      "table",
+      "linear",
+      "family:da_rate_table"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Recorded values",
+        "headers": [
+          "Minutes",
+          "Gallons pumped"
+        ],
+        "rows": [
+          [
+            "3",
+            "38"
+          ],
+          [
+            "6",
+            "71"
+          ],
+          [
+            "7",
+            "82"
+          ],
+          [
+            "9",
+            "104"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "y=11x+5"
+  },
+  {
+    "question_id": "act-math-data-analysis-hard-b0156",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "data_analysis",
+    "lesson_id": "act-math-data-analysis-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "tables",
+    "prompt": "The table shows the number of centimeters for 5 plants in 2022 and 2023 (a total of 299 in 2022 and 287 in 2023). Which plant had the greatest percent increase in centimeters from 2022 to 2023?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "C",
+        "rationale": "C changed by about −26%."
+      },
+      {
+        "id": "B",
+        "text": "A",
+        "rationale": "A changed by about −29%."
+      },
+      {
+        "id": "C",
+        "text": "E",
+        "rationale": "E changed by about 6%."
+      },
+      {
+        "id": "D",
+        "text": "B",
+        "rationale": "Correct."
+      },
+      {
+        "id": "E",
+        "text": "D",
+        "rationale": "D changed by about −29%."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Percent change = (new − old)/old; B: 23/77 ≈ 30%, the greatest.",
+    "estimated_time_seconds": 100,
+    "tags": [
+      "data",
+      "table",
+      "compare",
+      "family:da_two_year"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Plant heights, 2022 and 2023",
+        "headers": [
+          "Plant",
+          "2022",
+          "2023"
+        ],
+        "rows": [
+          [
+            "A",
+            "41",
+            "29"
+          ],
+          [
+            "B",
+            "77",
+            "100"
+          ],
+          [
+            "C",
+            "39",
+            "29"
+          ],
+          [
+            "D",
+            "63",
+            "45"
+          ],
+          [
+            "E",
+            "79",
+            "84"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "B"
+  },
+  {
+    "question_id": "act-math-data-analysis-hard-b0157",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "data_analysis",
+    "lesson_id": "act-math-data-analysis-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "tables",
+    "prompt": "The table shows the number of points for 5 teams in 2023 and 2024 (a total of 233 in 2023 and 227 in 2024). Which team had the greatest percent increase in points from 2023 to 2024?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Hawks",
+        "rationale": "Hawks changed by about 2%."
+      },
+      {
+        "id": "B",
+        "text": "Bears",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "Wolves",
+        "rationale": "Wolves changed by about −55%."
+      },
+      {
+        "id": "D",
+        "text": "Lynx",
+        "rationale": "Lynx changed by about 7%."
+      },
+      {
+        "id": "E",
+        "text": "Otters",
+        "rationale": "Otters changed by about 0%."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Percent change = (new − old)/old; Bears: 7/52 ≈ 13%, the greatest.",
+    "estimated_time_seconds": 100,
+    "tags": [
+      "data",
+      "table",
+      "compare",
+      "family:da_two_year"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Points scored, 2023 and 2024",
+        "headers": [
+          "Team",
+          "2023",
+          "2024"
+        ],
+        "rows": [
+          [
+            "Hawks",
+            "51",
+            "52"
+          ],
+          [
+            "Bears",
+            "52",
+            "59"
+          ],
+          [
+            "Otters",
+            "40",
+            "40"
+          ],
+          [
+            "Lynx",
+            "57",
+            "61"
+          ],
+          [
+            "Wolves",
+            "33",
+            "15"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "Bears"
+  },
+  {
+    "question_id": "act-math-data-analysis-hard-b0158",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "data_analysis",
+    "lesson_id": "act-math-data-analysis-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "graphs",
+    "prompt": "The values in the table follow a linear relationship. Which equation gives the second quantity y in terms of the first quantity x?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "y = 7x + 35",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "y = 7x + 42",
+        "rationale": "42 is y when x = 1, not when x = 0."
+      },
+      {
+        "id": "C",
+        "text": "y = 14x + 35",
+        "rationale": "Divide the change in y by the change in x to get the rate."
+      },
+      {
+        "id": "D",
+        "text": "y = 35x + 7",
+        "rationale": "The slope and the constant are swapped."
+      },
+      {
+        "id": "E",
+        "text": "y = 7x",
+        "rationale": "The relationship has a nonzero starting value; check x = 0."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Between rows, y changes by 7 per unit of x, so the rate is 7; then 42 = 7·1 + b gives b = 35.",
+    "estimated_time_seconds": 100,
+    "tags": [
+      "data",
+      "table",
+      "linear",
+      "family:da_rate_table"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Recorded values",
+        "headers": [
+          "Number of items",
+          "Cost (dollars)"
+        ],
+        "rows": [
+          [
+            "1",
+            "42"
+          ],
+          [
+            "3",
+            "56"
+          ],
+          [
+            "4",
+            "63"
+          ],
+          [
+            "7",
+            "84"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "y=7x+35"
+  },
+  {
+    "question_id": "act-math-data-analysis-hard-b0159",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "data_analysis",
+    "lesson_id": "act-math-data-analysis-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "tables",
+    "prompt": "Based on the table, what is the ratio of centimeters for D to centimeters for C?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "21/29",
+        "rationale": "Read the correct rows."
+      },
+      {
+        "id": "B",
+        "text": "14/19",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "-5/19",
+        "rationale": "A ratio is a quotient, not a difference over a value."
+      },
+      {
+        "id": "D",
+        "text": "21/89",
+        "rationale": "That compares D to the total, not to C."
+      },
+      {
+        "id": "E",
+        "text": "19/14",
+        "rationale": "The ratio is in the wrong order."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "42:57 = 14:19, i.e. 14/19.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "data",
+      "table",
+      "ratio",
+      "family:da_read"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Plant heights",
+        "headers": [
+          "Plant",
+          "Height (cm)"
+        ],
+        "rows": [
+          [
+            "A",
+            "38"
+          ],
+          [
+            "B",
+            "28"
+          ],
+          [
+            "C",
+            "57"
+          ],
+          [
+            "D",
+            "42"
+          ],
+          [
+            "E",
+            "13"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "42/57"
+  },
+  {
+    "question_id": "act-math-data-analysis-hard-b0160",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "data_analysis",
+    "lesson_id": "act-math-data-analysis-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "tables",
+    "prompt": "Based on the table, what is the ratio of millimeters of rain for Jan to millimeters of rain for Apr?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "41/37",
+        "rationale": "The ratio is in the wrong order."
+      },
+      {
+        "id": "B",
+        "text": "37/42",
+        "rationale": "Read the correct rows."
+      },
+      {
+        "id": "C",
+        "text": "-4/41",
+        "rationale": "A ratio is a quotient, not a difference over a value."
+      },
+      {
+        "id": "D",
+        "text": "37/221",
+        "rationale": "That compares Jan to the total, not to Apr."
+      },
+      {
+        "id": "E",
+        "text": "37/41",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "E",
+    "explanation": "37:41 = 37:41, i.e. 37/41.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "data",
+      "table",
+      "ratio",
+      "family:da_read"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Monthly rainfall",
+        "headers": [
+          "Month",
+          "Rainfall (mm)"
+        ],
+        "rows": [
+          [
+            "Jan",
+            "37"
+          ],
+          [
+            "Feb",
+            "58"
+          ],
+          [
+            "Mar",
+            "45"
+          ],
+          [
+            "Apr",
+            "41"
+          ],
+          [
+            "May",
+            "40"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "37/41"
   }
 ]

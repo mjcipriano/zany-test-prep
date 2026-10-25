@@ -11,31 +11,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "compare_entries",
-    "prompt": "In Table 1, how much greater was the activity of the enzyme at pH 7 than at pH 6?",
+    "prompt": "Based on Table 1, by how much did the time for the reaction to finish change as the mass of catalyst went from 0 mg to 6 mg?",
     "choices": [
       {
         "id": "A",
-        "text": "58 µmol/min",
-        "rationale": "This uses the row for pH 5 instead of pH 6."
+        "text": "177 s",
+        "rationale": "This uses the row for 4 mg instead of 6 mg."
       },
       {
         "id": "B",
-        "text": "19 µmol/min",
-        "rationale": "This uses the row for pH 8 instead of pH 7."
+        "text": "217 s",
+        "rationale": "Correct. |74 − 291| = 217."
       },
       {
         "id": "C",
-        "text": "26 µmol/min",
-        "rationale": "Correct. |81 − 55| = 26."
+        "text": "241 s",
+        "rationale": "This uses the row for 8 mg instead of 6 mg."
       },
       {
         "id": "D",
-        "text": "−26 µmol/min",
+        "text": "−217 s",
         "rationale": "This subtracts in the wrong order; the amount of the difference is positive."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Read the activity of the enzyme at pH 7 (81) and at pH 6 (55); the difference is 26 µmol/min.",
+    "correct_choice": "B",
+    "explanation": "Read the time for the reaction to finish at 6 mg (74) and at 0 mg (291); the difference is 217 s.",
     "estimated_time_seconds": 55,
     "tags": [
       "science",
@@ -45,42 +45,42 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Enzyme Activity and pH",
+      "title": "Catalyst and Reaction Time",
       "table": {
-        "caption": "Table 1. Activity of an enzyme in solutions of several pH values.",
+        "caption": "Table 1. Time for a reaction to finish with several masses of catalyst.",
         "headers": [
-          "pH",
-          "Enzyme activity (µmol/min)"
+          "Mass of catalyst (mg)",
+          "Reaction time (s)"
         ],
         "rows": [
           [
-            "4",
-            "6"
+            "0",
+            "291"
           ],
           [
-            "5",
-            "23"
+            "2",
+            "181"
+          ],
+          [
+            "4",
+            "114"
           ],
           [
             "6",
-            "55"
-          ],
-          [
-            "7",
-            "81"
-          ],
-          [
-            "8",
             "74"
           ],
           [
-            "9",
-            "41"
+            "8",
+            "50"
+          ],
+          [
+            "10",
+            "36"
           ]
         ]
       }
     },
-    "answer_verification": "science:diff;x1=6;x2=7;col=1"
+    "answer_verification": "science:diff;x1=0;x2=6;col=1"
   },
   {
     "question_id": "act-science-data-representation-medium-q02",
@@ -94,116 +94,37 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "compare_entries",
-    "prompt": "Based on Table 1, the ratio of the time for the reaction to finish at 2 mg to that at 6 mg is closest to:",
+    "prompt": "Based on Table 1, the ratio of the volume of base needed at 0.25 mol/L to that at 0.1 mol/L is closest to:",
     "choices": [
       {
         "id": "A",
-        "text": "2.3",
-        "rationale": "Correct. 139 ÷ 60 ≈ 2.3."
+        "text": "0.40",
+        "rationale": "This divides the smaller value by the larger one (23.7 ÷ 59.2); the question asks the reverse."
       },
       {
         "id": "B",
-        "text": "79",
+        "text": "35.5",
         "rationale": "This is the difference between the two values, not their ratio."
       },
       {
         "id": "C",
-        "text": "1.5",
-        "rationale": "This uses the row for 4 mg instead of one of the rows asked about."
+        "text": "2.5",
+        "rationale": "Correct. 59.2 ÷ 23.7 ≈ 2.5."
       },
       {
         "id": "D",
-        "text": "0.43",
-        "rationale": "This divides the smaller value by the larger one (60 ÷ 139); the question asks the reverse."
+        "text": "3.0",
+        "rationale": "This uses the row for 0.3 mol/L instead of one of the rows asked about."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Divide the larger value by the smaller: 139 ÷ 60 ≈ 2.3, so the value at 2 mg is about 2.3 times that at 6 mg.",
+    "correct_choice": "C",
+    "explanation": "Divide the larger value by the smaller: 59.2 ÷ 23.7 ≈ 2.5, so the value at 0.25 mol/L is about 2.5 times that at 0.1 mol/L.",
     "estimated_time_seconds": 60,
     "tags": [
       "science",
       "data-representation",
       "ratio",
       "family:dr_ratio"
-    ],
-    "stimulus": {
-      "type": "table",
-      "title": "Catalyst and Reaction Time",
-      "table": {
-        "caption": "Table 1. Time for a reaction to finish with several masses of catalyst.",
-        "headers": [
-          "Mass of catalyst (mg)",
-          "Reaction time (s)"
-        ],
-        "rows": [
-          [
-            "2",
-            "139"
-          ],
-          [
-            "4",
-            "89"
-          ],
-          [
-            "6",
-            "60"
-          ],
-          [
-            "8",
-            "44"
-          ],
-          [
-            "10",
-            "36"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "science:ratio;x1=6;x2=2;col=1"
-  },
-  {
-    "question_id": "act-science-data-representation-medium-q03",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "science",
-    "section": "interpretation_of_data",
-    "skill": "data_representation",
-    "lesson_id": "act-science-data-representation-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "consistent_statement",
-    "prompt": "Based on Table 1, which of the following statements is true?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "The volume of base needed was greater at 0.15 mol/L than at 0.3 mol/L.",
-        "rationale": "The table lists 25.4 mL at 0.15 mol/L and 50.8 mL at 0.3 mol/L."
-      },
-      {
-        "id": "B",
-        "text": "The volume of base needed was greater at 0.25 mol/L than at 0.15 mol/L.",
-        "rationale": "Correct. Checking the listed values confirms this statement."
-      },
-      {
-        "id": "C",
-        "text": "The volume of base needed was least at 0.15 mol/L.",
-        "rationale": "The least value, 16.9 mL, is at 0.1 mol/L."
-      },
-      {
-        "id": "D",
-        "text": "The volume of base needed was greater at 0.15 mol/L than at 0.2 mol/L.",
-        "rationale": "The table lists 25.4 mL at 0.15 mol/L and 33.9 mL at 0.2 mol/L."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Test each statement against the table: only \"The volume of base needed was greater at 0.25 mol/L than at 0.15 mol/L.\" matches the listed values.",
-    "estimated_time_seconds": 70,
-    "tags": [
-      "science",
-      "data-representation",
-      "statement",
-      "family:dr_consistent_statement"
     ],
     "stimulus": {
       "type": "table",
@@ -217,23 +138,102 @@
         "rows": [
           [
             "0.1",
-            "16.9"
+            "23.7"
           ],
           [
             "0.15",
-            "25.4"
+            "35.5"
           ],
           [
             "0.2",
-            "33.9"
+            "47.3"
           ],
           [
             "0.25",
-            "42.3"
+            "59.2"
           ],
           [
             "0.3",
-            "50.8"
+            "71.0"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "science:ratio;x1=0.1;x2=0.25;col=1"
+  },
+  {
+    "question_id": "act-science-data-representation-medium-q03",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "science",
+    "section": "interpretation_of_data",
+    "skill": "data_representation",
+    "lesson_id": "act-science-data-representation-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "consistent_statement",
+    "prompt": "Which statement about the results in Table 1 is supported by the data?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "The number of colonies was least at 20 µg/mL.",
+        "rationale": "Correct. Checking the listed values confirms this statement."
+      },
+      {
+        "id": "B",
+        "text": "The number of colonies was least at 0 µg/mL.",
+        "rationale": "The least value, 9 colonies, is at 20 µg/mL."
+      },
+      {
+        "id": "C",
+        "text": "The number of colonies was greater at 15 µg/mL than at 0 µg/mL.",
+        "rationale": "The table lists 22 colonies at 15 µg/mL and 287 colonies at 0 µg/mL."
+      },
+      {
+        "id": "D",
+        "text": "The number of colonies was greater at 20 µg/mL than at 15 µg/mL.",
+        "rationale": "The table lists 9 colonies at 20 µg/mL and 22 colonies at 15 µg/mL."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Test each statement against the table: only \"The number of colonies was least at 20 µg/mL.\" matches the listed values.",
+    "estimated_time_seconds": 70,
+    "tags": [
+      "science",
+      "data-representation",
+      "statement",
+      "family:dr_consistent_statement"
+    ],
+    "stimulus": {
+      "type": "table",
+      "title": "Antibiotic Dose and Bacterial Growth",
+      "table": {
+        "caption": "Table 1. Number of bacterial colonies on plates with several antibiotic concentrations.",
+        "headers": [
+          "Antibiotic concentration (µg/mL)",
+          "Colony count (colonies)"
+        ],
+        "rows": [
+          [
+            "0",
+            "287"
+          ],
+          [
+            "5",
+            "122"
+          ],
+          [
+            "10",
+            "52"
+          ],
+          [
+            "15",
+            "22"
+          ],
+          [
+            "20",
+            "9"
           ]
         ]
       }
@@ -251,31 +251,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "compare_entries",
-    "prompt": "Based on Table 1, when the distance from the speaker was 4 m, which condition gave the greater intensity, and what was the difference between the two conditions?",
+    "prompt": "According to Table 1, at a soaking time of 12 h, the percent of seeds that sprouted was greater under which condition, and by how much?",
     "choices": [
       {
         "id": "A",
-        "text": "Full volume, by 2.9 µW/m²",
-        "rationale": "Correct. At 4 m: full volume 5.9 versus half volume 3.0, a difference of 2.9."
+        "text": "25°C, by 26%",
+        "rationale": "Correct. At 12 h: 25°C 97 versus 15°C 71, a difference of 26."
       },
       {
         "id": "B",
-        "text": "Neither; both conditions gave the same intensity at 4 m",
-        "rationale": "The two columns differ at 4 m: 5.9 versus 3.0."
+        "text": "15°C, by 26%",
+        "rationale": "The difference is right, but 15°C gave the smaller value at 12 h."
       },
       {
         "id": "C",
-        "text": "Full volume, by 1.9 µW/m²",
-        "rationale": "This is the difference in the row for 5 m, not for 4 m."
+        "text": "Neither; both conditions gave the same germination rate at 12 h",
+        "rationale": "The two columns differ at 12 h: 97 versus 71."
       },
       {
         "id": "D",
-        "text": "Half volume, by 2.9 µW/m²",
-        "rationale": "The difference is right, but half volume gave the smaller value at 4 m."
+        "text": "25°C, by 23%",
+        "rationale": "This is the difference in the row for 16 h, not for 12 h."
       }
     ],
     "correct_choice": "A",
-    "explanation": "In the 4 m row, compare the two condition columns: 5.9 (full volume) minus 3.0 (half volume) = 2.9 µW/m².",
+    "explanation": "In the 12 h row, compare the two condition columns: 97 (25°C) minus 71 (15°C) = 26 %.",
     "estimated_time_seconds": 65,
     "tags": [
       "science",
@@ -285,49 +285,49 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Distance and Sound Intensity",
+      "title": "Seed Soaking and Germination",
       "table": {
-        "caption": "Table 1. Sound intensity measured at several distances from a speaker. Results are shown for two conditions: full volume and half volume.",
+        "caption": "Table 1. Percent of radish seeds that sprouted after soaking for several lengths of time. Results are shown for two conditions: 15°C and 25°C.",
         "headers": [
-          "Distance (m)",
-          "Intensity (µW/m²), full volume",
-          "Intensity (µW/m²), half volume"
+          "Soaking time (h)",
+          "Seeds sprouted (%), 15°C",
+          "Seeds sprouted (%), 25°C"
         ],
         "rows": [
           [
-            "1",
-            "95.2",
-            "48.2"
-          ],
-          [
-            "2",
-            "23.8",
-            "12.1"
-          ],
-          [
-            "3",
-            "10.6",
-            "5.4"
-          ],
-          [
             "4",
-            "5.9",
-            "3.0"
+            "52",
+            "71"
           ],
           [
-            "5",
-            "3.8",
-            "1.9"
+            "8",
+            "67",
+            "92"
           ],
           [
-            "6",
-            "2.6",
-            "1.3"
+            "12",
+            "71",
+            "97"
+          ],
+          [
+            "16",
+            "60",
+            "83"
+          ],
+          [
+            "20",
+            "44",
+            "61"
+          ],
+          [
+            "24",
+            "34",
+            "47"
           ]
         ]
       }
     },
-    "answer_verification": "science:conddiff;x=4"
+    "answer_verification": "science:conddiff;x=12"
   },
   {
     "question_id": "act-science-data-representation-medium-q05",
@@ -341,31 +341,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "consistent_statement",
-    "prompt": "According to Table 1, for how many of the 5 values of pH tested was the activity of the enzyme less than 20 µmol/min?",
+    "prompt": "In how many rows of Table 1 is the voltage of the battery less than 1.475 V?",
     "choices": [
       {
         "id": "A",
-        "text": "2",
-        "rationale": "Correct. Exactly 2 entries in the Enzyme activity (µmol/min) column are less than 20 µmol/min."
-      },
-      {
-        "id": "B",
-        "text": "None of the rows",
-        "rationale": "At least one entry is less than 20 µmol/min; count them."
-      },
-      {
-        "id": "C",
-        "text": "1",
+        "text": "5",
         "rationale": "Recount the column carefully; this is off by one or more."
       },
       {
-        "id": "D",
+        "id": "B",
         "text": "3",
-        "rationale": "This counts the entries greater than 20 µmol/min instead."
+        "rationale": "Recount the column carefully; this is off by one or more."
+      },
+      {
+        "id": "C",
+        "text": "None of the rows",
+        "rationale": "At least one entry is less than 1.475 V; count them."
+      },
+      {
+        "id": "D",
+        "text": "4",
+        "rationale": "Correct. Exactly 4 entries in the Voltage (V) column are less than 1.475 V."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Compare each entry in the Enzyme activity (µmol/min) column with 20 µmol/min; 2 of the 5 entries are less than it.",
+    "correct_choice": "D",
+    "explanation": "Compare each entry in the Voltage (V) column with 1.475 V; 4 of the 6 entries are less than it.",
     "estimated_time_seconds": 55,
     "tags": [
       "science",
@@ -375,38 +375,42 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Enzyme Activity and pH",
+      "title": "Battery Voltage Over Time",
       "table": {
-        "caption": "Table 1. Activity of an enzyme in solutions of several pH values.",
+        "caption": "Table 1. Voltage of a battery after several hours of powering a lamp.",
         "headers": [
-          "pH",
-          "Enzyme activity (µmol/min)"
+          "Time (h)",
+          "Voltage (V)"
         ],
         "rows": [
           [
-            "5",
-            "7"
+            "0",
+            "1.61"
+          ],
+          [
+            "2",
+            "1.53"
+          ],
+          [
+            "4",
+            "1.42"
           ],
           [
             "6",
-            "24"
-          ],
-          [
-            "7",
-            "42"
+            "1.28"
           ],
           [
             "8",
-            "37"
+            "1.09"
           ],
           [
-            "9",
-            "16"
+            "10",
+            "0.87"
           ]
         ]
       }
     },
-    "answer_verification": "science:count;op=lt;v=20.0;col=1"
+    "answer_verification": "science:count;op=lt;v=1.475;col=1"
   },
   {
     "question_id": "act-science-data-representation-medium-q06",
@@ -420,12 +424,12 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "consistent_statement",
-    "prompt": "For how many of the values of dissolved oxygen in Table 1 was the number of mayfly nymphs less than 163.5 nymphs for gravel bed AND less than 20 nymphs for sand bed?",
+    "prompt": "For how many of the values of launch angle in Table 1 was the horizontal distance the ball traveled greater than 19.85 m for foam ball AND greater than 33.45 m for rubber ball?",
     "choices": [
       {
         "id": "A",
         "text": "4",
-        "rationale": "This counts rows meeting only the gravel bed condition (less than 163.5 nymphs), ignoring the second condition."
+        "rationale": "This counts rows meeting only the foam ball condition (greater than 19.85 m), ignoring the second condition."
       },
       {
         "id": "B",
@@ -444,7 +448,7 @@
       }
     ],
     "correct_choice": "B",
-    "explanation": "Go row by row: a row counts only if its gravel bed value is less than 163.5 nymphs and its sand bed value is less than 20 nymphs. 1 rows pass both tests.",
+    "explanation": "Go row by row: a row counts only if its foam ball value is greater than 19.85 m and its rubber ball value is greater than 33.45 m. 1 rows pass both tests.",
     "estimated_time_seconds": 75,
     "tags": [
       "science",
@@ -455,44 +459,44 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Dissolved Oxygen and Mayflies",
+      "title": "Launch Angle and Range",
       "table": {
-        "caption": "Table 1. Number of mayfly nymphs found in stream samples with several dissolved-oxygen levels. Results are shown for two conditions: gravel bed and sand bed.",
+        "caption": "Table 1. Horizontal distance traveled by a ball launched at several angles. Results are shown for two conditions: foam ball and rubber ball.",
         "headers": [
-          "Dissolved oxygen (mg/L)",
-          "Mayfly count (nymphs), gravel bed",
-          "Mayfly count (nymphs), sand bed"
+          "Launch angle (°)",
+          "Range (m), foam ball",
+          "Range (m), rubber ball"
         ],
         "rows": [
           [
-            "4",
-            "26",
-            "13"
+            "20",
+            "18.3",
+            "24.1"
           ],
           [
-            "6",
-            "53",
-            "27"
+            "30",
+            "23.7",
+            "31.1"
           ],
           [
-            "8",
-            "89",
-            "46"
+            "40",
+            "25.9",
+            "34.0"
           ],
           [
-            "10",
-            "136",
-            "70"
+            "50",
+            "25.0",
+            "32.9"
           ],
           [
-            "12",
-            "191",
-            "99"
+            "60",
+            "21.4",
+            "28.1"
           ]
         ]
       }
     },
-    "answer_verification": "science:count2;opa=lt;ta=163.5;opb=lt;tb=20.0"
+    "answer_verification": "science:count2;opa=gt;ta=19.85;opb=gt;tb=33.45"
   },
   {
     "question_id": "act-science-data-representation-medium-q07",
@@ -506,31 +510,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "compare_entries",
-    "prompt": "According to Table 1, the average of the two conditions' values of the blood glucose level at 45 min is closest to:",
+    "prompt": "According to Table 1, the average of the two conditions' values of the voltage across the resistor at 0.4 A is closest to:",
     "choices": [
       {
         "id": "A",
-        "text": "278 mg/dL",
-        "rationale": "This is the sum of the two values, not their average."
+        "text": "19.00 V",
+        "rationale": "This averages the row for 0.5 A instead of 0.4."
       },
       {
         "id": "B",
-        "text": "158 mg/dL",
-        "rationale": "This is the sugary drink value alone."
+        "text": "15.2 V",
+        "rationale": "Correct. (8.7 + 21.6) ÷ 2 = 15.2."
       },
       {
         "id": "C",
-        "text": "139 mg/dL",
-        "rationale": "Correct. (158 + 120) ÷ 2 = 139."
+        "text": "30.3 V",
+        "rationale": "This is the sum of the two values, not their average."
       },
       {
         "id": "D",
-        "text": "134.5 mg/dL",
-        "rationale": "This averages the row for 60 min instead of 45."
+        "text": "8.7 V",
+        "rationale": "This is the Resistor 1 value alone."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Add the two values in the 45 row (158 and 120) and divide by 2: 139 mg/dL.",
+    "correct_choice": "B",
+    "explanation": "Add the two values in the 0.4 row (8.7 and 21.6) and divide by 2: 15.2 V.",
     "estimated_time_seconds": 65,
     "tags": [
       "science",
@@ -541,49 +545,49 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Blood Glucose After a Meal",
+      "title": "Current and Voltage",
       "table": {
-        "caption": "Table 1. Blood glucose of a volunteer at several times after eating a meal. Results are shown for two conditions: sugary drink and whole-grain meal.",
+        "caption": "Table 1. Voltage across a resistor at several currents. Results are shown for two conditions: Resistor 1 and Resistor 2.",
         "headers": [
-          "Time after meal (min)",
-          "Blood glucose (mg/dL), sugary drink",
-          "Blood glucose (mg/dL), whole-grain meal"
+          "Current (A)",
+          "Voltage (V), Resistor 1",
+          "Voltage (V), Resistor 2"
         ],
         "rows": [
           [
-            "15",
-            "136",
-            "109"
+            "0.1",
+            "2.2",
+            "5.4"
           ],
           [
-            "30",
-            "156",
-            "119"
+            "0.2",
+            "4.4",
+            "10.8"
           ],
           [
-            "45",
-            "158",
-            "120"
+            "0.3",
+            "6.5",
+            "16.2"
           ],
           [
-            "60",
-            "152",
-            "117"
+            "0.4",
+            "8.7",
+            "21.6"
           ],
           [
-            "90",
-            "132",
-            "107"
+            "0.5",
+            "10.9",
+            "27.1"
           ],
           [
-            "120",
-            "114",
-            "98"
+            "0.6",
+            "13.1",
+            "32.5"
           ]
         ]
       }
     },
-    "answer_verification": "science:condavg;x=45"
+    "answer_verification": "science:condavg;x=0.4"
   },
   {
     "question_id": "act-science-data-representation-medium-q08",
@@ -597,31 +601,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "compare_entries",
-    "prompt": "Based on Table 1, by how much did the flow rate of the river change as the rainfall on the previous day went from 20 mm to 40 mm?",
+    "prompt": "Based on Table 1, by how much did the rate of photosynthesis change as the light intensity went from 300 µmol/m²/s to 600 µmol/m²/s?",
     "choices": [
       {
         "id": "A",
-        "text": "18.7 m³/s",
-        "rationale": "This uses the row for 50 mm instead of 40 mm."
-      },
-      {
-        "id": "B",
-        "text": "−11.5 m³/s",
+        "text": "−4.5 bubbles/min",
         "rationale": "This subtracts in the wrong order; the amount of the difference is positive."
       },
       {
+        "id": "B",
+        "text": "4.5 bubbles/min",
+        "rationale": "Correct. |31.2 − 26.7| = 4.5."
+      },
+      {
         "id": "C",
-        "text": "11.5 m³/s",
-        "rationale": "Correct. |23.2 − 11.7| = 11.5."
+        "text": "7.9 bubbles/min",
+        "rationale": "This uses the row for 200 µmol/m²/s instead of 300 µmol/m²/s."
       },
       {
         "id": "D",
-        "text": "5.3 m³/s",
-        "rationale": "This uses the row for 30 mm instead of 40 mm."
+        "text": "3.5 bubbles/min",
+        "rationale": "This uses the row for 500 µmol/m²/s instead of 600 µmol/m²/s."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Read the flow rate of the river at 40 mm (23.2) and at 20 mm (11.7); the difference is 11.5 m³/s.",
+    "correct_choice": "B",
+    "explanation": "Read the rate of photosynthesis at 600 µmol/m²/s (31.2) and at 300 µmol/m²/s (26.7); the difference is 4.5 bubbles/min.",
     "estimated_time_seconds": 55,
     "tags": [
       "science",
@@ -631,38 +635,42 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Rainfall and River Flow",
+      "title": "Light and Photosynthesis",
       "table": {
-        "caption": "Table 1. Flow rate of a river measured the day after several amounts of rain.",
+        "caption": "Table 1. Rate of photosynthesis of a water plant at several light intensities.",
         "headers": [
-          "Rainfall (mm)",
-          "Flow rate (m³/s)"
+          "Light intensity (µmol/m²/s)",
+          "Bubbles per minute (bubbles/min)"
         ],
         "rows": [
           [
-            "20",
-            "11.7"
+            "100",
+            "16.9"
           ],
           [
-            "30",
-            "17.0"
+            "200",
+            "23.3"
           ],
           [
-            "40",
-            "23.2"
+            "300",
+            "26.7"
           ],
           [
-            "50",
-            "30.4"
+            "400",
+            "28.8"
           ],
           [
-            "60",
-            "38.7"
+            "500",
+            "30.2"
+          ],
+          [
+            "600",
+            "31.2"
           ]
         ]
       }
     },
-    "answer_verification": "science:diff;x1=20;x2=40;col=1"
+    "answer_verification": "science:diff;x1=300;x2=600;col=1"
   },
   {
     "question_id": "act-science-data-representation-medium-q09",
@@ -676,31 +684,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "compare_entries",
-    "prompt": "Based on Table 1, the ratio of the activity of the enzyme at pH 5 to that at pH 9 is closest to:",
+    "prompt": "According to Table 1, the stopping distance at 80 km/h was approximately how many times the stopping distance at 40 km/h?",
     "choices": [
       {
         "id": "A",
-        "text": "61",
-        "rationale": "This is the difference between the two values, not their ratio."
+        "text": "2.9",
+        "rationale": "Correct. 61.8 ÷ 21.4 ≈ 2.9."
       },
       {
         "id": "B",
-        "text": "11.2",
-        "rationale": "Correct. 67 ÷ 6 ≈ 11.2."
+        "text": "0.35",
+        "rationale": "This divides the smaller value by the larger one (21.4 ÷ 61.8); the question asks the reverse."
       },
       {
         "id": "C",
-        "text": "12.3",
-        "rationale": "This uses the row for pH 6 instead of one of the rows asked about."
+        "text": "40.4",
+        "rationale": "This is the difference between the two values, not their ratio."
       },
       {
         "id": "D",
-        "text": "0.090",
-        "rationale": "This divides the smaller value by the larger one (6 ÷ 67); the question asks the reverse."
+        "text": "4.2",
+        "rationale": "This uses the row for 100 km/h instead of one of the rows asked about."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Divide the larger value by the smaller: 67 ÷ 6 ≈ 11.2, so the value at pH 5 is about 11.2 times that at pH 9.",
+    "correct_choice": "A",
+    "explanation": "Divide the larger value by the smaller: 61.8 ÷ 21.4 ≈ 2.9, so the value at 80 km/h is about 2.9 times that at 40 km/h.",
     "estimated_time_seconds": 60,
     "tags": [
       "science",
@@ -710,42 +718,42 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Enzyme Activity and pH",
+      "title": "Speed and Stopping Distance",
       "table": {
-        "caption": "Table 1. Activity of an enzyme in solutions of several pH values.",
+        "caption": "Table 1. Distance needed for a car to stop from several speeds.",
         "headers": [
-          "pH",
-          "Enzyme activity (µmol/min)"
+          "Speed (km/h)",
+          "Stopping distance (m)"
         ],
         "rows": [
           [
-            "4",
-            "38"
+            "20",
+            "8.3"
           ],
           [
-            "5",
-            "67"
+            "40",
+            "21.4"
           ],
           [
-            "6",
-            "74"
+            "60",
+            "39.2"
           ],
           [
-            "7",
-            "50"
+            "80",
+            "61.8"
           ],
           [
-            "8",
-            "21"
+            "100",
+            "89.2"
           ],
           [
-            "9",
-            "6"
+            "120",
+            "121.4"
           ]
         ]
       }
     },
-    "answer_verification": "science:ratio;x1=9;x2=5;col=1"
+    "answer_verification": "science:ratio;x1=40;x2=80;col=1"
   },
   {
     "question_id": "act-science-data-representation-medium-q10",
@@ -763,27 +771,27 @@
     "choices": [
       {
         "id": "A",
-        "text": "The fuel efficiency at 60 km/h was more than twice its value at 90 km/h.",
-        "rationale": "Twice 15.0 km/L is 30.0 km/L, and the value at 60 km/h is 14.6 km/L."
+        "text": "The blood glucose level was least at 45 min.",
+        "rationale": "The least value, 120 mg/dL, is at 15 min."
       },
       {
         "id": "B",
-        "text": "The fuel efficiency was least at 50 km/h.",
-        "rationale": "The least value, 11.7 km/L, is at 40 km/h."
+        "text": "The blood glucose level was least at 60 min.",
+        "rationale": "The least value, 120 mg/dL, is at 15 min."
       },
       {
         "id": "C",
-        "text": "The fuel efficiency was greater at 70 km/h than at 40 km/h.",
-        "rationale": "Correct. Checking the listed values confirms this statement."
+        "text": "The blood glucose level was least at 90 min.",
+        "rationale": "The least value, 120 mg/dL, is at 15 min."
       },
       {
         "id": "D",
-        "text": "The fuel efficiency at 60 km/h was more than twice its value at 80 km/h.",
-        "rationale": "Twice 15.4 km/L is 30.8 km/L, and the value at 60 km/h is 14.6 km/L."
+        "text": "The blood glucose level was least at 15 min.",
+        "rationale": "Correct. Checking the listed values confirms this statement."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Test each statement against the table: only \"The fuel efficiency was greater at 70 km/h than at 40 km/h.\" matches the listed values.",
+    "correct_choice": "D",
+    "explanation": "Test each statement against the table: only \"The blood glucose level was least at 15 min.\" matches the listed values.",
     "estimated_time_seconds": 70,
     "tags": [
       "science",
@@ -793,37 +801,33 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Speed and Fuel Efficiency",
+      "title": "Blood Glucose After a Meal",
       "table": {
-        "caption": "Table 1. Fuel efficiency of a car driven at several steady speeds.",
+        "caption": "Table 1. Blood glucose of a volunteer at several times after eating a meal.",
         "headers": [
-          "Speed (km/h)",
-          "Fuel efficiency (km/L)"
+          "Time after meal (min)",
+          "Blood glucose (mg/dL)"
         ],
         "rows": [
           [
-            "40",
-            "11.7"
+            "15",
+            "120"
           ],
           [
-            "50",
-            "13.4"
+            "30",
+            "141"
+          ],
+          [
+            "45",
+            "149"
           ],
           [
             "60",
-            "14.6"
-          ],
-          [
-            "70",
-            "15.2"
-          ],
-          [
-            "80",
-            "15.4"
+            "150"
           ],
           [
             "90",
-            "15.0"
+            "141"
           ]
         ]
       }
@@ -841,31 +845,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "compare_entries",
-    "prompt": "Based on Table 1, when the time since the first reading was 50 min, which condition gave the greater count rate, and what was the difference between the two conditions?",
+    "prompt": "Based on Table 1, when the thickness of the insulation was 10 cm, which condition gave the greater heat loss, and what was the difference between the two conditions?",
     "choices": [
       {
         "id": "A",
-        "text": "Sample B, by 285 counts/min",
-        "rationale": "Correct. At 50 min: Sample B 518 versus Sample A 233, a difference of 285."
+        "text": "60°C inside, by 15 W",
+        "rationale": "The difference is right, but 60°C inside gave the smaller value at 10 cm."
       },
       {
         "id": "B",
-        "text": "Neither; both conditions gave the same count rate at 50 min",
-        "rationale": "The two columns differ at 50 min: 518 versus 233."
+        "text": "80°C inside, by 18 W",
+        "rationale": "This is the difference in the row for 8 cm, not for 10 cm."
       },
       {
         "id": "C",
-        "text": "Sample B, by 187 counts/min",
-        "rationale": "This is the difference in the row for 60 min, not for 50 min."
+        "text": "Neither; both conditions gave the same heat loss at 10 cm",
+        "rationale": "The two columns differ at 10 cm: 43 versus 28."
       },
       {
         "id": "D",
-        "text": "Sample A, by 285 counts/min",
-        "rationale": "The difference is right, but Sample A gave the smaller value at 50 min."
+        "text": "80°C inside, by 15 W",
+        "rationale": "Correct. At 10 cm: 80°C inside 43 versus 60°C inside 28, a difference of 15."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "In the 50 min row, compare the two condition columns: 518 (Sample B) minus 233 (Sample A) = 285 counts/min.",
+    "correct_choice": "D",
+    "explanation": "In the 10 cm row, compare the two condition columns: 43 (80°C inside) minus 28 (60°C inside) = 15 W.",
     "estimated_time_seconds": 65,
     "tags": [
       "science",
@@ -875,49 +879,49 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Radioactive Decay",
+      "title": "Insulation and Heat Loss",
       "table": {
-        "caption": "Table 1. Counts per minute recorded from a radioactive sample at several times. Results are shown for two conditions: Sample A and Sample B.",
+        "caption": "Table 1. Rate of heat loss from a heated box wrapped in several thicknesses of foam. Results are shown for two conditions: 60°C inside and 80°C inside.",
         "headers": [
-          "Time (min)",
-          "Counts per minute (counts/min), Sample A",
-          "Counts per minute (counts/min), Sample B"
+          "Foam thickness (cm)",
+          "Heat loss (W), 60°C inside",
+          "Heat loss (W), 80°C inside"
         ],
         "rows": [
           [
-            "10",
-            "1271",
-            "2832"
+            "0",
+            "119",
+            "184"
           ],
           [
-            "20",
-            "831",
-            "1852"
+            "2",
+            "72",
+            "111"
           ],
           [
-            "30",
-            "544",
-            "1211"
+            "4",
+            "51",
+            "79"
           ],
           [
+            "6",
             "40",
-            "356",
-            "792"
+            "62"
           ],
           [
-            "50",
-            "233",
-            "518"
+            "8",
+            "33",
+            "51"
           ],
           [
-            "60",
-            "152",
-            "339"
+            "10",
+            "28",
+            "43"
           ]
         ]
       }
     },
-    "answer_verification": "science:conddiff;x=50"
+    "answer_verification": "science:conddiff;x=10"
   },
   {
     "question_id": "act-science-data-representation-medium-q12",
@@ -931,31 +935,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "consistent_statement",
-    "prompt": "According to Table 1, for how many of the 6 values of water temperature tested was the mass of salt that dissolved greater than 106.5 g?",
+    "prompt": "In how many rows of Table 1 is the blood glucose level greater than 135 mg/dL?",
     "choices": [
       {
         "id": "A",
-        "text": "3",
+        "text": "4",
         "rationale": "Recount the column carefully; this is off by one or more."
       },
       {
         "id": "B",
-        "text": "1",
-        "rationale": "Recount the column carefully; this is off by one or more."
+        "text": "3",
+        "rationale": "Correct. Exactly 3 entries in the Blood glucose (mg/dL) column are greater than 135 mg/dL."
       },
       {
         "id": "C",
-        "text": "2",
-        "rationale": "Correct. Exactly 2 entries in the Mass dissolved (g) column are greater than 106.5 g."
+        "text": "None of the rows",
+        "rationale": "At least one entry is greater than 135 mg/dL; count them."
       },
       {
         "id": "D",
-        "text": "None of the rows",
-        "rationale": "At least one entry is greater than 106.5 g; count them."
+        "text": "2",
+        "rationale": "This counts the entries less than 135 mg/dL instead."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Compare each entry in the Mass dissolved (g) column with 106.5 g; 2 of the 6 entries are greater than it.",
+    "correct_choice": "B",
+    "explanation": "Compare each entry in the Blood glucose (mg/dL) column with 135 mg/dL; 3 of the 5 entries are greater than it.",
     "estimated_time_seconds": 55,
     "tags": [
       "science",
@@ -965,41 +969,37 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Solubility and Temperature",
+      "title": "Blood Glucose After a Meal",
       "table": {
-        "caption": "Table 1. Mass of a salt that dissolves in 100 g of water at several temperatures.",
+        "caption": "Table 1. Blood glucose of a volunteer at several times after eating a meal.",
         "headers": [
-          "Water temperature (°C)",
-          "Mass dissolved (g)"
+          "Time after meal (min)",
+          "Blood glucose (mg/dL)"
         ],
         "rows": [
           [
-            "0",
-            "15"
+            "30",
+            "148"
           ],
           [
-            "20",
-            "28"
-          ],
-          [
-            "40",
-            "51"
+            "45",
+            "150"
           ],
           [
             "60",
-            "85"
+            "144"
           ],
           [
-            "80",
-            "128"
+            "90",
+            "126"
           ],
           [
-            "100",
-            "182"
+            "120",
+            "109"
           ]
         ]
       }
     },
-    "answer_verification": "science:count;op=gt;v=106.5;col=1"
+    "answer_verification": "science:count;op=gt;v=135.0;col=1"
   }
 ]

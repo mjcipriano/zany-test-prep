@@ -11,36 +11,36 @@
     "version": "1.0.0",
     "question_type": "multi_step_math",
     "subskill": "simple_probability",
-    "prompt": "In a group of 80 employees, 59 work remotely, 57 have a company laptop, and 37 do both. If one of the employees who work remotely is chosen at random, what is the probability that this person also has a company laptop?",
+    "prompt": "In a group of 50 employees, 19 work remotely, 16 have a company laptop, and 2 do both. If one of the employees who work remotely is chosen at random, what is the probability that this person also has a company laptop?",
     "choices": [
       {
         "id": "A",
-        "text": "37/57",
-        "rationale": "Condition on those who work remotely, not those who have a company laptop."
+        "text": "2/19",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "59/80",
-        "rationale": "That is the probability of the condition itself."
+        "text": "17/19",
+        "rationale": "That is the probability of NOT doing the second thing."
       },
       {
         "id": "C",
-        "text": "37/80",
+        "text": "1/25",
         "rationale": "Condition on the group who work remotely, not everyone."
       },
       {
         "id": "D",
-        "text": "37/59",
-        "rationale": "Correct."
+        "text": "1/8",
+        "rationale": "Condition on those who work remotely, not those who have a company laptop."
       },
       {
         "id": "E",
-        "text": "22/59",
-        "rationale": "That is the probability of NOT doing the second thing."
+        "text": "19/50",
+        "rationale": "That is the probability of the condition itself."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Restrict to the 59 who work remotely; 37 of them also have a company laptop: 37/59.",
+    "correct_choice": "A",
+    "explanation": "Restrict to the 19 who work remotely; 2 of them also have a company laptop: 2/19.",
     "estimated_time_seconds": 95,
     "tags": [
       "probability",
@@ -48,7 +48,7 @@
       "word-problem",
       "family:pb_conditional_words"
     ],
-    "answer_verification": "total=80,a=59,b=57,both=37"
+    "answer_verification": "total=50,a=19,b=16,both=2"
   },
   {
     "question_id": "act-math-probability-easy-b0002",
@@ -62,42 +62,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "A fair six-sided die is rolled once. What is the probability of rolling a multiple of 3?",
+    "prompt": "A spinner is divided into 5 equal sections, 1 of which are shaded. What is the probability that the spinner lands on a shaded section?",
     "choices": [
       {
         "id": "A",
-        "text": "2/3",
-        "rationale": "That is the probability of the complement."
-      },
-      {
-        "id": "B",
-        "text": "1/3",
+        "text": "1/5",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "4/5",
+        "rationale": "That is the probability of an unshaded section."
+      },
+      {
         "id": "C",
-        "text": "1/2",
-        "rationale": "Recount the favourable outcomes."
+        "text": "-49/5",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
       },
       {
         "id": "D",
         "text": "1/6",
-        "rationale": "More than one outcome satisfies the condition."
+        "rationale": "There are 5 sections in all."
       },
       {
         "id": "E",
-        "text": "2/5",
-        "rationale": "The die has 6 outcomes, not 5."
+        "text": "1/4",
+        "rationale": "Divide by the total number of sections."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "2 of the 6 equally likely outcomes satisfy the condition: 2/6 = 1/3.",
-    "estimated_time_seconds": 70,
+    "correct_choice": "A",
+    "explanation": "1 of 5 equal sections: 1/5.",
+    "estimated_time_seconds": 75,
     "tags": [
       "probability",
-      "family:pb_compound"
+      "geometric",
+      "family:pb_geometric"
     ],
-    "answer_verification": "P=1/3"
+    "answer_verification": "P=1/5"
   },
   {
     "question_id": "act-math-probability-easy-b0003",
@@ -111,235 +112,36 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "A survey found that 80% of a town's residents use public transit. If 400 residents are selected at random, about how many would be expected to use public transit?",
+    "prompt": "A survey found that 20% of a town's residents use public transit. If 600 residents are selected at random, about how many would be expected to use public transit?",
     "choices": [
       {
         "id": "A",
-        "text": "32000",
-        "rationale": "Divide by 100 when using a percent."
-      },
-      {
-        "id": "B",
-        "text": "319",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "C",
-        "text": "80",
-        "rationale": "That is the expected number who do NOT use transit."
-      },
-      {
-        "id": "D",
-        "text": "330",
-        "rationale": "Arithmetic slip; recompute the percent of 400."
-      },
-      {
-        "id": "E",
-        "text": "320",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "E",
-    "explanation": "Expected count = probability × sample size = 80/100 × 400 = 320.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "probability",
-      "expected",
-      "family:pb_expected"
-    ],
-    "answer_verification": "val=320"
-  },
-  {
-    "question_id": "act-math-probability-easy-b0004",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "probability",
-    "lesson_id": "act-math-probability-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "simple_probability",
-    "prompt": "Ivy can choose from 3 shirts and 5 pairs of pants. How many different combinations of one of each are possible?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "5",
-        "rationale": "Both choices matter."
-      },
-      {
-        "id": "B",
-        "text": "30",
-        "rationale": "Each combination is one of each; no doubling."
-      },
-      {
-        "id": "C",
-        "text": "15",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "8",
-        "rationale": "Multiply the numbers of choices; don't add."
-      },
-      {
-        "id": "E",
-        "text": "18",
-        "rationale": "Arithmetic slip."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "Multiply the choices: 3 × 5 = 15.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "probability",
-      "counting",
-      "family:pb_counting"
-    ],
-    "answer_verification": "val=15"
-  },
-  {
-    "question_id": "act-math-probability-easy-b0005",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "probability",
-    "lesson_id": "act-math-probability-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "simple_probability",
-    "prompt": "A spinner is divided into 11 equal sections, 7 of which are shaded. What is the probability that the spinner lands on a shaded section?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "7/4",
-        "rationale": "Divide by the total number of sections."
-      },
-      {
-        "id": "B",
-        "text": "1/11",
-        "rationale": "More than one section is shaded."
-      },
-      {
-        "id": "C",
-        "text": "4/11",
-        "rationale": "That is the probability of an unshaded section."
-      },
-      {
-        "id": "D",
-        "text": "7/12",
-        "rationale": "There are 11 sections in all."
-      },
-      {
-        "id": "E",
-        "text": "7/11",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "E",
-    "explanation": "7 of 11 equal sections: 7/11.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "probability",
-      "geometric",
-      "family:pb_geometric"
-    ],
-    "answer_verification": "P=7/11"
-  },
-  {
-    "question_id": "act-math-probability-easy-b0006",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "probability",
-    "lesson_id": "act-math-probability-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "simple_probability",
-    "prompt": "A spinner has 5 equal sections numbered 1 through 5. What is the probability that the spinner lands on a number less than or equal to 2?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "1/5",
-        "rationale": "'Less than or equal to' includes 2 itself."
-      },
-      {
-        "id": "B",
-        "text": "2/5",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "1/2",
-        "rationale": "The spinner has 5 sections."
-      },
-      {
-        "id": "D",
-        "text": "3/5",
-        "rationale": "That is the probability of a number greater than 2."
-      },
-      {
-        "id": "E",
-        "text": "-11/10",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "2 of the 5 equal sections qualify: 2/5 = 2/5.",
-    "estimated_time_seconds": 70,
-    "tags": [
-      "probability",
-      "family:pb_compound"
-    ],
-    "answer_verification": "P=2/5"
-  },
-  {
-    "question_id": "act-math-probability-easy-b0007",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "probability",
-    "lesson_id": "act-math-probability-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "simple_probability",
-    "prompt": "A survey found that 80% of a town's residents use public transit. If 150 residents are selected at random, about how many would be expected to use public transit?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "80",
-        "rationale": "Multiply the percent by the sample size."
-      },
-      {
-        "id": "B",
-        "text": "130",
-        "rationale": "Arithmetic slip; recompute the percent of 150."
-      },
-      {
-        "id": "C",
         "text": "12000",
         "rationale": "Divide by 100 when using a percent."
       },
       {
+        "id": "B",
+        "text": "20",
+        "rationale": "Multiply the percent by the sample size."
+      },
+      {
+        "id": "C",
+        "text": "480",
+        "rationale": "That is the expected number who do NOT use transit."
+      },
+      {
         "id": "D",
-        "text": "120",
-        "rationale": "Correct."
+        "text": "130",
+        "rationale": "Arithmetic slip; recompute the percent of 600."
       },
       {
         "id": "E",
-        "text": "30",
-        "rationale": "That is the expected number who do NOT use transit."
+        "text": "120",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Expected count = probability × sample size = 80/100 × 150 = 120.",
+    "correct_choice": "E",
+    "explanation": "Expected count = probability × sample size = 20/100 × 600 = 120.",
     "estimated_time_seconds": 80,
     "tags": [
       "probability",
@@ -349,609 +151,7 @@
     "answer_verification": "val=120"
   },
   {
-    "question_id": "act-math-probability-easy-b0008",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "probability",
-    "lesson_id": "act-math-probability-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "simple_probability",
-    "prompt": "A survey found that 65% of a town's residents use public transit. If 2000 residents are selected at random, about how many would be expected to use public transit?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "130000",
-        "rationale": "Divide by 100 when using a percent."
-      },
-      {
-        "id": "B",
-        "text": "65",
-        "rationale": "Multiply the percent by the sample size."
-      },
-      {
-        "id": "C",
-        "text": "700",
-        "rationale": "That is the expected number who do NOT use transit."
-      },
-      {
-        "id": "D",
-        "text": "1300",
-        "rationale": "Correct."
-      },
-      {
-        "id": "E",
-        "text": "1310",
-        "rationale": "Arithmetic slip; recompute the percent of 2000."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Expected count = probability × sample size = 65/100 × 2000 = 1300.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "probability",
-      "expected",
-      "family:pb_expected"
-    ],
-    "answer_verification": "val=1300"
-  },
-  {
-    "question_id": "act-math-probability-easy-b0009",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "probability",
-    "lesson_id": "act-math-probability-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multi_step_math",
-    "subskill": "simple_probability",
-    "prompt": "In a group of 40 students, 21 play a sport, 21 play an instrument, and 19 do both. If one of the students who play a sport is chosen at random, what is the probability that this person also plays an instrument?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "19/40",
-        "rationale": "Condition on the group who play a sport, not everyone."
-      },
-      {
-        "id": "B",
-        "text": "21/40",
-        "rationale": "That is the probability of the condition itself."
-      },
-      {
-        "id": "C",
-        "text": "2/21",
-        "rationale": "That is the probability of NOT doing the second thing."
-      },
-      {
-        "id": "D",
-        "text": "-2/21",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "E",
-        "text": "19/21",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "E",
-    "explanation": "Restrict to the 21 who play a sport; 19 of them also play an instrument: 19/21.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "probability",
-      "conditional",
-      "word-problem",
-      "family:pb_conditional_words"
-    ],
-    "answer_verification": "total=40,a=21,b=21,both=19"
-  },
-  {
-    "question_id": "act-math-probability-easy-b0010",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "probability",
-    "lesson_id": "act-math-probability-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "simple_probability",
-    "prompt": "Arjun can choose from 7 paint colors and 6 trim colors. How many different combinations of one of each are possible?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "7",
-        "rationale": "Both choices matter."
-      },
-      {
-        "id": "B",
-        "text": "84",
-        "rationale": "Each combination is one of each; no doubling."
-      },
-      {
-        "id": "C",
-        "text": "49",
-        "rationale": "Arithmetic slip."
-      },
-      {
-        "id": "D",
-        "text": "42",
-        "rationale": "Correct."
-      },
-      {
-        "id": "E",
-        "text": "13",
-        "rationale": "Multiply the numbers of choices; don't add."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Multiply the choices: 7 × 6 = 42.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "probability",
-      "counting",
-      "family:pb_counting"
-    ],
-    "answer_verification": "val=42"
-  },
-  {
-    "question_id": "act-math-probability-easy-b0011",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "probability",
-    "lesson_id": "act-math-probability-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "simple_probability",
-    "prompt": "Felix can choose from 3 paint colors and 8 trim colors. How many different combinations of one of each are possible?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "27",
-        "rationale": "Arithmetic slip."
-      },
-      {
-        "id": "B",
-        "text": "11",
-        "rationale": "Multiply the numbers of choices; don't add."
-      },
-      {
-        "id": "C",
-        "text": "8",
-        "rationale": "Both choices matter."
-      },
-      {
-        "id": "D",
-        "text": "24",
-        "rationale": "Correct."
-      },
-      {
-        "id": "E",
-        "text": "48",
-        "rationale": "Each combination is one of each; no doubling."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Multiply the choices: 3 × 8 = 24.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "probability",
-      "counting",
-      "family:pb_counting"
-    ],
-    "answer_verification": "val=24"
-  },
-  {
-    "question_id": "act-math-probability-easy-b0012",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "probability",
-    "lesson_id": "act-math-probability-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "simple_probability",
-    "prompt": "A jar holds 24 tickets numbered 1 through 24. If one ticket is drawn at random, what is the probability its number is at most 9?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "3/8",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "1/3",
-        "rationale": "'At most 9' includes 9."
-      },
-      {
-        "id": "C",
-        "text": "5/8",
-        "rationale": "That is the probability of a number greater than 9."
-      },
-      {
-        "id": "D",
-        "text": "5/12",
-        "rationale": "Recount: the numbers 1 through 9."
-      },
-      {
-        "id": "E",
-        "text": "9/23",
-        "rationale": "There are 24 tickets in all."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "9 of the 24 tickets have numbers from 1 to 9: 9/24 = 3/8.",
-    "estimated_time_seconds": 70,
-    "tags": [
-      "probability",
-      "family:pb_compound"
-    ],
-    "answer_verification": "P=3/8"
-  },
-  {
-    "question_id": "act-math-probability-easy-b0013",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "probability",
-    "lesson_id": "act-math-probability-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multi_step_math",
-    "subskill": "simple_probability",
-    "prompt": "In a group of 80 students, 35 play a sport, 6 play an instrument, and 3 do both. If one of the students who play a sport is chosen at random, what is the probability that this person also plays an instrument?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "32/35",
-        "rationale": "That is the probability of NOT doing the second thing."
-      },
-      {
-        "id": "B",
-        "text": "3/35",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "3/80",
-        "rationale": "Condition on the group who play a sport, not everyone."
-      },
-      {
-        "id": "D",
-        "text": "1/2",
-        "rationale": "Condition on those who play a sport, not those who play an instrument."
-      },
-      {
-        "id": "E",
-        "text": "7/16",
-        "rationale": "That is the probability of the condition itself."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Restrict to the 35 who play a sport; 3 of them also play an instrument: 3/35.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "probability",
-      "conditional",
-      "word-problem",
-      "family:pb_conditional_words"
-    ],
-    "answer_verification": "total=80,a=35,b=6,both=3"
-  },
-  {
-    "question_id": "act-math-probability-easy-b0014",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "probability",
-    "lesson_id": "act-math-probability-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "simple_probability",
-    "prompt": "A survey found that 15% of a town's residents use public transit. If 400 residents are selected at random, about how many would be expected to use public transit?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "70",
-        "rationale": "Arithmetic slip; recompute the percent of 400."
-      },
-      {
-        "id": "B",
-        "text": "60",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "15",
-        "rationale": "Multiply the percent by the sample size."
-      },
-      {
-        "id": "D",
-        "text": "340",
-        "rationale": "That is the expected number who do NOT use transit."
-      },
-      {
-        "id": "E",
-        "text": "6000",
-        "rationale": "Divide by 100 when using a percent."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Expected count = probability × sample size = 15/100 × 400 = 60.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "probability",
-      "expected",
-      "family:pb_expected"
-    ],
-    "answer_verification": "val=60"
-  },
-  {
-    "question_id": "act-math-probability-easy-b0015",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "probability",
-    "lesson_id": "act-math-probability-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "simple_probability",
-    "prompt": "A survey found that 18% of a town's residents use public transit. If 1200 residents are selected at random, about how many would be expected to use public transit?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "18",
-        "rationale": "Multiply the percent by the sample size."
-      },
-      {
-        "id": "B",
-        "text": "984",
-        "rationale": "That is the expected number who do NOT use transit."
-      },
-      {
-        "id": "C",
-        "text": "21600",
-        "rationale": "Divide by 100 when using a percent."
-      },
-      {
-        "id": "D",
-        "text": "226",
-        "rationale": "Arithmetic slip; recompute the percent of 1200."
-      },
-      {
-        "id": "E",
-        "text": "216",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "E",
-    "explanation": "Expected count = probability × sample size = 18/100 × 1200 = 216.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "probability",
-      "expected",
-      "family:pb_expected"
-    ],
-    "answer_verification": "val=216"
-  },
-  {
-    "question_id": "act-math-probability-easy-b0016",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "probability",
-    "lesson_id": "act-math-probability-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "simple_probability",
-    "prompt": "Mateo can choose from 2 shirts and 5 pairs of pants. How many different combinations of one of each are possible?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "12",
-        "rationale": "Arithmetic slip."
-      },
-      {
-        "id": "B",
-        "text": "10",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "7",
-        "rationale": "Multiply the numbers of choices; don't add."
-      },
-      {
-        "id": "D",
-        "text": "5",
-        "rationale": "Both choices matter."
-      },
-      {
-        "id": "E",
-        "text": "20",
-        "rationale": "Each combination is one of each; no doubling."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Multiply the choices: 2 × 5 = 10.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "probability",
-      "counting",
-      "family:pb_counting"
-    ],
-    "answer_verification": "val=10"
-  },
-  {
-    "question_id": "act-math-probability-easy-b0017",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "probability",
-    "lesson_id": "act-math-probability-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "simple_probability",
-    "prompt": "A bag contains 7 purple, 10 yellow, and 4 white tokens. If one of the tokens is chosen at random, what is the probability that it is purple?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "1/3",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "2/3",
-        "rationale": "This is the probability of NOT drawing that colour."
-      },
-      {
-        "id": "C",
-        "text": "1",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "D",
-        "text": "8/21",
-        "rationale": "Recount the favourable outcomes."
-      },
-      {
-        "id": "E",
-        "text": "1/2",
-        "rationale": "Use the total count in the denominator, not the rest."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "7 of the 21 tokens are purple: 7/21 = 1/3.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "probability",
-      "family:pb_single"
-    ],
-    "answer_verification": "P=1/3"
-  },
-  {
-    "question_id": "act-math-probability-easy-b0018",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "probability",
-    "lesson_id": "act-math-probability-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multi_step_math",
-    "subskill": "simple_probability",
-    "prompt": "In a group of 80 students, 60 play a sport, 59 play an instrument, and 55 do both. If one of the students who play a sport is chosen at random, what is the probability that this person also plays an instrument?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "1/12",
-        "rationale": "That is the probability of NOT doing the second thing."
-      },
-      {
-        "id": "B",
-        "text": "55/59",
-        "rationale": "Condition on those who play a sport, not those who play an instrument."
-      },
-      {
-        "id": "C",
-        "text": "3/4",
-        "rationale": "That is the probability of the condition itself."
-      },
-      {
-        "id": "D",
-        "text": "11/16",
-        "rationale": "Condition on the group who play a sport, not everyone."
-      },
-      {
-        "id": "E",
-        "text": "11/12",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "E",
-    "explanation": "Restrict to the 60 who play a sport; 55 of them also play an instrument: 11/12.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "probability",
-      "conditional",
-      "word-problem",
-      "family:pb_conditional_words"
-    ],
-    "answer_verification": "total=80,a=60,b=59,both=55"
-  },
-  {
-    "question_id": "act-math-probability-easy-b0019",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "probability",
-    "lesson_id": "act-math-probability-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multi_step_math",
-    "subskill": "simple_probability",
-    "prompt": "In a group of 60 students, 23 play a sport, 37 play an instrument, and 19 do both. If one of the students who play a sport is chosen at random, what is the probability that this person also plays an instrument?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "4/23",
-        "rationale": "That is the probability of NOT doing the second thing."
-      },
-      {
-        "id": "B",
-        "text": "19/60",
-        "rationale": "Condition on the group who play a sport, not everyone."
-      },
-      {
-        "id": "C",
-        "text": "19/37",
-        "rationale": "Condition on those who play a sport, not those who play an instrument."
-      },
-      {
-        "id": "D",
-        "text": "23/60",
-        "rationale": "That is the probability of the condition itself."
-      },
-      {
-        "id": "E",
-        "text": "19/23",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "E",
-    "explanation": "Restrict to the 23 who play a sport; 19 of them also play an instrument: 19/23.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "probability",
-      "conditional",
-      "word-problem",
-      "family:pb_conditional_words"
-    ],
-    "answer_verification": "total=60,a=23,b=37,both=19"
-  },
-  {
-    "question_id": "act-math-probability-easy-b0020",
+    "question_id": "act-math-probability-easy-b0004",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1033,7 +233,7 @@
     "answer_verification": "P=31/54"
   },
   {
-    "question_id": "act-math-probability-easy-b0021",
+    "question_id": "act-math-probability-easy-b0005",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1084,7 +284,7 @@
     "answer_verification": "total=60,a=19,b=52,both=14"
   },
   {
-    "question_id": "act-math-probability-easy-b0022",
+    "question_id": "act-math-probability-easy-b0006",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1134,7 +334,7 @@
     "answer_verification": "val=350"
   },
   {
-    "question_id": "act-math-probability-easy-b0023",
+    "question_id": "act-math-probability-easy-b0007",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1185,7 +385,7 @@
     "answer_verification": "total=80,a=36,b=70,both=28"
   },
   {
-    "question_id": "act-math-probability-easy-b0024",
+    "question_id": "act-math-probability-easy-b0008",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1267,7 +467,7 @@
     "answer_verification": "P=19/29"
   },
   {
-    "question_id": "act-math-probability-easy-b0025",
+    "question_id": "act-math-probability-easy-b0009",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1317,7 +517,7 @@
     "answer_verification": "val=900"
   },
   {
-    "question_id": "act-math-probability-easy-b0026",
+    "question_id": "act-math-probability-easy-b0010",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1367,7 +567,7 @@
     "answer_verification": "val=11"
   },
   {
-    "question_id": "act-math-probability-easy-b0027",
+    "question_id": "act-math-probability-easy-b0011",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1416,7 +616,7 @@
     "answer_verification": "P=17/19"
   },
   {
-    "question_id": "act-math-probability-easy-b0028",
+    "question_id": "act-math-probability-easy-b0012",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1465,7 +665,7 @@
     "answer_verification": "P=18/25"
   },
   {
-    "question_id": "act-math-probability-easy-b0029",
+    "question_id": "act-math-probability-easy-b0013",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1514,7 +714,7 @@
     "answer_verification": "P=2/21"
   },
   {
-    "question_id": "act-math-probability-easy-b0030",
+    "question_id": "act-math-probability-easy-b0014",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1564,7 +764,7 @@
     "answer_verification": "P=1/2"
   },
   {
-    "question_id": "act-math-probability-easy-b0031",
+    "question_id": "act-math-probability-easy-b0015",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1614,7 +814,7 @@
     "answer_verification": "val=12"
   },
   {
-    "question_id": "act-math-probability-easy-b0032",
+    "question_id": "act-math-probability-easy-b0016",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1665,7 +865,7 @@
     "answer_verification": "total=100,a=28,b=79,both=16"
   },
   {
-    "question_id": "act-math-probability-easy-b0033",
+    "question_id": "act-math-probability-easy-b0017",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1716,7 +916,7 @@
     "answer_verification": "total=120,a=45,b=34,both=18"
   },
   {
-    "question_id": "act-math-probability-easy-b0034",
+    "question_id": "act-math-probability-easy-b0018",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1766,7 +966,7 @@
     "answer_verification": "P=2/5"
   },
   {
-    "question_id": "act-math-probability-easy-b0035",
+    "question_id": "act-math-probability-easy-b0019",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1817,7 +1017,7 @@
     "answer_verification": "total=100,a=36,b=47,both=8"
   },
   {
-    "question_id": "act-math-probability-easy-b0036",
+    "question_id": "act-math-probability-easy-b0020",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1866,7 +1066,7 @@
     "answer_verification": "P=1/9"
   },
   {
-    "question_id": "act-math-probability-easy-b0037",
+    "question_id": "act-math-probability-easy-b0021",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1916,7 +1116,7 @@
     "answer_verification": "val=40"
   },
   {
-    "question_id": "act-math-probability-easy-b0038",
+    "question_id": "act-math-probability-easy-b0022",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1965,7 +1165,7 @@
     "answer_verification": "P=13/30"
   },
   {
-    "question_id": "act-math-probability-easy-b0039",
+    "question_id": "act-math-probability-easy-b0023",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1976,45 +1176,95 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "A jar holds 21 tickets numbered 1 through 21. If one ticket is drawn at random, what is the probability its number is at most 8?",
+    "prompt": "A fair six-sided die is rolled once. What is the probability of rolling a multiple of 3?",
     "choices": [
       {
         "id": "A",
-        "text": "8/21",
-        "rationale": "Correct."
+        "text": "1/6",
+        "rationale": "More than one outcome satisfies the condition."
       },
       {
         "id": "B",
-        "text": "1/3",
-        "rationale": "'At most 8' includes 8."
+        "text": "2/5",
+        "rationale": "The die has 6 outcomes, not 5."
       },
       {
         "id": "C",
-        "text": "13/21",
-        "rationale": "That is the probability of a number greater than 8."
+        "text": "1/3",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "2/5",
-        "rationale": "There are 21 tickets in all."
+        "text": "2/3",
+        "rationale": "That is the probability of the complement."
       },
       {
         "id": "E",
-        "text": "3/7",
-        "rationale": "Recount: the numbers 1 through 8."
+        "text": "1/2",
+        "rationale": "Recount the favourable outcomes."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "8 of the 21 tickets have numbers from 1 to 8: 8/21 = 8/21.",
+    "correct_choice": "C",
+    "explanation": "2 of the 6 equally likely outcomes satisfy the condition: 2/6 = 1/3.",
     "estimated_time_seconds": 70,
     "tags": [
       "probability",
       "family:pb_compound"
     ],
-    "answer_verification": "P=8/21"
+    "answer_verification": "P=1/3"
   },
   {
-    "question_id": "act-math-probability-easy-b0040",
+    "question_id": "act-math-probability-easy-b0024",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "probability",
+    "lesson_id": "act-math-probability-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "simple_probability",
+    "prompt": "A spinner is divided into 9 equal sections, 4 of which are shaded. What is the probability that the spinner lands on a shaded section?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "4/9",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "4/5",
+        "rationale": "Divide by the total number of sections."
+      },
+      {
+        "id": "C",
+        "text": "5/9",
+        "rationale": "That is the probability of an unshaded section."
+      },
+      {
+        "id": "D",
+        "text": "2/5",
+        "rationale": "There are 9 sections in all."
+      },
+      {
+        "id": "E",
+        "text": "1/9",
+        "rationale": "More than one section is shaded."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "4 of 9 equal sections: 4/9.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "probability",
+      "geometric",
+      "family:pb_geometric"
+    ],
+    "answer_verification": "P=4/9"
+  },
+  {
+    "question_id": "act-math-probability-easy-b0025",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2063,7 +1313,7 @@
     "answer_verification": "P=11/26"
   },
   {
-    "question_id": "act-math-probability-easy-b0041",
+    "question_id": "act-math-probability-easy-b0026",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2112,7 +1362,7 @@
     "answer_verification": "P=5/7"
   },
   {
-    "question_id": "act-math-probability-easy-b0042",
+    "question_id": "act-math-probability-easy-b0027",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2161,7 +1411,7 @@
     "answer_verification": "P=2/5"
   },
   {
-    "question_id": "act-math-probability-easy-b0043",
+    "question_id": "act-math-probability-easy-b0028",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2211,7 +1461,7 @@
     "answer_verification": "val=75"
   },
   {
-    "question_id": "act-math-probability-easy-b0044",
+    "question_id": "act-math-probability-easy-b0029",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2261,7 +1511,7 @@
     "answer_verification": "val=500"
   },
   {
-    "question_id": "act-math-probability-easy-b0045",
+    "question_id": "act-math-probability-easy-b0030",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2311,7 +1561,7 @@
     "answer_verification": "val=12"
   },
   {
-    "question_id": "act-math-probability-easy-b0046",
+    "question_id": "act-math-probability-easy-b0031",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2361,7 +1611,7 @@
     "answer_verification": "P=1/5"
   },
   {
-    "question_id": "act-math-probability-easy-b0047",
+    "question_id": "act-math-probability-easy-b0032",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2443,7 +1693,7 @@
     "answer_verification": "P=26/75"
   },
   {
-    "question_id": "act-math-probability-easy-b0048",
+    "question_id": "act-math-probability-easy-b0033",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2493,7 +1743,7 @@
     "answer_verification": "val=35"
   },
   {
-    "question_id": "act-math-probability-easy-b0049",
+    "question_id": "act-math-probability-easy-b0034",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2542,7 +1792,7 @@
     "answer_verification": "P=1/5"
   },
   {
-    "question_id": "act-math-probability-easy-b0050",
+    "question_id": "act-math-probability-easy-b0035",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2624,7 +1874,7 @@
     "answer_verification": "P=56/83"
   },
   {
-    "question_id": "act-math-probability-easy-b0051",
+    "question_id": "act-math-probability-easy-b0036",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2674,7 +1924,7 @@
     "answer_verification": "val=16"
   },
   {
-    "question_id": "act-math-probability-easy-b0052",
+    "question_id": "act-math-probability-easy-b0037",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2723,7 +1973,7 @@
     "answer_verification": "P=9/20"
   },
   {
-    "question_id": "act-math-probability-easy-b0053",
+    "question_id": "act-math-probability-easy-b0038",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2773,7 +2023,7 @@
     "answer_verification": "val=12"
   },
   {
-    "question_id": "act-math-probability-easy-b0054",
+    "question_id": "act-math-probability-easy-b0039",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2823,7 +2073,7 @@
     "answer_verification": "P=5/8"
   },
   {
-    "question_id": "act-math-probability-easy-b0055",
+    "question_id": "act-math-probability-easy-b0040",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2872,7 +2122,7 @@
     "answer_verification": "P=2/19"
   },
   {
-    "question_id": "act-math-probability-easy-b0056",
+    "question_id": "act-math-probability-easy-b0041",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2954,7 +2204,7 @@
     "answer_verification": "P=14/29"
   },
   {
-    "question_id": "act-math-probability-easy-b0057",
+    "question_id": "act-math-probability-easy-b0042",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3004,7 +2254,7 @@
     "answer_verification": "val=1600"
   },
   {
-    "question_id": "act-math-probability-easy-b0058",
+    "question_id": "act-math-probability-easy-b0043",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3055,7 +2305,7 @@
     "answer_verification": "total=40,a=21,b=7,both=3"
   },
   {
-    "question_id": "act-math-probability-easy-b0059",
+    "question_id": "act-math-probability-easy-b0044",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3105,7 +2355,7 @@
     "answer_verification": "val=280"
   },
   {
-    "question_id": "act-math-probability-easy-b0060",
+    "question_id": "act-math-probability-easy-b0045",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3155,7 +2405,7 @@
     "answer_verification": "P=1/2"
   },
   {
-    "question_id": "act-math-probability-easy-b0061",
+    "question_id": "act-math-probability-easy-b0046",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3204,7 +2454,7 @@
     "answer_verification": "P=1/6"
   },
   {
-    "question_id": "act-math-probability-easy-b0062",
+    "question_id": "act-math-probability-easy-b0047",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3254,7 +2504,7 @@
     "answer_verification": "val=24"
   },
   {
-    "question_id": "act-math-probability-easy-b0063",
+    "question_id": "act-math-probability-easy-b0048",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3304,7 +2554,7 @@
     "answer_verification": "val=12"
   },
   {
-    "question_id": "act-math-probability-easy-b0064",
+    "question_id": "act-math-probability-easy-b0049",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3355,7 +2605,7 @@
     "answer_verification": "total=40,a=28,b=25,both=20"
   },
   {
-    "question_id": "act-math-probability-easy-b0065",
+    "question_id": "act-math-probability-easy-b0050",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3405,7 +2655,7 @@
     "answer_verification": "val=30"
   },
   {
-    "question_id": "act-math-probability-easy-b0066",
+    "question_id": "act-math-probability-easy-b0051",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3487,7 +2737,7 @@
     "answer_verification": "P=41/95"
   },
   {
-    "question_id": "act-math-probability-easy-b0067",
+    "question_id": "act-math-probability-easy-b0052",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3536,7 +2786,7 @@
     "answer_verification": "P=8/21"
   },
   {
-    "question_id": "act-math-probability-easy-b0068",
+    "question_id": "act-math-probability-easy-b0053",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3618,7 +2868,7 @@
     "answer_verification": "P=19/28"
   },
   {
-    "question_id": "act-math-probability-easy-b0069",
+    "question_id": "act-math-probability-easy-b0054",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3668,7 +2918,7 @@
     "answer_verification": "val=72"
   },
   {
-    "question_id": "act-math-probability-easy-b0070",
+    "question_id": "act-math-probability-easy-b0055",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3717,7 +2967,7 @@
     "answer_verification": "P=1/2"
   },
   {
-    "question_id": "act-math-probability-easy-b0071",
+    "question_id": "act-math-probability-easy-b0056",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3767,7 +3017,7 @@
     "answer_verification": "P=9/10"
   },
   {
-    "question_id": "act-math-probability-easy-b0072",
+    "question_id": "act-math-probability-easy-b0057",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3817,7 +3067,7 @@
     "answer_verification": "P=2/3"
   },
   {
-    "question_id": "act-math-probability-easy-b0073",
+    "question_id": "act-math-probability-easy-b0058",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3866,7 +3116,7 @@
     "answer_verification": "P=13/36"
   },
   {
-    "question_id": "act-math-probability-easy-b0074",
+    "question_id": "act-math-probability-easy-b0059",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3917,7 +3167,7 @@
     "answer_verification": "total=120,a=50,b=53,both=41"
   },
   {
-    "question_id": "act-math-probability-easy-b0075",
+    "question_id": "act-math-probability-easy-b0060",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3967,7 +3217,7 @@
     "answer_verification": "val=975"
   },
   {
-    "question_id": "act-math-probability-easy-b0076",
+    "question_id": "act-math-probability-easy-b0061",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4018,7 +3268,7 @@
     "answer_verification": "total=50,a=28,b=15,both=8"
   },
   {
-    "question_id": "act-math-probability-easy-b0077",
+    "question_id": "act-math-probability-easy-b0062",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4068,7 +3318,7 @@
     "answer_verification": "val=35"
   },
   {
-    "question_id": "act-math-probability-easy-b0078",
+    "question_id": "act-math-probability-easy-b0063",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4118,7 +3368,7 @@
     "answer_verification": "P=3/5"
   },
   {
-    "question_id": "act-math-probability-easy-b0079",
+    "question_id": "act-math-probability-easy-b0064",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4167,7 +3417,7 @@
     "answer_verification": "P=4/17"
   },
   {
-    "question_id": "act-math-probability-easy-b0080",
+    "question_id": "act-math-probability-easy-b0065",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4249,7 +3499,7 @@
     "answer_verification": "P=47/116"
   },
   {
-    "question_id": "act-math-probability-easy-b0081",
+    "question_id": "act-math-probability-easy-b0066",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4331,7 +3581,7 @@
     "answer_verification": "P=43/85"
   },
   {
-    "question_id": "act-math-probability-easy-b0082",
+    "question_id": "act-math-probability-easy-b0067",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4381,7 +3631,7 @@
     "answer_verification": "P=1/4"
   },
   {
-    "question_id": "act-math-probability-easy-b0083",
+    "question_id": "act-math-probability-easy-b0068",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4392,46 +3642,46 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "A survey found that 20% of a town's residents use public transit. If 600 residents are selected at random, about how many would be expected to use public transit?",
+    "prompt": "A survey found that 80% of a town's residents use public transit. If 500 residents are selected at random, about how many would be expected to use public transit?",
     "choices": [
       {
         "id": "A",
-        "text": "12000",
+        "text": "40000",
         "rationale": "Divide by 100 when using a percent."
       },
       {
         "id": "B",
-        "text": "20",
-        "rationale": "Multiply the percent by the sample size."
+        "text": "100",
+        "rationale": "That is the expected number who do NOT use transit."
       },
       {
         "id": "C",
-        "text": "120",
+        "text": "400",
         "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "480",
-        "rationale": "That is the expected number who do NOT use transit."
+        "text": "80",
+        "rationale": "Multiply the percent by the sample size."
       },
       {
         "id": "E",
-        "text": "130",
-        "rationale": "Arithmetic slip; recompute the percent of 600."
+        "text": "410",
+        "rationale": "Arithmetic slip; recompute the percent of 500."
       }
     ],
     "correct_choice": "C",
-    "explanation": "Expected count = probability × sample size = 20/100 × 600 = 120.",
+    "explanation": "Expected count = probability × sample size = 80/100 × 500 = 400.",
     "estimated_time_seconds": 80,
     "tags": [
       "probability",
       "expected",
       "family:pb_expected"
     ],
-    "answer_verification": "val=120"
+    "answer_verification": "val=400"
   },
   {
-    "question_id": "act-math-probability-easy-b0084",
+    "question_id": "act-math-probability-easy-b0069",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4442,36 +3692,36 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "two_way_tables",
-    "prompt": "The table summarizes 134 responses. If one response is chosen at random, what is the probability that it is from the Online group?",
+    "prompt": "The table summarizes 88 responses. If one response is chosen at random, what is the probability that it is from the Online group?",
     "choices": [
       {
         "id": "A",
-        "text": "69/134",
-        "rationale": "That is the probability of the In store row."
-      },
-      {
-        "id": "B",
-        "text": "59/134",
-        "rationale": "That is the probability of the Passed column."
-      },
-      {
-        "id": "C",
-        "text": "65/134",
+        "text": "29/88",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "29/59",
+        "rationale": "Divide by the grand total, not the other row."
+      },
+      {
+        "id": "C",
+        "text": "59/88",
+        "rationale": "That is the probability of the In store row."
+      },
+      {
         "id": "D",
-        "text": "17/67",
-        "rationale": "That uses only one cell (34), not the whole row."
+        "text": "5/8",
+        "rationale": "That is the probability of the Member column."
       },
       {
         "id": "E",
-        "text": "65/69",
-        "rationale": "Divide by the grand total, not the other row."
+        "text": "5/22",
+        "rationale": "That uses only one cell (20), not the whole row."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "The Online row totals 65 of 134: 65/134.",
+    "correct_choice": "A",
+    "explanation": "The Online row totals 29 of 88: 29/88.",
     "estimated_time_seconds": 90,
     "tags": [
       "probability",
@@ -4484,36 +3734,36 @@
         "caption": "Survey results",
         "headers": [
           "",
-          "Passed",
-          "Failed",
+          "Member",
+          "Non-member",
           "Total"
         ],
         "rows": [
           [
             "Online",
-            "34",
-            "31",
-            "65"
+            "20",
+            "9",
+            "29"
           ],
           [
             "In store",
-            "25",
-            "44",
-            "69"
+            "35",
+            "24",
+            "59"
           ],
           [
             "Total",
-            "59",
-            "75",
-            "134"
+            "55",
+            "33",
+            "88"
           ]
         ]
       }
     },
-    "answer_verification": "P=65/134"
+    "answer_verification": "P=29/88"
   },
   {
-    "question_id": "act-math-probability-easy-b0085",
+    "question_id": "act-math-probability-easy-b0070",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4524,46 +3774,127 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "A survey found that 18% of a town's residents use public transit. If 200 residents are selected at random, about how many would be expected to use public transit?",
+    "prompt": "A bag contains 12 yellow, 5 blue, and 7 orange marbles. If one of the marbles is chosen at random, what is the probability that it is yellow?",
     "choices": [
       {
         "id": "A",
-        "text": "164",
-        "rationale": "That is the expected number who do NOT use transit."
+        "text": "1",
+        "rationale": "Use the total count in the denominator, not the rest."
       },
       {
         "id": "B",
-        "text": "18",
-        "rationale": "Multiply the percent by the sample size."
+        "text": "13/24",
+        "rationale": "Recount the favourable outcomes."
       },
       {
         "id": "C",
-        "text": "46",
-        "rationale": "Arithmetic slip; recompute the percent of 200."
-      },
-      {
-        "id": "D",
-        "text": "36",
+        "text": "1/2",
         "rationale": "Correct."
       },
       {
+        "id": "D",
+        "text": "1/3",
+        "rationale": "The colours are not equally likely; use the counts."
+      },
+      {
         "id": "E",
-        "text": "3600",
-        "rationale": "Divide by 100 when using a percent."
+        "text": "11/2",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Expected count = probability × sample size = 18/100 × 200 = 36.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "C",
+    "explanation": "12 of the 24 marbles are yellow: 12/24 = 1/2.",
+    "estimated_time_seconds": 75,
     "tags": [
       "probability",
-      "expected",
-      "family:pb_expected"
+      "family:pb_single"
     ],
-    "answer_verification": "val=36"
+    "answer_verification": "P=1/2"
   },
   {
-    "question_id": "act-math-probability-easy-b0086",
+    "question_id": "act-math-probability-easy-b0071",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "probability",
+    "lesson_id": "act-math-probability-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "two_way_tables",
+    "prompt": "The table summarizes 91 responses. If one response is chosen at random, what is the probability that it is from the Freshmen group?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "38/53",
+        "rationale": "Divide by the grand total, not the other row."
+      },
+      {
+        "id": "B",
+        "text": "38/91",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "53/91",
+        "rationale": "That is the probability of the Sophomores row."
+      },
+      {
+        "id": "D",
+        "text": "8/91",
+        "rationale": "That uses only one cell (8), not the whole row."
+      },
+      {
+        "id": "E",
+        "text": "19/91",
+        "rationale": "That is the probability of the Yes column."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "The Freshmen row totals 38 of 91: 38/91.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "probability",
+      "table",
+      "family:pb_table"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Survey results",
+        "headers": [
+          "",
+          "Yes",
+          "No",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Freshmen",
+            "8",
+            "30",
+            "38"
+          ],
+          [
+            "Sophomores",
+            "11",
+            "42",
+            "53"
+          ],
+          [
+            "Total",
+            "19",
+            "72",
+            "91"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "P=38/91"
+  },
+  {
+    "question_id": "act-math-probability-easy-b0072",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4574,45 +3905,46 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "A jar holds 17 tickets numbered 1 through 17. If one ticket is drawn at random, what is the probability its number is at most 7?",
+    "prompt": "A spinner is divided into 11 equal sections, 9 of which are shaded. What is the probability that the spinner lands on a shaded section?",
     "choices": [
       {
         "id": "A",
-        "text": "8/17",
-        "rationale": "Recount: the numbers 1 through 7."
+        "text": "2/11",
+        "rationale": "That is the probability of an unshaded section."
       },
       {
         "id": "B",
-        "text": "7/16",
-        "rationale": "There are 17 tickets in all."
+        "text": "3/4",
+        "rationale": "There are 11 sections in all."
       },
       {
         "id": "C",
-        "text": "6/17",
-        "rationale": "'At most 7' includes 7."
+        "text": "9/11",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "10/17",
-        "rationale": "That is the probability of a number greater than 7."
+        "text": "9/2",
+        "rationale": "Divide by the total number of sections."
       },
       {
         "id": "E",
-        "text": "7/17",
-        "rationale": "Correct."
+        "text": "1/11",
+        "rationale": "More than one section is shaded."
       }
     ],
-    "correct_choice": "E",
-    "explanation": "7 of the 17 tickets have numbers from 1 to 7: 7/17 = 7/17.",
-    "estimated_time_seconds": 70,
+    "correct_choice": "C",
+    "explanation": "9 of 11 equal sections: 9/11.",
+    "estimated_time_seconds": 75,
     "tags": [
       "probability",
-      "family:pb_compound"
+      "geometric",
+      "family:pb_geometric"
     ],
-    "answer_verification": "P=7/17"
+    "answer_verification": "P=9/11"
   },
   {
-    "question_id": "act-math-probability-easy-b0087",
+    "question_id": "act-math-probability-easy-b0073",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4623,36 +3955,36 @@
     "version": "1.0.0",
     "question_type": "multi_step_math",
     "subskill": "simple_probability",
-    "prompt": "In a group of 100 visitors, 54 saw the exhibit, 22 bought a ticket online, and 6 do both. If one of the visitors who saw the exhibit is chosen at random, what is the probability that this person also bought a ticket online?",
+    "prompt": "In a group of 80 employees, 31 work remotely, 66 have a company laptop, and 26 do both. If one of the employees who work remotely is chosen at random, what is the probability that this person also has a company laptop?",
     "choices": [
       {
         "id": "A",
-        "text": "3/11",
-        "rationale": "Condition on those who saw the exhibit, not those who bought a ticket online."
+        "text": "26/31",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "3/50",
-        "rationale": "Condition on the group who saw the exhibit, not everyone."
-      },
-      {
-        "id": "C",
-        "text": "27/50",
+        "text": "31/80",
         "rationale": "That is the probability of the condition itself."
       },
       {
-        "id": "D",
-        "text": "8/9",
+        "id": "C",
+        "text": "5/31",
         "rationale": "That is the probability of NOT doing the second thing."
       },
       {
+        "id": "D",
+        "text": "13/33",
+        "rationale": "Condition on those who work remotely, not those who have a company laptop."
+      },
+      {
         "id": "E",
-        "text": "1/9",
-        "rationale": "Correct."
+        "text": "13/40",
+        "rationale": "Condition on the group who work remotely, not everyone."
       }
     ],
-    "correct_choice": "E",
-    "explanation": "Restrict to the 54 who saw the exhibit; 6 of them also bought a ticket online: 1/9.",
+    "correct_choice": "A",
+    "explanation": "Restrict to the 31 who work remotely; 26 of them also have a company laptop: 26/31.",
     "estimated_time_seconds": 95,
     "tags": [
       "probability",
@@ -4660,10 +3992,10 @@
       "word-problem",
       "family:pb_conditional_words"
     ],
-    "answer_verification": "total=100,a=54,b=22,both=6"
+    "answer_verification": "total=80,a=31,b=66,both=26"
   },
   {
-    "question_id": "act-math-probability-easy-b0088",
+    "question_id": "act-math-probability-easy-b0074",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4672,47 +4004,49 @@
     "lesson_id": "act-math-probability-easy",
     "difficulty": "easy",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "multi_step_math",
     "subskill": "simple_probability",
-    "prompt": "A bag contains 12 green, 13 black, and 4 blue beads. If one of the beads is chosen at random, what is the probability that it is black?",
+    "prompt": "In a group of 100 customers, 41 bought coffee, 72 bought a pastry, and 30 do both. If one of the customers who bought coffee is chosen at random, what is the probability that this person also bought a pastry?",
     "choices": [
       {
         "id": "A",
-        "text": "16/29",
-        "rationale": "This is the probability of NOT drawing that colour."
+        "text": "5/12",
+        "rationale": "Condition on those who bought coffee, not those who bought a pastry."
       },
       {
         "id": "B",
-        "text": "14/29",
-        "rationale": "Recount the favourable outcomes."
+        "text": "41/100",
+        "rationale": "That is the probability of the condition itself."
       },
       {
         "id": "C",
-        "text": "13/29",
-        "rationale": "Correct."
+        "text": "11/41",
+        "rationale": "That is the probability of NOT doing the second thing."
       },
       {
         "id": "D",
-        "text": "1/3",
-        "rationale": "The colours are not equally likely; use the counts."
+        "text": "3/10",
+        "rationale": "Condition on the group who bought coffee, not everyone."
       },
       {
         "id": "E",
-        "text": "13/16",
-        "rationale": "Use the total count in the denominator, not the rest."
+        "text": "30/41",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "13 of the 29 beads are black: 13/29 = 13/29.",
-    "estimated_time_seconds": 75,
+    "correct_choice": "E",
+    "explanation": "Restrict to the 41 who bought coffee; 30 of them also bought a pastry: 30/41.",
+    "estimated_time_seconds": 95,
     "tags": [
       "probability",
-      "family:pb_single"
+      "conditional",
+      "word-problem",
+      "family:pb_conditional_words"
     ],
-    "answer_verification": "P=13/29"
+    "answer_verification": "total=100,a=41,b=72,both=30"
   },
   {
-    "question_id": "act-math-probability-easy-b0089",
+    "question_id": "act-math-probability-easy-b0075",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4723,7 +4057,7 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "Omar can choose from 4 shirts and 3 pairs of pants. How many different combinations of one of each are possible?",
+    "prompt": "Liam can choose from 3 shirts and 4 pairs of pants. How many different combinations of one of each are possible?",
     "choices": [
       {
         "id": "A",
@@ -4737,22 +4071,22 @@
       },
       {
         "id": "C",
-        "text": "16",
-        "rationale": "Arithmetic slip."
+        "text": "4",
+        "rationale": "Both choices matter."
       },
       {
         "id": "D",
-        "text": "24",
-        "rationale": "Each combination is one of each; no doubling."
+        "text": "15",
+        "rationale": "Arithmetic slip."
       },
       {
         "id": "E",
-        "text": "4",
-        "rationale": "Both choices matter."
+        "text": "24",
+        "rationale": "Each combination is one of each; no doubling."
       }
     ],
     "correct_choice": "A",
-    "explanation": "Multiply the choices: 4 × 3 = 12.",
+    "explanation": "Multiply the choices: 3 × 4 = 12.",
     "estimated_time_seconds": 75,
     "tags": [
       "probability",
@@ -4762,155 +4096,7 @@
     "answer_verification": "val=12"
   },
   {
-    "question_id": "act-math-probability-easy-b0090",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "probability",
-    "lesson_id": "act-math-probability-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "simple_probability",
-    "prompt": "A fair six-sided die is rolled once. What is the probability of rolling a number greater than 4?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "1/2",
-        "rationale": "Recount the favourable outcomes."
-      },
-      {
-        "id": "B",
-        "text": "1/3",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "2/3",
-        "rationale": "That is the probability of the complement."
-      },
-      {
-        "id": "D",
-        "text": "2/5",
-        "rationale": "The die has 6 outcomes, not 5."
-      },
-      {
-        "id": "E",
-        "text": "1/6",
-        "rationale": "More than one outcome satisfies the condition."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "2 of the 6 equally likely outcomes satisfy the condition: 2/6 = 1/3.",
-    "estimated_time_seconds": 70,
-    "tags": [
-      "probability",
-      "family:pb_compound"
-    ],
-    "answer_verification": "P=1/3"
-  },
-  {
-    "question_id": "act-math-probability-easy-b0091",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "probability",
-    "lesson_id": "act-math-probability-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "simple_probability",
-    "prompt": "A survey found that 45% of a town's residents use public transit. If 500 residents are selected at random, about how many would be expected to use public transit?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "225",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "22500",
-        "rationale": "Divide by 100 when using a percent."
-      },
-      {
-        "id": "C",
-        "text": "275",
-        "rationale": "That is the expected number who do NOT use transit."
-      },
-      {
-        "id": "D",
-        "text": "45",
-        "rationale": "Multiply the percent by the sample size."
-      },
-      {
-        "id": "E",
-        "text": "235",
-        "rationale": "Arithmetic slip; recompute the percent of 500."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "Expected count = probability × sample size = 45/100 × 500 = 225.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "probability",
-      "expected",
-      "family:pb_expected"
-    ],
-    "answer_verification": "val=225"
-  },
-  {
-    "question_id": "act-math-probability-easy-b0092",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "probability",
-    "lesson_id": "act-math-probability-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "simple_probability",
-    "prompt": "A bag contains 6 yellow, 11 blue, and 2 black tokens. If one of the tokens is chosen at random, what is the probability that it is blue?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "1/3",
-        "rationale": "The colours are not equally likely; use the counts."
-      },
-      {
-        "id": "B",
-        "text": "8/19",
-        "rationale": "This is the probability of NOT drawing that colour."
-      },
-      {
-        "id": "C",
-        "text": "11/8",
-        "rationale": "Use the total count in the denominator, not the rest."
-      },
-      {
-        "id": "D",
-        "text": "12/19",
-        "rationale": "Recount the favourable outcomes."
-      },
-      {
-        "id": "E",
-        "text": "11/19",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "E",
-    "explanation": "11 of the 19 tokens are blue: 11/19 = 11/19.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "probability",
-      "family:pb_single"
-    ],
-    "answer_verification": "P=11/19"
-  },
-  {
-    "question_id": "act-math-probability-easy-b0093",
+    "question_id": "act-math-probability-easy-b0076",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4961,7 +4147,7 @@
     "answer_verification": "total=50,a=15,b=30,both=3"
   },
   {
-    "question_id": "act-math-probability-easy-b0094",
+    "question_id": "act-math-probability-easy-b0077",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5011,7 +4197,7 @@
     "answer_verification": "P=3/10"
   },
   {
-    "question_id": "act-math-probability-easy-b0095",
+    "question_id": "act-math-probability-easy-b0078",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5062,7 +4248,7 @@
     "answer_verification": "total=50,a=25,b=29,both=20"
   },
   {
-    "question_id": "act-math-probability-easy-b0096",
+    "question_id": "act-math-probability-easy-b0079",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5113,7 +4299,7 @@
     "answer_verification": "total=50,a=12,b=38,both=9"
   },
   {
-    "question_id": "act-math-probability-easy-b0097",
+    "question_id": "act-math-probability-easy-b0080",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5162,7 +4348,7 @@
     "answer_verification": "P=1/13"
   },
   {
-    "question_id": "act-math-probability-easy-b0098",
+    "question_id": "act-math-probability-easy-b0081",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5244,7 +4430,7 @@
     "answer_verification": "P=3/10"
   },
   {
-    "question_id": "act-math-probability-easy-b0099",
+    "question_id": "act-math-probability-easy-b0082",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5293,7 +4479,7 @@
     "answer_verification": "P=5/23"
   },
   {
-    "question_id": "act-math-probability-easy-b0100",
+    "question_id": "act-math-probability-easy-b0083",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5343,7 +4529,7 @@
     "answer_verification": "val=12"
   },
   {
-    "question_id": "act-math-probability-easy-b0101",
+    "question_id": "act-math-probability-easy-b0084",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5392,7 +4578,7 @@
     "answer_verification": "P=1/3"
   },
   {
-    "question_id": "act-math-probability-easy-b0102",
+    "question_id": "act-math-probability-easy-b0085",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5441,7 +4627,7 @@
     "answer_verification": "P=14/29"
   },
   {
-    "question_id": "act-math-probability-easy-b0103",
+    "question_id": "act-math-probability-easy-b0086",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5490,7 +4676,7 @@
     "answer_verification": "P=8/17"
   },
   {
-    "question_id": "act-math-probability-easy-b0104",
+    "question_id": "act-math-probability-easy-b0087",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5540,7 +4726,7 @@
     "answer_verification": "val=28"
   },
   {
-    "question_id": "act-math-probability-easy-b0105",
+    "question_id": "act-math-probability-easy-b0088",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5622,7 +4808,7 @@
     "answer_verification": "P=42/95"
   },
   {
-    "question_id": "act-math-probability-easy-b0106",
+    "question_id": "act-math-probability-easy-b0089",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5671,7 +4857,7 @@
     "answer_verification": "P=2/13"
   },
   {
-    "question_id": "act-math-probability-easy-b0107",
+    "question_id": "act-math-probability-easy-b0090",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5721,7 +4907,7 @@
     "answer_verification": "P=3/8"
   },
   {
-    "question_id": "act-math-probability-easy-b0108",
+    "question_id": "act-math-probability-easy-b0091",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5770,7 +4956,7 @@
     "answer_verification": "P=5/8"
   },
   {
-    "question_id": "act-math-probability-easy-b0109",
+    "question_id": "act-math-probability-easy-b0092",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5820,7 +5006,7 @@
     "answer_verification": "P=5/6"
   },
   {
-    "question_id": "act-math-probability-easy-b0110",
+    "question_id": "act-math-probability-easy-b0093",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5870,7 +5056,7 @@
     "answer_verification": "val=150"
   },
   {
-    "question_id": "act-math-probability-easy-b0111",
+    "question_id": "act-math-probability-easy-b0094",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5881,127 +5067,45 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "A jar holds 11 tickets numbered 1 through 11. If one ticket is drawn at random, what is the probability its number is at most 6?",
+    "prompt": "A fair six-sided die is rolled once. What is the probability of rolling a number greater than 4?",
     "choices": [
       {
         "id": "A",
-        "text": "-37/33",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "1/6",
+        "rationale": "More than one outcome satisfies the condition."
       },
       {
         "id": "B",
-        "text": "6/11",
-        "rationale": "Correct."
+        "text": "2/3",
+        "rationale": "That is the probability of the complement."
       },
       {
         "id": "C",
-        "text": "5/11",
-        "rationale": "That is the probability of a number greater than 6."
+        "text": "2/5",
+        "rationale": "The die has 6 outcomes, not 5."
       },
       {
         "id": "D",
-        "text": "3/5",
-        "rationale": "There are 11 tickets in all."
+        "text": "1/3",
+        "rationale": "Correct."
       },
       {
         "id": "E",
-        "text": "7/11",
-        "rationale": "Recount: the numbers 1 through 6."
+        "text": "1/2",
+        "rationale": "Recount the favourable outcomes."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "6 of the 11 tickets have numbers from 1 to 6: 6/11 = 6/11.",
+    "correct_choice": "D",
+    "explanation": "2 of the 6 equally likely outcomes satisfy the condition: 2/6 = 1/3.",
     "estimated_time_seconds": 70,
     "tags": [
       "probability",
       "family:pb_compound"
     ],
-    "answer_verification": "P=6/11"
+    "answer_verification": "P=1/3"
   },
   {
-    "question_id": "act-math-probability-easy-b0112",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "probability",
-    "lesson_id": "act-math-probability-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "two_way_tables",
-    "prompt": "The table summarizes 87 responses. If one response is chosen at random, what is the probability that it is from the Adults group?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "65/87",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "15/29",
-        "rationale": "That is the probability of the Passed column."
-      },
-      {
-        "id": "C",
-        "text": "65/22",
-        "rationale": "Divide by the grand total, not the other row."
-      },
-      {
-        "id": "D",
-        "text": "22/87",
-        "rationale": "That is the probability of the Children row."
-      },
-      {
-        "id": "E",
-        "text": "28/87",
-        "rationale": "That uses only one cell (28), not the whole row."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "The Adults row totals 65 of 87: 65/87.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "probability",
-      "table",
-      "family:pb_table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Survey results",
-        "headers": [
-          "",
-          "Passed",
-          "Failed",
-          "Total"
-        ],
-        "rows": [
-          [
-            "Adults",
-            "28",
-            "37",
-            "65"
-          ],
-          [
-            "Children",
-            "17",
-            "5",
-            "22"
-          ],
-          [
-            "Total",
-            "45",
-            "42",
-            "87"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "P=65/87"
-  },
-  {
-    "question_id": "act-math-probability-easy-b0113",
+    "question_id": "act-math-probability-easy-b0095",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6012,46 +5116,46 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "Priya can choose from 5 paint colors and 7 trim colors. How many different combinations of one of each are possible?",
+    "prompt": "Noah can choose from 3 sandwiches and 5 drinks. How many different combinations of one of each are possible?",
     "choices": [
       {
         "id": "A",
-        "text": "70",
-        "rationale": "Each combination is one of each; no doubling."
+        "text": "8",
+        "rationale": "Multiply the numbers of choices; don't add."
       },
       {
         "id": "B",
-        "text": "7",
-        "rationale": "Both choices matter."
+        "text": "15",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "40",
+        "text": "18",
         "rationale": "Arithmetic slip."
       },
       {
         "id": "D",
-        "text": "35",
-        "rationale": "Correct."
+        "text": "5",
+        "rationale": "Both choices matter."
       },
       {
         "id": "E",
-        "text": "12",
-        "rationale": "Multiply the numbers of choices; don't add."
+        "text": "30",
+        "rationale": "Each combination is one of each; no doubling."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Multiply the choices: 5 × 7 = 35.",
+    "correct_choice": "B",
+    "explanation": "Multiply the choices: 3 × 5 = 15.",
     "estimated_time_seconds": 75,
     "tags": [
       "probability",
       "counting",
       "family:pb_counting"
     ],
-    "answer_verification": "val=35"
+    "answer_verification": "val=15"
   },
   {
-    "question_id": "act-math-probability-easy-b0114",
+    "question_id": "act-math-probability-easy-b0096",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6062,46 +5166,196 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "A spinner is divided into 7 equal sections, 5 of which are shaded. What is the probability that the spinner lands on a shaded section?",
+    "prompt": "Aria can choose from 4 shirts and 8 pairs of pants. How many different combinations of one of each are possible?",
     "choices": [
       {
         "id": "A",
-        "text": "5/2",
-        "rationale": "Divide by the total number of sections."
-      },
-      {
-        "id": "B",
-        "text": "1/7",
-        "rationale": "More than one section is shaded."
-      },
-      {
-        "id": "C",
-        "text": "2/7",
-        "rationale": "That is the probability of an unshaded section."
-      },
-      {
-        "id": "D",
-        "text": "5/7",
+        "text": "32",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "36",
+        "rationale": "Arithmetic slip."
+      },
+      {
+        "id": "C",
+        "text": "12",
+        "rationale": "Multiply the numbers of choices; don't add."
+      },
+      {
+        "id": "D",
+        "text": "64",
+        "rationale": "Each combination is one of each; no doubling."
+      },
+      {
         "id": "E",
-        "text": "5/8",
-        "rationale": "There are 7 sections in all."
+        "text": "8",
+        "rationale": "Both choices matter."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "5 of 7 equal sections: 5/7.",
+    "correct_choice": "A",
+    "explanation": "Multiply the choices: 4 × 8 = 32.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "probability",
+      "counting",
+      "family:pb_counting"
+    ],
+    "answer_verification": "val=32"
+  },
+  {
+    "question_id": "act-math-probability-easy-b0097",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "probability",
+    "lesson_id": "act-math-probability-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "simple_probability",
+    "prompt": "A spinner has 12 equal sections numbered 1 through 12. What is the probability that the spinner lands on a number less than or equal to 3?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "3/11",
+        "rationale": "The spinner has 12 sections."
+      },
+      {
+        "id": "B",
+        "text": "1/3",
+        "rationale": "Recount the sections from 1 to 3."
+      },
+      {
+        "id": "C",
+        "text": "1/4",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "1/6",
+        "rationale": "'Less than or equal to' includes 3 itself."
+      },
+      {
+        "id": "E",
+        "text": "3/4",
+        "rationale": "That is the probability of a number greater than 3."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "3 of the 12 equal sections qualify: 3/12 = 1/4.",
+    "estimated_time_seconds": 70,
+    "tags": [
+      "probability",
+      "family:pb_compound"
+    ],
+    "answer_verification": "P=1/4"
+  },
+  {
+    "question_id": "act-math-probability-easy-b0098",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "probability",
+    "lesson_id": "act-math-probability-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multi_step_math",
+    "subskill": "simple_probability",
+    "prompt": "In a group of 60 visitors, 37 saw the exhibit, 22 bought a ticket online, and 18 do both. If one of the visitors who saw the exhibit is chosen at random, what is the probability that this person also bought a ticket online?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "19/37",
+        "rationale": "That is the probability of NOT doing the second thing."
+      },
+      {
+        "id": "B",
+        "text": "37/60",
+        "rationale": "That is the probability of the condition itself."
+      },
+      {
+        "id": "C",
+        "text": "18/37",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "3/10",
+        "rationale": "Condition on the group who saw the exhibit, not everyone."
+      },
+      {
+        "id": "E",
+        "text": "9/11",
+        "rationale": "Condition on those who saw the exhibit, not those who bought a ticket online."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "Restrict to the 37 who saw the exhibit; 18 of them also bought a ticket online: 18/37.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "probability",
+      "conditional",
+      "word-problem",
+      "family:pb_conditional_words"
+    ],
+    "answer_verification": "total=60,a=37,b=22,both=18"
+  },
+  {
+    "question_id": "act-math-probability-easy-b0099",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "probability",
+    "lesson_id": "act-math-probability-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "simple_probability",
+    "prompt": "A spinner is divided into 11 equal sections, 7 of which are shaded. What is the probability that the spinner lands on a shaded section?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "7/11",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "7/12",
+        "rationale": "There are 11 sections in all."
+      },
+      {
+        "id": "C",
+        "text": "1/11",
+        "rationale": "More than one section is shaded."
+      },
+      {
+        "id": "D",
+        "text": "4/11",
+        "rationale": "That is the probability of an unshaded section."
+      },
+      {
+        "id": "E",
+        "text": "7/4",
+        "rationale": "Divide by the total number of sections."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "7 of 11 equal sections: 7/11.",
     "estimated_time_seconds": 75,
     "tags": [
       "probability",
       "geometric",
       "family:pb_geometric"
     ],
-    "answer_verification": "P=5/7"
+    "answer_verification": "P=7/11"
   },
   {
-    "question_id": "act-math-probability-easy-b0115",
+    "question_id": "act-math-probability-easy-b0100",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6112,46 +5366,94 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "Maya can choose from 3 shirts and 7 pairs of pants. How many different combinations of one of each are possible?",
+    "prompt": "A jar holds 22 tickets numbered 1 through 22. If one ticket is drawn at random, what is the probability its number is at most 19?",
     "choices": [
       {
         "id": "A",
-        "text": "10",
-        "rationale": "Multiply the numbers of choices; don't add."
+        "text": "3/22",
+        "rationale": "That is the probability of a number greater than 19."
       },
       {
         "id": "B",
-        "text": "7",
-        "rationale": "Both choices matter."
+        "text": "19/21",
+        "rationale": "There are 22 tickets in all."
       },
       {
         "id": "C",
-        "text": "42",
-        "rationale": "Each combination is one of each; no doubling."
+        "text": "10/11",
+        "rationale": "Recount: the numbers 1 through 19."
       },
       {
         "id": "D",
-        "text": "24",
-        "rationale": "Arithmetic slip."
+        "text": "9/11",
+        "rationale": "'At most 19' includes 19."
       },
       {
         "id": "E",
-        "text": "21",
+        "text": "19/22",
         "rationale": "Correct."
       }
     ],
     "correct_choice": "E",
-    "explanation": "Multiply the choices: 3 × 7 = 21.",
-    "estimated_time_seconds": 75,
+    "explanation": "19 of the 22 tickets have numbers from 1 to 19: 19/22 = 19/22.",
+    "estimated_time_seconds": 70,
     "tags": [
       "probability",
-      "counting",
-      "family:pb_counting"
+      "family:pb_compound"
     ],
-    "answer_verification": "val=21"
+    "answer_verification": "P=19/22"
   },
   {
-    "question_id": "act-math-probability-easy-b0116",
+    "question_id": "act-math-probability-easy-b0101",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "probability",
+    "lesson_id": "act-math-probability-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "simple_probability",
+    "prompt": "A jar holds 30 tickets numbered 1 through 30. If one ticket is drawn at random, what is the probability its number is at most 5?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "5/6",
+        "rationale": "That is the probability of a number greater than 5."
+      },
+      {
+        "id": "B",
+        "text": "1/5",
+        "rationale": "Recount: the numbers 1 through 5."
+      },
+      {
+        "id": "C",
+        "text": "5/29",
+        "rationale": "There are 30 tickets in all."
+      },
+      {
+        "id": "D",
+        "text": "2/15",
+        "rationale": "'At most 5' includes 5."
+      },
+      {
+        "id": "E",
+        "text": "1/6",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "E",
+    "explanation": "5 of the 30 tickets have numbers from 1 to 5: 5/30 = 1/6.",
+    "estimated_time_seconds": 70,
+    "tags": [
+      "probability",
+      "family:pb_compound"
+    ],
+    "answer_verification": "P=1/6"
+  },
+  {
+    "question_id": "act-math-probability-easy-b0102",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6200,7 +5502,7 @@
     "answer_verification": "P=5/6"
   },
   {
-    "question_id": "act-math-probability-easy-b0117",
+    "question_id": "act-math-probability-easy-b0103",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6249,7 +5551,7 @@
     "answer_verification": "P=5/14"
   },
   {
-    "question_id": "act-math-probability-easy-b0118",
+    "question_id": "act-math-probability-easy-b0104",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6299,7 +5601,7 @@
     "answer_verification": "val=325"
   },
   {
-    "question_id": "act-math-probability-easy-b0119",
+    "question_id": "act-math-probability-easy-b0105",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6348,7 +5650,7 @@
     "answer_verification": "P=1/4"
   },
   {
-    "question_id": "act-math-probability-easy-b0120",
+    "question_id": "act-math-probability-easy-b0106",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6397,7 +5699,7 @@
     "answer_verification": "P=4/23"
   },
   {
-    "question_id": "act-math-probability-easy-b0121",
+    "question_id": "act-math-probability-easy-b0107",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6448,7 +5750,7 @@
     "answer_verification": "total=80,a=57,b=7,both=4"
   },
   {
-    "question_id": "act-math-probability-easy-b0122",
+    "question_id": "act-math-probability-easy-b0108",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6498,7 +5800,7 @@
     "answer_verification": "val=14"
   },
   {
-    "question_id": "act-math-probability-easy-b0123",
+    "question_id": "act-math-probability-easy-b0109",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6548,7 +5850,7 @@
     "answer_verification": "val=30"
   },
   {
-    "question_id": "act-math-probability-easy-b0124",
+    "question_id": "act-math-probability-easy-b0110",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6598,7 +5900,7 @@
     "answer_verification": "P=1/6"
   },
   {
-    "question_id": "act-math-probability-easy-b0125",
+    "question_id": "act-math-probability-easy-b0111",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6647,7 +5949,7 @@
     "answer_verification": "P=1/2"
   },
   {
-    "question_id": "act-math-probability-easy-b0126",
+    "question_id": "act-math-probability-easy-b0112",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6697,7 +5999,7 @@
     "answer_verification": "P=1/3"
   },
   {
-    "question_id": "act-math-probability-easy-b0127",
+    "question_id": "act-math-probability-easy-b0113",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6746,7 +6048,7 @@
     "answer_verification": "P=1/7"
   },
   {
-    "question_id": "act-math-probability-easy-b0128",
+    "question_id": "act-math-probability-easy-b0114",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6796,7 +6098,7 @@
     "answer_verification": "val=6"
   },
   {
-    "question_id": "act-math-probability-easy-b0129",
+    "question_id": "act-math-probability-easy-b0115",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6878,7 +6180,7 @@
     "answer_verification": "P=23/34"
   },
   {
-    "question_id": "act-math-probability-easy-b0130",
+    "question_id": "act-math-probability-easy-b0116",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6927,7 +6229,7 @@
     "answer_verification": "P=10/23"
   },
   {
-    "question_id": "act-math-probability-easy-b0131",
+    "question_id": "act-math-probability-easy-b0117",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6978,7 +6280,7 @@
     "answer_verification": "total=120,a=87,b=93,both=61"
   },
   {
-    "question_id": "act-math-probability-easy-b0132",
+    "question_id": "act-math-probability-easy-b0118",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7027,7 +6329,7 @@
     "answer_verification": "P=1/2"
   },
   {
-    "question_id": "act-math-probability-easy-b0133",
+    "question_id": "act-math-probability-easy-b0119",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7077,7 +6379,7 @@
     "answer_verification": "val=56"
   },
   {
-    "question_id": "act-math-probability-easy-b0134",
+    "question_id": "act-math-probability-easy-b0120",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7126,7 +6428,7 @@
     "answer_verification": "P=5/14"
   },
   {
-    "question_id": "act-math-probability-easy-b0135",
+    "question_id": "act-math-probability-easy-b0121",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7176,7 +6478,7 @@
     "answer_verification": "P=4/11"
   },
   {
-    "question_id": "act-math-probability-easy-b0136",
+    "question_id": "act-math-probability-easy-b0122",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7258,7 +6560,7 @@
     "answer_verification": "P=44/59"
   },
   {
-    "question_id": "act-math-probability-easy-b0137",
+    "question_id": "act-math-probability-easy-b0123",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7309,7 +6611,7 @@
     "answer_verification": "total=50,a=16,b=21,both=9"
   },
   {
-    "question_id": "act-math-probability-easy-b0138",
+    "question_id": "act-math-probability-easy-b0124",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7358,7 +6660,7 @@
     "answer_verification": "P=1/2"
   },
   {
-    "question_id": "act-math-probability-easy-b0139",
+    "question_id": "act-math-probability-easy-b0125",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7408,7 +6710,7 @@
     "answer_verification": "val=24"
   },
   {
-    "question_id": "act-math-probability-easy-b0140",
+    "question_id": "act-math-probability-easy-b0126",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7459,7 +6761,7 @@
     "answer_verification": "total=120,a=44,b=86,both=41"
   },
   {
-    "question_id": "act-math-probability-easy-b0141",
+    "question_id": "act-math-probability-easy-b0127",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7541,7 +6843,7 @@
     "answer_verification": "P=24/47"
   },
   {
-    "question_id": "act-math-probability-easy-b0142",
+    "question_id": "act-math-probability-easy-b0128",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7592,7 +6894,7 @@
     "answer_verification": "total=80,a=49,b=29,both=10"
   },
   {
-    "question_id": "act-math-probability-easy-b0143",
+    "question_id": "act-math-probability-easy-b0129",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7641,7 +6943,7 @@
     "answer_verification": "P=7/11"
   },
   {
-    "question_id": "act-math-probability-easy-b0144",
+    "question_id": "act-math-probability-easy-b0130",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7723,7 +7025,7 @@
     "answer_verification": "P=41/72"
   },
   {
-    "question_id": "act-math-probability-easy-b0145",
+    "question_id": "act-math-probability-easy-b0131",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7772,7 +7074,7 @@
     "answer_verification": "P=4/23"
   },
   {
-    "question_id": "act-math-probability-easy-b0146",
+    "question_id": "act-math-probability-easy-b0132",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7821,7 +7123,7 @@
     "answer_verification": "P=1/4"
   },
   {
-    "question_id": "act-math-probability-easy-b0147",
+    "question_id": "act-math-probability-easy-b0133",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7871,7 +7173,7 @@
     "answer_verification": "val=30"
   },
   {
-    "question_id": "act-math-probability-easy-b0148",
+    "question_id": "act-math-probability-easy-b0134",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7920,7 +7222,7 @@
     "answer_verification": "P=1/3"
   },
   {
-    "question_id": "act-math-probability-easy-b0149",
+    "question_id": "act-math-probability-easy-b0135",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7971,7 +7273,7 @@
     "answer_verification": "total=40,a=10,b=17,both=6"
   },
   {
-    "question_id": "act-math-probability-easy-b0150",
+    "question_id": "act-math-probability-easy-b0136",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8021,7 +7323,7 @@
     "answer_verification": "val=540"
   },
   {
-    "question_id": "act-math-probability-easy-b0151",
+    "question_id": "act-math-probability-easy-b0137",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8071,7 +7373,7 @@
     "answer_verification": "val=6"
   },
   {
-    "question_id": "act-math-probability-easy-b0152",
+    "question_id": "act-math-probability-easy-b0138",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8121,7 +7423,7 @@
     "answer_verification": "P=1/8"
   },
   {
-    "question_id": "act-math-probability-easy-b0153",
+    "question_id": "act-math-probability-easy-b0139",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8171,7 +7473,7 @@
     "answer_verification": "val=40"
   },
   {
-    "question_id": "act-math-probability-easy-b0154",
+    "question_id": "act-math-probability-easy-b0140",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8253,7 +7555,7 @@
     "answer_verification": "P=43/100"
   },
   {
-    "question_id": "act-math-probability-easy-b0155",
+    "question_id": "act-math-probability-easy-b0141",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8304,7 +7606,7 @@
     "answer_verification": "total=50,a=28,b=19,both=16"
   },
   {
-    "question_id": "act-math-probability-easy-b0156",
+    "question_id": "act-math-probability-easy-b0142",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8354,7 +7656,7 @@
     "answer_verification": "val=240"
   },
   {
-    "question_id": "act-math-probability-easy-b0157",
+    "question_id": "act-math-probability-easy-b0143",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8405,7 +7707,7 @@
     "answer_verification": "total=80,a=22,b=37,both=11"
   },
   {
-    "question_id": "act-math-probability-easy-b0158",
+    "question_id": "act-math-probability-easy-b0144",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8456,7 +7758,7 @@
     "answer_verification": "total=80,a=37,b=52,both=27"
   },
   {
-    "question_id": "act-math-probability-easy-b0159",
+    "question_id": "act-math-probability-easy-b0145",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8538,7 +7840,7 @@
     "answer_verification": "P=33/62"
   },
   {
-    "question_id": "act-math-probability-easy-b0160",
+    "question_id": "act-math-probability-easy-b0146",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8586,5 +7888,769 @@
       "family:pb_counting"
     ],
     "answer_verification": "val=12"
+  },
+  {
+    "question_id": "act-math-probability-easy-b0147",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "probability",
+    "lesson_id": "act-math-probability-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "simple_probability",
+    "prompt": "A spinner is divided into 8 equal sections, 7 of which are shaded. What is the probability that the spinner lands on a shaded section?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "53/24",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      },
+      {
+        "id": "B",
+        "text": "7/9",
+        "rationale": "There are 8 sections in all."
+      },
+      {
+        "id": "C",
+        "text": "1/8",
+        "rationale": "That is the probability of an unshaded section."
+      },
+      {
+        "id": "D",
+        "text": "7",
+        "rationale": "Divide by the total number of sections."
+      },
+      {
+        "id": "E",
+        "text": "7/8",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "E",
+    "explanation": "7 of 8 equal sections: 7/8.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "probability",
+      "geometric",
+      "family:pb_geometric"
+    ],
+    "answer_verification": "P=7/8"
+  },
+  {
+    "question_id": "act-math-probability-easy-b0148",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "probability",
+    "lesson_id": "act-math-probability-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "simple_probability",
+    "prompt": "A spinner is divided into 7 equal sections, 1 of which are shaded. What is the probability that the spinner lands on a shaded section?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "6/7",
+        "rationale": "That is the probability of an unshaded section."
+      },
+      {
+        "id": "B",
+        "text": "1/6",
+        "rationale": "Divide by the total number of sections."
+      },
+      {
+        "id": "C",
+        "text": "-6/7",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      },
+      {
+        "id": "D",
+        "text": "1/8",
+        "rationale": "There are 7 sections in all."
+      },
+      {
+        "id": "E",
+        "text": "1/7",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "E",
+    "explanation": "1 of 7 equal sections: 1/7.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "probability",
+      "geometric",
+      "family:pb_geometric"
+    ],
+    "answer_verification": "P=1/7"
+  },
+  {
+    "question_id": "act-math-probability-easy-b0149",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "probability",
+    "lesson_id": "act-math-probability-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "simple_probability",
+    "prompt": "Diego can choose from 5 shirts and 2 pairs of pants. How many different combinations of one of each are possible?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "15",
+        "rationale": "Arithmetic slip."
+      },
+      {
+        "id": "B",
+        "text": "10",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "5",
+        "rationale": "Both choices matter."
+      },
+      {
+        "id": "D",
+        "text": "7",
+        "rationale": "Multiply the numbers of choices; don't add."
+      },
+      {
+        "id": "E",
+        "text": "20",
+        "rationale": "Each combination is one of each; no doubling."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Multiply the choices: 5 × 2 = 10.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "probability",
+      "counting",
+      "family:pb_counting"
+    ],
+    "answer_verification": "val=10"
+  },
+  {
+    "question_id": "act-math-probability-easy-b0150",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "probability",
+    "lesson_id": "act-math-probability-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "two_way_tables",
+    "prompt": "The table summarizes 71 responses. If one response is chosen at random, what is the probability that it is from the Online group?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "35/71",
+        "rationale": "That is the probability of the Member column."
+      },
+      {
+        "id": "B",
+        "text": "6/71",
+        "rationale": "That uses only one cell (6), not the whole row."
+      },
+      {
+        "id": "C",
+        "text": "16/71",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "55/71",
+        "rationale": "That is the probability of the In store row."
+      },
+      {
+        "id": "E",
+        "text": "16/55",
+        "rationale": "Divide by the grand total, not the other row."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "The Online row totals 16 of 71: 16/71.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "probability",
+      "table",
+      "family:pb_table"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Survey results",
+        "headers": [
+          "",
+          "Member",
+          "Non-member",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Online",
+            "6",
+            "10",
+            "16"
+          ],
+          [
+            "In store",
+            "29",
+            "26",
+            "55"
+          ],
+          [
+            "Total",
+            "35",
+            "36",
+            "71"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "P=16/71"
+  },
+  {
+    "question_id": "act-math-probability-easy-b0151",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "probability",
+    "lesson_id": "act-math-probability-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multi_step_math",
+    "subskill": "simple_probability",
+    "prompt": "In a group of 60 customers, 17 bought coffee, 16 bought a pastry, and 6 do both. If one of the customers who bought coffee is chosen at random, what is the probability that this person also bought a pastry?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "6/17",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "11/17",
+        "rationale": "That is the probability of NOT doing the second thing."
+      },
+      {
+        "id": "C",
+        "text": "17/60",
+        "rationale": "That is the probability of the condition itself."
+      },
+      {
+        "id": "D",
+        "text": "1/10",
+        "rationale": "Condition on the group who bought coffee, not everyone."
+      },
+      {
+        "id": "E",
+        "text": "3/8",
+        "rationale": "Condition on those who bought coffee, not those who bought a pastry."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Restrict to the 17 who bought coffee; 6 of them also bought a pastry: 6/17.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "probability",
+      "conditional",
+      "word-problem",
+      "family:pb_conditional_words"
+    ],
+    "answer_verification": "total=60,a=17,b=16,both=6"
+  },
+  {
+    "question_id": "act-math-probability-easy-b0152",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "probability",
+    "lesson_id": "act-math-probability-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "simple_probability",
+    "prompt": "A survey found that 35% of a town's residents use public transit. If 600 residents are selected at random, about how many would be expected to use public transit?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "390",
+        "rationale": "That is the expected number who do NOT use transit."
+      },
+      {
+        "id": "B",
+        "text": "21000",
+        "rationale": "Divide by 100 when using a percent."
+      },
+      {
+        "id": "C",
+        "text": "35",
+        "rationale": "Multiply the percent by the sample size."
+      },
+      {
+        "id": "D",
+        "text": "210",
+        "rationale": "Correct."
+      },
+      {
+        "id": "E",
+        "text": "220",
+        "rationale": "Arithmetic slip; recompute the percent of 600."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Expected count = probability × sample size = 35/100 × 600 = 210.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "probability",
+      "expected",
+      "family:pb_expected"
+    ],
+    "answer_verification": "val=210"
+  },
+  {
+    "question_id": "act-math-probability-easy-b0153",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "probability",
+    "lesson_id": "act-math-probability-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multi_step_math",
+    "subskill": "simple_probability",
+    "prompt": "In a group of 40 customers, 28 bought coffee, 21 bought a pastry, and 17 do both. If one of the customers who bought coffee is chosen at random, what is the probability that this person also bought a pastry?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "11/28",
+        "rationale": "That is the probability of NOT doing the second thing."
+      },
+      {
+        "id": "B",
+        "text": "7/10",
+        "rationale": "That is the probability of the condition itself."
+      },
+      {
+        "id": "C",
+        "text": "17/28",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "17/21",
+        "rationale": "Condition on those who bought coffee, not those who bought a pastry."
+      },
+      {
+        "id": "E",
+        "text": "17/40",
+        "rationale": "Condition on the group who bought coffee, not everyone."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "Restrict to the 28 who bought coffee; 17 of them also bought a pastry: 17/28.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "probability",
+      "conditional",
+      "word-problem",
+      "family:pb_conditional_words"
+    ],
+    "answer_verification": "total=40,a=28,b=21,both=17"
+  },
+  {
+    "question_id": "act-math-probability-easy-b0154",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "probability",
+    "lesson_id": "act-math-probability-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "simple_probability",
+    "prompt": "A survey found that 18% of a town's residents use public transit. If 500 residents are selected at random, about how many would be expected to use public transit?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "410",
+        "rationale": "That is the expected number who do NOT use transit."
+      },
+      {
+        "id": "B",
+        "text": "100",
+        "rationale": "Arithmetic slip; recompute the percent of 500."
+      },
+      {
+        "id": "C",
+        "text": "9000",
+        "rationale": "Divide by 100 when using a percent."
+      },
+      {
+        "id": "D",
+        "text": "18",
+        "rationale": "Multiply the percent by the sample size."
+      },
+      {
+        "id": "E",
+        "text": "90",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "E",
+    "explanation": "Expected count = probability × sample size = 18/100 × 500 = 90.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "probability",
+      "expected",
+      "family:pb_expected"
+    ],
+    "answer_verification": "val=90"
+  },
+  {
+    "question_id": "act-math-probability-easy-b0155",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "probability",
+    "lesson_id": "act-math-probability-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "simple_probability",
+    "prompt": "Jonas can choose from 7 sandwiches and 7 drinks. How many different combinations of one of each are possible?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "7",
+        "rationale": "Both choices matter."
+      },
+      {
+        "id": "B",
+        "text": "14",
+        "rationale": "Multiply the numbers of choices; don't add."
+      },
+      {
+        "id": "C",
+        "text": "98",
+        "rationale": "Each combination is one of each; no doubling."
+      },
+      {
+        "id": "D",
+        "text": "49",
+        "rationale": "Correct."
+      },
+      {
+        "id": "E",
+        "text": "56",
+        "rationale": "Arithmetic slip."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Multiply the choices: 7 × 7 = 49.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "probability",
+      "counting",
+      "family:pb_counting"
+    ],
+    "answer_verification": "val=49"
+  },
+  {
+    "question_id": "act-math-probability-easy-b0156",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "probability",
+    "lesson_id": "act-math-probability-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "simple_probability",
+    "prompt": "A bag contains 8 blue, 7 yellow, and 11 orange tokens. If one of the tokens is chosen at random, what is the probability that it is orange?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "15/26",
+        "rationale": "This is the probability of NOT drawing that colour."
+      },
+      {
+        "id": "B",
+        "text": "1/3",
+        "rationale": "The colours are not equally likely; use the counts."
+      },
+      {
+        "id": "C",
+        "text": "6/13",
+        "rationale": "Recount the favourable outcomes."
+      },
+      {
+        "id": "D",
+        "text": "11/15",
+        "rationale": "Use the total count in the denominator, not the rest."
+      },
+      {
+        "id": "E",
+        "text": "11/26",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "E",
+    "explanation": "11 of the 26 tokens are orange: 11/26 = 11/26.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "probability",
+      "family:pb_single"
+    ],
+    "answer_verification": "P=11/26"
+  },
+  {
+    "question_id": "act-math-probability-easy-b0157",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "probability",
+    "lesson_id": "act-math-probability-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "simple_probability",
+    "prompt": "Zoe can choose from 2 shirts and 4 pairs of pants. How many different combinations of one of each are possible?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "6",
+        "rationale": "Multiply the numbers of choices; don't add."
+      },
+      {
+        "id": "B",
+        "text": "8",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "16",
+        "rationale": "Each combination is one of each; no doubling."
+      },
+      {
+        "id": "D",
+        "text": "10",
+        "rationale": "Arithmetic slip."
+      },
+      {
+        "id": "E",
+        "text": "4",
+        "rationale": "Both choices matter."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Multiply the choices: 2 × 4 = 8.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "probability",
+      "counting",
+      "family:pb_counting"
+    ],
+    "answer_verification": "val=8"
+  },
+  {
+    "question_id": "act-math-probability-easy-b0158",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "probability",
+    "lesson_id": "act-math-probability-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "simple_probability",
+    "prompt": "A spinner is divided into 5 equal sections, 1 of which are shaded. What is the probability that the spinner lands on a shaded section?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "1/4",
+        "rationale": "Divide by the total number of sections."
+      },
+      {
+        "id": "B",
+        "text": "1/5",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "53/15",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      },
+      {
+        "id": "D",
+        "text": "1/6",
+        "rationale": "There are 5 sections in all."
+      },
+      {
+        "id": "E",
+        "text": "4/5",
+        "rationale": "That is the probability of an unshaded section."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "1 of 5 equal sections: 1/5.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "probability",
+      "geometric",
+      "family:pb_geometric"
+    ],
+    "answer_verification": "P=1/5"
+  },
+  {
+    "question_id": "act-math-probability-easy-b0159",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "probability",
+    "lesson_id": "act-math-probability-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "two_way_tables",
+    "prompt": "The table summarizes 104 responses. If one response is chosen at random, what is the probability that it is from the Freshmen group?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "27/52",
+        "rationale": "That is the probability of the Member column."
+      },
+      {
+        "id": "B",
+        "text": "15/37",
+        "rationale": "Divide by the grand total, not the other row."
+      },
+      {
+        "id": "C",
+        "text": "15/52",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "37/52",
+        "rationale": "That is the probability of the Sophomores row."
+      },
+      {
+        "id": "E",
+        "text": "11/104",
+        "rationale": "That uses only one cell (11), not the whole row."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "The Freshmen row totals 30 of 104: 15/52.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "probability",
+      "table",
+      "family:pb_table"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Survey results",
+        "headers": [
+          "",
+          "Member",
+          "Non-member",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Freshmen",
+            "11",
+            "19",
+            "30"
+          ],
+          [
+            "Sophomores",
+            "43",
+            "31",
+            "74"
+          ],
+          [
+            "Total",
+            "54",
+            "50",
+            "104"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "P=15/52"
+  },
+  {
+    "question_id": "act-math-probability-easy-b0160",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "probability",
+    "lesson_id": "act-math-probability-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "simple_probability",
+    "prompt": "A bag contains 3 white, 2 purple, and 11 blue chips. If one of the chips is chosen at random, what is the probability that it is blue?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "11/5",
+        "rationale": "Use the total count in the denominator, not the rest."
+      },
+      {
+        "id": "B",
+        "text": "11/16",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "5/16",
+        "rationale": "This is the probability of NOT drawing that colour."
+      },
+      {
+        "id": "D",
+        "text": "3/4",
+        "rationale": "Recount the favourable outcomes."
+      },
+      {
+        "id": "E",
+        "text": "1/3",
+        "rationale": "The colours are not equally likely; use the counts."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "11 of the 16 chips are blue: 11/16 = 11/16.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "probability",
+      "family:pb_single"
+    ],
+    "answer_verification": "P=11/16"
   }
 ]

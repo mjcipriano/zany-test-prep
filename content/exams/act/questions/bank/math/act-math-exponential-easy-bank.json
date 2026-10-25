@@ -11,44 +11,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "The function f(t) = 500(1.04)^t models the number of members of a club t months after it was first measured. What was the initial value?",
+    "prompt": "A count of 2 dollars in an account is multiplied by 10 every year. After how many years will the count first reach 2000?",
     "choices": [
       {
         "id": "A",
-        "text": "541",
-        "rationale": "That is the value after two periods."
+        "text": "2",
+        "rationale": "That is one period too few."
       },
       {
         "id": "B",
-        "text": "4",
-        "rationale": "That is the percent rate, not the starting value."
+        "text": "3",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "504",
-        "rationale": "The initial value is the coefficient."
+        "text": "1000",
+        "rationale": "That is the growth multiple, not the number of periods."
       },
       {
         "id": "D",
-        "text": "520",
-        "rationale": "That is the value after one month."
+        "text": "4",
+        "rationale": "That is one period too many."
       },
       {
         "id": "E",
-        "text": "500",
-        "rationale": "Correct."
+        "text": "100",
+        "rationale": "Count how many times 10 must be multiplied in."
       }
     ],
-    "correct_choice": "E",
-    "explanation": "At t = 0, f(0) = 500·(1.04)⁰ = 500.",
-    "estimated_time_seconds": 65,
+    "correct_choice": "B",
+    "explanation": "2·10^t = 2000 → 10^t = 1000 = 10^3 → t = 3.",
+    "estimated_time_seconds": 80,
     "tags": [
       "advanced-math",
       "exponential",
-      "interpret",
-      "family:ex_interpret"
+      "family:ex_periods"
     ],
-    "answer_verification": "f(0)=500"
+    "answer_verification": "2*10^3=2000"
   },
   {
     "question_id": "act-math-exponential-easy-b0002",
@@ -62,44 +61,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "Which of the following functions models exponential growth?",
+    "prompt": "There are 4 cells in a sample, and the number doubles each hour. How many cells in a sample are there after 3 hours?",
     "choices": [
       {
         "id": "A",
-        "text": "f(t) = 400t^2",
-        "rationale": "A power of t is not exponential."
+        "text": "10",
+        "rationale": "This adds instead of repeatedly multiplying."
       },
       {
         "id": "B",
-        "text": "f(t) = 400 − 28t",
-        "rationale": "Subtracting a fixed amount each period is linear decay."
+        "text": "24",
+        "rationale": "This grows linearly (×r×time) instead of exponentially."
       },
       {
         "id": "C",
-        "text": "f(t) = 400(0.8)^t",
-        "rationale": "A base less than 1 gives exponential decay."
+        "text": "32",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "f(t) = 400 + 28t",
-        "rationale": "Adding a fixed amount each period is linear growth."
+        "text": "16",
+        "rationale": "This is the count one period too early."
       },
       {
         "id": "E",
-        "text": "f(t) = 400(2)^t",
-        "rationale": "Correct."
+        "text": "64",
+        "rationale": "This is one period too late."
       }
     ],
-    "correct_choice": "E",
-    "explanation": "Exponential functions have t in the exponent; the base above 1 gives exponential growth: f(t) = 400(2)^t.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "C",
+    "explanation": "Multiply by 2 each hour: 4 × 2^3 = 32.",
+    "estimated_time_seconds": 80,
     "tags": [
       "advanced-math",
       "exponential",
-      "identify",
-      "family:ex_identify_type"
+      "family:ex_value"
     ],
-    "answer_verification": "f(t) = 400(2)^t"
+    "answer_verification": "val=32"
   },
   {
     "question_id": "act-math-exponential-easy-b0003",
@@ -113,36 +111,36 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "A population of 500 users of an app quadruples every month. Which expression gives the population after t months?",
+    "prompt": "A population of 30 cells in a sample quadruples every hour. Which expression gives the population after t hours?",
     "choices": [
       {
         "id": "A",
-        "text": "500·4^t",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "500 + 4·t",
-        "rationale": "This adds a constant each period instead of multiplying."
-      },
-      {
-        "id": "C",
-        "text": "500^t·4",
+        "text": "30^t·4",
         "rationale": "The repeating growth factor is the base raised to t, applied to the starting amount."
       },
       {
-        "id": "D",
-        "text": "500·4·t",
+        "id": "B",
+        "text": "30·4·t",
         "rationale": "This models linear change (a fixed amount each period), not repeated multiplication."
       },
       {
+        "id": "C",
+        "text": "30·4^t",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "30 + 4·t",
+        "rationale": "This adds a constant each period instead of multiplying."
+      },
+      {
         "id": "E",
-        "text": "(500·4)^t",
+        "text": "4·t^30",
         "rationale": "The variable t belongs in the exponent, with base 4."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Each month multiplies the amount by 4, so after t months the population is 500·4^t.",
+    "correct_choice": "C",
+    "explanation": "Each hour multiplies the amount by 4, so after t hours the population is 30·4^t.",
     "estimated_time_seconds": 90,
     "tags": [
       "advanced-math",
@@ -150,7 +148,7 @@
       "model",
       "family:ex_model"
     ],
-    "answer_verification": "model 500·4^t"
+    "answer_verification": "model 30·4^t"
   },
   {
     "question_id": "act-math-exponential-easy-b0004",
@@ -164,44 +162,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "Which of the following functions models exponential growth?",
+    "prompt": "A count of 20 bacteria is multiplied by 5 every hour. After how many hours will the count first reach 2500?",
     "choices": [
       {
         "id": "A",
-        "text": "f(t) = 500(1.05)^t",
+        "text": "3",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "f(t) = 500 − 17t",
-        "rationale": "Subtracting a fixed amount each period is linear decay."
+        "text": "2",
+        "rationale": "That is one period too few."
       },
       {
         "id": "C",
-        "text": "f(t) = 500t^2",
-        "rationale": "A power of t is not exponential."
+        "text": "4",
+        "rationale": "That is one period too many."
       },
       {
         "id": "D",
-        "text": "f(t) = 500 + 17t",
-        "rationale": "Adding a fixed amount each period is linear growth."
+        "text": "125",
+        "rationale": "That is the growth multiple, not the number of periods."
       },
       {
         "id": "E",
-        "text": "f(t) = 500(0.98)^t",
-        "rationale": "A base less than 1 gives exponential decay."
+        "text": "25",
+        "rationale": "Count how many times 5 must be multiplied in."
       }
     ],
     "correct_choice": "A",
-    "explanation": "Exponential functions have t in the exponent; the base above 1 gives exponential growth: f(t) = 500(1.05)^t.",
-    "estimated_time_seconds": 85,
+    "explanation": "20·5^t = 2500 → 5^t = 125 = 5^3 → t = 3.",
+    "estimated_time_seconds": 80,
     "tags": [
       "advanced-math",
       "exponential",
-      "identify",
-      "family:ex_identify_type"
+      "family:ex_periods"
     ],
-    "answer_verification": "f(t) = 500(1.05)^t"
+    "answer_verification": "20*5^3=2500"
   },
   {
     "question_id": "act-math-exponential-easy-b0005",
@@ -215,805 +212,47 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "A population of 8 cells in a sample triples every hour. How many will there be after 3 hours?",
+    "prompt": "A population of 75 users of an app triples every month. Which expression gives the population after t months?",
     "choices": [
       {
         "id": "A",
-        "text": "216",
-        "rationale": "Correct."
+        "text": "75·3·t",
+        "rationale": "This models linear change (a fixed amount each period), not repeated multiplication."
       },
       {
         "id": "B",
-        "text": "648",
-        "rationale": "This is one period too late."
+        "text": "75 + 3·t",
+        "rationale": "This adds a constant each period instead of multiplying."
       },
       {
         "id": "C",
-        "text": "221",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "3·t^75",
+        "rationale": "The variable t belongs in the exponent, with base 3."
       },
       {
         "id": "D",
-        "text": "72",
-        "rationale": "This grows linearly (×r×time) instead of exponentially."
+        "text": "75·3^t",
+        "rationale": "Correct."
       },
       {
         "id": "E",
-        "text": "17",
-        "rationale": "This adds instead of repeatedly multiplying."
+        "text": "75^t·3",
+        "rationale": "The repeating growth factor is the base raised to t, applied to the starting amount."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Multiply by 3 each hour: 8 × 3^3 = 216.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "D",
+    "explanation": "Each month multiplies the amount by 3, so after t months the population is 75·3^t.",
+    "estimated_time_seconds": 90,
     "tags": [
       "advanced-math",
       "exponential",
-      "family:ex_value"
+      "model",
+      "family:ex_model"
     ],
-    "answer_verification": "val=216"
+    "answer_verification": "model 75·3^t"
   },
   {
     "question_id": "act-math-exponential-easy-b0006",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "exponential",
-    "lesson_id": "act-math-exponential-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "growth_decay",
-    "prompt": "A population of 25 bacteria in a culture triples every hour. Which expression gives the population after t hours?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "25^t·3",
-        "rationale": "The repeating growth factor is the base raised to t, applied to the starting amount."
-      },
-      {
-        "id": "B",
-        "text": "25 + 3·t",
-        "rationale": "This adds a constant each period instead of multiplying."
-      },
-      {
-        "id": "C",
-        "text": "25·3·t",
-        "rationale": "This models linear change (a fixed amount each period), not repeated multiplication."
-      },
-      {
-        "id": "D",
-        "text": "25·3^t",
-        "rationale": "Correct."
-      },
-      {
-        "id": "E",
-        "text": "3·t^25",
-        "rationale": "The variable t belongs in the exponent, with base 3."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Each hour multiplies the amount by 3, so after t hours the population is 25·3^t.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "model",
-      "family:ex_model"
-    ],
-    "answer_verification": "model 25·3^t"
-  },
-  {
-    "question_id": "act-math-exponential-easy-b0007",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "exponential",
-    "lesson_id": "act-math-exponential-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "growth_decay",
-    "prompt": "A count of 20 subscribers is multiplied by 2 every year. After how many years will the count first reach 160?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "2",
-        "rationale": "That is one period too few."
-      },
-      {
-        "id": "B",
-        "text": "4",
-        "rationale": "That is one period too many."
-      },
-      {
-        "id": "C",
-        "text": "6",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "D",
-        "text": "3",
-        "rationale": "Correct."
-      },
-      {
-        "id": "E",
-        "text": "8",
-        "rationale": "That is the growth multiple, not the number of periods."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "20·2^t = 160 → 2^t = 8 = 2^3 → t = 3.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "family:ex_periods"
-    ],
-    "answer_verification": "20*2^3=160"
-  },
-  {
-    "question_id": "act-math-exponential-easy-b0008",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "exponential",
-    "lesson_id": "act-math-exponential-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "growth_decay",
-    "prompt": "The function f(t) = 2000(1.2)^t models the value, in dollars, of a collectible t years after it was first measured. What was the initial value?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "2880",
-        "rationale": "That is the value after two periods."
-      },
-      {
-        "id": "B",
-        "text": "20",
-        "rationale": "That is the percent rate, not the starting value."
-      },
-      {
-        "id": "C",
-        "text": "2000",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "2020",
-        "rationale": "The initial value is the coefficient."
-      },
-      {
-        "id": "E",
-        "text": "2400",
-        "rationale": "That is the value after one year."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "At t = 0, f(0) = 2000·(1.2)⁰ = 2000.",
-    "estimated_time_seconds": 65,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "interpret",
-      "family:ex_interpret"
-    ],
-    "answer_verification": "f(0)=2000"
-  },
-  {
-    "question_id": "act-math-exponential-easy-b0009",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "exponential",
-    "lesson_id": "act-math-exponential-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "growth_decay",
-    "prompt": "A count of 1 subscribers is multiplied by 5 every day. After how many days will the count first reach 25?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "3",
-        "rationale": "That is one period too many."
-      },
-      {
-        "id": "B",
-        "text": "2",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "25",
-        "rationale": "That is the growth multiple, not the number of periods."
-      },
-      {
-        "id": "D",
-        "text": "5",
-        "rationale": "Count how many times 5 must be multiplied in."
-      },
-      {
-        "id": "E",
-        "text": "1",
-        "rationale": "That is one period too few."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "1·5^t = 25 → 5^t = 25 = 5^2 → t = 2.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "family:ex_periods"
-    ],
-    "answer_verification": "1*5^2=25"
-  },
-  {
-    "question_id": "act-math-exponential-easy-b0010",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "exponential",
-    "lesson_id": "act-math-exponential-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "growth_decay",
-    "prompt": "Maya deposits $6000 in an account that earns 5% interest, compounded annually. What is the balance, in dollars, after 2 years?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "$600",
-        "rationale": "That is only the interest earned, not the balance."
-      },
-      {
-        "id": "B",
-        "text": "$6,615",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "$6,945.75",
-        "rationale": "That is one year too many."
-      },
-      {
-        "id": "D",
-        "text": "$15",
-        "rationale": "Multiply by (1 + r), not r."
-      },
-      {
-        "id": "E",
-        "text": "$6,600",
-        "rationale": "Compound interest multiplies each year; it doesn't add the same amount."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "A = P(1 + r)^t = 6000(1.05)^2 = 6615.00.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "compound",
-      "family:ex_compound"
-    ],
-    "answer_verification": "A=6615.00"
-  },
-  {
-    "question_id": "act-math-exponential-easy-b0011",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "exponential",
-    "lesson_id": "act-math-exponential-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "growth_decay",
-    "prompt": "A population of 10 bacteria in a culture doubles every hour. How many will there be after 5 hours?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "100",
-        "rationale": "This grows linearly (×r×time) instead of exponentially."
-      },
-      {
-        "id": "B",
-        "text": "640",
-        "rationale": "This is one period too late."
-      },
-      {
-        "id": "C",
-        "text": "320",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "160",
-        "rationale": "This is the count one period too early."
-      },
-      {
-        "id": "E",
-        "text": "20",
-        "rationale": "This adds instead of repeatedly multiplying."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "Multiply by 2 each hour: 10 × 2^5 = 320.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "family:ex_value"
-    ],
-    "answer_verification": "val=320"
-  },
-  {
-    "question_id": "act-math-exponential-easy-b0012",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "exponential",
-    "lesson_id": "act-math-exponential-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "growth_decay",
-    "prompt": "Lena deposits $6000 in an account that earns 6% interest, compounded annually. What is the balance, in dollars, after 2 years?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "$21.60",
-        "rationale": "Multiply by (1 + r), not r."
-      },
-      {
-        "id": "B",
-        "text": "$720",
-        "rationale": "That is only the interest earned, not the balance."
-      },
-      {
-        "id": "C",
-        "text": "$6,741.60",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "$6,720",
-        "rationale": "Compound interest multiplies each year; it doesn't add the same amount."
-      },
-      {
-        "id": "E",
-        "text": "$7,146.10",
-        "rationale": "That is one year too many."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "A = P(1 + r)^t = 6000(1.06)^2 = 6741.60.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "compound",
-      "family:ex_compound"
-    ],
-    "answer_verification": "A=6741.60"
-  },
-  {
-    "question_id": "act-math-exponential-easy-b0013",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "exponential",
-    "lesson_id": "act-math-exponential-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "growth_decay",
-    "prompt": "A population of 40 subscribers to a newsletter doubles every month. How many will there be after 3 months?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "160",
-        "rationale": "This is the count one period too early."
-      },
-      {
-        "id": "B",
-        "text": "240",
-        "rationale": "This grows linearly (×r×time) instead of exponentially."
-      },
-      {
-        "id": "C",
-        "text": "640",
-        "rationale": "This is one period too late."
-      },
-      {
-        "id": "D",
-        "text": "320",
-        "rationale": "Correct."
-      },
-      {
-        "id": "E",
-        "text": "46",
-        "rationale": "This adds instead of repeatedly multiplying."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Multiply by 2 each month: 40 × 2^3 = 320.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "family:ex_value"
-    ],
-    "answer_verification": "val=320"
-  },
-  {
-    "question_id": "act-math-exponential-easy-b0014",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "exponential",
-    "lesson_id": "act-math-exponential-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "growth_decay",
-    "prompt": "A count of 100 rabbits is multiplied by 3 every year. After how many years will the count first reach 8100?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "5",
-        "rationale": "That is one period too many."
-      },
-      {
-        "id": "B",
-        "text": "3",
-        "rationale": "That is one period too few."
-      },
-      {
-        "id": "C",
-        "text": "4",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "81",
-        "rationale": "That is the growth multiple, not the number of periods."
-      },
-      {
-        "id": "E",
-        "text": "27",
-        "rationale": "Count how many times 3 must be multiplied in."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "100·3^t = 8100 → 3^t = 81 = 3^4 → t = 4.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "family:ex_periods"
-    ],
-    "answer_verification": "100*3^4=8100"
-  },
-  {
-    "question_id": "act-math-exponential-easy-b0015",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "exponential",
-    "lesson_id": "act-math-exponential-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "growth_decay",
-    "prompt": "Imani deposits $1500 in an account that earns 10% interest, compounded annually. What is the balance, in dollars, after 1 year?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "$1,815",
-        "rationale": "That is one year too many."
-      },
-      {
-        "id": "B",
-        "text": "$1,649",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "C",
-        "text": "$150",
-        "rationale": "That is only the interest earned, not the balance."
-      },
-      {
-        "id": "D",
-        "text": "$1,650",
-        "rationale": "Correct."
-      },
-      {
-        "id": "E",
-        "text": "$1,648",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "A = P(1 + r)^t = 1500(1.10)^1 = 1650.00.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "compound",
-      "family:ex_compound"
-    ],
-    "answer_verification": "A=1650.00"
-  },
-  {
-    "question_id": "act-math-exponential-easy-b0016",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "exponential",
-    "lesson_id": "act-math-exponential-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "growth_decay",
-    "prompt": "Mila deposits $1500 in an account that earns 6% interest, compounded annually. What is the balance, in dollars, after 1 year?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "$90",
-        "rationale": "That is only the interest earned, not the balance."
-      },
-      {
-        "id": "B",
-        "text": "$1,592",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "C",
-        "text": "$1,588",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "D",
-        "text": "$1,685.40",
-        "rationale": "That is one year too many."
-      },
-      {
-        "id": "E",
-        "text": "$1,590",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "E",
-    "explanation": "A = P(1 + r)^t = 1500(1.06)^1 = 1590.00.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "compound",
-      "family:ex_compound"
-    ],
-    "answer_verification": "A=1590.00"
-  },
-  {
-    "question_id": "act-math-exponential-easy-b0017",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "exponential",
-    "lesson_id": "act-math-exponential-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "growth_decay",
-    "prompt": "A population of 150 subscribers to a newsletter quadruples every month. Which expression gives the population after t months?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "(150·4)^t",
-        "rationale": "The variable t belongs in the exponent, with base 4."
-      },
-      {
-        "id": "B",
-        "text": "150·4^t",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "150^t·4",
-        "rationale": "The repeating growth factor is the base raised to t, applied to the starting amount."
-      },
-      {
-        "id": "D",
-        "text": "150·4·t",
-        "rationale": "This models linear change (a fixed amount each period), not repeated multiplication."
-      },
-      {
-        "id": "E",
-        "text": "150 + 4·t",
-        "rationale": "This adds a constant each period instead of multiplying."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Each month multiplies the amount by 4, so after t months the population is 150·4^t.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "model",
-      "family:ex_model"
-    ],
-    "answer_verification": "model 150·4^t"
-  },
-  {
-    "question_id": "act-math-exponential-easy-b0018",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "exponential",
-    "lesson_id": "act-math-exponential-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "growth_decay",
-    "prompt": "The function f(t) = 150(0.75)^t models the mass, in grams, of a substance t hours after it was first measured. What was the initial value?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "175",
-        "rationale": "The initial value is the coefficient."
-      },
-      {
-        "id": "B",
-        "text": "25",
-        "rationale": "That is the percent rate, not the starting value."
-      },
-      {
-        "id": "C",
-        "text": "112",
-        "rationale": "That is the value after one hour."
-      },
-      {
-        "id": "D",
-        "text": "84",
-        "rationale": "That is the value after two periods."
-      },
-      {
-        "id": "E",
-        "text": "150",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "E",
-    "explanation": "At t = 0, f(0) = 150·(0.75)⁰ = 150.",
-    "estimated_time_seconds": 65,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "interpret",
-      "family:ex_interpret"
-    ],
-    "answer_verification": "f(0)=150"
-  },
-  {
-    "question_id": "act-math-exponential-easy-b0019",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "exponential",
-    "lesson_id": "act-math-exponential-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "growth_decay",
-    "prompt": "A count of 50 dollars in an account is multiplied by 10 every hour. After how many hours will the count first reach 5000?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "10",
-        "rationale": "Count how many times 10 must be multiplied in."
-      },
-      {
-        "id": "B",
-        "text": "2",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "3",
-        "rationale": "That is one period too many."
-      },
-      {
-        "id": "D",
-        "text": "1",
-        "rationale": "That is one period too few."
-      },
-      {
-        "id": "E",
-        "text": "100",
-        "rationale": "That is the growth multiple, not the number of periods."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "50·10^t = 5000 → 10^t = 100 = 10^2 → t = 2.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "family:ex_periods"
-    ],
-    "answer_verification": "50*10^2=5000"
-  },
-  {
-    "question_id": "act-math-exponential-easy-b0020",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "exponential",
-    "lesson_id": "act-math-exponential-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "growth_decay",
-    "prompt": "A population of 40 cells in a sample quadruples every hour. Which expression gives the population after t hours?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "40·4·t",
-        "rationale": "This models linear change (a fixed amount each period), not repeated multiplication."
-      },
-      {
-        "id": "B",
-        "text": "40 + 4·t",
-        "rationale": "This adds a constant each period instead of multiplying."
-      },
-      {
-        "id": "C",
-        "text": "4·t^40",
-        "rationale": "The variable t belongs in the exponent, with base 4."
-      },
-      {
-        "id": "D",
-        "text": "40·4^t",
-        "rationale": "Correct."
-      },
-      {
-        "id": "E",
-        "text": "40^t·4",
-        "rationale": "The repeating growth factor is the base raised to t, applied to the starting amount."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Each hour multiplies the amount by 4, so after t hours the population is 40·4^t.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "model",
-      "family:ex_model"
-    ],
-    "answer_verification": "model 40·4^t"
-  },
-  {
-    "question_id": "act-math-exponential-easy-b0021",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1063,7 +302,7 @@
     "answer_verification": "25*5^2=625"
   },
   {
-    "question_id": "act-math-exponential-easy-b0022",
+    "question_id": "act-math-exponential-easy-b0007",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1113,7 +352,7 @@
     "answer_verification": "val=1620"
   },
   {
-    "question_id": "act-math-exponential-easy-b0023",
+    "question_id": "act-math-exponential-easy-b0008",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1164,7 +403,7 @@
     "answer_verification": "model 60·2^t"
   },
   {
-    "question_id": "act-math-exponential-easy-b0024",
+    "question_id": "act-math-exponential-easy-b0009",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1215,7 +454,7 @@
     "answer_verification": "model 10·3^t"
   },
   {
-    "question_id": "act-math-exponential-easy-b0025",
+    "question_id": "act-math-exponential-easy-b0010",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1266,7 +505,7 @@
     "answer_verification": "f(0)=80"
   },
   {
-    "question_id": "act-math-exponential-easy-b0026",
+    "question_id": "act-math-exponential-easy-b0011",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1316,7 +555,7 @@
     "answer_verification": "val=24"
   },
   {
-    "question_id": "act-math-exponential-easy-b0027",
+    "question_id": "act-math-exponential-easy-b0012",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1367,7 +606,7 @@
     "answer_verification": "f(t) = 1500(0.95)^t"
   },
   {
-    "question_id": "act-math-exponential-easy-b0028",
+    "question_id": "act-math-exponential-easy-b0013",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1418,7 +657,7 @@
     "answer_verification": "model 5·2^t"
   },
   {
-    "question_id": "act-math-exponential-easy-b0029",
+    "question_id": "act-math-exponential-easy-b0014",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1468,7 +707,7 @@
     "answer_verification": "3*5^2=75"
   },
   {
-    "question_id": "act-math-exponential-easy-b0030",
+    "question_id": "act-math-exponential-easy-b0015",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1519,7 +758,7 @@
     "answer_verification": "f(0)=2000"
   },
   {
-    "question_id": "act-math-exponential-easy-b0031",
+    "question_id": "act-math-exponential-easy-b0016",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1570,7 +809,7 @@
     "answer_verification": "f(0)=500"
   },
   {
-    "question_id": "act-math-exponential-easy-b0032",
+    "question_id": "act-math-exponential-easy-b0017",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1621,7 +860,7 @@
     "answer_verification": "model 75·3^t"
   },
   {
-    "question_id": "act-math-exponential-easy-b0033",
+    "question_id": "act-math-exponential-easy-b0018",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1671,7 +910,7 @@
     "answer_verification": "25*10^3=25000"
   },
   {
-    "question_id": "act-math-exponential-easy-b0034",
+    "question_id": "act-math-exponential-easy-b0019",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1722,7 +961,7 @@
     "answer_verification": "f(t) = 400(0.98)^t"
   },
   {
-    "question_id": "act-math-exponential-easy-b0035",
+    "question_id": "act-math-exponential-easy-b0020",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1772,7 +1011,7 @@
     "answer_verification": "val=96"
   },
   {
-    "question_id": "act-math-exponential-easy-b0036",
+    "question_id": "act-math-exponential-easy-b0021",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1823,7 +1062,7 @@
     "answer_verification": "A=8323.20"
   },
   {
-    "question_id": "act-math-exponential-easy-b0037",
+    "question_id": "act-math-exponential-easy-b0022",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1873,7 +1112,7 @@
     "answer_verification": "10*2^3=80"
   },
   {
-    "question_id": "act-math-exponential-easy-b0038",
+    "question_id": "act-math-exponential-easy-b0023",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1924,7 +1163,7 @@
     "answer_verification": "f(t) = 200(0.8)^t"
   },
   {
-    "question_id": "act-math-exponential-easy-b0039",
+    "question_id": "act-math-exponential-easy-b0024",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1975,7 +1214,7 @@
     "answer_verification": "f(0)=50"
   },
   {
-    "question_id": "act-math-exponential-easy-b0040",
+    "question_id": "act-math-exponential-easy-b0025",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2025,7 +1264,7 @@
     "answer_verification": "25*3^4=2025"
   },
   {
-    "question_id": "act-math-exponential-easy-b0041",
+    "question_id": "act-math-exponential-easy-b0026",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2076,7 +1315,7 @@
     "answer_verification": "f(t) = 800(1.25)^t"
   },
   {
-    "question_id": "act-math-exponential-easy-b0042",
+    "question_id": "act-math-exponential-easy-b0027",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2127,7 +1366,7 @@
     "answer_verification": "model 150·4^t"
   },
   {
-    "question_id": "act-math-exponential-easy-b0043",
+    "question_id": "act-math-exponential-easy-b0028",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2177,7 +1416,7 @@
     "answer_verification": "val=120"
   },
   {
-    "question_id": "act-math-exponential-easy-b0044",
+    "question_id": "act-math-exponential-easy-b0029",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2228,7 +1467,7 @@
     "answer_verification": "f(0)=80"
   },
   {
-    "question_id": "act-math-exponential-easy-b0045",
+    "question_id": "act-math-exponential-easy-b0030",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2278,7 +1517,7 @@
     "answer_verification": "val=320"
   },
   {
-    "question_id": "act-math-exponential-easy-b0046",
+    "question_id": "act-math-exponential-easy-b0031",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2329,7 +1568,7 @@
     "answer_verification": "f(0)=1000"
   },
   {
-    "question_id": "act-math-exponential-easy-b0047",
+    "question_id": "act-math-exponential-easy-b0032",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2379,7 +1618,7 @@
     "answer_verification": "25*5^2=625"
   },
   {
-    "question_id": "act-math-exponential-easy-b0048",
+    "question_id": "act-math-exponential-easy-b0033",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2430,7 +1669,7 @@
     "answer_verification": "model 25·3^t"
   },
   {
-    "question_id": "act-math-exponential-easy-b0049",
+    "question_id": "act-math-exponential-easy-b0034",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2480,7 +1719,7 @@
     "answer_verification": "val=20"
   },
   {
-    "question_id": "act-math-exponential-easy-b0050",
+    "question_id": "act-math-exponential-easy-b0035",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2530,7 +1769,7 @@
     "answer_verification": "val=2916"
   },
   {
-    "question_id": "act-math-exponential-easy-b0051",
+    "question_id": "act-math-exponential-easy-b0036",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2581,7 +1820,7 @@
     "answer_verification": "f(t) = 500(0.98)^t"
   },
   {
-    "question_id": "act-math-exponential-easy-b0052",
+    "question_id": "act-math-exponential-easy-b0037",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2632,7 +1871,7 @@
     "answer_verification": "A=8400.00"
   },
   {
-    "question_id": "act-math-exponential-easy-b0053",
+    "question_id": "act-math-exponential-easy-b0038",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2682,7 +1921,7 @@
     "answer_verification": "val=8"
   },
   {
-    "question_id": "act-math-exponential-easy-b0054",
+    "question_id": "act-math-exponential-easy-b0039",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2732,7 +1971,7 @@
     "answer_verification": "3*10^2=300"
   },
   {
-    "question_id": "act-math-exponential-easy-b0055",
+    "question_id": "act-math-exponential-easy-b0040",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2782,7 +2021,7 @@
     "answer_verification": "3*2^3=24"
   },
   {
-    "question_id": "act-math-exponential-easy-b0056",
+    "question_id": "act-math-exponential-easy-b0041",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2833,7 +2072,7 @@
     "answer_verification": "A=520.20"
   },
   {
-    "question_id": "act-math-exponential-easy-b0057",
+    "question_id": "act-math-exponential-easy-b0042",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2883,7 +2122,7 @@
     "answer_verification": "2*2^2=8"
   },
   {
-    "question_id": "act-math-exponential-easy-b0058",
+    "question_id": "act-math-exponential-easy-b0043",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2934,7 +2173,7 @@
     "answer_verification": "f(0)=50"
   },
   {
-    "question_id": "act-math-exponential-easy-b0059",
+    "question_id": "act-math-exponential-easy-b0044",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2985,7 +2224,7 @@
     "answer_verification": "model 25·2^t"
   },
   {
-    "question_id": "act-math-exponential-easy-b0060",
+    "question_id": "act-math-exponential-easy-b0045",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3035,7 +2274,7 @@
     "answer_verification": "val=192"
   },
   {
-    "question_id": "act-math-exponential-easy-b0061",
+    "question_id": "act-math-exponential-easy-b0046",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3086,7 +2325,7 @@
     "answer_verification": "model 80·4^t"
   },
   {
-    "question_id": "act-math-exponential-easy-b0062",
+    "question_id": "act-math-exponential-easy-b0047",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3136,7 +2375,7 @@
     "answer_verification": "3*4^3=192"
   },
   {
-    "question_id": "act-math-exponential-easy-b0063",
+    "question_id": "act-math-exponential-easy-b0048",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3187,7 +2426,7 @@
     "answer_verification": "model 80·2^t"
   },
   {
-    "question_id": "act-math-exponential-easy-b0064",
+    "question_id": "act-math-exponential-easy-b0049",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3238,7 +2477,7 @@
     "answer_verification": "model 400·3^t"
   },
   {
-    "question_id": "act-math-exponential-easy-b0065",
+    "question_id": "act-math-exponential-easy-b0050",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3288,7 +2527,7 @@
     "answer_verification": "val=1620"
   },
   {
-    "question_id": "act-math-exponential-easy-b0066",
+    "question_id": "act-math-exponential-easy-b0051",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3339,7 +2578,7 @@
     "answer_verification": "A=2652.25"
   },
   {
-    "question_id": "act-math-exponential-easy-b0067",
+    "question_id": "act-math-exponential-easy-b0052",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3390,7 +2629,7 @@
     "answer_verification": "f(0)=80"
   },
   {
-    "question_id": "act-math-exponential-easy-b0068",
+    "question_id": "act-math-exponential-easy-b0053",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3441,7 +2680,7 @@
     "answer_verification": "f(0)=750"
   },
   {
-    "question_id": "act-math-exponential-easy-b0069",
+    "question_id": "act-math-exponential-easy-b0054",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3492,7 +2731,7 @@
     "answer_verification": "f(t) = 500(1.25)^t"
   },
   {
-    "question_id": "act-math-exponential-easy-b0070",
+    "question_id": "act-math-exponential-easy-b0055",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3543,7 +2782,7 @@
     "answer_verification": "A=848.00"
   },
   {
-    "question_id": "act-math-exponential-easy-b0071",
+    "question_id": "act-math-exponential-easy-b0056",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3594,7 +2833,7 @@
     "answer_verification": "f(0)=400"
   },
   {
-    "question_id": "act-math-exponential-easy-b0072",
+    "question_id": "act-math-exponential-easy-b0057",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3645,7 +2884,7 @@
     "answer_verification": "f(0)=150"
   },
   {
-    "question_id": "act-math-exponential-easy-b0073",
+    "question_id": "act-math-exponential-easy-b0058",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3696,7 +2935,7 @@
     "answer_verification": "f(0)=600"
   },
   {
-    "question_id": "act-math-exponential-easy-b0074",
+    "question_id": "act-math-exponential-easy-b0059",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3747,7 +2986,7 @@
     "answer_verification": "model 300·4^t"
   },
   {
-    "question_id": "act-math-exponential-easy-b0075",
+    "question_id": "act-math-exponential-easy-b0060",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3798,7 +3037,7 @@
     "answer_verification": "model 12·4^t"
   },
   {
-    "question_id": "act-math-exponential-easy-b0076",
+    "question_id": "act-math-exponential-easy-b0061",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3849,7 +3088,7 @@
     "answer_verification": "A=5150.00"
   },
   {
-    "question_id": "act-math-exponential-easy-b0077",
+    "question_id": "act-math-exponential-easy-b0062",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3900,7 +3139,7 @@
     "answer_verification": "model 8·3^t"
   },
   {
-    "question_id": "act-math-exponential-easy-b0078",
+    "question_id": "act-math-exponential-easy-b0063",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3951,7 +3190,7 @@
     "answer_verification": "model 60·4^t"
   },
   {
-    "question_id": "act-math-exponential-easy-b0079",
+    "question_id": "act-math-exponential-easy-b0064",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4002,7 +3241,7 @@
     "answer_verification": "A=6120.00"
   },
   {
-    "question_id": "act-math-exponential-easy-b0080",
+    "question_id": "act-math-exponential-easy-b0065",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4053,7 +3292,7 @@
     "answer_verification": "f(0)=500"
   },
   {
-    "question_id": "act-math-exponential-easy-b0081",
+    "question_id": "act-math-exponential-easy-b0066",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4104,7 +3343,7 @@
     "answer_verification": "f(0)=600"
   },
   {
-    "question_id": "act-math-exponential-easy-b0082",
+    "question_id": "act-math-exponential-easy-b0067",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4154,7 +3393,7 @@
     "answer_verification": "val=2430"
   },
   {
-    "question_id": "act-math-exponential-easy-b0083",
+    "question_id": "act-math-exponential-easy-b0068",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4205,7 +3444,7 @@
     "answer_verification": "f(t) = 250(1.1)^t"
   },
   {
-    "question_id": "act-math-exponential-easy-b0084",
+    "question_id": "act-math-exponential-easy-b0069",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4255,7 +3494,7 @@
     "answer_verification": "5*4^3=320"
   },
   {
-    "question_id": "act-math-exponential-easy-b0085",
+    "question_id": "act-math-exponential-easy-b0070",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4306,7 +3545,7 @@
     "answer_verification": "f(0)=80"
   },
   {
-    "question_id": "act-math-exponential-easy-b0086",
+    "question_id": "act-math-exponential-easy-b0071",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4356,7 +3595,7 @@
     "answer_verification": "10*2^4=160"
   },
   {
-    "question_id": "act-math-exponential-easy-b0087",
+    "question_id": "act-math-exponential-easy-b0072",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4407,7 +3646,7 @@
     "answer_verification": "f(t) = 1500(1.05)^t"
   },
   {
-    "question_id": "act-math-exponential-easy-b0088",
+    "question_id": "act-math-exponential-easy-b0073",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4458,7 +3697,7 @@
     "answer_verification": "f(0)=1200"
   },
   {
-    "question_id": "act-math-exponential-easy-b0089",
+    "question_id": "act-math-exponential-easy-b0074",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4508,7 +3747,7 @@
     "answer_verification": "val=60"
   },
   {
-    "question_id": "act-math-exponential-easy-b0090",
+    "question_id": "act-math-exponential-easy-b0075",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4559,7 +3798,7 @@
     "answer_verification": "f(0)=400"
   },
   {
-    "question_id": "act-math-exponential-easy-b0091",
+    "question_id": "act-math-exponential-easy-b0076",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4609,7 +3848,7 @@
     "answer_verification": "val=960"
   },
   {
-    "question_id": "act-math-exponential-easy-b0092",
+    "question_id": "act-math-exponential-easy-b0077",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4659,7 +3898,7 @@
     "answer_verification": "2*2^3=16"
   },
   {
-    "question_id": "act-math-exponential-easy-b0093",
+    "question_id": "act-math-exponential-easy-b0078",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4710,7 +3949,7 @@
     "answer_verification": "f(0)=80"
   },
   {
-    "question_id": "act-math-exponential-easy-b0094",
+    "question_id": "act-math-exponential-easy-b0079",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4761,7 +4000,7 @@
     "answer_verification": "f(0)=500"
   },
   {
-    "question_id": "act-math-exponential-easy-b0095",
+    "question_id": "act-math-exponential-easy-b0080",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4812,7 +4051,7 @@
     "answer_verification": "f(0)=2000"
   },
   {
-    "question_id": "act-math-exponential-easy-b0096",
+    "question_id": "act-math-exponential-easy-b0081",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4863,7 +4102,7 @@
     "answer_verification": "model 15·4^t"
   },
   {
-    "question_id": "act-math-exponential-easy-b0097",
+    "question_id": "act-math-exponential-easy-b0082",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4914,7 +4153,7 @@
     "answer_verification": "f(t) = 800(3)^t"
   },
   {
-    "question_id": "act-math-exponential-easy-b0098",
+    "question_id": "act-math-exponential-easy-b0083",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4965,7 +4204,7 @@
     "answer_verification": "model 100·3^t"
   },
   {
-    "question_id": "act-math-exponential-easy-b0099",
+    "question_id": "act-math-exponential-easy-b0084",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5016,7 +4255,7 @@
     "answer_verification": "model 100·3^t"
   },
   {
-    "question_id": "act-math-exponential-easy-b0100",
+    "question_id": "act-math-exponential-easy-b0085",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5067,7 +4306,7 @@
     "answer_verification": "f(t) = 100(0.95)^t"
   },
   {
-    "question_id": "act-math-exponential-easy-b0101",
+    "question_id": "act-math-exponential-easy-b0086",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5117,7 +4356,7 @@
     "answer_verification": "val=16"
   },
   {
-    "question_id": "act-math-exponential-easy-b0102",
+    "question_id": "act-math-exponential-easy-b0087",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5167,7 +4406,7 @@
     "answer_verification": "val=2025"
   },
   {
-    "question_id": "act-math-exponential-easy-b0103",
+    "question_id": "act-math-exponential-easy-b0088",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5218,7 +4457,7 @@
     "answer_verification": "A=2332.80"
   },
   {
-    "question_id": "act-math-exponential-easy-b0104",
+    "question_id": "act-math-exponential-easy-b0089",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5269,7 +4508,7 @@
     "answer_verification": "A=8988.80"
   },
   {
-    "question_id": "act-math-exponential-easy-b0105",
+    "question_id": "act-math-exponential-easy-b0090",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5320,7 +4559,7 @@
     "answer_verification": "model 150·4^t"
   },
   {
-    "question_id": "act-math-exponential-easy-b0106",
+    "question_id": "act-math-exponential-easy-b0091",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5371,7 +4610,7 @@
     "answer_verification": "f(t) = 100(2)^t"
   },
   {
-    "question_id": "act-math-exponential-easy-b0107",
+    "question_id": "act-math-exponential-easy-b0092",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5422,7 +4661,7 @@
     "answer_verification": "A=9331.20"
   },
   {
-    "question_id": "act-math-exponential-easy-b0108",
+    "question_id": "act-math-exponential-easy-b0093",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5472,7 +4711,7 @@
     "answer_verification": "50*5^3=6250"
   },
   {
-    "question_id": "act-math-exponential-easy-b0109",
+    "question_id": "act-math-exponential-easy-b0094",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5523,7 +4762,7 @@
     "answer_verification": "model 15·2^t"
   },
   {
-    "question_id": "act-math-exponential-easy-b0110",
+    "question_id": "act-math-exponential-easy-b0095",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5574,7 +4813,7 @@
     "answer_verification": "model 30·3^t"
   },
   {
-    "question_id": "act-math-exponential-easy-b0111",
+    "question_id": "act-math-exponential-easy-b0096",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5624,7 +4863,7 @@
     "answer_verification": "2*3^4=162"
   },
   {
-    "question_id": "act-math-exponential-easy-b0112",
+    "question_id": "act-math-exponential-easy-b0097",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5675,7 +4914,7 @@
     "answer_verification": "f(t) = 200(1.1)^t"
   },
   {
-    "question_id": "act-math-exponential-easy-b0113",
+    "question_id": "act-math-exponential-easy-b0098",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5726,7 +4965,7 @@
     "answer_verification": "f(0)=400"
   },
   {
-    "question_id": "act-math-exponential-easy-b0114",
+    "question_id": "act-math-exponential-easy-b0099",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5777,7 +5016,7 @@
     "answer_verification": "f(0)=500"
   },
   {
-    "question_id": "act-math-exponential-easy-b0115",
+    "question_id": "act-math-exponential-easy-b0100",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5828,7 +5067,7 @@
     "answer_verification": "f(0)=1200"
   },
   {
-    "question_id": "act-math-exponential-easy-b0116",
+    "question_id": "act-math-exponential-easy-b0101",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5879,7 +5118,7 @@
     "answer_verification": "f(0)=800"
   },
   {
-    "question_id": "act-math-exponential-easy-b0117",
+    "question_id": "act-math-exponential-easy-b0102",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5929,7 +5168,7 @@
     "answer_verification": "val=64"
   },
   {
-    "question_id": "act-math-exponential-easy-b0118",
+    "question_id": "act-math-exponential-easy-b0103",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5980,7 +5219,7 @@
     "answer_verification": "model 12·4^t"
   },
   {
-    "question_id": "act-math-exponential-easy-b0119",
+    "question_id": "act-math-exponential-easy-b0104",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6030,7 +5269,7 @@
     "answer_verification": "val=81"
   },
   {
-    "question_id": "act-math-exponential-easy-b0120",
+    "question_id": "act-math-exponential-easy-b0105",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6081,7 +5320,7 @@
     "answer_verification": "A=3180.00"
   },
   {
-    "question_id": "act-math-exponential-easy-b0121",
+    "question_id": "act-math-exponential-easy-b0106",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6131,7 +5370,7 @@
     "answer_verification": "1*2^2=4"
   },
   {
-    "question_id": "act-math-exponential-easy-b0122",
+    "question_id": "act-math-exponential-easy-b0107",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6182,7 +5421,7 @@
     "answer_verification": "A=5512.50"
   },
   {
-    "question_id": "act-math-exponential-easy-b0123",
+    "question_id": "act-math-exponential-easy-b0108",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6233,7 +5472,7 @@
     "answer_verification": "f(0)=120"
   },
   {
-    "question_id": "act-math-exponential-easy-b0124",
+    "question_id": "act-math-exponential-easy-b0109",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6284,7 +5523,7 @@
     "answer_verification": "model 250·4^t"
   },
   {
-    "question_id": "act-math-exponential-easy-b0125",
+    "question_id": "act-math-exponential-easy-b0110",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6335,7 +5574,7 @@
     "answer_verification": "f(t) = 500(1.02)^t"
   },
   {
-    "question_id": "act-math-exponential-easy-b0126",
+    "question_id": "act-math-exponential-easy-b0111",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6385,7 +5624,7 @@
     "answer_verification": "1*5^3=125"
   },
   {
-    "question_id": "act-math-exponential-easy-b0127",
+    "question_id": "act-math-exponential-easy-b0112",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6435,7 +5674,7 @@
     "answer_verification": "25*3^4=2025"
   },
   {
-    "question_id": "act-math-exponential-easy-b0128",
+    "question_id": "act-math-exponential-easy-b0113",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6485,7 +5724,7 @@
     "answer_verification": "25*10^3=25000"
   },
   {
-    "question_id": "act-math-exponential-easy-b0129",
+    "question_id": "act-math-exponential-easy-b0114",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6535,7 +5774,7 @@
     "answer_verification": "val=48"
   },
   {
-    "question_id": "act-math-exponential-easy-b0130",
+    "question_id": "act-math-exponential-easy-b0115",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6586,7 +5825,7 @@
     "answer_verification": "model 30·3^t"
   },
   {
-    "question_id": "act-math-exponential-easy-b0131",
+    "question_id": "act-math-exponential-easy-b0116",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6637,7 +5876,7 @@
     "answer_verification": "f(t) = 400(1.05)^t"
   },
   {
-    "question_id": "act-math-exponential-easy-b0132",
+    "question_id": "act-math-exponential-easy-b0117",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6688,7 +5927,7 @@
     "answer_verification": "model 40·3^t"
   },
   {
-    "question_id": "act-math-exponential-easy-b0133",
+    "question_id": "act-math-exponential-easy-b0118",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6738,7 +5977,7 @@
     "answer_verification": "10*5^3=1250"
   },
   {
-    "question_id": "act-math-exponential-easy-b0134",
+    "question_id": "act-math-exponential-easy-b0119",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6788,7 +6027,7 @@
     "answer_verification": "25*3^2=225"
   },
   {
-    "question_id": "act-math-exponential-easy-b0135",
+    "question_id": "act-math-exponential-easy-b0120",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6839,7 +6078,7 @@
     "answer_verification": "f(0)=600"
   },
   {
-    "question_id": "act-math-exponential-easy-b0136",
+    "question_id": "act-math-exponential-easy-b0121",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6890,7 +6129,7 @@
     "answer_verification": "A=2600.00"
   },
   {
-    "question_id": "act-math-exponential-easy-b0137",
+    "question_id": "act-math-exponential-easy-b0122",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6941,7 +6180,7 @@
     "answer_verification": "f(t) = 1000(0.9)^t"
   },
   {
-    "question_id": "act-math-exponential-easy-b0138",
+    "question_id": "act-math-exponential-easy-b0123",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6991,7 +6230,7 @@
     "answer_verification": "10*3^5=2430"
   },
   {
-    "question_id": "act-math-exponential-easy-b0139",
+    "question_id": "act-math-exponential-easy-b0124",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7042,7 +6281,7 @@
     "answer_verification": "f(0)=250"
   },
   {
-    "question_id": "act-math-exponential-easy-b0140",
+    "question_id": "act-math-exponential-easy-b0125",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7092,7 +6331,7 @@
     "answer_verification": "val=80"
   },
   {
-    "question_id": "act-math-exponential-easy-b0141",
+    "question_id": "act-math-exponential-easy-b0126",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7142,7 +6381,7 @@
     "answer_verification": "val=12"
   },
   {
-    "question_id": "act-math-exponential-easy-b0142",
+    "question_id": "act-math-exponential-easy-b0127",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7193,7 +6432,7 @@
     "answer_verification": "f(t) = 800(0.9)^t"
   },
   {
-    "question_id": "act-math-exponential-easy-b0143",
+    "question_id": "act-math-exponential-easy-b0128",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7244,7 +6483,7 @@
     "answer_verification": "A=3499.20"
   },
   {
-    "question_id": "act-math-exponential-easy-b0144",
+    "question_id": "act-math-exponential-easy-b0129",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7295,7 +6534,7 @@
     "answer_verification": "f(t) = 400(0.5)^t"
   },
   {
-    "question_id": "act-math-exponential-easy-b0145",
+    "question_id": "act-math-exponential-easy-b0130",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7346,7 +6585,7 @@
     "answer_verification": "A=1248.00"
   },
   {
-    "question_id": "act-math-exponential-easy-b0146",
+    "question_id": "act-math-exponential-easy-b0131",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7396,7 +6635,7 @@
     "answer_verification": "5*10^2=500"
   },
   {
-    "question_id": "act-math-exponential-easy-b0147",
+    "question_id": "act-math-exponential-easy-b0132",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7447,7 +6686,7 @@
     "answer_verification": "f(0)=250"
   },
   {
-    "question_id": "act-math-exponential-easy-b0148",
+    "question_id": "act-math-exponential-easy-b0133",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7498,7 +6737,7 @@
     "answer_verification": "f(t) = 800(1.05)^t"
   },
   {
-    "question_id": "act-math-exponential-easy-b0149",
+    "question_id": "act-math-exponential-easy-b0134",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7548,7 +6787,7 @@
     "answer_verification": "100*4^3=6400"
   },
   {
-    "question_id": "act-math-exponential-easy-b0150",
+    "question_id": "act-math-exponential-easy-b0135",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7599,7 +6838,7 @@
     "answer_verification": "A=1020.00"
   },
   {
-    "question_id": "act-math-exponential-easy-b0151",
+    "question_id": "act-math-exponential-easy-b0136",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7650,7 +6889,7 @@
     "answer_verification": "A=1591.35"
   },
   {
-    "question_id": "act-math-exponential-easy-b0152",
+    "question_id": "act-math-exponential-easy-b0137",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7700,7 +6939,7 @@
     "answer_verification": "val=162"
   },
   {
-    "question_id": "act-math-exponential-easy-b0153",
+    "question_id": "act-math-exponential-easy-b0138",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7751,7 +6990,7 @@
     "answer_verification": "A=8480.00"
   },
   {
-    "question_id": "act-math-exponential-easy-b0154",
+    "question_id": "act-math-exponential-easy-b0139",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7802,7 +7041,7 @@
     "answer_verification": "f(t) = 800(2)^t"
   },
   {
-    "question_id": "act-math-exponential-easy-b0155",
+    "question_id": "act-math-exponential-easy-b0140",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7852,7 +7091,7 @@
     "answer_verification": "25*10^3=25000"
   },
   {
-    "question_id": "act-math-exponential-easy-b0156",
+    "question_id": "act-math-exponential-easy-b0141",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7902,7 +7141,7 @@
     "answer_verification": "1*5^3=125"
   },
   {
-    "question_id": "act-math-exponential-easy-b0157",
+    "question_id": "act-math-exponential-easy-b0142",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7953,7 +7192,7 @@
     "answer_verification": "f(0)=250"
   },
   {
-    "question_id": "act-math-exponential-easy-b0158",
+    "question_id": "act-math-exponential-easy-b0143",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8003,7 +7242,7 @@
     "answer_verification": "val=32"
   },
   {
-    "question_id": "act-math-exponential-easy-b0159",
+    "question_id": "act-math-exponential-easy-b0144",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8054,7 +7293,7 @@
     "answer_verification": "model 100·2^t"
   },
   {
-    "question_id": "act-math-exponential-easy-b0160",
+    "question_id": "act-math-exponential-easy-b0145",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8103,5 +7342,763 @@
       "family:ex_interpret"
     ],
     "answer_verification": "f(0)=2000"
+  },
+  {
+    "question_id": "act-math-exponential-easy-b0146",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "exponential",
+    "lesson_id": "act-math-exponential-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "growth_decay",
+    "prompt": "Dmitri deposits $2000 in an account that earns 10% interest, compounded annually. What is the balance, in dollars, after 2 years?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$2,400",
+        "rationale": "Compound interest multiplies each year; it doesn't add the same amount."
+      },
+      {
+        "id": "B",
+        "text": "$400",
+        "rationale": "That is only the interest earned, not the balance."
+      },
+      {
+        "id": "C",
+        "text": "$2,420",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "$2,662",
+        "rationale": "That is one year too many."
+      },
+      {
+        "id": "E",
+        "text": "$20",
+        "rationale": "Multiply by (1 + r), not r."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "A = P(1 + r)^t = 2000(1.10)^2 = 2420.00.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "compound",
+      "family:ex_compound"
+    ],
+    "answer_verification": "A=2420.00"
+  },
+  {
+    "question_id": "act-math-exponential-easy-b0147",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "exponential",
+    "lesson_id": "act-math-exponential-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "growth_decay",
+    "prompt": "A count of 3 bacteria is multiplied by 2 every week. After how many weeks will the count first reach 96?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "16",
+        "rationale": "Count how many times 2 must be multiplied in."
+      },
+      {
+        "id": "B",
+        "text": "32",
+        "rationale": "That is the growth multiple, not the number of periods."
+      },
+      {
+        "id": "C",
+        "text": "6",
+        "rationale": "That is one period too many."
+      },
+      {
+        "id": "D",
+        "text": "5",
+        "rationale": "Correct."
+      },
+      {
+        "id": "E",
+        "text": "4",
+        "rationale": "That is one period too few."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "3·2^t = 96 → 2^t = 32 = 2^5 → t = 5.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "family:ex_periods"
+    ],
+    "answer_verification": "3*2^5=96"
+  },
+  {
+    "question_id": "act-math-exponential-easy-b0148",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "exponential",
+    "lesson_id": "act-math-exponential-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "growth_decay",
+    "prompt": "There are 3 subscribers to a newsletter, and the number triples each month. How many subscribers to a newsletter are there after 2 months?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "81",
+        "rationale": "This is one period too late."
+      },
+      {
+        "id": "B",
+        "text": "9",
+        "rationale": "This is the count one period too early."
+      },
+      {
+        "id": "C",
+        "text": "27",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "18",
+        "rationale": "This grows linearly (×r×time) instead of exponentially."
+      },
+      {
+        "id": "E",
+        "text": "24",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "Multiply by 3 each month: 3 × 3^2 = 27.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "family:ex_value"
+    ],
+    "answer_verification": "val=27"
+  },
+  {
+    "question_id": "act-math-exponential-easy-b0149",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "exponential",
+    "lesson_id": "act-math-exponential-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "growth_decay",
+    "prompt": "A population of 2 bacteria in a culture triples every hour. How many will there be after 4 hours?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "14",
+        "rationale": "This adds instead of repeatedly multiplying."
+      },
+      {
+        "id": "B",
+        "text": "486",
+        "rationale": "This is one period too late."
+      },
+      {
+        "id": "C",
+        "text": "24",
+        "rationale": "This grows linearly (×r×time) instead of exponentially."
+      },
+      {
+        "id": "D",
+        "text": "162",
+        "rationale": "Correct."
+      },
+      {
+        "id": "E",
+        "text": "54",
+        "rationale": "This is the count one period too early."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Multiply by 3 each hour: 2 × 3^4 = 162.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "family:ex_value"
+    ],
+    "answer_verification": "val=162"
+  },
+  {
+    "question_id": "act-math-exponential-easy-b0150",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "exponential",
+    "lesson_id": "act-math-exponential-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "growth_decay",
+    "prompt": "The function f(t) = 120(0.9)^t models the mass, in grams, of a substance t hours after it was first measured. What was the initial value?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "10",
+        "rationale": "That is the percent rate, not the starting value."
+      },
+      {
+        "id": "B",
+        "text": "97",
+        "rationale": "That is the value after two periods."
+      },
+      {
+        "id": "C",
+        "text": "108",
+        "rationale": "That is the value after one hour."
+      },
+      {
+        "id": "D",
+        "text": "120",
+        "rationale": "Correct."
+      },
+      {
+        "id": "E",
+        "text": "130",
+        "rationale": "The initial value is the coefficient."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "At t = 0, f(0) = 120·(0.9)⁰ = 120.",
+    "estimated_time_seconds": 65,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "interpret",
+      "family:ex_interpret"
+    ],
+    "answer_verification": "f(0)=120"
+  },
+  {
+    "question_id": "act-math-exponential-easy-b0151",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "exponential",
+    "lesson_id": "act-math-exponential-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "growth_decay",
+    "prompt": "A population of 100 subscribers to a newsletter doubles every month. Which expression gives the population after t months?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "100·2·t",
+        "rationale": "This models linear change (a fixed amount each period), not repeated multiplication."
+      },
+      {
+        "id": "B",
+        "text": "100·2^t",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "100 + 2·t",
+        "rationale": "This adds a constant each period instead of multiplying."
+      },
+      {
+        "id": "D",
+        "text": "100^t·2",
+        "rationale": "The repeating growth factor is the base raised to t, applied to the starting amount."
+      },
+      {
+        "id": "E",
+        "text": "(100·2)^t",
+        "rationale": "The variable t belongs in the exponent, with base 2."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Each month multiplies the amount by 2, so after t months the population is 100·2^t.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "model",
+      "family:ex_model"
+    ],
+    "answer_verification": "model 100·2^t"
+  },
+  {
+    "question_id": "act-math-exponential-easy-b0152",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "exponential",
+    "lesson_id": "act-math-exponential-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "growth_decay",
+    "prompt": "The function f(t) = 150(1.25)^t models the number of members of a club t months after it was first measured. What was the initial value?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "150",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "25",
+        "rationale": "That is the percent rate, not the starting value."
+      },
+      {
+        "id": "C",
+        "text": "188",
+        "rationale": "That is the value after one month."
+      },
+      {
+        "id": "D",
+        "text": "175",
+        "rationale": "The initial value is the coefficient."
+      },
+      {
+        "id": "E",
+        "text": "234",
+        "rationale": "That is the value after two periods."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "At t = 0, f(0) = 150·(1.25)⁰ = 150.",
+    "estimated_time_seconds": 65,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "interpret",
+      "family:ex_interpret"
+    ],
+    "answer_verification": "f(0)=150"
+  },
+  {
+    "question_id": "act-math-exponential-easy-b0153",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "exponential",
+    "lesson_id": "act-math-exponential-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "growth_decay",
+    "prompt": "A population of 4 bacteria in a culture triples every hour. How many will there be after 3 hours?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "36",
+        "rationale": "This grows linearly (×r×time) instead of exponentially."
+      },
+      {
+        "id": "B",
+        "text": "324",
+        "rationale": "This is one period too late."
+      },
+      {
+        "id": "C",
+        "text": "110",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      },
+      {
+        "id": "D",
+        "text": "13",
+        "rationale": "This adds instead of repeatedly multiplying."
+      },
+      {
+        "id": "E",
+        "text": "108",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "E",
+    "explanation": "Multiply by 3 each hour: 4 × 3^3 = 108.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "family:ex_value"
+    ],
+    "answer_verification": "val=108"
+  },
+  {
+    "question_id": "act-math-exponential-easy-b0154",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "exponential",
+    "lesson_id": "act-math-exponential-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "growth_decay",
+    "prompt": "The function f(t) = 50(1.05)^t models the number of fish in a lake t years after it was first measured. What was the initial value?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "50",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "5",
+        "rationale": "That is the percent rate, not the starting value."
+      },
+      {
+        "id": "C",
+        "text": "60",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      },
+      {
+        "id": "D",
+        "text": "52",
+        "rationale": "That is the value after one year."
+      },
+      {
+        "id": "E",
+        "text": "55",
+        "rationale": "That is the value after two periods."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "At t = 0, f(0) = 50·(1.05)⁰ = 50.",
+    "estimated_time_seconds": 65,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "interpret",
+      "family:ex_interpret"
+    ],
+    "answer_verification": "f(0)=50"
+  },
+  {
+    "question_id": "act-math-exponential-easy-b0155",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "exponential",
+    "lesson_id": "act-math-exponential-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "growth_decay",
+    "prompt": "A count of 10 cells is multiplied by 3 every week. After how many weeks will the count first reach 2430?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "6",
+        "rationale": "That is one period too many."
+      },
+      {
+        "id": "B",
+        "text": "81",
+        "rationale": "Count how many times 3 must be multiplied in."
+      },
+      {
+        "id": "C",
+        "text": "243",
+        "rationale": "That is the growth multiple, not the number of periods."
+      },
+      {
+        "id": "D",
+        "text": "5",
+        "rationale": "Correct."
+      },
+      {
+        "id": "E",
+        "text": "4",
+        "rationale": "That is one period too few."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "10·3^t = 2430 → 3^t = 243 = 3^5 → t = 5.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "family:ex_periods"
+    ],
+    "answer_verification": "10*3^5=2430"
+  },
+  {
+    "question_id": "act-math-exponential-easy-b0156",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "exponential",
+    "lesson_id": "act-math-exponential-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "growth_decay",
+    "prompt": "A population of 2 subscribers to a newsletter doubles every month. How many will there be after 4 months?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "64",
+        "rationale": "This is one period too late."
+      },
+      {
+        "id": "B",
+        "text": "32",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "10",
+        "rationale": "This adds instead of repeatedly multiplying."
+      },
+      {
+        "id": "D",
+        "text": "29",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      },
+      {
+        "id": "E",
+        "text": "16",
+        "rationale": "This grows linearly (×r×time) instead of exponentially."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Multiply by 2 each month: 2 × 2^4 = 32.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "family:ex_value"
+    ],
+    "answer_verification": "val=32"
+  },
+  {
+    "question_id": "act-math-exponential-easy-b0157",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "exponential",
+    "lesson_id": "act-math-exponential-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "growth_decay",
+    "prompt": "The function f(t) = 800(1.2)^t models the value, in dollars, of a collectible t years after it was first measured. What was the initial value?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "820",
+        "rationale": "The initial value is the coefficient."
+      },
+      {
+        "id": "B",
+        "text": "960",
+        "rationale": "That is the value after one year."
+      },
+      {
+        "id": "C",
+        "text": "20",
+        "rationale": "That is the percent rate, not the starting value."
+      },
+      {
+        "id": "D",
+        "text": "1152",
+        "rationale": "That is the value after two periods."
+      },
+      {
+        "id": "E",
+        "text": "800",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "E",
+    "explanation": "At t = 0, f(0) = 800·(1.2)⁰ = 800.",
+    "estimated_time_seconds": 65,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "interpret",
+      "family:ex_interpret"
+    ],
+    "answer_verification": "f(0)=800"
+  },
+  {
+    "question_id": "act-math-exponential-easy-b0158",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "exponential",
+    "lesson_id": "act-math-exponential-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "growth_decay",
+    "prompt": "There are 15 users of an app, and the number doubles each month. How many users of an app are there after 3 months?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "240",
+        "rationale": "This is one period too late."
+      },
+      {
+        "id": "B",
+        "text": "90",
+        "rationale": "This grows linearly (×r×time) instead of exponentially."
+      },
+      {
+        "id": "C",
+        "text": "120",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "21",
+        "rationale": "This adds instead of repeatedly multiplying."
+      },
+      {
+        "id": "E",
+        "text": "60",
+        "rationale": "This is the count one period too early."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "Multiply by 2 each month: 15 × 2^3 = 120.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "family:ex_value"
+    ],
+    "answer_verification": "val=120"
+  },
+  {
+    "question_id": "act-math-exponential-easy-b0159",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "exponential",
+    "lesson_id": "act-math-exponential-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "growth_decay",
+    "prompt": "Dmitri deposits $8000 in an account that earns 2% interest, compounded annually. What is the balance, in dollars, after 2 years?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$3.20",
+        "rationale": "Multiply by (1 + r), not r."
+      },
+      {
+        "id": "B",
+        "text": "$8,320",
+        "rationale": "Compound interest multiplies each year; it doesn't add the same amount."
+      },
+      {
+        "id": "C",
+        "text": "$8,323.20",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "$320",
+        "rationale": "That is only the interest earned, not the balance."
+      },
+      {
+        "id": "E",
+        "text": "$8,489.66",
+        "rationale": "That is one year too many."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "A = P(1 + r)^t = 8000(1.02)^2 = 8323.20.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "compound",
+      "family:ex_compound"
+    ],
+    "answer_verification": "A=8323.20"
+  },
+  {
+    "question_id": "act-math-exponential-easy-b0160",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "exponential",
+    "lesson_id": "act-math-exponential-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "growth_decay",
+    "prompt": "Oscar deposits $2500 in an account that earns 3% interest, compounded annually. What is the balance, in dollars, after 2 years?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "$2,731.82",
+        "rationale": "That is one year too many."
+      },
+      {
+        "id": "B",
+        "text": "$150",
+        "rationale": "That is only the interest earned, not the balance."
+      },
+      {
+        "id": "C",
+        "text": "$2,650",
+        "rationale": "Compound interest multiplies each year; it doesn't add the same amount."
+      },
+      {
+        "id": "D",
+        "text": "$2,652.25",
+        "rationale": "Correct."
+      },
+      {
+        "id": "E",
+        "text": "$2.25",
+        "rationale": "Multiply by (1 + r), not r."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "A = P(1 + r)^t = 2500(1.03)^2 = 2652.25.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "compound",
+      "family:ex_compound"
+    ],
+    "answer_verification": "A=2652.25"
   }
 ]

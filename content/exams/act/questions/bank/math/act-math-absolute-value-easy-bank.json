@@ -11,44 +11,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "solve_equations",
-    "prompt": "A thermostat keeps the room temperature within 5 degrees of 70 degrees. What is the range of acceptable values, in degrees, from least to greatest?",
+    "prompt": "If |x − 3| = 8, what is the greatest possible value of x?",
     "choices": [
       {
         "id": "A",
-        "text": "70 to 75",
-        "rationale": "Values below 70 are also acceptable, down to 65."
-      },
-      {
-        "id": "B",
-        "text": "5 to 70",
-        "rationale": "The tolerance is a distance from 70, not a bound."
-      },
-      {
-        "id": "C",
-        "text": "60 to 80",
-        "rationale": "The tolerance is 5 on each side."
-      },
-      {
-        "id": "D",
-        "text": "65 to 75",
+        "text": "11",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "-5",
+        "rationale": "This is the lesser solution."
+      },
+      {
+        "id": "C",
+        "text": "12",
+        "rationale": "Arithmetic slip."
+      },
+      {
+        "id": "D",
+        "text": "5",
+        "rationale": "Recheck the signs in the two cases."
+      },
+      {
         "id": "E",
-        "text": "65 to 70",
-        "rationale": "Values above 70 up to 75 are acceptable too."
+        "text": "24",
+        "rationale": "Do not multiply; solve the two linear cases."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Within 5 of 70 means from 70 − 5 = 65 to 70 + 5 = 75.",
-    "estimated_time_seconds": 75,
+    "correct_choice": "A",
+    "explanation": "x − 3 = 8 or x − 3 = −8, so x = 11 or x = −5. The greatest is 11.",
+    "estimated_time_seconds": 80,
     "tags": [
       "algebra",
       "absolute-value",
-      "model",
-      "family:ab_model"
+      "family:ab_solve"
     ],
-    "answer_verification": "65 to 75"
+    "answer_verification": "|x-3|=8"
   },
   {
     "question_id": "act-math-absolute-value-easy-b0002",
@@ -62,36 +61,36 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "solve_equations",
-    "prompt": "The function f is defined by f(x) = |x − 7| − 5. What is the minimum value of f(x)?",
+    "prompt": "The function f is defined by f(x) = |x + 12| + 13. What is the minimum value of f(x)?",
     "choices": [
       {
         "id": "A",
-        "text": "-5",
-        "rationale": "Correct."
+        "text": "14",
+        "rationale": "The minimum can be negative."
       },
       {
         "id": "B",
-        "text": "-1",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "C",
-        "text": "-7",
+        "text": "12",
         "rationale": "x − h = 0 when x = h."
       },
       {
-        "id": "D",
-        "text": "7",
+        "id": "C",
+        "text": "-12",
         "rationale": "That is the x-value where the minimum occurs."
       },
       {
+        "id": "D",
+        "text": "13",
+        "rationale": "Correct."
+      },
+      {
         "id": "E",
-        "text": "5",
+        "text": "-13",
         "rationale": "The constant keeps its sign."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "|x − 7| is at least 0, with equality at x = 7; so the minimum is −5.",
+    "correct_choice": "D",
+    "explanation": "|x + 12| is at least 0, with equality at x = −12; so the minimum is 13.",
     "estimated_time_seconds": 80,
     "tags": [
       "algebra",
@@ -99,7 +98,7 @@
       "graph",
       "family:ab_vertex"
     ],
-    "answer_verification": "h=7,k=-5"
+    "answer_verification": "h=-12,k=13"
   },
   {
     "question_id": "act-math-absolute-value-easy-b0003",
@@ -113,290 +112,36 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "solve_equations",
-    "prompt": "The function f is defined by f(x) = |x − 7| + 13. What is the minimum value of f(x)?",
+    "prompt": "Which of the following describes all values of x that satisfy |x − 13| < 6?",
     "choices": [
       {
         "id": "A",
-        "text": "7",
-        "rationale": "That is the x-value where the minimum occurs."
+        "text": "−19 < x < −7",
+        "rationale": "The interval is centered at 13."
       },
       {
         "id": "B",
-        "text": "-13",
-        "rationale": "The constant keeps its sign."
+        "text": "13 < x < 19",
+        "rationale": "The distance condition applies on both sides of 13."
       },
       {
         "id": "C",
-        "text": "-7",
-        "rationale": "x − h = 0 when x = h."
-      },
-      {
-        "id": "D",
-        "text": "14",
-        "rationale": "The minimum can be negative."
-      },
-      {
-        "id": "E",
-        "text": "13",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "E",
-    "explanation": "|x − 7| is at least 0, with equality at x = 7; so the minimum is 13.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "algebra",
-      "absolute-value",
-      "graph",
-      "family:ab_vertex"
-    ],
-    "answer_verification": "h=7,k=13"
-  },
-  {
-    "question_id": "act-math-absolute-value-easy-b0004",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "absolute_value",
-    "lesson_id": "act-math-absolute-value-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "solve_equations",
-    "prompt": "If |x − 16| = 7, what is the least possible value of x?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "23",
-        "rationale": "This is the greater solution."
-      },
-      {
-        "id": "B",
-        "text": "9",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "8",
-        "rationale": "Arithmetic slip."
-      },
-      {
-        "id": "D",
-        "text": "-23",
-        "rationale": "Check the sign of the solution."
-      },
-      {
-        "id": "E",
-        "text": "-9",
-        "rationale": "Recheck the second case: x − a = −c."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "The two solutions are x = 23 and x = 9; the least is 9.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "algebra",
-      "absolute-value",
-      "family:ab_solve"
-    ],
-    "answer_verification": "|x-16|=7"
-  },
-  {
-    "question_id": "act-math-absolute-value-easy-b0005",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "absolute_value",
-    "lesson_id": "act-math-absolute-value-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "solve_equations",
-    "prompt": "A bottling line fills bottles to within 5 milliliters of 34 milliliters. What is the range of acceptable values, in milliliters, from least to greatest?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "34 to 39",
-        "rationale": "Values below 34 are also acceptable, down to 29."
-      },
-      {
-        "id": "B",
-        "text": "29 to 39",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "24 to 44",
-        "rationale": "The tolerance is 5 on each side."
-      },
-      {
-        "id": "D",
-        "text": "5 to 34",
-        "rationale": "The tolerance is a distance from 34, not a bound."
-      },
-      {
-        "id": "E",
-        "text": "29 to 34",
-        "rationale": "Values above 34 up to 39 are acceptable too."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Within 5 of 34 means from 34 − 5 = 29 to 34 + 5 = 39.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "algebra",
-      "absolute-value",
-      "model",
-      "family:ab_model"
-    ],
-    "answer_verification": "29 to 39"
-  },
-  {
-    "question_id": "act-math-absolute-value-easy-b0006",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "absolute_value",
-    "lesson_id": "act-math-absolute-value-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "solve_equations",
-    "prompt": "The function f is defined by f(x) = |x − 1| − 1. What is the minimum value of f(x)?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-2",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "B",
-        "text": "-1",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "4",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "D",
-        "text": "9",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "E",
-        "text": "1",
-        "rationale": "That is the x-value where the minimum occurs."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "|x − 1| is at least 0, with equality at x = 1; so the minimum is −1.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "algebra",
-      "absolute-value",
-      "graph",
-      "family:ab_vertex"
-    ],
-    "answer_verification": "h=1,k=-1"
-  },
-  {
-    "question_id": "act-math-absolute-value-easy-b0007",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "absolute_value",
-    "lesson_id": "act-math-absolute-value-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "solve_equations",
-    "prompt": "The function f is defined by f(x) = |x − 4| − 2. What is the minimum value of f(x)?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-4",
-        "rationale": "x − h = 0 when x = h."
-      },
-      {
-        "id": "B",
-        "text": "4",
-        "rationale": "That is the x-value where the minimum occurs."
-      },
-      {
-        "id": "C",
-        "text": "2",
-        "rationale": "The constant keeps its sign."
-      },
-      {
-        "id": "D",
-        "text": "-3",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "E",
-        "text": "-2",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "E",
-    "explanation": "|x − 4| is at least 0, with equality at x = 4; so the minimum is −2.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "algebra",
-      "absolute-value",
-      "graph",
-      "family:ab_vertex"
-    ],
-    "answer_verification": "h=4,k=-2"
-  },
-  {
-    "question_id": "act-math-absolute-value-easy-b0008",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "absolute_value",
-    "lesson_id": "act-math-absolute-value-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "solve_equations",
-    "prompt": "Which of the following describes all values of x that satisfy |x + 3| < 7?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "−4 < x < 10",
-        "rationale": "The interval is centered at −3."
-      },
-      {
-        "id": "B",
-        "text": "−10 < x < 4",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "x < 4",
+        "text": "x < 19",
         "rationale": "The inequality also bounds x from below."
       },
       {
         "id": "D",
-        "text": "x < −10 or x > 4",
-        "rationale": "That is the solution of |x − a| > c, not < c."
+        "text": "7 < x < 19",
+        "rationale": "Correct."
       },
       {
         "id": "E",
-        "text": "−3 < x < 4",
-        "rationale": "The distance condition applies on both sides of −3."
+        "text": "x < 7 or x > 19",
+        "rationale": "That is the solution of |x − a| > c, not < c."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "|x − a| < c means a − c < x < a + c: −10 < x < 4.",
+    "correct_choice": "D",
+    "explanation": "|x − a| < c means a − c < x < a + c: 7 < x < 19.",
     "estimated_time_seconds": 80,
     "tags": [
       "algebra",
@@ -404,60 +149,10 @@
       "inequality",
       "family:ab_inequality"
     ],
-    "answer_verification": "-10 < x < 4"
+    "answer_verification": "7 < x < 19"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0009",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "absolute_value",
-    "lesson_id": "act-math-absolute-value-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "solve_equations",
-    "prompt": "If |x − 8| = 1, what is the least possible value of x?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "9",
-        "rationale": "This is the greater solution."
-      },
-      {
-        "id": "B",
-        "text": "-7",
-        "rationale": "Recheck the second case: x − a = −c."
-      },
-      {
-        "id": "C",
-        "text": "6",
-        "rationale": "Arithmetic slip."
-      },
-      {
-        "id": "D",
-        "text": "-9",
-        "rationale": "Check the sign of the solution."
-      },
-      {
-        "id": "E",
-        "text": "7",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "E",
-    "explanation": "The two solutions are x = 9 and x = 7; the least is 7.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "algebra",
-      "absolute-value",
-      "family:ab_solve"
-    ],
-    "answer_verification": "|x-8|=1"
-  },
-  {
-    "question_id": "act-math-absolute-value-easy-b0010",
+    "question_id": "act-math-absolute-value-easy-b0004",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -472,13 +167,13 @@
     "choices": [
       {
         "id": "A",
-        "text": "-3",
-        "rationale": "|a − b| is not |a| − |b|."
+        "text": "19",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "-19",
-        "rationale": "Absolute value is never negative."
+        "text": "21",
+        "rationale": "Subtract first, then take the absolute value."
       },
       {
         "id": "C",
@@ -487,16 +182,16 @@
       },
       {
         "id": "D",
-        "text": "19",
-        "rationale": "Correct."
+        "text": "-17",
+        "rationale": "|a − b| is not |a| − |b|."
       },
       {
         "id": "E",
-        "text": "21",
-        "rationale": "Subtract first, then take the absolute value."
+        "text": "-19",
+        "rationale": "Absolute value is never negative."
       }
     ],
-    "correct_choice": "D",
+    "correct_choice": "A",
     "explanation": "The absolute value of 19 is its distance from 0: 19.",
     "estimated_time_seconds": 70,
     "tags": [
@@ -508,7 +203,7 @@
     "answer_verification": "val=19"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0011",
+    "question_id": "act-math-absolute-value-easy-b0005",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -519,438 +214,36 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "solve_equations",
-    "prompt": "If |x − 15| = 14, what is the least possible value of x?",
+    "prompt": "The temperature changed from −8° to −5°. By how many degrees did it change (as a positive number)?",
     "choices": [
       {
         "id": "A",
-        "text": "-1",
-        "rationale": "Recheck the second case: x − a = −c."
-      },
-      {
-        "id": "B",
-        "text": "1",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "29",
-        "rationale": "This is the greater solution."
-      },
-      {
-        "id": "D",
-        "text": "-29",
-        "rationale": "Check the sign of the solution."
-      },
-      {
-        "id": "E",
-        "text": "0",
-        "rationale": "Arithmetic slip."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "The two solutions are x = 29 and x = 1; the least is 1.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "algebra",
-      "absolute-value",
-      "family:ab_solve"
-    ],
-    "answer_verification": "|x-15|=14"
-  },
-  {
-    "question_id": "act-math-absolute-value-easy-b0012",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "absolute_value",
-    "lesson_id": "act-math-absolute-value-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "solve_equations",
-    "prompt": "A bottling line fills bottles to within 4 milliliters of 87 milliliters. What is the range of acceptable values, in milliliters, from least to greatest?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "83 to 91",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "4 to 87",
-        "rationale": "The tolerance is a distance from 87, not a bound."
-      },
-      {
-        "id": "C",
-        "text": "83 to 87",
-        "rationale": "Values above 87 up to 91 are acceptable too."
-      },
-      {
-        "id": "D",
-        "text": "79 to 95",
-        "rationale": "The tolerance is 4 on each side."
-      },
-      {
-        "id": "E",
-        "text": "87 to 91",
-        "rationale": "Values below 87 are also acceptable, down to 83."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "Within 4 of 87 means from 87 − 4 = 83 to 87 + 4 = 91.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "algebra",
-      "absolute-value",
-      "model",
-      "family:ab_model"
-    ],
-    "answer_verification": "83 to 91"
-  },
-  {
-    "question_id": "act-math-absolute-value-easy-b0013",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "absolute_value",
-    "lesson_id": "act-math-absolute-value-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "solve_equations",
-    "prompt": "Which of the following describes all values of x that satisfy |x + 4| < 6?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "−10 < x < 2",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "−4 < x < 2",
-        "rationale": "The distance condition applies on both sides of −4."
-      },
-      {
-        "id": "C",
-        "text": "−2 < x < 10",
-        "rationale": "The interval is centered at −4."
-      },
-      {
-        "id": "D",
-        "text": "x < −10 or x > 2",
-        "rationale": "That is the solution of |x − a| > c, not < c."
-      },
-      {
-        "id": "E",
-        "text": "x < 2",
-        "rationale": "The inequality also bounds x from below."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "|x − a| < c means a − c < x < a + c: −10 < x < 2.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "algebra",
-      "absolute-value",
-      "inequality",
-      "family:ab_inequality"
-    ],
-    "answer_verification": "-10 < x < 2"
-  },
-  {
-    "question_id": "act-math-absolute-value-easy-b0014",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "absolute_value",
-    "lesson_id": "act-math-absolute-value-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "solve_equations",
-    "prompt": "If |x − 14| = 11, what is the greatest possible value of x?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "154",
-        "rationale": "Do not multiply; solve the two linear cases."
-      },
-      {
-        "id": "B",
-        "text": "26",
-        "rationale": "Arithmetic slip."
-      },
-      {
-        "id": "C",
-        "text": "25",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
         "text": "-3",
-        "rationale": "Recheck the signs in the two cases."
-      },
-      {
-        "id": "E",
-        "text": "3",
-        "rationale": "This is the lesser solution."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "x − 14 = 11 or x − 14 = −11, so x = 25 or x = 3. The greatest is 25.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "algebra",
-      "absolute-value",
-      "family:ab_solve"
-    ],
-    "answer_verification": "|x-14|=11"
-  },
-  {
-    "question_id": "act-math-absolute-value-easy-b0015",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "absolute_value",
-    "lesson_id": "act-math-absolute-value-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "solve_equations",
-    "prompt": "If |x − 10| = 3, what is the greatest possible value of x?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "7",
-        "rationale": "This is the lesser solution."
+        "rationale": "Distance is never negative; take the absolute value."
       },
       {
         "id": "B",
-        "text": "30",
-        "rationale": "Do not multiply; solve the two linear cases."
-      },
-      {
-        "id": "C",
-        "text": "-7",
-        "rationale": "Recheck the signs in the two cases."
-      },
-      {
-        "id": "D",
-        "text": "14",
-        "rationale": "Arithmetic slip."
-      },
-      {
-        "id": "E",
-        "text": "13",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "E",
-    "explanation": "x − 10 = 3 or x − 10 = −3, so x = 13 or x = 7. The greatest is 13.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "algebra",
-      "absolute-value",
-      "family:ab_solve"
-    ],
-    "answer_verification": "|x-10|=3"
-  },
-  {
-    "question_id": "act-math-absolute-value-easy-b0016",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "absolute_value",
-    "lesson_id": "act-math-absolute-value-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "solve_equations",
-    "prompt": "If |x − 13| = 18, what is the least possible value of x?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-5",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "31",
-        "rationale": "This is the greater solution."
-      },
-      {
-        "id": "C",
-        "text": "-6",
-        "rationale": "Arithmetic slip."
-      },
-      {
-        "id": "D",
-        "text": "-31",
-        "rationale": "Check the sign of the solution."
-      },
-      {
-        "id": "E",
-        "text": "5",
-        "rationale": "Recheck the second case: x − a = −c."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "The two solutions are x = 31 and x = −5; the least is −5.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "algebra",
-      "absolute-value",
-      "family:ab_solve"
-    ],
-    "answer_verification": "|x-13|=18"
-  },
-  {
-    "question_id": "act-math-absolute-value-easy-b0017",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "absolute_value",
-    "lesson_id": "act-math-absolute-value-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "solve_equations",
-    "prompt": "What is the larger solution to the equation |x − 5| = 15?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "21",
-        "rationale": "Arithmetic slip."
-      },
-      {
-        "id": "B",
-        "text": "20",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "75",
-        "rationale": "Do not multiply; solve the two linear cases."
-      },
-      {
-        "id": "D",
-        "text": "10",
-        "rationale": "Recheck the signs in the two cases."
-      },
-      {
-        "id": "E",
-        "text": "-10",
-        "rationale": "This is the lesser solution."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "x − 5 = 15 or x − 5 = −15, so x = 20 or x = −10. The greatest is 20.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "algebra",
-      "absolute-value",
-      "family:ab_solve"
-    ],
-    "answer_verification": "|x-5|=15"
-  },
-  {
-    "question_id": "act-math-absolute-value-easy-b0018",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "absolute_value",
-    "lesson_id": "act-math-absolute-value-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "solve_equations",
-    "prompt": "If |x − 22| = 15, what is the least possible value of x?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-7",
-        "rationale": "Recheck the second case: x − a = −c."
-      },
-      {
-        "id": "B",
-        "text": "-37",
-        "rationale": "Check the sign of the solution."
-      },
-      {
-        "id": "C",
-        "text": "7",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "37",
-        "rationale": "This is the greater solution."
-      },
-      {
-        "id": "E",
-        "text": "6",
-        "rationale": "Arithmetic slip."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "The two solutions are x = 37 and x = 7; the least is 7.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "algebra",
-      "absolute-value",
-      "family:ab_solve"
-    ],
-    "answer_verification": "|x-22|=15"
-  },
-  {
-    "question_id": "act-math-absolute-value-easy-b0019",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "absolute_value",
-    "lesson_id": "act-math-absolute-value-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "solve_equations",
-    "prompt": "The temperature changed from −20° to −22°. By how many degrees did it change (as a positive number)?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "42",
-        "rationale": "Subtract the coordinates; don't add them."
-      },
-      {
-        "id": "B",
-        "text": "3",
+        "text": "4",
         "rationale": "Arithmetic slip."
       },
       {
         "id": "C",
         "text": "2",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "1",
         "rationale": "This comes from a small arithmetic slip; recompute carefully."
       },
       {
+        "id": "D",
+        "text": "3",
+        "rationale": "Correct."
+      },
+      {
         "id": "E",
-        "text": "-2",
-        "rationale": "Distance is never negative; take the absolute value."
+        "text": "13",
+        "rationale": "Subtract the coordinates; don't add them."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Distance = |−20 − (−22)| = |2| = 2.",
+    "correct_choice": "D",
+    "explanation": "Distance = |−8 − (−5)| = |−3| = 3.",
     "estimated_time_seconds": 65,
     "tags": [
       "algebra",
@@ -958,10 +251,10 @@
       "distance",
       "family:ab_distance_form"
     ],
-    "answer_verification": "|-20--22|=2"
+    "answer_verification": "|-8--5|=3"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0020",
+    "question_id": "act-math-absolute-value-easy-b0006",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -972,290 +265,36 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "solve_equations",
-    "prompt": "A machine part must have a length within 5 millimeters of 56 millimeters. What is the range of acceptable values, in millimeters, from least to greatest?",
+    "prompt": "The function f is defined by f(x) = |x + 5| + 11. What is the minimum value of f(x)?",
     "choices": [
       {
         "id": "A",
-        "text": "5 to 56",
-        "rationale": "The tolerance is a distance from 56, not a bound."
-      },
-      {
-        "id": "B",
-        "text": "46 to 66",
-        "rationale": "The tolerance is 5 on each side."
-      },
-      {
-        "id": "C",
-        "text": "51 to 61",
+        "text": "11",
         "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "51 to 56",
-        "rationale": "Values above 56 up to 61 are acceptable too."
-      },
-      {
-        "id": "E",
-        "text": "56 to 61",
-        "rationale": "Values below 56 are also acceptable, down to 51."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "Within 5 of 56 means from 56 − 5 = 51 to 56 + 5 = 61.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "algebra",
-      "absolute-value",
-      "model",
-      "family:ab_model"
-    ],
-    "answer_verification": "51 to 61"
-  },
-  {
-    "question_id": "act-math-absolute-value-easy-b0021",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "absolute_value",
-    "lesson_id": "act-math-absolute-value-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "solve_equations",
-    "prompt": "A bottling line fills bottles to within 6 milliliters of 56 milliliters. What is the range of acceptable values, in milliliters, from least to greatest?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "44 to 68",
-        "rationale": "The tolerance is 6 on each side."
-      },
-      {
-        "id": "B",
-        "text": "50 to 62",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "50 to 56",
-        "rationale": "Values above 56 up to 62 are acceptable too."
-      },
-      {
-        "id": "D",
-        "text": "6 to 56",
-        "rationale": "The tolerance is a distance from 56, not a bound."
-      },
-      {
-        "id": "E",
-        "text": "56 to 62",
-        "rationale": "Values below 56 are also acceptable, down to 50."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Within 6 of 56 means from 56 − 6 = 50 to 56 + 6 = 62.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "algebra",
-      "absolute-value",
-      "model",
-      "family:ab_model"
-    ],
-    "answer_verification": "50 to 62"
-  },
-  {
-    "question_id": "act-math-absolute-value-easy-b0022",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "absolute_value",
-    "lesson_id": "act-math-absolute-value-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "solve_equations",
-    "prompt": "Which of the following describes all values of x that satisfy |x − 10| < 8?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "2 < x < 18",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "10 < x < 18",
-        "rationale": "The distance condition applies on both sides of 10."
-      },
-      {
-        "id": "C",
-        "text": "x < 18",
-        "rationale": "The inequality also bounds x from below."
-      },
-      {
-        "id": "D",
-        "text": "x < 2 or x > 18",
-        "rationale": "That is the solution of |x − a| > c, not < c."
-      },
-      {
-        "id": "E",
-        "text": "−18 < x < −2",
-        "rationale": "The interval is centered at 10."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "|x − a| < c means a − c < x < a + c: 2 < x < 18.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "algebra",
-      "absolute-value",
-      "inequality",
-      "family:ab_inequality"
-    ],
-    "answer_verification": "2 < x < 18"
-  },
-  {
-    "question_id": "act-math-absolute-value-easy-b0023",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "absolute_value",
-    "lesson_id": "act-math-absolute-value-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "solve_equations",
-    "prompt": "If |x − 8| = 1, what is the sum of all possible values of x?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "8",
-        "rationale": "That is the center; the sum is twice it."
-      },
-      {
-        "id": "B",
-        "text": "16",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "9",
-        "rationale": "This is only one solution, not the sum."
-      },
-      {
-        "id": "D",
-        "text": "2",
-        "rationale": "The solutions are symmetric about 8, not about 1."
-      },
-      {
-        "id": "E",
-        "text": "14",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "The solutions x = 9 and x = 7 sum to 16.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "algebra",
-      "absolute-value",
-      "family:ab_solve"
-    ],
-    "answer_verification": "|x-8|=1"
-  },
-  {
-    "question_id": "act-math-absolute-value-easy-b0024",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "absolute_value",
-    "lesson_id": "act-math-absolute-value-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "solve_equations",
-    "prompt": "What is the value of |−6 − −18|?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-12",
-        "rationale": "Absolute value is never negative."
       },
       {
         "id": "B",
         "text": "12",
-        "rationale": "Correct."
+        "rationale": "The minimum can be negative."
       },
       {
         "id": "C",
-        "text": "13",
-        "rationale": "Arithmetic slip."
-      },
-      {
-        "id": "D",
-        "text": "24",
-        "rationale": "Subtract first, then take the absolute value."
-      },
-      {
-        "id": "E",
-        "text": "15",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "|−6 − −18| = |12| = 12.",
-    "estimated_time_seconds": 70,
-    "tags": [
-      "algebra",
-      "absolute-value",
-      "evaluate",
-      "family:ab_evaluate"
-    ],
-    "answer_verification": "val=12"
-  },
-  {
-    "question_id": "act-math-absolute-value-easy-b0025",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "absolute_value",
-    "lesson_id": "act-math-absolute-value-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "solve_equations",
-    "prompt": "The function f is defined by f(x) = |x + 10| + 12. What is the minimum value of f(x)?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-12",
+        "text": "-11",
         "rationale": "The constant keeps its sign."
       },
       {
-        "id": "B",
-        "text": "-10",
-        "rationale": "That is the x-value where the minimum occurs."
-      },
-      {
-        "id": "C",
-        "text": "10",
+        "id": "D",
+        "text": "5",
         "rationale": "x − h = 0 when x = h."
       },
       {
-        "id": "D",
-        "text": "12",
-        "rationale": "Correct."
-      },
-      {
         "id": "E",
-        "text": "13",
-        "rationale": "The minimum can be negative."
+        "text": "-5",
+        "rationale": "That is the x-value where the minimum occurs."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "|x + 10| is at least 0, with equality at x = −10; so the minimum is 12.",
+    "correct_choice": "A",
+    "explanation": "|x + 5| is at least 0, with equality at x = −5; so the minimum is 11.",
     "estimated_time_seconds": 80,
     "tags": [
       "algebra",
@@ -1263,10 +302,10 @@
       "graph",
       "family:ab_vertex"
     ],
-    "answer_verification": "h=-10,k=12"
+    "answer_verification": "h=-5,k=11"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0026",
+    "question_id": "act-math-absolute-value-easy-b0007",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1277,189 +316,36 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "solve_equations",
-    "prompt": "What is the value of |−2 − −13|?",
+    "prompt": "Which of the following describes all values of x that satisfy |x − 13| < 3?",
     "choices": [
       {
         "id": "A",
-        "text": "11",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "12",
-        "rationale": "Arithmetic slip."
-      },
-      {
-        "id": "C",
-        "text": "10",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "D",
-        "text": "15",
-        "rationale": "Subtract first, then take the absolute value."
-      },
-      {
-        "id": "E",
-        "text": "-11",
-        "rationale": "Absolute value is never negative."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "|−2 − −13| = |11| = 11.",
-    "estimated_time_seconds": 70,
-    "tags": [
-      "algebra",
-      "absolute-value",
-      "evaluate",
-      "family:ab_evaluate"
-    ],
-    "answer_verification": "val=11"
-  },
-  {
-    "question_id": "act-math-absolute-value-easy-b0027",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "absolute_value",
-    "lesson_id": "act-math-absolute-value-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "solve_equations",
-    "prompt": "Which of the following describes all values of x that satisfy |x − 3| < 3?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "3 < x < 6",
-        "rationale": "The distance condition applies on both sides of 3."
-      },
-      {
-        "id": "B",
-        "text": "−6 < x < 0",
-        "rationale": "The interval is centered at 3."
-      },
-      {
-        "id": "C",
-        "text": "0 < x < 6",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "x < 0 or x > 6",
+        "text": "x < 10 or x > 16",
         "rationale": "That is the solution of |x − a| > c, not < c."
       },
       {
-        "id": "E",
-        "text": "x < 6",
-        "rationale": "The inequality also bounds x from below."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "|x − a| < c means a − c < x < a + c: 0 < x < 6.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "algebra",
-      "absolute-value",
-      "inequality",
-      "family:ab_inequality"
-    ],
-    "answer_verification": "0 < x < 6"
-  },
-  {
-    "question_id": "act-math-absolute-value-easy-b0028",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "absolute_value",
-    "lesson_id": "act-math-absolute-value-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "solve_equations",
-    "prompt": "What is the value of |12|?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-12",
-        "rationale": "Absolute value is never negative."
-      },
-      {
         "id": "B",
-        "text": "12",
+        "text": "10 < x < 16",
         "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "20",
-        "rationale": "|a − b| is not |a| − |b|."
+        "text": "−16 < x < −10",
+        "rationale": "The interval is centered at 13."
       },
       {
         "id": "D",
-        "text": "10",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "x < 16",
+        "rationale": "The inequality also bounds x from below."
       },
       {
         "id": "E",
-        "text": "13",
-        "rationale": "Arithmetic slip."
+        "text": "13 < x < 16",
+        "rationale": "The distance condition applies on both sides of 13."
       }
     ],
     "correct_choice": "B",
-    "explanation": "The absolute value of 12 is its distance from 0: 12.",
-    "estimated_time_seconds": 70,
-    "tags": [
-      "algebra",
-      "absolute-value",
-      "evaluate",
-      "family:ab_evaluate"
-    ],
-    "answer_verification": "val=12"
-  },
-  {
-    "question_id": "act-math-absolute-value-easy-b0029",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "absolute_value",
-    "lesson_id": "act-math-absolute-value-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "solve_equations",
-    "prompt": "Which of the following describes all values of x that satisfy |x + 2| < 6?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "−2 < x < 4",
-        "rationale": "The distance condition applies on both sides of −2."
-      },
-      {
-        "id": "B",
-        "text": "−8 < x < 4",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "x < 4",
-        "rationale": "The inequality also bounds x from below."
-      },
-      {
-        "id": "D",
-        "text": "x < −8 or x > 4",
-        "rationale": "That is the solution of |x − a| > c, not < c."
-      },
-      {
-        "id": "E",
-        "text": "−4 < x < 8",
-        "rationale": "The interval is centered at −2."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "|x − a| < c means a − c < x < a + c: −8 < x < 4.",
+    "explanation": "|x − a| < c means a − c < x < a + c: 10 < x < 16.",
     "estimated_time_seconds": 80,
     "tags": [
       "algebra",
@@ -1467,10 +353,10 @@
       "inequality",
       "family:ab_inequality"
     ],
-    "answer_verification": "-8 < x < 4"
+    "answer_verification": "10 < x < 16"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0030",
+    "question_id": "act-math-absolute-value-easy-b0008",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1481,504 +367,47 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "solve_equations",
-    "prompt": "The temperature changed from −26° to −8°. By how many degrees did it change (as a positive number)?",
+    "prompt": "The function f is defined by f(x) = |x − 4| + 14. What is the minimum value of f(x)?",
     "choices": [
       {
         "id": "A",
-        "text": "18",
-        "rationale": "Correct."
+        "text": "-4",
+        "rationale": "x − h = 0 when x = h."
       },
       {
         "id": "B",
-        "text": "-18",
-        "rationale": "Distance is never negative; take the absolute value."
-      },
-      {
-        "id": "C",
-        "text": "19",
-        "rationale": "Arithmetic slip."
-      },
-      {
-        "id": "D",
-        "text": "21",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "E",
-        "text": "34",
-        "rationale": "Subtract the coordinates; don't add them."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "Distance = |−26 − (−8)| = |−18| = 18.",
-    "estimated_time_seconds": 65,
-    "tags": [
-      "algebra",
-      "absolute-value",
-      "distance",
-      "family:ab_distance_form"
-    ],
-    "answer_verification": "|-26--8|=18"
-  },
-  {
-    "question_id": "act-math-absolute-value-easy-b0031",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "absolute_value",
-    "lesson_id": "act-math-absolute-value-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "solve_equations",
-    "prompt": "If |x − 8| = 19, what is the sum of all possible values of x?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "27",
-        "rationale": "This is only one solution, not the sum."
-      },
-      {
-        "id": "B",
-        "text": "22",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "C",
-        "text": "38",
-        "rationale": "The solutions are symmetric about 8, not about 19."
-      },
-      {
-        "id": "D",
-        "text": "16",
-        "rationale": "Correct."
-      },
-      {
-        "id": "E",
-        "text": "8",
-        "rationale": "That is the center; the sum is twice it."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "The solutions x = 27 and x = −11 sum to 16.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "algebra",
-      "absolute-value",
-      "family:ab_solve"
-    ],
-    "answer_verification": "|x-8|=19"
-  },
-  {
-    "question_id": "act-math-absolute-value-easy-b0032",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "absolute_value",
-    "lesson_id": "act-math-absolute-value-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "solve_equations",
-    "prompt": "Which of the following describes all values of x that satisfy |x − 2| < 1?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "2 < x < 3",
-        "rationale": "The distance condition applies on both sides of 2."
-      },
-      {
-        "id": "B",
-        "text": "−3 < x < −1",
-        "rationale": "The interval is centered at 2."
-      },
-      {
-        "id": "C",
-        "text": "1 < x < 3",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "x < 1 or x > 3",
-        "rationale": "That is the solution of |x − a| > c, not < c."
-      },
-      {
-        "id": "E",
-        "text": "x < 3",
-        "rationale": "The inequality also bounds x from below."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "|x − a| < c means a − c < x < a + c: 1 < x < 3.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "algebra",
-      "absolute-value",
-      "inequality",
-      "family:ab_inequality"
-    ],
-    "answer_verification": "1 < x < 3"
-  },
-  {
-    "question_id": "act-math-absolute-value-easy-b0033",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "absolute_value",
-    "lesson_id": "act-math-absolute-value-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "solve_equations",
-    "prompt": "What is the value of |−8 − −10|?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-2",
-        "rationale": "Absolute value is never negative."
-      },
-      {
-        "id": "B",
-        "text": "2",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "18",
-        "rationale": "Subtract first, then take the absolute value."
-      },
-      {
-        "id": "D",
-        "text": "3",
-        "rationale": "Arithmetic slip."
-      },
-      {
-        "id": "E",
-        "text": "6",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "|−8 − −10| = |2| = 2.",
-    "estimated_time_seconds": 70,
-    "tags": [
-      "algebra",
-      "absolute-value",
-      "evaluate",
-      "family:ab_evaluate"
-    ],
-    "answer_verification": "val=2"
-  },
-  {
-    "question_id": "act-math-absolute-value-easy-b0034",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "absolute_value",
-    "lesson_id": "act-math-absolute-value-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "solve_equations",
-    "prompt": "Which of the following describes all values of x that satisfy |x + 6| < 7?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "−13 < x < 1",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "−6 < x < 1",
-        "rationale": "The distance condition applies on both sides of −6."
-      },
-      {
-        "id": "C",
-        "text": "−1 < x < 13",
-        "rationale": "The interval is centered at −6."
-      },
-      {
-        "id": "D",
-        "text": "x < −13 or x > 1",
-        "rationale": "That is the solution of |x − a| > c, not < c."
-      },
-      {
-        "id": "E",
-        "text": "x < 1",
-        "rationale": "The inequality also bounds x from below."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "|x − a| < c means a − c < x < a + c: −13 < x < 1.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "algebra",
-      "absolute-value",
-      "inequality",
-      "family:ab_inequality"
-    ],
-    "answer_verification": "-13 < x < 1"
-  },
-  {
-    "question_id": "act-math-absolute-value-easy-b0035",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "absolute_value",
-    "lesson_id": "act-math-absolute-value-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "solve_equations",
-    "prompt": "Which of the following describes all values of x that satisfy |x + 7| < 8?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "−15 < x < 1",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "−7 < x < 1",
-        "rationale": "The distance condition applies on both sides of −7."
-      },
-      {
-        "id": "C",
-        "text": "x < −15 or x > 1",
-        "rationale": "That is the solution of |x − a| > c, not < c."
-      },
-      {
-        "id": "D",
-        "text": "x < 1",
-        "rationale": "The inequality also bounds x from below."
-      },
-      {
-        "id": "E",
-        "text": "−1 < x < 15",
-        "rationale": "The interval is centered at −7."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "|x − a| < c means a − c < x < a + c: −15 < x < 1.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "algebra",
-      "absolute-value",
-      "inequality",
-      "family:ab_inequality"
-    ],
-    "answer_verification": "-15 < x < 1"
-  },
-  {
-    "question_id": "act-math-absolute-value-easy-b0036",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "absolute_value",
-    "lesson_id": "act-math-absolute-value-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "solve_equations",
-    "prompt": "If |x − 6| = 5, what is the least possible value of x?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "1",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "11",
-        "rationale": "This is the greater solution."
-      },
-      {
-        "id": "C",
-        "text": "-11",
-        "rationale": "Check the sign of the solution."
-      },
-      {
-        "id": "D",
-        "text": "0",
-        "rationale": "Arithmetic slip."
-      },
-      {
-        "id": "E",
-        "text": "-1",
-        "rationale": "Recheck the second case: x − a = −c."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "The two solutions are x = 11 and x = 1; the least is 1.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "algebra",
-      "absolute-value",
-      "family:ab_solve"
-    ],
-    "answer_verification": "|x-6|=5"
-  },
-  {
-    "question_id": "act-math-absolute-value-easy-b0037",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "absolute_value",
-    "lesson_id": "act-math-absolute-value-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "solve_equations",
-    "prompt": "A bottling line fills bottles to within 6 milliliters of 46 milliliters. What is the range of acceptable values, in milliliters, from least to greatest?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "46 to 52",
-        "rationale": "Values below 46 are also acceptable, down to 40."
-      },
-      {
-        "id": "B",
-        "text": "6 to 46",
-        "rationale": "The tolerance is a distance from 46, not a bound."
-      },
-      {
-        "id": "C",
-        "text": "34 to 58",
-        "rationale": "The tolerance is 6 on each side."
-      },
-      {
-        "id": "D",
-        "text": "40 to 46",
-        "rationale": "Values above 46 up to 52 are acceptable too."
-      },
-      {
-        "id": "E",
-        "text": "40 to 52",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "E",
-    "explanation": "Within 6 of 46 means from 46 − 6 = 40 to 46 + 6 = 52.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "algebra",
-      "absolute-value",
-      "model",
-      "family:ab_model"
-    ],
-    "answer_verification": "40 to 52"
-  },
-  {
-    "question_id": "act-math-absolute-value-easy-b0038",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "absolute_value",
-    "lesson_id": "act-math-absolute-value-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "solve_equations",
-    "prompt": "What is the value of |11|?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "12",
-        "rationale": "Arithmetic slip."
-      },
-      {
-        "id": "B",
-        "text": "11",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
         "text": "14",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "D",
-        "text": "-11",
-        "rationale": "Absolute value is never negative."
-      },
-      {
-        "id": "E",
-        "text": "21",
-        "rationale": "|a − b| is not |a| − |b|."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "The absolute value of 11 is its distance from 0: 11.",
-    "estimated_time_seconds": 70,
-    "tags": [
-      "algebra",
-      "absolute-value",
-      "evaluate",
-      "family:ab_evaluate"
-    ],
-    "answer_verification": "val=11"
-  },
-  {
-    "question_id": "act-math-absolute-value-easy-b0039",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "absolute_value",
-    "lesson_id": "act-math-absolute-value-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "solve_equations",
-    "prompt": "A bakery's loaves are acceptable if their weight is within 8 grams of 88 grams. What is the range of acceptable values, in grams, from least to greatest?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "8 to 88",
-        "rationale": "The tolerance is a distance from 88, not a bound."
-      },
-      {
-        "id": "B",
-        "text": "80 to 96",
         "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "80 to 88",
-        "rationale": "Values above 88 up to 96 are acceptable too."
+        "text": "15",
+        "rationale": "The minimum can be negative."
       },
       {
         "id": "D",
-        "text": "72 to 104",
-        "rationale": "The tolerance is 8 on each side."
+        "text": "-14",
+        "rationale": "The constant keeps its sign."
       },
       {
         "id": "E",
-        "text": "88 to 96",
-        "rationale": "Values below 88 are also acceptable, down to 80."
+        "text": "4",
+        "rationale": "That is the x-value where the minimum occurs."
       }
     ],
     "correct_choice": "B",
-    "explanation": "Within 8 of 88 means from 88 − 8 = 80 to 88 + 8 = 96.",
-    "estimated_time_seconds": 75,
+    "explanation": "|x − 4| is at least 0, with equality at x = 4; so the minimum is 14.",
+    "estimated_time_seconds": 80,
     "tags": [
       "algebra",
       "absolute-value",
-      "model",
-      "family:ab_model"
+      "graph",
+      "family:ab_vertex"
     ],
-    "answer_verification": "80 to 96"
+    "answer_verification": "h=4,k=14"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0040",
+    "question_id": "act-math-absolute-value-easy-b0009",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2028,7 +457,7 @@
     "answer_verification": "|x-1|=23"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0041",
+    "question_id": "act-math-absolute-value-easy-b0010",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2079,7 +508,7 @@
     "answer_verification": "|-2--16|=14"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0042",
+    "question_id": "act-math-absolute-value-easy-b0011",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2130,7 +559,7 @@
     "answer_verification": "h=-4,k=-4"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0043",
+    "question_id": "act-math-absolute-value-easy-b0012",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2180,7 +609,7 @@
     "answer_verification": "|x-5|=23"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0044",
+    "question_id": "act-math-absolute-value-easy-b0013",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2231,7 +660,7 @@
     "answer_verification": "51 to 65"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0045",
+    "question_id": "act-math-absolute-value-easy-b0014",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2282,7 +711,7 @@
     "answer_verification": "35 to 41"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0046",
+    "question_id": "act-math-absolute-value-easy-b0015",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2333,7 +762,7 @@
     "answer_verification": "h=8,k=12"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0047",
+    "question_id": "act-math-absolute-value-easy-b0016",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2384,7 +813,7 @@
     "answer_verification": "val=5"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0048",
+    "question_id": "act-math-absolute-value-easy-b0017",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2435,7 +864,7 @@
     "answer_verification": "7 < x < 21"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0049",
+    "question_id": "act-math-absolute-value-easy-b0018",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2486,7 +915,7 @@
     "answer_verification": "val=4"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0050",
+    "question_id": "act-math-absolute-value-easy-b0019",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2536,7 +965,7 @@
     "answer_verification": "|x-20|=5"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0051",
+    "question_id": "act-math-absolute-value-easy-b0020",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2587,7 +1016,7 @@
     "answer_verification": "9 < x < 21"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0052",
+    "question_id": "act-math-absolute-value-easy-b0021",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2638,7 +1067,7 @@
     "answer_verification": "21 to 31"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0053",
+    "question_id": "act-math-absolute-value-easy-b0022",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2689,7 +1118,7 @@
     "answer_verification": "15 to 31"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0054",
+    "question_id": "act-math-absolute-value-easy-b0023",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2739,7 +1168,7 @@
     "answer_verification": "|x-20|=24"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0055",
+    "question_id": "act-math-absolute-value-easy-b0024",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2790,7 +1219,7 @@
     "answer_verification": "h=-10,k=-11"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0056",
+    "question_id": "act-math-absolute-value-easy-b0025",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2841,7 +1270,7 @@
     "answer_verification": "h=6,k=-3"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0057",
+    "question_id": "act-math-absolute-value-easy-b0026",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2892,7 +1321,7 @@
     "answer_verification": "10 < x < 12"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0058",
+    "question_id": "act-math-absolute-value-easy-b0027",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2943,7 +1372,7 @@
     "answer_verification": "28 to 30"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0059",
+    "question_id": "act-math-absolute-value-easy-b0028",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2994,7 +1423,7 @@
     "answer_verification": "10 to 18"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0060",
+    "question_id": "act-math-absolute-value-easy-b0029",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3045,7 +1474,7 @@
     "answer_verification": "|10--1|=11"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0061",
+    "question_id": "act-math-absolute-value-easy-b0030",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3096,7 +1525,7 @@
     "answer_verification": "28 to 40"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0062",
+    "question_id": "act-math-absolute-value-easy-b0031",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3147,7 +1576,7 @@
     "answer_verification": "-6 < x < 6"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0063",
+    "question_id": "act-math-absolute-value-easy-b0032",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3198,7 +1627,7 @@
     "answer_verification": "val=9"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0064",
+    "question_id": "act-math-absolute-value-easy-b0033",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3249,7 +1678,7 @@
     "answer_verification": "h=9,k=-14"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0065",
+    "question_id": "act-math-absolute-value-easy-b0034",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3300,7 +1729,7 @@
     "answer_verification": "-15 < x < 3"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0066",
+    "question_id": "act-math-absolute-value-easy-b0035",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3351,7 +1780,7 @@
     "answer_verification": "-7 < x < 3"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0067",
+    "question_id": "act-math-absolute-value-easy-b0036",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3402,7 +1831,7 @@
     "answer_verification": "h=9,k=-3"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0068",
+    "question_id": "act-math-absolute-value-easy-b0037",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3453,7 +1882,7 @@
     "answer_verification": "val=25"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0069",
+    "question_id": "act-math-absolute-value-easy-b0038",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3504,7 +1933,7 @@
     "answer_verification": "-6 < x < 10"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0070",
+    "question_id": "act-math-absolute-value-easy-b0039",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3554,7 +1983,7 @@
     "answer_verification": "|x-6|=11"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0071",
+    "question_id": "act-math-absolute-value-easy-b0040",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3605,7 +2034,7 @@
     "answer_verification": "17 to 33"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0072",
+    "question_id": "act-math-absolute-value-easy-b0041",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3656,7 +2085,7 @@
     "answer_verification": "|-14-18|=32"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0073",
+    "question_id": "act-math-absolute-value-easy-b0042",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3706,7 +2135,7 @@
     "answer_verification": "|x-7|=11"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0074",
+    "question_id": "act-math-absolute-value-easy-b0043",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3757,7 +2186,7 @@
     "answer_verification": "|5--20|=25"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0075",
+    "question_id": "act-math-absolute-value-easy-b0044",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3807,7 +2236,7 @@
     "answer_verification": "|x-13|=13"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0076",
+    "question_id": "act-math-absolute-value-easy-b0045",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3858,7 +2287,7 @@
     "answer_verification": "-12 < x < 2"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0077",
+    "question_id": "act-math-absolute-value-easy-b0046",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3909,7 +2338,7 @@
     "answer_verification": "h=-8,k=6"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0078",
+    "question_id": "act-math-absolute-value-easy-b0047",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3959,7 +2388,7 @@
     "answer_verification": "|x-9|=16"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0079",
+    "question_id": "act-math-absolute-value-easy-b0048",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4009,7 +2438,7 @@
     "answer_verification": "|x-6|=17"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0080",
+    "question_id": "act-math-absolute-value-easy-b0049",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4060,7 +2489,7 @@
     "answer_verification": "h=9,k=-3"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0081",
+    "question_id": "act-math-absolute-value-easy-b0050",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4111,7 +2540,7 @@
     "answer_verification": "h=12,k=2"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0082",
+    "question_id": "act-math-absolute-value-easy-b0051",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4162,7 +2591,7 @@
     "answer_verification": "|30--8|=38"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0083",
+    "question_id": "act-math-absolute-value-easy-b0052",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4213,7 +2642,7 @@
     "answer_verification": "val=3"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0084",
+    "question_id": "act-math-absolute-value-easy-b0053",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4263,7 +2692,7 @@
     "answer_verification": "|x-12|=2"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0085",
+    "question_id": "act-math-absolute-value-easy-b0054",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4314,7 +2743,7 @@
     "answer_verification": "35 to 51"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0086",
+    "question_id": "act-math-absolute-value-easy-b0055",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4365,7 +2794,7 @@
     "answer_verification": "val=9"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0087",
+    "question_id": "act-math-absolute-value-easy-b0056",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4415,7 +2844,7 @@
     "answer_verification": "|x-7|=18"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0088",
+    "question_id": "act-math-absolute-value-easy-b0057",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4466,7 +2895,7 @@
     "answer_verification": "58 to 64"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0089",
+    "question_id": "act-math-absolute-value-easy-b0058",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4517,7 +2946,7 @@
     "answer_verification": "h=-1,k=-8"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0090",
+    "question_id": "act-math-absolute-value-easy-b0059",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4568,7 +2997,7 @@
     "answer_verification": "val=18"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0091",
+    "question_id": "act-math-absolute-value-easy-b0060",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4618,7 +3047,7 @@
     "answer_verification": "|x-20|=2"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0092",
+    "question_id": "act-math-absolute-value-easy-b0061",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4669,7 +3098,7 @@
     "answer_verification": "|3-18|=15"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0093",
+    "question_id": "act-math-absolute-value-easy-b0062",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4720,7 +3149,7 @@
     "answer_verification": "h=4,k=-4"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0094",
+    "question_id": "act-math-absolute-value-easy-b0063",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4771,7 +3200,7 @@
     "answer_verification": "47 to 63"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0095",
+    "question_id": "act-math-absolute-value-easy-b0064",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4822,7 +3251,7 @@
     "answer_verification": "val=2"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0096",
+    "question_id": "act-math-absolute-value-easy-b0065",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4872,7 +3301,7 @@
     "answer_verification": "|x-24|=13"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0097",
+    "question_id": "act-math-absolute-value-easy-b0066",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4923,7 +3352,7 @@
     "answer_verification": "h=-8,k=-14"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0098",
+    "question_id": "act-math-absolute-value-easy-b0067",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4974,7 +3403,7 @@
     "answer_verification": "-11 < x < -5"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0099",
+    "question_id": "act-math-absolute-value-easy-b0068",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5025,7 +3454,7 @@
     "answer_verification": "44 to 50"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0100",
+    "question_id": "act-math-absolute-value-easy-b0069",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5076,7 +3505,7 @@
     "answer_verification": "|28-15|=13"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0101",
+    "question_id": "act-math-absolute-value-easy-b0070",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5127,7 +3556,7 @@
     "answer_verification": "h=-4,k=-4"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0102",
+    "question_id": "act-math-absolute-value-easy-b0071",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5177,7 +3606,7 @@
     "answer_verification": "|x-1|=4"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0103",
+    "question_id": "act-math-absolute-value-easy-b0072",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5228,7 +3657,7 @@
     "answer_verification": "val=33"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0104",
+    "question_id": "act-math-absolute-value-easy-b0073",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5279,7 +3708,7 @@
     "answer_verification": "val=26"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0105",
+    "question_id": "act-math-absolute-value-easy-b0074",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5330,7 +3759,7 @@
     "answer_verification": "28 to 46"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0106",
+    "question_id": "act-math-absolute-value-easy-b0075",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5381,7 +3810,7 @@
     "answer_verification": "val=3"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0107",
+    "question_id": "act-math-absolute-value-easy-b0076",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5432,7 +3861,7 @@
     "answer_verification": "48 to 52"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0108",
+    "question_id": "act-math-absolute-value-easy-b0077",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5483,7 +3912,7 @@
     "answer_verification": "val=12"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0109",
+    "question_id": "act-math-absolute-value-easy-b0078",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5534,7 +3963,7 @@
     "answer_verification": "2 < x < 16"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0110",
+    "question_id": "act-math-absolute-value-easy-b0079",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5585,7 +4014,7 @@
     "answer_verification": "9 < x < 13"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0111",
+    "question_id": "act-math-absolute-value-easy-b0080",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5636,7 +4065,7 @@
     "answer_verification": "83 to 93"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0112",
+    "question_id": "act-math-absolute-value-easy-b0081",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5687,7 +4116,7 @@
     "answer_verification": "val=9"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0113",
+    "question_id": "act-math-absolute-value-easy-b0082",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5738,7 +4167,7 @@
     "answer_verification": "4 < x < 8"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0114",
+    "question_id": "act-math-absolute-value-easy-b0083",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5784,7 +4213,7 @@
     "answer_verification": "6 to 18"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0115",
+    "question_id": "act-math-absolute-value-easy-b0084",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5835,7 +4264,7 @@
     "answer_verification": "|20-0|=20"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0116",
+    "question_id": "act-math-absolute-value-easy-b0085",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5886,7 +4315,7 @@
     "answer_verification": "31 to 41"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0117",
+    "question_id": "act-math-absolute-value-easy-b0086",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5937,7 +4366,7 @@
     "answer_verification": "h=8,k=10"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0118",
+    "question_id": "act-math-absolute-value-easy-b0087",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5948,36 +4377,36 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "solve_equations",
-    "prompt": "Which of the following describes all values of x that satisfy |x − 7| < 6?",
+    "prompt": "Which of the following describes all values of x that satisfy |x + 6| < 7?",
     "choices": [
       {
         "id": "A",
-        "text": "x < 1 or x > 13",
+        "text": "x < −13 or x > 1",
         "rationale": "That is the solution of |x − a| > c, not < c."
       },
       {
         "id": "B",
-        "text": "1 < x < 13",
-        "rationale": "Correct."
+        "text": "−6 < x < 1",
+        "rationale": "The distance condition applies on both sides of −6."
       },
       {
         "id": "C",
-        "text": "−13 < x < −1",
-        "rationale": "The interval is centered at 7."
+        "text": "−13 < x < 1",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "x < 13",
-        "rationale": "The inequality also bounds x from below."
+        "text": "−1 < x < 13",
+        "rationale": "The interval is centered at −6."
       },
       {
         "id": "E",
-        "text": "7 < x < 13",
-        "rationale": "The distance condition applies on both sides of 7."
+        "text": "x < 1",
+        "rationale": "The inequality also bounds x from below."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "|x − a| < c means a − c < x < a + c: 1 < x < 13.",
+    "correct_choice": "C",
+    "explanation": "|x − a| < c means a − c < x < a + c: −13 < x < 1.",
     "estimated_time_seconds": 80,
     "tags": [
       "algebra",
@@ -5985,10 +4414,112 @@
       "inequality",
       "family:ab_inequality"
     ],
-    "answer_verification": "1 < x < 13"
+    "answer_verification": "-13 < x < 1"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0119",
+    "question_id": "act-math-absolute-value-easy-b0088",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "absolute_value",
+    "lesson_id": "act-math-absolute-value-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "solve_equations",
+    "prompt": "The function f is defined by f(x) = |x − 7| + 9. What is the minimum value of f(x)?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "10",
+        "rationale": "The minimum can be negative."
+      },
+      {
+        "id": "B",
+        "text": "7",
+        "rationale": "That is the x-value where the minimum occurs."
+      },
+      {
+        "id": "C",
+        "text": "-9",
+        "rationale": "The constant keeps its sign."
+      },
+      {
+        "id": "D",
+        "text": "-7",
+        "rationale": "x − h = 0 when x = h."
+      },
+      {
+        "id": "E",
+        "text": "9",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "E",
+    "explanation": "|x − 7| is at least 0, with equality at x = 7; so the minimum is 9.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "algebra",
+      "absolute-value",
+      "graph",
+      "family:ab_vertex"
+    ],
+    "answer_verification": "h=7,k=9"
+  },
+  {
+    "question_id": "act-math-absolute-value-easy-b0089",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "absolute_value",
+    "lesson_id": "act-math-absolute-value-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "solve_equations",
+    "prompt": "What is the value of |−27|?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "28",
+        "rationale": "Arithmetic slip."
+      },
+      {
+        "id": "B",
+        "text": "27",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "29",
+        "rationale": "Subtract first, then take the absolute value."
+      },
+      {
+        "id": "D",
+        "text": "-27",
+        "rationale": "Absolute value is never negative."
+      },
+      {
+        "id": "E",
+        "text": "7",
+        "rationale": "|a − b| is not |a| − |b|."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "The absolute value of −27 is its distance from 0: 27.",
+    "estimated_time_seconds": 70,
+    "tags": [
+      "algebra",
+      "absolute-value",
+      "evaluate",
+      "family:ab_evaluate"
+    ],
+    "answer_verification": "val=27"
+  },
+  {
+    "question_id": "act-math-absolute-value-easy-b0090",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6039,7 +4570,7 @@
     "answer_verification": "-10 < x < 8"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0120",
+    "question_id": "act-math-absolute-value-easy-b0091",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6089,7 +4620,7 @@
     "answer_verification": "|x-11|=21"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0121",
+    "question_id": "act-math-absolute-value-easy-b0092",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6140,7 +4671,7 @@
     "answer_verification": "val=3"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0122",
+    "question_id": "act-math-absolute-value-easy-b0093",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6191,7 +4722,7 @@
     "answer_verification": "val=1"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0123",
+    "question_id": "act-math-absolute-value-easy-b0094",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6242,7 +4773,7 @@
     "answer_verification": "val=1"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0124",
+    "question_id": "act-math-absolute-value-easy-b0095",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6293,7 +4824,7 @@
     "answer_verification": "|-7-12|=19"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0125",
+    "question_id": "act-math-absolute-value-easy-b0096",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6344,7 +4875,7 @@
     "answer_verification": "val=35"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0126",
+    "question_id": "act-math-absolute-value-easy-b0097",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6395,7 +4926,7 @@
     "answer_verification": "|-21--22|=1"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0127",
+    "question_id": "act-math-absolute-value-easy-b0098",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6445,7 +4976,7 @@
     "answer_verification": "|x-5|=25"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0128",
+    "question_id": "act-math-absolute-value-easy-b0099",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6495,7 +5026,7 @@
     "answer_verification": "|x-25|=5"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0129",
+    "question_id": "act-math-absolute-value-easy-b0100",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6546,7 +5077,7 @@
     "answer_verification": "|-16--3|=13"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0130",
+    "question_id": "act-math-absolute-value-easy-b0101",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6597,7 +5128,7 @@
     "answer_verification": "3 < x < 11"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0131",
+    "question_id": "act-math-absolute-value-easy-b0102",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6648,7 +5179,7 @@
     "answer_verification": "h=3,k=1"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0132",
+    "question_id": "act-math-absolute-value-easy-b0103",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6699,7 +5230,7 @@
     "answer_verification": "7 < x < 17"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0133",
+    "question_id": "act-math-absolute-value-easy-b0104",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6710,36 +5241,36 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "solve_equations",
-    "prompt": "The function f is defined by f(x) = |x + 12| + 11. What is the minimum value of f(x)?",
+    "prompt": "The function f is defined by f(x) = |x − 7| + 13. What is the minimum value of f(x)?",
     "choices": [
       {
         "id": "A",
-        "text": "10",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "14",
+        "rationale": "The minimum can be negative."
       },
       {
         "id": "B",
-        "text": "-12",
+        "text": "7",
         "rationale": "That is the x-value where the minimum occurs."
       },
       {
         "id": "C",
-        "text": "11",
-        "rationale": "Correct."
+        "text": "-13",
+        "rationale": "The constant keeps its sign."
       },
       {
         "id": "D",
-        "text": "12",
-        "rationale": "x − h = 0 when x = h."
+        "text": "13",
+        "rationale": "Correct."
       },
       {
         "id": "E",
-        "text": "-11",
-        "rationale": "The constant keeps its sign."
+        "text": "-7",
+        "rationale": "x − h = 0 when x = h."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "|x + 12| is at least 0, with equality at x = −12; so the minimum is 11.",
+    "correct_choice": "D",
+    "explanation": "|x − 7| is at least 0, with equality at x = 7; so the minimum is 13.",
     "estimated_time_seconds": 80,
     "tags": [
       "algebra",
@@ -6747,10 +5278,10 @@
       "graph",
       "family:ab_vertex"
     ],
-    "answer_verification": "h=-12,k=11"
+    "answer_verification": "h=7,k=13"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0134",
+    "question_id": "act-math-absolute-value-easy-b0105",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6761,22 +5292,72 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "solve_equations",
-    "prompt": "What is the larger solution to the equation |x − 25| = 5?",
+    "prompt": "If |x − 10| = 9, what is the sum of all possible values of x?",
     "choices": [
       {
         "id": "A",
-        "text": "125",
-        "rationale": "Do not multiply; solve the two linear cases."
+        "text": "18",
+        "rationale": "The solutions are symmetric about 10, not about 9."
       },
       {
         "id": "B",
-        "text": "-20",
-        "rationale": "Recheck the signs in the two cases."
+        "text": "30",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
       },
       {
         "id": "C",
+        "text": "19",
+        "rationale": "This is only one solution, not the sum."
+      },
+      {
+        "id": "D",
         "text": "20",
-        "rationale": "This is the lesser solution."
+        "rationale": "Correct."
+      },
+      {
+        "id": "E",
+        "text": "10",
+        "rationale": "That is the center; the sum is twice it."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "The solutions x = 19 and x = 1 sum to 20.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "algebra",
+      "absolute-value",
+      "family:ab_solve"
+    ],
+    "answer_verification": "|x-10|=9"
+  },
+  {
+    "question_id": "act-math-absolute-value-easy-b0106",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "absolute_value",
+    "lesson_id": "act-math-absolute-value-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "solve_equations",
+    "prompt": "What is the value of |−30|?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "32",
+        "rationale": "Subtract first, then take the absolute value."
+      },
+      {
+        "id": "B",
+        "text": "10",
+        "rationale": "|a − b| is not |a| − |b|."
+      },
+      {
+        "id": "C",
+        "text": "-30",
+        "rationale": "Absolute value is never negative."
       },
       {
         "id": "D",
@@ -6790,17 +5371,18 @@
       }
     ],
     "correct_choice": "D",
-    "explanation": "x − 25 = 5 or x − 25 = −5, so x = 30 or x = 20. The greatest is 30.",
-    "estimated_time_seconds": 80,
+    "explanation": "The absolute value of −30 is its distance from 0: 30.",
+    "estimated_time_seconds": 70,
     "tags": [
       "algebra",
       "absolute-value",
-      "family:ab_solve"
+      "evaluate",
+      "family:ab_evaluate"
     ],
-    "answer_verification": "|x-25|=5"
+    "answer_verification": "val=30"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0135",
+    "question_id": "act-math-absolute-value-easy-b0107",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6850,7 +5432,7 @@
     "answer_verification": "|x-5|=22"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0136",
+    "question_id": "act-math-absolute-value-easy-b0108",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6901,7 +5483,7 @@
     "answer_verification": "val=38"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0137",
+    "question_id": "act-math-absolute-value-easy-b0109",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6952,7 +5534,7 @@
     "answer_verification": "-3 < x < 9"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0138",
+    "question_id": "act-math-absolute-value-easy-b0110",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7003,7 +5585,7 @@
     "answer_verification": "val=6"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0139",
+    "question_id": "act-math-absolute-value-easy-b0111",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7054,7 +5636,7 @@
     "answer_verification": "62 to 80"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0140",
+    "question_id": "act-math-absolute-value-easy-b0112",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7104,7 +5686,7 @@
     "answer_verification": "|x-9|=22"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0141",
+    "question_id": "act-math-absolute-value-easy-b0113",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7154,7 +5736,7 @@
     "answer_verification": "|x-6|=5"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0142",
+    "question_id": "act-math-absolute-value-easy-b0114",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7205,7 +5787,7 @@
     "answer_verification": "|-3--9|=6"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0143",
+    "question_id": "act-math-absolute-value-easy-b0115",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7255,7 +5837,7 @@
     "answer_verification": "|x-16|=22"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0144",
+    "question_id": "act-math-absolute-value-easy-b0116",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7305,7 +5887,7 @@
     "answer_verification": "|x-16|=5"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0145",
+    "question_id": "act-math-absolute-value-easy-b0117",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7356,7 +5938,7 @@
     "answer_verification": "|17-24|=7"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0146",
+    "question_id": "act-math-absolute-value-easy-b0118",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7407,7 +5989,7 @@
     "answer_verification": "h=-3,k=6"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0147",
+    "question_id": "act-math-absolute-value-easy-b0119",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7457,7 +6039,7 @@
     "answer_verification": "|x-1|=8"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0148",
+    "question_id": "act-math-absolute-value-easy-b0120",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7507,7 +6089,7 @@
     "answer_verification": "|x-16|=12"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0149",
+    "question_id": "act-math-absolute-value-easy-b0121",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7557,7 +6139,7 @@
     "answer_verification": "|x-10|=15"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0150",
+    "question_id": "act-math-absolute-value-easy-b0122",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7608,7 +6190,7 @@
     "answer_verification": "38 to 44"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0151",
+    "question_id": "act-math-absolute-value-easy-b0123",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7659,7 +6241,7 @@
     "answer_verification": "h=-8,k=12"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0152",
+    "question_id": "act-math-absolute-value-easy-b0124",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7710,7 +6292,7 @@
     "answer_verification": "val=10"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0153",
+    "question_id": "act-math-absolute-value-easy-b0125",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7761,7 +6343,7 @@
     "answer_verification": "val=3"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0154",
+    "question_id": "act-math-absolute-value-easy-b0126",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7812,7 +6394,7 @@
     "answer_verification": "val=20"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0155",
+    "question_id": "act-math-absolute-value-easy-b0127",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7863,7 +6445,7 @@
     "answer_verification": "79 to 83"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0156",
+    "question_id": "act-math-absolute-value-easy-b0128",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7914,7 +6496,7 @@
     "answer_verification": "7 < x < 13"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0157",
+    "question_id": "act-math-absolute-value-easy-b0129",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7965,7 +6547,7 @@
     "answer_verification": "12 to 26"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0158",
+    "question_id": "act-math-absolute-value-easy-b0130",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8016,7 +6598,7 @@
     "answer_verification": "|-9-6|=15"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0159",
+    "question_id": "act-math-absolute-value-easy-b0131",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8067,7 +6649,7 @@
     "answer_verification": "3 < x < 13"
   },
   {
-    "question_id": "act-math-absolute-value-easy-b0160",
+    "question_id": "act-math-absolute-value-easy-b0132",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8116,5 +6698,1428 @@
       "family:ab_model"
     ],
     "answer_verification": "46 to 58"
+  },
+  {
+    "question_id": "act-math-absolute-value-easy-b0133",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "absolute_value",
+    "lesson_id": "act-math-absolute-value-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "solve_equations",
+    "prompt": "A bottling line fills bottles to within 6 milliliters of 14 milliliters. What is the range of acceptable values, in milliliters, from least to greatest?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "2 to 26",
+        "rationale": "The tolerance is 6 on each side."
+      },
+      {
+        "id": "B",
+        "text": "14 to 20",
+        "rationale": "Values below 14 are also acceptable, down to 8."
+      },
+      {
+        "id": "C",
+        "text": "6 to 14",
+        "rationale": "The tolerance is a distance from 14, not a bound."
+      },
+      {
+        "id": "D",
+        "text": "8 to 20",
+        "rationale": "Correct."
+      },
+      {
+        "id": "E",
+        "text": "8 to 14",
+        "rationale": "Values above 14 up to 20 are acceptable too."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Within 6 of 14 means from 14 − 6 = 8 to 14 + 6 = 20.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "algebra",
+      "absolute-value",
+      "model",
+      "family:ab_model"
+    ],
+    "answer_verification": "8 to 20"
+  },
+  {
+    "question_id": "act-math-absolute-value-easy-b0134",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "absolute_value",
+    "lesson_id": "act-math-absolute-value-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "solve_equations",
+    "prompt": "The function f is defined by f(x) = |x − 6| − 13. What is the minimum value of f(x)?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "6",
+        "rationale": "That is the x-value where the minimum occurs."
+      },
+      {
+        "id": "B",
+        "text": "13",
+        "rationale": "The constant keeps its sign."
+      },
+      {
+        "id": "C",
+        "text": "-12",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      },
+      {
+        "id": "D",
+        "text": "-6",
+        "rationale": "x − h = 0 when x = h."
+      },
+      {
+        "id": "E",
+        "text": "-13",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "E",
+    "explanation": "|x − 6| is at least 0, with equality at x = 6; so the minimum is −13.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "algebra",
+      "absolute-value",
+      "graph",
+      "family:ab_vertex"
+    ],
+    "answer_verification": "h=6,k=-13"
+  },
+  {
+    "question_id": "act-math-absolute-value-easy-b0135",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "absolute_value",
+    "lesson_id": "act-math-absolute-value-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "solve_equations",
+    "prompt": "The function f is defined by f(x) = |x − 3| + 2. What is the minimum value of f(x)?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-3",
+        "rationale": "x − h = 0 when x = h."
+      },
+      {
+        "id": "B",
+        "text": "3",
+        "rationale": "That is the x-value where the minimum occurs."
+      },
+      {
+        "id": "C",
+        "text": "-2",
+        "rationale": "The constant keeps its sign."
+      },
+      {
+        "id": "D",
+        "text": "7",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      },
+      {
+        "id": "E",
+        "text": "2",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "E",
+    "explanation": "|x − 3| is at least 0, with equality at x = 3; so the minimum is 2.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "algebra",
+      "absolute-value",
+      "graph",
+      "family:ab_vertex"
+    ],
+    "answer_verification": "h=3,k=2"
+  },
+  {
+    "question_id": "act-math-absolute-value-easy-b0136",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "absolute_value",
+    "lesson_id": "act-math-absolute-value-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "solve_equations",
+    "prompt": "Which of the following describes all values of x that satisfy |x − 10| < 7?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "3 < x < 17",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "x < 3 or x > 17",
+        "rationale": "That is the solution of |x − a| > c, not < c."
+      },
+      {
+        "id": "C",
+        "text": "10 < x < 17",
+        "rationale": "The distance condition applies on both sides of 10."
+      },
+      {
+        "id": "D",
+        "text": "−17 < x < −3",
+        "rationale": "The interval is centered at 10."
+      },
+      {
+        "id": "E",
+        "text": "x < 17",
+        "rationale": "The inequality also bounds x from below."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "|x − a| < c means a − c < x < a + c: 3 < x < 17.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "algebra",
+      "absolute-value",
+      "inequality",
+      "family:ab_inequality"
+    ],
+    "answer_verification": "3 < x < 17"
+  },
+  {
+    "question_id": "act-math-absolute-value-easy-b0137",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "absolute_value",
+    "lesson_id": "act-math-absolute-value-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "solve_equations",
+    "prompt": "If |x − 19| = 6, what is the least possible value of x?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-13",
+        "rationale": "Recheck the second case: x − a = −c."
+      },
+      {
+        "id": "B",
+        "text": "-25",
+        "rationale": "Check the sign of the solution."
+      },
+      {
+        "id": "C",
+        "text": "12",
+        "rationale": "Arithmetic slip."
+      },
+      {
+        "id": "D",
+        "text": "13",
+        "rationale": "Correct."
+      },
+      {
+        "id": "E",
+        "text": "25",
+        "rationale": "This is the greater solution."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "The two solutions are x = 25 and x = 13; the least is 13.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "algebra",
+      "absolute-value",
+      "family:ab_solve"
+    ],
+    "answer_verification": "|x-19|=6"
+  },
+  {
+    "question_id": "act-math-absolute-value-easy-b0138",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "absolute_value",
+    "lesson_id": "act-math-absolute-value-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "solve_equations",
+    "prompt": "What is the value of |7 − 5|?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "3",
+        "rationale": "Arithmetic slip."
+      },
+      {
+        "id": "B",
+        "text": "12",
+        "rationale": "|a − b| is not |a| − |b|."
+      },
+      {
+        "id": "C",
+        "text": "0",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      },
+      {
+        "id": "D",
+        "text": "2",
+        "rationale": "Correct."
+      },
+      {
+        "id": "E",
+        "text": "-2",
+        "rationale": "Absolute value is never negative."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "|7 − 5| = |2| = 2.",
+    "estimated_time_seconds": 70,
+    "tags": [
+      "algebra",
+      "absolute-value",
+      "evaluate",
+      "family:ab_evaluate"
+    ],
+    "answer_verification": "val=2"
+  },
+  {
+    "question_id": "act-math-absolute-value-easy-b0139",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "absolute_value",
+    "lesson_id": "act-math-absolute-value-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "solve_equations",
+    "prompt": "Which of the following describes all values of x that satisfy |x − 7| < 6?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "x < 13",
+        "rationale": "The inequality also bounds x from below."
+      },
+      {
+        "id": "B",
+        "text": "−13 < x < −1",
+        "rationale": "The interval is centered at 7."
+      },
+      {
+        "id": "C",
+        "text": "1 < x < 13",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "7 < x < 13",
+        "rationale": "The distance condition applies on both sides of 7."
+      },
+      {
+        "id": "E",
+        "text": "x < 1 or x > 13",
+        "rationale": "That is the solution of |x − a| > c, not < c."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "|x − a| < c means a − c < x < a + c: 1 < x < 13.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "algebra",
+      "absolute-value",
+      "inequality",
+      "family:ab_inequality"
+    ],
+    "answer_verification": "1 < x < 13"
+  },
+  {
+    "question_id": "act-math-absolute-value-easy-b0140",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "absolute_value",
+    "lesson_id": "act-math-absolute-value-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "solve_equations",
+    "prompt": "The function f is defined by f(x) = |x − 1| + 5. What is the minimum value of f(x)?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "5",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "1",
+        "rationale": "That is the x-value where the minimum occurs."
+      },
+      {
+        "id": "C",
+        "text": "-1",
+        "rationale": "x − h = 0 when x = h."
+      },
+      {
+        "id": "D",
+        "text": "-5",
+        "rationale": "The constant keeps its sign."
+      },
+      {
+        "id": "E",
+        "text": "6",
+        "rationale": "The minimum can be negative."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "|x − 1| is at least 0, with equality at x = 1; so the minimum is 5.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "algebra",
+      "absolute-value",
+      "graph",
+      "family:ab_vertex"
+    ],
+    "answer_verification": "h=1,k=5"
+  },
+  {
+    "question_id": "act-math-absolute-value-easy-b0141",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "absolute_value",
+    "lesson_id": "act-math-absolute-value-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "solve_equations",
+    "prompt": "The function f is defined by f(x) = |x + 9| + 12. What is the minimum value of f(x)?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-9",
+        "rationale": "That is the x-value where the minimum occurs."
+      },
+      {
+        "id": "B",
+        "text": "12",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "-12",
+        "rationale": "The constant keeps its sign."
+      },
+      {
+        "id": "D",
+        "text": "9",
+        "rationale": "x − h = 0 when x = h."
+      },
+      {
+        "id": "E",
+        "text": "13",
+        "rationale": "The minimum can be negative."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "|x + 9| is at least 0, with equality at x = −9; so the minimum is 12.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "algebra",
+      "absolute-value",
+      "graph",
+      "family:ab_vertex"
+    ],
+    "answer_verification": "h=-9,k=12"
+  },
+  {
+    "question_id": "act-math-absolute-value-easy-b0142",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "absolute_value",
+    "lesson_id": "act-math-absolute-value-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "solve_equations",
+    "prompt": "The function f is defined by f(x) = |x − 10| − 3. What is the minimum value of f(x)?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-3",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "-8",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      },
+      {
+        "id": "C",
+        "text": "10",
+        "rationale": "That is the x-value where the minimum occurs."
+      },
+      {
+        "id": "D",
+        "text": "-10",
+        "rationale": "x − h = 0 when x = h."
+      },
+      {
+        "id": "E",
+        "text": "3",
+        "rationale": "The constant keeps its sign."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "|x − 10| is at least 0, with equality at x = 10; so the minimum is −3.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "algebra",
+      "absolute-value",
+      "graph",
+      "family:ab_vertex"
+    ],
+    "answer_verification": "h=10,k=-3"
+  },
+  {
+    "question_id": "act-math-absolute-value-easy-b0143",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "absolute_value",
+    "lesson_id": "act-math-absolute-value-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "solve_equations",
+    "prompt": "What is the value of |−3|?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-3",
+        "rationale": "Absolute value is never negative."
+      },
+      {
+        "id": "B",
+        "text": "11",
+        "rationale": "|a − b| is not |a| − |b|."
+      },
+      {
+        "id": "C",
+        "text": "4",
+        "rationale": "Arithmetic slip."
+      },
+      {
+        "id": "D",
+        "text": "3",
+        "rationale": "Correct."
+      },
+      {
+        "id": "E",
+        "text": "9",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "The absolute value of −3 is its distance from 0: 3.",
+    "estimated_time_seconds": 70,
+    "tags": [
+      "algebra",
+      "absolute-value",
+      "evaluate",
+      "family:ab_evaluate"
+    ],
+    "answer_verification": "val=3"
+  },
+  {
+    "question_id": "act-math-absolute-value-easy-b0144",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "absolute_value",
+    "lesson_id": "act-math-absolute-value-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "solve_equations",
+    "prompt": "If |x − 5| = 7, what is the sum of all possible values of x?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "10",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "12",
+        "rationale": "This is only one solution, not the sum."
+      },
+      {
+        "id": "C",
+        "text": "14",
+        "rationale": "The solutions are symmetric about 5, not about 7."
+      },
+      {
+        "id": "D",
+        "text": "5",
+        "rationale": "That is the center; the sum is twice it."
+      },
+      {
+        "id": "E",
+        "text": "0",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "The solutions x = 12 and x = −2 sum to 10.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "algebra",
+      "absolute-value",
+      "family:ab_solve"
+    ],
+    "answer_verification": "|x-5|=7"
+  },
+  {
+    "question_id": "act-math-absolute-value-easy-b0145",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "absolute_value",
+    "lesson_id": "act-math-absolute-value-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "solve_equations",
+    "prompt": "The function f is defined by f(x) = |x + 3| − 2. What is the minimum value of f(x)?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "2",
+        "rationale": "The constant keeps its sign."
+      },
+      {
+        "id": "B",
+        "text": "-3",
+        "rationale": "That is the x-value where the minimum occurs."
+      },
+      {
+        "id": "C",
+        "text": "3",
+        "rationale": "x − h = 0 when x = h."
+      },
+      {
+        "id": "D",
+        "text": "-7",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      },
+      {
+        "id": "E",
+        "text": "-2",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "E",
+    "explanation": "|x + 3| is at least 0, with equality at x = −3; so the minimum is −2.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "algebra",
+      "absolute-value",
+      "graph",
+      "family:ab_vertex"
+    ],
+    "answer_verification": "h=-3,k=-2"
+  },
+  {
+    "question_id": "act-math-absolute-value-easy-b0146",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "absolute_value",
+    "lesson_id": "act-math-absolute-value-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "solve_equations",
+    "prompt": "A bakery's loaves are acceptable if their weight is within 8 grams of 49 grams. What is the range of acceptable values, in grams, from least to greatest?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "41 to 49",
+        "rationale": "Values above 49 up to 57 are acceptable too."
+      },
+      {
+        "id": "B",
+        "text": "49 to 57",
+        "rationale": "Values below 49 are also acceptable, down to 41."
+      },
+      {
+        "id": "C",
+        "text": "33 to 65",
+        "rationale": "The tolerance is 8 on each side."
+      },
+      {
+        "id": "D",
+        "text": "41 to 57",
+        "rationale": "Correct."
+      },
+      {
+        "id": "E",
+        "text": "8 to 49",
+        "rationale": "The tolerance is a distance from 49, not a bound."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Within 8 of 49 means from 49 − 8 = 41 to 49 + 8 = 57.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "algebra",
+      "absolute-value",
+      "model",
+      "family:ab_model"
+    ],
+    "answer_verification": "41 to 57"
+  },
+  {
+    "question_id": "act-math-absolute-value-easy-b0147",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "absolute_value",
+    "lesson_id": "act-math-absolute-value-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "solve_equations",
+    "prompt": "If |x − 7| = 11, what is the sum of all possible values of x?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "18",
+        "rationale": "This is only one solution, not the sum."
+      },
+      {
+        "id": "B",
+        "text": "14",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "22",
+        "rationale": "The solutions are symmetric about 7, not about 11."
+      },
+      {
+        "id": "D",
+        "text": "11",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      },
+      {
+        "id": "E",
+        "text": "7",
+        "rationale": "That is the center; the sum is twice it."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "The solutions x = 18 and x = −4 sum to 14.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "algebra",
+      "absolute-value",
+      "family:ab_solve"
+    ],
+    "answer_verification": "|x-7|=11"
+  },
+  {
+    "question_id": "act-math-absolute-value-easy-b0148",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "absolute_value",
+    "lesson_id": "act-math-absolute-value-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "solve_equations",
+    "prompt": "Which of the following describes all values of x that satisfy |x + 8| < 6?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "−8 < x < −2",
+        "rationale": "The distance condition applies on both sides of −8."
+      },
+      {
+        "id": "B",
+        "text": "x < −2",
+        "rationale": "The inequality also bounds x from below."
+      },
+      {
+        "id": "C",
+        "text": "−14 < x < −2",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "x < −14 or x > −2",
+        "rationale": "That is the solution of |x − a| > c, not < c."
+      },
+      {
+        "id": "E",
+        "text": "2 < x < 14",
+        "rationale": "The interval is centered at −8."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "|x − a| < c means a − c < x < a + c: −14 < x < −2.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "algebra",
+      "absolute-value",
+      "inequality",
+      "family:ab_inequality"
+    ],
+    "answer_verification": "-14 < x < -2"
+  },
+  {
+    "question_id": "act-math-absolute-value-easy-b0149",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "absolute_value",
+    "lesson_id": "act-math-absolute-value-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "solve_equations",
+    "prompt": "Which of the following describes all values of x that satisfy |x − 7| < 9?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "−2 < x < 16",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "x < 16",
+        "rationale": "The inequality also bounds x from below."
+      },
+      {
+        "id": "C",
+        "text": "7 < x < 16",
+        "rationale": "The distance condition applies on both sides of 7."
+      },
+      {
+        "id": "D",
+        "text": "−16 < x < 2",
+        "rationale": "The interval is centered at 7."
+      },
+      {
+        "id": "E",
+        "text": "x < −2 or x > 16",
+        "rationale": "That is the solution of |x − a| > c, not < c."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "|x − a| < c means a − c < x < a + c: −2 < x < 16.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "algebra",
+      "absolute-value",
+      "inequality",
+      "family:ab_inequality"
+    ],
+    "answer_verification": "-2 < x < 16"
+  },
+  {
+    "question_id": "act-math-absolute-value-easy-b0150",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "absolute_value",
+    "lesson_id": "act-math-absolute-value-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "solve_equations",
+    "prompt": "What is the larger solution to the equation |x − 20| = 21?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "41",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "42",
+        "rationale": "Arithmetic slip."
+      },
+      {
+        "id": "C",
+        "text": "1",
+        "rationale": "Recheck the signs in the two cases."
+      },
+      {
+        "id": "D",
+        "text": "420",
+        "rationale": "Do not multiply; solve the two linear cases."
+      },
+      {
+        "id": "E",
+        "text": "-1",
+        "rationale": "This is the lesser solution."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "x − 20 = 21 or x − 20 = −21, so x = 41 or x = −1. The greatest is 41.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "algebra",
+      "absolute-value",
+      "family:ab_solve"
+    ],
+    "answer_verification": "|x-20|=21"
+  },
+  {
+    "question_id": "act-math-absolute-value-easy-b0151",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "absolute_value",
+    "lesson_id": "act-math-absolute-value-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "solve_equations",
+    "prompt": "What is the value of |−11|?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "10",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      },
+      {
+        "id": "B",
+        "text": "12",
+        "rationale": "Arithmetic slip."
+      },
+      {
+        "id": "C",
+        "text": "11",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "-11",
+        "rationale": "Absolute value is never negative."
+      },
+      {
+        "id": "E",
+        "text": "13",
+        "rationale": "|a − b| is not |a| − |b|."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "The absolute value of −11 is its distance from 0: 11.",
+    "estimated_time_seconds": 70,
+    "tags": [
+      "algebra",
+      "absolute-value",
+      "evaluate",
+      "family:ab_evaluate"
+    ],
+    "answer_verification": "val=11"
+  },
+  {
+    "question_id": "act-math-absolute-value-easy-b0152",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "absolute_value",
+    "lesson_id": "act-math-absolute-value-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "solve_equations",
+    "prompt": "The temperature changed from 19° to 22°. By how many degrees did it change (as a positive number)?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "6",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      },
+      {
+        "id": "B",
+        "text": "3",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "4",
+        "rationale": "Arithmetic slip."
+      },
+      {
+        "id": "D",
+        "text": "-3",
+        "rationale": "Distance is never negative; take the absolute value."
+      },
+      {
+        "id": "E",
+        "text": "41",
+        "rationale": "Subtract the coordinates; don't add them."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Distance = |19 − (22)| = |−3| = 3.",
+    "estimated_time_seconds": 65,
+    "tags": [
+      "algebra",
+      "absolute-value",
+      "distance",
+      "family:ab_distance_form"
+    ],
+    "answer_verification": "|19-22|=3"
+  },
+  {
+    "question_id": "act-math-absolute-value-easy-b0153",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "absolute_value",
+    "lesson_id": "act-math-absolute-value-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "solve_equations",
+    "prompt": "What is the value of |5|?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-5",
+        "rationale": "Absolute value is never negative."
+      },
+      {
+        "id": "B",
+        "text": "6",
+        "rationale": "Arithmetic slip."
+      },
+      {
+        "id": "C",
+        "text": "4",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      },
+      {
+        "id": "D",
+        "text": "5",
+        "rationale": "Correct."
+      },
+      {
+        "id": "E",
+        "text": "15",
+        "rationale": "Subtract first, then take the absolute value."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "The absolute value of 5 is its distance from 0: 5.",
+    "estimated_time_seconds": 70,
+    "tags": [
+      "algebra",
+      "absolute-value",
+      "evaluate",
+      "family:ab_evaluate"
+    ],
+    "answer_verification": "val=5"
+  },
+  {
+    "question_id": "act-math-absolute-value-easy-b0154",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "absolute_value",
+    "lesson_id": "act-math-absolute-value-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "solve_equations",
+    "prompt": "If |x − 1| = 6, what is the greatest possible value of x?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-5",
+        "rationale": "This is the lesser solution."
+      },
+      {
+        "id": "B",
+        "text": "5",
+        "rationale": "Recheck the signs in the two cases."
+      },
+      {
+        "id": "C",
+        "text": "8",
+        "rationale": "Arithmetic slip."
+      },
+      {
+        "id": "D",
+        "text": "6",
+        "rationale": "Do not multiply; solve the two linear cases."
+      },
+      {
+        "id": "E",
+        "text": "7",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "E",
+    "explanation": "x − 1 = 6 or x − 1 = −6, so x = 7 or x = −5. The greatest is 7.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "algebra",
+      "absolute-value",
+      "family:ab_solve"
+    ],
+    "answer_verification": "|x-1|=6"
+  },
+  {
+    "question_id": "act-math-absolute-value-easy-b0155",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "absolute_value",
+    "lesson_id": "act-math-absolute-value-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "solve_equations",
+    "prompt": "The function f is defined by f(x) = |x − 12| + 3. What is the minimum value of f(x)?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "12",
+        "rationale": "That is the x-value where the minimum occurs."
+      },
+      {
+        "id": "B",
+        "text": "-3",
+        "rationale": "The constant keeps its sign."
+      },
+      {
+        "id": "C",
+        "text": "-12",
+        "rationale": "x − h = 0 when x = h."
+      },
+      {
+        "id": "D",
+        "text": "3",
+        "rationale": "Correct."
+      },
+      {
+        "id": "E",
+        "text": "4",
+        "rationale": "The minimum can be negative."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "|x − 12| is at least 0, with equality at x = 12; so the minimum is 3.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "algebra",
+      "absolute-value",
+      "graph",
+      "family:ab_vertex"
+    ],
+    "answer_verification": "h=12,k=3"
+  },
+  {
+    "question_id": "act-math-absolute-value-easy-b0156",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "absolute_value",
+    "lesson_id": "act-math-absolute-value-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "solve_equations",
+    "prompt": "A thermostat keeps the room temperature within 8 degrees of 34 degrees. What is the range of acceptable values, in degrees, from least to greatest?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "34 to 42",
+        "rationale": "Values below 34 are also acceptable, down to 26."
+      },
+      {
+        "id": "B",
+        "text": "18 to 50",
+        "rationale": "The tolerance is 8 on each side."
+      },
+      {
+        "id": "C",
+        "text": "26 to 42",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "8 to 34",
+        "rationale": "The tolerance is a distance from 34, not a bound."
+      },
+      {
+        "id": "E",
+        "text": "26 to 34",
+        "rationale": "Values above 34 up to 42 are acceptable too."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "Within 8 of 34 means from 34 − 8 = 26 to 34 + 8 = 42.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "algebra",
+      "absolute-value",
+      "model",
+      "family:ab_model"
+    ],
+    "answer_verification": "26 to 42"
+  },
+  {
+    "question_id": "act-math-absolute-value-easy-b0157",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "absolute_value",
+    "lesson_id": "act-math-absolute-value-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "solve_equations",
+    "prompt": "Which of the following describes all values of x that satisfy |x + 3| < 1?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "−4 < x < −2",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "2 < x < 4",
+        "rationale": "The interval is centered at −3."
+      },
+      {
+        "id": "C",
+        "text": "x < −2",
+        "rationale": "The inequality also bounds x from below."
+      },
+      {
+        "id": "D",
+        "text": "−3 < x < −2",
+        "rationale": "The distance condition applies on both sides of −3."
+      },
+      {
+        "id": "E",
+        "text": "x < −4 or x > −2",
+        "rationale": "That is the solution of |x − a| > c, not < c."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "|x − a| < c means a − c < x < a + c: −4 < x < −2.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "algebra",
+      "absolute-value",
+      "inequality",
+      "family:ab_inequality"
+    ],
+    "answer_verification": "-4 < x < -2"
+  },
+  {
+    "question_id": "act-math-absolute-value-easy-b0158",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "absolute_value",
+    "lesson_id": "act-math-absolute-value-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "solve_equations",
+    "prompt": "What is the value of |20|?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "22",
+        "rationale": "Subtract first, then take the absolute value."
+      },
+      {
+        "id": "B",
+        "text": "25",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      },
+      {
+        "id": "C",
+        "text": "-20",
+        "rationale": "Absolute value is never negative."
+      },
+      {
+        "id": "D",
+        "text": "21",
+        "rationale": "Arithmetic slip."
+      },
+      {
+        "id": "E",
+        "text": "20",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "E",
+    "explanation": "The absolute value of 20 is its distance from 0: 20.",
+    "estimated_time_seconds": 70,
+    "tags": [
+      "algebra",
+      "absolute-value",
+      "evaluate",
+      "family:ab_evaluate"
+    ],
+    "answer_verification": "val=20"
+  },
+  {
+    "question_id": "act-math-absolute-value-easy-b0159",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "absolute_value",
+    "lesson_id": "act-math-absolute-value-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "solve_equations",
+    "prompt": "A bottling line fills bottles to within 4 milliliters of 34 milliliters. What is the range of acceptable values, in milliliters, from least to greatest?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "26 to 42",
+        "rationale": "The tolerance is 4 on each side."
+      },
+      {
+        "id": "B",
+        "text": "30 to 34",
+        "rationale": "Values above 34 up to 38 are acceptable too."
+      },
+      {
+        "id": "C",
+        "text": "4 to 34",
+        "rationale": "The tolerance is a distance from 34, not a bound."
+      },
+      {
+        "id": "D",
+        "text": "30 to 38",
+        "rationale": "Correct."
+      },
+      {
+        "id": "E",
+        "text": "34 to 38",
+        "rationale": "Values below 34 are also acceptable, down to 30."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Within 4 of 34 means from 34 − 4 = 30 to 34 + 4 = 38.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "algebra",
+      "absolute-value",
+      "model",
+      "family:ab_model"
+    ],
+    "answer_verification": "30 to 38"
+  },
+  {
+    "question_id": "act-math-absolute-value-easy-b0160",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "absolute_value",
+    "lesson_id": "act-math-absolute-value-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "solve_equations",
+    "prompt": "The temperature changed from −27° to 30°. By how many degrees did it change (as a positive number)?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "57",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "-57",
+        "rationale": "Distance is never negative; take the absolute value."
+      },
+      {
+        "id": "C",
+        "text": "58",
+        "rationale": "Arithmetic slip."
+      },
+      {
+        "id": "D",
+        "text": "62",
+        "rationale": "|a − b| is not |a| + |b| in general."
+      },
+      {
+        "id": "E",
+        "text": "3",
+        "rationale": "Subtract the coordinates; don't add them."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Distance = |−27 − (30)| = |−57| = 57.",
+    "estimated_time_seconds": 65,
+    "tags": [
+      "algebra",
+      "absolute-value",
+      "distance",
+      "family:ab_distance_form"
+    ],
+    "answer_verification": "|-27-30|=57"
   }
 ]

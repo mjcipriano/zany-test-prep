@@ -14,6 +14,7 @@ import re
 import statistics
 import unittest
 import zlib
+from fractions import Fraction
 
 from tools.tests import helpers
 from audit import automated_checks as ac
@@ -378,3 +379,71 @@ class OtherFlaggedTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+# --------------------------------------------------------------------------- #
+# Round 2: remaining ambiguities from the audit2 re-check
+# --------------------------------------------------------------------------- #
+class Round2Test(unittest.TestCase):
+    def test_he_or_she_never_beside_one(self):
+        for diff in ("easy", "medium", "hard"):
+            for q in sample(rw_gen.pron_shift, diff):
+                if keyed(q) == "he or she":
+                    self.assertNotIn("one", texts(q), q["prompt"])
+
+    def test_contrast_keys_are_concessions_and_never_beside_in_fact(self):
+        for fn in _TRANS_FAMILIES + [rw_gen.trans_delete]:
+            for diff in ("easy", "medium", "hard"):
+                for q in sample(fn, diff, n=60):
+                    for t in texts(q):
+                        self.assertNotRegex(t, r"^(By contrast|On the other hand)", q["prompt"])
+                    w = _lead_word(keyed(q))
+                    if w and _WORD_REL[w] == "contrast":
+                        for t in wrong(q):
+                            x = _lead_word(t)
+                            self.assertFalse(x and _WORD_REL[x] == "emphasis", (q["prompt"], t))
+
+    def test_delete_items_offer_no_example_marker_and_no_built_in_still(self):
+        for q in sample(rw_gen.trans_delete, "hard", n=200) + sample(rw_gen.trans_delete, "medium", n=200):
+            if keyed(q) == rw_gen._DELETE_TEXT:
+                for t in wrong(q):
+                    self.assertNotEqual(_WORD_REL[_lead_word(t)], "example", (q["prompt"], t))
+            else:
+                self.assertNotRegex(q["prompt"].split("\n\n")[0], r"\bstill\b|\bactually\b", q["prompt"])
+        for s1, s2, rel in rw_gen._TRANS_ITEMS:
+            if rel == "contrast":
+                self.assertNotRegex(s2, r"\bstill\b|\bactually\b", s2)
+
+    def test_clock_tower_paragraph_sets_up_the_contrast(self):
+        clock = next(p for p in rw_gen._TRANS_PARA if "clock tower" in p[0])
+        self.assertIn("worn", clock[0])
+        self.assertIn("old mechanism", clock[1])
+
+    def test_stated_best_fit_line_is_the_least_squares_line(self):
+        for options in (4, 5):
+            for q in sample(math_extra.sp_outlier_point, "hard", options=options):
+                fig = q["stimulus"]["figure"]
+                pts = fig["points"]
+                m = math_extra._ols_slope(pts)
+                b = sum(p[1] for p in pts) / len(pts) - m * sum(p[0] for p in pts) / len(pts)
+                self.assertAlmostEqual(fig["line"]["m"], m, delta=0.051)
+                self.assertAlmostEqual(fig["line"]["b"], b, delta=0.051)
+                self.assertIn(f"y = {math_gen._lin(fig['line']['m'], fig['line']['b'])}", q["prompt"])
+
+    def test_outlier_fence_is_never_an_integer(self):
+        for q in sample(math_gen.st_quartiles, "hard", n=200):
+            fence = Fraction(re.search(r"= ([\d./]+); the least integer above it", q["explanation"]).group(1))
+            self.assertNotEqual(fence.denominator, 1, q["explanation"])
+
+    def test_ambiguous_pronoun_items_state_who_is_meant(self):
+        for diff in ("easy", "medium", "hard"):
+            for q in sample(rw_extra.pa_ambiguous, diff):
+                text = q["prompt"].split("\n\n")[0]
+                after = text.split("___", 1)[1]
+                self.assertIn(keyed(q), after, text)  # the follow-up names the intended person
+
+    def test_collective_items_mark_the_group_as_one_unit(self):
+        for diff in ("easy", "medium", "hard"):
+            for q in sample(rw_extra.pa_collective, diff):
+                self.assertRegex(q["prompt"], r"as a whole|single body|one group|one voice", q["prompt"])
+                self.assertNotRegex(q["prompt"], r"\b(cast|crew|faculty)\b", q["prompt"])

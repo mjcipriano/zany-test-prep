@@ -11,43 +11,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "roots",
-    "prompt": "What is the lesser of the two solutions to the equation 3x² + 19x + 6 = 0?",
+    "prompt": "If (x + 15)² = 225, what is the sum of all possible values of x?",
     "choices": [
       {
         "id": "A",
-        "text": "6",
-        "rationale": "Sign slip reading the roots."
+        "text": "30",
+        "rationale": "The solutions are symmetric about −15, so their sum is 2·−15."
       },
       {
         "id": "B",
-        "text": "-6",
+        "text": "-30",
         "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "-19/3",
-        "rationale": "Sum of roots is −b/a; make sure you answer what was asked."
+        "text": "-15",
+        "rationale": "That is the average of the solutions, not their sum."
       },
       {
         "id": "D",
-        "text": "-3",
-        "rationale": "The root of ax − p = 0 is p/a, not a/p."
+        "text": "0",
+        "rationale": "That is one solution, not the sum."
       },
       {
         "id": "E",
-        "text": "-1/3",
-        "rationale": "That is the other solution."
+        "text": "-35",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
       }
     ],
     "correct_choice": "B",
-    "explanation": "Factor: (3x + 1)(x + 6) = 0, so x = -1/3 or x = −6. Then the lesser of the two solutions is -6.",
+    "explanation": "x + 15 = ±15, so x = 0 or x = −30; the sum is −30.",
     "estimated_time_seconds": 85,
     "tags": [
       "quadratics",
-      "factoring",
-      "family:q_roots"
+      "square-root",
+      "family:q_square_root"
     ],
-    "answer_verification": "val=-6"
+    "answer_verification": "val=-30"
   },
   {
     "question_id": "act-math-quadratics-hard-b0002",
@@ -60,44 +60,39 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "roots",
-    "prompt": "3x² − x + 9 = 0\nHow many distinct real solutions does the equation above have?",
+    "subskill": "factoring",
+    "prompt": "Which equation has solutions x = −13 and x = 10?",
     "choices": [
       {
         "id": "A",
-        "text": "2",
-        "rationale": "The sign of b² − 4ac decides the number of real roots."
+        "text": "x² + 3x + 130 = 0",
+        "rationale": "The constant is the product of the roots, including its sign."
       },
       {
         "id": "B",
-        "text": "-10",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "C",
-        "text": "1",
-        "rationale": "Recompute the discriminant b² − 4ac and use its sign."
-      },
-      {
-        "id": "D",
-        "text": "0",
+        "text": "x² + 3x − 130 = 0",
         "rationale": "Correct."
       },
       {
-        "id": "E",
-        "text": "3",
-        "rationale": "A quadratic can have at most two real solutions."
+        "id": "C",
+        "text": "x² − 3x + 130 = 0",
+        "rationale": "Both the x-coefficient and the constant have the wrong sign."
+      },
+      {
+        "id": "D",
+        "text": "x² − 3x − 130 = 0",
+        "rationale": "The x-coefficient is −(sum of roots); the sign is wrong."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "The discriminant is b² − 4ac = (−1)² − 4·3·(9) = −107, which is negative (no real roots).",
-    "estimated_time_seconds": 90,
+    "correct_choice": "B",
+    "explanation": "(x − (−13))(x − (10)) = x² + 3x − 130, since the sum of the roots is −3 and their product is −130.",
+    "estimated_time_seconds": 85,
     "tags": [
       "quadratics",
-      "discriminant",
-      "family:q_discriminant"
+      "factoring",
+      "family:q_equivalent_form"
     ],
-    "answer_verification": "D=-107"
+    "answer_verification": "roots -13,10"
   },
   {
     "question_id": "act-math-quadratics-hard-b0003",
@@ -110,987 +105,47 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multi_step_math",
-    "subskill": "vertex",
-    "prompt": "A ball is thrown upward, and its height above the ground, in feet, t seconds after it is thrown is given by h(t) = −16t² + 16t + 32. What is the maximum height, in feet, the ball reaches?",
+    "subskill": "roots",
+    "prompt": "A rectangular garden measures 6 feet by 11 feet and is surrounded by a path of uniform width. If the garden and path together cover 104 square feet, what is the width of the path, in feet?",
     "choices": [
       {
         "id": "A",
-        "text": "1/2",
-        "rationale": "That is the time of the peak, not the height."
+        "text": "7",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
       },
       {
         "id": "B",
-        "text": "36",
-        "rationale": "Correct."
+        "text": "0",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
       },
       {
         "id": "C",
         "text": "2",
-        "rationale": "That is when the ball lands."
+        "rationale": "The path adds 2x to each dimension, but its width is x."
       },
       {
         "id": "D",
-        "text": "48",
-        "rationale": "Substitute the vertex time, not t = 1."
+        "text": "3",
+        "rationale": "Arithmetic slip."
       },
       {
         "id": "E",
-        "text": "4",
-        "rationale": "Include the initial height in the maximum."
+        "text": "1",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "The vertex is at t = −b/(2a) = 16/32 = 1/2; h(1/2) = 36 feet.",
+    "correct_choice": "E",
+    "explanation": "(6 + 2x)(11 + 2x) = 104 → 4x² + 34x + 66 = 104 → 4x² + 34x − 38 = 0 → x = 1.",
     "estimated_time_seconds": 110,
     "tags": [
       "quadratics",
-      "model",
-      "family:q_projectile"
+      "word-problem",
+      "family:q_word"
     ],
-    "answer_verification": "peak t=1/2 h=36 ground t=2"
+    "answer_verification": "x=1"
   },
   {
     "question_id": "act-math-quadratics-hard-b0004",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "quadratics",
-    "lesson_id": "act-math-quadratics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multi_step_math",
-    "subskill": "roots",
-    "prompt": "A rectangular garden measures 20 feet by 11 feet and is surrounded by a path of uniform width. If the garden and path together cover 286 square feet, what is the width of the path, in feet?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "3",
-        "rationale": "Arithmetic slip."
-      },
-      {
-        "id": "B",
-        "text": "4",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "C",
-        "text": "2",
-        "rationale": "The path adds 2x to each dimension, but its width is x."
-      },
-      {
-        "id": "D",
-        "text": "-2",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "E",
-        "text": "1",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "E",
-    "explanation": "(20 + 2x)(11 + 2x) = 286 → 4x² + 62x + 220 = 286 → 4x² + 62x − 66 = 0 → x = 1.",
-    "estimated_time_seconds": 110,
-    "tags": [
-      "quadratics",
-      "word-problem",
-      "family:q_word"
-    ],
-    "answer_verification": "x=1"
-  },
-  {
-    "question_id": "act-math-quadratics-hard-b0005",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "quadratics",
-    "lesson_id": "act-math-quadratics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "roots",
-    "prompt": "In the equation x² + kx + 16 = 0, k is a positive constant. If the equation has exactly one real solution, what is the value of k?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "18",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "B",
-        "text": "8",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "4",
-        "rationale": "k² = 4·16, so k = 2·4, not 4."
-      },
-      {
-        "id": "D",
-        "text": "16",
-        "rationale": "Set the discriminant to 0, not k equal to c."
-      },
-      {
-        "id": "E",
-        "text": "64",
-        "rationale": "That is k², not k."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "One solution means b² − 4ac = 0: k² − 4·16 = 0, so k² = 64 and k = 8 (positive).",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "quadratics",
-      "discriminant",
-      "family:q_discriminant"
-    ],
-    "answer_verification": "k=8"
-  },
-  {
-    "question_id": "act-math-quadratics-hard-b0006",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "quadratics",
-    "lesson_id": "act-math-quadratics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multi_step_math",
-    "subskill": "roots",
-    "prompt": "A rectangular garden measures 16 feet by 12 feet and is surrounded by a path of uniform width. If the garden and path together cover 480 square feet, what is the width of the path, in feet?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "2",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "B",
-        "text": "8",
-        "rationale": "The path adds 2x to each dimension, but its width is x."
-      },
-      {
-        "id": "C",
-        "text": "6",
-        "rationale": "Arithmetic slip."
-      },
-      {
-        "id": "D",
-        "text": "4",
-        "rationale": "Correct."
-      },
-      {
-        "id": "E",
-        "text": "5",
-        "rationale": "Check: (26)(22) ≠ 480."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "(16 + 2x)(12 + 2x) = 480 → 4x² + 56x + 192 = 480 → 4x² + 56x − 288 = 0 → x = 4.",
-    "estimated_time_seconds": 110,
-    "tags": [
-      "quadratics",
-      "word-problem",
-      "family:q_word"
-    ],
-    "answer_verification": "x=4"
-  },
-  {
-    "question_id": "act-math-quadratics-hard-b0007",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "quadratics",
-    "lesson_id": "act-math-quadratics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "roots",
-    "prompt": "If (x − 2)² = 64, what is the sum of all possible values of x?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "4",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "10",
-        "rationale": "That is one solution, not the sum."
-      },
-      {
-        "id": "C",
-        "text": "16",
-        "rationale": "The solutions are symmetric about 2, so their sum is 2·2."
-      },
-      {
-        "id": "D",
-        "text": "-4",
-        "rationale": "Sign slip; the solutions are centered at 2."
-      },
-      {
-        "id": "E",
-        "text": "2",
-        "rationale": "That is the average of the solutions, not their sum."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "x − 2 = ±8, so x = 10 or x = −6; the sum is 4.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "quadratics",
-      "square-root",
-      "family:q_square_root"
-    ],
-    "answer_verification": "val=4"
-  },
-  {
-    "question_id": "act-math-quadratics-hard-b0008",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "quadratics",
-    "lesson_id": "act-math-quadratics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "roots",
-    "prompt": "If (x + 10)² = 9, what is the sum of all possible values of x?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "20",
-        "rationale": "Sign slip; the solutions are centered at −10."
-      },
-      {
-        "id": "B",
-        "text": "-7",
-        "rationale": "That is one solution, not the sum."
-      },
-      {
-        "id": "C",
-        "text": "6",
-        "rationale": "The solutions are symmetric about −10, so their sum is 2·−10."
-      },
-      {
-        "id": "D",
-        "text": "-10",
-        "rationale": "That is the average of the solutions, not their sum."
-      },
-      {
-        "id": "E",
-        "text": "-20",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "E",
-    "explanation": "x + 10 = ±3, so x = −7 or x = −13; the sum is −20.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "quadratics",
-      "square-root",
-      "family:q_square_root"
-    ],
-    "answer_verification": "val=-20"
-  },
-  {
-    "question_id": "act-math-quadratics-hard-b0009",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "quadratics",
-    "lesson_id": "act-math-quadratics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "roots",
-    "prompt": "If (x + 19)² = 9, what is the sum of all possible values of x?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "38",
-        "rationale": "Sign slip; the solutions are centered at −19."
-      },
-      {
-        "id": "B",
-        "text": "-38",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "-19",
-        "rationale": "That is the average of the solutions, not their sum."
-      },
-      {
-        "id": "D",
-        "text": "6",
-        "rationale": "The solutions are symmetric about −19, so their sum is 2·−19."
-      },
-      {
-        "id": "E",
-        "text": "-16",
-        "rationale": "That is one solution, not the sum."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "x + 19 = ±3, so x = −16 or x = −22; the sum is −38.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "quadratics",
-      "square-root",
-      "family:q_square_root"
-    ],
-    "answer_verification": "val=-38"
-  },
-  {
-    "question_id": "act-math-quadratics-hard-b0010",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "quadratics",
-    "lesson_id": "act-math-quadratics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multi_step_math",
-    "subskill": "vertex",
-    "prompt": "A ball is thrown upward, and its height above the ground, in feet, t seconds after it is thrown is given by h(t) = −16t² + 96t. After how many seconds does the ball hit the ground?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "3",
-        "rationale": "That is when the ball reaches its maximum height."
-      },
-      {
-        "id": "B",
-        "text": "144",
-        "rationale": "That is the maximum height, not a time."
-      },
-      {
-        "id": "C",
-        "text": "7",
-        "rationale": "Recheck the quadratic formula."
-      },
-      {
-        "id": "D",
-        "text": "17/3",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "E",
-        "text": "6",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "E",
-    "explanation": "Set h(t) = 0: 16t² − 96t = 0 → t = (96 ± √9216)/32 = 6 (the positive root).",
-    "estimated_time_seconds": 110,
-    "tags": [
-      "quadratics",
-      "model",
-      "family:q_projectile"
-    ],
-    "answer_verification": "peak t=3 h=144 ground t=6"
-  },
-  {
-    "question_id": "act-math-quadratics-hard-b0011",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "quadratics",
-    "lesson_id": "act-math-quadratics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "roots",
-    "prompt": "If (x + 20)² = 144, what is the sum of all possible values of x?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "24",
-        "rationale": "The solutions are symmetric about −20, so their sum is 2·−20."
-      },
-      {
-        "id": "B",
-        "text": "40",
-        "rationale": "Sign slip; the solutions are centered at −20."
-      },
-      {
-        "id": "C",
-        "text": "-40",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "-8",
-        "rationale": "That is one solution, not the sum."
-      },
-      {
-        "id": "E",
-        "text": "-20",
-        "rationale": "That is the average of the solutions, not their sum."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "x + 20 = ±12, so x = −8 or x = −32; the sum is −40.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "quadratics",
-      "square-root",
-      "family:q_square_root"
-    ],
-    "answer_verification": "val=-40"
-  },
-  {
-    "question_id": "act-math-quadratics-hard-b0012",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "quadratics",
-    "lesson_id": "act-math-quadratics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "vertex",
-    "prompt": "The function f is defined by f(x) = 3x² − 6x − 6. When f(x) is written in the form a(x − h)² + k, what is the value of k?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "9",
-        "rationale": "Sign slip."
-      },
-      {
-        "id": "B",
-        "text": "-7",
-        "rationale": "Subtract a·h², not h², from c."
-      },
-      {
-        "id": "C",
-        "text": "-6",
-        "rationale": "k is f(h), not the constant c."
-      },
-      {
-        "id": "D",
-        "text": "1",
-        "rationale": "That is h, not k."
-      },
-      {
-        "id": "E",
-        "text": "-9",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "E",
-    "explanation": "h = −b/(2a) = 1; k = f(1) = 3(1)² − 6(1) − 6 = −9.",
-    "estimated_time_seconds": 100,
-    "tags": [
-      "quadratics",
-      "vertex-form",
-      "family:q_complete_square"
-    ],
-    "answer_verification": "h=1,k=-9"
-  },
-  {
-    "question_id": "act-math-quadratics-hard-b0013",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "quadratics",
-    "lesson_id": "act-math-quadratics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "roots",
-    "prompt": "In the equation x² + kx + 81 = 0, k is a positive constant. If the equation has exactly one real solution, what is the value of k?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "18",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "9",
-        "rationale": "k² = 4·81, so k = 2·9, not 9."
-      },
-      {
-        "id": "C",
-        "text": "36",
-        "rationale": "k² = 4c gives k = 2√c, not 4√c."
-      },
-      {
-        "id": "D",
-        "text": "324",
-        "rationale": "That is k², not k."
-      },
-      {
-        "id": "E",
-        "text": "81",
-        "rationale": "Set the discriminant to 0, not k equal to c."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "One solution means b² − 4ac = 0: k² − 4·81 = 0, so k² = 324 and k = 18 (positive).",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "quadratics",
-      "discriminant",
-      "family:q_discriminant"
-    ],
-    "answer_verification": "k=18"
-  },
-  {
-    "question_id": "act-math-quadratics-hard-b0014",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "quadratics",
-    "lesson_id": "act-math-quadratics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "roots",
-    "prompt": "If (x + 8)² = 4, what is the sum of all possible values of x?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-6",
-        "rationale": "That is one solution, not the sum."
-      },
-      {
-        "id": "B",
-        "text": "-16",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "4",
-        "rationale": "The solutions are symmetric about −8, so their sum is 2·−8."
-      },
-      {
-        "id": "D",
-        "text": "16",
-        "rationale": "Sign slip; the solutions are centered at −8."
-      },
-      {
-        "id": "E",
-        "text": "-8",
-        "rationale": "That is the average of the solutions, not their sum."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "x + 8 = ±2, so x = −6 or x = −10; the sum is −16.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "quadratics",
-      "square-root",
-      "family:q_square_root"
-    ],
-    "answer_verification": "val=-16"
-  },
-  {
-    "question_id": "act-math-quadratics-hard-b0015",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "quadratics",
-    "lesson_id": "act-math-quadratics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "vertex",
-    "prompt": "The graph of y = 3x² − 12x + 21 in the xy-plane is a parabola. What is the x-coordinate of its vertex?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "4",
-        "rationale": "Divide by 2a, not a."
-      },
-      {
-        "id": "B",
-        "text": "21",
-        "rationale": "That is the y-intercept, not the vertex."
-      },
-      {
-        "id": "C",
-        "text": "-2",
-        "rationale": "x = −b/(2a); watch the sign."
-      },
-      {
-        "id": "D",
-        "text": "2",
-        "rationale": "Correct."
-      },
-      {
-        "id": "E",
-        "text": "9",
-        "rationale": "That is the y-coordinate of the vertex."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "The vertex is at x = −b/(2a) = 12/(6) = 2.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "quadratics",
-      "vertex",
-      "family:q_vertex"
-    ],
-    "answer_verification": "vertex (2,9)"
-  },
-  {
-    "question_id": "act-math-quadratics-hard-b0016",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "quadratics",
-    "lesson_id": "act-math-quadratics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "vertex",
-    "prompt": "The function f is defined by f(x) = 4x² − 16x + 22. When f(x) is written in the form a(x − h)² + k, what is the value of k?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "18",
-        "rationale": "Subtract a·h², not h², from c."
-      },
-      {
-        "id": "B",
-        "text": "6",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "22",
-        "rationale": "k is f(h), not the constant c."
-      },
-      {
-        "id": "D",
-        "text": "2",
-        "rationale": "That is h, not k."
-      },
-      {
-        "id": "E",
-        "text": "-6",
-        "rationale": "Sign slip."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "h = −b/(2a) = 2; k = f(2) = 4(2)² − 16(2) + 22 = 6.",
-    "estimated_time_seconds": 100,
-    "tags": [
-      "quadratics",
-      "vertex-form",
-      "family:q_complete_square"
-    ],
-    "answer_verification": "h=2,k=6"
-  },
-  {
-    "question_id": "act-math-quadratics-hard-b0017",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "quadratics",
-    "lesson_id": "act-math-quadratics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "factoring",
-    "prompt": "Which equation has solutions x = −13 and x = 15?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "x² + 2x − 195 = 0",
-        "rationale": "The x-coefficient is −(sum of roots); the sign is wrong."
-      },
-      {
-        "id": "B",
-        "text": "x² + 2x + 195 = 0",
-        "rationale": "Both the x-coefficient and the constant have the wrong sign."
-      },
-      {
-        "id": "C",
-        "text": "x² − 2x + 195 = 0",
-        "rationale": "The constant is the product of the roots, including its sign."
-      },
-      {
-        "id": "D",
-        "text": "x² − 2x − 195 = 0",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "(x − (−13))(x − (15)) = x² − 2x − 195, since the sum of the roots is 2 and their product is −195.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "quadratics",
-      "factoring",
-      "family:q_equivalent_form"
-    ],
-    "answer_verification": "roots -13,15"
-  },
-  {
-    "question_id": "act-math-quadratics-hard-b0018",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "quadratics",
-    "lesson_id": "act-math-quadratics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "vertex",
-    "prompt": "The function f is defined by f(x) = −2x² − 20x − 56. When f(x) is written in the form a(x − h)² + k, what is the value of k?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-81",
-        "rationale": "Subtract a·h², not h², from c."
-      },
-      {
-        "id": "B",
-        "text": "-6",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "-56",
-        "rationale": "k is f(h), not the constant c."
-      },
-      {
-        "id": "D",
-        "text": "-5",
-        "rationale": "That is h, not k."
-      },
-      {
-        "id": "E",
-        "text": "6",
-        "rationale": "Sign slip."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "h = −b/(2a) = −5; k = f(−5) = −2(−5)² − 20(−5) − 56 = −6.",
-    "estimated_time_seconds": 100,
-    "tags": [
-      "quadratics",
-      "vertex-form",
-      "family:q_complete_square"
-    ],
-    "answer_verification": "h=-5,k=-6"
-  },
-  {
-    "question_id": "act-math-quadratics-hard-b0019",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "quadratics",
-    "lesson_id": "act-math-quadratics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "roots",
-    "prompt": "If (x − 13)² = 4, what is the sum of all possible values of x?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "4",
-        "rationale": "The solutions are symmetric about 13, so their sum is 2·13."
-      },
-      {
-        "id": "B",
-        "text": "-26",
-        "rationale": "Sign slip; the solutions are centered at 13."
-      },
-      {
-        "id": "C",
-        "text": "15",
-        "rationale": "That is one solution, not the sum."
-      },
-      {
-        "id": "D",
-        "text": "26",
-        "rationale": "Correct."
-      },
-      {
-        "id": "E",
-        "text": "13",
-        "rationale": "That is the average of the solutions, not their sum."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "x − 13 = ±2, so x = 15 or x = 11; the sum is 26.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "quadratics",
-      "square-root",
-      "family:q_square_root"
-    ],
-    "answer_verification": "val=26"
-  },
-  {
-    "question_id": "act-math-quadratics-hard-b0020",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "quadratics",
-    "lesson_id": "act-math-quadratics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multi_step_math",
-    "subskill": "roots",
-    "prompt": "A rectangular garden measures 10 feet by 5 feet and is surrounded by a path of uniform width. If the garden and path together cover 84 square feet, what is the width of the path, in feet?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-2",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "B",
-        "text": "3",
-        "rationale": "Arithmetic slip."
-      },
-      {
-        "id": "C",
-        "text": "1",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "2",
-        "rationale": "The path adds 2x to each dimension, but its width is x."
-      },
-      {
-        "id": "E",
-        "text": "5",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "(10 + 2x)(5 + 2x) = 84 → 4x² + 30x + 50 = 84 → 4x² + 30x − 34 = 0 → x = 1.",
-    "estimated_time_seconds": 110,
-    "tags": [
-      "quadratics",
-      "word-problem",
-      "family:q_word"
-    ],
-    "answer_verification": "x=1"
-  },
-  {
-    "question_id": "act-math-quadratics-hard-b0021",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "quadratics",
-    "lesson_id": "act-math-quadratics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "factoring",
-    "prompt": "Which equation has solutions x = −10 and x = 15?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "x² + 5x + 150 = 0",
-        "rationale": "Both the x-coefficient and the constant have the wrong sign."
-      },
-      {
-        "id": "B",
-        "text": "x² + 5x − 150 = 0",
-        "rationale": "The x-coefficient is −(sum of roots); the sign is wrong."
-      },
-      {
-        "id": "C",
-        "text": "x² − 5x + 150 = 0",
-        "rationale": "The constant is the product of the roots, including its sign."
-      },
-      {
-        "id": "D",
-        "text": "x² − 5x − 150 = 0",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "(x − (−10))(x − (15)) = x² − 5x − 150, since the sum of the roots is 5 and their product is −150.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "quadratics",
-      "factoring",
-      "family:q_equivalent_form"
-    ],
-    "answer_verification": "roots -10,15"
-  },
-  {
-    "question_id": "act-math-quadratics-hard-b0022",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "quadratics",
-    "lesson_id": "act-math-quadratics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "roots",
-    "prompt": "What is the lesser of the two solutions to the equation 5x² − 19x − 30 = 0?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-5/6",
-        "rationale": "The root of ax − p = 0 is p/a, not a/p."
-      },
-      {
-        "id": "B",
-        "text": "-6/5",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "6/5",
-        "rationale": "Sign slip reading the roots."
-      },
-      {
-        "id": "D",
-        "text": "-11/5",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "E",
-        "text": "19/5",
-        "rationale": "Sum of roots is −b/a; make sure you answer what was asked."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Factor: (5x + 6)(x − 5) = 0, so x = -6/5 or x = 5. Then the lesser of the two solutions is -6/5.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "quadratics",
-      "factoring",
-      "family:q_roots"
-    ],
-    "answer_verification": "val=-6/5"
-  },
-  {
-    "question_id": "act-math-quadratics-hard-b0023",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1140,7 +195,7 @@
     "answer_verification": "val=-30"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0024",
+    "question_id": "act-math-quadratics-hard-b0005",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1190,7 +245,7 @@
     "answer_verification": "D=0"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0025",
+    "question_id": "act-math-quadratics-hard-b0006",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1240,7 +295,7 @@
     "answer_verification": "val=-3/4"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0026",
+    "question_id": "act-math-quadratics-hard-b0007",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1290,7 +345,7 @@
     "answer_verification": "h=-5,k=15"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0027",
+    "question_id": "act-math-quadratics-hard-b0008",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1340,7 +395,7 @@
     "answer_verification": "h=8,k=-14"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0028",
+    "question_id": "act-math-quadratics-hard-b0009",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1390,7 +445,7 @@
     "answer_verification": "x=3"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0029",
+    "question_id": "act-math-quadratics-hard-b0010",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1436,7 +491,7 @@
     "answer_verification": "x = 0"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0030",
+    "question_id": "act-math-quadratics-hard-b0011",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1481,7 +536,7 @@
     "answer_verification": "roots -11,15"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0031",
+    "question_id": "act-math-quadratics-hard-b0012",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1531,7 +586,7 @@
     "answer_verification": "val=22"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0032",
+    "question_id": "act-math-quadratics-hard-b0013",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1581,7 +636,7 @@
     "answer_verification": "vertex (7,16)"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0033",
+    "question_id": "act-math-quadratics-hard-b0014",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1631,7 +686,7 @@
     "answer_verification": "D=0"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0034",
+    "question_id": "act-math-quadratics-hard-b0015",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1681,7 +736,7 @@
     "answer_verification": "x=3"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0035",
+    "question_id": "act-math-quadratics-hard-b0016",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1731,7 +786,7 @@
     "answer_verification": "vertex (6,-9)"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0036",
+    "question_id": "act-math-quadratics-hard-b0017",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1781,7 +836,7 @@
     "answer_verification": "x=4"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0037",
+    "question_id": "act-math-quadratics-hard-b0018",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1831,7 +886,7 @@
     "answer_verification": "peak t=5/2 h=196 ground t=6"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0038",
+    "question_id": "act-math-quadratics-hard-b0019",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1881,7 +936,7 @@
     "answer_verification": "D=0"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0039",
+    "question_id": "act-math-quadratics-hard-b0020",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1931,7 +986,7 @@
     "answer_verification": "x=1"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0040",
+    "question_id": "act-math-quadratics-hard-b0021",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1981,7 +1036,7 @@
     "answer_verification": "x=1"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0041",
+    "question_id": "act-math-quadratics-hard-b0022",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2031,7 +1086,7 @@
     "answer_verification": "val=4"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0042",
+    "question_id": "act-math-quadratics-hard-b0023",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2081,7 +1136,7 @@
     "answer_verification": "h=-6,k=6"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0043",
+    "question_id": "act-math-quadratics-hard-b0024",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2131,7 +1186,7 @@
     "answer_verification": "val=26"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0044",
+    "question_id": "act-math-quadratics-hard-b0025",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2181,7 +1236,7 @@
     "answer_verification": "val=-24"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0045",
+    "question_id": "act-math-quadratics-hard-b0026",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2231,7 +1286,7 @@
     "answer_verification": "h=-6,k=-11"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0046",
+    "question_id": "act-math-quadratics-hard-b0027",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2281,7 +1336,7 @@
     "answer_verification": "k=6"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0047",
+    "question_id": "act-math-quadratics-hard-b0028",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2331,7 +1386,7 @@
     "answer_verification": "vertex (-3,-8)"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0048",
+    "question_id": "act-math-quadratics-hard-b0029",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2381,7 +1436,7 @@
     "answer_verification": "x=2"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0049",
+    "question_id": "act-math-quadratics-hard-b0030",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2426,7 +1481,7 @@
     "answer_verification": "roots -10,14"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0050",
+    "question_id": "act-math-quadratics-hard-b0031",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2476,7 +1531,7 @@
     "answer_verification": "x=1"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0051",
+    "question_id": "act-math-quadratics-hard-b0032",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2526,7 +1581,7 @@
     "answer_verification": "peak t=1/2 h=4 ground t=1"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0052",
+    "question_id": "act-math-quadratics-hard-b0033",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2576,7 +1631,7 @@
     "answer_verification": "D=44"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0053",
+    "question_id": "act-math-quadratics-hard-b0034",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2626,7 +1681,7 @@
     "answer_verification": "val=2"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0054",
+    "question_id": "act-math-quadratics-hard-b0035",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2676,7 +1731,7 @@
     "answer_verification": "a=-1,k=7"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0055",
+    "question_id": "act-math-quadratics-hard-b0036",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2687,96 +1742,46 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "roots",
-    "prompt": "3x² + 4x + 5 = 0\nHow many distinct real solutions does the equation above have?",
+    "prompt": "In the equation x² + kx + 81 = 0, k is a positive constant. If the equation has exactly one real solution, what is the value of k?",
     "choices": [
       {
         "id": "A",
-        "text": "1",
-        "rationale": "Recompute the discriminant b² − 4ac and use its sign."
-      },
-      {
-        "id": "B",
-        "text": "3",
-        "rationale": "A quadratic can have at most two real solutions."
-      },
-      {
-        "id": "C",
-        "text": "2",
-        "rationale": "The sign of b² − 4ac decides the number of real roots."
-      },
-      {
-        "id": "D",
-        "text": "0",
+        "text": "18",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "81",
+        "rationale": "Set the discriminant to 0, not k equal to c."
+      },
+      {
+        "id": "C",
+        "text": "36",
+        "rationale": "k² = 4c gives k = 2√c, not 4√c."
+      },
+      {
+        "id": "D",
+        "text": "9",
+        "rationale": "k² = 4·81, so k = 2·9, not 9."
+      },
+      {
         "id": "E",
-        "text": "-2",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "324",
+        "rationale": "That is k², not k."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "The discriminant is b² − 4ac = (4)² − 4·3·(5) = −44, which is negative (no real roots).",
-    "estimated_time_seconds": 90,
+    "correct_choice": "A",
+    "explanation": "One solution means b² − 4ac = 0: k² − 4·81 = 0, so k² = 324 and k = 18 (positive).",
+    "estimated_time_seconds": 95,
     "tags": [
       "quadratics",
       "discriminant",
       "family:q_discriminant"
     ],
-    "answer_verification": "D=-44"
+    "answer_verification": "k=18"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0056",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "quadratics",
-    "lesson_id": "act-math-quadratics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "roots",
-    "prompt": "If (x − 3)² = 169, what is the sum of all possible values of x?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "3",
-        "rationale": "That is the average of the solutions, not their sum."
-      },
-      {
-        "id": "B",
-        "text": "16",
-        "rationale": "That is one solution, not the sum."
-      },
-      {
-        "id": "C",
-        "text": "-6",
-        "rationale": "Sign slip; the solutions are centered at 3."
-      },
-      {
-        "id": "D",
-        "text": "26",
-        "rationale": "The solutions are symmetric about 3, so their sum is 2·3."
-      },
-      {
-        "id": "E",
-        "text": "6",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "E",
-    "explanation": "x − 3 = ±13, so x = 16 or x = −10; the sum is 6.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "quadratics",
-      "square-root",
-      "family:q_square_root"
-    ],
-    "answer_verification": "val=6"
-  },
-  {
-    "question_id": "act-math-quadratics-hard-b0057",
+    "question_id": "act-math-quadratics-hard-b0037",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2787,46 +1792,46 @@
     "version": "1.0.0",
     "question_type": "multi_step_math",
     "subskill": "vertex",
-    "prompt": "A ball is thrown upward, and its height above the ground, in feet, t seconds after it is thrown is given by h(t) = −16t² + 48t. What is the maximum height, in feet, the ball reaches?",
+    "prompt": "A ball is thrown upward, and its height above the ground, in feet, t seconds after it is thrown is given by h(t) = −16t² + 32t. What is the maximum height, in feet, the ball reaches?",
     "choices": [
       {
         "id": "A",
-        "text": "3/2",
-        "rationale": "That is the time of the peak, not the height."
-      },
-      {
-        "id": "B",
-        "text": "36",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "3",
+        "text": "2",
         "rationale": "That is when the ball lands."
       },
       {
+        "id": "B",
+        "text": "1",
+        "rationale": "That is the time of the peak, not the height."
+      },
+      {
+        "id": "C",
+        "text": "32",
+        "rationale": "Substitute the vertex time, not t = 1."
+      },
+      {
         "id": "D",
-        "text": "52",
-        "rationale": "Include the initial height in the maximum."
+        "text": "46/3",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
       },
       {
         "id": "E",
-        "text": "48",
-        "rationale": "Substitute the vertex time, not t = 1."
+        "text": "16",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "The vertex is at t = −b/(2a) = 48/32 = 3/2; h(3/2) = 36 feet.",
+    "correct_choice": "E",
+    "explanation": "The vertex is at t = −b/(2a) = 32/32 = 1; h(1) = 16 feet.",
     "estimated_time_seconds": 110,
     "tags": [
       "quadratics",
       "model",
       "family:q_projectile"
     ],
-    "answer_verification": "peak t=3/2 h=36 ground t=3"
+    "answer_verification": "peak t=1 h=16 ground t=2"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0058",
+    "question_id": "act-math-quadratics-hard-b0038",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2835,48 +1840,48 @@
     "lesson_id": "act-math-quadratics-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "roots",
-    "prompt": "How many x-intercepts does the graph of y = 1(x + 5)² + 5 have in the xy-plane?",
+    "question_type": "multi_step_math",
+    "subskill": "vertex",
+    "prompt": "A ball is thrown upward, and its height above the ground, in feet, t seconds after it is thrown is given by h(t) = −16t² + 96t. What is the maximum height, in feet, the ball reaches?",
     "choices": [
       {
         "id": "A",
-        "text": "2",
-        "rationale": "Compare the vertex's position with the direction the parabola opens."
+        "text": "144",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "5",
-        "rationale": "The number of intercepts is not |k|."
+        "text": "160",
+        "rationale": "Include the initial height in the maximum."
       },
       {
         "id": "C",
-        "text": "3",
-        "rationale": "A parabola has at most two x-intercepts."
+        "text": "6",
+        "rationale": "That is when the ball lands."
       },
       {
         "id": "D",
-        "text": "1",
-        "rationale": "One intercept happens only when the vertex is on the x-axis (k = 0)."
+        "text": "96",
+        "rationale": "Substitute the vertex time, not t = 1."
       },
       {
         "id": "E",
-        "text": "0",
-        "rationale": "Correct."
+        "text": "3",
+        "rationale": "That is the time of the peak, not the height."
       }
     ],
-    "correct_choice": "E",
-    "explanation": "The vertex is at (−5, 5) and the parabola opens upward; it never reaches the x-axis.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "A",
+    "explanation": "The vertex is at t = −b/(2a) = 96/32 = 3; h(3) = 144 feet.",
+    "estimated_time_seconds": 110,
     "tags": [
       "quadratics",
-      "intercepts",
-      "family:q_intercepts"
+      "model",
+      "family:q_projectile"
     ],
-    "answer_verification": "a=1,k=5"
+    "answer_verification": "peak t=3 h=144 ground t=6"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0059",
+    "question_id": "act-math-quadratics-hard-b0039",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2887,46 +1892,146 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "roots",
-    "prompt": "How many x-intercepts does the graph of y = −1(x − 4)² + 2 have in the xy-plane?",
+    "prompt": "In the equation x² + kx + 16 = 0, k is a positive constant. If the equation has exactly one real solution, what is the value of k?",
     "choices": [
       {
         "id": "A",
-        "text": "0",
-        "rationale": "Compare the vertex's position with the direction the parabola opens."
+        "text": "8",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "7",
+        "text": "10",
         "rationale": "This comes from a small arithmetic slip; recompute carefully."
       },
       {
         "id": "C",
-        "text": "2",
-        "rationale": "Correct."
+        "text": "64",
+        "rationale": "That is k², not k."
       },
       {
         "id": "D",
-        "text": "3",
-        "rationale": "A parabola has at most two x-intercepts."
+        "text": "4",
+        "rationale": "k² = 4·16, so k = 2·4, not 4."
       },
       {
         "id": "E",
-        "text": "1",
-        "rationale": "One intercept happens only when the vertex is on the x-axis (k = 0)."
+        "text": "16",
+        "rationale": "Set the discriminant to 0, not k equal to c."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "The vertex is at (4, 2) and the parabola opens downward; it crosses the x-axis twice.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "A",
+    "explanation": "One solution means b² − 4ac = 0: k² − 4·16 = 0, so k² = 64 and k = 8 (positive).",
+    "estimated_time_seconds": 95,
     "tags": [
       "quadratics",
-      "intercepts",
-      "family:q_intercepts"
+      "discriminant",
+      "family:q_discriminant"
     ],
-    "answer_verification": "a=-1,k=2"
+    "answer_verification": "k=8"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0060",
+    "question_id": "act-math-quadratics-hard-b0040",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "quadratics",
+    "lesson_id": "act-math-quadratics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "vertex",
+    "prompt": "The function f is defined by f(x) = 4x² − 56x + 178. When f(x) is written in the form a(x − h)² + k, what is the value of k?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-18",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "18",
+        "rationale": "Sign slip."
+      },
+      {
+        "id": "C",
+        "text": "129",
+        "rationale": "Subtract a·h², not h², from c."
+      },
+      {
+        "id": "D",
+        "text": "7",
+        "rationale": "That is h, not k."
+      },
+      {
+        "id": "E",
+        "text": "178",
+        "rationale": "k is f(h), not the constant c."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "h = −b/(2a) = 7; k = f(7) = 4(7)² − 56(7) + 178 = −18.",
+    "estimated_time_seconds": 100,
+    "tags": [
+      "quadratics",
+      "vertex-form",
+      "family:q_complete_square"
+    ],
+    "answer_verification": "h=7,k=-18"
+  },
+  {
+    "question_id": "act-math-quadratics-hard-b0041",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "quadratics",
+    "lesson_id": "act-math-quadratics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multi_step_math",
+    "subskill": "vertex",
+    "prompt": "A ball is thrown upward, and its height above the ground, in feet, t seconds after it is thrown is given by h(t) = −16t² + 64t. After how many seconds does the ball hit the ground?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "4",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "64",
+        "rationale": "That is the maximum height, not a time."
+      },
+      {
+        "id": "C",
+        "text": "5",
+        "rationale": "Recheck the quadratic formula."
+      },
+      {
+        "id": "D",
+        "text": "7/3",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      },
+      {
+        "id": "E",
+        "text": "2",
+        "rationale": "That is when the ball reaches its maximum height."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Set h(t) = 0: 16t² − 64t = 0 → t = (64 ± √4096)/32 = 4 (the positive root).",
+    "estimated_time_seconds": 110,
+    "tags": [
+      "quadratics",
+      "model",
+      "family:q_projectile"
+    ],
+    "answer_verification": "peak t=2 h=64 ground t=4"
+  },
+  {
+    "question_id": "act-math-quadratics-hard-b0042",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2937,96 +2042,141 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "roots",
-    "prompt": "If (x + 11)² = 36, what is the sum of all possible values of x?",
+    "prompt": "If (x + 2)² = 121, what is the sum of all possible values of x?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-2",
+        "rationale": "That is the average of the solutions, not their sum."
+      },
+      {
+        "id": "B",
+        "text": "-4",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "9",
+        "rationale": "That is one solution, not the sum."
+      },
+      {
+        "id": "D",
+        "text": "22",
+        "rationale": "The solutions are symmetric about −2, so their sum is 2·−2."
+      },
+      {
+        "id": "E",
+        "text": "4",
+        "rationale": "Sign slip; the solutions are centered at −2."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "x + 2 = ±11, so x = 9 or x = −13; the sum is −4.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "quadratics",
+      "square-root",
+      "family:q_square_root"
+    ],
+    "answer_verification": "val=-4"
+  },
+  {
+    "question_id": "act-math-quadratics-hard-b0043",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "quadratics",
+    "lesson_id": "act-math-quadratics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "factoring",
+    "prompt": "Which equation has solutions x = −11 and x = 3?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "x² − 8x + 33 = 0",
+        "rationale": "Both the x-coefficient and the constant have the wrong sign."
+      },
+      {
+        "id": "B",
+        "text": "x² − 8x − 33 = 0",
+        "rationale": "The x-coefficient is −(sum of roots); the sign is wrong."
+      },
+      {
+        "id": "C",
+        "text": "x² + 8x − 33 = 0",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "x² + 8x + 33 = 0",
+        "rationale": "The constant is the product of the roots, including its sign."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "(x − (−11))(x − (3)) = x² + 8x − 33, since the sum of the roots is −8 and their product is −33.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "quadratics",
+      "factoring",
+      "family:q_equivalent_form"
+    ],
+    "answer_verification": "roots -11,3"
+  },
+  {
+    "question_id": "act-math-quadratics-hard-b0044",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "quadratics",
+    "lesson_id": "act-math-quadratics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "vertex",
+    "prompt": "The function f is defined by f(x) = 4x² + 8x + 22. When f(x) is written in the form a(x − h)² + k, what is the value of k?",
     "choices": [
       {
         "id": "A",
         "text": "22",
-        "rationale": "Sign slip; the solutions are centered at −11."
+        "rationale": "k is f(h), not the constant c."
       },
       {
         "id": "B",
-        "text": "-5",
-        "rationale": "That is one solution, not the sum."
-      },
-      {
-        "id": "C",
-        "text": "12",
-        "rationale": "The solutions are symmetric about −11, so their sum is 2·−11."
-      },
-      {
-        "id": "D",
-        "text": "-11",
-        "rationale": "That is the average of the solutions, not their sum."
-      },
-      {
-        "id": "E",
-        "text": "-22",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "E",
-    "explanation": "x + 11 = ±6, so x = −5 or x = −17; the sum is −22.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "quadratics",
-      "square-root",
-      "family:q_square_root"
-    ],
-    "answer_verification": "val=-22"
-  },
-  {
-    "question_id": "act-math-quadratics-hard-b0061",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "quadratics",
-    "lesson_id": "act-math-quadratics-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "roots",
-    "prompt": "If (x − 18)² = 144, what is the sum of all possible values of x?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "24",
-        "rationale": "The solutions are symmetric about 18, so their sum is 2·18."
-      },
-      {
-        "id": "B",
-        "text": "36",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "-36",
-        "rationale": "Sign slip; the solutions are centered at 18."
-      },
-      {
-        "id": "D",
         "text": "18",
-        "rationale": "That is the average of the solutions, not their sum."
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "21",
+        "rationale": "Subtract a·h², not h², from c."
+      },
+      {
+        "id": "D",
+        "text": "-18",
+        "rationale": "Sign slip."
       },
       {
         "id": "E",
-        "text": "30",
-        "rationale": "That is one solution, not the sum."
+        "text": "-1",
+        "rationale": "That is h, not k."
       }
     ],
     "correct_choice": "B",
-    "explanation": "x − 18 = ±12, so x = 30 or x = 6; the sum is 36.",
-    "estimated_time_seconds": 85,
+    "explanation": "h = −b/(2a) = −1; k = f(−1) = 4(−1)² + 8(−1) + 22 = 18.",
+    "estimated_time_seconds": 100,
     "tags": [
       "quadratics",
-      "square-root",
-      "family:q_square_root"
+      "vertex-form",
+      "family:q_complete_square"
     ],
-    "answer_verification": "val=36"
+    "answer_verification": "h=-1,k=18"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0062",
+    "question_id": "act-math-quadratics-hard-b0045",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3076,7 +2226,7 @@
     "answer_verification": "val=5"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0063",
+    "question_id": "act-math-quadratics-hard-b0046",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3087,46 +2237,96 @@
     "version": "1.0.0",
     "question_type": "multi_step_math",
     "subskill": "vertex",
-    "prompt": "A ball is thrown upward, and its height above the ground, in feet, t seconds after it is thrown is given by h(t) = −16t² + 32t + 48. After how many seconds does the ball hit the ground?",
+    "prompt": "A ball is thrown upward, and its height above the ground, in feet, t seconds after it is thrown is given by h(t) = −16t² + 16t + 32. What is the maximum height, in feet, the ball reaches?",
     "choices": [
       {
         "id": "A",
-        "text": "4",
-        "rationale": "Arithmetic slip in the quadratic formula."
+        "text": "1/2",
+        "rationale": "That is the time of the peak, not the height."
       },
       {
         "id": "B",
-        "text": "1",
-        "rationale": "That is when the ball reaches its maximum height."
+        "text": "36",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "64",
-        "rationale": "That is the maximum height, not a time."
+        "text": "48",
+        "rationale": "Substitute the vertex time, not t = 1."
       },
       {
         "id": "D",
-        "text": "3",
-        "rationale": "Correct."
+        "text": "4",
+        "rationale": "Include the initial height in the maximum."
       },
       {
         "id": "E",
         "text": "2",
-        "rationale": "That is the time to return to the launch height, not the ground."
+        "rationale": "That is when the ball lands."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Set h(t) = 0: 16t² − 32t − 48 = 0 → t = (32 ± √4096)/32 = 3 (the positive root).",
+    "correct_choice": "B",
+    "explanation": "The vertex is at t = −b/(2a) = 16/32 = 1/2; h(1/2) = 36 feet.",
     "estimated_time_seconds": 110,
     "tags": [
       "quadratics",
       "model",
       "family:q_projectile"
     ],
-    "answer_verification": "peak t=1 h=64 ground t=3"
+    "answer_verification": "peak t=1/2 h=36 ground t=2"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0064",
+    "question_id": "act-math-quadratics-hard-b0047",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "quadratics",
+    "lesson_id": "act-math-quadratics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "roots",
+    "prompt": "In the equation x² + kx + 49 = 0, k is a positive constant. If the equation has exactly one real solution, what is the value of k?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "28",
+        "rationale": "k² = 4c gives k = 2√c, not 4√c."
+      },
+      {
+        "id": "B",
+        "text": "7",
+        "rationale": "k² = 4·49, so k = 2·7, not 7."
+      },
+      {
+        "id": "C",
+        "text": "49",
+        "rationale": "Set the discriminant to 0, not k equal to c."
+      },
+      {
+        "id": "D",
+        "text": "14",
+        "rationale": "Correct."
+      },
+      {
+        "id": "E",
+        "text": "196",
+        "rationale": "That is k², not k."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "One solution means b² − 4ac = 0: k² − 4·49 = 0, so k² = 196 and k = 14 (positive).",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "quadratics",
+      "discriminant",
+      "family:q_discriminant"
+    ],
+    "answer_verification": "k=14"
+  },
+  {
+    "question_id": "act-math-quadratics-hard-b0048",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3176,7 +2376,7 @@
     "answer_verification": "val=18"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0065",
+    "question_id": "act-math-quadratics-hard-b0049",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3227,7 +2427,7 @@
     "answer_verification": "x = 1/2"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0066",
+    "question_id": "act-math-quadratics-hard-b0050",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3277,7 +2477,7 @@
     "answer_verification": "val=-36"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0067",
+    "question_id": "act-math-quadratics-hard-b0051",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3328,7 +2528,7 @@
     "answer_verification": "x = 1/2"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0068",
+    "question_id": "act-math-quadratics-hard-b0052",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3378,7 +2578,7 @@
     "answer_verification": "vertex (6,-20)"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0069",
+    "question_id": "act-math-quadratics-hard-b0053",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3428,7 +2628,7 @@
     "answer_verification": "val=-32"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0070",
+    "question_id": "act-math-quadratics-hard-b0054",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3473,7 +2673,7 @@
     "answer_verification": "roots -10,8"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0071",
+    "question_id": "act-math-quadratics-hard-b0055",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3518,7 +2718,7 @@
     "answer_verification": "roots -8,5"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0072",
+    "question_id": "act-math-quadratics-hard-b0056",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3569,7 +2769,7 @@
     "answer_verification": "x = −7/2"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0073",
+    "question_id": "act-math-quadratics-hard-b0057",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3619,7 +2819,7 @@
     "answer_verification": "D=61"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0074",
+    "question_id": "act-math-quadratics-hard-b0058",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3669,7 +2869,7 @@
     "answer_verification": "vertex (-8,10)"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0075",
+    "question_id": "act-math-quadratics-hard-b0059",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3714,7 +2914,7 @@
     "answer_verification": "roots -2,14"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0076",
+    "question_id": "act-math-quadratics-hard-b0060",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3764,7 +2964,7 @@
     "answer_verification": "val=-2"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0077",
+    "question_id": "act-math-quadratics-hard-b0061",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3814,7 +3014,7 @@
     "answer_verification": "val=-16/3"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0078",
+    "question_id": "act-math-quadratics-hard-b0062",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3864,7 +3064,7 @@
     "answer_verification": "val=-12"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0079",
+    "question_id": "act-math-quadratics-hard-b0063",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3909,7 +3109,7 @@
     "answer_verification": "roots -11,12"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0080",
+    "question_id": "act-math-quadratics-hard-b0064",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3959,7 +3159,7 @@
     "answer_verification": "val=36"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0081",
+    "question_id": "act-math-quadratics-hard-b0065",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4009,7 +3209,7 @@
     "answer_verification": "h=2,k=19"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0082",
+    "question_id": "act-math-quadratics-hard-b0066",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4059,7 +3259,7 @@
     "answer_verification": "h=1,k=-10"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0083",
+    "question_id": "act-math-quadratics-hard-b0067",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4109,7 +3309,7 @@
     "answer_verification": "x=1"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0084",
+    "question_id": "act-math-quadratics-hard-b0068",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4159,7 +3359,7 @@
     "answer_verification": "val=22"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0085",
+    "question_id": "act-math-quadratics-hard-b0069",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4209,7 +3409,7 @@
     "answer_verification": "val=-18"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0086",
+    "question_id": "act-math-quadratics-hard-b0070",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4259,7 +3459,7 @@
     "answer_verification": "vertex (-2,-14)"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0087",
+    "question_id": "act-math-quadratics-hard-b0071",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4309,7 +3509,7 @@
     "answer_verification": "h=1,k=-12"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0088",
+    "question_id": "act-math-quadratics-hard-b0072",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4359,7 +3559,7 @@
     "answer_verification": "h=9,k=15"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0089",
+    "question_id": "act-math-quadratics-hard-b0073",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4409,7 +3609,7 @@
     "answer_verification": "peak t=7/2 h=324 ground t=8"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0090",
+    "question_id": "act-math-quadratics-hard-b0074",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4459,7 +3659,7 @@
     "answer_verification": "peak t=1 h=64 ground t=3"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0091",
+    "question_id": "act-math-quadratics-hard-b0075",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4509,7 +3709,7 @@
     "answer_verification": "val=14"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0092",
+    "question_id": "act-math-quadratics-hard-b0076",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4559,7 +3759,7 @@
     "answer_verification": "x=2"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0093",
+    "question_id": "act-math-quadratics-hard-b0077",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4610,7 +3810,7 @@
     "answer_verification": "h=4,k=2"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0094",
+    "question_id": "act-math-quadratics-hard-b0078",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4660,7 +3860,7 @@
     "answer_verification": "peak t=1 h=144 ground t=4"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0095",
+    "question_id": "act-math-quadratics-hard-b0079",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4705,7 +3905,7 @@
     "answer_verification": "roots -7,8"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0096",
+    "question_id": "act-math-quadratics-hard-b0080",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4756,7 +3956,7 @@
     "answer_verification": "h=0,k=-50"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0097",
+    "question_id": "act-math-quadratics-hard-b0081",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4806,7 +4006,7 @@
     "answer_verification": "peak t=1/2 h=4 ground t=1"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0098",
+    "question_id": "act-math-quadratics-hard-b0082",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4856,7 +4056,7 @@
     "answer_verification": "val=5/4"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0099",
+    "question_id": "act-math-quadratics-hard-b0083",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4906,7 +4106,7 @@
     "answer_verification": "D=0"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0100",
+    "question_id": "act-math-quadratics-hard-b0084",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4956,7 +4156,7 @@
     "answer_verification": "x=2"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0101",
+    "question_id": "act-math-quadratics-hard-b0085",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5006,7 +4206,7 @@
     "answer_verification": "val=5/3"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0102",
+    "question_id": "act-math-quadratics-hard-b0086",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5056,7 +4256,7 @@
     "answer_verification": "val=28"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0103",
+    "question_id": "act-math-quadratics-hard-b0087",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5107,7 +4307,7 @@
     "answer_verification": "h=2,k=16"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0104",
+    "question_id": "act-math-quadratics-hard-b0088",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5157,7 +4357,7 @@
     "answer_verification": "peak t=5/2 h=100 ground t=5"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0105",
+    "question_id": "act-math-quadratics-hard-b0089",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5207,7 +4407,7 @@
     "answer_verification": "peak t=3 h=144 ground t=6"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0106",
+    "question_id": "act-math-quadratics-hard-b0090",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5257,7 +4457,7 @@
     "answer_verification": "x=2"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0107",
+    "question_id": "act-math-quadratics-hard-b0091",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5307,7 +4507,7 @@
     "answer_verification": "k=8"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0108",
+    "question_id": "act-math-quadratics-hard-b0092",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5357,7 +4557,7 @@
     "answer_verification": "val=40"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0109",
+    "question_id": "act-math-quadratics-hard-b0093",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5407,7 +4607,7 @@
     "answer_verification": "val=-1"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0110",
+    "question_id": "act-math-quadratics-hard-b0094",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5452,7 +4652,7 @@
     "answer_verification": "roots -9,3"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0111",
+    "question_id": "act-math-quadratics-hard-b0095",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5497,7 +4697,7 @@
     "answer_verification": "roots -7,1"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0112",
+    "question_id": "act-math-quadratics-hard-b0096",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5547,7 +4747,7 @@
     "answer_verification": "peak t=1 h=16 ground t=2"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0113",
+    "question_id": "act-math-quadratics-hard-b0097",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5597,7 +4797,7 @@
     "answer_verification": "D=-104"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0114",
+    "question_id": "act-math-quadratics-hard-b0098",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5647,7 +4847,7 @@
     "answer_verification": "a=-2,k=-5"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0115",
+    "question_id": "act-math-quadratics-hard-b0099",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5697,7 +4897,7 @@
     "answer_verification": "h=-6,k=6"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0116",
+    "question_id": "act-math-quadratics-hard-b0100",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5747,7 +4947,7 @@
     "answer_verification": "vertex (-8,-13)"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0117",
+    "question_id": "act-math-quadratics-hard-b0101",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5797,7 +4997,7 @@
     "answer_verification": "val=-5/6"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0118",
+    "question_id": "act-math-quadratics-hard-b0102",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5847,7 +5047,7 @@
     "answer_verification": "peak t=3/2 h=36 ground t=3"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0119",
+    "question_id": "act-math-quadratics-hard-b0103",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5897,7 +5097,7 @@
     "answer_verification": "val=-18"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0120",
+    "question_id": "act-math-quadratics-hard-b0104",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5947,7 +5147,7 @@
     "answer_verification": "val=-7/2"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0121",
+    "question_id": "act-math-quadratics-hard-b0105",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5997,7 +5197,7 @@
     "answer_verification": "x=3"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0122",
+    "question_id": "act-math-quadratics-hard-b0106",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6047,7 +5247,7 @@
     "answer_verification": "val=-6"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0123",
+    "question_id": "act-math-quadratics-hard-b0107",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6097,7 +5297,7 @@
     "answer_verification": "vertex (-5,-8)"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0124",
+    "question_id": "act-math-quadratics-hard-b0108",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6147,7 +5347,7 @@
     "answer_verification": "val=-10"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0125",
+    "question_id": "act-math-quadratics-hard-b0109",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6198,7 +5398,7 @@
     "answer_verification": "h=1,k=-36"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0126",
+    "question_id": "act-math-quadratics-hard-b0110",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6248,7 +5448,7 @@
     "answer_verification": "k=10"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0127",
+    "question_id": "act-math-quadratics-hard-b0111",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6298,7 +5498,7 @@
     "answer_verification": "val=23/6"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0128",
+    "question_id": "act-math-quadratics-hard-b0112",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6348,7 +5548,7 @@
     "answer_verification": "D=-63"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0129",
+    "question_id": "act-math-quadratics-hard-b0113",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6398,7 +5598,7 @@
     "answer_verification": "k=12"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0130",
+    "question_id": "act-math-quadratics-hard-b0114",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6448,7 +5648,7 @@
     "answer_verification": "D=0"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0131",
+    "question_id": "act-math-quadratics-hard-b0115",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6498,7 +5698,7 @@
     "answer_verification": "a=2,k=-3"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0132",
+    "question_id": "act-math-quadratics-hard-b0116",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6549,7 +5749,7 @@
     "answer_verification": "x = −1"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0133",
+    "question_id": "act-math-quadratics-hard-b0117",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6599,7 +5799,7 @@
     "answer_verification": "h=4,k=1"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0134",
+    "question_id": "act-math-quadratics-hard-b0118",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6649,7 +5849,7 @@
     "answer_verification": "val=-3"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0135",
+    "question_id": "act-math-quadratics-hard-b0119",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6699,7 +5899,7 @@
     "answer_verification": "x=3"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0136",
+    "question_id": "act-math-quadratics-hard-b0120",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6749,7 +5949,7 @@
     "answer_verification": "val=5/3"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0137",
+    "question_id": "act-math-quadratics-hard-b0121",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6799,7 +5999,7 @@
     "answer_verification": "h=-1,k=-1"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0138",
+    "question_id": "act-math-quadratics-hard-b0122",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6849,7 +6049,7 @@
     "answer_verification": "peak t=5/2 h=100 ground t=5"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0139",
+    "question_id": "act-math-quadratics-hard-b0123",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6894,7 +6094,7 @@
     "answer_verification": "roots -6,2"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0140",
+    "question_id": "act-math-quadratics-hard-b0124",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6944,7 +6144,7 @@
     "answer_verification": "vertex (2,-16)"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0141",
+    "question_id": "act-math-quadratics-hard-b0125",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6994,7 +6194,7 @@
     "answer_verification": "x=1"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0142",
+    "question_id": "act-math-quadratics-hard-b0126",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7039,7 +6239,7 @@
     "answer_verification": "roots -14,11"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0143",
+    "question_id": "act-math-quadratics-hard-b0127",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7089,7 +6289,7 @@
     "answer_verification": "D=61"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0144",
+    "question_id": "act-math-quadratics-hard-b0128",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7139,7 +6339,7 @@
     "answer_verification": "h=-7,k=-3"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0145",
+    "question_id": "act-math-quadratics-hard-b0129",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7190,7 +6390,7 @@
     "answer_verification": "h=1,k=98"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0146",
+    "question_id": "act-math-quadratics-hard-b0130",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7240,7 +6440,7 @@
     "answer_verification": "vertex (4,-3)"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0147",
+    "question_id": "act-math-quadratics-hard-b0131",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7290,7 +6490,7 @@
     "answer_verification": "a=-2,k=8"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0148",
+    "question_id": "act-math-quadratics-hard-b0132",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7340,7 +6540,7 @@
     "answer_verification": "k=8"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0149",
+    "question_id": "act-math-quadratics-hard-b0133",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7351,46 +6551,46 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "vertex",
-    "prompt": "The function f is defined by f(x) = −x² − 18x − 63. When f(x) is written in the form a(x − h)² + k, what is the value of k?",
+    "prompt": "The function f is defined by f(x) = 4x² − 16x + 22. When f(x) is written in the form a(x − h)² + k, what is the value of k?",
     "choices": [
       {
         "id": "A",
-        "text": "-18",
-        "rationale": "Sign slip."
+        "text": "6",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "-9",
+        "text": "2",
         "rationale": "That is h, not k."
       },
       {
         "id": "C",
-        "text": "-144",
-        "rationale": "Subtract a·h², not h², from c."
+        "text": "-6",
+        "rationale": "Sign slip."
       },
       {
         "id": "D",
-        "text": "-63",
-        "rationale": "k is f(h), not the constant c."
+        "text": "18",
+        "rationale": "Subtract a·h², not h², from c."
       },
       {
         "id": "E",
-        "text": "18",
-        "rationale": "Correct."
+        "text": "22",
+        "rationale": "k is f(h), not the constant c."
       }
     ],
-    "correct_choice": "E",
-    "explanation": "h = −b/(2a) = −9; k = f(−9) = −1(−9)² − 18(−9) − 63 = 18.",
+    "correct_choice": "A",
+    "explanation": "h = −b/(2a) = 2; k = f(2) = 4(2)² − 16(2) + 22 = 6.",
     "estimated_time_seconds": 100,
     "tags": [
       "quadratics",
       "vertex-form",
       "family:q_complete_square"
     ],
-    "answer_verification": "h=-9,k=18"
+    "answer_verification": "h=2,k=6"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0150",
+    "question_id": "act-math-quadratics-hard-b0134",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7401,46 +6601,97 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "roots",
-    "prompt": "How many x-intercepts does the graph of y = −2(x + 3)² + 3 have in the xy-plane?",
+    "prompt": "What is the sum of the solutions to the equation 6x² + 35x − 6 = 0?",
     "choices": [
       {
         "id": "A",
-        "text": "2",
+        "text": "-35/6",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "0",
-        "rationale": "Compare the vertex's position with the direction the parabola opens."
+        "text": "1/6",
+        "rationale": "That is the other solution."
       },
       {
         "id": "C",
-        "text": "-8",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "35/6",
+        "rationale": "Sign slip reading the roots."
       },
       {
         "id": "D",
-        "text": "1",
-        "rationale": "One intercept happens only when the vertex is on the x-axis (k = 0)."
+        "text": "6",
+        "rationale": "The root of ax − p = 0 is p/a, not a/p."
       },
       {
         "id": "E",
-        "text": "3",
-        "rationale": "The number of intercepts is not |k|."
+        "text": "-29/6",
+        "rationale": "Sum of roots is −b/a; make sure you answer what was asked."
       }
     ],
     "correct_choice": "A",
-    "explanation": "The vertex is at (−3, 3) and the parabola opens downward; it crosses the x-axis twice.",
+    "explanation": "Factor: (6x − 1)(x + 6) = 0, so x = 1/6 or x = −6. Then the sum of the solutions is -35/6.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "quadratics",
+      "factoring",
+      "family:q_roots"
+    ],
+    "answer_verification": "val=-35/6"
+  },
+  {
+    "question_id": "act-math-quadratics-hard-b0135",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "quadratics",
+    "lesson_id": "act-math-quadratics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "vertex",
+    "prompt": "A parabola in the xy-plane has x-intercepts at x = 3 and x = 1. What is the equation of its axis of symmetry?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "x = −1",
+        "rationale": "Average the intercepts; don't halve their difference."
+      },
+      {
+        "id": "B",
+        "text": "y = 2",
+        "rationale": "The axis of symmetry of y = ax² + … is a vertical line x = h."
+      },
+      {
+        "id": "C",
+        "text": "x = 4",
+        "rationale": "The axis is halfway between the intercepts: divide by 2."
+      },
+      {
+        "id": "D",
+        "text": "x = −2",
+        "rationale": "Sign slip."
+      },
+      {
+        "id": "E",
+        "text": "x = 2",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "E",
+    "explanation": "The axis of symmetry passes midway between the x-intercepts: x = (3 + 1)/2 = 2.",
     "estimated_time_seconds": 85,
     "tags": [
       "quadratics",
       "intercepts",
+      "symmetry",
       "family:q_intercepts"
     ],
-    "answer_verification": "a=-2,k=3"
+    "answer_verification": "x = 2"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0151",
+    "question_id": "act-math-quadratics-hard-b0136",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7490,7 +6741,7 @@
     "answer_verification": "x=2"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0152",
+    "question_id": "act-math-quadratics-hard-b0137",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7535,7 +6786,7 @@
     "answer_verification": "roots -1,3"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0153",
+    "question_id": "act-math-quadratics-hard-b0138",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7585,7 +6836,7 @@
     "answer_verification": "val=-3/4"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0154",
+    "question_id": "act-math-quadratics-hard-b0139",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7635,7 +6886,7 @@
     "answer_verification": "h=-7,k=-7"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0155",
+    "question_id": "act-math-quadratics-hard-b0140",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7685,7 +6936,7 @@
     "answer_verification": "x=1"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0156",
+    "question_id": "act-math-quadratics-hard-b0141",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7735,7 +6986,7 @@
     "answer_verification": "val=-2"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0157",
+    "question_id": "act-math-quadratics-hard-b0142",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7785,7 +7036,7 @@
     "answer_verification": "val=36"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0158",
+    "question_id": "act-math-quadratics-hard-b0143",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7835,7 +7086,7 @@
     "answer_verification": "h=8,k=2"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0159",
+    "question_id": "act-math-quadratics-hard-b0144",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7885,7 +7136,7 @@
     "answer_verification": "a=2,k=-4"
   },
   {
-    "question_id": "act-math-quadratics-hard-b0160",
+    "question_id": "act-math-quadratics-hard-b0145",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7896,42 +7147,785 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "roots",
-    "prompt": "In the equation x² + kx + 49 = 0, k is a positive constant. If the equation has exactly one real solution, what is the value of k?",
+    "prompt": "In the equation x² + kx + 16 = 0, k is a positive constant. If the equation has exactly one real solution, what is the value of k?",
     "choices": [
       {
         "id": "A",
-        "text": "14",
-        "rationale": "Correct."
+        "text": "-2",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
       },
       {
         "id": "B",
-        "text": "7",
-        "rationale": "k² = 4·49, so k = 2·7, not 7."
-      },
-      {
-        "id": "C",
-        "text": "196",
+        "text": "64",
         "rationale": "That is k², not k."
       },
       {
+        "id": "C",
+        "text": "8",
+        "rationale": "Correct."
+      },
+      {
         "id": "D",
-        "text": "28",
-        "rationale": "k² = 4c gives k = 2√c, not 4√c."
+        "text": "16",
+        "rationale": "Set the discriminant to 0, not k equal to c."
       },
       {
         "id": "E",
-        "text": "49",
-        "rationale": "Set the discriminant to 0, not k equal to c."
+        "text": "4",
+        "rationale": "k² = 4·16, so k = 2·4, not 4."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "One solution means b² − 4ac = 0: k² − 4·49 = 0, so k² = 196 and k = 14 (positive).",
+    "correct_choice": "C",
+    "explanation": "One solution means b² − 4ac = 0: k² − 4·16 = 0, so k² = 64 and k = 8 (positive).",
     "estimated_time_seconds": 95,
     "tags": [
       "quadratics",
       "discriminant",
       "family:q_discriminant"
     ],
-    "answer_verification": "k=14"
+    "answer_verification": "k=8"
+  },
+  {
+    "question_id": "act-math-quadratics-hard-b0146",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "quadratics",
+    "lesson_id": "act-math-quadratics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "factoring",
+    "prompt": "Which equation has solutions x = −2 and x = 11?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "x² − 9x − 22 = 0",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "x² + 9x + 22 = 0",
+        "rationale": "Both the x-coefficient and the constant have the wrong sign."
+      },
+      {
+        "id": "C",
+        "text": "x² − 9x + 22 = 0",
+        "rationale": "The constant is the product of the roots, including its sign."
+      },
+      {
+        "id": "D",
+        "text": "x² + 9x − 22 = 0",
+        "rationale": "The x-coefficient is −(sum of roots); the sign is wrong."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "(x − (−2))(x − (11)) = x² − 9x − 22, since the sum of the roots is 9 and their product is −22.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "quadratics",
+      "factoring",
+      "family:q_equivalent_form"
+    ],
+    "answer_verification": "roots -2,11"
+  },
+  {
+    "question_id": "act-math-quadratics-hard-b0147",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "quadratics",
+    "lesson_id": "act-math-quadratics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "vertex",
+    "prompt": "The function f is defined by f(x) = 2x² + 32x + 125. What is the minimum value of f(x)?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-1",
+        "rationale": "Arithmetic slip; recompute f(h)."
+      },
+      {
+        "id": "B",
+        "text": "125",
+        "rationale": "That is f(0), not the extreme value."
+      },
+      {
+        "id": "C",
+        "text": "-3",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "-8",
+        "rationale": "That is the x-coordinate of the vertex, not the value of f there."
+      },
+      {
+        "id": "E",
+        "text": "3",
+        "rationale": "Sign slip evaluating f at the vertex."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "The vertex is at x = −b/(2a) = −8; f(−8) = 2(−8)² + 32(−8) + 125 = −3.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "quadratics",
+      "vertex",
+      "family:q_vertex"
+    ],
+    "answer_verification": "vertex (-8,-3)"
+  },
+  {
+    "question_id": "act-math-quadratics-hard-b0148",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "quadratics",
+    "lesson_id": "act-math-quadratics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multi_step_math",
+    "subskill": "roots",
+    "prompt": "A rectangular garden measures 13 feet by 15 feet and is surrounded by a path of uniform width. If the garden and path together cover 399 square feet, what is the width of the path, in feet?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "4",
+        "rationale": "Check: (21)(23) ≠ 399."
+      },
+      {
+        "id": "B",
+        "text": "-2",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      },
+      {
+        "id": "C",
+        "text": "3",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "5",
+        "rationale": "Arithmetic slip."
+      },
+      {
+        "id": "E",
+        "text": "6",
+        "rationale": "The path adds 2x to each dimension, but its width is x."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "(13 + 2x)(15 + 2x) = 399 → 4x² + 56x + 195 = 399 → 4x² + 56x − 204 = 0 → x = 3.",
+    "estimated_time_seconds": 110,
+    "tags": [
+      "quadratics",
+      "word-problem",
+      "family:q_word"
+    ],
+    "answer_verification": "x=3"
+  },
+  {
+    "question_id": "act-math-quadratics-hard-b0149",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "quadratics",
+    "lesson_id": "act-math-quadratics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multi_step_math",
+    "subskill": "vertex",
+    "prompt": "A ball is thrown upward, and its height above the ground, in feet, t seconds after it is thrown is given by h(t) = −16t² + 80t + 96. After how many seconds does the ball hit the ground?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "5/2",
+        "rationale": "That is when the ball reaches its maximum height."
+      },
+      {
+        "id": "B",
+        "text": "6",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "196",
+        "rationale": "That is the maximum height, not a time."
+      },
+      {
+        "id": "D",
+        "text": "7",
+        "rationale": "Arithmetic slip in the quadratic formula."
+      },
+      {
+        "id": "E",
+        "text": "5",
+        "rationale": "That is the time to return to the launch height, not the ground."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Set h(t) = 0: 16t² − 80t − 96 = 0 → t = (80 ± √12544)/32 = 6 (the positive root).",
+    "estimated_time_seconds": 110,
+    "tags": [
+      "quadratics",
+      "model",
+      "family:q_projectile"
+    ],
+    "answer_verification": "peak t=5/2 h=196 ground t=6"
+  },
+  {
+    "question_id": "act-math-quadratics-hard-b0150",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "quadratics",
+    "lesson_id": "act-math-quadratics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "roots",
+    "prompt": "x² + 12x + 36 = 0\nHow many distinct real solutions does the equation above have?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "2",
+        "rationale": "The sign of b² − 4ac decides the number of real roots."
+      },
+      {
+        "id": "B",
+        "text": "-1",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      },
+      {
+        "id": "C",
+        "text": "3",
+        "rationale": "A quadratic can have at most two real solutions."
+      },
+      {
+        "id": "D",
+        "text": "0",
+        "rationale": "Recompute the discriminant b² − 4ac and use its sign."
+      },
+      {
+        "id": "E",
+        "text": "1",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "E",
+    "explanation": "The discriminant is b² − 4ac = (12)² − 4·1·(36) = 0, which is zero (one root).",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "quadratics",
+      "discriminant",
+      "family:q_discriminant"
+    ],
+    "answer_verification": "D=0"
+  },
+  {
+    "question_id": "act-math-quadratics-hard-b0151",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "quadratics",
+    "lesson_id": "act-math-quadratics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "vertex",
+    "prompt": "The function f is defined by f(x) = −x² + 16x − 65. When f(x) is written in the form a(x − h)² + k, what is the value of k?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-129",
+        "rationale": "Subtract a·h², not h², from c."
+      },
+      {
+        "id": "B",
+        "text": "8",
+        "rationale": "That is h, not k."
+      },
+      {
+        "id": "C",
+        "text": "1",
+        "rationale": "Sign slip."
+      },
+      {
+        "id": "D",
+        "text": "-1",
+        "rationale": "Correct."
+      },
+      {
+        "id": "E",
+        "text": "-65",
+        "rationale": "k is f(h), not the constant c."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "h = −b/(2a) = 8; k = f(8) = −1(8)² + 16(8) − 65 = −1.",
+    "estimated_time_seconds": 100,
+    "tags": [
+      "quadratics",
+      "vertex-form",
+      "family:q_complete_square"
+    ],
+    "answer_verification": "h=8,k=-1"
+  },
+  {
+    "question_id": "act-math-quadratics-hard-b0152",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "quadratics",
+    "lesson_id": "act-math-quadratics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "roots",
+    "prompt": "If (x − 10)² = 64, what is the sum of all possible values of x?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "10",
+        "rationale": "That is the average of the solutions, not their sum."
+      },
+      {
+        "id": "B",
+        "text": "18",
+        "rationale": "That is one solution, not the sum."
+      },
+      {
+        "id": "C",
+        "text": "16",
+        "rationale": "The solutions are symmetric about 10, so their sum is 2·10."
+      },
+      {
+        "id": "D",
+        "text": "-20",
+        "rationale": "Sign slip; the solutions are centered at 10."
+      },
+      {
+        "id": "E",
+        "text": "20",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "E",
+    "explanation": "x − 10 = ±8, so x = 18 or x = 2; the sum is 20.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "quadratics",
+      "square-root",
+      "family:q_square_root"
+    ],
+    "answer_verification": "val=20"
+  },
+  {
+    "question_id": "act-math-quadratics-hard-b0153",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "quadratics",
+    "lesson_id": "act-math-quadratics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multi_step_math",
+    "subskill": "vertex",
+    "prompt": "A ball is thrown upward, and its height above the ground, in feet, t seconds after it is thrown is given by h(t) = −16t² + 32t + 48. After how many seconds does the ball hit the ground?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "4",
+        "rationale": "Arithmetic slip in the quadratic formula."
+      },
+      {
+        "id": "B",
+        "text": "1",
+        "rationale": "That is when the ball reaches its maximum height."
+      },
+      {
+        "id": "C",
+        "text": "2",
+        "rationale": "That is the time to return to the launch height, not the ground."
+      },
+      {
+        "id": "D",
+        "text": "3",
+        "rationale": "Correct."
+      },
+      {
+        "id": "E",
+        "text": "64",
+        "rationale": "That is the maximum height, not a time."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Set h(t) = 0: 16t² − 32t − 48 = 0 → t = (32 ± √4096)/32 = 3 (the positive root).",
+    "estimated_time_seconds": 110,
+    "tags": [
+      "quadratics",
+      "model",
+      "family:q_projectile"
+    ],
+    "answer_verification": "peak t=1 h=64 ground t=3"
+  },
+  {
+    "question_id": "act-math-quadratics-hard-b0154",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "quadratics",
+    "lesson_id": "act-math-quadratics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "factoring",
+    "prompt": "Which equation has solutions x = −12 and x = 11?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "x² + x − 132 = 0",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "x² − x + 132 = 0",
+        "rationale": "Both the x-coefficient and the constant have the wrong sign."
+      },
+      {
+        "id": "C",
+        "text": "x² − x − 132 = 0",
+        "rationale": "The x-coefficient is −(sum of roots); the sign is wrong."
+      },
+      {
+        "id": "D",
+        "text": "x² + x + 132 = 0",
+        "rationale": "The constant is the product of the roots, including its sign."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "(x − (−12))(x − (11)) = x² + x − 132, since the sum of the roots is −1 and their product is −132.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "quadratics",
+      "factoring",
+      "family:q_equivalent_form"
+    ],
+    "answer_verification": "roots -12,11"
+  },
+  {
+    "question_id": "act-math-quadratics-hard-b0155",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "quadratics",
+    "lesson_id": "act-math-quadratics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "vertex",
+    "prompt": "The graph of y = −2x² + 20x − 46 in the xy-plane is a parabola. What is the x-coordinate of its vertex?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-5",
+        "rationale": "x = −b/(2a); watch the sign."
+      },
+      {
+        "id": "B",
+        "text": "-46",
+        "rationale": "That is the y-intercept, not the vertex."
+      },
+      {
+        "id": "C",
+        "text": "10",
+        "rationale": "Divide by 2a, not a."
+      },
+      {
+        "id": "D",
+        "text": "5",
+        "rationale": "Correct."
+      },
+      {
+        "id": "E",
+        "text": "4",
+        "rationale": "That is the y-coordinate of the vertex."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "The vertex is at x = −b/(2a) = −20/(−4) = 5.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "quadratics",
+      "vertex",
+      "family:q_vertex"
+    ],
+    "answer_verification": "vertex (5,4)"
+  },
+  {
+    "question_id": "act-math-quadratics-hard-b0156",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "quadratics",
+    "lesson_id": "act-math-quadratics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "vertex",
+    "prompt": "The function f is defined by f(x) = x² + 14x + 57. When f(x) is written in the form a(x − h)² + k, what is the value of k?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-8",
+        "rationale": "Sign slip."
+      },
+      {
+        "id": "B",
+        "text": "10",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      },
+      {
+        "id": "C",
+        "text": "8",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "-7",
+        "rationale": "That is h, not k."
+      },
+      {
+        "id": "E",
+        "text": "57",
+        "rationale": "k is f(h), not the constant c."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "h = −b/(2a) = −7; k = f(−7) = 1(−7)² + 14(−7) + 57 = 8.",
+    "estimated_time_seconds": 100,
+    "tags": [
+      "quadratics",
+      "vertex-form",
+      "family:q_complete_square"
+    ],
+    "answer_verification": "h=-7,k=8"
+  },
+  {
+    "question_id": "act-math-quadratics-hard-b0157",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "quadratics",
+    "lesson_id": "act-math-quadratics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "vertex",
+    "prompt": "The graph of y = 2(x − 9)(x + 1) in the xy-plane has its vertex at (h, k). What is the value of k?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-18",
+        "rationale": "That is the y-intercept, not the vertex's y-coordinate."
+      },
+      {
+        "id": "B",
+        "text": "50",
+        "rationale": "Sign slip."
+      },
+      {
+        "id": "C",
+        "text": "-50",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "-25",
+        "rationale": "Include the factor a = 2."
+      },
+      {
+        "id": "E",
+        "text": "4",
+        "rationale": "That is h, not k."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "h is midway between the intercepts: h = 4; k = 2(4 − (9))(4 − (−1)) = −50.",
+    "estimated_time_seconds": 100,
+    "tags": [
+      "quadratics",
+      "intercepts",
+      "vertex",
+      "family:q_intercepts"
+    ],
+    "answer_verification": "h=4,k=-50"
+  },
+  {
+    "question_id": "act-math-quadratics-hard-b0158",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "quadratics",
+    "lesson_id": "act-math-quadratics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "roots",
+    "prompt": "In the equation x² + kx + 4 = 0, k is a positive constant. If the equation has exactly one real solution, what is the value of k?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "2",
+        "rationale": "k² = 4·4, so k = 2·2, not 2."
+      },
+      {
+        "id": "B",
+        "text": "4",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "-1",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      },
+      {
+        "id": "D",
+        "text": "8",
+        "rationale": "k² = 4c gives k = 2√c, not 4√c."
+      },
+      {
+        "id": "E",
+        "text": "16",
+        "rationale": "That is k², not k."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "One solution means b² − 4ac = 0: k² − 4·4 = 0, so k² = 16 and k = 4 (positive).",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "quadratics",
+      "discriminant",
+      "family:q_discriminant"
+    ],
+    "answer_verification": "k=4"
+  },
+  {
+    "question_id": "act-math-quadratics-hard-b0159",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "quadratics",
+    "lesson_id": "act-math-quadratics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "vertex",
+    "prompt": "A parabola in the xy-plane has x-intercepts at x = 1 and x = 7. What is the equation of its axis of symmetry?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "x = 8",
+        "rationale": "The axis is halfway between the intercepts: divide by 2."
+      },
+      {
+        "id": "B",
+        "text": "y = 4",
+        "rationale": "The axis of symmetry of y = ax² + … is a vertical line x = h."
+      },
+      {
+        "id": "C",
+        "text": "x = 4",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "x = −4",
+        "rationale": "Sign slip."
+      },
+      {
+        "id": "E",
+        "text": "x = 3",
+        "rationale": "Average the intercepts; don't halve their difference."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "The axis of symmetry passes midway between the x-intercepts: x = (1 + 7)/2 = 4.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "quadratics",
+      "intercepts",
+      "symmetry",
+      "family:q_intercepts"
+    ],
+    "answer_verification": "x = 4"
+  },
+  {
+    "question_id": "act-math-quadratics-hard-b0160",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "quadratics",
+    "lesson_id": "act-math-quadratics-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "vertex",
+    "prompt": "A parabola in the xy-plane has x-intercepts at x = −1 and x = 7. What is the equation of its axis of symmetry?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "x = −3",
+        "rationale": "Sign slip."
+      },
+      {
+        "id": "B",
+        "text": "x = 3",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "x = 4",
+        "rationale": "Average the intercepts; don't halve their difference."
+      },
+      {
+        "id": "D",
+        "text": "x = 6",
+        "rationale": "The axis is halfway between the intercepts: divide by 2."
+      },
+      {
+        "id": "E",
+        "text": "y = 3",
+        "rationale": "The axis of symmetry of y = ax² + … is a vertical line x = h."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "The axis of symmetry passes midway between the x-intercepts: x = (−1 + 7)/2 = 3.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "quadratics",
+      "intercepts",
+      "symmetry",
+      "family:q_intercepts"
+    ],
+    "answer_verification": "x = 3"
   }
 ]

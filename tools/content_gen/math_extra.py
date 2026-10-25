@@ -1496,8 +1496,21 @@ def sp_outlier_point(rng, d):
         ds = [(f"({p[0]}, {_m(p[1])})", f"Its y-value differs from the prediction by {abs(r)}, more than {abs(res[j])}.") for p, r in zip(pts, res) if p is not pts[j]]
         expl = f"At x = {pts[j][0]} the line predicts {_m(m * pts[j][0] + b)}; the point is only {abs(res[j])} away, the smallest gap."
     else:
+        # State the ACTUAL least-squares line of the plotted points (rounded to
+        # tenths); a line drawn through the non-outlier trend is not "the line of
+        # best fit" and can disagree with the refit direction.
+        ls_m = _ols_slope(pts)
+        ls_b = sum(p[1] for p in pts) / 5 - ls_m * sum(p[0] for p in pts) / 5
+        lm, lb = round(ls_m, 1), round(ls_b, 1)
+        lm, lb = (int(lm) if lm == int(lm) else lm), (int(lb) if lb == int(lb) else lb)
+        resid = [p[1] - (ls_m * p[0] + ls_b) for p in pts]
+        others = [abs(r) for k, r in enumerate(resid) if k != i]
+        if abs(resid[i]) < 1.5 * max(others) or lm == 0:
+            return sp_outlier_point(rng, d)
+        eq = f"y = {_lin(lm, lb)}"
+        fig = {"type": "figure", "figure": {**fig["figure"], "line": {"m": lm, "b": lb}}}
         prompt = f"The line of best fit for the scatterplot is {eq}. If the point ({pts[i][0]}, {_m(pts[i][1])}) were removed and the line refit, how would the slope most likely change?"
-        above = big > 0
+        above = resid[i] > 0
         mean_x = sum(xs) / 5
         right = pts[i][0] > mean_x
         # Check against an actual least-squares refit: a point near the mean x

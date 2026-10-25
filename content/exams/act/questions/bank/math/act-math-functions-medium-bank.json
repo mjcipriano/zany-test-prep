@@ -9,45 +9,77 @@
     "lesson_id": "act-math-functions-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = (x + 4)/(x − 1). For what value of x is f(x) undefined?",
+    "question_type": "data_interpretation",
+    "subskill": "evaluate",
+    "prompt": "The table gives values of the linear function f. What is the value of f(−5)?",
     "choices": [
       {
         "id": "A",
-        "text": "-1",
-        "rationale": "Solve x + b = 0, so x = −b."
+        "text": "27",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "-4",
-        "rationale": "That makes the numerator 0, so f(x) = 0 there; the function is defined."
+        "text": "4",
+        "rationale": "Multiply the slope by k; don't add."
       },
       {
         "id": "C",
-        "text": "0",
-        "rationale": "f(0) is a perfectly good value here."
+        "text": "12",
+        "rationale": "That is f(0); extend the pattern to x = −5."
       },
       {
         "id": "D",
-        "text": "4",
-        "rationale": "The numerator's constant doesn't make f undefined."
+        "text": "15",
+        "rationale": "Include the constant term b."
       },
       {
         "id": "E",
-        "text": "1",
-        "rationale": "Correct."
+        "text": "24",
+        "rationale": "Off by one step of the pattern."
       }
     ],
-    "correct_choice": "E",
-    "explanation": "A fraction is undefined when its denominator is 0: x − 1 = 0 gives x = 1.",
-    "estimated_time_seconds": 75,
+    "correct_choice": "A",
+    "explanation": "The outputs change by −3 for each increase of 1 in x, so f(x) = −3x + 12 and f(−5) = 27.",
+    "estimated_time_seconds": 85,
     "tags": [
       "functions",
-      "rational",
-      "family:fn_undefined"
+      "table",
+      "family:fn_table"
     ],
-    "answer_verification": "x=1"
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Values of f",
+        "headers": [
+          "x",
+          "f(x)"
+        ],
+        "rows": [
+          [
+            "-4",
+            "24"
+          ],
+          [
+            "-1",
+            "15"
+          ],
+          [
+            "0",
+            "12"
+          ],
+          [
+            "3",
+            "3"
+          ],
+          [
+            "8",
+            "-12"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "val=27"
   },
   {
     "question_id": "act-math-functions-medium-b0002",
@@ -59,45 +91,45 @@
     "lesson_id": "act-math-functions-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "multi_step_math",
-    "subskill": "evaluate",
-    "prompt": "The functions f and g are defined by f(x) = 5x and g(x) = 4x. What is the value of f(g(−2))?",
+    "question_type": "multiple_choice",
+    "subskill": "interpret",
+    "prompt": "If f(x) = x² − 2x − 9, what is the average rate of change of f between x = 5 and x = 11?",
     "choices": [
       {
         "id": "A",
-        "text": "-18",
-        "rationale": "Composition is not addition."
+        "text": "48",
+        "rationale": "Average rate of change is not the average of the outputs."
       },
       {
         "id": "B",
-        "text": "80",
-        "rationale": "Composition is not multiplication."
+        "text": "84",
+        "rationale": "Divide by the change in x."
       },
       {
         "id": "C",
-        "text": "-34",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "14",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "-8",
-        "rationale": "That is g(k); now apply f."
+        "text": "-14",
+        "rationale": "Sign slip."
       },
       {
         "id": "E",
-        "text": "-40",
-        "rationale": "Correct."
+        "text": "90/11",
+        "rationale": "Use the change in f over the change in x, not f(x₂)/x₂."
       }
     ],
-    "correct_choice": "E",
-    "explanation": "First g(−2) = 4(−2) + 0 = −8. Then f(−8) = 5·(−8) + 0 = −40.",
+    "correct_choice": "C",
+    "explanation": "f(5) = 6 and f(11) = 90; average rate = (90 − (6))/(11 − (5)) = 14.",
     "estimated_time_seconds": 95,
     "tags": [
       "functions",
-      "composition",
-      "family:fn_compose_transform"
+      "rate-of-change",
+      "family:fn_rate_of_change"
     ],
-    "answer_verification": "val=-40"
+    "answer_verification": "rate=14"
   },
   {
     "question_id": "act-math-functions-medium-b0003",
@@ -110,44 +142,44 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = (x + 6)/(x − 1). For what value of x is f(x) = 0?",
+    "subskill": "evaluate",
+    "prompt": "For the function f defined by f(x) = 6x² − 6x − 10, what is f(2)?",
     "choices": [
       {
         "id": "A",
-        "text": "6",
-        "rationale": "Solve x + a = 0, so x = −a."
-      },
-      {
-        "id": "B",
-        "text": "-6",
+        "text": "2",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "-10",
+        "rationale": "This squares only the coefficient, not x."
+      },
+      {
         "id": "C",
-        "text": "0",
-        "rationale": "f(0) equals a/b, which isn't 0."
+        "text": "26",
+        "rationale": "Watch the sign on the middle term."
       },
       {
         "id": "D",
-        "text": "-1",
-        "rationale": "The denominator's constant isn't the zero of f."
+        "text": "-46",
+        "rationale": "(−k)² is positive; don't carry the sign through the square."
       },
       {
         "id": "E",
-        "text": "1",
-        "rationale": "That makes the denominator 0, so f is undefined there."
+        "text": "8",
+        "rationale": "Arithmetic slip in squaring; recompute (k)²."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "A fraction is 0 when its numerator is 0 (and the denominator isn't): x + 6 = 0 gives x = −6.",
-    "estimated_time_seconds": 75,
+    "correct_choice": "A",
+    "explanation": "f(2) = 6·(2)² − 6·(2) − 10 = 24 − 12 − 10 = 2.",
+    "estimated_time_seconds": 85,
     "tags": [
       "functions",
-      "rational",
-      "family:fn_undefined"
+      "evaluate",
+      "family:fn_evaluate"
     ],
-    "answer_verification": "x=-6"
+    "answer_verification": "f(2)=2"
   },
   {
     "question_id": "act-math-functions-medium-b0004",
@@ -159,45 +191,45 @@
     "lesson_id": "act-math-functions-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "multi_step_math",
+    "question_type": "multiple_choice",
     "subskill": "evaluate",
-    "prompt": "The functions f and g are defined by f(x) = 3x − 6 and g(x) = 3x + 1. What is the value of f(g(−2))?",
+    "prompt": "The function f is defined by f(x) = x² − 6x − 12. What is the value of f(4)?",
     "choices": [
       {
         "id": "A",
-        "text": "-5",
-        "rationale": "That is g(k); now apply f."
+        "text": "-32",
+        "rationale": "This squares only the coefficient, not x."
       },
       {
         "id": "B",
-        "text": "-35",
-        "rationale": "This computes g(f(k)); evaluate g first."
-      },
-      {
-        "id": "C",
-        "text": "-21",
+        "text": "-20",
         "rationale": "Correct."
       },
       {
+        "id": "C",
+        "text": "-52",
+        "rationale": "(−k)² is positive; don't carry the sign through the square."
+      },
+      {
         "id": "D",
-        "text": "-17",
-        "rationale": "Composition is not addition."
+        "text": "28",
+        "rationale": "Watch the sign on the middle term."
       },
       {
         "id": "E",
-        "text": "60",
-        "rationale": "Composition is not multiplication."
+        "text": "-19",
+        "rationale": "Arithmetic slip in squaring; recompute (k)²."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "First g(−2) = 3(−2) + 1 = −5. Then f(−5) = 3·(−5) − 6 = −21.",
-    "estimated_time_seconds": 95,
+    "correct_choice": "B",
+    "explanation": "f(4) = 1·(4)² − 6·(4) − 12 = 16 − 24 − 12 = −20.",
+    "estimated_time_seconds": 85,
     "tags": [
       "functions",
-      "composition",
-      "family:fn_compose_transform"
+      "evaluate",
+      "family:fn_evaluate"
     ],
-    "answer_verification": "val=-21"
+    "answer_verification": "f(4)=-20"
   },
   {
     "question_id": "act-math-functions-medium-b0005",
@@ -210,44 +242,44 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "evaluate",
-    "prompt": "Which of the following points lies on the graph of y = x² + 1 in the xy-plane?",
+    "subskill": "interpret",
+    "prompt": "The function h(t) = 213 + 11t gives the height, in centimeters, of a plant t weeks after it was planted. Which of the following is the best interpretation of h(0) = 213?",
     "choices": [
       {
         "id": "A",
-        "text": "(−3, 10)",
-        "rationale": "Correct."
+        "text": "the height after 213 weeks",
+        "rationale": "In h(0) the input is 0, not 213."
       },
       {
         "id": "B",
-        "text": "(−5, 27)",
-        "rationale": "At x = −5, y = 26, not 27."
+        "text": "the growth, in centimeters, each week",
+        "rationale": "That describes the coefficient of the variable, the rate of change."
       },
       {
         "id": "C",
-        "text": "(2, 4)",
-        "rationale": "At x = 2, y = 5, not 4."
+        "text": "the total change in the output of the function over the first 213 units of input",
+        "rationale": "The constant term is a starting value, not a change over an interval."
       },
       {
         "id": "D",
-        "text": "(0, −1)",
-        "rationale": "At x = 0, y = 1, not −1."
+        "text": "the height of the plant when it was planted",
+        "rationale": "Correct."
       },
       {
         "id": "E",
-        "text": "(−1, 0)",
-        "rationale": "At x = −1, y = 2, not 0."
+        "text": "the number of weeks until it reaches 213 cm",
+        "rationale": "That would be an input (a time or count) set equal to the output, which reverses the roles."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Substitute x = −3: y = (−3)² + 1 = 10.",
-    "estimated_time_seconds": 75,
+    "correct_choice": "D",
+    "explanation": "h(0) is the output when the input is 0, so 213 is the height of the plant when it was planted.",
+    "estimated_time_seconds": 85,
     "tags": [
       "functions",
-      "graph",
-      "family:fn_graph_point"
+      "interpret",
+      "family:fn_interpret"
     ],
-    "answer_verification": "(−3, 10)"
+    "answer_verification": "interpret h(0)"
   },
   {
     "question_id": "act-math-functions-medium-b0006",
@@ -259,45 +291,45 @@
     "lesson_id": "act-math-functions-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "interpret",
-    "prompt": "If f(x) = x² + 5x − 1, what is the average rate of change of f between x = −4 and x = 0?",
+    "question_type": "multi_step_math",
+    "subskill": "evaluate",
+    "prompt": "The functions f and g are defined by f(x) = 3x + 8 and g(x) = 2x + 1. What is the value of f(g(0))?",
     "choices": [
       {
         "id": "A",
-        "text": "4",
-        "rationale": "Divide by the change in x."
+        "text": "11",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "-1",
-        "rationale": "Sign slip."
+        "text": "8",
+        "rationale": "Composition is not multiplication."
       },
       {
         "id": "C",
-        "text": "-3",
-        "rationale": "Average rate of change is not the average of the outputs."
+        "text": "17",
+        "rationale": "This computes g(f(k)); evaluate g first."
       },
       {
         "id": "D",
-        "text": "2",
-        "rationale": "Use the change in f over the change in x, not f(x₂)/x₂."
+        "text": "9",
+        "rationale": "Composition is not addition."
       },
       {
         "id": "E",
         "text": "1",
-        "rationale": "Correct."
+        "rationale": "That is g(k); now apply f."
       }
     ],
-    "correct_choice": "E",
-    "explanation": "f(−4) = −5 and f(0) = −1; average rate = (−1 − (−5))/(0 − (−4)) = 1.",
+    "correct_choice": "A",
+    "explanation": "First g(0) = 2(0) + 1 = 1. Then f(1) = 3·(1) + 8 = 11.",
     "estimated_time_seconds": 95,
     "tags": [
       "functions",
-      "rate-of-change",
-      "family:fn_rate_of_change"
+      "composition",
+      "family:fn_compose_transform"
     ],
-    "answer_verification": "rate=1"
+    "answer_verification": "val=11"
   },
   {
     "question_id": "act-math-functions-medium-b0007",
@@ -309,45 +341,45 @@
     "lesson_id": "act-math-functions-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "multi_step_math",
-    "subskill": "evaluate",
-    "prompt": "The functions f and g are defined by f(x) = 6x − 6 and g(x) = 3x + 4. What is the value of f(g(−3))?",
+    "question_type": "multiple_choice",
+    "subskill": "interpret",
+    "prompt": "The function p(t) = 208 − 24t gives the amount of water, in gallons, remaining in a tank t minutes after a valve opens. Which of the following is the best interpretation of p(0) = 208?",
     "choices": [
       {
         "id": "A",
-        "text": "-5",
-        "rationale": "That is g(k); now apply f."
+        "text": "the amount of water remaining after 208 minutes",
+        "rationale": "In p(0) the input is 0, not 208."
       },
       {
         "id": "B",
-        "text": "-68",
-        "rationale": "This computes g(f(k)); evaluate g first."
+        "text": "the amount of water in the tank when the valve opens",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "120",
-        "rationale": "Composition is not multiplication."
+        "text": "the total change in the output of the function over the first 208 units of input",
+        "rationale": "The constant term is a starting value, not a change over an interval."
       },
       {
         "id": "D",
-        "text": "-29",
-        "rationale": "Composition is not addition."
+        "text": "the number of minutes until the tank is empty",
+        "rationale": "That would be an input (a time or count) set equal to the output, which reverses the roles."
       },
       {
         "id": "E",
-        "text": "-36",
-        "rationale": "Correct."
+        "text": "the number of gallons drained each minute",
+        "rationale": "That describes the coefficient of the variable, the rate of change."
       }
     ],
-    "correct_choice": "E",
-    "explanation": "First g(−3) = 3(−3) + 4 = −5. Then f(−5) = 6·(−5) − 6 = −36.",
-    "estimated_time_seconds": 95,
+    "correct_choice": "B",
+    "explanation": "p(0) is the output when the input is 0, so 208 is the amount of water in the tank when the valve opens.",
+    "estimated_time_seconds": 85,
     "tags": [
       "functions",
-      "composition",
-      "family:fn_compose_transform"
+      "interpret",
+      "family:fn_interpret"
     ],
-    "answer_verification": "val=-36"
+    "answer_verification": "interpret p(0)"
   },
   {
     "question_id": "act-math-functions-medium-b0008",
@@ -359,77 +391,45 @@
     "lesson_id": "act-math-functions-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "data_interpretation",
+    "question_type": "multiple_choice",
     "subskill": "evaluate",
-    "prompt": "The table gives values of the linear function f. What is the value of f(−2)?",
+    "prompt": "Which of the following points lies on the graph of y = x² − 1 in the xy-plane?",
     "choices": [
       {
         "id": "A",
-        "text": "7",
-        "rationale": "Off by one step of the pattern."
+        "text": "(4, 16)",
+        "rationale": "At x = 4, y = 15, not 16."
       },
       {
         "id": "B",
-        "text": "1",
-        "rationale": "Multiply the slope by k; don't add."
+        "text": "(−2, 0)",
+        "rationale": "At x = −2, y = 3, not 0."
       },
       {
         "id": "C",
-        "text": "4",
-        "rationale": "Include the constant term b."
+        "text": "(5, 23)",
+        "rationale": "At x = 5, y = 24, not 23."
       },
       {
         "id": "D",
-        "text": "5",
-        "rationale": "That is f(0); extend the pattern to x = −2."
+        "text": "(2, 4)",
+        "rationale": "At x = 2, y = 3, not 4."
       },
       {
         "id": "E",
-        "text": "9",
+        "text": "(0, −1)",
         "rationale": "Correct."
       }
     ],
     "correct_choice": "E",
-    "explanation": "The outputs change by −2 for each increase of 1 in x, so f(x) = −2x + 5 and f(−2) = 9.",
-    "estimated_time_seconds": 85,
+    "explanation": "Substitute x = 0: y = (0)² − 1 = −1.",
+    "estimated_time_seconds": 75,
     "tags": [
       "functions",
-      "table",
-      "family:fn_table"
+      "graph",
+      "family:fn_graph_point"
     ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Values of f",
-        "headers": [
-          "x",
-          "f(x)"
-        ],
-        "rows": [
-          [
-            "-4",
-            "13"
-          ],
-          [
-            "0",
-            "5"
-          ],
-          [
-            "1",
-            "3"
-          ],
-          [
-            "4",
-            "-3"
-          ],
-          [
-            "6",
-            "-7"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "val=9"
+    "answer_verification": "(0, −1)"
   },
   {
     "question_id": "act-math-functions-medium-b0009",
@@ -442,911 +442,47 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "interpret",
-    "prompt": "If f(x) = x² + 6x + 2, what is the average rate of change of f between x = −3 and x = 1?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-4",
-        "rationale": "Sign slip."
-      },
-      {
-        "id": "B",
-        "text": "9",
-        "rationale": "Use the change in f over the change in x, not f(x₂)/x₂."
-      },
-      {
-        "id": "C",
-        "text": "1",
-        "rationale": "Average rate of change is not the average of the outputs."
-      },
-      {
-        "id": "D",
-        "text": "16",
-        "rationale": "Divide by the change in x."
-      },
-      {
-        "id": "E",
-        "text": "4",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "E",
-    "explanation": "f(−3) = −7 and f(1) = 9; average rate = (9 − (−7))/(1 − (−3)) = 4.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "functions",
-      "rate-of-change",
-      "family:fn_rate_of_change"
-    ],
-    "answer_verification": "rate=4"
-  },
-  {
-    "question_id": "act-math-functions-medium-b0010",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "functions",
-    "lesson_id": "act-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multi_step_math",
     "subskill": "evaluate",
-    "prompt": "The functions f and g are defined by f(x) = 4x − 8 and g(x) = 5x − 2. What is the value of f(g(0))?",
+    "prompt": "Which of the following points lies on the graph of y = x² − 6 in the xy-plane?",
     "choices": [
       {
         "id": "A",
-        "text": "-16",
-        "rationale": "Correct."
+        "text": "(3, 0)",
+        "rationale": "At x = 3, y = 3, not 0."
       },
       {
         "id": "B",
-        "text": "-10",
-        "rationale": "Composition is not addition."
+        "text": "(1, −6)",
+        "rationale": "At x = 1, y = −5, not −6."
       },
       {
         "id": "C",
-        "text": "-42",
-        "rationale": "This computes g(f(k)); evaluate g first."
-      },
-      {
-        "id": "D",
-        "text": "-2",
-        "rationale": "That is g(k); now apply f."
-      },
-      {
-        "id": "E",
-        "text": "16",
-        "rationale": "Composition is not multiplication."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "First g(0) = 5(0) − 2 = −2. Then f(−2) = 4·(−2) − 8 = −16.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "functions",
-      "composition",
-      "family:fn_compose_transform"
-    ],
-    "answer_verification": "val=-16"
-  },
-  {
-    "question_id": "act-math-functions-medium-b0011",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "functions",
-    "lesson_id": "act-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "evaluate",
-    "prompt": "The function f is defined by f(x) = 3x² + 9x − 12. What is the value of f(6)?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-66",
-        "rationale": "(−k)² is positive; don't carry the sign through the square."
-      },
-      {
-        "id": "B",
-        "text": "60",
-        "rationale": "This squares only the coefficient, not x."
-      },
-      {
-        "id": "C",
-        "text": "153",
-        "rationale": "Arithmetic slip in squaring; recompute (k)²."
-      },
-      {
-        "id": "D",
-        "text": "42",
-        "rationale": "Watch the sign on the middle term."
-      },
-      {
-        "id": "E",
-        "text": "150",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "E",
-    "explanation": "f(6) = 3·(6)² + 9·(6) − 12 = 108 + 54 − 12 = 150.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "functions",
-      "evaluate",
-      "family:fn_evaluate"
-    ],
-    "answer_verification": "f(6)=150"
-  },
-  {
-    "question_id": "act-math-functions-medium-b0012",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "functions",
-    "lesson_id": "act-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "evaluate",
-    "prompt": "The table gives values of the linear function f. What is the value of f(7)?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "11",
-        "rationale": "That is f(0); extend the pattern to x = 7."
-      },
-      {
-        "id": "B",
-        "text": "19",
-        "rationale": "Multiply the slope by k; don't add."
-      },
-      {
-        "id": "C",
-        "text": "22",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "D",
-        "text": "7",
-        "rationale": "Include the constant term b."
-      },
-      {
-        "id": "E",
-        "text": "18",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "E",
-    "explanation": "The outputs change by 1 for each increase of 1 in x, so f(x) = x + 11 and f(7) = 18.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "functions",
-      "table",
-      "family:fn_table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Values of f",
-        "headers": [
-          "x",
-          "f(x)"
-        ],
-        "rows": [
-          [
-            "-4",
-            "7"
-          ],
-          [
-            "-3",
-            "8"
-          ],
-          [
-            "2",
-            "13"
-          ],
-          [
-            "5",
-            "16"
-          ],
-          [
-            "6",
-            "17"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "val=18"
-  },
-  {
-    "question_id": "act-math-functions-medium-b0013",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "functions",
-    "lesson_id": "act-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "evaluate",
-    "prompt": "For the function f defined by f(x) = 5x² + 6x + 6, what is f(−1)?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-5",
-        "rationale": "This squares only the coefficient, not x."
-      },
-      {
-        "id": "B",
-        "text": "5",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "17",
-        "rationale": "Watch the sign on the middle term."
-      },
-      {
-        "id": "D",
-        "text": "0",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "E",
-        "text": "10",
-        "rationale": "Arithmetic slip in squaring; recompute (k)²."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "f(−1) = 5·(−1)² + 6·(−1) + 6 = 5 − 6 + 6 = 5.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "functions",
-      "evaluate",
-      "family:fn_evaluate"
-    ],
-    "answer_verification": "f(-1)=5"
-  },
-  {
-    "question_id": "act-math-functions-medium-b0014",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "functions",
-    "lesson_id": "act-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "evaluate",
-    "prompt": "If f(x) = 5x² + 8x − 2, what is f(−3)?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "67",
-        "rationale": "Watch the sign on the middle term."
-      },
-      {
-        "id": "B",
-        "text": "19",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "24",
-        "rationale": "Arithmetic slip in squaring; recompute (k)²."
-      },
-      {
-        "id": "D",
-        "text": "-71",
-        "rationale": "(−k)² is positive; don't carry the sign through the square."
-      },
-      {
-        "id": "E",
-        "text": "-41",
-        "rationale": "This squares only the coefficient, not x."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "f(−3) = 5·(−3)² + 8·(−3) − 2 = 45 − 24 − 2 = 19.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "functions",
-      "evaluate",
-      "family:fn_evaluate"
-    ],
-    "answer_verification": "f(-3)=19"
-  },
-  {
-    "question_id": "act-math-functions-medium-b0015",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "functions",
-    "lesson_id": "act-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multi_step_math",
-    "subskill": "evaluate",
-    "prompt": "The functions f and g are defined by f(x) = 2x − 8 and g(x) = 2x − 6. What is the value of f(g(−2))?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-10",
-        "rationale": "That is g(k); now apply f."
-      },
-      {
-        "id": "B",
-        "text": "-22",
-        "rationale": "Composition is not addition."
-      },
-      {
-        "id": "C",
-        "text": "-30",
-        "rationale": "This computes g(f(k)); evaluate g first."
-      },
-      {
-        "id": "D",
-        "text": "-28",
-        "rationale": "Correct."
-      },
-      {
-        "id": "E",
-        "text": "120",
-        "rationale": "Composition is not multiplication."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "First g(−2) = 2(−2) − 6 = −10. Then f(−10) = 2·(−10) − 8 = −28.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "functions",
-      "composition",
-      "family:fn_compose_transform"
-    ],
-    "answer_verification": "val=-28"
-  },
-  {
-    "question_id": "act-math-functions-medium-b0016",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "functions",
-    "lesson_id": "act-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "evaluate",
-    "prompt": "The table gives values of the linear function f. What is the value of f(−6)?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-32",
-        "rationale": "Off by one step of the pattern."
-      },
-      {
-        "id": "B",
-        "text": "-2",
-        "rationale": "Multiply the slope by k; don't add."
-      },
-      {
-        "id": "C",
-        "text": "-39",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "D",
-        "text": "-38",
-        "rationale": "Correct."
-      },
-      {
-        "id": "E",
-        "text": "-36",
-        "rationale": "Include the constant term b."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "The outputs change by 6 for each increase of 1 in x, so f(x) = 6x − 2 and f(−6) = −38.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "functions",
-      "table",
-      "family:fn_table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Values of f",
-        "headers": [
-          "x",
-          "f(x)"
-        ],
-        "rows": [
-          [
-            "-3",
-            "-20"
-          ],
-          [
-            "1",
-            "4"
-          ],
-          [
-            "4",
-            "22"
-          ],
-          [
-            "5",
-            "28"
-          ],
-          [
-            "9",
-            "52"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "val=-38"
-  },
-  {
-    "question_id": "act-math-functions-medium-b0017",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "functions",
-    "lesson_id": "act-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "evaluate",
-    "prompt": "Which of the following points lies on the graph of y = x² − 9 in the xy-plane?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "(2, −2)",
-        "rationale": "At x = 2, y = −5, not −2."
-      },
-      {
-        "id": "B",
-        "text": "(−3, −2)",
-        "rationale": "At x = −3, y = 0, not −2."
-      },
-      {
-        "id": "C",
-        "text": "(3, −2)",
-        "rationale": "At x = 3, y = 0, not −2."
-      },
-      {
-        "id": "D",
-        "text": "(−5, 15)",
-        "rationale": "At x = −5, y = 16, not 15."
-      },
-      {
-        "id": "E",
-        "text": "(1, −8)",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "E",
-    "explanation": "Substitute x = 1: y = (1)² − 9 = −8.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "functions",
-      "graph",
-      "family:fn_graph_point"
-    ],
-    "answer_verification": "(1, −8)"
-  },
-  {
-    "question_id": "act-math-functions-medium-b0018",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "functions",
-    "lesson_id": "act-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "interpret",
-    "prompt": "The function C(n) = 23n + 392 gives the cost, in dollars, of printing n posters. Which of the following is the best interpretation of C(0) = 392?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "the cost per poster",
-        "rationale": "That describes the coefficient of the variable, the rate of change."
-      },
-      {
-        "id": "B",
-        "text": "the total change in the output of the function over the first 392 units of input",
-        "rationale": "The constant term is a starting value, not a change over an interval."
-      },
-      {
-        "id": "C",
-        "text": "the cost of printing 392 posters",
-        "rationale": "In C(0) the input is 0, not 392."
-      },
-      {
-        "id": "D",
-        "text": "the cost before any posters are printed",
-        "rationale": "Correct."
-      },
-      {
-        "id": "E",
-        "text": "the number of posters that cost $392",
-        "rationale": "That would be an input (a time or count) set equal to the output, which reverses the roles."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "C(0) is the output when the input is 0, so 392 is the cost before any posters are printed.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "functions",
-      "interpret",
-      "family:fn_interpret"
-    ],
-    "answer_verification": "interpret C(0)"
-  },
-  {
-    "question_id": "act-math-functions-medium-b0019",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "functions",
-    "lesson_id": "act-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = (x + 8)/(x − 8). For what value of x is f(x) = 0?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-18",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "B",
-        "text": "0",
-        "rationale": "f(0) equals a/b, which isn't 0."
-      },
-      {
-        "id": "C",
-        "text": "8",
-        "rationale": "That makes the denominator 0, so f is undefined there."
-      },
-      {
-        "id": "D",
-        "text": "2",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "E",
-        "text": "-8",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "E",
-    "explanation": "A fraction is 0 when its numerator is 0 (and the denominator isn't): x + 8 = 0 gives x = −8.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "functions",
-      "rational",
-      "family:fn_undefined"
-    ],
-    "answer_verification": "x=-8"
-  },
-  {
-    "question_id": "act-math-functions-medium-b0020",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "functions",
-    "lesson_id": "act-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "evaluate",
-    "prompt": "Which of the following points lies on the graph of y = x² − 8 in the xy-plane?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "(−5, 17)",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "(−3, 3)",
-        "rationale": "At x = −3, y = 1, not 3."
-      },
-      {
-        "id": "C",
-        "text": "(−4, 7)",
-        "rationale": "At x = −4, y = 8, not 7."
-      },
-      {
-        "id": "D",
-        "text": "(−1, −10)",
-        "rationale": "At x = −1, y = −7, not −10."
-      },
-      {
-        "id": "E",
-        "text": "(5, 19)",
-        "rationale": "At x = 5, y = 17, not 19."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "Substitute x = −5: y = (−5)² − 8 = 17.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "functions",
-      "graph",
-      "family:fn_graph_point"
-    ],
-    "answer_verification": "(−5, 17)"
-  },
-  {
-    "question_id": "act-math-functions-medium-b0021",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "functions",
-    "lesson_id": "act-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = 6x + 36. For what value of x is f(x) = 0?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-1/6",
-        "rationale": "This inverts the division."
-      },
-      {
-        "id": "B",
-        "text": "6",
-        "rationale": "Sign slip when moving the constant."
-      },
-      {
-        "id": "C",
-        "text": "36",
-        "rationale": "That is f(0), the y-intercept, not the zero."
-      },
-      {
-        "id": "D",
-        "text": "-6",
-        "rationale": "Correct."
-      },
-      {
-        "id": "E",
-        "text": "-2",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Set 6x + 36 = 0: 6x = −36, so x = −6.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "functions",
-      "solve",
-      "family:fn_solve_input"
-    ],
-    "answer_verification": "x=-6"
-  },
-  {
-    "question_id": "act-math-functions-medium-b0022",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "functions",
-    "lesson_id": "act-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = x² + x − 1. What is the average rate of change of f over the interval from x = 1 to x = 5?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "7",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "28",
-        "rationale": "Divide by the change in x."
-      },
-      {
-        "id": "C",
-        "text": "15",
-        "rationale": "Average rate of change is not the average of the outputs."
-      },
-      {
-        "id": "D",
-        "text": "-7",
-        "rationale": "Sign slip."
-      },
-      {
-        "id": "E",
-        "text": "29/5",
-        "rationale": "Use the change in f over the change in x, not f(x₂)/x₂."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "f(1) = 1 and f(5) = 29; average rate = (29 − (1))/(5 − (1)) = 7.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "functions",
-      "rate-of-change",
-      "family:fn_rate_of_change"
-    ],
-    "answer_verification": "rate=7"
-  },
-  {
-    "question_id": "act-math-functions-medium-b0023",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "functions",
-    "lesson_id": "act-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "interpret",
-    "prompt": "The function f is defined by f(x) = (x + 3)/(x + 7). For what value of x is f(x) = 0?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-3",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "-7",
-        "rationale": "That makes the denominator 0, so f is undefined there."
-      },
-      {
-        "id": "C",
-        "text": "0",
-        "rationale": "f(0) equals a/b, which isn't 0."
-      },
-      {
-        "id": "D",
-        "text": "7",
-        "rationale": "The denominator's constant isn't the zero of f."
-      },
-      {
-        "id": "E",
-        "text": "3",
-        "rationale": "Solve x + a = 0, so x = −a."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "A fraction is 0 when its numerator is 0 (and the denominator isn't): x + 3 = 0 gives x = −3.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "functions",
-      "rational",
-      "family:fn_undefined"
-    ],
-    "answer_verification": "x=-3"
-  },
-  {
-    "question_id": "act-math-functions-medium-b0024",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "functions",
-    "lesson_id": "act-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "evaluate",
-    "prompt": "Which of the following points lies on the graph of y = x² + 4 in the xy-plane?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "(−1, 3)",
-        "rationale": "At x = −1, y = 5, not 3."
-      },
-      {
-        "id": "B",
-        "text": "(−5, 31)",
-        "rationale": "At x = −5, y = 29, not 31."
-      },
-      {
-        "id": "C",
-        "text": "(2, 11)",
-        "rationale": "At x = 2, y = 8, not 11."
-      },
-      {
-        "id": "D",
-        "text": "(1, 5)",
-        "rationale": "Correct."
-      },
-      {
-        "id": "E",
-        "text": "(−4, 18)",
-        "rationale": "At x = −4, y = 20, not 18."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Substitute x = 1: y = (1)² + 4 = 5.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "functions",
-      "graph",
-      "family:fn_graph_point"
-    ],
-    "answer_verification": "(1, 5)"
-  },
-  {
-    "question_id": "act-math-functions-medium-b0025",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "functions",
-    "skill": "functions",
-    "lesson_id": "act-math-functions-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "interpret",
-    "prompt": "If f(x) = x² − 6x − 2, what is the average rate of change of f between x = 0 and x = 5?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-7/5",
-        "rationale": "Use the change in f over the change in x, not f(x₂)/x₂."
-      },
-      {
-        "id": "B",
-        "text": "1",
-        "rationale": "Sign slip."
-      },
-      {
-        "id": "C",
-        "text": "-1",
+        "text": "(4, 10)",
         "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "-9/2",
-        "rationale": "Average rate of change is not the average of the outputs."
+        "text": "(−3, 2)",
+        "rationale": "At x = −3, y = 3, not 2."
       },
       {
         "id": "E",
-        "text": "-5",
-        "rationale": "Divide by the change in x."
+        "text": "(−4, 12)",
+        "rationale": "At x = −4, y = 10, not 12."
       }
     ],
     "correct_choice": "C",
-    "explanation": "f(0) = −2 and f(5) = −7; average rate = (−7 − (−2))/(5 − (0)) = -1.",
-    "estimated_time_seconds": 95,
+    "explanation": "Substitute x = 4: y = (4)² − 6 = 10.",
+    "estimated_time_seconds": 75,
     "tags": [
       "functions",
-      "rate-of-change",
-      "family:fn_rate_of_change"
+      "graph",
+      "family:fn_graph_point"
     ],
-    "answer_verification": "rate=-1"
+    "answer_verification": "(4, 10)"
   },
   {
-    "question_id": "act-math-functions-medium-b0026",
+    "question_id": "act-math-functions-medium-b0010",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1396,7 +532,7 @@
     "answer_verification": "(0, −7)"
   },
   {
-    "question_id": "act-math-functions-medium-b0027",
+    "question_id": "act-math-functions-medium-b0011",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1478,7 +614,7 @@
     "answer_verification": "val=-30"
   },
   {
-    "question_id": "act-math-functions-medium-b0028",
+    "question_id": "act-math-functions-medium-b0012",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1528,7 +664,7 @@
     "answer_verification": "x=-7"
   },
   {
-    "question_id": "act-math-functions-medium-b0029",
+    "question_id": "act-math-functions-medium-b0013",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1578,7 +714,7 @@
     "answer_verification": "rate=-8"
   },
   {
-    "question_id": "act-math-functions-medium-b0030",
+    "question_id": "act-math-functions-medium-b0014",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1628,7 +764,7 @@
     "answer_verification": "val=-15"
   },
   {
-    "question_id": "act-math-functions-medium-b0031",
+    "question_id": "act-math-functions-medium-b0015",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1678,7 +814,7 @@
     "answer_verification": "interpret p(0)"
   },
   {
-    "question_id": "act-math-functions-medium-b0032",
+    "question_id": "act-math-functions-medium-b0016",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1728,7 +864,7 @@
     "answer_verification": "x=-7"
   },
   {
-    "question_id": "act-math-functions-medium-b0033",
+    "question_id": "act-math-functions-medium-b0017",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1810,7 +946,7 @@
     "answer_verification": "val=-3"
   },
   {
-    "question_id": "act-math-functions-medium-b0034",
+    "question_id": "act-math-functions-medium-b0018",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1860,7 +996,7 @@
     "answer_verification": "x=-4"
   },
   {
-    "question_id": "act-math-functions-medium-b0035",
+    "question_id": "act-math-functions-medium-b0019",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1910,7 +1046,7 @@
     "answer_verification": "rate=0"
   },
   {
-    "question_id": "act-math-functions-medium-b0036",
+    "question_id": "act-math-functions-medium-b0020",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -1960,7 +1096,7 @@
     "answer_verification": "rate=12"
   },
   {
-    "question_id": "act-math-functions-medium-b0037",
+    "question_id": "act-math-functions-medium-b0021",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2010,7 +1146,7 @@
     "answer_verification": "(−2, −5)"
   },
   {
-    "question_id": "act-math-functions-medium-b0038",
+    "question_id": "act-math-functions-medium-b0022",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2060,7 +1196,7 @@
     "answer_verification": "rate=2"
   },
   {
-    "question_id": "act-math-functions-medium-b0039",
+    "question_id": "act-math-functions-medium-b0023",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2110,7 +1246,7 @@
     "answer_verification": "interpret h(0)"
   },
   {
-    "question_id": "act-math-functions-medium-b0040",
+    "question_id": "act-math-functions-medium-b0024",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2160,7 +1296,7 @@
     "answer_verification": "(2, −1)"
   },
   {
-    "question_id": "act-math-functions-medium-b0041",
+    "question_id": "act-math-functions-medium-b0025",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2210,7 +1346,7 @@
     "answer_verification": "(3, 13)"
   },
   {
-    "question_id": "act-math-functions-medium-b0042",
+    "question_id": "act-math-functions-medium-b0026",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2260,7 +1396,7 @@
     "answer_verification": "x=-5"
   },
   {
-    "question_id": "act-math-functions-medium-b0043",
+    "question_id": "act-math-functions-medium-b0027",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2310,7 +1446,7 @@
     "answer_verification": "f(-5)=66"
   },
   {
-    "question_id": "act-math-functions-medium-b0044",
+    "question_id": "act-math-functions-medium-b0028",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2360,7 +1496,7 @@
     "answer_verification": "val=22"
   },
   {
-    "question_id": "act-math-functions-medium-b0045",
+    "question_id": "act-math-functions-medium-b0029",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2410,7 +1546,7 @@
     "answer_verification": "x=-3"
   },
   {
-    "question_id": "act-math-functions-medium-b0046",
+    "question_id": "act-math-functions-medium-b0030",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2460,7 +1596,7 @@
     "answer_verification": "(3, 5)"
   },
   {
-    "question_id": "act-math-functions-medium-b0047",
+    "question_id": "act-math-functions-medium-b0031",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2510,7 +1646,7 @@
     "answer_verification": "rate=6"
   },
   {
-    "question_id": "act-math-functions-medium-b0048",
+    "question_id": "act-math-functions-medium-b0032",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2560,7 +1696,7 @@
     "answer_verification": "interpret p(0)"
   },
   {
-    "question_id": "act-math-functions-medium-b0049",
+    "question_id": "act-math-functions-medium-b0033",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2610,7 +1746,7 @@
     "answer_verification": "interpret C(0)"
   },
   {
-    "question_id": "act-math-functions-medium-b0050",
+    "question_id": "act-math-functions-medium-b0034",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2692,7 +1828,7 @@
     "answer_verification": "val=-13"
   },
   {
-    "question_id": "act-math-functions-medium-b0051",
+    "question_id": "act-math-functions-medium-b0035",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2742,7 +1878,7 @@
     "answer_verification": "(−1, −3)"
   },
   {
-    "question_id": "act-math-functions-medium-b0052",
+    "question_id": "act-math-functions-medium-b0036",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2792,7 +1928,7 @@
     "answer_verification": "(0, 3)"
   },
   {
-    "question_id": "act-math-functions-medium-b0053",
+    "question_id": "act-math-functions-medium-b0037",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2842,7 +1978,7 @@
     "answer_verification": "rate=8"
   },
   {
-    "question_id": "act-math-functions-medium-b0054",
+    "question_id": "act-math-functions-medium-b0038",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2924,7 +2060,7 @@
     "answer_verification": "val=-8"
   },
   {
-    "question_id": "act-math-functions-medium-b0055",
+    "question_id": "act-math-functions-medium-b0039",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -2974,7 +2110,7 @@
     "answer_verification": "x=-3"
   },
   {
-    "question_id": "act-math-functions-medium-b0056",
+    "question_id": "act-math-functions-medium-b0040",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3024,7 +2160,7 @@
     "answer_verification": "x=-6"
   },
   {
-    "question_id": "act-math-functions-medium-b0057",
+    "question_id": "act-math-functions-medium-b0041",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3074,7 +2210,7 @@
     "answer_verification": "f(5)=68"
   },
   {
-    "question_id": "act-math-functions-medium-b0058",
+    "question_id": "act-math-functions-medium-b0042",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3124,7 +2260,7 @@
     "answer_verification": "x=-5"
   },
   {
-    "question_id": "act-math-functions-medium-b0059",
+    "question_id": "act-math-functions-medium-b0043",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3174,7 +2310,7 @@
     "answer_verification": "interpret h(0)"
   },
   {
-    "question_id": "act-math-functions-medium-b0060",
+    "question_id": "act-math-functions-medium-b0044",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3224,7 +2360,7 @@
     "answer_verification": "rate=2"
   },
   {
-    "question_id": "act-math-functions-medium-b0061",
+    "question_id": "act-math-functions-medium-b0045",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3274,7 +2410,7 @@
     "answer_verification": "rate=18"
   },
   {
-    "question_id": "act-math-functions-medium-b0062",
+    "question_id": "act-math-functions-medium-b0046",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3324,7 +2460,7 @@
     "answer_verification": "(3, 4)"
   },
   {
-    "question_id": "act-math-functions-medium-b0063",
+    "question_id": "act-math-functions-medium-b0047",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3374,7 +2510,7 @@
     "answer_verification": "x=-2"
   },
   {
-    "question_id": "act-math-functions-medium-b0064",
+    "question_id": "act-math-functions-medium-b0048",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3424,7 +2560,7 @@
     "answer_verification": "interpret h(0)"
   },
   {
-    "question_id": "act-math-functions-medium-b0065",
+    "question_id": "act-math-functions-medium-b0049",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3474,7 +2610,7 @@
     "answer_verification": "(0, −6)"
   },
   {
-    "question_id": "act-math-functions-medium-b0066",
+    "question_id": "act-math-functions-medium-b0050",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3524,7 +2660,7 @@
     "answer_verification": "val=0"
   },
   {
-    "question_id": "act-math-functions-medium-b0067",
+    "question_id": "act-math-functions-medium-b0051",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3574,7 +2710,7 @@
     "answer_verification": "rate=7"
   },
   {
-    "question_id": "act-math-functions-medium-b0068",
+    "question_id": "act-math-functions-medium-b0052",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3624,7 +2760,7 @@
     "answer_verification": "val=123"
   },
   {
-    "question_id": "act-math-functions-medium-b0069",
+    "question_id": "act-math-functions-medium-b0053",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3674,7 +2810,7 @@
     "answer_verification": "x=-5"
   },
   {
-    "question_id": "act-math-functions-medium-b0070",
+    "question_id": "act-math-functions-medium-b0054",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3724,7 +2860,7 @@
     "answer_verification": "interpret p(0)"
   },
   {
-    "question_id": "act-math-functions-medium-b0071",
+    "question_id": "act-math-functions-medium-b0055",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3774,7 +2910,7 @@
     "answer_verification": "val=15"
   },
   {
-    "question_id": "act-math-functions-medium-b0072",
+    "question_id": "act-math-functions-medium-b0056",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3824,7 +2960,7 @@
     "answer_verification": "f(4)=69"
   },
   {
-    "question_id": "act-math-functions-medium-b0073",
+    "question_id": "act-math-functions-medium-b0057",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3874,7 +3010,7 @@
     "answer_verification": "x=-7"
   },
   {
-    "question_id": "act-math-functions-medium-b0074",
+    "question_id": "act-math-functions-medium-b0058",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3924,7 +3060,7 @@
     "answer_verification": "x=3"
   },
   {
-    "question_id": "act-math-functions-medium-b0075",
+    "question_id": "act-math-functions-medium-b0059",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -3974,7 +3110,7 @@
     "answer_verification": "rate=-11"
   },
   {
-    "question_id": "act-math-functions-medium-b0076",
+    "question_id": "act-math-functions-medium-b0060",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4024,7 +3160,7 @@
     "answer_verification": "x=-2"
   },
   {
-    "question_id": "act-math-functions-medium-b0077",
+    "question_id": "act-math-functions-medium-b0061",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4074,7 +3210,7 @@
     "answer_verification": "x=-6"
   },
   {
-    "question_id": "act-math-functions-medium-b0078",
+    "question_id": "act-math-functions-medium-b0062",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4124,7 +3260,7 @@
     "answer_verification": "x=3"
   },
   {
-    "question_id": "act-math-functions-medium-b0079",
+    "question_id": "act-math-functions-medium-b0063",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4174,7 +3310,7 @@
     "answer_verification": "x=-9"
   },
   {
-    "question_id": "act-math-functions-medium-b0080",
+    "question_id": "act-math-functions-medium-b0064",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4224,7 +3360,7 @@
     "answer_verification": "x=-3"
   },
   {
-    "question_id": "act-math-functions-medium-b0081",
+    "question_id": "act-math-functions-medium-b0065",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4306,7 +3442,7 @@
     "answer_verification": "val=27"
   },
   {
-    "question_id": "act-math-functions-medium-b0082",
+    "question_id": "act-math-functions-medium-b0066",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4388,7 +3524,7 @@
     "answer_verification": "val=-20"
   },
   {
-    "question_id": "act-math-functions-medium-b0083",
+    "question_id": "act-math-functions-medium-b0067",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4438,7 +3574,7 @@
     "answer_verification": "val=25"
   },
   {
-    "question_id": "act-math-functions-medium-b0084",
+    "question_id": "act-math-functions-medium-b0068",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4488,7 +3624,7 @@
     "answer_verification": "(0, 3)"
   },
   {
-    "question_id": "act-math-functions-medium-b0085",
+    "question_id": "act-math-functions-medium-b0069",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4538,7 +3674,7 @@
     "answer_verification": "f(-5)=13"
   },
   {
-    "question_id": "act-math-functions-medium-b0086",
+    "question_id": "act-math-functions-medium-b0070",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4620,7 +3756,7 @@
     "answer_verification": "val=34"
   },
   {
-    "question_id": "act-math-functions-medium-b0087",
+    "question_id": "act-math-functions-medium-b0071",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4670,7 +3806,7 @@
     "answer_verification": "x=4"
   },
   {
-    "question_id": "act-math-functions-medium-b0088",
+    "question_id": "act-math-functions-medium-b0072",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4720,7 +3856,7 @@
     "answer_verification": "val=-42"
   },
   {
-    "question_id": "act-math-functions-medium-b0089",
+    "question_id": "act-math-functions-medium-b0073",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4770,7 +3906,7 @@
     "answer_verification": "(2, −5)"
   },
   {
-    "question_id": "act-math-functions-medium-b0090",
+    "question_id": "act-math-functions-medium-b0074",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4820,7 +3956,7 @@
     "answer_verification": "val=43"
   },
   {
-    "question_id": "act-math-functions-medium-b0091",
+    "question_id": "act-math-functions-medium-b0075",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4870,7 +4006,7 @@
     "answer_verification": "f(2)=-3"
   },
   {
-    "question_id": "act-math-functions-medium-b0092",
+    "question_id": "act-math-functions-medium-b0076",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4920,7 +4056,7 @@
     "answer_verification": "x=2"
   },
   {
-    "question_id": "act-math-functions-medium-b0093",
+    "question_id": "act-math-functions-medium-b0077",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -4970,7 +4106,7 @@
     "answer_verification": "x=8"
   },
   {
-    "question_id": "act-math-functions-medium-b0094",
+    "question_id": "act-math-functions-medium-b0078",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5020,7 +4156,7 @@
     "answer_verification": "x=-8"
   },
   {
-    "question_id": "act-math-functions-medium-b0095",
+    "question_id": "act-math-functions-medium-b0079",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5070,7 +4206,7 @@
     "answer_verification": "x=-4"
   },
   {
-    "question_id": "act-math-functions-medium-b0096",
+    "question_id": "act-math-functions-medium-b0080",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5152,7 +4288,7 @@
     "answer_verification": "val=19"
   },
   {
-    "question_id": "act-math-functions-medium-b0097",
+    "question_id": "act-math-functions-medium-b0081",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5202,7 +4338,7 @@
     "answer_verification": "f(5)=122"
   },
   {
-    "question_id": "act-math-functions-medium-b0098",
+    "question_id": "act-math-functions-medium-b0082",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5252,7 +4388,7 @@
     "answer_verification": "x=-5"
   },
   {
-    "question_id": "act-math-functions-medium-b0099",
+    "question_id": "act-math-functions-medium-b0083",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5302,7 +4438,7 @@
     "answer_verification": "val=-6"
   },
   {
-    "question_id": "act-math-functions-medium-b0100",
+    "question_id": "act-math-functions-medium-b0084",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5352,7 +4488,7 @@
     "answer_verification": "x=-5"
   },
   {
-    "question_id": "act-math-functions-medium-b0101",
+    "question_id": "act-math-functions-medium-b0085",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5402,7 +4538,7 @@
     "answer_verification": "rate=-4"
   },
   {
-    "question_id": "act-math-functions-medium-b0102",
+    "question_id": "act-math-functions-medium-b0086",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5452,7 +4588,7 @@
     "answer_verification": "f(5)=158"
   },
   {
-    "question_id": "act-math-functions-medium-b0103",
+    "question_id": "act-math-functions-medium-b0087",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5502,7 +4638,7 @@
     "answer_verification": "f(-3)=37"
   },
   {
-    "question_id": "act-math-functions-medium-b0104",
+    "question_id": "act-math-functions-medium-b0088",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5552,7 +4688,7 @@
     "answer_verification": "interpret p(0)"
   },
   {
-    "question_id": "act-math-functions-medium-b0105",
+    "question_id": "act-math-functions-medium-b0089",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5602,7 +4738,7 @@
     "answer_verification": "f(1)=-6"
   },
   {
-    "question_id": "act-math-functions-medium-b0106",
+    "question_id": "act-math-functions-medium-b0090",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5652,7 +4788,7 @@
     "answer_verification": "x=-6"
   },
   {
-    "question_id": "act-math-functions-medium-b0107",
+    "question_id": "act-math-functions-medium-b0091",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5702,7 +4838,7 @@
     "answer_verification": "val=90"
   },
   {
-    "question_id": "act-math-functions-medium-b0108",
+    "question_id": "act-math-functions-medium-b0092",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5752,7 +4888,7 @@
     "answer_verification": "f(5)=93"
   },
   {
-    "question_id": "act-math-functions-medium-b0109",
+    "question_id": "act-math-functions-medium-b0093",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5802,7 +4938,7 @@
     "answer_verification": "(−1, −1)"
   },
   {
-    "question_id": "act-math-functions-medium-b0110",
+    "question_id": "act-math-functions-medium-b0094",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5852,7 +4988,7 @@
     "answer_verification": "(−1, −6)"
   },
   {
-    "question_id": "act-math-functions-medium-b0111",
+    "question_id": "act-math-functions-medium-b0095",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5902,7 +5038,7 @@
     "answer_verification": "x=1"
   },
   {
-    "question_id": "act-math-functions-medium-b0112",
+    "question_id": "act-math-functions-medium-b0096",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -5952,7 +5088,7 @@
     "answer_verification": "(2, −4)"
   },
   {
-    "question_id": "act-math-functions-medium-b0113",
+    "question_id": "act-math-functions-medium-b0097",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6002,7 +5138,7 @@
     "answer_verification": "rate=11"
   },
   {
-    "question_id": "act-math-functions-medium-b0114",
+    "question_id": "act-math-functions-medium-b0098",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6052,7 +5188,7 @@
     "answer_verification": "f(5)=11"
   },
   {
-    "question_id": "act-math-functions-medium-b0115",
+    "question_id": "act-math-functions-medium-b0099",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6102,7 +5238,7 @@
     "answer_verification": "f(1)=-6"
   },
   {
-    "question_id": "act-math-functions-medium-b0116",
+    "question_id": "act-math-functions-medium-b0100",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6152,7 +5288,7 @@
     "answer_verification": "x=3"
   },
   {
-    "question_id": "act-math-functions-medium-b0117",
+    "question_id": "act-math-functions-medium-b0101",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6202,7 +5338,7 @@
     "answer_verification": "x=7"
   },
   {
-    "question_id": "act-math-functions-medium-b0118",
+    "question_id": "act-math-functions-medium-b0102",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6252,7 +5388,7 @@
     "answer_verification": "rate=-2"
   },
   {
-    "question_id": "act-math-functions-medium-b0119",
+    "question_id": "act-math-functions-medium-b0103",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6334,7 +5470,7 @@
     "answer_verification": "val=13"
   },
   {
-    "question_id": "act-math-functions-medium-b0120",
+    "question_id": "act-math-functions-medium-b0104",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6384,7 +5520,7 @@
     "answer_verification": "f(-4)=43"
   },
   {
-    "question_id": "act-math-functions-medium-b0121",
+    "question_id": "act-math-functions-medium-b0105",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6434,7 +5570,7 @@
     "answer_verification": "f(-4)=44"
   },
   {
-    "question_id": "act-math-functions-medium-b0122",
+    "question_id": "act-math-functions-medium-b0106",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6484,7 +5620,7 @@
     "answer_verification": "val=4"
   },
   {
-    "question_id": "act-math-functions-medium-b0123",
+    "question_id": "act-math-functions-medium-b0107",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6534,7 +5670,7 @@
     "answer_verification": "rate=6"
   },
   {
-    "question_id": "act-math-functions-medium-b0124",
+    "question_id": "act-math-functions-medium-b0108",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6584,7 +5720,7 @@
     "answer_verification": "x=-5"
   },
   {
-    "question_id": "act-math-functions-medium-b0125",
+    "question_id": "act-math-functions-medium-b0109",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6634,7 +5770,7 @@
     "answer_verification": "rate=-3"
   },
   {
-    "question_id": "act-math-functions-medium-b0126",
+    "question_id": "act-math-functions-medium-b0110",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6684,7 +5820,7 @@
     "answer_verification": "interpret p(0)"
   },
   {
-    "question_id": "act-math-functions-medium-b0127",
+    "question_id": "act-math-functions-medium-b0111",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6734,7 +5870,7 @@
     "answer_verification": "val=8"
   },
   {
-    "question_id": "act-math-functions-medium-b0128",
+    "question_id": "act-math-functions-medium-b0112",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6784,7 +5920,7 @@
     "answer_verification": "interpret p(0)"
   },
   {
-    "question_id": "act-math-functions-medium-b0129",
+    "question_id": "act-math-functions-medium-b0113",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6834,7 +5970,7 @@
     "answer_verification": "x=-6"
   },
   {
-    "question_id": "act-math-functions-medium-b0130",
+    "question_id": "act-math-functions-medium-b0114",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6884,7 +6020,7 @@
     "answer_verification": "(4, 18)"
   },
   {
-    "question_id": "act-math-functions-medium-b0131",
+    "question_id": "act-math-functions-medium-b0115",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6934,7 +6070,7 @@
     "answer_verification": "x=-5"
   },
   {
-    "question_id": "act-math-functions-medium-b0132",
+    "question_id": "act-math-functions-medium-b0116",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -6984,7 +6120,7 @@
     "answer_verification": "(−4, 13)"
   },
   {
-    "question_id": "act-math-functions-medium-b0133",
+    "question_id": "act-math-functions-medium-b0117",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7066,7 +6202,7 @@
     "answer_verification": "val=-8"
   },
   {
-    "question_id": "act-math-functions-medium-b0134",
+    "question_id": "act-math-functions-medium-b0118",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7116,7 +6252,7 @@
     "answer_verification": "rate=9"
   },
   {
-    "question_id": "act-math-functions-medium-b0135",
+    "question_id": "act-math-functions-medium-b0119",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7166,7 +6302,7 @@
     "answer_verification": "rate=3"
   },
   {
-    "question_id": "act-math-functions-medium-b0136",
+    "question_id": "act-math-functions-medium-b0120",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7216,7 +6352,7 @@
     "answer_verification": "rate=1"
   },
   {
-    "question_id": "act-math-functions-medium-b0137",
+    "question_id": "act-math-functions-medium-b0121",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7266,7 +6402,7 @@
     "answer_verification": "val=66"
   },
   {
-    "question_id": "act-math-functions-medium-b0138",
+    "question_id": "act-math-functions-medium-b0122",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7348,7 +6484,7 @@
     "answer_verification": "val=-11"
   },
   {
-    "question_id": "act-math-functions-medium-b0139",
+    "question_id": "act-math-functions-medium-b0123",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7398,7 +6534,7 @@
     "answer_verification": "x=6"
   },
   {
-    "question_id": "act-math-functions-medium-b0140",
+    "question_id": "act-math-functions-medium-b0124",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7448,7 +6584,7 @@
     "answer_verification": "interpret p(0)"
   },
   {
-    "question_id": "act-math-functions-medium-b0141",
+    "question_id": "act-math-functions-medium-b0125",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7498,7 +6634,7 @@
     "answer_verification": "val=92"
   },
   {
-    "question_id": "act-math-functions-medium-b0142",
+    "question_id": "act-math-functions-medium-b0126",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7548,7 +6684,7 @@
     "answer_verification": "(4, 13)"
   },
   {
-    "question_id": "act-math-functions-medium-b0143",
+    "question_id": "act-math-functions-medium-b0127",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7630,7 +6766,7 @@
     "answer_verification": "val=29"
   },
   {
-    "question_id": "act-math-functions-medium-b0144",
+    "question_id": "act-math-functions-medium-b0128",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7680,7 +6816,7 @@
     "answer_verification": "x=9"
   },
   {
-    "question_id": "act-math-functions-medium-b0145",
+    "question_id": "act-math-functions-medium-b0129",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7730,7 +6866,7 @@
     "answer_verification": "x=-2"
   },
   {
-    "question_id": "act-math-functions-medium-b0146",
+    "question_id": "act-math-functions-medium-b0130",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7780,7 +6916,7 @@
     "answer_verification": "x=9"
   },
   {
-    "question_id": "act-math-functions-medium-b0147",
+    "question_id": "act-math-functions-medium-b0131",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7830,7 +6966,7 @@
     "answer_verification": "x=-6"
   },
   {
-    "question_id": "act-math-functions-medium-b0148",
+    "question_id": "act-math-functions-medium-b0132",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7912,7 +7048,7 @@
     "answer_verification": "val=-72"
   },
   {
-    "question_id": "act-math-functions-medium-b0149",
+    "question_id": "act-math-functions-medium-b0133",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -7962,7 +7098,7 @@
     "answer_verification": "rate=8"
   },
   {
-    "question_id": "act-math-functions-medium-b0150",
+    "question_id": "act-math-functions-medium-b0134",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8012,7 +7148,7 @@
     "answer_verification": "x=1"
   },
   {
-    "question_id": "act-math-functions-medium-b0151",
+    "question_id": "act-math-functions-medium-b0135",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8062,7 +7198,7 @@
     "answer_verification": "rate=15"
   },
   {
-    "question_id": "act-math-functions-medium-b0152",
+    "question_id": "act-math-functions-medium-b0136",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8112,7 +7248,7 @@
     "answer_verification": "val=-37"
   },
   {
-    "question_id": "act-math-functions-medium-b0153",
+    "question_id": "act-math-functions-medium-b0137",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8162,7 +7298,7 @@
     "answer_verification": "f(1)=-4"
   },
   {
-    "question_id": "act-math-functions-medium-b0154",
+    "question_id": "act-math-functions-medium-b0138",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8244,7 +7380,7 @@
     "answer_verification": "val=-11"
   },
   {
-    "question_id": "act-math-functions-medium-b0155",
+    "question_id": "act-math-functions-medium-b0139",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8326,7 +7462,7 @@
     "answer_verification": "val=-27"
   },
   {
-    "question_id": "act-math-functions-medium-b0156",
+    "question_id": "act-math-functions-medium-b0140",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8376,7 +7512,7 @@
     "answer_verification": "interpret C(0)"
   },
   {
-    "question_id": "act-math-functions-medium-b0157",
+    "question_id": "act-math-functions-medium-b0141",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8426,7 +7562,7 @@
     "answer_verification": "rate=4"
   },
   {
-    "question_id": "act-math-functions-medium-b0158",
+    "question_id": "act-math-functions-medium-b0142",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8476,7 +7612,7 @@
     "answer_verification": "interpret p(0)"
   },
   {
-    "question_id": "act-math-functions-medium-b0159",
+    "question_id": "act-math-functions-medium-b0143",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8526,7 +7662,7 @@
     "answer_verification": "x=5"
   },
   {
-    "question_id": "act-math-functions-medium-b0160",
+    "question_id": "act-math-functions-medium-b0144",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -8574,5 +7710,837 @@
       "family:fn_solve_input"
     ],
     "answer_verification": "x=-1"
+  },
+  {
+    "question_id": "act-math-functions-medium-b0145",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "functions",
+    "lesson_id": "act-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multi_step_math",
+    "subskill": "evaluate",
+    "prompt": "The functions f and g are defined by f(x) = 5x + 6 and g(x) = 2x − 6. What is the value of f(g(4))?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "46",
+        "rationale": "This computes g(f(k)); evaluate g first."
+      },
+      {
+        "id": "B",
+        "text": "2",
+        "rationale": "That is g(k); now apply f."
+      },
+      {
+        "id": "C",
+        "text": "28",
+        "rationale": "Composition is not addition."
+      },
+      {
+        "id": "D",
+        "text": "52",
+        "rationale": "Composition is not multiplication."
+      },
+      {
+        "id": "E",
+        "text": "16",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "E",
+    "explanation": "First g(4) = 2(4) − 6 = 2. Then f(2) = 5·(2) + 6 = 16.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "functions",
+      "composition",
+      "family:fn_compose_transform"
+    ],
+    "answer_verification": "val=16"
+  },
+  {
+    "question_id": "act-math-functions-medium-b0146",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "functions",
+    "lesson_id": "act-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "interpret",
+    "prompt": "If f(x) = x² − 3x − 8, what is the average rate of change of f between x = −2 and x = 4?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-6",
+        "rationale": "Divide by the change in x."
+      },
+      {
+        "id": "B",
+        "text": "-1",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "9",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      },
+      {
+        "id": "D",
+        "text": "1",
+        "rationale": "Sign slip."
+      },
+      {
+        "id": "E",
+        "text": "-3",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "f(−2) = 2 and f(4) = −4; average rate = (−4 − (2))/(4 − (−2)) = -1.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "functions",
+      "rate-of-change",
+      "family:fn_rate_of_change"
+    ],
+    "answer_verification": "rate=-1"
+  },
+  {
+    "question_id": "act-math-functions-medium-b0147",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "functions",
+    "lesson_id": "act-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "evaluate",
+    "prompt": "Which of the following points lies on the graph of y = x² − 6 in the xy-plane?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "(−4, 13)",
+        "rationale": "At x = −4, y = 10, not 13."
+      },
+      {
+        "id": "B",
+        "text": "(2, −5)",
+        "rationale": "At x = 2, y = −2, not −5."
+      },
+      {
+        "id": "C",
+        "text": "(3, 2)",
+        "rationale": "At x = 3, y = 3, not 2."
+      },
+      {
+        "id": "D",
+        "text": "(0, −6)",
+        "rationale": "Correct."
+      },
+      {
+        "id": "E",
+        "text": "(−1, −2)",
+        "rationale": "At x = −1, y = −5, not −2."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Substitute x = 0: y = (0)² − 6 = −6.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "functions",
+      "graph",
+      "family:fn_graph_point"
+    ],
+    "answer_verification": "(0, −6)"
+  },
+  {
+    "question_id": "act-math-functions-medium-b0148",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "functions",
+    "lesson_id": "act-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "evaluate",
+    "prompt": "The table gives values of the linear function f. What is the value of f(0)?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-9",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      },
+      {
+        "id": "B",
+        "text": "-11",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "-10",
+        "rationale": "Multiply the slope by k; don't add."
+      },
+      {
+        "id": "D",
+        "text": "0",
+        "rationale": "Include the constant term b."
+      },
+      {
+        "id": "E",
+        "text": "-13",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "The outputs change by 1 for each increase of 1 in x, so f(x) = x − 11 and f(0) = −11.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "functions",
+      "table",
+      "family:fn_table"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Values of f",
+        "headers": [
+          "x",
+          "f(x)"
+        ],
+        "rows": [
+          [
+            "-3",
+            "-14"
+          ],
+          [
+            "-2",
+            "-13"
+          ],
+          [
+            "-1",
+            "-12"
+          ],
+          [
+            "2",
+            "-9"
+          ],
+          [
+            "6",
+            "-5"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "val=-11"
+  },
+  {
+    "question_id": "act-math-functions-medium-b0149",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "functions",
+    "lesson_id": "act-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "interpret",
+    "prompt": "The function p(t) = 386 − 19t gives the amount of water, in gallons, remaining in a tank t minutes after a valve opens. Which of the following is the best interpretation of p(0) = 386?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "the amount of water in the tank when the valve opens",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "the number of minutes until the tank is empty",
+        "rationale": "That would be an input (a time or count) set equal to the output, which reverses the roles."
+      },
+      {
+        "id": "C",
+        "text": "the number of gallons drained each minute",
+        "rationale": "That describes the coefficient of the variable, the rate of change."
+      },
+      {
+        "id": "D",
+        "text": "the amount of water remaining after 386 minutes",
+        "rationale": "In p(0) the input is 0, not 386."
+      },
+      {
+        "id": "E",
+        "text": "the total change in the output of the function over the first 386 units of input",
+        "rationale": "The constant term is a starting value, not a change over an interval."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "p(0) is the output when the input is 0, so 386 is the amount of water in the tank when the valve opens.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "functions",
+      "interpret",
+      "family:fn_interpret"
+    ],
+    "answer_verification": "interpret p(0)"
+  },
+  {
+    "question_id": "act-math-functions-medium-b0150",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "functions",
+    "lesson_id": "act-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "interpret",
+    "prompt": "The function f is defined by f(x) = 9x + 54. For what value of x is f(x) = 0?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "54",
+        "rationale": "That is f(0), the y-intercept, not the zero."
+      },
+      {
+        "id": "B",
+        "text": "6",
+        "rationale": "Sign slip when moving the constant."
+      },
+      {
+        "id": "C",
+        "text": "-1/6",
+        "rationale": "This inverts the division."
+      },
+      {
+        "id": "D",
+        "text": "-6",
+        "rationale": "Correct."
+      },
+      {
+        "id": "E",
+        "text": "9",
+        "rationale": "The zero is −b/a, not the coefficient."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Set 9x + 54 = 0: 9x = −54, so x = −6.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "functions",
+      "solve",
+      "family:fn_solve_input"
+    ],
+    "answer_verification": "x=-6"
+  },
+  {
+    "question_id": "act-math-functions-medium-b0151",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "functions",
+    "lesson_id": "act-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "interpret",
+    "prompt": "The function C(n) = 11n + 264 gives the cost, in dollars, of printing n posters. Which of the following is the best interpretation of C(0) = 264?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "the total change in the output of the function over the first 264 units of input",
+        "rationale": "The constant term is a starting value, not a change over an interval."
+      },
+      {
+        "id": "B",
+        "text": "the cost per poster",
+        "rationale": "That describes the coefficient of the variable, the rate of change."
+      },
+      {
+        "id": "C",
+        "text": "the cost before any posters are printed",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "the cost of printing 264 posters",
+        "rationale": "In C(0) the input is 0, not 264."
+      },
+      {
+        "id": "E",
+        "text": "the number of posters that cost $264",
+        "rationale": "That would be an input (a time or count) set equal to the output, which reverses the roles."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "C(0) is the output when the input is 0, so 264 is the cost before any posters are printed.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "functions",
+      "interpret",
+      "family:fn_interpret"
+    ],
+    "answer_verification": "interpret C(0)"
+  },
+  {
+    "question_id": "act-math-functions-medium-b0152",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "functions",
+    "lesson_id": "act-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "evaluate",
+    "prompt": "The function f is defined by f(x) = 4x² − 6x + 5. What is the value of f(−3)?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "59",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "11",
+        "rationale": "This squares only the coefficient, not x."
+      },
+      {
+        "id": "C",
+        "text": "-13",
+        "rationale": "(−k)² is positive; don't carry the sign through the square."
+      },
+      {
+        "id": "D",
+        "text": "63",
+        "rationale": "Arithmetic slip in squaring; recompute (k)²."
+      },
+      {
+        "id": "E",
+        "text": "23",
+        "rationale": "Watch the sign on the middle term."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "f(−3) = 4·(−3)² − 6·(−3) + 5 = 36 + 18 + 5 = 59.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "functions",
+      "evaluate",
+      "family:fn_evaluate"
+    ],
+    "answer_verification": "f(-3)=59"
+  },
+  {
+    "question_id": "act-math-functions-medium-b0153",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "functions",
+    "lesson_id": "act-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "evaluate",
+    "prompt": "Which of the following points lies on the graph of y = x² − 4 in the xy-plane?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "(−3, 2)",
+        "rationale": "At x = −3, y = 5, not 2."
+      },
+      {
+        "id": "B",
+        "text": "(−2, −1)",
+        "rationale": "At x = −2, y = 0, not −1."
+      },
+      {
+        "id": "C",
+        "text": "(4, 12)",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "(0, −7)",
+        "rationale": "At x = 0, y = −4, not −7."
+      },
+      {
+        "id": "E",
+        "text": "(−5, 18)",
+        "rationale": "At x = −5, y = 21, not 18."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "Substitute x = 4: y = (4)² − 4 = 12.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "functions",
+      "graph",
+      "family:fn_graph_point"
+    ],
+    "answer_verification": "(4, 12)"
+  },
+  {
+    "question_id": "act-math-functions-medium-b0154",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "functions",
+    "lesson_id": "act-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "evaluate",
+    "prompt": "Which of the following points lies on the graph of y = x² − 8 in the xy-plane?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "(1, −8)",
+        "rationale": "At x = 1, y = −7, not −8."
+      },
+      {
+        "id": "B",
+        "text": "(−2, −5)",
+        "rationale": "At x = −2, y = −4, not −5."
+      },
+      {
+        "id": "C",
+        "text": "(2, −2)",
+        "rationale": "At x = 2, y = −4, not −2."
+      },
+      {
+        "id": "D",
+        "text": "(4, 9)",
+        "rationale": "At x = 4, y = 8, not 9."
+      },
+      {
+        "id": "E",
+        "text": "(−4, 8)",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "E",
+    "explanation": "Substitute x = −4: y = (−4)² − 8 = 8.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "functions",
+      "graph",
+      "family:fn_graph_point"
+    ],
+    "answer_verification": "(−4, 8)"
+  },
+  {
+    "question_id": "act-math-functions-medium-b0155",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "functions",
+    "lesson_id": "act-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "interpret",
+    "prompt": "The function f is defined by f(x) = (x + 3)/(x − 3). For what value of x is f(x) undefined?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "2",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      },
+      {
+        "id": "B",
+        "text": "0",
+        "rationale": "f(0) is a perfectly good value here."
+      },
+      {
+        "id": "C",
+        "text": "-3",
+        "rationale": "That makes the numerator 0, so f(x) = 0 there; the function is defined."
+      },
+      {
+        "id": "D",
+        "text": "3",
+        "rationale": "Correct."
+      },
+      {
+        "id": "E",
+        "text": "5",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "A fraction is undefined when its denominator is 0: x − 3 = 0 gives x = 3.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "functions",
+      "rational",
+      "family:fn_undefined"
+    ],
+    "answer_verification": "x=3"
+  },
+  {
+    "question_id": "act-math-functions-medium-b0156",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "functions",
+    "lesson_id": "act-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "interpret",
+    "prompt": "The function f is defined by f(x) = 6x − 24. For what value of x is f(x) = 0?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "6",
+        "rationale": "The zero is −b/a, not the coefficient."
+      },
+      {
+        "id": "B",
+        "text": "4",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "1/4",
+        "rationale": "This inverts the division."
+      },
+      {
+        "id": "D",
+        "text": "-4",
+        "rationale": "Sign slip when moving the constant."
+      },
+      {
+        "id": "E",
+        "text": "-24",
+        "rationale": "That is f(0), the y-intercept, not the zero."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Set 6x − 24 = 0: 6x = 24, so x = 4.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "functions",
+      "solve",
+      "family:fn_solve_input"
+    ],
+    "answer_verification": "x=4"
+  },
+  {
+    "question_id": "act-math-functions-medium-b0157",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "functions",
+    "lesson_id": "act-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "evaluate",
+    "prompt": "The function f is defined by f(x) = 4x² − 6x − 10. What is the value of f(−4)?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "30",
+        "rationale": "Watch the sign on the middle term."
+      },
+      {
+        "id": "B",
+        "text": "-2",
+        "rationale": "This squares only the coefficient, not x."
+      },
+      {
+        "id": "C",
+        "text": "82",
+        "rationale": "Arithmetic slip in squaring; recompute (k)²."
+      },
+      {
+        "id": "D",
+        "text": "78",
+        "rationale": "Correct."
+      },
+      {
+        "id": "E",
+        "text": "-50",
+        "rationale": "(−k)² is positive; don't carry the sign through the square."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "f(−4) = 4·(−4)² − 6·(−4) − 10 = 64 + 24 − 10 = 78.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "functions",
+      "evaluate",
+      "family:fn_evaluate"
+    ],
+    "answer_verification": "f(-4)=78"
+  },
+  {
+    "question_id": "act-math-functions-medium-b0158",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "functions",
+    "lesson_id": "act-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multi_step_math",
+    "subskill": "evaluate",
+    "prompt": "The functions f and g are defined by f(x) = 4x + 1 and g(x) = 2x − 6. What is the value of f(g(5))?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "25",
+        "rationale": "Composition is not addition."
+      },
+      {
+        "id": "B",
+        "text": "84",
+        "rationale": "Composition is not multiplication."
+      },
+      {
+        "id": "C",
+        "text": "36",
+        "rationale": "This computes g(f(k)); evaluate g first."
+      },
+      {
+        "id": "D",
+        "text": "4",
+        "rationale": "That is g(k); now apply f."
+      },
+      {
+        "id": "E",
+        "text": "17",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "E",
+    "explanation": "First g(5) = 2(5) − 6 = 4. Then f(4) = 4·(4) + 1 = 17.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "functions",
+      "composition",
+      "family:fn_compose_transform"
+    ],
+    "answer_verification": "val=17"
+  },
+  {
+    "question_id": "act-math-functions-medium-b0159",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "functions",
+    "lesson_id": "act-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "interpret",
+    "prompt": "If f(x) = x² − 3x − 1, what is the average rate of change of f between x = 4 and x = 10?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "11",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "66",
+        "rationale": "Divide by the change in x."
+      },
+      {
+        "id": "C",
+        "text": "-11",
+        "rationale": "Sign slip."
+      },
+      {
+        "id": "D",
+        "text": "69/10",
+        "rationale": "Use the change in f over the change in x, not f(x₂)/x₂."
+      },
+      {
+        "id": "E",
+        "text": "36",
+        "rationale": "Average rate of change is not the average of the outputs."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "f(4) = 3 and f(10) = 69; average rate = (69 − (3))/(10 − (4)) = 11.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "functions",
+      "rate-of-change",
+      "family:fn_rate_of_change"
+    ],
+    "answer_verification": "rate=11"
+  },
+  {
+    "question_id": "act-math-functions-medium-b0160",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "functions",
+    "skill": "functions",
+    "lesson_id": "act-math-functions-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "interpret",
+    "prompt": "The function h(t) = 166 + 2t gives the height, in centimeters, of a plant t weeks after it was planted. Which of the following is the best interpretation of h(0) = 166?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "the number of weeks until it reaches 166 cm",
+        "rationale": "That would be an input (a time or count) set equal to the output, which reverses the roles."
+      },
+      {
+        "id": "B",
+        "text": "the height after 166 weeks",
+        "rationale": "In h(0) the input is 0, not 166."
+      },
+      {
+        "id": "C",
+        "text": "the total change in the output of the function over the first 166 units of input",
+        "rationale": "The constant term is a starting value, not a change over an interval."
+      },
+      {
+        "id": "D",
+        "text": "the growth, in centimeters, each week",
+        "rationale": "That describes the coefficient of the variable, the rate of change."
+      },
+      {
+        "id": "E",
+        "text": "the height of the plant when it was planted",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "E",
+    "explanation": "h(0) is the output when the input is 0, so 166 is the height of the plant when it was planted.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "functions",
+      "interpret",
+      "family:fn_interpret"
+    ],
+    "answer_verification": "interpret h(0)"
   }
 ]

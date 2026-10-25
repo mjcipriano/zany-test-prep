@@ -11,31 +11,31 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "A radioactive sample has a half-life of 5 years: every 5 years, half of it decays. If the sample starts at 64 grams, how many grams remain after 15 years?",
+    "prompt": "A radioactive sample has a half-life of 3 hours: every 3 hours, half of it decays. If the sample starts at 48 grams, how many grams remain after 9 hours?",
     "choices": [
       {
         "id": "A",
-        "text": "32",
-        "rationale": "That is after one half-life only."
+        "text": "8",
+        "rationale": "Divide by 2 repeatedly (3 times), not by 2·3."
       },
       {
         "id": "B",
-        "text": "8",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "4",
+        "text": "3",
         "rationale": "Each half-life halves what remains; it doesn't subtract a fixed amount."
       },
       {
+        "id": "C",
+        "text": "6",
+        "rationale": "Correct."
+      },
+      {
         "id": "D",
-        "text": "32/3",
-        "rationale": "Divide by 2 repeatedly (3 times), not by 2·3."
+        "text": "24",
+        "rationale": "That is after one half-life only."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "15 years is 3 half-lives; 64 ÷ 2^3 = 8 grams.",
+    "correct_choice": "C",
+    "explanation": "9 hours is 3 half-lives; 48 ÷ 2^3 = 6 grams.",
     "estimated_time_seconds": 90,
     "tags": [
       "advanced-math",
@@ -43,7 +43,7 @@
       "half-life",
       "family:ex_periods"
     ],
-    "answer_verification": "64/2^3"
+    "answer_verification": "48/2^3"
   },
   {
     "question_id": "sat-math-exponential-medium-b0002",
@@ -57,39 +57,39 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "A radioactive sample has a half-life of 100 minutes: every 100 minutes, half of it decays. If the sample starts at 32 grams, how many grams remain after 200 minutes?",
+    "prompt": "The function f(t) = 150(0.75)^t models the number of fish in a lake t years after it was first measured. By what percent does the quantity decrease each year?",
     "choices": [
       {
         "id": "A",
-        "text": "4",
-        "rationale": "Each half-life halves what remains; it doesn't subtract a fixed amount."
-      },
-      {
-        "id": "B",
-        "text": "8",
+        "text": "25%",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "125%",
+        "rationale": "Compare the factor to 1 (100%)."
+      },
+      {
         "id": "C",
-        "text": "16",
-        "rationale": "That is after one half-life only."
+        "text": "50%",
+        "rationale": "Arithmetic slip; 0.75 − 1 = ±0.25."
       },
       {
         "id": "D",
-        "text": "10",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "75%",
+        "rationale": "75% is the factor as a percent; the change is the part above or below 100%."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "200 minutes is 2 half-lives; 32 ÷ 2^2 = 8 grams.",
-    "estimated_time_seconds": 90,
+    "correct_choice": "A",
+    "explanation": "The factor 0.75 = 1 − 0.25, so the quantity shrinks by 25% per year.",
+    "estimated_time_seconds": 80,
     "tags": [
       "advanced-math",
       "exponential",
-      "half-life",
-      "family:ex_periods"
+      "interpret",
+      "family:ex_interpret"
     ],
-    "answer_verification": "32/2^2"
+    "answer_verification": "rate=25%"
   },
   {
     "question_id": "sat-math-exponential-medium-b0003",
@@ -101,41 +101,26 @@
     "lesson_id": "sat-math-exponential-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "student_produced",
     "subskill": "growth_decay",
-    "prompt": "A radioactive sample has a half-life of 4 days: every 4 days, half of it decays. If the sample starts at 160 grams, how many grams remain after 16 days?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "10",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "5",
-        "rationale": "Each half-life halves what remains; it doesn't subtract a fixed amount."
-      },
-      {
-        "id": "C",
-        "text": "20",
-        "rationale": "Divide by 2 repeatedly (4 times), not by 2·4."
-      },
-      {
-        "id": "D",
-        "text": "80",
-        "rationale": "That is after one half-life only."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "16 days is 4 half-lives; 160 ÷ 2^4 = 10 grams.",
-    "estimated_time_seconds": 90,
+    "prompt": "A quantity of 7680 is divided by 4 every day. What is the quantity after 4 days?",
+    "answer": {
+      "type": "numeric",
+      "value": 30,
+      "accepted": [
+        "30"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "7680 ÷ 4^4 = 30.",
+    "estimated_time_seconds": 85,
     "tags": [
       "advanced-math",
       "exponential",
-      "half-life",
-      "family:ex_periods"
+      "grid-in",
+      "family:ex_gridin"
     ],
-    "answer_verification": "160/2^4"
+    "answer_verification": "val=30"
   },
   {
     "question_id": "sat-math-exponential-medium-b0004",
@@ -147,201 +132,32 @@
     "lesson_id": "sat-math-exponential-medium",
     "difficulty": "medium",
     "version": "1.0.0",
-    "question_type": "student_produced",
-    "subskill": "growth_decay",
-    "prompt": "A quantity of 5500 is divided by 5 every day. What is the quantity after 3 days?",
-    "answer": {
-      "type": "numeric",
-      "value": 44,
-      "accepted": [
-        "44"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "5500 ÷ 5^3 = 44.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "grid-in",
-      "family:ex_gridin"
-    ],
-    "answer_verification": "val=44"
-  },
-  {
-    "question_id": "sat-math-exponential-medium-b0005",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "exponential",
-    "lesson_id": "sat-math-exponential-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "growth_decay",
-    "prompt": "A radioactive sample has a half-life of 3 days: every 3 days, half of it decays. If the sample starts at 32 grams, how many grams remain after 6 days?",
+    "prompt": "The function f(t) = 80(1.05)^t models the number of fish in a lake t years after it was first measured. By what percent does the quantity increase each year?",
     "choices": [
       {
         "id": "A",
-        "text": "4",
-        "rationale": "Each half-life halves what remains; it doesn't subtract a fixed amount."
-      },
-      {
-        "id": "B",
-        "text": "16",
-        "rationale": "That is after one half-life only."
-      },
-      {
-        "id": "C",
-        "text": "8",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "9",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "6 days is 2 half-lives; 32 ÷ 2^2 = 8 grams.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "half-life",
-      "family:ex_periods"
-    ],
-    "answer_verification": "32/2^2"
-  },
-  {
-    "question_id": "sat-math-exponential-medium-b0006",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "exponential",
-    "lesson_id": "sat-math-exponential-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "growth_decay",
-    "prompt": "The function f(t) = 150(1.3)^t models the mass, in grams, of a substance t hours after it was first measured. By what percent does the quantity increase each hour?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "60%",
-        "rationale": "Arithmetic slip; 1.3 − 1 = ±0.3."
-      },
-      {
-        "id": "B",
-        "text": "30%",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "70%",
-        "rationale": "Compare the factor to 1 (100%)."
-      },
-      {
-        "id": "D",
-        "text": "130%",
-        "rationale": "130% is the factor as a percent; the change is the part above or below 100%."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "The factor 1.3 = 1 + 0.3, so the quantity grows by 30% per hour.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "interpret",
-      "family:ex_interpret"
-    ],
-    "answer_verification": "rate=30%"
-  },
-  {
-    "question_id": "sat-math-exponential-medium-b0007",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "exponential",
-    "lesson_id": "sat-math-exponential-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "growth_decay",
-    "prompt": "A radioactive sample has a half-life of 12 hours: every 12 hours, half of it decays. If the sample starts at 320 grams, how many grams remain after 48 hours?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "20",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "10",
-        "rationale": "Each half-life halves what remains; it doesn't subtract a fixed amount."
-      },
-      {
-        "id": "C",
-        "text": "160",
-        "rationale": "That is after one half-life only."
-      },
-      {
-        "id": "D",
-        "text": "40",
-        "rationale": "Divide by 2 repeatedly (4 times), not by 2·4."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "48 hours is 4 half-lives; 320 ÷ 2^4 = 20 grams.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "half-life",
-      "family:ex_periods"
-    ],
-    "answer_verification": "320/2^4"
-  },
-  {
-    "question_id": "sat-math-exponential-medium-b0008",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "exponential",
-    "lesson_id": "sat-math-exponential-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "growth_decay",
-    "prompt": "The function f(t) = 400(1.05)^t models the value, in dollars, of a collectible t years after it was first measured. By what percent does the quantity increase each year?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "10%",
-        "rationale": "Arithmetic slip; 1.05 − 1 = ±0.05."
-      },
-      {
-        "id": "B",
-        "text": "105%",
-        "rationale": "105% is the factor as a percent; the change is the part above or below 100%."
-      },
-      {
-        "id": "C",
         "text": "95%",
         "rationale": "Compare the factor to 1 (100%)."
       },
       {
-        "id": "D",
+        "id": "B",
         "text": "5%",
         "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "10%",
+        "rationale": "Arithmetic slip; 1.05 − 1 = ±0.05."
+      },
+      {
+        "id": "D",
+        "text": "105%",
+        "rationale": "105% is the factor as a percent; the change is the part above or below 100%."
       }
     ],
-    "correct_choice": "D",
+    "correct_choice": "B",
     "explanation": "The factor 1.05 = 1 + 0.05, so the quantity grows by 5% per year.",
     "estimated_time_seconds": 80,
     "tags": [
@@ -353,1401 +169,7 @@
     "answer_verification": "rate=5%"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0009",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "exponential",
-    "lesson_id": "sat-math-exponential-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "growth_decay",
-    "prompt": "A machine worth $400 loses 15% of its value each year. Which statement best describes the quantity over time?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "It changes exponentially: it is multiplied by 0.85 each year.",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "It changes linearly: it changes by exactly 60 every year.",
-        "rationale": "A percent change is proportional to the current amount, so the yearly change is not constant."
-      },
-      {
-        "id": "C",
-        "text": "It changes linearly: the same percent is applied every year.",
-        "rationale": "A constant percent is a constant multiplier, which is exponential."
-      },
-      {
-        "id": "D",
-        "text": "It changes exponentially: it changes by exactly 60 every year.",
-        "rationale": "Exponential change is a constant factor, not a constant amount."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "A 15% decrease multiplies by 0.85 every year, so the model is exponential.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "identify",
-      "family:ex_identify_type"
-    ],
-    "answer_verification": "It changes exponentially: it is multiplied by 0.85 each year."
-  },
-  {
-    "question_id": "sat-math-exponential-medium-b0010",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "exponential",
-    "lesson_id": "sat-math-exponential-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "growth_decay",
-    "prompt": "An investment of $5000 grows by 8% per year, compounded annually. Which expression gives the value, in dollars, of the investment after 2 years?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "5000(1.08)^2",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "5000·2·1.08",
-        "rationale": "The number of years is an exponent."
-      },
-      {
-        "id": "C",
-        "text": "5000(0.08)^2",
-        "rationale": "The growth factor is 1 + r, not r."
-      },
-      {
-        "id": "D",
-        "text": "5000(1 + 2·0.08)",
-        "rationale": "Compound growth is repeated multiplication, not repeated addition."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "Each year multiplies the value by 1 + 8/100 = 1.08; after 2 years: 5000(1.08)^2.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "compound",
-      "family:ex_compound"
-    ],
-    "answer_verification": "5000(1.08)^2"
-  },
-  {
-    "question_id": "sat-math-exponential-medium-b0011",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "exponential",
-    "lesson_id": "sat-math-exponential-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "growth_decay",
-    "prompt": "An investment of $5000 grows by 10% per year, compounded annually. Which expression gives the value, in dollars, of the investment after 3 years?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "5000(1.10)^3",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "5000(1 + 3·0.10)",
-        "rationale": "Compound growth is repeated multiplication, not repeated addition."
-      },
-      {
-        "id": "C",
-        "text": "5000(0.10)^3",
-        "rationale": "The growth factor is 1 + r, not r."
-      },
-      {
-        "id": "D",
-        "text": "5000·3·1.10",
-        "rationale": "The number of years is an exponent."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "Each year multiplies the value by 1 + 10/100 = 1.10; after 3 years: 5000(1.10)^3.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "compound",
-      "family:ex_compound"
-    ],
-    "answer_verification": "5000(1.10)^3"
-  },
-  {
-    "question_id": "sat-math-exponential-medium-b0012",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "exponential",
-    "lesson_id": "sat-math-exponential-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "growth_decay",
-    "prompt": "A population of 384 subscribers to a newsletter is cut to one-quarter every month. How many will there be after 2 months?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "376",
-        "rationale": "This subtracts instead of repeatedly dividing."
-      },
-      {
-        "id": "B",
-        "text": "48",
-        "rationale": "This divides once by r×time instead of repeatedly."
-      },
-      {
-        "id": "C",
-        "text": "24",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "96",
-        "rationale": "This stops one period too early."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "Divide by 4 each month: 384 ÷ 4^2 = 24.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "family:ex_value"
-    ],
-    "answer_verification": "val=24"
-  },
-  {
-    "question_id": "sat-math-exponential-medium-b0013",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "exponential",
-    "lesson_id": "sat-math-exponential-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "student_produced",
-    "subskill": "growth_decay",
-    "prompt": "A quantity of 333 is divided by 3 every day. What is the quantity after 2 days?",
-    "answer": {
-      "type": "numeric",
-      "value": 37,
-      "accepted": [
-        "37"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "333 ÷ 3^2 = 37.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "grid-in",
-      "family:ex_gridin"
-    ],
-    "answer_verification": "val=37"
-  },
-  {
-    "question_id": "sat-math-exponential-medium-b0014",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "exponential",
-    "lesson_id": "sat-math-exponential-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "growth_decay",
-    "prompt": "A town's population is 800 and decreases by 25% per year. Which function gives the value V after t years?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "V(t) = 800(0.25)^t",
-        "rationale": "The factor is 1 ± the rate, not the rate alone."
-      },
-      {
-        "id": "B",
-        "text": "V(t) = 800 − 200t",
-        "rationale": "Percent change compounds (exponential), it doesn't add a fixed amount each year."
-      },
-      {
-        "id": "C",
-        "text": "V(t) = 800(0.75)^t",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "V(t) = 800(1.25)^t",
-        "rationale": "A 25% decrease means a factor of 0.75, not 1.25."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "A 25% decrease per year multiplies by 0.75 each year: V(t) = 800(0.75)^t.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "model",
-      "family:ex_model"
-    ],
-    "answer_verification": "model V(t) = 800(0.75)^t"
-  },
-  {
-    "question_id": "sat-math-exponential-medium-b0015",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "exponential",
-    "lesson_id": "sat-math-exponential-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "growth_decay",
-    "prompt": "The function f(t) = 800(1.2)^t models the number of members of a club t months after it was first measured. By what percent does the quantity increase each month?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "40%",
-        "rationale": "Arithmetic slip; 1.2 − 1 = ±0.2."
-      },
-      {
-        "id": "B",
-        "text": "20%",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "80%",
-        "rationale": "Compare the factor to 1 (100%)."
-      },
-      {
-        "id": "D",
-        "text": "120%",
-        "rationale": "120% is the factor as a percent; the change is the part above or below 100%."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "The factor 1.2 = 1 + 0.2, so the quantity grows by 20% per month.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "interpret",
-      "family:ex_interpret"
-    ],
-    "answer_verification": "rate=20%"
-  },
-  {
-    "question_id": "sat-math-exponential-medium-b0016",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "exponential",
-    "lesson_id": "sat-math-exponential-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "growth_decay",
-    "prompt": "A population of 1408 views of a video is cut to one-quarter every day. How many will there be after 3 days?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "1396",
-        "rationale": "This subtracts instead of repeatedly dividing."
-      },
-      {
-        "id": "B",
-        "text": "22",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "88",
-        "rationale": "This stops one period too early."
-      },
-      {
-        "id": "D",
-        "text": "117",
-        "rationale": "This divides once by r×time instead of repeatedly."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Divide by 4 each day: 1408 ÷ 4^3 = 22.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "family:ex_value"
-    ],
-    "answer_verification": "val=22"
-  },
-  {
-    "question_id": "sat-math-exponential-medium-b0017",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "exponential",
-    "lesson_id": "sat-math-exponential-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "growth_decay",
-    "prompt": "The function f(t) = 80(0.9)^t models the value, in dollars, of a collectible t years after it was first measured. By what percent does the quantity decrease each year?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "20%",
-        "rationale": "Arithmetic slip; 0.9 − 1 = ±0.1."
-      },
-      {
-        "id": "B",
-        "text": "10%",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "90%",
-        "rationale": "90% is the factor as a percent; the change is the part above or below 100%."
-      },
-      {
-        "id": "D",
-        "text": "110%",
-        "rationale": "Compare the factor to 1 (100%)."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "The factor 0.9 = 1 − 0.1, so the quantity shrinks by 10% per year.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "interpret",
-      "family:ex_interpret"
-    ],
-    "answer_verification": "rate=10%"
-  },
-  {
-    "question_id": "sat-math-exponential-medium-b0018",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "exponential",
-    "lesson_id": "sat-math-exponential-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "growth_decay",
-    "prompt": "An investment of $1500 increases by 15% each year. Which function gives the value V after t years?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "V(t) = 1500(0.85)^t",
-        "rationale": "A 15% increase means a factor of 1.15, not 0.85."
-      },
-      {
-        "id": "B",
-        "text": "V(t) = 1500(0.15)^t",
-        "rationale": "The factor is 1 ± the rate, not the rate alone."
-      },
-      {
-        "id": "C",
-        "text": "V(t) = 1500 + 225t",
-        "rationale": "Percent change compounds (exponential), it doesn't add a fixed amount each year."
-      },
-      {
-        "id": "D",
-        "text": "V(t) = 1500(1.15)^t",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "A 15% increase per year multiplies by 1.15 each year: V(t) = 1500(1.15)^t.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "model",
-      "family:ex_model"
-    ],
-    "answer_verification": "model V(t) = 1500(1.15)^t"
-  },
-  {
-    "question_id": "sat-math-exponential-medium-b0019",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "exponential",
-    "lesson_id": "sat-math-exponential-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "growth_decay",
-    "prompt": "A town's population is 200 and shrinks by 3% per year. Which statement best describes the quantity over time?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "It changes linearly: the same percent is applied every year.",
-        "rationale": "A constant percent is a constant multiplier, which is exponential."
-      },
-      {
-        "id": "B",
-        "text": "It changes exponentially: it is multiplied by 0.97 each year.",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "It changes linearly: it changes by exactly 6 every year.",
-        "rationale": "A percent change is proportional to the current amount, so the yearly change is not constant."
-      },
-      {
-        "id": "D",
-        "text": "It changes exponentially: it changes by exactly 6 every year.",
-        "rationale": "Exponential change is a constant factor, not a constant amount."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "A 3% decrease multiplies by 0.97 every year, so the model is exponential.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "identify",
-      "family:ex_identify_type"
-    ],
-    "answer_verification": "It changes exponentially: it is multiplied by 0.97 each year."
-  },
-  {
-    "question_id": "sat-math-exponential-medium-b0020",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "exponential",
-    "lesson_id": "sat-math-exponential-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "growth_decay",
-    "prompt": "A radioactive sample has a half-life of 8 minutes: every 8 minutes, half of it decays. If the sample starts at 48 grams, how many grams remain after 24 minutes?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "8",
-        "rationale": "Divide by 2 repeatedly (3 times), not by 2·3."
-      },
-      {
-        "id": "B",
-        "text": "24",
-        "rationale": "That is after one half-life only."
-      },
-      {
-        "id": "C",
-        "text": "3",
-        "rationale": "Each half-life halves what remains; it doesn't subtract a fixed amount."
-      },
-      {
-        "id": "D",
-        "text": "6",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "24 minutes is 3 half-lives; 48 ÷ 2^3 = 6 grams.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "half-life",
-      "family:ex_periods"
-    ],
-    "answer_verification": "48/2^3"
-  },
-  {
-    "question_id": "sat-math-exponential-medium-b0021",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "exponential",
-    "lesson_id": "sat-math-exponential-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "growth_decay",
-    "prompt": "A radioactive sample has a half-life of 50 hours: every 50 hours, half of it decays. If the sample starts at 240 grams, how many grams remain after 200 hours?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "30",
-        "rationale": "Divide by 2 repeatedly (4 times), not by 2·4."
-      },
-      {
-        "id": "B",
-        "text": "15/2",
-        "rationale": "Each half-life halves what remains; it doesn't subtract a fixed amount."
-      },
-      {
-        "id": "C",
-        "text": "15",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "120",
-        "rationale": "That is after one half-life only."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "200 hours is 4 half-lives; 240 ÷ 2^4 = 15 grams.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "half-life",
-      "family:ex_periods"
-    ],
-    "answer_verification": "240/2^4"
-  },
-  {
-    "question_id": "sat-math-exponential-medium-b0022",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "exponential",
-    "lesson_id": "sat-math-exponential-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "growth_decay",
-    "prompt": "An investment of $8000 grows by 10% per year, compounded annually. Which expression gives the value, in dollars, of the investment after 4 years?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "8000·4·1.10",
-        "rationale": "The number of years is an exponent."
-      },
-      {
-        "id": "B",
-        "text": "8000(0.10)^4",
-        "rationale": "The growth factor is 1 + r, not r."
-      },
-      {
-        "id": "C",
-        "text": "8000(1.10)^4",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "8000(1 + 4·0.10)",
-        "rationale": "Compound growth is repeated multiplication, not repeated addition."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "Each year multiplies the value by 1 + 10/100 = 1.10; after 4 years: 8000(1.10)^4.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "compound",
-      "family:ex_compound"
-    ],
-    "answer_verification": "8000(1.10)^4"
-  },
-  {
-    "question_id": "sat-math-exponential-medium-b0023",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "exponential",
-    "lesson_id": "sat-math-exponential-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "growth_decay",
-    "prompt": "The function f(t) = 80(0.98)^t models the mass, in grams, of a substance t hours after it was first measured. By what percent does the quantity decrease each hour?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "102%",
-        "rationale": "Compare the factor to 1 (100%)."
-      },
-      {
-        "id": "B",
-        "text": "4%",
-        "rationale": "Arithmetic slip; 0.98 − 1 = ±0.02."
-      },
-      {
-        "id": "C",
-        "text": "2%",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "98%",
-        "rationale": "98% is the factor as a percent; the change is the part above or below 100%."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "The factor 0.98 = 1 − 0.02, so the quantity shrinks by 2% per hour.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "interpret",
-      "family:ex_interpret"
-    ],
-    "answer_verification": "rate=2%"
-  },
-  {
-    "question_id": "sat-math-exponential-medium-b0024",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "exponential",
-    "lesson_id": "sat-math-exponential-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "growth_decay",
-    "prompt": "A radioactive sample has a half-life of 20 years: every 20 years, half of it decays. If the sample starts at 120 grams, how many grams remain after 40 years?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "95/3",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "B",
-        "text": "60",
-        "rationale": "That is after one half-life only."
-      },
-      {
-        "id": "C",
-        "text": "15",
-        "rationale": "Each half-life halves what remains; it doesn't subtract a fixed amount."
-      },
-      {
-        "id": "D",
-        "text": "30",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "40 years is 2 half-lives; 120 ÷ 2^2 = 30 grams.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "half-life",
-      "family:ex_periods"
-    ],
-    "answer_verification": "120/2^2"
-  },
-  {
-    "question_id": "sat-math-exponential-medium-b0025",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "exponential",
-    "lesson_id": "sat-math-exponential-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "growth_decay",
-    "prompt": "A radioactive sample has a half-life of 3 hours: every 3 hours, half of it decays. If the sample starts at 240 grams, how many grams remain after 9 hours?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "40",
-        "rationale": "Divide by 2 repeatedly (3 times), not by 2·3."
-      },
-      {
-        "id": "B",
-        "text": "15",
-        "rationale": "Each half-life halves what remains; it doesn't subtract a fixed amount."
-      },
-      {
-        "id": "C",
-        "text": "120",
-        "rationale": "That is after one half-life only."
-      },
-      {
-        "id": "D",
-        "text": "30",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "9 hours is 3 half-lives; 240 ÷ 2^3 = 30 grams.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "half-life",
-      "family:ex_periods"
-    ],
-    "answer_verification": "240/2^3"
-  },
-  {
-    "question_id": "sat-math-exponential-medium-b0026",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "exponential",
-    "lesson_id": "sat-math-exponential-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "growth_decay",
-    "prompt": "A radioactive sample has a half-life of 25 days: every 25 days, half of it decays. If the sample starts at 120 grams, how many grams remain after 50 days?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "30",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "15",
-        "rationale": "Each half-life halves what remains; it doesn't subtract a fixed amount."
-      },
-      {
-        "id": "C",
-        "text": "60",
-        "rationale": "That is after one half-life only."
-      },
-      {
-        "id": "D",
-        "text": "95/3",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "50 days is 2 half-lives; 120 ÷ 2^2 = 30 grams.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "half-life",
-      "family:ex_periods"
-    ],
-    "answer_verification": "120/2^2"
-  },
-  {
-    "question_id": "sat-math-exponential-medium-b0027",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "exponential",
-    "lesson_id": "sat-math-exponential-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "growth_decay",
-    "prompt": "A town's population is 5000 and increases by 10% per year. Which function gives the value V after t years?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "V(t) = 5000(1.1)^t",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "V(t) = 5000(0.1)^t",
-        "rationale": "The factor is 1 ± the rate, not the rate alone."
-      },
-      {
-        "id": "C",
-        "text": "V(t) = 5000(0.9)^t",
-        "rationale": "A 10% increase means a factor of 1.1, not 0.9."
-      },
-      {
-        "id": "D",
-        "text": "V(t) = 5000 + 500t",
-        "rationale": "Percent change compounds (exponential), it doesn't add a fixed amount each year."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "A 10% increase per year multiplies by 1.1 each year: V(t) = 5000(1.1)^t.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "model",
-      "family:ex_model"
-    ],
-    "answer_verification": "model V(t) = 5000(1.1)^t"
-  },
-  {
-    "question_id": "sat-math-exponential-medium-b0028",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "exponential",
-    "lesson_id": "sat-math-exponential-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "growth_decay",
-    "prompt": "A town's population is 1000 and shrinks by 10% per year. Which statement best describes the quantity over time?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "It changes exponentially: it changes by exactly 100 every year.",
-        "rationale": "Exponential change is a constant factor, not a constant amount."
-      },
-      {
-        "id": "B",
-        "text": "It changes linearly: it changes by exactly 100 every year.",
-        "rationale": "A percent change is proportional to the current amount, so the yearly change is not constant."
-      },
-      {
-        "id": "C",
-        "text": "It changes exponentially: it is multiplied by 0.9 each year.",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "It changes linearly: the same percent is applied every year.",
-        "rationale": "A constant percent is a constant multiplier, which is exponential."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "A 10% decrease multiplies by 0.9 every year, so the model is exponential.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "identify",
-      "family:ex_identify_type"
-    ],
-    "answer_verification": "It changes exponentially: it is multiplied by 0.9 each year."
-  },
-  {
-    "question_id": "sat-math-exponential-medium-b0029",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "exponential",
-    "lesson_id": "sat-math-exponential-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "growth_decay",
-    "prompt": "The function f(t) = 80(1.02)^t models the number of members of a club t months after it was first measured. By what percent does the quantity increase each month?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "102%",
-        "rationale": "102% is the factor as a percent; the change is the part above or below 100%."
-      },
-      {
-        "id": "B",
-        "text": "2%",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "98%",
-        "rationale": "Compare the factor to 1 (100%)."
-      },
-      {
-        "id": "D",
-        "text": "4%",
-        "rationale": "Arithmetic slip; 1.02 − 1 = ±0.02."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "The factor 1.02 = 1 + 0.02, so the quantity grows by 2% per month.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "interpret",
-      "family:ex_interpret"
-    ],
-    "answer_verification": "rate=2%"
-  },
-  {
-    "question_id": "sat-math-exponential-medium-b0030",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "exponential",
-    "lesson_id": "sat-math-exponential-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "student_produced",
-    "subskill": "growth_decay",
-    "prompt": "A quantity of 34375 is divided by 5 every day. What is the quantity after 4 days?",
-    "answer": {
-      "type": "numeric",
-      "value": 55,
-      "accepted": [
-        "55"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "34375 ÷ 5^4 = 55.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "grid-in",
-      "family:ex_gridin"
-    ],
-    "answer_verification": "val=55"
-  },
-  {
-    "question_id": "sat-math-exponential-medium-b0031",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "exponential",
-    "lesson_id": "sat-math-exponential-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "student_produced",
-    "subskill": "growth_decay",
-    "prompt": "A quantity of 594 is divided by 3 every day. What is the quantity after 3 days?",
-    "answer": {
-      "type": "numeric",
-      "value": 22,
-      "accepted": [
-        "22"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "594 ÷ 3^3 = 22.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "grid-in",
-      "family:ex_gridin"
-    ],
-    "answer_verification": "val=22"
-  },
-  {
-    "question_id": "sat-math-exponential-medium-b0032",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "exponential",
-    "lesson_id": "sat-math-exponential-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "student_produced",
-    "subskill": "growth_decay",
-    "prompt": "A quantity of 6750 is divided by 5 every day. What is the quantity after 3 days?",
-    "answer": {
-      "type": "numeric",
-      "value": 54,
-      "accepted": [
-        "54"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "6750 ÷ 5^3 = 54.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "grid-in",
-      "family:ex_gridin"
-    ],
-    "answer_verification": "val=54"
-  },
-  {
-    "question_id": "sat-math-exponential-medium-b0033",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "exponential",
-    "lesson_id": "sat-math-exponential-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "growth_decay",
-    "prompt": "An investment of $3000 grows by 5% per year, compounded annually. Which expression gives the value, in dollars, of the investment after 2 years?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "3000(1.05)^2",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "3000(1 + 2·0.05)",
-        "rationale": "Compound growth is repeated multiplication, not repeated addition."
-      },
-      {
-        "id": "C",
-        "text": "3000·2·1.05",
-        "rationale": "The number of years is an exponent."
-      },
-      {
-        "id": "D",
-        "text": "3000(0.05)^2",
-        "rationale": "The growth factor is 1 + r, not r."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "Each year multiplies the value by 1 + 5/100 = 1.05; after 2 years: 3000(1.05)^2.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "compound",
-      "family:ex_compound"
-    ],
-    "answer_verification": "3000(1.05)^2"
-  },
-  {
-    "question_id": "sat-math-exponential-medium-b0034",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "exponential",
-    "lesson_id": "sat-math-exponential-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "growth_decay",
-    "prompt": "An investment of $500 decreases by 20% each year. Which function gives the value V after t years?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "V(t) = 500(0.8)^t",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "V(t) = 500 − 100t",
-        "rationale": "Percent change compounds (exponential), it doesn't add a fixed amount each year."
-      },
-      {
-        "id": "C",
-        "text": "V(t) = 500(1.2)^t",
-        "rationale": "A 20% decrease means a factor of 0.8, not 1.2."
-      },
-      {
-        "id": "D",
-        "text": "V(t) = 500(0.2)^t",
-        "rationale": "The factor is 1 ± the rate, not the rate alone."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "A 20% decrease per year multiplies by 0.8 each year: V(t) = 500(0.8)^t.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "model",
-      "family:ex_model"
-    ],
-    "answer_verification": "model V(t) = 500(0.8)^t"
-  },
-  {
-    "question_id": "sat-math-exponential-medium-b0035",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "exponential",
-    "lesson_id": "sat-math-exponential-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "growth_decay",
-    "prompt": "The function f(t) = 120(1.25)^t models the number of fish in a lake t years after it was first measured. By what percent does the quantity increase each year?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "25%",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "50%",
-        "rationale": "Arithmetic slip; 1.25 − 1 = ±0.25."
-      },
-      {
-        "id": "C",
-        "text": "125%",
-        "rationale": "125% is the factor as a percent; the change is the part above or below 100%."
-      },
-      {
-        "id": "D",
-        "text": "75%",
-        "rationale": "Compare the factor to 1 (100%)."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "The factor 1.25 = 1 + 0.25, so the quantity grows by 25% per year.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "interpret",
-      "family:ex_interpret"
-    ],
-    "answer_verification": "rate=25%"
-  },
-  {
-    "question_id": "sat-math-exponential-medium-b0036",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "exponential",
-    "lesson_id": "sat-math-exponential-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "growth_decay",
-    "prompt": "A radioactive sample has a half-life of 25 minutes: every 25 minutes, half of it decays. If the sample starts at 120 grams, how many grams remain after 50 minutes?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "30",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "32",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "C",
-        "text": "15",
-        "rationale": "Each half-life halves what remains; it doesn't subtract a fixed amount."
-      },
-      {
-        "id": "D",
-        "text": "60",
-        "rationale": "That is after one half-life only."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "50 minutes is 2 half-lives; 120 ÷ 2^2 = 30 grams.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "half-life",
-      "family:ex_periods"
-    ],
-    "answer_verification": "120/2^2"
-  },
-  {
-    "question_id": "sat-math-exponential-medium-b0037",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "exponential",
-    "lesson_id": "sat-math-exponential-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "growth_decay",
-    "prompt": "A population of 1863 views of a video is cut to one-third every day. How many will there be after 4 days?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "1851",
-        "rationale": "This subtracts instead of repeatedly dividing."
-      },
-      {
-        "id": "B",
-        "text": "69",
-        "rationale": "This stops one period too early."
-      },
-      {
-        "id": "C",
-        "text": "155",
-        "rationale": "This divides once by r×time instead of repeatedly."
-      },
-      {
-        "id": "D",
-        "text": "23",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Divide by 3 each day: 1863 ÷ 3^4 = 23.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "family:ex_value"
-    ],
-    "answer_verification": "val=23"
-  },
-  {
-    "question_id": "sat-math-exponential-medium-b0038",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "exponential",
-    "lesson_id": "sat-math-exponential-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "growth_decay",
-    "prompt": "A radioactive sample has a half-life of 6 hours: every 6 hours, half of it decays. If the sample starts at 200 grams, how many grams remain after 12 hours?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "50",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "25",
-        "rationale": "Each half-life halves what remains; it doesn't subtract a fixed amount."
-      },
-      {
-        "id": "C",
-        "text": "100",
-        "rationale": "That is after one half-life only."
-      },
-      {
-        "id": "D",
-        "text": "49",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "12 hours is 2 half-lives; 200 ÷ 2^2 = 50 grams.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "half-life",
-      "family:ex_periods"
-    ],
-    "answer_verification": "200/2^2"
-  },
-  {
-    "question_id": "sat-math-exponential-medium-b0039",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "exponential",
-    "lesson_id": "sat-math-exponential-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "student_produced",
-    "subskill": "growth_decay",
-    "prompt": "A quantity of 875 is divided by 5 every day. What is the quantity after 3 days?",
-    "answer": {
-      "type": "numeric",
-      "value": 7,
-      "accepted": [
-        "7"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "875 ÷ 5^3 = 7.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "grid-in",
-      "family:ex_gridin"
-    ],
-    "answer_verification": "val=7"
-  },
-  {
-    "question_id": "sat-math-exponential-medium-b0040",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "exponential",
-    "lesson_id": "sat-math-exponential-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "growth_decay",
-    "prompt": "The value of a car is $100 and decreases by 25% each year. Which function gives the value V after t years?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "V(t) = 100(1.25)^t",
-        "rationale": "A 25% decrease means a factor of 0.75, not 1.25."
-      },
-      {
-        "id": "B",
-        "text": "V(t) = 100(0.75)^t",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "V(t) = 100 − 25t",
-        "rationale": "Percent change compounds (exponential), it doesn't add a fixed amount each year."
-      },
-      {
-        "id": "D",
-        "text": "V(t) = 100(0.25)^t",
-        "rationale": "The factor is 1 ± the rate, not the rate alone."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "A 25% decrease per year multiplies by 0.75 each year: V(t) = 100(0.75)^t.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "advanced-math",
-      "exponential",
-      "model",
-      "family:ex_model"
-    ],
-    "answer_verification": "model V(t) = 100(0.75)^t"
-  },
-  {
-    "question_id": "sat-math-exponential-medium-b0041",
+    "question_id": "sat-math-exponential-medium-b0005",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1793,7 +215,7 @@
     "answer_verification": "6000(1.08)^4"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0042",
+    "question_id": "sat-math-exponential-medium-b0006",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1824,7 +246,7 @@
     "answer_verification": "val=30"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0043",
+    "question_id": "sat-math-exponential-medium-b0007",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1870,7 +292,7 @@
     "answer_verification": "model V(t) = 1500(0.85)^t"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0044",
+    "question_id": "sat-math-exponential-medium-b0008",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1915,7 +337,7 @@
     "answer_verification": "val=23"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0045",
+    "question_id": "sat-math-exponential-medium-b0009",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1961,7 +383,7 @@
     "answer_verification": "It changes exponentially: it is multiplied by 1.12 each year."
   },
   {
-    "question_id": "sat-math-exponential-medium-b0046",
+    "question_id": "sat-math-exponential-medium-b0010",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2006,7 +428,7 @@
     "answer_verification": "val=21"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0047",
+    "question_id": "sat-math-exponential-medium-b0011",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2052,7 +474,7 @@
     "answer_verification": "400/2^2"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0048",
+    "question_id": "sat-math-exponential-medium-b0012",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2098,7 +520,7 @@
     "answer_verification": "240/2^3"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0049",
+    "question_id": "sat-math-exponential-medium-b0013",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2143,7 +565,7 @@
     "answer_verification": "val=21"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0050",
+    "question_id": "sat-math-exponential-medium-b0014",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2189,7 +611,7 @@
     "answer_verification": "It changes exponentially: it is multiplied by 1.05 each year."
   },
   {
-    "question_id": "sat-math-exponential-medium-b0051",
+    "question_id": "sat-math-exponential-medium-b0015",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2220,7 +642,7 @@
     "answer_verification": "val=12"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0052",
+    "question_id": "sat-math-exponential-medium-b0016",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2266,7 +688,7 @@
     "answer_verification": "2500(1.02)^2"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0053",
+    "question_id": "sat-math-exponential-medium-b0017",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2311,7 +733,7 @@
     "answer_verification": "val=15"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0054",
+    "question_id": "sat-math-exponential-medium-b0018",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2357,7 +779,7 @@
     "answer_verification": "It changes exponentially: it is multiplied by 1.08 each year."
   },
   {
-    "question_id": "sat-math-exponential-medium-b0055",
+    "question_id": "sat-math-exponential-medium-b0019",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2402,7 +824,7 @@
     "answer_verification": "val=14"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0056",
+    "question_id": "sat-math-exponential-medium-b0020",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2448,7 +870,7 @@
     "answer_verification": "80/2^4"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0057",
+    "question_id": "sat-math-exponential-medium-b0021",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2494,7 +916,7 @@
     "answer_verification": "model V(t) = 2000(1.04)^t"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0058",
+    "question_id": "sat-math-exponential-medium-b0022",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2540,7 +962,7 @@
     "answer_verification": "1200(1.08)^3"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0059",
+    "question_id": "sat-math-exponential-medium-b0023",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2586,7 +1008,7 @@
     "answer_verification": "5000(1.06)^4"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0060",
+    "question_id": "sat-math-exponential-medium-b0024",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2632,7 +1054,7 @@
     "answer_verification": "model V(t) = 100(0.97)^t"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0061",
+    "question_id": "sat-math-exponential-medium-b0025",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2678,7 +1100,7 @@
     "answer_verification": "10000(1.04)^4"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0062",
+    "question_id": "sat-math-exponential-medium-b0026",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2724,7 +1146,7 @@
     "answer_verification": "rate=10%"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0063",
+    "question_id": "sat-math-exponential-medium-b0027",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2770,7 +1192,7 @@
     "answer_verification": "rate=5%"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0064",
+    "question_id": "sat-math-exponential-medium-b0028",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2816,7 +1238,7 @@
     "answer_verification": "It changes exponentially: it is multiplied by 0.97 each year."
   },
   {
-    "question_id": "sat-math-exponential-medium-b0065",
+    "question_id": "sat-math-exponential-medium-b0029",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2861,7 +1283,7 @@
     "answer_verification": "val=12"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0066",
+    "question_id": "sat-math-exponential-medium-b0030",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2892,7 +1314,7 @@
     "answer_verification": "val=51"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0067",
+    "question_id": "sat-math-exponential-medium-b0031",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2938,7 +1360,7 @@
     "answer_verification": "It changes exponentially: it is multiplied by 0.9 each year."
   },
   {
-    "question_id": "sat-math-exponential-medium-b0068",
+    "question_id": "sat-math-exponential-medium-b0032",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2983,7 +1405,7 @@
     "answer_verification": "val=11"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0069",
+    "question_id": "sat-math-exponential-medium-b0033",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3028,7 +1450,7 @@
     "answer_verification": "val=18"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0070",
+    "question_id": "sat-math-exponential-medium-b0034",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3059,7 +1481,7 @@
     "answer_verification": "val=49"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0071",
+    "question_id": "sat-math-exponential-medium-b0035",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3104,7 +1526,7 @@
     "answer_verification": "val=14"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0072",
+    "question_id": "sat-math-exponential-medium-b0036",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3135,7 +1557,7 @@
     "answer_verification": "val=43"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0073",
+    "question_id": "sat-math-exponential-medium-b0037",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3181,7 +1603,7 @@
     "answer_verification": "rate=6%"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0074",
+    "question_id": "sat-math-exponential-medium-b0038",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3212,7 +1634,7 @@
     "answer_verification": "val=38"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0075",
+    "question_id": "sat-math-exponential-medium-b0039",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3258,7 +1680,7 @@
     "answer_verification": "800/2^3"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0076",
+    "question_id": "sat-math-exponential-medium-b0040",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3304,7 +1726,7 @@
     "answer_verification": "80/2^3"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0077",
+    "question_id": "sat-math-exponential-medium-b0041",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3350,7 +1772,7 @@
     "answer_verification": "4000(1.08)^2"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0078",
+    "question_id": "sat-math-exponential-medium-b0042",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3396,7 +1818,7 @@
     "answer_verification": "1000(1.04)^2"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0079",
+    "question_id": "sat-math-exponential-medium-b0043",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3442,7 +1864,7 @@
     "answer_verification": "It changes exponentially: it is multiplied by 1.1 each year."
   },
   {
-    "question_id": "sat-math-exponential-medium-b0080",
+    "question_id": "sat-math-exponential-medium-b0044",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3488,7 +1910,7 @@
     "answer_verification": "rate=2%"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0081",
+    "question_id": "sat-math-exponential-medium-b0045",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3534,7 +1956,7 @@
     "answer_verification": "5000(1.05)^4"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0082",
+    "question_id": "sat-math-exponential-medium-b0046",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3565,7 +1987,7 @@
     "answer_verification": "val=22"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0083",
+    "question_id": "sat-math-exponential-medium-b0047",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3610,7 +2032,7 @@
     "answer_verification": "val=23"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0084",
+    "question_id": "sat-math-exponential-medium-b0048",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3641,7 +2063,7 @@
     "answer_verification": "val=49"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0085",
+    "question_id": "sat-math-exponential-medium-b0049",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3687,7 +2109,7 @@
     "answer_verification": "400/2^3"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0086",
+    "question_id": "sat-math-exponential-medium-b0050",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3733,7 +2155,7 @@
     "answer_verification": "400/2^3"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0087",
+    "question_id": "sat-math-exponential-medium-b0051",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3779,7 +2201,7 @@
     "answer_verification": "It changes exponentially: it is multiplied by 1.08 each year."
   },
   {
-    "question_id": "sat-math-exponential-medium-b0088",
+    "question_id": "sat-math-exponential-medium-b0052",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3825,7 +2247,7 @@
     "answer_verification": "It changes exponentially: it is multiplied by 1.1 each year."
   },
   {
-    "question_id": "sat-math-exponential-medium-b0089",
+    "question_id": "sat-math-exponential-medium-b0053",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3871,7 +2293,7 @@
     "answer_verification": "model V(t) = 800(0.96)^t"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0090",
+    "question_id": "sat-math-exponential-medium-b0054",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3902,7 +2324,7 @@
     "answer_verification": "val=18"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0091",
+    "question_id": "sat-math-exponential-medium-b0055",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3948,7 +2370,7 @@
     "answer_verification": "320/2^2"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0092",
+    "question_id": "sat-math-exponential-medium-b0056",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3994,7 +2416,7 @@
     "answer_verification": "5000(1.10)^4"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0093",
+    "question_id": "sat-math-exponential-medium-b0057",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4039,7 +2461,7 @@
     "answer_verification": "val=10"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0094",
+    "question_id": "sat-math-exponential-medium-b0058",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4084,7 +2506,7 @@
     "answer_verification": "val=5"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0095",
+    "question_id": "sat-math-exponential-medium-b0059",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4115,7 +2537,7 @@
     "answer_verification": "val=24"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0096",
+    "question_id": "sat-math-exponential-medium-b0060",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4161,7 +2583,7 @@
     "answer_verification": "10000(1.10)^3"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0097",
+    "question_id": "sat-math-exponential-medium-b0061",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4207,7 +2629,7 @@
     "answer_verification": "model V(t) = 100(0.95)^t"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0098",
+    "question_id": "sat-math-exponential-medium-b0062",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4253,7 +2675,7 @@
     "answer_verification": "5000(1.02)^3"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0099",
+    "question_id": "sat-math-exponential-medium-b0063",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4299,7 +2721,7 @@
     "answer_verification": "It changes exponentially: it is multiplied by 1.05 each year."
   },
   {
-    "question_id": "sat-math-exponential-medium-b0100",
+    "question_id": "sat-math-exponential-medium-b0064",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4330,7 +2752,7 @@
     "answer_verification": "val=43"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0101",
+    "question_id": "sat-math-exponential-medium-b0065",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4375,7 +2797,7 @@
     "answer_verification": "val=24"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0102",
+    "question_id": "sat-math-exponential-medium-b0066",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4421,7 +2843,7 @@
     "answer_verification": "64/2^4"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0103",
+    "question_id": "sat-math-exponential-medium-b0067",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4467,7 +2889,7 @@
     "answer_verification": "48/2^3"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0104",
+    "question_id": "sat-math-exponential-medium-b0068",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4513,7 +2935,7 @@
     "answer_verification": "6000(1.12)^4"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0105",
+    "question_id": "sat-math-exponential-medium-b0069",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4558,7 +2980,7 @@
     "answer_verification": "val=19"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0106",
+    "question_id": "sat-math-exponential-medium-b0070",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4589,7 +3011,7 @@
     "answer_verification": "val=3"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0107",
+    "question_id": "sat-math-exponential-medium-b0071",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4635,7 +3057,7 @@
     "answer_verification": "40/2^3"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0108",
+    "question_id": "sat-math-exponential-medium-b0072",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4680,7 +3102,7 @@
     "answer_verification": "val=18"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0109",
+    "question_id": "sat-math-exponential-medium-b0073",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4725,7 +3147,7 @@
     "answer_verification": "val=6"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0110",
+    "question_id": "sat-math-exponential-medium-b0074",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4756,7 +3178,7 @@
     "answer_verification": "val=5"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0111",
+    "question_id": "sat-math-exponential-medium-b0075",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4802,7 +3224,7 @@
     "answer_verification": "It changes exponentially: it is multiplied by 0.9 each year."
   },
   {
-    "question_id": "sat-math-exponential-medium-b0112",
+    "question_id": "sat-math-exponential-medium-b0076",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4847,7 +3269,7 @@
     "answer_verification": "val=7"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0113",
+    "question_id": "sat-math-exponential-medium-b0077",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4878,7 +3300,7 @@
     "answer_verification": "val=16"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0114",
+    "question_id": "sat-math-exponential-medium-b0078",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4924,7 +3346,7 @@
     "answer_verification": "It changes exponentially: it is multiplied by 0.88 each year."
   },
   {
-    "question_id": "sat-math-exponential-medium-b0115",
+    "question_id": "sat-math-exponential-medium-b0079",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4970,7 +3392,7 @@
     "answer_verification": "1500(1.12)^2"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0116",
+    "question_id": "sat-math-exponential-medium-b0080",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5016,7 +3438,7 @@
     "answer_verification": "40/2^3"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0117",
+    "question_id": "sat-math-exponential-medium-b0081",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5047,7 +3469,7 @@
     "answer_verification": "val=11"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0118",
+    "question_id": "sat-math-exponential-medium-b0082",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5093,7 +3515,7 @@
     "answer_verification": "model V(t) = 1000(1.03)^t"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0119",
+    "question_id": "sat-math-exponential-medium-b0083",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5139,7 +3561,7 @@
     "answer_verification": "48/2^3"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0120",
+    "question_id": "sat-math-exponential-medium-b0084",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5185,7 +3607,7 @@
     "answer_verification": "It changes exponentially: it is multiplied by 1.2 each year."
   },
   {
-    "question_id": "sat-math-exponential-medium-b0121",
+    "question_id": "sat-math-exponential-medium-b0085",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5216,7 +3638,7 @@
     "answer_verification": "val=47"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0122",
+    "question_id": "sat-math-exponential-medium-b0086",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5262,7 +3684,7 @@
     "answer_verification": "5000(1.04)^2"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0123",
+    "question_id": "sat-math-exponential-medium-b0087",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5308,7 +3730,7 @@
     "answer_verification": "model V(t) = 1000(0.92)^t"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0124",
+    "question_id": "sat-math-exponential-medium-b0088",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5339,7 +3761,7 @@
     "answer_verification": "val=5"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0125",
+    "question_id": "sat-math-exponential-medium-b0089",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5385,7 +3807,7 @@
     "answer_verification": "model V(t) = 1500(0.92)^t"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0126",
+    "question_id": "sat-math-exponential-medium-b0090",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5431,7 +3853,7 @@
     "answer_verification": "model V(t) = 1500(1.03)^t"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0127",
+    "question_id": "sat-math-exponential-medium-b0091",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5477,7 +3899,7 @@
     "answer_verification": "3000(1.10)^2"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0128",
+    "question_id": "sat-math-exponential-medium-b0092",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5523,7 +3945,7 @@
     "answer_verification": "8000(1.05)^3"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0129",
+    "question_id": "sat-math-exponential-medium-b0093",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5569,7 +3991,7 @@
     "answer_verification": "8/2^2"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0130",
+    "question_id": "sat-math-exponential-medium-b0094",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5615,7 +4037,7 @@
     "answer_verification": "500(1.02)^4"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0131",
+    "question_id": "sat-math-exponential-medium-b0095",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5661,7 +4083,7 @@
     "answer_verification": "model V(t) = 800(0.92)^t"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0132",
+    "question_id": "sat-math-exponential-medium-b0096",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5706,7 +4128,7 @@
     "answer_verification": "val=6"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0133",
+    "question_id": "sat-math-exponential-medium-b0097",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5752,7 +4174,7 @@
     "answer_verification": "rate=5%"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0134",
+    "question_id": "sat-math-exponential-medium-b0098",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5798,7 +4220,7 @@
     "answer_verification": "model V(t) = 5000(0.75)^t"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0135",
+    "question_id": "sat-math-exponential-medium-b0099",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5844,7 +4266,7 @@
     "answer_verification": "320/2^2"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0136",
+    "question_id": "sat-math-exponential-medium-b0100",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5890,7 +4312,7 @@
     "answer_verification": "80/2^2"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0137",
+    "question_id": "sat-math-exponential-medium-b0101",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5935,7 +4357,7 @@
     "answer_verification": "val=9"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0138",
+    "question_id": "sat-math-exponential-medium-b0102",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5966,7 +4388,7 @@
     "answer_verification": "val=26"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0139",
+    "question_id": "sat-math-exponential-medium-b0103",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5997,7 +4419,7 @@
     "answer_verification": "val=10"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0140",
+    "question_id": "sat-math-exponential-medium-b0104",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6043,7 +4465,7 @@
     "answer_verification": "model V(t) = 5000(0.8)^t"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0141",
+    "question_id": "sat-math-exponential-medium-b0105",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6089,7 +4511,7 @@
     "answer_verification": "model V(t) = 500(0.94)^t"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0142",
+    "question_id": "sat-math-exponential-medium-b0106",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6135,7 +4557,7 @@
     "answer_verification": "800(1.12)^4"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0143",
+    "question_id": "sat-math-exponential-medium-b0107",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6181,7 +4603,7 @@
     "answer_verification": "rate=30%"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0144",
+    "question_id": "sat-math-exponential-medium-b0108",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6226,7 +4648,7 @@
     "answer_verification": "val=16"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0145",
+    "question_id": "sat-math-exponential-medium-b0109",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6272,7 +4694,7 @@
     "answer_verification": "120/2^2"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0146",
+    "question_id": "sat-math-exponential-medium-b0110",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6318,7 +4740,7 @@
     "answer_verification": "It changes exponentially: it is multiplied by 0.88 each year."
   },
   {
-    "question_id": "sat-math-exponential-medium-b0147",
+    "question_id": "sat-math-exponential-medium-b0111",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6349,7 +4771,7 @@
     "answer_verification": "val=46"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0148",
+    "question_id": "sat-math-exponential-medium-b0112",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6394,7 +4816,7 @@
     "answer_verification": "val=18"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0149",
+    "question_id": "sat-math-exponential-medium-b0113",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6440,7 +4862,7 @@
     "answer_verification": "500(1.04)^3"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0150",
+    "question_id": "sat-math-exponential-medium-b0114",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6485,7 +4907,7 @@
     "answer_verification": "val=20"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0151",
+    "question_id": "sat-math-exponential-medium-b0115",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6531,7 +4953,7 @@
     "answer_verification": "16/2^3"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0152",
+    "question_id": "sat-math-exponential-medium-b0116",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6577,7 +4999,7 @@
     "answer_verification": "3000(1.08)^2"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0153",
+    "question_id": "sat-math-exponential-medium-b0117",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6623,7 +5045,7 @@
     "answer_verification": "3000(1.02)^2"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0154",
+    "question_id": "sat-math-exponential-medium-b0118",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6669,7 +5091,7 @@
     "answer_verification": "rate=6%"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0155",
+    "question_id": "sat-math-exponential-medium-b0119",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6715,7 +5137,7 @@
     "answer_verification": "96/2^2"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0156",
+    "question_id": "sat-math-exponential-medium-b0120",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6760,7 +5182,7 @@
     "answer_verification": "val=7"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0157",
+    "question_id": "sat-math-exponential-medium-b0121",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6806,7 +5228,7 @@
     "answer_verification": "rate=3%"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0158",
+    "question_id": "sat-math-exponential-medium-b0122",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6852,7 +5274,7 @@
     "answer_verification": "rate=10%"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0159",
+    "question_id": "sat-math-exponential-medium-b0123",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6897,7 +5319,7 @@
     "answer_verification": "val=7"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0160",
+    "question_id": "sat-math-exponential-medium-b0124",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6943,7 +5365,7 @@
     "answer_verification": "rate=2%"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0161",
+    "question_id": "sat-math-exponential-medium-b0125",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6989,7 +5411,7 @@
     "answer_verification": "It changes exponentially: it is multiplied by 0.92 each year."
   },
   {
-    "question_id": "sat-math-exponential-medium-b0162",
+    "question_id": "sat-math-exponential-medium-b0126",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7020,7 +5442,7 @@
     "answer_verification": "val=13"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0163",
+    "question_id": "sat-math-exponential-medium-b0127",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7066,7 +5488,7 @@
     "answer_verification": "240/2^4"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0164",
+    "question_id": "sat-math-exponential-medium-b0128",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7112,7 +5534,7 @@
     "answer_verification": "1000(1.05)^2"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0165",
+    "question_id": "sat-math-exponential-medium-b0129",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7143,7 +5565,7 @@
     "answer_verification": "val=29"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0166",
+    "question_id": "sat-math-exponential-medium-b0130",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7189,7 +5611,7 @@
     "answer_verification": "It changes exponentially: it is multiplied by 0.85 each year."
   },
   {
-    "question_id": "sat-math-exponential-medium-b0167",
+    "question_id": "sat-math-exponential-medium-b0131",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7234,7 +5656,7 @@
     "answer_verification": "val=10"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0168",
+    "question_id": "sat-math-exponential-medium-b0132",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7280,7 +5702,7 @@
     "answer_verification": "1000(1.06)^2"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0169",
+    "question_id": "sat-math-exponential-medium-b0133",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7326,7 +5748,7 @@
     "answer_verification": "It changes exponentially: it is multiplied by 1.08 each year."
   },
   {
-    "question_id": "sat-math-exponential-medium-b0170",
+    "question_id": "sat-math-exponential-medium-b0134",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7371,7 +5793,7 @@
     "answer_verification": "val=18"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0171",
+    "question_id": "sat-math-exponential-medium-b0135",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7416,7 +5838,7 @@
     "answer_verification": "val=4"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0172",
+    "question_id": "sat-math-exponential-medium-b0136",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7461,7 +5883,7 @@
     "answer_verification": "val=7"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0173",
+    "question_id": "sat-math-exponential-medium-b0137",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7492,7 +5914,7 @@
     "answer_verification": "val=48"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0174",
+    "question_id": "sat-math-exponential-medium-b0138",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7537,7 +5959,7 @@
     "answer_verification": "val=16"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0175",
+    "question_id": "sat-math-exponential-medium-b0139",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7583,7 +6005,7 @@
     "answer_verification": "model V(t) = 250(1.2)^t"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0176",
+    "question_id": "sat-math-exponential-medium-b0140",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7629,7 +6051,7 @@
     "answer_verification": "model V(t) = 2000(0.8)^t"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0177",
+    "question_id": "sat-math-exponential-medium-b0141",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7675,7 +6097,7 @@
     "answer_verification": "200/2^3"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0178",
+    "question_id": "sat-math-exponential-medium-b0142",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7721,7 +6143,7 @@
     "answer_verification": "rate=4%"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0179",
+    "question_id": "sat-math-exponential-medium-b0143",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7767,7 +6189,7 @@
     "answer_verification": "80/2^4"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0180",
+    "question_id": "sat-math-exponential-medium-b0144",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7813,7 +6235,7 @@
     "answer_verification": "rate=2%"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0181",
+    "question_id": "sat-math-exponential-medium-b0145",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7858,7 +6280,7 @@
     "answer_verification": "val=19"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0182",
+    "question_id": "sat-math-exponential-medium-b0146",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7904,7 +6326,7 @@
     "answer_verification": "3000(1.06)^4"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0183",
+    "question_id": "sat-math-exponential-medium-b0147",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7950,7 +6372,7 @@
     "answer_verification": "96/2^2"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0184",
+    "question_id": "sat-math-exponential-medium-b0148",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7981,7 +6403,7 @@
     "answer_verification": "val=36"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0185",
+    "question_id": "sat-math-exponential-medium-b0149",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8027,7 +6449,7 @@
     "answer_verification": "800/2^4"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0186",
+    "question_id": "sat-math-exponential-medium-b0150",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8072,7 +6494,7 @@
     "answer_verification": "val=9"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0187",
+    "question_id": "sat-math-exponential-medium-b0151",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8118,7 +6540,7 @@
     "answer_verification": "6000(1.04)^3"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0188",
+    "question_id": "sat-math-exponential-medium-b0152",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8164,7 +6586,7 @@
     "answer_verification": "1000(1.02)^3"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0189",
+    "question_id": "sat-math-exponential-medium-b0153",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8210,7 +6632,7 @@
     "answer_verification": "It changes exponentially: it is multiplied by 1.08 each year."
   },
   {
-    "question_id": "sat-math-exponential-medium-b0190",
+    "question_id": "sat-math-exponential-medium-b0154",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8256,7 +6678,7 @@
     "answer_verification": "48/2^2"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0191",
+    "question_id": "sat-math-exponential-medium-b0155",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8302,7 +6724,7 @@
     "answer_verification": "model V(t) = 1500(1.04)^t"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0192",
+    "question_id": "sat-math-exponential-medium-b0156",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8347,7 +6769,7 @@
     "answer_verification": "val=10"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0193",
+    "question_id": "sat-math-exponential-medium-b0157",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8392,7 +6814,7 @@
     "answer_verification": "val=22"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0194",
+    "question_id": "sat-math-exponential-medium-b0158",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8438,7 +6860,7 @@
     "answer_verification": "rate=10%"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0195",
+    "question_id": "sat-math-exponential-medium-b0159",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8484,7 +6906,7 @@
     "answer_verification": "model V(t) = 800(0.9)^t"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0196",
+    "question_id": "sat-math-exponential-medium-b0160",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8529,7 +6951,7 @@
     "answer_verification": "val=6"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0197",
+    "question_id": "sat-math-exponential-medium-b0161",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8560,7 +6982,7 @@
     "answer_verification": "val=4"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0198",
+    "question_id": "sat-math-exponential-medium-b0162",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8606,7 +7028,7 @@
     "answer_verification": "model V(t) = 100(1.12)^t"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0199",
+    "question_id": "sat-math-exponential-medium-b0163",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8652,7 +7074,7 @@
     "answer_verification": "model V(t) = 5000(1.06)^t"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0200",
+    "question_id": "sat-math-exponential-medium-b0164",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8698,7 +7120,7 @@
     "answer_verification": "1000(1.10)^4"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0201",
+    "question_id": "sat-math-exponential-medium-b0165",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8744,7 +7166,7 @@
     "answer_verification": "rate=6%"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0202",
+    "question_id": "sat-math-exponential-medium-b0166",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8790,7 +7212,7 @@
     "answer_verification": "It changes exponentially: it is multiplied by 1.15 each year."
   },
   {
-    "question_id": "sat-math-exponential-medium-b0203",
+    "question_id": "sat-math-exponential-medium-b0167",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8836,7 +7258,7 @@
     "answer_verification": "model V(t) = 1000(1.08)^t"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0204",
+    "question_id": "sat-math-exponential-medium-b0168",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8882,7 +7304,7 @@
     "answer_verification": "It changes exponentially: it is multiplied by 1.08 each year."
   },
   {
-    "question_id": "sat-math-exponential-medium-b0205",
+    "question_id": "sat-math-exponential-medium-b0169",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8928,7 +7350,7 @@
     "answer_verification": "model V(t) = 500(0.9)^t"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0206",
+    "question_id": "sat-math-exponential-medium-b0170",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8973,7 +7395,7 @@
     "answer_verification": "val=11"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0207",
+    "question_id": "sat-math-exponential-medium-b0171",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9019,7 +7441,7 @@
     "answer_verification": "6000(1.06)^3"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0208",
+    "question_id": "sat-math-exponential-medium-b0172",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9065,7 +7487,7 @@
     "answer_verification": "2500(1.05)^4"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0209",
+    "question_id": "sat-math-exponential-medium-b0173",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9111,7 +7533,7 @@
     "answer_verification": "It changes exponentially: it is multiplied by 1.1 each year."
   },
   {
-    "question_id": "sat-math-exponential-medium-b0210",
+    "question_id": "sat-math-exponential-medium-b0174",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9157,7 +7579,7 @@
     "answer_verification": "16/2^3"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0211",
+    "question_id": "sat-math-exponential-medium-b0175",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9203,7 +7625,7 @@
     "answer_verification": "10000(1.06)^2"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0212",
+    "question_id": "sat-math-exponential-medium-b0176",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9249,7 +7671,7 @@
     "answer_verification": "model V(t) = 5000(1.03)^t"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0213",
+    "question_id": "sat-math-exponential-medium-b0177",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9295,7 +7717,7 @@
     "answer_verification": "2500(1.04)^2"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0214",
+    "question_id": "sat-math-exponential-medium-b0178",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9341,7 +7763,7 @@
     "answer_verification": "rate=20%"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0215",
+    "question_id": "sat-math-exponential-medium-b0179",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9387,7 +7809,7 @@
     "answer_verification": "800(1.05)^3"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0216",
+    "question_id": "sat-math-exponential-medium-b0180",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9433,7 +7855,7 @@
     "answer_verification": "32/2^4"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0217",
+    "question_id": "sat-math-exponential-medium-b0181",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9478,7 +7900,7 @@
     "answer_verification": "val=22"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0218",
+    "question_id": "sat-math-exponential-medium-b0182",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9524,7 +7946,7 @@
     "answer_verification": "model V(t) = 800(0.98)^t"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0219",
+    "question_id": "sat-math-exponential-medium-b0183",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9570,7 +7992,7 @@
     "answer_verification": "rate=5%"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0220",
+    "question_id": "sat-math-exponential-medium-b0184",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9616,7 +8038,7 @@
     "answer_verification": "800(1.08)^4"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0221",
+    "question_id": "sat-math-exponential-medium-b0185",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9661,7 +8083,7 @@
     "answer_verification": "val=2"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0222",
+    "question_id": "sat-math-exponential-medium-b0186",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9707,7 +8129,7 @@
     "answer_verification": "rate=2%"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0223",
+    "question_id": "sat-math-exponential-medium-b0187",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9738,7 +8160,7 @@
     "answer_verification": "val=37"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0224",
+    "question_id": "sat-math-exponential-medium-b0188",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9784,7 +8206,7 @@
     "answer_verification": "4000(1.05)^4"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0225",
+    "question_id": "sat-math-exponential-medium-b0189",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9829,7 +8251,7 @@
     "answer_verification": "val=4"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0226",
+    "question_id": "sat-math-exponential-medium-b0190",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9875,7 +8297,7 @@
     "answer_verification": "32/2^2"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0227",
+    "question_id": "sat-math-exponential-medium-b0191",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9921,7 +8343,7 @@
     "answer_verification": "model V(t) = 500(1.02)^t"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0228",
+    "question_id": "sat-math-exponential-medium-b0192",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9967,7 +8389,7 @@
     "answer_verification": "It changes exponentially: it is multiplied by 1.05 each year."
   },
   {
-    "question_id": "sat-math-exponential-medium-b0229",
+    "question_id": "sat-math-exponential-medium-b0193",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9998,7 +8420,7 @@
     "answer_verification": "val=24"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0230",
+    "question_id": "sat-math-exponential-medium-b0194",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10044,7 +8466,7 @@
     "answer_verification": "model V(t) = 100(0.98)^t"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0231",
+    "question_id": "sat-math-exponential-medium-b0195",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10090,7 +8512,7 @@
     "answer_verification": "320/2^4"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0232",
+    "question_id": "sat-math-exponential-medium-b0196",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10136,7 +8558,7 @@
     "answer_verification": "model V(t) = 250(1.04)^t"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0233",
+    "question_id": "sat-math-exponential-medium-b0197",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10182,7 +8604,7 @@
     "answer_verification": "rate=6%"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0234",
+    "question_id": "sat-math-exponential-medium-b0198",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10228,7 +8650,7 @@
     "answer_verification": "rate=6%"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0235",
+    "question_id": "sat-math-exponential-medium-b0199",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10274,7 +8696,7 @@
     "answer_verification": "It changes exponentially: it is multiplied by 1.03 each year."
   },
   {
-    "question_id": "sat-math-exponential-medium-b0236",
+    "question_id": "sat-math-exponential-medium-b0200",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10320,7 +8742,7 @@
     "answer_verification": "It changes exponentially: it is multiplied by 1.25 each year."
   },
   {
-    "question_id": "sat-math-exponential-medium-b0237",
+    "question_id": "sat-math-exponential-medium-b0201",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10366,7 +8788,7 @@
     "answer_verification": "It changes exponentially: it is multiplied by 1.08 each year."
   },
   {
-    "question_id": "sat-math-exponential-medium-b0238",
+    "question_id": "sat-math-exponential-medium-b0202",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10411,7 +8833,7 @@
     "answer_verification": "val=22"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0239",
+    "question_id": "sat-math-exponential-medium-b0203",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10457,7 +8879,7 @@
     "answer_verification": "rate=10%"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0240",
+    "question_id": "sat-math-exponential-medium-b0204",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10502,7 +8924,7 @@
     "answer_verification": "val=8"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0241",
+    "question_id": "sat-math-exponential-medium-b0205",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10533,7 +8955,7 @@
     "answer_verification": "val=22"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0242",
+    "question_id": "sat-math-exponential-medium-b0206",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10579,7 +9001,7 @@
     "answer_verification": "500(1.04)^4"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0243",
+    "question_id": "sat-math-exponential-medium-b0207",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10625,7 +9047,7 @@
     "answer_verification": "It changes exponentially: it is multiplied by 0.85 each year."
   },
   {
-    "question_id": "sat-math-exponential-medium-b0244",
+    "question_id": "sat-math-exponential-medium-b0208",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10671,7 +9093,7 @@
     "answer_verification": "40/2^3"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0245",
+    "question_id": "sat-math-exponential-medium-b0209",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10717,7 +9139,7 @@
     "answer_verification": "It changes exponentially: it is multiplied by 1.2 each year."
   },
   {
-    "question_id": "sat-math-exponential-medium-b0246",
+    "question_id": "sat-math-exponential-medium-b0210",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10763,7 +9185,7 @@
     "answer_verification": "rate=6%"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0247",
+    "question_id": "sat-math-exponential-medium-b0211",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10794,7 +9216,7 @@
     "answer_verification": "val=44"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0248",
+    "question_id": "sat-math-exponential-medium-b0212",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10840,7 +9262,7 @@
     "answer_verification": "500(1.10)^2"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0249",
+    "question_id": "sat-math-exponential-medium-b0213",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10886,7 +9308,7 @@
     "answer_verification": "8000(1.06)^3"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0250",
+    "question_id": "sat-math-exponential-medium-b0214",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10932,7 +9354,7 @@
     "answer_verification": "model V(t) = 2000(0.88)^t"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0251",
+    "question_id": "sat-math-exponential-medium-b0215",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10978,7 +9400,7 @@
     "answer_verification": "rate=12%"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0252",
+    "question_id": "sat-math-exponential-medium-b0216",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11024,7 +9446,7 @@
     "answer_verification": "80/2^2"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0253",
+    "question_id": "sat-math-exponential-medium-b0217",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11055,7 +9477,7 @@
     "answer_verification": "val=52"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0254",
+    "question_id": "sat-math-exponential-medium-b0218",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11100,7 +9522,7 @@
     "answer_verification": "val=10"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0255",
+    "question_id": "sat-math-exponential-medium-b0219",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11146,7 +9568,7 @@
     "answer_verification": "rate=15%"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0256",
+    "question_id": "sat-math-exponential-medium-b0220",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11192,7 +9614,7 @@
     "answer_verification": "It changes exponentially: it is multiplied by 0.97 each year."
   },
   {
-    "question_id": "sat-math-exponential-medium-b0257",
+    "question_id": "sat-math-exponential-medium-b0221",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11238,7 +9660,7 @@
     "answer_verification": "rate=8%"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0258",
+    "question_id": "sat-math-exponential-medium-b0222",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11269,7 +9691,7 @@
     "answer_verification": "val=53"
   },
   {
-    "question_id": "sat-math-exponential-medium-b0259",
+    "question_id": "sat-math-exponential-medium-b0223",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11315,7 +9737,7 @@
     "answer_verification": "It changes exponentially: it is multiplied by 1.03 each year."
   },
   {
-    "question_id": "sat-math-exponential-medium-b0260",
+    "question_id": "sat-math-exponential-medium-b0224",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11359,5 +9781,1566 @@
       "family:ex_periods"
     ],
     "answer_verification": "32/2^4"
+  },
+  {
+    "question_id": "sat-math-exponential-medium-b0225",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "exponential",
+    "lesson_id": "sat-math-exponential-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "growth_decay",
+    "prompt": "A town's population is 100 and decreases by 10% per year. Which function gives the value V after t years?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "V(t) = 100 − 10t",
+        "rationale": "Percent change compounds (exponential), it doesn't add a fixed amount each year."
+      },
+      {
+        "id": "B",
+        "text": "V(t) = 100(0.9)^t",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "V(t) = 100(1.1)^t",
+        "rationale": "A 10% decrease means a factor of 0.9, not 1.1."
+      },
+      {
+        "id": "D",
+        "text": "V(t) = 100(0.1)^t",
+        "rationale": "The factor is 1 ± the rate, not the rate alone."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "A 10% decrease per year multiplies by 0.9 each year: V(t) = 100(0.9)^t.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "model",
+      "family:ex_model"
+    ],
+    "answer_verification": "model V(t) = 100(0.9)^t"
+  },
+  {
+    "question_id": "sat-math-exponential-medium-b0226",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "exponential",
+    "lesson_id": "sat-math-exponential-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "growth_decay",
+    "prompt": "A machine worth $1000 loses 10% of its value each year. Which statement best describes the quantity over time?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "It changes linearly: it changes by exactly 100 every year.",
+        "rationale": "A percent change is proportional to the current amount, so the yearly change is not constant."
+      },
+      {
+        "id": "B",
+        "text": "It changes exponentially: it is multiplied by 0.9 each year.",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "It changes linearly: the same percent is applied every year.",
+        "rationale": "A constant percent is a constant multiplier, which is exponential."
+      },
+      {
+        "id": "D",
+        "text": "It changes exponentially: it changes by exactly 100 every year.",
+        "rationale": "Exponential change is a constant factor, not a constant amount."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "A 10% decrease multiplies by 0.9 every year, so the model is exponential.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "identify",
+      "family:ex_identify_type"
+    ],
+    "answer_verification": "It changes exponentially: it is multiplied by 0.9 each year."
+  },
+  {
+    "question_id": "sat-math-exponential-medium-b0227",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "exponential",
+    "lesson_id": "sat-math-exponential-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "growth_decay",
+    "prompt": "An investment of $10000 grows by 8% per year, compounded annually. Which expression gives the value, in dollars, of the investment after 4 years?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "10000(0.08)^4",
+        "rationale": "The growth factor is 1 + r, not r."
+      },
+      {
+        "id": "B",
+        "text": "10000·4·1.08",
+        "rationale": "The number of years is an exponent."
+      },
+      {
+        "id": "C",
+        "text": "10000(1.08)^4",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "10000(1 + 4·0.08)",
+        "rationale": "Compound growth is repeated multiplication, not repeated addition."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "Each year multiplies the value by 1 + 8/100 = 1.08; after 4 years: 10000(1.08)^4.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "compound",
+      "family:ex_compound"
+    ],
+    "answer_verification": "10000(1.08)^4"
+  },
+  {
+    "question_id": "sat-math-exponential-medium-b0228",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "exponential",
+    "lesson_id": "sat-math-exponential-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "growth_decay",
+    "prompt": "A radioactive sample has a half-life of 12 days: every 12 days, half of it decays. If the sample starts at 8 grams, how many grams remain after 24 days?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "5",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      },
+      {
+        "id": "B",
+        "text": "1",
+        "rationale": "Each half-life halves what remains; it doesn't subtract a fixed amount."
+      },
+      {
+        "id": "C",
+        "text": "2",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "4",
+        "rationale": "That is after one half-life only."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "24 days is 2 half-lives; 8 ÷ 2^2 = 2 grams.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "half-life",
+      "family:ex_periods"
+    ],
+    "answer_verification": "8/2^2"
+  },
+  {
+    "question_id": "sat-math-exponential-medium-b0229",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "exponential",
+    "lesson_id": "sat-math-exponential-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "growth_decay",
+    "prompt": "A population of 512 cells in a sample is cut to one-quarter every hour. How many will there be after 3 hours?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "500",
+        "rationale": "This subtracts instead of repeatedly dividing."
+      },
+      {
+        "id": "B",
+        "text": "8",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "42",
+        "rationale": "This divides once by r×time instead of repeatedly."
+      },
+      {
+        "id": "D",
+        "text": "32",
+        "rationale": "This stops one period too early."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Divide by 4 each hour: 512 ÷ 4^3 = 8.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "family:ex_value"
+    ],
+    "answer_verification": "val=8"
+  },
+  {
+    "question_id": "sat-math-exponential-medium-b0230",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "exponential",
+    "lesson_id": "sat-math-exponential-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "growth_decay",
+    "prompt": "A population of 189 users of an app is cut to one-third every month. How many will there be after 2 months?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "31",
+        "rationale": "This divides once by r×time instead of repeatedly."
+      },
+      {
+        "id": "B",
+        "text": "21",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "63",
+        "rationale": "This stops one period too early."
+      },
+      {
+        "id": "D",
+        "text": "183",
+        "rationale": "This subtracts instead of repeatedly dividing."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Divide by 3 each month: 189 ÷ 3^2 = 21.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "family:ex_value"
+    ],
+    "answer_verification": "val=21"
+  },
+  {
+    "question_id": "sat-math-exponential-medium-b0231",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "exponential",
+    "lesson_id": "sat-math-exponential-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "growth_decay",
+    "prompt": "An investment of $100 increases by 10% each year. Which function gives the value V after t years?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "V(t) = 100(0.1)^t",
+        "rationale": "The factor is 1 ± the rate, not the rate alone."
+      },
+      {
+        "id": "B",
+        "text": "V(t) = 100(0.9)^t",
+        "rationale": "A 10% increase means a factor of 1.1, not 0.9."
+      },
+      {
+        "id": "C",
+        "text": "V(t) = 100(1.1)^t",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "V(t) = 100 + 10t",
+        "rationale": "Percent change compounds (exponential), it doesn't add a fixed amount each year."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "A 10% increase per year multiplies by 1.1 each year: V(t) = 100(1.1)^t.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "model",
+      "family:ex_model"
+    ],
+    "answer_verification": "model V(t) = 100(1.1)^t"
+  },
+  {
+    "question_id": "sat-math-exponential-medium-b0232",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "exponential",
+    "lesson_id": "sat-math-exponential-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "growth_decay",
+    "prompt": "The function f(t) = 800(1.12)^t models the mass, in grams, of a substance t hours after it was first measured. By what percent does the quantity increase each hour?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "24%",
+        "rationale": "Arithmetic slip; 1.12 − 1 = ±0.12."
+      },
+      {
+        "id": "B",
+        "text": "112%",
+        "rationale": "112% is the factor as a percent; the change is the part above or below 100%."
+      },
+      {
+        "id": "C",
+        "text": "88%",
+        "rationale": "Compare the factor to 1 (100%)."
+      },
+      {
+        "id": "D",
+        "text": "12%",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "The factor 1.12 = 1 + 0.12, so the quantity grows by 12% per hour.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "interpret",
+      "family:ex_interpret"
+    ],
+    "answer_verification": "rate=12%"
+  },
+  {
+    "question_id": "sat-math-exponential-medium-b0233",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "exponential",
+    "lesson_id": "sat-math-exponential-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "growth_decay",
+    "prompt": "The function f(t) = 1200(1.1)^t models the number of fish in a lake t years after it was first measured. By what percent does the quantity increase each year?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "20%",
+        "rationale": "Arithmetic slip; 1.1 − 1 = ±0.1."
+      },
+      {
+        "id": "B",
+        "text": "110%",
+        "rationale": "110% is the factor as a percent; the change is the part above or below 100%."
+      },
+      {
+        "id": "C",
+        "text": "10%",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "90%",
+        "rationale": "Compare the factor to 1 (100%)."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "The factor 1.1 = 1 + 0.1, so the quantity grows by 10% per year.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "interpret",
+      "family:ex_interpret"
+    ],
+    "answer_verification": "rate=10%"
+  },
+  {
+    "question_id": "sat-math-exponential-medium-b0234",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "exponential",
+    "lesson_id": "sat-math-exponential-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "growth_decay",
+    "prompt": "A population of 1134 cells in a sample is cut to one-third every hour. How many will there be after 4 hours?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "94",
+        "rationale": "This divides once by r×time instead of repeatedly."
+      },
+      {
+        "id": "B",
+        "text": "1122",
+        "rationale": "This subtracts instead of repeatedly dividing."
+      },
+      {
+        "id": "C",
+        "text": "42",
+        "rationale": "This stops one period too early."
+      },
+      {
+        "id": "D",
+        "text": "14",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Divide by 3 each hour: 1134 ÷ 3^4 = 14.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "family:ex_value"
+    ],
+    "answer_verification": "val=14"
+  },
+  {
+    "question_id": "sat-math-exponential-medium-b0235",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "exponential",
+    "lesson_id": "sat-math-exponential-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "student_produced",
+    "subskill": "growth_decay",
+    "prompt": "A quantity of 400 is divided by 2 every day. What is the quantity after 4 days?",
+    "answer": {
+      "type": "numeric",
+      "value": 25,
+      "accepted": [
+        "25"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "400 ÷ 2^4 = 25.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "grid-in",
+      "family:ex_gridin"
+    ],
+    "answer_verification": "val=25"
+  },
+  {
+    "question_id": "sat-math-exponential-medium-b0236",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "exponential",
+    "lesson_id": "sat-math-exponential-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "growth_decay",
+    "prompt": "An investment of $5000 increases by 8% each year. Which function gives the value V after t years?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "V(t) = 5000(0.92)^t",
+        "rationale": "A 8% increase means a factor of 1.08, not 0.92."
+      },
+      {
+        "id": "B",
+        "text": "V(t) = 5000(0.08)^t",
+        "rationale": "The factor is 1 ± the rate, not the rate alone."
+      },
+      {
+        "id": "C",
+        "text": "V(t) = 5000 + 400t",
+        "rationale": "Percent change compounds (exponential), it doesn't add a fixed amount each year."
+      },
+      {
+        "id": "D",
+        "text": "V(t) = 5000(1.08)^t",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "A 8% increase per year multiplies by 1.08 each year: V(t) = 5000(1.08)^t.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "model",
+      "family:ex_model"
+    ],
+    "answer_verification": "model V(t) = 5000(1.08)^t"
+  },
+  {
+    "question_id": "sat-math-exponential-medium-b0237",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "exponential",
+    "lesson_id": "sat-math-exponential-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "growth_decay",
+    "prompt": "A town's population is 500 and decreases by 6% per year. Which function gives the value V after t years?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "V(t) = 500 − 30t",
+        "rationale": "Percent change compounds (exponential), it doesn't add a fixed amount each year."
+      },
+      {
+        "id": "B",
+        "text": "V(t) = 500(1.06)^t",
+        "rationale": "A 6% decrease means a factor of 0.94, not 1.06."
+      },
+      {
+        "id": "C",
+        "text": "V(t) = 500(0.94)^t",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "V(t) = 500(0.06)^t",
+        "rationale": "The factor is 1 ± the rate, not the rate alone."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "A 6% decrease per year multiplies by 0.94 each year: V(t) = 500(0.94)^t.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "model",
+      "family:ex_model"
+    ],
+    "answer_verification": "model V(t) = 500(0.94)^t"
+  },
+  {
+    "question_id": "sat-math-exponential-medium-b0238",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "exponential",
+    "lesson_id": "sat-math-exponential-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "growth_decay",
+    "prompt": "A machine worth $250 gains 20% of its value each year. Which statement best describes the quantity over time?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "It changes exponentially: it changes by exactly 50 every year.",
+        "rationale": "Exponential change is a constant factor, not a constant amount."
+      },
+      {
+        "id": "B",
+        "text": "It changes exponentially: it is multiplied by 1.2 each year.",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "It changes linearly: it changes by exactly 50 every year.",
+        "rationale": "A percent change is proportional to the current amount, so the yearly change is not constant."
+      },
+      {
+        "id": "D",
+        "text": "It changes linearly: the same percent is applied every year.",
+        "rationale": "A constant percent is a constant multiplier, which is exponential."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "A 20% increase multiplies by 1.2 every year, so the model is exponential.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "identify",
+      "family:ex_identify_type"
+    ],
+    "answer_verification": "It changes exponentially: it is multiplied by 1.2 each year."
+  },
+  {
+    "question_id": "sat-math-exponential-medium-b0239",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "exponential",
+    "lesson_id": "sat-math-exponential-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "growth_decay",
+    "prompt": "The function f(t) = 750(1.03)^t models the number of members of a club t months after it was first measured. By what percent does the quantity increase each month?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "97%",
+        "rationale": "Compare the factor to 1 (100%)."
+      },
+      {
+        "id": "B",
+        "text": "103%",
+        "rationale": "103% is the factor as a percent; the change is the part above or below 100%."
+      },
+      {
+        "id": "C",
+        "text": "6%",
+        "rationale": "Arithmetic slip; 1.03 − 1 = ±0.03."
+      },
+      {
+        "id": "D",
+        "text": "3%",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "The factor 1.03 = 1 + 0.03, so the quantity grows by 3% per month.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "interpret",
+      "family:ex_interpret"
+    ],
+    "answer_verification": "rate=3%"
+  },
+  {
+    "question_id": "sat-math-exponential-medium-b0240",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "exponential",
+    "lesson_id": "sat-math-exponential-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "growth_decay",
+    "prompt": "The number of trees in a forest is 1000 and increases by 10% each year. Which statement best describes the quantity over time?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "It changes exponentially: it is multiplied by 1.1 each year.",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "It changes exponentially: it changes by exactly 100 every year.",
+        "rationale": "Exponential change is a constant factor, not a constant amount."
+      },
+      {
+        "id": "C",
+        "text": "It changes linearly: it changes by exactly 100 every year.",
+        "rationale": "A percent change is proportional to the current amount, so the yearly change is not constant."
+      },
+      {
+        "id": "D",
+        "text": "It changes linearly: the same percent is applied every year.",
+        "rationale": "A constant percent is a constant multiplier, which is exponential."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "A 10% increase multiplies by 1.1 every year, so the model is exponential.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "identify",
+      "family:ex_identify_type"
+    ],
+    "answer_verification": "It changes exponentially: it is multiplied by 1.1 each year."
+  },
+  {
+    "question_id": "sat-math-exponential-medium-b0241",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "exponential",
+    "lesson_id": "sat-math-exponential-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "student_produced",
+    "subskill": "growth_decay",
+    "prompt": "A quantity of 576 is divided by 4 every day. What is the quantity after 2 days?",
+    "answer": {
+      "type": "numeric",
+      "value": 36,
+      "accepted": [
+        "36"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "576 ÷ 4^2 = 36.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "grid-in",
+      "family:ex_gridin"
+    ],
+    "answer_verification": "val=36"
+  },
+  {
+    "question_id": "sat-math-exponential-medium-b0242",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "exponential",
+    "lesson_id": "sat-math-exponential-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "student_produced",
+    "subskill": "growth_decay",
+    "prompt": "A quantity of 495 is divided by 3 every day. What is the quantity after 2 days?",
+    "answer": {
+      "type": "numeric",
+      "value": 55,
+      "accepted": [
+        "55"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "495 ÷ 3^2 = 55.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "grid-in",
+      "family:ex_gridin"
+    ],
+    "answer_verification": "val=55"
+  },
+  {
+    "question_id": "sat-math-exponential-medium-b0243",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "exponential",
+    "lesson_id": "sat-math-exponential-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "growth_decay",
+    "prompt": "The number of trees in a forest is 800 and increases by 25% each year. Which statement best describes the quantity over time?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "It changes exponentially: it is multiplied by 1.25 each year.",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "It changes linearly: it changes by exactly 200 every year.",
+        "rationale": "A percent change is proportional to the current amount, so the yearly change is not constant."
+      },
+      {
+        "id": "C",
+        "text": "It changes linearly: the same percent is applied every year.",
+        "rationale": "A constant percent is a constant multiplier, which is exponential."
+      },
+      {
+        "id": "D",
+        "text": "It changes exponentially: it changes by exactly 200 every year.",
+        "rationale": "Exponential change is a constant factor, not a constant amount."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "A 25% increase multiplies by 1.25 every year, so the model is exponential.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "identify",
+      "family:ex_identify_type"
+    ],
+    "answer_verification": "It changes exponentially: it is multiplied by 1.25 each year."
+  },
+  {
+    "question_id": "sat-math-exponential-medium-b0244",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "exponential",
+    "lesson_id": "sat-math-exponential-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "growth_decay",
+    "prompt": "A radioactive sample has a half-life of 5 minutes: every 5 minutes, half of it decays. If the sample starts at 160 grams, how many grams remain after 15 minutes?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "80/3",
+        "rationale": "Divide by 2 repeatedly (3 times), not by 2·3."
+      },
+      {
+        "id": "B",
+        "text": "10",
+        "rationale": "Each half-life halves what remains; it doesn't subtract a fixed amount."
+      },
+      {
+        "id": "C",
+        "text": "20",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "80",
+        "rationale": "That is after one half-life only."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "15 minutes is 3 half-lives; 160 ÷ 2^3 = 20 grams.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "half-life",
+      "family:ex_periods"
+    ],
+    "answer_verification": "160/2^3"
+  },
+  {
+    "question_id": "sat-math-exponential-medium-b0245",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "exponential",
+    "lesson_id": "sat-math-exponential-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "growth_decay",
+    "prompt": "The number of trees in a forest is 400 and increases by 20% each year. Which statement best describes the quantity over time?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "It changes exponentially: it is multiplied by 1.2 each year.",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "It changes exponentially: it changes by exactly 80 every year.",
+        "rationale": "Exponential change is a constant factor, not a constant amount."
+      },
+      {
+        "id": "C",
+        "text": "It changes linearly: the same percent is applied every year.",
+        "rationale": "A constant percent is a constant multiplier, which is exponential."
+      },
+      {
+        "id": "D",
+        "text": "It changes linearly: it changes by exactly 80 every year.",
+        "rationale": "A percent change is proportional to the current amount, so the yearly change is not constant."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "A 20% increase multiplies by 1.2 every year, so the model is exponential.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "identify",
+      "family:ex_identify_type"
+    ],
+    "answer_verification": "It changes exponentially: it is multiplied by 1.2 each year."
+  },
+  {
+    "question_id": "sat-math-exponential-medium-b0246",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "exponential",
+    "lesson_id": "sat-math-exponential-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "growth_decay",
+    "prompt": "A machine worth $400 gains 8% of its value each year. Which statement best describes the quantity over time?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "It changes linearly: the same percent is applied every year.",
+        "rationale": "A constant percent is a constant multiplier, which is exponential."
+      },
+      {
+        "id": "B",
+        "text": "It changes exponentially: it changes by exactly 32 every year.",
+        "rationale": "Exponential change is a constant factor, not a constant amount."
+      },
+      {
+        "id": "C",
+        "text": "It changes exponentially: it is multiplied by 1.08 each year.",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "It changes linearly: it changes by exactly 32 every year.",
+        "rationale": "A percent change is proportional to the current amount, so the yearly change is not constant."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "A 8% increase multiplies by 1.08 every year, so the model is exponential.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "identify",
+      "family:ex_identify_type"
+    ],
+    "answer_verification": "It changes exponentially: it is multiplied by 1.08 each year."
+  },
+  {
+    "question_id": "sat-math-exponential-medium-b0247",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "exponential",
+    "lesson_id": "sat-math-exponential-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "student_produced",
+    "subskill": "growth_decay",
+    "prompt": "A quantity of 9375 is divided by 5 every day. What is the quantity after 4 days?",
+    "answer": {
+      "type": "numeric",
+      "value": 15,
+      "accepted": [
+        "15"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "9375 ÷ 5^4 = 15.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "grid-in",
+      "family:ex_gridin"
+    ],
+    "answer_verification": "val=15"
+  },
+  {
+    "question_id": "sat-math-exponential-medium-b0248",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "exponential",
+    "lesson_id": "sat-math-exponential-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "growth_decay",
+    "prompt": "An investment of $250 decreases by 4% each year. Which function gives the value V after t years?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "V(t) = 250(1.04)^t",
+        "rationale": "A 4% decrease means a factor of 0.96, not 1.04."
+      },
+      {
+        "id": "B",
+        "text": "V(t) = 250(0.04)^t",
+        "rationale": "The factor is 1 ± the rate, not the rate alone."
+      },
+      {
+        "id": "C",
+        "text": "V(t) = 250 − 10t",
+        "rationale": "Percent change compounds (exponential), it doesn't add a fixed amount each year."
+      },
+      {
+        "id": "D",
+        "text": "V(t) = 250(0.96)^t",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "A 4% decrease per year multiplies by 0.96 each year: V(t) = 250(0.96)^t.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "model",
+      "family:ex_model"
+    ],
+    "answer_verification": "model V(t) = 250(0.96)^t"
+  },
+  {
+    "question_id": "sat-math-exponential-medium-b0249",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "exponential",
+    "lesson_id": "sat-math-exponential-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "growth_decay",
+    "prompt": "A population of 320 cells in a sample is cut to one-quarter every hour. How many will there be after 3 hours?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "5",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "20",
+        "rationale": "This stops one period too early."
+      },
+      {
+        "id": "C",
+        "text": "26",
+        "rationale": "This divides once by r×time instead of repeatedly."
+      },
+      {
+        "id": "D",
+        "text": "308",
+        "rationale": "This subtracts instead of repeatedly dividing."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Divide by 4 each hour: 320 ÷ 4^3 = 5.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "family:ex_value"
+    ],
+    "answer_verification": "val=5"
+  },
+  {
+    "question_id": "sat-math-exponential-medium-b0250",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "exponential",
+    "lesson_id": "sat-math-exponential-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "growth_decay",
+    "prompt": "A machine worth $1500 loses 12% of its value each year. Which statement best describes the quantity over time?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "It changes exponentially: it changes by exactly 180 every year.",
+        "rationale": "Exponential change is a constant factor, not a constant amount."
+      },
+      {
+        "id": "B",
+        "text": "It changes exponentially: it is multiplied by 0.88 each year.",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "It changes linearly: the same percent is applied every year.",
+        "rationale": "A constant percent is a constant multiplier, which is exponential."
+      },
+      {
+        "id": "D",
+        "text": "It changes linearly: it changes by exactly 180 every year.",
+        "rationale": "A percent change is proportional to the current amount, so the yearly change is not constant."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "A 12% decrease multiplies by 0.88 every year, so the model is exponential.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "identify",
+      "family:ex_identify_type"
+    ],
+    "answer_verification": "It changes exponentially: it is multiplied by 0.88 each year."
+  },
+  {
+    "question_id": "sat-math-exponential-medium-b0251",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "exponential",
+    "lesson_id": "sat-math-exponential-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "growth_decay",
+    "prompt": "A machine worth $50 loses 8% of its value each year. Which statement best describes the quantity over time?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "It changes exponentially: it is multiplied by 0.92 each year.",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "It changes linearly: it changes by exactly 4 every year.",
+        "rationale": "A percent change is proportional to the current amount, so the yearly change is not constant."
+      },
+      {
+        "id": "C",
+        "text": "It changes linearly: the same percent is applied every year.",
+        "rationale": "A constant percent is a constant multiplier, which is exponential."
+      },
+      {
+        "id": "D",
+        "text": "It changes exponentially: it changes by exactly 4 every year.",
+        "rationale": "Exponential change is a constant factor, not a constant amount."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "A 8% decrease multiplies by 0.92 every year, so the model is exponential.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "identify",
+      "family:ex_identify_type"
+    ],
+    "answer_verification": "It changes exponentially: it is multiplied by 0.92 each year."
+  },
+  {
+    "question_id": "sat-math-exponential-medium-b0252",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "exponential",
+    "lesson_id": "sat-math-exponential-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "growth_decay",
+    "prompt": "A machine worth $500 gains 15% of its value each year. Which statement best describes the quantity over time?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "It changes linearly: it changes by exactly 75 every year.",
+        "rationale": "A percent change is proportional to the current amount, so the yearly change is not constant."
+      },
+      {
+        "id": "B",
+        "text": "It changes exponentially: it is multiplied by 1.15 each year.",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "It changes linearly: the same percent is applied every year.",
+        "rationale": "A constant percent is a constant multiplier, which is exponential."
+      },
+      {
+        "id": "D",
+        "text": "It changes exponentially: it changes by exactly 75 every year.",
+        "rationale": "Exponential change is a constant factor, not a constant amount."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "A 15% increase multiplies by 1.15 every year, so the model is exponential.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "identify",
+      "family:ex_identify_type"
+    ],
+    "answer_verification": "It changes exponentially: it is multiplied by 1.15 each year."
+  },
+  {
+    "question_id": "sat-math-exponential-medium-b0253",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "exponential",
+    "lesson_id": "sat-math-exponential-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "growth_decay",
+    "prompt": "A town's population is 1000 and decreases by 20% per year. Which function gives the value V after t years?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "V(t) = 1000(1.2)^t",
+        "rationale": "A 20% decrease means a factor of 0.8, not 1.2."
+      },
+      {
+        "id": "B",
+        "text": "V(t) = 1000(0.8)^t",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "V(t) = 1000(0.2)^t",
+        "rationale": "The factor is 1 ± the rate, not the rate alone."
+      },
+      {
+        "id": "D",
+        "text": "V(t) = 1000 − 200t",
+        "rationale": "Percent change compounds (exponential), it doesn't add a fixed amount each year."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "A 20% decrease per year multiplies by 0.8 each year: V(t) = 1000(0.8)^t.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "model",
+      "family:ex_model"
+    ],
+    "answer_verification": "model V(t) = 1000(0.8)^t"
+  },
+  {
+    "question_id": "sat-math-exponential-medium-b0254",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "exponential",
+    "lesson_id": "sat-math-exponential-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "growth_decay",
+    "prompt": "A population of 1600 users of an app is cut to one-quarter every month. How many will there be after 3 months?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "133",
+        "rationale": "This divides once by r×time instead of repeatedly."
+      },
+      {
+        "id": "B",
+        "text": "25",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "1588",
+        "rationale": "This subtracts instead of repeatedly dividing."
+      },
+      {
+        "id": "D",
+        "text": "100",
+        "rationale": "This stops one period too early."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Divide by 4 each month: 1600 ÷ 4^3 = 25.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "family:ex_value"
+    ],
+    "answer_verification": "val=25"
+  },
+  {
+    "question_id": "sat-math-exponential-medium-b0255",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "exponential",
+    "lesson_id": "sat-math-exponential-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "growth_decay",
+    "prompt": "The value of a car is $800 and increases by 3% each year. Which function gives the value V after t years?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "V(t) = 800(0.97)^t",
+        "rationale": "A 3% increase means a factor of 1.03, not 0.97."
+      },
+      {
+        "id": "B",
+        "text": "V(t) = 800 + 24t",
+        "rationale": "Percent change compounds (exponential), it doesn't add a fixed amount each year."
+      },
+      {
+        "id": "C",
+        "text": "V(t) = 800(1.03)^t",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "V(t) = 800(0.03)^t",
+        "rationale": "The factor is 1 ± the rate, not the rate alone."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "A 3% increase per year multiplies by 1.03 each year: V(t) = 800(1.03)^t.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "model",
+      "family:ex_model"
+    ],
+    "answer_verification": "model V(t) = 800(1.03)^t"
+  },
+  {
+    "question_id": "sat-math-exponential-medium-b0256",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "exponential",
+    "lesson_id": "sat-math-exponential-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "growth_decay",
+    "prompt": "A radioactive sample has a half-life of 2 days: every 2 days, half of it decays. If the sample starts at 16 grams, how many grams remain after 4 days?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "4",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "2",
+        "rationale": "Each half-life halves what remains; it doesn't subtract a fixed amount."
+      },
+      {
+        "id": "C",
+        "text": "8",
+        "rationale": "That is after one half-life only."
+      },
+      {
+        "id": "D",
+        "text": "7",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "4 days is 2 half-lives; 16 ÷ 2^2 = 4 grams.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "half-life",
+      "family:ex_periods"
+    ],
+    "answer_verification": "16/2^2"
+  },
+  {
+    "question_id": "sat-math-exponential-medium-b0257",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "exponential",
+    "lesson_id": "sat-math-exponential-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "growth_decay",
+    "prompt": "A machine worth $1000 loses 3% of its value each year. Which statement best describes the quantity over time?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "It changes linearly: the same percent is applied every year.",
+        "rationale": "A constant percent is a constant multiplier, which is exponential."
+      },
+      {
+        "id": "B",
+        "text": "It changes exponentially: it changes by exactly 30 every year.",
+        "rationale": "Exponential change is a constant factor, not a constant amount."
+      },
+      {
+        "id": "C",
+        "text": "It changes linearly: it changes by exactly 30 every year.",
+        "rationale": "A percent change is proportional to the current amount, so the yearly change is not constant."
+      },
+      {
+        "id": "D",
+        "text": "It changes exponentially: it is multiplied by 0.97 each year.",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "A 3% decrease multiplies by 0.97 every year, so the model is exponential.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "identify",
+      "family:ex_identify_type"
+    ],
+    "answer_verification": "It changes exponentially: it is multiplied by 0.97 each year."
+  },
+  {
+    "question_id": "sat-math-exponential-medium-b0258",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "exponential",
+    "lesson_id": "sat-math-exponential-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "student_produced",
+    "subskill": "growth_decay",
+    "prompt": "A quantity of 2835 is divided by 3 every day. What is the quantity after 4 days?",
+    "answer": {
+      "type": "numeric",
+      "value": 35,
+      "accepted": [
+        "35"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "2835 ÷ 3^4 = 35.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "grid-in",
+      "family:ex_gridin"
+    ],
+    "answer_verification": "val=35"
+  },
+  {
+    "question_id": "sat-math-exponential-medium-b0259",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "exponential",
+    "lesson_id": "sat-math-exponential-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "student_produced",
+    "subskill": "growth_decay",
+    "prompt": "A quantity of 126 is divided by 3 every day. What is the quantity after 2 days?",
+    "answer": {
+      "type": "numeric",
+      "value": 14,
+      "accepted": [
+        "14"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "126 ÷ 3^2 = 14.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "grid-in",
+      "family:ex_gridin"
+    ],
+    "answer_verification": "val=14"
+  },
+  {
+    "question_id": "sat-math-exponential-medium-b0260",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "exponential",
+    "lesson_id": "sat-math-exponential-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "growth_decay",
+    "prompt": "A town's population is 250 and increases by 12% per year. Which function gives the value V after t years?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "V(t) = 250(1.12)^t",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "V(t) = 250(0.12)^t",
+        "rationale": "The factor is 1 ± the rate, not the rate alone."
+      },
+      {
+        "id": "C",
+        "text": "V(t) = 250(0.88)^t",
+        "rationale": "A 12% increase means a factor of 1.12, not 0.88."
+      },
+      {
+        "id": "D",
+        "text": "V(t) = 250 + 30t",
+        "rationale": "Percent change compounds (exponential), it doesn't add a fixed amount each year."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "A 12% increase per year multiplies by 1.12 each year: V(t) = 250(1.12)^t.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "advanced-math",
+      "exponential",
+      "model",
+      "family:ex_model"
+    ],
+    "answer_verification": "model V(t) = 250(1.12)^t"
   }
 ]
