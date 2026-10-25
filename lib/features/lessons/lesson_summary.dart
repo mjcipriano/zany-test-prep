@@ -26,6 +26,7 @@ class LessonSummary extends StatelessWidget {
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
     final mistakes = results.where((r) => !r.correct).toList();
+    final reduceMotion = MediaQuery.maybeDisableAnimationsOf(context) ?? false;
     return Column(
       children: [
         Expanded(
@@ -35,16 +36,20 @@ class LessonSummary extends StatelessWidget {
               Gap.l,
               Center(
                 child: TweenAnimationBuilder<double>(
-                  tween: Tween(begin: 0.6, end: 1),
-                  duration: const Duration(milliseconds: 500),
+                  tween: Tween(begin: reduceMotion ? 1 : 0.6, end: 1),
+                  duration: reduceMotion
+                      ? Duration.zero
+                      : const Duration(milliseconds: 500),
                   curve: Curves.elasticOut,
                   builder: (context, s, child) =>
                       Transform.scale(scale: s, child: child),
                   child: Column(
                     children: [
-                      Text(
-                        outcome.accuracy >= 0.8 ? '🎉' : '💪',
-                        style: const TextStyle(fontSize: 64),
+                      ExcludeSemantics(
+                        child: Text(
+                          outcome.accuracy >= 0.8 ? '🎉' : '💪',
+                          style: const TextStyle(fontSize: 64),
+                        ),
                       ),
                       Text(
                         isReview ? 'Review complete!' : 'Lesson complete!',
@@ -196,23 +201,34 @@ class _AnimatedStars extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: List.generate(3, (i) {
-        final filled = i < stars;
-        return TweenAnimationBuilder<double>(
-          tween: Tween(begin: 0, end: filled ? 1 : 0.4),
-          duration: Duration(milliseconds: 400 + i * 150),
-          curve: Curves.elasticOut,
-          builder: (context, s, child) =>
-              Transform.scale(scale: s, child: child),
-          child: Icon(
-            filled ? Icons.star_rounded : Icons.star_outline_rounded,
-            size: 56,
-            color: filled ? AppTheme.xpGold : Theme.of(context).disabledColor,
-          ),
-        );
-      }),
+    final reduceMotion = MediaQuery.maybeDisableAnimationsOf(context) ?? false;
+    final gold = AppColors.of(context).textOn(AppTheme.xpGold, minRatio: 3);
+    return Semantics(
+      label: '$stars of 3 stars',
+      excludeSemantics: true,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: List.generate(3, (i) {
+          final filled = i < stars;
+          return TweenAnimationBuilder<double>(
+            tween: Tween(
+              begin: reduceMotion ? (filled ? 1 : 0.4) : 0,
+              end: filled ? 1 : 0.4,
+            ),
+            duration: reduceMotion
+                ? Duration.zero
+                : Duration(milliseconds: 400 + i * 150),
+            curve: Curves.elasticOut,
+            builder: (context, s, child) =>
+                Transform.scale(scale: s, child: child),
+            child: Icon(
+              filled ? Icons.star_rounded : Icons.star_outline_rounded,
+              size: 56,
+              color: filled ? gold : Theme.of(context).colorScheme.outline,
+            ),
+          );
+        }),
+      ),
     );
   }
 }
@@ -224,13 +240,24 @@ class _CountUp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TweenAnimationBuilder<double>(
-      tween: Tween(begin: 0, end: value.toDouble()),
-      duration: const Duration(milliseconds: 900),
-      curve: Curves.easeOut,
-      builder: (context, v, _) => Text(
-        '${v.round()}$suffix',
-        style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w800),
+    final reduceMotion = MediaQuery.maybeDisableAnimationsOf(context) ?? false;
+    // Screen readers get the final number, not the ticking count.
+    return Semantics(
+      label: '$value$suffix',
+      excludeSemantics: true,
+      child: TweenAnimationBuilder<double>(
+        tween: Tween(
+          begin: reduceMotion ? value.toDouble() : 0,
+          end: value.toDouble(),
+        ),
+        duration: reduceMotion
+            ? Duration.zero
+            : const Duration(milliseconds: 900),
+        curve: Curves.easeOut,
+        builder: (context, v, _) => Text(
+          '${v.round()}$suffix',
+          style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w800),
+        ),
       ),
     );
   }
@@ -255,7 +282,7 @@ class _SummaryStat extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(icon, color: color),
+          Icon(icon, color: AppColors.of(context).textOn(color, minRatio: 3)),
           Gap.s,
           valueWidget,
           Text(label, style: Theme.of(context).textTheme.bodySmall),
@@ -273,6 +300,7 @@ class _Banner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final fg = AppColors.of(context).textOn(color);
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
@@ -281,12 +309,12 @@ class _Banner extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Icon(icon, color: color),
+          Icon(icon, color: fg),
           Gap.s,
           Expanded(
             child: Text(
               text,
-              style: TextStyle(color: color, fontWeight: FontWeight.w700),
+              style: TextStyle(color: fg, fontWeight: FontWeight.w700),
             ),
           ),
         ],
@@ -320,16 +348,16 @@ class _MistakeCard extends StatelessWidget {
             Gap.s,
             Row(
               children: [
-                const Icon(
+                Icon(
                   Icons.check_circle_rounded,
-                  color: AppTheme.correct,
+                  color: AppColors.of(context).correct,
                   size: 18,
                 ),
                 const SizedBox(width: 6),
                 Expanded(
                   child: Text(
                     'Answer: $answer',
-                    style: const TextStyle(color: AppTheme.correct),
+                    style: TextStyle(color: AppColors.of(context).correct),
                   ),
                 ),
               ],

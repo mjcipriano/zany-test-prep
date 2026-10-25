@@ -151,9 +151,9 @@ class _RemindersSectionState extends ConsumerState<RemindersSection>
           const Divider(height: 1),
           SwitchListTile(
             contentPadding: EdgeInsets.zero,
-            secondary: const Icon(
+            secondary: Icon(
               Icons.local_fire_department_rounded,
-              color: AppTheme.streak,
+              color: AppColors.of(context).streak,
             ),
             title: const Text('Streak saver'),
             subtitle: Text(
@@ -196,9 +196,9 @@ class NotificationsBlockedNote extends ConsumerWidget {
         children: [
           Row(
             children: [
-              const Icon(
+              Icon(
                 Icons.notifications_off_rounded,
-                color: AppTheme.streak,
+                color: AppColors.of(context).streak,
               ),
               const SizedBox(width: 8),
               Expanded(

@@ -202,14 +202,14 @@ class SettingsScreen extends ConsumerWidget {
             color: AppTheme.incorrect.withValues(alpha: 0.10),
             child: ListTile(
               contentPadding: EdgeInsets.zero,
-              leading: const Icon(
+              leading: Icon(
                 Icons.restart_alt_rounded,
-                color: AppTheme.incorrect,
+                color: AppColors.of(context).incorrect,
               ),
-              title: const Text(
+              title: Text(
                 'Reset progress',
                 style: TextStyle(
-                  color: AppTheme.incorrect,
+                  color: AppColors.of(context).incorrect,
                   fontWeight: FontWeight.w700,
                 ),
               ),
@@ -298,7 +298,10 @@ class SettingsScreen extends ConsumerWidget {
             child: const Text('Cancel'),
           ),
           FilledButton(
-            style: FilledButton.styleFrom(backgroundColor: AppTheme.incorrect),
+            style: FilledButton.styleFrom(
+              backgroundColor: AppColors.of(ctx).incorrectFill,
+              foregroundColor: Colors.white,
+            ),
             onPressed: () => Navigator.pop(ctx, true),
             child: const Text('Reset'),
           ),
