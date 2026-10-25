@@ -50,7 +50,7 @@ PASSAGES3 = [
         "inference": (
             "Based on the text, it can reasonably be inferred that Ines",
             ["has learned the routine of the lighthouse from her father over a period of time",
-             "has only recently arrived at the lighthouse and is teaching herself the work",
+             "has only recently arrived at the lighthouse and is teaching herself the work without help",
              "regards the keeper's log as a formality that she rarely bothers to fill in",
              "believes the crews of passing ships can clearly see her in the lamp room"],
             0,
@@ -111,7 +111,7 @@ PASSAGES3 = [
             "The primary purpose of the text is to",
             ["describe the technical steps involved in baking a loaf of bread from scratch",
              "recount how a brief remark from a mentor taught the narrator a lesson about patience",
-             "argue that practical jobs teach adolescents far more than formal schooling ever can",
+             "argue that practical summer jobs teach adolescents far more than formal schooling ever can",
              "explain why the narrator eventually chose a career as a professional baker"],
             1,
             ["Only a few steps are mentioned, and they serve the story rather than instruct.",
@@ -144,7 +144,7 @@ PASSAGES3 = [
              "No new mentor appears."],
             "The closing sentence generalizes the bakery lesson to the rest of the narrator's life."),
         "wic": (
-            "As used in the text, the word “sullen” most nearly means",
+            "In the context of the text, “sullen” most nearly means",
             ["burned and blackened", "oversized and airy", "sweet and delicate", "dull and heavy"],
             3,
             ["Nothing suggests burning; the problem is that the loaves failed to rise.",
@@ -197,7 +197,7 @@ PASSAGES3 = [
             "Based on the text, the researchers most likely chose to use monitors rather than complaints because",
             ["residents could not be trusted to report their own sleep habits honestly",
              "complaints come from a self-selected group that may not reflect residents as a whole",
-             "wrist monitors are far cheaper to deploy than collecting and sorting complaints",
+             "wrist monitors are far cheaper to deploy than collecting and sorting written complaints",
              "city officials had refused to share the complaints they had already received"],
             1,
             ["Honesty is not raised; the issue is who complains.",
@@ -210,7 +210,7 @@ PASSAGES3 = [
             ["contrasting the sleep habits of city residents with those of people living in quieter rural areas",
              "listing several sources of urban noise in order from the most disruptive to the least disruptive",
              "identifying a flaw in a common method, describing an alternative study, and drawing a policy implication",
-             "narrating the daily experiences of a single resident who took part in a noise study for three weeks"],
+             "narrating the daily experiences of a single resident who took part in a noise study for three weeks in a mid-sized city"],
             2,
             ["Rural areas are never discussed.",
              "The sources named are examples, not a ranked list.",
@@ -218,7 +218,7 @@ PASSAGES3 = [
              "The study involved 412 residents and no individual is profiled."],
             "The passage proceeds from method problem to study to implication."),
         "wic": (
-            "As used in the text, the word “tidy” most nearly means",
+            "Which choice gives the closest meaning of “tidy” as it is used in the text?",
             ["simple and clear-cut", "neat and well organized", "small and compact", "profitable and substantial"],
             0,
             ["Correct. The results were less straightforward than headlines imply.",
@@ -228,10 +228,10 @@ PASSAGES3 = [
             "'Less tidy' means the findings resisted a simple summary."),
         "evidence": (
             "Which detail from the text best supports the claim that average noise is not the key factor?",
-            ["The researchers lent wrist monitors to 412 residents of a mid-sized city.",
+            ["The researchers lent wrist monitors to 412 residents of a mid-sized city and recorded their sleep for three weeks.",
              "Complaints about city noise are easy to collect but hard to interpret.",
              "Sound meters were placed in each bedroom and recorded for three weeks.",
-             "Residents with nearly identical average noise levels slept differently depending on how many peaks they experienced."],
+             "Residents with similar average noise slept differently depending on how many peaks they experienced."],
             3,
             ["This describes the sample, not the finding.",
              "This concerns complaints, not average noise.",
@@ -302,7 +302,7 @@ PASSAGES3 = [
             "'Turn over' parallels the replacement of planks: old parts are swapped for new."),
         "evidence": (
             "Which quotation best supports the idea that the puzzle has implications beyond the example of the ship?",
-            ["'Most people say yes; a ship is not its planks but a pattern'",
+            ["'Most people say yes; a ship is not its planks but a pattern that persists through them'",
              "'Now suppose someone collected every discarded plank'",
              "'the warehouse ship feels like an imposter'",
              "'It asks what makes anything the same thing over time, including a person'"],
@@ -365,7 +365,7 @@ PASSAGES3 = [
              "No competing theory is introduced."],
             "The concession sets up the explanation of how the colony tolerates error."),
         "wic": (
-            "As used in the text, the word “rich” most nearly means",
+            "In the context of the passage, the word “rich” most nearly means",
             ["wealthy in money", "heavy and fatty", "deeply colored", "abundant in resources"],
             3,
             ["Flowers have no money.",
@@ -378,7 +378,7 @@ PASSAGES3 = [
             ["The angle of the run relative to straight up matches the angle of the food relative to the sun.",
              "The forager runs forward in a straight line while shaking her abdomen.",
              "Other bees touch the dancer with their antennae as she performs.",
-             "Roughly one second of waggling corresponds to every kilometer of distance."],
+             "Roughly one second of waggling corresponds to every kilometer of distance between the hive and the food."],
             0,
             ["Correct. The angle correspondence is the direction code.",
              "This describes the motion without saying what it encodes.",
@@ -403,7 +403,7 @@ PASSAGES3 = [
             "timetable, rather than the sky, tell them what time it was."),
         "main_idea": (
             "Which choice best states the main idea of the text?",
-            ["The federal government imposed four time zones on the railroads in 1883 over the strong objections of the rail companies.",
+            ["The federal government imposed four time zones on the railroads in 1883 over the strong objections of the major rail companies.",
              "Most American towns before the 1880s kept their clocks carefully synchronized with the clocks of neighboring cities.",
              "Railroads replaced local sun-based time with standard zones, and most people adopted the change before any official backing.",
              "Towns that refused to adopt standard time were eventually forced to comply by the rail companies that served them."],
@@ -427,7 +427,7 @@ PASSAGES3 = [
             "The passage attributes the earlier tolerance to the slow pace of travel."),
         "structure": (
             "The sentence 'But commerce followed the trains' primarily functions to",
-            ["introduce a discussion of the goods that trains carried",
+            ["introduce a discussion of the goods that trains carried between cities",
              "explain why the railroads' scheme prevailed despite resistance",
              "suggest that merchants opposed the new time zones",
              "signal that the federal government finally acted"],
@@ -512,7 +512,7 @@ PASSAGES3 = [
              "Budget procedure is not described."],
             "The sentence sets up the position the rest of the passage refutes."),
         "wic": (
-            "As used in the text, the word “trim” most nearly means",
+            "Which choice best captures the meaning of “trim” as used in the text?",
             ["reduce", "decorate", "neaten", "balance"],
             0,
             ["Correct. Budgets that look easy to trim are easy to cut.",
@@ -534,7 +534,7 @@ PASSAGES3 = [
             "The statement that services do not appear in circulation counts is the measurement point."),
     },
     {
-        "id": "letter_home", "title": "A Letter from the Camp",
+        "id": "camp_letter", "title": "A Letter from the Camp",
         "text": (
             "Dear Margaret, You will forgive the hand; I am writing on the lid of a trunk "
             "by the light of a lamp that smokes. We reached the river camp on Tuesday, two "
@@ -584,7 +584,7 @@ PASSAGES3 = [
              "Father's fear was also wrong, by a week in the other direction."],
             "The sentence sets the letter's dry, balanced voice."),
         "wic": (
-            "As used in the text, the word “hand” most nearly means",
+            "In the first sentence of the letter, the word “hand” most nearly means",
             ["assistance", "applause", "handwriting", "a hired worker"],
             2,
             ["He is not asking forgiveness for help.",
@@ -648,7 +648,7 @@ PASSAGES3 = [
         "structure": (
             "The author describes the reef as 'a city of animals' primarily to",
             ["emphasize how crowded modern reefs have become",
-             "suggest that reefs should be managed like cities",
+             "suggest that reefs should be managed the way cities are governed",
              "introduce the concept of accumulated heat",
              "correct a common misperception about what coral is"],
             3,
@@ -670,8 +670,8 @@ PASSAGES3 = [
             "Which finding best supports the author's claim about accumulated heat?",
             ["Bleached coral is starving rather than dead.",
              "Polyps expel their algae and turn white when water grows too warm.",
-             "A two-degree excess for four weeks caused about as much bleaching as a one-degree excess for eight weeks.",
-             "Reefs that recovered fully did so when more than a decade passed between events."],
+             "Two degrees for four weeks bleached about as much coral as one degree for eight weeks.",
+             "Reefs that recovered fully did so only when more than a decade passed between successive heat events."],
             2,
             ["This describes the state of bleached coral, not what causes it.",
              "This explains bleaching generally, not the role of duration.",
@@ -721,7 +721,7 @@ PASSAGES3 = [
             "The ironic adverb points to how the absence of instructions enables competing claims."),
         "structure": (
             "The text is structured as",
-            ["a chronological history of the fresco from its painting to the present day",
+            ["a chronological history of the fresco from its original painting through five centuries to the present day",
              "a presentation of two competing positions followed by a reflection on why neither can prevail",
              "an argument that the critics were right, supported by chemical evidence",
              "a step-by-step description of the techniques used to clean a fresco"],
@@ -796,7 +796,7 @@ PASSAGES3 = [
         "structure": (
             "The phrase 'in other words' signals that the final sentence",
             ["introduces a counterexample to the field studies",
-             "shifts the discussion to how lines work in other countries",
+             "shifts the discussion to how lines work in other countries and cultures",
              "begins a list of specific rules that lines follow",
              "restates the preceding evidence as a general interpretation"],
             3,
@@ -880,7 +880,7 @@ PASSAGES3 = [
              "Farmers' views of moraines are not mentioned."],
             "The image explains the ridge as the mark of a former edge."),
         "wic": (
-            "As used in the text, the word “apt” most nearly means",
+            "Which choice gives the closest meaning of “apt” as it is used in the text?",
             ["likely", "quick to learn", "fitting", "inclined"],
             2,
             ["Probability is not the sense.",
@@ -1003,7 +1003,7 @@ PASSAGES3 = [
         "inference": (
             "The detail that the boy 'looked up' at the end most strongly suggests that",
             ["Priya's move has surprised him or disturbed his sense of control",
-             "he has realized that the clock is running out for both players",
+             "he has realized that the clock is running out for both of the players",
              "he intends to offer Priya a draw out of sympathy for her",
              "he had not noticed until then that his opponent was a girl"],
             0,
@@ -1014,7 +1014,7 @@ PASSAGES3 = [
             "The contrast with his earlier indifference makes the look a reaction to her move."),
         "structure": (
             "The author includes the coach's advice primarily to",
-            ["suggest that Priya has been poorly prepared for competitive play",
+            ["suggest that Priya has been poorly prepared for competitive tournament play",
              "contrast the coach's calm with the opponent's impatience",
              "reveal that the coach is watching the game from across the room",
              "motivate the shift in Priya's thinking that leads to her decisive move"],
@@ -1081,7 +1081,7 @@ PASSAGES3 = [
             ["studies that found an effect were likelier to be published than those that found none",
              "the children who participated in them came from unusually wealthy families",
              "the card-sorting task is not a valid measure of attention in young children",
-             "the researchers deliberately excluded monolingual children from their samples"],
+             "the researchers deliberately excluded monolingual children from their samples altogether"],
             0,
             ["Correct. The text attributes the distortion to small studies and publication favoring positive results.",
              "Income was a confound in the pooled analysis, but the text does not say early samples were wealthy.",
@@ -1101,7 +1101,7 @@ PASSAGES3 = [
              "The task was described earlier."],
             "The sentence clears the researchers of dishonesty before diagnosing the actual flaw."),
         "wic": (
-            "As used in the text, the word “modest” most nearly means",
+            "In the final sentence, the word “modest” most nearly means",
             ["humble in manner", "decently dressed", "reasonably priced", "small in size"],
             3,
             ["A finding has no manner.",
@@ -1188,7 +1188,7 @@ PASSAGES3 = [
             ["The heart slows to a few dozen beats a minute from more than a thousand.",
              "A hummingbird weighs less than a coin.",
              "Warming back up at dawn takes time and energy.",
-             "The bird must feed every few minutes during the day."],
+             "The bird must feed every few minutes throughout the day simply to stay alive."],
             0,
             ["Correct. The fall from over a thousand beats to a few dozen is the drop in activity.",
              "Weight is not activity.",
@@ -1314,7 +1314,7 @@ PASSAGES3 = [
             "The final two sentences serve mainly to",
             ["cast doubt on the genetic comparisons described earlier",
              "draw a general lesson about evolution from the specific case",
-             "introduce a competing explanation for the fish's survival",
+             "introduce a competing explanation for the fish's survival in frigid water",
              "summarize how the antifreeze proteins attach to ice"],
             1,
             ["They build on the comparisons rather than doubting them.",
@@ -1323,7 +1323,7 @@ PASSAGES3 = [
              "The mechanism was summarized earlier."],
             "The ending generalizes from the fish to evolution at large."),
         "wic": (
-            "As used in the text, the word “cheap” most nearly means",
+            "Which choice best captures the meaning of “cheap” as used in the text?",
             ["of poor or inferior quality", "easily bought in stores", "economical", "unworthy of respect"],
             2,
             ["The strategy is effective, not shoddy.",
@@ -1335,7 +1335,7 @@ PASSAGES3 = [
             "Which detail best supports the claim that the proteins work differently from salt?",
             ["They attach to ice crystals and halt their growth rather than lowering the freezing point.",
              "A fish's blood is less salty than the surrounding sea.",
-             "The proteins arose from a digestive enzyme over millions of years.",
+             "Genetic comparisons suggest the proteins arose from a copied digestive-enzyme gene altered over millions of years.",
              "A small amount of protein guards an enormous volume of blood."],
             0,
             ["Correct. This states the alternative mechanism in contrast with salt's.",
@@ -1387,7 +1387,7 @@ PASSAGES3 = [
             "The author's remark that the train arrives 'in a manner of speaking, on time' primarily serves to",
             ["explain the mechanical reason the station clock cannot be repaired",
              "establish a wry tone and hint at a town where errors are quietly accommodated",
-             "indicate that Mrs. Abernathy has misjudged how much time she has to decide",
+             "indicate that Mrs. Abernathy has badly misjudged how much time she has left to decide",
              "suggest that the railway company is far more reliable than the townspeople"],
             1,
             ["No mechanical explanation is given.",
@@ -1460,7 +1460,7 @@ PASSAGES3 = [
         "structure": (
             "The author concedes that the arrangement 'sometimes' was exploitative in order to",
             ["argue that guilds deserve condemnation from modern historians",
-             "introduce specific cases of masters who mistreated their apprentices",
+             "introduce specific historical cases of masters who mistreated their apprentices",
              "contrast medieval apprenticeships with modern internships",
              "acknowledge a valid objection before explaining the system's other purposes"],
             3,
@@ -1470,7 +1470,7 @@ PASSAGES3 = [
              "Correct. The concession is followed by 'But the guilds ... had reasons that went beyond cheap labor.'"],
             "The concession prepares the turn to the system's rationale."),
         "wic": (
-            "As used in the text, the word “bound” most nearly means",
+            "In the context of the passage, the word “bound” most nearly means",
             ["tied with rope", "certain to happen", "committed by contract", "headed in a direction"],
             2,
             ["No physical binding is meant.",
@@ -1525,7 +1525,7 @@ PASSAGES3 = [
             ["people's tendency to underestimate the cumulative burden of a repeated experience",
              "the amount of time it typically takes a worker to receive a raise",
              "the period during which a new commute is at its most unpleasant",
-             "the number of households that were surveyed over the course of the study"],
+             "the total number of households that were surveyed over the many years of the long-running study"],
             0,
             ["Correct. Imagining only the first week misses how the burden accumulates over many repetitions.",
              "Raises are not the subject of this phrase.",
@@ -1534,7 +1534,7 @@ PASSAGES3 = [
             "The phrase captures a failure to anticipate repetition."),
         "structure": (
             "The author introduces the three explanations in order to",
-            ["argue that the survey data should be disregarded entirely",
+            ["argue that the survey data should be disregarded entirely by economists",
              "present competing accounts of the puzzle without endorsing one",
              "show that economists have fully resolved the puzzle",
              "list the benefits that commuters typically receive"],
@@ -1597,7 +1597,7 @@ PASSAGES3 = [
         "inference": (
             "The narrator's comment 'I had theories' most strongly implies that",
             ["she had studied swimming more thoroughly than her instructor had",
-             "she believed that the children's fear was more rational than her own",
+             "she believed that the children's fear was far more rational than her own was",
              "she intended to teach swimming herself once she had learned",
              "her knowledge about swimming did not help her once she was in the water"],
             3,
@@ -1610,7 +1610,7 @@ PASSAGES3 = [
             "The sentence 'By the eighth I had stopped counting' functions to",
             ["indicate that the narrator lost interest in the lessons and quit",
              "suggest that swimming had become natural enough not to require measuring",
-             "show that the narrator could no longer keep track of the passing weeks",
+             "show that the narrator could no longer keep track of how many weeks had passed",
              "reveal that the class had grown too large for the municipal pool"],
             1,
             ["Nothing suggests quitting.",
@@ -1685,7 +1685,7 @@ PASSAGES3 = [
             ["describe the physical structure of a mature kelp forest",
              "compare the strength of the otter to that of stone",
              "convey the suddenness of collapse when a keystone species is removed",
-             "suggest that damaged ecosystems can be rebuilt like buildings"],
+             "suggest that damaged ecosystems can be rebuilt as easily as buildings are"],
             2,
             ["The arch is a metaphor, not a description of kelp.",
              "Strength is not the comparison.",
@@ -1757,7 +1757,7 @@ PASSAGES3 = [
             "Borrowing from neighbors explains the shared errors."),
         "structure": (
             "The sentence 'These were not careless witnesses' serves to",
-            ["defend the written record against the survivors' challenges to it",
+            ["defend the accuracy of the written record against the survivors' challenges to it",
              "dismiss one explanation before introducing the author's actual explanation",
              "introduce a comparison with witnesses to a different disaster",
              "concede that the survivors' memories were accurate after all"],
@@ -1833,7 +1833,7 @@ PASSAGES3 = [
             "The author refers to a preacher and a congregation in order to",
             ["argue that jazz is at bottom a religious form of music",
              "show that the structure predates jazz and is familiar from other settings",
-             "contrast the formality of church music with the looseness of jazz",
+             "contrast the formality of church music with the apparent looseness of jazz",
              "describe the setting in which jazz was first performed"],
             1,
             ["No religious claim about jazz is made.",
@@ -1842,7 +1842,7 @@ PASSAGES3 = [
              "The church is not presented as a jazz venue."],
             "The examples establish the pattern's age and familiarity."),
         "wic": (
-            "As used in the text, the word “grammar” most nearly means",
+            "Which choice gives the closest meaning of “grammar” as it is used in the text?",
             ["the formal study of language", "a textbook for students", "correct spelling and usage", "underlying set of rules"],
             3,
             ["No academic study is meant.",
@@ -1924,7 +1924,7 @@ PASSAGES3 = [
             "A fraction that has drifted has changed slowly."),
         "evidence": (
             "Which detail best supports the claim that the method is useless for very old remains?",
-            ["After ten half-lives the remaining carbon-14 is too small to measure above background noise.",
+            ["After ten half-lives too little carbon-14 remains to measure above background noise.",
              "Every living thing takes in carbon from its surroundings while it is alive.",
              "The atmospheric fraction of carbon-14 has drifted over the centuries.",
              "Half of the carbon-14 is gone after about 5,700 years."],
@@ -1954,7 +1954,7 @@ PASSAGES3 = [
             "Which choice best states the author's main argument?",
             ["People should work fewer hours so that they have more time to rest and recover from their demanding jobs.",
              "Unstructured time is valuable in itself and is also the condition for the insight that productivity culture wants.",
-             "Tracking habits and optimizing schedules are the most effective ways to solve stubborn intellectual problems.",
+             "Tracking habits and optimizing schedules are the most effective ways of solving stubborn intellectual problems quickly.",
              "Rest should be understood primarily as an investment that yields returns in the quality of later work."],
             1,
             ["The author says 'I do not propose that anyone work less.'",
@@ -2126,7 +2126,7 @@ PASSAGES3 = [
             "The sentence 'I remembered the order of the knots' functions to",
             ["explain the technical method by which the tree was protected from frost",
              "reveal that the narrator had absorbed more from the grandmother than she had realized",
-             "show that the grandmother had explicitly taught the narrator how to wrap the tree",
+             "show that the grandmother had explicitly taught the narrator how to wrap the tree each fall",
              "indicate that the narrator had forgotten everything else about the grandmother"],
             1,
             ["The method is not explained; the point is memory.",
@@ -2191,7 +2191,7 @@ PASSAGES3 = [
             ["have required a wooden rather than a stone ceiling",
              "have been at risk of collapse from the outward thrust of its vault",
              "have been considered ugly by its contemporaries",
-             "have admitted even more light than the cathedrals actually built"],
+             "have admitted even more light than the cathedrals that were actually built"],
             1,
             ["Wooden ceilings are not discussed.",
              "Correct. A tall wall with big windows is 'a wall waiting to fall' under the vault's outward push.",
@@ -2299,7 +2299,7 @@ PASSAGES3 = [
         "evidence": (
             "Which detail best supports the claim that the obligation operates 'below the level of argument'?",
             ["Customers who learned of the experiment insisted the mints had not influenced them.",
-             "Two mints raised tips by fourteen percent compared with the control group.",
+             "Two mints raised tips by fourteen percent compared with the group that received none.",
              "Grocery stores give away cheese on toothpicks to shoppers.",
              "Anthropologists have documented the same pull in other societies."],
             0,
@@ -2351,7 +2351,7 @@ PASSAGES3 = [
             "Sugars from photosynthesis are the fungus's gain."),
         "structure": (
             "The author describes the lichen as not getting 'to enjoy what it built' in order to",
-            ["argue that lichens deserve more protection than forests",
+            ["argue that lichens deserve more legal protection than forests do",
              "end with a reflective note on the irony of the pioneer's fate",
              "explain the chemical process by which acids etch stone",
              "introduce the next stage of forest growth after trees"],
@@ -2362,7 +2362,7 @@ PASSAGES3 = [
              "The passage ends there."],
             "The ending is a reflective flourish."),
         "wic": (
-            "As used in the text, the word “smear” most nearly means",
+            "In the context of the text, “smear” most nearly means",
             ["thin layer", "false accusation", "dirty mark", "medical sample"],
             0,
             ["Correct. The first soil is a thin coating on the rock.",
@@ -2424,7 +2424,7 @@ PASSAGES3 = [
             "The later lesson reveals the remark's youthful misjudgment."),
         "structure": (
             "Hallam's speech functions in the text to",
-            ["reveal that Hallam himself had once put a ship on rocks through carelessness",
+            ["reveal that Hallam himself had once put a ship on rocks through his own carelessness",
              "make vivid the real consequences of the narrator's seemingly harmless proposal",
              "demonstrate that Hallam was unreasonably harsh toward his young apprentices",
              "explain the proper technique for drawing an accurate coastline on a chart"],
@@ -2476,7 +2476,7 @@ PASSAGES3 = [
             "own."),
         "main_idea": (
             "Which choice best states the main idea of the text?",
-            ["Basketball players who have made several shots in a row are far more likely to make their next shot than fans realize.",
+            ["Basketball players who have made several shots in a row are far more likely to make their next shot than even their fans realize.",
              "A famous finding that shooting streaks are illusory was itself undermined by a statistical error, revealing a small real effect.",
              "Researchers in the 1980s proved beyond any doubt that streaks in basketball are the product of pure randomness.",
              "Economists have shown that the hot hand is a much larger effect than coaches and fans have traditionally believed."],
@@ -2640,7 +2640,7 @@ PASSAGES3 = [
             "The text suggests that rain falling on a city is less cooling than rain falling on farmland because",
             ["on pavement it runs into drains before it can evaporate from the ground",
              "city air is too warm for the rain to reach the ground",
-             "buildings block the rain from reaching most of the streets",
+             "tall buildings block most of the rain from ever reaching the streets below",
              "drains carry the water to reservoirs where it is heated"],
             0,
             ["Correct. Pavement 'sheds rain into drains,' losing the cooling of evaporation from soil.",
@@ -2652,7 +2652,7 @@ PASSAGES3 = [
             "The sentence beginning 'What is less obvious' marks a shift from",
             ["describing summer conditions to describing winter conditions",
              "explaining the causes of the heat island to examining its uneven effects",
-             "the author's own observations to the findings of meteorologists",
+             "the author's own casual observations to the formal findings of meteorologists",
              "a discussion of large cities to a discussion of small towns"],
             1,
             ["Winter is never discussed.",
@@ -2661,7 +2661,7 @@ PASSAGES3 = [
              "Small towns are not discussed."],
             "The sentence pivots from cause to distribution."),
         "wic": (
-            "As used in the text, the word “sheds” most nearly means",
+            "Which choice best captures the meaning of “sheds” as used in the text?",
             ["loses hair or skin", "stores in a small building", "gives off light", "diverts away"],
             3,
             ["The biological sense does not apply.",
@@ -2674,7 +2674,7 @@ PASSAGES3 = [
             ["Neighborhoods with the fewest trees were four degrees warmer and almost always the poorest.",
              "Asphalt and dark roofing absorb sunlight by day and release it slowly at night.",
              "City centers can be seven degrees warmer than farmland an hour's drive away.",
-             "A mature canopy can erase much of the temperature difference between neighborhoods."],
+             "A mature tree canopy can erase much of the temperature difference between neighborhoods over time."],
             0,
             ["Correct. The temperature gap aligned with poverty is the unevenness.",
              "This is a cause, not distribution.",
@@ -2706,7 +2706,7 @@ PASSAGES3 = [
              "A brother agrees to sell his mother's clock because he has never liked it and has no use for it in his own apartment."],
             0,
             ["Correct. Ben's 'No,' said 'too quickly,' exposes an attachment he had denied.",
-             "There is no bitterness and no rivalry; the clock is called cheap-era 'small things,' not valuable.",
+             "There is no bitterness and no rivalry; the clock is one of the 'small things,' not a valuable item.",
              "The small things are exactly where easy division fails.",
              "He refuses to sell it."],
             "Unacknowledged attachment surfacing is the heart of the scene."),
@@ -2746,7 +2746,7 @@ PASSAGES3 = [
         "evidence": (
             "Which quotation best supports the idea that the siblings had anticipated difficulty with the smaller items?",
             ["'had come, as they had both known they would, to the small things'",
-             "'They had agreed easily on the furniture, which neither wanted'",
+             "'They had agreed easily on the furniture, which neither wanted, and the photographs'",
              "'It was the fourth hour'",
              "'It was heavier than he remembered'"],
             0,
@@ -2758,3 +2758,778 @@ PASSAGES3 = [
     },
 ]
 
+PAIRED3 = [
+    {
+        "id": "remote_work",
+        "text_a": (
+            "Supporters of remote work point to a decade of surveys in which employees "
+            "report doing more in fewer hours when they work from home. The savings are not "
+            "mysterious: no commute, fewer interruptions, and the freedom to schedule deep "
+            "work when one's attention is sharpest. Companies that measured output rather "
+            "than hours, the author notes, found that productivity held steady or rose "
+            "when offices closed, while turnover fell. The office, on this view, was never "
+            "where the work got done; it was where the work got watched. A firm that "
+            "insists on attendance is paying for supervision it does not need and losing "
+            "workers who can find flexibility elsewhere."),
+        "text_b": (
+            "The productivity gains reported by remote workers are real but misleading, "
+            "this author argues, because they measure the wrong period. In the first year "
+            "of working from home, employees drew on relationships and shared knowledge "
+            "built over years in the office. The question is what happens when that stock "
+            "runs down. Studies tracking new hires who never met their colleagues in "
+            "person find slower skill growth and weaker ties to the people who could help "
+            "them. Individual output may hold up; the collective capacity to train, "
+            "mentor, and improvise together erodes quietly. The office, the author "
+            "concludes, was less a place of supervision than a place of apprenticeship."),
+        "questions": [
+            ("Which choice best describes the relationship between the two texts?",
+             ["Text 2 accepts the evidence cited in Text 1 but argues that it overlooks longer-term costs.",
+              "Text 2 rejects the surveys cited in Text 1 as fabrications produced by supporters of remote work.",
+              "Text 1 and Text 2 agree that the office served mainly to supervise employees.",
+              "Text 1 and Text 2 both argue that remote work should be abandoned entirely."],
+             0,
+             ["Correct. Text 2 calls the gains 'real but misleading' and points to costs that appear later.",
+              "Text 2 calls the gains real, not fabricated.",
+              "Text 2 calls the office 'a place of apprenticeship,' not supervision.",
+              "Text 1 favors remote work, and Text 2 does not call for abandoning it."],
+             "Text 2 grants the data and shifts the time frame."),
+            ("How would the author of Text 2 most likely respond to Text 1's claim that the office was 'where the work got watched'?",
+             ["by agreeing that supervision was the office's only real purpose",
+              "by arguing that the office's more important role was developing workers' skills and relationships",
+              "by insisting that remote employees are in fact monitored far more closely than office workers ever were",
+              "by denying that any companies ever measured output rather than hours"],
+             1,
+             ["Text 2 explicitly rejects supervision as the office's main role.",
+              "Correct. Text 2 says the office 'was less a place of supervision than a place of apprenticeship.'",
+              "Monitoring of remote workers is not discussed in Text 2.",
+              "Text 2 does not dispute the output measurements."],
+             "Text 2 reframes the office as a site of apprenticeship."),
+            ("Based on the texts, both authors would most likely agree that",
+             ["new hires are better served by remote work than by working alongside colleagues in an office",
+              "companies should return to measuring hours rather than output",
+              "individual productivity did not decline when employees began working from home",
+              "the relationships built in offices are of little value to employees"],
+             2,
+             ["Text 2 says new hires fare worse remotely.",
+              "Neither text advocates measuring hours.",
+              "Correct. Text 1 reports steady or rising productivity, and Text 2 says 'individual output may hold up.'",
+              "Text 2 values those relationships highly."],
+             "Both accept that individual output held up."),
+        ],
+    },
+    {
+        "id": "wolf_return",
+        "text_a": (
+            "When wolves were returned to a mountain national park after seventy years' "
+            "absence, the author observes, the landscape itself seemed to change. Elk, "
+            "which had grazed riverbanks bare without fear, began to move and to avoid "
+            "open valleys. Willows and aspens recovered along the streams, beavers "
+            "returned to build dams in the slower water, and songbirds followed the new "
+            "cover. Ecologists describe the pattern as a trophic cascade: the effect of a "
+            "top predator flowing down through the food web to reshape plants and even "
+            "the course of rivers. The wolves, in this account, did not merely add a "
+            "species. They restored a process that the park had been missing."),
+        "text_b": (
+            "The story of wolves remaking a park is appealing, this author concedes, but "
+            "the evidence is thinner than the popular version suggests. Willow recovery "
+            "along some streams coincided with the wolves' return, yet other streams show "
+            "no recovery at all, and the elk population was also being reduced by hunting "
+            "outside the park and by harsh winters. Separating the wolves' contribution "
+            "from these other factors has proven difficult. The author does not deny that "
+            "predators matter. The concern is that a tidy narrative, repeated often "
+            "enough, substitutes for the messier work of measurement, and that managers "
+            "elsewhere may expect results that a single reintroduction cannot guarantee."),
+        "questions": [
+            ("Which choice best describes how Text 2 responds to Text 1?",
+             ["It denies that willows or beavers returned to the park after the wolves did.",
+              "It argues that wolves should never have been reintroduced to the park in the first place.",
+              "It offers additional evidence that confirms the trophic cascade described in Text 1.",
+              "It questions whether the changes Text 1 describes can be attributed to wolves alone."],
+             3,
+             ["Text 2 accepts that willow recovery occurred along some streams.",
+              "Text 2 takes no position against reintroduction.",
+              "Text 2 complicates rather than confirms the account.",
+              "Correct. Text 2 points to hunting and harsh winters as other factors that are hard to separate."],
+             "Text 2's point is about attribution, not denial."),
+            ("The author of Text 2 would most likely say that the phrase 'the landscape itself seemed to change' in Text 1",
+             ["captures an appealing story that may outrun the available evidence",
+              "understates the dramatic effect that the wolves actually had on the park",
+              "correctly identifies the wolves as the sole cause of the willow recovery",
+              "ignores the important role that beavers played in reshaping the streams"],
+             0,
+             ["Correct. Text 2 calls the story 'appealing' but the evidence 'thinner than the popular version suggests.'",
+              "Text 2 thinks the effect is overstated, not understated.",
+              "Text 2 doubts that wolves were the sole cause.",
+              "Beavers are part of Text 1's account, and Text 2 does not raise them."],
+             "Text 2 regards the dramatic framing as a tidy narrative."),
+            ("Based on the texts, the two authors would most likely agree that",
+             ["hunting outside the park had no effect on the elk population",
+              "predators can have effects that extend beyond the animals they eat",
+              "the wolves' return fully explains the recovery of streamside vegetation",
+              "reintroducing wolves elsewhere will reliably produce the same results"],
+             1,
+             ["Text 2 cites hunting as a factor.",
+              "Correct. Text 1 describes a cascade, and Text 2 'does not deny that predators matter.'",
+              "Text 2 disputes a full explanation.",
+              "Text 2 warns against exactly this expectation."],
+             "Both grant that predators matter beyond their prey."),
+            ("Which choice best states a point on which Text 2 directly challenges Text 1?",
+             ["whether elk had grazed the riverbanks before the wolves returned",
+              "whether ecologists are correct to use the term trophic cascade for patterns of this kind",
+              "whether every stream in the park showed willow recovery after the wolves returned",
+              "whether wolves had been absent from the park for seventy years"],
+             2,
+             ["Neither text disputes the earlier grazing.",
+              "The term is not contested.",
+              "Correct. Text 2 notes that 'other streams show no recovery at all.'",
+              "The absence is not disputed."],
+             "The uneven stream recovery is Text 2's factual challenge."),
+        ],
+    },
+    {
+        "id": "by_heart",
+        "text_a": (
+            "Requiring students to memorize poems, the author argues, is not an antique "
+            "practice but a gift. A poem carried in memory is available anywhere: on a "
+            "bus, in a hospital waiting room, at a graveside. Students who learn lines by "
+            "heart come to feel the rhythm of the language from the inside, in a way that "
+            "reading silently never provides, and they acquire a store of phrases that "
+            "will shape how they write and speak for the rest of their lives. The "
+            "objection that memorization is mere rote misses the point. One does not "
+            "memorize a poem instead of understanding it. One memorizes it in order to "
+            "understand it slowly, over years."),
+        "text_b": (
+            "Memorization has its pleasures, this author grants, but classroom time is "
+            "scarce and should go where it does the most good. An hour spent drilling "
+            "lines is an hour not spent discussing what a poem means, comparing it with "
+            "another, or writing in response to it. The students who thrive at recitation "
+            "are often those who already love the material; for the rest, the assignment "
+            "confirms a suspicion that poetry is a performance of obedience. If the goal "
+            "is a lifelong relationship with poems, the author suggests, it is better "
+            "served by teaching students how to find and read new ones than by fixing a "
+            "few old ones in their heads."),
+        "questions": [
+            ("Which choice best describes the relationship between the texts?",
+             ["They agree that memorization is the best way to understand a poem.",
+              "They disagree about whether memorizing poems is a good use of class time.",
+              "Text 2 provides evidence that supports the central claim of Text 1.",
+              "They disagree about whether poetry should be taught in schools at all."],
+             1,
+             ["Text 2 prefers discussion and writing to memorization.",
+              "Correct. Text 1 calls memorization a gift; Text 2 says the time is better spent otherwise.",
+              "Text 2 argues against Text 1's recommendation.",
+              "Both assume poetry belongs in school."],
+             "The dispute is over the value of memorization as instruction."),
+            ("How would the author of Text 1 most likely respond to Text 2's claim that memorization is 'a performance of obedience'?",
+             ["by arguing that memorization is a route to understanding rather than a substitute for it",
+              "by conceding that memorization is only appropriate for students who already love poetry on their own",
+              "by agreeing that class time should be spent on discussion rather than on recitation",
+              "by denying that any students ever find memorization difficult or unpleasant"],
+             0,
+             ["Correct. Text 1 says one memorizes 'in order to understand it slowly, over years.'",
+              "Text 1 makes no such concession.",
+              "Text 1 defends memorization as class work.",
+              "Text 1 does not address students' feelings about difficulty."],
+             "Text 1's reply is that memorization serves understanding."),
+            ("Both authors would most likely agree that",
+             ["memorized poems are most useful in hospital waiting rooms",
+              "students should be taught to find new poems rather than to memorize old ones",
+              "the rhythm of a poem can only be felt by reciting it aloud",
+              "a lasting relationship with poetry is a worthwhile goal of instruction"],
+             3,
+             ["Only Text 1 mentions waiting rooms.",
+              "This is Text 2's position only.",
+              "This is Text 1's position only.",
+              "Correct. Text 1 speaks of phrases that last 'the rest of their lives,' and Text 2 of 'a lifelong relationship with poems.'"],
+             "Both aim at a lifelong connection; they differ on means."),
+        ],
+    },
+    {
+        "id": "whose_artifacts",
+        "text_a": (
+            "Objects taken from their countries of origin during periods of conquest, the "
+            "author argues, should be returned to the communities from which they came. A "
+            "ceremonial mask displayed in a glass case thousands of miles from the people "
+            "who made it has been severed from its meaning; it has become a decoration. "
+            "The argument that large museums 'preserve' such objects for all humanity "
+            "assumes that the original owners cannot be trusted with their own heritage, "
+            "a claim that would be recognized as insulting in any other context. Return is "
+            "not a loss to the world's knowledge. It is a correction, and the museums that "
+            "make it will find their remaining collections easier to defend."),
+        "text_b": (
+            "The author agrees that many objects were acquired unjustly and that some "
+            "should go home. But a blanket rule of return, the text cautions, would treat "
+            "every case as identical when they are not. Some objects were purchased "
+            "fairly; some come from peoples who no longer exist as a community; some are "
+            "claimed by more than one modern nation. Large museums, whatever their "
+            "origins, allow a visitor from anywhere to encounter the art of everywhere in "
+            "a single afternoon, an experience with real value. The better path, the "
+            "author suggests, is case-by-case negotiation, long-term loans, and shared "
+            "custody, rather than a principle that sounds just and resolves nothing."),
+        "questions": [
+            ("Which choice best describes how Text 2 relates to Text 1?",
+             ["It rejects Text 1's claim that any objects were acquired unjustly.",
+              "It extends Text 1's argument to objects that were purchased fairly.",
+              "It accepts part of Text 1's argument while objecting to its universal application.",
+              "It agrees with Text 1 that museums should return every contested object to its country of origin."],
+             2,
+             ["Text 2 agrees many objects were acquired unjustly.",
+              "Text 2 treats fair purchases as a reason against return.",
+              "Correct. Text 2 agrees some objects should go home but rejects 'a blanket rule.'",
+              "Text 2 opposes a universal rule."],
+             "Partial agreement plus objection to a blanket rule is the relationship."),
+            ("The author of Text 2 would most likely respond to Text 1's description of a mask as 'a decoration' by",
+             ["noting that the museum encounter has value of its own even if some meaning is lost",
+              "agreeing that the mask has no value whatsoever once removed from its original community",
+              "arguing that masks of that kind were never actually used in ceremonies",
+              "insisting that the mask should be destroyed rather than put on display"],
+             0,
+             ["Correct. Text 2 says encountering 'the art of everywhere' is 'an experience with real value.'",
+              "Text 2 defends the museum experience.",
+              "Text 2 does not dispute the objects' origins.",
+              "Destruction is not suggested."],
+             "Text 2 would defend the museum visit's value."),
+            ("Based on the texts, the authors would most likely disagree about whether",
+             ["some objects in museums were taken during periods of conquest",
+              "a general principle of return is preferable to negotiating individual cases",
+              "museums have any responsibility toward the communities that made the objects they hold",
+              "ceremonial masks were made by specific communities"],
+             1,
+             ["Both accept this.",
+              "Correct. Text 1 argues for return as a principle; Text 2 prefers case-by-case negotiation.",
+              "Both accept some responsibility.",
+              "Neither disputes this."],
+             "Principle versus case-by-case is the disagreement."),
+        ],
+    },
+    {
+        "id": "clock_change",
+        "text_a": (
+            "Changing the clocks twice a year, the author argues, is a ritual whose costs "
+            "have outlived its purpose. The shift was introduced to save fuel, but modern "
+            "studies find the savings negligible, and the week after each change brings "
+            "measurable increases in traffic accidents, heart attacks, and workplace "
+            "injuries as millions of people lose an hour of sleep at once. Fixing the "
+            "clock permanently to standard time, which matches the sun most closely, "
+            "would end the disruption. The darker winter evenings some people fear would "
+            "be no darker than they are now; the only change would be that nobody had to "
+            "adjust."),
+        "text_b": (
+            "The author agrees that the twice-yearly change should end but argues that "
+            "the clock should be fixed on the summer schedule instead. Most people are "
+            "awake for far more hours after work than before it, and an extra hour of "
+            "evening light is used: for exercise, for errands, for time outdoors with "
+            "children. Evening light also reduces crime and road deaths in the hours when "
+            "most people are traveling. Standard time, the text concedes, aligns better "
+            "with the body's internal clock, but that benefit is largely theoretical for "
+            "people who spend their mornings indoors anyway. The question is not which "
+            "time is natural, but which one people will actually enjoy."),
+        "questions": [
+            ("Which choice best describes the relationship between the texts?",
+             ["They agree the clock change should end but disagree about which time to keep.",
+              "They disagree about whether the twice-yearly clock change causes any harm at all.",
+              "Text 2 argues that the twice-yearly clock change should continue indefinitely.",
+              "They agree that standard time should be adopted on a permanent basis."],
+             0,
+             ["Correct. Both oppose the change; Text 1 wants standard time and Text 2 wants summer time.",
+              "Both accept that the change is harmful.",
+              "Text 2 agrees the change should end.",
+              "Text 2 prefers the summer schedule."],
+             "Shared goal, different fixed time."),
+            ("How would the author of Text 1 most likely respond to Text 2's emphasis on evening light?",
+             ["by agreeing that evening light matters more than alignment with the sun",
+              "by denying that people spend more waking hours after work than before it",
+              "by arguing that the twice-yearly clock change should be kept to provide both kinds of benefit",
+              "by pointing out that standard time matches the sun and the body's rhythms most closely"],
+             3,
+             ["Text 1 bases its case on matching the sun.",
+              "Text 1 does not address waking hours.",
+              "Text 1 wants the change ended.",
+              "Correct. Text 1's reason for standard time is that it 'matches the sun most closely.'"],
+             "Text 1 would appeal to alignment with the sun."),
+            ("Both authors mention which of the following in support of their positions?",
+             ["fuel savings from the clock change",
+              "effects on road safety",
+              "the sleep lost by schoolchildren",
+              "the preferences of farmers"],
+             1,
+             ["Only Text 1 mentions fuel, and as a failed rationale.",
+              "Correct. Text 1 cites traffic accidents after the change; Text 2 cites road deaths reduced by evening light.",
+              "Schoolchildren are not mentioned.",
+              "Farmers are not mentioned."],
+             "Road safety appears in both arguments."),
+        ],
+    },
+    {
+        "id": "moon_money",
+        "text_a": (
+            "Spending billions to send people to other worlds while problems remain "
+            "unsolved at home, the author argues, reflects misplaced priorities. The money "
+            "devoted to a single crewed mission could fund clean water for millions or "
+            "research into diseases that kill every year. Robots, moreover, can collect "
+            "most of the scientific data humans could, at a fraction of the cost and risk. "
+            "The romance of exploration is real, but romance is a poor basis for budgets. "
+            "A government's first obligation is to the people who already live on the "
+            "planet it governs, and every launch should be weighed against what the same "
+            "money could do for them."),
+        "text_b": (
+            "The author does not dispute that needs on Earth are urgent, but argues that "
+            "framing the choice as exploration versus welfare is false. Space budgets are "
+            "a small fraction of national spending, far smaller than most people guess, "
+            "and cutting them would not transfer the savings to clean water; it would "
+            "simply reduce them. Meanwhile, the engineering required to keep humans alive "
+            "in hostile environments has produced water purification, medical monitoring, "
+            "and weather forecasting that serve people who will never leave Earth. The "
+            "question, the text suggests, is not whether to look up or down, but whether "
+            "we can do both well."),
+        "questions": [
+            ("Which choice best describes how Text 2 responds to Text 1?",
+             ["It agrees that robots can gather all of the data that human explorers could.",
+              "It argues that the problems on Earth are far less urgent than Text 1 makes them out to be.",
+              "It challenges the assumption that money not spent on space would be spent on other needs.",
+              "It accepts that crewed missions should be ended in favor of welfare spending."],
+             2,
+             ["Text 2 does not address robots.",
+              "Text 2 does 'not dispute that needs on Earth are urgent.'",
+              "Correct. Text 2 says cutting space budgets 'would not transfer the savings to clean water.'",
+              "Text 2 defends crewed engineering's benefits."],
+             "Text 2 attacks the either-or framing."),
+            ("Based on the texts, the two authors would most likely agree that",
+             ["problems on Earth deserve serious attention and resources",
+              "space exploration should be left entirely to robots",
+              "space budgets make up a large share of national spending",
+              "the romance of exploration justifies almost any expense"],
+             0,
+             ["Correct. Text 1 prioritizes them, and Text 2 does not dispute their urgency.",
+              "Only Text 1 raises robots.",
+              "Text 2 says the share is small.",
+              "Text 1 calls romance a poor basis for budgets."],
+             "Both grant Earth's needs."),
+            ("The author of Text 1 would most likely respond to Text 2's point about water purification and weather forecasting by",
+             ["agreeing that crewed missions are the best source of such technologies",
+              "arguing that such benefits could be pursued directly without crewed missions",
+              "denying that any useful technology has ever come from space programs",
+              "claiming that weather forecasting is of no value to people on Earth"],
+             1,
+             ["Text 1 wants spending directed at Earth's problems directly.",
+              "Correct. Text 1's logic is that money should go straight to the needs, and that robots suffice for space science.",
+              "Text 1 does not deny past benefits.",
+              "Text 1 would not dismiss forecasting's value."],
+             "Text 1 would favor the direct route to such benefits."),
+        ],
+    },
+    {
+        "id": "grade_free",
+        "text_a": (
+            "Grades, the author argues, are a poor measure of learning and a worse "
+            "motivator. Students taught to chase a letter learn to ask what will be on the "
+            "test rather than what is true, and they abandon a subject the moment the "
+            "grade is secured. Schools that have replaced grades with written feedback "
+            "report students taking harder courses, asking more questions, and revising "
+            "work they would once have discarded. The letter grade compresses a semester "
+            "of thinking into a single symbol that tells a student almost nothing about "
+            "what to do next. Feedback tells them exactly that, and does so while there "
+            "is still time to act on it."),
+        "text_b": (
+            "Written feedback is valuable, this author agrees, and no one defends a grade "
+            "as a complete account of a student. But grades do work that feedback cannot. "
+            "They are comparable across teachers and schools, which lets a college or "
+            "employer read a transcript from a school it has never heard of. They make it "
+            "harder for bias to hide, since a vague paragraph can flatter one student and "
+            "damn another without ever stating a standard. And for many students, a clear "
+            "target is not a corruption of learning but the thing that gets them to the "
+            "desk at all. The right reform is to improve grades, not to abolish them."),
+        "questions": [
+            ("Which choice best describes the relationship between the texts?",
+             ["Text 2 denies that written feedback has any real value for students.",
+              "Text 2 agrees with Text 1 about the value of feedback but defends grades on other grounds.",
+              "Both texts argue that letter grades should be abolished entirely in favor of written feedback.",
+              "Text 1 argues in favor of grades while Text 2 argues against them."],
+             1,
+             ["Text 2 calls feedback 'valuable.'",
+              "Correct. Text 2 grants feedback's value and argues grades do other necessary work.",
+              "Text 2 wants grades improved, not abolished.",
+              "The positions are reversed."],
+             "Agreement on feedback, disagreement on grades."),
+            ("How would the author of Text 2 most likely respond to Text 1's claim that a grade 'tells a student almost nothing'?",
+             ["by agreeing that grades are limited while noting that they serve readers other than the student",
+              "by arguing that grades tell students everything they need to know about their work",
+              "by conceding that grades should therefore be replaced with written feedback",
+              "by insisting that written feedback is actually more comparable across schools and teachers than grades are"],
+             0,
+             ["Correct. Text 2 concedes grades are incomplete but stresses colleges and employers who read transcripts.",
+              "Text 2 says no one defends a grade as a complete account.",
+              "Text 2 opposes abolition.",
+              "Text 2 says grades, not feedback, are comparable."],
+             "Text 2 shifts attention to the other readers of grades."),
+            ("Based on Text 2, the author would most likely say that the schools described in Text 1 that replaced grades",
+             ["have proven that grades are unnecessary for motivating students to do their work",
+              "have eliminated the possibility of bias in evaluation",
+              "should be adopted as a model by every other school",
+              "may have made it harder for outsiders to interpret their students' records"],
+             3,
+             ["Text 2 says a clear target motivates many students.",
+              "Text 2 says vague feedback lets bias hide.",
+              "Text 2 opposes abolishing grades.",
+              "Correct. Text 2 values grades because they let outsiders read a transcript."],
+             "Comparability for outsiders is Text 2's concern."),
+        ],
+    },
+    {
+        "id": "bike_lanes",
+        "text_a": (
+            "Converting a traffic lane on a busy street into a protected bicycle lane, the "
+            "author argues, benefits even the drivers who complain about it. Separated "
+            "lanes draw riders who would otherwise avoid the street, and each of those "
+            "riders is a car that is not in the queue ahead. Cities that have built "
+            "networks of such lanes report fewer collisions for everyone, including "
+            "pedestrians, since the design narrows crossings and slows turning vehicles. "
+            "Shops along converted streets, despite early fears, have generally seen sales "
+            "hold steady or rise as foot and bicycle traffic increases. The lane looks "
+            "like a gift to cyclists. It is, the author contends, a repair to the street."),
+        "text_b": (
+            "The author supports cycling but warns that the benefits of protected lanes "
+            "depend heavily on where they are built. On a dense commercial street with "
+            "many short trips, a lane can replace car journeys; on an arterial road "
+            "through a spread-out district, it may serve a handful of riders while pushing "
+            "congestion onto parallel streets that were never designed for it. Delivery "
+            "drivers, people with disabilities, and residents without transit options bear "
+            "costs that rarely appear in the studies cited by advocates. The text does not "
+            "oppose bicycle lanes. It asks that each one be judged on its own street, with "
+            "its own numbers, rather than on averages drawn from the places where lanes "
+            "work best."),
+        "questions": [
+            ("Which choice best describes how Text 2 responds to Text 1?",
+             ["It rejects Text 1's claim that bicycle lanes reduce collisions for pedestrians.",
+              "It argues that bicycle lanes should be removed from dense commercial streets.",
+              "It qualifies Text 1's conclusion by arguing that results vary with the setting.",
+              "It agrees that every busy street would benefit from a protected lane."],
+             2,
+             ["Text 2 does not dispute the collision findings.",
+              "Text 2 says dense commercial streets are where lanes work.",
+              "Correct. Text 2 says benefits 'depend heavily on where they are built.'",
+              "Text 2 warns against generalizing."],
+             "Text 2 adds a condition rather than a contradiction."),
+            ("The author of Text 2 would most likely say that the studies cited in Text 1",
+             ["may reflect the streets where lanes succeed rather than typical conditions",
+              "were conducted by researchers who are opposed to cycling",
+              "show that protected lanes harm the sales of shops located along converted streets",
+              "prove that lanes never increase congestion on nearby streets"],
+             0,
+             ["Correct. Text 2 objects to 'averages drawn from the places where lanes work best.'",
+              "Text 2 refers to studies 'cited by advocates,' not opponents.",
+              "Text 2 does not address shops.",
+              "Text 2 says lanes can push congestion onto parallel streets."],
+             "Selection of favorable sites is Text 2's worry."),
+            ("Both authors would most likely agree that",
+             ["drivers are the main beneficiaries of protected bicycle lanes",
+              "protected bicycle lanes can benefit a city under the right conditions",
+              "delivery drivers' concerns are adequately addressed in existing studies",
+              "bicycle lanes should be built on every busy street in a city"],
+             1,
+             ["Text 1 says drivers benefit too, not mainly; Text 2 does not say this.",
+              "Correct. Text 1 praises lanes; Text 2 'supports cycling' and says lanes work on dense streets.",
+              "Text 2 says those costs 'rarely appear' in studies.",
+              "Text 2 rejects a blanket approach."],
+             "Both see value in lanes; Text 2 adds conditions."),
+        ],
+    },
+    {
+        "id": "mammoth_return",
+        "text_a": (
+            "Using recovered genetic material to bring back vanished species, the author "
+            "argues, is the most hopeful project in modern biology. A herd of cold-adapted "
+            "elephants grazing the northern tundra could help restore grasslands that once "
+            "held carbon in their soils, and the techniques developed along the way, from "
+            "gene editing to artificial wombs, would serve the conservation of species "
+            "that are endangered now. Extinction has always been treated as a final "
+            "verdict. For the first time, it might become an appeal. The author "
+            "acknowledges the project is expensive but sees in it something the field has "
+            "lacked for decades: a reason for optimism."),
+        "text_b": (
+            "Resurrecting a mammoth, this author contends, would produce not a mammoth but "
+            "an elephant with a few mammoth genes, raised without the mother, the herd, or "
+            "the climate that made the original what it was. The money, measured in "
+            "hundreds of millions, would protect dozens of species that are vanishing "
+            "today and need only habitat and enforcement rather than invention. The author "
+            "worries most about the lesson. If the public comes to believe that extinction "
+            "is reversible, the urgency that drives conservation drains away. Hope is "
+            "valuable. False hope, the author warns, is worse than none."),
+        "questions": [
+            ("Which choice best describes the central disagreement between the texts?",
+             ["whether gene editing is technically possible with recovered genetic material",
+              "whether any species are currently in danger of extinction",
+              "whether mammoths once lived on the northern tundra",
+              "whether reviving extinct species is a wise use of conservation resources"],
+             3,
+             ["Neither text disputes the technical possibility.",
+              "Both accept that species are endangered now.",
+              "Neither disputes this.",
+              "Correct. Text 1 calls the project hopeful; Text 2 says the money should go to living species."],
+             "The dispute is about wisdom and priorities."),
+            ("How would the author of Text 2 most likely respond to Text 1's hope that extinction 'might become an appeal'?",
+             ["by warning that such a belief could weaken the public's commitment to preventing extinction",
+              "by agreeing that reversing extinction is now a realistic goal for modern biology",
+              "by arguing that courts rather than scientists should decide which species are revived",
+              "by claiming that extinction has never been a serious problem for ecosystems"],
+             0,
+             ["Correct. Text 2 fears that belief in reversibility drains conservation's urgency.",
+              "Text 2 says the result would not truly be a mammoth.",
+              "Courts are not mentioned.",
+              "Text 2 treats extinction as urgent."],
+             "Text 2's chief worry is the lesson the public draws."),
+            ("Both authors would most likely agree that",
+             ["the revived animals would be genuine mammoths in every respect",
+              "the project would require a very large financial investment",
+              "the public's beliefs about extinction are unimportant",
+              "conservation has recently enjoyed abundant optimism"],
+             1,
+             ["Text 2 denies this.",
+              "Correct. Text 1 acknowledges the project is expensive; Text 2 cites hundreds of millions.",
+              "Text 2 cares deeply about public belief.",
+              "Text 1 says optimism has been lacking."],
+             "Cost is common ground."),
+        ],
+    },
+    {
+        "id": "pen_keyboard",
+        "text_a": (
+            "Students who take notes by hand, the author reports, consistently remember "
+            "more of a lecture than those who type. Because writing is slower, they cannot "
+            "transcribe, so they must decide what matters and put it in their own words, "
+            "and that act of compression is itself a form of learning. Typists, by "
+            "contrast, tend to produce near-verbatim records that they never fully "
+            "process. In several experiments, the handwriting advantage held even when "
+            "typists were explicitly warned not to transcribe. The author concludes that "
+            "the pen's limitations are a feature, and recommends that lecture halls "
+            "discourage laptops."),
+        "text_b": (
+            "The author accepts the finding that handwriting aids memory in the lecture "
+            "hall but questions the recommendation that follows. The experiments measured "
+            "recall of a single lecture within a week. They did not measure what students "
+            "did afterward with their notes, and typed notes are far easier to search, "
+            "reorganize, and share when preparing for an exam weeks later. Nor did the "
+            "studies include students with disabilities, for whom a keyboard may be the "
+            "only practical option. Rather than banning laptops, the author suggests "
+            "teaching students to type the way good note-takers write: selectively, in "
+            "their own words, and with the lecture rather than the screen as the focus."),
+        "questions": [
+            ("Which choice best describes the relationship between the texts?",
+             ["Text 2 accepts Text 1's evidence but disputes the policy that Text 1 draws from it.",
+              "Text 2 presents new experiments that contradict the findings reported in Text 1.",
+              "Text 1 and Text 2 agree that laptops should be discouraged in lecture halls.",
+              "Text 2 argues that handwriting actually harms memory for lectures."],
+             0,
+             ["Correct. Text 2 'accepts the finding' but 'questions the recommendation.'",
+              "Text 2 cites no new experiments.",
+              "Text 2 opposes banning laptops.",
+              "Text 2 accepts that handwriting aids memory."],
+             "Agreement on data, disagreement on policy."),
+            ("The author of Text 2 would most likely say that the experiments described in Text 1",
+             ["were so poorly designed that they should be disregarded entirely",
+              "showed that typed notes are better for immediate recall of lectures",
+              "measured too narrow an outcome to justify a general rule",
+              "included an adequate range of students with different needs"],
+             2,
+             ["Text 2 accepts the finding.",
+              "Text 2 accepts that handwriting won on recall.",
+              "Correct. Text 2 notes they measured only one lecture's recall within a week.",
+              "Text 2 says students with disabilities were not included."],
+             "Narrow outcome measurement is Text 2's critique."),
+            ("Based on the texts, both authors would most likely agree that",
+             ["verbatim notes are the most useful kind for later study",
+              "putting ideas in one's own words helps learning",
+              "the speed of typing is its chief advantage for learning",
+              "laptops should be prohibited in all lecture halls"],
+             1,
+             ["Text 1 criticizes verbatim notes; Text 2 wants selective typing.",
+              "Correct. Text 1 praises compression into one's own words; Text 2 wants typists to do the same.",
+              "Neither says this.",
+              "Text 2 opposes prohibition."],
+             "Own-words processing is common ground."),
+            ("Text 2 raises which consideration that Text 1 does not address?",
+             ["the difference in speed between handwriting and typing",
+              "whether typists were warned against transcribing",
+              "the tendency of typists to produce verbatim notes",
+              "the needs of students with disabilities"],
+             3,
+             ["Text 1 discusses speed.",
+              "Text 1 mentions the warning.",
+              "Text 1 describes this tendency.",
+              "Correct. Only Text 2 mentions students for whom a keyboard is the only practical option."],
+             "Accessibility is Text 2's added consideration."),
+        ],
+    },
+    {
+        "id": "four_days",
+        "text_a": (
+            "Companies that have tried a four-day week without cutting pay, the author "
+            "reports, have mostly kept it. Employees, given a day back, cut the meetings "
+            "and idle hours that had filled the fifth, and output in trials across several "
+            "countries held steady while sick days fell and resignations dropped by more "
+            "than a third. The author argues that the five-day week was never a law of "
+            "nature; it was a compromise struck a century ago for factory labor, and "
+            "knowledge work has simply inherited it. A schedule that produces the same "
+            "work with less exhaustion is not a perk, the text concludes. It is the "
+            "correction of a mistake."),
+        "text_b": (
+            "The four-day trials are encouraging, this author allows, but they share a "
+            "flaw: the companies that volunteer for them are the ones most likely to "
+            "succeed. They are small, office-based, and already flexible. A hospital, a "
+            "school, or a restaurant cannot compress a week; it can only hire more people, "
+            "which the trials' accounting never includes. Even in offices, the author "
+            "notes, the gains came partly from cutting work that was wasteful in the first "
+            "place, which a firm could do on any schedule. The text does not oppose "
+            "shorter weeks. It warns that a result from firms that chose to be studied "
+            "cannot be assumed to hold for firms that did not."),
+        "questions": [
+            ("Which choice best describes how Text 2 responds to Text 1?",
+             ["It denies that any firm has successfully adopted a four-day week.",
+              "It questions whether the trial results can be generalized beyond the firms that volunteered.",
+              "It agrees that the five-day week was a historical mistake that should be corrected everywhere.",
+              "It argues that employees in the trials worked much harder than before."],
+             1,
+             ["Text 2 calls the trials 'encouraging.'",
+              "Correct. Text 2's central point is that volunteers are 'the ones most likely to succeed.'",
+              "Text 2 warns against generalizing.",
+              "Text 2 attributes gains partly to cutting waste, not harder work."],
+             "Selection bias is Text 2's objection."),
+            ("How would the author of Text 2 most likely respond to Text 1's claim that the four-day week is 'the correction of a mistake'?",
+             ["by observing that some workplaces cannot shorten the week without hiring more staff",
+              "by agreeing that factory schedules should govern all knowledge work",
+              "by arguing that the five-day week has always been a law of nature",
+              "by insisting that sick days and resignations actually rose during the four-day trials"],
+             0,
+             ["Correct. Text 2 says hospitals, schools, and restaurants 'can only hire more people.'",
+              "Text 2 does not defend factory schedules.",
+              "Text 2 does not make this claim.",
+              "Text 2 does not dispute the sick-day data."],
+             "Text 2 points to workplaces that cannot compress."),
+            ("Both authors would most likely agree that",
+             ["hospitals and restaurants can easily adopt a four-day week",
+              "the trials prove the four-day week works for every employer",
+              "the firms in the trials eliminated some wasteful activity",
+              "employees in the trials produced less than they had before"],
+             2,
+             ["Text 2 says they cannot compress a week.",
+              "Text 2 denies this.",
+              "Correct. Text 1 says employees cut idle meetings; Text 2 says gains came from cutting wasteful work.",
+              "Both say output held steady."],
+             "Cutting waste is common ground."),
+        ],
+    },
+    {
+        "id": "bag_ban",
+        "text_a": (
+            "Banning thin plastic grocery bags, the author argues, is one of the rare "
+            "environmental policies that costs almost nothing and works. Within a year of "
+            "one city's ban, the number of plastic bags found in storm drains and along "
+            "the shoreline fell by roughly half, and shoppers adapted within weeks, as "
+            "they had been told they would not. The bag itself was never essential; it "
+            "was a convenience that had become a habit, and habits can be changed by a "
+            "small, well-timed push. The author sees the ban as a model: pick the waste "
+            "that is most visible, most avoidable, and least missed."),
+        "text_b": (
+            "The bans do reduce litter, this author agrees, but their effect on the "
+            "environment as a whole is less clear. When thin bags disappear, shoppers buy "
+            "thicker plastic bags for trash cans and pet waste, and many of the reusable "
+            "bags handed out in their place are made of materials that require dozens of "
+            "uses before they outperform the bag they replaced. Studies in several cities "
+            "find total plastic consumption falling by far less than the bag count "
+            "suggests. The author does not call for repealing the bans. The point is that "
+            "a visible result is not the same as a large one, and that policy should be "
+            "judged by the second."),
+        "questions": [
+            ("Which choice best describes the relationship between the texts?",
+             ["Text 2 argues that bag bans should be repealed because they have failed to reduce litter at all.",
+              "Text 1 and Text 2 agree that bag bans have little effect on anything at all.",
+              "Text 2 argues that shoppers have largely failed to adapt to the bans.",
+              "Text 2 accepts that the bans reduce litter but questions their broader environmental benefit."],
+             3,
+             ["Text 2 does not call for repeal and agrees litter fell.",
+              "Text 1 says the bans work.",
+              "Adaptation is not disputed.",
+              "Correct. Text 2 grants the litter reduction and questions the total effect."],
+             "Partial agreement, broader doubt."),
+            ("How would the author of Text 2 most likely respond to Text 1's advice to 'pick the waste that is most visible'?",
+             ["by cautioning that visibility is a poor guide to the size of a policy's real effect",
+              "by agreeing that visible waste is the most environmentally harmful kind",
+              "by proposing that bans be extended immediately to all plastic products",
+              "by denying that plastic bags are ever found in storm drains"],
+             0,
+             ["Correct. Text 2 says 'a visible result is not the same as a large one.'",
+              "Text 2 distinguishes visibility from harm.",
+              "Text 2 proposes no such extension.",
+              "Text 2 accepts that litter fell."],
+             "Visibility versus magnitude is Text 2's point."),
+            ("Which finding from Text 2 most directly complicates the claim in Text 1 that the bag 'was never essential'?",
+             ["Studies in several cities measured total plastic consumption.",
+              "Shoppers buy thicker bags for uses the thin bags had served.",
+              "Reusable bags require dozens of uses to outperform thin ones.",
+              "The bans do reduce litter along shorelines."],
+             1,
+             ["Measurement alone does not address essentiality.",
+              "Correct. Buying replacements for trash and pet waste shows the bag served real uses.",
+              "This concerns reusable bags, not whether thin bags were needed.",
+              "This supports Text 1."],
+             "Replacement purchases show the bag had functions."),
+        ],
+    },
+    {
+        "id": "screen_age",
+        "text_a": (
+            "Raising the minimum age for social media accounts to sixteen, the author "
+            "argues, is the least a society can do for its adolescents. The years between "
+            "twelve and fifteen are when self-image is most fragile, and platforms built "
+            "to maximize attention have learned to exploit that fragility with comparison, "
+            "notification, and the quiet arithmetic of likes. Surveys of teenagers "
+            "themselves find that most wish they used the apps less and cannot manage to. "
+            "An age limit does not solve everything. It gives families a rule to point to, "
+            "and it gives the youngest users three more years before the pressure begins."),
+        "text_b": (
+            "The evidence linking social media to adolescent distress, this author notes, "
+            "is weaker and more mixed than headlines suggest, and age limits carry costs "
+            "that advocates rarely weigh. For isolated teenagers, including those in rural "
+            "areas or with uncommon interests, the apps are where they find the only "
+            "people who understand them. A ban would push younger users onto platforms "
+            "with no safety features at all, since enforcement by birthdate is trivially "
+            "evaded. The author favors stricter design rules, such as limits on "
+            "notifications and infinite scrolling, that would apply to every user. Fix the "
+            "product, the text argues, rather than fencing off the people."),
+        "questions": [
+            ("Which choice best describes the central disagreement between the texts?",
+             ["whether adolescents use social media at all",
+              "whether social media platforms are deliberately designed to capture users' attention",
+              "whether an age limit is the right response to concerns about social media",
+              "whether rural teenagers have access to the internet"],
+             2,
+             ["Both assume adolescents use it.",
+              "Both describe attention-capturing design.",
+              "Correct. Text 1 wants an age limit; Text 2 wants design rules instead.",
+              "Not in dispute."],
+             "Age limit versus design rules is the disagreement."),
+            ("How would the author of Text 2 most likely respond to the survey cited in Text 1?",
+             ["by noting that the broader evidence of harm is less clear than such surveys suggest",
+              "by agreeing that it proves an age limit is necessary",
+              "by arguing that teenagers' own reports about their habits should be given no weight whatsoever",
+              "by claiming that most teenagers actually want to use the apps more"],
+             0,
+             ["Correct. Text 2 says the evidence is 'weaker and more mixed than headlines suggest.'",
+              "Text 2 opposes an age limit.",
+              "Text 2 does not dismiss self-reports outright.",
+              "Text 2 makes no such claim."],
+             "Text 2 would question what the evidence shows."),
+            ("Both authors would most likely agree that",
+             ["an age limit would be easy to enforce",
+              "some features of social media platforms are harmful to young users",
+              "isolated teenagers have little to gain from social media",
+              "design rules limiting notifications would be ineffective"],
+             1,
+             ["Text 2 says enforcement is trivially evaded.",
+              "Correct. Text 1 cites notifications and likes; Text 2 wants limits on notifications and infinite scrolling.",
+              "Text 2 says isolated teens benefit.",
+              "Text 2 proposes design rules."],
+             "Both see harmful design features."),
+        ],
+    },
+]
