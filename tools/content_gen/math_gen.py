@@ -701,7 +701,11 @@ def le_line_equation(rng, d):
               (f"y = {_lin(m, -b)}", "Sign slip when solving for b."),
               (f"y = {_lin(x1, b)}", "The slope is the given m, not the x-coordinate."),
               (f"y = {_lin(-m, b)}", "The slope keeps its given sign."),
-              (f"y = {_lin(b, m)}", "The slope and the y-intercept are swapped.")]
+              (f"y = {_lin(b, m)}", "The slope and the y-intercept are swapped."),
+              # Fallbacks that never equal y = mx + b (b ≠ b ± m since m ≠ 0),
+              # so there are always enough distinct options (e.g. when m == b).
+              (f"y = {_lin(m, b + m)}", "Off by one step in x when solving for b."),
+              (f"y = {_lin(m, b - m)}", "Off by one step in x when solving for b.")]
     else:
         x1 = rng.choice([v for v in range(-7, 8) if v != 0])
         x2 = x1 + rng.choice([v for v in range(-5, 6) if v != 0 and v != -x1])
@@ -715,7 +719,11 @@ def le_line_equation(rng, d):
               (f"y = {_lin(m, -b)}", "Sign slip when solving for the intercept."),
               (f"y = {_lin(y2 - y1, b)}" if y2 - y1 != m else f"y = {_lin(m, b + 1)}",
                "Divide the change in y by the change in x to get the slope."),
-              (f"y = {_lin(b, m)}", "The slope and the y-intercept are swapped.")]
+              (f"y = {_lin(b, m)}", "The slope and the y-intercept are swapped."),
+              # Fallbacks that never equal y = mx + b (b ≠ b ± m since m ≠ 0),
+              # so there are always enough distinct options (e.g. when m == b).
+              (f"y = {_lin(m, b + m)}", "Off by one step in x when solving for the intercept."),
+              (f"y = {_lin(m, b - m)}", "Off by one step in x when solving for the intercept.")]
     return _text_mc(rng, prompt, f"y = {_lin(m, b)}", ds, subskill="two_variable",
                     explanation=expl, tags=["algebra", "linear", "equation"], est=90,
                     verify=f"y={m}x+({b}) through ({x1},{y1})")
