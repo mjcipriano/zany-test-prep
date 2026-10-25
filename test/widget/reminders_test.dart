@@ -228,12 +228,23 @@ void main() {
   });
 
   group('Onboarding reminder offer', () {
+    // The offer sits on the daily-goal step (the last step is the placement
+    // check), below the goal choices and test date.
     Future<void> toLastStep(WidgetTester tester) async {
-      for (var i = 0; i < 4; i++) {
+      for (var i = 0; i < 3; i++) {
         await tester.tap(find.text('Continue'));
         await tester.pumpAndSettle();
       }
+      await tester.ensureVisible(find.text('Want a daily reminder?'));
+      await tester.pumpAndSettle();
       expect(find.text('Want a daily reminder?'), findsOneWidget);
+    }
+
+    Future<void> finishOnboarding(WidgetTester tester) async {
+      await tester.tap(find.text('Continue'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Start learning'));
+      await tester.pumpAndSettle();
     }
 
     testWidgets('default is off and never asks for permission', (tester) async {
@@ -271,8 +282,7 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.text('4:30 PM'), findsOneWidget);
 
-      await tester.tap(find.text('Start learning'));
-      await tester.pumpAndSettle();
+      await finishOnboarding(tester);
       expect(find.text('READING & WRITING'), findsOneWidget);
       expect(_stored(store).enabled, isTrue);
       expect(_stored(store).minutesOfDay, 16 * 60 + 30);
@@ -290,8 +300,7 @@ void main() {
       expect(find.text(_blockedTitle), findsOneWidget);
       expect(find.text('5:00 PM'), findsNothing);
 
-      await tester.tap(find.text('Start learning'));
-      await tester.pumpAndSettle();
+      await finishOnboarding(tester);
       expect(_stored(store).enabled, isFalse);
     });
   });
