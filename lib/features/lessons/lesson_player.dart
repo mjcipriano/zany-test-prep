@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/semantics.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -202,11 +203,33 @@ class _LessonPlayerState extends ConsumerState<LessonPlayer> {
     );
     widget.onAnswered?.call(_index, _results.last);
     _feedbackEffects(correct);
+    _announceFeedback(correct);
     setState(() {
       _answered = true;
       _lastCorrect = correct;
     });
     _emitProgress();
+  }
+
+  /// Tells screen-reader users how they did without moving their focus:
+  /// "Correct!" or "Not quite. The answer is B: 42."
+  void _announceFeedback(bool correct) {
+    final q = _q;
+    String? answer;
+    if (!correct) {
+      if (q.type.isStudentProduced) {
+        answer = q.answer?.accepted.firstOrNull;
+      } else {
+        final c = q.correct;
+        if (c != null) answer = '${c.id}: ${c.text}';
+      }
+    }
+    SemanticsService.announce(
+      correct
+          ? 'Correct!'
+          : 'Not quite.${answer == null ? '' : ' The answer is $answer.'}',
+      Directionality.of(context),
+    );
   }
 
   Future<void> _next() async {
@@ -313,6 +336,7 @@ class _LessonPlayerState extends ConsumerState<LessonPlayer> {
           child: Row(
             children: [
               IconButton(
+                tooltip: widget.isReview ? 'Leave review' : 'Leave lesson',
                 icon: const Icon(Icons.close_rounded),
                 onPressed: () async {
                   if (await _confirmExit() && mounted) context.pop();
@@ -323,12 +347,16 @@ class _LessonPlayerState extends ConsumerState<LessonPlayer> {
                   value: total == 0
                       ? 0
                       : (_index + (_answered ? 1 : 0)) / total,
+                  semanticLabel: 'Lesson progress',
+                  semanticValue: 'Question ${_index + 1} of $total',
                 ),
               ),
               const SizedBox(width: 12),
-              Text(
-                '${_index + 1}/$total',
-                style: const TextStyle(fontWeight: FontWeight.w700),
+              ExcludeSemantics(
+                child: Text(
+                  '${_index + 1}/$total',
+                  style: const TextStyle(fontWeight: FontWeight.w700),
+                ),
               ),
             ],
           ),
@@ -403,11 +431,16 @@ class _TeachingViewState extends State<_TeachingView> {
     final scheme = Theme.of(context).colorScheme;
     final screens = widget.card.screens;
     final isLast = _page >= screens.length - 1;
+    final reduceMotion = MediaQuery.maybeDisableAnimationsOf(context) ?? false;
+    final pageTurn = reduceMotion
+        ? const Duration(milliseconds: 1)
+        : const Duration(milliseconds: 250);
     return Column(
       children: [
         Row(
           children: [
             IconButton(
+              tooltip: 'Close',
               icon: const Icon(Icons.close_rounded),
               onPressed: widget.onClose,
             ),
@@ -423,9 +456,13 @@ class _TeachingViewState extends State<_TeachingView> {
             if (screens.length > 1)
               Padding(
                 padding: const EdgeInsets.only(right: 16),
-                child: Text(
-                  '${_page + 1}/${screens.length}',
-                  style: Theme.of(context).textTheme.bodySmall,
+                child: Semantics(
+                  label: 'Page ${_page + 1} of ${screens.length}',
+                  excludeSemantics: true,
+                  child: Text(
+                    '${_page + 1}/${screens.length}',
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
                 ),
               ),
           ],
@@ -439,23 +476,28 @@ class _TeachingViewState extends State<_TeachingView> {
           ),
         ),
         if (screens.length > 1)
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              for (var i = 0; i < screens.length; i++)
-                AnimatedContainer(
-                  duration: const Duration(milliseconds: 200),
-                  margin: const EdgeInsets.symmetric(horizontal: 3),
-                  width: i == _page ? 18 : 7,
-                  height: 7,
-                  decoration: BoxDecoration(
-                    color: i == _page
-                        ? scheme.primary
-                        : scheme.surfaceContainerHighest,
-                    borderRadius: BorderRadius.circular(4),
+          // Page dots repeat the "Page 1 of 4" label above: decorative.
+          ExcludeSemantics(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                for (var i = 0; i < screens.length; i++)
+                  AnimatedContainer(
+                    duration: reduceMotion
+                        ? Duration.zero
+                        : const Duration(milliseconds: 200),
+                    margin: const EdgeInsets.symmetric(horizontal: 3),
+                    width: i == _page ? 18 : 7,
+                    height: 7,
+                    decoration: BoxDecoration(
+                      color: i == _page
+                          ? scheme.primary
+                          : scheme.surfaceContainerHighest,
+                      borderRadius: BorderRadius.circular(4),
+                    ),
                   ),
-                ),
-            ],
+              ],
+            ),
           ),
         Padding(
           padding: kPagePadding,
@@ -465,7 +507,7 @@ class _TeachingViewState extends State<_TeachingView> {
                 Expanded(
                   child: OutlinedButton(
                     onPressed: () => _controller.previousPage(
-                      duration: const Duration(milliseconds: 250),
+                      duration: pageTurn,
                       curve: Curves.easeOut,
                     ),
                     child: const Text('Back'),
@@ -478,7 +520,7 @@ class _TeachingViewState extends State<_TeachingView> {
                   onPressed: isLast
                       ? widget.onStart
                       : () => _controller.nextPage(
-                          duration: const Duration(milliseconds: 250),
+                          duration: pageTurn,
                           curve: Curves.easeOut,
                         ),
                   child: Text(isLast ? 'Start' : 'Next'),
@@ -587,15 +629,21 @@ class _BottomBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = correct ? AppTheme.correct : AppTheme.incorrect;
+    final colors = AppColors.of(context);
+    final tint = correct ? AppTheme.correct : AppTheme.incorrect;
+    final color = correct ? colors.correct : colors.incorrect;
+    final fill = correct ? colors.correctFill : colors.incorrectFill;
+    final reduceMotion = MediaQuery.maybeDisableAnimationsOf(context) ?? false;
     return AnimatedSize(
-      duration: const Duration(milliseconds: 200),
+      duration: reduceMotion
+          ? Duration.zero
+          : const Duration(milliseconds: 200),
       alignment: Alignment.bottomCenter,
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
           color: answered
-              ? color.withValues(alpha: 0.12)
+              ? tint.withValues(alpha: 0.12)
               : Theme.of(context).colorScheme.surface,
           borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
         ),
@@ -604,53 +652,77 @@ class _BottomBar extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            if (answered) ...[
-              Row(
-                children: [
-                  Icon(
-                    correct ? Icons.check_circle_rounded : Icons.cancel_rounded,
-                    color: color,
+            if (answered)
+              // Long explanations (or large text) scroll inside the panel
+              // instead of pushing the question off screen.
+              ConstrainedBox(
+                constraints: BoxConstraints(
+                  maxHeight: MediaQuery.sizeOf(context).height * 0.42,
+                ),
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Icon(
+                            correct
+                                ? Icons.check_circle_rounded
+                                : Icons.cancel_rounded,
+                            color: color,
+                          ),
+                          const SizedBox(width: 8),
+                          Flexible(
+                            child: Text(
+                              correct ? 'Correct!' : 'Not quite',
+                              style: TextStyle(
+                                color: color,
+                                fontWeight: FontWeight.w800,
+                                fontSize: 18,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Gap.s,
+                      if (!correct && question.type.isStudentProduced)
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 6),
+                          child: Text(
+                            'Answer: ${question.answer?.accepted.firstOrNull ?? ''}',
+                            style: const TextStyle(fontWeight: FontWeight.w700),
+                          ),
+                        ),
+                      if (chosenRationale != null && !correct)
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 6),
+                          child: Text(chosenRationale!),
+                        ),
+                      Text(
+                        question.explanation,
+                        style: const TextStyle(height: 1.4),
+                      ),
+                    ],
                   ),
-                  const SizedBox(width: 8),
-                  Text(
-                    correct ? 'Correct!' : 'Not quite',
-                    style: TextStyle(
-                      color: color,
-                      fontWeight: FontWeight.w800,
-                      fontSize: 18,
-                    ),
-                  ),
-                ],
+                ),
               ),
-              Gap.s,
-              if (!correct && question.type.isStudentProduced)
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 6),
-                  child: Text(
-                    'Answer: ${question.answer?.accepted.firstOrNull ?? ''}',
-                    style: const TextStyle(fontWeight: FontWeight.w700),
-                  ),
-                ),
-              if (chosenRationale != null && !correct)
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 6),
-                  child: Text(chosenRationale!),
-                ),
-              Text(question.explanation, style: const TextStyle(height: 1.4)),
-              Gap.m,
-            ],
+            if (answered) Gap.m,
             FilledButton(
               onPressed: submitting
                   ? null
                   : (answered ? onNext : (canCheck ? onCheck : null)),
               style: FilledButton.styleFrom(
-                backgroundColor: answered ? color : null,
+                backgroundColor: answered ? fill : null,
+                foregroundColor: answered ? Colors.white : null,
               ),
               child: submitting
                   ? const SizedBox(
                       height: 22,
                       width: 22,
-                      child: CircularProgressIndicator(strokeWidth: 2),
+                      child: CircularProgressIndicator(
+                        strokeWidth: 2,
+                        semanticsLabel: 'Saving',
+                      ),
                     )
                   : Text(answered ? (isLast ? 'Finish' : 'Continue') : 'Check'),
             ),
