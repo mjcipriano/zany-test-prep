@@ -26,7 +26,7 @@ publishes the GitHub Release (see docs/release.md). Never push tags by hand — 
 sessions cannot, and the workflow does it for you. The avatar pack repo works the same
 way (`pubspec.yaml` version there → `vX.Y.Z` tag + release on merge).
 
-## Latest state (v2.1.0)
+## Latest state (v2.1.1)
 
 - **Two exams.** SAT and ACT. Onboarding offers every exam listed in
   `assets/content/exams.json`; Settings → Exam switches (XP/streak/rewards carry
@@ -58,6 +58,10 @@ way (`pubspec.yaml` version there → `vX.Y.Z` tag + release on merge).
   tests; Python tooling suite (`python -m unittest discover -s tools/tests -t .`) covers
   the registry, plans, orchestrator, validator, bundler and every generator family. CI
   runs all of it plus the validator for every exam and the bundle-freshness check.
+- **2.1.1:** avatar art vendored as WebP (APK 152 MB → ~75 MB; phones failed to
+  parse truncated downloads); release CI verifies the APK (apksigner/zipalign/aapt2,
+  size cap) and publishes a SHA-256; `ownership-proof.yml` for Android developer
+  verification; docs/install.md covers install, troubleshooting and verification.
 - **2.1.0:** 216 math families (+64), 35 new writing families, 18 new science scenarios
   + 8 viewpoint sets, 37 new reading passages + 13 paired sets; larger practice banks;
   releases cut by CI on version bump.
