@@ -11,31 +11,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "trend_shape",
-    "prompt": "According to Table 1, as the slope angle of the tray increased, the mass of soil eroded:",
+    "prompt": "Which of the following best describes how the length of the glacier changed as the year of the survey increased from 2009 to 2017?",
     "choices": [
       {
         "id": "A",
-        "text": "decreased, by larger and larger amounts",
-        "rationale": "The values rise down the column; they never decrease."
+        "text": "decreased by approximately the same amount for each step in year",
+        "rationale": "The decreases from row to row are not all about the same size."
       },
       {
         "id": "B",
-        "text": "increased, by larger and larger amounts",
-        "rationale": "Correct. The row-to-row changes are 49, 68, 87, 106, which fits this description."
+        "text": "decreased, by larger and larger amounts",
+        "rationale": "Correct. The row-to-row changes are 0.17, 0.20, 0.23, 0.25, which fits this description."
       },
       {
         "id": "C",
-        "text": "increased by approximately the same amount for each step in slope angle",
-        "rationale": "The increases from row to row are not all about the same size."
+        "text": "increased, but by smaller and smaller amounts",
+        "rationale": "The values fall down the column; they never increase."
       },
       {
         "id": "D",
-        "text": "increased, but by smaller and smaller amounts",
-        "rationale": "The increases do not get steadily smaller down the column."
+        "text": "decreased, but by smaller and smaller amounts",
+        "rationale": "The decreases do not get steadily smaller down the column."
       }
     ],
     "correct_choice": "B",
-    "explanation": "Compute the change between consecutive rows (49, 68, 87, 106). The mass of soil eroded increased, by larger and larger amounts.",
+    "explanation": "Compute the change between consecutive rows (0.17, 0.20, 0.23, 0.25). The length of the glacier decreased, by larger and larger amounts.",
     "estimated_time_seconds": 60,
     "tags": [
       "science",
@@ -45,38 +45,38 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Slope and Soil Erosion",
+      "title": "Glacier Length Over Time",
       "table": {
-        "caption": "Table 1. Mass of soil washed from trays set at several slope angles.",
+        "caption": "Table 1. Length of a mountain glacier measured each summer.",
         "headers": [
-          "Slope angle (°)",
-          "Soil eroded (g)"
+          "Year",
+          "Glacier length (km)"
         ],
         "rows": [
           [
-            "5",
-            "30"
+            "2009",
+            "11.18"
           ],
           [
-            "10",
-            "79"
+            "2011",
+            "11.01"
           ],
           [
-            "15",
-            "147"
+            "2013",
+            "10.81"
           ],
           [
-            "20",
-            "234"
+            "2015",
+            "10.58"
           ],
           [
-            "25",
-            "340"
+            "2017",
+            "10.33"
           ]
         ]
       }
     },
-    "answer_verification": "science:shape;col=1;expect=inc_acc"
+    "answer_verification": "science:shape;col=1;expect=dec_acc"
   },
   {
     "question_id": "act-science-trends-extrapolation-easy-q02",
@@ -90,31 +90,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "interpolation",
-    "prompt": "Suppose a trial had been run at a dissolved oxygen of 9 mg/L. Based on Table 1, the number of mayfly nymphs would most likely have been:",
+    "prompt": "Based on the trend in Table 1, if the depth below the surface had been 350 m, the salinity of the water would most likely have been:",
     "choices": [
       {
         "id": "A",
-        "text": "between 120 nymphs and 164 nymphs",
-        "rationale": "This is the interval for dissolved oxygen between 10 mg/L and 12 mg/L."
-      },
-      {
-        "id": "B",
-        "text": "above every listed value, greater than 164 nymphs",
+        "text": "above every listed value, greater than 34.79 g/kg",
         "rationale": "This is above every value in the table; the trend has no reason to jump there."
       },
       {
+        "id": "B",
+        "text": "below every listed value, less than 34.58 g/kg",
+        "rationale": "This is below every value in the table; the trend has no reason to jump there."
+      },
+      {
         "id": "C",
-        "text": "between 83 nymphs and 120 nymphs",
-        "rationale": "Correct. 9 mg/L lies between 8 mg/L and 10 mg/L, whose values are 83 and 120."
+        "text": "between 34.69 g/kg and 34.76 g/kg",
+        "rationale": "This is the interval for depth between 400 m and 500 m."
       },
       {
         "id": "D",
-        "text": "below every listed value, less than 52 nymphs",
-        "rationale": "This is below every value in the table; the trend has no reason to jump there."
+        "text": "between 34.58 g/kg and 34.69 g/kg",
+        "rationale": "Correct. 350 m lies between 300 m and 400 m, whose values are 34.58 and 34.69."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "9 mg/L falls between the rows for 8 mg/L and 10 mg/L; since the values change steadily, the result should fall between 83 and 120 nymphs.",
+    "correct_choice": "D",
+    "explanation": "350 m falls between the rows for 300 m and 400 m; since the values change steadily, the result should fall between 34.58 and 34.69 g/kg.",
     "estimated_time_seconds": 60,
     "tags": [
       "science",
@@ -124,34 +124,34 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Dissolved Oxygen and Mayflies",
+      "title": "Ocean Salinity and Depth",
       "table": {
-        "caption": "Table 1. Number of mayfly nymphs found in stream samples with several dissolved-oxygen levels.",
+        "caption": "Table 1. Salinity of seawater measured at several depths at one station.",
         "headers": [
-          "Dissolved oxygen (mg/L)",
-          "Mayfly count (nymphs)"
+          "Depth (m)",
+          "Salinity (g/kg)"
         ],
         "rows": [
           [
-            "6",
-            "52"
+            "300",
+            "34.58"
           ],
           [
-            "8",
-            "83"
+            "400",
+            "34.69"
           ],
           [
-            "10",
-            "120"
+            "500",
+            "34.76"
           ],
           [
-            "12",
-            "164"
+            "600",
+            "34.79"
           ]
         ]
       }
     },
-    "answer_verification": "science:interp_range;x=9;col=1"
+    "answer_verification": "science:interp_range;x=350;col=1"
   },
   {
     "question_id": "act-science-trends-extrapolation-easy-q03",
@@ -165,31 +165,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "extrapolation",
-    "prompt": "If the trend in Table 1 continued, the mass of salt that dissolved at a water temperature of 100 °C would most likely be:",
+    "prompt": "If the trend in Table 1 continued, the salinity of the water at a depth of 400 m would most likely be:",
     "choices": [
       {
         "id": "A",
-        "text": "greater than 163 g",
-        "rationale": "Correct. The values rise with every row, so the next value should exceed the last one, 163 g."
+        "text": "greater than 34.63 g/kg",
+        "rationale": "Correct. The values rise with every row, so the next value should exceed the last one, 34.63 g/kg."
       },
       {
         "id": "B",
-        "text": "between 104 g and 163 g",
+        "text": "between 34.30 g/kg and 34.63 g/kg",
         "rationale": "This would require the trend to reverse and fall back below the last value."
       },
       {
         "id": "C",
-        "text": "less than 31 g",
-        "rationale": "This is below the very first value; the data rise, not fall."
+        "text": "between 32.50 g/kg and 34.30 g/kg",
+        "rationale": "These are values from earlier rows; the trend has already moved past them."
       },
       {
         "id": "D",
-        "text": "between 31 g and 104 g",
-        "rationale": "These are values from earlier rows; the trend has already moved past them."
+        "text": "less than 32.50 g/kg",
+        "rationale": "This is below the very first value; the data rise, not fall."
       }
     ],
     "correct_choice": "A",
-    "explanation": "Every step in water temperature raised the mass of salt that dissolved, so one more step beyond 80 °C should give a value greater than 163 g.",
+    "explanation": "Every step in depth raised the salinity of the water, so one more step beyond 300 m should give a value greater than 34.63 g/kg.",
     "estimated_time_seconds": 55,
     "tags": [
       "science",
@@ -199,29 +199,29 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Solubility and Temperature",
+      "title": "Ocean Salinity and Depth",
       "table": {
-        "caption": "Table 1. Mass of a salt that dissolves in 100 g of water at several temperatures.",
+        "caption": "Table 1. Salinity of seawater measured at several depths at one station.",
         "headers": [
-          "Water temperature (°C)",
-          "Mass dissolved (g)"
+          "Depth (m)",
+          "Salinity (g/kg)"
         ],
         "rows": [
           [
-            "20",
-            "31"
+            "0",
+            "32.50"
           ],
           [
-            "40",
-            "60"
+            "100",
+            "33.67"
           ],
           [
-            "60",
-            "104"
+            "200",
+            "34.30"
           ],
           [
-            "80",
-            "163"
+            "300",
+            "34.63"
           ]
         ]
       }
@@ -240,31 +240,31 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "trend_shape",
-    "prompt": "According to Figure 1, as the slope angle of the tray increases, the mass of soil eroded:",
+    "prompt": "According to Figure 1, as the temperature of the water increases, the mass of salt that dissolved:",
     "choices": [
       {
         "id": "A",
-        "text": "increases",
-        "rationale": "Correct. Reading the points from left to right shows this pattern."
+        "text": "stays about the same",
+        "rationale": "The points change height clearly from left to right."
       },
       {
         "id": "B",
-        "text": "increases, then decreases",
-        "rationale": "The points keep climbing to the rightmost one; they never turn down."
-      },
-      {
-        "id": "C",
         "text": "decreases, then increases",
         "rationale": "The points would have to fall and then rise; they do not."
       },
       {
+        "id": "C",
+        "text": "increases",
+        "rationale": "Correct. Reading the points from left to right shows this pattern."
+      },
+      {
         "id": "D",
-        "text": "stays about the same",
-        "rationale": "The points change height clearly from left to right."
+        "text": "increases, then decreases",
+        "rationale": "The points keep climbing to the rightmost one; they never turn down."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Follow the points from left (small slope angle) to right (large slope angle): the mass of soil eroded increases.",
+    "correct_choice": "C",
+    "explanation": "Follow the points from left (small water temperature) to right (large water temperature): the mass of salt that dissolved increases.",
     "estimated_time_seconds": 45,
     "tags": [
       "science",
@@ -274,37 +274,33 @@
     ],
     "stimulus": {
       "type": "figure",
-      "title": "Slope and Soil Erosion",
+      "title": "Solubility and Temperature",
       "figure": {
         "kind": "scatter",
         "points": [
           [
-            10.0,
-            85.0
-          ],
-          [
-            15.0,
-            161.0
+            0.0,
+            18.0
           ],
           [
             20.0,
-            257.0
+            30.0
           ],
           [
-            25.0,
-            375.0
+            40.0,
+            55.0
           ],
           [
-            30.0,
-            515.0
+            60.0,
+            92.0
           ]
         ],
-        "xlabel": "Slope angle (°)",
-        "ylabel": "Soil eroded (g)",
-        "caption": "Figure 1. Soil eroded (g) (vertical axis) versus Slope angle (°) (horizontal axis). Each point is one trial.",
+        "xlabel": "Water temperature (°C)",
+        "ylabel": "Mass dissolved (g)",
+        "caption": "Figure 1. Mass dissolved (g) (vertical axis) versus Water temperature (°C) (horizontal axis). Each point is one trial.",
         "line": {
-          "m": 21.48,
-          "b": -151.0
+          "m": 1.235,
+          "b": 11.7
         }
       }
     },
@@ -322,31 +318,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "trend_shape",
-    "prompt": "According to Table 1, between 500 µmol/m²/s and 600 µmol/m²/s, the rate of photosynthesis changed at an average rate closest to:",
+    "prompt": "According to Table 1, between 10 min and 30 min, the count rate changed at an average rate closest to:",
     "choices": [
       {
         "id": "A",
-        "text": "0.008 bubbles/min per µmol/m²/s",
-        "rationale": "Correct. Change in photosynthesis rate ÷ change in light intensity = 0.8 ÷ 100 ≈ 0.008."
+        "text": "38 counts/min per min",
+        "rationale": "Correct. Change in count rate ÷ change in time = 760 ÷ 20 ≈ 38."
       },
       {
         "id": "B",
-        "text": "0.004 bubbles/min per µmol/m²/s",
+        "text": "19 counts/min per min",
         "rationale": "This is half the rate; recheck the division."
       },
       {
         "id": "C",
-        "text": "0.8 bubbles/min over the whole interval",
-        "rationale": "This is the total change in photosynthesis rate, not divided by the change in light intensity."
+        "text": "760 counts/min over the whole interval",
+        "rationale": "This is the total change in count rate, not divided by the change in time."
       },
       {
         "id": "D",
-        "text": "0.016 bubbles/min per µmol/m²/s",
+        "text": "76 counts/min per min",
         "rationale": "This is twice the rate; recheck the division."
       }
     ],
     "correct_choice": "A",
-    "explanation": "Rate = Δphotosynthesis rate ÷ Δlight intensity = (26.2 − 25.4) ÷ (600 − 500) ≈ 0.008 bubbles/min per µmol/m²/s.",
+    "explanation": "Rate = Δcount rate ÷ Δtime = (670 − 1430) ÷ (30 − 10) ≈ 38 counts/min per min.",
     "estimated_time_seconds": 70,
     "tags": [
       "science",
@@ -356,34 +352,38 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Light and Photosynthesis",
+      "title": "Radioactive Decay",
       "table": {
-        "caption": "Table 1. Rate of photosynthesis of a water plant at several light intensities.",
+        "caption": "Table 1. Counts per minute recorded from a radioactive sample at several times.",
         "headers": [
-          "Light intensity (µmol/m²/s)",
-          "Bubbles per minute (bubbles/min)"
+          "Time (min)",
+          "Counts per minute (counts/min)"
         ],
         "rows": [
           [
-            "300",
-            "23.0"
+            "0",
+            "2089"
           ],
           [
-            "400",
-            "24.5"
+            "10",
+            "1430"
           ],
           [
-            "500",
-            "25.4"
+            "20",
+            "979"
           ],
           [
-            "600",
-            "26.2"
+            "30",
+            "670"
+          ],
+          [
+            "40",
+            "459"
           ]
         ]
       }
     },
-    "answer_verification": "science:rate;x1=500;x2=600;col=1"
+    "answer_verification": "science:rate;x1=10;x2=30;col=1"
   },
   {
     "question_id": "act-science-trends-extrapolation-easy-q06",

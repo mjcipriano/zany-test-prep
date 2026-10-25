@@ -11,43 +11,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "factors_multiples",
-    "prompt": "What is the greatest common factor of 9, 15, and 21?",
+    "prompt": "What is the greatest common factor of 6, 10, and 14?",
     "choices": [
       {
         "id": "A",
-        "text": "2",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "4",
+        "rationale": "All three numbers must share the factor."
       },
       {
         "id": "B",
-        "text": "3",
-        "rationale": "Correct."
+        "text": "6",
+        "rationale": "The smallest number is not a factor of the others."
       },
       {
         "id": "C",
-        "text": "315",
+        "text": "210",
         "rationale": "That is the least common multiple."
       },
       {
         "id": "D",
-        "text": "6",
-        "rationale": "All three numbers must share the factor."
+        "text": "-8",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
       },
       {
         "id": "E",
-        "text": "9",
-        "rationale": "Recheck the common prime factors."
+        "text": "2",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Prime-factor each: the common factors give 3.",
+    "correct_choice": "E",
+    "explanation": "Prime-factor each: the common factors give 2.",
     "estimated_time_seconds": 85,
     "tags": [
       "number",
       "gcf-lcm",
       "family:np_gcf_lcm"
     ],
-    "answer_verification": "val=3"
+    "answer_verification": "val=2"
   },
   {
     "question_id": "act-math-number-properties-hard-q02",
@@ -61,46 +61,497 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "primes",
-    "prompt": "If n = 13^2 · 2^1, how many positive factors does n have?",
+    "prompt": "If n = 13^2 · 11^3, how many positive factors does n have?",
     "choices": [
       {
         "id": "A",
-        "text": "2",
-        "rationale": "Count the exponent choices from 0 to each exponent (add 1 to each)."
-      },
-      {
-        "id": "B",
-        "text": "5",
+        "text": "11",
         "rationale": "1 is a factor too."
       },
       {
-        "id": "C",
+        "id": "B",
         "text": "6",
+        "rationale": "Count the exponent choices from 0 to each exponent (add 1 to each)."
+      },
+      {
+        "id": "C",
+        "text": "12",
         "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "8",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "10",
+        "rationale": "Use (a + 1)(b + 1)."
       },
       {
         "id": "E",
-        "text": "3",
+        "text": "5",
         "rationale": "Multiply the (exponent + 1) counts; don't add."
       }
     ],
     "correct_choice": "C",
-    "explanation": "Each factor is 13^i·2^j with 0 ≤ i ≤ 2 and 0 ≤ j ≤ 1: (2 + 1)(1 + 1) = 6.",
+    "explanation": "Each factor is 13^i·11^j with 0 ≤ i ≤ 2 and 0 ≤ j ≤ 3: (2 + 1)(3 + 1) = 12.",
     "estimated_time_seconds": 90,
     "tags": [
       "number",
       "factors",
       "family:np_primes_factors"
     ],
-    "answer_verification": "val=6"
+    "answer_verification": "val=12"
   },
   {
     "question_id": "act-math-number-properties-hard-q03",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "number_and_quantity",
+    "skill": "number_properties",
+    "lesson_id": "act-math-number-properties-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "integer_reasoning",
+    "prompt": "If n is an integer, which of the following is always divisible by 4?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "n² + 4n + 4",
+        "rationale": "For n = 1 this is 9."
+      },
+      {
+        "id": "B",
+        "text": "n(n + 1)(n + 2)",
+        "rationale": "For n = 1 this is 6, not a multiple of 4."
+      },
+      {
+        "id": "C",
+        "text": "n(n + 1)(n + 2)(n + 3)",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "2n(n + 2)",
+        "rationale": "For n = 1 this is 6, not a multiple of 4."
+      },
+      {
+        "id": "E",
+        "text": "(2n + 1)(2n + 3)",
+        "rationale": "This is a product of odd numbers, so it is odd."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "n(n + 1)(n + 2)(n + 3) always contains a factor of 4 (a multiple of 4 or two even factors).",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "number",
+      "parity",
+      "family:np_parity"
+    ],
+    "answer_verification": "n(n + 1)(n + 2)(n + 3)"
+  },
+  {
+    "question_id": "act-math-number-properties-hard-q04",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "number_and_quantity",
+    "skill": "number_properties",
+    "lesson_id": "act-math-number-properties-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "order_of_operations",
+    "prompt": "What is the value of ((−2)² · 4 − 9 · 2) ÷ 2?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-17",
+        "rationale": "(−2)² is positive."
+      },
+      {
+        "id": "B",
+        "text": "-1",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "0",
+        "rationale": "Arithmetic slip."
+      },
+      {
+        "id": "D",
+        "text": "-10",
+        "rationale": "The whole numerator is divided by 2."
+      },
+      {
+        "id": "E",
+        "text": "1/2",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "(−2)² = 4; 4·4 = 16; 9·2 = 18; (16 − 18) ÷ 2 = -1.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "number",
+      "order-of-operations",
+      "family:np_order_ops"
+    ],
+    "answer_verification": "val=-1"
+  },
+  {
+    "question_id": "act-math-number-properties-hard-q05",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "number_and_quantity",
+    "skill": "number_properties",
+    "lesson_id": "act-math-number-properties-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "scientific_notation",
+    "prompt": "A star is 4.8 × 10^10 kilometers away. A probe travels this distance in 5 equal stages. How long, in kilometers, is each stage? (Express the answer in scientific notation.)",
+    "choices": [
+      {
+        "id": "A",
+        "text": "4.8 × 10^5",
+        "rationale": "Dividing by 5 doesn't subtract 5 from the exponent."
+      },
+      {
+        "id": "B",
+        "text": "2.4 × 10^11",
+        "rationale": "Divide the coefficient; don't multiply."
+      },
+      {
+        "id": "C",
+        "text": "9.6 × 10^10",
+        "rationale": "Recheck the exponent after normalizing."
+      },
+      {
+        "id": "D",
+        "text": "0.96 × 10^10",
+        "rationale": "Normalize so the coefficient is at least 1."
+      },
+      {
+        "id": "E",
+        "text": "9.6 × 10^9",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "E",
+    "explanation": "4.8 ÷ 5 = 0.96; rewrite with a coefficient between 1 and 10: 9.6 × 10^9.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "number",
+      "scientific-notation",
+      "family:np_scientific"
+    ],
+    "answer_verification": "9.6 × 10^9"
+  },
+  {
+    "question_id": "act-math-number-properties-hard-q06",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "number_and_quantity",
+    "skill": "number_properties",
+    "lesson_id": "act-math-number-properties-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "fraction_decimal_percent",
+    "prompt": "What is the value of 2/3 × 1/4?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "1/2",
+        "rationale": "Arithmetic slip."
+      },
+      {
+        "id": "B",
+        "text": "1/6",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "11/12",
+        "rationale": "Fractions multiplied don't combine numerators and denominators separately."
+      },
+      {
+        "id": "D",
+        "text": "8/3",
+        "rationale": "Check the operation: multiply."
+      },
+      {
+        "id": "E",
+        "text": "1/3",
+        "rationale": "Recheck the arithmetic."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Multiply numerators and denominators: 2/12 = 1/6.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "number",
+      "fractions",
+      "family:np_fdp"
+    ],
+    "answer_verification": "2/3×1/4=1/6"
+  },
+  {
+    "question_id": "act-math-number-properties-hard-q07",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "number_and_quantity",
+    "skill": "number_properties",
+    "lesson_id": "act-math-number-properties-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "integer_reasoning",
+    "prompt": "Which of the following numbers is divisible by 4?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "658",
+        "rationale": "658 ÷ 4 leaves remainder 2."
+      },
+      {
+        "id": "B",
+        "text": "647",
+        "rationale": "647 ÷ 4 leaves remainder 3."
+      },
+      {
+        "id": "C",
+        "text": "659",
+        "rationale": "659 ÷ 4 leaves remainder 3."
+      },
+      {
+        "id": "D",
+        "text": "687",
+        "rationale": "687 ÷ 4 leaves remainder 3."
+      },
+      {
+        "id": "E",
+        "text": "684",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "E",
+    "explanation": "A number is divisible by 4 when the last two digits form a multiple of 4: 684 = 4 × 171.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "number",
+      "divisibility",
+      "family:np_divisibility"
+    ],
+    "answer_verification": "684/4"
+  },
+  {
+    "question_id": "act-math-number-properties-hard-q08",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "number_and_quantity",
+    "skill": "number_properties",
+    "lesson_id": "act-math-number-properties-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "integer_reasoning",
+    "prompt": "What is the sum of all the multiples of 9 between 11 and 70, inclusive?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "486",
+        "rationale": "Divide by 2 after multiplying by the count."
+      },
+      {
+        "id": "B",
+        "text": "243",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "252",
+        "rationale": "Check the last multiple."
+      },
+      {
+        "id": "D",
+        "text": "6",
+        "rationale": "That is how many multiples there are, not their sum."
+      },
+      {
+        "id": "E",
+        "text": "225",
+        "rationale": "Include the first multiple."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "The multiples are 18, 27, …, 63 (6 terms); sum = 6·(18 + 63)/2 = 243.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "number",
+      "counting",
+      "family:np_counting"
+    ],
+    "answer_verification": "val=243"
+  },
+  {
+    "question_id": "act-math-number-properties-hard-q09",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "number_and_quantity",
+    "skill": "number_properties",
+    "lesson_id": "act-math-number-properties-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multi_step_math",
+    "subskill": "fraction_decimal_percent",
+    "prompt": "Yara spent 3/8 of a paycheck on rent and then $339 on groceries, leaving $21. How much, in dollars, was the paycheck?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "648",
+        "rationale": "Arithmetic slip."
+      },
+      {
+        "id": "B",
+        "text": "360",
+        "rationale": "That is the amount left after rent, not the whole paycheck."
+      },
+      {
+        "id": "C",
+        "text": "581",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      },
+      {
+        "id": "D",
+        "text": "960",
+        "rationale": "The remaining part is 5/8 of the paycheck, not 3/8."
+      },
+      {
+        "id": "E",
+        "text": "576",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "E",
+    "explanation": "After rent, 5/8 of the paycheck remains: 5/8P − 339 = 21 → P = 576.",
+    "estimated_time_seconds": 100,
+    "tags": [
+      "number",
+      "fractions",
+      "word-problem",
+      "family:np_fraction_word"
+    ],
+    "answer_verification": "val=576"
+  },
+  {
+    "question_id": "act-math-number-properties-hard-q10",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "number_and_quantity",
+    "skill": "number_properties",
+    "lesson_id": "act-math-number-properties-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "factors_multiples",
+    "prompt": "What is the least common multiple of 16, 24, and 32?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "8",
+        "rationale": "That is the greatest common factor."
+      },
+      {
+        "id": "B",
+        "text": "12288",
+        "rationale": "The product is a common multiple but far from the least."
+      },
+      {
+        "id": "C",
+        "text": "32",
+        "rationale": "The largest number is not a multiple of the others."
+      },
+      {
+        "id": "D",
+        "text": "96",
+        "rationale": "Correct."
+      },
+      {
+        "id": "E",
+        "text": "48",
+        "rationale": "All three numbers must divide the result."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Take the highest power of each prime appearing in 16, 24, 32: LCM = 96.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "number",
+      "gcf-lcm",
+      "family:np_gcf_lcm"
+    ],
+    "answer_verification": "val=96"
+  },
+  {
+    "question_id": "act-math-number-properties-hard-q11",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "number_and_quantity",
+    "skill": "number_properties",
+    "lesson_id": "act-math-number-properties-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "primes",
+    "prompt": "If n = 3^2 · 11^3, how many positive factors does n have?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "6",
+        "rationale": "Count the exponent choices from 0 to each exponent (add 1 to each)."
+      },
+      {
+        "id": "B",
+        "text": "5",
+        "rationale": "Multiply the (exponent + 1) counts; don't add."
+      },
+      {
+        "id": "C",
+        "text": "10",
+        "rationale": "Use (a + 1)(b + 1)."
+      },
+      {
+        "id": "D",
+        "text": "11",
+        "rationale": "1 is a factor too."
+      },
+      {
+        "id": "E",
+        "text": "12",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "E",
+    "explanation": "Each factor is 3^i·11^j with 0 ≤ i ≤ 2 and 0 ≤ j ≤ 3: (2 + 1)(3 + 1) = 12.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "number",
+      "factors",
+      "family:np_primes_factors"
+    ],
+    "answer_verification": "val=12"
+  },
+  {
+    "question_id": "act-math-number-properties-hard-q12",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -130,7 +581,7 @@
       },
       {
         "id": "D",
-        "text": "n(n + 1)",
+        "text": "n² − n",
         "rationale": "Correct."
       },
       {
@@ -140,465 +591,14 @@
       }
     ],
     "correct_choice": "D",
-    "explanation": "n(n + 1) is the product of two consecutive integers, one of which is even.",
+    "explanation": "n² − n is the product of two consecutive integers, one of which is even.",
     "estimated_time_seconds": 80,
     "tags": [
       "number",
       "parity",
       "family:np_parity"
     ],
-    "answer_verification": "n(n + 1)"
-  },
-  {
-    "question_id": "act-math-number-properties-hard-q04",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "number_and_quantity",
-    "skill": "number_properties",
-    "lesson_id": "act-math-number-properties-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "order_of_operations",
-    "prompt": "What is the value of ((−3)² · 6 − 3 · 3) ÷ 3?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "9",
-        "rationale": "The whole numerator is divided by 3."
-      },
-      {
-        "id": "B",
-        "text": "16",
-        "rationale": "Arithmetic slip."
-      },
-      {
-        "id": "C",
-        "text": "15",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "17",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "E",
-        "text": "-21",
-        "rationale": "(−3)² is positive."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "(−3)² = 9; 9·6 = 54; 3·3 = 9; (54 − 9) ÷ 3 = 15.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "number",
-      "order-of-operations",
-      "family:np_order_ops"
-    ],
-    "answer_verification": "val=15"
-  },
-  {
-    "question_id": "act-math-number-properties-hard-q05",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "number_and_quantity",
-    "skill": "number_properties",
-    "lesson_id": "act-math-number-properties-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "scientific_notation",
-    "prompt": "A country produces 1.2 × 10^6 kilograms of grain per year. If this is shared equally among 3 regions, how many kilograms does each region get? (Express the answer in scientific notation.)",
-    "choices": [
-      {
-        "id": "A",
-        "text": "1.2 × 10^3",
-        "rationale": "Dividing by 3 doesn't subtract 3 from the exponent."
-      },
-      {
-        "id": "B",
-        "text": "4 × 10^5",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "4 × 10^6",
-        "rationale": "Recheck the exponent after normalizing."
-      },
-      {
-        "id": "D",
-        "text": "3.6 × 10^6",
-        "rationale": "Divide the coefficient; don't multiply."
-      },
-      {
-        "id": "E",
-        "text": "0.4 × 10^6",
-        "rationale": "Normalize so the coefficient is at least 1."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "1.2 ÷ 3 = 0.4; rewrite with a coefficient between 1 and 10: 4 × 10^5.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "number",
-      "scientific-notation",
-      "family:np_scientific"
-    ],
-    "answer_verification": "4 × 10^5"
-  },
-  {
-    "question_id": "act-math-number-properties-hard-q06",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "number_and_quantity",
-    "skill": "number_properties",
-    "lesson_id": "act-math-number-properties-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "fraction_decimal_percent",
-    "prompt": "What is the value of 3/5 − 3/8?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "9/20",
-        "rationale": "Recheck the arithmetic."
-      },
-      {
-        "id": "B",
-        "text": "0",
-        "rationale": "Fractions subtracted don't combine numerators and denominators separately."
-      },
-      {
-        "id": "C",
-        "text": "209/40",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "D",
-        "text": "17/40",
-        "rationale": "Arithmetic slip."
-      },
-      {
-        "id": "E",
-        "text": "9/40",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "E",
-    "explanation": "Common denominator 40: 3/5 − 3/8 = 9/40.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "number",
-      "fractions",
-      "family:np_fdp"
-    ],
-    "answer_verification": "3/5−3/8=9/40"
-  },
-  {
-    "question_id": "act-math-number-properties-hard-q07",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "number_and_quantity",
-    "skill": "number_properties",
-    "lesson_id": "act-math-number-properties-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "integer_reasoning",
-    "prompt": "Which of the following numbers is divisible by 3?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "593",
-        "rationale": "593 ÷ 3 leaves remainder 2."
-      },
-      {
-        "id": "B",
-        "text": "650",
-        "rationale": "650 ÷ 3 leaves remainder 2."
-      },
-      {
-        "id": "C",
-        "text": "596",
-        "rationale": "596 ÷ 3 leaves remainder 2."
-      },
-      {
-        "id": "D",
-        "text": "627",
-        "rationale": "Correct."
-      },
-      {
-        "id": "E",
-        "text": "646",
-        "rationale": "646 ÷ 3 leaves remainder 1."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "A number is divisible by 3 when the digit sum is a multiple of 3: 627 = 3 × 209.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "number",
-      "divisibility",
-      "family:np_divisibility"
-    ],
-    "answer_verification": "627/3"
-  },
-  {
-    "question_id": "act-math-number-properties-hard-q08",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "number_and_quantity",
-    "skill": "number_properties",
-    "lesson_id": "act-math-number-properties-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "integer_reasoning",
-    "prompt": "What is the sum of all the multiples of 8 between 15 and 116, inclusive?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "840",
-        "rationale": "Check the last multiple."
-      },
-      {
-        "id": "B",
-        "text": "13",
-        "rationale": "That is how many multiples there are, not their sum."
-      },
-      {
-        "id": "C",
-        "text": "832",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "816",
-        "rationale": "Include the first multiple."
-      },
-      {
-        "id": "E",
-        "text": "1664",
-        "rationale": "Divide by 2 after multiplying by the count."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "The multiples are 16, 24, …, 112 (13 terms); sum = 13·(16 + 112)/2 = 832.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "number",
-      "counting",
-      "family:np_counting"
-    ],
-    "answer_verification": "val=832"
-  },
-  {
-    "question_id": "act-math-number-properties-hard-q09",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "number_and_quantity",
-    "skill": "number_properties",
-    "lesson_id": "act-math-number-properties-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multi_step_math",
-    "subskill": "fraction_decimal_percent",
-    "prompt": "Imani spent 1/4 of a paycheck on rent and then $35 on groceries, leaving $55. How much, in dollars, was the paycheck?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "150",
-        "rationale": "Arithmetic slip."
-      },
-      {
-        "id": "B",
-        "text": "90",
-        "rationale": "That is the amount left after rent, not the whole paycheck."
-      },
-      {
-        "id": "C",
-        "text": "120",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "360",
-        "rationale": "The remaining part is 3/4 of the paycheck, not 1/4."
-      },
-      {
-        "id": "E",
-        "text": "110",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "After rent, 3/4 of the paycheck remains: 3/4P − 35 = 55 → P = 120.",
-    "estimated_time_seconds": 100,
-    "tags": [
-      "number",
-      "fractions",
-      "word-problem",
-      "family:np_fraction_word"
-    ],
-    "answer_verification": "val=120"
-  },
-  {
-    "question_id": "act-math-number-properties-hard-q10",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "number_and_quantity",
-    "skill": "number_properties",
-    "lesson_id": "act-math-number-properties-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "factors_multiples",
-    "prompt": "What is the greatest common factor of 6, 18, and 22?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "2",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "12",
-        "rationale": "Recheck the common prime factors."
-      },
-      {
-        "id": "C",
-        "text": "5",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "D",
-        "text": "198",
-        "rationale": "That is the least common multiple."
-      },
-      {
-        "id": "E",
-        "text": "6",
-        "rationale": "All three numbers must share the factor."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "Prime-factor each: the common factors give 2.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "number",
-      "gcf-lcm",
-      "family:np_gcf_lcm"
-    ],
-    "answer_verification": "val=2"
-  },
-  {
-    "question_id": "act-math-number-properties-hard-q11",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "number_and_quantity",
-    "skill": "number_properties",
-    "lesson_id": "act-math-number-properties-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "primes",
-    "prompt": "If n = 13^3 · 7^1, how many positive factors does n have?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "7",
-        "rationale": "1 is a factor too."
-      },
-      {
-        "id": "B",
-        "text": "5",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "C",
-        "text": "8",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "4",
-        "rationale": "Multiply the (exponent + 1) counts; don't add."
-      },
-      {
-        "id": "E",
-        "text": "3",
-        "rationale": "Count the exponent choices from 0 to each exponent (add 1 to each)."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "Each factor is 13^i·7^j with 0 ≤ i ≤ 3 and 0 ≤ j ≤ 1: (3 + 1)(1 + 1) = 8.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "number",
-      "factors",
-      "family:np_primes_factors"
-    ],
-    "answer_verification": "val=8"
-  },
-  {
-    "question_id": "act-math-number-properties-hard-q12",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "number_and_quantity",
-    "skill": "number_properties",
-    "lesson_id": "act-math-number-properties-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "integer_reasoning",
-    "prompt": "If n is an integer, which of the following is always divisible by 4?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "n² + 4n + 4",
-        "rationale": "For n = 1 this is 9."
-      },
-      {
-        "id": "B",
-        "text": "(2n + 1)(2n + 3)",
-        "rationale": "This is a product of odd numbers, so it is odd."
-      },
-      {
-        "id": "C",
-        "text": "n(n + 1)(n + 2)",
-        "rationale": "For n = 1 this is 6, not a multiple of 4."
-      },
-      {
-        "id": "D",
-        "text": "2n(n + 2)",
-        "rationale": "For n = 1 this is 6, not a multiple of 4."
-      },
-      {
-        "id": "E",
-        "text": "4n² + 8n",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "E",
-    "explanation": "4n² + 8n always contains a factor of 4 (a multiple of 4 or two even factors).",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "number",
-      "parity",
-      "family:np_parity"
-    ],
-    "answer_verification": "4n² + 8n"
+    "answer_verification": "n² − n"
   },
   {
     "question_id": "act-math-number-properties-hard-q13",
@@ -612,43 +612,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "order_of_operations",
-    "prompt": "What is the value of ((−4)² · 5 − 5 · 2) ÷ 4?",
+    "prompt": "What is the value of ((−5)² · 5 − 9 · 3) ÷ 5?",
     "choices": [
       {
         "id": "A",
-        "text": "10",
-        "rationale": "The whole numerator is divided by 4."
+        "text": "23/5",
+        "rationale": "(−5)² is 5·5, not 2·5."
       },
       {
         "id": "B",
-        "text": "-45/2",
-        "rationale": "(−4)² is positive."
+        "text": "-152/5",
+        "rationale": "(−5)² is positive."
       },
       {
         "id": "C",
-        "text": "37/2",
+        "text": "103/5",
         "rationale": "Arithmetic slip."
       },
       {
         "id": "D",
-        "text": "35/2",
+        "text": "98/5",
         "rationale": "Correct."
       },
       {
         "id": "E",
-        "text": "15/2",
-        "rationale": "(−4)² is 4·4, not 2·4."
+        "text": "-2",
+        "rationale": "The whole numerator is divided by 5."
       }
     ],
     "correct_choice": "D",
-    "explanation": "(−4)² = 16; 16·5 = 80; 5·2 = 10; (80 − 10) ÷ 4 = 35/2.",
+    "explanation": "(−5)² = 25; 25·5 = 125; 9·3 = 27; (125 − 27) ÷ 5 = 98/5.",
     "estimated_time_seconds": 80,
     "tags": [
       "number",
       "order-of-operations",
       "family:np_order_ops"
     ],
-    "answer_verification": "val=35/2"
+    "answer_verification": "val=98/5"
   },
   {
     "question_id": "act-math-number-properties-hard-q14",
@@ -662,43 +662,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "scientific_notation",
-    "prompt": "A star is 1.5 × 10^8 kilometers away. A probe travels this distance in 6 equal stages. How long, in kilometers, is each stage? (Express the answer in scientific notation.)",
+    "prompt": "A country produces 6 × 10^9 kilograms of grain per year. If this is shared equally among 8 regions, how many kilograms does each region get? (Express the answer in scientific notation.)",
     "choices": [
       {
         "id": "A",
-        "text": "9 × 10^8",
-        "rationale": "Divide the coefficient; don't multiply."
-      },
-      {
-        "id": "B",
-        "text": "1.5 × 10^2",
-        "rationale": "Dividing by 6 doesn't subtract 6 from the exponent."
-      },
-      {
-        "id": "C",
-        "text": "0.25 × 10^8",
+        "text": "0.75 × 10^9",
         "rationale": "Normalize so the coefficient is at least 1."
       },
       {
+        "id": "B",
+        "text": "6 × 10^1",
+        "rationale": "Dividing by 8 doesn't subtract 8 from the exponent."
+      },
+      {
+        "id": "C",
+        "text": "7.5 × 10^8",
+        "rationale": "Correct."
+      },
+      {
         "id": "D",
-        "text": "2.5 × 10^8",
-        "rationale": "Recheck the exponent after normalizing."
+        "text": "4.8 × 10^10",
+        "rationale": "Divide the coefficient; don't multiply."
       },
       {
         "id": "E",
-        "text": "2.5 × 10^7",
-        "rationale": "Correct."
+        "text": "7.5 × 10^9",
+        "rationale": "Recheck the exponent after normalizing."
       }
     ],
-    "correct_choice": "E",
-    "explanation": "1.5 ÷ 6 = 0.25; rewrite with a coefficient between 1 and 10: 2.5 × 10^7.",
+    "correct_choice": "C",
+    "explanation": "6 ÷ 8 = 0.75; rewrite with a coefficient between 1 and 10: 7.5 × 10^8.",
     "estimated_time_seconds": 90,
     "tags": [
       "number",
       "scientific-notation",
       "family:np_scientific"
     ],
-    "answer_verification": "2.5 × 10^7"
+    "answer_verification": "7.5 × 10^8"
   },
   {
     "question_id": "act-math-number-properties-hard-q15",
@@ -712,43 +712,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "fraction_decimal_percent",
-    "prompt": "What is the value of 1/2 × 1/4?",
+    "prompt": "What is the value of 7/8 × 1/4?",
     "choices": [
       {
         "id": "A",
-        "text": "1/8",
-        "rationale": "Correct."
+        "text": "7/16",
+        "rationale": "Recheck the arithmetic."
       },
       {
         "id": "B",
-        "text": "2",
+        "text": "7/2",
         "rationale": "Check the operation: multiply."
       },
       {
         "id": "C",
-        "text": "1/4",
-        "rationale": "Recheck the arithmetic."
+        "text": "7/32",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "5/8",
+        "text": "11/32",
         "rationale": "Arithmetic slip."
       },
       {
         "id": "E",
-        "text": "3/4",
+        "text": "9/8",
         "rationale": "Fractions multiplied don't combine numerators and denominators separately."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Multiply numerators and denominators: 1/8 = 1/8.",
+    "correct_choice": "C",
+    "explanation": "Multiply numerators and denominators: 7/32 = 7/32.",
     "estimated_time_seconds": 80,
     "tags": [
       "number",
       "fractions",
       "family:np_fdp"
     ],
-    "answer_verification": "1/2×1/4=1/8"
+    "answer_verification": "7/8×1/4=7/32"
   },
   {
     "question_id": "act-math-number-properties-hard-q16",
@@ -762,43 +762,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "integer_reasoning",
-    "prompt": "Which of the following numbers is divisible by 3?",
+    "prompt": "Which of the following numbers is divisible by 4?",
     "choices": [
       {
         "id": "A",
-        "text": "303",
-        "rationale": "Correct."
+        "text": "301",
+        "rationale": "301 ÷ 4 leaves remainder 1."
       },
       {
         "id": "B",
-        "text": "280",
-        "rationale": "280 ÷ 3 leaves remainder 1."
+        "text": "300",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "307",
-        "rationale": "307 ÷ 3 leaves remainder 1."
+        "text": "323",
+        "rationale": "323 ÷ 4 leaves remainder 3."
       },
       {
         "id": "D",
-        "text": "313",
-        "rationale": "313 ÷ 3 leaves remainder 1."
+        "text": "314",
+        "rationale": "314 ÷ 4 leaves remainder 2."
       },
       {
         "id": "E",
-        "text": "326",
-        "rationale": "326 ÷ 3 leaves remainder 2."
+        "text": "273",
+        "rationale": "273 ÷ 4 leaves remainder 1."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "A number is divisible by 3 when the digit sum is a multiple of 3: 303 = 3 × 101.",
+    "correct_choice": "B",
+    "explanation": "A number is divisible by 4 when the last two digits form a multiple of 4: 300 = 4 × 75.",
     "estimated_time_seconds": 80,
     "tags": [
       "number",
       "divisibility",
       "family:np_divisibility"
     ],
-    "answer_verification": "303/3"
+    "answer_verification": "300/4"
   },
   {
     "question_id": "act-math-number-properties-hard-q17",
@@ -812,43 +812,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "integer_reasoning",
-    "prompt": "What is the sum of all the multiples of 9 between 21 and 107, inclusive?",
+    "prompt": "What is the sum of all the multiples of 3 between 13 and 83, inclusive?",
     "choices": [
       {
         "id": "A",
-        "text": "1134",
-        "rationale": "Divide by 2 after multiplying by the count."
+        "text": "1089",
+        "rationale": "Include the first multiple."
       },
       {
         "id": "B",
-        "text": "9",
+        "text": "23",
         "rationale": "That is how many multiples there are, not their sum."
       },
       {
         "id": "C",
-        "text": "567",
+        "text": "1104",
         "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "540",
-        "rationale": "Include the first multiple."
+        "text": "1107",
+        "rationale": "Check the last multiple."
       },
       {
         "id": "E",
-        "text": "576",
-        "rationale": "Check the last multiple."
+        "text": "2208",
+        "rationale": "Divide by 2 after multiplying by the count."
       }
     ],
     "correct_choice": "C",
-    "explanation": "The multiples are 27, 36, …, 99 (9 terms); sum = 9·(27 + 99)/2 = 567.",
+    "explanation": "The multiples are 15, 18, …, 81 (23 terms); sum = 23·(15 + 81)/2 = 1104.",
     "estimated_time_seconds": 90,
     "tags": [
       "number",
       "counting",
       "family:np_counting"
     ],
-    "answer_verification": "val=567"
+    "answer_verification": "val=1104"
   },
   {
     "question_id": "act-math-number-properties-hard-q18",
@@ -862,36 +862,36 @@
     "version": "1.0.0",
     "question_type": "multi_step_math",
     "subskill": "fraction_decimal_percent",
-    "prompt": "Arjun spent 1/4 of a paycheck on rent and then $123 on groceries, leaving $57. How much, in dollars, was the paycheck?",
+    "prompt": "Elena spent 3/7 of a paycheck on rent and then $146 on groceries, leaving $46. How much, in dollars, was the paycheck?",
     "choices": [
       {
         "id": "A",
-        "text": "240",
-        "rationale": "Correct."
+        "text": "339",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
       },
       {
         "id": "B",
-        "text": "180",
-        "rationale": "That is the amount left after rent, not the whole paycheck."
-      },
-      {
-        "id": "C",
-        "text": "720",
-        "rationale": "The remaining part is 3/4 of the paycheck, not 1/4."
-      },
-      {
-        "id": "D",
-        "text": "300",
+        "text": "384",
         "rationale": "Arithmetic slip."
       },
       {
+        "id": "C",
+        "text": "336",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "448",
+        "rationale": "The remaining part is 4/7 of the paycheck, not 3/7."
+      },
+      {
         "id": "E",
-        "text": "244",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "192",
+        "rationale": "That is the amount left after rent, not the whole paycheck."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "After rent, 3/4 of the paycheck remains: 3/4P − 123 = 57 → P = 240.",
+    "correct_choice": "C",
+    "explanation": "After rent, 4/7 of the paycheck remains: 4/7P − 146 = 46 → P = 336.",
     "estimated_time_seconds": 100,
     "tags": [
       "number",
@@ -899,7 +899,7 @@
       "word-problem",
       "family:np_fraction_word"
     ],
-    "answer_verification": "val=240"
+    "answer_verification": "val=336"
   },
   {
     "question_id": "act-math-number-properties-hard-q19",
@@ -913,43 +913,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "factors_multiples",
-    "prompt": "What is the least common multiple of 12, 20, and 36?",
+    "prompt": "What is the least common multiple of 20, 28, and 36?",
     "choices": [
       {
         "id": "A",
-        "text": "180",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "36",
-        "rationale": "The largest number is not a multiple of the others."
-      },
-      {
-        "id": "C",
-        "text": "60",
-        "rationale": "All three numbers must divide the result."
-      },
-      {
-        "id": "D",
         "text": "4",
         "rationale": "That is the greatest common factor."
       },
       {
-        "id": "E",
-        "text": "8640",
+        "id": "B",
+        "text": "1260",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "20160",
         "rationale": "The product is a common multiple but far from the least."
+      },
+      {
+        "id": "D",
+        "text": "36",
+        "rationale": "The largest number is not a multiple of the others."
+      },
+      {
+        "id": "E",
+        "text": "140",
+        "rationale": "All three numbers must divide the result."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Take the highest power of each prime appearing in 12, 20, 36: LCM = 180.",
+    "correct_choice": "B",
+    "explanation": "Take the highest power of each prime appearing in 20, 28, 36: LCM = 1260.",
     "estimated_time_seconds": 85,
     "tags": [
       "number",
       "gcf-lcm",
       "family:np_gcf_lcm"
     ],
-    "answer_verification": "val=180"
+    "answer_verification": "val=1260"
   },
   {
     "question_id": "act-math-number-properties-hard-q20",
@@ -963,42 +963,42 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "primes",
-    "prompt": "If n = 11^1 · 13^2, how many positive factors does n have?",
+    "prompt": "If n = 3^1 · 11^3, how many positive factors does n have?",
     "choices": [
       {
         "id": "A",
-        "text": "9",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "B",
-        "text": "3",
+        "text": "4",
         "rationale": "Multiply the (exponent + 1) counts; don't add."
       },
       {
-        "id": "C",
-        "text": "6",
+        "id": "B",
+        "text": "8",
         "rationale": "Correct."
       },
       {
+        "id": "C",
+        "text": "7",
+        "rationale": "1 is a factor too."
+      },
+      {
         "id": "D",
-        "text": "2",
+        "text": "3",
         "rationale": "Count the exponent choices from 0 to each exponent (add 1 to each)."
       },
       {
         "id": "E",
-        "text": "5",
-        "rationale": "1 is a factor too."
+        "text": "6",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Each factor is 11^i·13^j with 0 ≤ i ≤ 1 and 0 ≤ j ≤ 2: (1 + 1)(2 + 1) = 6.",
+    "correct_choice": "B",
+    "explanation": "Each factor is 3^i·11^j with 0 ≤ i ≤ 1 and 0 ≤ j ≤ 3: (1 + 1)(3 + 1) = 8.",
     "estimated_time_seconds": 90,
     "tags": [
       "number",
       "factors",
       "family:np_primes_factors"
     ],
-    "answer_verification": "val=6"
+    "answer_verification": "val=8"
   }
 ]

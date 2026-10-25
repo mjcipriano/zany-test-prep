@@ -342,7 +342,9 @@ def np_fdp(rng, d):
             prompt = f"Which fraction is equal to {num_str(dec)}?"
             correct = f"{n}/{dn}"
             ds = [(f"{dn}/{n}" if dn != n else f"{n + 1}/{dn}", "This is the reciprocal."), (f"{n}/{dn * 10}", "Check the place value of the last digit."), (f"{n + 1}/{dn}", "This fraction has a different value."), (f"{n}/{dn + 1 if dn + 1 != 2 * n else dn + 2}", "This fraction has a different value.")]
-            expl = f"{num_str(dec)} = {int(round(dec * 100))}/100 = {correct} in lowest terms." if dn <= 100 else f"{num_str(dec)} = {correct}."
+            places = len(num_str(dec).split(".")[1]) if "." in num_str(dec) else 0
+            expl = (f"{num_str(dec)} = {int(round(dec * 10 ** places))}/{10 ** places} = {correct} in lowest terms."
+                    if places else f"{num_str(dec)} = {correct}.")  # 0.625 is 625/1000, not 62/100
         else:
             prompt = f"Which fraction is equal to {num_str(pct)}%?"
             correct = f"{n}/{dn}"
@@ -451,7 +453,10 @@ def cg_distance(rng, d):
     prompt = f"What is the distance between {_pt(x1, y1)} and {_pt(x2, y2)} in the standard (x, y) coordinate plane?"
     expl = f"d = √({dx}² + {dy}²) = √{dx * dx + dy * dy} = {correct}."
     ds = [(f"√{dx + dy}", "Square the differences before adding."), (f"{dx + dy}", "Use the Pythagorean form, not the sum of differences."),
-          (f"√{abs(dx * dx - dy * dy)}" if dx != dy else f"√{2 * (dx * dx + dy * dy)}", "Add the squared differences."), (f"{k * k if k > 1 else 2}√{sq}", "Simplify the radical carefully: √{0} = {1}.".format(dx * dx + dy * dy, correct))]
+          (f"√{abs(dx * dx - dy * dy)}" if dx != dy else f"√{2 * (dx * dx + dy * dy)}", "Add the squared differences."), (f"{k * k if k > 1 else 2}√{sq}", "Simplify the radical carefully: √{0} = {1}.".format(dx * dx + dy * dy, correct)),
+          # spares, used when one above equals another in value (√100 vs 10)
+          (f"√{dx * dx + dy * dy + 1}", "Recompute the sum of the squared differences."),
+          (f"{k + 1}√{sq}" if sq > 1 else f"√{k * k + 2}", "Simplify the radical carefully: √{0} = {1}.".format(dx * dx + dy * dy, correct))]
     return _text_mc(rng, prompt, correct, ds, subskill="distance_midpoint", explanation=expl, tags=["coordinate", "distance", "radical"], est=90, verify=correct)
 
 
@@ -1652,13 +1657,15 @@ def ap_angle_chase(rng, d):
         a = rng.randint(30, 150)
         x = rng.randint(10, 40)
         k = rng.randint(2, 4)
-        c = a - k * x if a - k * x > 0 else None
-        if c is None or c == 0:
+        # AOB + BOC = (kx + c) + x = a, so c = a − (k + 1)x. (The old c = a − kx
+        # left x off BOC: the keyed x did not solve the stated equation.)
+        c = a - (k + 1) * x
+        if c <= 0:
             return ap_angle_chase(rng, d)
         prompt = f"Ray OB lies inside angle AOC, which measures {a}°. If angle AOB measures ({k}x + {c})° and angle BOC measures x°, what is the measure of angle BOC?"
         val = x
         expl = f"({k}x + {c}) + x = {a} → {k + 1}x = {a - c} → x = {x}; angle BOC = {x}°."
-        ds = [(k * x + c, "That is angle AOB."), (Fraction(a - c, k), "Both angles contain x; the coefficient is {0}.".format(k + 1)), (a - x, "That is angle AOB, not BOC."), (x + 2, "Arithmetic slip.")]
+        ds = [(k * x + c, "That is angle AOB."), (Fraction(a - c, k), "Both angles contain x; the coefficient is {0}.".format(k + 1)), (a - c, "That is {0}x; divide by {0} to find x.".format(k + 1)), (x + 2, "Arithmetic slip.")]
     return _numeric_mc(rng, prompt, val, ds, subskill="parallel_lines" if d != "hard" else "triangle_angles", explanation=expl, tags=["geometry", "angles", "chase"], est=70 if d == "easy" else 90, verify=f"val={val}")
 
 
@@ -1671,8 +1678,9 @@ def sq_geometric_word(rng, d):
         r = rng.choice([2, 3, 4])
         n = rng.randint(4, 6)
         word = {2: "doubles", 3: "triples", 4: "quadruples"}[r]
-        prompt = rng.choice([f"A chain message is sent to {a1} people, and the number of people who receive it {word} each day. How many people receive it on day {n}?",
-                             f"A colony starts with {a1} bacteria and {word} every hour. How many bacteria are there at the start of the {_ordinal(n)} hour?"])
+        # Pin the first term to day 1 / the first hour (otherwise "day n" could count from day 0).
+        prompt = rng.choice([f"On day 1, a chain message is sent to {a1} people. Each day after that, the number of people who receive it that day {word}. How many people receive it on day {n}?",
+                             f"A colony has {a1} bacteria at the start of the first hour, and the number {word} every hour. How many bacteria are there at the start of the {_ordinal(n)} hour?"])
         val = a1 * r ** (n - 1)
         expl = f"Geometric with a₁ = {a1}, r = {r}: a_{n} = {a1}·{r}^{n - 1} = {val}."
         ds = [(a1 * r ** n, "Use the exponent n − 1 = {0}.".format(n - 1)), (a1 * r * (n - 1), "The number multiplies each day; it doesn't add."), (a1 * r ** (n - 2), "That is one step too few."), (a1 * (r ** n - 1) // (r - 1), "That is the total over all days, not the amount on day {0}.".format(n))]
@@ -1834,7 +1842,7 @@ def cx_quadratic(rng, d):
         k = s * s
         prompt = rng.choice([f"What are the solutions to the equation x² + {k} = 0?", f"In the complex numbers, what are the solutions to x² = −{k}?", f"Which of the following gives all solutions to x² + {k} = 0?"])
         correct = f"x = ±{s}i" if s != 1 else "x = ±i"
-        ds = [(f"x = ±{s}", f"x² = −{k} has no real solutions; the square root of −1 is i."), (f"x = ±{k}i", "Take the square root of {0}.".format(k)), (f"x = {s}i" if s != 1 else "x = i", "There are two solutions, ±."), (f"x = ±√{k}i" if s != 1 else "x = ±2i", "Simplify √{0} = {1}.".format(k, s) if s != 1 else "√1 = 1.")]
+        ds = [(f"x = ±{s}", f"x² = −{k} has no real solutions; the square root of −1 is i."), (f"x = ±{k}i" if s != 1 else "x = ±3i", "Take the square root of {0}.".format(k)), (f"x = {s}i" if s != 1 else "x = i", "There are two solutions, ±."), (f"x = ±{s + 1}i", f"Check: ({s + 1}i)² = −{(s + 1) ** 2}, not −{k}.")]  # not ±√{k}i: equal in value
         expl = f"x² = −{k}, so x = ±√(−{k}) = ±{s}i."
     elif d == "medium":
         k = rng.randint(2, 9)
@@ -1842,7 +1850,9 @@ def cx_quadratic(rng, d):
         n = k * k * r
         prompt = rng.choice([f"What are the solutions to x² + {n} = 0?", f"Which of the following gives all complex solutions to x² = −{n}?"])
         correct = f"x = ±{k}i√{r}"
-        ds = [(f"x = ±{k}√{r}", "The solutions are imaginary."), (f"x = ±{n}i", "Take the square root of {0}.".format(n)), (f"x = ±i√{n}", "Simplify the radical: √{0} = {1}√{2}.".format(n, k, r)), (f"x = ±{r}i√{k}", "The perfect-square factor {0} comes out as {1}.".format(k * k, k))]
+        ds = [(f"x = ±{k}√{r}", "The solutions are imaginary."), (f"x = ±{n}i", "Take the square root of {0}.".format(n)), (f"x = ±{k * k}i√{r}", "The perfect-square factor {0} comes out of the radical as {1}, not {0}.".format(k * k, k)),
+              (f"x = ±{r}i√{k}" if r != k else f"x = ±{k + 1}i√{r}", "The perfect-square factor {0} comes out as {1}.".format(k * k, k))]
+        # (No "±i√{n}" option: it equals the key in value, so two choices were correct.)
         expl = f"x² = −{n}, so x = ±i√{n} = ±{k}i√{r}."
     else:
         p = rng.choice([v for v in range(-6, 7) if v])

@@ -11,31 +11,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "table_lookup",
-    "prompt": "Based on Table 1, the height of the seedlings recorded at a fertilizer concentration of 5 g/L for 10 h of light was:",
+    "prompt": "Based on Table 1, the volume of base needed recorded at an acid concentration of 0.15 mol/L was:",
     "choices": [
       {
         "id": "A",
-        "text": "26.6 cm",
-        "rationale": "This is the value in the row below, for 10 g/L."
+        "text": "9.4 mL",
+        "rationale": "This is the value for 0.05 mol/L, a different row."
       },
       {
         "id": "B",
-        "text": "14.5 cm",
-        "rationale": "This is the value in the row above, for 0 g/L."
+        "text": "18.8 mL",
+        "rationale": "This is the value in the row above, for 0.1 mol/L."
       },
       {
         "id": "C",
-        "text": "20.55 cm",
-        "rationale": "This averages the rows above and below (0 g/L and 10 g/L) instead of reading the row for 5 g/L."
+        "text": "37.6 mL",
+        "rationale": "This is the value in the row below, for 0.2 mol/L."
       },
       {
         "id": "D",
-        "text": "21.9 cm",
-        "rationale": "Correct. Find the row for 5 g/L and read across to the Seedling height (cm), 10 h of light column."
+        "text": "28.2 mL",
+        "rationale": "Correct. Find the row for 0.15 mol/L and read across to the Volume of base (mL) column."
       }
     ],
     "correct_choice": "D",
-    "explanation": "Locate 5 g/L in the Fertilizer concentration (g/L) column, then read the Seedling height (cm), 10 h of light entry in that row: 21.9 cm.",
+    "explanation": "Locate 0.15 mol/L in the Acid concentration (mol/L) column, then read the Volume of base (mL) entry in that row: 28.2 mL.",
     "estimated_time_seconds": 40,
     "tags": [
       "science",
@@ -45,44 +45,34 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Fertilizer and Plant Growth",
+      "title": "Acid Concentration and Titration",
       "table": {
-        "caption": "Table 1. Average height of bean seedlings after 4 weeks at several fertilizer concentrations. Results are shown for two conditions: 6 h of light and 10 h of light.",
+        "caption": "Table 1. Volume of base solution needed to neutralize 25 mL of acid at several acid concentrations.",
         "headers": [
-          "Fertilizer concentration (g/L)",
-          "Seedling height (cm), 6 h of light",
-          "Seedling height (cm), 10 h of light"
+          "Acid concentration (mol/L)",
+          "Volume of base (mL)"
         ],
         "rows": [
           [
-            "0",
-            "12.0",
-            "14.5"
+            "0.05",
+            "9.4"
           ],
           [
-            "5",
-            "18.2",
-            "21.9"
+            "0.1",
+            "18.8"
           ],
           [
-            "10",
-            "22.1",
-            "26.6"
+            "0.15",
+            "28.2"
           ],
           [
-            "15",
-            "23.7",
-            "28.6"
-          ],
-          [
-            "20",
-            "23.0",
-            "27.7"
+            "0.2",
+            "37.6"
           ]
         ]
       }
     },
-    "answer_verification": "science:lookup;x=5;col=2"
+    "answer_verification": "science:lookup;x=0.15;col=1"
   },
   {
     "question_id": "act-science-data-representation-easy-q02",
@@ -96,31 +86,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "trend_direction",
-    "prompt": "Based on the data in Table 1, over the range of dissolved oxygen tested, the number of mayfly nymphs:",
+    "prompt": "According to Table 1, as the mass hung from the spring increased from 150 g to 300 g, the stretch of the spring:",
     "choices": [
       {
         "id": "A",
-        "text": "decreased only",
-        "rationale": "Every value is smaller than the one above it; the values never rise."
-      },
-      {
-        "id": "B",
         "text": "increased only",
         "rationale": "Correct. Reading down the column, each value is greater than the one before it."
       },
       {
-        "id": "C",
+        "id": "B",
         "text": "increased, then decreased",
         "rationale": "The values keep rising to the last row; they never turn downward."
       },
       {
+        "id": "C",
+        "text": "remained the same",
+        "rationale": "The values change from row to row, so they did not remain the same."
+      },
+      {
         "id": "D",
-        "text": "decreased, then increased",
-        "rationale": "The values would have to fall and then rise, which the table does not show."
+        "text": "decreased only",
+        "rationale": "Every value is smaller than the one above it; the values never rise."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Compare each value with the one above it: the number of mayfly nymphs increased.",
+    "correct_choice": "A",
+    "explanation": "Compare each value with the one above it: the stretch of the spring increased.",
     "estimated_time_seconds": 45,
     "tags": [
       "science",
@@ -130,33 +120,29 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Dissolved Oxygen and Mayflies",
+      "title": "Spring Stretch",
       "table": {
-        "caption": "Table 1. Number of mayfly nymphs found in stream samples with several dissolved-oxygen levels.",
+        "caption": "Table 1. Stretch of a spring when several masses are hung from it.",
         "headers": [
-          "Dissolved oxygen (mg/L)",
-          "Mayfly count (nymphs)"
+          "Mass (g)",
+          "Stretch (cm)"
         ],
         "rows": [
           [
-            "2",
-            "13"
+            "150",
+            "7.2"
           ],
           [
-            "4",
-            "38"
+            "200",
+            "9.6"
           ],
           [
-            "6",
-            "73"
+            "250",
+            "12.0"
           ],
           [
-            "8",
-            "120"
-          ],
-          [
-            "10",
-            "178"
+            "300",
+            "14.4"
           ]
         ]
       }
@@ -175,31 +161,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "extreme_value",
-    "prompt": "According to Table 1, the stretch of the spring was greatest when the mass hung from the spring was:",
+    "prompt": "Based on Table 1, in which year was the number of leopard frogs counted least?",
     "choices": [
       {
         "id": "A",
-        "text": "150 g and 200 g, which are tied",
-        "rationale": "The values there (8.6 and 11.5) are neither equal nor the greatest."
+        "text": "2018",
+        "rationale": "This is where the number of leopard frogs counted was greatest, the opposite extreme."
       },
       {
         "id": "B",
-        "text": "100 g",
-        "rationale": "This is where the stretch of the spring was least, the opposite extreme."
+        "text": "2021",
+        "rationale": "Correct. The least value in the Leopard frogs column is 109, in the row for 2021."
       },
       {
         "id": "C",
-        "text": "250 g",
-        "rationale": "Correct. The greatest value in the Stretch (cm) column is 14.4 cm, in the row for 250 g."
+        "text": "2020",
+        "rationale": "The value here, 125, is not the least in the column."
       },
       {
         "id": "D",
-        "text": "200 g",
-        "rationale": "The value here, 11.5 cm, is not the greatest in the column."
+        "text": "2019 and 2020, which are tied",
+        "rationale": "The values there (141 and 125) are neither equal nor the least."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Scan the Stretch (cm) column for the greatest value, 14.4 cm, and read the mass in that row.",
+    "correct_choice": "B",
+    "explanation": "Scan the Leopard frogs column for the least value, 109, and read the year in that row.",
     "estimated_time_seconds": 40,
     "tags": [
       "science",
@@ -209,34 +195,39 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Spring Stretch",
+      "title": "Two Frog Species",
       "table": {
-        "caption": "Table 1. Stretch of a spring when several masses are hung from it.",
+        "caption": "Table 1. Counts of two frog species in a pond in the years after bullfrogs first appeared there.",
         "headers": [
-          "Mass (g)",
-          "Stretch (cm)"
+          "Year",
+          "Leopard frogs",
+          "Bullfrogs"
         ],
         "rows": [
           [
-            "100",
-            "5.7"
+            "2018",
+            "157",
+            "91"
           ],
           [
-            "150",
-            "8.6"
+            "2019",
+            "141",
+            "114"
           ],
           [
-            "200",
-            "11.5"
+            "2020",
+            "125",
+            "137"
           ],
           [
-            "250",
-            "14.4"
+            "2021",
+            "109",
+            "160"
           ]
         ]
       }
     },
-    "answer_verification": "science:extreme;mode=max;col=1"
+    "answer_verification": "science:extreme;mode=min;col=1"
   },
   {
     "question_id": "act-science-data-representation-easy-q04",
@@ -250,31 +241,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "table_lookup",
-    "prompt": "In Table 1, a value of 21.6 m for the horizontal distance the ball traveled corresponds to which launch angle?",
+    "prompt": "Based on Table 1, which launch angle produced a range of 23.1 m?",
     "choices": [
       {
         "id": "A",
-        "text": "50°",
-        "rationale": "At 50° the table lists 25.6 m, not 21.6 m."
+        "text": "40°",
+        "rationale": "At 40° the table lists 24.3 m, not 23.1 m."
       },
       {
         "id": "B",
-        "text": "60°",
-        "rationale": "Correct. Find 21.6 m in the Range (m) column and read the launch angle in the same row."
+        "text": "50°",
+        "rationale": "Correct. Find 23.1 m in the Range (m) column and read the launch angle in the same row."
       },
       {
         "id": "C",
         "text": "Cannot be determined from Table 1",
-        "rationale": "The table does list 21.6 m; read the launch angle in that row."
+        "rationale": "The table does list 23.1 m; read the launch angle in that row."
       },
       {
         "id": "D",
-        "text": "40°",
-        "rationale": "At 40° the table lists 27.0 m, not 21.6 m."
+        "text": "30°",
+        "rationale": "At 30° the table lists 22.5 m, not 23.1 m."
       }
     ],
     "correct_choice": "B",
-    "explanation": "Search the Range (m) column for 21.6 m; it appears in the row where launch angle is 60°.",
+    "explanation": "Search the Range (m) column for 23.1 m; it appears in the row where launch angle is 50°.",
     "estimated_time_seconds": 40,
     "tags": [
       "science",
@@ -293,25 +284,25 @@
         ],
         "rows": [
           [
+            "20",
+            "17.7"
+          ],
+          [
             "30",
-            "25.1"
+            "22.5"
           ],
           [
             "40",
-            "27.0"
+            "24.3"
           ],
           [
             "50",
-            "25.6"
-          ],
-          [
-            "60",
-            "21.6"
+            "23.1"
           ]
         ]
       }
     },
-    "answer_verification": "science:invlookup;v=21.6;col=1"
+    "answer_verification": "science:invlookup;v=23.1;col=1"
   },
   {
     "question_id": "act-science-data-representation-easy-q05",
@@ -325,31 +316,31 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "figure_reading",
-    "prompt": "Based on Figure 1, the heart rate at a speed of 4 km/h was approximately:",
+    "prompt": "According to Figure 1, when the steady speed of the car was 70 km/h, the fuel efficiency was closest to:",
     "choices": [
       {
         "id": "A",
-        "text": "124.5 beats/min",
-        "rationale": "This is halfway between the point at 4 km/h and its neighbour at 6 km/h, not the height of the point itself."
+        "text": "14.6 km/L",
+        "rationale": "This is the height of the point at 60 km/h, a different position on the horizontal axis."
       },
       {
         "id": "B",
-        "text": "135 beats/min",
-        "rationale": "This is the height of the point at 6 km/h, a different position on the horizontal axis."
+        "text": "15.20 km/L",
+        "rationale": "This is halfway between the point at 70 km/h and its neighbour at 60 km/h, not the height of the point itself."
       },
       {
         "id": "C",
-        "text": "157 beats/min",
-        "rationale": "This is the height of the point at 8 km/h, a different position on the horizontal axis."
+        "text": "15.8 km/L",
+        "rationale": "Correct. The point plotted at 70 km/h on the horizontal axis sits at about 15.8 km/L on the vertical axis."
       },
       {
         "id": "D",
-        "text": "114 beats/min",
-        "rationale": "Correct. The point plotted at 4 km/h on the horizontal axis sits at about 114 beats/min on the vertical axis."
+        "text": "16.3 km/L",
+        "rationale": "This is the height of the point at 80 km/h, a different position on the horizontal axis."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Find 4 km/h on the horizontal axis, move up to the plotted point, and read its height on the vertical axis: about 114 beats/min.",
+    "correct_choice": "C",
+    "explanation": "Find 70 km/h on the horizontal axis, move up to the plotted point, and read its height on the vertical axis: about 15.8 km/L.",
     "estimated_time_seconds": 45,
     "tags": [
       "science",
@@ -359,37 +350,37 @@
     ],
     "stimulus": {
       "type": "figure",
-      "title": "Exercise Intensity and Heart Rate",
+      "title": "Speed and Fuel Efficiency",
       "figure": {
         "kind": "scatter",
         "points": [
           [
-            4.0,
-            114.0
+            60.0,
+            14.6
           ],
           [
-            6.0,
-            135.0
+            70.0,
+            15.8
           ],
           [
-            8.0,
-            157.0
+            80.0,
+            16.3
           ],
           [
-            10.0,
-            178.0
+            90.0,
+            16.1
           ],
           [
-            12.0,
-            200.0
+            100.0,
+            15.2
           ]
         ],
-        "xlabel": "Treadmill speed (km/h)",
-        "ylabel": "Heart rate (beats/min)",
-        "caption": "Figure 1. Heart rate (beats/min) (vertical axis) versus Treadmill speed (km/h) (horizontal axis). Each point is one trial."
+        "xlabel": "Speed (km/h)",
+        "ylabel": "Fuel efficiency (km/L)",
+        "caption": "Figure 1. Fuel efficiency (km/L) (vertical axis) versus Speed (km/h) (horizontal axis). Each point is one trial."
       }
     },
-    "answer_verification": "science:fig_lookup;x=4"
+    "answer_verification": "science:fig_lookup;x=70"
   },
   {
     "question_id": "act-science-data-representation-easy-q06",
@@ -403,31 +394,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "table_lookup",
-    "prompt": "According to Table 1, the horizontal distance the ball traveled at 70°, expressed in km, was:",
+    "prompt": "According to Table 1, the rate of heat loss at 2 cm, expressed in kW, was:",
     "choices": [
       {
         "id": "A",
-        "text": "0.166 km",
-        "rationale": "This is off by a factor of 10; recheck the conversion factor."
-      },
-      {
-        "id": "B",
-        "text": "16600 km",
+        "text": "73000 kW",
         "rationale": "This converts in the wrong direction (divides instead of multiplying, or the reverse)."
       },
       {
+        "id": "B",
+        "text": "0.073 kW",
+        "rationale": "Correct. 73 W × 0.001 = 0.073 kW."
+      },
+      {
         "id": "C",
-        "text": "0.0166 km",
-        "rationale": "Correct. 16.6 m × 0.001 = 0.0166 km."
+        "text": "73 kW",
+        "rationale": "This keeps the number from the table but changes only the unit label; W must be converted to kW."
       },
       {
         "id": "D",
-        "text": "16.6 km",
-        "rationale": "This keeps the number from the table but changes only the unit label; m must be converted to km."
+        "text": "0.73 kW",
+        "rationale": "This is off by a factor of 10; recheck the conversion factor."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Read 16.6 m from the table, then convert: 1 m = 0.001 km, so 16.6 × 0.001 = 0.0166 km.",
+    "correct_choice": "B",
+    "explanation": "Read 73 W from the table, then convert: 1 W = 0.001 kW, so 73 × 0.001 = 0.073 kW.",
     "estimated_time_seconds": 55,
     "tags": [
       "science",
@@ -437,38 +428,38 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Launch Angle and Range",
+      "title": "Insulation and Heat Loss",
       "table": {
-        "caption": "Table 1. Horizontal distance traveled by a ball launched at several angles.",
+        "caption": "Table 1. Rate of heat loss from a heated box wrapped in several thicknesses of foam.",
         "headers": [
-          "Launch angle (°)",
-          "Range (m)"
+          "Foam thickness (cm)",
+          "Heat loss (W)"
         ],
         "rows": [
           [
-            "30",
-            "25.7"
+            "2",
+            "73"
           ],
           [
-            "40",
-            "28.0"
+            "4",
+            "49"
           ],
           [
-            "50",
-            "27.0"
+            "6",
+            "37"
           ],
           [
-            "60",
-            "23.0"
+            "8",
+            "30"
           ],
           [
-            "70",
-            "16.6"
+            "10",
+            "25"
           ]
         ]
       }
     },
-    "answer_verification": "science:convert;x=70;col=1;mult=0.001"
+    "answer_verification": "science:convert;x=2;col=1;mult=0.001"
   },
   {
     "question_id": "act-science-data-representation-easy-q07",
@@ -482,31 +473,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "figure_reading",
-    "prompt": "Which description best matches a graph of song pitch versus body mass drawn from Table 1?",
+    "prompt": "If the stopping distance were plotted on the vertical axis against the speed of the car on the horizontal axis, which of the following best describes the resulting graph of the data in Table 1?",
     "choices": [
       {
         "id": "A",
-        "text": "a curve falling from left to right that becomes steeper and steeper",
-        "rationale": "The sizes of the row-to-row changes do not fit this shape."
+        "text": "a curve rising from left to right that becomes steeper and steeper",
+        "rationale": "Correct. The row-to-row changes (17.9, 22.9, 27.7) give exactly this shape."
       },
       {
         "id": "B",
-        "text": "a curve falling from left to right that flattens out",
-        "rationale": "Correct. The row-to-row changes (−0.72, −0.44, −0.31, −0.23) give exactly this shape."
+        "text": "a straight line rising from left to right",
+        "rationale": "The sizes of the row-to-row changes do not fit this shape."
       },
       {
         "id": "C",
-        "text": "a straight line falling from left to right",
+        "text": "a curve rising from left to right that becomes less steep",
         "rationale": "The sizes of the row-to-row changes do not fit this shape."
       },
       {
         "id": "D",
-        "text": "a curve rising from left to right that becomes steeper and steeper",
-        "rationale": "The values would have to rise; they fall."
+        "text": "a straight line falling from left to right",
+        "rationale": "The values would have to fall; they rise."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "The changes between consecutive rows are −0.72, −0.44, −0.31, −0.23; plotted, the pitch of the song forms a curve falling from left to right that flattens out.",
+    "correct_choice": "A",
+    "explanation": "The changes between consecutive rows are 17.9, 22.9, 27.7; plotted, the stopping distance forms a curve rising from left to right that becomes steeper and steeper.",
     "estimated_time_seconds": 60,
     "tags": [
       "science",
@@ -516,38 +507,34 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Body Size and Song Pitch",
+      "title": "Speed and Stopping Distance",
       "table": {
-        "caption": "Table 1. Average pitch of the song of several songbird species of different body mass.",
+        "caption": "Table 1. Distance needed for a car to stop from several speeds.",
         "headers": [
-          "Body mass (g)",
-          "Song pitch (kHz)"
+          "Speed (km/h)",
+          "Stopping distance (m)"
         ],
         "rows": [
           [
-            "20",
-            "4.78"
-          ],
-          [
-            "30",
-            "4.06"
-          ],
-          [
             "40",
-            "3.62"
-          ],
-          [
-            "50",
-            "3.31"
+            "21.3"
           ],
           [
             "60",
-            "3.08"
+            "39.2"
+          ],
+          [
+            "80",
+            "62.1"
+          ],
+          [
+            "100",
+            "89.8"
           ]
         ]
       }
     },
-    "answer_verification": "science:shape;col=1;expect=dec_slow"
+    "answer_verification": "science:shape;col=1;expect=inc_acc"
   },
   {
     "question_id": "act-science-data-representation-easy-q08",
@@ -561,31 +548,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "table_lookup",
-    "prompt": "Based on Table 1, the salinity of the water recorded at a depth of 500 m for near river mouth was:",
+    "prompt": "According to Table 1, when the year was 2016, the percent of electricity from solar was:",
     "choices": [
       {
         "id": "A",
-        "text": "34.75 g/kg",
-        "rationale": "This is the value in the row above, for 400 m."
+        "text": "31%",
+        "rationale": "This is the value in the row above, for 2015."
       },
       {
         "id": "B",
-        "text": "34.93 g/kg",
-        "rationale": "Correct. Find the row for 500 m and read across to the Salinity (g/kg), near river mouth column."
+        "text": "45%",
+        "rationale": "This is the value in the row below, for 2017."
       },
       {
         "id": "C",
-        "text": "34.895 g/kg",
-        "rationale": "This averages the rows above and below (400 m and 600 m) instead of reading the row for 500 m."
+        "text": "41%",
+        "rationale": "This value comes from the Coal (%) column, not the column asked about."
       },
       {
         "id": "D",
-        "text": "35.04 g/kg",
-        "rationale": "This is the value in the row below, for 600 m."
+        "text": "38%",
+        "rationale": "Correct. Find the row for 2016 and read across to the Solar (%) column."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Locate 500 m in the Depth (m) column, then read the Salinity (g/kg), near river mouth entry in that row: 34.93 g/kg.",
+    "correct_choice": "D",
+    "explanation": "Locate 2016 in the Year column, then read the Solar (%) entry in that row: 38%.",
     "estimated_time_seconds": 40,
     "tags": [
       "science",
@@ -595,39 +582,44 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Ocean Salinity and Depth",
+      "title": "Electricity Sources",
       "table": {
-        "caption": "Table 1. Salinity of seawater measured at several depths at one station. Results are shown for two conditions: near river mouth and open ocean.",
+        "caption": "Table 1. Percent of a region's electricity generated from coal and from solar power each year.",
         "headers": [
-          "Depth (m)",
-          "Salinity (g/kg), near river mouth",
-          "Salinity (g/kg), open ocean"
+          "Year",
+          "Coal (%)",
+          "Solar (%)"
         ],
         "rows": [
           [
-            "300",
-            "34.47",
-            "35.35"
+            "2014",
+            "55",
+            "24"
           ],
           [
-            "400",
-            "34.75",
-            "35.63"
+            "2015",
+            "48",
+            "31"
           ],
           [
-            "500",
-            "34.93",
-            "35.81"
+            "2016",
+            "41",
+            "38"
           ],
           [
-            "600",
-            "35.04",
-            "35.92"
+            "2017",
+            "34",
+            "45"
+          ],
+          [
+            "2018",
+            "27",
+            "52"
           ]
         ]
       }
     },
-    "answer_verification": "science:lookup;x=500;col=1"
+    "answer_verification": "science:lookup;x=2016;col=2"
   },
   {
     "question_id": "act-science-data-representation-easy-q09",
@@ -641,31 +633,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "trend_direction",
-    "prompt": "Which of the following best describes how the dissolved oxygen concentration changed as the temperature of the water increased from 5 °C to 25 °C?",
+    "prompt": "According to Table 1, as the body mass of the species increased from 10 g to 50 g, the pitch of the song:",
     "choices": [
       {
         "id": "A",
-        "text": "decreased only",
-        "rationale": "Correct. Reading down the column, each value is less than the one before it."
-      },
-      {
-        "id": "B",
-        "text": "increased only",
-        "rationale": "Every value is larger than the one above it; the values never fall."
-      },
-      {
-        "id": "C",
         "text": "increased, then decreased",
         "rationale": "The values rise to a maximum and then fall, which the table does not show."
       },
       {
-        "id": "D",
+        "id": "B",
         "text": "remained the same",
         "rationale": "The values change from row to row, so they did not remain the same."
+      },
+      {
+        "id": "C",
+        "text": "increased only",
+        "rationale": "Every value is larger than the one above it; the values never fall."
+      },
+      {
+        "id": "D",
+        "text": "decreased only",
+        "rationale": "Correct. Reading down the column, each value is less than the one before it."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Compare each value with the one above it: the dissolved oxygen concentration decreased.",
+    "correct_choice": "D",
+    "explanation": "Compare each value with the one above it: the pitch of the song decreased.",
     "estimated_time_seconds": 45,
     "tags": [
       "science",
@@ -675,33 +667,33 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Water Temperature and Dissolved Oxygen",
+      "title": "Body Size and Song Pitch",
       "table": {
-        "caption": "Table 1. Amount of oxygen that dissolves in water at several temperatures.",
+        "caption": "Table 1. Average pitch of the song of several songbird species of different body mass.",
         "headers": [
-          "Water temperature (°C)",
-          "Dissolved oxygen (mg/L)"
+          "Body mass (g)",
+          "Song pitch (kHz)"
         ],
         "rows": [
           [
-            "5",
-            "11.9"
-          ],
-          [
             "10",
-            "10.3"
-          ],
-          [
-            "15",
-            "9.0"
+            "5.00"
           ],
           [
             "20",
-            "8.0"
+            "3.79"
           ],
           [
-            "25",
-            "7.3"
+            "30",
+            "3.22"
+          ],
+          [
+            "40",
+            "2.87"
+          ],
+          [
+            "50",
+            "2.63"
           ]
         ]
       }
@@ -720,31 +712,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "extreme_value",
-    "prompt": "According to Table 1, the chirping rate was greatest when the air temperature was:",
+    "prompt": "For which value of distance in Table 1 was the sound intensity the greatest?",
     "choices": [
       {
         "id": "A",
-        "text": "24 °C and 27 °C, which are tied",
-        "rationale": "The values there (111 and 129) are neither equal nor the greatest."
+        "text": "2 m and 3 m, which are tied",
+        "rationale": "The values there (24.9 and 11.1) are neither equal nor the greatest."
       },
       {
         "id": "B",
-        "text": "27 °C",
-        "rationale": "The value here, 129 chirps/min, is not the greatest in the column."
+        "text": "2 m",
+        "rationale": "The value here, 24.9 µW/m², is not the greatest in the column."
       },
       {
         "id": "C",
-        "text": "30 °C",
-        "rationale": "Correct. The greatest value in the Chirps per minute (chirps/min) column is 147 chirps/min, in the row for 30 °C."
+        "text": "1 m",
+        "rationale": "Correct. The greatest value in the Intensity (µW/m²) column is 99.7 µW/m², in the row for 1 m."
       },
       {
         "id": "D",
-        "text": "21 °C",
-        "rationale": "This is where the chirping rate was least, the opposite extreme."
+        "text": "4 m",
+        "rationale": "This is where the sound intensity was least, the opposite extreme."
       }
     ],
     "correct_choice": "C",
-    "explanation": "Scan the Chirps per minute (chirps/min) column for the greatest value, 147 chirps/min, and read the temperature in that row.",
+    "explanation": "Scan the Intensity (µW/m²) column for the greatest value, 99.7 µW/m², and read the distance in that row.",
     "estimated_time_seconds": 40,
     "tags": [
       "science",
@@ -754,29 +746,29 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Temperature and Cricket Chirps",
+      "title": "Distance and Sound Intensity",
       "table": {
-        "caption": "Table 1. Number of chirps per minute made by a cricket at several air temperatures.",
+        "caption": "Table 1. Sound intensity measured at several distances from a speaker.",
         "headers": [
-          "Air temperature (°C)",
-          "Chirps per minute (chirps/min)"
+          "Distance (m)",
+          "Intensity (µW/m²)"
         ],
         "rows": [
           [
-            "21",
-            "93"
+            "1",
+            "99.7"
           ],
           [
-            "24",
-            "111"
+            "2",
+            "24.9"
           ],
           [
-            "27",
-            "129"
+            "3",
+            "11.1"
           ],
           [
-            "30",
-            "147"
+            "4",
+            "6.2"
           ]
         ]
       }
@@ -795,31 +787,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "table_lookup",
-    "prompt": "In Table 1, a value of 42.9 m³/s for the flow rate of the river corresponds to which rainfall?",
+    "prompt": "In Table 1, a value of 3.51 kHz for the pitch of the song corresponds to which body mass?",
     "choices": [
       {
         "id": "A",
-        "text": "50 mm",
-        "rationale": "At 50 mm the table lists 33.7 m³/s, not 42.9 m³/s."
+        "text": "30 g",
+        "rationale": "At 30 g the table lists 2.98 kHz, not 3.51 kHz."
       },
       {
         "id": "B",
-        "text": "40 mm",
-        "rationale": "At 40 mm the table lists 25.9 m³/s, not 42.9 m³/s."
+        "text": "40 g",
+        "rationale": "At 40 g the table lists 2.66 kHz, not 3.51 kHz."
       },
       {
         "id": "C",
-        "text": "60 mm",
-        "rationale": "Correct. Find 42.9 m³/s in the Flow rate (m³/s) column and read the rainfall in the same row."
+        "text": "Cannot be determined from Table 1",
+        "rationale": "The table does list 3.51 kHz; read the body mass in that row."
       },
       {
         "id": "D",
-        "text": "Cannot be determined from Table 1",
-        "rationale": "The table does list 42.9 m³/s; read the rainfall in that row."
+        "text": "20 g",
+        "rationale": "Correct. Find 3.51 kHz in the Song pitch (kHz) column and read the body mass in the same row."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Search the Flow rate (m³/s) column for 42.9 m³/s; it appears in the row where rainfall is 60 mm.",
+    "correct_choice": "D",
+    "explanation": "Search the Song pitch (kHz) column for 3.51 kHz; it appears in the row where body mass is 20 g.",
     "estimated_time_seconds": 40,
     "tags": [
       "science",
@@ -829,38 +821,38 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Rainfall and River Flow",
+      "title": "Body Size and Song Pitch",
       "table": {
-        "caption": "Table 1. Flow rate of a river measured the day after several amounts of rain.",
+        "caption": "Table 1. Average pitch of the song of several songbird species of different body mass.",
         "headers": [
-          "Rainfall (mm)",
-          "Flow rate (m³/s)"
+          "Body mass (g)",
+          "Song pitch (kHz)"
         ],
         "rows": [
           [
             "20",
-            "14.4"
+            "3.51"
           ],
           [
             "30",
-            "19.5"
+            "2.98"
           ],
           [
             "40",
-            "25.9"
+            "2.66"
           ],
           [
             "50",
-            "33.7"
+            "2.43"
           ],
           [
             "60",
-            "42.9"
+            "2.26"
           ]
         ]
       }
     },
-    "answer_verification": "science:invlookup;v=42.9;col=1"
+    "answer_verification": "science:invlookup;v=3.51;col=1"
   },
   {
     "question_id": "act-science-data-representation-easy-q12",
@@ -874,31 +866,31 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "figure_reading",
-    "prompt": "Based on Figure 1, the boiling point of the water at an altitude of 2000 m was approximately:",
+    "prompt": "Based on Figure 1, the height of the dough at a temperature of 20 °C was approximately:",
     "choices": [
       {
         "id": "A",
-        "text": "95.0 °C",
-        "rationale": "This is the height of the point at 1500 m, a different position on the horizontal axis."
+        "text": "6.9 cm",
+        "rationale": "This is the height of the point at 25 °C, a different position on the horizontal axis."
       },
       {
         "id": "B",
-        "text": "91.6 °C",
-        "rationale": "This is the height of the point at 2500 m, a different position on the horizontal axis."
+        "text": "8.7 cm",
+        "rationale": "This is the height of the point at 30 °C, a different position on the horizontal axis."
       },
       {
         "id": "C",
-        "text": "93.3 °C",
-        "rationale": "Correct. The point plotted at 2000 m on the horizontal axis sits at about 93.3 °C on the vertical axis."
+        "text": "4.6 cm",
+        "rationale": "Correct. The point plotted at 20 °C on the horizontal axis sits at about 4.6 cm on the vertical axis."
       },
       {
         "id": "D",
-        "text": "94.15 °C",
-        "rationale": "This is halfway between the point at 2000 m and its neighbour at 1500 m, not the height of the point itself."
+        "text": "5.75 cm",
+        "rationale": "This is halfway between the point at 20 °C and its neighbour at 25 °C, not the height of the point itself."
       }
     ],
     "correct_choice": "C",
-    "explanation": "Find 2000 m on the horizontal axis, move up to the plotted point, and read its height on the vertical axis: about 93.3 °C.",
+    "explanation": "Find 20 °C on the horizontal axis, move up to the plotted point, and read its height on the vertical axis: about 4.6 cm.",
     "estimated_time_seconds": 45,
     "tags": [
       "science",
@@ -908,36 +900,36 @@
     ],
     "stimulus": {
       "type": "figure",
-      "title": "Altitude and Boiling Point",
+      "title": "Proofing Temperature and Dough Rise",
       "figure": {
         "kind": "scatter",
         "points": [
           [
-            500.0,
-            98.3
+            20.0,
+            4.6
           ],
           [
-            1000.0,
-            96.6
+            25.0,
+            6.9
           ],
           [
-            1500.0,
-            95.0
+            30.0,
+            8.7
           ],
           [
-            2000.0,
-            93.3
+            35.0,
+            7.9
           ],
           [
-            2500.0,
-            91.6
+            40.0,
+            5.4
           ]
         ],
-        "xlabel": "Altitude (m)",
-        "ylabel": "Boiling point (°C)",
-        "caption": "Figure 1. Boiling point (°C) (vertical axis) versus Altitude (m) (horizontal axis). Each point is one trial."
+        "xlabel": "Temperature (°C)",
+        "ylabel": "Dough height (cm)",
+        "caption": "Figure 1. Dough height (cm) (vertical axis) versus Temperature (°C) (horizontal axis). Each point is one trial."
       }
     },
-    "answer_verification": "science:fig_lookup;x=2000"
+    "answer_verification": "science:fig_lookup;x=20"
   }
 ]

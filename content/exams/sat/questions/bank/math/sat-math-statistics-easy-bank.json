@@ -10,39 +10,39 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "spread",
-    "prompt": "What is the third quartile of the data set 44, 19, 16, 51, 21, 23, 42, 29?",
+    "subskill": "mean_median_mode",
+    "prompt": "The data set 13, 18, 19, 23, 33, 33, 36 has mean 25 and median 23. If the value 94 is added to the set, which statistic changes by more?",
     "choices": [
       {
         "id": "A",
-        "text": "43",
+        "text": "The mean, which increases from 25 to 269/8.",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "51",
-        "rationale": "That is the minimum/maximum, not a quartile."
+        "text": "The median, which increases from 23 to 28.",
+        "rationale": "The median moves only to 28; the mean moves to 269/8."
       },
       {
         "id": "C",
-        "text": "20",
-        "rationale": "That is the first quartile."
+        "text": "Neither changes, because one value cannot affect a summary statistic.",
+        "rationale": "Every value affects the mean."
       },
       {
         "id": "D",
-        "text": "26",
-        "rationale": "That is the median (second quartile)."
+        "text": "Both change by the same amount.",
+        "rationale": "The mean is pulled by the outlier much more than the median."
       }
     ],
     "correct_choice": "A",
-    "explanation": "Order the data: 16, 19, 21, 23, 29, 42, 44, 51. The median is 26; the third quartile is the median of the upper half: 43.",
+    "explanation": "New mean = (175 + 94)/8 = 269/8; new median = 28. The mean changes far more.",
     "estimated_time_seconds": 85,
     "tags": [
       "statistics",
-      "quartiles",
-      "family:st_quartiles"
+      "outlier",
+      "family:st_outlier_effect"
     ],
-    "answer_verification": "q1=20,q3=43"
+    "answer_verification": "mean 25->269/8, median 23->28"
   },
   {
     "question_id": "sat-math-statistics-easy-b0002",
@@ -54,40 +54,68 @@
     "lesson_id": "sat-math-statistics-easy",
     "difficulty": "easy",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The data set 15, 19, 20, 21, 35 has mean 22 and median 20. If the value 101 is added to the set, which statistic changes by more?",
+    "prompt": "The table summarizes data for 16 students. What is the mode of the data?",
     "choices": [
       {
         "id": "A",
-        "text": "Both change by the same amount.",
-        "rationale": "The mean is pulled by the outlier much more than the median."
+        "text": "6",
+        "rationale": "That is the frequency, not the value that occurs most."
       },
       {
         "id": "B",
-        "text": "Neither changes, because one value cannot affect a summary statistic.",
-        "rationale": "Every value affects the mean."
+        "text": "4",
+        "rationale": "The mode is the most frequent value, not the largest."
       },
       {
         "id": "C",
-        "text": "The mean, which increases from 22 to 211/6.",
-        "rationale": "Correct."
+        "text": "16",
+        "rationale": "That is the number of students."
       },
       {
         "id": "D",
-        "text": "The median, which increases from 20 to 41/2.",
-        "rationale": "The median moves only to 41/2; the mean moves to 211/6."
+        "text": "2",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "New mean = (110 + 101)/6 = 211/6; new median = 41/2. The mean changes far more.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "D",
+    "explanation": "The mode is the value with the greatest frequency: 2 (frequency 6).",
+    "estimated_time_seconds": 80,
     "tags": [
       "statistics",
-      "outlier",
-      "family:st_outlier_effect"
+      "table",
+      "family:st_frequency_table"
     ],
-    "answer_verification": "mean 22->211/6, median 20->41/2"
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Frequency table",
+        "headers": [
+          "Number of pets",
+          "Number of students"
+        ],
+        "rows": [
+          [
+            "1",
+            "2"
+          ],
+          [
+            "2",
+            "6"
+          ],
+          [
+            "3",
+            "5"
+          ],
+          [
+            "4",
+            "3"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "val=2"
   },
   {
     "question_id": "sat-math-statistics-easy-b0003",
@@ -99,253 +127,82 @@
     "lesson_id": "sat-math-statistics-easy",
     "difficulty": "easy",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "spread",
-    "prompt": "The scores on a quiz were 18, 20, 12, 13, 33. What is the range of the scores?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "18",
-        "rationale": "This is the median, not the range."
-      },
-      {
-        "id": "B",
-        "text": "21",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "33",
-        "rationale": "This is the greatest value, not the range."
-      },
-      {
-        "id": "D",
-        "text": "96/5",
-        "rationale": "This is the mean, not the range."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Range = greatest − least = 33 − 12 = 21.",
-    "estimated_time_seconds": 65,
-    "tags": [
-      "statistics",
-      "range",
-      "family:st_spread"
-    ],
-    "answer_verification": "range=21"
-  },
-  {
-    "question_id": "sat-math-statistics-easy-b0004",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "statistics",
-    "lesson_id": "sat-math-statistics-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "mean_median_mode",
-    "prompt": "The mean of the data set 15, 17, 24, 32, 37 is 25. If 7 is added to every value, what is the new mean?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "175",
-        "rationale": "The values are shifted, not multiplied."
-      },
-      {
-        "id": "B",
-        "text": "132/5",
-        "rationale": "Every value increases by 7, so the mean does too (not by 7/5)."
-      },
-      {
-        "id": "C",
-        "text": "25",
-        "rationale": "The mean shifts by the same amount as the data."
-      },
-      {
-        "id": "D",
-        "text": "32",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Adding 7 to every value adds 7 to the mean: 25 + 7 = 32.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "statistics",
-      "mean",
-      "change",
-      "family:st_change_effect"
-    ],
-    "answer_verification": "val=32"
-  },
-  {
-    "question_id": "sat-math-statistics-easy-b0005",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "statistics",
-    "lesson_id": "sat-math-statistics-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "mean_median_mode",
-    "prompt": "The daily high temperatures, in °F, over 5 days were 5, 12, 5, 14, 25. What was the median high temperature?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "61/5",
-        "rationale": "This is the mean, not the median."
-      },
-      {
-        "id": "B",
-        "text": "20",
-        "rationale": "This is the range, not the median."
-      },
-      {
-        "id": "C",
-        "text": "12",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "5",
-        "rationale": "The median is the middle value of the ordered data, not the smallest."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "Order the data: 5, 5, 12, 14, 25. The middle value is 12.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "statistics",
-      "median",
-      "family:st_center_list"
-    ],
-    "answer_verification": "median=12"
-  },
-  {
-    "question_id": "sat-math-statistics-easy-b0006",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "statistics",
-    "lesson_id": "sat-math-statistics-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "mean_median_mode",
-    "prompt": "The mean of the data set 9, 11, 14, 24, 27 is 17. If 8 is added to every value, what is the new mean?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "17",
-        "rationale": "The mean shifts by the same amount as the data."
-      },
-      {
-        "id": "B",
-        "text": "25",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "136",
-        "rationale": "The values are shifted, not multiplied."
-      },
-      {
-        "id": "D",
-        "text": "93/5",
-        "rationale": "Every value increases by 8, so the mean does too (not by 8/5)."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Adding 8 to every value adds 8 to the mean: 17 + 8 = 25.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "statistics",
-      "mean",
-      "change",
-      "family:st_change_effect"
-    ],
-    "answer_verification": "val=25"
-  },
-  {
-    "question_id": "sat-math-statistics-easy-b0007",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "statistics",
-    "lesson_id": "sat-math-statistics-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
     "question_type": "data_interpretation",
-    "subskill": "mean_median_mode",
-    "prompt": "The table summarizes survey responses. How many people were surveyed in total?",
+    "subskill": "spread",
+    "prompt": "The table shows how many responses in two groups took each value (Group A: 18 responses, Group B: 12). Which group's data has the greater standard deviation?",
     "choices": [
       {
         "id": "A",
-        "text": "6",
-        "rationale": "That is one frequency, not the total."
+        "text": "The groups have the same standard deviation, because they have the same values.",
+        "rationale": "The frequencies differ, so the spreads differ."
       },
       {
         "id": "B",
-        "text": "14",
+        "text": "Group A, because its responses are spread farther from the center.",
         "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "30",
-        "rationale": "That is the total of all responses' values, not the number of people."
+        "text": "Group B, because it has more responses at a single value.",
+        "rationale": "A tall peak at the center indicates less spread."
       },
       {
         "id": "D",
-        "text": "10",
-        "rationale": "Add the frequencies, not the values."
+        "text": "Group B, because its responses cluster near the center.",
+        "rationale": "Clustering near the center means a SMALLER standard deviation."
       }
     ],
     "correct_choice": "B",
-    "explanation": "Add the frequencies: 6 + 2 + 4 + 2 = 14.",
-    "estimated_time_seconds": 80,
+    "explanation": "Group A has many responses at the extreme values and few in the middle, so its spread (standard deviation) is larger.",
+    "estimated_time_seconds": 90,
     "tags": [
       "statistics",
       "table",
-      "family:st_frequency_table"
+      "standard-deviation",
+      "family:st_compare_tables"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Number of responses by value",
         "headers": [
-          "Goals scored",
-          "Number of games"
+          "Value",
+          "Group A",
+          "Group B"
         ],
         "rows": [
           [
             "1",
-            "6"
+            "8",
+            "0"
           ],
           [
             "2",
+            "1",
             "2"
           ],
           [
             "3",
-            "4"
+            "2",
+            "7"
           ],
           [
             "4",
-            "2"
+            "3",
+            "3"
+          ],
+          [
+            "5",
+            "4",
+            "0"
           ]
         ]
       }
     },
-    "answer_verification": "val=14"
+    "answer_verification": "wide=A"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0008",
+    "question_id": "sat-math-statistics-easy-b0004",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -390,7 +247,7 @@
     "answer_verification": "mean=16"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0009",
+    "question_id": "sat-math-statistics-easy-b0005",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -435,7 +292,7 @@
     "answer_verification": "q1=35/2,q3=71/2"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0010",
+    "question_id": "sat-math-statistics-easy-b0006",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -480,7 +337,7 @@
     "answer_verification": "range=29"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0011",
+    "question_id": "sat-math-statistics-easy-b0007",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -564,7 +421,7 @@
     "answer_verification": "wide=B"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0012",
+    "question_id": "sat-math-statistics-easy-b0008",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -594,7 +451,7 @@
     "answer_verification": "val=10"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0013",
+    "question_id": "sat-math-statistics-easy-b0009",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -639,7 +496,7 @@
     "answer_verification": "range=28"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0014",
+    "question_id": "sat-math-statistics-easy-b0010",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -684,7 +541,7 @@
     "answer_verification": "range=36"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0015",
+    "question_id": "sat-math-statistics-easy-b0011",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -695,7 +552,7 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 15 people. What is the mode of the data?",
+    "prompt": "The table summarizes data for 15 readers. What is the mode of the data?",
     "choices": [
       {
         "id": "A",
@@ -705,7 +562,7 @@
       {
         "id": "B",
         "text": "15",
-        "rationale": "That is the number of people surveyed."
+        "rationale": "That is the number of readers."
       },
       {
         "id": "C",
@@ -729,7 +586,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Books read",
           "Number of readers"
@@ -757,7 +614,7 @@
     "answer_verification": "val=4"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0016",
+    "question_id": "sat-math-statistics-easy-b0012",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -841,7 +698,7 @@
     "answer_verification": "wide=A"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0017",
+    "question_id": "sat-math-statistics-easy-b0013",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -871,7 +728,7 @@
     "answer_verification": "val=19"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0018",
+    "question_id": "sat-math-statistics-easy-b0014",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -955,7 +812,7 @@
     "answer_verification": "wide=B"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0019",
+    "question_id": "sat-math-statistics-easy-b0015",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -966,7 +823,7 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table summarizes survey responses. How many people were surveyed in total?",
+    "prompt": "The table summarizes data about readers. How many readers are represented in the table in total?",
     "choices": [
       {
         "id": "A",
@@ -981,7 +838,7 @@
       {
         "id": "C",
         "text": "48",
-        "rationale": "That is the total of all responses' values, not the number of people."
+        "rationale": "That is the total of all the values, not the number of readers."
       },
       {
         "id": "D",
@@ -1000,7 +857,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Books read",
           "Number of readers"
@@ -1028,7 +885,7 @@
     "answer_verification": "val=16"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0020",
+    "question_id": "sat-math-statistics-easy-b0016",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1058,7 +915,7 @@
     "answer_verification": "val=15"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0021",
+    "question_id": "sat-math-statistics-easy-b0017",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1103,7 +960,7 @@
     "answer_verification": "mean 21->227/8, median 18->19"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0022",
+    "question_id": "sat-math-statistics-easy-b0018",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1114,7 +971,7 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table summarizes survey responses. How many people were surveyed in total?",
+    "prompt": "The table summarizes data about readers. How many readers are represented in the table in total?",
     "choices": [
       {
         "id": "A",
@@ -1134,7 +991,7 @@
       {
         "id": "D",
         "text": "70",
-        "rationale": "That is the total of all responses' values, not the number of people."
+        "rationale": "That is the total of all the values, not the number of readers."
       }
     ],
     "correct_choice": "C",
@@ -1148,7 +1005,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Books read",
           "Number of readers"
@@ -1176,7 +1033,7 @@
     "answer_verification": "val=27"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0023",
+    "question_id": "sat-math-statistics-easy-b0019",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1206,7 +1063,7 @@
     "answer_verification": "val=17"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0024",
+    "question_id": "sat-math-statistics-easy-b0020",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1217,7 +1074,7 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table summarizes survey responses. How many people were surveyed in total?",
+    "prompt": "The table summarizes data about games. How many games are represented in the table in total?",
     "choices": [
       {
         "id": "A",
@@ -1227,7 +1084,7 @@
       {
         "id": "B",
         "text": "59",
-        "rationale": "That is the total of all responses' values, not the number of people."
+        "rationale": "That is the total of all the values, not the number of games."
       },
       {
         "id": "C",
@@ -1251,7 +1108,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Goals scored",
           "Number of games"
@@ -1279,7 +1136,7 @@
     "answer_verification": "val=26"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0025",
+    "question_id": "sat-math-statistics-easy-b0021",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1363,7 +1220,7 @@
     "answer_verification": "wide=A"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0026",
+    "question_id": "sat-math-statistics-easy-b0022",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1447,7 +1304,7 @@
     "answer_verification": "wide=B"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0027",
+    "question_id": "sat-math-statistics-easy-b0023",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1492,7 +1349,7 @@
     "answer_verification": "mean=11"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0028",
+    "question_id": "sat-math-statistics-easy-b0024",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1537,7 +1394,7 @@
     "answer_verification": "range=38"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0029",
+    "question_id": "sat-math-statistics-easy-b0025",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1548,7 +1405,7 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table summarizes survey responses. How many people were surveyed in total?",
+    "prompt": "The table summarizes data about children. How many children are represented in the table in total?",
     "choices": [
       {
         "id": "A",
@@ -1568,7 +1425,7 @@
       {
         "id": "D",
         "text": "21",
-        "rationale": "That is the total of all responses' values, not the number of people."
+        "rationale": "That is the total of all the values, not the number of children."
       }
     ],
     "correct_choice": "A",
@@ -1582,7 +1439,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Siblings",
           "Number of children"
@@ -1610,7 +1467,7 @@
     "answer_verification": "val=13"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0030",
+    "question_id": "sat-math-statistics-easy-b0026",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1655,7 +1512,7 @@
     "answer_verification": "median=18"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0031",
+    "question_id": "sat-math-statistics-easy-b0027",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1685,7 +1542,7 @@
     "answer_verification": "val=18"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0032",
+    "question_id": "sat-math-statistics-easy-b0028",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1730,7 +1587,7 @@
     "answer_verification": "missing=30"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0033",
+    "question_id": "sat-math-statistics-easy-b0029",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1814,7 +1671,7 @@
     "answer_verification": "wide=A"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0034",
+    "question_id": "sat-math-statistics-easy-b0030",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1859,7 +1716,7 @@
     "answer_verification": "q1=10,q3=81/2"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0035",
+    "question_id": "sat-math-statistics-easy-b0031",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1904,7 +1761,7 @@
     "answer_verification": "median=14"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0036",
+    "question_id": "sat-math-statistics-easy-b0032",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1988,7 +1845,7 @@
     "answer_verification": "wide=A"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0037",
+    "question_id": "sat-math-statistics-easy-b0033",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2034,7 +1891,7 @@
     "answer_verification": "val=28"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0038",
+    "question_id": "sat-math-statistics-easy-b0034",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2118,7 +1975,7 @@
     "answer_verification": "wide=B"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0039",
+    "question_id": "sat-math-statistics-easy-b0035",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2163,7 +2020,7 @@
     "answer_verification": "median=17"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0040",
+    "question_id": "sat-math-statistics-easy-b0036",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2247,7 +2104,7 @@
     "answer_verification": "wide=A"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0041",
+    "question_id": "sat-math-statistics-easy-b0037",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2292,7 +2149,7 @@
     "answer_verification": "q1=23,q3=97/2"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0042",
+    "question_id": "sat-math-statistics-easy-b0038",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2337,7 +2194,7 @@
     "answer_verification": "mean=15"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0043",
+    "question_id": "sat-math-statistics-easy-b0039",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2421,7 +2278,7 @@
     "answer_verification": "wide=B"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0044",
+    "question_id": "sat-math-statistics-easy-b0040",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2466,7 +2323,7 @@
     "answer_verification": "mean 23->63/2, median 17->26"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0045",
+    "question_id": "sat-math-statistics-easy-b0041",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2511,7 +2368,7 @@
     "answer_verification": "mean 34->41, median 33->67/2"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0046",
+    "question_id": "sat-math-statistics-easy-b0042",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2556,7 +2413,7 @@
     "answer_verification": "q1=39,q3=47"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0047",
+    "question_id": "sat-math-statistics-easy-b0043",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2567,12 +2424,12 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table summarizes survey responses. How many people were surveyed in total?",
+    "prompt": "The table summarizes data about students. How many students are represented in the table in total?",
     "choices": [
       {
         "id": "A",
         "text": "25",
-        "rationale": "That is the total of all responses' values, not the number of people."
+        "rationale": "That is the total of all the values, not the number of students."
       },
       {
         "id": "B",
@@ -2601,7 +2458,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Number of pets",
           "Number of students"
@@ -2629,7 +2486,7 @@
     "answer_verification": "val=15"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0048",
+    "question_id": "sat-math-statistics-easy-b0044",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2674,7 +2531,7 @@
     "answer_verification": "range=37"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0049",
+    "question_id": "sat-math-statistics-easy-b0045",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2719,7 +2576,7 @@
     "answer_verification": "missing=1"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0050",
+    "question_id": "sat-math-statistics-easy-b0046",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2765,7 +2622,7 @@
     "answer_verification": "val=25"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0051",
+    "question_id": "sat-math-statistics-easy-b0047",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2849,7 +2706,7 @@
     "answer_verification": "wide=A"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0052",
+    "question_id": "sat-math-statistics-easy-b0048",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2894,7 +2751,7 @@
     "answer_verification": "median=15"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0053",
+    "question_id": "sat-math-statistics-easy-b0049",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2939,7 +2796,7 @@
     "answer_verification": "q1=34,q3=49"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0054",
+    "question_id": "sat-math-statistics-easy-b0050",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2950,7 +2807,7 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 18 people. What is the mode of the data?",
+    "prompt": "The table summarizes data for 18 readers. What is the mode of the data?",
     "choices": [
       {
         "id": "A",
@@ -2970,7 +2827,7 @@
       {
         "id": "D",
         "text": "18",
-        "rationale": "That is the number of people surveyed."
+        "rationale": "That is the number of readers."
       }
     ],
     "correct_choice": "A",
@@ -2984,7 +2841,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Books read",
           "Number of readers"
@@ -3012,7 +2869,7 @@
     "answer_verification": "val=3"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0055",
+    "question_id": "sat-math-statistics-easy-b0051",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3096,7 +2953,7 @@
     "answer_verification": "wide=B"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0056",
+    "question_id": "sat-math-statistics-easy-b0052",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3141,7 +2998,7 @@
     "answer_verification": "mean 23->247/8, median 23->24"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0057",
+    "question_id": "sat-math-statistics-easy-b0053",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3171,7 +3028,7 @@
     "answer_verification": "val=9"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0058",
+    "question_id": "sat-math-statistics-easy-b0054",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3216,7 +3073,7 @@
     "answer_verification": "missing=32"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0059",
+    "question_id": "sat-math-statistics-easy-b0055",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3261,7 +3118,7 @@
     "answer_verification": "mean 25->33, median 17->25"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0060",
+    "question_id": "sat-math-statistics-easy-b0056",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3272,7 +3129,7 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table summarizes survey responses. How many people were surveyed in total?",
+    "prompt": "The table summarizes data about children. How many children are represented in the table in total?",
     "choices": [
       {
         "id": "A",
@@ -3287,7 +3144,7 @@
       {
         "id": "C",
         "text": "19",
-        "rationale": "That is the total of all responses' values, not the number of people."
+        "rationale": "That is the total of all the values, not the number of children."
       },
       {
         "id": "D",
@@ -3306,7 +3163,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Siblings",
           "Number of children"
@@ -3334,7 +3191,7 @@
     "answer_verification": "val=7"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0061",
+    "question_id": "sat-math-statistics-easy-b0057",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3379,7 +3236,7 @@
     "answer_verification": "mean 25->263/8, median 25->25"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0062",
+    "question_id": "sat-math-statistics-easy-b0058",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3424,7 +3281,7 @@
     "answer_verification": "median=18"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0063",
+    "question_id": "sat-math-statistics-easy-b0059",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3470,7 +3327,7 @@
     "answer_verification": "val=26"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0064",
+    "question_id": "sat-math-statistics-easy-b0060",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3515,7 +3372,7 @@
     "answer_verification": "missing=22"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0065",
+    "question_id": "sat-math-statistics-easy-b0061",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3560,7 +3417,7 @@
     "answer_verification": "range=26"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0066",
+    "question_id": "sat-math-statistics-easy-b0062",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3606,7 +3463,7 @@
     "answer_verification": "val=24"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0067",
+    "question_id": "sat-math-statistics-easy-b0063",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3651,7 +3508,7 @@
     "answer_verification": "mean 28->319/8, median 29->59/2"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0068",
+    "question_id": "sat-math-statistics-easy-b0064",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3696,7 +3553,7 @@
     "answer_verification": "q1=35,q3=113/2"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0069",
+    "question_id": "sat-math-statistics-easy-b0065",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3741,7 +3598,7 @@
     "answer_verification": "range=29"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0070",
+    "question_id": "sat-math-statistics-easy-b0066",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3787,7 +3644,7 @@
     "answer_verification": "val=23"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0071",
+    "question_id": "sat-math-statistics-easy-b0067",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3832,7 +3689,7 @@
     "answer_verification": "mean 27->75/2, median 28->29"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0072",
+    "question_id": "sat-math-statistics-easy-b0068",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3877,7 +3734,7 @@
     "answer_verification": "q1=29/2,q3=52"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0073",
+    "question_id": "sat-math-statistics-easy-b0069",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3922,7 +3779,7 @@
     "answer_verification": "range=32"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0074",
+    "question_id": "sat-math-statistics-easy-b0070",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3967,7 +3824,7 @@
     "answer_verification": "missing=11"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0075",
+    "question_id": "sat-math-statistics-easy-b0071",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3997,7 +3854,7 @@
     "answer_verification": "val=14"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0076",
+    "question_id": "sat-math-statistics-easy-b0072",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4081,7 +3938,7 @@
     "answer_verification": "wide=A"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0077",
+    "question_id": "sat-math-statistics-easy-b0073",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4126,7 +3983,7 @@
     "answer_verification": "missing=19"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0078",
+    "question_id": "sat-math-statistics-easy-b0074",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4210,7 +4067,7 @@
     "answer_verification": "wide=A"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0079",
+    "question_id": "sat-math-statistics-easy-b0075",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4221,7 +4078,7 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 26 people. What is the mode of the data?",
+    "prompt": "The table summarizes data for 26 readers. What is the mode of the data?",
     "choices": [
       {
         "id": "A",
@@ -4236,7 +4093,7 @@
       {
         "id": "C",
         "text": "26",
-        "rationale": "That is the number of people surveyed."
+        "rationale": "That is the number of readers."
       },
       {
         "id": "D",
@@ -4255,7 +4112,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Books read",
           "Number of readers"
@@ -4283,7 +4140,7 @@
     "answer_verification": "val=2"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0080",
+    "question_id": "sat-math-statistics-easy-b0076",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4328,7 +4185,7 @@
     "answer_verification": "mean=13"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0081",
+    "question_id": "sat-math-statistics-easy-b0077",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4373,7 +4230,7 @@
     "answer_verification": "range=26"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0082",
+    "question_id": "sat-math-statistics-easy-b0078",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4418,7 +4275,7 @@
     "answer_verification": "missing=36"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0083",
+    "question_id": "sat-math-statistics-easy-b0079",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4463,7 +4320,7 @@
     "answer_verification": "range=24"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0084",
+    "question_id": "sat-math-statistics-easy-b0080",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4508,7 +4365,7 @@
     "answer_verification": "mean=11"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0085",
+    "question_id": "sat-math-statistics-easy-b0081",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4519,7 +4376,7 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table summarizes survey responses. How many people were surveyed in total?",
+    "prompt": "The table summarizes data about games. How many games are represented in the table in total?",
     "choices": [
       {
         "id": "A",
@@ -4529,7 +4386,7 @@
       {
         "id": "B",
         "text": "18",
-        "rationale": "That is the total of all responses' values, not the number of people."
+        "rationale": "That is the total of all the values, not the number of games."
       },
       {
         "id": "C",
@@ -4553,7 +4410,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Goals scored",
           "Number of games"
@@ -4581,7 +4438,7 @@
     "answer_verification": "val=10"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0086",
+    "question_id": "sat-math-statistics-easy-b0082",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4592,7 +4449,7 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table summarizes survey responses. How many people were surveyed in total?",
+    "prompt": "The table summarizes data about games. How many games are represented in the table in total?",
     "choices": [
       {
         "id": "A",
@@ -4607,7 +4464,7 @@
       {
         "id": "C",
         "text": "45",
-        "rationale": "That is the total of all responses' values, not the number of people."
+        "rationale": "That is the total of all the values, not the number of games."
       },
       {
         "id": "D",
@@ -4626,7 +4483,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Goals scored",
           "Number of games"
@@ -4654,7 +4511,7 @@
     "answer_verification": "val=21"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0087",
+    "question_id": "sat-math-statistics-easy-b0083",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4699,7 +4556,7 @@
     "answer_verification": "median=12"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0088",
+    "question_id": "sat-math-statistics-easy-b0084",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4729,7 +4586,7 @@
     "answer_verification": "val=13"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0089",
+    "question_id": "sat-math-statistics-easy-b0085",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4759,7 +4616,7 @@
     "answer_verification": "val=12"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0090",
+    "question_id": "sat-math-statistics-easy-b0086",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4805,7 +4662,7 @@
     "answer_verification": "val=34"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0091",
+    "question_id": "sat-math-statistics-easy-b0087",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4850,7 +4707,7 @@
     "answer_verification": "q1=27,q3=99/2"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0092",
+    "question_id": "sat-math-statistics-easy-b0088",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4896,7 +4753,7 @@
     "answer_verification": "val=33"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0093",
+    "question_id": "sat-math-statistics-easy-b0089",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4941,7 +4798,7 @@
     "answer_verification": "range=35"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0094",
+    "question_id": "sat-math-statistics-easy-b0090",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4952,7 +4809,7 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table summarizes survey responses. How many people were surveyed in total?",
+    "prompt": "The table summarizes data about readers. How many readers are represented in the table in total?",
     "choices": [
       {
         "id": "A",
@@ -4972,7 +4829,7 @@
       {
         "id": "D",
         "text": "39",
-        "rationale": "That is the total of all responses' values, not the number of people."
+        "rationale": "That is the total of all the values, not the number of readers."
       }
     ],
     "correct_choice": "B",
@@ -4986,7 +4843,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Books read",
           "Number of readers"
@@ -5014,7 +4871,7 @@
     "answer_verification": "val=26"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0095",
+    "question_id": "sat-math-statistics-easy-b0091",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5059,7 +4916,7 @@
     "answer_verification": "missing=35"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0096",
+    "question_id": "sat-math-statistics-easy-b0092",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5089,7 +4946,7 @@
     "answer_verification": "val=15"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0097",
+    "question_id": "sat-math-statistics-easy-b0093",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5119,7 +4976,7 @@
     "answer_verification": "val=15"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0098",
+    "question_id": "sat-math-statistics-easy-b0094",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5164,7 +5021,7 @@
     "answer_verification": "missing=3"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0099",
+    "question_id": "sat-math-statistics-easy-b0095",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5209,7 +5066,7 @@
     "answer_verification": "mean 30->305/8, median 34->71/2"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0100",
+    "question_id": "sat-math-statistics-easy-b0096",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5239,7 +5096,7 @@
     "answer_verification": "val=15"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0101",
+    "question_id": "sat-math-statistics-easy-b0097",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5284,7 +5141,7 @@
     "answer_verification": "missing=24"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0102",
+    "question_id": "sat-math-statistics-easy-b0098",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5295,12 +5152,12 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table summarizes survey responses. How many people were surveyed in total?",
+    "prompt": "The table summarizes data about students. How many students are represented in the table in total?",
     "choices": [
       {
         "id": "A",
         "text": "35",
-        "rationale": "That is the total of all responses' values, not the number of people."
+        "rationale": "That is the total of all the values, not the number of students."
       },
       {
         "id": "B",
@@ -5329,7 +5186,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Number of pets",
           "Number of students"
@@ -5357,7 +5214,7 @@
     "answer_verification": "val=20"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0103",
+    "question_id": "sat-math-statistics-easy-b0099",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5402,7 +5259,7 @@
     "answer_verification": "q1=23/2,q3=93/2"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0104",
+    "question_id": "sat-math-statistics-easy-b0100",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5447,7 +5304,7 @@
     "answer_verification": "mean 20->203/6, median 19->22"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0105",
+    "question_id": "sat-math-statistics-easy-b0101",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5458,7 +5315,7 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 25 people. What is the mode of the data?",
+    "prompt": "The table summarizes data for 25 children. What is the mode of the data?",
     "choices": [
       {
         "id": "A",
@@ -5478,7 +5335,7 @@
       {
         "id": "D",
         "text": "25",
-        "rationale": "That is the number of people surveyed."
+        "rationale": "That is the number of children."
       }
     ],
     "correct_choice": "C",
@@ -5492,7 +5349,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Siblings",
           "Number of children"
@@ -5520,7 +5377,7 @@
     "answer_verification": "val=2"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0106",
+    "question_id": "sat-math-statistics-easy-b0102",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5565,7 +5422,7 @@
     "answer_verification": "mean=11"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0107",
+    "question_id": "sat-math-statistics-easy-b0103",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5576,7 +5433,7 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 15 people. What is the mode of the data?",
+    "prompt": "The table summarizes data for 15 readers. What is the mode of the data?",
     "choices": [
       {
         "id": "A",
@@ -5586,7 +5443,7 @@
       {
         "id": "B",
         "text": "15",
-        "rationale": "That is the number of people surveyed."
+        "rationale": "That is the number of readers."
       },
       {
         "id": "C",
@@ -5610,7 +5467,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Books read",
           "Number of readers"
@@ -5638,7 +5495,7 @@
     "answer_verification": "val=2"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0108",
+    "question_id": "sat-math-statistics-easy-b0104",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5683,7 +5540,7 @@
     "answer_verification": "mean 29->285/8, median 32->33"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0109",
+    "question_id": "sat-math-statistics-easy-b0105",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5728,7 +5585,7 @@
     "answer_verification": "range=40"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0110",
+    "question_id": "sat-math-statistics-easy-b0106",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5739,7 +5596,7 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 20 people. What is the mode of the data?",
+    "prompt": "The table summarizes data for 20 games. What is the mode of the data?",
     "choices": [
       {
         "id": "A",
@@ -5749,7 +5606,7 @@
       {
         "id": "B",
         "text": "20",
-        "rationale": "That is the number of people surveyed."
+        "rationale": "That is the number of games."
       },
       {
         "id": "C",
@@ -5773,7 +5630,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Goals scored",
           "Number of games"
@@ -5801,7 +5658,7 @@
     "answer_verification": "val=2"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0111",
+    "question_id": "sat-math-statistics-easy-b0107",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5846,7 +5703,7 @@
     "answer_verification": "mean=19"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0112",
+    "question_id": "sat-math-statistics-easy-b0108",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5930,7 +5787,7 @@
     "answer_verification": "wide=A"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0113",
+    "question_id": "sat-math-statistics-easy-b0109",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5960,7 +5817,7 @@
     "answer_verification": "val=16"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0114",
+    "question_id": "sat-math-statistics-easy-b0110",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6005,7 +5862,7 @@
     "answer_verification": "q1=27/2,q3=89/2"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0115",
+    "question_id": "sat-math-statistics-easy-b0111",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6050,7 +5907,7 @@
     "answer_verification": "range=31"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0116",
+    "question_id": "sat-math-statistics-easy-b0112",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6095,7 +5952,7 @@
     "answer_verification": "mean=17"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0117",
+    "question_id": "sat-math-statistics-easy-b0113",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6106,7 +5963,7 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table summarizes survey responses. How many people were surveyed in total?",
+    "prompt": "The table summarizes data about students. How many students are represented in the table in total?",
     "choices": [
       {
         "id": "A",
@@ -6116,7 +5973,7 @@
       {
         "id": "B",
         "text": "31",
-        "rationale": "That is the total of all responses' values, not the number of people."
+        "rationale": "That is the total of all the values, not the number of students."
       },
       {
         "id": "C",
@@ -6140,7 +5997,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Number of pets",
           "Number of students"
@@ -6168,7 +6025,7 @@
     "answer_verification": "val=16"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0118",
+    "question_id": "sat-math-statistics-easy-b0114",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6213,7 +6070,7 @@
     "answer_verification": "mean=10"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0119",
+    "question_id": "sat-math-statistics-easy-b0115",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6258,7 +6115,7 @@
     "answer_verification": "mean 23->273/8, median 24->49/2"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0120",
+    "question_id": "sat-math-statistics-easy-b0116",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6303,7 +6160,7 @@
     "answer_verification": "missing=1"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0121",
+    "question_id": "sat-math-statistics-easy-b0117",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6333,7 +6190,7 @@
     "answer_verification": "val=12"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0122",
+    "question_id": "sat-math-statistics-easy-b0118",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6379,7 +6236,7 @@
     "answer_verification": "val=26"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0123",
+    "question_id": "sat-math-statistics-easy-b0119",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6424,7 +6281,7 @@
     "answer_verification": "mean 25->261/8, median 25->51/2"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0124",
+    "question_id": "sat-math-statistics-easy-b0120",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6469,7 +6326,7 @@
     "answer_verification": "q1=35/2,q3=41"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0125",
+    "question_id": "sat-math-statistics-easy-b0121",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6480,7 +6337,7 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table summarizes survey responses. How many people were surveyed in total?",
+    "prompt": "The table summarizes data about students. How many students are represented in the table in total?",
     "choices": [
       {
         "id": "A",
@@ -6495,7 +6352,7 @@
       {
         "id": "C",
         "text": "13",
-        "rationale": "That is the total of all responses' values, not the number of people."
+        "rationale": "That is the total of all the values, not the number of students."
       },
       {
         "id": "D",
@@ -6514,7 +6371,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Number of pets",
           "Number of students"
@@ -6542,7 +6399,7 @@
     "answer_verification": "val=15"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0126",
+    "question_id": "sat-math-statistics-easy-b0122",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6587,7 +6444,7 @@
     "answer_verification": "missing=11"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0127",
+    "question_id": "sat-math-statistics-easy-b0123",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6632,7 +6489,7 @@
     "answer_verification": "missing=26"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0128",
+    "question_id": "sat-math-statistics-easy-b0124",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6677,7 +6534,7 @@
     "answer_verification": "mean 26->32, median 26->55/2"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0129",
+    "question_id": "sat-math-statistics-easy-b0125",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6722,7 +6579,7 @@
     "answer_verification": "missing=36"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0130",
+    "question_id": "sat-math-statistics-easy-b0126",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6768,7 +6625,7 @@
     "answer_verification": "val=33"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0131",
+    "question_id": "sat-math-statistics-easy-b0127",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6779,7 +6636,7 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table summarizes survey responses. How many people were surveyed in total?",
+    "prompt": "The table summarizes data about children. How many children are represented in the table in total?",
     "choices": [
       {
         "id": "A",
@@ -6789,7 +6646,7 @@
       {
         "id": "B",
         "text": "50",
-        "rationale": "That is the total of all responses' values, not the number of people."
+        "rationale": "That is the total of all the values, not the number of children."
       },
       {
         "id": "C",
@@ -6813,7 +6670,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Siblings",
           "Number of children"
@@ -6841,7 +6698,7 @@
     "answer_verification": "val=18"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0132",
+    "question_id": "sat-math-statistics-easy-b0128",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6886,7 +6743,7 @@
     "answer_verification": "mean 22->33, median 17->21"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0133",
+    "question_id": "sat-math-statistics-easy-b0129",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6970,7 +6827,7 @@
     "answer_verification": "wide=B"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0134",
+    "question_id": "sat-math-statistics-easy-b0130",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7015,7 +6872,7 @@
     "answer_verification": "mean=15"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0135",
+    "question_id": "sat-math-statistics-easy-b0131",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7060,7 +6917,7 @@
     "answer_verification": "q1=21,q3=105/2"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0136",
+    "question_id": "sat-math-statistics-easy-b0132",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7090,7 +6947,7 @@
     "answer_verification": "val=8"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0137",
+    "question_id": "sat-math-statistics-easy-b0133",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7135,7 +6992,7 @@
     "answer_verification": "q1=17/2,q3=40"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0138",
+    "question_id": "sat-math-statistics-easy-b0134",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7180,7 +7037,7 @@
     "answer_verification": "missing=5"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0139",
+    "question_id": "sat-math-statistics-easy-b0135",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7210,7 +7067,7 @@
     "answer_verification": "val=17"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0140",
+    "question_id": "sat-math-statistics-easy-b0136",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7256,7 +7113,7 @@
     "answer_verification": "val=30"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0141",
+    "question_id": "sat-math-statistics-easy-b0137",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7301,7 +7158,7 @@
     "answer_verification": "mean 24->35, median 21->23"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0142",
+    "question_id": "sat-math-statistics-easy-b0138",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7331,7 +7188,7 @@
     "answer_verification": "val=18"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0143",
+    "question_id": "sat-math-statistics-easy-b0139",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7376,7 +7233,7 @@
     "answer_verification": "q1=12,q3=37"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0144",
+    "question_id": "sat-math-statistics-easy-b0140",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7406,7 +7263,7 @@
     "answer_verification": "val=11"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0145",
+    "question_id": "sat-math-statistics-easy-b0141",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7451,7 +7308,7 @@
     "answer_verification": "mean 20->117/4, median 19->20"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0146",
+    "question_id": "sat-math-statistics-easy-b0142",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7462,7 +7319,7 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 22 people. What is the mode of the data?",
+    "prompt": "The table summarizes data for 22 games. What is the mode of the data?",
     "choices": [
       {
         "id": "A",
@@ -7477,7 +7334,7 @@
       {
         "id": "C",
         "text": "22",
-        "rationale": "That is the number of people surveyed."
+        "rationale": "That is the number of games."
       },
       {
         "id": "D",
@@ -7496,7 +7353,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Goals scored",
           "Number of games"
@@ -7524,7 +7381,7 @@
     "answer_verification": "val=3"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0147",
+    "question_id": "sat-math-statistics-easy-b0143",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7608,7 +7465,7 @@
     "answer_verification": "wide=B"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0148",
+    "question_id": "sat-math-statistics-easy-b0144",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7653,7 +7510,7 @@
     "answer_verification": "missing=4"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0149",
+    "question_id": "sat-math-statistics-easy-b0145",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7698,7 +7555,7 @@
     "answer_verification": "mean 21->106/3, median 20->43/2"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0150",
+    "question_id": "sat-math-statistics-easy-b0146",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7744,7 +7601,7 @@
     "answer_verification": "val=27"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0151",
+    "question_id": "sat-math-statistics-easy-b0147",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7789,7 +7646,7 @@
     "answer_verification": "missing=33"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0152",
+    "question_id": "sat-math-statistics-easy-b0148",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7873,7 +7730,7 @@
     "answer_verification": "wide=A"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0153",
+    "question_id": "sat-math-statistics-easy-b0149",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7918,7 +7775,7 @@
     "answer_verification": "missing=15"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0154",
+    "question_id": "sat-math-statistics-easy-b0150",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7964,7 +7821,7 @@
     "answer_verification": "val=25"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0155",
+    "question_id": "sat-math-statistics-easy-b0151",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7975,7 +7832,7 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table summarizes survey responses. How many people were surveyed in total?",
+    "prompt": "The table summarizes data about readers. How many readers are represented in the table in total?",
     "choices": [
       {
         "id": "A",
@@ -7995,7 +7852,7 @@
       {
         "id": "D",
         "text": "11",
-        "rationale": "That is the total of all responses' values, not the number of people."
+        "rationale": "That is the total of all the values, not the number of readers."
       }
     ],
     "correct_choice": "C",
@@ -8009,7 +7866,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Books read",
           "Number of readers"
@@ -8037,7 +7894,7 @@
     "answer_verification": "val=13"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0156",
+    "question_id": "sat-math-statistics-easy-b0152",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8082,7 +7939,7 @@
     "answer_verification": "range=35"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0157",
+    "question_id": "sat-math-statistics-easy-b0153",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8127,7 +7984,7 @@
     "answer_verification": "range=41"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0158",
+    "question_id": "sat-math-statistics-easy-b0154",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8138,7 +7995,7 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 24 people. What is the mode of the data?",
+    "prompt": "The table summarizes data for 24 children. What is the mode of the data?",
     "choices": [
       {
         "id": "A",
@@ -8158,7 +8015,7 @@
       {
         "id": "D",
         "text": "24",
-        "rationale": "That is the number of people surveyed."
+        "rationale": "That is the number of children."
       }
     ],
     "correct_choice": "A",
@@ -8172,7 +8029,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Siblings",
           "Number of children"
@@ -8200,7 +8057,7 @@
     "answer_verification": "val=4"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0159",
+    "question_id": "sat-math-statistics-easy-b0155",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8211,7 +8068,7 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table summarizes survey responses. How many people were surveyed in total?",
+    "prompt": "The table summarizes data about games. How many games are represented in the table in total?",
     "choices": [
       {
         "id": "A",
@@ -8226,7 +8083,7 @@
       {
         "id": "C",
         "text": "43",
-        "rationale": "That is the total of all responses' values, not the number of people."
+        "rationale": "That is the total of all the values, not the number of games."
       },
       {
         "id": "D",
@@ -8245,7 +8102,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Goals scored",
           "Number of games"
@@ -8273,7 +8130,7 @@
     "answer_verification": "val=18"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0160",
+    "question_id": "sat-math-statistics-easy-b0156",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8319,7 +8176,7 @@
     "answer_verification": "val=29"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0161",
+    "question_id": "sat-math-statistics-easy-b0157",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8365,7 +8222,7 @@
     "answer_verification": "val=19"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0162",
+    "question_id": "sat-math-statistics-easy-b0158",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8410,7 +8267,7 @@
     "answer_verification": "missing=16"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0163",
+    "question_id": "sat-math-statistics-easy-b0159",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8455,7 +8312,7 @@
     "answer_verification": "median=18"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0164",
+    "question_id": "sat-math-statistics-easy-b0160",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8501,7 +8358,7 @@
     "answer_verification": "val=24"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0165",
+    "question_id": "sat-math-statistics-easy-b0161",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8546,7 +8403,7 @@
     "answer_verification": "mean 21->109/4, median 18->43/2"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0166",
+    "question_id": "sat-math-statistics-easy-b0162",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8591,7 +8448,7 @@
     "answer_verification": "q1=14,q3=35"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0167",
+    "question_id": "sat-math-statistics-easy-b0163",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8636,7 +8493,7 @@
     "answer_verification": "q1=37/2,q3=42"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0168",
+    "question_id": "sat-math-statistics-easy-b0164",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8681,7 +8538,7 @@
     "answer_verification": "missing=19"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0169",
+    "question_id": "sat-math-statistics-easy-b0165",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8692,12 +8549,12 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 17 people. What is the mode of the data?",
+    "prompt": "The table summarizes data for 17 readers. What is the mode of the data?",
     "choices": [
       {
         "id": "A",
         "text": "17",
-        "rationale": "That is the number of people surveyed."
+        "rationale": "That is the number of readers."
       },
       {
         "id": "B",
@@ -8726,7 +8583,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Books read",
           "Number of readers"
@@ -8754,7 +8611,7 @@
     "answer_verification": "val=3"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0170",
+    "question_id": "sat-math-statistics-easy-b0166",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8799,7 +8656,7 @@
     "answer_verification": "q1=17/2,q3=103/2"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0171",
+    "question_id": "sat-math-statistics-easy-b0167",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8844,7 +8701,7 @@
     "answer_verification": "range=33"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0172",
+    "question_id": "sat-math-statistics-easy-b0168",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8874,7 +8731,7 @@
     "answer_verification": "val=13"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0173",
+    "question_id": "sat-math-statistics-easy-b0169",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8919,7 +8776,7 @@
     "answer_verification": "q1=21/2,q3=71/2"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0174",
+    "question_id": "sat-math-statistics-easy-b0170",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8964,7 +8821,7 @@
     "answer_verification": "missing=27"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0175",
+    "question_id": "sat-math-statistics-easy-b0171",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9009,7 +8866,7 @@
     "answer_verification": "range=39"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0176",
+    "question_id": "sat-math-statistics-easy-b0172",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9054,7 +8911,7 @@
     "answer_verification": "mean 32->169/4, median 33->67/2"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0177",
+    "question_id": "sat-math-statistics-easy-b0173",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9099,7 +8956,7 @@
     "answer_verification": "mean 24->36, median 29->59/2"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0178",
+    "question_id": "sat-math-statistics-easy-b0174",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9144,7 +9001,7 @@
     "answer_verification": "q1=61/2,q3=52"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0179",
+    "question_id": "sat-math-statistics-easy-b0175",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9228,7 +9085,7 @@
     "answer_verification": "wide=B"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0180",
+    "question_id": "sat-math-statistics-easy-b0176",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9258,7 +9115,7 @@
     "answer_verification": "val=18"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0181",
+    "question_id": "sat-math-statistics-easy-b0177",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9304,7 +9161,7 @@
     "answer_verification": "val=39"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0182",
+    "question_id": "sat-math-statistics-easy-b0178",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9349,7 +9206,7 @@
     "answer_verification": "missing=17"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0183",
+    "question_id": "sat-math-statistics-easy-b0179",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9395,7 +9252,7 @@
     "answer_verification": "val=32"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0184",
+    "question_id": "sat-math-statistics-easy-b0180",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9441,7 +9298,7 @@
     "answer_verification": "val=33"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0185",
+    "question_id": "sat-math-statistics-easy-b0181",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9486,7 +9343,7 @@
     "answer_verification": "mean 24->77/2, median 22->29"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0186",
+    "question_id": "sat-math-statistics-easy-b0182",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9532,7 +9389,7 @@
     "answer_verification": "val=28"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0187",
+    "question_id": "sat-math-statistics-easy-b0183",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9577,7 +9434,7 @@
     "answer_verification": "range=36"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0188",
+    "question_id": "sat-math-statistics-easy-b0184",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9622,7 +9479,7 @@
     "answer_verification": "range=31"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0189",
+    "question_id": "sat-math-statistics-easy-b0185",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9633,7 +9490,7 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table summarizes survey responses. How many people were surveyed in total?",
+    "prompt": "The table summarizes data about readers. How many readers are represented in the table in total?",
     "choices": [
       {
         "id": "A",
@@ -9648,7 +9505,7 @@
       {
         "id": "C",
         "text": "33",
-        "rationale": "That is the total of all responses' values, not the number of people."
+        "rationale": "That is the total of all the values, not the number of readers."
       },
       {
         "id": "D",
@@ -9667,7 +9524,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Books read",
           "Number of readers"
@@ -9695,7 +9552,7 @@
     "answer_verification": "val=17"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0190",
+    "question_id": "sat-math-statistics-easy-b0186",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9741,7 +9598,7 @@
     "answer_verification": "val=40"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0191",
+    "question_id": "sat-math-statistics-easy-b0187",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9786,7 +9643,7 @@
     "answer_verification": "q1=36,q3=107/2"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0192",
+    "question_id": "sat-math-statistics-easy-b0188",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9831,7 +9688,7 @@
     "answer_verification": "mean=18"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0193",
+    "question_id": "sat-math-statistics-easy-b0189",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9877,7 +9734,7 @@
     "answer_verification": "val=31"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0194",
+    "question_id": "sat-math-statistics-easy-b0190",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9922,7 +9779,7 @@
     "answer_verification": "q1=9/2,q3=45/2"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0195",
+    "question_id": "sat-math-statistics-easy-b0191",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9968,7 +9825,7 @@
     "answer_verification": "val=18"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0196",
+    "question_id": "sat-math-statistics-easy-b0192",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10013,7 +9870,7 @@
     "answer_verification": "missing=14"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0197",
+    "question_id": "sat-math-statistics-easy-b0193",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10043,7 +9900,7 @@
     "answer_verification": "val=17"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0198",
+    "question_id": "sat-math-statistics-easy-b0194",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10088,7 +9945,7 @@
     "answer_verification": "mean 27->143/4, median 30->63/2"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0199",
+    "question_id": "sat-math-statistics-easy-b0195",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10133,7 +9990,7 @@
     "answer_verification": "missing=38"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0200",
+    "question_id": "sat-math-statistics-easy-b0196",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10179,7 +10036,7 @@
     "answer_verification": "val=32"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0201",
+    "question_id": "sat-math-statistics-easy-b0197",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10209,7 +10066,7 @@
     "answer_verification": "val=14"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0202",
+    "question_id": "sat-math-statistics-easy-b0198",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10254,7 +10111,7 @@
     "answer_verification": "range=35"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0203",
+    "question_id": "sat-math-statistics-easy-b0199",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10265,12 +10122,12 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 26 people. What is the mode of the data?",
+    "prompt": "The table summarizes data for 26 children. What is the mode of the data?",
     "choices": [
       {
         "id": "A",
         "text": "26",
-        "rationale": "That is the number of people surveyed."
+        "rationale": "That is the number of children."
       },
       {
         "id": "B",
@@ -10299,7 +10156,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Siblings",
           "Number of children"
@@ -10327,7 +10184,7 @@
     "answer_verification": "val=0"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0204",
+    "question_id": "sat-math-statistics-easy-b0200",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10373,7 +10230,7 @@
     "answer_verification": "val=34"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0205",
+    "question_id": "sat-math-statistics-easy-b0201",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10403,7 +10260,7 @@
     "answer_verification": "val=19"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0206",
+    "question_id": "sat-math-statistics-easy-b0202",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10414,7 +10271,7 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 22 people. What is the mode of the data?",
+    "prompt": "The table summarizes data for 22 students. What is the mode of the data?",
     "choices": [
       {
         "id": "A",
@@ -10429,7 +10286,7 @@
       {
         "id": "C",
         "text": "22",
-        "rationale": "That is the number of people surveyed."
+        "rationale": "That is the number of students."
       },
       {
         "id": "D",
@@ -10448,7 +10305,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Number of pets",
           "Number of students"
@@ -10476,7 +10333,7 @@
     "answer_verification": "val=1"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0207",
+    "question_id": "sat-math-statistics-easy-b0203",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10521,7 +10378,7 @@
     "answer_verification": "range=38"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0208",
+    "question_id": "sat-math-statistics-easy-b0204",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10532,7 +10389,7 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table summarizes survey responses. How many people were surveyed in total?",
+    "prompt": "The table summarizes data about games. How many games are represented in the table in total?",
     "choices": [
       {
         "id": "A",
@@ -10542,7 +10399,7 @@
       {
         "id": "B",
         "text": "62",
-        "rationale": "That is the total of all responses' values, not the number of people."
+        "rationale": "That is the total of all the values, not the number of games."
       },
       {
         "id": "C",
@@ -10566,7 +10423,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Goals scored",
           "Number of games"
@@ -10594,7 +10451,7 @@
     "answer_verification": "val=23"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0209",
+    "question_id": "sat-math-statistics-easy-b0205",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10678,7 +10535,7 @@
     "answer_verification": "wide=A"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0210",
+    "question_id": "sat-math-statistics-easy-b0206",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10724,7 +10581,7 @@
     "answer_verification": "val=25"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0211",
+    "question_id": "sat-math-statistics-easy-b0207",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10808,7 +10665,7 @@
     "answer_verification": "wide=A"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0212",
+    "question_id": "sat-math-statistics-easy-b0208",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10853,7 +10710,7 @@
     "answer_verification": "mean 30->245/6, median 37->75/2"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0213",
+    "question_id": "sat-math-statistics-easy-b0209",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10864,7 +10721,7 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 19 people. What is the mode of the data?",
+    "prompt": "The table summarizes data for 19 students. What is the mode of the data?",
     "choices": [
       {
         "id": "A",
@@ -10884,7 +10741,7 @@
       {
         "id": "D",
         "text": "19",
-        "rationale": "That is the number of people surveyed."
+        "rationale": "That is the number of students."
       }
     ],
     "correct_choice": "B",
@@ -10898,7 +10755,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Number of pets",
           "Number of students"
@@ -10926,7 +10783,7 @@
     "answer_verification": "val=2"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0214",
+    "question_id": "sat-math-statistics-easy-b0210",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10971,7 +10828,7 @@
     "answer_verification": "mean 28->215/6, median 28->30"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0215",
+    "question_id": "sat-math-statistics-easy-b0211",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10982,7 +10839,7 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 32 people. What is the mode of the data?",
+    "prompt": "The table summarizes data for 32 readers. What is the mode of the data?",
     "choices": [
       {
         "id": "A",
@@ -11002,7 +10859,7 @@
       {
         "id": "D",
         "text": "32",
-        "rationale": "That is the number of people surveyed."
+        "rationale": "That is the number of readers."
       }
     ],
     "correct_choice": "A",
@@ -11016,7 +10873,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Books read",
           "Number of readers"
@@ -11044,7 +10901,7 @@
     "answer_verification": "val=0"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0216",
+    "question_id": "sat-math-statistics-easy-b0212",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11090,7 +10947,7 @@
     "answer_verification": "val=23"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0217",
+    "question_id": "sat-math-statistics-easy-b0213",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11135,7 +10992,7 @@
     "answer_verification": "missing=30"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0218",
+    "question_id": "sat-math-statistics-easy-b0214",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11181,7 +11038,7 @@
     "answer_verification": "val=12"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0219",
+    "question_id": "sat-math-statistics-easy-b0215",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11226,7 +11083,7 @@
     "answer_verification": "median=11"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0220",
+    "question_id": "sat-math-statistics-easy-b0216",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11271,7 +11128,7 @@
     "answer_verification": "mean 22->119/4, median 20->41/2"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0221",
+    "question_id": "sat-math-statistics-easy-b0217",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11301,7 +11158,7 @@
     "answer_verification": "val=20"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0222",
+    "question_id": "sat-math-statistics-easy-b0218",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11346,7 +11203,7 @@
     "answer_verification": "missing=37"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0223",
+    "question_id": "sat-math-statistics-easy-b0219",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11391,7 +11248,7 @@
     "answer_verification": "missing=36"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0224",
+    "question_id": "sat-math-statistics-easy-b0220",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11436,7 +11293,7 @@
     "answer_verification": "mean 24->121/4, median 22->23"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0225",
+    "question_id": "sat-math-statistics-easy-b0221",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11447,7 +11304,7 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 17 people. What is the mode of the data?",
+    "prompt": "The table summarizes data for 17 students. What is the mode of the data?",
     "choices": [
       {
         "id": "A",
@@ -11467,7 +11324,7 @@
       {
         "id": "D",
         "text": "17",
-        "rationale": "That is the number of people surveyed."
+        "rationale": "That is the number of students."
       }
     ],
     "correct_choice": "A",
@@ -11481,7 +11338,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Number of pets",
           "Number of students"
@@ -11509,7 +11366,7 @@
     "answer_verification": "val=3"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0226",
+    "question_id": "sat-math-statistics-easy-b0222",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11555,7 +11412,7 @@
     "answer_verification": "val=32"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0227",
+    "question_id": "sat-math-statistics-easy-b0223",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11600,7 +11457,7 @@
     "answer_verification": "q1=19,q3=79/2"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0228",
+    "question_id": "sat-math-statistics-easy-b0224",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11645,7 +11502,7 @@
     "answer_verification": "mean=14"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0229",
+    "question_id": "sat-math-statistics-easy-b0225",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11690,7 +11547,7 @@
     "answer_verification": "median=20"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0230",
+    "question_id": "sat-math-statistics-easy-b0226",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11736,7 +11593,7 @@
     "answer_verification": "val=24"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0231",
+    "question_id": "sat-math-statistics-easy-b0227",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11781,7 +11638,7 @@
     "answer_verification": "mean 24->249/8, median 21->43/2"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0232",
+    "question_id": "sat-math-statistics-easy-b0228",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11827,7 +11684,7 @@
     "answer_verification": "val=32"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0233",
+    "question_id": "sat-math-statistics-easy-b0229",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11873,7 +11730,7 @@
     "answer_verification": "val=22"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0234",
+    "question_id": "sat-math-statistics-easy-b0230",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11903,7 +11760,7 @@
     "answer_verification": "val=7"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0235",
+    "question_id": "sat-math-statistics-easy-b0231",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11948,7 +11805,7 @@
     "answer_verification": "range=33"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0236",
+    "question_id": "sat-math-statistics-easy-b0232",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12032,7 +11889,7 @@
     "answer_verification": "wide=B"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0237",
+    "question_id": "sat-math-statistics-easy-b0233",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12077,7 +11934,7 @@
     "answer_verification": "range=28"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0238",
+    "question_id": "sat-math-statistics-easy-b0234",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12107,7 +11964,7 @@
     "answer_verification": "val=15"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0239",
+    "question_id": "sat-math-statistics-easy-b0235",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12191,7 +12048,7 @@
     "answer_verification": "wide=A"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0240",
+    "question_id": "sat-math-statistics-easy-b0236",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12236,7 +12093,7 @@
     "answer_verification": "median=13"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0241",
+    "question_id": "sat-math-statistics-easy-b0237",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12281,7 +12138,7 @@
     "answer_verification": "q1=10,q3=41"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0242",
+    "question_id": "sat-math-statistics-easy-b0238",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12292,31 +12149,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 19 people. What is the mode of the data?",
+    "prompt": "The table summarizes data for 19 children. What is the mode of the data?",
     "choices": [
       {
         "id": "A",
-        "text": "19",
-        "rationale": "That is the number of people surveyed."
+        "text": "2",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "3",
+        "text": "4",
         "rationale": "The mode is the most frequent value, not the largest."
       },
       {
         "id": "C",
-        "text": "1",
-        "rationale": "Correct."
+        "text": "19",
+        "rationale": "That is the number of children."
       },
       {
         "id": "D",
-        "text": "6",
+        "text": "8",
         "rationale": "That is the frequency, not the value that occurs most."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "The mode is the value with the greatest frequency: 1 (frequency 6).",
+    "correct_choice": "A",
+    "explanation": "The mode is the value with the greatest frequency: 2 (frequency 8).",
     "estimated_time_seconds": 80,
     "tags": [
       "statistics",
@@ -12326,178 +12183,15 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
           "Siblings",
           "Number of children"
         ],
         "rows": [
           [
-            "0",
-            "4"
-          ],
-          [
             "1",
-            "6"
-          ],
-          [
-            "2",
             "4"
-          ],
-          [
-            "3",
-            "5"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "val=1"
-  },
-  {
-    "question_id": "sat-math-statistics-easy-b0243",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "statistics",
-    "lesson_id": "sat-math-statistics-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "mean_median_mode",
-    "prompt": "The mean of four numbers is 16. Three of the numbers are 23, 24, 15. What is the fourth number?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "64",
-        "rationale": "That is the total of all four; subtract the three shown."
-      },
-      {
-        "id": "B",
-        "text": "16",
-        "rationale": "That is the mean itself, not the missing number."
-      },
-      {
-        "id": "C",
-        "text": "2",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "62",
-        "rationale": "That is the sum of the three known numbers."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "The four numbers total 16×4 = 64; 64 − 62 = 2.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "statistics",
-      "mean",
-      "family:st_missing_value"
-    ],
-    "answer_verification": "missing=2"
-  },
-  {
-    "question_id": "sat-math-statistics-easy-b0244",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "statistics",
-    "lesson_id": "sat-math-statistics-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "spread",
-    "prompt": "What is the third quartile of the data set 48, 17, 16, 5, 21, 47, 57, 60?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "60",
-        "rationale": "That is the minimum/maximum, not a quartile."
-      },
-      {
-        "id": "B",
-        "text": "105/2",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "33/2",
-        "rationale": "That is the first quartile."
-      },
-      {
-        "id": "D",
-        "text": "34",
-        "rationale": "That is the median (second quartile)."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Order the data: 5, 16, 17, 21, 47, 48, 57, 60. The median is 34; the third quartile is the median of the upper half: 105/2.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "statistics",
-      "quartiles",
-      "family:st_quartiles"
-    ],
-    "answer_verification": "q1=33/2,q3=105/2"
-  },
-  {
-    "question_id": "sat-math-statistics-easy-b0245",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "statistics",
-    "lesson_id": "sat-math-statistics-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "mean_median_mode",
-    "prompt": "The table summarizes survey responses. How many people were surveyed in total?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "9",
-        "rationale": "That is one frequency, not the total."
-      },
-      {
-        "id": "B",
-        "text": "10",
-        "rationale": "Add the frequencies, not the values."
-      },
-      {
-        "id": "C",
-        "text": "66",
-        "rationale": "That is the total of all responses' values, not the number of people."
-      },
-      {
-        "id": "D",
-        "text": "23",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Add the frequencies: 2 + 8 + 4 + 9 = 23.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "statistics",
-      "table",
-      "family:st_frequency_table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Survey results",
-        "headers": [
-          "Number of pets",
-          "Number of students"
-        ],
-        "rows": [
-          [
-            "1",
-            "2"
           ],
           [
             "2",
@@ -12509,15 +12203,15 @@
           ],
           [
             "4",
-            "9"
+            "3"
           ]
         ]
       }
     },
-    "answer_verification": "val=23"
+    "answer_verification": "val=2"
   },
   {
-    "question_id": "sat-math-statistics-easy-b0246",
+    "question_id": "sat-math-statistics-easy-b0239",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12528,31 +12222,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "spread",
-    "prompt": "The table shows how many responses in two groups took each value (Group A: 17 responses, Group B: 13). Which group's data has the greater standard deviation?",
+    "prompt": "The table shows how many responses in two groups took each value (Group A: 14 responses, Group B: 12). Which group's data has the greater standard deviation?",
     "choices": [
       {
         "id": "A",
-        "text": "Group A, because it has more responses at a single value.",
-        "rationale": "A tall peak at the center indicates less spread."
-      },
-      {
-        "id": "B",
-        "text": "Group B, because its responses are spread farther from the center.",
+        "text": "Group A, because its responses are spread farther from the center.",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "Group B, because it has more responses at a single value.",
+        "rationale": "A tall peak at the center indicates less spread."
+      },
+      {
         "id": "C",
-        "text": "Group A, because its responses cluster near the center.",
-        "rationale": "Clustering near the center means a SMALLER standard deviation."
+        "text": "The groups have the same standard deviation, because they have the same values.",
+        "rationale": "The frequencies differ, so the spreads differ."
       },
       {
         "id": "D",
-        "text": "The groups have the same standard deviation, because they have the same values.",
-        "rationale": "The frequencies differ, so the spreads differ."
+        "text": "Group B, because its responses cluster near the center.",
+        "rationale": "Clustering near the center means a SMALLER standard deviation."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Group B has many responses at the extreme values and few in the middle, so its spread (standard deviation) is larger.",
+    "correct_choice": "A",
+    "explanation": "Group A has many responses at the extreme values and few in the middle, so its spread (standard deviation) is larger.",
     "estimated_time_seconds": 90,
     "tags": [
       "statistics",
@@ -12572,33 +12266,418 @@
         "rows": [
           [
             "1",
-            "1",
-            "4"
-          ],
-          [
-            "2",
-            "4",
-            "3"
-          ],
-          [
-            "3",
-            "9",
+            "6",
             "0"
           ],
           [
-            "4",
+            "2",
             "2",
             "2"
           ],
           [
-            "5",
+            "3",
             "1",
+            "7"
+          ],
+          [
+            "4",
+            "1",
+            "3"
+          ],
+          [
+            "5",
+            "4",
+            "0"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "wide=A"
+  },
+  {
+    "question_id": "sat-math-statistics-easy-b0240",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "statistics",
+    "lesson_id": "sat-math-statistics-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "student_produced",
+    "subskill": "mean_median_mode",
+    "prompt": "What is the mean of the data set 4, 10, 18, 9, 24?",
+    "answer": {
+      "type": "numeric",
+      "value": 13,
+      "accepted": [
+        "13"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "65 ÷ 5 = 13.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "statistics",
+      "grid-in",
+      "family:st_gridin"
+    ],
+    "answer_verification": "val=13"
+  },
+  {
+    "question_id": "sat-math-statistics-easy-b0241",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "statistics",
+    "lesson_id": "sat-math-statistics-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "mean_median_mode",
+    "prompt": "The mean of the data set 7, 16, 19, 25, 28 is 19. If 2 is added to every value, what is the new mean?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "19",
+        "rationale": "The mean shifts by the same amount as the data."
+      },
+      {
+        "id": "B",
+        "text": "97/5",
+        "rationale": "Every value increases by 2, so the mean does too (not by 2/5)."
+      },
+      {
+        "id": "C",
+        "text": "21",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "38",
+        "rationale": "The values are shifted, not multiplied."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "Adding 2 to every value adds 2 to the mean: 19 + 2 = 21.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "statistics",
+      "mean",
+      "change",
+      "family:st_change_effect"
+    ],
+    "answer_verification": "val=21"
+  },
+  {
+    "question_id": "sat-math-statistics-easy-b0242",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "statistics",
+    "lesson_id": "sat-math-statistics-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "mean_median_mode",
+    "prompt": "The table summarizes data for 20 readers. What is the mode of the data?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "4",
+        "rationale": "The mode is the most frequent value, not the largest."
+      },
+      {
+        "id": "B",
+        "text": "7",
+        "rationale": "That is the frequency, not the value that occurs most."
+      },
+      {
+        "id": "C",
+        "text": "20",
+        "rationale": "That is the number of readers."
+      },
+      {
+        "id": "D",
+        "text": "2",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "The mode is the value with the greatest frequency: 2 (frequency 7).",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "statistics",
+      "table",
+      "family:st_frequency_table"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Frequency table",
+        "headers": [
+          "Books read",
+          "Number of readers"
+        ],
+        "rows": [
+          [
+            "1",
+            "5"
+          ],
+          [
+            "2",
+            "7"
+          ],
+          [
+            "3",
+            "4"
+          ],
+          [
+            "4",
             "4"
           ]
         ]
       }
     },
-    "answer_verification": "wide=B"
+    "answer_verification": "val=2"
+  },
+  {
+    "question_id": "sat-math-statistics-easy-b0243",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "statistics",
+    "lesson_id": "sat-math-statistics-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "mean_median_mode",
+    "prompt": "The table summarizes data about children. How many children are represented in the table in total?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "19",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "7",
+        "rationale": "That is one frequency, not the total."
+      },
+      {
+        "id": "C",
+        "text": "56",
+        "rationale": "That is the total of all the values, not the number of children."
+      },
+      {
+        "id": "D",
+        "text": "10",
+        "rationale": "Add the frequencies, not the values."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Add the frequencies: 1 + 5 + 7 + 6 = 19.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "statistics",
+      "table",
+      "family:st_frequency_table"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Frequency table",
+        "headers": [
+          "Siblings",
+          "Number of children"
+        ],
+        "rows": [
+          [
+            "1",
+            "1"
+          ],
+          [
+            "2",
+            "5"
+          ],
+          [
+            "3",
+            "7"
+          ],
+          [
+            "4",
+            "6"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "val=19"
+  },
+  {
+    "question_id": "sat-math-statistics-easy-b0244",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "statistics",
+    "lesson_id": "sat-math-statistics-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "mean_median_mode",
+    "prompt": "A sample of 5 packages had weights, in pounds, of 15, 24, 5, 7, 9. What is the mean weight?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "19",
+        "rationale": "This is the range, not the mean."
+      },
+      {
+        "id": "B",
+        "text": "13",
+        "rationale": "Recheck the sum before dividing."
+      },
+      {
+        "id": "C",
+        "text": "9",
+        "rationale": "This is the median, not the mean."
+      },
+      {
+        "id": "D",
+        "text": "12",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Mean = sum ÷ count = 60 ÷ 5 = 12.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "statistics",
+      "mean",
+      "family:st_center_list"
+    ],
+    "answer_verification": "mean=12"
+  },
+  {
+    "question_id": "sat-math-statistics-easy-b0245",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "statistics",
+    "lesson_id": "sat-math-statistics-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "mean_median_mode",
+    "prompt": "The mean of four numbers is 15. Three of the numbers are 13, 10, 9. What is the fourth number?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "15",
+        "rationale": "That is the mean itself, not the missing number."
+      },
+      {
+        "id": "B",
+        "text": "32",
+        "rationale": "That is the sum of the three known numbers."
+      },
+      {
+        "id": "C",
+        "text": "28",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "60",
+        "rationale": "That is the total of all four; subtract the three shown."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "The four numbers total 15×4 = 60; 60 − 32 = 28.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "statistics",
+      "mean",
+      "family:st_missing_value"
+    ],
+    "answer_verification": "missing=28"
+  },
+  {
+    "question_id": "sat-math-statistics-easy-b0246",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "statistics",
+    "lesson_id": "sat-math-statistics-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "mean_median_mode",
+    "prompt": "The table summarizes data for 27 games. What is the mode of the data?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "9",
+        "rationale": "That is the frequency, not the value that occurs most."
+      },
+      {
+        "id": "B",
+        "text": "27",
+        "rationale": "That is the number of games."
+      },
+      {
+        "id": "C",
+        "text": "3",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "4",
+        "rationale": "The mode is the most frequent value, not the largest."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "The mode is the value with the greatest frequency: 3 (frequency 9).",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "statistics",
+      "table",
+      "family:st_frequency_table"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Frequency table",
+        "headers": [
+          "Goals scored",
+          "Number of games"
+        ],
+        "rows": [
+          [
+            "1",
+            "5"
+          ],
+          [
+            "2",
+            "6"
+          ],
+          [
+            "3",
+            "9"
+          ],
+          [
+            "4",
+            "7"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "val=3"
   },
   {
     "question_id": "sat-math-statistics-easy-b0247",
@@ -12612,38 +12691,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "mean_median_mode",
-    "prompt": "The data set 11, 27, 34, 37, 41 has mean 30 and median 34. If the value 74 is added to the set, which statistic changes by more?",
+    "prompt": "The mean of four numbers is 11. Three of the numbers are 2, 28, 5. What is the fourth number?",
     "choices": [
       {
         "id": "A",
-        "text": "The median, which increases from 34 to 71/2.",
-        "rationale": "The median moves only to 71/2; the mean moves to 112/3."
+        "text": "11",
+        "rationale": "That is the mean itself, not the missing number."
       },
       {
         "id": "B",
-        "text": "Neither changes, because one value cannot affect a summary statistic.",
-        "rationale": "Every value affects the mean."
+        "text": "35",
+        "rationale": "That is the sum of the three known numbers."
       },
       {
         "id": "C",
-        "text": "The mean, which increases from 30 to 112/3.",
+        "text": "9",
         "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "Both change by the same amount.",
-        "rationale": "The mean is pulled by the outlier much more than the median."
+        "text": "44",
+        "rationale": "That is the total of all four; subtract the three shown."
       }
     ],
     "correct_choice": "C",
-    "explanation": "New mean = (150 + 74)/6 = 112/3; new median = 71/2. The mean changes far more.",
-    "estimated_time_seconds": 85,
+    "explanation": "The four numbers total 11×4 = 44; 44 − 35 = 9.",
+    "estimated_time_seconds": 90,
     "tags": [
       "statistics",
-      "outlier",
-      "family:st_outlier_effect"
+      "mean",
+      "family:st_missing_value"
     ],
-    "answer_verification": "mean 30->112/3, median 34->71/2"
+    "answer_verification": "missing=9"
   },
   {
     "question_id": "sat-math-statistics-easy-b0248",
@@ -12657,31 +12736,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "mean_median_mode",
-    "prompt": "The table summarizes survey responses. How many people were surveyed in total?",
+    "prompt": "The table summarizes data about games. How many games are represented in the table in total?",
     "choices": [
       {
         "id": "A",
-        "text": "24",
-        "rationale": "That is the total of all responses' values, not the number of people."
+        "text": "6",
+        "rationale": "Add the frequencies, not the values."
       },
       {
         "id": "B",
+        "text": "21",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
         "text": "8",
         "rationale": "That is one frequency, not the total."
       },
       {
-        "id": "C",
-        "text": "18",
-        "rationale": "Correct."
-      },
-      {
         "id": "D",
-        "text": "6",
-        "rationale": "Add the frequencies, not the values."
+        "text": "28",
+        "rationale": "That is the total of all the values, not the number of games."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Add the frequencies: 4 + 8 + 2 + 4 = 18.",
+    "correct_choice": "B",
+    "explanation": "Add the frequencies: 8 + 5 + 1 + 7 = 21.",
     "estimated_time_seconds": 80,
     "tags": [
       "statistics",
@@ -12691,32 +12770,32 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Survey results",
+        "caption": "Frequency table",
         "headers": [
-          "Books read",
-          "Number of readers"
+          "Goals scored",
+          "Number of games"
         ],
         "rows": [
           [
             "0",
-            "4"
-          ],
-          [
-            "1",
             "8"
           ],
           [
+            "1",
+            "5"
+          ],
+          [
             "2",
-            "2"
+            "1"
           ],
           [
             "3",
-            "4"
+            "7"
           ]
         ]
       }
     },
-    "answer_verification": "val=18"
+    "answer_verification": "val=21"
   },
   {
     "question_id": "sat-math-statistics-easy-b0249",
@@ -12730,38 +12809,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "mean_median_mode",
-    "prompt": "The mean of four numbers is 16. Three of the numbers are 29, 19, 14. What is the fourth number?",
+    "prompt": "The mean of four numbers is 18. Three of the numbers are 15, 3, 30. What is the fourth number?",
     "choices": [
       {
         "id": "A",
-        "text": "64",
-        "rationale": "That is the total of all four; subtract the three shown."
+        "text": "48",
+        "rationale": "That is the sum of the three known numbers."
       },
       {
         "id": "B",
-        "text": "16",
+        "text": "18",
         "rationale": "That is the mean itself, not the missing number."
       },
       {
         "id": "C",
-        "text": "62",
-        "rationale": "That is the sum of the three known numbers."
+        "text": "24",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "2",
-        "rationale": "Correct."
+        "text": "72",
+        "rationale": "That is the total of all four; subtract the three shown."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "The four numbers total 16×4 = 64; 64 − 62 = 2.",
+    "correct_choice": "C",
+    "explanation": "The four numbers total 18×4 = 72; 72 − 48 = 24.",
     "estimated_time_seconds": 90,
     "tags": [
       "statistics",
       "mean",
       "family:st_missing_value"
     ],
-    "answer_verification": "missing=2"
+    "answer_verification": "missing=24"
   },
   {
     "question_id": "sat-math-statistics-easy-b0250",
@@ -12774,39 +12853,39 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "spread",
-    "prompt": "What is the range of the data set 12, 16, 20, 27, 42?",
+    "subskill": "mean_median_mode",
+    "prompt": "The mean of four numbers is 16. Three of the numbers are 11, 25, 16. What is the fourth number?",
     "choices": [
       {
         "id": "A",
-        "text": "42",
-        "rationale": "This is the greatest value, not the range."
+        "text": "16",
+        "rationale": "That is the mean itself, not the missing number."
       },
       {
         "id": "B",
-        "text": "117/5",
-        "rationale": "This is the mean, not the range."
+        "text": "64",
+        "rationale": "That is the total of all four; subtract the three shown."
       },
       {
         "id": "C",
-        "text": "30",
+        "text": "12",
         "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "20",
-        "rationale": "This is the median, not the range."
+        "text": "52",
+        "rationale": "That is the sum of the three known numbers."
       }
     ],
     "correct_choice": "C",
-    "explanation": "Range = greatest − least = 42 − 12 = 30.",
-    "estimated_time_seconds": 65,
+    "explanation": "The four numbers total 16×4 = 64; 64 − 52 = 12.",
+    "estimated_time_seconds": 90,
     "tags": [
       "statistics",
-      "range",
-      "family:st_spread"
+      "mean",
+      "family:st_missing_value"
     ],
-    "answer_verification": "range=30"
+    "answer_verification": "missing=12"
   },
   {
     "question_id": "sat-math-statistics-easy-b0251",
@@ -12818,40 +12897,25 @@
     "lesson_id": "sat-math-statistics-easy",
     "difficulty": "easy",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "student_produced",
     "subskill": "mean_median_mode",
-    "prompt": "A sample of 5 packages had weights, in pounds, of 26, 5, 3, 6, 15. What is the mean weight?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "12",
-        "rationale": "Recheck the sum before dividing."
-      },
-      {
-        "id": "B",
-        "text": "6",
-        "rationale": "This is the median, not the mean."
-      },
-      {
-        "id": "C",
-        "text": "23",
-        "rationale": "This is the range, not the mean."
-      },
-      {
-        "id": "D",
-        "text": "11",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Mean = sum ÷ count = 55 ÷ 5 = 11.",
-    "estimated_time_seconds": 75,
+    "prompt": "What is the mean of the data set 23, 16, 10, 13, 23?",
+    "answer": {
+      "type": "numeric",
+      "value": 17,
+      "accepted": [
+        "17"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "85 ÷ 5 = 17.",
+    "estimated_time_seconds": 80,
     "tags": [
       "statistics",
-      "mean",
-      "family:st_center_list"
+      "grid-in",
+      "family:st_gridin"
     ],
-    "answer_verification": "mean=11"
+    "answer_verification": "val=17"
   },
   {
     "question_id": "sat-math-statistics-easy-b0252",
@@ -12863,24 +12927,278 @@
     "lesson_id": "sat-math-statistics-easy",
     "difficulty": "easy",
     "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "spread",
-    "prompt": "The table shows how many responses in two groups took each value (Group A: 21 responses, Group B: 11). Which group's data has the greater standard deviation?",
+    "question_type": "multiple_choice",
+    "subskill": "mean_median_mode",
+    "prompt": "The data set 11, 13, 22, 31, 38 has mean 23 and median 22. If the value 68 is added to the set, which statistic changes by more?",
     "choices": [
       {
         "id": "A",
-        "text": "Group A, because its responses are spread farther from the center.",
+        "text": "The median, which increases from 22 to 53/2.",
+        "rationale": "The median moves only to 53/2; the mean moves to 61/2."
+      },
+      {
+        "id": "B",
+        "text": "The mean, which increases from 23 to 61/2.",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "Neither changes, because one value cannot affect a summary statistic.",
+        "rationale": "Every value affects the mean."
+      },
+      {
+        "id": "D",
+        "text": "Both change by the same amount.",
+        "rationale": "The mean is pulled by the outlier much more than the median."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "New mean = (115 + 68)/6 = 61/2; new median = 53/2. The mean changes far more.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "statistics",
+      "outlier",
+      "family:st_outlier_effect"
+    ],
+    "answer_verification": "mean 23->61/2, median 22->53/2"
+  },
+  {
+    "question_id": "sat-math-statistics-easy-b0253",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "statistics",
+    "lesson_id": "sat-math-statistics-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "mean_median_mode",
+    "prompt": "The mean of four numbers is 13. Three of the numbers are 16, 4, 7. What is the fourth number?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "27",
+        "rationale": "That is the sum of the three known numbers."
+      },
+      {
+        "id": "B",
+        "text": "13",
+        "rationale": "That is the mean itself, not the missing number."
+      },
+      {
+        "id": "C",
+        "text": "25",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "52",
+        "rationale": "That is the total of all four; subtract the three shown."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "The four numbers total 13×4 = 52; 52 − 27 = 25.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "statistics",
+      "mean",
+      "family:st_missing_value"
+    ],
+    "answer_verification": "missing=25"
+  },
+  {
+    "question_id": "sat-math-statistics-easy-b0254",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "statistics",
+    "lesson_id": "sat-math-statistics-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "mean_median_mode",
+    "prompt": "The mean of the data set 6, 13, 32, 34, 40 is 25. If 3 is added to every value, what is the new mean?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "128/5",
+        "rationale": "Every value increases by 3, so the mean does too (not by 3/5)."
+      },
+      {
+        "id": "B",
+        "text": "75",
+        "rationale": "The values are shifted, not multiplied."
+      },
+      {
+        "id": "C",
+        "text": "25",
+        "rationale": "The mean shifts by the same amount as the data."
+      },
+      {
+        "id": "D",
+        "text": "28",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Adding 3 to every value adds 3 to the mean: 25 + 3 = 28.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "statistics",
+      "mean",
+      "change",
+      "family:st_change_effect"
+    ],
+    "answer_verification": "val=28"
+  },
+  {
+    "question_id": "sat-math-statistics-easy-b0255",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "statistics",
+    "lesson_id": "sat-math-statistics-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "spread",
+    "prompt": "What is the range of the data set 9, 26, 40, 4, 42?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "38",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "Group B, because its responses cluster near the center.",
-        "rationale": "Clustering near the center means a SMALLER standard deviation."
+        "text": "121/5",
+        "rationale": "This is the mean, not the range."
       },
       {
         "id": "C",
+        "text": "42",
+        "rationale": "This is the greatest value, not the range."
+      },
+      {
+        "id": "D",
+        "text": "26",
+        "rationale": "This is the median, not the range."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Range = greatest − least = 42 − 4 = 38.",
+    "estimated_time_seconds": 65,
+    "tags": [
+      "statistics",
+      "range",
+      "family:st_spread"
+    ],
+    "answer_verification": "range=38"
+  },
+  {
+    "question_id": "sat-math-statistics-easy-b0256",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "statistics",
+    "lesson_id": "sat-math-statistics-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "mean_median_mode",
+    "prompt": "The table summarizes data about students. How many students are represented in the table in total?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "42",
+        "rationale": "That is the total of all the values, not the number of students."
+      },
+      {
+        "id": "B",
+        "text": "22",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "6",
+        "rationale": "Add the frequencies, not the values."
+      },
+      {
+        "id": "D",
+        "text": "9",
+        "rationale": "That is one frequency, not the total."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Add the frequencies: 1 + 6 + 9 + 6 = 22.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "statistics",
+      "table",
+      "family:st_frequency_table"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Frequency table",
+        "headers": [
+          "Number of pets",
+          "Number of students"
+        ],
+        "rows": [
+          [
+            "0",
+            "1"
+          ],
+          [
+            "1",
+            "6"
+          ],
+          [
+            "2",
+            "9"
+          ],
+          [
+            "3",
+            "6"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "val=22"
+  },
+  {
+    "question_id": "sat-math-statistics-easy-b0257",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "statistics",
+    "lesson_id": "sat-math-statistics-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "spread",
+    "prompt": "The table shows how many responses in two groups took each value (Group A: 20 responses, Group B: 14). Which group's data has the greater standard deviation?",
+    "choices": [
+      {
+        "id": "A",
         "text": "The groups have the same standard deviation, because they have the same values.",
         "rationale": "The frequencies differ, so the spreads differ."
+      },
+      {
+        "id": "B",
+        "text": "Group A, because its responses are spread farther from the center.",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "Group B, because its responses cluster near the center.",
+        "rationale": "Clustering near the center means a SMALLER standard deviation."
       },
       {
         "id": "D",
@@ -12888,7 +13206,7 @@
         "rationale": "A tall peak at the center indicates less spread."
       }
     ],
-    "correct_choice": "A",
+    "correct_choice": "B",
     "explanation": "Group A has many responses at the extreme values and few in the middle, so its spread (standard deviation) is larger.",
     "estimated_time_seconds": 90,
     "tags": [
@@ -12914,282 +13232,28 @@
           ],
           [
             "2",
-            "1",
+            "3",
             "2"
           ],
           [
             "3",
-            "2",
-            "7"
+            "0",
+            "8"
           ],
           [
             "4",
-            "2",
-            "2"
+            "3",
+            "4"
           ],
           [
             "5",
-            "8",
+            "6",
             "0"
           ]
         ]
       }
     },
     "answer_verification": "wide=A"
-  },
-  {
-    "question_id": "sat-math-statistics-easy-b0253",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "statistics",
-    "lesson_id": "sat-math-statistics-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "mean_median_mode",
-    "prompt": "The mean of the data set 4, 17, 24, 36, 39 is 24. If 8 is added to every value, what is the new mean?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "32",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "192",
-        "rationale": "The values are shifted, not multiplied."
-      },
-      {
-        "id": "C",
-        "text": "24",
-        "rationale": "The mean shifts by the same amount as the data."
-      },
-      {
-        "id": "D",
-        "text": "128/5",
-        "rationale": "Every value increases by 8, so the mean does too (not by 8/5)."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "Adding 8 to every value adds 8 to the mean: 24 + 8 = 32.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "statistics",
-      "mean",
-      "change",
-      "family:st_change_effect"
-    ],
-    "answer_verification": "val=32"
-  },
-  {
-    "question_id": "sat-math-statistics-easy-b0254",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "statistics",
-    "lesson_id": "sat-math-statistics-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "mean_median_mode",
-    "prompt": "The table summarizes survey responses. How many people were surveyed in total?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "5",
-        "rationale": "That is one frequency, not the total."
-      },
-      {
-        "id": "B",
-        "text": "10",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "6",
-        "rationale": "Add the frequencies, not the values."
-      },
-      {
-        "id": "D",
-        "text": "20",
-        "rationale": "That is the total of all responses' values, not the number of people."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Add the frequencies: 1 + 1 + 5 + 3 = 10.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "statistics",
-      "table",
-      "family:st_frequency_table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Survey results",
-        "headers": [
-          "Number of pets",
-          "Number of students"
-        ],
-        "rows": [
-          [
-            "0",
-            "1"
-          ],
-          [
-            "1",
-            "1"
-          ],
-          [
-            "2",
-            "5"
-          ],
-          [
-            "3",
-            "3"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "val=10"
-  },
-  {
-    "question_id": "sat-math-statistics-easy-b0255",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "statistics",
-    "lesson_id": "sat-math-statistics-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "mean_median_mode",
-    "prompt": "The mean of four numbers is 18. Three of the numbers are 7, 25, 12. What is the fourth number?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "72",
-        "rationale": "That is the total of all four; subtract the three shown."
-      },
-      {
-        "id": "B",
-        "text": "28",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "18",
-        "rationale": "That is the mean itself, not the missing number."
-      },
-      {
-        "id": "D",
-        "text": "44",
-        "rationale": "That is the sum of the three known numbers."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "The four numbers total 18×4 = 72; 72 − 44 = 28.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "statistics",
-      "mean",
-      "family:st_missing_value"
-    ],
-    "answer_verification": "missing=28"
-  },
-  {
-    "question_id": "sat-math-statistics-easy-b0256",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "statistics",
-    "lesson_id": "sat-math-statistics-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "mean_median_mode",
-    "prompt": "The data set 11, 13, 14, 24, 28 has mean 18 and median 14. If the value 64 is added to the set, which statistic changes by more?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "Both change by the same amount.",
-        "rationale": "The mean is pulled by the outlier much more than the median."
-      },
-      {
-        "id": "B",
-        "text": "The median, which increases from 14 to 19.",
-        "rationale": "The median moves only to 19; the mean moves to 77/3."
-      },
-      {
-        "id": "C",
-        "text": "Neither changes, because one value cannot affect a summary statistic.",
-        "rationale": "Every value affects the mean."
-      },
-      {
-        "id": "D",
-        "text": "The mean, which increases from 18 to 77/3.",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "New mean = (90 + 64)/6 = 77/3; new median = 19. The mean changes far more.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "statistics",
-      "outlier",
-      "family:st_outlier_effect"
-    ],
-    "answer_verification": "mean 18->77/3, median 14->19"
-  },
-  {
-    "question_id": "sat-math-statistics-easy-b0257",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "statistics",
-    "lesson_id": "sat-math-statistics-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "mean_median_mode",
-    "prompt": "The daily high temperatures, in °F, over 5 days were 15, 2, 22, 16, 22. What was the median high temperature?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "16",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "77/5",
-        "rationale": "This is the mean, not the median."
-      },
-      {
-        "id": "C",
-        "text": "2",
-        "rationale": "The median is the middle value of the ordered data, not the smallest."
-      },
-      {
-        "id": "D",
-        "text": "20",
-        "rationale": "This is the range, not the median."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "Order the data: 2, 15, 16, 22, 22. The middle value is 16.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "statistics",
-      "median",
-      "family:st_center_list"
-    ],
-    "answer_verification": "median=16"
   },
   {
     "question_id": "sat-math-statistics-easy-b0258",
@@ -13202,39 +13266,40 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "spread",
-    "prompt": "What is the third quartile of the data set 48, 4, 29, 32, 29, 47, 59, 44?",
+    "subskill": "mean_median_mode",
+    "prompt": "The mean of the data set 7, 19, 27, 33, 39 is 25. If 9 is added to every value, what is the new mean?",
     "choices": [
       {
         "id": "A",
-        "text": "38",
-        "rationale": "That is the median (second quartile)."
+        "text": "134/5",
+        "rationale": "Every value increases by 9, so the mean does too (not by 9/5)."
       },
       {
         "id": "B",
-        "text": "95/2",
+        "text": "34",
         "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "59",
-        "rationale": "That is the minimum/maximum, not a quartile."
+        "text": "225",
+        "rationale": "The values are shifted, not multiplied."
       },
       {
         "id": "D",
-        "text": "29",
-        "rationale": "That is the first quartile."
+        "text": "25",
+        "rationale": "The mean shifts by the same amount as the data."
       }
     ],
     "correct_choice": "B",
-    "explanation": "Order the data: 4, 29, 29, 32, 44, 47, 48, 59. The median is 38; the third quartile is the median of the upper half: 95/2.",
+    "explanation": "Adding 9 to every value adds 9 to the mean: 25 + 9 = 34.",
     "estimated_time_seconds": 85,
     "tags": [
       "statistics",
-      "quartiles",
-      "family:st_quartiles"
+      "mean",
+      "change",
+      "family:st_change_effect"
     ],
-    "answer_verification": "q1=29,q3=95/2"
+    "answer_verification": "val=34"
   },
   {
     "question_id": "sat-math-statistics-easy-b0259",
@@ -13247,39 +13312,39 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "mean_median_mode",
-    "prompt": "The mean of four numbers is 19. Three of the numbers are 24, 10, 28. What is the fourth number?",
+    "subskill": "spread",
+    "prompt": "What is the range of the data set 38, 3, 25, 17, 41, 3, 11?",
     "choices": [
       {
         "id": "A",
-        "text": "76",
-        "rationale": "That is the total of all four; subtract the three shown."
+        "text": "17",
+        "rationale": "This is the median, not the range."
       },
       {
         "id": "B",
-        "text": "19",
-        "rationale": "That is the mean itself, not the missing number."
+        "text": "38",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "62",
-        "rationale": "That is the sum of the three known numbers."
+        "text": "138/7",
+        "rationale": "This is the mean, not the range."
       },
       {
         "id": "D",
-        "text": "14",
-        "rationale": "Correct."
+        "text": "41",
+        "rationale": "This is the greatest value, not the range."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "The four numbers total 19×4 = 76; 76 − 62 = 14.",
-    "estimated_time_seconds": 90,
+    "correct_choice": "B",
+    "explanation": "Range = greatest − least = 41 − 3 = 38.",
+    "estimated_time_seconds": 65,
     "tags": [
       "statistics",
-      "mean",
-      "family:st_missing_value"
+      "range",
+      "family:st_spread"
     ],
-    "answer_verification": "missing=14"
+    "answer_verification": "range=38"
   },
   {
     "question_id": "sat-math-statistics-easy-b0260",
@@ -13291,67 +13356,39 @@
     "lesson_id": "sat-math-statistics-easy",
     "difficulty": "easy",
     "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "mean_median_mode",
-    "prompt": "The table shows the results of a survey of 11 people. What is the mode of the data?",
+    "question_type": "multiple_choice",
+    "subskill": "spread",
+    "prompt": "The scores on a quiz were 11, 25, 30, 36, 28. What is the range of the scores?",
     "choices": [
       {
         "id": "A",
-        "text": "11",
-        "rationale": "That is the number of people surveyed."
+        "text": "28",
+        "rationale": "This is the median, not the range."
       },
       {
         "id": "B",
-        "text": "2",
-        "rationale": "Correct."
+        "text": "36",
+        "rationale": "This is the greatest value, not the range."
       },
       {
         "id": "C",
-        "text": "3",
-        "rationale": "The mode is the most frequent value, not the largest."
+        "text": "25",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "5",
-        "rationale": "That is the frequency, not the value that occurs most."
+        "text": "26",
+        "rationale": "This is the mean, not the range."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "The mode is the value with the greatest frequency: 2 (frequency 5).",
-    "estimated_time_seconds": 80,
+    "correct_choice": "C",
+    "explanation": "Range = greatest − least = 36 − 11 = 25.",
+    "estimated_time_seconds": 65,
     "tags": [
       "statistics",
-      "table",
-      "family:st_frequency_table"
+      "range",
+      "family:st_spread"
     ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Survey results",
-        "headers": [
-          "Number of pets",
-          "Number of students"
-        ],
-        "rows": [
-          [
-            "0",
-            "2"
-          ],
-          [
-            "1",
-            "2"
-          ],
-          [
-            "2",
-            "5"
-          ],
-          [
-            "3",
-            "2"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "val=2"
+    "answer_verification": "range=25"
   }
 ]
