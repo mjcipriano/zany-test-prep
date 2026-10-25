@@ -20,8 +20,17 @@ python tools/generate_content.py              # (re)generate every exam (sat + a
 python tools/generate_content.py --exam act   # one exam
 python -m unittest discover -s tools/tests -t .   # tooling + generator unit tests
 python tools/validate_content.py              # schema + referential + duplicate + variety checks
-python tools/build_bundle.py                  # write the bundles + exams.json (loaded by the app)
+python tools/build_bundle.py --bump           # write the bundles + exams.json, bumping content_version
 ```
+
+**Content versions.** Each exam's `content_version` (exam.yaml) must change
+whenever its content does. `build_bundle.py` fingerprints every exam's content and
+records `{content_version, fingerprint}` in `content/exams/<exam>/content.lock.json`.
+If the content changed but the version didn't, it stops with an error. Pass `--bump`
+(`--bump-part major|minor|patch`, default minor) and it bumps exam.yaml for you.
+CI runs it without `--bump`, so a forgotten bump fails CI. The version and a short
+fingerprint show in the app under **Settings → Content version** and on **About**.
+Commit the lock files with the content.
 
 CI runs the tooling tests, the validator for every exam, and fails if a committed
 bundle is stale (see `.github/workflows/ci.yml`). Always run **validate →

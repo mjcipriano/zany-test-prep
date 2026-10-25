@@ -26,7 +26,7 @@ publishes the GitHub Release (see docs/release.md). Never push tags by hand — 
 sessions cannot, and the workflow does it for you. The avatar pack repo works the same
 way (`pubspec.yaml` version there → `vX.Y.Z` tag + release on merge).
 
-## Latest state (v2.1.2)
+## Latest state (v2.1.3)
 
 - **Two exams.** SAT and ACT. Onboarding offers every exam listed in
   `assets/content/exams.json`; Settings → Exam switches (XP/streak/rewards carry
@@ -58,6 +58,10 @@ way (`pubspec.yaml` version there → `vX.Y.Z` tag + release on merge).
   tests; Python tooling suite (`python -m unittest discover -s tools/tests -t .`) covers
   the registry, plans, orchestrator, validator, bundler and every generator family. CI
   runs all of it plus the validator for every exam and the bundle-freshness check.
+- **2.1.3:** content is versioned for real: `content_version` was stuck at 1.0.0;
+  both exams are now 2.1.0, `build_bundle.py` fingerprints content into
+  `content/exams/<exam>/content.lock.json` and fails (or `--bump`s) when content changes
+  without a version bump; the app shows version + fingerprint; release notes list them.
 - **2.1.2:** cheat code made reliable: counts on touch-down (a wobbling finger no
   longer turns taps into a scroll), bigger target, 1.5 s window, countdown, and also
   works on the Settings "Content version" row.
@@ -81,7 +85,7 @@ way (`pubspec.yaml` version there → `vX.Y.Z` tag + release on merge).
 python tools/generate_content.py          # regenerate every exam (or --exam act)
 python -m unittest discover -s tools/tests -t .   # tooling + generator tests
 python tools/validate_content.py          # validate every exam (CI)
-python tools/build_bundle.py              # build assets/content/*.bundle.json + exams.json
+python tools/build_bundle.py --bump       # build bundles + exams.json; bump content_version if content changed
 python tools/sync_avatars.py --full       # vendor the avatar pack (--tag vX.Y.Z)
 flutter test                              # unit + widget + persistence + render tests
 flutter test integration_test            # on-device end-to-end test

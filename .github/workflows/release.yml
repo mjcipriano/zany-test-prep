@@ -195,6 +195,19 @@ jobs:
             echo "- signer: $(grep -m1 'certificate SHA-256 digest' apksigner.txt)"
           } >> "$GITHUB_STEP_SUMMARY"
 
+      # Content versions (and fingerprints) of every exam, for the release page.
+      - name: Read content versions
+        id: content
+        run: |
+          {
+            echo 'summary<<EOT'
+            for lock in content/exams/*/content.lock.json; do
+              exam="$(basename "$(dirname "$lock")" | tr '[:lower:]' '[:upper:]')"
+              python3 -c "import json,sys; d=json.load(open(sys.argv[1])); print(f'- {sys.argv[2]} content {d[\"content_version\"]} ({d[\"fingerprint\"][:7]})')" "$lock" "$exam"
+            done
+            echo 'EOT'
+          } >> "$GITHUB_OUTPUT"
+
       # Name the APK after the tag for a clean, unambiguous release asset, and
       # publish its SHA-256 so a phone download can be checked for completeness.
       - name: Stage tag-named APK
@@ -233,6 +246,9 @@ jobs:
             the download to finish completely, then open it from your Downloads and allow
             installing from that app when asked. Full instructions and troubleshooting:
             [docs/install.md](https://github.com/${{ github.repository }}/blob/${{ github.sha }}/docs/install.md).
+
+            **Content in this build** (shown in Settings → Content version):
+            ${{ steps.content.outputs.summary }}
           files: |
             zany-test-prep-${{ env.RELEASE_TAG }}.apk
             zany-test-prep-${{ env.RELEASE_TAG }}.apk.sha256

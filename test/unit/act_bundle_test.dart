@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
@@ -16,6 +17,16 @@ void main() {
       final bundle = await repo.loadBundle('act');
 
       expect(bundle.exam.id, 'act');
+      // Content is versioned: the bundle's version and fingerprint must match
+      // content/exams/act/content.lock.json (tools/build_bundle.py keeps them in sync).
+      final lock =
+          jsonDecode(
+                File('content/exams/act/content.lock.json').readAsStringSync(),
+              )
+              as Map<String, dynamic>;
+      expect(bundle.exam.contentVersion, lock['content_version']);
+      expect(bundle.exam.contentFingerprint, lock['fingerprint']);
+      expect(bundle.exam.contentVersion, isNot('1.0.0'));
       expect(bundle.domainIds, ['english', 'math', 'reading', 'science']);
       expect(bundle.exam.scoring.scale, ScoreScale.act36);
       expect(bundle.exam.timedTest.modules.map((m) => m.domain).toList(), [

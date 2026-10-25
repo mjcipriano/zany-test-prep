@@ -13,6 +13,7 @@ class Exam {
     required this.description,
     required this.domains,
     this.tagline = '',
+    this.contentFingerprint = '',
     this.timedTest = const TimedTestPlan(),
     this.scoring = const ScoringSpec(),
   });
@@ -28,11 +29,22 @@ class Exam {
   /// One-line pitch shown in the exam picker (e.g. "Reading, Writing & Math").
   final String tagline;
 
+  /// Short hash of the bundle's content (written by tools/build_bundle.py).
+  /// Shown next to [contentVersion] so a device's content can be identified
+  /// exactly. Empty for bundles built before fingerprints existed.
+  final String contentFingerprint;
+
   /// The full-length practice-test layout (modules, counts, minutes).
   final TimedTestPlan timedTest;
 
   /// How raw correct counts map onto the exam's reported scale.
   final ScoringSpec scoring;
+
+  /// "2.1.0 · 413ec7f" (version plus a short fingerprint), or just the
+  /// version when the bundle has no fingerprint.
+  String get contentLabel => contentFingerprint.isEmpty
+      ? contentVersion
+      : '$contentVersion · ${contentFingerprint.length > 7 ? contentFingerprint.substring(0, 7) : contentFingerprint}';
 
   factory Exam.fromJson(Map<String, dynamic> json) {
     final domains = (json['domains'] as List? ?? const [])
@@ -50,6 +62,7 @@ class Exam {
       description: (json['description'] as String? ?? '').trim(),
       domains: domains,
       tagline: (json['tagline'] as String? ?? '').trim(),
+      contentFingerprint: (json['content_fingerprint'] as String? ?? '').trim(),
       timedTest: timed is Map
           ? TimedTestPlan.fromJson(timed.cast<String, dynamic>(), domains)
           : TimedTestPlan.defaultFor(domains),
