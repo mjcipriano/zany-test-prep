@@ -155,7 +155,11 @@ lists all 756 assets. The **full pack is bundled** (110 avatars, 376 items, 270 
 ~22 MB as WebP) so everything works offline. To pull a newer pack release, re-run the script
 (`tools/sync_avatars.py --tag <ver> --full`) — nothing hardcodes asset lists, so the
 store/customizer expand automatically. (Jacket/top overlays are filtered out via
-`kExcludedItemCategories` because they don't fit the varied avatar torsos.)
+`kExcludedItemCategories` because they don't fit the varied avatar torsos. **Hats are
+retired for now** via `kRetiredItemCategories`: the art is drawn tilted, so the
+underside of the brim shows over the face. The art and catalog entries stay in the
+pack, owned hats stay owned, and removing `headwear` from that set brings them back
+once they are redrawn front-facing; see the pack's docs/hat_art_guidelines.md.)
 
 **Compositing (`target_box_v1`).** Item/pet PNGs are tightly-trimmed sprites; each
 carries a normalized **placement target** (`cx,cy,w,h` as fractions of the 512

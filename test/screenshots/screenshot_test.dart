@@ -285,14 +285,14 @@ void main() {
     tester,
   ) async {
     const owned = {
-      'item_001_classic_cap', // headwear
+      'item_249_silver_studs', // ear accessory
       'item_041_round_glasses', // eyewear
       'item_071_simple_mask', // face_accessory
       'pet_fox_study_cap_001', // side pet
     };
     const paths = [
       'assets/avatar/avatars/starter/avatar_basic_001_nova_learner.webp',
-      'assets/avatar/items/headwear/item_001_classic_cap.webp',
+      'assets/avatar/items/ear_accessory/item_249_silver_studs.webp',
       'assets/avatar/items/eyewear/item_041_round_glasses.webp',
       'assets/avatar/items/face_accessory/item_071_simple_mask.webp',
       'assets/avatar/pets/common/pet_fox_study_cap_001.webp',
@@ -327,7 +327,7 @@ void main() {
     // Scroll the owned-items rows into view (the regression area) and capture.
     final scrollable = find.byType(Scrollable).first;
     await tester.scrollUntilVisible(
-      find.text('Classic Cap'),
+      find.text('Silver Studs'),
       300,
       scrollable: scrollable,
     );

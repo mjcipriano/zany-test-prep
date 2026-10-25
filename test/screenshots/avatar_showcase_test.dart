@@ -139,16 +139,16 @@ void main() {
     await _shoot(tester, '01_base', 'Starter avatar', _loadout(nova, {}));
     await _shoot(
       tester,
-      '02_headwear',
-      '+ Classic Cap',
-      _loadout(nova, {'headwear': 'item_001_classic_cap'}),
+      '02_earrings',
+      '+ Gold Hoops',
+      _loadout(nova, {'ear_accessory': 'item_260_minimal_gold_hoops'}),
     );
     await _shoot(
       tester,
       '03_eyewear',
       '+ Round Glasses',
       _loadout(nova, {
-        'headwear': 'item_001_classic_cap',
+        'ear_accessory': 'item_260_minimal_gold_hoops',
         'eyewear': 'item_041_round_glasses',
       }),
     );
@@ -157,7 +157,7 @@ void main() {
       '04_badge_scarf',
       '+ Scarf & Badge',
       _loadout(nova, {
-        'headwear': 'item_001_classic_cap',
+        'ear_accessory': 'item_260_minimal_gold_hoops',
         'eyewear': 'item_041_round_glasses',
         'neck_accessory': 'item_096_red_scarf',
         'chest_badge': 'item_121_starter_star_badge',
@@ -170,7 +170,7 @@ void main() {
       _loadout(nova, {
         'background_frame': 'item_201_neon_focus_ring',
         'back_or_aura': 'item_151_soft_aura',
-        'headwear': 'item_001_classic_cap',
+        'ear_accessory': 'item_260_minimal_gold_hoops',
         'eyewear': 'item_041_round_glasses',
         'neck_accessory': 'item_096_red_scarf',
         'chest_badge': 'item_121_starter_star_badge',
@@ -192,9 +192,9 @@ void main() {
     await _shoot(
       tester,
       '07_sage',
-      'Sage · cap + props',
+      'Sage · studs + props',
       _loadout(sage, {
-        'headwear': 'item_001_classic_cap',
+        'ear_accessory': 'item_249_silver_studs',
         'side_left_1': 'pet_fox_study_cap_001',
         'side_right_1': 'item_176_pencil_wand',
       }),

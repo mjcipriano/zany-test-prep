@@ -25,7 +25,7 @@ Map<String, dynamic> _raw({
 
 void main() {
   test('parses slot type and placement target box', () {
-    final c = AvatarCatalog.fromJson({
+    final c = AvatarCatalog.fromJson(includeRetired: true, {
       'pack_id': 'p',
       'style_version': 'v',
       'assets': [
@@ -50,7 +50,7 @@ void main() {
   });
 
   test('parses per-slot targets for side assets', () {
-    final c = AvatarCatalog.fromJson({
+    final c = AvatarCatalog.fromJson(includeRetired: true, {
       'pack_id': 'p',
       'style_version': 'v',
       'assets': [
@@ -80,7 +80,7 @@ void main() {
   });
 
   test('assets without placement fall back to a full-frame target', () {
-    final c = AvatarCatalog.fromJson({
+    final c = AvatarCatalog.fromJson(includeRetired: true, {
       'pack_id': 'p',
       'style_version': 'v',
       'assets': [
@@ -94,7 +94,7 @@ void main() {
   });
 
   test('excludes jacket/blazer overlays everywhere', () {
-    final c = AvatarCatalog.fromJson({
+    final c = AvatarCatalog.fromJson(includeRetired: true, {
       'pack_id': 'p',
       'style_version': 'v',
       'assets': [
@@ -111,5 +111,33 @@ void main() {
     expect(c['cap'], isNotNull);
     expect(c['blazer'], isNull);
     expect(c.items.any((a) => a.category == 'jacket_overlay'), isFalse);
+  });
+
+  test('retired categories (hats) are hidden unless asked for', () {
+    final json = {
+      'pack_id': 'p',
+      'style_version': 'v',
+      'assets': [
+        _raw(id: 'cap', type: 'item', slotType: 'worn'),
+        _raw(
+          id: 'specs',
+          type: 'item',
+          slotType: 'worn',
+          category: 'eyewear',
+          slots: const ['eyewear'],
+        ),
+        _raw(id: 'av', type: 'avatar', slotType: 'base', slots: const []),
+      ],
+    };
+    expect(kRetiredItemCategories, contains('headwear'));
+    final shown = AvatarCatalog.fromJson(json);
+    expect(
+      shown['cap'],
+      isNull,
+    ); // headwear hidden from store/customizer/chests
+    expect(shown['specs'], isNotNull);
+    expect(shown['av'], isNotNull);
+    final all = AvatarCatalog.fromJson(json, includeRetired: true);
+    expect(all['cap'], isNotNull); // art and data are kept
   });
 }

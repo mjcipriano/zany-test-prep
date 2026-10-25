@@ -69,10 +69,15 @@ void main() {
       await _openStoreTab(tester, 'Items');
 
       expect(_count(tester), '${items.length} items');
-      // "All" is grouped into category sections, hats first.
-      expect(find.text('HATS'), findsOneWidget);
-      final hats = _sorted(items.where((a) => a.category == 'headwear'));
-      expect(_tile(hats.first), findsOneWidget);
+      // "All" is grouped into category sections, glasses first (hats are
+      // retired for now).
+      expect(find.text('GLASSES'), findsOneWidget);
+      expect(find.text('HATS'), findsNothing);
+      expect(_key('catalog-category-headwear'), findsNothing);
+      final firstGlasses = _sorted(
+        items.where((a) => a.category == 'eyewear'),
+      ).first;
+      expect(_tile(firstGlasses), findsOneWidget);
 
       // Every category chip is present with its friendly label.
       for (final c in items.map((a) => a.category).toSet()) {
@@ -86,15 +91,15 @@ void main() {
         );
       }
 
-      await _tap(tester, _key('catalog-category-eyewear'));
-      final glasses = _sorted(items.where((a) => a.category == 'eyewear'));
-      expect(_count(tester), 'Showing ${glasses.length} of ${items.length}');
-      expect(_tile(glasses.first), findsOneWidget);
-      expect(_tile(hats.first), findsNothing);
-      expect(find.text('HATS'), findsNothing); // no sections when filtered
+      await _tap(tester, _key('catalog-category-ear_accessory'));
+      final ears = _sorted(items.where((a) => a.category == 'ear_accessory'));
+      expect(_count(tester), 'Showing ${ears.length} of ${items.length}');
+      expect(_tile(ears.first), findsOneWidget);
+      expect(_tile(firstGlasses), findsNothing);
+      expect(find.text('GLASSES'), findsNothing); // no sections when filtered
 
       // Tapping the selected chip again goes back to All.
-      await _tap(tester, _key('catalog-category-eyewear'));
+      await _tap(tester, _key('catalog-category-ear_accessory'));
       expect(_count(tester), '${items.length} items');
     });
 
@@ -117,30 +122,30 @@ void main() {
         'Showing ${epicOrLegendary.length} of ${items.length}',
       );
 
-      // Combine with a category: legendary/epic hats only, no rare hats.
-      await _tap(tester, _key('catalog-category-headwear'));
+      // Combine with a category: legendary/epic earrings only, no rare ones.
+      await _tap(tester, _key('catalog-category-ear_accessory'));
       final bigHats = _sorted(
-        epicOrLegendary.where((a) => a.category == 'headwear'),
+        epicOrLegendary.where((a) => a.category == 'ear_accessory'),
       );
       expect(_count(tester), 'Showing ${bigHats.length} of ${items.length}');
       expect(_tile(bigHats.first), findsOneWidget);
       final rareHat = _sorted(
-        items.where((a) => a.category == 'headwear' && a.rarity == 'rare'),
+        items.where((a) => a.category == 'ear_accessory' && a.rarity == 'rare'),
       ).first;
       expect(_tile(rareHat), findsNothing);
 
       await _tap(tester, _key('catalog-clear'));
       expect(_count(tester), '${items.length} items');
-      expect(find.text('HATS'), findsOneWidget);
+      expect(find.text('GLASSES'), findsOneWidget);
     });
 
     testWidgets('an empty result offers Clear filters', (tester) async {
       await pumpApp(tester, store: _store());
       await _openStoreTab(tester, 'Items');
 
-      // No hat is common.
+      // No necklace is common.
       await _tap(tester, _key('catalog-rarity-common'));
-      await _tap(tester, _key('catalog-category-headwear'));
+      await _tap(tester, _key('catalog-category-neck_accessory'));
       expect(_count(tester), 'Showing 0 of ${items.length}');
       expect(find.text('No items match these filters'), findsOneWidget);
 
@@ -279,10 +284,10 @@ void main() {
   });
 
   group('customizer', () {
-    // 3 hats, 3 glasses, 2 necklaces; 6 pets across rarities.
+    // 3 earrings, 3 glasses, 2 necklaces; 6 pets across rarities.
     List<CatalogAsset> pick(String category, int n) =>
         _sorted(items.where((a) => a.category == category)).take(n).toList();
-    final hats = pick('headwear', 3);
+    final hats = pick('ear_accessory', 3);
     final glasses = pick('eyewear', 3);
     final necks = pick('neck_accessory', 2);
     final ownedItems = [...hats, ...glasses, ...necks];

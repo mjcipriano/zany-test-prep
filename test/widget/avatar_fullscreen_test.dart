@@ -10,7 +10,7 @@ import 'package:zany_test_prep/features/rewards/avatar_view.dart';
 
 import '../helpers/pump_app.dart';
 
-const _hat = 'item_001_classic_cap'; // "Classic Cap"
+const _hat = 'item_249_silver_studs'; // "Silver Studs"
 const _mask = 'item_071_simple_mask'; // "Simple Mask"
 
 MemoryStore _store({Map<String, String> equipped = const {}}) {
@@ -41,7 +41,7 @@ void main() {
   ) async {
     await pumpApp(
       tester,
-      store: _store(equipped: {'headwear': _hat, 'face_accessory': _mask}),
+      store: _store(equipped: {'ear_accessory': _hat, 'face_accessory': _mask}),
     );
     await _openCustomizer(tester);
 
@@ -61,7 +61,7 @@ void main() {
     expect(
       find.descendant(
         of: find.byType(AvatarFullScreen),
-        matching: find.widgetWithText(Chip, 'Classic Cap'),
+        matching: find.widgetWithText(Chip, 'Silver Studs'),
       ),
       findsOneWidget,
     );
@@ -94,7 +94,7 @@ void main() {
   testWidgets('double-tap zooms in and a second double-tap resets', (
     tester,
   ) async {
-    await pumpApp(tester, store: _store(equipped: {'headwear': _hat}));
+    await pumpApp(tester, store: _store(equipped: {'ear_accessory': _hat}));
     await _openCustomizer(tester);
     await tester.tap(find.byType(TappableAvatarPreview));
     await tester.pumpAndSettle();
@@ -122,7 +122,7 @@ void main() {
   });
 
   testWidgets('the rewards hub preview opens it too', (tester) async {
-    await pumpApp(tester, store: _store(equipped: {'headwear': _hat}));
+    await pumpApp(tester, store: _store(equipped: {'ear_accessory': _hat}));
     await tester.tap(find.byIcon(Icons.card_giftcard_rounded));
     await tester.pumpAndSettle();
     await tester.tap(find.byType(TappableAvatarPreview));

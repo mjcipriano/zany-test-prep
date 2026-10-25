@@ -15,6 +15,14 @@ library;
 /// out of the store, customizer, and chest drops.
 const Set<String> kExcludedItemCategories = {'jacket_overlay'};
 
+/// Item categories hidden for now but kept in the pack so they can come back:
+/// the hats are drawn tilted (their underside shows over the face), so they're
+/// off the store, customizer and chests until the art is redrawn front-facing.
+/// Hats a player already owns stay in their inventory and reappear when a
+/// category is removed from this set. Pass `includeRetired: true` to
+/// [AvatarCatalog.fromJson] to load them anyway (layout tests do).
+const Set<String> kRetiredItemCategories = {'headwear'};
+
 /// z of items drawn behind the avatar: under the avatar (0), above back auras
 /// (-20) and background frames (-40).
 const int kBehindAvatarZ = -10;
@@ -363,12 +371,21 @@ class AvatarCatalog {
       ? starterAvatars.first
       : (avatars.isNotEmpty ? avatars.first : null);
 
-  factory AvatarCatalog.fromJson(Map<String, dynamic> j) => AvatarCatalog(
+  factory AvatarCatalog.fromJson(
+    Map<String, dynamic> j, {
+    bool includeRetired = false,
+  }) => AvatarCatalog(
     packId: j['pack_id'] as String? ?? 'unknown',
     styleVersion: j['style_version'] as String? ?? 'unknown',
     assets: ((j['assets'] as List?) ?? const [])
         .map((e) => CatalogAsset.fromJson((e as Map).cast<String, dynamic>()))
         .where((a) => !kExcludedItemCategories.contains(a.category))
+        .where(
+          (a) =>
+              includeRetired ||
+              !a.isItem ||
+              !kRetiredItemCategories.contains(a.category),
+        )
         .toList(),
   );
 
