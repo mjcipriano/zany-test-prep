@@ -18,6 +18,7 @@ import '../domain/models/reward.dart';
 import '../domain/services/badges.dart';
 import '../domain/services/game_service.dart';
 import '../domain/services/rewards_service.dart';
+import 'lesson_resume_controller.dart';
 
 /// Immutable snapshot of the app session handed to the UI.
 class AppData {
@@ -184,11 +185,18 @@ class AppController extends AsyncNotifier<AppData> {
   }
 
   /// Applies a finished lesson attempt; persists and returns the outcome.
+  ///
+  /// The lesson's saved in-progress state is cleared *before* XP is granted:
+  /// if the app dies in between, the worst case is a lost attempt, never a
+  /// resumable one whose XP was already paid out (no double XP on resume).
   Future<LessonOutcome> completeLesson({
     required Lesson lesson,
     required List<AnswerResult> results,
   }) async {
     final data = _data;
+    await ref
+        .read(lessonResumeProvider.notifier)
+        .clear(data.bundle.exam.id, lesson.id);
     final outcome = _game.applyLessonResult(
       progress: data.progress,
       profile: data.profile!,
@@ -301,6 +309,7 @@ class AppController extends AsyncNotifier<AppData> {
   /// Wipes all local progress and profile (Settings -> Reset Progress).
   Future<void> resetProgress() async {
     await _repo.resetAll();
+    ref.invalidate(lessonResumeProvider);
     state = AsyncData(
       AppData(
         bundle: _data.bundle,
@@ -454,6 +463,7 @@ class AppController extends AsyncNotifier<AppData> {
         onboarded: data.onboarded,
       ),
     );
+    ref.invalidate(lessonResumeProvider); // writeBackup dropped them
     final storedProfile = _repo.loadProfile();
     state = AsyncData(
       AppData(

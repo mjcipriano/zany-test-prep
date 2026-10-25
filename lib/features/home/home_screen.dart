@@ -12,6 +12,7 @@ import '../../domain/services/leveling.dart';
 import '../../domain/services/review_engine.dart';
 import '../../domain/services/streak_engine.dart';
 import '../../domain/services/unlock_engine.dart';
+import '../lessons/lesson_resume_badge.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -570,6 +571,7 @@ class _LessonNode extends StatelessWidget {
                           style: Theme.of(context).textTheme.bodySmall,
                         ),
                         if (completed) CrownRow(stars: stars),
+                        if (unlocked) LessonResumeBadge(lesson: lesson),
                       ],
                     ),
                   ),
