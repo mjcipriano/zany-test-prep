@@ -8,9 +8,11 @@ import '../../design/theme.dart';
 import '../../design/widgets.dart';
 import '../../domain/models/avatar_catalog.dart';
 import '../../domain/models/progress.dart';
+import '../../domain/services/catalog_filter.dart';
 import '../../domain/services/pet_engine.dart';
 import '../../domain/services/rewards_service.dart';
 import 'avatar_view.dart';
+import 'catalog_filter_bar.dart';
 
 /// Customize the player's avatar: pick an owned avatar and equip owned
 /// items/pets. Locked content is bought in the Store.
@@ -41,8 +43,11 @@ class AvatarScreen extends ConsumerWidget {
     final companions = [
       for (final line in ownedPetLines)
         if (rewards.highestOwnedStage(g, catalog, line) case final pet?) pet,
-    ]..sort((a, b) => a.name.compareTo(b.name));
+    ];
     final selectedId = rewards.selectedAvatar(g, catalog)?.id;
+    final status = CatalogStatus(
+      isEquipped: (a) => rewards.equippedSlotOf(g, a.id) != null,
+    );
 
     return Scaffold(
       appBar: AppBar(
@@ -111,8 +116,16 @@ class AvatarScreen extends ConsumerWidget {
               ),
             )
           else
-            ...companions.map(
-              (pet) => _CompanionRow(
+            _FilteredList(
+              key: const ValueKey('customizer-companions'),
+              assets: companions,
+              status: status,
+              noun: 'companions',
+              showCategories: false,
+              showSearch: true,
+              searchHint: 'Search companions — fox, cat…',
+              rowBuilder: (pet) => _CompanionRow(
+                key: ValueKey('companion-row-${pet.id}'),
                 pet: pet,
                 game: g,
                 catalog: catalog,
@@ -140,14 +153,97 @@ class AvatarScreen extends ConsumerWidget {
               ),
             )
           else
-            ...ownedItems.map(
-              (item) => _ItemRow(
+            _FilteredList(
+              key: const ValueKey('customizer-items'),
+              assets: ownedItems,
+              status: status,
+              noun: 'items',
+              rowBuilder: (item) => _ItemRow(
+                key: ValueKey('item-row-${item.id}'),
                 item: item,
                 equippedSlot: rewards.equippedSlotOf(g, item.id),
               ),
             ),
         ],
       ),
+    );
+  }
+}
+
+/// Lists with at least this many entries get the filter bar in the
+/// customizer; shorter ones are simply sorted by name.
+const int kCustomizerFilterMinCount = 6;
+
+/// An owned items / companions list with the shared [CatalogFilterBar]
+/// (category or search, rarity, sort, Equipped toggle) once it is long enough
+/// to need it.
+class _FilteredList extends StatefulWidget {
+  const _FilteredList({
+    super.key,
+    required this.assets,
+    required this.status,
+    required this.noun,
+    required this.rowBuilder,
+    this.showCategories = true,
+    this.showSearch = false,
+    this.searchHint = 'Search',
+  });
+
+  final List<CatalogAsset> assets;
+  final CatalogStatus status;
+  final String noun;
+  final Widget Function(CatalogAsset asset) rowBuilder;
+  final bool showCategories;
+  final bool showSearch;
+  final String searchHint;
+
+  @override
+  State<_FilteredList> createState() => _FilteredListState();
+}
+
+class _FilteredListState extends State<_FilteredList> {
+  CatalogFilter _filter = const CatalogFilter(sort: CatalogSort.name);
+
+  void _set(CatalogFilter f) => setState(() => _filter = f);
+
+  @override
+  Widget build(BuildContext context) {
+    final showBar = widget.assets.length >= kCustomizerFilterMinCount;
+    // A hidden bar must not keep filtering (e.g. after the list shrinks).
+    final filter = showBar ? _filter : _filter.cleared();
+    final shown = filter.apply(widget.assets, status: widget.status);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        if (showBar) ...[
+          CatalogFilterBar(
+            assets: widget.assets,
+            filter: _filter,
+            onChanged: _set,
+            status: widget.status,
+            showCategories: widget.showCategories,
+            showSearch: widget.showSearch,
+            searchHint: widget.searchHint,
+            sortOptions: const [CatalogSort.name, CatalogSort.rarity],
+            toggles: const [CatalogToggle.equippedOnly],
+            horizontalPadding: 0,
+          ),
+          CatalogResultsLine(
+            shown: shown.length,
+            total: widget.assets.length,
+            noun: widget.noun,
+            filtered: _filter.hasActiveFilters,
+            onClear: () => _set(_filter.cleared()),
+          ),
+        ],
+        if (shown.isEmpty)
+          CatalogEmptyState(
+            noun: widget.noun,
+            onClear: () => _set(_filter.cleared()),
+          )
+        else
+          ...shown.map(widget.rowBuilder),
+      ],
     );
   }
 }
@@ -193,7 +289,7 @@ String _slotLabel(String slot) => switch (slot) {
 };
 
 class _ItemRow extends ConsumerWidget {
-  const _ItemRow({required this.item, required this.equippedSlot});
+  const _ItemRow({super.key, required this.item, required this.equippedSlot});
   final CatalogAsset item;
   final String? equippedSlot;
 
@@ -267,6 +363,7 @@ class _ItemRow extends ConsumerWidget {
 /// level allows — an Evolve button that upgrades it to the next stage.
 class _CompanionRow extends ConsumerWidget {
   const _CompanionRow({
+    super.key,
     required this.pet,
     required this.game,
     required this.catalog,
