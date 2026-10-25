@@ -183,6 +183,8 @@ Future<void> beginTimedTest(WidgetTester tester) async {
     200,
     scrollable: find.byType(Scrollable).first,
   );
+  await tester.ensureVisible(find.text('Begin test'));
+  await tester.pumpAndSettle();
   await tester.tap(find.text('Begin test'));
   await tester.pumpAndSettle();
 }

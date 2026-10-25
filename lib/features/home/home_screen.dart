@@ -54,12 +54,15 @@ class HomeScreen extends ConsumerWidget {
       appBar: AppBar(
         title: Row(
           children: [
-            // Ellipsize rather than overflow on narrow (360dp) phones.
+            // 20sp (one step under the 22sp app-bar default) so the full
+            // name fits beside the exam chip and three actions on a 360dp
+            // phone; at large text sizes it ellipsizes rather than
+            // overflowing.
             const Flexible(
               child: Text(
                 'Zany Test Prep',
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(fontWeight: FontWeight.w800),
+                style: TextStyle(fontWeight: FontWeight.w800, fontSize: 20),
               ),
             ),
             Gap.s,
