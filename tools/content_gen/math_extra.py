@@ -1188,7 +1188,8 @@ def wp_interest(rng, d):
         # same interest: P r t = P2 r2 t -> P2 = P r / r2 ; choose P so integer
         P = r2 * rng.randint(5, 40) * 10
         P2 = P * r // r2
-        I = P * r * t // 100
+        I = Fraction(P * r * t, 100)  # may be fractional (e.g. 446.4): never truncate it
+        I = int(I) if I.denominator == 1 else float(I)
         prompt = (f"{name} earns the same amount of simple interest from two accounts over {t} years. The first holds ${P} at {r}% per year. "
                   f"If the second account earns {r2}% per year, how much, in dollars, is in the second account?")
         val = P2
@@ -1429,6 +1430,12 @@ def tw_relative_freq(rng, d):
     pe = round(1 - pa - pb - pc, 2)
     if pe <= 0.04:
         return tw_relative_freq(rng, d)
+    # The asked count must be a whole number of responses (0.25 × 250 = 62.5 is
+    # not). Proportions are in hundredths, so a multiple of 100 always works
+    # (not 100 itself, which would collide with the "times 100" distractor).
+    asked = {"easy": pb, "medium": pa + pc}.get(d)
+    if asked is not None and round(asked * total, 6) % 1:
+        total = {50: 200, 250: 500}[total]
     rows = [[rcat[0], f"{pa:.2f}", f"{pb:.2f}", f"{pa + pb:.2f}"], [rcat[1], f"{pc:.2f}", f"{pe:.2f}", f"{pc + pe:.2f}"], ["Total", f"{pa + pc:.2f}", f"{pb + pe:.2f}", "1.00"]]
     stim = _table(f"Relative frequencies (n = {total})", ["", ccat[0], ccat[1], "Total"], rows)
     if d == "easy":

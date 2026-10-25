@@ -888,7 +888,9 @@ def sq_geometric_term(rng, d):
             return sq_geometric_term(rng, d)
         prompt = f"In a geometric sequence with positive ratio, the {_ordinal(p)} term is {num_str(ap_)} and the {_ordinal(q)} term is {num_str(aq)}. What is the {_ordinal(n)} term?" if r > 0 else \
                  f"In a geometric sequence, the {_ordinal(p)} term is {num_str(ap_)} and the {_ordinal(q)} term is {num_str(aq)}, and the ratio is negative. What is the {_ordinal(n)} term?"
-        expl = f"r^({q} − {p}) = {num_str(aq)}/{num_str(ap_)} = {num_str(aq / ap_)}, so r = {num_str(r)}; a₁ = {num_str(a1)}; a_{n} = {num_str(a1)}·({num_str(r)})^{n - 1} = {num_str(val)}."
+        def par(v):  # (81/16)/(81/4), not the ambiguous 81/16/81/4
+            return f"({num_str(v)})" if isinstance(v, Fraction) and v.denominator != 1 else num_str(v)
+        expl = f"r^({q} − {p}) = {par(aq)}/{par(ap_)} = {num_str(aq / ap_)}, so r = {num_str(r)}; a₁ = {num_str(a1)}; a_{n} = {num_str(a1)}·({num_str(r)})^{n - 1} = {num_str(val)}."
         ds = [(a1 * r ** n, "Use the exponent n − 1."), (ap_ * r ** (n - p) * r if n != p else val * r, "From the {0} term there are n − {1} steps.".format(_ordinal(p), p)), (ap_ + (n - p) * (aq - ap_) / (q - p), "That treats the sequence as arithmetic."), (val * r if val * r != val else val + 1, "Off by one step.")]
         sub = "geometric"
     return _numeric_mc(rng, prompt, val, ds, subskill=sub, explanation=expl, tags=["sequences", "geometric"], est=80 if d == "easy" else 100, verify=f"a1={num_str(a1)},r={num_str(r)},val={num_str(val)}")
@@ -1358,7 +1360,9 @@ def cx_conjugate_modulus(rng, d):
         a, b = rng.choice([(p, q), (q, p), (-p, q), (p, -q), (-q, p), (-p, -q)])
         prompt = rng.choice([f"What is the modulus (absolute value) of the complex number {_cx(a, b)}?", f"What is |{_cx(a, b)}|?"])
         val = r
-        expl = f"|a + bi| = √(a² + b²) = √({a}² + ({_m(b)})²) = √{r * r} = {r}."
+        def sq(v):  # (−21)², not −21² (which is −441)
+            return f"({_m(v)})²" if v < 0 else f"{v}²"
+        expl = f"|a + bi| = √(a² + b²) = √({sq(a)} + {sq(b)}) = √{r * r} = {r}."
         ds = [(abs(a) + abs(b), "Square, add, then take the square root; don't just add."), (r * r, "Take the square root."), (abs(a * a - b * b) if a * a != b * b else r + 2, "Add the squares; don't subtract."), (r + 1, "Arithmetic slip.")]
         return _numeric_mc(rng, prompt, val, ds, subskill="conjugate_modulus", explanation=expl, tags=["complex", "modulus"], est=75, verify=f"|{a}+{b}i|={r}")
     a, b = rng.choice([v for v in range(-6, 7) if v]), rng.choice([v for v in range(-6, 7) if v])
@@ -1374,8 +1378,10 @@ def cx_conjugate_modulus(rng, d):
           (f"({fr(Fraction(re_n, c * c - e * e))}) + ({fr(Fraction(im_n, c * c - e * e))})i" if c * c != e * e else f"({fr(re_n)}) + ({fr(im_n)})i", "The denominator becomes c² + e², a positive real number."),
           (f"({fr(Fraction(a, c))}) + ({fr(Fraction(b, e))})i", "Don't divide real by real and imaginary by imaginary."),
           (f"({fr(re)}) − ({fr(im)})i" if im else f"({fr(re + 1)}) + ({fr(im)})i", "Check the sign of the imaginary part.")]
+    def sq(v):  # (−1)², not −1² (which is −1)
+        return f"({_m(v)})²" if v < 0 else f"{v}²"
     expl = (f"Multiply top and bottom by the conjugate {_cx(c, -e)}: numerator ({_m(re_n)}) + ({_m(im_n)})i, denominator "
-            f"{c}² + {e}² = {den}. Result: {correct}.")
+            f"{sq(c)} + {sq(e)} = {den}. Result: {correct}.")
     return _text_mc(rng, prompt, correct, ds, subskill="conjugate_modulus", explanation=expl, tags=["complex", "divide"], est=105, qtype="multi_step_math", verify=correct)
 
 
