@@ -790,16 +790,19 @@ def ui_who_that(rng, difficulty):
 
 
 _CMP_PREP = [
-    ("The study compares the new vaccine ___ the older formula.", "with", ["than", "against of", "by"]),
-    ("The guide contrasted the limestone caves ___ the lava tubes to the south.", "with", ["than", "to from", "by"]),
+    ("The study compares the new vaccine ___ the older formula.", "with", ["than", "to of", "by"]),
+    ("The guide contrasted the limestone caves ___ the lava tubes to the south.", "with", ["than", "to", "by"]),
     ("Her second novel differs ___ her first in almost every way.", "from", ["than", "to", "against"]),
+    ("The committee weighed the new plan ___ the old one for a month.", "against", ["than", "to", "from"]),
+    ("The lab contrasted the morning samples ___ those taken at dusk.", "with", ["than", "to", "by"]),
+    ("The new schedule varies ___ the old one only on Fridays.", "from", ["than", "to", "with"]),
     ("The copy is identical ___ the original in every detail.", "to", ["with", "than", "as"]),
     ("The brick oven is superior ___ the gas oven for bread.", "to", ["than", "over", "from"]),
     ("The valley's climate is similar ___ that of the coast.", "to", ["with", "than", "as"]),
     ("Nothing in the archive is comparable ___ the 1890 letters.", "to", ["than", "with of", "against"]),
     ("The new route is preferable ___ the old one in winter.", "to", ["than", "over", "from"]),
     ("The sketch bears little resemblance ___ the finished mural.", "to", ["with", "of", "than"]),
-    ("Measured ___ last year's total, the harvest was small.", "against", ["than", "to of", "by of"]),
+    ("Measured ___ last year's total, the harvest was small.", "against", ["than", "to", "by of"]),
 ]
 
 
@@ -839,9 +842,9 @@ def ui_double_negative(rng, difficulty):
     correct = (right, "Correct. A single negative expresses the meaning; adding another would cancel or muddle it.")
     ds = [(w, f"'{w}' creates a double negative.") for w in wrongs]
     if difficulty != "easy":
-        text = rng.choice(["As it turned out, ", "By all accounts, ", "That night, "]) + soft_low(text)
+        text = rng.choice(["As it turned out, ", "By all accounts, ", "In short, "]) + soft_low(text)
     if difficulty == "hard":
-        text = text + " " + rng.choice(["Nobody was surprised.", "The search was called off.", "The silence was total."])
+        text = text + " " + rng.choice(["Nobody was surprised.", "That much was clear.", "The matter ended there."])
     return build(rng, fill(text, _stem(rng)), correct, ds, subskill="confused_words",
                  explanation=("Words like 'hardly', 'never', and 'nobody' are already negative; pair them with "
                               "positive forms ('any', 'anything'), not with 'no' or 'not'."),
@@ -859,6 +862,12 @@ _NUM_AMT = [
     ("The ___ of flour in the recipe can be halved.", "amount", "flour"),
     ("The ___ of volunteers grew every year.", "number", "volunteers"),
     ("A surprising ___ of rain fell in a single afternoon.", "amount", "rain"),
+    ("The ___ of ferries crossing each day doubled in summer.", "number", "ferries"),
+    ("The ___ of honey from the hives varies with the weather.", "amount", "honey"),
+    ("A record ___ of kites filled the sky on Saturday.", "number", "kites"),
+    ("The ___ of gravel needed for the path surprised the crew.", "amount", "gravel"),
+    ("The ___ of letters in the archive exceeds ninety thousand.", "number", "letters"),
+    ("The ___ of snow on the ridge is measured every morning.", "amount", "snow"),
 ]
 
 

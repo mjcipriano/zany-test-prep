@@ -14,7 +14,7 @@ import random
 from fractions import Fraction
 
 from .math_gen import (_numeric_mc, _text_mc, _lin, _m, _pm, _ordinal, _dispatch,
-                       _pyth_triple, _table, NAMES)
+                       _pyth_triple, _table, _poly_str, NAMES)
 from .util import num_str
 
 SUBSKILLS = {
@@ -1715,10 +1715,12 @@ def sq_pattern(rng, d):
 def lg_word(rng, d):
     """Logarithms in context: pH, decibels, Richter scale."""
     if d == "easy":
-        k = rng.randint(2, 9)
+        k = rng.randint(1, 14)
         prompt = rng.choice([f"The pH of a solution is given by pH = −log[H⁺], where [H⁺] is the hydrogen ion concentration. What is the pH of a solution with [H⁺] = 10^(−{k})?",
-                             f"The loudness of a sound, in decibels, is L = 10·log(I/I₀). What is the loudness of a sound with I/I₀ = 10^{k}?"])
-        if prompt.startswith("The pH"):
+                             f"A chemist measures a hydrogen ion concentration of 10^(−{k}) moles per liter. Using pH = −log[H⁺], what is the pH?",
+                             f"The loudness of a sound, in decibels, is L = 10·log(I/I₀). What is the loudness of a sound with I/I₀ = 10^{k}?",
+                             f"A sound's intensity is 10^{k} times the reference intensity I₀. Using L = 10·log(I/I₀), what is its loudness in decibels?"])
+        if "pH" in prompt:
             val = k
             expl = f"pH = −log(10^(−{k})) = −(−{k}) = {k}."
             ds = [(-k, "The negative signs cancel."), (10 ** k if k <= 4 else k * 10, "The log of 10^(−k) is −k."), (k + 1, "Arithmetic slip."), (Fraction(1, k), "log(10^n) = n.")]
@@ -1743,36 +1745,36 @@ def lg_word(rng, d):
             expl = f"I/I₀ = 10^(L/10): 10^{b}/10^{a} = 10^{b - a} = {val}."
         ds = [(b - a, "A difference of {0} on a log scale is a factor of 10^{0}.".format(b - a)), (10 * (b - a), "Each unit is a factor of 10, so the factor is 10^{0}, not 10·{0}.".format(b - a)), (Fraction(b, a), "The scale is logarithmic; don't divide the readings."), (10 ** (b - a + 1), "The exponent is the difference {0} − {1} = {2}.".format(b, a, b - a))]
     else:
-        P = rng.choice([1000, 2000, 5000])
-        r = rng.choice([4, 5, 6, 8, 10])
-        t = rng.randint(5, 20)
+        P = rng.choice([500, 1000, 1500, 2000, 2500, 4000, 5000, 8000])
+        r = rng.choice([2, 3, 4, 5, 6, 7, 8, 9, 10, 12])
+        mult = rng.choice([2, 3, 4, 5])
         prompt = (f"An account earning {r}% interest compounded annually grows from ${P} to ${P}(1.{r:02d})^t after t years. "
-                  f"Which expression gives the number of years needed for the account to reach ${P * 2}?")
-        correct = f"t = log(2)/log(1.{r:02d})"
-        ds = [(f"t = log(1.{r:02d})/log(2)", "Solve (1.{0})^t = 2 by taking logs: t·log(1.{0}) = log 2.".format(f"{r:02d}")), (f"t = 2/1.{r:02d}", "t is an exponent; use logarithms."), (f"t = log(2·1.{r:02d})", "Divide the logs; don't multiply the arguments."), (f"t = log({P * 2})/log(1.{r:02d})", "First divide both sides by {0} to get (1.{1})^t = 2.".format(P, f"{r:02d}"))]
-        expl = f"{P}(1.{r:02d})^t = {P * 2} → (1.{r:02d})^t = 2 → t·log(1.{r:02d}) = log 2 → {correct}."
+                  f"Which expression gives the number of years needed for the account to reach ${P * mult}?")
+        correct = f"t = log({mult})/log(1.{r:02d})"
+        ds = [(f"t = log(1.{r:02d})/log({mult})", "Solve (1.{0})^t = {1} by taking logs: t·log(1.{0}) = log {1}.".format(f"{r:02d}", mult)), (f"t = {mult}/1.{r:02d}", "t is an exponent; use logarithms."), (f"t = log({mult}·1.{r:02d})", "Divide the logs; don't multiply the arguments."), (f"t = log({P * mult})/log(1.{r:02d})", "First divide both sides by {0} to get (1.{1})^t = {2}.".format(P, f"{r:02d}", mult))]
+        expl = f"{P}(1.{r:02d})^t = {P * mult} → (1.{r:02d})^t = {mult} → t·log(1.{r:02d}) = log {mult} → {correct}."
         return _text_mc(rng, prompt, correct, ds, subskill="solve_exponential", explanation=expl, tags=["logarithms", "word-problem"], est=100, verify=correct)
     return _numeric_mc(rng, prompt, val, ds, subskill="evaluate", explanation=expl, tags=["logarithms", "word-problem"], est=80 if d == "easy" else 95, verify=f"val={val}")
 
 
 def lg_natural(rng, d):
     """Natural logs and e: ln(e^k), e^(ln k), solving e^x = c (expressions)."""
-    k = rng.randint(2, 12)
+    k = rng.randint(2, 40)
     if d == "easy":
         if rng.random() < 0.5:
-            prompt = f"What is the value of ln(e^{k})?"
+            prompt = rng.choice([f"What is the value of ln(e^{k})?", f"If y = ln(e^{k}), what is y?", f"Simplify ln(e^{k})."])
             val = k
             expl = f"ln and e^x are inverses: ln(e^{k}) = {k}."
             ds = [(1, "ln(e) = 1, but ln(e^k) = k."), (k * 2, "The logarithm returns the exponent."), (0, "ln(1) = 0, not ln(e^k)."), (k + 1, "Arithmetic slip.")]
         else:
-            prompt = f"What is the value of e^(ln {k})?"
+            prompt = rng.choice([f"What is the value of e^(ln {k})?", f"If y = e^(ln {k}), what is y?", f"Simplify e^(ln {k})."])
             val = k
             expl = f"e^x and ln are inverses: e^(ln {k}) = {k}."
             ds = [(1, "e^(ln k) = k, not 1."), (k * k, "The functions cancel exactly."), (0, "ln of a positive number is defined; the result is k."), (k - 1, "Arithmetic slip.")]
         return _numeric_mc(rng, prompt, val, ds, subskill="evaluate", explanation=expl, tags=["logarithms", "natural"], est=65, verify=f"val={val}")
     if d == "medium":
-        c = rng.choice([v for v in range(2, 40)])
-        prompt = f"Which of the following is the solution to e^x = {c}?"
+        c = rng.choice([v for v in range(2, 100)])
+        prompt = rng.choice([f"Which of the following is the solution to e^x = {c}?", f"If e^x = {c}, which expression gives x?"])
         correct = f"x = ln({c})"
         ds = [(f"x = e^{c}", "Apply ln to both sides, not e^x."), (f"x = {c}/e", "x is an exponent; use ln."), (f"x = log({c})", "The base is e, so use the natural log (ln), not log base 10."), (f"x = ln({c})/ln(e²)", "ln(e) = 1, so the division is unnecessary.")]
         expl = f"Take ln of both sides: ln(e^x) = x = ln({c})."
@@ -1815,16 +1817,17 @@ def cx_conj_product(rng, d):
 def cx_quadratic(rng, d):
     """Complex solutions of quadratics."""
     if d == "easy":
-        k = rng.choice([1, 4, 9, 16, 25, 36, 49, 64, 81, 100])
-        s = math.isqrt(k)
-        prompt = f"What are the solutions to the equation x² + {k} = 0?"
+        s = rng.randint(1, 20)
+        k = s * s
+        prompt = rng.choice([f"What are the solutions to the equation x² + {k} = 0?", f"In the complex numbers, what are the solutions to x² = −{k}?", f"Which of the following gives all solutions to x² + {k} = 0?"])
         correct = f"x = ±{s}i" if s != 1 else "x = ±i"
         ds = [(f"x = ±{s}", f"x² = −{k} has no real solutions; the square root of −1 is i."), (f"x = ±{k}i", "Take the square root of {0}.".format(k)), (f"x = {s}i" if s != 1 else "x = i", "There are two solutions, ±."), (f"x = ±√{k}i" if s != 1 else "x = ±2i", "Simplify √{0} = {1}.".format(k, s) if s != 1 else "√1 = 1.")]
         expl = f"x² = −{k}, so x = ±√(−{k}) = ±{s}i."
     elif d == "medium":
-        k, r = rng.choice([(2, 2), (3, 2), (2, 3), (5, 2), (2, 5), (3, 3), (6, 2), (2, 7), (3, 5), (4, 3)])
+        k = rng.randint(2, 9)
+        r = rng.choice([2, 3, 5, 6, 7, 10, 11, 13])
         n = k * k * r
-        prompt = f"What are the solutions to x² + {n} = 0?"
+        prompt = rng.choice([f"What are the solutions to x² + {n} = 0?", f"Which of the following gives all complex solutions to x² = −{n}?"])
         correct = f"x = ±{k}i√{r}"
         ds = [(f"x = ±{k}√{r}", "The solutions are imaginary."), (f"x = ±{n}i", "Take the square root of {0}.".format(n)), (f"x = ±i√{n}", "Simplify the radical: √{0} = {1}√{2}.".format(n, k, r)), (f"x = ±{r}i√{k}", "The perfect-square factor {0} comes out as {1}.".format(k * k, k))]
         expl = f"x² = −{n}, so x = ±i√{n} = ±{k}i√{r}."

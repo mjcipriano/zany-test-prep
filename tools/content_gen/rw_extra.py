@@ -968,6 +968,9 @@ def qe_trend(rng, difficulty):
     else:
         start = rng.randint(120, 400)
         steps = [rng.choice([7, 9, 11, 15, 20]) for _ in range(n - 1)]
+    if unit == "percent":
+        start = rng.randint(10, 35)
+        steps = [max(2, st // 3) for st in steps]
     asc = [start]
     for st in steps:
         asc.append(asc[-1] + st)
@@ -1213,6 +1216,14 @@ _COND = [
      "After 'request that,' the base form is used."),
     ("If {N} ___ here now, she would know what to do.", "were", ["was", "is", "had been"],
      "A present situation contrary to fact uses 'were.'"),
+    ("The director demanded that the set ___ finished by Friday.", "be", ["is", "was", "will be"],
+     "After 'demand that,' the subjunctive base form 'be' is used."),
+    ("The board suggested that the museum ___ free on Sundays.", "be", ["is", "was", "will be"],
+     "After 'suggest that,' the base form is used."),
+    ("The rules require that each entry ___ original.", "be", ["is", "was", "will be"],
+     "After 'require that,' the base form is used."),
+    ("The guide asked that visitors ___ quiet in the nursery.", "remain", ["remains", "remained", "will remain"],
+     "After 'ask that,' the base form is used."),
 ]
 
 
@@ -1240,26 +1251,34 @@ _FUT_PERF = [
     ("By the time you read this, the comet", "fade", "from view"),
     ("By 2040, the glacier", "retreat", "another mile"),
     ("By the final whistle, the goalkeeper", "face", "forty shots"),
+    ("By the time the exhibit opens, the curators", "label", "every case"),
+    ("By midnight, the bakers", "shape", "three hundred loaves"),
+    ("By the end of the decade, the town", "replace", "every wooden bridge"),
+    ("By the time the ferry returns, the tide", "turn", "twice"),
 ]
 _FP_PP = {"publish": "published", "pass": "passed", "plant": "planted", "sing": "sung", "repair": "repaired",
-          "fade": "faded", "retreat": "retreated", "face": "faced"}
+          "fade": "faded", "retreat": "retreated", "face": "faced", "label": "labeled", "shape": "shaped",
+          "replace": "replaced", "turn": "turned"}
 _FP_S3 = {"publish": "publishes", "pass": "passes", "plant": "plants", "sing": "sings", "repair": "repairs",
-          "fade": "fades", "retreat": "retreats", "face": "faces"}
+          "fade": "fades", "retreat": "retreats", "face": "faces", "label": "labels", "shape": "shapes",
+          "replace": "replaces", "turn": "turns"}
 
 
-@family(fill_in=True)
+@family(fill_in=True, small_space=True)
 def vt_future_perfect(rng, difficulty):
     """'By <future time>' + an action completed before it -> future perfect."""
     lead, base, obj = rng.choice(_FUT_PERF)
     pp, s3 = _FP_PP[base], _FP_S3[base]
-    plural = lead.split()[-1] in ("volunteers", "crew") and lead.split()[-1] != "crew"
+    plural = lead.split()[-1] in ("volunteers", "curators", "bakers")
     correct = ("will have " + pp, "Correct. An action that will be complete before a future point takes the "
                                   "future perfect: 'will have' + past participle.")
     ds = [("will " + base, "The simple future does not show that the action is finished by the stated time."),
           (("have " if plural else "has ") + pp, "The present perfect looks back from now, not from a future point."),
-          ((base if plural else s3), "The simple present cannot express completion by a future deadline.")]
+          ("would have been " + pp, "'would have been' belongs to hypothetical statements, not a plain prediction.")]
     if difficulty == "hard":
-        ds[2] = ("would have " + pp, "'would have' belongs to hypothetical statements, not a plain prediction.")
+        ds[1] = ("will have been " + base + "ing" if not base.endswith("e") else "will have been " + base[:-1] + "ing",
+                 "The progressive form stresses ongoing activity rather than completion by the deadline, "
+                 "which the sentence's total requires.")
     text = f"{lead} ___ {obj}."
     if difficulty != "easy":
         text = text + " " + rng.choice(["The milestone has been long awaited.", "Few doubt the prediction.",
@@ -1286,7 +1305,7 @@ _REPORTED = [
 @family(fill_in=True)
 def vt_reported(rng, difficulty):
     """Tense in reported speech: shift back after a past reporting verb; general truths stay present."""
-    pool = _REPORTED if difficulty != "easy" else [r for r in _REPORTED if r[4] == "past" and " " not in r[1]]
+    pool = _REPORTED if difficulty != "easy" else [r for r in _REPORTED if r[4] == "past"]
     lead, right, obj, wrongs, kind = rng.choice(pool)
     name = rng.choice(_NAMES)
     text = f"{lead.format(N=name)} ___ {obj}."
@@ -1392,10 +1411,14 @@ _CORR_VERBS = [
     ("The guide would rather walk the ridge than ___", "drive the valley road", ["driving the valley road", "she would drive the valley road", "to drive the valley road"]),
     ("Each spring the farmers either plow the lower field or ___", "let it rest", ["letting it rest", "it is left to rest", "to let it rest"]),
     ("The library will not only extend its hours but also ___", "add a second reading room", ["adding a second reading room", "a second reading room will be added", "to add a second reading room"]),
+    ("The ranger either closes the trail or ___", "posts a warning at the gate", ["posting a warning at the gate", "a warning is posted at the gate", "to post a warning at the gate"]),
+    ("{N} would rather repair the old canoe than ___", "buy a new one", ["buying a new one", "she would buy a new one", "to buy a new one"]),
+    ("The drought not only withered the corn but also ___", "dried the creek", ["drying the creek", "the creek dried", "to dry the creek"]),
+    ("The choir will both record an album and ___", "tour the coast", ["touring the coast", "a tour of the coast", "to tour the coast"]),
 ]
 
 
-@family(fill_in=True)
+@family(fill_in=True, small_space=True)
 def par_correlative_verbs(rng, difficulty):
     """Correlative pairs joining verb phrases."""
     frame, right, wrongs = rng.choice(_CORR_VERBS)
@@ -1465,25 +1488,26 @@ def pa_collective(rng, difficulty):
                  tags=["conventions", "pronoun-antecedent", "collective"])
 
 
-_PA_INDEF = [("Neither of the companies", "report", "its"), ("Each of the branches", "hours", "its"),
-             ("One of the ferries", "schedule", "its"), ("Either of the proposals", "budget", "its"),
-             ("Every one of the clinics", "address", "its"), ("Neither of the bridges", "deck", "its"),
-             ("Each of the orchards", "harvest", "its"), ("One of the museums", "east wing", "its")]
+_PA_INDEF = [("Neither of the companies", "released ___ annual report"), ("Each of the branches", "updated ___ hours"),
+             ("One of the ferries", "changed ___ schedule"), ("Either of the proposals", "could win on ___ merits"),
+             ("Every one of the clinics", "posted ___ address at the gate"), ("Neither of the bridges", "has had ___ deck replaced"),
+             ("Each of the orchards", "sells ___ harvest at the market"), ("One of the museums", "reopened ___ east wing"),
+             ("Neither of the choirs", "has chosen ___ program"), ("Each of the ferries", "carries ___ own mechanic"),
+             ("One of the bakeries", "doubled ___ staff"), ("Every one of the lighthouses", "still has ___ original lens")]
 
 
 @family(fill_in=True)
 def pa_indefinite(rng, difficulty):
     """Indefinite pronouns (each, neither, one of) are singular antecedents."""
-    ante, thing, right = rng.choice(_PA_INDEF)
+    ante, pred = rng.choice(_PA_INDEF)
     head = ante.split()[0]
     plural_noun = ante.split()[-1]
-    pred = rng.choice([f"updated ___ {thing} last week", f"published ___ {thing} online",
-                       f"changed ___ {thing} this spring", f"has posted ___ {thing} at the gate"])
+    pred = pred + rng.choice(["", " last year", " this spring", " after the storm"])
     correct = ("its", f"Correct. '{head}' is singular, so the pronoun is 'its'; the plural '{plural_noun}' "
                       "is the object of 'of', not the antecedent.")
     ds = [("their", f"'their' agrees with '{plural_noun}', but the antecedent is the singular '{head}'."),
-          ("it's", "'it's' means 'it is' and cannot show possession."),
-          ("there", "'there' is not a possessive pronoun.")]
+          ("its'", "'its'' is not a word."),
+          ("it's", "'it's' means 'it is' and cannot show possession.")]
     text = f"{ante} {pred}."
     if difficulty == "medium":
         text = rng.choice(["According to the newsletter, ", "As of this month, ", "To the surprise of many, "]) + low(text)
@@ -1564,18 +1588,25 @@ def qe_percent_change(rng, difficulty):
     pct = round((v2 - v1) / v1 * 100)
     diff = v2 - v1
     claim = f"A journalist writes that {nm} showed the kind of growth in {measure} the region hoped for."
-    correct_text = rng.choice([
-        f"{nm} rose from {v1} to {v2} {unit}, an increase of about {pct} percent.",
-        f"Between {y1} and {y2}, {_poss(nm)} figure grew by roughly {pct} percent, from {v1} to {v2} {unit}.",
+    tmpl = rng.choice([
+        lambda v: f"{nm} rose from {v1} to {v2} {unit}, an increase of about {v} percent.",
+        lambda v: f"From {y1} to {y2}, {nm} climbed from {v1} to {v2} {unit}, up roughly {v} percent.",
+        lambda v: f"{_poss(nm)} figure grew by about {v} percent, from {v1} to {v2} {unit}.",
     ])
-    correct = (correct_text, f"Correct. ({v2} − {v1}) ÷ {v1} = {pct}% growth.")
-    wrong_pct1 = round(diff / v2 * 100)
-    ds = [(f"{nm} rose from {v1} to {v2} {unit}, an increase of about {diff} percent.",
-           f"{diff} is the change in {unit}, not a percent; the percent change is {pct}%."),
-          (f"{nm} rose from {v1} to {v2} {unit}, an increase of about {wrong_pct1 if wrong_pct1 != pct else pct + 5} percent.",
-           "This divides by the later value instead of the starting value."),
-          (f"{nm} rose from {v1} to {v2} {unit}, an increase of about {pct * 2} percent.",
-           f"The percent change is {pct}%, not double that.")]
+    correct = (tmpl(pct), f"Correct. ({v2} − {v1}) ÷ {v1} = {pct}% growth.")
+    cands = [(diff, f"{diff} is the change in {unit}, not a percent; the percent change is {pct}%."),
+             (round(diff / v2 * 100), "This divides by the later value instead of the starting value."),
+             (pct * 2, f"The percent change is {pct}%, not double that."),
+             (pct + 10, f"The percent change is {pct}%; this figure is simply too high."),
+             (max(pct - 5, 1), f"The percent change is {pct}%; this figure is too low.")]
+    ds, seen = [], {pct}
+    for val, why in cands:
+        if val in seen:
+            continue
+        seen.add(val)
+        ds.append((tmpl(val), why))
+        if len(ds) == 3:
+            break
     prompt = (f"{claim}\n\n" + rng.choice(["Which choice most accurately uses data from the table to support the statement?",
                                            "Which statement about the table's data is accurate?"]))
     return _qe_mc(rng, prompt, correct, ds,
@@ -1591,8 +1622,8 @@ def qe_contradict_year(rng, difficulty):
     n = {"easy": 4, "medium": 5, "hard": 6}[difficulty]
     y0 = 2016 + rng.randint(0, 3)
     years = [y0 + i for i in range(n)]
-    start = rng.randint(40, 120)
-    steps = [rng.choice([4, 6, 8, 10]) for _ in range(n - 1)]
+    start = rng.randint(40, 120) if unit != "percent" else rng.randint(10, 35)
+    steps = [rng.choice([4, 6, 8, 10]) if unit != "percent" else rng.choice([2, 3, 4, 5]) for _ in range(n - 1)]
     vals = [start]
     for st in steps:
         vals.append(vals[-1] + st)
@@ -1647,7 +1678,8 @@ def qe_two_groups(rng, difficulty):
     b_dir = "rose" if db > 0 else "fell"
     correct_text = rng.choice([
         f"{a} rose by {da} {unit} while {b} {b_dir} by {abs(db)} {unit}.",
-        f"Between {y1} and {y2}, {_poss(a)} figure climbed from {a1} to {a2} {unit}, whereas {_poss(b)} moved only from {b1} to {b2} {unit}.",
+        f"{_poss(a)} figure climbed {da} {unit}; {_poss(b)} {b_dir} {abs(db)} {unit}.",
+        f"From {y1} to {y2}, {a} gained {da} {unit} and {b} {b_dir} {abs(db)} {unit}.",
     ])
     correct = (correct_text, "Correct. The changes are read directly from the two rows for each group.")
     ds = [(f"{b} rose by {da} {unit} while {a} {b_dir} by {abs(db)} {unit}.", "This swaps the two groups."),

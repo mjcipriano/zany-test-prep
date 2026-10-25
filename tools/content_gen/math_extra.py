@@ -11,7 +11,7 @@ import random
 from fractions import Fraction
 
 from .math_gen import (_numeric_mc, _text_mc, _spr_num, _lin, _m, _pm, _table,
-                       _dispatch, _ordinal, NAMES)
+                       _dispatch, _ordinal, _money, NAMES)
 from .util import num_str
 
 
