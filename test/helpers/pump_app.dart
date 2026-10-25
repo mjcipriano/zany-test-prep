@@ -5,10 +5,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zany_test_prep/app/app.dart';
 import 'package:zany_test_prep/app/app_controller.dart';
+import 'package:zany_test_prep/core/notifications/notification_gateway.dart';
+import 'package:zany_test_prep/core/notifications/reminder_scheduler.dart';
 import 'package:zany_test_prep/core/sound_service.dart';
 import 'package:zany_test_prep/data/local/key_value_store.dart';
 import 'package:zany_test_prep/data/repositories/avatar_repository.dart';
 import 'package:zany_test_prep/data/repositories/content_repository.dart';
+
+import 'fake_notification_gateway.dart';
 
 // Preloaded once from disk (cwd == repo root during tests). Returned to the app
 // via completed futures so bootstrap resolves through microtasks under the
@@ -40,15 +44,22 @@ AvatarRepository _testAvatarRepository() =>
     AvatarRepository(reader: (path) async => _avatarCatalogJson);
 
 /// The provider overrides [pumpApp] uses (real content, in-memory store,
-/// silent audio). Also handy for pumping a single screen or a
-/// [ProviderContainer] in unit tests.
-List<Override> testOverrides(MemoryStore memory, {String? examsJson}) => [
+/// silent audio, fake notifications). Also handy for pumping a single screen
+/// or a [ProviderContainer] in unit tests.
+List<Override> testOverrides(
+  MemoryStore memory, {
+  String? examsJson,
+  NotificationGateway? notifications,
+}) => [
   contentRepositoryProvider.overrideWithValue(
     testContentRepository(examsJson: examsJson),
   ),
   avatarRepositoryProvider.overrideWithValue(_testAvatarRepository()),
   keyValueStoreProvider.overrideWith((ref) async => memory),
   soundServiceProvider.overrideWithValue(NoopSoundService()),
+  notificationGatewayProvider.overrideWithValue(
+    notifications ?? FakeNotificationGateway(),
+  ),
 ];
 
 /// Pumps the full app with test overrides. Reuse [store] across pumps to
@@ -57,6 +68,7 @@ Future<MemoryStore> pumpApp(
   WidgetTester tester, {
   MemoryStore? store,
   String? examsJson,
+  NotificationGateway? notifications,
 }) async {
   final memory = store ?? MemoryStore();
   // Tall viewport so long scrollable screens render without manual scrolling.
@@ -75,7 +87,11 @@ Future<MemoryStore> pumpApp(
   }
   await tester.pumpWidget(
     ProviderScope(
-      overrides: testOverrides(memory, examsJson: examsJson),
+      overrides: testOverrides(
+        memory,
+        examsJson: examsJson,
+        notifications: notifications,
+      ),
       child: const ZanyTestPrepApp(),
     ),
   );
