@@ -47,9 +47,13 @@ class HomeScreen extends ConsumerWidget {
       appBar: AppBar(
         title: Row(
           children: [
-            const Text(
-              'Zany Test Prep',
-              style: TextStyle(fontWeight: FontWeight.w800),
+            // Ellipsize rather than overflow on narrow (360dp) phones.
+            const Flexible(
+              child: Text(
+                'Zany Test Prep',
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(fontWeight: FontWeight.w800),
+              ),
             ),
             Gap.s,
             Container(
@@ -415,7 +419,13 @@ class _QuickAction extends StatelessWidget {
           children: [
             Icon(icon, color: scheme.primary),
             Gap.s,
-            Text(label, style: const TextStyle(fontWeight: FontWeight.w700)),
+            Flexible(
+              child: Text(
+                label,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(fontWeight: FontWeight.w700),
+              ),
+            ),
             if (badge != null) ...[
               const Spacer(),
               Container(

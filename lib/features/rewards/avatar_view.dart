@@ -54,11 +54,36 @@ Rect placementRect(CatalogAsset asset, String? slot, double size) {
 /// centring left short sprites floating above the hair.
 const double kHeadwearBrimLine = 0.245;
 
-/// The exact rectangle a sprite is drawn into: its target box shrunk to the
-/// sprite's aspect ratio (contain-fit), with headwear bottom-aligned on the
+/// Where a fitted item lands on an avatar's [FaceRig] (pack contract
+/// `face_fit_v1`), or null when either side lacks the data: the item is
+/// `fit.width` × the rig's `fit.widthRef` width wide (height from the sprite's
+/// aspect) and its `fit.spriteAnchor` point sits on the rig's `fit.anchor`.
+Rect? faceFitRect(CatalogAsset asset, FaceRig? rig, double size) {
+  final fit = asset.fit;
+  final aspect = asset.spriteAspect;
+  if (fit == null || rig == null || aspect == null || aspect <= 0) return null;
+  final point = rig.points[fit.anchor];
+  final ref = rig.widths[fit.widthRef];
+  if (point == null || ref == null) return null;
+  final w = ref * fit.width * size;
+  final h = w / aspect;
+  return Rect.fromLTWH(
+    point.x * size - fit.spriteAnchor.x * w,
+    point.y * size - fit.spriteAnchor.y * h,
+    w,
+    h,
+  );
+}
+
+/// The exact rectangle a sprite is drawn into. Head, face and ear items are
+/// fitted to the wearer's face ([faceFitRect]) when the avatar carries a
+/// [FaceRig]; everything else uses its target box shrunk to the sprite's
+/// aspect ratio (contain-fit), with headwear bottom-aligned on the
 /// [kHeadwearBrimLine] unless it is meant to float. Falls back to the box when
 /// the pack records no sprite size.
-Rect fittedRect(CatalogAsset asset, String? slot, double size) {
+Rect fittedRect(CatalogAsset asset, String? slot, double size, {FaceRig? rig}) {
+  final fitted = faceFitRect(asset, rig, size);
+  if (fitted != null) return fitted;
   final box = placementRect(asset, slot, size);
   final aspect = asset.spriteAspect;
   var r = box;
@@ -76,6 +101,35 @@ Rect fittedRect(CatalogAsset asset, String? slot, double size) {
     );
   }
   return r;
+}
+
+/// How much to shrink the whole scene so worn items that poke past the frame
+/// (a tall hat on an avatar whose head sits high) stay visible: 1.0 when
+/// everything fits, otherwise the scale that brings the overflow back in with
+/// the scene anchored at the bottom centre (the waist-up crop stays put).
+/// Never shrinks below [kMinSceneScale].
+const double kMinSceneScale = 0.8;
+
+double sceneScale(List<EquippedLayer> layers) {
+  final rig = avatarRig(layers);
+  var top = 0.0, side = 0.0;
+  for (final layer in layers) {
+    final a = layer.asset;
+    if (a.isAvatar || a.isSide) continue;
+    final r = fittedRect(a, layer.slot, 1, rig: rig);
+    top = math.max(top, -r.top);
+    side = math.max(side, math.max(-r.left, r.right - 1));
+  }
+  final s = math.min(1 / (1 + top), 1 / (1 + 2 * side));
+  return s.clamp(kMinSceneScale, 1.0);
+}
+
+/// The face rig of the avatar layer in [layers], if any.
+FaceRig? avatarRig(List<EquippedLayer> layers) {
+  for (final layer in layers) {
+    if (layer.asset.isAvatar) return layer.asset.faceRig;
+  }
+  return null;
 }
 
 /// Composes the equipped loadout (avatar + items/pets) into a single preview.
@@ -140,6 +194,8 @@ class _AvatarPreviewState extends State<AvatarPreview>
     super.dispose();
   }
 
+  double get _scale => sceneScale(widget.layers);
+
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
@@ -152,9 +208,13 @@ class _AvatarPreviewState extends State<AvatarPreview>
         borderRadius: BorderRadius.circular(24),
       ),
       clipBehavior: Clip.antiAlias,
-      child: Stack(
-        clipBehavior: Clip.hardEdge,
-        children: [for (final layer in widget.layers) _positioned(layer)],
+      child: Transform.scale(
+        scale: _scale,
+        alignment: Alignment.bottomCenter,
+        child: Stack(
+          clipBehavior: Clip.hardEdge,
+          children: [for (final layer in widget.layers) _positioned(layer)],
+        ),
       ),
     );
     final idle = _idle;
@@ -167,7 +227,7 @@ class _AvatarPreviewState extends State<AvatarPreview>
     final size = widget.size;
     // The avatar (and any base layer) fills the whole frame.
     if (a.isAvatar) return Positioned.fill(child: AssetImage512(a));
-    final r = fittedRect(a, layer.slot, size);
+    final r = fittedRect(a, layer.slot, size, rig: avatarRig(widget.layers));
     if (!a.isSide) {
       return Positioned.fromRect(rect: r, child: AssetImage512(a));
     }

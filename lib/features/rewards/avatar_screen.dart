@@ -10,6 +10,7 @@ import '../../domain/models/avatar_catalog.dart';
 import '../../domain/models/progress.dart';
 import '../../domain/services/pet_engine.dart';
 import '../../domain/services/rewards_service.dart';
+import 'avatar_fullscreen.dart';
 import 'avatar_view.dart';
 
 /// Customize the player's avatar: pick an owned avatar and equip owned
@@ -59,7 +60,7 @@ class AvatarScreen extends ConsumerWidget {
         padding: kPagePadding,
         children: [
           Center(
-            child: AvatarPreview(
+            child: TappableAvatarPreview(
               layers: rewards.equippedLayers(g, catalog),
               size: 200,
             ),

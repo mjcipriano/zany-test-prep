@@ -50,7 +50,7 @@ class RewardsService {
       final a = catalog[id];
       if (a != null) layers.add(EquippedLayer(slot, a));
     });
-    layers.sort((a, b) => a.asset.zIndex.compareTo(b.asset.zIndex));
+    layers.sort((a, b) => a.asset.renderZ.compareTo(b.asset.renderZ));
     return layers;
   }
 

@@ -277,11 +277,11 @@ void main() {
       'pet_fox_study_cap_001', // side pet
     };
     const paths = [
-      'assets/avatar/avatars/starter/avatar_basic_001_nova_learner.png',
-      'assets/avatar/items/headwear/item_001_classic_cap.png',
-      'assets/avatar/items/eyewear/item_041_round_glasses.png',
-      'assets/avatar/items/face_accessory/item_071_simple_mask.png',
-      'assets/avatar/pets/common/pet_fox_study_cap_001.png',
+      'assets/avatar/avatars/starter/avatar_basic_001_nova_learner.webp',
+      'assets/avatar/items/headwear/item_001_classic_cap.webp',
+      'assets/avatar/items/eyewear/item_041_round_glasses.webp',
+      'assets/avatar/items/face_accessory/item_071_simple_mask.webp',
+      'assets/avatar/pets/common/pet_fox_study_cap_001.webp',
     ];
 
     final store = MemoryStore();

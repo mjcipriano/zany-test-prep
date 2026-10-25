@@ -6,7 +6,7 @@ import '../../app/app_controller.dart';
 import '../../design/theme.dart';
 import '../../design/widgets.dart';
 import '../../domain/models/progress.dart';
-import 'avatar_view.dart';
+import 'avatar_fullscreen.dart';
 
 /// The rewards hub: XP balance, chests to open, streak freezes, XP boost, and
 /// entry points into the store and avatar customizer. Reached from the stats
@@ -68,7 +68,7 @@ class RewardsScreen extends ConsumerWidget {
           AppCard(
             child: Row(
               children: [
-                AvatarPreview(layers: layers, size: 96),
+                TappableAvatarPreview(layers: layers, size: 96),
                 Gap.m,
                 Expanded(
                   child: Column(
