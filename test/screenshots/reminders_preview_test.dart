@@ -185,7 +185,7 @@ void main() {
       skip: !fontsAvailable,
       (tester) async {
         await _pump(tester, MemoryStore(), FakeNotificationGateway());
-        for (var i = 0; i < 4; i++) {
+        for (var i = 0; i < 3; i++) {
           await tester.tap(find.text('Continue'));
           await tester.pumpAndSettle();
         }
