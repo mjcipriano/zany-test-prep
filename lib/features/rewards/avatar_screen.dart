@@ -265,6 +265,7 @@ class _PickTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
     return Semantics(
+      container: true,
       button: true,
       selected: selected,
       label: asset.name,

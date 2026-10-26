@@ -152,6 +152,7 @@ class TappableAvatarPreview extends StatelessWidget {
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
     return Semantics(
+      container: true,
       button: true,
       label: avatarDescription(layers),
       hint: 'Opens full screen',

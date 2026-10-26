@@ -276,6 +276,7 @@ class _AvatarPreviewState extends State<AvatarPreview>
     );
     final idle = _idle;
     return Semantics(
+      container: true,
       image: true,
       label: avatarDescription(widget.layers),
       excludeSemantics: true,

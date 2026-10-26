@@ -146,10 +146,8 @@ Future<void> scrollThrough(WidgetTester tester) async {
   }
 }
 
-/// Scrolls the question until choice "A" is on screen and taps it. Returns
-/// false when the question has no choices (a grid-in).
-Future<bool> tapChoiceA(WidgetTester tester) async {
-  if (find.byType(TextField).evaluate().isNotEmpty) return false;
+/// Scrolls the question until choice "A" is on screen.
+Future<void> scrollToChoices(WidgetTester tester) async {
   final scrollable = find.byType(Scrollable).first;
   for (
     var i = 0;
@@ -159,6 +157,13 @@ Future<bool> tapChoiceA(WidgetTester tester) async {
     await tester.drag(scrollable, const Offset(0, -150));
     await tester.pumpAndSettle();
   }
+}
+
+/// Scrolls the question until choice "A" is on screen and taps it. Returns
+/// false when the question has no choices (a grid-in).
+Future<bool> tapChoiceA(WidgetTester tester) async {
+  if (find.byType(TextField).evaluate().isNotEmpty) return false;
+  await scrollToChoices(tester);
   await tester.tap(find.text('A').hitTestable().first);
   await tester.pumpAndSettle();
   return true;

@@ -569,6 +569,7 @@ class _NavChip extends StatelessWidget {
       if (flagged) 'flagged',
     ].join(', ');
     return Semantics(
+      container: true,
       button: true,
       label: 'Question $number, $state',
       excludeSemantics: true,
@@ -642,6 +643,7 @@ class _TimerChip extends StatelessWidget {
     );
     return Semantics(
       key: const Key('test-timer'),
+      container: true,
       button: true,
       label: remaining <= 60
           ? 'Time remaining: under a minute'

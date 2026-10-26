@@ -118,6 +118,7 @@ class ProgressBar extends StatelessWidget {
         this.animate &&
         !(MediaQuery.maybeDisableAnimationsOf(context) ?? false);
     return Semantics(
+      container: true,
       label: semanticLabel,
       value: semanticValue ?? '${(v * 100).round()}%',
       excludeSemantics: true,

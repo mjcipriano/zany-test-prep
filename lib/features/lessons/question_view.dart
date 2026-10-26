@@ -126,6 +126,7 @@ class _ChoiceButton extends StatelessWidget {
     }
 
     return Semantics(
+      container: true,
       button: true,
       selected: selected,
       enabled: onTap != null,

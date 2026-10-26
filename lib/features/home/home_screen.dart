@@ -95,7 +95,10 @@ class HomeScreen extends ConsumerWidget {
             onPressed: () => context.push('/rewards'),
             icon: Badge(
               isLabelVisible: progress.game.unopenedChests > 0,
-              label: Text('${progress.game.unopenedChests}'),
+              // The tooltip already says how many chests.
+              label: ExcludeSemantics(
+                child: Text('${progress.game.unopenedChests}'),
+              ),
               child: const Icon(Icons.card_giftcard_rounded),
             ),
           ),
@@ -590,6 +593,7 @@ class _QuickAction extends StatelessWidget {
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
     return Semantics(
+      container: true,
       button: true,
       enabled: onTap != null,
       label: semanticLabel ?? label,
