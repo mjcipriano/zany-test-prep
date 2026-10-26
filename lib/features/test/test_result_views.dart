@@ -46,10 +46,10 @@ class ModuleTransitionView extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Icon(
+                Icon(
                   Icons.check_circle_rounded,
                   size: 64,
-                  color: AppTheme.correct,
+                  color: AppColors.of(context).correct,
                 ),
                 Gap.m,
                 Text(

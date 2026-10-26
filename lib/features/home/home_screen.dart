@@ -54,12 +54,15 @@ class HomeScreen extends ConsumerWidget {
       appBar: AppBar(
         title: Row(
           children: [
-            // Ellipsize rather than overflow on narrow (360dp) phones.
+            // 20sp (one step under the 22sp app-bar default) so the full
+            // name fits beside the exam chip and three actions on a 360dp
+            // phone; at large text sizes it ellipsizes rather than
+            // overflowing.
             const Flexible(
               child: Text(
                 'Zany Test Prep',
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(fontWeight: FontWeight.w800),
+                style: TextStyle(fontWeight: FontWeight.w800, fontSize: 20),
               ),
             ),
             Gap.s,
@@ -80,30 +83,53 @@ class HomeScreen extends ConsumerWidget {
             ),
           ],
         ),
+        // Rewards and Settings stay one tap away; Progress and Achievements
+        // live in the overflow menu so the title fits on 360dp phones.
         actions: [
           IconButton(
-            tooltip: 'Rewards',
+            tooltip: progress.game.unopenedChests > 0
+                ? 'Rewards, ${progress.game.unopenedChests} '
+                      'chest${progress.game.unopenedChests == 1 ? '' : 's'} '
+                      'to open'
+                : 'Rewards',
             onPressed: () => context.push('/rewards'),
             icon: Badge(
               isLabelVisible: progress.game.unopenedChests > 0,
-              label: Text('${progress.game.unopenedChests}'),
+              // The tooltip already says how many chests.
+              label: ExcludeSemantics(
+                child: Text('${progress.game.unopenedChests}'),
+              ),
               child: const Icon(Icons.card_giftcard_rounded),
             ),
-          ),
-          IconButton(
-            tooltip: 'Progress',
-            onPressed: () => context.push('/dashboard'),
-            icon: const Icon(Icons.bar_chart_rounded),
-          ),
-          IconButton(
-            tooltip: 'Achievements',
-            onPressed: () => context.push('/achievements'),
-            icon: const Icon(Icons.emoji_events_rounded),
           ),
           IconButton(
             tooltip: 'Settings',
             onPressed: () => context.push('/settings'),
             icon: const Icon(Icons.settings_rounded),
+          ),
+          PopupMenuButton<String>(
+            key: const Key('home-more-menu'),
+            tooltip: 'More',
+            icon: const Icon(Icons.more_vert_rounded),
+            onSelected: (route) => context.push(route),
+            itemBuilder: (context) => const [
+              PopupMenuItem(
+                value: '/dashboard',
+                child: ListTile(
+                  leading: Icon(Icons.bar_chart_rounded),
+                  title: Text('Progress'),
+                  contentPadding: EdgeInsets.zero,
+                ),
+              ),
+              PopupMenuItem(
+                value: '/achievements',
+                child: ListTile(
+                  leading: Icon(Icons.emoji_events_rounded),
+                  title: Text('Achievements'),
+                  contentPadding: EdgeInsets.zero,
+                ),
+              ),
+            ],
           ),
         ],
       ),
@@ -181,85 +207,56 @@ class HomeScreen extends ConsumerWidget {
               done: progress.isLessonCompleted(suggested.id),
             ),
           Gap.s,
-          Row(
-            children: [
-              Expanded(
-                child: _QuickAction(
-                  icon: Icons.refresh_rounded,
-                  label: 'Review',
-                  badge: reviewCount > 0 ? '$reviewCount' : null,
-                  onTap: reviewCount > 0 ? () => context.push('/review') : null,
-                ),
+          _QuickActions(
+            actions: [
+              _QuickAction(
+                icon: Icons.refresh_rounded,
+                label: 'Review',
+                badge: reviewCount > 0 ? '$reviewCount' : null,
+                semanticLabel: reviewCount > 0
+                    ? 'Review, $reviewCount due'
+                    : 'Review, nothing due',
+                onTap: reviewCount > 0 ? () => context.push('/review') : null,
               ),
-              Gap.s,
-              Expanded(
-                child: _QuickAction(
-                  icon: Icons.insights_rounded,
-                  label: 'Skills',
-                  onTap: () => context.push('/skills'),
-                ),
+              _QuickAction(
+                icon: Icons.insights_rounded,
+                label: 'Skills',
+                onTap: () => context.push('/skills'),
               ),
-            ],
-          ),
-          Gap.s,
-          Row(
-            children: [
-              Expanded(
-                child: _QuickAction(
-                  icon: Icons.auto_awesome_rounded,
-                  label: 'Smart Practice',
-                  onTap: () => context.push('/practice/smart'),
-                ),
+              _QuickAction(
+                icon: Icons.auto_awesome_rounded,
+                label: 'Smart Practice',
+                onTap: () => context.push('/practice/smart'),
               ),
-              Gap.s,
-              Expanded(
-                child: _QuickAction(
-                  icon: Icons.explore_rounded,
-                  label: 'Placement check',
-                  onTap: () => context.push('/diagnostic'),
-                ),
+              _QuickAction(
+                icon: Icons.explore_rounded,
+                label: 'Placement check',
+                onTap: () => context.push('/diagnostic'),
               ),
-            ],
-          ),
-          Gap.s,
-          Row(
-            children: [
-              Expanded(
-                child: _QuickAction(
-                  icon: Icons.shuffle_rounded,
-                  label: 'Quick Practice',
-                  onTap: () => context.push('/practice/unlocked'),
-                ),
+              _QuickAction(
+                icon: Icons.shuffle_rounded,
+                label: 'Quick Practice',
+                onTap: () => context.push('/practice/unlocked'),
               ),
-              Gap.s,
-              Expanded(
-                child: _QuickAction(
-                  icon: Icons.whatshot_rounded,
-                  label: 'Challenge',
-                  onTap: () => context.push('/practice/all'),
-                ),
+              _QuickAction(
+                icon: Icons.whatshot_rounded,
+                label: 'Challenge',
+                onTap: () => context.push('/practice/all'),
               ),
-            ],
-          ),
-          Gap.s,
-          Row(
-            children: [
-              Expanded(
-                child: _QuickAction(
-                  icon: Icons.bolt_rounded,
-                  label: progress.game.survivalBest > 0
-                      ? 'Survival · ${progress.game.survivalBest}'
-                      : 'Survival',
-                  onTap: () => context.push('/survival'),
-                ),
+              _QuickAction(
+                icon: Icons.bolt_rounded,
+                label: progress.game.survivalBest > 0
+                    ? 'Survival · ${progress.game.survivalBest}'
+                    : 'Survival',
+                semanticLabel: progress.game.survivalBest > 0
+                    ? 'Survival, best ${progress.game.survivalBest}'
+                    : null,
+                onTap: () => context.push('/survival'),
               ),
-              Gap.s,
-              Expanded(
-                child: _QuickAction(
-                  icon: Icons.timer_rounded,
-                  label: 'Practice Test',
-                  onTap: () => context.push('/test'),
-                ),
+              _QuickAction(
+                icon: Icons.timer_rounded,
+                label: 'Practice Test',
+                onTap: () => context.push('/test'),
               ),
             ],
           ),
@@ -307,35 +304,37 @@ class _StatsHeader extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: [
+          _StatPills(
+            pills: [
               StatPill(
                 icon: Icons.local_fire_department_rounded,
                 value: '$streak',
                 color: AppTheme.streak,
                 semanticLabel: '$streak day streak',
               ),
-              Gap.s,
               StatPill(
                 icon: Icons.bolt_rounded,
                 value: '$xp XP',
                 color: AppTheme.xpGold,
                 semanticLabel: '$xp total XP',
               ),
-              const Spacer(),
-              StatPill(
-                icon: Icons.military_tech_rounded,
-                value: 'Lvl $level',
-                color: Theme.of(context).colorScheme.primary,
-                semanticLabel: 'Level $level',
-              ),
             ],
+            trailing: StatPill(
+              icon: Icons.military_tech_rounded,
+              value: 'Lvl $level',
+              color: Theme.of(context).colorScheme.primary,
+              semanticLabel: 'Level $level',
+            ),
           ),
           Gap.m,
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Daily goal', style: Theme.of(context).textTheme.labelLarge),
+              Expanded(
+                child: Text(
+                  'Daily goal',
+                  style: Theme.of(context).textTheme.labelLarge,
+                ),
+              ),
               Text(
                 '$dailyXp / $goalXp XP',
                 style: Theme.of(context).textTheme.labelLarge,
@@ -343,7 +342,12 @@ class _StatsHeader extends StatelessWidget {
             ],
           ),
           Gap.xs,
-          ProgressBar(value: goalProgress, color: AppTheme.streak),
+          ProgressBar(
+            value: goalProgress,
+            color: AppTheme.streak,
+            semanticLabel: 'Daily goal',
+            semanticValue: '$dailyXp of $goalXp XP',
+          ),
           Gap.s,
           Row(
             children: [
@@ -356,17 +360,44 @@ class _StatsHeader extends StatelessWidget {
               Expanded(
                 child: ProgressBar(
                   value: xpForNext == 0 ? 0 : xpIntoLevel / xpForNext,
+                  semanticLabel: 'Progress to level ${level + 1}',
+                  semanticValue: '$xpIntoLevel of $xpForNext XP',
                 ),
               ),
               const SizedBox(width: 8),
-              Text(
-                '$xpIntoLevel/$xpForNext',
-                style: Theme.of(context).textTheme.bodySmall,
+              ExcludeSemantics(
+                child: Text(
+                  '$xpIntoLevel/$xpForNext',
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
               ),
             ],
           ),
         ],
       ),
+    );
+  }
+}
+
+/// The stats header's pills: [pills] on the left and [trailing] on the
+/// right. When they no longer fit on one line (large text, narrow phones)
+/// they wrap instead, each pill keeping the full width so no value is cut
+/// short.
+class _StatPills extends StatelessWidget {
+  const _StatPills({required this.pills, required this.trailing});
+  final List<Widget> pills;
+  final Widget trailing;
+
+  @override
+  Widget build(BuildContext context) {
+    return Wrap(
+      alignment: WrapAlignment.spaceBetween,
+      spacing: 8,
+      runSpacing: 8,
+      children: [
+        Wrap(spacing: 8, runSpacing: 8, children: pills),
+        trailing,
+      ],
     );
   }
 }
@@ -519,60 +550,111 @@ class _ContinueCard extends StatelessWidget {
   }
 }
 
+/// The Home shortcut tiles: two per row, or one per row at large text sizes
+/// so labels like "Placement check" never shrink or clip.
+class _QuickActions extends StatelessWidget {
+  const _QuickActions({required this.actions});
+  final List<_QuickAction> actions;
+
+  @override
+  Widget build(BuildContext context) {
+    final perRow = MediaQuery.textScalerOf(context).scale(10) > 13 ? 1 : 2;
+    final rows = <Widget>[];
+    for (var i = 0; i < actions.length; i += perRow) {
+      if (i > 0) rows.add(Gap.s);
+      rows.add(
+        perRow == 1
+            ? actions[i]
+            : Row(
+                children: [
+                  Expanded(child: actions[i]),
+                  Gap.s,
+                  Expanded(
+                    child: i + 1 < actions.length
+                        ? actions[i + 1]
+                        : const SizedBox.shrink(),
+                  ),
+                ],
+              ),
+      );
+    }
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: rows,
+    );
+  }
+}
+
 class _QuickAction extends StatelessWidget {
   const _QuickAction({
     required this.icon,
     required this.label,
     this.badge,
+    this.semanticLabel,
     this.onTap,
   });
   final IconData icon;
   final String label;
   final String? badge;
+
+  /// Spoken instead of [label] + [badge] ("Review, 3 due").
+  final String? semanticLabel;
   final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
-    return Opacity(
-      opacity: onTap == null ? 0.5 : 1,
-      child: AppCard(
-        onTap: onTap,
-        child: Row(
-          children: [
-            Icon(icon, color: scheme.primary),
-            Gap.s,
-            Expanded(
-              // Shrink long labels ("Quick Practice") to fit 360dp phones
-              // rather than ellipsizing them.
-              child: FittedBox(
-                fit: BoxFit.scaleDown,
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  label,
-                  maxLines: 1,
-                  style: const TextStyle(fontWeight: FontWeight.w700),
-                ),
-              ),
-            ),
-            if (badge != null) ...[
+    return Semantics(
+      container: true,
+      button: true,
+      enabled: onTap != null,
+      label: semanticLabel ?? label,
+      excludeSemantics: true,
+      onTap: onTap,
+      child: Opacity(
+        opacity: onTap == null ? 0.5 : 1,
+        child: AppCard(
+          onTap: onTap,
+          child: Row(
+            children: [
+              Icon(icon, color: scheme.primary),
               Gap.s,
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                decoration: BoxDecoration(
-                  color: AppTheme.incorrect,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Text(
-                  badge!,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w800,
+              Expanded(
+                // Shrink long labels ("Quick Practice") to fit 360dp phones
+                // rather than ellipsizing them. (At large text sizes the tiles
+                // go one per row, so this never shrinks below the user's size.)
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    label,
+                    maxLines: 1,
+                    style: const TextStyle(fontWeight: FontWeight.w700),
                   ),
                 ),
               ),
+              if (badge != null) ...[
+                Gap.s,
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 2,
+                  ),
+                  decoration: BoxDecoration(
+                    color: AppColors.of(context).incorrectFill,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Text(
+                    badge!,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w800,
+                    ),
+                  ),
+                ),
+              ],
             ],
-          ],
+          ),
         ),
       ),
     );
@@ -653,7 +735,8 @@ class _LessonNode extends StatelessWidget {
         ? scheme.onSurfaceVariant
         : completed
         ? Colors.white
-        : color;
+        // The path colour on its own pale tint: nudged to stay visible (3:1).
+        : AppColors.of(context).textOn(color, minRatio: 3);
 
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 6),
@@ -680,6 +763,11 @@ class _LessonNode extends StatelessWidget {
                           ? Icons.check_rounded
                           : Icons.play_arrow_rounded,
                       color: fg,
+                      semanticLabel: !unlocked
+                          ? 'Locked'
+                          : completed
+                          ? 'Completed'
+                          : 'Not started',
                     ),
                   ),
                   Gap.m,

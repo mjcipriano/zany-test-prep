@@ -169,9 +169,11 @@ class _ChestCard extends StatelessWidget {
       onTap: has ? () => context.push('/chest') : null,
       child: Row(
         children: [
-          Opacity(
-            opacity: has ? 1 : 0.5,
-            child: const Text('🎁', style: TextStyle(fontSize: 40)),
+          ExcludeSemantics(
+            child: Opacity(
+              opacity: has ? 1 : 0.5,
+              child: const Text('🎁', style: TextStyle(fontSize: 40)),
+            ),
           ),
           Gap.m,
           Expanded(
@@ -202,7 +204,7 @@ class _ChestCard extends StatelessWidget {
               // invalid as a non-flex child of a Row.
               style: FilledButton.styleFrom(minimumSize: const Size(64, 44)),
               onPressed: () => context.push('/chest'),
-              child: const Text('Open'),
+              child: const Text('Open', semanticsLabel: 'Open a chest'),
             ),
         ],
       ),
@@ -229,7 +231,7 @@ class _MiniStat extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(icon, color: color),
+          Icon(icon, color: AppColors.of(context).textOn(color, minRatio: 3)),
           Gap.s,
           Text(
             value,

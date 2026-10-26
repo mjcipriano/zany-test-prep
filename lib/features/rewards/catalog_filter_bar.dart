@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../design/theme.dart';
 import '../../domain/models/avatar_catalog.dart';
 import '../../domain/services/catalog_filter.dart';
 import 'avatar_view.dart';
@@ -269,7 +270,7 @@ class _RarityChip extends StatelessWidget {
             ),
       label: _CountLabel(label: rarityLabel(rarity), count: count),
       selected: selected,
-      checkmarkColor: color,
+      checkmarkColor: AppColors.of(context).textOn(color, minRatio: 3),
       selectedColor: color.withValues(alpha: 0.22),
       side: BorderSide(color: color.withValues(alpha: selected ? 1 : 0.5)),
       onSelected: (_) => onTap(),

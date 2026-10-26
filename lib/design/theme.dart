@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'contrast.dart';
+
 /// Central design tokens and Material 3 themes (light + dark).
 class AppTheme {
   static const seed = Color(0xFF5B6CF6); // friendly indigo
@@ -33,6 +35,7 @@ class AppTheme {
     return ThemeData(
       useMaterial3: true,
       colorScheme: scheme,
+      extensions: [AppColors.forScheme(scheme)],
       // Roboto is the Material/Android default; pinning it keeps typography
       // consistent across every text element (including buttons). The emoji
       // fallback family is a no-op on devices (the OS supplies emoji) and lets
@@ -95,3 +98,60 @@ class Gap {
 }
 
 const kPagePadding = EdgeInsets.all(20);
+
+/// Readable variants of the app's accent colours for the active theme.
+///
+/// The brand accents ([AppTheme.correct], [AppTheme.streak], rarity and
+/// domain colours…) are bright mid-tones: fine as fills, too light for text
+/// on the light theme's cards (an orange "12" on a pale orange pill is about
+/// 2:1). Text and meaningful icons drawn in an accent go through [textOn],
+/// which nudges the accent's lightness just enough to reach WCAG AA (4.5:1)
+/// on a card and on the accent's own tint; fills behind white text use the
+/// `*Fill` colours. In the dark theme most accents already pass and come back
+/// unchanged.
+@immutable
+class AppColors extends ThemeExtension<AppColors> {
+  const AppColors._(this._card);
+
+  /// Derives the readable colours for [scheme] (cards are
+  /// `surfaceContainerHigh`).
+  factory AppColors.forScheme(ColorScheme scheme) =>
+      AppColors._(scheme.surfaceContainerHigh);
+
+  final Color _card;
+
+  static AppColors of(BuildContext context) =>
+      Theme.of(context).extension<AppColors>() ??
+      AppColors.forScheme(Theme.of(context).colorScheme);
+
+  /// The strongest tint an accent is laid over (pills, chips, feedback bars).
+  static const double tintAlpha = 0.18;
+
+  /// [accent] adjusted to read as text (4.5:1) on a card, on the plain
+  /// surface and on the accent's own [tintAlpha] tint over a card.
+  Color textOn(Color accent, {double minRatio = kContrastText}) {
+    final tint = composite(accent.withValues(alpha: tintAlpha), _card);
+    var c = readableOn(accent, _card, minRatio: minRatio);
+    c = readableOn(c, tint, minRatio: minRatio);
+    return c;
+  }
+
+  /// [accent] darkened just enough to carry white text (4.5:1).
+  Color fillFor(Color accent) => readableOn(accent, const Color(0xFFFFFFFF));
+
+  Color get correct => textOn(AppTheme.correct);
+  Color get incorrect => textOn(AppTheme.incorrect);
+  Color get streak => textOn(AppTheme.streak);
+  Color get xp => textOn(AppTheme.xpGold);
+
+  /// Backgrounds for white text (feedback buttons, count badges).
+  Color get correctFill => fillFor(AppTheme.correct);
+  Color get incorrectFill => fillFor(AppTheme.incorrect);
+
+  @override
+  AppColors copyWith() => this;
+
+  @override
+  AppColors lerp(AppColors? other, double t) =>
+      other == null || t < 0.5 ? this : other;
+}

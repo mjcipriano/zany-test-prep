@@ -112,14 +112,19 @@ class _SkillRow extends StatelessWidget {
               Text(
                 label,
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                  color: color,
+                  color: AppColors.of(context).textOn(color),
                   fontWeight: FontWeight.w700,
                 ),
               ),
             ],
           ),
           Gap.xs,
-          ProgressBar(value: mastery / 100, color: color, height: 8),
+          ProgressBar(
+            value: mastery / 100,
+            color: color,
+            height: 8,
+            semanticLabel: '$name mastery',
+          ),
         ],
       ),
     );

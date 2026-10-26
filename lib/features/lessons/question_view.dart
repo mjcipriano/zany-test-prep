@@ -75,71 +75,116 @@ class _ChoiceButton extends StatelessWidget {
   final bool isCorrect;
   final VoidCallback? onTap;
 
+  /// What a screen reader says for this choice: "Choice B: 42", plus its
+  /// state once the answer is checked ("correct answer", "your answer,
+  /// incorrect").
+  String get semanticLabel {
+    final base = 'Choice ${choice.id}: ${choice.text}';
+    if (!answered) return base;
+    if (isCorrect && selected) return '$base, your answer, correct';
+    if (isCorrect) return '$base, correct answer';
+    if (selected) return '$base, your answer, incorrect';
+    return base;
+  }
+
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
+    final colors = AppColors.of(context);
     Color border = scheme.outlineVariant;
+    Color letterBorder = scheme.outline;
     Color bg = scheme.surfaceContainerHigh;
     final Color fg = scheme.onSurface;
+    // The picked letter is filled in, so "selected" never relies on colour.
+    var letterFill = Colors.transparent;
+    var letterFg = fg;
     IconData? trailing;
+    String? trailingLabel;
 
     if (answered) {
       if (isCorrect) {
-        border = AppTheme.correct;
+        border = letterBorder = colors.correct;
         bg = AppTheme.correct.withValues(alpha: 0.14);
         trailing = Icons.check_circle_rounded;
+        trailingLabel = 'Correct';
       } else if (selected) {
-        border = AppTheme.incorrect;
+        border = letterBorder = colors.incorrect;
         bg = AppTheme.incorrect.withValues(alpha: 0.12);
         trailing = Icons.cancel_rounded;
+        trailingLabel = 'Incorrect';
       }
     } else if (selected) {
-      border = scheme.primary;
+      border = letterBorder = scheme.primary;
       bg = scheme.primaryContainer;
     }
+    if (selected && answered) {
+      letterFill = isCorrect ? colors.correctFill : colors.incorrectFill;
+      letterFg = Colors.white;
+    } else if (selected) {
+      letterFill = scheme.primary;
+      letterFg = scheme.onPrimary;
+    }
 
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 180),
-      decoration: BoxDecoration(
-        color: bg,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: border, width: 2),
-      ),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          onTap: onTap,
+    return Semantics(
+      container: true,
+      button: true,
+      selected: selected,
+      enabled: onTap != null,
+      label: semanticLabel,
+      onTap: onTap,
+      excludeSemantics: true,
+      child: AnimatedContainer(
+        duration: MediaQuery.maybeDisableAnimationsOf(context) ?? false
+            ? Duration.zero
+            : const Duration(milliseconds: 180),
+        decoration: BoxDecoration(
+          color: bg,
           borderRadius: BorderRadius.circular(16),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-            child: Row(
-              children: [
-                Container(
-                  width: 30,
-                  height: 30,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(color: border, width: 2),
+          border: Border.all(color: border, width: 2),
+        ),
+        child: Material(
+          color: Colors.transparent,
+          child: InkWell(
+            onTap: onTap,
+            borderRadius: BorderRadius.circular(16),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+              child: Row(
+                children: [
+                  Container(
+                    constraints: const BoxConstraints(
+                      minWidth: 30,
+                      minHeight: 30,
+                    ),
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: letterFill,
+                      border: Border.all(color: letterBorder, width: 2),
+                    ),
+                    child: Text(
+                      choice.id,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w800,
+                        color: letterFg,
+                      ),
+                    ),
                   ),
-                  child: Text(
-                    choice.id,
-                    style: TextStyle(fontWeight: FontWeight.w800, color: fg),
+                  Gap.m,
+                  Expanded(
+                    child: Text(
+                      choice.text,
+                      style: TextStyle(fontSize: 16, color: fg),
+                    ),
                   ),
-                ),
-                Gap.m,
-                Expanded(
-                  child: Text(
-                    choice.text,
-                    style: TextStyle(fontSize: 16, color: fg),
-                  ),
-                ),
-                if (trailing != null)
-                  Icon(
-                    trailing,
-                    color: isCorrect ? AppTheme.correct : AppTheme.incorrect,
-                  ),
-              ],
+                  if (trailing != null)
+                    Icon(
+                      trailing,
+                      semanticLabel: trailingLabel,
+                      color: isCorrect ? colors.correct : colors.incorrect,
+                    ),
+                ],
+              ),
             ),
           ),
         ),
@@ -155,28 +200,33 @@ class _ProducedInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'Enter your answer',
-          style: Theme.of(context).textTheme.labelLarge,
-        ),
-        Gap.s,
-        TextField(
-          controller: controller,
-          enabled: !answered,
-          keyboardType: const TextInputType.numberWithOptions(
-            decimal: true,
-            signed: true,
+    // Merged so the field is announced as "Enter your answer".
+    return MergeSemantics(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Enter your answer',
+            style: Theme.of(context).textTheme.labelLarge,
           ),
-          style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
-          decoration: InputDecoration(
-            hintText: 'e.g. 12 or 3/4',
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(16)),
+          Gap.s,
+          TextField(
+            controller: controller,
+            enabled: !answered,
+            keyboardType: const TextInputType.numberWithOptions(
+              decimal: true,
+              signed: true,
+            ),
+            style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
+            decoration: InputDecoration(
+              hintText: 'e.g. 12 or 3/4',
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(16),
+              ),
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

@@ -59,8 +59,14 @@ Future<int> _answerCheck(WidgetTester tester, {required int right}) async {
         view.onSelectChoice(q.correctChoice!);
       }
       await tester.pump();
-      final next = find.text('Next');
-      await tester.tap(next.evaluate().isNotEmpty ? next : find.text('Finish'));
+      // The button, not a choice that happens to read "Next" (ACT English
+      // transition words).
+      final next = find.widgetWithText(FilledButton, 'Next');
+      await tester.tap(
+        next.evaluate().isNotEmpty
+            ? next
+            : find.widgetWithText(FilledButton, 'Finish'),
+      );
     } else {
       await tester.tap(find.text('Not sure'));
     }

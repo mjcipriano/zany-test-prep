@@ -225,14 +225,18 @@ void main() {
     await tester.pumpAndSettle();
 
     // 8. Achievements.
-    await tester.tap(find.byIcon(Icons.emoji_events_rounded));
+    await tester.tap(find.byTooltip('More'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Achievements'));
     await tester.pumpAndSettle();
     await _shoot(tester, '08_achievements');
     await tester.pageBack();
     await tester.pumpAndSettle();
 
     // 9. Progress dashboard.
-    await tester.tap(find.byIcon(Icons.bar_chart_rounded));
+    await tester.tap(find.byTooltip('More'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Progress'));
     await tester.pumpAndSettle();
     await _shoot(tester, '09_dashboard');
     await tester.pageBack();

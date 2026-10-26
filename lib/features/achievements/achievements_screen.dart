@@ -27,7 +27,9 @@ class AchievementsScreen extends ConsumerWidget {
             color: AppTheme.xpGold.withValues(alpha: 0.14),
             child: Row(
               children: [
-                const Text('🏆', style: TextStyle(fontSize: 32)),
+                const ExcludeSemantics(
+                  child: Text('🏆', style: TextStyle(fontSize: 32)),
+                ),
                 Gap.m,
                 Expanded(
                   child: Text(
@@ -46,14 +48,19 @@ class AchievementsScreen extends ConsumerWidget {
             final got = earned.contains(b.id);
             return Padding(
               padding: const EdgeInsets.only(bottom: 8),
-              child: Opacity(
-                opacity: got ? 1 : 0.55,
+              // Locked badges fade their picture only: the text stays at full
+              // contrast, and the lock / check icons say the state.
+              child: MergeSemantics(
                 child: AppCard(
                   child: Row(
                     children: [
-                      Text(
-                        got ? b.emoji : '🔒',
-                        style: const TextStyle(fontSize: 30),
+                      Opacity(
+                        opacity: got ? 1 : 0.55,
+                        child: Text(
+                          got ? b.emoji : '🔒',
+                          semanticsLabel: got ? '' : 'Locked',
+                          style: const TextStyle(fontSize: 30),
+                        ),
                       ),
                       Gap.m,
                       Expanded(
@@ -72,9 +79,10 @@ class AchievementsScreen extends ConsumerWidget {
                         ),
                       ),
                       if (got)
-                        const Icon(
+                        Icon(
                           Icons.check_circle_rounded,
-                          color: AppTheme.correct,
+                          color: AppColors.of(context).correct,
+                          semanticLabel: 'Unlocked',
                         ),
                     ],
                   ),
