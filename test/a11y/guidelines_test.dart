@@ -18,14 +18,10 @@ Future<void> _skipTables(WidgetTester tester, String skipLabel) async {
   }
 }
 
-Future<void> _expectGuidelines(
-  WidgetTester tester, {
-  bool contrast = true,
-}) async {
+Future<void> _expectGuidelines(WidgetTester tester) async {
   await expectLater(tester, meetsGuideline(androidTapTargetGuideline));
   await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
-  if (contrast)
-    await expectLater(tester, meetsGuideline(textContrastGuideline));
+  await expectLater(tester, meetsGuideline(textContrastGuideline));
 }
 
 void main() {

@@ -304,38 +304,27 @@ class _StatsHeader extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Wraps onto a second line at large text sizes.
-              Expanded(
-                child: Wrap(
-                  spacing: 8,
-                  runSpacing: 8,
-                  children: [
-                    StatPill(
-                      icon: Icons.local_fire_department_rounded,
-                      value: '$streak',
-                      color: AppTheme.streak,
-                      semanticLabel: '$streak day streak',
-                    ),
-                    StatPill(
-                      icon: Icons.bolt_rounded,
-                      value: '$xp XP',
-                      color: AppTheme.xpGold,
-                      semanticLabel: '$xp total XP',
-                    ),
-                  ],
-                ),
-              ),
-              Gap.s,
+          _StatPills(
+            pills: [
               StatPill(
-                icon: Icons.military_tech_rounded,
-                value: 'Lvl $level',
-                color: Theme.of(context).colorScheme.primary,
-                semanticLabel: 'Level $level',
+                icon: Icons.local_fire_department_rounded,
+                value: '$streak',
+                color: AppTheme.streak,
+                semanticLabel: '$streak day streak',
+              ),
+              StatPill(
+                icon: Icons.bolt_rounded,
+                value: '$xp XP',
+                color: AppTheme.xpGold,
+                semanticLabel: '$xp total XP',
               ),
             ],
+            trailing: StatPill(
+              icon: Icons.military_tech_rounded,
+              value: 'Lvl $level',
+              color: Theme.of(context).colorScheme.primary,
+              semanticLabel: 'Level $level',
+            ),
           ),
           Gap.m,
           Row(
@@ -386,6 +375,29 @@ class _StatsHeader extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+/// The stats header's pills: [pills] on the left and [trailing] on the
+/// right. When they no longer fit on one line (large text, narrow phones)
+/// they wrap instead, each pill keeping the full width so no value is cut
+/// short.
+class _StatPills extends StatelessWidget {
+  const _StatPills({required this.pills, required this.trailing});
+  final List<Widget> pills;
+  final Widget trailing;
+
+  @override
+  Widget build(BuildContext context) {
+    return Wrap(
+      alignment: WrapAlignment.spaceBetween,
+      spacing: 8,
+      runSpacing: 8,
+      children: [
+        Wrap(spacing: 8, runSpacing: 8, children: pills),
+        trailing,
+      ],
     );
   }
 }
