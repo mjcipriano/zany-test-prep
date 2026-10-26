@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/semantics.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -41,6 +42,16 @@ class _ChestRevealScreenState extends ConsumerState<ChestRevealScreen>
   _Phase _phase = _Phase.closed;
   Reward? _reward;
 
+  /// Reduce motion: skip the shake/burst and the entrance bounce.
+  bool get _reduceMotion =>
+      MediaQuery.maybeDisableAnimationsOf(context) ?? false;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (_reduceMotion && _entrance.isAnimating) _entrance.value = 1;
+  }
+
   @override
   void dispose() {
     _entrance.dispose();
@@ -65,7 +76,15 @@ class _ChestRevealScreenState extends ConsumerState<ChestRevealScreen>
       _reward = reward;
       _phase = _Phase.opening;
     });
-    _open.forward(from: 0);
+    SemanticsService.announce(
+      'You got ${reward.title}. ${reward.description}',
+      Directionality.of(context),
+    );
+    if (_reduceMotion) {
+      _open.value = 1; // straight to the reveal (completes the animation)
+    } else {
+      _open.forward(from: 0);
+    }
   }
 
   void _reset() {
@@ -74,7 +93,11 @@ class _ChestRevealScreenState extends ConsumerState<ChestRevealScreen>
       _reward = null;
     });
     _open.reset();
-    _entrance.forward(from: 0);
+    if (_reduceMotion) {
+      _entrance.value = 1;
+    } else {
+      _entrance.forward(from: 0);
+    }
   }
 
   @override
@@ -85,18 +108,24 @@ class _ChestRevealScreenState extends ConsumerState<ChestRevealScreen>
 
     return Scaffold(
       appBar: AppBar(title: const Text('Chest')),
+      // Scrolls when large text makes the caption and buttons taller than
+      // the screen.
       body: Center(
-        child: Padding(
+        child: SingleChildScrollView(
           padding: kPagePadding,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(
-                height: 280,
-                width: double.infinity,
-                child: AnimatedBuilder(
-                  animation: Listenable.merge([_open, _entrance]),
-                  builder: (context, _) => _buildStage(scheme),
+              // The chest, sparkles and reward badge are pictures of what
+              // the caption below says.
+              ExcludeSemantics(
+                child: SizedBox(
+                  height: 280,
+                  width: double.infinity,
+                  child: AnimatedBuilder(
+                    animation: Listenable.merge([_open, _entrance]),
+                    builder: (context, _) => _buildStage(scheme),
+                  ),
                 ),
               ),
               Gap.xl,

@@ -35,7 +35,10 @@ class AppCard extends StatelessWidget {
   }
 }
 
-/// A small icon + value chip (streak, XP, level).
+/// A small icon + value chip (streak, XP, level). The accent [color] tints
+/// the chip; the icon and value use its readable variant
+/// ([AppColors.textOn]). Screen readers hear [semanticLabel] (e.g. "12 day
+/// streak") instead of the bare number.
 class StatPill extends StatelessWidget {
   const StatPill({
     super.key,
@@ -52,8 +55,10 @@ class StatPill extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final fg = AppColors.of(context).textOn(color);
     return Semantics(
       label: semanticLabel,
+      excludeSemantics: semanticLabel != null,
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         decoration: BoxDecoration(
@@ -63,11 +68,15 @@ class StatPill extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(icon, color: color, size: 20),
+            Icon(icon, color: fg, size: 20),
             const SizedBox(width: 6),
-            Text(
-              value,
-              style: TextStyle(fontWeight: FontWeight.w800, color: color),
+            Flexible(
+              child: Text(
+                value,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(fontWeight: FontWeight.w800, color: fg),
+              ),
             ),
           ],
         ),
@@ -84,6 +93,8 @@ class ProgressBar extends StatelessWidget {
     this.color,
     this.height = 12,
     this.animate = true,
+    this.semanticLabel,
+    this.semanticValue,
   });
 
   final double value;
@@ -91,17 +102,38 @@ class ProgressBar extends StatelessWidget {
   final double height;
   final bool animate;
 
+  /// What the bar measures ("Daily goal"), read by screen readers.
+  final String? semanticLabel;
+
+  /// The value as words ("40 of 50 XP"); defaults to a percentage.
+  final String? semanticValue;
+
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
     final c = color ?? scheme.primary;
+    final v = value.isNaN ? 0.0 : value.clamp(0.0, 1.0);
+    // Reduce motion: fill instantly when the system asks for no animations.
+    final animate =
+        this.animate &&
+        !(MediaQuery.maybeDisableAnimationsOf(context) ?? false);
+    return Semantics(
+      container: true,
+      label: semanticLabel,
+      value: semanticValue ?? '${(v * 100).round()}%',
+      excludeSemantics: true,
+      child: _bar(scheme, c, v, animate),
+    );
+  }
+
+  Widget _bar(ColorScheme scheme, Color c, double v, bool animate) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(height),
       child: Stack(
         children: [
           Container(height: height, color: scheme.surfaceContainerHighest),
           TweenAnimationBuilder<double>(
-            tween: Tween(begin: 0, end: value.clamp(0, 1)),
+            tween: Tween(begin: 0, end: v),
             duration: animate
                 ? const Duration(milliseconds: 600)
                 : Duration.zero,
@@ -146,7 +178,7 @@ class SectionLabel extends StatelessWidget {
   }
 }
 
-/// Row of crown/star icons (0-3) for lesson mastery.
+/// Row of crown/star icons (0-3) for lesson mastery, read as "2 of 3 stars".
 class CrownRow extends StatelessWidget {
   const CrownRow({super.key, required this.stars, this.size = 18});
   final int stars;
@@ -154,16 +186,21 @@ class CrownRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: List.generate(3, (i) {
-        final filled = i < stars;
-        return Icon(
-          filled ? Icons.star_rounded : Icons.star_outline_rounded,
-          size: size,
-          color: filled ? AppTheme.xpGold : Theme.of(context).disabledColor,
-        );
-      }),
+    final gold = AppColors.of(context).textOn(AppTheme.xpGold, minRatio: 3);
+    return Semantics(
+      label: '$stars of 3 stars',
+      excludeSemantics: true,
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: List.generate(3, (i) {
+          final filled = i < stars;
+          return Icon(
+            filled ? Icons.star_rounded : Icons.star_outline_rounded,
+            size: size,
+            color: filled ? gold : Theme.of(context).colorScheme.outline,
+          );
+        }),
+      ),
     );
   }
 }

@@ -11,43 +11,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "arithmetic",
-    "prompt": "In an arithmetic sequence, the third term is 4 and the fourth term is 6. What is the seventh term?",
+    "prompt": "In an arithmetic sequence, the seventh term is 63 and the 15th term is 159. What is the 34th term?",
     "choices": [
       {
         "id": "A",
-        "text": "10",
+        "text": "385",
         "rationale": "This comes from a small arithmetic slip; recompute carefully."
       },
       {
         "id": "B",
-        "text": "17",
+        "text": "397",
         "rationale": "This comes from a small arithmetic slip; recompute carefully."
       },
       {
         "id": "C",
-        "text": "7",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "399",
+        "rationale": "From the seventh term there are n − 7 = 27 steps."
       },
       {
         "id": "D",
-        "text": "14",
-        "rationale": "From the third term there are n − 3 = 4 steps."
+        "text": "387",
+        "rationale": "Correct."
       },
       {
         "id": "E",
-        "text": "12",
-        "rationale": "Correct."
+        "text": "2655",
+        "rationale": "Divide the difference of terms by the number of steps between them to get d."
       }
     ],
-    "correct_choice": "E",
-    "explanation": "d = (6 − (4))/(4 − 3) = 2; a₁ = 4 − 2·(2) = 0; a_7 = 0 + 6·(2) = 12.",
+    "correct_choice": "D",
+    "explanation": "d = (159 − (63))/(15 − 7) = 12; a₁ = 63 − 6·(12) = −9; a_34 = −9 + 33·(12) = 387.",
     "estimated_time_seconds": 95,
     "tags": [
       "sequences",
       "arithmetic",
       "family:sq_arithmetic_term"
     ],
-    "answer_verification": "a1=0,d=2,val=12"
+    "answer_verification": "a1=-9,d=12,val=387"
   },
   {
     "question_id": "act-math-sequences-hard-q02",
@@ -61,43 +61,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "geometric",
-    "prompt": "In a geometric sequence with positive ratio, the fourth term is 768 and the sixth term is 3072. What is the second term?",
+    "prompt": "In a geometric sequence with positive ratio, the second term is 128 and the fourth term is 2048. What is the third term?",
     "choices": [
       {
         "id": "A",
-        "text": "202",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "B",
-        "text": "192",
+        "text": "512",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "1088",
+        "rationale": "That treats the sequence as arithmetic."
+      },
+      {
         "id": "C",
-        "text": "384",
+        "text": "2048",
         "rationale": "Use the exponent n − 1."
       },
       {
         "id": "D",
-        "text": "-1536",
-        "rationale": "That treats the sequence as arithmetic."
+        "text": "513",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
       },
       {
         "id": "E",
-        "text": "196",
+        "text": "515",
         "rationale": "This comes from a small arithmetic slip; recompute carefully."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "r^(6 − 4) = 3072/768 = 4, so r = 2; a₁ = 96; a_2 = 96·(2)^1 = 192.",
+    "correct_choice": "A",
+    "explanation": "r^(4 − 2) = 2048/128 = 16, so r = 4; a₁ = 32; a_3 = 32·(4)^2 = 512.",
     "estimated_time_seconds": 100,
     "tags": [
       "sequences",
       "geometric",
       "family:sq_geometric_term"
     ],
-    "answer_verification": "a1=96,r=2,val=192"
+    "answer_verification": "a1=32,r=4,val=512"
   },
   {
     "question_id": "act-math-sequences-hard-q03",
@@ -111,36 +111,36 @@
     "version": "1.0.0",
     "question_type": "multi_step_math",
     "subskill": "series",
-    "prompt": "What is the sum of the first 5 terms of the geometric sequence 5, 20, 80, …?",
+    "prompt": "What is the sum of the first 4 terms of the geometric sequence 2, 4, 8, …?",
     "choices": [
       {
         "id": "A",
-        "text": "1280",
-        "rationale": "That is the fifth term, not the sum."
+        "text": "16",
+        "rationale": "That is the fourth term, not the sum."
       },
       {
         "id": "B",
-        "text": "425",
-        "rationale": "That sums only 4 terms."
+        "text": "62",
+        "rationale": "That sums 5 terms."
       },
       {
         "id": "C",
-        "text": "100",
-        "rationale": "Geometric terms don't all equal a₁r."
+        "text": "30",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "6825",
-        "rationale": "That sums 6 terms."
+        "text": "33",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
       },
       {
         "id": "E",
-        "text": "1705",
-        "rationale": "Correct."
+        "text": "14",
+        "rationale": "That sums only 3 terms."
       }
     ],
-    "correct_choice": "E",
-    "explanation": "S_n = a₁(rⁿ − 1)/(r − 1) with a₁ = 5, r = 4, n = 5: 1705.",
+    "correct_choice": "C",
+    "explanation": "S_n = a₁(rⁿ − 1)/(r − 1) with a₁ = 2, r = 2, n = 4: 30.",
     "estimated_time_seconds": 105,
     "tags": [
       "sequences",
@@ -148,7 +148,7 @@
       "geometric",
       "family:sq_sum"
     ],
-    "answer_verification": "S=1705"
+    "answer_verification": "S=30"
   },
   {
     "question_id": "act-math-sequences-hard-q04",
@@ -162,43 +162,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "recursive",
-    "prompt": "Which of the following recursive definitions produces the sequence 5, 10, 15, 20, …?",
+    "prompt": "Which of the following recursive definitions produces the sequence 10, 30, 90, 270, …?",
     "choices": [
       {
         "id": "A",
-        "text": "a₁ = 5, a_n = 5·a_(n−1)",
-        "rationale": "Multiplying by 5 would make the sequence geometric."
+        "text": "a₁ = 10, a_n = 0.3333333333333333·a_(n−1)",
+        "rationale": "The ratio is later ÷ earlier = 3."
       },
       {
         "id": "B",
-        "text": "a₁ = 10, a_n = a_(n−1) + 5",
-        "rationale": "The first term is 5, not 10."
+        "text": "a₁ = 30, a_n = 3·a_(n−1)",
+        "rationale": "The first term is 10."
       },
       {
         "id": "C",
-        "text": "a₁ = 5, a_n = a_(n−1) − 5",
-        "rationale": "The terms change by 5 each step, so the sign is wrong."
+        "text": "a₁ = 10, a_n = 3·a_(n−1)",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "a₁ = 5, a_n = a_(n−1) + n·5",
-        "rationale": "The difference is constant, not growing with n."
+        "text": "a₁ = 10, a_n = a_(n−1) + 20",
+        "rationale": "The differences are not constant; the ratio is."
       },
       {
         "id": "E",
-        "text": "a₁ = 5, a_n = a_(n−1) + 5",
-        "rationale": "Correct."
+        "text": "a₁ = 10, a_n = a_(n−1)^3",
+        "rationale": "Check the rule against the given terms."
       }
     ],
-    "correct_choice": "E",
-    "explanation": "Each term is the previous term plus 5: a₁ = 5, a_n = a_(n−1) + 5.",
+    "correct_choice": "C",
+    "explanation": "Each term is 3 times the previous: a₁ = 10, a_n = 3·a_(n−1).",
     "estimated_time_seconds": 90,
     "tags": [
       "sequences",
       "recursive",
       "family:sq_recursive"
     ],
-    "answer_verification": "a₁ = 5, a_n = a_(n−1) + 5"
+    "answer_verification": "a₁ = 10, a_n = 3·a_(n−1)"
   },
   {
     "question_id": "act-math-sequences-hard-q05",
@@ -212,43 +212,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "arithmetic",
-    "prompt": "A theater has 5 seats in the first row, and each row after the first has 7 more seats than the row before it. How many seats are in the 28th row?",
+    "prompt": "A stack of logs has 15 logs in the top layer, and each layer below has 3 more logs than the layer above. How many logs are in the 16th layer from the top?",
     "choices": [
       {
         "id": "A",
-        "text": "201",
-        "rationale": "Use n − 1 = 27 increases."
+        "text": "600",
+        "rationale": "That is the total of all 16 layers, not the 16th."
       },
       {
         "id": "B",
-        "text": "140",
-        "rationale": "Add 7 repeatedly; don't multiply the first value by n."
+        "text": "63",
+        "rationale": "Use n − 1 = 15 increases."
       },
       {
         "id": "C",
-        "text": "2786",
-        "rationale": "That is the total of all 28 rows, not the 28th."
+        "text": "240",
+        "rationale": "Add 3 repeatedly; don't multiply the first value by n."
       },
       {
         "id": "D",
-        "text": "194",
+        "text": "60",
         "rationale": "Correct."
       },
       {
         "id": "E",
-        "text": "187",
-        "rationale": "That is the 27th value."
+        "text": "57",
+        "rationale": "That is the 15th value."
       }
     ],
     "correct_choice": "D",
-    "explanation": "This is arithmetic with a₁ = 5, d = 7: a_28 = 5 + (28 − 1)·7 = 194.",
+    "explanation": "This is arithmetic with a₁ = 15, d = 3: a_16 = 15 + (16 − 1)·3 = 60.",
     "estimated_time_seconds": 95,
     "tags": [
       "sequences",
       "arithmetic",
       "family:sq_which_term"
     ],
-    "answer_verification": "val=194"
+    "answer_verification": "val=60"
   },
   {
     "question_id": "act-math-sequences-hard-q06",
@@ -262,36 +262,36 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "series",
-    "prompt": "A ball is dropped and its first bounce rises 60 centimeters; each later bounce rises 1/4 as high as the previous one. What is the total of all the bounce heights, in centimeters?",
+    "prompt": "A ball is dropped and its first bounce rises 90 centimeters; each later bounce rises 3/4 as high as the previous one. What is the total of all the bounce heights, in centimeters?",
     "choices": [
       {
         "id": "A",
-        "text": "45",
-        "rationale": "Divide by 1 − r; don't multiply."
+        "text": "360",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "75",
-        "rationale": "That is only the first two swings."
+        "text": "45/2",
+        "rationale": "Divide by 1 − r; don't multiply."
       },
       {
         "id": "C",
-        "text": "240",
-        "rationale": "The denominator is 1 − r, not r."
-      },
-      {
-        "id": "D",
-        "text": "140",
+        "text": "450",
         "rationale": "Arithmetic slip."
       },
       {
+        "id": "D",
+        "text": "315/2",
+        "rationale": "That is only the first two swings."
+      },
+      {
         "id": "E",
-        "text": "80",
-        "rationale": "Correct."
+        "text": "120",
+        "rationale": "The denominator is 1 − r, not r."
       }
     ],
-    "correct_choice": "E",
-    "explanation": "Infinite geometric series with |r| < 1: S = a₁/(1 − r) = 60/(1 − 1/4) = 80.",
+    "correct_choice": "A",
+    "explanation": "Infinite geometric series with |r| < 1: S = a₁/(1 − r) = 90/(1 − 3/4) = 360.",
     "estimated_time_seconds": 100,
     "tags": [
       "sequences",
@@ -299,7 +299,7 @@
       "word-problem",
       "family:sq_geometric_word"
     ],
-    "answer_verification": "val=80"
+    "answer_verification": "val=360"
   },
   {
     "question_id": "act-math-sequences-hard-q07",
@@ -313,43 +313,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "series",
-    "prompt": "In a pattern, figure 1 uses 8 blocks and each later figure uses 5 more than the previous one. How many blocks are needed to build figures 1 through 11 all together?",
+    "prompt": "In a pattern, figure 1 uses 5 dots and each later figure uses 4 more than the previous one. How many dots are needed to build figures 1 through 11 all together?",
     "choices": [
       {
         "id": "A",
-        "text": "363",
-        "rationale": "Correct."
+        "text": "280",
+        "rationale": "Arithmetic slip."
       },
       {
         "id": "B",
-        "text": "58",
-        "rationale": "That is figure 11 alone."
+        "text": "275",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "638",
+        "text": "495",
         "rationale": "Average the first and last figures before multiplying."
       },
       {
         "id": "D",
-        "text": "371",
-        "rationale": "Arithmetic slip."
+        "text": "45",
+        "rationale": "That is figure 11 alone."
       },
       {
         "id": "E",
-        "text": "726",
+        "text": "550",
         "rationale": "Divide by 2."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Figure 11 uses 58; total = 11(8 + 58)/2 = 363.",
+    "correct_choice": "B",
+    "explanation": "Figure 11 uses 45; total = 11(5 + 45)/2 = 275.",
     "estimated_time_seconds": 100,
     "tags": [
       "sequences",
       "pattern",
       "family:sq_pattern"
     ],
-    "answer_verification": "val=363"
+    "answer_verification": "val=275"
   },
   {
     "question_id": "act-math-sequences-hard-q08",
@@ -363,43 +363,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "arithmetic",
-    "prompt": "In an arithmetic sequence, the 13th term is 13 and the 25th term is 25. What is the 48th term?",
+    "prompt": "In an arithmetic sequence, the ninth term is 87 and the 20th term is 186. What is the 32th term?",
     "choices": [
       {
         "id": "A",
-        "text": "51",
+        "text": "291",
         "rationale": "This comes from a small arithmetic slip; recompute carefully."
       },
       {
         "id": "B",
-        "text": "53",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "303",
+        "rationale": "From the ninth term there are n − 9 = 23 steps."
       },
       {
         "id": "C",
-        "text": "433",
+        "text": "2364",
         "rationale": "Divide the difference of terms by the number of steps between them to get d."
       },
       {
         "id": "D",
-        "text": "49",
-        "rationale": "From the 13th term there are n − 13 = 35 steps."
+        "text": "297",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
       },
       {
         "id": "E",
-        "text": "48",
+        "text": "294",
         "rationale": "Correct."
       }
     ],
     "correct_choice": "E",
-    "explanation": "d = (25 − (13))/(25 − 13) = 1; a₁ = 13 − 12·(1) = 1; a_48 = 1 + 47·(1) = 48.",
+    "explanation": "d = (186 − (87))/(20 − 9) = 9; a₁ = 87 − 8·(9) = 15; a_32 = 15 + 31·(9) = 294.",
     "estimated_time_seconds": 95,
     "tags": [
       "sequences",
       "arithmetic",
       "family:sq_arithmetic_term"
     ],
-    "answer_verification": "a1=1,d=1,val=48"
+    "answer_verification": "a1=15,d=9,val=294"
   },
   {
     "question_id": "act-math-sequences-hard-q09",
@@ -413,43 +413,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "geometric",
-    "prompt": "In a geometric sequence with positive ratio, the fourth term is 108 and the fifth term is 162. What is the first term?",
+    "prompt": "In a geometric sequence with positive ratio, the fourth term is 250 and the fifth term is 1250. What is the third term?",
     "choices": [
       {
         "id": "A",
-        "text": "-54",
-        "rationale": "That treats the sequence as arithmetic."
-      },
-      {
-        "id": "B",
-        "text": "32",
+        "text": "50",
         "rationale": "Correct."
       },
       {
-        "id": "C",
-        "text": "48",
+        "id": "B",
+        "text": "250",
         "rationale": "Use the exponent n − 1."
       },
       {
-        "id": "D",
-        "text": "35",
+        "id": "C",
+        "text": "60",
         "rationale": "This comes from a small arithmetic slip; recompute carefully."
       },
       {
+        "id": "D",
+        "text": "-750",
+        "rationale": "That treats the sequence as arithmetic."
+      },
+      {
         "id": "E",
-        "text": "42",
+        "text": "40",
         "rationale": "This comes from a small arithmetic slip; recompute carefully."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "r^(5 − 4) = 162/108 = 3/2, so r = 3/2; a₁ = 32; a_1 = 32·(3/2)^0 = 32.",
+    "correct_choice": "A",
+    "explanation": "r^(5 − 4) = 1250/250 = 5, so r = 5; a₁ = 2; a_3 = 2·(5)^2 = 50.",
     "estimated_time_seconds": 100,
     "tags": [
       "sequences",
       "geometric",
       "family:sq_geometric_term"
     ],
-    "answer_verification": "a1=32,r=3/2,val=32"
+    "answer_verification": "a1=2,r=5,val=50"
   },
   {
     "question_id": "act-math-sequences-hard-q10",
@@ -463,36 +463,36 @@
     "version": "1.0.0",
     "question_type": "multi_step_math",
     "subskill": "series",
-    "prompt": "What is the sum of the first 4 terms of the geometric sequence 4, 16, 64, …?",
+    "prompt": "What is the sum of the first 6 terms of the geometric sequence 3, 6, 12, …?",
     "choices": [
       {
         "id": "A",
-        "text": "340",
+        "text": "189",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "1364",
-        "rationale": "That sums 5 terms."
-      },
-      {
-        "id": "C",
-        "text": "64",
+        "text": "36",
         "rationale": "Geometric terms don't all equal a₁r."
       },
       {
+        "id": "C",
+        "text": "381",
+        "rationale": "That sums 7 terms."
+      },
+      {
         "id": "D",
-        "text": "256",
-        "rationale": "That is the fourth term, not the sum."
+        "text": "96",
+        "rationale": "That is the sixth term, not the sum."
       },
       {
         "id": "E",
-        "text": "84",
-        "rationale": "That sums only 3 terms."
+        "text": "93",
+        "rationale": "That sums only 5 terms."
       }
     ],
     "correct_choice": "A",
-    "explanation": "S_n = a₁(rⁿ − 1)/(r − 1) with a₁ = 4, r = 4, n = 4: 340.",
+    "explanation": "S_n = a₁(rⁿ − 1)/(r − 1) with a₁ = 3, r = 2, n = 6: 189.",
     "estimated_time_seconds": 105,
     "tags": [
       "sequences",
@@ -500,7 +500,7 @@
       "geometric",
       "family:sq_sum"
     ],
-    "answer_verification": "S=340"
+    "answer_verification": "S=189"
   },
   {
     "question_id": "act-math-sequences-hard-q11",
@@ -514,43 +514,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "recursive",
-    "prompt": "Which of the following recursive definitions produces the sequence 9, 13, 17, 21, …?",
+    "prompt": "Which of the following recursive definitions produces the sequence 10, 20, 40, 80, …?",
     "choices": [
       {
         "id": "A",
-        "text": "a₁ = 9, a_n = a_(n−1) − 4",
-        "rationale": "The terms change by 4 each step, so the sign is wrong."
-      },
-      {
-        "id": "B",
-        "text": "a₁ = 9, a_n = a_(n−1) + n·4",
-        "rationale": "The difference is constant, not growing with n."
-      },
-      {
-        "id": "C",
-        "text": "a₁ = 9, a_n = 4·a_(n−1)",
-        "rationale": "Multiplying by 4 would make the sequence geometric."
-      },
-      {
-        "id": "D",
-        "text": "a₁ = 9, a_n = a_(n−1) + 4",
+        "text": "a₁ = 10, a_n = 2·a_(n−1)",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "a₁ = 10, a_n = 0.5·a_(n−1)",
+        "rationale": "The ratio is later ÷ earlier = 2."
+      },
+      {
+        "id": "C",
+        "text": "a₁ = 20, a_n = 2·a_(n−1)",
+        "rationale": "The first term is 10."
+      },
+      {
+        "id": "D",
+        "text": "a₁ = 10, a_n = a_(n−1)^2",
+        "rationale": "Check the rule against the given terms."
+      },
+      {
         "id": "E",
-        "text": "a₁ = 13, a_n = a_(n−1) + 4",
-        "rationale": "The first term is 9, not 13."
+        "text": "a₁ = 10, a_n = a_(n−1) + 10",
+        "rationale": "The differences are not constant; the ratio is."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Each term is the previous term plus 4: a₁ = 9, a_n = a_(n−1) + 4.",
+    "correct_choice": "A",
+    "explanation": "Each term is 2 times the previous: a₁ = 10, a_n = 2·a_(n−1).",
     "estimated_time_seconds": 90,
     "tags": [
       "sequences",
       "recursive",
       "family:sq_recursive"
     ],
-    "answer_verification": "a₁ = 9, a_n = a_(n−1) + 4"
+    "answer_verification": "a₁ = 10, a_n = 2·a_(n−1)"
   },
   {
     "question_id": "act-math-sequences-hard-q12",
@@ -564,43 +564,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "arithmetic",
-    "prompt": "A stack of logs has 25 logs in the top layer, and each layer below has 9 more logs than the layer above. How many logs are in the eighth layer from the top?",
+    "prompt": "Lena saves $12 in the first week and increases the amount saved by $3 every week. How much does Lena save in the 30th week?",
     "choices": [
       {
         "id": "A",
-        "text": "452",
-        "rationale": "That is the total of all 8 layers, not the eighth."
+        "text": "1665",
+        "rationale": "That is the total of all 30 weeks, not the 30th."
       },
       {
         "id": "B",
-        "text": "200",
-        "rationale": "Add 9 repeatedly; don't multiply the first value by n."
+        "text": "360",
+        "rationale": "Add 3 repeatedly; don't multiply the first value by n."
       },
       {
         "id": "C",
-        "text": "97",
-        "rationale": "Use n − 1 = 7 increases."
+        "text": "102",
+        "rationale": "Use n − 1 = 29 increases."
       },
       {
         "id": "D",
-        "text": "79",
-        "rationale": "That is the seventh value."
+        "text": "99",
+        "rationale": "Correct."
       },
       {
         "id": "E",
-        "text": "88",
-        "rationale": "Correct."
+        "text": "96",
+        "rationale": "That is the 29th value."
       }
     ],
-    "correct_choice": "E",
-    "explanation": "This is arithmetic with a₁ = 25, d = 9: a_8 = 25 + (8 − 1)·9 = 88.",
+    "correct_choice": "D",
+    "explanation": "This is arithmetic with a₁ = 12, d = 3: a_30 = 12 + (30 − 1)·3 = 99.",
     "estimated_time_seconds": 95,
     "tags": [
       "sequences",
       "arithmetic",
       "family:sq_which_term"
     ],
-    "answer_verification": "val=88"
+    "answer_verification": "val=99"
   },
   {
     "question_id": "act-math-sequences-hard-q13",
@@ -614,36 +614,36 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "series",
-    "prompt": "A ball is dropped and its first bounce rises 12 centimeters; each later bounce rises 4/5 as high as the previous one. What is the total of all the bounce heights, in centimeters?",
+    "prompt": "A pendulum's first swing covers 24 centimeters, and each swing covers 2/3 of the distance of the previous swing. What is the total distance, in centimeters, covered by all the swings?",
     "choices": [
       {
         "id": "A",
-        "text": "108/5",
-        "rationale": "That is only the first two swings."
-      },
-      {
-        "id": "B",
         "text": "72",
-        "rationale": "Arithmetic slip."
-      },
-      {
-        "id": "C",
-        "text": "12/5",
-        "rationale": "Divide by 1 − r; don't multiply."
-      },
-      {
-        "id": "D",
-        "text": "60",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "8",
+        "rationale": "Divide by 1 − r; don't multiply."
+      },
+      {
+        "id": "C",
+        "text": "40",
+        "rationale": "That is only the first two swings."
+      },
+      {
+        "id": "D",
+        "text": "96",
+        "rationale": "Arithmetic slip."
+      },
+      {
         "id": "E",
-        "text": "15",
+        "text": "36",
         "rationale": "The denominator is 1 − r, not r."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Infinite geometric series with |r| < 1: S = a₁/(1 − r) = 12/(1 − 4/5) = 60.",
+    "correct_choice": "A",
+    "explanation": "Infinite geometric series with |r| < 1: S = a₁/(1 − r) = 24/(1 − 2/3) = 72.",
     "estimated_time_seconds": 100,
     "tags": [
       "sequences",
@@ -651,7 +651,7 @@
       "word-problem",
       "family:sq_geometric_word"
     ],
-    "answer_verification": "val=60"
+    "answer_verification": "val=72"
   },
   {
     "question_id": "act-math-sequences-hard-q14",
@@ -665,43 +665,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "series",
-    "prompt": "In a pattern, figure 1 uses 4 dots and each later figure uses 5 more than the previous one. How many dots are needed to build figures 1 through 10 all together?",
+    "prompt": "In a pattern, figure 1 uses 4 toothpicks and each later figure uses 5 more than the previous one. How many toothpicks are needed to build figures 1 through 11 all together?",
     "choices": [
       {
         "id": "A",
-        "text": "490",
-        "rationale": "Average the first and last figures before multiplying."
+        "text": "319",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "530",
-        "rationale": "Divide by 2."
+        "text": "594",
+        "rationale": "Average the first and last figures before multiplying."
       },
       {
         "id": "C",
-        "text": "49",
-        "rationale": "That is figure 10 alone."
+        "text": "638",
+        "rationale": "Divide by 2."
       },
       {
         "id": "D",
-        "text": "269",
-        "rationale": "Arithmetic slip."
+        "text": "54",
+        "rationale": "That is figure 11 alone."
       },
       {
         "id": "E",
-        "text": "265",
-        "rationale": "Correct."
+        "text": "323",
+        "rationale": "Arithmetic slip."
       }
     ],
-    "correct_choice": "E",
-    "explanation": "Figure 10 uses 49; total = 10(4 + 49)/2 = 265.",
+    "correct_choice": "A",
+    "explanation": "Figure 11 uses 54; total = 11(4 + 54)/2 = 319.",
     "estimated_time_seconds": 100,
     "tags": [
       "sequences",
       "pattern",
       "family:sq_pattern"
     ],
-    "answer_verification": "val=265"
+    "answer_verification": "val=319"
   },
   {
     "question_id": "act-math-sequences-hard-q15",
@@ -715,43 +715,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "arithmetic",
-    "prompt": "In an arithmetic sequence, the sixth term is −6 and the 19th term is −32. What is the 16th term?",
+    "prompt": "In an arithmetic sequence, the 11th term is −90 and the 26th term is −195. What is the 41th term?",
     "choices": [
       {
         "id": "A",
-        "text": "-20",
+        "text": "-305",
         "rationale": "This comes from a small arithmetic slip; recompute carefully."
       },
       {
         "id": "B",
-        "text": "-266",
-        "rationale": "Divide the difference of terms by the number of steps between them to get d."
+        "text": "-307",
+        "rationale": "From the 11th term there are n − 11 = 30 steps."
       },
       {
         "id": "C",
-        "text": "-28",
-        "rationale": "From the sixth term there are n − 6 = 10 steps."
+        "text": "-3240",
+        "rationale": "Divide the difference of terms by the number of steps between them to get d."
       },
       {
         "id": "D",
-        "text": "-26",
-        "rationale": "Correct."
+        "text": "-298",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
       },
       {
         "id": "E",
-        "text": "-27",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "-300",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "d = (−32 − (−6))/(19 − 6) = −2; a₁ = −6 − 5·(−2) = 4; a_16 = 4 + 15·(−2) = −26.",
+    "correct_choice": "E",
+    "explanation": "d = (−195 − (−90))/(26 − 11) = −7; a₁ = −90 − 10·(−7) = −20; a_41 = −20 + 40·(−7) = −300.",
     "estimated_time_seconds": 95,
     "tags": [
       "sequences",
       "arithmetic",
       "family:sq_arithmetic_term"
     ],
-    "answer_verification": "a1=4,d=-2,val=-26"
+    "answer_verification": "a1=-20,d=-7,val=-300"
   },
   {
     "question_id": "act-math-sequences-hard-q16",
@@ -765,43 +765,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "geometric",
-    "prompt": "In a geometric sequence with positive ratio, the second term is 288 and the fourth term is 2592. What is the seventh term?",
+    "prompt": "In a geometric sequence with positive ratio, the second term is 32/3 and the third term is 32/9. What is the eighth term?",
     "choices": [
       {
         "id": "A",
-        "text": "209952",
-        "rationale": "Use the exponent n − 1."
-      },
-      {
-        "id": "B",
-        "text": "69984",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "69982",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "D",
-        "text": "6048",
+        "text": "-32",
         "rationale": "That treats the sequence as arithmetic."
       },
       {
+        "id": "B",
+        "text": "32/6561",
+        "rationale": "Use the exponent n − 1."
+      },
+      {
+        "id": "C",
+        "text": "32/2187",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "-7258/2187",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      },
+      {
         "id": "E",
-        "text": "69990",
+        "text": "-3613/2187",
         "rationale": "This comes from a small arithmetic slip; recompute carefully."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "r^(4 − 2) = 2592/288 = 9, so r = 3; a₁ = 96; a_7 = 96·(3)^6 = 69984.",
+    "correct_choice": "C",
+    "explanation": "r^(3 − 2) = (32/9)/(32/3) = 1/3, so r = 1/3; a₁ = 32; a_8 = 32·(1/3)^7 = 32/2187.",
     "estimated_time_seconds": 100,
     "tags": [
       "sequences",
       "geometric",
       "family:sq_geometric_term"
     ],
-    "answer_verification": "a1=96,r=3,val=69984"
+    "answer_verification": "a1=32,r=1/3,val=32/2187"
   },
   {
     "question_id": "act-math-sequences-hard-q17",
@@ -815,36 +815,36 @@
     "version": "1.0.0",
     "question_type": "multi_step_math",
     "subskill": "series",
-    "prompt": "What is the sum of the first 5 terms of the geometric sequence 1, 2, 4, …?",
+    "prompt": "What is the sum of the first 4 terms of the geometric sequence 3, 3/2, 3/4, …?",
     "choices": [
       {
         "id": "A",
-        "text": "31",
-        "rationale": "Correct."
+        "text": "21/4",
+        "rationale": "That sums only 3 terms."
       },
       {
         "id": "B",
-        "text": "15",
-        "rationale": "That sums only 4 terms."
-      },
-      {
-        "id": "C",
-        "text": "63",
-        "rationale": "That sums 6 terms."
-      },
-      {
-        "id": "D",
-        "text": "10",
+        "text": "6",
         "rationale": "Geometric terms don't all equal a₁r."
       },
       {
+        "id": "C",
+        "text": "3/8",
+        "rationale": "That is the fourth term, not the sum."
+      },
+      {
+        "id": "D",
+        "text": "93/16",
+        "rationale": "That sums 5 terms."
+      },
+      {
         "id": "E",
-        "text": "16",
-        "rationale": "That is the fifth term, not the sum."
+        "text": "45/8",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "S_n = a₁(rⁿ − 1)/(r − 1) with a₁ = 1, r = 2, n = 5: 31.",
+    "correct_choice": "E",
+    "explanation": "S_n = a₁(rⁿ − 1)/(r − 1) with a₁ = 3, r = 1/2, n = 4: 45/8.",
     "estimated_time_seconds": 105,
     "tags": [
       "sequences",
@@ -852,7 +852,7 @@
       "geometric",
       "family:sq_sum"
     ],
-    "answer_verification": "S=31"
+    "answer_verification": "S=45/8"
   },
   {
     "question_id": "act-math-sequences-hard-q18",
@@ -866,43 +866,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "recursive",
-    "prompt": "Which of the following recursive definitions produces the sequence 4, 12, 36, 108, …?",
+    "prompt": "Which of the following recursive definitions produces the sequence -3, 1, 5, 9, …?",
     "choices": [
       {
         "id": "A",
-        "text": "a₁ = 12, a_n = 3·a_(n−1)",
-        "rationale": "The first term is 4."
+        "text": "a₁ = −3, a_n = 4·a_(n−1)",
+        "rationale": "Multiplying by 4 would make the sequence geometric."
       },
       {
         "id": "B",
-        "text": "a₁ = 4, a_n = 3·a_(n−1)",
+        "text": "a₁ = −3, a_n = a_(n−1) + 4",
         "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "a₁ = 4, a_n = a_(n−1) + 8",
-        "rationale": "The differences are not constant; the ratio is."
+        "text": "a₁ = −3, a_n = a_(n−1) + n·4",
+        "rationale": "The difference is constant, not growing with n."
       },
       {
         "id": "D",
-        "text": "a₁ = 4, a_n = 0.3333333333333333·a_(n−1)",
-        "rationale": "The ratio is later ÷ earlier = 3."
+        "text": "a₁ = 1, a_n = a_(n−1) + 4",
+        "rationale": "The first term is −3, not 1."
       },
       {
         "id": "E",
-        "text": "a₁ = 4, a_n = a_(n−1)^3",
-        "rationale": "Check the rule against the given terms."
+        "text": "a₁ = −3, a_n = a_(n−1) − 4",
+        "rationale": "The terms change by 4 each step, so the sign is wrong."
       }
     ],
     "correct_choice": "B",
-    "explanation": "Each term is 3 times the previous: a₁ = 4, a_n = 3·a_(n−1).",
+    "explanation": "Each term is the previous term plus 4: a₁ = −3, a_n = a_(n−1) + 4.",
     "estimated_time_seconds": 90,
     "tags": [
       "sequences",
       "recursive",
       "family:sq_recursive"
     ],
-    "answer_verification": "a₁ = 4, a_n = 3·a_(n−1)"
+    "answer_verification": "a₁ = −3, a_n = a_(n−1) + 4"
   },
   {
     "question_id": "act-math-sequences-hard-q19",
@@ -916,43 +916,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "arithmetic",
-    "prompt": "Sofia saves $22 in the first week and increases the amount saved by $11 every week. How much does Sofia save in the 30th week?",
+    "prompt": "A theater has 29 seats in the first row, and each row after the first has 10 more seats than the row before it. How many seats are in the 20th row?",
     "choices": [
       {
         "id": "A",
-        "text": "330",
-        "rationale": "That is the 29th value."
+        "text": "229",
+        "rationale": "Use n − 1 = 19 increases."
       },
       {
         "id": "B",
-        "text": "5445",
-        "rationale": "That is the total of all 30 weeks, not the 30th."
+        "text": "580",
+        "rationale": "Add 10 repeatedly; don't multiply the first value by n."
       },
       {
         "id": "C",
-        "text": "352",
-        "rationale": "Use n − 1 = 29 increases."
+        "text": "219",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "660",
-        "rationale": "Add 11 repeatedly; don't multiply the first value by n."
+        "text": "2480",
+        "rationale": "That is the total of all 20 rows, not the 20th."
       },
       {
         "id": "E",
-        "text": "341",
-        "rationale": "Correct."
+        "text": "209",
+        "rationale": "That is the 19th value."
       }
     ],
-    "correct_choice": "E",
-    "explanation": "This is arithmetic with a₁ = 22, d = 11: a_30 = 22 + (30 − 1)·11 = 341.",
+    "correct_choice": "C",
+    "explanation": "This is arithmetic with a₁ = 29, d = 10: a_20 = 29 + (20 − 1)·10 = 219.",
     "estimated_time_seconds": 95,
     "tags": [
       "sequences",
       "arithmetic",
       "family:sq_which_term"
     ],
-    "answer_verification": "val=341"
+    "answer_verification": "val=219"
   },
   {
     "question_id": "act-math-sequences-hard-q20",
@@ -966,36 +966,36 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "series",
-    "prompt": "A ball is dropped and its first bounce rises 80 centimeters; each later bounce rises 2/3 as high as the previous one. What is the total of all the bounce heights, in centimeters?",
+    "prompt": "A pendulum's first swing covers 100 centimeters, and each swing covers 1/3 of the distance of the previous swing. What is the total distance, in centimeters, covered by all the swings?",
     "choices": [
       {
         "id": "A",
-        "text": "240",
-        "rationale": "Correct."
+        "text": "300",
+        "rationale": "The denominator is 1 − r, not r."
       },
       {
         "id": "B",
+        "text": "150",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
         "text": "400/3",
         "rationale": "That is only the first two swings."
       },
       {
-        "id": "C",
-        "text": "120",
-        "rationale": "The denominator is 1 − r, not r."
-      },
-      {
         "id": "D",
-        "text": "80/3",
-        "rationale": "Divide by 1 − r; don't multiply."
+        "text": "250",
+        "rationale": "Arithmetic slip."
       },
       {
         "id": "E",
-        "text": "320",
-        "rationale": "Arithmetic slip."
+        "text": "200/3",
+        "rationale": "Divide by 1 − r; don't multiply."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Infinite geometric series with |r| < 1: S = a₁/(1 − r) = 80/(1 − 2/3) = 240.",
+    "correct_choice": "B",
+    "explanation": "Infinite geometric series with |r| < 1: S = a₁/(1 − r) = 100/(1 − 1/3) = 150.",
     "estimated_time_seconds": 100,
     "tags": [
       "sequences",
@@ -1003,6 +1003,6 @@
       "word-problem",
       "family:sq_geometric_word"
     ],
-    "answer_verification": "val=240"
+    "answer_verification": "val=150"
   }
 ]

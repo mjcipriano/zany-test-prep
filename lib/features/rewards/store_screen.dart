@@ -70,7 +70,10 @@ class _PetHint extends StatelessWidget {
     color: const Color(0xFF8E44AD).withValues(alpha: 0.12),
     child: Row(
       children: [
-        const Icon(Icons.pets_rounded, color: Color(0xFF8E44AD)),
+        Icon(
+          Icons.pets_rounded,
+          color: AppColors.of(context).textOn(const Color(0xFF8E44AD)),
+        ),
         Gap.m,
         Expanded(
           child: Text(
@@ -88,8 +91,12 @@ class _XpChip extends StatelessWidget {
   const _XpChip({required this.xp});
   final int xp;
   @override
-  Widget build(BuildContext context) =>
-      StatPill(icon: Icons.bolt_rounded, value: '$xp', color: AppTheme.xpGold);
+  Widget build(BuildContext context) => StatPill(
+    icon: Icons.bolt_rounded,
+    value: '$xp',
+    color: AppTheme.xpGold,
+    semanticLabel: '$xp XP to spend',
+  );
 }
 
 /// Which filter controls a store tab shows.
@@ -299,14 +306,15 @@ class _StoreTile extends ConsumerWidget {
           Gap.s,
           Text(
             asset.name,
-            maxLines: 1,
+            // Two lines at large text sizes so names are not cut short.
+            maxLines: MediaQuery.textScalerOf(context).scale(10) > 12 ? 2 : 1,
             overflow: TextOverflow.ellipsis,
             style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 13),
           ),
           Text(
             asset.rarity,
             style: TextStyle(
-              color: color,
+              color: AppColors.of(context).textOn(color),
               fontSize: 11,
               fontWeight: FontWeight.w700,
             ),
@@ -321,12 +329,16 @@ class _StoreTile extends ConsumerWidget {
                 padding: const EdgeInsets.symmetric(vertical: 6),
                 minimumSize: const Size.fromHeight(34),
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Icon(Icons.bolt_rounded, size: 16),
-                  Text('${asset.xpCost}'),
-                ],
+              child: Semantics(
+                label: 'Buy ${asset.name} for ${asset.xpCost} XP',
+                excludeSemantics: true,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Icon(Icons.bolt_rounded, size: 16),
+                    Flexible(child: Text('${asset.xpCost}')),
+                  ],
+                ),
               ),
             ),
         ],
@@ -352,24 +364,22 @@ class _OwnedChip extends StatelessWidget {
   const _OwnedChip();
   @override
   Widget build(BuildContext context) {
+    final green = AppColors.of(context).correct;
     return Container(
-      height: 34,
+      constraints: const BoxConstraints(minHeight: 34),
       alignment: Alignment.center,
       decoration: BoxDecoration(
         color: AppTheme.correct.withValues(alpha: 0.16),
         borderRadius: BorderRadius.circular(10),
       ),
-      child: const Row(
+      child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.check_rounded, size: 16, color: AppTheme.correct),
-          SizedBox(width: 4),
+          Icon(Icons.check_rounded, size: 16, color: green),
+          const SizedBox(width: 4),
           Text(
             'Owned',
-            style: TextStyle(
-              color: AppTheme.correct,
-              fontWeight: FontWeight.w700,
-            ),
+            style: TextStyle(color: green, fontWeight: FontWeight.w700),
           ),
         ],
       ),
@@ -431,13 +441,19 @@ class _StreakFreezeCard extends ConsumerWidget {
             // as a non-flex child of a Row.
             style: FilledButton.styleFrom(minimumSize: const Size(64, 44)),
             onPressed: (maxed || !affordable) ? null : () => _buy(context, ref),
-            child: const Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(Icons.bolt_rounded, size: 16),
-                SizedBox(width: 2),
-                Text('${RewardsService.streakFreezeCost}'),
-              ],
+            child: Semantics(
+              label:
+                  'Buy a streak freeze for '
+                  '${RewardsService.streakFreezeCost} XP',
+              excludeSemantics: true,
+              child: const Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(Icons.bolt_rounded, size: 16),
+                  SizedBox(width: 2),
+                  Text('${RewardsService.streakFreezeCost}'),
+                ],
+              ),
             ),
           ),
         ],

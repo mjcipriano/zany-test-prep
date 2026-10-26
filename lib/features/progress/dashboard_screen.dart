@@ -185,9 +185,15 @@ class DashboardScreen extends ConsumerWidget {
                   ? const Center(
                       child: Text('No activity yet — finish a lesson!'),
                     )
-                  : CustomPaint(
-                      painter: _BarChartPainter(s.last14, scheme.primary),
-                      child: const SizedBox.expand(),
+                  : Semantics(
+                      label:
+                          'XP chart, last 14 days: '
+                          '${s.last14.fold<int>(0, (a, b) => a + b)} XP in total, '
+                          'best day ${s.last14.fold<int>(0, (a, b) => b > a ? b : a)} XP',
+                      child: CustomPaint(
+                        painter: _BarChartPainter(s.last14, scheme.primary),
+                        child: const SizedBox.expand(),
+                      ),
                     ),
             ),
           ),
@@ -265,7 +271,12 @@ class DashboardScreen extends ConsumerWidget {
           ],
         ),
         Gap.xs,
-        ProgressBar(value: attempts == 0 ? 0 : acc, color: color, height: 10),
+        ProgressBar(
+          value: attempts == 0 ? 0 : acc,
+          color: color,
+          height: 10,
+          semanticLabel: '$name accuracy',
+        ),
       ],
     ),
   );
@@ -290,7 +301,13 @@ class DashboardScreen extends ConsumerWidget {
             ],
           ),
           Gap.xs,
-          ProgressBar(value: done / target, color: color, height: 10),
+          ProgressBar(
+            value: done / target,
+            color: color,
+            height: 10,
+            semanticLabel: name,
+            semanticValue: '$done of $target questions',
+          ),
         ],
       ),
     );
@@ -314,7 +331,7 @@ class _StatTile extends StatelessWidget {
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Icon(icon, color: color),
+        Icon(icon, color: AppColors.of(context).textOn(color, minRatio: 3)),
         Gap.xs,
         Text(
           value,
@@ -485,36 +502,41 @@ class _Heatmap extends StatelessWidget {
   Widget build(BuildContext context) {
     final maxV = days.fold<int>(1, (m, v) => v > m ? v : m);
     final base = Theme.of(context).colorScheme.surfaceContainerHighest;
+    final active = days.where((v) => v > 0).length;
     // 10 columns (weeks) x 7 rows (days).
-    return LayoutBuilder(
-      builder: (context, c) {
-        const cols = 10, rows = 7, gap = 4.0;
-        final cell = (c.maxWidth - gap * (cols - 1)) / cols;
-        return SizedBox(
-          height: rows * cell + (rows - 1) * gap,
-          child: Stack(
-            children: [
-              for (var i = 0; i < days.length; i++)
-                Positioned(
-                  left: (i ~/ rows) * (cell + gap),
-                  top: (i % rows) * (cell + gap),
-                  child: Container(
-                    width: cell,
-                    height: cell,
-                    decoration: BoxDecoration(
-                      color: days[i] == 0
-                          ? base
-                          : color.withValues(
-                              alpha: 0.3 + 0.7 * (days[i] / maxV),
-                            ),
-                      borderRadius: BorderRadius.circular(3),
+    return Semantics(
+      label: 'Activity: practised on $active of the last ${days.length} days',
+      excludeSemantics: true,
+      child: LayoutBuilder(
+        builder: (context, c) {
+          const cols = 10, rows = 7, gap = 4.0;
+          final cell = (c.maxWidth - gap * (cols - 1)) / cols;
+          return SizedBox(
+            height: rows * cell + (rows - 1) * gap,
+            child: Stack(
+              children: [
+                for (var i = 0; i < days.length; i++)
+                  Positioned(
+                    left: (i ~/ rows) * (cell + gap),
+                    top: (i % rows) * (cell + gap),
+                    child: Container(
+                      width: cell,
+                      height: cell,
+                      decoration: BoxDecoration(
+                        color: days[i] == 0
+                            ? base
+                            : color.withValues(
+                                alpha: 0.3 + 0.7 * (days[i] / maxV),
+                              ),
+                        borderRadius: BorderRadius.circular(3),
+                      ),
                     ),
                   ),
-                ),
-            ],
-          ),
-        );
-      },
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 }
@@ -564,7 +586,9 @@ class _RewardsEntryCard extends ConsumerWidget {
                 color: AppTheme.xpGold.withValues(alpha: 0.22),
                 shape: BoxShape.circle,
               ),
-              child: const Text('🎁', style: TextStyle(fontSize: 18)),
+              child: const ExcludeSemantics(
+                child: Text('🎁', style: TextStyle(fontSize: 18)),
+              ),
             )
           else
             const Icon(Icons.chevron_right_rounded),

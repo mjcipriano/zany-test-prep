@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import '../../domain/models/backup.dart';
+import '../../domain/models/lesson_resume.dart';
 import '../../domain/models/profile.dart';
 import '../../domain/models/progress.dart';
 import '../local/key_value_store.dart';
@@ -14,6 +15,7 @@ class ProgressRepository {
   static const _profileKey = 'profile.v1';
   static const _progressKey = 'progress.v1';
   static const _onboardedKey = 'onboarded.v1';
+  static const _lessonResumeKey = 'lessonResume.v1';
 
   bool get isOnboarded => _store.getString(_onboardedKey) == 'true';
 
@@ -42,6 +44,25 @@ class ProgressRepository {
       return AppProgress();
     }
   }
+
+  /// Loads the saved in-progress lessons. Missing or unreadable data yields an
+  /// empty book (resume is a convenience; it must never block a launch).
+  LessonResumeBook loadLessonResume() {
+    final map = _decodeMap(_lessonResumeKey);
+    if (map == null) return const LessonResumeBook();
+    try {
+      return LessonResumeBook.fromJson(map);
+    } catch (_) {
+      return const LessonResumeBook();
+    }
+  }
+
+  /// Writes the in-progress lessons. Kept apart from `progress.v1` so saving
+  /// after every answer serializes a few hundred bytes, not the whole progress
+  /// document.
+  Future<void> saveLessonResume(LessonResumeBook book) => book.isEmpty
+      ? _store.remove(_lessonResumeKey)
+      : _store.setString(_lessonResumeKey, jsonEncode(book.toJson()));
 
   /// Decodes a stored JSON object, returning null for missing or invalid data.
   Map<String, dynamic>? _decodeMap(String key) {
@@ -82,12 +103,16 @@ class ProgressRepository {
     }
     await saveProgress(data.progress);
     await setOnboarded(data.onboarded);
+    // In-progress lessons belong to the replaced data; drop them.
+    await _store.remove(_lessonResumeKey);
   }
 
-  /// Wipes all stored progress and profile (Reset Progress in settings).
+  /// Wipes all stored progress, profile, and in-progress lessons (Reset
+  /// Progress in settings).
   Future<void> resetAll() async {
     await _store.remove(_profileKey);
     await _store.remove(_progressKey);
     await _store.remove(_onboardedKey);
+    await _store.remove(_lessonResumeKey);
   }
 }

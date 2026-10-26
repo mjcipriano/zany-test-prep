@@ -129,17 +129,48 @@ class QuestionStat {
 }
 
 /// 0-100 mastery for a skill.
+///
+/// [attempts] and [lastPracticedDay] count real practice only (lessons,
+/// review, practice modes) and feed the recommender's uncertainty and recency
+/// terms. [seeded] is true while [mastery] is only a placement-check estimate:
+/// it flips to false on the first real answer, and badges ignore seeded
+/// entries so an estimate never earns a mastery badge.
 class SkillMastery {
-  SkillMastery({required this.skillId, this.mastery = 0});
+  SkillMastery({
+    required this.skillId,
+    this.mastery = 0,
+    this.attempts = 0,
+    this.lastPracticedDay,
+    this.seeded = false,
+  });
 
   final String skillId;
   double mastery;
+  int attempts;
+  String? lastPracticedDay;
+  bool seeded;
 
-  Map<String, dynamic> toJson() => {'skillId': skillId, 'mastery': mastery};
+  /// Records one real answer for this skill on [day].
+  void notePracticed(String day) {
+    attempts += 1;
+    lastPracticedDay = day;
+    seeded = false;
+  }
+
+  Map<String, dynamic> toJson() => {
+    'skillId': skillId,
+    'mastery': mastery,
+    'attempts': attempts,
+    'lastPracticedDay': lastPracticedDay,
+    'seeded': seeded,
+  };
 
   factory SkillMastery.fromJson(Map<String, dynamic> j) => SkillMastery(
     skillId: asString(j['skillId']),
     mastery: asDouble(j['mastery']),
+    attempts: asInt(j['attempts']),
+    lastPracticedDay: asStringOrNull(j['lastPracticedDay']),
+    seeded: asBool(j['seeded']),
   );
 }
 

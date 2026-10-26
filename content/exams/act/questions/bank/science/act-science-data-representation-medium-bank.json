@@ -10,32 +10,285 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "data_interpretation",
-    "subskill": "consistent_statement",
-    "prompt": "According to Table 1, for how many of the 5 values of year tested was the percent of electricity from solar less than 12.5%?",
+    "subskill": "compare_entries",
+    "prompt": "Based on Table 1, at 10 km/h, the mean of the heart rate for before training and for after training is approximately:",
     "choices": [
       {
         "id": "A",
-        "text": "None of the rows",
-        "rationale": "At least one entry is less than 12.5%; count them."
+        "text": "325 beats/min",
+        "rationale": "This is the sum of the two values, not their average."
       },
       {
         "id": "B",
-        "text": "4",
-        "rationale": "This counts the entries greater than 12.5% instead."
+        "text": "162 beats/min",
+        "rationale": "Correct. (175 + 150) ÷ 2 = 162."
       },
       {
         "id": "C",
+        "text": "182.0 beats/min",
+        "rationale": "This averages the row for 12 km/h instead of 10."
+      },
+      {
+        "id": "D",
+        "text": "175 beats/min",
+        "rationale": "This is the before training value alone."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Add the two values in the 10 row (175 and 150) and divide by 2: 162 beats/min.",
+    "estimated_time_seconds": 65,
+    "tags": [
+      "science",
+      "data-representation",
+      "conditions",
+      "average",
+      "family:dr_condition_average"
+    ],
+    "stimulus": {
+      "type": "table",
+      "title": "Exercise Intensity and Heart Rate",
+      "table": {
+        "caption": "Table 1. Heart rate of a volunteer walking or running on a treadmill at several speeds. Results are shown for two conditions: before training and after training.",
+        "headers": [
+          "Treadmill speed (km/h)",
+          "Heart rate (beats/min), before training",
+          "Heart rate (beats/min), after training"
+        ],
+        "rows": [
+          [
+            "2",
+            "91",
+            "79"
+          ],
+          [
+            "4",
+            "112",
+            "97"
+          ],
+          [
+            "6",
+            "133",
+            "115"
+          ],
+          [
+            "8",
+            "154",
+            "132"
+          ],
+          [
+            "10",
+            "175",
+            "150"
+          ],
+          [
+            "12",
+            "196",
+            "168"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "science:condavg;x=10"
+  },
+  {
+    "question_id": "act-science-data-representation-medium-b0002",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "science",
+    "section": "interpretation_of_data",
+    "skill": "data_representation",
+    "lesson_id": "act-science-data-representation-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "compare_entries",
+    "prompt": "Based on Table 1, by how much did the voltage of the battery change as the time the lamp had been on went from 4 h to 8 h?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "0.27 V",
+        "rationale": "Correct. |1.13 − 1.40| = 0.27."
+      },
+      {
+        "id": "B",
+        "text": "0.37 V",
+        "rationale": "This uses the row for 2 h instead of 4 h."
+      },
+      {
+        "id": "C",
+        "text": "0.12 V",
+        "rationale": "This uses the row for 6 h instead of 8 h."
+      },
+      {
+        "id": "D",
+        "text": "−0.27 V",
+        "rationale": "This subtracts in the wrong order; the amount of the difference is positive."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Read the voltage of the battery at 8 h (1.13) and at 4 h (1.40); the difference is 0.27 V.",
+    "estimated_time_seconds": 55,
+    "tags": [
+      "science",
+      "data-representation",
+      "difference",
+      "family:dr_difference"
+    ],
+    "stimulus": {
+      "type": "table",
+      "title": "Battery Voltage Over Time",
+      "table": {
+        "caption": "Table 1. Voltage of a battery after several hours of powering a lamp.",
+        "headers": [
+          "Time (h)",
+          "Voltage (V)"
+        ],
+        "rows": [
+          [
+            "0",
+            "1.57"
+          ],
+          [
+            "2",
+            "1.50"
+          ],
+          [
+            "4",
+            "1.40"
+          ],
+          [
+            "6",
+            "1.28"
+          ],
+          [
+            "8",
+            "1.13"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "science:diff;x1=4;x2=8;col=1"
+  },
+  {
+    "question_id": "act-science-data-representation-medium-b0003",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "science",
+    "section": "interpretation_of_data",
+    "skill": "data_representation",
+    "lesson_id": "act-science-data-representation-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "consistent_statement",
+    "prompt": "According to Table 1, for how many of the 6 values of distance tested was the sound intensity less than 3.05 µW/m²?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "1",
+        "rationale": "Correct. Exactly 1 entries in the Intensity (µW/m²) column are less than 3.05 µW/m²."
+      },
+      {
+        "id": "B",
         "text": "2",
         "rationale": "Recount the column carefully; this is off by one or more."
       },
       {
+        "id": "C",
+        "text": "5",
+        "rationale": "This counts the entries greater than 3.05 µW/m² instead."
+      },
+      {
         "id": "D",
-        "text": "1",
-        "rationale": "Correct. Exactly 1 entries in the Solar (%) column are less than 12.5%."
+        "text": "None of the rows",
+        "rationale": "At least one entry is less than 3.05 µW/m²; count them."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Compare each entry in the Intensity (µW/m²) column with 3.05 µW/m²; 1 of the 6 entries are less than it.",
+    "estimated_time_seconds": 55,
+    "tags": [
+      "science",
+      "data-representation",
+      "count",
+      "family:dr_count_above"
+    ],
+    "stimulus": {
+      "type": "table",
+      "title": "Distance and Sound Intensity",
+      "table": {
+        "caption": "Table 1. Sound intensity measured at several distances from a speaker.",
+        "headers": [
+          "Distance (m)",
+          "Intensity (µW/m²)"
+        ],
+        "rows": [
+          [
+            "1",
+            "88.8"
+          ],
+          [
+            "2",
+            "22.2"
+          ],
+          [
+            "3",
+            "9.9"
+          ],
+          [
+            "4",
+            "5.5"
+          ],
+          [
+            "5",
+            "3.6"
+          ],
+          [
+            "6",
+            "2.5"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "science:count;op=lt;v=3.05;col=1"
+  },
+  {
+    "question_id": "act-science-data-representation-medium-b0004",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "science",
+    "section": "interpretation_of_data",
+    "skill": "data_representation",
+    "lesson_id": "act-science-data-representation-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "consistent_statement",
+    "prompt": "In how many rows of Table 1 is the percent of electricity from solar less than 34%?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "None of the rows",
+        "rationale": "At least one entry is less than 34%; count them."
+      },
+      {
+        "id": "B",
+        "text": "4",
+        "rationale": "Recount the column carefully; this is off by one or more."
+      },
+      {
+        "id": "C",
+        "text": "2",
+        "rationale": "This counts the entries greater than 34% instead."
+      },
+      {
+        "id": "D",
+        "text": "3",
+        "rationale": "Correct. Exactly 3 entries in the Solar (%) column are less than 34%."
       }
     ],
     "correct_choice": "D",
-    "explanation": "Compare each entry in the Solar (%) column with 12.5%; 1 of the 5 entries are less than it.",
+    "explanation": "Compare each entry in the Solar (%) column with 34%; 3 of the 5 entries are less than it.",
     "estimated_time_seconds": 55,
     "tags": [
       "science",
@@ -55,282 +308,34 @@
         ],
         "rows": [
           [
-            "2018",
-            "67",
-            "9"
-          ],
-          [
-            "2019",
-            "61",
-            "16"
-          ],
-          [
-            "2020",
-            "55",
-            "23"
-          ],
-          [
-            "2021",
-            "49",
-            "30"
-          ],
-          [
-            "2022",
-            "43",
-            "37"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "science:count;op=lt;v=12.5;col=2"
-  },
-  {
-    "question_id": "act-science-data-representation-medium-b0002",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "science",
-    "section": "interpretation_of_data",
-    "skill": "data_representation",
-    "lesson_id": "act-science-data-representation-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "compare_entries",
-    "prompt": "According to Table 1, the average of the two conditions' values of the maximum ground motion at 200 km is closest to:",
-    "choices": [
-      {
-        "id": "A",
-        "text": "1.46 mm",
-        "rationale": "Correct. (0.70 + 2.22) ÷ 2 = 1.46."
-      },
-      {
-        "id": "B",
-        "text": "2.92 mm",
-        "rationale": "This is the sum of the two values, not their average."
-      },
-      {
-        "id": "C",
-        "text": "0.70 mm",
-        "rationale": "This is the Quake 1 value alone."
-      },
-      {
-        "id": "D",
-        "text": "1.045 mm",
-        "rationale": "This averages the row for 250 km instead of 200."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "Add the two values in the 200 row (0.70 and 2.22) and divide by 2: 1.46 mm.",
-    "estimated_time_seconds": 65,
-    "tags": [
-      "science",
-      "data-representation",
-      "conditions",
-      "average",
-      "family:dr_condition_average"
-    ],
-    "stimulus": {
-      "type": "table",
-      "title": "Earthquake Distance and Shaking",
-      "table": {
-        "caption": "Table 1. Maximum ground motion recorded by seismographs at several distances from an earthquake. Results are shown for two conditions: Quake 1 and Quake 2.",
-        "headers": [
-          "Distance from epicenter (km)",
-          "Ground motion (mm), Quake 1",
-          "Ground motion (mm), Quake 2"
-        ],
-        "rows": [
-          [
+            "2012",
             "50",
-            "5.58",
-            "17.79"
+            "19"
           ],
           [
-            "100",
-            "1.97",
-            "6.29"
+            "2013",
+            "45",
+            "25"
           ],
           [
-            "150",
-            "1.07",
-            "3.42"
-          ],
-          [
-            "200",
-            "0.70",
-            "2.22"
-          ],
-          [
-            "250",
-            "0.50",
-            "1.59"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "science:condavg;x=200"
-  },
-  {
-    "question_id": "act-science-data-representation-medium-b0003",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "science",
-    "section": "interpretation_of_data",
-    "skill": "data_representation",
-    "lesson_id": "act-science-data-representation-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "consistent_statement",
-    "prompt": "According to Table 1, for how many of the 5 values of speed tested was the stopping distance less than 15.85 m?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "None of the rows",
-        "rationale": "At least one entry is less than 15.85 m; count them."
-      },
-      {
-        "id": "B",
-        "text": "4",
-        "rationale": "This counts the entries greater than 15.85 m instead."
-      },
-      {
-        "id": "C",
-        "text": "2",
-        "rationale": "Recount the column carefully; this is off by one or more."
-      },
-      {
-        "id": "D",
-        "text": "1",
-        "rationale": "Correct. Exactly 1 entries in the Stopping distance (m) column are less than 15.85 m."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Compare each entry in the Stopping distance (m) column with 15.85 m; 1 of the 5 entries are less than it.",
-    "estimated_time_seconds": 55,
-    "tags": [
-      "science",
-      "data-representation",
-      "count",
-      "family:dr_count_above"
-    ],
-    "stimulus": {
-      "type": "table",
-      "title": "Speed and Stopping Distance",
-      "table": {
-        "caption": "Table 1. Distance needed for a car to stop from several speeds.",
-        "headers": [
-          "Speed (km/h)",
-          "Stopping distance (m)"
-        ],
-        "rows": [
-          [
-            "20",
-            "8.6"
-          ],
-          [
+            "2014",
             "40",
-            "23.1"
+            "31"
           ],
           [
-            "60",
-            "43.6"
+            "2015",
+            "35",
+            "37"
           ],
           [
-            "80",
-            "70.1"
-          ],
-          [
-            "100",
-            "102.5"
+            "2016",
+            "30",
+            "43"
           ]
         ]
       }
     },
-    "answer_verification": "science:count;op=lt;v=15.85;col=1"
-  },
-  {
-    "question_id": "act-science-data-representation-medium-b0004",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "science",
-    "section": "interpretation_of_data",
-    "skill": "data_representation",
-    "lesson_id": "act-science-data-representation-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "compare_entries",
-    "prompt": "In Table 1, how much greater was the salinity of the water at 500 m than at 100 m?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "1.19 g/kg",
-        "rationale": "This uses the row for 400 m instead of 500 m."
-      },
-      {
-        "id": "B",
-        "text": "1.31 g/kg",
-        "rationale": "Correct. |35.05 − 33.74| = 1.31."
-      },
-      {
-        "id": "C",
-        "text": "2.35 g/kg",
-        "rationale": "This uses the row for 0 m instead of 100 m."
-      },
-      {
-        "id": "D",
-        "text": "−1.31 g/kg",
-        "rationale": "This subtracts in the wrong order; the amount of the difference is positive."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Read the salinity of the water at 500 m (35.05) and at 100 m (33.74); the difference is 1.31 g/kg.",
-    "estimated_time_seconds": 55,
-    "tags": [
-      "science",
-      "data-representation",
-      "difference",
-      "family:dr_difference"
-    ],
-    "stimulus": {
-      "type": "table",
-      "title": "Ocean Salinity and Depth",
-      "table": {
-        "caption": "Table 1. Salinity of seawater measured at several depths at one station.",
-        "headers": [
-          "Depth (m)",
-          "Salinity (g/kg)"
-        ],
-        "rows": [
-          [
-            "0",
-            "32.70"
-          ],
-          [
-            "100",
-            "33.74"
-          ],
-          [
-            "200",
-            "34.36"
-          ],
-          [
-            "300",
-            "34.72"
-          ],
-          [
-            "400",
-            "34.93"
-          ],
-          [
-            "500",
-            "35.05"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "science:diff;x1=100;x2=500;col=1"
+    "answer_verification": "science:count;op=lt;v=34.0;col=2"
   },
   {
     "question_id": "act-science-data-representation-medium-b0005",
@@ -344,38 +349,283 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "compare_entries",
-    "prompt": "According to Table 1, the average of the two conditions' values of the height of the seedlings at 10 g/L is closest to:",
+    "prompt": "In Table 1, how much greater was the horizontal distance the ball traveled at 40° than at 20°?",
     "choices": [
       {
         "id": "A",
-        "text": "45.6 cm",
-        "rationale": "This is the sum of the two values, not their average."
+        "text": "5.4 m",
+        "rationale": "This uses the row for 50° instead of 40°."
       },
       {
         "id": "B",
-        "text": "20.0 cm",
-        "rationale": "This is the 6 h of light value alone."
+        "text": "6.4 m",
+        "rationale": "Correct. |22.9 − 16.5| = 6.4."
       },
       {
         "id": "C",
-        "text": "22.50 cm",
-        "rationale": "This averages the row for 15 g/L instead of 10."
+        "text": "−6.4 m",
+        "rationale": "This subtracts in the wrong order; the amount of the difference is positive."
       },
       {
         "id": "D",
-        "text": "22.8 cm",
-        "rationale": "Correct. (20.0 + 25.6) ÷ 2 = 22.8."
+        "text": "4.6 m",
+        "rationale": "This uses the row for 30° instead of 40°."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Read the horizontal distance the ball traveled at 40° (22.9) and at 20° (16.5); the difference is 6.4 m.",
+    "estimated_time_seconds": 55,
+    "tags": [
+      "science",
+      "data-representation",
+      "difference",
+      "family:dr_difference"
+    ],
+    "stimulus": {
+      "type": "table",
+      "title": "Launch Angle and Range",
+      "table": {
+        "caption": "Table 1. Horizontal distance traveled by a ball launched at several angles.",
+        "headers": [
+          "Launch angle (°)",
+          "Range (m)"
+        ],
+        "rows": [
+          [
+            "20",
+            "16.5"
+          ],
+          [
+            "30",
+            "21.1"
+          ],
+          [
+            "40",
+            "22.9"
+          ],
+          [
+            "50",
+            "21.9"
+          ],
+          [
+            "60",
+            "18.5"
+          ],
+          [
+            "70",
+            "13.4"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "science:diff;x1=20;x2=40;col=1"
+  },
+  {
+    "question_id": "act-science-data-representation-medium-b0006",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "science",
+    "section": "interpretation_of_data",
+    "skill": "data_representation",
+    "lesson_id": "act-science-data-representation-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "consistent_statement",
+    "prompt": "In how many rows of Table 1 is the pitch of the song greater than 2.585 kHz?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "4",
+        "rationale": "Correct. Exactly 4 entries in the Song pitch (kHz) column are greater than 2.585 kHz."
+      },
+      {
+        "id": "B",
+        "text": "5",
+        "rationale": "Recount the column carefully; this is off by one or more."
+      },
+      {
+        "id": "C",
+        "text": "3",
+        "rationale": "Recount the column carefully; this is off by one or more."
+      },
+      {
+        "id": "D",
+        "text": "None of the rows",
+        "rationale": "At least one entry is greater than 2.585 kHz; count them."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Compare each entry in the Song pitch (kHz) column with 2.585 kHz; 4 of the 6 entries are greater than it.",
+    "estimated_time_seconds": 55,
+    "tags": [
+      "science",
+      "data-representation",
+      "count",
+      "family:dr_count_above"
+    ],
+    "stimulus": {
+      "type": "table",
+      "title": "Body Size and Song Pitch",
+      "table": {
+        "caption": "Table 1. Average pitch of the song of several songbird species of different body mass.",
+        "headers": [
+          "Body mass (g)",
+          "Song pitch (kHz)"
+        ],
+        "rows": [
+          [
+            "10",
+            "4.70"
+          ],
+          [
+            "20",
+            "3.56"
+          ],
+          [
+            "30",
+            "3.03"
+          ],
+          [
+            "40",
+            "2.70"
+          ],
+          [
+            "50",
+            "2.47"
+          ],
+          [
+            "60",
+            "2.30"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "science:count;op=gt;v=2.585;col=1"
+  },
+  {
+    "question_id": "act-science-data-representation-medium-b0007",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "science",
+    "section": "interpretation_of_data",
+    "skill": "data_representation",
+    "lesson_id": "act-science-data-representation-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "consistent_statement",
+    "prompt": "According to Table 1, for how many of the 5 values of body mass tested was the pitch of the song greater than 3.18 kHz?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "2",
+        "rationale": "Recount the column carefully; this is off by one or more."
+      },
+      {
+        "id": "B",
+        "text": "None of the rows",
+        "rationale": "At least one entry is greater than 3.18 kHz; count them."
+      },
+      {
+        "id": "C",
+        "text": "4",
+        "rationale": "This counts the entries less than 3.18 kHz instead."
+      },
+      {
+        "id": "D",
+        "text": "1",
+        "rationale": "Correct. Exactly 1 entries in the Song pitch (kHz) column are greater than 3.18 kHz."
       }
     ],
     "correct_choice": "D",
-    "explanation": "Add the two values in the 10 row (20.0 and 25.6) and divide by 2: 22.8 cm.",
-    "estimated_time_seconds": 65,
+    "explanation": "Compare each entry in the Song pitch (kHz) column with 3.18 kHz; 1 of the 5 entries are greater than it.",
+    "estimated_time_seconds": 55,
+    "tags": [
+      "science",
+      "data-representation",
+      "count",
+      "family:dr_count_above"
+    ],
+    "stimulus": {
+      "type": "table",
+      "title": "Body Size and Song Pitch",
+      "table": {
+        "caption": "Table 1. Average pitch of the song of several songbird species of different body mass.",
+        "headers": [
+          "Body mass (g)",
+          "Song pitch (kHz)"
+        ],
+        "rows": [
+          [
+            "10",
+            "3.62"
+          ],
+          [
+            "20",
+            "2.74"
+          ],
+          [
+            "30",
+            "2.33"
+          ],
+          [
+            "40",
+            "2.08"
+          ],
+          [
+            "50",
+            "1.90"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "science:count;op=gt;v=3.18;col=1"
+  },
+  {
+    "question_id": "act-science-data-representation-medium-b0008",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "science",
+    "section": "interpretation_of_data",
+    "skill": "data_representation",
+    "lesson_id": "act-science-data-representation-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "consistent_statement",
+    "prompt": "For how many of the values of fertilizer concentration in Table 1 was the height of the seedlings greater than 22.85 cm for 6 h of light AND greater than 31.45 cm for 10 h of light?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "None of the rows",
+        "rationale": "At least one row meets both conditions; check each row."
+      },
+      {
+        "id": "B",
+        "text": "4",
+        "rationale": "This counts rows meeting only the 6 h of light condition (greater than 22.85 cm), ignoring the second condition."
+      },
+      {
+        "id": "C",
+        "text": "2",
+        "rationale": "Check each row against both conditions; this count is wrong."
+      },
+      {
+        "id": "D",
+        "text": "3",
+        "rationale": "Correct. Exactly 3 rows satisfy both conditions at once."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Go row by row: a row counts only if its 6 h of light value is greater than 22.85 cm and its 10 h of light value is greater than 31.45 cm. 3 rows pass both tests.",
+    "estimated_time_seconds": 75,
     "tags": [
       "science",
       "data-representation",
       "conditions",
-      "average",
-      "family:dr_condition_average"
+      "count",
+      "family:dr_two_condition_count"
     ],
     "stimulus": {
       "type": "table",
@@ -390,41 +640,41 @@
         "rows": [
           [
             "0",
-            "12.2",
-            "15.7"
+            "15.8",
+            "20.2"
           ],
           [
             "5",
-            "17.5",
-            "22.4"
+            "21.3",
+            "27.2"
           ],
           [
             "10",
-            "20.0",
-            "25.6"
+            "24.9",
+            "31.8"
           ],
           [
             "15",
-            "19.7",
-            "25.3"
+            "26.6",
+            "34.0"
           ],
           [
             "20",
-            "16.7",
-            "21.4"
+            "26.4",
+            "33.7"
           ],
           [
             "25",
-            "10.8",
-            "13.9"
+            "24.4",
+            "31.1"
           ]
         ]
       }
     },
-    "answer_verification": "science:condavg;x=10"
+    "answer_verification": "science:count2;opa=gt;ta=22.85;opb=gt;tb=31.45"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0006",
+    "question_id": "act-science-data-representation-medium-b0009",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -435,75 +685,75 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "compare_entries",
-    "prompt": "In Table 1, how much less was the water temperature at 6 m than at 2 m?",
+    "prompt": "Based on Table 1, the ratio of the count rate at 30 min to that at 40 min is closest to:",
     "choices": [
       {
         "id": "A",
-        "text": "14.4 °C",
-        "rationale": "This uses the row for 0 m instead of 2 m."
+        "text": "1.5",
+        "rationale": "Correct. 1198 ÷ 816 ≈ 1.5."
       },
       {
         "id": "B",
-        "text": "7.2 °C",
-        "rationale": "Correct. |10.7 − 17.9| = 7.2."
+        "text": "2.2",
+        "rationale": "This uses the row for 20 min instead of one of the rows asked about."
       },
       {
         "id": "C",
-        "text": "8.9 °C",
-        "rationale": "This uses the row for 8 m instead of 6 m."
+        "text": "382",
+        "rationale": "This is the difference between the two values, not their ratio."
       },
       {
         "id": "D",
-        "text": "−7.2 °C",
-        "rationale": "This subtracts in the wrong order; the amount of the difference is positive."
+        "text": "0.68",
+        "rationale": "This divides the smaller value by the larger one (816 ÷ 1198); the question asks the reverse."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Read the water temperature at 6 m (10.7) and at 2 m (17.9); the difference is 7.2 °C.",
-    "estimated_time_seconds": 55,
+    "correct_choice": "A",
+    "explanation": "Divide the larger value by the smaller: 1198 ÷ 816 ≈ 1.5, so the value at 30 min is about 1.5 times that at 40 min.",
+    "estimated_time_seconds": 60,
     "tags": [
       "science",
       "data-representation",
-      "difference",
-      "family:dr_difference"
+      "ratio",
+      "family:dr_ratio"
     ],
     "stimulus": {
       "type": "table",
-      "title": "Lake Temperature and Depth",
+      "title": "Radioactive Decay",
       "table": {
-        "caption": "Table 1. Water temperature of a lake measured at several depths.",
+        "caption": "Table 1. Counts per minute recorded from a radioactive sample at several times.",
         "headers": [
-          "Depth (m)",
-          "Water temperature (°C)"
+          "Time (min)",
+          "Counts per minute (counts/min)"
         ],
         "rows": [
           [
             "0",
-            "25.1"
+            "3783"
           ],
           [
-            "2",
-            "17.9"
+            "10",
+            "2579"
           ],
           [
-            "4",
-            "13.4"
+            "20",
+            "1757"
           ],
           [
-            "6",
-            "10.7"
+            "30",
+            "1198"
           ],
           [
-            "8",
-            "9.0"
+            "40",
+            "816"
           ]
         ]
       }
     },
-    "answer_verification": "science:diff;x1=2;x2=6;col=1"
+    "answer_verification": "science:ratio;x1=40;x2=30;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0007",
+    "question_id": "act-science-data-representation-medium-b0010",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -514,87 +764,75 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "consistent_statement",
-    "prompt": "For how many of the values of distance in Table 1 was the sound intensity greater than 15.75 µW/m² for full volume AND greater than 29.65 µW/m² for half volume?",
+    "prompt": "In how many rows of Table 1 is the period of the pendulum greater than 1.68 s?",
     "choices": [
       {
         "id": "A",
-        "text": "1",
-        "rationale": "Correct. Exactly 1 rows satisfy both conditions at once."
+        "text": "4",
+        "rationale": "Recount the column carefully; this is off by one or more."
       },
       {
         "id": "B",
-        "text": "5",
-        "rationale": "Check each row against both conditions; this count is wrong."
+        "text": "3",
+        "rationale": "Correct. Exactly 3 entries in the Period (s) column are greater than 1.68 s."
       },
       {
         "id": "C",
         "text": "2",
-        "rationale": "This counts rows meeting only the full volume condition (greater than 15.75 µW/m²), ignoring the second condition."
+        "rationale": "This counts the entries less than 1.68 s instead."
       },
       {
         "id": "D",
         "text": "None of the rows",
-        "rationale": "At least one row meets both conditions; check each row."
+        "rationale": "At least one entry is greater than 1.68 s; count them."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Go row by row: a row counts only if its full volume value is greater than 15.75 µW/m² and its half volume value is greater than 29.65 µW/m². 1 rows pass both tests.",
-    "estimated_time_seconds": 75,
+    "correct_choice": "B",
+    "explanation": "Compare each entry in the Period (s) column with 1.68 s; 3 of the 5 entries are greater than it.",
+    "estimated_time_seconds": 55,
     "tags": [
       "science",
       "data-representation",
-      "conditions",
       "count",
-      "family:dr_two_condition_count"
+      "family:dr_count_above"
     ],
     "stimulus": {
       "type": "table",
-      "title": "Distance and Sound Intensity",
+      "title": "Pendulum Period",
       "table": {
-        "caption": "Table 1. Sound intensity measured at several distances from a speaker. Results are shown for two conditions: full volume and half volume.",
+        "caption": "Table 1. Period of a pendulum measured at several string lengths.",
         "headers": [
-          "Distance (m)",
-          "Intensity (µW/m²), full volume",
-          "Intensity (µW/m²), half volume"
+          "Length of string (cm)",
+          "Period (s)"
         ],
         "rows": [
           [
-            "1",
-            "87.2",
-            "47.4"
+            "40",
+            "1.27"
           ],
           [
-            "2",
-            "21.8",
-            "11.9"
+            "60",
+            "1.56"
           ],
           [
-            "3",
-            "9.7",
-            "5.3"
+            "80",
+            "1.80"
           ],
           [
-            "4",
-            "5.5",
-            "3.0"
+            "100",
+            "2.01"
           ],
           [
-            "5",
-            "3.5",
-            "1.9"
-          ],
-          [
-            "6",
-            "2.4",
-            "1.3"
+            "120",
+            "2.21"
           ]
         ]
       }
     },
-    "answer_verification": "science:count2;opa=gt;ta=15.75;opb=gt;tb=29.65"
+    "answer_verification": "science:count;op=gt;v=1.68;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0008",
+    "question_id": "act-science-data-representation-medium-b0011",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -605,31 +843,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "compare_entries",
-    "prompt": "Based on Table 1, at 8 mg, the mean of the time for the reaction to finish for 20°C and for 30°C is approximately:",
+    "prompt": "According to Table 1, the average of the two conditions' values of the time for the reaction to finish at 4 mg is closest to:",
     "choices": [
       {
         "id": "A",
-        "text": "26 s",
-        "rationale": "Correct. (30 + 21) ÷ 2 = 26."
-      },
-      {
-        "id": "B",
-        "text": "30 s",
+        "text": "100 s",
         "rationale": "This is the 20°C value alone."
       },
       {
-        "id": "C",
-        "text": "51 s",
+        "id": "B",
+        "text": "165 s",
         "rationale": "This is the sum of the two values, not their average."
       },
       {
+        "id": "C",
+        "text": "82 s",
+        "rationale": "Correct. (100 + 65) ÷ 2 = 82."
+      },
+      {
         "id": "D",
-        "text": "20.0 s",
-        "rationale": "This averages the row for 10 mg instead of 8."
+        "text": "53.0 s",
+        "rationale": "This averages the row for 6 mg instead of 4."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Add the two values in the 8 row (30 and 21) and divide by 2: 26 s.",
+    "correct_choice": "C",
+    "explanation": "Add the two values in the 4 row (100 and 65) and divide by 2: 82 s.",
     "estimated_time_seconds": 65,
     "tags": [
       "science",
@@ -650,37 +888,42 @@
         ],
         "rows": [
           [
+            "0",
+            "269",
+            "174"
+          ],
+          [
             "2",
-            "136",
-            "95"
+            "162",
+            "105"
           ],
           [
             "4",
-            "72",
-            "50"
+            "100",
+            "65"
           ],
           [
             "6",
-            "43",
-            "30"
+            "64",
+            "42"
           ],
           [
             "8",
-            "30",
-            "21"
+            "43",
+            "28"
           ],
           [
             "10",
-            "24",
-            "16"
+            "31",
+            "20"
           ]
         ]
       }
     },
-    "answer_verification": "science:condavg;x=8"
+    "answer_verification": "science:condavg;x=4"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0009",
+    "question_id": "act-science-data-representation-medium-b0012",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -691,82 +934,75 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "compare_entries",
-    "prompt": "Based on Table 1, at 0 m, the mean of the boiling point of the water for pure water and for salt water is approximately:",
+    "prompt": "According to Table 1, the difference between the heart rate at 10 km/h and at 8 km/h is:",
     "choices": [
       {
         "id": "A",
-        "text": "100.3 °C",
-        "rationale": "Correct. (100.0 + 100.6) ÷ 2 = 100.3."
+        "text": "20 beats/min",
+        "rationale": "Correct. |167 − 147| = 20."
       },
       {
         "id": "B",
-        "text": "200.6 °C",
-        "rationale": "This is the sum of the two values, not their average."
+        "text": "41 beats/min",
+        "rationale": "This uses the row for 6 km/h instead of 8 km/h."
       },
       {
         "id": "C",
-        "text": "100.0 °C",
-        "rationale": "This is the pure water value alone."
+        "text": "−20 beats/min",
+        "rationale": "This subtracts in the wrong order; the amount of the difference is positive."
       },
       {
         "id": "D",
-        "text": "98.70 °C",
-        "rationale": "This averages the row for 500 m instead of 0."
+        "text": "40 beats/min",
+        "rationale": "This uses the row for 12 km/h instead of 10 km/h."
       }
     ],
     "correct_choice": "A",
-    "explanation": "Add the two values in the 0 row (100.0 and 100.6) and divide by 2: 100.3 °C.",
-    "estimated_time_seconds": 65,
+    "explanation": "Read the heart rate at 10 km/h (167) and at 8 km/h (147); the difference is 20 beats/min.",
+    "estimated_time_seconds": 55,
     "tags": [
       "science",
       "data-representation",
-      "conditions",
-      "average",
-      "family:dr_condition_average"
+      "difference",
+      "family:dr_difference"
     ],
     "stimulus": {
       "type": "table",
-      "title": "Altitude and Boiling Point",
+      "title": "Exercise Intensity and Heart Rate",
       "table": {
-        "caption": "Table 1. Boiling point of water measured at several altitudes. Results are shown for two conditions: pure water and salt water.",
+        "caption": "Table 1. Heart rate of a volunteer walking or running on a treadmill at several speeds.",
         "headers": [
-          "Altitude (m)",
-          "Boiling point (°C), pure water",
-          "Boiling point (°C), salt water"
+          "Treadmill speed (km/h)",
+          "Heart rate (beats/min)"
         ],
         "rows": [
           [
-            "0",
-            "100.0",
-            "100.6"
+            "4",
+            "106"
           ],
           [
-            "500",
-            "98.4",
-            "99.0"
+            "6",
+            "126"
           ],
           [
-            "1000",
-            "96.9",
-            "97.4"
+            "8",
+            "147"
           ],
           [
-            "1500",
-            "95.3",
-            "95.9"
+            "10",
+            "167"
           ],
           [
-            "2000",
-            "93.7",
-            "94.3"
+            "12",
+            "187"
           ]
         ]
       }
     },
-    "answer_verification": "science:condavg;x=0"
+    "answer_verification": "science:diff;x1=8;x2=10;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0010",
+    "question_id": "act-science-data-representation-medium-b0013",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -777,74 +1013,82 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "consistent_statement",
-    "prompt": "Which statement about the results in Table 1 is supported by the data?",
+    "prompt": "In how many rows of Table 1 is the 20°C value greater than 1.175 V while the 0°C value is less than 1.22 V?",
     "choices": [
       {
         "id": "A",
-        "text": "The tread depth at 10000 km was more than twice its value at 20000 km.",
-        "rationale": "Twice 6.7 mm is 13.4 mm, and the value at 10000 km is 7.8 mm."
+        "text": "2",
+        "rationale": "Correct. Exactly 2 rows satisfy both conditions at once."
       },
       {
         "id": "B",
-        "text": "The tread depth decreased with every increase in distance driven.",
-        "rationale": "Correct. Checking the listed values confirms this statement."
+        "text": "3",
+        "rationale": "This counts rows meeting only the 20°C condition (greater than 1.175 V), ignoring the second condition."
       },
       {
         "id": "C",
-        "text": "The tread depth at 30000 km was more than twice its value at 10000 km.",
-        "rationale": "Twice 7.8 mm is 15.6 mm, and the value at 30000 km is 5.7 mm."
+        "text": "None of the rows",
+        "rationale": "At least one row meets both conditions; check each row."
       },
       {
         "id": "D",
-        "text": "The tread depth at 40000 km was more than twice its value at 50000 km.",
-        "rationale": "Twice 3.7 mm is 7.4 mm, and the value at 40000 km is 4.7 mm."
+        "text": "1",
+        "rationale": "Check each row against both conditions; this count is wrong."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Test each statement against the table: only \"The tread depth decreased with every increase in distance driven.\" matches the listed values.",
-    "estimated_time_seconds": 70,
+    "correct_choice": "A",
+    "explanation": "Go row by row: a row counts only if its 20°C value is greater than 1.175 V and its 0°C value is less than 1.22 V. 2 rows pass both tests.",
+    "estimated_time_seconds": 75,
     "tags": [
       "science",
       "data-representation",
-      "statement",
-      "family:dr_consistent_statement"
+      "conditions",
+      "count",
+      "family:dr_two_condition_count"
     ],
     "stimulus": {
       "type": "table",
-      "title": "Distance Driven and Tire Wear",
+      "title": "Battery Voltage Over Time",
       "table": {
-        "caption": "Table 1. Tread depth of a car tire after several distances driven.",
+        "caption": "Table 1. Voltage of a battery after several hours of powering a lamp. Results are shown for two conditions: 20°C and 0°C.",
         "headers": [
-          "Distance driven (km)",
-          "Tread depth (mm)"
+          "Time (h)",
+          "Voltage (V), 20°C",
+          "Voltage (V), 0°C"
         ],
         "rows": [
           [
-            "10000",
-            "7.8"
+            "2",
+            "1.46",
+            "1.26"
           ],
           [
-            "20000",
-            "6.7"
+            "4",
+            "1.37",
+            "1.18"
           ],
           [
-            "30000",
-            "5.7"
+            "6",
+            "1.25",
+            "1.08"
           ],
           [
-            "40000",
-            "4.7"
+            "8",
+            "1.10",
+            "0.95"
           ],
           [
-            "50000",
-            "3.7"
+            "10",
+            "0.92",
+            "0.79"
           ]
         ]
       }
-    }
+    },
+    "answer_verification": "science:count2;opa=gt;ta=1.175;opb=lt;tb=1.22"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0011",
+    "question_id": "act-science-data-representation-medium-b0014",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -854,80 +1098,83 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "data_interpretation",
-    "subskill": "compare_entries",
-    "prompt": "According to Table 1, the difference between the stopping distance at 120 km/h and at 80 km/h is:",
+    "subskill": "consistent_statement",
+    "prompt": "In how many rows of Table 1 is the 30°C value greater than 17.5 colonies while the 37°C value is greater than 66.5 colonies?",
     "choices": [
       {
         "id": "A",
-        "text": "99.3 m",
-        "rationale": "This uses the row for 60 km/h instead of 80 km/h."
+        "text": "3",
+        "rationale": "Correct. Exactly 3 rows satisfy both conditions at once."
       },
       {
         "id": "B",
-        "text": "72.3 m",
-        "rationale": "Correct. |143.9 − 71.6| = 72.3."
+        "text": "4",
+        "rationale": "This counts rows meeting only the 30°C condition (greater than 17.5 colonies), ignoring the second condition."
       },
       {
         "id": "C",
-        "text": "33.1 m",
-        "rationale": "This uses the row for 100 km/h instead of 120 km/h."
+        "text": "2",
+        "rationale": "Check each row against both conditions; this count is wrong."
       },
       {
         "id": "D",
-        "text": "−72.3 m",
-        "rationale": "This subtracts in the wrong order; the amount of the difference is positive."
+        "text": "None of the rows",
+        "rationale": "At least one row meets both conditions; check each row."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Read the stopping distance at 120 km/h (143.9) and at 80 km/h (71.6); the difference is 72.3 m.",
-    "estimated_time_seconds": 55,
+    "correct_choice": "A",
+    "explanation": "Go row by row: a row counts only if its 30°C value is greater than 17.5 colonies and its 37°C value is greater than 66.5 colonies. 3 rows pass both tests.",
+    "estimated_time_seconds": 75,
     "tags": [
       "science",
       "data-representation",
-      "difference",
-      "family:dr_difference"
+      "conditions",
+      "count",
+      "family:dr_two_condition_count"
     ],
     "stimulus": {
       "type": "table",
-      "title": "Speed and Stopping Distance",
+      "title": "Antibiotic Dose and Bacterial Growth",
       "table": {
-        "caption": "Table 1. Distance needed for a car to stop from several speeds.",
+        "caption": "Table 1. Number of bacterial colonies on plates with several antibiotic concentrations. Results are shown for two conditions: 30°C and 37°C.",
         "headers": [
-          "Speed (km/h)",
-          "Stopping distance (m)"
+          "Antibiotic concentration (µg/mL)",
+          "Colony count (colonies), 30°C",
+          "Colony count (colonies), 37°C"
         ],
         "rows": [
           [
+            "0",
+            "394",
+            "593"
+          ],
+          [
+            "5",
+            "157",
+            "237"
+          ],
+          [
+            "10",
+            "63",
+            "95"
+          ],
+          [
+            "15",
+            "25",
+            "38"
+          ],
+          [
             "20",
-            "8.8"
-          ],
-          [
-            "40",
-            "23.6"
-          ],
-          [
-            "60",
-            "44.6"
-          ],
-          [
-            "80",
-            "71.6"
-          ],
-          [
-            "100",
-            "104.7"
-          ],
-          [
-            "120",
-            "143.9"
+            "10",
+            "15"
           ]
         ]
       }
     },
-    "answer_verification": "science:diff;x1=80;x2=120;col=1"
+    "answer_verification": "science:count2;opa=gt;ta=17.5;opb=gt;tb=66.5"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0012",
+    "question_id": "act-science-data-representation-medium-b0015",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -942,27 +1189,27 @@
     "choices": [
       {
         "id": "A",
-        "text": "The pitch of the song was least at 60 g.",
-        "rationale": "Correct. Checking the listed values confirms this statement."
+        "text": "The rate of heat loss was greater at 6 cm than at 0 cm.",
+        "rationale": "The table lists 41 W at 6 cm and 129 W at 0 cm."
       },
       {
         "id": "B",
-        "text": "The pitch of the song was greater at 40 g than at 20 g.",
-        "rationale": "The table lists 3.46 kHz at 40 g and 4.57 kHz at 20 g."
+        "text": "The rate of heat loss at 4 cm was more than twice its value at 8 cm.",
+        "rationale": "Twice 34 W is 68 W, and the value at 4 cm is 54 W."
       },
       {
         "id": "C",
-        "text": "The pitch of the song at 50 g was more than twice its value at 30 g.",
-        "rationale": "Twice 3.89 kHz is 7.78 kHz, and the value at 50 g is 3.17 kHz."
+        "text": "The rate of heat loss at 6 cm was more than twice its value at 4 cm.",
+        "rationale": "Twice 54 W is 108 W, and the value at 6 cm is 41 W."
       },
       {
         "id": "D",
-        "text": "The pitch of the song at 20 g was more than twice its value at 50 g.",
-        "rationale": "Twice 3.17 kHz is 6.34 kHz, and the value at 20 g is 4.57 kHz."
+        "text": "The rate of heat loss was greatest at 0 cm.",
+        "rationale": "Correct. Checking the listed values confirms this statement."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Test each statement against the table: only \"The pitch of the song was least at 60 g.\" matches the listed values.",
+    "correct_choice": "D",
+    "explanation": "Test each statement against the table: only \"The rate of heat loss was greatest at 0 cm.\" matches the listed values.",
     "estimated_time_seconds": 70,
     "tags": [
       "science",
@@ -972,302 +1219,41 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Body Size and Song Pitch",
+      "title": "Insulation and Heat Loss",
       "table": {
-        "caption": "Table 1. Average pitch of the song of several songbird species of different body mass.",
+        "caption": "Table 1. Rate of heat loss from a heated box wrapped in several thicknesses of foam.",
         "headers": [
-          "Body mass (g)",
-          "Song pitch (kHz)"
-        ],
-        "rows": [
-          [
-            "10",
-            "6.03"
-          ],
-          [
-            "20",
-            "4.57"
-          ],
-          [
-            "30",
-            "3.89"
-          ],
-          [
-            "40",
-            "3.46"
-          ],
-          [
-            "50",
-            "3.17"
-          ],
-          [
-            "60",
-            "2.95"
-          ]
-        ]
-      }
-    }
-  },
-  {
-    "question_id": "act-science-data-representation-medium-b0013",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "science",
-    "section": "interpretation_of_data",
-    "skill": "data_representation",
-    "lesson_id": "act-science-data-representation-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "compare_entries",
-    "prompt": "According to Table 1, the number of bullfrogs counted in 2014 was approximately how many times the number of bullfrogs counted in 2010?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "2.4",
-        "rationale": "This uses the row for 2013 instead of one of the rows asked about."
-      },
-      {
-        "id": "B",
-        "text": "92",
-        "rationale": "This is the difference between the two values, not their ratio."
-      },
-      {
-        "id": "C",
-        "text": "0.34",
-        "rationale": "This divides the smaller value by the larger one (48 ÷ 140); the question asks the reverse."
-      },
-      {
-        "id": "D",
-        "text": "2.9",
-        "rationale": "Correct. 140 ÷ 48 ≈ 2.9."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Divide the larger value by the smaller: 140 ÷ 48 ≈ 2.9, so the value in 2014 is about 2.9 times that in 2010.",
-    "estimated_time_seconds": 60,
-    "tags": [
-      "science",
-      "data-representation",
-      "ratio",
-      "family:dr_ratio"
-    ],
-    "stimulus": {
-      "type": "table",
-      "title": "Two Frog Species",
-      "table": {
-        "caption": "Table 1. Counts of two frog species in a pond in the years after bullfrogs first appeared there.",
-        "headers": [
-          "Year",
-          "Leopard frogs",
-          "Bullfrogs"
-        ],
-        "rows": [
-          [
-            "2010",
-            "194",
-            "48"
-          ],
-          [
-            "2011",
-            "177",
-            "71"
-          ],
-          [
-            "2012",
-            "160",
-            "94"
-          ],
-          [
-            "2013",
-            "143",
-            "117"
-          ],
-          [
-            "2014",
-            "126",
-            "140"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "science:ratio;x1=2010;x2=2014;col=2"
-  },
-  {
-    "question_id": "act-science-data-representation-medium-b0014",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "science",
-    "section": "interpretation_of_data",
-    "skill": "data_representation",
-    "lesson_id": "act-science-data-representation-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "compare_entries",
-    "prompt": "According to Table 1, at a water temperature of 20 °C, the mass of salt that dissolved was greater under which condition, and by how much?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "Salt B, by 9 g",
-        "rationale": "The difference is right, but Salt B gave the smaller value at 20 °C."
-      },
-      {
-        "id": "B",
-        "text": "Salt A, by 9 g",
-        "rationale": "Correct. At 20 °C: Salt A 30 versus Salt B 21, a difference of 9."
-      },
-      {
-        "id": "C",
-        "text": "Neither; both conditions gave the same mass dissolved at 20 °C",
-        "rationale": "The two columns differ at 20 °C: 30 versus 21."
-      },
-      {
-        "id": "D",
-        "text": "Salt A, by 17 g",
-        "rationale": "This is the difference in the row for 40 °C, not for 20 °C."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "In the 20 °C row, compare the two condition columns: 30 (Salt A) minus 21 (Salt B) = 9 g.",
-    "estimated_time_seconds": 65,
-    "tags": [
-      "science",
-      "data-representation",
-      "conditions",
-      "family:dr_condition_compare"
-    ],
-    "stimulus": {
-      "type": "table",
-      "title": "Solubility and Temperature",
-      "table": {
-        "caption": "Table 1. Mass of a salt that dissolves in 100 g of water at several temperatures. Results are shown for two conditions: Salt A and Salt B.",
-        "headers": [
-          "Water temperature (°C)",
-          "Mass dissolved (g), Salt A",
-          "Mass dissolved (g), Salt B"
+          "Foam thickness (cm)",
+          "Heat loss (W)"
         ],
         "rows": [
           [
             "0",
-            "15",
-            "10"
+            "129"
           ],
           [
-            "20",
-            "30",
-            "21"
+            "2",
+            "76"
           ],
           [
-            "40",
-            "57",
-            "40"
+            "4",
+            "54"
           ],
           [
-            "60",
-            "96",
-            "66"
+            "6",
+            "41"
           ],
           [
-            "80",
-            "145",
-            "101"
+            "8",
+            "34"
           ],
           [
-            "100",
-            "207",
-            "143"
+            "10",
+            "29"
           ]
         ]
       }
-    },
-    "answer_verification": "science:conddiff;x=20"
-  },
-  {
-    "question_id": "act-science-data-representation-medium-b0015",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "science",
-    "section": "interpretation_of_data",
-    "skill": "data_representation",
-    "lesson_id": "act-science-data-representation-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "consistent_statement",
-    "prompt": "In how many rows of Table 1 is the Species A value less than 92.5 chirps/min while the Species B value is less than 103 chirps/min?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "2",
-        "rationale": "This counts rows meeting only the Species A condition (less than 92.5 chirps/min), ignoring the second condition."
-      },
-      {
-        "id": "B",
-        "text": "1",
-        "rationale": "Correct. Exactly 1 rows satisfy both conditions at once."
-      },
-      {
-        "id": "C",
-        "text": "None of the rows",
-        "rationale": "At least one row meets both conditions; check each row."
-      },
-      {
-        "id": "D",
-        "text": "4",
-        "rationale": "Check each row against both conditions; this count is wrong."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Go row by row: a row counts only if its Species A value is less than 92.5 chirps/min and its Species B value is less than 103 chirps/min. 1 rows pass both tests.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "science",
-      "data-representation",
-      "conditions",
-      "count",
-      "family:dr_two_condition_count"
-    ],
-    "stimulus": {
-      "type": "table",
-      "title": "Temperature and Cricket Chirps",
-      "table": {
-        "caption": "Table 1. Number of chirps per minute made by a cricket at several air temperatures. Results are shown for two conditions: Species A and Species B.",
-        "headers": [
-          "Air temperature (°C)",
-          "Chirps per minute (chirps/min), Species A",
-          "Chirps per minute (chirps/min), Species B"
-        ],
-        "rows": [
-          [
-            "15",
-            "64",
-            "90"
-          ],
-          [
-            "18",
-            "83",
-            "116"
-          ],
-          [
-            "21",
-            "102",
-            "142"
-          ],
-          [
-            "24",
-            "121",
-            "168"
-          ],
-          [
-            "27",
-            "140",
-            "195"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "science:count2;opa=lt;ta=92.5;opb=lt;tb=103.0"
+    }
   },
   {
     "question_id": "act-science-data-representation-medium-b0016",
@@ -1281,84 +1267,72 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "consistent_statement",
-    "prompt": "For how many of the values of water temperature in Table 1 was the dissolved oxygen concentration less than 10.5 mg/L for fresh water AND greater than 6.8 mg/L for sea water?",
+    "prompt": "In how many rows of Table 1 is the flow rate of the river greater than 9.4 m³/s?",
     "choices": [
       {
         "id": "A",
-        "text": "2",
-        "rationale": "Correct. Exactly 2 rows satisfy both conditions at once."
+        "text": "4",
+        "rationale": "Correct. Exactly 4 entries in the Flow rate (m³/s) column are greater than 9.4 m³/s."
       },
       {
         "id": "B",
         "text": "3",
-        "rationale": "Check each row against both conditions; this count is wrong."
+        "rationale": "Recount the column carefully; this is off by one or more."
       },
       {
         "id": "C",
         "text": "None of the rows",
-        "rationale": "At least one row meets both conditions; check each row."
+        "rationale": "At least one entry is greater than 9.4 m³/s; count them."
       },
       {
         "id": "D",
-        "text": "4",
-        "rationale": "This counts rows meeting only the fresh water condition (less than 10.5 mg/L), ignoring the second condition."
+        "text": "5",
+        "rationale": "Recount the column carefully; this is off by one or more."
       }
     ],
     "correct_choice": "A",
-    "explanation": "Go row by row: a row counts only if its fresh water value is less than 10.5 mg/L and its sea water value is greater than 6.8 mg/L. 2 rows pass both tests.",
-    "estimated_time_seconds": 75,
+    "explanation": "Compare each entry in the Flow rate (m³/s) column with 9.4 m³/s; 4 of the 5 entries are greater than it.",
+    "estimated_time_seconds": 55,
     "tags": [
       "science",
       "data-representation",
-      "conditions",
       "count",
-      "family:dr_two_condition_count"
+      "family:dr_count_above"
     ],
     "stimulus": {
       "type": "table",
-      "title": "Water Temperature and Dissolved Oxygen",
+      "title": "Rainfall and River Flow",
       "table": {
-        "caption": "Table 1. Amount of oxygen that dissolves in water at several temperatures. Results are shown for two conditions: fresh water and sea water.",
+        "caption": "Table 1. Flow rate of a river measured the day after several amounts of rain.",
         "headers": [
-          "Water temperature (°C)",
-          "Dissolved oxygen (mg/L), fresh water",
-          "Dissolved oxygen (mg/L), sea water"
+          "Rainfall (mm)",
+          "Flow rate (m³/s)"
         ],
         "rows": [
           [
-            "5",
-            "12.9",
-            "10.4"
-          ],
-          [
             "10",
-            "11.2",
-            "9.0"
-          ],
-          [
-            "15",
-            "9.8",
-            "7.9"
+            "7.7"
           ],
           [
             "20",
-            "8.8",
-            "7.1"
-          ],
-          [
-            "25",
-            "8.1",
-            "6.5"
+            "11.1"
           ],
           [
             "30",
-            "7.7",
-            "6.2"
+            "15.4"
+          ],
+          [
+            "40",
+            "20.5"
+          ],
+          [
+            "50",
+            "26.5"
           ]
         ]
       }
     },
-    "answer_verification": "science:count2;opa=lt;ta=10.5;opb=gt;tb=6.8"
+    "answer_verification": "science:count;op=gt;v=9.4;col=1"
   },
   {
     "question_id": "act-science-data-representation-medium-b0017",
@@ -1372,79 +1346,72 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "compare_entries",
-    "prompt": "According to Table 1, the average of the two conditions' values of the rate of photosynthesis at 300 µmol/m²/s is closest to:",
+    "prompt": "Based on Table 1, the ratio of the voltage across the resistor at 0.6 A to that at 0.4 A is closest to:",
     "choices": [
       {
         "id": "A",
-        "text": "57.2 bubbles/min",
-        "rationale": "This is the sum of the two values, not their average."
+        "text": "6.1",
+        "rationale": "This is the difference between the two values, not their ratio."
       },
       {
         "id": "B",
-        "text": "22.9 bubbles/min",
-        "rationale": "This is the low CO₂ value alone."
+        "text": "1.5",
+        "rationale": "Correct. 18.4 ÷ 12.3 ≈ 1.5."
       },
       {
         "id": "C",
-        "text": "28.6 bubbles/min",
-        "rationale": "Correct. (22.9 + 34.3) ÷ 2 = 28.6."
+        "text": "0.67",
+        "rationale": "This divides the smaller value by the larger one (12.3 ÷ 18.4); the question asks the reverse."
       },
       {
         "id": "D",
-        "text": "30.65 bubbles/min",
-        "rationale": "This averages the row for 400 µmol/m²/s instead of 300."
+        "text": "1.2",
+        "rationale": "This uses the row for 0.5 A instead of one of the rows asked about."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Add the two values in the 300 row (22.9 and 34.3) and divide by 2: 28.6 bubbles/min.",
-    "estimated_time_seconds": 65,
+    "correct_choice": "B",
+    "explanation": "Divide the larger value by the smaller: 18.4 ÷ 12.3 ≈ 1.5, so the value at 0.6 A is about 1.5 times that at 0.4 A.",
+    "estimated_time_seconds": 60,
     "tags": [
       "science",
       "data-representation",
-      "conditions",
-      "average",
-      "family:dr_condition_average"
+      "ratio",
+      "family:dr_ratio"
     ],
     "stimulus": {
       "type": "table",
-      "title": "Light and Photosynthesis",
+      "title": "Current and Voltage",
       "table": {
-        "caption": "Table 1. Rate of photosynthesis of a water plant at several light intensities. Results are shown for two conditions: low CO₂ and high CO₂.",
+        "caption": "Table 1. Voltage across a resistor at several currents.",
         "headers": [
-          "Light intensity (µmol/m²/s)",
-          "Bubbles per minute (bubbles/min), low CO₂",
-          "Bubbles per minute (bubbles/min), high CO₂"
+          "Current (A)",
+          "Voltage (V)"
         ],
         "rows": [
           [
-            "200",
-            "20.2",
-            "30.3"
+            "0.2",
+            "6.1"
           ],
           [
-            "300",
-            "22.9",
-            "34.3"
+            "0.3",
+            "9.2"
           ],
           [
-            "400",
-            "24.5",
-            "36.8"
+            "0.4",
+            "12.3"
           ],
           [
-            "500",
-            "25.6",
-            "38.4"
+            "0.5",
+            "15.3"
           ],
           [
-            "600",
-            "26.4",
-            "39.6"
+            "0.6",
+            "18.4"
           ]
         ]
       }
     },
-    "answer_verification": "science:condavg;x=300"
+    "answer_verification": "science:ratio;x1=0.4;x2=0.6;col=1"
   },
   {
     "question_id": "act-science-data-representation-medium-b0018",
@@ -1458,76 +1425,78 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "compare_entries",
-    "prompt": "In Table 1, how much greater was the blood glucose level at 90 min than at 15 min?",
+    "prompt": "According to Table 1, at an insulation thickness of 6 cm, the rate of heat loss was greater under which condition, and by how much?",
     "choices": [
       {
         "id": "A",
-        "text": "29 mg/dL",
-        "rationale": "This uses the row for 60 min instead of 90 min."
+        "text": "80°C inside, by 18 W",
+        "rationale": "Correct. At 6 cm: 80°C inside 57 versus 60°C inside 39, a difference of 18."
       },
       {
         "id": "B",
-        "text": "16 mg/dL",
-        "rationale": "Correct. |148 − 132| = 16."
+        "text": "60°C inside, by 18 W",
+        "rationale": "The difference is right, but 60°C inside gave the smaller value at 6 cm."
       },
       {
         "id": "C",
-        "text": "1 mg/dL",
-        "rationale": "This uses the row for 120 min instead of 90 min."
+        "text": "Neither; both conditions gave the same heat loss at 6 cm",
+        "rationale": "The two columns differ at 6 cm: 57 versus 39."
       },
       {
         "id": "D",
-        "text": "−16 mg/dL",
-        "rationale": "This subtracts in the wrong order; the amount of the difference is positive."
+        "text": "80°C inside, by 15 W",
+        "rationale": "This is the difference in the row for 8 cm, not for 6 cm."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Read the blood glucose level at 90 min (148) and at 15 min (132); the difference is 16 mg/dL.",
-    "estimated_time_seconds": 55,
+    "correct_choice": "A",
+    "explanation": "In the 6 cm row, compare the two condition columns: 57 (80°C inside) minus 39 (60°C inside) = 18 W.",
+    "estimated_time_seconds": 65,
     "tags": [
       "science",
       "data-representation",
-      "difference",
-      "family:dr_difference"
+      "conditions",
+      "family:dr_condition_compare"
     ],
     "stimulus": {
       "type": "table",
-      "title": "Blood Glucose After a Meal",
+      "title": "Insulation and Heat Loss",
       "table": {
-        "caption": "Table 1. Blood glucose of a volunteer at several times after eating a meal.",
+        "caption": "Table 1. Rate of heat loss from a heated box wrapped in several thicknesses of foam. Results are shown for two conditions: 60°C inside and 80°C inside.",
         "headers": [
-          "Time after meal (min)",
-          "Blood glucose (mg/dL)"
+          "Foam thickness (cm)",
+          "Heat loss (W), 60°C inside",
+          "Heat loss (W), 80°C inside"
         ],
         "rows": [
           [
-            "15",
-            "132"
-          ],
-          [
-            "30",
-            "154"
-          ],
-          [
-            "45",
+            "0",
+            "110",
             "162"
           ],
           [
-            "60",
-            "161"
+            "2",
+            "68",
+            "101"
           ],
           [
-            "90",
-            "148"
+            "4",
+            "49",
+            "73"
           ],
           [
-            "120",
-            "131"
+            "6",
+            "39",
+            "57"
+          ],
+          [
+            "8",
+            "32",
+            "47"
           ]
         ]
       }
     },
-    "answer_verification": "science:diff;x1=15;x2=90;col=1"
+    "answer_verification": "science:conddiff;x=6"
   },
   {
     "question_id": "act-science-data-representation-medium-b0019",
@@ -1541,203 +1510,38 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "compare_entries",
-    "prompt": "In Table 1, how much less was the pitch of the song at 50 g than at 10 g?",
+    "prompt": "According to Table 1, the average of the two conditions' values of the fuel efficiency at 80 km/h is closest to:",
     "choices": [
       {
         "id": "A",
-        "text": "2.08 kHz",
-        "rationale": "Correct. |2.31 − 4.39| = 2.08."
+        "text": "14.75 km/L",
+        "rationale": "This averages the row for 90 km/h instead of 80."
       },
       {
         "id": "B",
-        "text": "−2.08 kHz",
-        "rationale": "This subtracts in the wrong order; the amount of the difference is positive."
+        "text": "31.3 km/L",
+        "rationale": "This is the sum of the two values, not their average."
       },
       {
         "id": "C",
-        "text": "1.87 kHz",
-        "rationale": "This uses the row for 40 g instead of 50 g."
+        "text": "15.7 km/L",
+        "rationale": "Correct. (17.1 + 14.2) ÷ 2 = 15.7."
       },
       {
         "id": "D",
-        "text": "2.25 kHz",
-        "rationale": "This uses the row for 60 g instead of 50 g."
+        "text": "17.1 km/L",
+        "rationale": "This is the driver only value alone."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Read the pitch of the song at 50 g (2.31) and at 10 g (4.39); the difference is 2.08 kHz.",
-    "estimated_time_seconds": 55,
-    "tags": [
-      "science",
-      "data-representation",
-      "difference",
-      "family:dr_difference"
-    ],
-    "stimulus": {
-      "type": "table",
-      "title": "Body Size and Song Pitch",
-      "table": {
-        "caption": "Table 1. Average pitch of the song of several songbird species of different body mass.",
-        "headers": [
-          "Body mass (g)",
-          "Song pitch (kHz)"
-        ],
-        "rows": [
-          [
-            "10",
-            "4.39"
-          ],
-          [
-            "20",
-            "3.33"
-          ],
-          [
-            "30",
-            "2.83"
-          ],
-          [
-            "40",
-            "2.52"
-          ],
-          [
-            "50",
-            "2.31"
-          ],
-          [
-            "60",
-            "2.14"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "science:diff;x1=10;x2=50;col=1"
-  },
-  {
-    "question_id": "act-science-data-representation-medium-b0020",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "science",
-    "section": "interpretation_of_data",
-    "skill": "data_representation",
-    "lesson_id": "act-science-data-representation-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "compare_entries",
-    "prompt": "According to Table 1, the difference between the water temperature at 10 m and at 6 m is:",
-    "choices": [
-      {
-        "id": "A",
-        "text": "−2.1 °C",
-        "rationale": "This subtracts in the wrong order; the amount of the difference is positive."
-      },
-      {
-        "id": "B",
-        "text": "4.5 °C",
-        "rationale": "This uses the row for 4 m instead of 6 m."
-      },
-      {
-        "id": "C",
-        "text": "2.5 °C",
-        "rationale": "This uses the row for 12 m instead of 10 m."
-      },
-      {
-        "id": "D",
-        "text": "2.1 °C",
-        "rationale": "Correct. |8.7 − 10.8| = 2.1."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Read the water temperature at 10 m (8.7) and at 6 m (10.8); the difference is 2.1 °C.",
-    "estimated_time_seconds": 55,
-    "tags": [
-      "science",
-      "data-representation",
-      "difference",
-      "family:dr_difference"
-    ],
-    "stimulus": {
-      "type": "table",
-      "title": "Lake Temperature and Depth",
-      "table": {
-        "caption": "Table 1. Water temperature of a lake measured at several depths.",
-        "headers": [
-          "Depth (m)",
-          "Water temperature (°C)"
-        ],
-        "rows": [
-          [
-            "2",
-            "17.5"
-          ],
-          [
-            "4",
-            "13.2"
-          ],
-          [
-            "6",
-            "10.8"
-          ],
-          [
-            "8",
-            "9.5"
-          ],
-          [
-            "10",
-            "8.7"
-          ],
-          [
-            "12",
-            "8.3"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "science:diff;x1=6;x2=10;col=1"
-  },
-  {
-    "question_id": "act-science-data-representation-medium-b0021",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "science",
-    "section": "interpretation_of_data",
-    "skill": "data_representation",
-    "lesson_id": "act-science-data-representation-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "compare_entries",
-    "prompt": "According to Table 1, at a speed of 60 km/h, the fuel efficiency was greater under which condition, and by how much?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "Driver only, by 2.5 km/L",
-        "rationale": "This is the difference in the row for 80 km/h, not for 60 km/h."
-      },
-      {
-        "id": "B",
-        "text": "Driver only, by 2.6 km/L",
-        "rationale": "Correct. At 60 km/h: driver only 17.3 versus driver plus 300 kg 14.7, a difference of 2.6."
-      },
-      {
-        "id": "C",
-        "text": "Driver plus 300 kg, by 2.6 km/L",
-        "rationale": "The difference is right, but driver plus 300 kg gave the smaller value at 60 km/h."
-      },
-      {
-        "id": "D",
-        "text": "Neither; both conditions gave the same fuel efficiency at 60 km/h",
-        "rationale": "The two columns differ at 60 km/h: 17.3 versus 14.7."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "In the 60 km/h row, compare the two condition columns: 17.3 (driver only) minus 14.7 (driver plus 300 kg) = 2.6 km/L.",
+    "correct_choice": "C",
+    "explanation": "Add the two values in the 80 row (17.1 and 14.2) and divide by 2: 15.7 km/L.",
     "estimated_time_seconds": 65,
     "tags": [
       "science",
       "data-representation",
       "conditions",
-      "family:dr_condition_compare"
+      "average",
+      "family:dr_condition_average"
     ],
     "stimulus": {
       "type": "table",
@@ -1751,34 +1555,197 @@
         ],
         "rows": [
           [
+            "50",
+            "15.5",
+            "12.9"
+          ],
+          [
             "60",
-            "17.3",
-            "14.7"
+            "16.8",
+            "13.9"
           ],
           [
             "70",
-            "17.5",
-            "14.9"
+            "17.3",
+            "14.3"
           ],
           [
             "80",
             "17.1",
-            "14.6"
+            "14.2"
           ],
           [
             "90",
-            "16.4",
-            "13.9"
+            "16.1",
+            "13.4"
           ],
           [
             "100",
-            "15.2",
-            "12.9"
+            "14.4",
+            "11.9"
           ]
         ]
       }
     },
-    "answer_verification": "science:conddiff;x=60"
+    "answer_verification": "science:condavg;x=80"
+  },
+  {
+    "question_id": "act-science-data-representation-medium-b0020",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "science",
+    "section": "interpretation_of_data",
+    "skill": "data_representation",
+    "lesson_id": "act-science-data-representation-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "compare_entries",
+    "prompt": "According to Table 1, the time for the reaction to finish at 2 mg was approximately how many times the time for the reaction to finish at 6 mg?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "2.3",
+        "rationale": "Correct. 105 ÷ 45 ≈ 2.3."
+      },
+      {
+        "id": "B",
+        "text": "60",
+        "rationale": "This is the difference between the two values, not their ratio."
+      },
+      {
+        "id": "C",
+        "text": "1.4",
+        "rationale": "This uses the row for 4 mg instead of one of the rows asked about."
+      },
+      {
+        "id": "D",
+        "text": "0.43",
+        "rationale": "This divides the smaller value by the larger one (45 ÷ 105); the question asks the reverse."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Divide the larger value by the smaller: 105 ÷ 45 ≈ 2.3, so the value at 2 mg is about 2.3 times that at 6 mg.",
+    "estimated_time_seconds": 60,
+    "tags": [
+      "science",
+      "data-representation",
+      "ratio",
+      "family:dr_ratio"
+    ],
+    "stimulus": {
+      "type": "table",
+      "title": "Catalyst and Reaction Time",
+      "table": {
+        "caption": "Table 1. Time for a reaction to finish with several masses of catalyst.",
+        "headers": [
+          "Mass of catalyst (mg)",
+          "Reaction time (s)"
+        ],
+        "rows": [
+          [
+            "2",
+            "105"
+          ],
+          [
+            "4",
+            "64"
+          ],
+          [
+            "6",
+            "45"
+          ],
+          [
+            "8",
+            "36"
+          ],
+          [
+            "10",
+            "32"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "science:ratio;x1=6;x2=2;col=1"
+  },
+  {
+    "question_id": "act-science-data-representation-medium-b0021",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "science",
+    "section": "interpretation_of_data",
+    "skill": "data_representation",
+    "lesson_id": "act-science-data-representation-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "compare_entries",
+    "prompt": "Based on Table 1, the ratio of the number of mayfly nymphs at 6 mg/L to that at 2 mg/L is closest to:",
+    "choices": [
+      {
+        "id": "A",
+        "text": "49",
+        "rationale": "This is the difference between the two values, not their ratio."
+      },
+      {
+        "id": "B",
+        "text": "0.16",
+        "rationale": "This divides the smaller value by the larger one (9 ÷ 58); the question asks the reverse."
+      },
+      {
+        "id": "C",
+        "text": "10.8",
+        "rationale": "This uses the row for 8 mg/L instead of one of the rows asked about."
+      },
+      {
+        "id": "D",
+        "text": "6.4",
+        "rationale": "Correct. 58 ÷ 9 ≈ 6.4."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Divide the larger value by the smaller: 58 ÷ 9 ≈ 6.4, so the value at 6 mg/L is about 6.4 times that at 2 mg/L.",
+    "estimated_time_seconds": 60,
+    "tags": [
+      "science",
+      "data-representation",
+      "ratio",
+      "family:dr_ratio"
+    ],
+    "stimulus": {
+      "type": "table",
+      "title": "Dissolved Oxygen and Mayflies",
+      "table": {
+        "caption": "Table 1. Number of mayfly nymphs found in stream samples with several dissolved-oxygen levels.",
+        "headers": [
+          "Dissolved oxygen (mg/L)",
+          "Mayfly count (nymphs)"
+        ],
+        "rows": [
+          [
+            "2",
+            "9"
+          ],
+          [
+            "4",
+            "28"
+          ],
+          [
+            "6",
+            "58"
+          ],
+          [
+            "8",
+            "97"
+          ],
+          [
+            "10",
+            "148"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "science:ratio;x1=2;x2=6;col=1"
   },
   {
     "question_id": "act-science-data-representation-medium-b0022",
@@ -1791,73 +1758,79 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "data_interpretation",
-    "subskill": "consistent_statement",
-    "prompt": "In how many rows of Table 1 is the horizontal distance the ball traveled less than 26.45 m?",
+    "subskill": "compare_entries",
+    "prompt": "According to Table 1, at a distance driven of 10000 km, the tread depth was greater under which condition, and by how much?",
     "choices": [
       {
         "id": "A",
-        "text": "4",
-        "rationale": "Recount the column carefully; this is off by one or more."
+        "text": "Gravel roads, by 0.6 mm",
+        "rationale": "The difference is right, but gravel roads gave the smaller value at 10000 km."
       },
       {
         "id": "B",
-        "text": "None of the rows",
-        "rationale": "At least one entry is less than 26.45 m; count them."
+        "text": "Neither; both conditions gave the same tread depth at 10000 km",
+        "rationale": "The two columns differ at 10000 km: 7.8 versus 7.2."
       },
       {
         "id": "C",
-        "text": "3",
-        "rationale": "Correct. Exactly 3 entries in the Range (m) column are less than 26.45 m."
+        "text": "Paved roads, by 0.6 mm",
+        "rationale": "Correct. At 10000 km: paved roads 7.8 versus gravel roads 7.2, a difference of 0.6."
       },
       {
         "id": "D",
-        "text": "2",
-        "rationale": "This counts the entries greater than 26.45 m instead."
+        "text": "Paved roads, by 1.2 mm",
+        "rationale": "This is the difference in the row for 20000 km, not for 10000 km."
       }
     ],
     "correct_choice": "C",
-    "explanation": "Compare each entry in the Range (m) column with 26.45 m; 3 of the 5 entries are less than it.",
-    "estimated_time_seconds": 55,
+    "explanation": "In the 10000 km row, compare the two condition columns: 7.8 (paved roads) minus 7.2 (gravel roads) = 0.6 mm.",
+    "estimated_time_seconds": 65,
     "tags": [
       "science",
       "data-representation",
-      "count",
-      "family:dr_count_above"
+      "conditions",
+      "family:dr_condition_compare"
     ],
     "stimulus": {
       "type": "table",
-      "title": "Launch Angle and Range",
+      "title": "Distance Driven and Tire Wear",
       "table": {
-        "caption": "Table 1. Horizontal distance traveled by a ball launched at several angles.",
+        "caption": "Table 1. Tread depth of a car tire after several distances driven. Results are shown for two conditions: paved roads and gravel roads.",
         "headers": [
-          "Launch angle (°)",
-          "Range (m)"
+          "Distance driven (km)",
+          "Tread depth (mm), paved roads",
+          "Tread depth (mm), gravel roads"
         ],
         "rows": [
           [
-            "20",
-            "19.4"
+            "10000",
+            "7.8",
+            "7.2"
           ],
           [
-            "30",
-            "25.4"
+            "20000",
+            "7.0",
+            "5.8"
           ],
           [
-            "40",
-            "28.1"
+            "30000",
+            "6.2",
+            "4.4"
           ],
           [
-            "50",
-            "27.5"
+            "40000",
+            "5.4",
+            "2.9"
           ],
           [
-            "60",
-            "23.7"
+            "50000",
+            "4.5",
+            "1.5"
           ]
         ]
       }
     },
-    "answer_verification": "science:count;op=lt;v=26.45;col=1"
+    "answer_verification": "science:conddiff;x=10000"
   },
   {
     "question_id": "act-science-data-representation-medium-b0023",
@@ -1871,79 +1844,71 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "consistent_statement",
-    "prompt": "In how many rows of Table 1 is the ceramic cup value less than 39.65 °C while the foam cup value is less than 35.05 °C?",
+    "prompt": "Which of the following statements is consistent with the data in Table 1?",
     "choices": [
       {
         "id": "A",
-        "text": "4",
-        "rationale": "This counts rows meeting only the ceramic cup condition (less than 39.65 °C), ignoring the second condition."
+        "text": "The number of mayfly nymphs was greatest at 6 mg/L.",
+        "rationale": "The greatest value, 218 nymphs, is at 12 mg/L."
       },
       {
         "id": "B",
-        "text": "None of the rows",
-        "rationale": "At least one row meets both conditions; check each row."
+        "text": "The number of mayfly nymphs was greater at 4 mg/L than at 12 mg/L.",
+        "rationale": "The table lists 33 nymphs at 4 mg/L and 218 nymphs at 12 mg/L."
       },
       {
         "id": "C",
-        "text": "1",
-        "rationale": "Correct. Exactly 1 rows satisfy both conditions at once."
+        "text": "The number of mayfly nymphs at 12 mg/L was more than twice its value at 10 mg/L.",
+        "rationale": "Twice 157 nymphs is 314 nymphs, and the value at 12 mg/L is 218 nymphs."
       },
       {
         "id": "D",
-        "text": "2",
-        "rationale": "Check each row against both conditions; this count is wrong."
+        "text": "The number of mayfly nymphs was least at 4 mg/L.",
+        "rationale": "Correct. Checking the listed values confirms this statement."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Go row by row: a row counts only if its ceramic cup value is less than 39.65 °C and its foam cup value is less than 35.05 °C. 1 rows pass both tests.",
-    "estimated_time_seconds": 75,
+    "correct_choice": "D",
+    "explanation": "Test each statement against the table: only \"The number of mayfly nymphs was least at 4 mg/L.\" matches the listed values.",
+    "estimated_time_seconds": 70,
     "tags": [
       "science",
       "data-representation",
-      "conditions",
-      "count",
-      "family:dr_two_condition_count"
+      "statement",
+      "family:dr_consistent_statement"
     ],
     "stimulus": {
       "type": "table",
-      "title": "Cooling Curve",
+      "title": "Dissolved Oxygen and Mayflies",
       "table": {
-        "caption": "Table 1. Temperature of hot water in an open cup at several times after pouring. Results are shown for two conditions: ceramic cup and foam cup.",
+        "caption": "Table 1. Number of mayfly nymphs found in stream samples with several dissolved-oxygen levels.",
         "headers": [
-          "Time since pouring (min)",
-          "Water temperature (°C), ceramic cup",
-          "Water temperature (°C), foam cup"
+          "Dissolved oxygen (mg/L)",
+          "Mayfly count (nymphs)"
         ],
         "rows": [
           [
-            "15",
-            "43.0",
-            "53.2"
+            "4",
+            "33"
           ],
           [
-            "20",
-            "36.3",
-            "46.3"
+            "6",
+            "64"
           ],
           [
-            "25",
-            "31.7",
-            "40.9"
+            "8",
+            "106"
           ],
           [
-            "30",
-            "28.5",
-            "36.7"
+            "10",
+            "157"
           ],
           [
-            "35",
-            "26.4",
-            "33.4"
+            "12",
+            "218"
           ]
         ]
       }
-    },
-    "answer_verification": "science:count2;opa=lt;ta=39.65;opb=lt;tb=35.05"
+    }
   },
   {
     "question_id": "act-science-data-representation-medium-b0024",
@@ -1957,75 +1922,76 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "consistent_statement",
-    "prompt": "Which statement about the results in Table 1 is supported by the data?",
+    "prompt": "According to Table 1, for how many of the 6 values of current tested was the voltage across the resistor greater than 5 V?",
     "choices": [
       {
         "id": "A",
-        "text": "The activity of the enzyme at pH 8 was more than twice its value at pH 6.",
-        "rationale": "Twice 69 µmol/min is 138 µmol/min, and the value at pH 8 is 48 µmol/min."
+        "text": "5",
+        "rationale": "Correct. Exactly 5 entries in the Voltage (V) column are greater than 5 V."
       },
       {
         "id": "B",
-        "text": "The activity of the enzyme was greater at pH 7 than at pH 8.",
-        "rationale": "Correct. Checking the listed values confirms this statement."
+        "text": "6",
+        "rationale": "Recount the column carefully; this is off by one or more."
       },
       {
         "id": "C",
-        "text": "The activity of the enzyme decreased with every increase in pH.",
-        "rationale": "Reading down the column, the values do not fall at every step."
+        "text": "4",
+        "rationale": "Recount the column carefully; this is off by one or more."
       },
       {
         "id": "D",
-        "text": "The activity of the enzyme was greater at pH 3 than at pH 4.",
-        "rationale": "The table lists 1 µmol/min at pH 3 and 9 µmol/min at pH 4."
+        "text": "None of the rows",
+        "rationale": "At least one entry is greater than 5 V; count them."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Test each statement against the table: only \"The activity of the enzyme was greater at pH 7 than at pH 8.\" matches the listed values.",
-    "estimated_time_seconds": 70,
+    "correct_choice": "A",
+    "explanation": "Compare each entry in the Voltage (V) column with 5 V; 5 of the 6 entries are greater than it.",
+    "estimated_time_seconds": 55,
     "tags": [
       "science",
       "data-representation",
-      "statement",
-      "family:dr_consistent_statement"
+      "count",
+      "family:dr_count_above"
     ],
     "stimulus": {
       "type": "table",
-      "title": "Enzyme Activity and pH",
+      "title": "Current and Voltage",
       "table": {
-        "caption": "Table 1. Activity of an enzyme in solutions of several pH values.",
+        "caption": "Table 1. Voltage across a resistor at several currents.",
         "headers": [
-          "pH",
-          "Enzyme activity (µmol/min)"
+          "Current (A)",
+          "Voltage (V)"
         ],
         "rows": [
           [
-            "3",
-            "1"
+            "0.1",
+            "3.3"
           ],
           [
-            "4",
-            "9"
+            "0.2",
+            "6.7"
           ],
           [
-            "5",
-            "34"
+            "0.3",
+            "10.0"
           ],
           [
-            "6",
-            "69"
+            "0.4",
+            "13.3"
           ],
           [
-            "7",
-            "77"
+            "0.5",
+            "16.7"
           ],
           [
-            "8",
-            "48"
+            "0.6",
+            "20.0"
           ]
         ]
       }
-    }
+    },
+    "answer_verification": "science:count;op=gt;v=5.0;col=1"
   },
   {
     "question_id": "act-science-data-representation-medium-b0025",
@@ -2039,31 +2005,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "compare_entries",
-    "prompt": "Based on Table 1, at 0 m, the mean of the salinity of the water for near river mouth and for open ocean is approximately:",
+    "prompt": "According to Table 1, the average of the two conditions' values of the dissolved oxygen concentration at 30 °C is closest to:",
     "choices": [
       {
         "id": "A",
-        "text": "33.03 g/kg",
-        "rationale": "Correct. (32.51 + 33.55) ÷ 2 = 33.03."
-      },
-      {
-        "id": "B",
-        "text": "66.06 g/kg",
+        "text": "13.8 mg/L",
         "rationale": "This is the sum of the two values, not their average."
       },
       {
+        "id": "B",
+        "text": "7.30 mg/L",
+        "rationale": "This averages the row for 25 °C instead of 30."
+      },
+      {
         "id": "C",
-        "text": "33.950 g/kg",
-        "rationale": "This averages the row for 100 m instead of 0."
+        "text": "7.5 mg/L",
+        "rationale": "This is the fresh water value alone."
       },
       {
         "id": "D",
-        "text": "32.51 g/kg",
-        "rationale": "This is the near river mouth value alone."
+        "text": "6.9 mg/L",
+        "rationale": "Correct. (7.5 + 6.3) ÷ 2 = 6.9."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Add the two values in the 0 row (32.51 and 33.55) and divide by 2: 33.03 g/kg.",
+    "correct_choice": "D",
+    "explanation": "Add the two values in the 30 row (7.5 and 6.3) and divide by 2: 6.9 mg/L.",
     "estimated_time_seconds": 65,
     "tags": [
       "science",
@@ -2074,49 +2040,44 @@
     ],
     "stimulus": {
       "type": "table",
-      "title": "Ocean Salinity and Depth",
+      "title": "Water Temperature and Dissolved Oxygen",
       "table": {
-        "caption": "Table 1. Salinity of seawater measured at several depths at one station. Results are shown for two conditions: near river mouth and open ocean.",
+        "caption": "Table 1. Amount of oxygen that dissolves in water at several temperatures. Results are shown for two conditions: fresh water and sea water.",
         "headers": [
-          "Depth (m)",
-          "Salinity (g/kg), near river mouth",
-          "Salinity (g/kg), open ocean"
+          "Water temperature (°C)",
+          "Dissolved oxygen (mg/L), fresh water",
+          "Dissolved oxygen (mg/L), sea water"
         ],
         "rows": [
           [
-            "0",
-            "32.51",
-            "33.55"
+            "10",
+            "11.1",
+            "9.3"
           ],
           [
-            "100",
-            "33.43",
-            "34.47"
+            "15",
+            "9.7",
+            "8.1"
           ],
           [
-            "200",
-            "33.98",
-            "35.02"
+            "20",
+            "8.7",
+            "7.2"
           ],
           [
-            "300",
-            "34.32",
-            "35.36"
+            "25",
+            "8.0",
+            "6.6"
           ],
           [
-            "400",
-            "34.52",
-            "35.56"
-          ],
-          [
-            "500",
-            "34.64",
-            "35.68"
+            "30",
+            "7.5",
+            "6.3"
           ]
         ]
       }
     },
-    "answer_verification": "science:condavg;x=0"
+    "answer_verification": "science:condavg;x=30"
   },
   {
     "question_id": "act-science-data-representation-medium-b0026",
@@ -2130,76 +2091,78 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "compare_entries",
-    "prompt": "According to Table 1, the power output of the turbine at 8 m/s was approximately how many times the power output of the turbine at 4 m/s?",
+    "prompt": "Based on Table 1, when the rainfall on the previous day was 20 mm, which condition gave the greater flow rate, and what was the difference between the two conditions?",
     "choices": [
       {
         "id": "A",
-        "text": "0.12",
-        "rationale": "This divides the smaller value by the larger one (51 ÷ 411); the question asks the reverse."
+        "text": "Summer, by 5.7 m³/s",
+        "rationale": "The difference is right, but summer gave the smaller value at 20 mm."
       },
       {
         "id": "B",
-        "text": "5.4",
-        "rationale": "This uses the row for 7 m/s instead of one of the rows asked about."
+        "text": "Winter, by 5.7 m³/s",
+        "rationale": "Correct. At 20 mm: winter 21.4 versus summer 15.7, a difference of 5.7."
       },
       {
         "id": "C",
-        "text": "360",
-        "rationale": "This is the difference between the two values, not their ratio."
+        "text": "Winter, by 7.8 m³/s",
+        "rationale": "This is the difference in the row for 30 mm, not for 20 mm."
       },
       {
         "id": "D",
-        "text": "8.1",
-        "rationale": "Correct. 411 ÷ 51 ≈ 8.1."
+        "text": "Neither; both conditions gave the same flow rate at 20 mm",
+        "rationale": "The two columns differ at 20 mm: 21.4 versus 15.7."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Divide the larger value by the smaller: 411 ÷ 51 ≈ 8.1, so the value at 8 m/s is about 8.1 times that at 4 m/s.",
-    "estimated_time_seconds": 60,
+    "correct_choice": "B",
+    "explanation": "In the 20 mm row, compare the two condition columns: 21.4 (winter) minus 15.7 (summer) = 5.7 m³/s.",
+    "estimated_time_seconds": 65,
     "tags": [
       "science",
       "data-representation",
-      "ratio",
-      "family:dr_ratio"
+      "conditions",
+      "family:dr_condition_compare"
     ],
     "stimulus": {
       "type": "table",
-      "title": "Wind Speed and Turbine Power",
+      "title": "Rainfall and River Flow",
       "table": {
-        "caption": "Table 1. Electrical power produced by a small wind turbine at several wind speeds.",
+        "caption": "Table 1. Flow rate of a river measured the day after several amounts of rain. Results are shown for two conditions: summer and winter.",
         "headers": [
-          "Wind speed (m/s)",
-          "Power output (W)"
+          "Rainfall (mm)",
+          "Flow rate (m³/s), summer",
+          "Flow rate (m³/s), winter"
         ],
         "rows": [
           [
-            "3",
-            "22"
+            "10",
+            "11.4",
+            "15.5"
           ],
           [
-            "4",
-            "51"
+            "20",
+            "15.7",
+            "21.4"
           ],
           [
-            "5",
-            "100"
+            "30",
+            "21.6",
+            "29.4"
           ],
           [
-            "6",
-            "173"
+            "40",
+            "29.0",
+            "39.5"
           ],
           [
-            "7",
-            "275"
-          ],
-          [
-            "8",
-            "411"
+            "50",
+            "38.1",
+            "51.8"
           ]
         ]
       }
     },
-    "answer_verification": "science:ratio;x1=4;x2=8;col=1"
+    "answer_verification": "science:conddiff;x=20"
   },
   {
     "question_id": "act-science-data-representation-medium-b0027",
@@ -2212,76 +2175,173 @@
     "difficulty": "medium",
     "version": "1.0.0",
     "question_type": "data_interpretation",
-    "subskill": "consistent_statement",
-    "prompt": "In how many rows of Table 1 is the height of the seedlings greater than 22.75 cm?",
+    "subskill": "compare_entries",
+    "prompt": "According to Table 1, at a string length of 20 cm, the period of the pendulum was greater under which condition, and by how much?",
     "choices": [
       {
         "id": "A",
-        "text": "4",
-        "rationale": "This counts the entries less than 22.75 cm instead."
+        "text": "Air, by 0.12 s",
+        "rationale": "The difference is right, but air gave the smaller value at 20 cm."
       },
       {
         "id": "B",
-        "text": "None of the rows",
-        "rationale": "At least one entry is greater than 22.75 cm; count them."
+        "text": "Neither; both conditions gave the same period at 20 cm",
+        "rationale": "The two columns differ at 20 cm: 1.00 versus 0.88."
       },
       {
         "id": "C",
-        "text": "1",
-        "rationale": "Correct. Exactly 1 entries in the Seedling height (cm) column are greater than 22.75 cm."
+        "text": "Water, by 0.18 s",
+        "rationale": "This is the difference in the row for 40 cm, not for 20 cm."
       },
       {
         "id": "D",
-        "text": "2",
-        "rationale": "Recount the column carefully; this is off by one or more."
+        "text": "Water, by 0.12 s",
+        "rationale": "Correct. At 20 cm: water 1.00 versus air 0.88, a difference of 0.12."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Compare each entry in the Seedling height (cm) column with 22.75 cm; 1 of the 5 entries are greater than it.",
-    "estimated_time_seconds": 55,
+    "correct_choice": "D",
+    "explanation": "In the 20 cm row, compare the two condition columns: 1.00 (water) minus 0.88 (air) = 0.12 s.",
+    "estimated_time_seconds": 65,
     "tags": [
       "science",
       "data-representation",
-      "count",
-      "family:dr_count_above"
+      "conditions",
+      "family:dr_condition_compare"
     ],
     "stimulus": {
       "type": "table",
-      "title": "Fertilizer and Plant Growth",
+      "title": "Pendulum Period",
       "table": {
-        "caption": "Table 1. Average height of bean seedlings after 4 weeks at several fertilizer concentrations.",
+        "caption": "Table 1. Period of a pendulum measured at several string lengths. Results are shown for two conditions: air and water.",
         "headers": [
-          "Fertilizer concentration (g/L)",
-          "Seedling height (cm)"
+          "Length of string (cm)",
+          "Period (s), air",
+          "Period (s), water"
         ],
         "rows": [
           [
-            "0",
-            "14.9"
-          ],
-          [
-            "5",
-            "19.2"
-          ],
-          [
-            "10",
-            "21.9"
-          ],
-          [
-            "15",
-            "23.0"
-          ],
-          [
             "20",
-            "22.5"
+            "0.88",
+            "1.00"
+          ],
+          [
+            "40",
+            "1.24",
+            "1.42"
+          ],
+          [
+            "60",
+            "1.52",
+            "1.73"
+          ],
+          [
+            "80",
+            "1.76",
+            "2.00"
+          ],
+          [
+            "100",
+            "1.96",
+            "2.24"
+          ],
+          [
+            "120",
+            "2.15",
+            "2.45"
           ]
         ]
       }
     },
-    "answer_verification": "science:count;op=gt;v=22.75;col=1"
+    "answer_verification": "science:conddiff;x=20"
   },
   {
     "question_id": "act-science-data-representation-medium-b0028",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "science",
+    "section": "interpretation_of_data",
+    "skill": "data_representation",
+    "lesson_id": "act-science-data-representation-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "compare_entries",
+    "prompt": "Based on Table 1, at 10 min, the mean of the count rate for Sample A and for Sample B is approximately:",
+    "choices": [
+      {
+        "id": "A",
+        "text": "2999 counts/min",
+        "rationale": "Correct. (2237 + 3761) ÷ 2 = 2999."
+      },
+      {
+        "id": "B",
+        "text": "5998 counts/min",
+        "rationale": "This is the sum of the two values, not their average."
+      },
+      {
+        "id": "C",
+        "text": "2237 counts/min",
+        "rationale": "This is the Sample A value alone."
+      },
+      {
+        "id": "D",
+        "text": "2184.0 counts/min",
+        "rationale": "This averages the row for 20 min instead of 10."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Add the two values in the 10 row (2237 and 3761) and divide by 2: 2999 counts/min.",
+    "estimated_time_seconds": 65,
+    "tags": [
+      "science",
+      "data-representation",
+      "conditions",
+      "average",
+      "family:dr_condition_average"
+    ],
+    "stimulus": {
+      "type": "table",
+      "title": "Radioactive Decay",
+      "table": {
+        "caption": "Table 1. Counts per minute recorded from a radioactive sample at several times. Results are shown for two conditions: Sample A and Sample B.",
+        "headers": [
+          "Time (min)",
+          "Counts per minute (counts/min), Sample A",
+          "Counts per minute (counts/min), Sample B"
+        ],
+        "rows": [
+          [
+            "10",
+            "2237",
+            "3761"
+          ],
+          [
+            "20",
+            "1629",
+            "2739"
+          ],
+          [
+            "30",
+            "1187",
+            "1995"
+          ],
+          [
+            "40",
+            "864",
+            "1453"
+          ],
+          [
+            "50",
+            "630",
+            "1059"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "science:condavg;x=10"
+  },
+  {
+    "question_id": "act-science-data-representation-medium-b0029",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -2372,7 +2432,7 @@
     "answer_verification": "science:count2;opa=gt;ta=34.4;opb=gt;tb=35.585"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0029",
+    "question_id": "act-science-data-representation-medium-b0030",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -2451,7 +2511,7 @@
     "answer_verification": "science:ratio;x1=0;x2=40;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0030",
+    "question_id": "act-science-data-representation-medium-b0031",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -2534,7 +2594,7 @@
     "answer_verification": "science:count;op=gt;v=216.5;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0031",
+    "question_id": "act-science-data-representation-medium-b0032",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -2625,7 +2685,7 @@
     "answer_verification": "science:count2;opa=gt;ta=46.5;opb=lt;tb=87.5"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0032",
+    "question_id": "act-science-data-representation-medium-b0033",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -2711,7 +2771,7 @@
     "answer_verification": "science:count2;opa=gt;ta=54.0;opb=gt;tb=597.5"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0033",
+    "question_id": "act-science-data-representation-medium-b0034",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -2797,7 +2857,7 @@
     "answer_verification": "science:count2;opa=lt;ta=7.8;opb=gt;tb=7.35"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0034",
+    "question_id": "act-science-data-representation-medium-b0035",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -2876,7 +2936,7 @@
     "answer_verification": "science:diff;x1=4;x2=8;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0035",
+    "question_id": "act-science-data-representation-medium-b0036",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -2955,7 +3015,7 @@
     "answer_verification": "science:count;op=lt;v=17.2;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0036",
+    "question_id": "act-science-data-representation-medium-b0037",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -3037,7 +3097,7 @@
     }
   },
   {
-    "question_id": "act-science-data-representation-medium-b0037",
+    "question_id": "act-science-data-representation-medium-b0038",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -3128,7 +3188,7 @@
     "answer_verification": "science:condavg;x=50"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0038",
+    "question_id": "act-science-data-representation-medium-b0039",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -3207,7 +3267,7 @@
     "answer_verification": "science:count;op=gt;v=50.45;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0039",
+    "question_id": "act-science-data-representation-medium-b0040",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -3298,7 +3358,7 @@
     "answer_verification": "science:count2;opa=gt;ta=89.0;opb=gt;tb=187.0"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0040",
+    "question_id": "act-science-data-representation-medium-b0041",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -3377,7 +3437,7 @@
     "answer_verification": "science:diff;x1=0;x2=6;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0041",
+    "question_id": "act-science-data-representation-medium-b0042",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -3467,7 +3527,7 @@
     "answer_verification": "science:conddiff;x=20"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0042",
+    "question_id": "act-science-data-representation-medium-b0043",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -3557,7 +3617,7 @@
     "answer_verification": "science:conddiff;x=60"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0043",
+    "question_id": "act-science-data-representation-medium-b0044",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -3640,7 +3700,7 @@
     "answer_verification": "science:diff;x1=15;x2=90;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0044",
+    "question_id": "act-science-data-representation-medium-b0045",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -3719,7 +3779,7 @@
     "answer_verification": "science:count;op=gt;v=6.75;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0045",
+    "question_id": "act-science-data-representation-medium-b0046",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -3809,7 +3869,7 @@
     "answer_verification": "science:conddiff;x=30"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0046",
+    "question_id": "act-science-data-representation-medium-b0047",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -3892,7 +3952,7 @@
     "answer_verification": "science:count;op=lt;v=22.05;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0047",
+    "question_id": "act-science-data-representation-medium-b0048",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -3970,7 +4030,7 @@
     }
   },
   {
-    "question_id": "act-science-data-representation-medium-b0048",
+    "question_id": "act-science-data-representation-medium-b0049",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -4056,7 +4116,7 @@
     "answer_verification": "science:count2;opa=lt;ta=29.05;opb=lt;tb=30.95"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0049",
+    "question_id": "act-science-data-representation-medium-b0050",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -4139,7 +4199,7 @@
     "answer_verification": "science:diff;x1=200;x2=400;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0050",
+    "question_id": "act-science-data-representation-medium-b0051",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -4230,7 +4290,7 @@
     "answer_verification": "science:condavg;x=5"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0051",
+    "question_id": "act-science-data-representation-medium-b0052",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -4313,7 +4373,7 @@
     "answer_verification": "science:ratio;x1=300;x2=150;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0052",
+    "question_id": "act-science-data-representation-medium-b0053",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -4391,7 +4451,7 @@
     }
   },
   {
-    "question_id": "act-science-data-representation-medium-b0053",
+    "question_id": "act-science-data-representation-medium-b0054",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -4470,7 +4530,7 @@
     "answer_verification": "science:diff;x1=20;x2=40;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0054",
+    "question_id": "act-science-data-representation-medium-b0055",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -4553,7 +4613,7 @@
     "answer_verification": "science:ratio;x1=2;x2=10;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0055",
+    "question_id": "act-science-data-representation-medium-b0056",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -4632,7 +4692,7 @@
     "answer_verification": "science:count;op=lt;v=143.5;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0056",
+    "question_id": "act-science-data-representation-medium-b0057",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -4710,7 +4770,7 @@
     }
   },
   {
-    "question_id": "act-science-data-representation-medium-b0057",
+    "question_id": "act-science-data-representation-medium-b0058",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -4789,7 +4849,7 @@
     "answer_verification": "science:count;op=gt;v=33.25;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0058",
+    "question_id": "act-science-data-representation-medium-b0059",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -4880,7 +4940,7 @@
     "answer_verification": "science:count2;opa=lt;ta=452.5;opb=gt;tb=500.0"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0059",
+    "question_id": "act-science-data-representation-medium-b0060",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -4966,7 +5026,7 @@
     "answer_verification": "science:condavg;x=8"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0060",
+    "question_id": "act-science-data-representation-medium-b0061",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -5045,7 +5105,7 @@
     "answer_verification": "science:count;op=lt;v=1.455;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0061",
+    "question_id": "act-science-data-representation-medium-b0062",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -5131,7 +5191,7 @@
     "answer_verification": "science:condavg;x=0"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0062",
+    "question_id": "act-science-data-representation-medium-b0063",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -5210,7 +5270,7 @@
     "answer_verification": "science:ratio;x1=4;x2=7;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0063",
+    "question_id": "act-science-data-representation-medium-b0064",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -5289,7 +5349,7 @@
     "answer_verification": "science:ratio;x1=0.1;x2=0.2;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0064",
+    "question_id": "act-science-data-representation-medium-b0065",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -5375,7 +5435,7 @@
     "answer_verification": "science:condavg;x=4"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0065",
+    "question_id": "act-science-data-representation-medium-b0066",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -5461,7 +5521,7 @@
     "answer_verification": "science:condavg;x=8"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0066",
+    "question_id": "act-science-data-representation-medium-b0067",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -5552,7 +5612,7 @@
     "answer_verification": "science:count2;opa=gt;ta=40.0;opb=gt;tb=157.0"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0067",
+    "question_id": "act-science-data-representation-medium-b0068",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -5641,7 +5701,7 @@
     }
   },
   {
-    "question_id": "act-science-data-representation-medium-b0068",
+    "question_id": "act-science-data-representation-medium-b0069",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -5723,7 +5783,7 @@
     }
   },
   {
-    "question_id": "act-science-data-representation-medium-b0069",
+    "question_id": "act-science-data-representation-medium-b0070",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -5806,7 +5866,7 @@
     "answer_verification": "science:count;op=gt;v=1.01;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0070",
+    "question_id": "act-science-data-representation-medium-b0071",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -5889,7 +5949,7 @@
     "answer_verification": "science:diff;x1=5;x2=30;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0071",
+    "question_id": "act-science-data-representation-medium-b0072",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -5968,7 +6028,7 @@
     "answer_verification": "science:count;op=gt;v=99.5;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0072",
+    "question_id": "act-science-data-representation-medium-b0073",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -6051,7 +6111,7 @@
     "answer_verification": "science:count;op=gt;v=65.2;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0073",
+    "question_id": "act-science-data-representation-medium-b0074",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -6134,7 +6194,7 @@
     "answer_verification": "science:ratio;x1=8;x2=4;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0074",
+    "question_id": "act-science-data-representation-medium-b0075",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -6225,7 +6285,7 @@
     "answer_verification": "science:condavg;x=6"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0075",
+    "question_id": "act-science-data-representation-medium-b0076",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -6304,7 +6364,7 @@
     "answer_verification": "science:count;op=lt;v=1.93;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0076",
+    "question_id": "act-science-data-representation-medium-b0077",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -6383,7 +6443,7 @@
     "answer_verification": "science:diff;x1=5;x2=15;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0077",
+    "question_id": "act-science-data-representation-medium-b0078",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -6469,7 +6529,7 @@
     "answer_verification": "science:condavg;x=50000"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0078",
+    "question_id": "act-science-data-representation-medium-b0079",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -6555,7 +6615,7 @@
     "answer_verification": "science:condavg;x=0.3"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0079",
+    "question_id": "act-science-data-representation-medium-b0080",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -6633,7 +6693,7 @@
     }
   },
   {
-    "question_id": "act-science-data-representation-medium-b0080",
+    "question_id": "act-science-data-representation-medium-b0081",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -6718,7 +6778,7 @@
     "answer_verification": "science:conddiff;x=20"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0081",
+    "question_id": "act-science-data-representation-medium-b0082",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -6808,7 +6868,7 @@
     "answer_verification": "science:conddiff;x=30"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0082",
+    "question_id": "act-science-data-representation-medium-b0083",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -6894,7 +6954,7 @@
     "answer_verification": "science:condavg;x=1000"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0083",
+    "question_id": "act-science-data-representation-medium-b0084",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -6973,7 +7033,7 @@
     "answer_verification": "science:ratio;x1=50;x2=10;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0084",
+    "question_id": "act-science-data-representation-medium-b0085",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -7056,7 +7116,7 @@
     "answer_verification": "science:diff;x1=90;x2=150;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0085",
+    "question_id": "act-science-data-representation-medium-b0086",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -7139,7 +7199,7 @@
     "answer_verification": "science:count;op=gt;v=5.75;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0086",
+    "question_id": "act-science-data-representation-medium-b0087",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -7218,7 +7278,7 @@
     "answer_verification": "science:ratio;x1=25;x2=30;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0087",
+    "question_id": "act-science-data-representation-medium-b0088",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -7308,7 +7368,7 @@
     "answer_verification": "science:conddiff;x=80"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0088",
+    "question_id": "act-science-data-representation-medium-b0089",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -7387,7 +7447,7 @@
     "answer_verification": "science:count;op=lt;v=47.0;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0089",
+    "question_id": "act-science-data-representation-medium-b0090",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -7466,7 +7526,7 @@
     "answer_verification": "science:diff;x1=0.1;x2=0.3;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0090",
+    "question_id": "act-science-data-representation-medium-b0091",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -7544,7 +7604,7 @@
     }
   },
   {
-    "question_id": "act-science-data-representation-medium-b0091",
+    "question_id": "act-science-data-representation-medium-b0092",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -7626,7 +7686,7 @@
     }
   },
   {
-    "question_id": "act-science-data-representation-medium-b0092",
+    "question_id": "act-science-data-representation-medium-b0093",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -7711,7 +7771,7 @@
     "answer_verification": "science:conddiff;x=3"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0093",
+    "question_id": "act-science-data-representation-medium-b0094",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -7794,7 +7854,7 @@
     "answer_verification": "science:count;op=lt;v=112.5;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0094",
+    "question_id": "act-science-data-representation-medium-b0095",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -7883,7 +7943,7 @@
     }
   },
   {
-    "question_id": "act-science-data-representation-medium-b0095",
+    "question_id": "act-science-data-representation-medium-b0096",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -7962,7 +8022,7 @@
     "answer_verification": "science:ratio;x1=40;x2=60;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0096",
+    "question_id": "act-science-data-representation-medium-b0097",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -8048,7 +8108,7 @@
     "answer_verification": "science:condavg;x=8"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0097",
+    "question_id": "act-science-data-representation-medium-b0098",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -8139,7 +8199,7 @@
     "answer_verification": "science:count2;opa=gt;ta=45.2;opb=gt;tb=72.6"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0098",
+    "question_id": "act-science-data-representation-medium-b0099",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -8218,7 +8278,7 @@
     "answer_verification": "science:diff;x1=4;x2=10;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0099",
+    "question_id": "act-science-data-representation-medium-b0100",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -8296,7 +8356,7 @@
     }
   },
   {
-    "question_id": "act-science-data-representation-medium-b0100",
+    "question_id": "act-science-data-representation-medium-b0101",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -8375,7 +8435,7 @@
     "answer_verification": "science:diff;x1=5;x2=7;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0101",
+    "question_id": "act-science-data-representation-medium-b0102",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -8458,7 +8518,7 @@
     "answer_verification": "science:count;op=lt;v=66.0;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0102",
+    "question_id": "act-science-data-representation-medium-b0103",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -8541,7 +8601,7 @@
     "answer_verification": "science:count;op=lt;v=4.21;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0103",
+    "question_id": "act-science-data-representation-medium-b0104",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -8624,7 +8684,7 @@
     "answer_verification": "science:count;op=lt;v=10.8;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0104",
+    "question_id": "act-science-data-representation-medium-b0105",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -8707,7 +8767,7 @@
     "answer_verification": "science:count;op=lt;v=12.45;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0105",
+    "question_id": "act-science-data-representation-medium-b0106",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -8789,7 +8849,7 @@
     }
   },
   {
-    "question_id": "act-science-data-representation-medium-b0106",
+    "question_id": "act-science-data-representation-medium-b0107",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -8867,7 +8927,7 @@
     }
   },
   {
-    "question_id": "act-science-data-representation-medium-b0107",
+    "question_id": "act-science-data-representation-medium-b0108",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -8952,7 +9012,7 @@
     "answer_verification": "science:conddiff;x=2"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0108",
+    "question_id": "act-science-data-representation-medium-b0109",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -9037,7 +9097,7 @@
     "answer_verification": "science:conddiff;x=0.1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0109",
+    "question_id": "act-science-data-representation-medium-b0110",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -9123,7 +9183,7 @@
     "answer_verification": "science:condavg;x=600"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0110",
+    "question_id": "act-science-data-representation-medium-b0111",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -9206,7 +9266,7 @@
     "answer_verification": "science:diff;x1=10;x2=40;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0111",
+    "question_id": "act-science-data-representation-medium-b0112",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -9297,7 +9357,7 @@
     "answer_verification": "science:count2;opa=gt;ta=51.5;opb=lt;tb=77.5"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0112",
+    "question_id": "act-science-data-representation-medium-b0113",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -9380,7 +9440,7 @@
     "answer_verification": "science:ratio;x1=40;x2=60;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0113",
+    "question_id": "act-science-data-representation-medium-b0114",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -9471,7 +9531,7 @@
     "answer_verification": "science:count2;opa=gt;ta=37.15;opb=gt;tb=59.35"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0114",
+    "question_id": "act-science-data-representation-medium-b0115",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -9562,7 +9622,7 @@
     "answer_verification": "science:count2;opa=gt;ta=16.55;opb=gt;tb=13.75"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0115",
+    "question_id": "act-science-data-representation-medium-b0116",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -9648,7 +9708,7 @@
     "answer_verification": "science:count2;opa=gt;ta=16.75;opb=lt;tb=14.85"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0116",
+    "question_id": "act-science-data-representation-medium-b0117",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -9733,7 +9793,7 @@
     "answer_verification": "science:conddiff;x=8"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0117",
+    "question_id": "act-science-data-representation-medium-b0118",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -9812,7 +9872,7 @@
     "answer_verification": "science:diff;x1=45;x2=90;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0118",
+    "question_id": "act-science-data-representation-medium-b0119",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -9895,7 +9955,7 @@
     "answer_verification": "science:ratio;x1=20;x2=120;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0119",
+    "question_id": "act-science-data-representation-medium-b0120",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -9985,7 +10045,7 @@
     "answer_verification": "science:conddiff;x=20"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0120",
+    "question_id": "act-science-data-representation-medium-b0121",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -10076,7 +10136,7 @@
     "answer_verification": "science:condavg;x=5"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0121",
+    "question_id": "act-science-data-representation-medium-b0122",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -10162,7 +10222,7 @@
     "answer_verification": "science:count2;opa=gt;ta=909.5;opb=lt;tb=2210.5"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0122",
+    "question_id": "act-science-data-representation-medium-b0123",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -10241,7 +10301,7 @@
     "answer_verification": "science:count;op=gt;v=8.2;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0123",
+    "question_id": "act-science-data-representation-medium-b0124",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -10324,7 +10384,7 @@
     "answer_verification": "science:diff;x1=0;x2=20;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0124",
+    "question_id": "act-science-data-representation-medium-b0125",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -10415,7 +10475,7 @@
     "answer_verification": "science:count2;opa=gt;ta=3.85;opb=gt;tb=9.65"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0125",
+    "question_id": "act-science-data-representation-medium-b0126",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -10498,7 +10558,7 @@
     "answer_verification": "science:ratio;x1=0.2;x2=0.4;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0126",
+    "question_id": "act-science-data-representation-medium-b0127",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -10584,7 +10644,7 @@
     "answer_verification": "science:count2;opa=gt;ta=35.0;opb=lt;tb=77.0"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0127",
+    "question_id": "act-science-data-representation-medium-b0128",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -10675,7 +10735,7 @@
     "answer_verification": "science:count2;opa=gt;ta=23.5;opb=lt;tb=92.0"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0128",
+    "question_id": "act-science-data-representation-medium-b0129",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -10758,7 +10818,7 @@
     "answer_verification": "science:count;op=lt;v=125.4;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0129",
+    "question_id": "act-science-data-representation-medium-b0130",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -10849,7 +10909,7 @@
     "answer_verification": "science:condavg;x=10"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0130",
+    "question_id": "act-science-data-representation-medium-b0131",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -10935,7 +10995,7 @@
     "answer_verification": "science:condavg;x=300"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0131",
+    "question_id": "act-science-data-representation-medium-b0132",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -11014,7 +11074,7 @@
     "answer_verification": "science:ratio;x1=6;x2=7;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0132",
+    "question_id": "act-science-data-representation-medium-b0133",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -11105,7 +11165,7 @@
     "answer_verification": "science:condavg;x=20"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0133",
+    "question_id": "act-science-data-representation-medium-b0134",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -11184,7 +11244,7 @@
     "answer_verification": "science:ratio;x1=0.1;x2=0.4;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0134",
+    "question_id": "act-science-data-representation-medium-b0135",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -11266,7 +11326,7 @@
     }
   },
   {
-    "question_id": "act-science-data-representation-medium-b0135",
+    "question_id": "act-science-data-representation-medium-b0136",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -11349,7 +11409,7 @@
     "answer_verification": "science:count;op=lt;v=92.15;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0136",
+    "question_id": "act-science-data-representation-medium-b0137",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -11440,7 +11500,7 @@
     "answer_verification": "science:count2;opa=gt;ta=80.0;opb=lt;tb=140.5"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0137",
+    "question_id": "act-science-data-representation-medium-b0138",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -11525,7 +11585,7 @@
     "answer_verification": "science:conddiff;x=0"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0138",
+    "question_id": "act-science-data-representation-medium-b0139",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -11610,7 +11670,7 @@
     "answer_verification": "science:conddiff;x=27"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0139",
+    "question_id": "act-science-data-representation-medium-b0140",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -11689,7 +11749,7 @@
     "answer_verification": "science:ratio;x1=4;x2=2;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0140",
+    "question_id": "act-science-data-representation-medium-b0141",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -11779,7 +11839,7 @@
     "answer_verification": "science:conddiff;x=5"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0141",
+    "question_id": "act-science-data-representation-medium-b0142",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -11865,7 +11925,7 @@
     "answer_verification": "science:condavg;x=25"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0142",
+    "question_id": "act-science-data-representation-medium-b0143",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -11943,7 +12003,7 @@
     }
   },
   {
-    "question_id": "act-science-data-representation-medium-b0143",
+    "question_id": "act-science-data-representation-medium-b0144",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -12034,7 +12094,7 @@
     "answer_verification": "science:condavg;x=30"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0144",
+    "question_id": "act-science-data-representation-medium-b0145",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -12120,7 +12180,7 @@
     "answer_verification": "science:condavg;x=50"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0145",
+    "question_id": "act-science-data-representation-medium-b0146",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -12202,7 +12262,7 @@
     }
   },
   {
-    "question_id": "act-science-data-representation-medium-b0146",
+    "question_id": "act-science-data-representation-medium-b0147",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -12281,7 +12341,7 @@
     "answer_verification": "science:diff;x1=60;x2=100;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0147",
+    "question_id": "act-science-data-representation-medium-b0148",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -12372,7 +12432,7 @@
     "answer_verification": "science:count2;opa=lt;ta=1.29;opb=gt;tb=1.015"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0148",
+    "question_id": "act-science-data-representation-medium-b0149",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -12451,7 +12511,7 @@
     "answer_verification": "science:diff;x1=15;x2=25;col=1"
   },
   {
-    "question_id": "act-science-data-representation-medium-b0149",
+    "question_id": "act-science-data-representation-medium-b0150",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "science",
@@ -12539,88 +12599,5 @@
       }
     },
     "answer_verification": "science:conddiff;x=1500"
-  },
-  {
-    "question_id": "act-science-data-representation-medium-b0150",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "science",
-    "section": "interpretation_of_data",
-    "skill": "data_representation",
-    "lesson_id": "act-science-data-representation-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "compare_entries",
-    "prompt": "According to Table 1, the tread depth at 10000 km was approximately how many times the tread depth at 50000 km?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "4.3",
-        "rationale": "This is the difference between the two values, not their ratio."
-      },
-      {
-        "id": "B",
-        "text": "2.5",
-        "rationale": "Correct. 7.1 ÷ 2.8 ≈ 2.5."
-      },
-      {
-        "id": "C",
-        "text": "0.39",
-        "rationale": "This divides the smaller value by the larger one (2.8 ÷ 7.1); the question asks the reverse."
-      },
-      {
-        "id": "D",
-        "text": "2.1",
-        "rationale": "This uses the row for 20000 km instead of one of the rows asked about."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Divide the larger value by the smaller: 7.1 ÷ 2.8 ≈ 2.5, so the value at 10000 km is about 2.5 times that at 50000 km.",
-    "estimated_time_seconds": 60,
-    "tags": [
-      "science",
-      "data-representation",
-      "ratio",
-      "family:dr_ratio"
-    ],
-    "stimulus": {
-      "type": "table",
-      "title": "Distance Driven and Tire Wear",
-      "table": {
-        "caption": "Table 1. Tread depth of a car tire after several distances driven.",
-        "headers": [
-          "Distance driven (km)",
-          "Tread depth (mm)"
-        ],
-        "rows": [
-          [
-            "0",
-            "8.1"
-          ],
-          [
-            "10000",
-            "7.1"
-          ],
-          [
-            "20000",
-            "6.0"
-          ],
-          [
-            "30000",
-            "4.9"
-          ],
-          [
-            "40000",
-            "3.9"
-          ],
-          [
-            "50000",
-            "2.8"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "science:ratio;x1=50000;x2=10000;col=1"
   }
 ]

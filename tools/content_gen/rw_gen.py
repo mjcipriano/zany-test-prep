@@ -1024,9 +1024,9 @@ def bnd_passage(rng, difficulty):
 # =========================================================================== #
 _SING_NOUNS = [
     ("scientist", "scientist's"), ("city", "city's"), ("author", "author's"),
-    ("company", "company's"), ("teacher", "teacher's"), ("river", "river's"),
-    ("artist", "artist's"), ("dog", "dog's"), ("school", "school's"),
-    ("engineer", "engineer's"), ("violin", "violin's"), ("committee", "committee's"),
+    ("company", "company's"), ("teacher", "teacher's"), ("gardener", "gardener's"),
+    ("artist", "artist's"), ("coach", "coach's"), ("school", "school's"),
+    ("engineer", "engineer's"), ("designer", "designer's"), ("committee", "committee's"),
 ]
 _PLUR_NOUNS = [
     ("students", "students'"), ("workers", "workers'"), ("birds", "birds'"),
@@ -1045,6 +1045,11 @@ _POSS_FRAMES = [
     "Judges praised the {n} ___ performance",
     "The {n} ___ request was approved after a short debate",
 ]
+# Determiners that fix the owner's number, so exactly one possessive form fits
+# ("this player's", "the three players'"). Without them "The ___ reputation"
+# took either "player's" or "players'" and the key was a coin flip.
+_POSS_DET = {"singular": ["this", "each"],
+             "plural": ["the two", "the three", "the four", "both", "these"]}
 _POSS_ITEMS = ["discovery", "schedule", "design", "reputation", "results", "performance",
                "request"]
 
@@ -1064,7 +1069,9 @@ def punct_possessive(rng, difficulty):
     frame = rng.choice(_POSS_FRAMES)
     item = frame.split("___ ")[1].split()[0]
     pre, post = frame.split(" ___ ")
-    pre = pre.replace(" {n}", "")
+    lead, _the = pre.replace(" {n}", "").rsplit(" ", 1) if " the {n}" in pre else ("", pre)
+    det = rng.choice(_POSS_DET["singular" if kind == "singular" else "plural"])
+    pre = f"{lead} {det}" if lead else cap(det)
     if kind == "singular":
         ds = [(f"{base}s", "A plain -s makes a plural, not a possessive."),
               (f"{base}s'", "This puts the apostrophe after a plural -s, but the owner is singular."),
@@ -1587,10 +1594,14 @@ def pron_preposition(rng, difficulty):
                  explanation=expl, tags=["conventions", "pronouns", "preposition"])
 
 
+# Reflexive frames spell out that the subject acts on itself (no teacher, alone,
+# "{P} own" mistake): with a bare "{N} taught ___ to read music", the object
+# "him"/"her" (someone else) was just as grammatical as "himself"/"herself".
 _REFL = [
-    ("{N} taught ___ to read music", True), ("{N} blamed ___ for the delay", True),
-    ("{N} treated ___ to a day off after the deadline", True),
-    ("{N} reminded ___ to breathe before the speech", True),
+    ("With no teacher in town, {N} taught ___ to read music from library books", True),
+    ("Since the missed step had been {P} own mistake, {N} blamed ___ for the delay", True),
+    ("Having met the deadline on {P} own, {N} treated ___ to a day off", True),
+    ("Alone backstage, {N} quietly reminded ___ to breathe before the speech", True),
     ("Please send the revised forms to {N} or ___", False),
     ("The committee invited {N} and ___ to present the plan", False),
     ("The tickets were reserved for {N} and ___", False),
@@ -1620,8 +1631,8 @@ def pron_reflexive(rng, difficulty):
               ("my", "A possessive cannot stand alone as an object here.")]
         expl = ("A reflexive pronoun reflects the subject; when the subject is someone else, "
                 "the plain object form 'me' is correct.")
-    text = frame.format(N=name) + "."
-    if difficulty != "easy":
+    text = frame.format(N=name, P=p) + "."
+    if difficulty != "easy" and not needs_refl:
         text = rng.choice(["Before the recital, ", "After the vote, ", "That winter, "]) + soft_low(text)
     if difficulty == "hard":
         text = text + " " + rng.choice(["It made a surprising difference.", "No one argued.",
@@ -1725,7 +1736,7 @@ def pron_clause_options(rng, difficulty):
 _MODIFIERS = [
     ("Walking through the old town,", "the travelers", "the cobblestones", "the photographs", "the afternoon",
      "admired the architecture", "The tour began at the harbor gate.", "They reached the cathedral by dusk."),
-    ("Built more than a century ago,", "the bridge", "the engineers", "the traffic", "the city",
+    ("Built more than a century ago,", "the bridge", "the engineers", "the traffic", "the commuters",
      "still carries thousands of cars each day", "The river has three crossings.", "Inspectors check it every spring."),
     ("Having studied all night,", "Maya", "the exam", "the results", "the room",
      "felt ready for the exam", "The chemistry final was scheduled for eight.", "She finished with ten minutes to spare."),
@@ -1743,7 +1754,7 @@ _MODIFIERS = [
      "decided to land early", "The flight had been diverted around a storm.", "The passengers never noticed."),
     ("Translated into a dozen languages,", "the novel", "the author", "the readers", "the prize",
      "reached readers worldwide", "The book was first printed in a run of five hundred.", "It has never gone out of print."),
-    ("Worried about the deadline,", "the editor", "the article", "the printer", "the office",
+    ("Worried about the deadline,", "the editor", "the article", "the printing press", "the office",
      "worked late into the night", "The magazine goes to press on Thursdays.", "The issue shipped on time."),
     ("Frozen solid overnight,", "the lake", "the skaters", "the town", "the morning",
      "was safe to walk across", "A cold front arrived in late December.", "Children were skating by noon."),
@@ -1753,23 +1764,23 @@ _MODIFIERS = [
      "gleamed when finally unearthed", "A gardener was digging a new bed.", "The coins now belong to the museum."),
     ("Eager to begin,", "the students", "the lesson", "the bell", "the classroom",
      "raced into the room", "The first day of the robotics course had arrived.", "The teacher could barely keep up."),
-    ("Damaged by the flood,", "the records", "the clerk", "the basement", "the city",
+    ("Damaged by the flood,", "the records", "the clerk", "the weather report", "the summer",
      "had to be carefully restored", "Water rose two feet in the archive.", "The work took eighteen months."),
-    ("Covered in fresh snow,", "the field", "the children", "the morning", "the village",
+    ("Covered in fresh snow,", "the field", "the children", "the morning", "the forecast",
      "looked completely transformed", "The storm ended just before dawn.", "By noon the snow had melted."),
-    ("Sealed for a hundred years,", "the letter", "the historian", "the attic", "the family",
+    ("Sealed for a hundred years,", "the letter", "the historian", "the mail carrier", "the family",
      "revealed a forgotten secret", "The envelope was found in an attic trunk.", "The family had never heard the story."),
-    ("Startled by the noise,", "the deer", "the hikers", "the forest", "the silence",
+    ("Startled by the noise,", "the deer", "the trail", "the forest", "the silence",
      "bolted into the trees", "A branch snapped on the trail.", "The hikers waited quietly for a minute."),
-    ("Printed in bold letters,", "the headline", "the editor", "the readers", "the page",
+    ("Printed in bold letters,", "the headline", "the editor", "the readers", "the morning",
      "caught every reader's eye", "The paper's front page was redesigned.", "Sales rose that week."),
     ("Exhausted after the climb,", "the team", "the summit", "the gear", "the weather",
      "rested at the summit", "The ascent took eleven hours.", "They descended the next morning."),
-    ("Polished to a shine,", "the trophy", "the winner", "the shelf", "the ceremony",
+    ("Polished to a shine,", "the trophy", "the winner", "the speech", "the ceremony",
      "gleamed under the lights", "The awards dinner was held in the gym.", "It now sits in the lobby case."),
     ("Lost in thought,", "the writer", "the deadline", "the office", "the afternoon",
      "barely noticed the time", "The chapter had stalled for days.", "She finished it that night."),
-    ("Wrapped in fog,", "the harbor", "the sailors", "the ships", "the dawn",
+    ("Wrapped in fog,", "the harbor", "the weather report", "the noise", "the dawn",
      "was almost invisible at dawn", "A thick fog settled overnight.", "The ferries ran late all morning."),
 ]
 _MOD_STEM = ("Which choice completes the sentence so that the introductory phrase modifies "
@@ -1989,8 +2000,9 @@ def mod_passage(rng, difficulty):
 # TRANSITIONS
 # =========================================================================== #
 _TRANS_BANK = {
-    "contrast": ["However", "Nevertheless", "By contrast", "On the other hand", "Still",
-                 "Even so", "In spite of this"],
+    # Concession words only: "By contrast"/"On the other hand" compare two subjects
+    # and read oddly for "expected X; Y happened" items (audit phase 3, round 2).
+    "contrast": ["However", "Nevertheless", "Still", "Even so", "In spite of this"],
     "cause": ["Therefore", "As a result", "Consequently", "Thus", "For this reason", "Hence"],
     "addition": ["Moreover", "In addition", "Furthermore", "Additionally", "What is more"],
     "example": ["For example", "For instance", "To illustrate", "Specifically"],
@@ -1998,13 +2010,13 @@ _TRANS_BANK = {
     "emphasis": ["Indeed", "In fact", "Above all"],
 }
 _TRANS_ITEMS = [
-    ("The new policy promised faster service.", "wait times actually grew longer in the first month.", "contrast"),
+    ("The new policy promised faster service.", "wait times grew longer in the first month.", "contrast"),
     ("Sea otters eat large numbers of sea urchins.", "kelp forests thrive where otters are present.", "cause"),
-    ("The author spent years researching the topic.", "she interviewed dozens of experts in the field.", "addition"),
+    ("The biography is meticulously researched.", "it is written in lively, accessible prose.", "addition"),
     ("Some metals expand significantly when heated.", "bridges are built with expansion joints.", "cause"),
     ("Many songbirds navigate using the stars.", "some species also sense the Earth's magnetic field.", "addition"),
     ("The committee expected the plan to save money.", "costs rose in the first quarter.", "contrast"),
-    ("The recipe calls for very ripe bananas.", "the loaf turns out dense and bland.", "cause"),
+    ("The recipe calls for very ripe bananas.", "the loaf turns out moist and naturally sweet.", "cause"),
     ("Renewable energy use has grown quickly.", "wind power capacity tripled in a decade.", "example"),
     ("The museum lacked space for its collection.", "it opened a second gallery downtown.", "cause"),
     ("The team practiced the play for weeks.", "they executed it perfectly in the final.", "cause"),
@@ -2016,24 +2028,23 @@ _TRANS_ITEMS = [
     ("The novel explores themes of memory.", "it examines how stories shape identity.", "addition"),
     ("The drought reduced the harvest.", "food prices climbed across the region.", "cause"),
     ("Glass can be recycled almost indefinitely.", "recycling rates remain surprisingly low.", "contrast"),
-    ("The professor outlined the theory clearly.", "she illustrated it with a simple experiment.", "sequence"),
+    ("The professor outlined the theory in the first half of the lecture.", "she spent the second half demonstrating it with a simple experiment.", "sequence"),
     ("The bridge was closed for repairs.", "commuters had to take a long detour.", "cause"),
     ("Many readers found the ending abrupt.", "the author defended it as intentional.", "contrast"),
     ("The city installed hundreds of new bike lanes.", "cycling rose by nearly forty percent.", "cause"),
     ("The data supported the first hypothesis.", "it cast doubt on the second.", "contrast"),
     ("The species looks fragile.", "it survives in some of the harshest deserts.", "contrast"),
     ("The factory switched to solar power.", "its emissions fell dramatically.", "cause"),
-    ("The lecture covered the basics of the method.", "the lab session put it into practice.", "sequence"),
+    ("The lecture covered the basics of the method.", "the class moved to the lab to try it out.", "sequence"),
     ("The trail offers stunning views.", "it passes three historic landmarks.", "addition"),
     ("Critics praised the film's visuals.", "they found the plot thin.", "contrast"),
-    ("The plant needs very little water.", "it can survive weeks of neglect.", "emphasis"),
-    ("The report identified several risks.", "it proposed concrete solutions for each.", "addition"),
+    ("The report identified several risks.", "it also listed the agencies responsible for each one.", "addition"),
     ("The bakery doubled its staff.", "lines at the counter grew even longer.", "contrast"),
-    ("The coral bleached during the heat wave.", "many colonies failed to recover.", "cause"),
-    ("The app was simple to use.", "it offered surprisingly powerful features.", "addition"),
+    ("The heat wave bleached most of the reef's coral.", "dive shops that depended on the reef lost much of their business.", "cause"),
+    ("The app is simple to use.", "it is free for students.", "addition"),
     ("The river rose above its banks.", "nearby roads were closed for days.", "cause"),
     ("The theory explained the early results.", "it failed to predict the later ones.", "contrast"),
-    ("The orchard was planted in spring.", "the first apples appeared by autumn.", "sequence"),
+    ("The farmers sowed the wheat in early spring.", "they harvested it in late summer.", "sequence"),
     ("The lecture was dense and technical.", "the audience followed it closely.", "contrast"),
     ("The vaccine reached remote villages.", "infection rates there dropped sharply.", "cause"),
     ("The museum is free to enter.", "it relies entirely on donations.", "cause"),
@@ -2043,10 +2054,19 @@ _TRANS_ITEMS = [
     ("The plan looked promising on paper.", "it collapsed at the first real test.", "contrast"),
     ("The choir warmed up backstage.", "they walked out to perform.", "sequence"),
 ]
-_TRANS_CONFUSABLE = {
-    "contrast": ["emphasis", "addition"], "cause": ["sequence", "emphasis"],
-    "addition": ["emphasis", "example"], "example": ["addition", "emphasis"],
-    "sequence": ["cause", "addition"], "emphasis": ["addition", "contrast"],
+# Relations whose transitions are safe WRONG answers for an item keyed to the
+# given relation. Neighbouring relations are left out on purpose: a "cause"
+# item usually also reads as a time sequence ("The drought withered the corn.
+# Later, yields fell") and an "addition" item as emphasis or an example, so
+# offering those made two choices defensible (answer-key audit, phase 3).
+# Nothing is keyed "emphasis": "Indeed"/"In fact" fit too many additions.
+_TRANS_DISTRACTOR_RELS = {
+    # no emphasis: "In fact" also means "actually, contrary to expectation"
+    "contrast": ["addition", "cause", "example"],
+    "cause": ["contrast", "example"],
+    "addition": ["contrast", "sequence"],
+    "example": ["contrast", "sequence"],
+    "sequence": ["contrast", "example"],
 }
 _TRANS_REL_NAMES = {
     "contrast": "a contrast", "cause": "a cause-and-effect relationship",
@@ -2060,30 +2080,30 @@ _TRANS_STEMS = [
 ]
 
 
-def _trans_distractors(rng, rel, difficulty, used, fmt=lambda w: w):
-    others = [r for r in _TRANS_BANK if r != rel]
-    near = [r for r in _TRANS_CONFUSABLE.get(rel, []) if r in _TRANS_BANK]
-    far = [r for r in others if r not in near]
-    rng.shuffle(near)
-    rng.shuffle(far)
-    if difficulty == "hard":
-        rel_order = near + far
-    elif difficulty == "easy":
-        rel_order = far + near
-    else:
-        rel_order = others[:]
-        rng.shuffle(rel_order)
+def _trans_distractors(rng, rel, difficulty, used, fmt=lambda w: w, n=3):
+    """``n`` wrong transitions for an item keyed to ``rel``, drawn only from
+    relations that cannot also fit (see ``_TRANS_DISTRACTOR_RELS``). Each
+    allowed relation is used once before any repeats; on hard items the first
+    listed (most tempting) relation leads."""
+    allowed = list(_TRANS_DISTRACTOR_RELS[rel])
+    if difficulty != "hard":
+        rng.shuffle(allowed)
     ds = []
-    for r in rel_order:
-        if len(ds) == 3:
+    while len(ds) < n:
+        progressed = False
+        for r in allowed:
+            if len(ds) == n:
+                break
+            choices = [w for w in _TRANS_BANK[r] if w.lower() not in used]
+            if not choices:
+                continue
+            w = rng.choice(choices)
+            used.add(w.lower())
+            progressed = True
+            ds.append((fmt(w), f"This signals {_TRANS_REL_NAMES[r]}, but the sentences need "
+                               f"{_TRANS_REL_NAMES[rel]}."))
+        if not progressed:
             break
-        choices = [w for w in _TRANS_BANK[r] if w.lower() not in used]
-        if not choices:
-            continue
-        w = rng.choice(choices)
-        used.add(w.lower())
-        ds.append((fmt(w), f"This signals {_TRANS_REL_NAMES[r]}, but the sentences need "
-                           f"{_TRANS_REL_NAMES[rel]}."))
     return ds
 
 
@@ -2145,10 +2165,10 @@ def trans_sentence_options(rng, difficulty):
 # (lead, s1, s2, relation, close) coherent 3-4 sentence passages
 _TRANS_PASS = [
     ("For decades, the harbor town relied on a single cannery.", "The cannery closed in 2003.",
-     "the town reinvented itself as a weekend destination for cyclists.", "contrast",
+     "the town had to find a new way to make a living.", "cause",
      "Today its old warehouses hold cafés and repair shops."),
     ("Desert tortoises spend most of the year underground.", "Their burrows stay cool even in July.",
-     "dozens of other species shelter in the burrows as well.", "cause",
+     "dozens of other species shelter in the burrows during the hottest months.", "cause",
      "Biologists call the tortoise an engineer of its ecosystem."),
     ("The school's garden began as a single raised bed.", "Students added a bed each spring.",
      "the garden now supplies the cafeteria with salad greens.", "cause",
@@ -2157,7 +2177,7 @@ _TRANS_PASS = [
      "it can be sent with almost any equipment, even a flashlight.", "contrast",
      "Amateur operators still practice it today."),
     ("The city's oldest bridge was built for horse carts.", "Engineers reinforced it twice last century.",
-     "heavy trucks are still banned from crossing it.", "contrast",
+     "heavy trucks are banned from crossing it.", "contrast",
      "A second bridge now carries most freight."),
     ("Amara's grandmother kept bees behind the house.", "Amara helped with the harvest each August.",
      "she started a hive of her own at fourteen.", "sequence",
@@ -2166,13 +2186,13 @@ _TRANS_PASS = [
      "they help create the first thin layer of soil on new ground.", "cause",
      "Mosses and grasses follow within a few decades."),
     ("The library's photograph archive was nearly lost in a flood.", "Volunteers dried each print by hand.",
-     "they scanned every image so the collection could be viewed online.", "addition",
+     "they scanned every image so the collection could be viewed online.", "sequence",
      "The digital archive now receives thousands of visits a month."),
     ("Many migrating birds travel at night.", "Bright city lights can draw them off course.",
      "several cities now dim their skylines during peak migration.", "cause",
      "Early counts suggest fewer collisions."),
-    ("The clock tower's mechanism dates from 1884.", "It must be wound by hand twice a week.",
-     "the tower keeps time to within a few seconds a month.", "contrast",
+    ("The clock tower's mechanism dates from 1884.", "Its worn gears must be wound by hand twice a week.",
+     "the old mechanism keeps time to within a few seconds a month.", "contrast",
      "A volunteer has climbed the stairs to wind it for thirty years."),
     ("The new stadium was designed to use less water.", "Rain is collected from the roof.",
      "the field is irrigated with recycled water from the concession stands.", "addition",
@@ -2748,8 +2768,11 @@ _SHIFT = [
     ("If a traveler misses the last ferry,", "must stay the night on the island", "he or she"),
     ("Once one has learned the knots,", "never forgets them", "one"),
 ]
-_SHIFT_WRONG = {"one": ["you", "they", "we"], "you": ["one", "they", "we"],
-                "he or she": ["you", "one", "they"]}
+# Never offer "they" beside a keyed "he or she": singular "they" is standard
+# for "a visitor", so both would be right. "I" is an unambiguous shift instead.
+# Nor "one" beside "he or she": both can refer back to "a person" (generic "one").
+_SHIFT_WRONG = {"one": ["you", "I", "we"], "you": ["one", "I", "we"],
+                "he or she": ["you", "I", "we"]}
 
 
 @family(fill_in=True)
@@ -2760,8 +2783,14 @@ def pron_shift(rng, difficulty):
     rationale = {"you": "Shifting to 'you' changes the point of view established in the first clause.",
                  "one": "Shifting to 'one' changes the point of view established in the first clause.",
                  "they": "'they' does not match the singular, consistent point of view of the first clause.",
-                 "we": "'we' introduces a new point of view not used earlier."}
-    correct = (right, f"Correct. The first clause uses '{right}', so the second clause keeps the same point of view.")
+                 "we": "'we' introduces a new point of view not used earlier.",
+                 "I": "'I' shifts to the first person, a point of view not used earlier."}
+    if right == "he or she":
+        correct = (right, "Correct. The first clause is about one person in the third person, so the "
+                          "second clause keeps that point of view.")
+    else:
+        correct = (right, f"Correct. The first clause uses '{right}', so the second clause keeps the same "
+                          "point of view.")
     ds = [(w, rationale[w]) for w in wrongs]
     text = f"{lead} ___ {pred}."
     if difficulty != "easy":
@@ -2808,8 +2837,10 @@ def pron_vague(rng, difficulty):
     lead, noun_phrase, tail = rng.choice(_VAGUE)
     adv = rng.choice(["ultimately", "predictably", "unfortunately", "in the end,"])
     correct = (noun_phrase, "Correct. Naming the idea with a noun gives the clause a clear antecedent.")
-    ds = [(f"which {adv} {tail}", "'which' has no single noun to refer to; it points vaguely at the whole "
-                                  "preceding clause."),
+    # No "which" option: broad-reference "which" ("..., which confused many
+    # patrons") is accepted by many editors, so it made two answers defensible.
+    ds = [(f"that {adv} {tail}", "'that' has no single noun to refer to, and after a comma it starts a "
+                                 "new independent clause, creating a comma splice."),
           (f"this {adv} {tail}", "'this' has no clear antecedent and creates a comma splice."),
           (f"it {adv} {tail}", "'it' has no clear antecedent, and the clause becomes a comma splice.")]
     text = f"{lead}, ___."
@@ -2876,7 +2907,7 @@ def pron_reflexive_compound(rng, difficulty):
 _MODIFIERS.extend([
     ("Soaked by the sudden downpour,", "the hikers", "the trail", "the map", "the afternoon",
      "took shelter under a ledge", "The forecast had promised sun.", "The rain stopped within an hour."),
-    ("Restored by local volunteers,", "the carousel", "the children", "the park", "the summer",
+    ("Restored by local volunteers,", "the carousel", "the children", "the riders", "the summer",
      "reopened in June", "The carousel had sat idle for a decade.", "Lines formed on the first day."),
     ("Known for her patience,", "the teacher", "the lesson", "the classroom", "the bell",
      "waited for every hand to go down", "The class was unusually restless.", "The quiet lasted the rest of the hour."),
@@ -2898,13 +2929,13 @@ _MODIFIERS.extend([
      "weighs less than fifty pounds", "The log came from a fallen cedar.", "It has crossed the lake many times."),
     ("Alarmed by the smoke,", "the neighbors", "the fire", "the kitchen", "the alarm",
      "called the fire department", "The smoke turned out to be burnt toast.", "Everyone laughed about it later."),
-    ("Delayed by fog,", "the ferries", "the passengers", "the harbor", "the schedule",
+    ("Delayed by fog,", "the ferries", "the lighthouse", "the harbor", "the gulls",
      "ran two hours late", "A thick fog settled over the bay at dawn.", "The last boat left after dark."),
     ("Hoping to attract younger readers,", "the magazine", "the readers", "the cover", "the newsstand",
      "redesigned its cover", "Sales had slipped for three years.", "Subscriptions rose that fall."),
     ("Perched on the cliff,", "the lighthouse", "the sailors", "the waves", "the storm",
      "can be seen for twenty miles", "The cliff rises three hundred feet above the surf.", "Its lamp still turns each night."),
-    ("Weakened by years of flooding,", "the old pier", "the fishermen", "the harbor", "the town",
+    ("Weakened by years of flooding,", "the old pier", "the fishermen", "the tide", "the forecast",
      "was finally torn down", "The pier had stood since 1902.", "A new one opened the next summer."),
     ("Grateful for the rain,", "the farmers", "the fields", "the crops", "the forecast",
      "postponed the irrigation", "The spring had been the driest in decades.", "The barley recovered within weeks."),
@@ -2914,7 +2945,7 @@ _MODIFIERS.extend([
      "sells out by ten", "The shop has stood on Elm Street since 1962.", "Regulars arrive before the doors open."),
     ("Nervous before the audition,", "Chloe", "the violin", "the judges", "the hall",
      "practiced the opening bars one more time", "The audition was held in the old concert hall.", "She won the seat."),
-    ("Hidden by tall grass,", "the stone marker", "the hikers", "the trail", "the summer",
+    ("Hidden by tall grass,", "the stone marker", "the hikers", "the ranger", "the summer",
      "went unnoticed for years", "The marker dates from the first survey of the valley.", "A ranger found it last July."),
     ("Rebuilt after the fire,", "the barn", "the farmer", "the horses", "the winter",
      "now has a metal roof", "Lightning struck the old barn in August.", "The horses moved back in by spring."),
@@ -3084,24 +3115,24 @@ _SQUINT = [
     ("Students who review their notes", "often", "pass the exam", "the reviewing is frequent",
      "Students who often review their notes pass the exam.", "Students who review their notes often pass the exam.",
      "Students who review their notes pass often the exam.", "Often students who review their notes pass the exam."),
-    ("The coach told the players", "on Friday", "to rest", "the resting is on Friday",
-     "The coach told the players to rest on Friday.", "The coach told the players on Friday to rest.",
-     "On Friday the coach told the players to rest.", "The coach on Friday told the players to rest."),
+    # Time phrases at the END of "told X to rest on Friday" still attach to either verb,
+    # so these items key the fronted version (the telling/saying/promising time).
+    ("The coach told the players", "on Friday", "to rest", "the telling happened on Friday",
+     "On Friday the coach told the players to rest.", "The coach told the players on Friday to rest.",
+     "The coach told the players to rest on Friday.", "The coach told on Friday the players to rest."),
+    # "Walking the trail slowly reveals..." is itself squinting: the adverb goes first.
     ("Walking the trail", "slowly", "reveals its beauty", "the walking is slow",
-     "Walking the trail slowly reveals its beauty.", "Walking the trail reveals its beauty slowly.",
-     "Slowly walking the trail reveals its beauty.", "Walking slowly the trail reveals its beauty."),
-    ("The manager said", "on Monday", "the store would close", "the closing is on Monday",
-     "The manager said the store would close on Monday.", "The manager said on Monday the store would close.",
-     "On Monday the manager said the store would close.", "The manager on Monday said the store would close."),
+     "Slowly walking the trail reveals its beauty.", "Walking the trail slowly reveals its beauty.",
+     "Walking the trail reveals its beauty slowly.", "Walking slowly the trail reveals its beauty."),
+    ("The manager said", "on Monday", "the store would close", "the announcement was made on Monday",
+     "On Monday the manager said the store would close.", "The manager said on Monday the store would close.",
+     "The manager said the store would close on Monday.", "The manager said the store on Monday would close."),
     ("Teachers who grade essays", "carefully", "help their students", "the grading is careful",
      "Teachers who carefully grade essays help their students.", "Teachers who grade essays carefully help their students.",
      "Teachers who grade essays help carefully their students.", "Carefully teachers who grade essays help their students."),
-    ("Nina promised", "after the concert", "to call", "the calling is after the concert",
-     "Nina promised to call after the concert.", "Nina promised after the concert to call.",
-     "After the concert Nina promised to call.", "Nina after the concert promised to call."),
-    ("Drinking coffee", "in the evening", "disturbs sleep", "the coffee is drunk in the evening",
-     "Drinking coffee in the evening disturbs sleep.", "Drinking coffee disturbs sleep in the evening.",
-     "In the evening drinking coffee disturbs sleep.", "Drinking in the evening coffee disturbs sleep."),
+    ("Nina promised", "after the concert", "to call", "the promise was made after the concert",
+     "After the concert Nina promised to call.", "Nina promised after the concert to call.",
+     "Nina promised to call after the concert.", "Nina promised to after the concert call."),
 ]
 
 
@@ -3127,21 +3158,21 @@ def mod_squinting(rng, difficulty):
 # =========================================================================== #
 _TRANS_ITEMS.extend([
     ("The clinic added evening hours in March.", "fewer patients now visit the emergency room.", "cause"),
-    ("The tunnel shortens the drive by an hour.", "most trucks still use the mountain road.", "contrast"),
+    ("The tunnel shortens the drive by an hour.", "most trucks keep using the mountain road.", "contrast"),
     ("The robot's arm jammed in the first round.", "the team finished in the top ten.", "contrast"),
-    ("The lighthouse was automated decades ago.", "its lens is cleaned by hand every spring.", "addition"),
+    ("The lighthouse was automated decades ago.", "its lens is cleaned by hand every spring.", "contrast"),
     ("The bakery's rye loaf sold out by noon.", "the owners doubled the batch the next day.", "cause"),
     ("The archive's letters were scanned last year.", "researchers in three countries have already cited them.", "cause"),
     ("The marsh lost half its area after 1990.", "bird counts have risen since the grasses were replanted.", "contrast"),
     ("The telescope's mirror was replaced in 2021.", "its resolution doubled.", "cause"),
     ("Many desert plants store water in their stems.", "the barrel cactus can hold a gallon.", "example"),
-    ("The orchestra rehearsed the finale a dozen times.", "the performance still ran long.", "contrast"),
+    ("The orchestra rehearsed the finale a dozen times.", "the performance ran long.", "contrast"),
     ("The choir auditioned new members in September.", "it added a second rehearsal night.", "sequence"),
     ("Kite festivals draw crowds in many coastal towns.", "the one in Harlan fills every hotel.", "example"),
     ("The ferry company added a third boat.", "weekend crossings carry twice as many bicycles.", "cause"),
     ("The mill employed half the town in the 1950s.", "it closed in 1983.", "contrast"),
-    ("The new filter removes nearly all the sediment.", "the water still tastes faintly of iron.", "contrast"),
-    ("The glacier has retreated a mile since 1950.", "scientists expect the trend to continue.", "addition"),
+    ("The new filter removes nearly all the sediment.", "the water tastes faintly of iron.", "contrast"),
+    ("The glacier has retreated a mile since 1950.", "it has thinned by nearly two hundred feet.", "addition"),
 ])
 
 # (paragraph 1, paragraph 2 without its opening transition, relation)
@@ -3152,7 +3183,7 @@ _TRANS_PARA = [
      "a climbing gym, and a bicycle repair shop.", "contrast"),
     ("Desert tortoises spend most of the year underground. Their burrows stay cool through the hottest "
      "afternoons and hold warmth on winter nights.",
-     "dozens of other species shelter in those burrows as well. Biologists call the tortoise an engineer "
+     "dozens of other species shelter in those burrows during the hottest months. Biologists call the tortoise an engineer "
      "of its ecosystem.", "cause"),
     ("The school garden began as a single raised bed behind the cafeteria. Each spring a new class added "
      "another bed, and by the fifth year the beds filled the whole courtyard.",
@@ -3162,9 +3193,10 @@ _TRANS_PARA = [
      "it took months of nightly practice.",
      "it can be sent with almost any equipment, even a flashlight. Amateur operators still practice it "
      "today for exactly that reason.", "contrast"),
-    ("The clock tower's mechanism dates from 1884. It must be wound by hand twice a week, a job that "
+    ("The clock tower's mechanism dates from 1884, and its gears are worn smooth with age. It must be "
+     "wound by hand twice a week, a job that "
      "takes a volunteer up two hundred stairs.",
-     "the tower keeps time to within a few seconds a month. The volunteer who winds it has done so for "
+     "the old mechanism keeps time to within a few seconds a month. The volunteer who winds it has done so for "
      "thirty years.", "contrast"),
     ("Lichens grow on bare rock where little else survives. They release weak acids that slowly break the "
      "rock's surface into grains.",
@@ -3177,7 +3209,7 @@ _TRANS_PARA = [
     ("The library's photograph archive was nearly lost in a flood. Volunteers dried each print by hand "
      "over a long winter.",
      "they scanned every image so that the collection could be viewed online. The digital archive now "
-     "receives thousands of visits a month.", "addition"),
+     "receives thousands of visits a month.", "sequence"),
     ("The new stadium was designed to use as little water as possible. Rain is collected from the roof and "
      "stored in tanks beneath the stands.",
      "the field is irrigated with recycled water from the concession stands. Water use has fallen by half "
@@ -3191,7 +3223,7 @@ _TRANS_PARA = [
      "she started a hive of her own at fourteen. She now sells honey at the Saturday market.", "sequence"),
     ("The city's oldest bridge was built for horse carts. Engineers reinforced it twice last century, "
      "adding steel beneath the original stone.",
-     "heavy trucks are still banned from crossing it. A second bridge now carries most freight.", "contrast"),
+     "heavy trucks are banned from crossing it. A second bridge now carries most freight.", "contrast"),
 ]
 
 
@@ -3215,18 +3247,18 @@ def trans_paragraph(rng, difficulty):
 
 # (sentence 1, sentence 2 that simply continues with no logical connector)
 _TRANS_DELETE = [
-    ("The bakery opens at six.", "The first customers are usually fishermen heading to the docks."),
+    ("The bakery sits on Harbor Street.", "A blue awning shades its front window."),
     ("The trail begins behind the ranger station.", "A wooden sign marks the first turn."),
     ("The museum's new wing holds the textile collection.", "A tapestry of woven silk hangs at the far end."),
-    ("Nadia restores antique clocks in a small workshop.", "She keeps a drawer of spare parts sorted by century."),
+    ("Nadia restores antique clocks in a small workshop.", "The workshop has a single window facing the river."),
     ("The orchestra toured three cities over spring break.", "Recordings of the concerts are posted online."),
     ("The coral nursery sits in a shallow lagoon.", "Divers check the frames twice a month."),
-    ("The city archive holds thousands of letters from the 1890s.", "Volunteers transcribe them one page at a time."),
+    ("The city archive holds thousands of letters from the 1890s.", "The letters are stored in acid-free boxes."),
     ("The kite festival takes place on the first Saturday in June.", "Prizes go to the largest kite and the most unusual design."),
     ("The robotics club meets after school on Tuesdays.", "Its next competition is in March."),
     ("The lighthouse was built in 1874.", "A keeper's cottage stands beside it."),
     ("The ferry crosses to the island four times a day.", "Tickets are sold at a booth on the pier."),
-    ("The olive grove covers the hillside above the village.", "Farmers harvest the fruit by hand with long rakes."),
+    ("The olive grove covers the hillside above the village.", "Its oldest trees were planted more than two centuries ago."),
 ]
 _DELETE_TEXT = "DELETE it"
 
@@ -3238,8 +3270,11 @@ def trans_delete(rng, difficulty):
     if delete_case:
         s1, s2 = rng.choice(_TRANS_DELETE)
         shown = rng.choice(["Therefore", "However", "Consequently"] if difficulty == "easy"
-                           else ["Therefore", "However", "For example", "Consequently", "Nevertheless"])
-        others = [w for r in _TRANS_BANK for w in _TRANS_BANK[r] if w != shown]
+                           else ["Therefore", "However", "As a result", "Consequently", "Nevertheless"])
+        # Only relations a plain continuation clearly lacks: an addition word
+        # ("Moreover"), a sequence word ("Next") or an example marker ("For instance,
+        # a tapestry hangs...") could arguably stay.
+        others = [w for r in ("contrast", "cause") for w in _TRANS_BANK[r] if w != shown]
         rng.shuffle(others)
         correct = (_DELETE_TEXT, "Correct. The second sentence simply adds a detail; no cause, contrast, or "
                                  "example is being signaled, so any transition word is misleading.")
@@ -3250,9 +3285,12 @@ def trans_delete(rng, difficulty):
         expl = ("Transitions must signal a real relationship between ideas; when the second sentence merely "
                 "continues the description, no transition is needed.")
     else:
-        s1, s2, rel = rng.choice(_TRANS_ITEMS)
+        # Keep-a-transition items use contrasts only: dropping the connector
+        # from a cause/addition/example pair still reads acceptably, which made
+        # "DELETE it" defensible too.
+        s1, s2, rel = rng.choice([t for t in _TRANS_ITEMS if t[2] == "contrast"])
         word = rng.choice(_TRANS_BANK[rel])
-        shown = rng.choice([w for r in _TRANS_BANK if r != rel for w in _TRANS_BANK[r]])
+        shown = rng.choice([w for r in _TRANS_DISTRACTOR_RELS[rel] for w in _TRANS_BANK[r]])
         used = {word.lower(), shown.lower()}
         ds = _trans_distractors(rng, rel, difficulty, used, fmt=lambda w: f"{w},")[:2]
         ds.append((_DELETE_TEXT, f"Deleting the transition hides the {_TRANS_REL_NAMES[rel]} between the sentences."))
@@ -3392,13 +3430,7 @@ def pool_transitions(rng: random.Random):
     items = []
     for s1, s2, rel in _TRANS_ITEMS:
         correct_word = rng.choice(_TRANS_BANK[rel])
-        wrong_rels = [r for r in _TRANS_BANK if r != rel]
-        rng.shuffle(wrong_rels)
-        distractors = []
-        for r in wrong_rels[:3]:
-            distractors.append((rng.choice(_TRANS_BANK[r]),
-                                f"This signals {_TRANS_REL_NAMES[r]}, but the sentences require "
-                                f"{_TRANS_REL_NAMES[rel]}."))
+        distractors = _trans_distractors(rng, rel, "medium", {correct_word.lower()})
         correct = (correct_word, f"Correct. The relationship is {_TRANS_REL_NAMES[rel]}.")
         options, ci, rats = shuffle_with_correct(rng, correct, distractors)
         prompt = (f"{s1} ___, {s2}\n\nWhich transition best fits the relationship "

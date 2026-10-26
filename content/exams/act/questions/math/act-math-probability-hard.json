@@ -11,42 +11,42 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "In a survey, 12% of respondents own a bicycle, 40% own a scooter, and 8% own both. If a respondent is selected at random, what is the probability that the respondent owns a bicycle or a scooter (or both)?",
+    "prompt": "In a survey, 50% of respondents own a bicycle, 20% own a scooter, and 12% own both. If a respondent is selected at random, what is the probability that the respondent owns a bicycle or a scooter (or both)?",
     "choices": [
       {
         "id": "A",
-        "text": "2/25",
+        "text": "3/25",
         "rationale": "That is P(both), not P(either)."
       },
       {
         "id": "B",
-        "text": "13/25",
-        "rationale": "Subtract the overlap; it was counted twice."
-      },
-      {
-        "id": "C",
-        "text": "3/5",
+        "text": "41/50",
         "rationale": "The overlap is subtracted, not added."
       },
       {
+        "id": "C",
+        "text": "7/10",
+        "rationale": "Subtract the overlap; it was counted twice."
+      },
+      {
         "id": "D",
-        "text": "6/125",
-        "rationale": "Multiplying is for independent 'and', not for 'or'."
+        "text": "29/50",
+        "rationale": "Correct."
       },
       {
         "id": "E",
-        "text": "11/25",
-        "rationale": "Correct."
+        "text": "1/10",
+        "rationale": "Multiplying is for independent 'and', not for 'or'."
       }
     ],
-    "correct_choice": "E",
-    "explanation": "P(A or B) = P(A) + P(B) − P(A and B) = (12 + 40 − 8)/100 = 11/25.",
+    "correct_choice": "D",
+    "explanation": "P(A or B) = P(A) + P(B) − P(A and B) = (50 + 20 − 12)/100 = 29/50.",
     "estimated_time_seconds": 90,
     "tags": [
       "probability",
       "family:pb_single"
     ],
-    "answer_verification": "P=11/25"
+    "answer_verification": "P=29/50"
   },
   {
     "question_id": "act-math-probability-hard-q02",
@@ -60,43 +60,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "A bag contains 3 red, 14 green, and 10 white chips. Two chips are drawn at random without replacement. What is the probability that both are green?",
+    "prompt": "A bag contains 2 white, 9 red, and 9 green beads. Two beads are drawn at random without replacement. What is the probability that the first is red and the second is white?",
     "choices": [
       {
         "id": "A",
-        "text": "7/27",
-        "rationale": "Correct."
+        "text": "11/20",
+        "rationale": "'And' for two draws multiplies; it doesn't add."
       },
       {
         "id": "B",
-        "text": "14/27",
-        "rationale": "This is the probability for a single draw."
+        "text": "9/200",
+        "rationale": "The second draw is from 19 beads, not 20."
       },
       {
         "id": "C",
-        "text": "196/729",
-        "rationale": "Without replacement, the second draw has one fewer green and one fewer total."
+        "text": "9/380",
+        "rationale": "The white count doesn't drop after drawing a red."
       },
       {
         "id": "D",
-        "text": "28/27",
-        "rationale": "Two draws of the same colour multiply, not add."
+        "text": "9/20",
+        "rationale": "That is only the first draw."
       },
       {
         "id": "E",
-        "text": "182/729",
-        "rationale": "Reduce the total by one on the second draw as well."
+        "text": "9/190",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "P(both green) = 14/27 × 13/26 = 7/27.",
+    "correct_choice": "E",
+    "explanation": "P = 9/20 × 2/19 = 9/190.",
     "estimated_time_seconds": 100,
     "tags": [
       "probability",
       "without-replacement",
       "family:pb_compound"
     ],
-    "answer_verification": "P=7/27"
+    "answer_verification": "P=9/190"
   },
   {
     "question_id": "act-math-probability-hard-q03",
@@ -110,43 +110,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "In a random sample of 500 light bulbs from a factory, 60 were defective. Based on the sample, approximately how many defective bulbs would be expected in a shipment of 2500 bulbs?",
+    "prompt": "In a random sample of 500 light bulbs from a factory, 50 were defective. Based on the sample, approximately how many defective bulbs would be expected in a shipment of 1500 bulbs?",
     "choices": [
       {
         "id": "A",
-        "text": "300",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "1500",
-        "rationale": "Divide by the sample size 500, not by 100."
-      },
-      {
-        "id": "C",
-        "text": "600",
+        "text": "1000",
         "rationale": "Use the fraction defective (k/n), not n/k."
       },
       {
+        "id": "B",
+        "text": "150",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "750",
+        "rationale": "Divide by the sample size 500, not by 100."
+      },
+      {
         "id": "D",
-        "text": "60",
+        "text": "50",
         "rationale": "That is the number defective in the sample, not the shipment."
       },
       {
         "id": "E",
-        "text": "325",
-        "rationale": "Arithmetic slip; recompute k/n × 2500."
+        "text": "165",
+        "rationale": "Arithmetic slip; recompute k/n × 1500."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Sample rate = 60/500 = 3/25; × 2500 = 300.",
+    "correct_choice": "B",
+    "explanation": "Sample rate = 50/500 = 1/10; × 1500 = 150.",
     "estimated_time_seconds": 80,
     "tags": [
       "probability",
       "expected",
       "family:pb_expected"
     ],
-    "answer_verification": "val=300"
+    "answer_verification": "val=150"
   },
   {
     "question_id": "act-math-probability-hard-q04",
@@ -160,36 +160,36 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "two_way_tables",
-    "prompt": "The table summarizes 79 responses. If a response in the Yes category is selected at random, what is the probability that it is from the Adults group?",
+    "prompt": "The table summarizes 65 responses. If a response in the Member category is selected at random, what is the probability that it is from the Adults group?",
     "choices": [
       {
         "id": "A",
-        "text": "11/30",
-        "rationale": "That is the probability of the Children group within the column."
-      },
-      {
-        "id": "B",
-        "text": "38/43",
+        "text": "7/15",
         "rationale": "Condition on the column, not the row."
       },
       {
+        "id": "B",
+        "text": "5/19",
+        "rationale": "That is the probability of the Children group within the column."
+      },
+      {
         "id": "C",
-        "text": "38/79",
+        "text": "14/65",
         "rationale": "Condition on the column total, not the grand total."
       },
       {
         "id": "D",
-        "text": "60/79",
+        "text": "19/65",
         "rationale": "That is the probability of the column itself."
       },
       {
         "id": "E",
-        "text": "19/30",
+        "text": "14/19",
         "rationale": "Correct."
       }
     ],
     "correct_choice": "E",
-    "explanation": "Restrict to the Yes column (60 responses); 38 are Adults: 19/30.",
+    "explanation": "Restrict to the Member column (19 responses); 14 are Adults: 14/19.",
     "estimated_time_seconds": 90,
     "tags": [
       "probability",
@@ -202,33 +202,33 @@
         "caption": "Survey results",
         "headers": [
           "",
-          "Yes",
-          "No",
+          "Member",
+          "Non-member",
           "Total"
         ],
         "rows": [
           [
             "Adults",
-            "38",
-            "5",
-            "43"
+            "14",
+            "16",
+            "30"
           ],
           [
             "Children",
-            "22",
-            "14",
-            "36"
+            "5",
+            "30",
+            "35"
           ],
           [
             "Total",
-            "60",
             "19",
-            "79"
+            "46",
+            "65"
           ]
         ]
       }
     },
-    "answer_verification": "P=19/30"
+    "answer_verification": "P=14/19"
   },
   {
     "question_id": "act-math-probability-hard-q05",
@@ -242,36 +242,36 @@
     "version": "1.0.0",
     "question_type": "multi_step_math",
     "subskill": "simple_probability",
-    "prompt": "In a group of 100 visitors, 56 saw the exhibit, 24 bought a ticket online, and 13 do both. If one of the visitors who do NOT saw the exhibit is chosen at random, what is the probability that this person bought a ticket online?",
+    "prompt": "In a group of 40 students, 28 play a sport, 25 play an instrument, and 22 do both. If one of the students who do NOT play a sport is chosen at random, what is the probability that this person plays an instrument?",
     "choices": [
       {
         "id": "A",
-        "text": "13/44",
-        "rationale": "Those who do both DO saw the exhibit."
-      },
-      {
-        "id": "B",
-        "text": "11/24",
+        "text": "3/25",
         "rationale": "Condition on the complement of the first group, not on the second group."
       },
       {
-        "id": "C",
-        "text": "11/100",
-        "rationale": "Condition on the 44 who do not saw the exhibit."
+        "id": "B",
+        "text": "11/6",
+        "rationale": "Those who do both DO play a sport."
       },
       {
-        "id": "D",
-        "text": "6/11",
+        "id": "C",
+        "text": "25/12",
         "rationale": "Those who do both are in the other group; subtract them."
       },
       {
-        "id": "E",
+        "id": "D",
         "text": "1/4",
         "rationale": "Correct."
+      },
+      {
+        "id": "E",
+        "text": "3/40",
+        "rationale": "Condition on the 12 who do not play a sport."
       }
     ],
-    "correct_choice": "E",
-    "explanation": "Those who do not saw the exhibit: 100 − 56 = 44; of them, 24 − 13 = 11 bought a ticket online: 1/4.",
+    "correct_choice": "D",
+    "explanation": "Those who do not play a sport: 40 − 28 = 12; of them, 25 − 22 = 3 play an instrument: 1/4.",
     "estimated_time_seconds": 95,
     "tags": [
       "probability",
@@ -279,7 +279,7 @@
       "word-problem",
       "family:pb_conditional_words"
     ],
-    "answer_verification": "total=100,a=56,b=24,both=13"
+    "answer_verification": "total=40,a=28,b=25,both=22"
   },
   {
     "question_id": "act-math-probability-hard-q06",
@@ -293,36 +293,36 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "A semicircle of radius 8 is drawn inside a rectangle that is 16 by 8, with its diameter along the longer side. If a point is chosen at random in the rectangle, what is the probability that it lies inside the semicircle, in terms of π?",
+    "prompt": "A semicircle of radius 17 is drawn inside a rectangle that is 34 by 17, with its diameter along the longer side. If a point is chosen at random in the rectangle, what is the probability that it lies inside the semicircle, in terms of π?",
     "choices": [
       {
         "id": "A",
-        "text": "π/4",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
         "text": "1/2",
         "rationale": "The semicircle's area involves π."
       },
       {
+        "id": "B",
+        "text": "2/π",
+        "rationale": "That is the inverse-type ratio for a square in a circle."
+      },
+      {
         "id": "C",
+        "text": "π/4",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
         "text": "π/8",
         "rationale": "The rectangle's area is 2r², not 4r²."
       },
       {
-        "id": "D",
+        "id": "E",
         "text": "π/2",
         "rationale": "The semicircle's area is ½πr² and the rectangle's is 2r², giving π/4."
-      },
-      {
-        "id": "E",
-        "text": "2/π",
-        "rationale": "That is the inverse-type ratio for a square in a circle."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Semicircle area ½π·8² = 32π; rectangle area 16·8 = 128; ratio = π/4.",
+    "correct_choice": "C",
+    "explanation": "Semicircle area ½π·17² = 289/2π; rectangle area 34·17 = 578; ratio = π/4.",
     "estimated_time_seconds": 90,
     "tags": [
       "probability",
@@ -343,43 +343,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "A fair coin is flipped 4 times. What is the probability that it lands heads up exactly 2 times?",
+    "prompt": "A fair coin is flipped 5 times. What is the probability that it lands heads up exactly 2 times?",
     "choices": [
       {
         "id": "A",
-        "text": "1/16",
-        "rationale": "Count the arrangements of the heads: C(4, 2) = 6."
+        "text": "47/48",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
       },
       {
         "id": "B",
-        "text": "1/2",
-        "rationale": "Count sequences out of 2^4."
+        "text": "2/5",
+        "rationale": "Count sequences out of 2^5."
       },
       {
         "id": "C",
-        "text": "1/4",
-        "rationale": "That is the probability of exactly 3 heads."
+        "text": "1",
+        "rationale": "The denominator is 2^5 = 32."
       },
       {
         "id": "D",
-        "text": "3/8",
+        "text": "5/16",
         "rationale": "Correct."
       },
       {
         "id": "E",
-        "text": "3/4",
-        "rationale": "The denominator is 2^4 = 16."
+        "text": "1/32",
+        "rationale": "Count the arrangements of the heads: C(5, 2) = 10."
       }
     ],
     "correct_choice": "D",
-    "explanation": "There are 2^4 = 16 equally likely sequences; exactly 2 heads can occur in C(4, 2) = 6 ways: 6/16 = 3/8.",
+    "explanation": "There are 2^5 = 32 equally likely sequences; exactly 2 heads can occur in C(5, 2) = 10 ways: 10/32 = 5/16.",
     "estimated_time_seconds": 95,
     "tags": [
       "probability",
       "counting",
       "family:pb_counting"
     ],
-    "answer_verification": "val=3/8"
+    "answer_verification": "val=5/16"
   },
   {
     "question_id": "act-math-probability-hard-q08",
@@ -393,42 +393,42 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "In a survey, 12% of respondents own a bicycle, 22% own a scooter, and 5% own both. If a respondent is selected at random, what is the probability that the respondent owns a bicycle or a scooter (or both)?",
+    "prompt": "In a survey, 30% of respondents own a bicycle, 40% own a scooter, and 4% own both. If a respondent is selected at random, what is the probability that the respondent owns a bicycle or a scooter (or both)?",
     "choices": [
       {
         "id": "A",
-        "text": "29/100",
+        "text": "33/50",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "17/50",
+        "text": "7/10",
         "rationale": "Subtract the overlap; it was counted twice."
       },
       {
         "id": "C",
-        "text": "1/20",
-        "rationale": "That is P(both), not P(either)."
+        "text": "3/25",
+        "rationale": "Multiplying is for independent 'and', not for 'or'."
       },
       {
         "id": "D",
-        "text": "39/100",
+        "text": "37/50",
         "rationale": "The overlap is subtracted, not added."
       },
       {
         "id": "E",
-        "text": "33/1250",
-        "rationale": "Multiplying is for independent 'and', not for 'or'."
+        "text": "1/25",
+        "rationale": "That is P(both), not P(either)."
       }
     ],
     "correct_choice": "A",
-    "explanation": "P(A or B) = P(A) + P(B) − P(A and B) = (12 + 22 − 5)/100 = 29/100.",
+    "explanation": "P(A or B) = P(A) + P(B) − P(A and B) = (30 + 40 − 4)/100 = 33/50.",
     "estimated_time_seconds": 90,
     "tags": [
       "probability",
       "family:pb_single"
     ],
-    "answer_verification": "P=29/100"
+    "answer_verification": "P=33/50"
   },
   {
     "question_id": "act-math-probability-hard-q09",
@@ -442,43 +442,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "A bag contains 3 green, 13 black, and 12 orange marbles. Two marbles are drawn at random without replacement. What is the probability that both are green?",
+    "prompt": "A bag contains 2 blue, 7 orange, and 5 yellow tokens. Two tokens are drawn at random without replacement. What is the probability that the first is orange and the second is yellow?",
     "choices": [
       {
         "id": "A",
-        "text": "3/14",
-        "rationale": "Two draws of the same colour multiply, not add."
+        "text": "6/7",
+        "rationale": "'And' for two draws multiplies; it doesn't add."
       },
       {
         "id": "B",
-        "text": "9/784",
-        "rationale": "Without replacement, the second draw has one fewer green and one fewer total."
+        "text": "5/28",
+        "rationale": "The second draw is from 13 tokens, not 14."
       },
       {
         "id": "C",
-        "text": "3/392",
-        "rationale": "Reduce the total by one on the second draw as well."
+        "text": "5/26",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "3/28",
-        "rationale": "This is the probability for a single draw."
+        "text": "2/13",
+        "rationale": "The yellow count doesn't drop after drawing a orange."
       },
       {
         "id": "E",
-        "text": "1/126",
-        "rationale": "Correct."
+        "text": "1/2",
+        "rationale": "That is only the first draw."
       }
     ],
-    "correct_choice": "E",
-    "explanation": "P(both green) = 3/28 × 2/27 = 1/126.",
+    "correct_choice": "C",
+    "explanation": "P = 7/14 × 5/13 = 5/26.",
     "estimated_time_seconds": 100,
     "tags": [
       "probability",
       "without-replacement",
       "family:pb_compound"
     ],
-    "answer_verification": "P=1/126"
+    "answer_verification": "P=5/26"
   },
   {
     "question_id": "act-math-probability-hard-q10",
@@ -492,43 +492,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "In a random sample of 800 light bulbs from a factory, 96 were defective. Based on the sample, approximately how many defective bulbs would be expected in a shipment of 2500 bulbs?",
+    "prompt": "In a random sample of 800 light bulbs from a factory, 88 were defective. Based on the sample, approximately how many defective bulbs would be expected in a shipment of 1000 bulbs?",
     "choices": [
       {
         "id": "A",
-        "text": "300",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "600",
+        "text": "220",
         "rationale": "Use the fraction defective (k/n), not n/k."
       },
       {
-        "id": "C",
-        "text": "2400",
+        "id": "B",
+        "text": "880",
         "rationale": "Divide by the sample size 800, not by 100."
       },
       {
+        "id": "C",
+        "text": "88",
+        "rationale": "That is the number defective in the sample, not the shipment."
+      },
+      {
         "id": "D",
-        "text": "325",
-        "rationale": "Arithmetic slip; recompute k/n × 2500."
+        "text": "120",
+        "rationale": "Arithmetic slip; recompute k/n × 1000."
       },
       {
         "id": "E",
-        "text": "96",
-        "rationale": "That is the number defective in the sample, not the shipment."
+        "text": "110",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Sample rate = 96/800 = 3/25; × 2500 = 300.",
+    "correct_choice": "E",
+    "explanation": "Sample rate = 88/800 = 11/100; × 1000 = 110.",
     "estimated_time_seconds": 80,
     "tags": [
       "probability",
       "expected",
       "family:pb_expected"
     ],
-    "answer_verification": "val=300"
+    "answer_verification": "val=110"
   },
   {
     "question_id": "act-math-probability-hard-q11",
@@ -542,36 +542,36 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "two_way_tables",
-    "prompt": "The table summarizes 155 responses. If a response in the Prefers tea category is selected at random, what is the probability that it is from the Morning group?",
+    "prompt": "The table summarizes 95 responses. If a response in the Passed category is selected at random, what is the probability that it is from the Adults group?",
     "choices": [
       {
         "id": "A",
-        "text": "43/155",
-        "rationale": "Condition on the column total, not the grand total."
+        "text": "7/8",
+        "rationale": "That is the probability of the Children group within the column."
       },
       {
         "id": "B",
-        "text": "16/31",
-        "rationale": "That is the probability of the column itself."
-      },
-      {
-        "id": "C",
-        "text": "43/80",
+        "text": "1/8",
         "rationale": "Correct."
       },
       {
+        "id": "C",
+        "text": "6/95",
+        "rationale": "Condition on the column total, not the grand total."
+      },
+      {
         "id": "D",
-        "text": "37/80",
-        "rationale": "That is the probability of the Afternoon group within the column."
+        "text": "48/95",
+        "rationale": "That is the probability of the column itself."
       },
       {
         "id": "E",
-        "text": "43/84",
+        "text": "1/7",
         "rationale": "Condition on the column, not the row."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Restrict to the Prefers tea column (80 responses); 43 are Morning: 43/80.",
+    "correct_choice": "B",
+    "explanation": "Restrict to the Passed column (48 responses); 6 are Adults: 1/8.",
     "estimated_time_seconds": 90,
     "tags": [
       "probability",
@@ -584,33 +584,33 @@
         "caption": "Survey results",
         "headers": [
           "",
-          "Prefers tea",
-          "Prefers coffee",
+          "Passed",
+          "Failed",
           "Total"
         ],
         "rows": [
           [
-            "Morning",
-            "43",
-            "41",
-            "84"
+            "Adults",
+            "6",
+            "36",
+            "42"
           ],
           [
-            "Afternoon",
-            "37",
-            "34",
-            "71"
+            "Children",
+            "42",
+            "11",
+            "53"
           ],
           [
             "Total",
-            "80",
-            "75",
-            "155"
+            "48",
+            "47",
+            "95"
           ]
         ]
       }
     },
-    "answer_verification": "P=43/80"
+    "answer_verification": "P=1/8"
   },
   {
     "question_id": "act-math-probability-hard-q12",
@@ -624,36 +624,36 @@
     "version": "1.0.0",
     "question_type": "multi_step_math",
     "subskill": "simple_probability",
-    "prompt": "In a group of 60 students, 37 play a sport, 18 play an instrument, and 12 do both. If one of the students who do NOT play a sport is chosen at random, what is the probability that this person plays an instrument?",
+    "prompt": "In a group of 50 employees, 36 work remotely, 14 have a company laptop, and 10 do both. If one of the employees who do NOT work remotely is chosen at random, what is the probability that this person has a company laptop?",
     "choices": [
       {
         "id": "A",
-        "text": "18/23",
-        "rationale": "Those who do both are in the other group; subtract them."
+        "text": "2/7",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "1/3",
-        "rationale": "Condition on the complement of the first group, not on the second group."
+        "text": "2/25",
+        "rationale": "Condition on the 14 who do not work remotely."
       },
       {
         "id": "C",
-        "text": "1/10",
-        "rationale": "Condition on the 23 who do not play a sport."
+        "text": "5/7",
+        "rationale": "Those who do both DO work remotely."
       },
       {
         "id": "D",
-        "text": "12/23",
-        "rationale": "Those who do both DO play a sport."
+        "text": "11/14",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
       },
       {
         "id": "E",
-        "text": "6/23",
-        "rationale": "Correct."
+        "text": "1",
+        "rationale": "Those who do both are in the other group; subtract them."
       }
     ],
-    "correct_choice": "E",
-    "explanation": "Those who do not play a sport: 60 − 37 = 23; of them, 18 − 12 = 6 play an instrument: 6/23.",
+    "correct_choice": "A",
+    "explanation": "Those who do not work remotely: 50 − 36 = 14; of them, 14 − 10 = 4 have a company laptop: 2/7.",
     "estimated_time_seconds": 95,
     "tags": [
       "probability",
@@ -661,7 +661,7 @@
       "word-problem",
       "family:pb_conditional_words"
     ],
-    "answer_verification": "total=60,a=37,b=18,both=12"
+    "answer_verification": "total=50,a=36,b=14,both=10"
   },
   {
     "question_id": "act-math-probability-hard-q13",
@@ -675,43 +675,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "A square is inscribed in a circle of radius 13. If a point is chosen at random inside the circle, what is the probability that it lies inside the square, in terms of π?",
+    "prompt": "A circle of radius 16 is inscribed in a square. If a point is chosen at random inside the square, what is the probability that it lies inside the circle, in terms of π?",
     "choices": [
       {
         "id": "A",
-        "text": "1/2",
-        "rationale": "The circle's area involves π."
+        "text": "π/2",
+        "rationale": "Area of circle/area of square = πr²/(2r)² = π/4."
       },
       {
         "id": "B",
-        "text": "1/π",
-        "rationale": "The square's area is 2r², so the ratio is 2r²/(πr²) = 2/π."
+        "text": "π/16",
+        "rationale": "The square has side 2r, so its area is 4r², not 16r²."
       },
       {
         "id": "C",
+        "text": "1/4",
+        "rationale": "The circle's area involves π."
+      },
+      {
+        "id": "D",
         "text": "4/π",
         "rationale": "The probability must be less than 1."
       },
       {
-        "id": "D",
-        "text": "π/4",
-        "rationale": "That is the probability for a circle inscribed in a square."
-      },
-      {
         "id": "E",
-        "text": "2/π",
+        "text": "π/4",
         "rationale": "Correct."
       }
     ],
     "correct_choice": "E",
-    "explanation": "The square's diagonal is 2·13 = 26, so its area is 338; circle area 169π; ratio = 2/π.",
+    "explanation": "Circle area π·16² = 256π; square side 32, area 1024; ratio 256π/1024 = π/4.",
     "estimated_time_seconds": 90,
     "tags": [
       "probability",
       "geometric",
       "family:pb_geometric"
     ],
-    "answer_verification": "square_in_circle 2/π"
+    "answer_verification": "circle_in_square π/4"
   },
   {
     "question_id": "act-math-probability-hard-q14",
@@ -725,43 +725,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "Two fair six-sided dice are rolled. What is the probability that the sum of the numbers rolled is 3?",
+    "prompt": "A fair coin is flipped 5 times. What is the probability that it lands heads up exactly 2 times?",
     "choices": [
       {
         "id": "A",
-        "text": "1/36",
-        "rationale": "More than one pair of numbers adds to 3."
+        "text": "1",
+        "rationale": "The denominator is 2^5 = 32."
       },
       {
         "id": "B",
-        "text": "1/11",
-        "rationale": "The 11 possible sums are not equally likely."
+        "text": "5/16",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "1/6",
-        "rationale": "There are 36 outcomes, not 12."
+        "text": "29/16",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
       },
       {
         "id": "D",
-        "text": "1/12",
-        "rationale": "Recount the pairs that add to 3."
+        "text": "2/5",
+        "rationale": "Count sequences out of 2^5."
       },
       {
         "id": "E",
-        "text": "1/18",
-        "rationale": "Correct."
+        "text": "1/32",
+        "rationale": "Count the arrangements of the heads: C(5, 2) = 10."
       }
     ],
-    "correct_choice": "E",
-    "explanation": "There are 36 equally likely outcomes; 2 of them have sum 3: 2/36 = 1/18.",
+    "correct_choice": "B",
+    "explanation": "There are 2^5 = 32 equally likely sequences; exactly 2 heads can occur in C(5, 2) = 10 ways: 10/32 = 5/16.",
     "estimated_time_seconds": 95,
     "tags": [
       "probability",
       "counting",
       "family:pb_counting"
     ],
-    "answer_verification": "val=1/18"
+    "answer_verification": "val=5/16"
   },
   {
     "question_id": "act-math-probability-hard-q15",
@@ -775,22 +775,22 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "In a survey, 56% of respondents own a bicycle, 28% own a scooter, and 2% own both. If a respondent is selected at random, what is the probability that the respondent owns a bicycle or a scooter (or both)?",
+    "prompt": "In a survey, 48% of respondents own a bicycle, 14% own a scooter, and 2% own both. If a respondent is selected at random, what is the probability that the respondent owns a bicycle or a scooter (or both)?",
     "choices": [
       {
         "id": "A",
-        "text": "41/50",
+        "text": "3/5",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "98/625",
-        "rationale": "Multiplying is for independent 'and', not for 'or'."
+        "text": "16/25",
+        "rationale": "The overlap is subtracted, not added."
       },
       {
         "id": "C",
-        "text": "43/50",
-        "rationale": "The overlap is subtracted, not added."
+        "text": "42/625",
+        "rationale": "Multiplying is for independent 'and', not for 'or'."
       },
       {
         "id": "D",
@@ -799,18 +799,18 @@
       },
       {
         "id": "E",
-        "text": "21/25",
+        "text": "31/50",
         "rationale": "Subtract the overlap; it was counted twice."
       }
     ],
     "correct_choice": "A",
-    "explanation": "P(A or B) = P(A) + P(B) − P(A and B) = (56 + 28 − 2)/100 = 41/50.",
+    "explanation": "P(A or B) = P(A) + P(B) − P(A and B) = (48 + 14 − 2)/100 = 3/5.",
     "estimated_time_seconds": 90,
     "tags": [
       "probability",
       "family:pb_single"
     ],
-    "answer_verification": "P=41/50"
+    "answer_verification": "P=3/5"
   },
   {
     "question_id": "act-math-probability-hard-q16",
@@ -824,43 +824,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "A bag contains 10 orange, 5 green, and 12 blue marbles. Two marbles are drawn at random without replacement. What is the probability that the first is green and the second is orange?",
+    "prompt": "A bag contains 2 yellow, 11 purple, and 5 orange tokens. Two tokens are drawn at random without replacement. What is the probability that both are purple?",
     "choices": [
       {
         "id": "A",
-        "text": "5/27",
-        "rationale": "That is only the first draw."
+        "text": "55/162",
+        "rationale": "Reduce the total by one on the second draw as well."
       },
       {
         "id": "B",
-        "text": "50/729",
-        "rationale": "The second draw is from 26 marbles, not 27."
-      },
-      {
-        "id": "C",
-        "text": "25/351",
+        "text": "55/153",
         "rationale": "Correct."
       },
       {
+        "id": "C",
+        "text": "11/9",
+        "rationale": "Two draws of the same colour multiply, not add."
+      },
+      {
         "id": "D",
-        "text": "5/9",
-        "rationale": "'And' for two draws multiplies; it doesn't add."
+        "text": "11/18",
+        "rationale": "This is the probability for a single draw."
       },
       {
         "id": "E",
-        "text": "5/78",
-        "rationale": "The orange count doesn't drop after drawing a green."
+        "text": "121/324",
+        "rationale": "Without replacement, the second draw has one fewer purple and one fewer total."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "P = 5/27 × 10/26 = 25/351.",
+    "correct_choice": "B",
+    "explanation": "P(both purple) = 11/18 × 10/17 = 55/153.",
     "estimated_time_seconds": 100,
     "tags": [
       "probability",
       "without-replacement",
       "family:pb_compound"
     ],
-    "answer_verification": "P=25/351"
+    "answer_verification": "P=55/153"
   },
   {
     "question_id": "act-math-probability-hard-q17",
@@ -874,43 +874,43 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "In a random sample of 500 light bulbs from a factory, 25 were defective. Based on the sample, approximately how many defective bulbs would be expected in a shipment of 1000 bulbs?",
+    "prompt": "In a random sample of 200 light bulbs from a factory, 14 were defective. Based on the sample, approximately how many defective bulbs would be expected in a shipment of 2000 bulbs?",
     "choices": [
       {
         "id": "A",
-        "text": "25",
-        "rationale": "That is the number defective in the sample, not the shipment."
+        "text": "150",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
       },
       {
         "id": "B",
-        "text": "60",
-        "rationale": "Arithmetic slip; recompute k/n × 1000."
+        "text": "280",
+        "rationale": "Use the fraction defective (k/n), not n/k."
       },
       {
         "id": "C",
-        "text": "50",
+        "text": "140",
         "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "250",
-        "rationale": "Divide by the sample size 500, not by 100."
+        "text": "160",
+        "rationale": "Arithmetic slip; recompute k/n × 2000."
       },
       {
         "id": "E",
-        "text": "2000",
-        "rationale": "Use the fraction defective (k/n), not n/k."
+        "text": "14",
+        "rationale": "That is the number defective in the sample, not the shipment."
       }
     ],
     "correct_choice": "C",
-    "explanation": "Sample rate = 25/500 = 1/20; × 1000 = 50.",
+    "explanation": "Sample rate = 14/200 = 7/100; × 2000 = 140.",
     "estimated_time_seconds": 80,
     "tags": [
       "probability",
       "expected",
       "family:pb_expected"
     ],
-    "answer_verification": "val=50"
+    "answer_verification": "val=140"
   },
   {
     "question_id": "act-math-probability-hard-q18",
@@ -924,36 +924,36 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "two_way_tables",
-    "prompt": "The table summarizes 148 responses. If a response in the Member category is selected at random, what is the probability that it is from the Adults group?",
+    "prompt": "The table summarizes 64 responses. If a response in the Member category is selected at random, what is the probability that it is from the Morning group?",
     "choices": [
       {
         "id": "A",
-        "text": "41/71",
+        "text": "7/37",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "30/71",
-        "rationale": "That is the probability of the Children group within the column."
-      },
-      {
-        "id": "C",
-        "text": "71/148",
+        "text": "37/64",
         "rationale": "That is the probability of the column itself."
       },
       {
-        "id": "D",
-        "text": "41/148",
+        "id": "C",
+        "text": "7/64",
         "rationale": "Condition on the column total, not the grand total."
       },
       {
-        "id": "E",
-        "text": "41/77",
+        "id": "D",
+        "text": "7/19",
         "rationale": "Condition on the column, not the row."
+      },
+      {
+        "id": "E",
+        "text": "30/37",
+        "rationale": "That is the probability of the Afternoon group within the column."
       }
     ],
     "correct_choice": "A",
-    "explanation": "Restrict to the Member column (71 responses); 41 are Adults: 41/71.",
+    "explanation": "Restrict to the Member column (37 responses); 7 are Morning: 7/37.",
     "estimated_time_seconds": 90,
     "tags": [
       "probability",
@@ -972,27 +972,27 @@
         ],
         "rows": [
           [
-            "Adults",
-            "41",
-            "36",
-            "77"
+            "Morning",
+            "7",
+            "12",
+            "19"
           ],
           [
-            "Children",
+            "Afternoon",
             "30",
-            "41",
-            "71"
+            "15",
+            "45"
           ],
           [
             "Total",
-            "71",
-            "77",
-            "148"
+            "37",
+            "27",
+            "64"
           ]
         ]
       }
     },
-    "answer_verification": "P=41/71"
+    "answer_verification": "P=7/37"
   },
   {
     "question_id": "act-math-probability-hard-q19",
@@ -1006,36 +1006,36 @@
     "version": "1.0.0",
     "question_type": "multi_step_math",
     "subskill": "simple_probability",
-    "prompt": "In a group of 40 visitors, 17 saw the exhibit, 24 bought a ticket online, and 3 do both. If one of the visitors who do NOT saw the exhibit is chosen at random, what is the probability that this person bought a ticket online?",
+    "prompt": "In a group of 40 students, 14 play a sport, 29 play an instrument, and 10 do both. If one of the students who do NOT play a sport is chosen at random, what is the probability that this person plays an instrument?",
     "choices": [
       {
         "id": "A",
-        "text": "7/8",
-        "rationale": "Condition on the complement of the first group, not on the second group."
+        "text": "29/26",
+        "rationale": "Those who do both are in the other group; subtract them."
       },
       {
         "id": "B",
-        "text": "21/23",
-        "rationale": "Correct."
+        "text": "19/40",
+        "rationale": "Condition on the 26 who do not play a sport."
       },
       {
         "id": "C",
-        "text": "3/23",
-        "rationale": "Those who do both DO saw the exhibit."
+        "text": "19/26",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "21/40",
-        "rationale": "Condition on the 23 who do not saw the exhibit."
+        "text": "5/13",
+        "rationale": "Those who do both DO play a sport."
       },
       {
         "id": "E",
-        "text": "24/23",
-        "rationale": "Those who do both are in the other group; subtract them."
+        "text": "19/29",
+        "rationale": "Condition on the complement of the first group, not on the second group."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Those who do not saw the exhibit: 40 − 17 = 23; of them, 24 − 3 = 21 bought a ticket online: 21/23.",
+    "correct_choice": "C",
+    "explanation": "Those who do not play a sport: 40 − 14 = 26; of them, 29 − 10 = 19 play an instrument: 19/26.",
     "estimated_time_seconds": 95,
     "tags": [
       "probability",
@@ -1043,7 +1043,7 @@
       "word-problem",
       "family:pb_conditional_words"
     ],
-    "answer_verification": "total=40,a=17,b=24,both=3"
+    "answer_verification": "total=40,a=14,b=29,both=10"
   },
   {
     "question_id": "act-math-probability-hard-q20",
@@ -1057,12 +1057,12 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "simple_probability",
-    "prompt": "A square is inscribed in a circle of radius 15. If a point is chosen at random inside the circle, what is the probability that it lies inside the square, in terms of π?",
+    "prompt": "A square is inscribed in a circle of radius 25. If a point is chosen at random inside the circle, what is the probability that it lies inside the square, in terms of π?",
     "choices": [
       {
         "id": "A",
-        "text": "2/π",
-        "rationale": "Correct."
+        "text": "1/π",
+        "rationale": "The square's area is 2r², so the ratio is 2r²/(πr²) = 2/π."
       },
       {
         "id": "B",
@@ -1076,17 +1076,17 @@
       },
       {
         "id": "D",
-        "text": "1/π",
-        "rationale": "The square's area is 2r², so the ratio is 2r²/(πr²) = 2/π."
+        "text": "4/π",
+        "rationale": "The probability must be less than 1."
       },
       {
         "id": "E",
-        "text": "4/π",
-        "rationale": "The probability must be less than 1."
+        "text": "2/π",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "The square's diagonal is 2·15 = 30, so its area is 450; circle area 225π; ratio = 2/π.",
+    "correct_choice": "E",
+    "explanation": "The square's diagonal is 2·25 = 50, so its area is 1250; circle area 625π; ratio = 2/π.",
     "estimated_time_seconds": 90,
     "tags": [
       "probability",

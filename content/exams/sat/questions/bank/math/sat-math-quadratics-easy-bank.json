@@ -11,38 +11,38 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "roots",
-    "prompt": "The graph of y = (x − 6)(x + 3) in the xy-plane has x-intercepts at x = p and x = q. What is the value of p + q?",
+    "prompt": "If x² = 729, what is the greater of the two solutions?",
     "choices": [
       {
         "id": "A",
-        "text": "9",
-        "rationale": "Add the intercepts; don't subtract."
+        "text": "27",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "-18",
-        "rationale": "That is the product of the intercepts (the y-intercept)."
+        "text": "-27",
+        "rationale": "The question asks for the positive solution."
       },
       {
         "id": "C",
-        "text": "-3",
-        "rationale": "Each factor x − r is 0 at x = r, not −r."
+        "text": "54",
+        "rationale": "Recheck: (54)² = 2916, not 729."
       },
       {
         "id": "D",
-        "text": "3",
-        "rationale": "Correct."
+        "text": "364",
+        "rationale": "Halving is not the inverse of squaring."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "The x-intercepts are where each factor is 0: x = 6 and x = −3; their sum is 3.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "A",
+    "explanation": "x = √729 = 27 (taking the positive root).",
+    "estimated_time_seconds": 75,
     "tags": [
       "quadratics",
-      "intercepts",
-      "family:q_intercepts"
+      "square-root",
+      "family:q_square_root"
     ],
-    "answer_verification": "roots 6,-3"
+    "answer_verification": "val=27"
   },
   {
     "question_id": "sat-math-quadratics-easy-b0002",
@@ -54,43 +54,838 @@
     "lesson_id": "sat-math-quadratics-easy",
     "difficulty": "easy",
     "version": "1.0.0",
-    "question_type": "multiple_choice",
+    "question_type": "student_produced",
     "subskill": "roots",
-    "prompt": "If x² = 625, what is the greater of the two solutions?",
+    "prompt": "If x² − 3600 = 0 and x > 0, what is the value of x?",
+    "answer": {
+      "type": "numeric",
+      "value": 60,
+      "accepted": [
+        "60"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "x² = 3600, so x = 60.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "quadratics",
+      "grid-in",
+      "family:q_gridin"
+    ],
+    "answer_verification": "x=60"
+  },
+  {
+    "question_id": "sat-math-quadratics-easy-b0003",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "quadratics",
+    "lesson_id": "sat-math-quadratics-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "vertex",
+    "prompt": "Which of the following is equivalent to x² − 2x + 9?",
     "choices": [
       {
         "id": "A",
-        "text": "50",
-        "rationale": "Recheck: (50)² = 2500, not 625."
+        "text": "(x − 1)² + 9",
+        "rationale": "Subtract h² = 1 from the constant."
       },
       {
         "id": "B",
-        "text": "-25",
-        "rationale": "The question asks for the positive solution."
+        "text": "(x + 1)² + 8",
+        "rationale": "The sign inside the parentheses is wrong: (x − h)² expands to x² − 2hx + h²."
       },
       {
         "id": "C",
-        "text": "312",
-        "rationale": "Halving is not the inverse of squaring."
+        "text": "(x − 1)² − 8",
+        "rationale": "Check the sign of the constant after completing the square."
       },
       {
         "id": "D",
-        "text": "25",
+        "text": "(x − 1)² + 8",
         "rationale": "Correct."
       }
     ],
     "correct_choice": "D",
-    "explanation": "x = √625 = 25 (taking the positive root).",
+    "explanation": "x² − 2x = (x − 1)² − 1; so the expression is (x − 1)² + 9 − 1 = (x − 1)² + 8.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "quadratics",
+      "vertex-form",
+      "family:q_complete_square"
+    ],
+    "answer_verification": "(x − 1)² + 8"
+  },
+  {
+    "question_id": "sat-math-quadratics-easy-b0004",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "quadratics",
+    "lesson_id": "sat-math-quadratics-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "vertex",
+    "prompt": "Which of the following is equivalent to x² + 4x + 19?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "(x + 2)² − 15",
+        "rationale": "Check the sign of the constant after completing the square."
+      },
+      {
+        "id": "B",
+        "text": "(x − 2)² + 15",
+        "rationale": "The sign inside the parentheses is wrong: (x − h)² expands to x² − 2hx + h²."
+      },
+      {
+        "id": "C",
+        "text": "(x + 2)² + 15",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "(x + 2)² + 19",
+        "rationale": "Subtract h² = 4 from the constant."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "x² + 4x = (x + 2)² − 4; so the expression is (x + 2)² + 19 − 4 = (x + 2)² + 15.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "quadratics",
+      "vertex-form",
+      "family:q_complete_square"
+    ],
+    "answer_verification": "(x + 2)² + 15"
+  },
+  {
+    "question_id": "sat-math-quadratics-easy-b0005",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "quadratics",
+    "lesson_id": "sat-math-quadratics-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "roots",
+    "prompt": "What is the lesser of the two solutions to the equation (x + 8)(x − 7) = 0?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "8",
+        "rationale": "Each factor x − r is 0 when x = r, not −r."
+      },
+      {
+        "id": "B",
+        "text": "-1",
+        "rationale": "That is the sum of the solutions."
+      },
+      {
+        "id": "C",
+        "text": "7",
+        "rationale": "That is the greater solution."
+      },
+      {
+        "id": "D",
+        "text": "-8",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "A product is 0 when a factor is 0: x = −8 or x = 7. The lesser is −8.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "quadratics",
+      "factoring",
+      "family:q_roots"
+    ],
+    "answer_verification": "val=-8"
+  },
+  {
+    "question_id": "sat-math-quadratics-easy-b0006",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "quadratics",
+    "lesson_id": "sat-math-quadratics-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "vertex",
+    "prompt": "The function f is defined by f(x) = −(x + 0)² − 4. At what value of x does f reach its maximum?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "4",
+        "rationale": "That is the opposite of the extreme value."
+      },
+      {
+        "id": "B",
+        "text": "3",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      },
+      {
+        "id": "C",
+        "text": "0",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "-4",
+        "rationale": "That is the extreme value, not where it occurs."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "The vertex of (x − h)² + k is at x = h; here h = 0.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "quadratics",
+      "vertex",
+      "family:q_vertex"
+    ],
+    "answer_verification": "vertex (0,-4)"
+  },
+  {
+    "question_id": "sat-math-quadratics-easy-b0007",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "quadratics",
+    "lesson_id": "sat-math-quadratics-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "vertex",
+    "prompt": "The function f is defined by f(x) = (x − 9)² − 1. At what value of x does f reach its minimum?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-9",
+        "rationale": "x − h = 0 when x = h, so the sign flips from what's written."
+      },
+      {
+        "id": "B",
+        "text": "-1",
+        "rationale": "That is the extreme value, not where it occurs."
+      },
+      {
+        "id": "C",
+        "text": "9",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "1",
+        "rationale": "That is the opposite of the extreme value."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "The vertex of (x − h)² + k is at x = h; here h = 9.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "quadratics",
+      "vertex",
+      "family:q_vertex"
+    ],
+    "answer_verification": "vertex (9,-1)"
+  },
+  {
+    "question_id": "sat-math-quadratics-easy-b0008",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "quadratics",
+    "lesson_id": "sat-math-quadratics-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "roots",
+    "prompt": "What is the greater of the two solutions to the equation (x − 7)(x − 6) = 0?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "6",
+        "rationale": "That is the lesser solution."
+      },
+      {
+        "id": "B",
+        "text": "-7",
+        "rationale": "Each factor x − r is 0 when x = r, not −r."
+      },
+      {
+        "id": "C",
+        "text": "7",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "13",
+        "rationale": "That is the sum of the solutions."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "A product is 0 when a factor is 0: x = 7 or x = 6. The greater is 7.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "quadratics",
+      "factoring",
+      "family:q_roots"
+    ],
+    "answer_verification": "val=7"
+  },
+  {
+    "question_id": "sat-math-quadratics-easy-b0009",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "quadratics",
+    "lesson_id": "sat-math-quadratics-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "vertex",
+    "prompt": "Which of the following is equivalent to x² − 6x + 28?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "(x − 3)² − 19",
+        "rationale": "Check the sign of the constant after completing the square."
+      },
+      {
+        "id": "B",
+        "text": "(x − 3)² + 19",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "(x + 3)² + 19",
+        "rationale": "The sign inside the parentheses is wrong: (x − h)² expands to x² − 2hx + h²."
+      },
+      {
+        "id": "D",
+        "text": "(x − 3)² + 28",
+        "rationale": "Subtract h² = 9 from the constant."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "x² − 6x = (x − 3)² − 9; so the expression is (x − 3)² + 28 − 9 = (x − 3)² + 19.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "quadratics",
+      "vertex-form",
+      "family:q_complete_square"
+    ],
+    "answer_verification": "(x − 3)² + 19"
+  },
+  {
+    "question_id": "sat-math-quadratics-easy-b0010",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "quadratics",
+    "lesson_id": "sat-math-quadratics-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "vertex",
+    "prompt": "Which of the following is equivalent to x² + 12x + 27?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "(x + 6)² + 27",
+        "rationale": "Subtract h² = 36 from the constant."
+      },
+      {
+        "id": "B",
+        "text": "(x + 6)² + 9",
+        "rationale": "Check the sign of the constant after completing the square."
+      },
+      {
+        "id": "C",
+        "text": "(x − 6)² − 9",
+        "rationale": "The sign inside the parentheses is wrong: (x − h)² expands to x² − 2hx + h²."
+      },
+      {
+        "id": "D",
+        "text": "(x + 6)² − 9",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "x² + 12x = (x + 6)² − 36; so the expression is (x + 6)² + 27 − 36 = (x + 6)² − 9.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "quadratics",
+      "vertex-form",
+      "family:q_complete_square"
+    ],
+    "answer_verification": "(x + 6)² − 9"
+  },
+  {
+    "question_id": "sat-math-quadratics-easy-b0011",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "quadratics",
+    "lesson_id": "sat-math-quadratics-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "roots",
+    "prompt": "The graph of y = (x + 2)(x + 0) in the xy-plane has x-intercepts at x = p and x = q. What is the value of p + q?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "2",
+        "rationale": "Each factor x − r is 0 at x = r, not −r."
+      },
+      {
+        "id": "B",
+        "text": "-5",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      },
+      {
+        "id": "C",
+        "text": "-2",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "0",
+        "rationale": "That is the product of the intercepts (the y-intercept)."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "The x-intercepts are where each factor is 0: x = −2 and x = 0; their sum is −2.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "quadratics",
+      "intercepts",
+      "family:q_intercepts"
+    ],
+    "answer_verification": "roots -2,0"
+  },
+  {
+    "question_id": "sat-math-quadratics-easy-b0012",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "quadratics",
+    "lesson_id": "sat-math-quadratics-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "roots",
+    "prompt": "What is the positive solution to x² − 2025 = 0?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "45",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "90",
+        "rationale": "Recheck: (90)² = 8100, not 2025."
+      },
+      {
+        "id": "C",
+        "text": "1012",
+        "rationale": "Halving is not the inverse of squaring."
+      },
+      {
+        "id": "D",
+        "text": "-45",
+        "rationale": "The question asks for the positive solution."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "x = √2025 = 45 (taking the positive root).",
     "estimated_time_seconds": 75,
     "tags": [
       "quadratics",
       "square-root",
       "family:q_square_root"
     ],
-    "answer_verification": "val=25"
+    "answer_verification": "val=45"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0003",
+    "question_id": "sat-math-quadratics-easy-b0013",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "quadratics",
+    "lesson_id": "sat-math-quadratics-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "student_produced",
+    "subskill": "roots",
+    "prompt": "What is the positive solution to the equation x² = 1156?",
+    "answer": {
+      "type": "numeric",
+      "value": 34,
+      "accepted": [
+        "34"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "x² = 1156, so x = 34.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "quadratics",
+      "grid-in",
+      "family:q_gridin"
+    ],
+    "answer_verification": "x=34"
+  },
+  {
+    "question_id": "sat-math-quadratics-easy-b0014",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "quadratics",
+    "lesson_id": "sat-math-quadratics-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multi_step_math",
+    "subskill": "roots",
+    "prompt": "The length of a rectangle is 4 more than its width, and its area is 165. What is the width of the rectangle?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "12",
+        "rationale": "Check: 12·16 ≠ 165."
+      },
+      {
+        "id": "B",
+        "text": "13",
+        "rationale": "Set up w(w + k) = A; don't divide the area by 4."
+      },
+      {
+        "id": "C",
+        "text": "15",
+        "rationale": "That is the length."
+      },
+      {
+        "id": "D",
+        "text": "11",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "w(w + 4) = 165 → w² + 4w − 165 = 0 → (w − 11)(w + 15) = 0 → w = 11.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "quadratics",
+      "word-problem",
+      "family:q_word"
+    ],
+    "answer_verification": "val=11"
+  },
+  {
+    "question_id": "sat-math-quadratics-easy-b0015",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "quadratics",
+    "lesson_id": "sat-math-quadratics-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "vertex",
+    "prompt": "The function f is defined by f(x) = (x − 3)² + 8. At what value of x does f reach its minimum?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "3",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "8",
+        "rationale": "That is the extreme value, not where it occurs."
+      },
+      {
+        "id": "C",
+        "text": "-8",
+        "rationale": "That is the opposite of the extreme value."
+      },
+      {
+        "id": "D",
+        "text": "-3",
+        "rationale": "x − h = 0 when x = h, so the sign flips from what's written."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "The vertex of (x − h)² + k is at x = h; here h = 3.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "quadratics",
+      "vertex",
+      "family:q_vertex"
+    ],
+    "answer_verification": "vertex (3,8)"
+  },
+  {
+    "question_id": "sat-math-quadratics-easy-b0016",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "quadratics",
+    "lesson_id": "sat-math-quadratics-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "vertex",
+    "prompt": "The function f is defined by f(x) = −(x − 3)² + 5. At what value of x does f reach its maximum?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-5",
+        "rationale": "That is the opposite of the extreme value."
+      },
+      {
+        "id": "B",
+        "text": "-3",
+        "rationale": "x − h = 0 when x = h, so the sign flips from what's written."
+      },
+      {
+        "id": "C",
+        "text": "3",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "5",
+        "rationale": "That is the extreme value, not where it occurs."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "The vertex of (x − h)² + k is at x = h; here h = 3.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "quadratics",
+      "vertex",
+      "family:q_vertex"
+    ],
+    "answer_verification": "vertex (3,5)"
+  },
+  {
+    "question_id": "sat-math-quadratics-easy-b0017",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "quadratics",
+    "lesson_id": "sat-math-quadratics-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "student_produced",
+    "subskill": "roots",
+    "prompt": "If x² − 2704 = 0 and x > 0, what is the value of x?",
+    "answer": {
+      "type": "numeric",
+      "value": 52,
+      "accepted": [
+        "52"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "x² = 2704, so x = 52.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "quadratics",
+      "grid-in",
+      "family:q_gridin"
+    ],
+    "answer_verification": "x=52"
+  },
+  {
+    "question_id": "sat-math-quadratics-easy-b0018",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "quadratics",
+    "lesson_id": "sat-math-quadratics-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multi_step_math",
+    "subskill": "roots",
+    "prompt": "The length of a rectangle is 2 more than its width, and its area is 15. What is the width of the rectangle?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "3",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "5",
+        "rationale": "That is the length."
+      },
+      {
+        "id": "C",
+        "text": "4",
+        "rationale": "Check: 4·6 ≠ 15."
+      },
+      {
+        "id": "D",
+        "text": "2",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "w(w + 2) = 15 → w² + 2w − 15 = 0 → (w − 3)(w + 5) = 0 → w = 3.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "quadratics",
+      "word-problem",
+      "family:q_word"
+    ],
+    "answer_verification": "val=3"
+  },
+  {
+    "question_id": "sat-math-quadratics-easy-b0019",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "quadratics",
+    "lesson_id": "sat-math-quadratics-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "vertex",
+    "prompt": "The function f is defined by f(x) = −(x + 1)² + 11. At what value of x does f reach its maximum?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "1",
+        "rationale": "x − h = 0 when x = h, so the sign flips from what's written."
+      },
+      {
+        "id": "B",
+        "text": "11",
+        "rationale": "That is the extreme value, not where it occurs."
+      },
+      {
+        "id": "C",
+        "text": "-1",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "-11",
+        "rationale": "That is the opposite of the extreme value."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "The vertex of (x − h)² + k is at x = h; here h = −1.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "quadratics",
+      "vertex",
+      "family:q_vertex"
+    ],
+    "answer_verification": "vertex (-1,11)"
+  },
+  {
+    "question_id": "sat-math-quadratics-easy-b0020",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "quadratics",
+    "lesson_id": "sat-math-quadratics-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "roots",
+    "prompt": "What is the positive solution to x² − 361 = 0?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "180",
+        "rationale": "Halving is not the inverse of squaring."
+      },
+      {
+        "id": "B",
+        "text": "19",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "-19",
+        "rationale": "The question asks for the positive solution."
+      },
+      {
+        "id": "D",
+        "text": "38",
+        "rationale": "Recheck: (38)² = 1444, not 361."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "x = √361 = 19 (taking the positive root).",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "quadratics",
+      "square-root",
+      "family:q_square_root"
+    ],
+    "answer_verification": "val=19"
+  },
+  {
+    "question_id": "sat-math-quadratics-easy-b0021",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "quadratics",
+    "lesson_id": "sat-math-quadratics-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "student_produced",
+    "subskill": "roots",
+    "prompt": "If x² − 1764 = 0 and x > 0, what is the value of x?",
+    "answer": {
+      "type": "numeric",
+      "value": 42,
+      "accepted": [
+        "42"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "x² = 1764, so x = 42.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "quadratics",
+      "grid-in",
+      "family:q_gridin"
+    ],
+    "answer_verification": "x=42"
+  },
+  {
+    "question_id": "sat-math-quadratics-easy-b0022",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -135,7 +930,7 @@
     "answer_verification": "val=15"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0004",
+    "question_id": "sat-math-quadratics-easy-b0023",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -180,7 +975,7 @@
     "answer_verification": "vertex (-5,-1)"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0005",
+    "question_id": "sat-math-quadratics-easy-b0024",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -225,7 +1020,7 @@
     "answer_verification": "val=57"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0006",
+    "question_id": "sat-math-quadratics-easy-b0025",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -270,7 +1065,7 @@
     "answer_verification": "val=8"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0007",
+    "question_id": "sat-math-quadratics-easy-b0026",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -315,7 +1110,7 @@
     "answer_verification": "val=-6"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0008",
+    "question_id": "sat-math-quadratics-easy-b0027",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -360,7 +1155,7 @@
     "answer_verification": "val=13"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0009",
+    "question_id": "sat-math-quadratics-easy-b0028",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -405,7 +1200,7 @@
     "answer_verification": "val=-3"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0010",
+    "question_id": "sat-math-quadratics-easy-b0029",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -450,7 +1245,7 @@
     "answer_verification": "(x − 9)² + 3"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0011",
+    "question_id": "sat-math-quadratics-easy-b0030",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -480,7 +1275,7 @@
     "answer_verification": "x=16"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0012",
+    "question_id": "sat-math-quadratics-easy-b0031",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -525,7 +1320,7 @@
     "answer_verification": "val=12"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0013",
+    "question_id": "sat-math-quadratics-easy-b0032",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -570,7 +1365,7 @@
     "answer_verification": "val=12"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0014",
+    "question_id": "sat-math-quadratics-easy-b0033",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -615,7 +1410,7 @@
     "answer_verification": "roots 1,-2"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0015",
+    "question_id": "sat-math-quadratics-easy-b0034",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -660,7 +1455,7 @@
     "answer_verification": "roots 8,0"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0016",
+    "question_id": "sat-math-quadratics-easy-b0035",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -705,7 +1500,7 @@
     "answer_verification": "(x + 3)² − 17"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0017",
+    "question_id": "sat-math-quadratics-easy-b0036",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -750,7 +1545,7 @@
     "answer_verification": "(x − 2)² + 7"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0018",
+    "question_id": "sat-math-quadratics-easy-b0037",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -795,7 +1590,7 @@
     "answer_verification": "val=12"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0019",
+    "question_id": "sat-math-quadratics-easy-b0038",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -840,7 +1635,7 @@
     "answer_verification": "(x + 2)² + 7"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0020",
+    "question_id": "sat-math-quadratics-easy-b0039",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -885,7 +1680,7 @@
     "answer_verification": "vertex (-9,4)"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0021",
+    "question_id": "sat-math-quadratics-easy-b0040",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -930,7 +1725,7 @@
     "answer_verification": "val=47"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0022",
+    "question_id": "sat-math-quadratics-easy-b0041",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -960,7 +1755,7 @@
     "answer_verification": "x=10"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0023",
+    "question_id": "sat-math-quadratics-easy-b0042",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1005,7 +1800,7 @@
     "answer_verification": "val=24"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0024",
+    "question_id": "sat-math-quadratics-easy-b0043",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1050,7 +1845,7 @@
     "answer_verification": "val=-3"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0025",
+    "question_id": "sat-math-quadratics-easy-b0044",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1080,7 +1875,7 @@
     "answer_verification": "x=19"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0026",
+    "question_id": "sat-math-quadratics-easy-b0045",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1125,7 +1920,7 @@
     "answer_verification": "val=45"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0027",
+    "question_id": "sat-math-quadratics-easy-b0046",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1170,7 +1965,7 @@
     "answer_verification": "vertex (-2,12)"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0028",
+    "question_id": "sat-math-quadratics-easy-b0047",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1215,7 +2010,7 @@
     "answer_verification": "val=7"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0029",
+    "question_id": "sat-math-quadratics-easy-b0048",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1260,7 +2055,7 @@
     "answer_verification": "val=37"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0030",
+    "question_id": "sat-math-quadratics-easy-b0049",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1290,7 +2085,7 @@
     "answer_verification": "x=16"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0031",
+    "question_id": "sat-math-quadratics-easy-b0050",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1335,7 +2130,7 @@
     "answer_verification": "(x + 8)² + 11"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0032",
+    "question_id": "sat-math-quadratics-easy-b0051",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1380,7 +2175,7 @@
     "answer_verification": "(x + 3)² − 20"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0033",
+    "question_id": "sat-math-quadratics-easy-b0052",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1425,7 +2220,7 @@
     "answer_verification": "val=47"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0034",
+    "question_id": "sat-math-quadratics-easy-b0053",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1455,7 +2250,7 @@
     "answer_verification": "x=14"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0035",
+    "question_id": "sat-math-quadratics-easy-b0054",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1485,7 +2280,7 @@
     "answer_verification": "x=32"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0036",
+    "question_id": "sat-math-quadratics-easy-b0055",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1530,7 +2325,7 @@
     "answer_verification": "roots 8,-5"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0037",
+    "question_id": "sat-math-quadratics-easy-b0056",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1575,7 +2370,7 @@
     "answer_verification": "val=0"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0038",
+    "question_id": "sat-math-quadratics-easy-b0057",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1620,7 +2415,7 @@
     "answer_verification": "(x − 3)² − 8"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0039",
+    "question_id": "sat-math-quadratics-easy-b0058",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1665,7 +2460,7 @@
     "answer_verification": "val=9"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0040",
+    "question_id": "sat-math-quadratics-easy-b0059",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1710,7 +2505,7 @@
     "answer_verification": "val=4"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0041",
+    "question_id": "sat-math-quadratics-easy-b0060",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1755,7 +2550,7 @@
     "answer_verification": "val=-1"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0042",
+    "question_id": "sat-math-quadratics-easy-b0061",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1800,7 +2595,7 @@
     "answer_verification": "val=18"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0043",
+    "question_id": "sat-math-quadratics-easy-b0062",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1845,7 +2640,7 @@
     "answer_verification": "roots -6,-8"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0044",
+    "question_id": "sat-math-quadratics-easy-b0063",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1890,7 +2685,7 @@
     "answer_verification": "val=42"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0045",
+    "question_id": "sat-math-quadratics-easy-b0064",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1935,7 +2730,7 @@
     "answer_verification": "val=3"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0046",
+    "question_id": "sat-math-quadratics-easy-b0065",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1980,7 +2775,7 @@
     "answer_verification": "roots -5,-9"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0047",
+    "question_id": "sat-math-quadratics-easy-b0066",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2025,7 +2820,7 @@
     "answer_verification": "(x + 2)² − 13"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0048",
+    "question_id": "sat-math-quadratics-easy-b0067",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2070,7 +2865,7 @@
     "answer_verification": "vertex (4,-2)"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0049",
+    "question_id": "sat-math-quadratics-easy-b0068",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2115,7 +2910,7 @@
     "answer_verification": "roots 5,-6"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0050",
+    "question_id": "sat-math-quadratics-easy-b0069",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2160,7 +2955,7 @@
     "answer_verification": "val=1"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0051",
+    "question_id": "sat-math-quadratics-easy-b0070",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2205,7 +3000,7 @@
     "answer_verification": "val=8"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0052",
+    "question_id": "sat-math-quadratics-easy-b0071",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2250,7 +3045,7 @@
     "answer_verification": "roots 6,1"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0053",
+    "question_id": "sat-math-quadratics-easy-b0072",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2295,7 +3090,7 @@
     "answer_verification": "val=-2"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0054",
+    "question_id": "sat-math-quadratics-easy-b0073",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2325,7 +3120,7 @@
     "answer_verification": "x=4"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0055",
+    "question_id": "sat-math-quadratics-easy-b0074",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2355,7 +3150,7 @@
     "answer_verification": "x=39"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0056",
+    "question_id": "sat-math-quadratics-easy-b0075",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2385,7 +3180,7 @@
     "answer_verification": "x=26"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0057",
+    "question_id": "sat-math-quadratics-easy-b0076",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2430,7 +3225,7 @@
     "answer_verification": "val=6"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0058",
+    "question_id": "sat-math-quadratics-easy-b0077",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2475,7 +3270,7 @@
     "answer_verification": "vertex (3,12)"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0059",
+    "question_id": "sat-math-quadratics-easy-b0078",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2520,7 +3315,7 @@
     "answer_verification": "vertex (8,9)"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0060",
+    "question_id": "sat-math-quadratics-easy-b0079",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2565,7 +3360,7 @@
     "answer_verification": "val=11"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0061",
+    "question_id": "sat-math-quadratics-easy-b0080",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2595,7 +3390,7 @@
     "answer_verification": "x=52"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0062",
+    "question_id": "sat-math-quadratics-easy-b0081",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2640,7 +3435,7 @@
     "answer_verification": "val=50"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0063",
+    "question_id": "sat-math-quadratics-easy-b0082",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2685,7 +3480,7 @@
     "answer_verification": "roots -4,-7"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0064",
+    "question_id": "sat-math-quadratics-easy-b0083",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2730,7 +3525,7 @@
     "answer_verification": "roots -9,4"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0065",
+    "question_id": "sat-math-quadratics-easy-b0084",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2775,7 +3570,7 @@
     "answer_verification": "val=15"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0066",
+    "question_id": "sat-math-quadratics-easy-b0085",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2820,7 +3615,7 @@
     "answer_verification": "val=12"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0067",
+    "question_id": "sat-math-quadratics-easy-b0086",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2865,7 +3660,7 @@
     "answer_verification": "val=-6"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0068",
+    "question_id": "sat-math-quadratics-easy-b0087",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2910,7 +3705,7 @@
     "answer_verification": "val=7"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0069",
+    "question_id": "sat-math-quadratics-easy-b0088",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2940,7 +3735,7 @@
     "answer_verification": "x=59"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0070",
+    "question_id": "sat-math-quadratics-easy-b0089",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2985,7 +3780,7 @@
     "answer_verification": "vertex (-7,-8)"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0071",
+    "question_id": "sat-math-quadratics-easy-b0090",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3030,7 +3825,7 @@
     "answer_verification": "vertex (7,1)"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0072",
+    "question_id": "sat-math-quadratics-easy-b0091",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3075,7 +3870,7 @@
     "answer_verification": "val=8"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0073",
+    "question_id": "sat-math-quadratics-easy-b0092",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3120,7 +3915,7 @@
     "answer_verification": "val=40"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0074",
+    "question_id": "sat-math-quadratics-easy-b0093",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3165,7 +3960,7 @@
     "answer_verification": "vertex (-3,11)"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0075",
+    "question_id": "sat-math-quadratics-easy-b0094",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3210,7 +4005,7 @@
     "answer_verification": "roots 6,-4"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0076",
+    "question_id": "sat-math-quadratics-easy-b0095",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3255,7 +4050,7 @@
     "answer_verification": "roots 0,-6"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0077",
+    "question_id": "sat-math-quadratics-easy-b0096",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3285,7 +4080,7 @@
     "answer_verification": "x=21"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0078",
+    "question_id": "sat-math-quadratics-easy-b0097",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3330,7 +4125,7 @@
     "answer_verification": "val=-3"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0079",
+    "question_id": "sat-math-quadratics-easy-b0098",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3375,7 +4170,7 @@
     "answer_verification": "val=6"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0080",
+    "question_id": "sat-math-quadratics-easy-b0099",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3420,7 +4215,7 @@
     "answer_verification": "vertex (2,-11)"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0081",
+    "question_id": "sat-math-quadratics-easy-b0100",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3465,7 +4260,7 @@
     "answer_verification": "roots 7,4"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0082",
+    "question_id": "sat-math-quadratics-easy-b0101",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3510,7 +4305,7 @@
     "answer_verification": "val=13"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0083",
+    "question_id": "sat-math-quadratics-easy-b0102",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3555,7 +4350,7 @@
     "answer_verification": "val=-3"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0084",
+    "question_id": "sat-math-quadratics-easy-b0103",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3600,7 +4395,7 @@
     "answer_verification": "val=-3"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0085",
+    "question_id": "sat-math-quadratics-easy-b0104",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3645,7 +4440,7 @@
     "answer_verification": "val=-2"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0086",
+    "question_id": "sat-math-quadratics-easy-b0105",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3675,7 +4470,7 @@
     "answer_verification": "x=46"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0087",
+    "question_id": "sat-math-quadratics-easy-b0106",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3720,7 +4515,7 @@
     "answer_verification": "vertex (0,-14)"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0088",
+    "question_id": "sat-math-quadratics-easy-b0107",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3765,7 +4560,7 @@
     "answer_verification": "roots 8,-8"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0089",
+    "question_id": "sat-math-quadratics-easy-b0108",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3810,7 +4605,7 @@
     "answer_verification": "val=11"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0090",
+    "question_id": "sat-math-quadratics-easy-b0109",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3840,7 +4635,7 @@
     "answer_verification": "x=15"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0091",
+    "question_id": "sat-math-quadratics-easy-b0110",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3870,7 +4665,7 @@
     "answer_verification": "x=56"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0092",
+    "question_id": "sat-math-quadratics-easy-b0111",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3915,7 +4710,7 @@
     "answer_verification": "roots 3,-7"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0093",
+    "question_id": "sat-math-quadratics-easy-b0112",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3960,7 +4755,7 @@
     "answer_verification": "(x + 3)² − 16"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0094",
+    "question_id": "sat-math-quadratics-easy-b0113",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4005,7 +4800,7 @@
     "answer_verification": "val=15"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0095",
+    "question_id": "sat-math-quadratics-easy-b0114",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4050,7 +4845,7 @@
     "answer_verification": "val=50"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0096",
+    "question_id": "sat-math-quadratics-easy-b0115",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4095,7 +4890,7 @@
     "answer_verification": "(x − 3)² + 13"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0097",
+    "question_id": "sat-math-quadratics-easy-b0116",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4140,7 +4935,7 @@
     "answer_verification": "val=53"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0098",
+    "question_id": "sat-math-quadratics-easy-b0117",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4185,7 +4980,7 @@
     "answer_verification": "roots -5,7"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0099",
+    "question_id": "sat-math-quadratics-easy-b0118",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4230,7 +5025,7 @@
     "answer_verification": "(x − 8)² − 5"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0100",
+    "question_id": "sat-math-quadratics-easy-b0119",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4275,7 +5070,7 @@
     "answer_verification": "val=10"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0101",
+    "question_id": "sat-math-quadratics-easy-b0120",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4320,7 +5115,7 @@
     "answer_verification": "roots 9,1"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0102",
+    "question_id": "sat-math-quadratics-easy-b0121",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4365,7 +5160,7 @@
     "answer_verification": "(x + 8)² + 10"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0103",
+    "question_id": "sat-math-quadratics-easy-b0122",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4410,7 +5205,7 @@
     "answer_verification": "val=12"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0104",
+    "question_id": "sat-math-quadratics-easy-b0123",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4455,7 +5250,7 @@
     "answer_verification": "val=-7"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0105",
+    "question_id": "sat-math-quadratics-easy-b0124",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4500,7 +5295,7 @@
     "answer_verification": "(x + 7)² + 14"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0106",
+    "question_id": "sat-math-quadratics-easy-b0125",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4545,7 +5340,7 @@
     "answer_verification": "roots -1,-9"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0107",
+    "question_id": "sat-math-quadratics-easy-b0126",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4590,7 +5385,7 @@
     "answer_verification": "val=12"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0108",
+    "question_id": "sat-math-quadratics-easy-b0127",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4635,7 +5430,7 @@
     "answer_verification": "val=-2"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0109",
+    "question_id": "sat-math-quadratics-easy-b0128",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4680,7 +5475,7 @@
     "answer_verification": "(x + 6)² − 11"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0110",
+    "question_id": "sat-math-quadratics-easy-b0129",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4725,7 +5520,7 @@
     "answer_verification": "vertex (7,-13)"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0111",
+    "question_id": "sat-math-quadratics-easy-b0130",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4770,7 +5565,7 @@
     "answer_verification": "val=44"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0112",
+    "question_id": "sat-math-quadratics-easy-b0131",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4815,7 +5610,7 @@
     "answer_verification": "val=6"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0113",
+    "question_id": "sat-math-quadratics-easy-b0132",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4860,7 +5655,7 @@
     "answer_verification": "roots -2,-8"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0114",
+    "question_id": "sat-math-quadratics-easy-b0133",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4905,7 +5700,7 @@
     "answer_verification": "val=6"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0115",
+    "question_id": "sat-math-quadratics-easy-b0134",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4950,7 +5745,7 @@
     "answer_verification": "val=-9"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0116",
+    "question_id": "sat-math-quadratics-easy-b0135",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4995,7 +5790,7 @@
     "answer_verification": "roots 3,4"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0117",
+    "question_id": "sat-math-quadratics-easy-b0136",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5025,7 +5820,7 @@
     "answer_verification": "x=47"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0118",
+    "question_id": "sat-math-quadratics-easy-b0137",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5055,7 +5850,7 @@
     "answer_verification": "x=25"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0119",
+    "question_id": "sat-math-quadratics-easy-b0138",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5066,26 +5861,26 @@
     "version": "1.0.0",
     "question_type": "student_produced",
     "subskill": "roots",
-    "prompt": "What is the positive solution to the equation x² = 1156?",
+    "prompt": "If (x − 5)(x + 5) = 0 and x > 0, what is the value of x?",
     "answer": {
       "type": "numeric",
-      "value": 34,
+      "value": 5,
       "accepted": [
-        "34"
+        "5"
       ],
       "tolerance": 0.0
     },
-    "explanation": "x² = 1156, so x = 34.",
+    "explanation": "x² = 25, so x = 5.",
     "estimated_time_seconds": 85,
     "tags": [
       "quadratics",
       "grid-in",
       "family:q_gridin"
     ],
-    "answer_verification": "x=34"
+    "answer_verification": "x=5"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0120",
+    "question_id": "sat-math-quadratics-easy-b0139",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5095,87 +5890,42 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "vertex",
-    "prompt": "Which of the following is equivalent to x² + 16x + 84?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "(x − 8)² + 20",
-        "rationale": "The sign inside the parentheses is wrong: (x − h)² expands to x² − 2hx + h²."
-      },
-      {
-        "id": "B",
-        "text": "(x + 8)² + 84",
-        "rationale": "Subtract h² = 64 from the constant."
-      },
-      {
-        "id": "C",
-        "text": "(x + 8)² − 20",
-        "rationale": "Check the sign of the constant after completing the square."
-      },
-      {
-        "id": "D",
-        "text": "(x + 8)² + 20",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "x² + 16x = (x + 8)² − 64; so the expression is (x + 8)² + 84 − 64 = (x + 8)² + 20.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "quadratics",
-      "vertex-form",
-      "family:q_complete_square"
-    ],
-    "answer_verification": "(x + 8)² + 20"
-  },
-  {
-    "question_id": "sat-math-quadratics-easy-b0121",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "quadratics",
-    "lesson_id": "sat-math-quadratics-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multi_step_math",
     "subskill": "roots",
-    "prompt": "The length of a rectangle is 6 more than its width, and its area is 216. What is the width of the rectangle?",
+    "prompt": "The graph of y = (x + 8)(x + 6) in the xy-plane has x-intercepts at x = p and x = q. What is the value of p + q?",
     "choices": [
       {
         "id": "A",
-        "text": "13",
-        "rationale": "Check: 13·19 ≠ 216."
-      },
-      {
-        "id": "B",
-        "text": "12",
+        "text": "-14",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "-2",
+        "rationale": "Add the intercepts; don't subtract."
+      },
+      {
         "id": "C",
-        "text": "18",
-        "rationale": "That is the length."
+        "text": "48",
+        "rationale": "That is the product of the intercepts (the y-intercept)."
       },
       {
         "id": "D",
-        "text": "36",
-        "rationale": "Set up w(w + k) = A; don't divide the area by 6."
+        "text": "14",
+        "rationale": "Each factor x − r is 0 at x = r, not −r."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "w(w + 6) = 216 → w² + 6w − 216 = 0 → (w − 12)(w + 18) = 0 → w = 12.",
-    "estimated_time_seconds": 95,
+    "correct_choice": "A",
+    "explanation": "The x-intercepts are where each factor is 0: x = −8 and x = −6; their sum is −14.",
+    "estimated_time_seconds": 80,
     "tags": [
       "quadratics",
-      "word-problem",
-      "family:q_word"
+      "intercepts",
+      "family:q_intercepts"
     ],
-    "answer_verification": "val=12"
+    "answer_verification": "roots -8,-6"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0122",
+    "question_id": "sat-math-quadratics-easy-b0140",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5185,42 +5935,42 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "vertex",
-    "prompt": "Which of the following is equivalent to x² + 4x + 17?",
+    "subskill": "roots",
+    "prompt": "If x² = 900 and x > 0, what is the value of x?",
     "choices": [
       {
         "id": "A",
-        "text": "(x − 2)² + 13",
-        "rationale": "The sign inside the parentheses is wrong: (x − h)² expands to x² − 2hx + h²."
-      },
-      {
-        "id": "B",
-        "text": "(x + 2)² + 13",
+        "text": "30",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "-30",
+        "rationale": "The question asks for the positive solution."
+      },
+      {
         "id": "C",
-        "text": "(x + 2)² + 17",
-        "rationale": "Subtract h² = 4 from the constant."
+        "text": "60",
+        "rationale": "Recheck: (60)² = 3600, not 900."
       },
       {
         "id": "D",
-        "text": "(x + 2)² − 13",
-        "rationale": "Check the sign of the constant after completing the square."
+        "text": "450",
+        "rationale": "Halving is not the inverse of squaring."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "x² + 4x = (x + 2)² − 4; so the expression is (x + 2)² + 17 − 4 = (x + 2)² + 13.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "A",
+    "explanation": "x = √900 = 30 (taking the positive root).",
+    "estimated_time_seconds": 75,
     "tags": [
       "quadratics",
-      "vertex-form",
-      "family:q_complete_square"
+      "square-root",
+      "family:q_square_root"
     ],
-    "answer_verification": "(x + 2)² + 13"
+    "answer_verification": "val=30"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0123",
+    "question_id": "sat-math-quadratics-easy-b0141",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5230,42 +5980,42 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "vertex",
-    "prompt": "Which of the following is equivalent to x² − 2x + 7?",
+    "subskill": "roots",
+    "prompt": "The graph of y = (x − 8)(x + 6) in the xy-plane has x-intercepts at x = p and x = q. What is the value of p + q?",
     "choices": [
       {
         "id": "A",
-        "text": "(x + 1)² + 6",
-        "rationale": "The sign inside the parentheses is wrong: (x − h)² expands to x² − 2hx + h²."
-      },
-      {
-        "id": "B",
-        "text": "(x − 1)² + 6",
+        "text": "2",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "14",
+        "rationale": "Add the intercepts; don't subtract."
+      },
+      {
         "id": "C",
-        "text": "(x − 1)² − 6",
-        "rationale": "Check the sign of the constant after completing the square."
+        "text": "-2",
+        "rationale": "Each factor x − r is 0 at x = r, not −r."
       },
       {
         "id": "D",
-        "text": "(x − 1)² + 7",
-        "rationale": "Subtract h² = 1 from the constant."
+        "text": "-48",
+        "rationale": "That is the product of the intercepts (the y-intercept)."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "x² − 2x = (x − 1)² − 1; so the expression is (x − 1)² + 7 − 1 = (x − 1)² + 6.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "A",
+    "explanation": "The x-intercepts are where each factor is 0: x = 8 and x = −6; their sum is 2.",
+    "estimated_time_seconds": 80,
     "tags": [
       "quadratics",
-      "vertex-form",
-      "family:q_complete_square"
+      "intercepts",
+      "family:q_intercepts"
     ],
-    "answer_verification": "(x − 1)² + 6"
+    "answer_verification": "roots 8,-6"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0124",
+    "question_id": "sat-math-quadratics-easy-b0142",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5275,87 +6025,87 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "vertex",
-    "prompt": "Which of the following is equivalent to x² + 16x + 50?",
+    "subskill": "roots",
+    "prompt": "The graph of y = (x − 8)(x + 7) in the xy-plane has x-intercepts at x = p and x = q. What is the value of p + q?",
     "choices": [
       {
         "id": "A",
-        "text": "(x + 8)² + 14",
-        "rationale": "Check the sign of the constant after completing the square."
+        "text": "-56",
+        "rationale": "That is the product of the intercepts (the y-intercept)."
       },
       {
         "id": "B",
-        "text": "(x − 8)² − 14",
-        "rationale": "The sign inside the parentheses is wrong: (x − h)² expands to x² − 2hx + h²."
+        "text": "-1",
+        "rationale": "Each factor x − r is 0 at x = r, not −r."
       },
       {
         "id": "C",
-        "text": "(x + 8)² − 14",
-        "rationale": "Correct."
+        "text": "15",
+        "rationale": "Add the intercepts; don't subtract."
       },
       {
         "id": "D",
-        "text": "(x + 8)² + 50",
-        "rationale": "Subtract h² = 64 from the constant."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "x² + 16x = (x + 8)² − 64; so the expression is (x + 8)² + 50 − 64 = (x + 8)² − 14.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "quadratics",
-      "vertex-form",
-      "family:q_complete_square"
-    ],
-    "answer_verification": "(x + 8)² − 14"
-  },
-  {
-    "question_id": "sat-math-quadratics-easy-b0125",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "quadratics",
-    "lesson_id": "sat-math-quadratics-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "vertex",
-    "prompt": "Which of the following is equivalent to x² − 8x + 8?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "(x − 4)² + 8",
-        "rationale": "Subtract h² = 16 from the constant."
-      },
-      {
-        "id": "B",
-        "text": "(x − 8)² − 8",
-        "rationale": "Half of the x-coefficient goes inside the parentheses."
-      },
-      {
-        "id": "C",
-        "text": "(x + 4)² − 8",
-        "rationale": "The sign inside the parentheses is wrong: (x − h)² expands to x² − 2hx + h²."
-      },
-      {
-        "id": "D",
-        "text": "(x − 4)² − 8",
+        "text": "1",
         "rationale": "Correct."
       }
     ],
     "correct_choice": "D",
-    "explanation": "x² − 8x = (x − 4)² − 16; so the expression is (x − 4)² + 8 − 16 = (x − 4)² − 8.",
+    "explanation": "The x-intercepts are where each factor is 0: x = 8 and x = −7; their sum is 1.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "quadratics",
+      "intercepts",
+      "family:q_intercepts"
+    ],
+    "answer_verification": "roots 8,-7"
+  },
+  {
+    "question_id": "sat-math-quadratics-easy-b0143",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "quadratics",
+    "lesson_id": "sat-math-quadratics-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "roots",
+    "prompt": "What is the greater of the two solutions to the equation (x − 5)(x − 3) = 0?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-5",
+        "rationale": "Each factor x − r is 0 when x = r, not −r."
+      },
+      {
+        "id": "B",
+        "text": "8",
+        "rationale": "That is the sum of the solutions."
+      },
+      {
+        "id": "C",
+        "text": "3",
+        "rationale": "That is the lesser solution."
+      },
+      {
+        "id": "D",
+        "text": "5",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "A product is 0 when a factor is 0: x = 5 or x = 3. The greater is 5.",
     "estimated_time_seconds": 85,
     "tags": [
       "quadratics",
-      "vertex-form",
-      "family:q_complete_square"
+      "factoring",
+      "family:q_roots"
     ],
-    "answer_verification": "(x − 4)² − 8"
+    "answer_verification": "val=5"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0126",
+    "question_id": "sat-math-quadratics-easy-b0144",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5400,7 +6150,7 @@
     "answer_verification": "val=10"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0127",
+    "question_id": "sat-math-quadratics-easy-b0145",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5445,7 +6195,7 @@
     "answer_verification": "val=11"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0128",
+    "question_id": "sat-math-quadratics-easy-b0146",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5490,7 +6240,7 @@
     "answer_verification": "val=-6"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0129",
+    "question_id": "sat-math-quadratics-easy-b0147",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5535,7 +6285,7 @@
     "answer_verification": "val=-8"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0130",
+    "question_id": "sat-math-quadratics-easy-b0148",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5580,7 +6330,7 @@
     "answer_verification": "val=-5"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0131",
+    "question_id": "sat-math-quadratics-easy-b0149",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5625,7 +6375,7 @@
     "answer_verification": "(x + 1)² − 4"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0132",
+    "question_id": "sat-math-quadratics-easy-b0150",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5670,7 +6420,7 @@
     "answer_verification": "val=32"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0133",
+    "question_id": "sat-math-quadratics-easy-b0151",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5715,7 +6465,7 @@
     "answer_verification": "(x − 9)² + 4"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0134",
+    "question_id": "sat-math-quadratics-easy-b0152",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5760,7 +6510,7 @@
     "answer_verification": "val=6"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0135",
+    "question_id": "sat-math-quadratics-easy-b0153",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5805,7 +6555,7 @@
     "answer_verification": "val=15"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0136",
+    "question_id": "sat-math-quadratics-easy-b0154",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5850,7 +6600,7 @@
     "answer_verification": "val=19"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0137",
+    "question_id": "sat-math-quadratics-easy-b0155",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5895,7 +6645,7 @@
     "answer_verification": "val=-8"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0138",
+    "question_id": "sat-math-quadratics-easy-b0156",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5925,7 +6675,7 @@
     "answer_verification": "x=22"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0139",
+    "question_id": "sat-math-quadratics-easy-b0157",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5955,7 +6705,7 @@
     "answer_verification": "x=20"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0140",
+    "question_id": "sat-math-quadratics-easy-b0158",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5985,7 +6735,7 @@
     "answer_verification": "x=44"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0141",
+    "question_id": "sat-math-quadratics-easy-b0159",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6030,7 +6780,7 @@
     "answer_verification": "roots 6,-5"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0142",
+    "question_id": "sat-math-quadratics-easy-b0160",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6075,7 +6825,7 @@
     "answer_verification": "val=-9"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0143",
+    "question_id": "sat-math-quadratics-easy-b0161",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6120,7 +6870,7 @@
     "answer_verification": "(x − 2)² + 1"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0144",
+    "question_id": "sat-math-quadratics-easy-b0162",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6165,7 +6915,7 @@
     "answer_verification": "(x − 3)² + 20"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0145",
+    "question_id": "sat-math-quadratics-easy-b0163",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6195,7 +6945,7 @@
     "answer_verification": "x=58"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0146",
+    "question_id": "sat-math-quadratics-easy-b0164",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6240,7 +6990,7 @@
     "answer_verification": "vertex (-4,-9)"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0147",
+    "question_id": "sat-math-quadratics-easy-b0165",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6285,7 +7035,7 @@
     "answer_verification": "val=6"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0148",
+    "question_id": "sat-math-quadratics-easy-b0166",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6330,7 +7080,7 @@
     "answer_verification": "roots -4,-5"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0149",
+    "question_id": "sat-math-quadratics-easy-b0167",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6360,7 +7110,7 @@
     "answer_verification": "x=8"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0150",
+    "question_id": "sat-math-quadratics-easy-b0168",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6405,7 +7155,7 @@
     "answer_verification": "vertex (-6,3)"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0151",
+    "question_id": "sat-math-quadratics-easy-b0169",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6416,41 +7166,41 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "roots",
-    "prompt": "If x² = 324, what is the greater of the two solutions?",
+    "prompt": "If x² = 625, what is the greater of the two solutions?",
     "choices": [
       {
         "id": "A",
-        "text": "36",
-        "rationale": "Recheck: (36)² = 1296, not 324."
+        "text": "50",
+        "rationale": "Recheck: (50)² = 2500, not 625."
       },
       {
         "id": "B",
-        "text": "162",
+        "text": "312",
         "rationale": "Halving is not the inverse of squaring."
       },
       {
         "id": "C",
-        "text": "18",
-        "rationale": "Correct."
+        "text": "-25",
+        "rationale": "The question asks for the positive solution."
       },
       {
         "id": "D",
-        "text": "-18",
-        "rationale": "The question asks for the positive solution."
+        "text": "25",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "x = √324 = 18 (taking the positive root).",
+    "correct_choice": "D",
+    "explanation": "x = √625 = 25 (taking the positive root).",
     "estimated_time_seconds": 75,
     "tags": [
       "quadratics",
       "square-root",
       "family:q_square_root"
     ],
-    "answer_verification": "val=18"
+    "answer_verification": "val=25"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0152",
+    "question_id": "sat-math-quadratics-easy-b0170",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6459,178 +7209,43 @@
     "lesson_id": "sat-math-quadratics-easy",
     "difficulty": "easy",
     "version": "1.0.0",
-    "question_type": "multi_step_math",
+    "question_type": "multiple_choice",
     "subskill": "roots",
-    "prompt": "The length of a rectangle is 5 more than its width, and its area is 266. What is the width of the rectangle?",
+    "prompt": "What is the positive solution to x² − 400 = 0?",
     "choices": [
       {
         "id": "A",
-        "text": "14",
+        "text": "20",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "15",
-        "rationale": "Check: 15·20 ≠ 266."
+        "text": "-20",
+        "rationale": "The question asks for the positive solution."
       },
       {
         "id": "C",
-        "text": "19",
-        "rationale": "That is the length."
+        "text": "200",
+        "rationale": "Halving is not the inverse of squaring."
       },
       {
         "id": "D",
-        "text": "16",
-        "rationale": "Set up w(w + k) = A; don't divide the area by 5."
+        "text": "40",
+        "rationale": "Recheck: (40)² = 1600, not 400."
       }
     ],
     "correct_choice": "A",
-    "explanation": "w(w + 5) = 266 → w² + 5w − 266 = 0 → (w − 14)(w + 19) = 0 → w = 14.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "quadratics",
-      "word-problem",
-      "family:q_word"
-    ],
-    "answer_verification": "val=14"
-  },
-  {
-    "question_id": "sat-math-quadratics-easy-b0153",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "quadratics",
-    "lesson_id": "sat-math-quadratics-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "roots",
-    "prompt": "If x² = 784 and x > 0, what is the value of x?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "56",
-        "rationale": "Recheck: (56)² = 3136, not 784."
-      },
-      {
-        "id": "B",
-        "text": "392",
-        "rationale": "Halving is not the inverse of squaring."
-      },
-      {
-        "id": "C",
-        "text": "28",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "-28",
-        "rationale": "The question asks for the positive solution."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "x = √784 = 28 (taking the positive root).",
+    "explanation": "x = √400 = 20 (taking the positive root).",
     "estimated_time_seconds": 75,
     "tags": [
       "quadratics",
       "square-root",
       "family:q_square_root"
     ],
-    "answer_verification": "val=28"
+    "answer_verification": "val=20"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0154",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "quadratics",
-    "lesson_id": "sat-math-quadratics-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "roots",
-    "prompt": "What is the lesser of the two solutions to the equation (x + 7)(x + 5) = 0?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-5",
-        "rationale": "That is the greater solution."
-      },
-      {
-        "id": "B",
-        "text": "-7",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "7",
-        "rationale": "Each factor x − r is 0 when x = r, not −r."
-      },
-      {
-        "id": "D",
-        "text": "-12",
-        "rationale": "That is the sum of the solutions."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "A product is 0 when a factor is 0: x = −7 or x = −5. The lesser is −7.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "quadratics",
-      "factoring",
-      "family:q_roots"
-    ],
-    "answer_verification": "val=-7"
-  },
-  {
-    "question_id": "sat-math-quadratics-easy-b0155",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "quadratics",
-    "lesson_id": "sat-math-quadratics-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "roots",
-    "prompt": "The graph of y = (x + 6)(x − 5) in the xy-plane has x-intercepts at x = p and x = q. What is the value of p + q?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-30",
-        "rationale": "That is the product of the intercepts (the y-intercept)."
-      },
-      {
-        "id": "B",
-        "text": "1",
-        "rationale": "Each factor x − r is 0 at x = r, not −r."
-      },
-      {
-        "id": "C",
-        "text": "-1",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "-11",
-        "rationale": "Add the intercepts; don't subtract."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "The x-intercepts are where each factor is 0: x = −6 and x = 5; their sum is −1.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "quadratics",
-      "intercepts",
-      "family:q_intercepts"
-    ],
-    "answer_verification": "roots -6,5"
-  },
-  {
-    "question_id": "sat-math-quadratics-easy-b0156",
+    "question_id": "sat-math-quadratics-easy-b0171",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6641,41 +7256,176 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "vertex",
-    "prompt": "The function f is defined by f(x) = −(x + 9)² + 10. What is the maximum value of f?",
+    "prompt": "The function f is defined by f(x) = −(x − 3)² − 13. At what value of x does f reach its maximum?",
     "choices": [
       {
         "id": "A",
-        "text": "9",
-        "rationale": "That is the opposite of the vertex's x-coordinate."
+        "text": "13",
+        "rationale": "That is the opposite of the extreme value."
       },
       {
         "id": "B",
-        "text": "-9",
-        "rationale": "That is the x-coordinate of the vertex, not the extreme value."
+        "text": "-13",
+        "rationale": "That is the extreme value, not where it occurs."
       },
       {
         "id": "C",
-        "text": "-10",
-        "rationale": "The vertical shift k keeps its sign in the output."
+        "text": "-3",
+        "rationale": "x − h = 0 when x = h, so the sign flips from what's written."
       },
       {
         "id": "D",
-        "text": "10",
+        "text": "3",
         "rationale": "Correct."
       }
     ],
     "correct_choice": "D",
-    "explanation": "In vertex form the vertex is (−9, 10); the maximum value is 10.",
+    "explanation": "The vertex of (x − h)² + k is at x = h; here h = 3.",
     "estimated_time_seconds": 80,
     "tags": [
       "quadratics",
       "vertex",
       "family:q_vertex"
     ],
-    "answer_verification": "vertex (-9,10)"
+    "answer_verification": "vertex (3,-13)"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0157",
+    "question_id": "sat-math-quadratics-easy-b0172",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "quadratics",
+    "lesson_id": "sat-math-quadratics-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multi_step_math",
+    "subskill": "roots",
+    "prompt": "The length of a rectangle is 8 more than its width, and its area is 153. What is the width of the rectangle?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "11",
+        "rationale": "Set up w(w + k) = A; don't divide the area by 8."
+      },
+      {
+        "id": "B",
+        "text": "10",
+        "rationale": "Check: 10·18 ≠ 153."
+      },
+      {
+        "id": "C",
+        "text": "9",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "17",
+        "rationale": "That is the length."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "w(w + 8) = 153 → w² + 8w − 153 = 0 → (w − 9)(w + 17) = 0 → w = 9.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "quadratics",
+      "word-problem",
+      "family:q_word"
+    ],
+    "answer_verification": "val=9"
+  },
+  {
+    "question_id": "sat-math-quadratics-easy-b0173",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "quadratics",
+    "lesson_id": "sat-math-quadratics-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multi_step_math",
+    "subskill": "roots",
+    "prompt": "The length of a rectangle is 3 more than its width, and its area is 130. What is the width of the rectangle?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "13",
+        "rationale": "That is the length."
+      },
+      {
+        "id": "B",
+        "text": "11",
+        "rationale": "Check: 11·14 ≠ 130."
+      },
+      {
+        "id": "C",
+        "text": "10",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "12",
+        "rationale": "Set up w(w + k) = A; don't divide the area by 3."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "w(w + 3) = 130 → w² + 3w − 130 = 0 → (w − 10)(w + 13) = 0 → w = 10.",
+    "estimated_time_seconds": 95,
+    "tags": [
+      "quadratics",
+      "word-problem",
+      "family:q_word"
+    ],
+    "answer_verification": "val=10"
+  },
+  {
+    "question_id": "sat-math-quadratics-easy-b0174",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "quadratics",
+    "lesson_id": "sat-math-quadratics-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "roots",
+    "prompt": "The graph of y = (x + 0)(x + 5) in the xy-plane has x-intercepts at x = p and x = q. What is the value of p + q?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-8",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      },
+      {
+        "id": "B",
+        "text": "5",
+        "rationale": "Each factor x − r is 0 at x = r, not −r."
+      },
+      {
+        "id": "C",
+        "text": "0",
+        "rationale": "That is the product of the intercepts (the y-intercept)."
+      },
+      {
+        "id": "D",
+        "text": "-5",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "The x-intercepts are where each factor is 0: x = 0 and x = −5; their sum is −5.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "quadratics",
+      "intercepts",
+      "family:q_intercepts"
+    ],
+    "answer_verification": "roots 0,-5"
+  },
+  {
+    "question_id": "sat-math-quadratics-easy-b0175",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6720,7 +7470,7 @@
     "answer_verification": "roots 5,3"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0158",
+    "question_id": "sat-math-quadratics-easy-b0176",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6750,7 +7500,7 @@
     "answer_verification": "x=6"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0159",
+    "question_id": "sat-math-quadratics-easy-b0177",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6795,7 +7545,7 @@
     "answer_verification": "val=5"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0160",
+    "question_id": "sat-math-quadratics-easy-b0178",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6825,7 +7575,7 @@
     "answer_verification": "x=38"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0161",
+    "question_id": "sat-math-quadratics-easy-b0179",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6836,41 +7586,86 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "roots",
-    "prompt": "If x² = 900 and x > 0, what is the value of x?",
+    "prompt": "If x² = 25, what is the greater of the two solutions?",
     "choices": [
       {
         "id": "A",
-        "text": "-30",
-        "rationale": "The question asks for the positive solution."
-      },
-      {
-        "id": "B",
-        "text": "30",
+        "text": "5",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "-5",
+        "rationale": "The question asks for the positive solution."
+      },
+      {
         "id": "C",
-        "text": "450",
-        "rationale": "Halving is not the inverse of squaring."
+        "text": "10",
+        "rationale": "Recheck: (10)² = 100, not 25."
       },
       {
         "id": "D",
-        "text": "60",
-        "rationale": "Recheck: (60)² = 3600, not 900."
+        "text": "12",
+        "rationale": "Halving is not the inverse of squaring."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "x = √900 = 30 (taking the positive root).",
+    "correct_choice": "A",
+    "explanation": "x = √25 = 5 (taking the positive root).",
     "estimated_time_seconds": 75,
     "tags": [
       "quadratics",
       "square-root",
       "family:q_square_root"
     ],
-    "answer_verification": "val=30"
+    "answer_verification": "val=5"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0162",
+    "question_id": "sat-math-quadratics-easy-b0180",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "quadratics",
+    "lesson_id": "sat-math-quadratics-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "roots",
+    "prompt": "What is the greater of the two solutions to the equation (x − 5)(x + 1) = 0?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "4",
+        "rationale": "That is the sum of the solutions."
+      },
+      {
+        "id": "B",
+        "text": "5",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "-1",
+        "rationale": "That is the lesser solution."
+      },
+      {
+        "id": "D",
+        "text": "-5",
+        "rationale": "Each factor x − r is 0 when x = r, not −r."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "A product is 0 when a factor is 0: x = 5 or x = −1. The greater is 5.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "quadratics",
+      "factoring",
+      "family:q_roots"
+    ],
+    "answer_verification": "val=5"
+  },
+  {
+    "question_id": "sat-math-quadratics-easy-b0181",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6881,41 +7676,41 @@
     "version": "1.0.0",
     "question_type": "multi_step_math",
     "subskill": "roots",
-    "prompt": "The length of a rectangle is 9 more than its width, and its area is 190. What is the width of the rectangle?",
+    "prompt": "The length of a rectangle is 6 more than its width, and its area is 216. What is the width of the rectangle?",
     "choices": [
       {
         "id": "A",
-        "text": "12",
-        "rationale": "Set up w(w + k) = A; don't divide the area by 9."
+        "text": "36",
+        "rationale": "Set up w(w + k) = A; don't divide the area by 6."
       },
       {
         "id": "B",
-        "text": "10",
-        "rationale": "Correct."
+        "text": "13",
+        "rationale": "Check: 13·19 ≠ 216."
       },
       {
         "id": "C",
-        "text": "11",
-        "rationale": "Check: 11·20 ≠ 190."
+        "text": "12",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "19",
+        "text": "18",
         "rationale": "That is the length."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "w(w + 9) = 190 → w² + 9w − 190 = 0 → (w − 10)(w + 19) = 0 → w = 10.",
+    "correct_choice": "C",
+    "explanation": "w(w + 6) = 216 → w² + 6w − 216 = 0 → (w − 12)(w + 18) = 0 → w = 12.",
     "estimated_time_seconds": 95,
     "tags": [
       "quadratics",
       "word-problem",
       "family:q_word"
     ],
-    "answer_verification": "val=10"
+    "answer_verification": "val=12"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0163",
+    "question_id": "sat-math-quadratics-easy-b0182",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6926,131 +7721,41 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "roots",
-    "prompt": "What is the greater of the two solutions to the equation (x + 2)(x + 0) = 0?",
+    "prompt": "If x² = 196 and x > 0, what is the value of x?",
     "choices": [
       {
         "id": "A",
-        "text": "0",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "-1",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "C",
-        "text": "3",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "D",
-        "text": "-2",
-        "rationale": "That is the lesser solution."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "A product is 0 when a factor is 0: x = −2 or x = 0. The greater is 0.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "quadratics",
-      "factoring",
-      "family:q_roots"
-    ],
-    "answer_verification": "val=0"
-  },
-  {
-    "question_id": "sat-math-quadratics-easy-b0164",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "quadratics",
-    "lesson_id": "sat-math-quadratics-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "roots",
-    "prompt": "If x² = 36, what is the greater of the two solutions?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "18",
+        "text": "98",
         "rationale": "Halving is not the inverse of squaring."
       },
       {
         "id": "B",
-        "text": "6",
-        "rationale": "Correct."
+        "text": "28",
+        "rationale": "Recheck: (28)² = 784, not 196."
       },
       {
         "id": "C",
-        "text": "-6",
+        "text": "-14",
         "rationale": "The question asks for the positive solution."
       },
       {
         "id": "D",
-        "text": "12",
-        "rationale": "Recheck: (12)² = 144, not 36."
+        "text": "14",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "x = √36 = 6 (taking the positive root).",
+    "correct_choice": "D",
+    "explanation": "x = √196 = 14 (taking the positive root).",
     "estimated_time_seconds": 75,
     "tags": [
       "quadratics",
       "square-root",
       "family:q_square_root"
     ],
-    "answer_verification": "val=6"
+    "answer_verification": "val=14"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0165",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "quadratics",
-    "lesson_id": "sat-math-quadratics-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "vertex",
-    "prompt": "The function f is defined by f(x) = −(x − 2)² − 5. At what value of x does f reach its maximum?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-2",
-        "rationale": "x − h = 0 when x = h, so the sign flips from what's written."
-      },
-      {
-        "id": "B",
-        "text": "5",
-        "rationale": "That is the opposite of the extreme value."
-      },
-      {
-        "id": "C",
-        "text": "2",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "-5",
-        "rationale": "That is the extreme value, not where it occurs."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "The vertex of (x − h)² + k is at x = h; here h = 2.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "quadratics",
-      "vertex",
-      "family:q_vertex"
-    ],
-    "answer_verification": "vertex (2,-5)"
-  },
-  {
-    "question_id": "sat-math-quadratics-easy-b0166",
+    "question_id": "sat-math-quadratics-easy-b0183",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7061,86 +7766,41 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "roots",
-    "prompt": "What is the greater of the two solutions to the equation (x + 8)(x + 2) = 0?",
+    "prompt": "The graph of y = (x + 8)(x + 1) in the xy-plane has x-intercepts at x = p and x = q. What is the value of p + q?",
     "choices": [
       {
         "id": "A",
-        "text": "-2",
-        "rationale": "Correct."
+        "text": "-7",
+        "rationale": "Add the intercepts; don't subtract."
       },
       {
         "id": "B",
-        "text": "-10",
-        "rationale": "That is the sum of the solutions."
-      },
-      {
-        "id": "C",
-        "text": "2",
-        "rationale": "Each factor x − r is 0 when x = r, not −r."
-      },
-      {
-        "id": "D",
-        "text": "-8",
-        "rationale": "That is the lesser solution."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "A product is 0 when a factor is 0: x = −8 or x = −2. The greater is −2.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "quadratics",
-      "factoring",
-      "family:q_roots"
-    ],
-    "answer_verification": "val=-2"
-  },
-  {
-    "question_id": "sat-math-quadratics-easy-b0167",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "quadratics",
-    "lesson_id": "sat-math-quadratics-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "vertex",
-    "prompt": "Which of the following is equivalent to x² − 8x − 2?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "(x − 4)² + 18",
-        "rationale": "Check the sign of the constant after completing the square."
-      },
-      {
-        "id": "B",
-        "text": "(x − 4)² − 2",
-        "rationale": "Subtract h² = 16 from the constant."
-      },
-      {
-        "id": "C",
-        "text": "(x − 4)² − 18",
+        "text": "-9",
         "rationale": "Correct."
       },
       {
+        "id": "C",
+        "text": "8",
+        "rationale": "That is the product of the intercepts (the y-intercept)."
+      },
+      {
         "id": "D",
-        "text": "(x + 4)² − 18",
-        "rationale": "The sign inside the parentheses is wrong: (x − h)² expands to x² − 2hx + h²."
+        "text": "9",
+        "rationale": "Each factor x − r is 0 at x = r, not −r."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "x² − 8x = (x − 4)² − 16; so the expression is (x − 4)² − 2 − 16 = (x − 4)² − 18.",
-    "estimated_time_seconds": 85,
+    "correct_choice": "B",
+    "explanation": "The x-intercepts are where each factor is 0: x = −8 and x = −1; their sum is −9.",
+    "estimated_time_seconds": 80,
     "tags": [
       "quadratics",
-      "vertex-form",
-      "family:q_complete_square"
+      "intercepts",
+      "family:q_intercepts"
     ],
-    "answer_verification": "(x − 4)² − 18"
+    "answer_verification": "roots -8,-1"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0168",
+    "question_id": "sat-math-quadratics-easy-b0184",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7185,7 +7845,7 @@
     "answer_verification": "vertex (5,-11)"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0169",
+    "question_id": "sat-math-quadratics-easy-b0185",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7230,7 +7890,7 @@
     "answer_verification": "(x + 4)² + 1"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0170",
+    "question_id": "sat-math-quadratics-easy-b0186",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7275,7 +7935,7 @@
     "answer_verification": "val=37"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0171",
+    "question_id": "sat-math-quadratics-easy-b0187",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7320,7 +7980,7 @@
     "answer_verification": "val=5"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0172",
+    "question_id": "sat-math-quadratics-easy-b0188",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7365,7 +8025,7 @@
     "answer_verification": "roots -3,-7"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0173",
+    "question_id": "sat-math-quadratics-easy-b0189",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7376,86 +8036,41 @@
     "version": "1.0.0",
     "question_type": "multi_step_math",
     "subskill": "roots",
-    "prompt": "The length of a rectangle is 3 more than its width, and its area is 130. What is the width of the rectangle?",
+    "prompt": "The length of a rectangle is 2 more than its width, and its area is 24. What is the width of the rectangle?",
     "choices": [
       {
         "id": "A",
-        "text": "12",
-        "rationale": "Set up w(w + k) = A; don't divide the area by 3."
+        "text": "5",
+        "rationale": "Check: 5·7 ≠ 24."
       },
       {
         "id": "B",
-        "text": "10",
+        "text": "4",
         "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "11",
-        "rationale": "Check: 11·14 ≠ 130."
+        "text": "6",
+        "rationale": "That is the length."
       },
       {
         "id": "D",
-        "text": "13",
-        "rationale": "That is the length."
+        "text": "12",
+        "rationale": "Set up w(w + k) = A; don't divide the area by 2."
       }
     ],
     "correct_choice": "B",
-    "explanation": "w(w + 3) = 130 → w² + 3w − 130 = 0 → (w − 10)(w + 13) = 0 → w = 10.",
+    "explanation": "w(w + 2) = 24 → w² + 2w − 24 = 0 → (w − 4)(w + 6) = 0 → w = 4.",
     "estimated_time_seconds": 95,
     "tags": [
       "quadratics",
       "word-problem",
       "family:q_word"
     ],
-    "answer_verification": "val=10"
+    "answer_verification": "val=4"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0174",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "quadratics",
-    "lesson_id": "sat-math-quadratics-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "roots",
-    "prompt": "What is the lesser of the two solutions to the equation (x − 9)(x + 7) = 0?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "9",
-        "rationale": "That is the greater solution."
-      },
-      {
-        "id": "B",
-        "text": "-7",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "2",
-        "rationale": "That is the sum of the solutions."
-      },
-      {
-        "id": "D",
-        "text": "7",
-        "rationale": "Each factor x − r is 0 when x = r, not −r."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "A product is 0 when a factor is 0: x = 9 or x = −7. The lesser is −7.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "quadratics",
-      "factoring",
-      "family:q_roots"
-    ],
-    "answer_verification": "val=-7"
-  },
-  {
-    "question_id": "sat-math-quadratics-easy-b0175",
+    "question_id": "sat-math-quadratics-easy-b0190",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7500,7 +8115,7 @@
     "answer_verification": "val=9"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0176",
+    "question_id": "sat-math-quadratics-easy-b0191",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7545,7 +8160,7 @@
     "answer_verification": "val=14"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0177",
+    "question_id": "sat-math-quadratics-easy-b0192",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7590,7 +8205,7 @@
     "answer_verification": "val=59"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0178",
+    "question_id": "sat-math-quadratics-easy-b0193",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7635,7 +8250,7 @@
     "answer_verification": "(x − 4)² − 14"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0179",
+    "question_id": "sat-math-quadratics-easy-b0194",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7646,281 +8261,41 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "roots",
-    "prompt": "If x² = 729, what is the greater of the two solutions?",
+    "prompt": "What is the positive solution to x² − 3600 = 0?",
     "choices": [
       {
         "id": "A",
-        "text": "364",
-        "rationale": "Halving is not the inverse of squaring."
+        "text": "60",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "-27",
+        "text": "-60",
         "rationale": "The question asks for the positive solution."
       },
       {
         "id": "C",
-        "text": "54",
-        "rationale": "Recheck: (54)² = 2916, not 729."
+        "text": "120",
+        "rationale": "Recheck: (120)² = 14400, not 3600."
       },
       {
         "id": "D",
-        "text": "27",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "x = √729 = 27 (taking the positive root).",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "quadratics",
-      "square-root",
-      "family:q_square_root"
-    ],
-    "answer_verification": "val=27"
-  },
-  {
-    "question_id": "sat-math-quadratics-easy-b0180",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "quadratics",
-    "lesson_id": "sat-math-quadratics-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "roots",
-    "prompt": "If x² = 289, what is the greater of the two solutions?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "34",
-        "rationale": "Recheck: (34)² = 1156, not 289."
-      },
-      {
-        "id": "B",
-        "text": "144",
+        "text": "1800",
         "rationale": "Halving is not the inverse of squaring."
-      },
-      {
-        "id": "C",
-        "text": "17",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "-17",
-        "rationale": "The question asks for the positive solution."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "x = √289 = 17 (taking the positive root).",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "quadratics",
-      "square-root",
-      "family:q_square_root"
-    ],
-    "answer_verification": "val=17"
-  },
-  {
-    "question_id": "sat-math-quadratics-easy-b0181",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "quadratics",
-    "lesson_id": "sat-math-quadratics-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "student_produced",
-    "subskill": "roots",
-    "prompt": "If x² − 2500 = 0 and x > 0, what is the value of x?",
-    "answer": {
-      "type": "numeric",
-      "value": 50,
-      "accepted": [
-        "50"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "x² = 2500, so x = 50.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "quadratics",
-      "grid-in",
-      "family:q_gridin"
-    ],
-    "answer_verification": "x=50"
-  },
-  {
-    "question_id": "sat-math-quadratics-easy-b0182",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "quadratics",
-    "lesson_id": "sat-math-quadratics-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "vertex",
-    "prompt": "Which of the following is equivalent to x² − 14x + 29?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "(x − 7)² + 20",
-        "rationale": "Check the sign of the constant after completing the square."
-      },
-      {
-        "id": "B",
-        "text": "(x + 7)² − 20",
-        "rationale": "The sign inside the parentheses is wrong: (x − h)² expands to x² − 2hx + h²."
-      },
-      {
-        "id": "C",
-        "text": "(x − 7)² − 20",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "(x − 7)² + 29",
-        "rationale": "Subtract h² = 49 from the constant."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "x² − 14x = (x − 7)² − 49; so the expression is (x − 7)² + 29 − 49 = (x − 7)² − 20.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "quadratics",
-      "vertex-form",
-      "family:q_complete_square"
-    ],
-    "answer_verification": "(x − 7)² − 20"
-  },
-  {
-    "question_id": "sat-math-quadratics-easy-b0183",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "quadratics",
-    "lesson_id": "sat-math-quadratics-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "vertex",
-    "prompt": "Which of the following is equivalent to x² − 12x + 21?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "(x + 6)² − 15",
-        "rationale": "The sign inside the parentheses is wrong: (x − h)² expands to x² − 2hx + h²."
-      },
-      {
-        "id": "B",
-        "text": "(x − 6)² + 21",
-        "rationale": "Subtract h² = 36 from the constant."
-      },
-      {
-        "id": "C",
-        "text": "(x − 6)² + 15",
-        "rationale": "Check the sign of the constant after completing the square."
-      },
-      {
-        "id": "D",
-        "text": "(x − 6)² − 15",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "x² − 12x = (x − 6)² − 36; so the expression is (x − 6)² + 21 − 36 = (x − 6)² − 15.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "quadratics",
-      "vertex-form",
-      "family:q_complete_square"
-    ],
-    "answer_verification": "(x − 6)² − 15"
-  },
-  {
-    "question_id": "sat-math-quadratics-easy-b0184",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "quadratics",
-    "lesson_id": "sat-math-quadratics-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "student_produced",
-    "subskill": "roots",
-    "prompt": "What is the positive solution to the equation x² = 64?",
-    "answer": {
-      "type": "numeric",
-      "value": 8,
-      "accepted": [
-        "8"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "x² = 64, so x = 8.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "quadratics",
-      "grid-in",
-      "family:q_gridin"
-    ],
-    "answer_verification": "x=8"
-  },
-  {
-    "question_id": "sat-math-quadratics-easy-b0185",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "quadratics",
-    "lesson_id": "sat-math-quadratics-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "vertex",
-    "prompt": "Which of the following is equivalent to x² − 10x + 33?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "(x − 5)² + 8",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "(x − 5)² − 8",
-        "rationale": "Check the sign of the constant after completing the square."
-      },
-      {
-        "id": "C",
-        "text": "(x + 5)² + 8",
-        "rationale": "The sign inside the parentheses is wrong: (x − h)² expands to x² − 2hx + h²."
-      },
-      {
-        "id": "D",
-        "text": "(x − 5)² + 33",
-        "rationale": "Subtract h² = 25 from the constant."
       }
     ],
     "correct_choice": "A",
-    "explanation": "x² − 10x = (x − 5)² − 25; so the expression is (x − 5)² + 33 − 25 = (x − 5)² + 8.",
-    "estimated_time_seconds": 85,
+    "explanation": "x = √3600 = 60 (taking the positive root).",
+    "estimated_time_seconds": 75,
     "tags": [
       "quadratics",
-      "vertex-form",
-      "family:q_complete_square"
+      "square-root",
+      "family:q_square_root"
     ],
-    "answer_verification": "(x − 5)² + 8"
+    "answer_verification": "val=60"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0186",
+    "question_id": "sat-math-quadratics-easy-b0195",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7931,41 +8306,206 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "roots",
-    "prompt": "What is the lesser of the two solutions to the equation (x + 3)(x + 4) = 0?",
+    "prompt": "What is the greater of the two solutions to the equation (x + 0)(x − 4) = 0?",
     "choices": [
       {
         "id": "A",
-        "text": "-3",
-        "rationale": "That is the greater solution."
+        "text": "0",
+        "rationale": "That is the lesser solution."
       },
       {
         "id": "B",
-        "text": "-4",
+        "text": "4",
         "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "4",
+        "text": "-4",
         "rationale": "Each factor x − r is 0 when x = r, not −r."
       },
       {
         "id": "D",
-        "text": "-7",
-        "rationale": "That is the sum of the solutions."
+        "text": "-6",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
       }
     ],
     "correct_choice": "B",
-    "explanation": "A product is 0 when a factor is 0: x = −3 or x = −4. The lesser is −4.",
+    "explanation": "A product is 0 when a factor is 0: x = 0 or x = 4. The greater is 4.",
     "estimated_time_seconds": 85,
     "tags": [
       "quadratics",
       "factoring",
       "family:q_roots"
     ],
-    "answer_verification": "val=-4"
+    "answer_verification": "val=4"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0187",
+    "question_id": "sat-math-quadratics-easy-b0196",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "quadratics",
+    "lesson_id": "sat-math-quadratics-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "roots",
+    "prompt": "What is the positive solution to x² − 9 = 0?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "4",
+        "rationale": "Halving is not the inverse of squaring."
+      },
+      {
+        "id": "B",
+        "text": "6",
+        "rationale": "Recheck: (6)² = 36, not 9."
+      },
+      {
+        "id": "C",
+        "text": "3",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "-3",
+        "rationale": "The question asks for the positive solution."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "x = √9 = 3 (taking the positive root).",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "quadratics",
+      "square-root",
+      "family:q_square_root"
+    ],
+    "answer_verification": "val=3"
+  },
+  {
+    "question_id": "sat-math-quadratics-easy-b0197",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "quadratics",
+    "lesson_id": "sat-math-quadratics-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "roots",
+    "prompt": "What is the lesser of the two solutions to the equation (x − 7)(x + 5) = 0?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "7",
+        "rationale": "That is the greater solution."
+      },
+      {
+        "id": "B",
+        "text": "-5",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "2",
+        "rationale": "That is the sum of the solutions."
+      },
+      {
+        "id": "D",
+        "text": "5",
+        "rationale": "Each factor x − r is 0 when x = r, not −r."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "A product is 0 when a factor is 0: x = 7 or x = −5. The lesser is −5.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "quadratics",
+      "factoring",
+      "family:q_roots"
+    ],
+    "answer_verification": "val=-5"
+  },
+  {
+    "question_id": "sat-math-quadratics-easy-b0198",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "quadratics",
+    "lesson_id": "sat-math-quadratics-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "roots",
+    "prompt": "If x² = 1024 and x > 0, what is the value of x?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-32",
+        "rationale": "The question asks for the positive solution."
+      },
+      {
+        "id": "B",
+        "text": "32",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "64",
+        "rationale": "Recheck: (64)² = 4096, not 1024."
+      },
+      {
+        "id": "D",
+        "text": "512",
+        "rationale": "Halving is not the inverse of squaring."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "x = √1024 = 32 (taking the positive root).",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "quadratics",
+      "square-root",
+      "family:q_square_root"
+    ],
+    "answer_verification": "val=32"
+  },
+  {
+    "question_id": "sat-math-quadratics-easy-b0199",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "quadratics",
+    "lesson_id": "sat-math-quadratics-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "student_produced",
+    "subskill": "roots",
+    "prompt": "If x² − 1681 = 0 and x > 0, what is the value of x?",
+    "answer": {
+      "type": "numeric",
+      "value": 41,
+      "accepted": [
+        "41"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "x² = 1681, so x = 41.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "quadratics",
+      "grid-in",
+      "family:q_gridin"
+    ],
+    "answer_verification": "x=41"
+  },
+  {
+    "question_id": "sat-math-quadratics-easy-b0200",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8010,7 +8550,7 @@
     "answer_verification": "(x − 2)² − 5"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0188",
+    "question_id": "sat-math-quadratics-easy-b0201",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8055,7 +8595,7 @@
     "answer_verification": "roots 9,8"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0189",
+    "question_id": "sat-math-quadratics-easy-b0202",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8100,7 +8640,7 @@
     "answer_verification": "vertex (4,13)"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0190",
+    "question_id": "sat-math-quadratics-easy-b0203",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8145,7 +8685,7 @@
     "answer_verification": "val=-1"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0191",
+    "question_id": "sat-math-quadratics-easy-b0204",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8190,7 +8730,7 @@
     "answer_verification": "val=22"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0192",
+    "question_id": "sat-math-quadratics-easy-b0205",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8235,7 +8775,7 @@
     "answer_verification": "vertex (-7,6)"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0193",
+    "question_id": "sat-math-quadratics-easy-b0206",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8280,7 +8820,7 @@
     "answer_verification": "roots -1,1"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0194",
+    "question_id": "sat-math-quadratics-easy-b0207",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8325,7 +8865,7 @@
     "answer_verification": "(x − 8)² − 7"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0195",
+    "question_id": "sat-math-quadratics-easy-b0208",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8370,7 +8910,7 @@
     "answer_verification": "(x + 3)² − 2"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0196",
+    "question_id": "sat-math-quadratics-easy-b0209",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8415,7 +8955,7 @@
     "answer_verification": "val=-6"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0197",
+    "question_id": "sat-math-quadratics-easy-b0210",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8460,7 +9000,7 @@
     "answer_verification": "(x + 6)² + 3"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0198",
+    "question_id": "sat-math-quadratics-easy-b0211",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8505,7 +9045,7 @@
     "answer_verification": "val=-9"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0199",
+    "question_id": "sat-math-quadratics-easy-b0212",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8550,7 +9090,7 @@
     "answer_verification": "val=9"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0200",
+    "question_id": "sat-math-quadratics-easy-b0213",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8595,7 +9135,7 @@
     "answer_verification": "val=7"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0201",
+    "question_id": "sat-math-quadratics-easy-b0214",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8640,7 +9180,7 @@
     "answer_verification": "(x − 9)² − 12"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0202",
+    "question_id": "sat-math-quadratics-easy-b0215",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8685,7 +9225,7 @@
     "answer_verification": "(x + 5)² + 2"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0203",
+    "question_id": "sat-math-quadratics-easy-b0216",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8730,7 +9270,7 @@
     "answer_verification": "(x + 2)² + 12"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0204",
+    "question_id": "sat-math-quadratics-easy-b0217",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8775,7 +9315,7 @@
     "answer_verification": "val=32"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0205",
+    "question_id": "sat-math-quadratics-easy-b0218",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8820,7 +9360,7 @@
     "answer_verification": "roots 3,-8"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0206",
+    "question_id": "sat-math-quadratics-easy-b0219",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8865,7 +9405,7 @@
     "answer_verification": "val=9"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0207",
+    "question_id": "sat-math-quadratics-easy-b0220",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8910,7 +9450,7 @@
     "answer_verification": "vertex (-4,-11)"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0208",
+    "question_id": "sat-math-quadratics-easy-b0221",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8955,7 +9495,7 @@
     "answer_verification": "val=54"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0209",
+    "question_id": "sat-math-quadratics-easy-b0222",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9000,7 +9540,7 @@
     "answer_verification": "val=-8"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0210",
+    "question_id": "sat-math-quadratics-easy-b0223",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9045,7 +9585,7 @@
     "answer_verification": "(x − 2)² + 12"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0211",
+    "question_id": "sat-math-quadratics-easy-b0224",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9090,7 +9630,7 @@
     "answer_verification": "val=3"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0212",
+    "question_id": "sat-math-quadratics-easy-b0225",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9135,7 +9675,7 @@
     "answer_verification": "vertex (4,-6)"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0213",
+    "question_id": "sat-math-quadratics-easy-b0226",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9180,7 +9720,7 @@
     "answer_verification": "val=11"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0214",
+    "question_id": "sat-math-quadratics-easy-b0227",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9225,7 +9765,7 @@
     "answer_verification": "roots 2,7"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0215",
+    "question_id": "sat-math-quadratics-easy-b0228",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9255,7 +9795,7 @@
     "answer_verification": "x=20"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0216",
+    "question_id": "sat-math-quadratics-easy-b0229",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9300,7 +9840,7 @@
     "answer_verification": "(x + 4)² + 5"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0217",
+    "question_id": "sat-math-quadratics-easy-b0230",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9311,41 +9851,41 @@
     "version": "1.0.0",
     "question_type": "multi_step_math",
     "subskill": "roots",
-    "prompt": "The length of a rectangle is 2 more than its width, and its area is 15. What is the width of the rectangle?",
+    "prompt": "The length of a rectangle is 5 more than its width, and its area is 266. What is the width of the rectangle?",
     "choices": [
       {
         "id": "A",
-        "text": "5",
-        "rationale": "That is the length."
+        "text": "15",
+        "rationale": "Check: 15·20 ≠ 266."
       },
       {
         "id": "B",
-        "text": "3",
-        "rationale": "Correct."
+        "text": "16",
+        "rationale": "Set up w(w + k) = A; don't divide the area by 5."
       },
       {
         "id": "C",
-        "text": "4",
-        "rationale": "Check: 4·6 ≠ 15."
+        "text": "19",
+        "rationale": "That is the length."
       },
       {
         "id": "D",
-        "text": "9",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "14",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "w(w + 2) = 15 → w² + 2w − 15 = 0 → (w − 3)(w + 5) = 0 → w = 3.",
+    "correct_choice": "D",
+    "explanation": "w(w + 5) = 266 → w² + 5w − 266 = 0 → (w − 14)(w + 19) = 0 → w = 14.",
     "estimated_time_seconds": 95,
     "tags": [
       "quadratics",
       "word-problem",
       "family:q_word"
     ],
-    "answer_verification": "val=3"
+    "answer_verification": "val=14"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0218",
+    "question_id": "sat-math-quadratics-easy-b0231",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9356,41 +9896,86 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "vertex",
-    "prompt": "Which of the following is equivalent to x² − 12x + 19?",
+    "prompt": "Which of the following is equivalent to x² + 2x + 14?",
     "choices": [
       {
         "id": "A",
-        "text": "(x + 6)² − 17",
+        "text": "(x − 1)² + 13",
         "rationale": "The sign inside the parentheses is wrong: (x − h)² expands to x² − 2hx + h²."
       },
       {
         "id": "B",
-        "text": "(x − 6)² + 19",
-        "rationale": "Subtract h² = 36 from the constant."
+        "text": "(x + 1)² + 14",
+        "rationale": "Subtract h² = 1 from the constant."
       },
       {
         "id": "C",
-        "text": "(x − 6)² + 17",
-        "rationale": "Check the sign of the constant after completing the square."
+        "text": "(x + 1)² + 13",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "(x − 6)² − 17",
-        "rationale": "Correct."
+        "text": "(x + 1)² − 13",
+        "rationale": "Check the sign of the constant after completing the square."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "x² − 12x = (x − 6)² − 36; so the expression is (x − 6)² + 19 − 36 = (x − 6)² − 17.",
+    "correct_choice": "C",
+    "explanation": "x² + 2x = (x + 1)² − 1; so the expression is (x + 1)² + 14 − 1 = (x + 1)² + 13.",
     "estimated_time_seconds": 85,
     "tags": [
       "quadratics",
       "vertex-form",
       "family:q_complete_square"
     ],
-    "answer_verification": "(x − 6)² − 17"
+    "answer_verification": "(x + 1)² + 13"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0219",
+    "question_id": "sat-math-quadratics-easy-b0232",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "advanced_math",
+    "skill": "quadratics",
+    "lesson_id": "sat-math-quadratics-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "roots",
+    "prompt": "What is the greater of the two solutions to the equation (x + 6)(x − 6) = 0?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-6",
+        "rationale": "That is the lesser solution."
+      },
+      {
+        "id": "B",
+        "text": "0",
+        "rationale": "That is the sum of the solutions."
+      },
+      {
+        "id": "C",
+        "text": "6",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "-36",
+        "rationale": "That is the product of the solutions."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "A product is 0 when a factor is 0: x = −6 or x = 6. The greater is 6.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "quadratics",
+      "factoring",
+      "family:q_roots"
+    ],
+    "answer_verification": "val=6"
+  },
+  {
+    "question_id": "sat-math-quadratics-easy-b0233",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9401,41 +9986,41 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "vertex",
-    "prompt": "Which of the following is equivalent to x² − 10x + 40?",
+    "prompt": "The function f is defined by f(x) = −(x + 5)² + 3. At what value of x does f reach its maximum?",
     "choices": [
       {
         "id": "A",
-        "text": "(x − 5)² + 15",
+        "text": "-5",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "(x − 5)² − 15",
-        "rationale": "Check the sign of the constant after completing the square."
+        "text": "5",
+        "rationale": "x − h = 0 when x = h, so the sign flips from what's written."
       },
       {
         "id": "C",
-        "text": "(x + 5)² + 15",
-        "rationale": "The sign inside the parentheses is wrong: (x − h)² expands to x² − 2hx + h²."
+        "text": "3",
+        "rationale": "That is the extreme value, not where it occurs."
       },
       {
         "id": "D",
-        "text": "(x − 5)² + 40",
-        "rationale": "Subtract h² = 25 from the constant."
+        "text": "-3",
+        "rationale": "That is the opposite of the extreme value."
       }
     ],
     "correct_choice": "A",
-    "explanation": "x² − 10x = (x − 5)² − 25; so the expression is (x − 5)² + 40 − 25 = (x − 5)² + 15.",
-    "estimated_time_seconds": 85,
+    "explanation": "The vertex of (x − h)² + k is at x = h; here h = −5.",
+    "estimated_time_seconds": 80,
     "tags": [
       "quadratics",
-      "vertex-form",
-      "family:q_complete_square"
+      "vertex",
+      "family:q_vertex"
     ],
-    "answer_verification": "(x − 5)² + 15"
+    "answer_verification": "vertex (-5,3)"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0220",
+    "question_id": "sat-math-quadratics-easy-b0234",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9480,7 +10065,7 @@
     "answer_verification": "vertex (-4,3)"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0221",
+    "question_id": "sat-math-quadratics-easy-b0235",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9525,7 +10110,7 @@
     "answer_verification": "roots 1,-4"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0222",
+    "question_id": "sat-math-quadratics-easy-b0236",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9555,7 +10140,7 @@
     "answer_verification": "x=4"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0223",
+    "question_id": "sat-math-quadratics-easy-b0237",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9585,7 +10170,7 @@
     "answer_verification": "x=11"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0224",
+    "question_id": "sat-math-quadratics-easy-b0238",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9630,7 +10215,7 @@
     "answer_verification": "val=-3"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0225",
+    "question_id": "sat-math-quadratics-easy-b0239",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9675,7 +10260,7 @@
     "answer_verification": "roots 2,-2"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0226",
+    "question_id": "sat-math-quadratics-easy-b0240",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9720,7 +10305,7 @@
     "answer_verification": "(x + 1)² − 6"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0227",
+    "question_id": "sat-math-quadratics-easy-b0241",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9765,7 +10350,7 @@
     "answer_verification": "(x − 6)² + 11"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0228",
+    "question_id": "sat-math-quadratics-easy-b0242",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9810,7 +10395,7 @@
     "answer_verification": "val=21"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0229",
+    "question_id": "sat-math-quadratics-easy-b0243",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9855,7 +10440,7 @@
     "answer_verification": "vertex (7,-3)"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0230",
+    "question_id": "sat-math-quadratics-easy-b0244",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9900,7 +10485,7 @@
     "answer_verification": "val=13"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0231",
+    "question_id": "sat-math-quadratics-easy-b0245",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9930,7 +10515,7 @@
     "answer_verification": "x=49"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0232",
+    "question_id": "sat-math-quadratics-easy-b0246",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9975,7 +10560,7 @@
     "answer_verification": "(x − 5)² + 2"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0233",
+    "question_id": "sat-math-quadratics-easy-b0247",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10020,7 +10605,7 @@
     "answer_verification": "val=9"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0234",
+    "question_id": "sat-math-quadratics-easy-b0248",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10065,7 +10650,7 @@
     "answer_verification": "val=7"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0235",
+    "question_id": "sat-math-quadratics-easy-b0249",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10110,7 +10695,7 @@
     "answer_verification": "(x + 3)² − 10"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0236",
+    "question_id": "sat-math-quadratics-easy-b0250",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10155,7 +10740,7 @@
     "answer_verification": "(x − 2)² + 20"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0237",
+    "question_id": "sat-math-quadratics-easy-b0251",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10185,7 +10770,7 @@
     "answer_verification": "x=17"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0238",
+    "question_id": "sat-math-quadratics-easy-b0252",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10230,7 +10815,7 @@
     "answer_verification": "val=9"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0239",
+    "question_id": "sat-math-quadratics-easy-b0253",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10275,7 +10860,7 @@
     "answer_verification": "roots 3,2"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0240",
+    "question_id": "sat-math-quadratics-easy-b0254",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10320,7 +10905,7 @@
     "answer_verification": "val=4"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0241",
+    "question_id": "sat-math-quadratics-easy-b0255",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10365,7 +10950,7 @@
     "answer_verification": "val=12"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0242",
+    "question_id": "sat-math-quadratics-easy-b0256",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10410,7 +10995,7 @@
     "answer_verification": "val=55"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0243",
+    "question_id": "sat-math-quadratics-easy-b0257",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10455,7 +11040,7 @@
     "answer_verification": "roots 3,0"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0244",
+    "question_id": "sat-math-quadratics-easy-b0258",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10500,7 +11085,7 @@
     "answer_verification": "val=36"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0245",
+    "question_id": "sat-math-quadratics-easy-b0259",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10545,7 +11130,7 @@
     "answer_verification": "vertex (7,13)"
   },
   {
-    "question_id": "sat-math-quadratics-easy-b0246",
+    "question_id": "sat-math-quadratics-easy-b0260",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10588,605 +11173,5 @@
       "family:q_intercepts"
     ],
     "answer_verification": "roots 8,-1"
-  },
-  {
-    "question_id": "sat-math-quadratics-easy-b0247",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "quadratics",
-    "lesson_id": "sat-math-quadratics-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multi_step_math",
-    "subskill": "roots",
-    "prompt": "The length of a rectangle is 4 more than its width, and its area is 285. What is the width of the rectangle?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "16",
-        "rationale": "Check: 16·20 ≠ 285."
-      },
-      {
-        "id": "B",
-        "text": "15",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "19",
-        "rationale": "That is the length."
-      },
-      {
-        "id": "D",
-        "text": "17",
-        "rationale": "Set up w(w + k) = A; don't divide the area by 4."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "w(w + 4) = 285 → w² + 4w − 285 = 0 → (w − 15)(w + 19) = 0 → w = 15.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "quadratics",
-      "word-problem",
-      "family:q_word"
-    ],
-    "answer_verification": "val=15"
-  },
-  {
-    "question_id": "sat-math-quadratics-easy-b0248",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "quadratics",
-    "lesson_id": "sat-math-quadratics-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "vertex",
-    "prompt": "Which of the following is equivalent to x² − 12x + 25?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "(x + 6)² − 11",
-        "rationale": "The sign inside the parentheses is wrong: (x − h)² expands to x² − 2hx + h²."
-      },
-      {
-        "id": "B",
-        "text": "(x − 6)² − 11",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "(x − 6)² + 25",
-        "rationale": "Subtract h² = 36 from the constant."
-      },
-      {
-        "id": "D",
-        "text": "(x − 6)² + 11",
-        "rationale": "Check the sign of the constant after completing the square."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "x² − 12x = (x − 6)² − 36; so the expression is (x − 6)² + 25 − 36 = (x − 6)² − 11.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "quadratics",
-      "vertex-form",
-      "family:q_complete_square"
-    ],
-    "answer_verification": "(x − 6)² − 11"
-  },
-  {
-    "question_id": "sat-math-quadratics-easy-b0249",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "quadratics",
-    "lesson_id": "sat-math-quadratics-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "vertex",
-    "prompt": "The function f is defined by f(x) = (x + 5)² − 14. At what value of x does f reach its minimum?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-14",
-        "rationale": "That is the extreme value, not where it occurs."
-      },
-      {
-        "id": "B",
-        "text": "-5",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "5",
-        "rationale": "x − h = 0 when x = h, so the sign flips from what's written."
-      },
-      {
-        "id": "D",
-        "text": "14",
-        "rationale": "That is the opposite of the extreme value."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "The vertex of (x − h)² + k is at x = h; here h = −5.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "quadratics",
-      "vertex",
-      "family:q_vertex"
-    ],
-    "answer_verification": "vertex (-5,-14)"
-  },
-  {
-    "question_id": "sat-math-quadratics-easy-b0250",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "quadratics",
-    "lesson_id": "sat-math-quadratics-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "roots",
-    "prompt": "What is the greater of the two solutions to the equation (x + 7)(x + 1) = 0?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-1",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "1",
-        "rationale": "Each factor x − r is 0 when x = r, not −r."
-      },
-      {
-        "id": "C",
-        "text": "-8",
-        "rationale": "That is the sum of the solutions."
-      },
-      {
-        "id": "D",
-        "text": "-7",
-        "rationale": "That is the lesser solution."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "A product is 0 when a factor is 0: x = −7 or x = −1. The greater is −1.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "quadratics",
-      "factoring",
-      "family:q_roots"
-    ],
-    "answer_verification": "val=-1"
-  },
-  {
-    "question_id": "sat-math-quadratics-easy-b0251",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "quadratics",
-    "lesson_id": "sat-math-quadratics-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "roots",
-    "prompt": "The graph of y = (x + 7)(x − 7) in the xy-plane has x-intercepts at x = p and x = q. What is the value of p + q?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-14",
-        "rationale": "Add the intercepts; don't subtract."
-      },
-      {
-        "id": "B",
-        "text": "0",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "-49",
-        "rationale": "That is the product of the intercepts (the y-intercept)."
-      },
-      {
-        "id": "D",
-        "text": "1",
-        "rationale": "Each factor x − r is 0 at x = r, not −r."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "The x-intercepts are where each factor is 0: x = −7 and x = 7; their sum is 0.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "quadratics",
-      "intercepts",
-      "family:q_intercepts"
-    ],
-    "answer_verification": "roots -7,7"
-  },
-  {
-    "question_id": "sat-math-quadratics-easy-b0252",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "quadratics",
-    "lesson_id": "sat-math-quadratics-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multi_step_math",
-    "subskill": "roots",
-    "prompt": "The length of a rectangle is 6 more than its width, and its area is 112. What is the width of the rectangle?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "14",
-        "rationale": "That is the length."
-      },
-      {
-        "id": "B",
-        "text": "8",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "10",
-        "rationale": "Set up w(w + k) = A; don't divide the area by 6."
-      },
-      {
-        "id": "D",
-        "text": "9",
-        "rationale": "Check: 9·15 ≠ 112."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "w(w + 6) = 112 → w² + 6w − 112 = 0 → (w − 8)(w + 14) = 0 → w = 8.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "quadratics",
-      "word-problem",
-      "family:q_word"
-    ],
-    "answer_verification": "val=8"
-  },
-  {
-    "question_id": "sat-math-quadratics-easy-b0253",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "quadratics",
-    "lesson_id": "sat-math-quadratics-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "vertex",
-    "prompt": "The function f is defined by f(x) = −(x + 0)² − 3. What is the maximum value of f?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-3",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "7",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "C",
-        "text": "3",
-        "rationale": "The vertical shift k keeps its sign in the output."
-      },
-      {
-        "id": "D",
-        "text": "0",
-        "rationale": "That is the x-coordinate of the vertex, not the extreme value."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "In vertex form the vertex is (0, −3); the maximum value is −3.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "quadratics",
-      "vertex",
-      "family:q_vertex"
-    ],
-    "answer_verification": "vertex (0,-3)"
-  },
-  {
-    "question_id": "sat-math-quadratics-easy-b0254",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "quadratics",
-    "lesson_id": "sat-math-quadratics-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "vertex",
-    "prompt": "The function f is defined by f(x) = (x + 2)² + 5. What is the minimum value of f?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-2",
-        "rationale": "That is the x-coordinate of the vertex, not the extreme value."
-      },
-      {
-        "id": "B",
-        "text": "2",
-        "rationale": "That is the opposite of the vertex's x-coordinate."
-      },
-      {
-        "id": "C",
-        "text": "-5",
-        "rationale": "The vertical shift k keeps its sign in the output."
-      },
-      {
-        "id": "D",
-        "text": "5",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "In vertex form the vertex is (−2, 5); the minimum value is 5.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "quadratics",
-      "vertex",
-      "family:q_vertex"
-    ],
-    "answer_verification": "vertex (-2,5)"
-  },
-  {
-    "question_id": "sat-math-quadratics-easy-b0255",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "quadratics",
-    "lesson_id": "sat-math-quadratics-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multi_step_math",
-    "subskill": "roots",
-    "prompt": "The length of a rectangle is 3 more than its width, and its area is 40. What is the width of the rectangle?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "5",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "8",
-        "rationale": "That is the length."
-      },
-      {
-        "id": "C",
-        "text": "6",
-        "rationale": "Check: 6·9 ≠ 40."
-      },
-      {
-        "id": "D",
-        "text": "7",
-        "rationale": "Set up w(w + k) = A; don't divide the area by 3."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "w(w + 3) = 40 → w² + 3w − 40 = 0 → (w − 5)(w + 8) = 0 → w = 5.",
-    "estimated_time_seconds": 95,
-    "tags": [
-      "quadratics",
-      "word-problem",
-      "family:q_word"
-    ],
-    "answer_verification": "val=5"
-  },
-  {
-    "question_id": "sat-math-quadratics-easy-b0256",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "quadratics",
-    "lesson_id": "sat-math-quadratics-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "roots",
-    "prompt": "The graph of y = (x + 9)(x − 5) in the xy-plane has x-intercepts at x = p and x = q. What is the value of p + q?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-45",
-        "rationale": "That is the product of the intercepts (the y-intercept)."
-      },
-      {
-        "id": "B",
-        "text": "4",
-        "rationale": "Each factor x − r is 0 at x = r, not −r."
-      },
-      {
-        "id": "C",
-        "text": "-4",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "-14",
-        "rationale": "Add the intercepts; don't subtract."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "The x-intercepts are where each factor is 0: x = −9 and x = 5; their sum is −4.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "quadratics",
-      "intercepts",
-      "family:q_intercepts"
-    ],
-    "answer_verification": "roots -9,5"
-  },
-  {
-    "question_id": "sat-math-quadratics-easy-b0257",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "quadratics",
-    "lesson_id": "sat-math-quadratics-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "student_produced",
-    "subskill": "roots",
-    "prompt": "What is the positive solution to the equation x² = 2025?",
-    "answer": {
-      "type": "numeric",
-      "value": 45,
-      "accepted": [
-        "45"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "x² = 2025, so x = 45.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "quadratics",
-      "grid-in",
-      "family:q_gridin"
-    ],
-    "answer_verification": "x=45"
-  },
-  {
-    "question_id": "sat-math-quadratics-easy-b0258",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "quadratics",
-    "lesson_id": "sat-math-quadratics-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "roots",
-    "prompt": "What is the greater of the two solutions to the equation (x + 0)(x + 9) = 0?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "6",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "B",
-        "text": "0",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "2",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "D",
-        "text": "-9",
-        "rationale": "That is the lesser solution."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "A product is 0 when a factor is 0: x = 0 or x = −9. The greater is 0.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "quadratics",
-      "factoring",
-      "family:q_roots"
-    ],
-    "answer_verification": "val=0"
-  },
-  {
-    "question_id": "sat-math-quadratics-easy-b0259",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "quadratics",
-    "lesson_id": "sat-math-quadratics-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "vertex",
-    "prompt": "The function f is defined by f(x) = (x + 1)² − 9. At what value of x does f reach its minimum?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-9",
-        "rationale": "That is the extreme value, not where it occurs."
-      },
-      {
-        "id": "B",
-        "text": "9",
-        "rationale": "That is the opposite of the extreme value."
-      },
-      {
-        "id": "C",
-        "text": "-1",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "1",
-        "rationale": "x − h = 0 when x = h, so the sign flips from what's written."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "The vertex of (x − h)² + k is at x = h; here h = −1.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "quadratics",
-      "vertex",
-      "family:q_vertex"
-    ],
-    "answer_verification": "vertex (-1,-9)"
-  },
-  {
-    "question_id": "sat-math-quadratics-easy-b0260",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "advanced_math",
-    "skill": "quadratics",
-    "lesson_id": "sat-math-quadratics-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "student_produced",
-    "subskill": "roots",
-    "prompt": "If (x − 58)(x + 58) = 0 and x > 0, what is the value of x?",
-    "answer": {
-      "type": "numeric",
-      "value": 58,
-      "accepted": [
-        "58"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "x² = 3364, so x = 58.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "quadratics",
-      "grid-in",
-      "family:q_gridin"
-    ],
-    "answer_verification": "x=58"
   }
 ]

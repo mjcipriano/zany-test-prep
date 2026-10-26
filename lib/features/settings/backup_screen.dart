@@ -215,10 +215,10 @@ class _ConfirmImportDialog extends StatelessWidget {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Icon(
+                    Icon(
                       Icons.warning_amber_rounded,
                       size: 16,
-                      color: AppTheme.streak,
+                      color: AppColors.of(context).streak,
                     ),
                     const SizedBox(width: 6),
                     Expanded(

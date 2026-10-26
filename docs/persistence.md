@@ -17,6 +17,7 @@ Keys:
 | `profile.v1`   | `UserProfile` (exam, daily goal, target date, sound/haptics/theme, createdAt) |
 | `progress.v1`  | `AppProgress` (see below)                  |
 | `onboarded.v1` | `"true"` once onboarding is complete       |
+| `lessonResume.v1` | In-progress lessons (`LessonResumeBook`, see below) |
 
 ## `AppProgress` shape
 
@@ -36,6 +37,34 @@ Keys:
 
 Day-granular values (streak, daily goal, review) are stored as `yyyy-MM-dd` strings
 to avoid timezone/precision bugs.
+
+## In-progress lessons (`lessonResume.v1`)
+
+Leaving a lesson part-way (back button, app killed, phone restarted) keeps the
+attempt: `lib/domain/models/lesson_resume.dart`, held by `lessonResumeProvider`
+(`lib/app/lesson_resume_controller.dart`).
+
+```jsonc
+{ "schema": 1, "lessons": [ {
+  "exam": "sat", "lesson": "<lessonId>", "fp": "1a2b3c4d", "total": 14,
+  "teachingDone": true, "index": 6,
+  "answers": [ { "id": "<questionId>", "correct": true, "ms": 8400, "choice": "B" },
+               { "id": "<questionId>", "correct": false, "ms": 5100, "text": "3/4" } ],
+  "startedAt": "2026-10-25T09:30:00.000", "updatedAt": "2026-10-25T09:41:12.000" } ] }
+```
+
+- Keyed by exam + lesson id; at most 20 entries (oldest dropped). Written after
+  the quiz starts, every Check, and every Continue — a few hundred bytes, kept
+  apart from `progress.v1` so per-answer saves stay cheap.
+- `answers` has `index` entries, or `index + 1` when the student left on the
+  feedback view (resume re-shows that feedback).
+- `fp` is an FNV-1a hash of the lesson's question ids/order, prompts, choices,
+  and answer keys. If the shipped content no longer matches, the save is
+  discarded on open (and the home marker hidden) instead of resumed.
+- No XP is granted mid-lesson. `completeLesson` clears the save *before*
+  granting XP, so a crash can lose an attempt but never pay it out twice.
+- Reset and backup import remove the key; backups do not include it.
+- Reviews and practice sessions are not saved.
 
 ## When it is written
 

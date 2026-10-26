@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'reminder_settings.dart';
 import 'safe_json.dart';
 
 /// Bumped only when the persisted profile shape needs a real migration.
@@ -14,6 +15,7 @@ class UserProfile {
     this.soundOn = true,
     this.hapticsOn = true,
     this.themeMode = ThemeMode.system,
+    this.reminders = const ReminderSettings(),
     required this.createdAt,
   });
 
@@ -23,6 +25,9 @@ class UserProfile {
   final bool soundOn;
   final bool hapticsOn;
   final ThemeMode themeMode;
+
+  /// Opt-in local study reminders (off unless the user turns them on).
+  final ReminderSettings reminders;
   final DateTime createdAt;
 
   /// Daily goal expressed as XP. Calibrated to roughly 20 XP per minute of
@@ -38,6 +43,7 @@ class UserProfile {
     bool? soundOn,
     bool? hapticsOn,
     ThemeMode? themeMode,
+    ReminderSettings? reminders,
   }) {
     return UserProfile(
       examId: examId ?? this.examId,
@@ -48,6 +54,7 @@ class UserProfile {
       soundOn: soundOn ?? this.soundOn,
       hapticsOn: hapticsOn ?? this.hapticsOn,
       themeMode: themeMode ?? this.themeMode,
+      reminders: reminders ?? this.reminders,
       createdAt: createdAt,
     );
   }
@@ -60,6 +67,7 @@ class UserProfile {
     'soundOn': soundOn,
     'hapticsOn': hapticsOn,
     'themeMode': themeMode.name,
+    'reminders': reminders.toJson(),
     'createdAt': createdAt.toIso8601String(),
   };
 
@@ -78,6 +86,8 @@ class UserProfile {
         (m) => m.name == asStringOrNull(json['themeMode']),
         orElse: () => ThemeMode.system,
       ),
+      // Profiles saved before reminders existed have no blob -> off.
+      reminders: ReminderSettings.fromJson(asMap(json['reminders'])),
       createdAt:
           DateTime.tryParse(asString(json['createdAt'])) ?? DateTime.now(),
     );

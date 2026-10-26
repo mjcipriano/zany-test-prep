@@ -4,7 +4,7 @@ publish_to: 'none'
 
 # versionName is the part before '+', versionCode the part after.
 # Keep versionName in sync with kAppVersion (lib/core/app_info.dart).
-version: 2.2.2+22
+version: 2.3.0+23
 
 environment:
   sdk: ^3.9.2
@@ -31,6 +31,13 @@ dependencies:
   share_plus: ^10.1.4
   file_picker: ^8.1.6
   path_provider: ^2.1.5
+  # Opt-in local reminder notifications (daily study reminder + evening
+  # streak nudge). Scheduled on-device; no push server. 20.x is the newest line
+  # that supports Flutter 3.35 / Dart 3.9 (21+ needs Flutter 3.38). Behind a
+  # NotificationGateway so the scheduling logic is testable with a fake.
+  flutter_local_notifications: ^20.1.0
+  timezone: ^0.10.1
+  flutter_timezone: ^5.0.1
 
 dev_dependencies:
   flutter_test:

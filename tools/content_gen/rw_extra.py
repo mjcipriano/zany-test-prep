@@ -337,8 +337,10 @@ _VT_PASS = [
      "Each shift, the workers", "produce", "miles of cotton cloth", "The mill closed in 1983."),
     ("Mateo coaches a youth soccer team on weekends.", "present",
      "Before each match, he", "walk", "the field to check for holes", "The players rarely notice."),
+    # The planetarium must be gone, or present-habitual "fill" fits as well as "filled".
     ("In 1962 the town built a small planetarium beside the library.", "past",
-     "On Friday nights, families", "fill", "every seat under the dome", "The projector was replaced in 2010."),
+     "In its first years, families", "fill", "every seat under the dome on Friday nights",
+     "The planetarium closed in 1985."),
     ("The ferry company will add a third boat next summer.", "future",
      "With the extra boat, crews", "carry", "twice as many bicycles on weekend crossings", "Cyclists have asked for this for years."),
     ("Every winter the pond behind the school freezes solid.", "present",
@@ -712,9 +714,11 @@ _PA_BAIT_SHORT = {"plural": ["of the two founders", "with the regional offices",
 _PA_BAIT_LONG = {"plural": ["along with several partner organizations that joined last year",
                             "together with the dozens of branches it had opened abroad",
                             "despite objections from the neighboring districts"],
-                 "singular": ["which had grown out of a single research lab downtown",
-                              "as part of the larger national federation it belonged to",
-                              "after a long meeting with the regional director"]}
+                 # used after PLURAL antecedents (often people): no "which"/"it" clauses,
+                 # which would need a singular thing to attach to ("The members, which...")
+                 "singular": ["after a long meeting with the regional director",
+                              "despite a short delay",
+                              "under the guidance of a single veteran coach"]}
 
 
 @family(fill_in=True)
@@ -793,21 +797,38 @@ def pa_subject(rng, difficulty):
                  tags=["conventions", "pronoun-antecedent", "subject-pronoun"])
 
 
+# (frame, predicate, which person is meant, follow-up sentence that tells the
+# reader who the writer means). A pronoun in the blank would be ambiguous; the
+# follow-up settles the INTENDED referent so the one name offered is clearly it.
 _PA_AMBIG = [
-    ("When {A} handed {B} the report,", "noticed a typo on the first page", "B"),
-    ("After {A} called {B} about the schedule,", "agreed to switch shifts", "B"),
-    ("Before {A} interviewed {B},", "reviewed the application twice", "A"),
-    ("Although {A} had coached {B} for years,", "never mentioned the award", "A"),
-    ("Once {A} emailed {B} the directions,", "left for the airport", "B"),
-    ("While {A} was tutoring {B},", "kept checking the clock", "B"),
+    ("When {A} handed {B} the report,", "noticed a typo on the first page", "B",
+     "{T}, the newer of the two, was the one reading it."),
+    ("After {A} called {B} about the schedule,", "agreed to switch shifts", "B",
+     "{T} had been the one asked to switch."),
+    ("Before {A} interviewed {B},", "reviewed the application twice", "A",
+     "As the interviewer, {T} wanted to be prepared."),
+    ("Although {A} had coached {B} for years,", "never mentioned the award", "A",
+     "As the coach, {T} preferred to stay out of the spotlight."),
+    ("Once {A} emailed {B} the directions,", "left for the airport", "B",
+     "{T} was the one with a flight to catch."),
+    ("While {A} was tutoring {B},", "kept checking the clock", "B",
+     "As the student, {T} was eager for the session to end."),
 ]
+
+
+# Names a reader might not read as "she": left out of ambiguous-pronoun items.
+_UNISEX_NAMES = {"Sora", "Wren", "Yuki"}
 
 
 @family(fill_in=True)
 def pa_ambiguous(rng, difficulty):
     """Two possible antecedents: the clear choice repeats the noun."""
-    frame, pred, who = rng.choice(_PA_AMBIG)
-    group = [n for n in _NAMES if pron(n)[0] == rng.choice(["she", "he"])]
+    frame, pred, who, follow = rng.choice(_PA_AMBIG)
+    # Both people must take the same pronoun, or "he"/"she" alone would settle
+    # the reference (the old filter re-drew the pronoun for every name, so it
+    # paired e.g. Oscar with Maya and the keyed "repeat the name" wasn't better).
+    subj = rng.choice(["she", "he"])
+    group = [n for n in _NAMES if pron(n)[0] == subj and n not in _UNISEX_NAMES]
     a, b = rng.sample(group, 2)
     target = a if who == "A" else b
     s, o, p, r = pron(target)
@@ -818,11 +839,9 @@ def pa_ambiguous(rng, difficulty):
     ds = [(s, f"'{s}' could refer to either {a} or {b}, so the reference is ambiguous."),
           (f"{s} {r}", f"Even with the emphatic '{r}', '{s}' could still be either {a} or {b}."),
           (o, f"'{o}' is objective case and cannot be the subject of the clause.")]
-    if difficulty == "hard":
-        text = text + " " + rng.choice(["The matter was dropped.", "Neither mentioned it again.",
-                                        "The mistake was fixed by noon."])
-    elif difficulty == "medium":
+    if difficulty == "medium":
         text = rng.choice(["Later that week, ", "On Monday, ", "That afternoon, "]) + low(text)
+    text = text + " " + follow.format(T=target)
     return build(rng, fill(text, conv_stem(rng)), correct, ds, subskill="pronoun_antecedent",
                  explanation=("A pronoun must point to exactly one antecedent; when two nouns could "
                               "be its referent, repeat the intended noun instead."),
@@ -1029,14 +1048,17 @@ def qe_category_max(rng, difficulty):
     lo = min(rows, key=lambda r: r[1])
     second = sorted(rows, key=lambda r: -r[1])[1]
     gap = hi[1] - lo[1]
+    # A difference of two percents is in percentage points ("34 percent higher"
+    # would mean ×1.34).
+    gap_unit = "percentage points" if unit == "percent" else unit
     claim = rng.choice([
         f"A student argues that the {measure} varied considerably across the {plural} studied.",
         f"A report claims that one {label.lower()} stood out from the others in {measure}.",
     ])
     correct_text = rng.choice([
         f"{hi[0]} had the highest {measure}, at {hi[1]} {unit}, while {lo[0]} had the lowest, at {lo[1]} {unit}.",
-        f"At {hi[1]} {unit}, {hi[0]} exceeded the lowest {label.lower()}, {lo[0]}, by {gap} {unit}.",
-        f"{_poss(hi[0])} figure ({hi[1]} {unit}) was {gap} {unit} higher than {_poss(lo[0])}.",
+        f"At {hi[1]} {unit}, {hi[0]} exceeded the lowest {label.lower()}, {lo[0]}, by {gap} {gap_unit}.",
+        f"{_poss(hi[0])} figure ({hi[1]} {unit}) was {gap} {gap_unit} higher than {_poss(lo[0])}.",
     ])
     correct = (correct_text, "Correct. These figures are read directly from the table and compare "
                              "the highest and lowest values.")
@@ -1047,8 +1069,8 @@ def qe_category_max(rng, difficulty):
           (f"Every {label.lower()} recorded roughly the same {measure}, within a few {unit} of {hi[1]} {unit}.",
            f"The values range from {lo[1]} to {hi[1]} {unit}, so they are not roughly the same.")]
     if difficulty == "hard":
-        ds[2] = (f"At {hi[1]} {unit}, {hi[0]} exceeded the lowest {label.lower()}, {lo[0]}, by {gap + rng.choice([5, 8, 10])} {unit}.",
-                 f"The actual gap is {hi[1]} − {lo[1]} = {gap} {unit}.")
+        ds[2] = (f"At {hi[1]} {unit}, {hi[0]} exceeded the lowest {label.lower()}, {lo[0]}, by {gap + rng.choice([5, 8, 10])} {gap_unit}.",
+                 f"The actual gap is {hi[1]} − {lo[1]} = {gap} {gap_unit}.")
     prompt = (f"{claim}\n\n" + rng.choice([
         "Which choice most effectively uses data from the table to support the claim?",
         "Which statement about the data in the table is accurate?"]))
@@ -1081,6 +1103,8 @@ def qe_compare_two(rng, difficulty):
     b_change = b_vals[0] - b_vals[-1]
     claim = f"A researcher claims that the gap between {b} and {a} in {measure} has been closing."
     if crossed:
+        # the gap did more than close: it reversed
+        claim = f"A researcher claims that {a} caught up with and passed {b} in {measure}."
         correct_text = rng.choice([
             f"{b} led in every year until {years[-1]}, when {a} moved ahead, {a_vals[-1]} to {b_vals[-1]} {unit}.",
             f"By {years[-1]}, {a} ({a_vals[-1]} {unit}) had overtaken {b} ({b_vals[-1]} {unit}).",
@@ -1441,9 +1465,12 @@ def par_correlative_verbs(rng, difficulty):
 # =========================================================================== #
 # v2.1 ADDITIONS — PRONOUN-ANTECEDENT
 # =========================================================================== #
+# Bodies that act as one unit (vote, announce, approve). "Cast", "crew" and
+# "faculty" are left out: their members usually act individually ("their
+# bows"), and plural "they" is standard there too.
 _PA_COLL = [("The jury", "verdict"), ("The committee", "recommendation"), ("The orchestra", "program"),
-            ("The team", "lineup"), ("The council", "budget"), ("The faculty", "schedule"),
-            ("The crew", "route"), ("The board", "decision"), ("The choir", "repertoire"), ("The cast", "bows")]
+            ("The team", "lineup"), ("The council", "budget"), ("The board", "decision"),
+            ("The choir", "repertoire")]
 
 
 @family(fill_in=True)
@@ -1452,8 +1479,10 @@ def pa_collective(rng, difficulty):
     ante, thing = rng.choice(_PA_COLL)
     noun = ante.split()[1]
     kind = rng.choice(["poss", "subj"])
-    members = rng.choice(["whose members rarely agree", "made up of twelve members",
-                          "which includes several newcomers", "despite its many members"])
+    # each interrupter keeps the group acting as ONE body (the old "whose members
+    # rarely agree" invited a plural reading)
+    members = rng.choice(["voting as a single body", "acting as one group",
+                          "speaking with one voice", "deciding as a single body"])
     if kind == "poss":
         right, wrong = "its", "their"
         pred = rng.choice([f"announced ___ {thing} at noon", f"revised ___ {thing} twice", f"defended ___ {thing}"])
@@ -1469,17 +1498,14 @@ def pa_collective(rng, difficulty):
               ("one", "'one' does not refer back to the collective noun.")]
     correct = (right, f"Correct. '{ante}' is a collective noun acting as one unit, so '{right}' agrees with it.")
     if kind == "poss":
-        text = f"{ante} {pred}." if difficulty == "easy" else f"{ante}, {members}, {pred}."
+        text = f"{ante} as a whole {pred}." if difficulty == "easy" else f"{ante}, {members}, {pred}."
     else:
-        text = f"The reporters waited outside {pred.replace('___', '___')}" if False else \
-            f"The hall fell silent {pred}." if difficulty == "easy" else f"The hall, packed with reporters, fell silent {pred}."
-        text = text.replace("silent when", "silent when").replace(f"silent after", "silent after")
-        if difficulty != "easy":
-            text = text.replace(f"{ante}", f"{ante}, {members},") if ante in text else text
-        text = text.replace("___ announced", f"___ announced").replace("the hall", "the hall")
-        # make the antecedent explicit
-        text = f"{ante} met for nine hours. " + text if difficulty != "hard" else \
-            f"{ante}, {members}, met for nine hours. " + text
+        # No other singular/plural noun may sit near the blank: "The hall fell silent
+        # when ___ announced..." let "it" mean the hall (and "they" the reporters).
+        when = rng.choice(["Shortly before midnight,", "Late that evening,", "At last,"])
+        clause = pred.split(" ", 1)[1]  # "___ announced the verdict"
+        lead = f"{ante}, {members}, met for nine hours."
+        text = f"{lead} {when} {clause}."
     if difficulty == "hard" and kind == "poss":
         text = text + " " + rng.choice(["The announcement surprised no one.", "Reporters had waited all day."])
     return build(rng, fill(text, conv_stem(rng)), correct, ds, subskill="pronoun_antecedent",
@@ -1571,7 +1597,9 @@ def pa_distant(rng, difficulty):
 @family(fill_in=False)
 def qe_percent_change(rng, difficulty):
     """Percent change computed from two table values."""
-    label, plural, cats, measure, unit = rng.choice(_QE_CATS)
+    # Counts only: for a measure already in percent, growth "of 10 percent" could
+    # mean percentage points, and values like 80 → 120 percent are impossible.
+    label, plural, cats, measure, unit = rng.choice([c for c in _QE_CATS if c[4] != "percent"])
     k = {"easy": 3, "medium": 4, "hard": 5}[difficulty]
     names = rng.sample(cats, k)
     y1, y2 = 2018 + rng.randint(0, 2), 2022 + rng.randint(0, 2)

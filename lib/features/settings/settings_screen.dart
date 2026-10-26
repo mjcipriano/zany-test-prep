@@ -6,6 +6,7 @@ import '../../app/app_controller.dart';
 import '../../design/theme.dart';
 import '../../design/widgets.dart';
 import 'cheat_tap.dart';
+import 'reminders_section.dart';
 
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
@@ -66,6 +67,17 @@ class SettingsScreen extends ConsumerWidget {
                 const Divider(height: 1),
                 ListTile(
                   contentPadding: EdgeInsets.zero,
+                  leading: const Icon(Icons.explore_rounded),
+                  title: const Text('Placement check'),
+                  subtitle: const Text(
+                    'Retake the 3-minute check to re-tune recommendations',
+                  ),
+                  trailing: const Icon(Icons.chevron_right_rounded),
+                  onTap: () => context.push('/diagnostic'),
+                ),
+                const Divider(height: 1),
+                ListTile(
+                  contentPadding: EdgeInsets.zero,
                   leading: const Icon(Icons.event_rounded),
                   title: const Text('Target test date'),
                   subtitle: Text(
@@ -94,6 +106,9 @@ class SettingsScreen extends ConsumerWidget {
               ],
             ),
           ),
+          Gap.m,
+          const SectionLabel('Reminders'),
+          const AppCard(child: RemindersSection()),
           Gap.m,
           const SectionLabel('Preferences'),
           AppCard(
@@ -187,14 +202,14 @@ class SettingsScreen extends ConsumerWidget {
             color: AppTheme.incorrect.withValues(alpha: 0.10),
             child: ListTile(
               contentPadding: EdgeInsets.zero,
-              leading: const Icon(
+              leading: Icon(
                 Icons.restart_alt_rounded,
-                color: AppTheme.incorrect,
+                color: AppColors.of(context).incorrect,
               ),
-              title: const Text(
+              title: Text(
                 'Reset progress',
                 style: TextStyle(
-                  color: AppTheme.incorrect,
+                  color: AppColors.of(context).incorrect,
                   fontWeight: FontWeight.w700,
                 ),
               ),
@@ -283,7 +298,10 @@ class SettingsScreen extends ConsumerWidget {
             child: const Text('Cancel'),
           ),
           FilledButton(
-            style: FilledButton.styleFrom(backgroundColor: AppTheme.incorrect),
+            style: FilledButton.styleFrom(
+              backgroundColor: AppColors.of(ctx).incorrectFill,
+              foregroundColor: Colors.white,
+            ),
             onPressed: () => Navigator.pop(ctx, true),
             child: const Text('Reset'),
           ),

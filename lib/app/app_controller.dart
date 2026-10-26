@@ -1,8 +1,10 @@
+import 'dart:async';
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'dart:math';
-
+import '../core/notifications/reminder_scheduler.dart';
 import '../data/local/key_value_store.dart';
 import '../data/repositories/avatar_repository.dart';
 import '../data/repositories/content_repository.dart';
@@ -14,10 +16,13 @@ import '../domain/models/exam.dart';
 import '../domain/models/lesson.dart';
 import '../domain/models/profile.dart';
 import '../domain/models/progress.dart';
+import '../domain/models/reminder_settings.dart';
 import '../domain/models/reward.dart';
 import '../domain/services/badges.dart';
+import '../domain/services/diagnostic_engine.dart';
 import '../domain/services/game_service.dart';
 import '../domain/services/rewards_service.dart';
+import 'lesson_resume_controller.dart';
 
 /// Immutable snapshot of the app session handed to the UI.
 class AppData {
@@ -120,7 +125,7 @@ class AppController extends AsyncNotifier<AppData> {
         : (exams.isEmpty ? wanted : exams.first.id);
     final bundle = await content.loadBundle(examId);
     final catalog = await avatars.loadCatalog();
-    return AppData(
+    final data = AppData(
       bundle: bundle,
       profile: profile,
       progress: _repo.loadProgress(),
@@ -130,6 +135,29 @@ class AppController extends AsyncNotifier<AppData> {
       catalog: catalog,
       exams: exams,
     );
+    // App start: re-plan reminders (today's copy, streak, a new day).
+    _syncReminders(data);
+    return data;
+  }
+
+  /// Re-plans local reminders in the background (cancel + reschedule). Called
+  /// on app start, when settings change and after every finished session, so
+  /// meeting today's goal cancels today's streak nudge.
+  void _syncReminders(AppData data) {
+    unawaited(
+      ref
+          .read(reminderSchedulerProvider)
+          .sync(
+            profile: data.onboarded ? data.profile : null,
+            game: data.progress.game,
+          ),
+    );
+  }
+
+  /// Sets [state] and re-plans reminders against it.
+  void _emitAndSync(AppData data) {
+    state = AsyncData(data);
+    _syncReminders(data);
   }
 
   AppData get _data => state.requireValue;
@@ -167,28 +195,34 @@ class AppController extends AsyncNotifier<AppData> {
     required String examId,
     required int dailyGoalMinutes,
     DateTime? targetTestDate,
+    ReminderSettings reminders = const ReminderSettings(),
   }) async {
     final data = _data;
     final profile = UserProfile.initial(
       examId,
       dailyGoalMinutes,
-    ).copyWith(targetTestDate: targetTestDate);
+    ).copyWith(targetTestDate: targetTestDate, reminders: reminders);
     final bundle = data.bundle.exam.id == examId
         ? data.bundle
         : await ref.read(contentRepositoryProvider).loadBundle(examId);
     await _repo.saveProfile(profile);
     await _repo.setOnboarded(true);
-    state = AsyncData(
-      data.bump(profile: profile, onboarded: true, bundle: bundle),
-    );
+    _emitAndSync(data.bump(profile: profile, onboarded: true, bundle: bundle));
   }
 
   /// Applies a finished lesson attempt; persists and returns the outcome.
+  ///
+  /// The lesson's saved in-progress state is cleared *before* XP is granted:
+  /// if the app dies in between, the worst case is a lost attempt, never a
+  /// resumable one whose XP was already paid out (no double XP on resume).
   Future<LessonOutcome> completeLesson({
     required Lesson lesson,
     required List<AnswerResult> results,
   }) async {
     final data = _data;
+    await ref
+        .read(lessonResumeProvider.notifier)
+        .clear(data.bundle.exam.id, lesson.id);
     final outcome = _game.applyLessonResult(
       progress: data.progress,
       profile: data.profile!,
@@ -198,7 +232,7 @@ class AppController extends AsyncNotifier<AppData> {
       catalog: data.catalog,
     );
     await _repo.saveProgress(data.progress);
-    state = AsyncData(data.bump());
+    _emitAndSync(data.bump());
     return outcome;
   }
 
@@ -215,7 +249,7 @@ class AppController extends AsyncNotifier<AppData> {
       catalog: data.catalog,
     );
     await _repo.saveProgress(data.progress);
-    state = AsyncData(data.bump());
+    _emitAndSync(data.bump());
     return outcome;
   }
 
@@ -244,7 +278,7 @@ class AppController extends AsyncNotifier<AppData> {
       data.bundle,
     ).map(Badges.byId).whereType<BadgeDef>().toList();
     await _repo.saveProgress(data.progress);
-    state = AsyncData(data.bump());
+    _emitAndSync(data.bump());
     return SurvivalResult(
       streak: streak,
       best: g.survivalBest,
@@ -253,15 +287,11 @@ class AppController extends AsyncNotifier<AppData> {
     );
   }
 
-  /// Seeds per-skill mastery from a diagnostic and marks it done.
+  /// Seeds per-skill mastery estimates from the placement check and marks it
+  /// done (see [DiagnosticEngine.seed]). Grants no XP, streak or chest.
   Future<void> applyDiagnostic({required List<AnswerResult> results}) async {
     final data = _data;
-    for (final r in results) {
-      data.progress.mastery(masteryKeyFor(r.question)).mastery = r.correct
-          ? 60
-          : 25;
-    }
-    data.progress.game.markDiagnosticDone(data.bundle.exam.id);
+    const DiagnosticEngine().seed(data.progress, data.bundle, results);
     await _repo.saveProgress(data.progress);
     state = AsyncData(data.bump());
   }
@@ -276,8 +306,15 @@ class AppController extends AsyncNotifier<AppData> {
 
   Future<void> updateProfile(UserProfile profile) async {
     await _repo.saveProfile(profile);
-    state = AsyncData(_data.bump(profile: profile));
+    // Any setting can matter to reminders (the daily goal changes whether
+    // today's goal is met), so re-plan on every profile change.
+    _emitAndSync(_data.bump(profile: profile));
   }
+
+  /// Saves reminder preferences and reschedules. The caller has already
+  /// obtained the notification permission when turning reminders on.
+  Future<void> setReminders(ReminderSettings reminders) =>
+      updateProfile(_data.profile!.copyWith(reminders: reminders));
 
   Future<void> setDailyGoal(int minutes) =>
       updateProfile(_data.profile!.copyWith(dailyGoalMinutes: minutes));
@@ -301,7 +338,8 @@ class AppController extends AsyncNotifier<AppData> {
   /// Wipes all local progress and profile (Settings -> Reset Progress).
   Future<void> resetProgress() async {
     await _repo.resetAll();
-    state = AsyncData(
+    ref.invalidate(lessonResumeProvider);
+    _emitAndSync(
       AppData(
         bundle: _data.bundle,
         profile: null,
@@ -454,8 +492,9 @@ class AppController extends AsyncNotifier<AppData> {
         onboarded: data.onboarded,
       ),
     );
+    ref.invalidate(lessonResumeProvider); // writeBackup dropped them
     final storedProfile = _repo.loadProfile();
-    state = AsyncData(
+    _emitAndSync(
       AppData(
         bundle: bundle,
         profile: storedProfile,

@@ -11,14 +11,14 @@ void main() {
     // Welcome step.
     expect(find.text('Welcome to Zany Test Prep'), findsOneWidget);
 
-    // Step through: welcome -> offline -> exam -> goal -> date.
+    // Step through: welcome -> offline -> exam -> goal (+ date) -> placement.
     for (var i = 0; i < 4; i++) {
       await tester.tap(find.text('Continue'));
       await tester.pumpAndSettle();
     }
-    expect(find.text('When is your test?'), findsOneWidget);
+    expect(find.text('Find your starting point'), findsOneWidget);
 
-    // Finish onboarding.
+    // Finish onboarding, skipping the placement check.
     await tester.tap(find.text('Start learning'));
     await tester.pumpAndSettle();
 

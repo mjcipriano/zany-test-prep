@@ -52,21 +52,24 @@ class AboutScreen extends ConsumerWidget {
           Gap.l,
           AppCard(
             color: AppTheme.correct.withValues(alpha: 0.12),
-            child: const Column(
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   children: [
-                    Icon(Icons.lock_outline_rounded, color: AppTheme.correct),
-                    SizedBox(width: 8),
-                    Text(
+                    Icon(
+                      Icons.lock_outline_rounded,
+                      color: AppColors.of(context).correct,
+                    ),
+                    const SizedBox(width: 8),
+                    const Text(
                       'Your privacy',
                       style: TextStyle(fontWeight: FontWeight.w800),
                     ),
                   ],
                 ),
                 Gap.s,
-                Text(
+                const Text(
                   'This app works entirely offline. All of your progress — XP, '
                   'streaks, mastery, and answers — is stored locally on this '
                   'device only. There is no account, no login, no backend, and '

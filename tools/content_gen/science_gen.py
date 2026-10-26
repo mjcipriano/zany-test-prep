@@ -31,6 +31,7 @@ from __future__ import annotations
 
 import functools
 import math
+import re
 import random
 
 from .util import mc, shuffle_with_correct
@@ -1050,10 +1051,24 @@ def _spec(kind, **kw):
     return "science:" + kind + "".join(f";{k}={v}" for k, v in kw.items())
 
 
+_NUM_UNIT_RE = re.compile(r"^([−-]?\d+(?:\.\d+)?)\s*(\S*)$")
+
+
+def _num_and_unit(text):
+    m = _NUM_UNIT_RE.match(text.strip())
+    return (float(m.group(1).replace("−", "-")), m.group(2)) if m else None
+
+
 def _emit(rng, prompt, correct, distractors, *, subskill, explanation, qtype,
           est, tags, stimulus, verify=None):
     texts = [correct[0]] + [d[0] for d in distractors]
     if len(set(t.strip() for t in texts)) != len(texts) or len(distractors) < 3:
+        return None
+    # Equal VALUES count as duplicates too ("1.9" vs "1.90", "4" vs "4.0"): two
+    # choices that say the same number are two right answers or a giveaway.
+    vals = [_num_and_unit(t) for t in texts[:4]]
+    vals = [v for v in vals if v is not None]
+    if len(set(vals)) != len(vals):
         return None
     options, ci, rats = shuffle_with_correct(rng, correct, distractors[:3])
     return mc(prompt, options, ci, rats, subskill=subskill, explanation=explanation,
@@ -1124,10 +1139,13 @@ def dr_lookup_value(rng, difficulty):
     nb = [j for j in (i - 1, i + 1) if 0 <= j < n]
     if len(nb) == 2:
         avg = (col["vals"][nb[0]] + col["vals"][nb[1]]) / 2
+    # On a linear column the neighbours' average IS the right value (98.0 vs
+    # 98): only offer it as a distractor when it differs.
+    if len(nb) == 2 and abs(avg - col["vals"][i]) > 1e-9:
         distractors.append((_vu(f"{avg:.{ds['dec'] + 1}f}", yu),
                             f"This averages the rows above and below ({_vu(ds['xstrs'][nb[0]], xu)} and "
                             f"{_vu(ds['xstrs'][nb[1]], xu)}) instead of reading the row for {_vu(x, xu)}."))
-    else:
+    elif len(nb) == 1:
         j = nb[0]
         avg = (col["vals"][i] + col["vals"][j]) / 2
         distractors.append((_vu(f"{avg:.{ds['dec'] + 1}f}", yu),
@@ -1743,13 +1761,12 @@ def dr_percent_change(rng, difficulty):
         return f"{sign}{abs(v)}%" if sign else f"{abs(v)}%"
     correct = (ps(pct), f"Correct. ({col['strs'][j]} − {col['strs'][i]}) ÷ {col['strs'][i]} × 100 "
                         f"≈ {abs(pct)}%.")
-    abs_change = _fmt(round(abs(vj - vi), ds["dec"]), ds["dec"])
     distractors = [
         (ps(wrong_base), f"This divides by the final value ({col['strs'][j]}) instead of the "
                          f"starting value ({col['strs'][i]})." if abs(round((vj - vi) / vj * 100)) <= 250
          else f"This uses the row for {_vu(ds['xstrs'][j - 1], xu)} instead of {xj}."),
-        (f"{sign}{abs_change} {col['unit']}".strip(),
-         f"This is the absolute change in {col['short']}, not a percent of the starting value."),
+        # percents only (an absolute change is a true "amount" too; see tr_percent_across_table)
+        (ps(half), "This is half the actual percent change; recheck the arithmetic."),
         (ps(dbl), "This is double the actual percent change; recheck the arithmetic."),
     ]
     expl = (f"Percent change = (final − initial) ÷ initial × 100 = ({col['strs'][j]} − "
@@ -2391,7 +2408,7 @@ def tr_extrapolate_value(rng, difficulty):
                                                  "earlier values)."))
     expl = (f"The change between {last2} is {col['strs'][-1]} − {col['strs'][-2]} = {ds_}. "
             f"One more step of {_xstep(ds, step)} adds the same change: {col['strs'][-1]} + "
-            f"({ds_}) = {_fmt(pred, dec)}.")
+            f"({ds_}) = {_vu(_fmt(pred, dec), yu)}.")
     return _emit(rng, prompt, correct, distractors, subskill="extrapolation",
                  explanation=expl, qtype=QT_TABLE, est=80, tags=TR_TAGS + ["extrapolate"],
                  stimulus=table_stimulus(ds),
@@ -2542,10 +2559,13 @@ def tr_condition_trend_compare(rng, difficulty):
     word = "increase" if a["shape"] == "inc" else "decrease"
     x0, x1 = _vu(ds["xstrs"][0], xu), _vu(ds["xstrs"][-1], xu)
     prompt = rng.choice([
+        # "by how much" must point at the gap between conditions, not at the
+        # larger condition's own total change (both readings were offered).
         f"According to Table 1, the total {word} in {a['desc']} from {x0} to {x1} was larger under "
-        f"which condition, and by how much?",
+        f"which condition, and how much larger was it than under the other condition?",
         f"Compare the overall change in {a['desc']} between {x0} and {x1} under the two conditions "
-        f"in Table 1. Which condition showed the larger {word}, and by what amount?",
+        f"in Table 1. Which condition showed the larger {word}, and by how much did its {word} "
+        f"exceed the other condition's?",
     ])
     correct = (f"{_cap_first(big['label'])}, by {_vu(_fmt(gap, dec), yu)}",
                f"Correct. {big['label']}: {_fmt(dbig, dec)}; {small['label']}: {_fmt(dsmall, dec)}; "
@@ -3446,18 +3466,20 @@ def tr_percent_across_table(rng, difficulty):
     prompt = rng.choice([
         f"Over the entire range of {scen['x_short']} shown in Table 1 ({x0} to {x1}), {col['desc']} "
         f"{word} by approximately what percent?",
-        f"According to Table 1, from the first row to the last, {col['desc']} {word} by about:",
+        f"According to Table 1, from the first row to the last, {col['desc']} {word} by about what "
+        f"percent of its starting value?",
     ])
-    abs_change = round(abs(vj - vi), ds["dec"])
     wrong_base = round(abs(vj - vi) / vj * 100) if vj > 0 else abs(pct) * 3
     cands = {abs(pct) * 2: "This is double the actual percent change.",
              wrong_base: f"This divides the change by the final value ({col['strs'][-1]}) instead of "
                          f"the starting value ({col['strs'][0]}).",
              round(abs(pct) / 2): "This is half the actual percent change."}
+    # Every option is a percent: an absolute-change option ("0.50 V") is also a true
+    # statement of how much the value fell, which made two answers defensible.
+    ratio = round(vj / vi * 100)
+    cands.setdefault(ratio, f"This is the final value as a percent of the starting value, not the "
+                            f"percent change.")
     distractors = [(f"{v}%", why) for v, why in cands.items() if v != abs(pct) and v > 0]
-    distractors.insert(0, (f"{_fmt(abs_change, ds['dec'])} {col['unit']}".strip(),
-                           f"This is the absolute change in {col['short']}, not a percent of the "
-                           f"starting value."))
     correct = (f"{abs(pct)}%", f"Correct. |{col['strs'][-1]} − {col['strs'][0]}| ÷ {col['strs'][0]} × 100 "
                                f"≈ {abs(pct)}%.")
     expl = (f"Percent change = (last − first) ÷ first × 100 = ({col['strs'][-1]} − {col['strs'][0]}) ÷ "

@@ -4,7 +4,7 @@ exam_name: "SAT"
 display_name: "Digital SAT"
 tagline: "Reading, Writing & Math"
 enabled: true
-content_version: "2.1.0"   # bump whenever content changes (tools/build_bundle.py enforces it)
+content_version: "2.4.0"   # bump whenever content changes (tools/build_bundle.py enforces it)
 description: >
   Original, SAT-style practice for the Digital SAT, covering the Reading and
   Writing section and the Math section. All content is original and contains no
@@ -24,6 +24,10 @@ question_types:
 # Full-length practice test layout (the app's Practice Test mode). Mirrors the
 # Digital SAT: two Reading & Writing modules, then two Math modules.
 timed_test:
+  # Multistage: module 2 of each section is harder when at least this share
+  # of module 1 was correct, easier otherwise (lib/domain/services/timed_test.dart).
+  adaptive:
+    route_threshold: 0.6
   intro: >
     This mirrors the Digital SAT: two Reading & Writing modules, then two Math
     modules, each timed.

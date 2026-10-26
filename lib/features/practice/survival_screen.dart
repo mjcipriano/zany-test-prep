@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/semantics.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -90,6 +91,10 @@ class _SurvivalScreenState extends ConsumerState<SurvivalScreen> {
       _lastCorrect = correct;
       if (correct) _streak += 1;
     });
+    SemanticsService.announce(
+      correct ? 'Correct! Streak $_streak.' : 'Run over.',
+      Directionality.of(context),
+    );
   }
 
   Future<void> _next() async {
@@ -157,14 +162,18 @@ class _SurvivalScreenState extends ConsumerState<SurvivalScreen> {
           child: Row(
             children: [
               IconButton(
+                tooltip: 'Leave Survival',
                 icon: const Icon(Icons.close_rounded),
                 onPressed: () => context.pop(),
               ),
               const Spacer(),
-              StatPill(
-                icon: Icons.bolt_rounded,
-                value: 'Streak $_streak',
-                color: AppTheme.streak,
+              Flexible(
+                child: StatPill(
+                  icon: Icons.bolt_rounded,
+                  value: 'Streak $_streak',
+                  color: AppTheme.streak,
+                  semanticLabel: 'Streak $_streak',
+                ),
               ),
             ],
           ),
@@ -184,7 +193,10 @@ class _SurvivalScreenState extends ConsumerState<SurvivalScreen> {
   }
 
   Widget _bottomBar() {
-    final color = _lastCorrect ? AppTheme.correct : AppTheme.incorrect;
+    final colors = AppColors.of(context);
+    final tint = _lastCorrect ? AppTheme.correct : AppTheme.incorrect;
+    final color = _lastCorrect ? colors.correct : colors.incorrect;
+    final fill = _lastCorrect ? colors.correctFill : colors.incorrectFill;
     final q = _question;
     final answer = q.type.isStudentProduced
         ? (q.answer?.accepted.first ?? '')
@@ -192,7 +204,7 @@ class _SurvivalScreenState extends ConsumerState<SurvivalScreen> {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
-        color: _answered ? color.withValues(alpha: 0.12) : null,
+        color: _answered ? tint.withValues(alpha: 0.12) : null,
         borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
       ),
       padding: const EdgeInsets.fromLTRB(20, 16, 20, 20),
@@ -201,35 +213,50 @@ class _SurvivalScreenState extends ConsumerState<SurvivalScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           if (_answered) ...[
-            Row(
-              children: [
-                Icon(
-                  _lastCorrect
-                      ? Icons.check_circle_rounded
-                      : Icons.cancel_rounded,
-                  color: color,
-                ),
-                const SizedBox(width: 8),
-                Text(
-                  _lastCorrect ? 'Correct!' : 'Run over',
-                  style: TextStyle(
-                    color: color,
-                    fontWeight: FontWeight.w800,
-                    fontSize: 18,
-                  ),
-                ),
-              ],
-            ),
-            Gap.s,
-            if (!_lastCorrect)
-              Padding(
-                padding: const EdgeInsets.only(bottom: 6),
-                child: Text(
-                  'Answer: $answer',
-                  style: const TextStyle(fontWeight: FontWeight.w700),
+            // Long explanations (or large text) scroll inside the panel.
+            ConstrainedBox(
+              constraints: BoxConstraints(
+                maxHeight: MediaQuery.sizeOf(context).height * 0.42,
+              ),
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Icon(
+                          _lastCorrect
+                              ? Icons.check_circle_rounded
+                              : Icons.cancel_rounded,
+                          color: color,
+                        ),
+                        const SizedBox(width: 8),
+                        Flexible(
+                          child: Text(
+                            _lastCorrect ? 'Correct!' : 'Run over',
+                            style: TextStyle(
+                              color: color,
+                              fontWeight: FontWeight.w800,
+                              fontSize: 18,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Gap.s,
+                    if (!_lastCorrect)
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 6),
+                        child: Text(
+                          'Answer: $answer',
+                          style: const TextStyle(fontWeight: FontWeight.w700),
+                        ),
+                      ),
+                    Text(q.explanation, style: const TextStyle(height: 1.4)),
+                  ],
                 ),
               ),
-            Text(q.explanation, style: const TextStyle(height: 1.4)),
+            ),
             Gap.m,
           ],
           FilledButton(
@@ -237,7 +264,8 @@ class _SurvivalScreenState extends ConsumerState<SurvivalScreen> {
                 ? _next
                 : (_canCheck && !_submitting ? _check : null),
             style: FilledButton.styleFrom(
-              backgroundColor: _answered ? color : null,
+              backgroundColor: _answered ? fill : null,
+              foregroundColor: _answered ? Colors.white : null,
             ),
             child: _submitting
                 ? const SizedBox(
@@ -269,9 +297,11 @@ class _SurvivalScreenState extends ConsumerState<SurvivalScreen> {
               Center(
                 child: Column(
                   children: [
-                    Text(
-                      r.isRecord ? '🏆' : '🛡️',
-                      style: const TextStyle(fontSize: 64),
+                    ExcludeSemantics(
+                      child: Text(
+                        r.isRecord ? '🏆' : '🛡️',
+                        style: const TextStyle(fontSize: 64),
+                      ),
                     ),
                     Text(
                       r.isRecord ? 'New best streak!' : 'Run complete',
@@ -290,9 +320,9 @@ class _SurvivalScreenState extends ConsumerState<SurvivalScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Icon(
+                          Icon(
                             Icons.bolt_rounded,
-                            color: AppTheme.streak,
+                            color: AppColors.of(context).streak,
                           ),
                           Gap.s,
                           Text(
@@ -314,9 +344,9 @@ class _SurvivalScreenState extends ConsumerState<SurvivalScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Icon(
+                          Icon(
                             Icons.emoji_events_rounded,
-                            color: AppTheme.xpGold,
+                            color: AppColors.of(context).xp,
                           ),
                           Gap.s,
                           Text(
@@ -340,7 +370,12 @@ class _SurvivalScreenState extends ConsumerState<SurvivalScreen> {
                   (bdg) => AppCard(
                     child: Row(
                       children: [
-                        Text(bdg.emoji, style: const TextStyle(fontSize: 28)),
+                        ExcludeSemantics(
+                          child: Text(
+                            bdg.emoji,
+                            style: const TextStyle(fontSize: 28),
+                          ),
+                        ),
                         Gap.m,
                         Expanded(
                           child: Column(

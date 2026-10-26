@@ -71,6 +71,33 @@ class Stimulus {
   bool get isTable => type == 'table';
   bool get isFigure => type == 'figure';
 
+  /// Passages at least this long (both texts together) are ACT-length and get
+  /// the phone reader layout (a scrollable, height-capped passage panel with
+  /// numbered paragraphs). The short shared pool stays well under it.
+  static const longPassageWords = 400;
+
+  /// Words in [text] plus [textB].
+  int get wordCount => _countWords(text) + _countWords(textB);
+
+  /// An ACT-length prose passage (single or paired).
+  bool get isLongPassage =>
+      !isTable && !isFigure && wordCount >= longPassageWords;
+
+  /// [text] split into paragraphs (blank-line separated).
+  List<String> get paragraphs => _splitParagraphs(text);
+
+  /// [textB] split into paragraphs (blank-line separated).
+  List<String> get paragraphsB => _splitParagraphs(textB);
+
+  static int _countWords(String? s) =>
+      s == null || s.trim().isEmpty ? 0 : s.trim().split(RegExp(r'\s+')).length;
+
+  static List<String> _splitParagraphs(String? s) => (s ?? '')
+      .split(RegExp(r'\n\s*\n'))
+      .map((p) => p.trim())
+      .where((p) => p.isNotEmpty)
+      .toList();
+
   factory Stimulus.fromJson(Map<String, dynamic> json) => Stimulus(
     type: json['type'] as String,
     title: json['title'] as String?,
@@ -199,6 +226,20 @@ class Question {
         : ProducedAnswer.fromJson(json['answer'] as Map<String, dynamic>),
     answerVerification: json['answer_verification'] as String?,
   );
+
+  /// Tag prefix that groups the questions of one long passage set.
+  static const passageSetTagPrefix = 'passage-set:';
+
+  /// The long passage set this question belongs to (its `passage-set:<id>`
+  /// tag), or null. Questions of a set share one passage and are dealt together.
+  String? get passageSetId {
+    for (final t in tags) {
+      if (t.startsWith(passageSetTagPrefix)) {
+        return t.substring(passageSetTagPrefix.length);
+      }
+    }
+    return null;
+  }
 
   Choice? get correct {
     for (final c in choices) {

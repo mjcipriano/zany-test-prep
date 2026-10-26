@@ -95,6 +95,57 @@ void main() {
     });
   });
 
+  group('timed_test.adaptive', () {
+    Exam exam(String scale, [Object? adaptive = #absent]) => Exam.fromJson({
+      'exam_id': 'x',
+      'exam_name': 'X',
+      'domains': ['math'],
+      'timed_test': {
+        if (adaptive != #absent) 'adaptive': adaptive,
+        'modules': [
+          {'name': 'M1', 'domain': 'math', 'count': 22, 'minutes': 35},
+          {'name': 'M2', 'domain': 'math', 'count': 22, 'minutes': 35},
+        ],
+      },
+      'scoring': {'type': scale},
+    });
+
+    test('SAT bundles without the key default to adaptive at 0.6', () {
+      final a = exam('sat_1600').timedTest.adaptive;
+      expect(a.enabled, isTrue);
+      expect(a.routeThreshold, AdaptiveSpec.kDefaultRouteThreshold);
+    });
+
+    test('ACT and percent exams default to linear', () {
+      expect(exam('act_36').timedTest.adaptive.enabled, isFalse);
+      expect(exam('percent').timedTest.adaptive.enabled, isFalse);
+    });
+
+    test('exam.yaml can set the threshold or switch routing off', () {
+      final custom = exam('sat_1600', {'route_threshold': 0.7});
+      expect(custom.timedTest.adaptive.enabled, isTrue);
+      expect(custom.timedTest.adaptive.routeThreshold, 0.7);
+      expect(exam('sat_1600', false).timedTest.adaptive.enabled, isFalse);
+      expect(exam('act_36', true).timedTest.adaptive.enabled, isTrue);
+    });
+
+    test('bad thresholds fall back or clamp instead of throwing', () {
+      expect(
+        exam('sat_1600', {
+          'route_threshold': 'lots',
+        }).timedTest.adaptive.routeThreshold,
+        AdaptiveSpec.kDefaultRouteThreshold,
+      );
+      expect(
+        exam('sat_1600', {
+          'route_threshold': 1.5,
+        }).timedTest.adaptive.routeThreshold,
+        1.0,
+      );
+      expect(exam('sat_1600', 'yes').timedTest.adaptive.enabled, isTrue);
+    });
+  });
+
   group('ExamInfo.fromJson', () {
     test('accepts a bare id (legacy exams.json)', () {
       final info = ExamInfo.fromJson('sat');

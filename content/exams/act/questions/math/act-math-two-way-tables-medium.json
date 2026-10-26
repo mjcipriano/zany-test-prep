@@ -11,36 +11,36 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "conditional_probability",
-    "prompt": "The table shows 111 survey responses. If one response is chosen at random, what is the probability that it is both “Coffee” and “Adults”?",
+    "prompt": "The table shows 174 survey responses. If one response is chosen at random, what is the probability that it is both “Left-handed” and “Weekday”?",
     "choices": [
       {
         "id": "A",
-        "text": "19/29",
-        "rationale": "This conditions on the row instead of using the grand total."
-      },
-      {
-        "id": "B",
-        "text": "104/111",
-        "rationale": "'Both' means the single cell, not either/or."
-      },
-      {
-        "id": "C",
-        "text": "57/74",
-        "rationale": "This conditions on the column instead of the grand total."
-      },
-      {
-        "id": "D",
-        "text": "29/37",
+        "text": "67/174",
         "rationale": "This is the whole row, not the single cell."
       },
       {
-        "id": "E",
-        "text": "19/37",
+        "id": "B",
+        "text": "21/67",
+        "rationale": "This conditions on the row instead of using the grand total."
+      },
+      {
+        "id": "C",
+        "text": "7/58",
         "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "7/24",
+        "rationale": "This conditions on the column instead of the grand total."
+      },
+      {
+        "id": "E",
+        "text": "59/87",
+        "rationale": "'Both' means the single cell, not either/or."
       }
     ],
-    "correct_choice": "E",
-    "explanation": "That single cell holds 57 of the 111 responses: 19/37.",
+    "correct_choice": "C",
+    "explanation": "That single cell holds 21 of the 174 responses: 7/58.",
     "estimated_time_seconds": 90,
     "tags": [
       "data",
@@ -54,33 +54,33 @@
         "caption": "Survey responses",
         "headers": [
           "",
-          "Adults",
-          "Students",
+          "Weekday",
+          "Weekend",
           "Total"
         ],
         "rows": [
           [
-            "Coffee",
-            "57",
-            "30",
-            "87"
+            "Left-handed",
+            "21",
+            "46",
+            "67"
           ],
           [
-            "Tea",
-            "17",
-            "7",
-            "24"
+            "Right-handed",
+            "51",
+            "56",
+            "107"
           ],
           [
             "Total",
-            "74",
-            "37",
-            "111"
+            "72",
+            "102",
+            "174"
           ]
         ]
       }
     },
-    "answer_verification": "P=19/37"
+    "answer_verification": "P=7/58"
   },
   {
     "question_id": "act-math-two-way-tables-medium-q02",
@@ -94,36 +94,36 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "conditional_probability",
-    "prompt": "In the table of 181 responses, one value is missing. How many responses were “Soccer” and “Students”?",
+    "prompt": "In the table of 94 responses, one value is missing. How many responses were “Coffee” and “Weekend”?",
     "choices": [
       {
         "id": "A",
-        "text": "28",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "42",
+        "text": "56",
         "rationale": "Subtract within the same row or the same column."
       },
       {
+        "id": "B",
+        "text": "16",
+        "rationale": "That is the known cell in the row."
+      },
+      {
         "id": "C",
-        "text": "57",
-        "rationale": "That is the other cell in the column."
+        "text": "41",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "71",
+        "text": "57",
         "rationale": "That is the row total; subtract the known cell."
       },
       {
         "id": "E",
-        "text": "43",
-        "rationale": "That is the known cell in the row."
+        "text": "31",
+        "rationale": "That is the other cell in the column."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Row total minus the known cell: 71 − 43 = 28 (check: column 28 + 57 = 85).",
+    "correct_choice": "C",
+    "explanation": "Row total minus the known cell: 57 − 16 = 41 (check: column 41 + 31 = 72).",
     "estimated_time_seconds": 95,
     "tags": [
       "data",
@@ -136,33 +136,33 @@
         "caption": "Survey responses",
         "headers": [
           "",
-          "Adults",
-          "Students",
+          "Weekday",
+          "Weekend",
           "Total"
         ],
         "rows": [
           [
-            "Soccer",
-            "43",
+            "Coffee",
+            "16",
             "?",
-            "71"
+            "57"
           ],
           [
-            "Basketball",
-            "53",
-            "57",
-            "110"
+            "Tea",
+            "6",
+            "31",
+            "37"
           ],
           [
             "Total",
-            "96",
-            "85",
-            "181"
+            "22",
+            "72",
+            "94"
           ]
         ]
       }
     },
-    "answer_verification": "val=28"
+    "answer_verification": "val=41"
   },
   {
     "question_id": "act-math-two-way-tables-medium-q03",
@@ -176,42 +176,125 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "conditional_probability",
-    "prompt": "Based on the table of 122 responses, approximately what percent of the “Weekday” responses were “Bike”?",
+    "prompt": "Based on the table of 89 responses, approximately what percent of the “Grade 9” responses were “Right-handed”?",
     "choices": [
       {
         "id": "A",
-        "text": "53%",
-        "rationale": "Correct."
+        "text": "23%",
+        "rationale": "That is the percent that were “Left-handed”."
       },
       {
         "id": "B",
-        "text": "47%",
-        "rationale": "That is the percent that were “Bus”."
+        "text": "27%",
+        "rationale": "Divide by the column total, not the grand total."
       },
       {
         "id": "C",
-        "text": "48%",
-        "rationale": "Arithmetic slip."
+        "text": "77%",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "86%",
+        "text": "69%",
         "rationale": "Divide by the column total, not the row total."
       },
       {
         "id": "E",
-        "text": "46%",
-        "rationale": "Divide by the column total, not the grand total."
+        "text": "24%",
+        "rationale": "Arithmetic slip."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "56/105 × 100 ≈ 53%.",
+    "correct_choice": "C",
+    "explanation": "24/31 × 100 ≈ 77%.",
     "estimated_time_seconds": 90,
     "tags": [
       "data",
       "table",
       "percent",
       "family:tw_fraction_percent"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Survey responses",
+        "headers": [
+          "",
+          "Grade 9",
+          "Grade 10",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Left-handed",
+            "7",
+            "47",
+            "54"
+          ],
+          [
+            "Right-handed",
+            "24",
+            "11",
+            "35"
+          ],
+          [
+            "Total",
+            "31",
+            "58",
+            "89"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "24/31"
+  },
+  {
+    "question_id": "act-math-two-way-tables-medium-q04",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "two_way_tables",
+    "lesson_id": "act-math-two-way-tables-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "conditional_probability",
+    "prompt": "Based on the table of 142 responses, which statement correctly compares the two “Weekday”/“Weekend” groups?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Every “Weekend” response is “Bus”.",
+        "rationale": "The “Weekend” column contains both rows."
+      },
+      {
+        "id": "B",
+        "text": "A “Weekday” response is more likely than a “Weekend” response to be “Bus”.",
+        "rationale": "Compare proportions: 5/57 ≈ 0.09 vs 49/85 ≈ 0.58."
+      },
+      {
+        "id": "C",
+        "text": "A “Weekend” response is more likely to be “Bus” because the “Weekend” column has more responses.",
+        "rationale": "Likelihood depends on the proportion within the group, not the group's size."
+      },
+      {
+        "id": "D",
+        "text": "The two groups are equally likely to be “Bus”.",
+        "rationale": "The proportions differ."
+      },
+      {
+        "id": "E",
+        "text": "A “Weekend” response is more likely than a “Weekday” response to be “Bus”.",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "E",
+    "explanation": "P(Bus | Weekday) = 5/57 ≈ 0.09 and P(Bus | Weekend) = 49/85 ≈ 0.58; the larger is “Weekend”.",
+    "estimated_time_seconds": 100,
+    "tags": [
+      "data",
+      "table",
+      "compare",
+      "family:tw_compare"
     ],
     "stimulus": {
       "type": "table",
@@ -226,109 +309,26 @@
         "rows": [
           [
             "Bus",
+            "5",
             "49",
-            "8",
-            "57"
+            "54"
           ],
           [
             "Bike",
-            "56",
-            "9",
-            "65"
+            "52",
+            "36",
+            "88"
           ],
           [
             "Total",
-            "105",
-            "17",
-            "122"
+            "57",
+            "85",
+            "142"
           ]
         ]
       }
     },
-    "answer_verification": "56/105"
-  },
-  {
-    "question_id": "act-math-two-way-tables-medium-q04",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "two_way_tables",
-    "lesson_id": "act-math-two-way-tables-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "conditional_probability",
-    "prompt": "Based on the table of 120 responses, which statement correctly compares the two “Adults”/“Students” groups?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "A “Students” response is more likely than a “Adults” response to be “Soccer”.",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "The two groups are equally likely to be “Soccer”.",
-        "rationale": "The proportions differ."
-      },
-      {
-        "id": "C",
-        "text": "A “Adults” response is more likely than a “Students” response to be “Soccer”.",
-        "rationale": "Compare proportions: 7/48 ≈ 0.15 vs 33/72 ≈ 0.46."
-      },
-      {
-        "id": "D",
-        "text": "Every “Students” response is “Soccer”.",
-        "rationale": "The “Students” column contains both rows."
-      },
-      {
-        "id": "E",
-        "text": "A “Students” response is more likely to be “Soccer” because the “Students” column has more responses.",
-        "rationale": "Likelihood depends on the proportion within the group, not the group's size."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "P(Soccer | Adults) = 7/48 ≈ 0.15 and P(Soccer | Students) = 33/72 ≈ 0.46; the larger is “Students”.",
-    "estimated_time_seconds": 100,
-    "tags": [
-      "data",
-      "table",
-      "compare",
-      "family:tw_compare"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Survey responses",
-        "headers": [
-          "",
-          "Adults",
-          "Students",
-          "Total"
-        ],
-        "rows": [
-          [
-            "Soccer",
-            "7",
-            "33",
-            "40"
-          ],
-          [
-            "Basketball",
-            "41",
-            "39",
-            "80"
-          ],
-          [
-            "Total",
-            "48",
-            "72",
-            "120"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "0.146 vs 0.458"
+    "answer_verification": "0.088 vs 0.576"
   },
   {
     "question_id": "act-math-two-way-tables-medium-q05",
@@ -342,36 +342,36 @@
     "version": "1.0.0",
     "question_type": "multi_step_math",
     "subskill": "conditional_probability",
-    "prompt": "Of the 130 morning classes and afternoon classes surveyed, 64 were morning classes. 49 of the morning classes and 37 of the afternoon classes were adopted. If one of the surveyed is chosen at random, what is the probability that it is one of the afternoon classes who were adopted?",
+    "prompt": "Of the 153 morning classes and afternoon classes surveyed, 75 were morning classes. 37 of the morning classes and 23 of the afternoon classes were full. If one of the surveyed is chosen at random, what is the probability that it is one of the afternoon classes who were full?",
     "choices": [
       {
         "id": "A",
-        "text": "43/65",
-        "rationale": "That counts the morning classes who were adopted as well."
-      },
-      {
-        "id": "B",
-        "text": "37/86",
-        "rationale": "That conditions on the condition, not the whole group."
-      },
-      {
-        "id": "C",
-        "text": "37/66",
+        "text": "23/78",
         "rationale": "Divide by the grand total, not the afternoon classes total."
       },
       {
+        "id": "B",
+        "text": "20/51",
+        "rationale": "That counts the morning classes who were full as well."
+      },
+      {
+        "id": "C",
+        "text": "23/60",
+        "rationale": "That conditions on the condition, not the whole group."
+      },
+      {
         "id": "D",
-        "text": "29/130",
-        "rationale": "That is the probability of a afternoon classe who did not."
+        "text": "23/153",
+        "rationale": "Correct."
       },
       {
         "id": "E",
-        "text": "37/130",
-        "rationale": "Correct."
+        "text": "55/153",
+        "rationale": "That is the probability of a afternoon classe who did not."
       }
     ],
-    "correct_choice": "E",
-    "explanation": "37 of the 130 fit both conditions: 37/130.",
+    "correct_choice": "D",
+    "explanation": "23 of the 153 fit both conditions: 23/153.",
     "estimated_time_seconds": 100,
     "tags": [
       "data",
@@ -379,7 +379,7 @@
       "build",
       "family:tw_build"
     ],
-    "answer_verification": "cells 49,15,37,29"
+    "answer_verification": "cells 37,38,23,55"
   },
   {
     "question_id": "act-math-two-way-tables-medium-q06",
@@ -393,36 +393,36 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "conditional_probability",
-    "prompt": "The table shows relative frequencies for 200 responses. How many responses in total were “Morning”?",
+    "prompt": "The table shows relative frequencies for 250 responses. How many responses in total were “Weekday”?",
     "choices": [
       {
         "id": "A",
-        "text": "38",
-        "rationale": "Multiply by 200."
+        "text": "150",
+        "rationale": "That is the other column."
       },
       {
         "id": "B",
-        "text": "36",
-        "rationale": "That is one cell only."
-      },
-      {
-        "id": "C",
-        "text": "56",
-        "rationale": "That is a row total."
-      },
-      {
-        "id": "D",
-        "text": "76",
+        "text": "100",
         "rationale": "Correct."
       },
       {
+        "id": "C",
+        "text": "40",
+        "rationale": "Multiply by 250."
+      },
+      {
+        "id": "D",
+        "text": "112",
+        "rationale": "That is a row total."
+      },
+      {
         "id": "E",
-        "text": "124",
-        "rationale": "That is the other column."
+        "text": "50",
+        "rationale": "That is one cell only."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Column total 0.38 × 200 = 76.",
+    "correct_choice": "B",
+    "explanation": "Column total 0.40 × 250 = 100.",
     "estimated_time_seconds": 90,
     "tags": [
       "data",
@@ -433,36 +433,36 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Relative frequencies (n = 200)",
+        "caption": "Relative frequencies (n = 250)",
         "headers": [
           "",
-          "Morning",
-          "Evening",
+          "Weekday",
+          "Weekend",
           "Total"
         ],
         "rows": [
           [
-            "Bus",
-            "0.18",
-            "0.10",
-            "0.28"
+            "Left-handed",
+            "0.20",
+            "0.25",
+            "0.45"
           ],
           [
-            "Bike",
+            "Right-handed",
             "0.20",
-            "0.52",
-            "0.72"
+            "0.35",
+            "0.55"
           ],
           [
             "Total",
-            "0.38",
-            "0.62",
+            "0.40",
+            "0.60",
             "1.00"
           ]
         ]
       }
     },
-    "answer_verification": "0.18,0.1,0.2,0.52"
+    "answer_verification": "0.2,0.25,0.2,0.35"
   },
   {
     "question_id": "act-math-two-way-tables-medium-q07",
@@ -476,36 +476,36 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "conditional_probability",
-    "prompt": "The table shows 148 survey responses. If one response is chosen at random, what is the probability that it is both “Bus” and “Morning”?",
+    "prompt": "The table shows 105 survey responses. If one response is chosen at random, what is the probability that it is both “Soccer” and “Morning”?",
     "choices": [
       {
         "id": "A",
-        "text": "10/37",
-        "rationale": "Correct."
+        "text": "11/21",
+        "rationale": "This is the whole row, not the single cell."
       },
       {
         "id": "B",
-        "text": "1/2",
-        "rationale": "This conditions on the column instead of the grand total."
+        "text": "2/5",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "20/37",
+        "text": "42/55",
         "rationale": "This conditions on the row instead of using the grand total."
       },
       {
         "id": "D",
-        "text": "57/74",
-        "rationale": "'Both' means the single cell, not either/or."
+        "text": "-3/5",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
       },
       {
         "id": "E",
-        "text": "84/37",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "68/105",
+        "rationale": "'Both' means the single cell, not either/or."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "That single cell holds 40 of the 148 responses: 10/37.",
+    "correct_choice": "B",
+    "explanation": "That single cell holds 42 of the 105 responses: 2/5.",
     "estimated_time_seconds": 90,
     "tags": [
       "data",
@@ -525,27 +525,27 @@
         ],
         "rows": [
           [
-            "Bus",
-            "40",
-            "34",
-            "74"
+            "Soccer",
+            "42",
+            "13",
+            "55"
           ],
           [
-            "Bike",
-            "40",
-            "34",
-            "74"
+            "Basketball",
+            "13",
+            "37",
+            "50"
           ],
           [
             "Total",
-            "80",
-            "68",
-            "148"
+            "55",
+            "50",
+            "105"
           ]
         ]
       }
     },
-    "answer_verification": "P=10/37"
+    "answer_verification": "P=2/5"
   },
   {
     "question_id": "act-math-two-way-tables-medium-q08",
@@ -559,124 +559,41 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "conditional_probability",
-    "prompt": "In the table of 135 responses, one value is missing. How many responses were “Fiction” and “Weekend”?",
+    "prompt": "In the table of 143 responses, one value is missing. How many responses were “Left-handed” and “Rural”?",
     "choices": [
       {
         "id": "A",
+        "text": "57",
+        "rationale": "That is the known cell in the row."
+      },
+      {
+        "id": "B",
         "text": "9",
         "rationale": "Subtract within the same row or the same column."
       },
       {
-        "id": "B",
-        "text": "73",
-        "rationale": "That is the row total; subtract the known cell."
-      },
-      {
         "id": "C",
-        "text": "54",
-        "rationale": "That is the known cell in the row."
-      },
-      {
-        "id": "D",
-        "text": "19",
+        "text": "6",
         "rationale": "Correct."
       },
       {
+        "id": "D",
+        "text": "63",
+        "rationale": "That is the row total; subtract the known cell."
+      },
+      {
         "id": "E",
-        "text": "44",
+        "text": "41",
         "rationale": "That is the other cell in the column."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Row total minus the known cell: 73 − 54 = 19 (check: column 19 + 44 = 63).",
+    "correct_choice": "C",
+    "explanation": "Row total minus the known cell: 63 − 57 = 6 (check: column 6 + 41 = 47).",
     "estimated_time_seconds": 95,
     "tags": [
       "data",
       "table",
       "family:tw_count"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Survey responses",
-        "headers": [
-          "",
-          "Weekday",
-          "Weekend",
-          "Total"
-        ],
-        "rows": [
-          [
-            "Fiction",
-            "54",
-            "?",
-            "73"
-          ],
-          [
-            "Nonfiction",
-            "18",
-            "44",
-            "62"
-          ],
-          [
-            "Total",
-            "72",
-            "63",
-            "135"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "val=19"
-  },
-  {
-    "question_id": "act-math-two-way-tables-medium-q09",
-    "exam_id": "act",
-    "exam_name": "ACT",
-    "domain": "math",
-    "section": "statistics_probability",
-    "skill": "two_way_tables",
-    "lesson_id": "act-math-two-way-tables-medium",
-    "difficulty": "medium",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "conditional_probability",
-    "prompt": "Based on the table of 119 responses, approximately what percent of the “Urban” responses were “Tea”?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "77%",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "43%",
-        "rationale": "Divide by the column total, not the grand total."
-      },
-      {
-        "id": "C",
-        "text": "24%",
-        "rationale": "Arithmetic slip."
-      },
-      {
-        "id": "D",
-        "text": "23%",
-        "rationale": "That is the percent that were “Coffee”."
-      },
-      {
-        "id": "E",
-        "text": "67%",
-        "rationale": "Divide by the column total, not the row total."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "51/66 × 100 ≈ 77%.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "data",
-      "table",
-      "percent",
-      "family:tw_fraction_percent"
     ],
     "stimulus": {
       "type": "table",
@@ -690,30 +607,30 @@
         ],
         "rows": [
           [
-            "Coffee",
-            "15",
-            "28",
-            "43"
+            "Left-handed",
+            "57",
+            "?",
+            "63"
           ],
           [
-            "Tea",
-            "51",
-            "25",
-            "76"
+            "Right-handed",
+            "39",
+            "41",
+            "80"
           ],
           [
             "Total",
-            "66",
-            "53",
-            "119"
+            "96",
+            "47",
+            "143"
           ]
         ]
       }
     },
-    "answer_verification": "51/66"
+    "answer_verification": "val=6"
   },
   {
-    "question_id": "act-math-two-way-tables-medium-q10",
+    "question_id": "act-math-two-way-tables-medium-q09",
     "exam_id": "act",
     "exam_name": "ACT",
     "domain": "math",
@@ -724,42 +641,42 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "conditional_probability",
-    "prompt": "Based on the table of 201 responses, which statement correctly compares the two “Morning”/“Evening” groups?",
+    "prompt": "Based on the table of 151 responses, approximately what percent of the “Morning” responses were “Tea”?",
     "choices": [
       {
         "id": "A",
-        "text": "The two groups are equally likely to be “Coffee”.",
-        "rationale": "The proportions differ."
+        "text": "14%",
+        "rationale": "Arithmetic slip."
       },
       {
         "id": "B",
-        "text": "A “Morning” response is more likely to be “Coffee” because the “Morning” column has more responses.",
-        "rationale": "Likelihood depends on the proportion within the group, not the group's size."
-      },
-      {
-        "id": "C",
-        "text": "A “Morning” response is more likely than a “Evening” response to be “Coffee”.",
+        "text": "87%",
         "rationale": "Correct."
       },
       {
+        "id": "C",
+        "text": "31%",
+        "rationale": "Divide by the column total, not the grand total."
+      },
+      {
         "id": "D",
-        "text": "Every “Morning” response is “Coffee”.",
-        "rationale": "The “Morning” column contains both rows."
+        "text": "13%",
+        "rationale": "That is the percent that were “Coffee”."
       },
       {
         "id": "E",
-        "text": "A “Evening” response is more likely than a “Morning” response to be “Coffee”.",
-        "rationale": "Compare proportions: 51/85 ≈ 0.60 vs 60/116 ≈ 0.52."
+        "text": "48%",
+        "rationale": "Divide by the column total, not the row total."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "P(Coffee | Morning) = 51/85 ≈ 0.60 and P(Coffee | Evening) = 60/116 ≈ 0.52; the larger is “Morning”.",
-    "estimated_time_seconds": 100,
+    "correct_choice": "B",
+    "explanation": "47/54 × 100 ≈ 87%.",
+    "estimated_time_seconds": 90,
     "tags": [
       "data",
       "table",
-      "compare",
-      "family:tw_compare"
+      "percent",
+      "family:tw_fraction_percent"
     ],
     "stimulus": {
       "type": "table",
@@ -774,26 +691,109 @@
         "rows": [
           [
             "Coffee",
-            "51",
-            "60",
-            "111"
+            "7",
+            "46",
+            "53"
           ],
           [
             "Tea",
-            "34",
-            "56",
-            "90"
+            "47",
+            "51",
+            "98"
           ],
           [
             "Total",
-            "85",
-            "116",
-            "201"
+            "54",
+            "97",
+            "151"
           ]
         ]
       }
     },
-    "answer_verification": "0.600 vs 0.517"
+    "answer_verification": "47/54"
+  },
+  {
+    "question_id": "act-math-two-way-tables-medium-q10",
+    "exam_id": "act",
+    "exam_name": "ACT",
+    "domain": "math",
+    "section": "statistics_probability",
+    "skill": "two_way_tables",
+    "lesson_id": "act-math-two-way-tables-medium",
+    "difficulty": "medium",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "conditional_probability",
+    "prompt": "Based on the table of 120 responses, which statement correctly compares the two “Grade 9”/“Grade 10” groups?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Every “Grade 9” response is “Left-handed”.",
+        "rationale": "The “Grade 9” column contains both rows."
+      },
+      {
+        "id": "B",
+        "text": "The two groups are equally likely to be “Left-handed”.",
+        "rationale": "The proportions differ."
+      },
+      {
+        "id": "C",
+        "text": "A “Grade 9” response is more likely to be “Left-handed” because the “Grade 9” column has more responses.",
+        "rationale": "Likelihood depends on the proportion within the group, not the group's size."
+      },
+      {
+        "id": "D",
+        "text": "A “Grade 9” response is more likely than a “Grade 10” response to be “Left-handed”.",
+        "rationale": "Correct."
+      },
+      {
+        "id": "E",
+        "text": "A “Grade 10” response is more likely than a “Grade 9” response to be “Left-handed”.",
+        "rationale": "Compare proportions: 29/53 ≈ 0.55 vs 20/67 ≈ 0.30."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "P(Left-handed | Grade 9) = 29/53 ≈ 0.55 and P(Left-handed | Grade 10) = 20/67 ≈ 0.30; the larger is “Grade 9”.",
+    "estimated_time_seconds": 100,
+    "tags": [
+      "data",
+      "table",
+      "compare",
+      "family:tw_compare"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Survey responses",
+        "headers": [
+          "",
+          "Grade 9",
+          "Grade 10",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Left-handed",
+            "29",
+            "20",
+            "49"
+          ],
+          [
+            "Right-handed",
+            "24",
+            "47",
+            "71"
+          ],
+          [
+            "Total",
+            "53",
+            "67",
+            "120"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "0.547 vs 0.299"
   },
   {
     "question_id": "act-math-two-way-tables-medium-q11",
@@ -807,36 +807,36 @@
     "version": "1.0.0",
     "question_type": "multi_step_math",
     "subskill": "conditional_probability",
-    "prompt": "Of the 157 morning classes and afternoon classes surveyed, 90 were morning classes. 30 of the morning classes and 50 of the afternoon classes voted yes. If one of the surveyed is chosen at random, what is the probability that it is one of the afternoon classes who voted yes?",
+    "prompt": "Of the 140 seniors and juniors surveyed, 78 were seniors. 47 of the seniors and 14 of the juniors were adopted. If one of the surveyed is chosen at random, what is the probability that it is one of the juniors who were adopted?",
     "choices": [
       {
         "id": "A",
-        "text": "17/157",
-        "rationale": "That is the probability of a afternoon classe who did not."
+        "text": "14/61",
+        "rationale": "That conditions on the condition, not the whole group."
       },
       {
         "id": "B",
-        "text": "80/157",
-        "rationale": "That counts the morning classes who voted yes as well."
+        "text": "12/35",
+        "rationale": "That is the probability of a junior who did not."
       },
       {
         "id": "C",
-        "text": "50/67",
-        "rationale": "Divide by the grand total, not the afternoon classes total."
+        "text": "61/140",
+        "rationale": "That counts the seniors who were adopted as well."
       },
       {
         "id": "D",
-        "text": "50/157",
+        "text": "1/10",
         "rationale": "Correct."
       },
       {
         "id": "E",
-        "text": "5/8",
-        "rationale": "That conditions on the condition, not the whole group."
+        "text": "7/31",
+        "rationale": "Divide by the grand total, not the juniors total."
       }
     ],
     "correct_choice": "D",
-    "explanation": "50 of the 157 fit both conditions: 50/157.",
+    "explanation": "14 of the 140 fit both conditions: 1/10.",
     "estimated_time_seconds": 100,
     "tags": [
       "data",
@@ -844,7 +844,7 @@
       "build",
       "family:tw_build"
     ],
-    "answer_verification": "cells 30,60,50,17"
+    "answer_verification": "cells 47,31,14,48"
   },
   {
     "question_id": "act-math-two-way-tables-medium-q12",
@@ -858,36 +858,36 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "conditional_probability",
-    "prompt": "The table shows relative frequencies for 50 responses. How many responses in total were “Adults”?",
+    "prompt": "The table shows relative frequencies for 100 responses. How many responses in total were “Urban”?",
     "choices": [
       {
         "id": "A",
-        "text": "5",
-        "rationale": "That is one cell only."
+        "text": "47",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
       },
       {
         "id": "B",
-        "text": "30",
-        "rationale": "Multiply by 50."
-      },
-      {
-        "id": "C",
-        "text": "12",
+        "text": "40",
         "rationale": "That is a row total."
       },
       {
+        "id": "C",
+        "text": "25",
+        "rationale": "That is one cell only."
+      },
+      {
         "id": "D",
-        "text": "35",
-        "rationale": "That is the other column."
+        "text": "50",
+        "rationale": "Correct."
       },
       {
         "id": "E",
-        "text": "15",
-        "rationale": "Correct."
+        "text": "53",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
       }
     ],
-    "correct_choice": "E",
-    "explanation": "Column total 0.30 × 50 = 15.",
+    "correct_choice": "D",
+    "explanation": "Column total 0.50 × 100 = 50.",
     "estimated_time_seconds": 90,
     "tags": [
       "data",
@@ -898,36 +898,36 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Relative frequencies (n = 50)",
+        "caption": "Relative frequencies (n = 100)",
         "headers": [
           "",
-          "Adults",
-          "Students",
+          "Urban",
+          "Rural",
           "Total"
         ],
         "rows": [
           [
-            "Fiction",
-            "0.10",
+            "Bus",
+            "0.25",
             "0.15",
-            "0.25"
+            "0.40"
           ],
           [
-            "Nonfiction",
-            "0.20",
-            "0.55",
-            "0.75"
+            "Bike",
+            "0.25",
+            "0.35",
+            "0.60"
           ],
           [
             "Total",
-            "0.30",
-            "0.70",
+            "0.50",
+            "0.50",
             "1.00"
           ]
         ]
       }
     },
-    "answer_verification": "0.1,0.15,0.2,0.55"
+    "answer_verification": "0.25,0.15,0.25,0.35"
   },
   {
     "question_id": "act-math-two-way-tables-medium-q13",
@@ -941,36 +941,36 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "conditional_probability",
-    "prompt": "The table shows 133 survey responses. If one response is chosen at random, what is the probability that it is both “Bus” and “Grade 9”?",
+    "prompt": "The table shows 112 survey responses. If one response is chosen at random, what is the probability that it is both “Left-handed” and “Grade 9”?",
     "choices": [
       {
         "id": "A",
-        "text": "15/37",
-        "rationale": "This conditions on the column instead of the grand total."
-      },
-      {
-        "id": "B",
-        "text": "6/19",
-        "rationale": "This is the whole row, not the single cell."
-      },
-      {
-        "id": "C",
-        "text": "86/133",
+        "text": "85/112",
         "rationale": "'Both' means the single cell, not either/or."
       },
       {
+        "id": "B",
+        "text": "5/9",
+        "rationale": "This conditions on the column instead of the grand total."
+      },
+      {
+        "id": "C",
+        "text": "65/112",
+        "rationale": "This is the whole row, not the single cell."
+      },
+      {
         "id": "D",
-        "text": "30/133",
-        "rationale": "Correct."
+        "text": "5/13",
+        "rationale": "This conditions on the row instead of using the grand total."
       },
       {
         "id": "E",
-        "text": "5/7",
-        "rationale": "This conditions on the row instead of using the grand total."
+        "text": "25/112",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "That single cell holds 30 of the 133 responses: 30/133.",
+    "correct_choice": "E",
+    "explanation": "That single cell holds 25 of the 112 responses: 25/112.",
     "estimated_time_seconds": 90,
     "tags": [
       "data",
@@ -990,27 +990,27 @@
         ],
         "rows": [
           [
-            "Bus",
-            "30",
-            "12",
-            "42"
+            "Left-handed",
+            "25",
+            "40",
+            "65"
           ],
           [
-            "Bike",
-            "44",
-            "47",
-            "91"
+            "Right-handed",
+            "20",
+            "27",
+            "47"
           ],
           [
             "Total",
-            "74",
-            "59",
-            "133"
+            "45",
+            "67",
+            "112"
           ]
         ]
       }
     },
-    "answer_verification": "P=30/133"
+    "answer_verification": "P=25/112"
   },
   {
     "question_id": "act-math-two-way-tables-medium-q14",
@@ -1024,36 +1024,36 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "conditional_probability",
-    "prompt": "In the table of 125 responses, one value is missing. How many responses were “Soccer” and “Rural”?",
+    "prompt": "In the table of 93 responses, one value is missing. How many responses were “Soccer” and “Rural”?",
     "choices": [
       {
         "id": "A",
-        "text": "59",
-        "rationale": "That is the row total; subtract the known cell."
-      },
-      {
-        "id": "B",
-        "text": "42",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "61",
-        "rationale": "Subtract within the same row or the same column."
-      },
-      {
-        "id": "D",
-        "text": "36",
+        "text": "13",
         "rationale": "That is the other cell in the column."
       },
       {
-        "id": "E",
-        "text": "17",
+        "id": "B",
+        "text": "72",
+        "rationale": "That is the row total; subtract the known cell."
+      },
+      {
+        "id": "C",
+        "text": "37",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "35",
         "rationale": "That is the known cell in the row."
+      },
+      {
+        "id": "E",
+        "text": "15",
+        "rationale": "Subtract within the same row or the same column."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Row total minus the known cell: 59 − 17 = 42 (check: column 42 + 36 = 78).",
+    "correct_choice": "C",
+    "explanation": "Row total minus the known cell: 72 − 35 = 37 (check: column 37 + 13 = 50).",
     "estimated_time_seconds": 95,
     "tags": [
       "data",
@@ -1073,26 +1073,26 @@
         "rows": [
           [
             "Soccer",
-            "17",
+            "35",
             "?",
-            "59"
+            "72"
           ],
           [
             "Basketball",
-            "30",
-            "36",
-            "66"
+            "8",
+            "13",
+            "21"
           ],
           [
             "Total",
-            "47",
-            "78",
-            "125"
+            "43",
+            "50",
+            "93"
           ]
         ]
       }
     },
-    "answer_verification": "val=42"
+    "answer_verification": "val=37"
   },
   {
     "question_id": "act-math-two-way-tables-medium-q15",
@@ -1106,36 +1106,36 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "conditional_probability",
-    "prompt": "Based on the table of 171 responses, approximately what percent of the “Weekday” responses were “Right-handed”?",
+    "prompt": "Based on the table of 210 responses, approximately what percent of the “Urban” responses were “Nonfiction”?",
     "choices": [
       {
         "id": "A",
-        "text": "75%",
-        "rationale": "Arithmetic slip."
+        "text": "37%",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "21%",
-        "rationale": "Divide by the column total, not the row total."
+        "text": "63%",
+        "rationale": "That is the percent that were “Fiction”."
       },
       {
         "id": "C",
-        "text": "74%",
-        "rationale": "That is the percent that were “Left-handed”."
+        "text": "64%",
+        "rationale": "Arithmetic slip."
       },
       {
         "id": "D",
-        "text": "9%",
+        "text": "16%",
         "rationale": "Divide by the column total, not the grand total."
       },
       {
         "id": "E",
-        "text": "26%",
-        "rationale": "Correct."
+        "text": "36%",
+        "rationale": "Divide by the column total, not the row total."
       }
     ],
-    "correct_choice": "E",
-    "explanation": "16/62 × 100 ≈ 26%.",
+    "correct_choice": "A",
+    "explanation": "34/91 × 100 ≈ 37%.",
     "estimated_time_seconds": 90,
     "tags": [
       "data",
@@ -1149,33 +1149,33 @@
         "caption": "Survey responses",
         "headers": [
           "",
-          "Weekday",
-          "Weekend",
+          "Urban",
+          "Rural",
           "Total"
         ],
         "rows": [
           [
-            "Left-handed",
-            "46",
-            "49",
-            "95"
+            "Fiction",
+            "57",
+            "59",
+            "116"
           ],
           [
-            "Right-handed",
-            "16",
+            "Nonfiction",
+            "34",
             "60",
-            "76"
+            "94"
           ],
           [
             "Total",
-            "62",
-            "109",
-            "171"
+            "91",
+            "119",
+            "210"
           ]
         ]
       }
     },
-    "answer_verification": "16/62"
+    "answer_verification": "34/91"
   },
   {
     "question_id": "act-math-two-way-tables-medium-q16",
@@ -1189,36 +1189,36 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "conditional_probability",
-    "prompt": "Based on the table of 128 responses, which statement correctly compares the two “Urban”/“Rural” groups?",
+    "prompt": "Based on the table of 112 responses, which statement correctly compares the two “Urban”/“Rural” groups?",
     "choices": [
       {
         "id": "A",
-        "text": "Every “Rural” response is “Fiction”.",
+        "text": "Every “Rural” response is “Left-handed”.",
         "rationale": "The “Rural” column contains both rows."
       },
       {
         "id": "B",
-        "text": "The two groups are equally likely to be “Fiction”.",
-        "rationale": "The proportions differ."
-      },
-      {
-        "id": "C",
-        "text": "A “Rural” response is more likely to be “Fiction” because the “Rural” column has more responses.",
+        "text": "A “Rural” response is more likely to be “Left-handed” because the “Rural” column has more responses.",
         "rationale": "Likelihood depends on the proportion within the group, not the group's size."
       },
       {
+        "id": "C",
+        "text": "The two groups are equally likely to be “Left-handed”.",
+        "rationale": "The proportions differ."
+      },
+      {
         "id": "D",
-        "text": "A “Rural” response is more likely than a “Urban” response to be “Fiction”.",
+        "text": "A “Rural” response is more likely than a “Urban” response to be “Left-handed”.",
         "rationale": "Correct."
       },
       {
         "id": "E",
-        "text": "A “Urban” response is more likely than a “Rural” response to be “Fiction”.",
-        "rationale": "Compare proportions: 8/25 ≈ 0.32 vs 54/103 ≈ 0.52."
+        "text": "A “Urban” response is more likely than a “Rural” response to be “Left-handed”.",
+        "rationale": "Compare proportions: 6/31 ≈ 0.19 vs 31/81 ≈ 0.38."
       }
     ],
     "correct_choice": "D",
-    "explanation": "P(Fiction | Urban) = 8/25 ≈ 0.32 and P(Fiction | Rural) = 54/103 ≈ 0.52; the larger is “Rural”.",
+    "explanation": "P(Left-handed | Urban) = 6/31 ≈ 0.19 and P(Left-handed | Rural) = 31/81 ≈ 0.38; the larger is “Rural”.",
     "estimated_time_seconds": 100,
     "tags": [
       "data",
@@ -1238,27 +1238,27 @@
         ],
         "rows": [
           [
-            "Fiction",
-            "8",
-            "54",
-            "62"
+            "Left-handed",
+            "6",
+            "31",
+            "37"
           ],
           [
-            "Nonfiction",
-            "17",
-            "49",
-            "66"
+            "Right-handed",
+            "25",
+            "50",
+            "75"
           ],
           [
             "Total",
-            "25",
-            "103",
-            "128"
+            "31",
+            "81",
+            "112"
           ]
         ]
       }
     },
-    "answer_verification": "0.320 vs 0.524"
+    "answer_verification": "0.194 vs 0.383"
   },
   {
     "question_id": "act-math-two-way-tables-medium-q17",
@@ -1272,36 +1272,36 @@
     "version": "1.0.0",
     "question_type": "multi_step_math",
     "subskill": "conditional_probability",
-    "prompt": "Of the 66 cats and dogs surveyed, 31 were cats. 13 of the cats and 25 of the dogs voted yes. If one of the surveyed is chosen at random, what is the probability that it is one of the dogs who voted yes?",
+    "prompt": "Of the 164 seniors and juniors surveyed, 65 were seniors. 57 of the seniors and 44 of the juniors were full. If one of the surveyed is chosen at random, what is the probability that it is one of the juniors who were full?",
     "choices": [
       {
         "id": "A",
-        "text": "5/7",
-        "rationale": "Divide by the grand total, not the dogs total."
+        "text": "11/41",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "5/33",
-        "rationale": "That is the probability of a dog who did not."
+        "text": "101/164",
+        "rationale": "That counts the seniors who were full as well."
       },
       {
         "id": "C",
-        "text": "25/38",
+        "text": "44/101",
         "rationale": "That conditions on the condition, not the whole group."
       },
       {
         "id": "D",
-        "text": "19/33",
-        "rationale": "That counts the cats who voted yes as well."
+        "text": "55/164",
+        "rationale": "That is the probability of a junior who did not."
       },
       {
         "id": "E",
-        "text": "25/66",
-        "rationale": "Correct."
+        "text": "4/9",
+        "rationale": "Divide by the grand total, not the juniors total."
       }
     ],
-    "correct_choice": "E",
-    "explanation": "25 of the 66 fit both conditions: 25/66.",
+    "correct_choice": "A",
+    "explanation": "44 of the 164 fit both conditions: 11/41.",
     "estimated_time_seconds": 100,
     "tags": [
       "data",
@@ -1309,7 +1309,7 @@
       "build",
       "family:tw_build"
     ],
-    "answer_verification": "cells 13,18,25,10"
+    "answer_verification": "cells 57,8,44,55"
   },
   {
     "question_id": "act-math-two-way-tables-medium-q18",
@@ -1323,36 +1323,36 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "conditional_probability",
-    "prompt": "The table shows relative frequencies for 200 responses. How many responses in total were “Adults”?",
+    "prompt": "The table shows relative frequencies for 50 responses. How many responses in total were “Urban”?",
     "choices": [
       {
         "id": "A",
-        "text": "80",
-        "rationale": "Correct."
+        "text": "34",
+        "rationale": "Multiply by 50."
       },
       {
         "id": "B",
-        "text": "86",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "33",
+        "rationale": "That is the other column."
       },
       {
         "id": "C",
-        "text": "40",
-        "rationale": "That is one cell only."
+        "text": "17",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "84",
-        "rationale": "That is a row total."
+        "text": "12",
+        "rationale": "That is one cell only."
       },
       {
         "id": "E",
-        "text": "120",
-        "rationale": "That is the other column."
+        "text": "23",
+        "rationale": "That is a row total."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Column total 0.40 × 200 = 80.",
+    "correct_choice": "C",
+    "explanation": "Column total 0.34 × 50 = 17.",
     "estimated_time_seconds": 90,
     "tags": [
       "data",
@@ -1363,36 +1363,36 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Relative frequencies (n = 200)",
+        "caption": "Relative frequencies (n = 50)",
         "headers": [
           "",
-          "Adults",
-          "Students",
+          "Urban",
+          "Rural",
           "Total"
         ],
         "rows": [
           [
-            "Coffee",
-            "0.20",
+            "Fiction",
+            "0.24",
             "0.22",
-            "0.42"
+            "0.46"
           ],
           [
-            "Tea",
-            "0.20",
-            "0.38",
-            "0.58"
+            "Nonfiction",
+            "0.10",
+            "0.44",
+            "0.54"
           ],
           [
             "Total",
-            "0.40",
-            "0.60",
+            "0.34",
+            "0.66",
             "1.00"
           ]
         ]
       }
     },
-    "answer_verification": "0.2,0.22,0.2,0.38"
+    "answer_verification": "0.24,0.22,0.1,0.44"
   },
   {
     "question_id": "act-math-two-way-tables-medium-q19",
@@ -1406,36 +1406,36 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "conditional_probability",
-    "prompt": "The table shows 154 survey responses. If one response is chosen at random, what is the probability that it is both “Cats” and “Weekday”?",
+    "prompt": "The table shows 213 survey responses. If one response is chosen at random, what is the probability that it is both “Soccer” and “Weekday”?",
     "choices": [
       {
         "id": "A",
-        "text": "4/7",
-        "rationale": "This is the whole row, not the single cell."
+        "text": "14/71",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "47/77",
-        "rationale": "'Both' means the single cell, not either/or."
+        "text": "227/71",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
       },
       {
         "id": "C",
-        "text": "3/8",
+        "text": "14/33",
         "rationale": "This conditions on the row instead of using the grand total."
       },
       {
         "id": "D",
-        "text": "11/13",
-        "rationale": "This conditions on the column instead of the grand total."
+        "text": "33/71",
+        "rationale": "This is the whole row, not the single cell."
       },
       {
         "id": "E",
-        "text": "3/14",
-        "rationale": "Correct."
+        "text": "52/71",
+        "rationale": "'Both' means the single cell, not either/or."
       }
     ],
-    "correct_choice": "E",
-    "explanation": "That single cell holds 33 of the 154 responses: 3/14.",
+    "correct_choice": "A",
+    "explanation": "That single cell holds 42 of the 213 responses: 14/71.",
     "estimated_time_seconds": 90,
     "tags": [
       "data",
@@ -1455,27 +1455,27 @@
         ],
         "rows": [
           [
-            "Cats",
-            "33",
-            "55",
-            "88"
+            "Soccer",
+            "42",
+            "57",
+            "99"
           ],
           [
-            "Dogs",
-            "6",
-            "60",
-            "66"
+            "Basketball",
+            "57",
+            "57",
+            "114"
           ],
           [
             "Total",
-            "39",
-            "115",
-            "154"
+            "99",
+            "114",
+            "213"
           ]
         ]
       }
     },
-    "answer_verification": "P=3/14"
+    "answer_verification": "P=14/71"
   },
   {
     "question_id": "act-math-two-way-tables-medium-q20",
@@ -1489,36 +1489,36 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "conditional_probability",
-    "prompt": "In the table of 157 responses, one value is missing. How many responses were “Bus” and “Weekend”?",
+    "prompt": "In the table of 89 responses, one value is missing. How many responses were “Fiction” and “Grade 10”?",
     "choices": [
       {
         "id": "A",
-        "text": "28",
-        "rationale": "That is the other cell in the column."
+        "text": "12",
+        "rationale": "That is the known cell in the row."
       },
       {
         "id": "B",
-        "text": "40",
+        "text": "53",
         "rationale": "Subtract within the same row or the same column."
       },
       {
         "id": "C",
-        "text": "43",
-        "rationale": "Correct."
+        "text": "68",
+        "rationale": "That is the row total; subtract the known cell."
       },
       {
         "id": "D",
-        "text": "31",
-        "rationale": "That is the known cell in the row."
+        "text": "56",
+        "rationale": "Correct."
       },
       {
         "id": "E",
-        "text": "74",
-        "rationale": "That is the row total; subtract the known cell."
+        "text": "9",
+        "rationale": "That is the other cell in the column."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Row total minus the known cell: 74 − 31 = 43 (check: column 43 + 28 = 71).",
+    "correct_choice": "D",
+    "explanation": "Row total minus the known cell: 68 − 12 = 56 (check: column 56 + 9 = 65).",
     "estimated_time_seconds": 95,
     "tags": [
       "data",
@@ -1531,32 +1531,32 @@
         "caption": "Survey responses",
         "headers": [
           "",
-          "Weekday",
-          "Weekend",
+          "Grade 9",
+          "Grade 10",
           "Total"
         ],
         "rows": [
           [
-            "Bus",
-            "31",
+            "Fiction",
+            "12",
             "?",
-            "74"
+            "68"
           ],
           [
-            "Bike",
-            "55",
-            "28",
-            "83"
+            "Nonfiction",
+            "12",
+            "9",
+            "21"
           ],
           [
             "Total",
-            "86",
-            "71",
-            "157"
+            "24",
+            "65",
+            "89"
           ]
         ]
       }
     },
-    "answer_verification": "val=43"
+    "answer_verification": "val=56"
   }
 ]

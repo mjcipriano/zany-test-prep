@@ -819,10 +819,15 @@ def tw_count(rng, d):
     else:
         rows = [[rcat[0], a, "?", a + b], [rcat[1], "?", e, c + e], ["Total", a + c, b + e, total]]
         stim = _table("Survey responses", ["", ccat[0], ccat[1], "Total"], rows)
-        prompt = f"Two values in the table of {total} responses are missing. How many more responses were “{rcat[0]}” than “{rcat[1]}” in the “{ccat[1]}” column?"
-        val = b - e
-        expl = f"Missing “{rcat[0]}”/“{ccat[1]}” = {a + b} − {a} = {b}; missing “{rcat[1]}”/“{ccat[0]}” = {a + c} − {a} = {c}. Then {b} − {e} = {_m(val)}."
-        ds = [(b, "That is the missing cell itself, not the difference."), (e - b, "The comparison is reversed."), (b + e, "Subtract; don't add."), (a - e, "Use the “{0}” column, not the “{1}” cell.".format(ccat[1], ccat[0]))]
+        if b == e:
+            return tw_count(rng, d)
+        # Ask "how many more" of the larger group, so the answer is positive.
+        more, fewer = (rcat[0], rcat[1]) if b > e else (rcat[1], rcat[0])
+        prompt = f"Two values in the table of {total} responses are missing. How many more responses were “{more}” than “{fewer}” in the “{ccat[1]}” column?"
+        val = abs(b - e)
+        expl = (f"Missing “{rcat[0]}”/“{ccat[1]}” = {a + b} − {a} = {b}; the “{rcat[1]}”/“{ccat[1]}” cell is {e}. "
+                f"Then {max(b, e)} − {min(b, e)} = {val}.")
+        ds = [(b if b != val else b + e, "That is the missing cell itself, not the difference."), (-val, "The comparison is reversed."), (b + e, "Subtract; don't add."), (a - e, "Use the “{0}” column, not the “{1}” cell.".format(ccat[1], ccat[0]))]
     return _numeric_mc(rng, prompt, val, ds, subskill="conditional_probability", explanation=expl,
                        qtype="data_interpretation", est=75 if d == "easy" else 95,
                        tags=["data", "table"], verify=f"val={val}", stimulus=stim)
@@ -1188,7 +1193,8 @@ def wp_interest(rng, d):
         # same interest: P r t = P2 r2 t -> P2 = P r / r2 ; choose P so integer
         P = r2 * rng.randint(5, 40) * 10
         P2 = P * r // r2
-        I = P * r * t // 100
+        I = Fraction(P * r * t, 100)  # may be fractional (e.g. 446.4): never truncate it
+        I = int(I) if I.denominator == 1 else float(I)
         prompt = (f"{name} earns the same amount of simple interest from two accounts over {t} years. The first holds ${P} at {r}% per year. "
                   f"If the second account earns {r2}% per year, how much, in dollars, is in the second account?")
         val = P2
@@ -1429,6 +1435,12 @@ def tw_relative_freq(rng, d):
     pe = round(1 - pa - pb - pc, 2)
     if pe <= 0.04:
         return tw_relative_freq(rng, d)
+    # The asked count must be a whole number of responses (0.25 × 250 = 62.5 is
+    # not). Proportions are in hundredths, so a multiple of 100 always works
+    # (not 100 itself, which would collide with the "times 100" distractor).
+    asked = {"easy": pb, "medium": pa + pc}.get(d)
+    if asked is not None and round(asked * total, 6) % 1:
+        total = {50: 200, 250: 500}[total]
     rows = [[rcat[0], f"{pa:.2f}", f"{pb:.2f}", f"{pa + pb:.2f}"], [rcat[1], f"{pc:.2f}", f"{pe:.2f}", f"{pc + pe:.2f}"], ["Total", f"{pa + pc:.2f}", f"{pb + pe:.2f}", "1.00"]]
     stim = _table(f"Relative frequencies (n = {total})", ["", ccat[0], ccat[1], "Total"], rows)
     if d == "easy":
@@ -1451,12 +1463,21 @@ def tw_relative_freq(rng, d):
 
 
 # ---- scatterplots ------------------------------------------------------------ #
+def _ols_slope(pts):
+    n = len(pts)
+    mx = sum(p[0] for p in pts) / n
+    my = sum(p[1] for p in pts) / n
+    return (sum((p[0] - mx) * (p[1] - my) for p in pts) / sum((p[0] - mx) ** 2 for p in pts))
+
+
 def sp_outlier_point(rng, d):
     """Which data point is farthest from / closest to the line of best fit (text options)."""
     m = rng.choice([v for v in range(-6, 7) if v])
     b = rng.randint(0, 30)
     xs = sorted(rng.sample(range(1, 14), 5))
-    res = rng.sample([-5, -3, -2, -1, 1, 2, 3, 5], 5)
+    # Distinct residual sizes, so "closest to the line" has one answer (the old
+    # draw from ±1, ±2, ... could tie, e.g. residuals −2 and +2).
+    res = [mag * rng.choice([-1, 1]) for mag in rng.sample([1, 2, 3, 4, 5, 6], 5)]
     big = rng.choice([8, 9, 10, 11, 12]) * rng.choice([-1, 1])
     i = rng.randrange(5)
     res[i] = big
@@ -1475,9 +1496,28 @@ def sp_outlier_point(rng, d):
         ds = [(f"({p[0]}, {_m(p[1])})", f"Its y-value differs from the prediction by {abs(r)}, more than {abs(res[j])}.") for p, r in zip(pts, res) if p is not pts[j]]
         expl = f"At x = {pts[j][0]} the line predicts {_m(m * pts[j][0] + b)}; the point is only {abs(res[j])} away, the smallest gap."
     else:
+        # State the ACTUAL least-squares line of the plotted points (rounded to
+        # tenths); a line drawn through the non-outlier trend is not "the line of
+        # best fit" and can disagree with the refit direction.
+        ls_m = _ols_slope(pts)
+        ls_b = sum(p[1] for p in pts) / 5 - ls_m * sum(p[0] for p in pts) / 5
+        lm, lb = round(ls_m, 1), round(ls_b, 1)
+        lm, lb = (int(lm) if lm == int(lm) else lm), (int(lb) if lb == int(lb) else lb)
+        resid = [p[1] - (ls_m * p[0] + ls_b) for p in pts]
+        others = [abs(r) for k, r in enumerate(resid) if k != i]
+        if abs(resid[i]) < 1.5 * max(others) or lm == 0:
+            return sp_outlier_point(rng, d)
+        eq = f"y = {_lin(lm, lb)}"
+        fig = {"type": "figure", "figure": {**fig["figure"], "line": {"m": lm, "b": lb}}}
         prompt = f"The line of best fit for the scatterplot is {eq}. If the point ({pts[i][0]}, {_m(pts[i][1])}) were removed and the line refit, how would the slope most likely change?"
-        above = big > 0
-        right = xs.index(pts[i][0]) >= 3
+        above = resid[i] > 0
+        mean_x = sum(xs) / 5
+        right = pts[i][0] > mean_x
+        # Check against an actual least-squares refit: a point near the mean x
+        # barely moves the slope, so redraw those.
+        before, after = _ols_slope(pts), _ols_slope([p for p in pts if p is not pts[i]])
+        if abs(pts[i][0] - mean_x) < 2 or abs(after - before) < 0.2 or (after < before) != ((above and right) or (not above and not right)):
+            return sp_outlier_point(rng, d)
         # outlier above on the right pulls slope up; removing it lowers slope
         if (above and right) or (not above and not right):
             correct = "The slope would decrease."

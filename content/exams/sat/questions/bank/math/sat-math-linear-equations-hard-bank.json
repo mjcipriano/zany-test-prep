@@ -10,40 +10,40 @@
     "difficulty": "hard",
     "version": "1.0.0",
     "question_type": "multiple_choice",
-    "subskill": "two_variable",
-    "prompt": "The number of members m in a club grows at a constant rate. After 4 months it is 59 members, and after 7 months it is 80 members. Which equation gives m in terms of the number of months t?",
+    "subskill": "one_variable",
+    "prompt": "What value of x satisfies the equation 4(x + 3) = −6(x + 4)?",
     "choices": [
       {
         "id": "A",
-        "text": "m = 31t + 7",
-        "rationale": "This swaps the rate and the starting value."
+        "text": "-6/5",
+        "rationale": "The constant moves with the opposite sign."
       },
       {
         "id": "B",
-        "text": "m = 21t + 31",
-        "rationale": "Divide the change 21 by the 3 months it took."
+        "text": "18/5",
+        "rationale": "Sign slip when collecting like terms."
       },
       {
         "id": "C",
-        "text": "m = 7t + 59",
-        "rationale": "59 is the value at t = 4, not at t = 0."
+        "text": "18",
+        "rationale": "Subtract the x-coefficients; don't add them."
       },
       {
         "id": "D",
-        "text": "m = 7t + 31",
+        "text": "-18/5",
         "rationale": "Correct."
       }
     ],
     "correct_choice": "D",
-    "explanation": "Rate = (80 − 59)/(7 − 4) = 7 per month. Then 59 = 7·4 + b gives b = 31, so m = 7t + 31.",
+    "explanation": "Distribute both sides: 4x + 12 = −6x − 24. Collect: 10x = −36, so x = -18/5.",
     "estimated_time_seconds": 85,
     "tags": [
       "algebra",
       "linear",
-      "model",
-      "family:le_model_equation"
+      "distribute",
+      "family:le_distribute"
     ],
-    "answer_verification": "model m = 7t + 31"
+    "answer_verification": "x=-18/5 in 4(x + 3) = -6(x + 4)"
   },
   {
     "question_id": "sat-math-linear-equations-hard-b0002",
@@ -55,27 +55,41 @@
     "lesson_id": "sat-math-linear-equations-hard",
     "difficulty": "hard",
     "version": "1.0.0",
-    "question_type": "student_produced",
-    "subskill": "one_variable",
-    "prompt": "5(2x + 1) = 20\nWhat is the solution to the given equation?",
-    "answer": {
-      "type": "numeric",
-      "value": 1.5,
-      "accepted": [
-        "3/2",
-        "1.5"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "Divide both sides by 5: 2x + 1 = 4. Then 2x = 3 and x = 3/2.",
-    "estimated_time_seconds": 75,
+    "question_type": "multiple_choice",
+    "subskill": "slope_intercept",
+    "prompt": "What is the slope of a line that is perpendicular to the graph of 4x − 3y = −5 in the xy-plane?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-7/4",
+        "rationale": "Recheck the negative reciprocal; don't shift it."
+      },
+      {
+        "id": "B",
+        "text": "-4/3",
+        "rationale": "Take the reciprocal as well as changing the sign."
+      },
+      {
+        "id": "C",
+        "text": "-3/4",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "4/3",
+        "rationale": "That is the parallel slope; perpendicular needs the negative reciprocal."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "The given line has slope 4/3; a perpendicular line has the negative reciprocal slope, -3/4.",
+    "estimated_time_seconds": 80,
     "tags": [
       "algebra",
       "linear",
-      "grid-in",
-      "family:le_gridin"
+      "perpendicular",
+      "family:le_parallel_perp"
     ],
-    "answer_verification": "x=3/2 satisfies 5(2x + 1) = 20"
+    "answer_verification": "given slope 4/3; perpendicular -> -3/4"
   },
   {
     "question_id": "sat-math-linear-equations-hard-b0003",
@@ -89,31 +103,609 @@
     "version": "1.0.0",
     "question_type": "multiple_choice",
     "subskill": "two_variable",
-    "prompt": "The temperature T, in degrees, of a tank rises at a constant rate. After 2 minutes it is 25 degrees, and after 7 minutes it is 80 degrees. Which equation gives T in terms of the number of minutes t?",
+    "prompt": "The point (k, 2) lies on the graph of 8x + 2y = −36 in the xy-plane. What is the value of k?",
     "choices": [
       {
         "id": "A",
-        "text": "T = 55t + 3",
-        "rationale": "Divide the change 55 by the 5 minutes it took."
+        "text": "5",
+        "rationale": "Sign slip when isolating k."
       },
       {
         "id": "B",
-        "text": "T = 11t + 3",
+        "text": "-4",
+        "rationale": "Subtract 4; don't add it."
+      },
+      {
+        "id": "C",
+        "text": "-5",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "-40",
+        "rationale": "Divide by the coefficient of x."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "Substitute y = 2: 8k + 4 = −36, so k = −5.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "algebra",
+      "linear",
+      "point",
+      "family:le_point_on_line"
+    ],
+    "answer_verification": "(-5,2) on 8x+(2)y=-36"
+  },
+  {
+    "question_id": "sat-math-linear-equations-hard-b0004",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "linear_equations",
+    "lesson_id": "sat-math-linear-equations-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "slope_intercept",
+    "prompt": "The amount of fuel F, in gallons, left in a truck's tank after it has driven m miles is F = 410 − 35m. Which of the following is the best interpretation of the number 35 in this context?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "the number of gallons of fuel used per mile driven",
+        "rationale": "The coefficient of the variable is the rate of change."
+      },
+      {
+        "id": "B",
+        "text": "the number of gallons in the tank before the trip began",
+        "rationale": "That describes the constant term (the value when the variable is 0)."
+      },
+      {
+        "id": "C",
+        "text": "the number of miles the truck has driven so far on the trip",
+        "rationale": "The variable itself is not a fixed number in the equation."
+      },
+      {
+        "id": "D",
+        "text": "the amount of fuel left in the tank after driving m miles",
+        "rationale": "The total is the output of the equation, not a single constant."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "In a linear model the coefficient of m is the rate of change: the number of gallons of fuel used per mile driven.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "algebra",
+      "linear",
+      "interpret",
+      "family:le_interpret"
+    ],
+    "answer_verification": "slope=35"
+  },
+  {
+    "question_id": "sat-math-linear-equations-hard-b0005",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "linear_equations",
+    "lesson_id": "sat-math-linear-equations-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "one_variable",
+    "prompt": "What value of x satisfies the equation 6(x − 9) = 1(x + 11)?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "13",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "65/7",
+        "rationale": "Subtract the x-coefficients; don't add them."
+      },
+      {
+        "id": "C",
+        "text": "-13",
+        "rationale": "Sign slip when collecting like terms."
+      },
+      {
+        "id": "D",
+        "text": "-43/5",
+        "rationale": "The constant moves with the opposite sign."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Distribute both sides: 6x − 54 = 1x + 11. Collect: 5x = 65, so x = 13.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "algebra",
+      "linear",
+      "distribute",
+      "family:le_distribute"
+    ],
+    "answer_verification": "x=13 in 6(x - 9) = 1(x + 11)"
+  },
+  {
+    "question_id": "sat-math-linear-equations-hard-b0006",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "linear_equations",
+    "lesson_id": "sat-math-linear-equations-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "one_variable",
+    "prompt": "In the equation (4x + 1)/5 = (2x − 5)/2, what is the value of x?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-27/2",
+        "rationale": "Sign slip."
+      },
+      {
+        "id": "B",
+        "text": "27/2",
         "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "T = 11t + 25",
-        "rationale": "25 is the value at t = 2, not at t = 0."
+        "text": "23/2",
+        "rationale": "The constant moves with the opposite sign."
       },
       {
         "id": "D",
-        "text": "T = 3t + 11",
-        "rationale": "This swaps the rate and the starting value."
+        "text": "-3/2",
+        "rationale": "Subtract the x-terms; don't add them."
       }
     ],
     "correct_choice": "B",
-    "explanation": "Rate = (80 − 25)/(7 − 2) = 11 per minute. Then 25 = 11·2 + b gives b = 3, so T = 11t + 3.",
+    "explanation": "Cross-multiply: 2(4x + 1) = 5(2x − 5) → 8x + 2 = 10x − 25 → −2x = −27 → x = 27/2.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "algebra",
+      "linear",
+      "fractions",
+      "family:le_fraction_eq"
+    ],
+    "answer_verification": "x=27/2 in (4x + 1)/5 = (2x - 5)/2"
+  },
+  {
+    "question_id": "sat-math-linear-equations-hard-b0007",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "linear_equations",
+    "lesson_id": "sat-math-linear-equations-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "one_variable",
+    "prompt": "What value of x satisfies the equation (7x − 2)/3 = (4x + 6)/3?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "8/11",
+        "rationale": "Subtract the x-terms; don't add them."
+      },
+      {
+        "id": "B",
+        "text": "8/3",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "4/3",
+        "rationale": "The constant moves with the opposite sign."
+      },
+      {
+        "id": "D",
+        "text": "-8/3",
+        "rationale": "Sign slip."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Cross-multiply: 3(7x − 2) = 3(4x + 6) → 21x − 6 = 12x + 18 → 9x = 24 → x = 8/3.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "algebra",
+      "linear",
+      "fractions",
+      "family:le_fraction_eq"
+    ],
+    "answer_verification": "x=8/3 in (7x - 2)/3 = (4x + 6)/3"
+  },
+  {
+    "question_id": "sat-math-linear-equations-hard-b0008",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "linear_equations",
+    "lesson_id": "sat-math-linear-equations-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "one_variable",
+    "prompt": "3(x + 9) = 7(x − 3)\nWhat value of x makes the equation true?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-24/5",
+        "rationale": "Subtract the x-coefficients; don't add them."
+      },
+      {
+        "id": "B",
+        "text": "12",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "-12",
+        "rationale": "Sign slip when collecting like terms."
+      },
+      {
+        "id": "D",
+        "text": "-3/2",
+        "rationale": "The constant moves with the opposite sign."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Distribute both sides: 3x + 27 = 7x − 21. Collect: −4x = −48, so x = 12.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "algebra",
+      "linear",
+      "distribute",
+      "family:le_distribute"
+    ],
+    "answer_verification": "x=12 in 3(x + 9) = 7(x - 3)"
+  },
+  {
+    "question_id": "sat-math-linear-equations-hard-b0009",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "linear_equations",
+    "lesson_id": "sat-math-linear-equations-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "one_variable",
+    "prompt": "5(x + 3) = 4(x − 3)\nWhat value of x makes the equation true?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "27",
+        "rationale": "Sign slip when collecting like terms."
+      },
+      {
+        "id": "B",
+        "text": "3",
+        "rationale": "The constant moves with the opposite sign."
+      },
+      {
+        "id": "C",
+        "text": "-27",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "-3",
+        "rationale": "Subtract the x-coefficients; don't add them."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "Distribute both sides: 5x + 15 = 4x − 12. Collect: 1x = −27, so x = -27.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "algebra",
+      "linear",
+      "distribute",
+      "family:le_distribute"
+    ],
+    "answer_verification": "x=-27 in 5(x + 3) = 4(x - 3)"
+  },
+  {
+    "question_id": "sat-math-linear-equations-hard-b0010",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "linear_equations",
+    "lesson_id": "sat-math-linear-equations-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "one_variable",
+    "prompt": "−7x − 11 = 4x − 10\nWhat is the solution to the given equation?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-1/11",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "1",
+        "rationale": "This is −11x, not x; divide by −11."
+      },
+      {
+        "id": "C",
+        "text": "1/11",
+        "rationale": "Sign slip when moving terms across the equals sign."
+      },
+      {
+        "id": "D",
+        "text": "-1/3",
+        "rationale": "This divides by a + c instead of a − c."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Collect the x-terms: −7x − (4x) = −10 − (−11), so −11x = 1. Divide by −11: x = -1/11.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "algebra",
+      "linear",
+      "family:le_both_sides"
+    ],
+    "answer_verification": "x=-1/11 satisfies -7x - 11 = 4x - 10"
+  },
+  {
+    "question_id": "sat-math-linear-equations-hard-b0011",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "linear_equations",
+    "lesson_id": "sat-math-linear-equations-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "two_variable",
+    "prompt": "The table shows four pairs of values of x and y that satisfy a linear equation (x = -6 gives y = 4). Which equation is it?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "y = x + 10",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "y = 4x + 10",
+        "rationale": "Divide the change in y by the change in x; the x-values are not 1 apart."
+      },
+      {
+        "id": "C",
+        "text": "y = x + 4",
+        "rationale": "4 is y when x = -6, not when x = 0."
+      },
+      {
+        "id": "D",
+        "text": "y = 10x + 1",
+        "rationale": "The slope and the constant are swapped."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Between rows, y changes by 4 when x changes by 4: slope 1. Then 4 = 1·-6 + b gives b = 10: y = x + 10.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "algebra",
+      "linear",
+      "table",
+      "family:le_table_equation"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Values of x and y",
+        "headers": [
+          "x",
+          "y"
+        ],
+        "rows": [
+          [
+            "-6",
+            "4"
+          ],
+          [
+            "-2",
+            "8"
+          ],
+          [
+            "4",
+            "14"
+          ],
+          [
+            "6",
+            "16"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "y=1x+(10)"
+  },
+  {
+    "question_id": "sat-math-linear-equations-hard-b0012",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "linear_equations",
+    "lesson_id": "sat-math-linear-equations-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "one_variable",
+    "prompt": "12x − 4 = 8x + 10\nWhat is the solution to the given equation?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "7/2",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "7/10",
+        "rationale": "This divides by a + c instead of a − c."
+      },
+      {
+        "id": "C",
+        "text": "-7/2",
+        "rationale": "Sign slip when moving terms across the equals sign."
+      },
+      {
+        "id": "D",
+        "text": "14",
+        "rationale": "This is 4x, not x; divide by 4."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Collect the x-terms: 12x − (8x) = 10 − (−4), so 4x = 14. Divide by 4: x = 7/2.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "algebra",
+      "linear",
+      "family:le_both_sides"
+    ],
+    "answer_verification": "x=7/2 satisfies 12x - 4 = 8x + 10"
+  },
+  {
+    "question_id": "sat-math-linear-equations-hard-b0013",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "linear_equations",
+    "lesson_id": "sat-math-linear-equations-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "slope_intercept",
+    "prompt": "What is the slope of a line that is perpendicular to the graph of 3x − 7y = −1 in the xy-plane?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "3/7",
+        "rationale": "That is the parallel slope; perpendicular needs the negative reciprocal."
+      },
+      {
+        "id": "B",
+        "text": "-3/7",
+        "rationale": "Take the reciprocal as well as changing the sign."
+      },
+      {
+        "id": "C",
+        "text": "-7/3",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "-10/3",
+        "rationale": "Recheck the negative reciprocal; don't shift it."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "The given line has slope 3/7; a perpendicular line has the negative reciprocal slope, -7/3.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "algebra",
+      "linear",
+      "perpendicular",
+      "family:le_parallel_perp"
+    ],
+    "answer_verification": "given slope 3/7; perpendicular -> -7/3"
+  },
+  {
+    "question_id": "sat-math-linear-equations-hard-b0014",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "linear_equations",
+    "lesson_id": "sat-math-linear-equations-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "one_variable",
+    "prompt": "In the equation (4x + 2)/2 = (7x − 3)/3, what is the value of x?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-6/13",
+        "rationale": "Subtract the x-terms; don't add them."
+      },
+      {
+        "id": "B",
+        "text": "0",
+        "rationale": "The constant moves with the opposite sign."
+      },
+      {
+        "id": "C",
+        "text": "-6",
+        "rationale": "Sign slip."
+      },
+      {
+        "id": "D",
+        "text": "6",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Cross-multiply: 3(4x + 2) = 2(7x − 3) → 12x + 6 = 14x − 6 → −2x = −12 → x = 6.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "algebra",
+      "linear",
+      "fractions",
+      "family:le_fraction_eq"
+    ],
+    "answer_verification": "x=6 in (4x + 2)/2 = (7x - 3)/3"
+  },
+  {
+    "question_id": "sat-math-linear-equations-hard-b0015",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "linear_equations",
+    "lesson_id": "sat-math-linear-equations-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "two_variable",
+    "prompt": "The cost c, in dollars, of a custom order depends linearly on the number of items. After 4 items it is 66 dollars, and after 7 items it is 96 dollars. Which equation gives c in terms of the number of items n?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "c = 10n + 26",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "c = 10n + 66",
+        "rationale": "66 is the value at n = 4, not at n = 0."
+      },
+      {
+        "id": "C",
+        "text": "c = 30n + 26",
+        "rationale": "Divide the change 30 by the 3 items it took."
+      },
+      {
+        "id": "D",
+        "text": "c = 26n + 10",
+        "rationale": "This swaps the rate and the starting value."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Rate = (96 − 66)/(7 − 4) = 10 per item. Then 66 = 10·4 + b gives b = 26, so c = 10n + 26.",
     "estimated_time_seconds": 85,
     "tags": [
       "algebra",
@@ -121,10 +713,331 @@
       "model",
       "family:le_model_equation"
     ],
-    "answer_verification": "model T = 11t + 3"
+    "answer_verification": "model c = 10n + 26"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0004",
+    "question_id": "sat-math-linear-equations-hard-b0016",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "linear_equations",
+    "lesson_id": "sat-math-linear-equations-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "two_variable",
+    "prompt": "The point (6, k) lies on the graph of 2x − 8y = −28 in the xy-plane. What is the value of k?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-40",
+        "rationale": "Divide by the coefficient of y."
+      },
+      {
+        "id": "B",
+        "text": "2",
+        "rationale": "Subtract 12; don't add it."
+      },
+      {
+        "id": "C",
+        "text": "5",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "-5",
+        "rationale": "Sign slip when isolating k."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "Substitute x = 6: 12 − 8k = −28, so k = 5.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "algebra",
+      "linear",
+      "point",
+      "family:le_point_on_line"
+    ],
+    "answer_verification": "(6,5) on 2x+(-8)y=-28"
+  },
+  {
+    "question_id": "sat-math-linear-equations-hard-b0017",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "linear_equations",
+    "lesson_id": "sat-math-linear-equations-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "one_variable",
+    "prompt": "If 6(x + 2) = 2(x − 4), what is the value of x?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "1",
+        "rationale": "The constant moves with the opposite sign."
+      },
+      {
+        "id": "B",
+        "text": "-5",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "-5/2",
+        "rationale": "Subtract the x-coefficients; don't add them."
+      },
+      {
+        "id": "D",
+        "text": "5",
+        "rationale": "Sign slip when collecting like terms."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Distribute both sides: 6x + 12 = 2x − 8. Collect: 4x = −20, so x = -5.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "algebra",
+      "linear",
+      "distribute",
+      "family:le_distribute"
+    ],
+    "answer_verification": "x=-5 in 6(x + 2) = 2(x - 4)"
+  },
+  {
+    "question_id": "sat-math-linear-equations-hard-b0018",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "linear_equations",
+    "lesson_id": "sat-math-linear-equations-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "one_variable",
+    "prompt": "If 7x − 2 = −65, what is the value of 3x − 4?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "-31",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "-23",
+        "rationale": "Check the sign of the constant term."
+      },
+      {
+        "id": "C",
+        "text": "-9",
+        "rationale": "That is x itself; substitute it into the expression."
+      },
+      {
+        "id": "D",
+        "text": "-199",
+        "rationale": "Substitute x, not the whole equation's right side."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Solve: 7x = −63, so x = −9. Then 3x − 4 = 3·(−9) − 4 = −31.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "algebra",
+      "linear",
+      "family:le_expression_value"
+    ],
+    "answer_verification": "x=-9; 3x - 4=-31"
+  },
+  {
+    "question_id": "sat-math-linear-equations-hard-b0019",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "linear_equations",
+    "lesson_id": "sat-math-linear-equations-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "slope_intercept",
+    "prompt": "A line in the xy-plane passes through the points (−8, −23) and (−11, −32). What is the y-coordinate of the y-intercept of the line?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "1",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "-1",
+        "rationale": "Sign slip when solving for the intercept."
+      },
+      {
+        "id": "C",
+        "text": "3",
+        "rationale": "That is the slope, not an intercept."
+      },
+      {
+        "id": "D",
+        "text": "-1/3",
+        "rationale": "That is the x-intercept."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Slope = (−32 − (−23))/(−11 − (−8)) = 3. Then −23 = 3·(−8) + b gives b = 1.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "algebra",
+      "linear",
+      "intercept",
+      "family:le_intercepts"
+    ],
+    "answer_verification": "y-int=1"
+  },
+  {
+    "question_id": "sat-math-linear-equations-hard-b0020",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "linear_equations",
+    "lesson_id": "sat-math-linear-equations-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "slope_intercept",
+    "prompt": "The distance R, in miles, remaining on a road trip after h hours of driving is R = 380 − 32h. Which of the following is the best interpretation of the number 32 in this context?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "the number of miles driven each hour",
+        "rationale": "The coefficient of the variable is the rate of change."
+      },
+      {
+        "id": "B",
+        "text": "the distance remaining on the trip after h hours of driving",
+        "rationale": "The total is the output of the equation, not a single constant."
+      },
+      {
+        "id": "C",
+        "text": "the total length of the trip, in miles",
+        "rationale": "That describes the constant term (the value when the variable is 0)."
+      },
+      {
+        "id": "D",
+        "text": "the number of hours that have been spent driving so far",
+        "rationale": "The variable itself is not a fixed number in the equation."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "In a linear model the coefficient of h is the rate of change: the number of miles driven each hour.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "algebra",
+      "linear",
+      "interpret",
+      "family:le_interpret"
+    ],
+    "answer_verification": "slope=32"
+  },
+  {
+    "question_id": "sat-math-linear-equations-hard-b0021",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "linear_equations",
+    "lesson_id": "sat-math-linear-equations-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "slope_intercept",
+    "prompt": "A line in the xy-plane passes through the points (−6, −5) and (−3, −8). What is the x-coordinate of the x-intercept of the line?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "11",
+        "rationale": "Sign slip when solving for the intercept."
+      },
+      {
+        "id": "B",
+        "text": "-1",
+        "rationale": "That is the slope, not an intercept."
+      },
+      {
+        "id": "C",
+        "text": "-6",
+        "rationale": "That is a coordinate of a given point, not the intercept."
+      },
+      {
+        "id": "D",
+        "text": "-11",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Slope = −1, so y = −x − 11. Set y = 0: x = 11/−1 = -11.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "algebra",
+      "linear",
+      "intercept",
+      "family:le_intercepts"
+    ],
+    "answer_verification": "x-int=-11"
+  },
+  {
+    "question_id": "sat-math-linear-equations-hard-b0022",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "algebra",
+    "skill": "linear_equations",
+    "lesson_id": "sat-math-linear-equations-hard",
+    "difficulty": "hard",
+    "version": "1.0.0",
+    "question_type": "multiple_choice",
+    "subskill": "one_variable",
+    "prompt": "Which of the following is the solution to the equation (4x − 2)/2 = (5x + 7)/2?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "9",
+        "rationale": "Sign slip."
+      },
+      {
+        "id": "B",
+        "text": "-9",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "-5",
+        "rationale": "The constant moves with the opposite sign."
+      },
+      {
+        "id": "D",
+        "text": "1",
+        "rationale": "Subtract the x-terms; don't add them."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Cross-multiply: 2(4x − 2) = 2(5x + 7) → 8x − 4 = 10x + 14 → −2x = 18 → x = -9.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "algebra",
+      "linear",
+      "fractions",
+      "family:le_fraction_eq"
+    ],
+    "answer_verification": "x=-9 in (4x - 2)/2 = (5x + 7)/2"
+  },
+  {
+    "question_id": "sat-math-linear-equations-hard-b0023",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -170,7 +1083,7 @@
     "answer_verification": "given slope -3/4; parallel -> -3/4"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0005",
+    "question_id": "sat-math-linear-equations-hard-b0024",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -215,7 +1128,7 @@
     "answer_verification": "x=-3; -7x - 6=15"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0006",
+    "question_id": "sat-math-linear-equations-hard-b0025",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -289,7 +1202,7 @@
     "answer_verification": "y=-1x+(6)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0007",
+    "question_id": "sat-math-linear-equations-hard-b0026",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -335,7 +1248,7 @@
     "answer_verification": "(3,9) on 3x+(-5)y=-36"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0008",
+    "question_id": "sat-math-linear-equations-hard-b0027",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -381,7 +1294,7 @@
     "answer_verification": "y=2x+(12) through (-3,6)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0009",
+    "question_id": "sat-math-linear-equations-hard-b0028",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -426,7 +1339,7 @@
     "answer_verification": "x=-17/5 satisfies 11x + 21 = 6x + 4"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0010",
+    "question_id": "sat-math-linear-equations-hard-b0029",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -500,7 +1413,7 @@
     "answer_verification": "y=5x+(2)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0011",
+    "question_id": "sat-math-linear-equations-hard-b0030",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -546,7 +1459,7 @@
     "answer_verification": "(2,7) on 2x+(-3)y=-17"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0012",
+    "question_id": "sat-math-linear-equations-hard-b0031",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -620,7 +1533,7 @@
     "answer_verification": "y=-6x+(2)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0013",
+    "question_id": "sat-math-linear-equations-hard-b0032",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -694,7 +1607,7 @@
     "answer_verification": "y=6x+(8)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0014",
+    "question_id": "sat-math-linear-equations-hard-b0033",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -740,7 +1653,7 @@
     "answer_verification": "literal axby: y = (5 − 9x)/8"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0015",
+    "question_id": "sat-math-linear-equations-hard-b0034",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -786,7 +1699,7 @@
     "answer_verification": "intercept=320"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0016",
+    "question_id": "sat-math-linear-equations-hard-b0035",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -832,7 +1745,7 @@
     "answer_verification": "(-7,-2) on 9x+(-2)y=-59"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0017",
+    "question_id": "sat-math-linear-equations-hard-b0036",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -877,7 +1790,7 @@
     "answer_verification": "x=-4; -6x - 14=10"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0018",
+    "question_id": "sat-math-linear-equations-hard-b0037",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -923,7 +1836,7 @@
     "answer_verification": "given slope 2/3; parallel -> 2/3"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0019",
+    "question_id": "sat-math-linear-equations-hard-b0038",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -969,7 +1882,7 @@
     "answer_verification": "model m = 4t + 23"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0020",
+    "question_id": "sat-math-linear-equations-hard-b0039",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1014,7 +1927,7 @@
     "answer_verification": "x=23/18 satisfies 12x + 19 = -6x + 42"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0021",
+    "question_id": "sat-math-linear-equations-hard-b0040",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1088,7 +2001,7 @@
     "answer_verification": "y=2x+(-8)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0022",
+    "question_id": "sat-math-linear-equations-hard-b0041",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1134,7 +2047,7 @@
     "answer_verification": "slope=26"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0023",
+    "question_id": "sat-math-linear-equations-hard-b0042",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1180,7 +2093,7 @@
     "answer_verification": "literal formula: W = (P − 3L)/8"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0024",
+    "question_id": "sat-math-linear-equations-hard-b0043",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1254,7 +2167,7 @@
     "answer_verification": "y=-4x+(-3)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0025",
+    "question_id": "sat-math-linear-equations-hard-b0044",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1300,7 +2213,7 @@
     "answer_verification": "x=-1/3 in (7x - 6)/5 = (4x - 2)/2"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0026",
+    "question_id": "sat-math-linear-equations-hard-b0045",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1346,7 +2259,7 @@
     "answer_verification": "literal formula: W = (P − 9L)/7"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0027",
+    "question_id": "sat-math-linear-equations-hard-b0046",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1391,7 +2304,7 @@
     "answer_verification": "1.5x - 4.5 = 3 at x=5"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0028",
+    "question_id": "sat-math-linear-equations-hard-b0047",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1437,7 +2350,7 @@
     "answer_verification": "intercept=350"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0029",
+    "question_id": "sat-math-linear-equations-hard-b0048",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1483,7 +2396,7 @@
     "answer_verification": "slope=10"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0030",
+    "question_id": "sat-math-linear-equations-hard-b0049",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1529,7 +2442,7 @@
     "answer_verification": "x=-14 in 6(x + 4) = 3(x - 6)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0031",
+    "question_id": "sat-math-linear-equations-hard-b0050",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1575,7 +2488,7 @@
     "answer_verification": "model h = 3t + 17"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0032",
+    "question_id": "sat-math-linear-equations-hard-b0051",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1621,7 +2534,7 @@
     "answer_verification": "x=1/2 in 3(x + 3) = -7(x - 2)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0033",
+    "question_id": "sat-math-linear-equations-hard-b0052",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1652,7 +2565,7 @@
     "answer_verification": "x=10/7 satisfies 5(7x + 13) = 115"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0034",
+    "question_id": "sat-math-linear-equations-hard-b0053",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1683,7 +2596,7 @@
     "answer_verification": "x=28/3 satisfies 4(3x + 3) = 124"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0035",
+    "question_id": "sat-math-linear-equations-hard-b0054",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1729,7 +2642,7 @@
     "answer_verification": "x-int=-3/4"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0036",
+    "question_id": "sat-math-linear-equations-hard-b0055",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1775,7 +2688,7 @@
     "answer_verification": "x=-27/5 in (5x - 1)/4 = (5x + 6)/3"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0037",
+    "question_id": "sat-math-linear-equations-hard-b0056",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1821,7 +2734,7 @@
     "answer_verification": "(5,9) on 3x+(4)y=51"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0038",
+    "question_id": "sat-math-linear-equations-hard-b0057",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1867,7 +2780,7 @@
     "answer_verification": "model m = 4t + 22"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0039",
+    "question_id": "sat-math-linear-equations-hard-b0058",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1912,7 +2825,7 @@
     "answer_verification": "x=7; -8x - 19=-75"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0040",
+    "question_id": "sat-math-linear-equations-hard-b0059",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1986,7 +2899,7 @@
     "answer_verification": "y=4x+(-4)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0041",
+    "question_id": "sat-math-linear-equations-hard-b0060",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2032,7 +2945,7 @@
     "answer_verification": "given slope -3/8; perpendicular -> 8/3"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0042",
+    "question_id": "sat-math-linear-equations-hard-b0061",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2078,7 +2991,7 @@
     "answer_verification": "(-9,-7) on 8x+(5)y=-107"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0043",
+    "question_id": "sat-math-linear-equations-hard-b0062",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2124,7 +3037,7 @@
     "answer_verification": "y-int=-13"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0044",
+    "question_id": "sat-math-linear-equations-hard-b0063",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2170,7 +3083,7 @@
     "answer_verification": "y=7x+(2) through (-2,-12)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0045",
+    "question_id": "sat-math-linear-equations-hard-b0064",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2216,7 +3129,7 @@
     "answer_verification": "x=-12 in (5x - 3)/3 = (4x + 6)/2"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0046",
+    "question_id": "sat-math-linear-equations-hard-b0065",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2262,7 +3175,7 @@
     "answer_verification": "model c = 3n + 35"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0047",
+    "question_id": "sat-math-linear-equations-hard-b0066",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2307,7 +3220,7 @@
     "answer_verification": "x=4; -6x + 15=-9"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0048",
+    "question_id": "sat-math-linear-equations-hard-b0067",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2339,7 +3252,7 @@
     "answer_verification": "x=5/2 satisfies 4(2x - 19) = -56"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0049",
+    "question_id": "sat-math-linear-equations-hard-b0068",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2384,7 +3297,7 @@
     "answer_verification": "x=-5/6 satisfies 4x - 4 = -2x - 9"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0050",
+    "question_id": "sat-math-linear-equations-hard-b0069",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2430,7 +3343,7 @@
     "answer_verification": "model c = 11n + 3"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0051",
+    "question_id": "sat-math-linear-equations-hard-b0070",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2476,7 +3389,7 @@
     "answer_verification": "(-9,2) on 7x+(-2)y=-67"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0052",
+    "question_id": "sat-math-linear-equations-hard-b0071",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2523,7 +3436,7 @@
     "answer_verification": "v=22t+8"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0053",
+    "question_id": "sat-math-linear-equations-hard-b0072",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2569,7 +3482,7 @@
     "answer_verification": "(-1,5) on 2x+(6)y=28"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0054",
+    "question_id": "sat-math-linear-equations-hard-b0073",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2615,7 +3528,7 @@
     "answer_verification": "literal formula: W = (P − 7L)/7"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0055",
+    "question_id": "sat-math-linear-equations-hard-b0074",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2661,7 +3574,7 @@
     "answer_verification": "(-2--3)/(-10--7)=-1/3"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0056",
+    "question_id": "sat-math-linear-equations-hard-b0075",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2707,7 +3620,7 @@
     "answer_verification": "model m = 11t + 16"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0057",
+    "question_id": "sat-math-linear-equations-hard-b0076",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2739,7 +3652,7 @@
     "answer_verification": "x=17/2 satisfies 3(2x + 4) = 63"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0058",
+    "question_id": "sat-math-linear-equations-hard-b0077",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2785,7 +3698,7 @@
     "answer_verification": "literal fraction: x = 6y/(3 − y)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0059",
+    "question_id": "sat-math-linear-equations-hard-b0078",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2859,7 +3772,7 @@
     "answer_verification": "y=-4x+(5)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0060",
+    "question_id": "sat-math-linear-equations-hard-b0079",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2906,7 +3819,7 @@
     "answer_verification": "v=28t+27"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0061",
+    "question_id": "sat-math-linear-equations-hard-b0080",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2952,7 +3865,7 @@
     "answer_verification": "given slope 4/3; parallel -> 4/3"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0062",
+    "question_id": "sat-math-linear-equations-hard-b0081",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2998,7 +3911,7 @@
     "answer_verification": "y=3x+(9) through (6,27)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0063",
+    "question_id": "sat-math-linear-equations-hard-b0082",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3030,7 +3943,7 @@
     "answer_verification": "x=17/4 satisfies 5(4x + 1) = 90"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0064",
+    "question_id": "sat-math-linear-equations-hard-b0083",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3075,7 +3988,7 @@
     "answer_verification": "3x + 16 = 9 at x=-7/3"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0065",
+    "question_id": "sat-math-linear-equations-hard-b0084",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3121,7 +4034,7 @@
     "answer_verification": "(3,-1) on 7x+(3)y=18"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0066",
+    "question_id": "sat-math-linear-equations-hard-b0085",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3167,7 +4080,7 @@
     "answer_verification": "model m = 3t + 28"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0067",
+    "question_id": "sat-math-linear-equations-hard-b0086",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3213,7 +4126,7 @@
     "answer_verification": "given slope 1/3; perpendicular -> -3"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0068",
+    "question_id": "sat-math-linear-equations-hard-b0087",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3259,7 +4172,7 @@
     "answer_verification": "x=10/3 in 6(x - 7) = -3(x + 4)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0069",
+    "question_id": "sat-math-linear-equations-hard-b0088",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3333,7 +4246,7 @@
     "answer_verification": "y=3x+(5)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0070",
+    "question_id": "sat-math-linear-equations-hard-b0089",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3379,7 +4292,7 @@
     "answer_verification": "literal fraction: x = 16y/(6 − y)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0071",
+    "question_id": "sat-math-linear-equations-hard-b0090",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3425,7 +4338,7 @@
     "answer_verification": "given slope -4/3; perpendicular -> 3/4"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0072",
+    "question_id": "sat-math-linear-equations-hard-b0091",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3471,7 +4384,7 @@
     "answer_verification": "model m = 9t + 8"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0073",
+    "question_id": "sat-math-linear-equations-hard-b0092",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3516,7 +4429,7 @@
     "answer_verification": "8x + 21 = 2 at x=-19/8"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0074",
+    "question_id": "sat-math-linear-equations-hard-b0093",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3562,7 +4475,7 @@
     "answer_verification": "(-3,9) on 7x+(8)y=51"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0075",
+    "question_id": "sat-math-linear-equations-hard-b0094",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3607,7 +4520,7 @@
     "answer_verification": "x=13/2 satisfies 9x + 6 = 7x + 19"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0076",
+    "question_id": "sat-math-linear-equations-hard-b0095",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3654,7 +4567,7 @@
     "answer_verification": "v=36t+30"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0077",
+    "question_id": "sat-math-linear-equations-hard-b0096",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3700,7 +4613,7 @@
     "answer_verification": "(5,-7) on 8x+(-5)y=75"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0078",
+    "question_id": "sat-math-linear-equations-hard-b0097",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3746,7 +4659,7 @@
     "answer_verification": "intercept=260"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0079",
+    "question_id": "sat-math-linear-equations-hard-b0098",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3792,7 +4705,7 @@
     "answer_verification": "x=33/4 in 5(x - 6) = 1(x + 3)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0080",
+    "question_id": "sat-math-linear-equations-hard-b0099",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3838,7 +4751,7 @@
     "answer_verification": "(8,-2) on 4x+(-2)y=36"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0081",
+    "question_id": "sat-math-linear-equations-hard-b0100",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3884,7 +4797,7 @@
     "answer_verification": "x=3/5 in (3x - 1)/2 = (x + 1)/4"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0082",
+    "question_id": "sat-math-linear-equations-hard-b0101",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3929,7 +4842,7 @@
     "answer_verification": "x=3/2 satisfies -2x + 11 = 2x + 5"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0083",
+    "question_id": "sat-math-linear-equations-hard-b0102",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3974,7 +4887,7 @@
     "answer_verification": "x/6 - 3 = -6 at x=-18"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0084",
+    "question_id": "sat-math-linear-equations-hard-b0103",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4020,7 +4933,7 @@
     "answer_verification": "literal fraction: x = 1y/(6 − y)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0085",
+    "question_id": "sat-math-linear-equations-hard-b0104",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4066,7 +4979,7 @@
     "answer_verification": "given slope 3/7; perpendicular -> -7/3"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0086",
+    "question_id": "sat-math-linear-equations-hard-b0105",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4111,7 +5024,7 @@
     "answer_verification": "3x - 23 = -15 at x=8/3"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0087",
+    "question_id": "sat-math-linear-equations-hard-b0106",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4157,7 +5070,7 @@
     "answer_verification": "model h = 7t + 36"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0088",
+    "question_id": "sat-math-linear-equations-hard-b0107",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4203,7 +5116,7 @@
     "answer_verification": "given slope 1/2; parallel -> 1/2"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0089",
+    "question_id": "sat-math-linear-equations-hard-b0108",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4249,7 +5162,7 @@
     "answer_verification": "x=0 in (5x - 5)/2 = (6x - 5)/2"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0090",
+    "question_id": "sat-math-linear-equations-hard-b0109",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4295,7 +5208,7 @@
     "answer_verification": "x=-70/13 in 7(x + 4) = -6(x + 7)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0091",
+    "question_id": "sat-math-linear-equations-hard-b0110",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4341,7 +5254,7 @@
     "answer_verification": "y=-2x+(-7) through (-7,7)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0092",
+    "question_id": "sat-math-linear-equations-hard-b0111",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4387,7 +5300,7 @@
     "answer_verification": "given slope 4; perpendicular -> -1/4"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0093",
+    "question_id": "sat-math-linear-equations-hard-b0112",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4433,7 +5346,7 @@
     "answer_verification": "y=-4x+(12) through (-2,20)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0094",
+    "question_id": "sat-math-linear-equations-hard-b0113",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4478,7 +5391,7 @@
     "answer_verification": "0.4x + 4 = 2.4 at x=-4"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0095",
+    "question_id": "sat-math-linear-equations-hard-b0114",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4523,7 +5436,7 @@
     "answer_verification": "0.2x - 3.5 = 0.3 at x=19"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0096",
+    "question_id": "sat-math-linear-equations-hard-b0115",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4568,7 +5481,7 @@
     "answer_verification": "x=-8; -2x + 6=22"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0097",
+    "question_id": "sat-math-linear-equations-hard-b0116",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4642,7 +5555,7 @@
     "answer_verification": "y=2x+(7)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0098",
+    "question_id": "sat-math-linear-equations-hard-b0117",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4688,7 +5601,7 @@
     "answer_verification": "slope=20"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0099",
+    "question_id": "sat-math-linear-equations-hard-b0118",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4734,7 +5647,7 @@
     "answer_verification": "x=9/2 in 2(x - 6) = -6(x - 4)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0100",
+    "question_id": "sat-math-linear-equations-hard-b0119",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4780,7 +5693,7 @@
     "answer_verification": "x=-6 in 7(x - 2) = 4(x - 8)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0101",
+    "question_id": "sat-math-linear-equations-hard-b0120",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4825,7 +5738,7 @@
     "answer_verification": "x=5; 9x + 6=51"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0102",
+    "question_id": "sat-math-linear-equations-hard-b0121",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4871,7 +5784,7 @@
     "answer_verification": "(7,1) on 7x+(6)y=55"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0103",
+    "question_id": "sat-math-linear-equations-hard-b0122",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4917,7 +5830,7 @@
     "answer_verification": "(20-10)/(2-6)=-5/2"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0104",
+    "question_id": "sat-math-linear-equations-hard-b0123",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4963,7 +5876,7 @@
     "answer_verification": "x=7/4 in (7x - 8)/3 = (3x - 1)/3"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0105",
+    "question_id": "sat-math-linear-equations-hard-b0124",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5009,7 +5922,7 @@
     "answer_verification": "x=-13/3 in 7(x + 7) = 4(x + 9)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0106",
+    "question_id": "sat-math-linear-equations-hard-b0125",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5083,7 +5996,7 @@
     "answer_verification": "y=6x+(-11)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0107",
+    "question_id": "sat-math-linear-equations-hard-b0126",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5129,7 +6042,7 @@
     "answer_verification": "y=3x+(10) through (-3,1)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0108",
+    "question_id": "sat-math-linear-equations-hard-b0127",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5174,7 +6087,7 @@
     "answer_verification": "x=3/10 satisfies 8x + 5 = -2x + 8"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0109",
+    "question_id": "sat-math-linear-equations-hard-b0128",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5219,7 +6132,7 @@
     "answer_verification": "x=-6; 5x - 10=-40"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0110",
+    "question_id": "sat-math-linear-equations-hard-b0129",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5264,7 +6177,7 @@
     "answer_verification": "5x - 22 = 4 at x=26/5"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0111",
+    "question_id": "sat-math-linear-equations-hard-b0130",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5311,7 +6224,7 @@
     "answer_verification": "v=15t+11"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0112",
+    "question_id": "sat-math-linear-equations-hard-b0131",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5357,7 +6270,7 @@
     "answer_verification": "intercept=480"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0113",
+    "question_id": "sat-math-linear-equations-hard-b0132",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5403,7 +6316,7 @@
     "answer_verification": "literal formula: W = (P − 2L)/2"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0114",
+    "question_id": "sat-math-linear-equations-hard-b0133",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5449,7 +6362,7 @@
     "answer_verification": "literal axby: y = (27 − 5x)/7"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0115",
+    "question_id": "sat-math-linear-equations-hard-b0134",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5496,7 +6409,7 @@
     "answer_verification": "v=26t+33"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0116",
+    "question_id": "sat-math-linear-equations-hard-b0135",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5570,7 +6483,7 @@
     "answer_verification": "y=1x+(10)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0117",
+    "question_id": "sat-math-linear-equations-hard-b0136",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5616,7 +6529,7 @@
     "answer_verification": "(-4-8)/(28-8)=-3/5"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0118",
+    "question_id": "sat-math-linear-equations-hard-b0137",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5662,7 +6575,7 @@
     "answer_verification": "y=3x+(-6) through (3,3)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0119",
+    "question_id": "sat-math-linear-equations-hard-b0138",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5708,7 +6621,7 @@
     "answer_verification": "given slope 5/8; parallel -> 5/8"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0120",
+    "question_id": "sat-math-linear-equations-hard-b0139",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5754,7 +6667,7 @@
     "answer_verification": "model h = 3t + 14"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0121",
+    "question_id": "sat-math-linear-equations-hard-b0140",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5799,7 +6712,7 @@
     "answer_verification": "x=6; -3x - 19=-37"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0122",
+    "question_id": "sat-math-linear-equations-hard-b0141",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5873,7 +6786,7 @@
     "answer_verification": "y=-4x+(-12)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0123",
+    "question_id": "sat-math-linear-equations-hard-b0142",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5905,7 +6818,7 @@
     "answer_verification": "x=11/5 satisfies 4(5x + 1) = 48"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0124",
+    "question_id": "sat-math-linear-equations-hard-b0143",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5951,7 +6864,7 @@
     "answer_verification": "x-int=-5/3"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0125",
+    "question_id": "sat-math-linear-equations-hard-b0144",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5997,7 +6910,7 @@
     "answer_verification": "y=-2x+(3) through (-3,9)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0126",
+    "question_id": "sat-math-linear-equations-hard-b0145",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6042,7 +6955,7 @@
     "answer_verification": "3x + 25 = 18 at x=-7/3"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0127",
+    "question_id": "sat-math-linear-equations-hard-b0146",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6088,7 +7001,7 @@
     "answer_verification": "(-3,5) on 8x+(-6)y=-54"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0128",
+    "question_id": "sat-math-linear-equations-hard-b0147",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6162,7 +7075,7 @@
     "answer_verification": "y=-2x+(5)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0129",
+    "question_id": "sat-math-linear-equations-hard-b0148",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6208,7 +7121,7 @@
     "answer_verification": "slope=41"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0130",
+    "question_id": "sat-math-linear-equations-hard-b0149",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6282,7 +7195,7 @@
     "answer_verification": "y=3x+(-5)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0131",
+    "question_id": "sat-math-linear-equations-hard-b0150",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6328,7 +7241,7 @@
     "answer_verification": "y=-3x+(-9) through (4,-21)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0132",
+    "question_id": "sat-math-linear-equations-hard-b0151",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6374,7 +7287,7 @@
     "answer_verification": "given slope 7/6; parallel -> 7/6"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0133",
+    "question_id": "sat-math-linear-equations-hard-b0152",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6420,7 +7333,7 @@
     "answer_verification": "(-4--3)/(7-5)=-1/2"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0134",
+    "question_id": "sat-math-linear-equations-hard-b0153",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6465,7 +7378,7 @@
     "answer_verification": "0.5x + 3 = 10 at x=14"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0135",
+    "question_id": "sat-math-linear-equations-hard-b0154",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6539,7 +7452,7 @@
     "answer_verification": "y=3x+(-1)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0136",
+    "question_id": "sat-math-linear-equations-hard-b0155",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6585,7 +7498,7 @@
     "answer_verification": "literal axby: y = (20 − 9x)/3"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0137",
+    "question_id": "sat-math-linear-equations-hard-b0156",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6631,7 +7544,7 @@
     "answer_verification": "given slope -3/5; parallel -> -3/5"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0138",
+    "question_id": "sat-math-linear-equations-hard-b0157",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6677,7 +7590,7 @@
     "answer_verification": "x=-2/3 in (3x + 4)/3 = (4x + 4)/2"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0139",
+    "question_id": "sat-math-linear-equations-hard-b0158",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6723,7 +7636,7 @@
     "answer_verification": "y-int=-4"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0140",
+    "question_id": "sat-math-linear-equations-hard-b0159",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6769,7 +7682,7 @@
     "answer_verification": "slope=50"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0141",
+    "question_id": "sat-math-linear-equations-hard-b0160",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6815,7 +7728,7 @@
     "answer_verification": "y=-1x+(-4) through (1,-5)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0142",
+    "question_id": "sat-math-linear-equations-hard-b0161",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6861,7 +7774,7 @@
     "answer_verification": "(9,3) on 2x+(6)y=36"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0143",
+    "question_id": "sat-math-linear-equations-hard-b0162",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6907,7 +7820,7 @@
     "answer_verification": "literal fraction: x = 10y/(4 − y)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0144",
+    "question_id": "sat-math-linear-equations-hard-b0163",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6953,7 +7866,7 @@
     "answer_verification": "x=-14/3 in (5x + 6)/5 = (2x - 8)/5"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0145",
+    "question_id": "sat-math-linear-equations-hard-b0164",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6999,7 +7912,7 @@
     "answer_verification": "y=2x+(11) through (1,13)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0146",
+    "question_id": "sat-math-linear-equations-hard-b0165",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7045,7 +7958,7 @@
     "answer_verification": "y-int=7"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0147",
+    "question_id": "sat-math-linear-equations-hard-b0166",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7091,7 +8004,7 @@
     "answer_verification": "(-9,4) on 8x+(-8)y=-104"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0148",
+    "question_id": "sat-math-linear-equations-hard-b0167",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7137,7 +8050,7 @@
     "answer_verification": "given slope 2/3; perpendicular -> -3/2"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0149",
+    "question_id": "sat-math-linear-equations-hard-b0168",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7183,7 +8096,7 @@
     "answer_verification": "(4-5)/(9-7)=-1/2"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0150",
+    "question_id": "sat-math-linear-equations-hard-b0169",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7229,7 +8142,7 @@
     "answer_verification": "intercept=320"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0151",
+    "question_id": "sat-math-linear-equations-hard-b0170",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7275,7 +8188,7 @@
     "answer_verification": "x=-3 in (7x + 7)/2 = (2x - 8)/2"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0152",
+    "question_id": "sat-math-linear-equations-hard-b0171",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7320,7 +8233,7 @@
     "answer_verification": "x=-5; x + 2=-3"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0153",
+    "question_id": "sat-math-linear-equations-hard-b0172",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7366,7 +8279,7 @@
     "answer_verification": "model c = 11n + 17"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0154",
+    "question_id": "sat-math-linear-equations-hard-b0173",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7412,7 +8325,7 @@
     "answer_verification": "given slope -7/9; perpendicular -> 9/7"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0155",
+    "question_id": "sat-math-linear-equations-hard-b0174",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7458,7 +8371,7 @@
     "answer_verification": "slope=4"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0156",
+    "question_id": "sat-math-linear-equations-hard-b0175",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7504,7 +8417,7 @@
     "answer_verification": "x=-19/4 in 6(x + 4) = -2(x + 7)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0157",
+    "question_id": "sat-math-linear-equations-hard-b0176",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7578,7 +8491,7 @@
     "answer_verification": "y=-3x+(5)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0158",
+    "question_id": "sat-math-linear-equations-hard-b0177",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7625,7 +8538,7 @@
     "answer_verification": "v=27t+10"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0159",
+    "question_id": "sat-math-linear-equations-hard-b0178",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7671,7 +8584,7 @@
     "answer_verification": "(-25--9)/(9--3)=-4/3"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0160",
+    "question_id": "sat-math-linear-equations-hard-b0179",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7716,7 +8629,7 @@
     "answer_verification": "x=-2; -8x + 14=30"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0161",
+    "question_id": "sat-math-linear-equations-hard-b0180",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7762,7 +8675,7 @@
     "answer_verification": "y=6x+(-6) through (-4,-30)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0162",
+    "question_id": "sat-math-linear-equations-hard-b0181",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7808,7 +8721,7 @@
     "answer_verification": "x=-7/6 in (7x + 1)/3 = (x - 6)/3"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0163",
+    "question_id": "sat-math-linear-equations-hard-b0182",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7855,7 +8768,7 @@
     "answer_verification": "v=10t+65"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0164",
+    "question_id": "sat-math-linear-equations-hard-b0183",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7901,7 +8814,7 @@
     "answer_verification": "slope=53"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0165",
+    "question_id": "sat-math-linear-equations-hard-b0184",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7947,7 +8860,7 @@
     "answer_verification": "literal fraction: x = 7y/(8 − y)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0166",
+    "question_id": "sat-math-linear-equations-hard-b0185",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7993,7 +8906,7 @@
     "answer_verification": "(3,-9) on 9x+(-3)y=54"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0167",
+    "question_id": "sat-math-linear-equations-hard-b0186",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8039,7 +8952,7 @@
     "answer_verification": "literal fraction: x = 9y/(8 − y)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0168",
+    "question_id": "sat-math-linear-equations-hard-b0187",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8113,7 +9026,7 @@
     "answer_verification": "y=-1x+(-8)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0169",
+    "question_id": "sat-math-linear-equations-hard-b0188",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8159,7 +9072,7 @@
     "answer_verification": "model c = 9n + 8"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0170",
+    "question_id": "sat-math-linear-equations-hard-b0189",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8205,7 +9118,7 @@
     "answer_verification": "x=5/19 in (3x - 5)/5 = (5x - 3)/2"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0171",
+    "question_id": "sat-math-linear-equations-hard-b0190",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8251,7 +9164,7 @@
     "answer_verification": "(-3--1)/(3-7)=1/2"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0172",
+    "question_id": "sat-math-linear-equations-hard-b0191",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8297,7 +9210,7 @@
     "answer_verification": "x=-8 in 5(x + 1) = 7(x + 3)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0173",
+    "question_id": "sat-math-linear-equations-hard-b0192",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8343,7 +9256,7 @@
     "answer_verification": "(16--4)/(-9-3)=-5/3"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0174",
+    "question_id": "sat-math-linear-equations-hard-b0193",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8389,7 +9302,7 @@
     "answer_verification": "x=-31/4 in (4x + 7)/2 = (4x - 5)/3"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0175",
+    "question_id": "sat-math-linear-equations-hard-b0194",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8434,7 +9347,7 @@
     "answer_verification": "2.5x + 2.5 = 30 at x=11"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0176",
+    "question_id": "sat-math-linear-equations-hard-b0195",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8480,7 +9393,7 @@
     "answer_verification": "x=19/3 in 4(x - 4) = -2(x - 11)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0177",
+    "question_id": "sat-math-linear-equations-hard-b0196",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8526,7 +9439,7 @@
     "answer_verification": "intercept=120"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0178",
+    "question_id": "sat-math-linear-equations-hard-b0197",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8573,7 +9486,7 @@
     "answer_verification": "v=2t+70"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0179",
+    "question_id": "sat-math-linear-equations-hard-b0198",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8619,7 +9532,7 @@
     "answer_verification": "x=11 in 3(x - 7) = 6(x - 9)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0180",
+    "question_id": "sat-math-linear-equations-hard-b0199",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8665,7 +9578,7 @@
     "answer_verification": "slope=5"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0181",
+    "question_id": "sat-math-linear-equations-hard-b0200",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8710,7 +9623,7 @@
     "answer_verification": "x=19/9 satisfies 11x + 9 = 2x + 28"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0182",
+    "question_id": "sat-math-linear-equations-hard-b0201",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8756,7 +9669,7 @@
     "answer_verification": "model T = 10t + 5"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0183",
+    "question_id": "sat-math-linear-equations-hard-b0202",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8801,7 +9714,7 @@
     "answer_verification": "x=8; -6x - 14=-62"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0184",
+    "question_id": "sat-math-linear-equations-hard-b0203",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8847,7 +9760,7 @@
     "answer_verification": "x=23/5 in 2(x - 1) = -3(x - 7)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0185",
+    "question_id": "sat-math-linear-equations-hard-b0204",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8921,7 +9834,7 @@
     "answer_verification": "y=-5x+(-12)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0186",
+    "question_id": "sat-math-linear-equations-hard-b0205",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8967,7 +9880,7 @@
     "answer_verification": "intercept=330"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0187",
+    "question_id": "sat-math-linear-equations-hard-b0206",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9013,7 +9926,7 @@
     "answer_verification": "x=-3 in (3x + 3)/3 = (6x + 8)/5"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0188",
+    "question_id": "sat-math-linear-equations-hard-b0207",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9058,7 +9971,7 @@
     "answer_verification": "1.5x + 4.5 = -21 at x=-17"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0189",
+    "question_id": "sat-math-linear-equations-hard-b0208",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9103,7 +10016,7 @@
     "answer_verification": "3x + 1 = 24 at x=23/3"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0190",
+    "question_id": "sat-math-linear-equations-hard-b0209",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9149,7 +10062,7 @@
     "answer_verification": "x=-4 in 5(x + 2) = 1(x - 6)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0191",
+    "question_id": "sat-math-linear-equations-hard-b0210",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9195,7 +10108,7 @@
     "answer_verification": "(-14--6)/(36-8)=-2/7"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0192",
+    "question_id": "sat-math-linear-equations-hard-b0211",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9241,7 +10154,7 @@
     "answer_verification": "(9-11)/(-3-2)=2/5"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0193",
+    "question_id": "sat-math-linear-equations-hard-b0212",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9287,7 +10200,7 @@
     "answer_verification": "literal fraction: x = 17y/(2 − y)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0194",
+    "question_id": "sat-math-linear-equations-hard-b0213",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9333,7 +10246,7 @@
     "answer_verification": "y=7x+(7) through (-3,-14)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0195",
+    "question_id": "sat-math-linear-equations-hard-b0214",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9379,7 +10292,7 @@
     "answer_verification": "model h = 8t + 23"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0196",
+    "question_id": "sat-math-linear-equations-hard-b0215",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9425,7 +10338,7 @@
     "answer_verification": "(-7-8)/(0--6)=-5/2"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0197",
+    "question_id": "sat-math-linear-equations-hard-b0216",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9471,7 +10384,7 @@
     "answer_verification": "intercept=550"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0198",
+    "question_id": "sat-math-linear-equations-hard-b0217",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9517,7 +10430,7 @@
     "answer_verification": "y=-1x+(2) through (6,-4)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0199",
+    "question_id": "sat-math-linear-equations-hard-b0218",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9563,7 +10476,7 @@
     "answer_verification": "x=53/3 in 2(x + 9) = 5(x - 7)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0200",
+    "question_id": "sat-math-linear-equations-hard-b0219",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9610,7 +10523,7 @@
     "answer_verification": "v=30t+18"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0201",
+    "question_id": "sat-math-linear-equations-hard-b0220",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9656,7 +10569,7 @@
     "answer_verification": "y-int=7"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0202",
+    "question_id": "sat-math-linear-equations-hard-b0221",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9702,7 +10615,7 @@
     "answer_verification": "given slope 3/2; parallel -> 3/2"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0203",
+    "question_id": "sat-math-linear-equations-hard-b0222",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9748,7 +10661,7 @@
     "answer_verification": "literal fraction: x = 3y/(9 − y)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0204",
+    "question_id": "sat-math-linear-equations-hard-b0223",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9793,7 +10706,7 @@
     "answer_verification": "4x + 22 = 48 at x=13/2"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0205",
+    "question_id": "sat-math-linear-equations-hard-b0224",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9839,7 +10752,7 @@
     "answer_verification": "x=13/7 in 3(x + 1) = -4(x - 4)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0206",
+    "question_id": "sat-math-linear-equations-hard-b0225",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9885,7 +10798,7 @@
     "answer_verification": "(-7--11)/(-2--8)=2/3"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0207",
+    "question_id": "sat-math-linear-equations-hard-b0226",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9931,7 +10844,7 @@
     "answer_verification": "x=-18/13 in 6(x - 4) = -7(x + 6)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0208",
+    "question_id": "sat-math-linear-equations-hard-b0227",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9977,7 +10890,7 @@
     "answer_verification": "model c = 6n + 22"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0209",
+    "question_id": "sat-math-linear-equations-hard-b0228",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10051,7 +10964,7 @@
     "answer_verification": "y=-5x+(1)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0210",
+    "question_id": "sat-math-linear-equations-hard-b0229",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10098,7 +11011,7 @@
     "answer_verification": "v=32t+40"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0211",
+    "question_id": "sat-math-linear-equations-hard-b0230",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10143,7 +11056,7 @@
     "answer_verification": "3x + 20 = 37 at x=17/3"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0212",
+    "question_id": "sat-math-linear-equations-hard-b0231",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10189,7 +11102,7 @@
     "answer_verification": "model m = 2t + 24"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0213",
+    "question_id": "sat-math-linear-equations-hard-b0232",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10235,7 +11148,7 @@
     "answer_verification": "literal fraction: x = 18y/(7 − y)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0214",
+    "question_id": "sat-math-linear-equations-hard-b0233",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10281,7 +11194,7 @@
     "answer_verification": "literal axby: y = (4 − 4x)/8"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0215",
+    "question_id": "sat-math-linear-equations-hard-b0234",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10327,7 +11240,7 @@
     "answer_verification": "given slope -9/8; parallel -> -9/8"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0216",
+    "question_id": "sat-math-linear-equations-hard-b0235",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10401,7 +11314,7 @@
     "answer_verification": "y=6x+(-5)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0217",
+    "question_id": "sat-math-linear-equations-hard-b0236",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10447,7 +11360,7 @@
     "answer_verification": "(17-9)/(23--5)=2/7"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0218",
+    "question_id": "sat-math-linear-equations-hard-b0237",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10493,7 +11406,7 @@
     "answer_verification": "x=0 in 4(x - 2) = -1(x + 8)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0219",
+    "question_id": "sat-math-linear-equations-hard-b0238",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10567,7 +11480,7 @@
     "answer_verification": "y=-4x+(-6)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0220",
+    "question_id": "sat-math-linear-equations-hard-b0239",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10613,7 +11526,7 @@
     "answer_verification": "x=-92/11 in 6(x + 7) = -5(x + 10)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0221",
+    "question_id": "sat-math-linear-equations-hard-b0240",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10659,7 +11572,7 @@
     "answer_verification": "(5-8)/(2--3)=-3/5"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0222",
+    "question_id": "sat-math-linear-equations-hard-b0241",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10705,7 +11618,7 @@
     "answer_verification": "(-5,-8) on 6x+(-2)y=-14"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0223",
+    "question_id": "sat-math-linear-equations-hard-b0242",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10751,7 +11664,7 @@
     "answer_verification": "(-19--7)/(0--9)=-4/3"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0224",
+    "question_id": "sat-math-linear-equations-hard-b0243",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10797,7 +11710,7 @@
     "answer_verification": "(-3,2) on 4x+(-5)y=-22"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0225",
+    "question_id": "sat-math-linear-equations-hard-b0244",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10842,7 +11755,7 @@
     "answer_verification": "x=-14/5 satisfies -2x + 6 = -7x - 8"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0226",
+    "question_id": "sat-math-linear-equations-hard-b0245",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10916,7 +11829,7 @@
     "answer_verification": "y=-2x+(6)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0227",
+    "question_id": "sat-math-linear-equations-hard-b0246",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10948,7 +11861,7 @@
     "answer_verification": "x=15/4 satisfies 4(4x - 1) = 56"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0228",
+    "question_id": "sat-math-linear-equations-hard-b0247",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10994,7 +11907,7 @@
     "answer_verification": "x=7/2 in (6x + 1)/5 = (4x + 8)/5"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0229",
+    "question_id": "sat-math-linear-equations-hard-b0248",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11039,7 +11952,7 @@
     "answer_verification": "x=1/12 satisfies 3x + 6 = -9x + 7"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0230",
+    "question_id": "sat-math-linear-equations-hard-b0249",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11085,7 +11998,7 @@
     "answer_verification": "x-int=-13/3"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0231",
+    "question_id": "sat-math-linear-equations-hard-b0250",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11131,7 +12044,7 @@
     "answer_verification": "y=-4x+(9) through (-1,13)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0232",
+    "question_id": "sat-math-linear-equations-hard-b0251",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11177,7 +12090,7 @@
     "answer_verification": "slope=18"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0233",
+    "question_id": "sat-math-linear-equations-hard-b0252",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11223,7 +12136,7 @@
     "answer_verification": "intercept=430"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0234",
+    "question_id": "sat-math-linear-equations-hard-b0253",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11269,7 +12182,7 @@
     "answer_verification": "given slope -1/3; parallel -> -1/3"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0235",
+    "question_id": "sat-math-linear-equations-hard-b0254",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11314,7 +12227,7 @@
     "answer_verification": "x=1/3 satisfies -5x - 4 = -8x - 3"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0236",
+    "question_id": "sat-math-linear-equations-hard-b0255",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11359,7 +12272,7 @@
     "answer_verification": "0.8x + 0.5 = -5.1 at x=-7"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0237",
+    "question_id": "sat-math-linear-equations-hard-b0256",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11406,7 +12319,7 @@
     "answer_verification": "v=20t+66"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0238",
+    "question_id": "sat-math-linear-equations-hard-b0257",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11451,7 +12364,7 @@
     "answer_verification": "7x - 23 = -42 at x=-19/7"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0239",
+    "question_id": "sat-math-linear-equations-hard-b0258",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11496,7 +12409,7 @@
     "answer_verification": "7x + 10 = 40 at x=30/7"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0240",
+    "question_id": "sat-math-linear-equations-hard-b0259",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11542,7 +12455,7 @@
     "answer_verification": "x=-49/8 in 3(x + 8) = -5(x + 5)"
   },
   {
-    "question_id": "sat-math-linear-equations-hard-b0241",
+    "question_id": "sat-math-linear-equations-hard-b0260",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11587,932 +12500,5 @@
       "family:le_rate_word"
     ],
     "answer_verification": "v=30t+54"
-  },
-  {
-    "question_id": "sat-math-linear-equations-hard-b0242",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "linear_equations",
-    "lesson_id": "sat-math-linear-equations-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "two_variable",
-    "prompt": "The formula P = 3L + 4W relates the perimeter P of a figure to its length L and width W. Which equation gives W in terms of P and L?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "W = (P + 3L)/4",
-        "rationale": "Subtract the L-term; don't add it."
-      },
-      {
-        "id": "B",
-        "text": "W = (P − 3L)/4",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "W = (P − 4L)/3",
-        "rationale": "The coefficients are swapped."
-      },
-      {
-        "id": "D",
-        "text": "W = P/4 − 3L",
-        "rationale": "The L-term must also be divided by 4."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Subtract 3L from both sides, then divide by 4: W = (P − 3L)/4.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "algebra",
-      "linear",
-      "literal",
-      "family:le_literal"
-    ],
-    "answer_verification": "literal formula: W = (P − 3L)/4"
-  },
-  {
-    "question_id": "sat-math-linear-equations-hard-b0243",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "linear_equations",
-    "lesson_id": "sat-math-linear-equations-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "one_variable",
-    "prompt": "What value of x satisfies the equation −9x − 3 = −6x + 22?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-25/3",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "25",
-        "rationale": "This is −3x, not x; divide by −3."
-      },
-      {
-        "id": "C",
-        "text": "-5/3",
-        "rationale": "This divides by a + c instead of a − c."
-      },
-      {
-        "id": "D",
-        "text": "25/3",
-        "rationale": "Sign slip when moving terms across the equals sign."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "Collect the x-terms: −9x − (−6x) = 22 − (−3), so −3x = 25. Divide by −3: x = -25/3.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "algebra",
-      "linear",
-      "family:le_both_sides"
-    ],
-    "answer_verification": "x=-25/3 satisfies -9x - 3 = -6x + 22"
-  },
-  {
-    "question_id": "sat-math-linear-equations-hard-b0244",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "linear_equations",
-    "lesson_id": "sat-math-linear-equations-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "one_variable",
-    "prompt": "2(x + 5) = −6(x − 11)\nWhat is the solution to the given equation?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "7",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "19/2",
-        "rationale": "The constant moves with the opposite sign."
-      },
-      {
-        "id": "C",
-        "text": "-7",
-        "rationale": "Sign slip when collecting like terms."
-      },
-      {
-        "id": "D",
-        "text": "-14",
-        "rationale": "Subtract the x-coefficients; don't add them."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "Distribute both sides: 2x + 10 = −6x + 66. Collect: 8x = 56, so x = 7.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "algebra",
-      "linear",
-      "distribute",
-      "family:le_distribute"
-    ],
-    "answer_verification": "x=7 in 2(x + 5) = -6(x - 11)"
-  },
-  {
-    "question_id": "sat-math-linear-equations-hard-b0245",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "linear_equations",
-    "lesson_id": "sat-math-linear-equations-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "two_variable",
-    "prompt": "The temperature T, in degrees, of a tank rises at a constant rate. After 1 minutes it is 17 degrees, and after 3 minutes it is 29 degrees. Which equation gives T in terms of the number of minutes t?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "T = 12t + 11",
-        "rationale": "Divide the change 12 by the 2 minutes it took."
-      },
-      {
-        "id": "B",
-        "text": "T = 6t + 11",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "T = 11t + 6",
-        "rationale": "This swaps the rate and the starting value."
-      },
-      {
-        "id": "D",
-        "text": "T = 6t + 17",
-        "rationale": "17 is the value at t = 1, not at t = 0."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Rate = (29 − 17)/(3 − 1) = 6 per minute. Then 17 = 6·1 + b gives b = 11, so T = 6t + 11.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "algebra",
-      "linear",
-      "model",
-      "family:le_model_equation"
-    ],
-    "answer_verification": "model T = 6t + 11"
-  },
-  {
-    "question_id": "sat-math-linear-equations-hard-b0246",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "linear_equations",
-    "lesson_id": "sat-math-linear-equations-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "two_variable",
-    "prompt": "The table shows four pairs of values of x and y that satisfy a linear equation (x = -8 gives y = 5). Which equation is it?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "y = −4x − 3",
-        "rationale": "Divide the change in y by the change in x; the x-values are not 1 apart."
-      },
-      {
-        "id": "B",
-        "text": "y = −x − 3",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "y = −x + 5",
-        "rationale": "5 is y when x = -8, not when x = 0."
-      },
-      {
-        "id": "D",
-        "text": "y = −3x − 1",
-        "rationale": "The slope and the constant are swapped."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Between rows, y changes by −4 when x changes by 4: slope −1. Then 5 = −1·-8 + b gives b = −3: y = −x − 3.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "algebra",
-      "linear",
-      "table",
-      "family:le_table_equation"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Values of x and y",
-        "headers": [
-          "x",
-          "y"
-        ],
-        "rows": [
-          [
-            "-8",
-            "5"
-          ],
-          [
-            "-4",
-            "1"
-          ],
-          [
-            "2",
-            "-5"
-          ],
-          [
-            "4",
-            "-7"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "y=-1x+(-3)"
-  },
-  {
-    "question_id": "sat-math-linear-equations-hard-b0247",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "linear_equations",
-    "lesson_id": "sat-math-linear-equations-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "two_variable",
-    "prompt": "The temperature T, in degrees, of a tank rises at a constant rate. After 5 minutes it is 93 degrees, and after 11 minutes it is 159 degrees. Which equation gives T in terms of the number of minutes t?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "T = 38t + 11",
-        "rationale": "This swaps the rate and the starting value."
-      },
-      {
-        "id": "B",
-        "text": "T = 11t + 38",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "T = 11t + 93",
-        "rationale": "93 is the value at t = 5, not at t = 0."
-      },
-      {
-        "id": "D",
-        "text": "T = 66t + 38",
-        "rationale": "Divide the change 66 by the 6 minutes it took."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Rate = (159 − 93)/(11 − 5) = 11 per minute. Then 93 = 11·5 + b gives b = 38, so T = 11t + 38.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "algebra",
-      "linear",
-      "model",
-      "family:le_model_equation"
-    ],
-    "answer_verification": "model T = 11t + 38"
-  },
-  {
-    "question_id": "sat-math-linear-equations-hard-b0248",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "linear_equations",
-    "lesson_id": "sat-math-linear-equations-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "two_variable",
-    "prompt": "The table shows four pairs of values of x and y that satisfy a linear equation (x = -4 gives y = 19). Which equation is it?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "y = −x − 5",
-        "rationale": "The slope and the constant are swapped."
-      },
-      {
-        "id": "B",
-        "text": "y = −10x − 1",
-        "rationale": "Divide the change in y by the change in x; the x-values are not 1 apart."
-      },
-      {
-        "id": "C",
-        "text": "y = −5x + 19",
-        "rationale": "19 is y when x = -4, not when x = 0."
-      },
-      {
-        "id": "D",
-        "text": "y = −5x − 1",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Between rows, y changes by −10 when x changes by 2: slope −5. Then 19 = −5·-4 + b gives b = −1: y = −5x − 1.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "algebra",
-      "linear",
-      "table",
-      "family:le_table_equation"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Values of x and y",
-        "headers": [
-          "x",
-          "y"
-        ],
-        "rows": [
-          [
-            "-4",
-            "19"
-          ],
-          [
-            "-2",
-            "9"
-          ],
-          [
-            "2",
-            "-11"
-          ],
-          [
-            "6",
-            "-31"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "y=-5x+(-1)"
-  },
-  {
-    "question_id": "sat-math-linear-equations-hard-b0249",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "linear_equations",
-    "lesson_id": "sat-math-linear-equations-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "two_variable",
-    "prompt": "If 5x + 2y = 7, which of the following expresses y in terms of x?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "y = 7 − 5x",
-        "rationale": "Both terms must be divided by 2."
-      },
-      {
-        "id": "B",
-        "text": "y = (5x − 7)/2",
-        "rationale": "Sign slip: subtract the x-term from the constant."
-      },
-      {
-        "id": "C",
-        "text": "y = (7 − 5x)/2",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "y = (7 − 5x)/5",
-        "rationale": "Divide by the coefficient of y, which is 2."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "Subtract 5x: 2y = 7 − 5x. Divide by 2: y = (7 − 5x)/2.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "algebra",
-      "linear",
-      "literal",
-      "family:le_literal"
-    ],
-    "answer_verification": "literal axby: y = (7 − 5x)/2"
-  },
-  {
-    "question_id": "sat-math-linear-equations-hard-b0250",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "linear_equations",
-    "lesson_id": "sat-math-linear-equations-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "one_variable",
-    "prompt": "If (7x + 9)/4 = (6x − 9)/2, what is the value of x?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-27/19",
-        "rationale": "Subtract the x-terms; don't add them."
-      },
-      {
-        "id": "B",
-        "text": "9/5",
-        "rationale": "The constant moves with the opposite sign."
-      },
-      {
-        "id": "C",
-        "text": "-27/5",
-        "rationale": "Sign slip."
-      },
-      {
-        "id": "D",
-        "text": "27/5",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Cross-multiply: 2(7x + 9) = 4(6x − 9) → 14x + 18 = 24x − 36 → −10x = −54 → x = 27/5.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "algebra",
-      "linear",
-      "fractions",
-      "family:le_fraction_eq"
-    ],
-    "answer_verification": "x=27/5 in (7x + 9)/4 = (6x - 9)/2"
-  },
-  {
-    "question_id": "sat-math-linear-equations-hard-b0251",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "linear_equations",
-    "lesson_id": "sat-math-linear-equations-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "slope_intercept",
-    "prompt": "The depth D, in centimeters, of water in a leaking tank t hours after it was filled is D = 320 − 9t. Which of the following is the best interpretation of the number 320 in this context?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "the depth of the water in the tank after t hours",
-        "rationale": "The total is the output, not the constant term."
-      },
-      {
-        "id": "B",
-        "text": "the decrease in depth, in centimeters, each hour",
-        "rationale": "That describes the coefficient of the variable (the rate)."
-      },
-      {
-        "id": "C",
-        "text": "the depth of the water when the tank was full",
-        "rationale": "The constant term is the value when the variable is 0."
-      },
-      {
-        "id": "D",
-        "text": "the number of hours that have passed since the tank was filled",
-        "rationale": "The variable itself is not a fixed number in the equation."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "When t = 0 the model equals the constant term, so it represents the depth of the water when the tank was full.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "algebra",
-      "linear",
-      "interpret",
-      "family:le_interpret"
-    ],
-    "answer_verification": "intercept=320"
-  },
-  {
-    "question_id": "sat-math-linear-equations-hard-b0252",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "linear_equations",
-    "lesson_id": "sat-math-linear-equations-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "one_variable",
-    "prompt": "x/4 + 18 = 7\nWhat value of x makes the equation true?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-11",
-        "rationale": "This is x/4; multiply by 4 to get x."
-      },
-      {
-        "id": "B",
-        "text": "100",
-        "rationale": "Subtract the constant before multiplying."
-      },
-      {
-        "id": "C",
-        "text": "-11/4",
-        "rationale": "Multiply by 4; don't divide again."
-      },
-      {
-        "id": "D",
-        "text": "-44",
-        "rationale": "Correct: substituting back makes both sides equal."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Subtract 18: x/4 = −11. Multiply both sides by 4: x = −44.",
-    "estimated_time_seconds": 70,
-    "tags": [
-      "algebra",
-      "linear",
-      "family:le_two_step"
-    ],
-    "answer_verification": "x/4 + 18 = 7 at x=-44"
-  },
-  {
-    "question_id": "sat-math-linear-equations-hard-b0253",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "linear_equations",
-    "lesson_id": "sat-math-linear-equations-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "one_variable",
-    "prompt": "3x + 4 = −1\nWhat is the solution to the given equation?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-3/5",
-        "rationale": "This inverts the final division."
-      },
-      {
-        "id": "B",
-        "text": "1",
-        "rationale": "Subtract the constant; don't add it."
-      },
-      {
-        "id": "C",
-        "text": "-5/3",
-        "rationale": "Correct: substituting back makes both sides equal."
-      },
-      {
-        "id": "D",
-        "text": "-5",
-        "rationale": "This is 3x; divide by 3."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "Subtract 4: 3x = −5. Divide by 3: x = -5/3.",
-    "estimated_time_seconds": 70,
-    "tags": [
-      "algebra",
-      "linear",
-      "family:le_two_step"
-    ],
-    "answer_verification": "3x + 4 = -1 at x=-5/3"
-  },
-  {
-    "question_id": "sat-math-linear-equations-hard-b0254",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "linear_equations",
-    "lesson_id": "sat-math-linear-equations-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "two_variable",
-    "prompt": "The point (8, k) lies on the graph of 7x − 5y = 71 in the xy-plane. What is the value of k?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-127/5",
-        "rationale": "Subtract 56; don't add it."
-      },
-      {
-        "id": "B",
-        "text": "-3",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "15",
-        "rationale": "Divide by the coefficient of y."
-      },
-      {
-        "id": "D",
-        "text": "3",
-        "rationale": "Sign slip when isolating k."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Substitute x = 8: 56 − 5k = 71, so k = −3.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "algebra",
-      "linear",
-      "point",
-      "family:le_point_on_line"
-    ],
-    "answer_verification": "(8,-3) on 7x+(-5)y=71"
-  },
-  {
-    "question_id": "sat-math-linear-equations-hard-b0255",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "linear_equations",
-    "lesson_id": "sat-math-linear-equations-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "one_variable",
-    "prompt": "5(x + 2) = −7(x − 5)\nWhat value of x makes the equation true?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-25/2",
-        "rationale": "Subtract the x-coefficients; don't add them."
-      },
-      {
-        "id": "B",
-        "text": "25/12",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "15/4",
-        "rationale": "The constant moves with the opposite sign."
-      },
-      {
-        "id": "D",
-        "text": "-25/12",
-        "rationale": "Sign slip when collecting like terms."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Distribute both sides: 5x + 10 = −7x + 35. Collect: 12x = 25, so x = 25/12.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "algebra",
-      "linear",
-      "distribute",
-      "family:le_distribute"
-    ],
-    "answer_verification": "x=25/12 in 5(x + 2) = -7(x - 5)"
-  },
-  {
-    "question_id": "sat-math-linear-equations-hard-b0256",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "linear_equations",
-    "lesson_id": "sat-math-linear-equations-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "slope_intercept",
-    "prompt": "Line k contains the points (1, 5) and (−5, 3). What is the slope of line k?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-1/3",
-        "rationale": "Sign slip; subtract the coordinates in the same order."
-      },
-      {
-        "id": "B",
-        "text": "-2",
-        "rationale": "That is only the change in y; divide by the change in x."
-      },
-      {
-        "id": "C",
-        "text": "3",
-        "rationale": "This is run over rise; slope is rise over run."
-      },
-      {
-        "id": "D",
-        "text": "1/3",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Slope = (y₂ − y₁)/(x₂ − x₁) = (3 − (5))/(−5 − (1)) = −2/−6 = 1/3.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "algebra",
-      "linear",
-      "slope",
-      "family:le_slope_points"
-    ],
-    "answer_verification": "(3-5)/(-5-1)=1/3"
-  },
-  {
-    "question_id": "sat-math-linear-equations-hard-b0257",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "linear_equations",
-    "lesson_id": "sat-math-linear-equations-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "slope_intercept",
-    "prompt": "A line in the xy-plane passes through the points (1, 13) and (−3, 9). What is the x-coordinate of the x-intercept of the line?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "1",
-        "rationale": "That is the slope, not an intercept."
-      },
-      {
-        "id": "B",
-        "text": "-12",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "12",
-        "rationale": "That is the y-intercept."
-      },
-      {
-        "id": "D",
-        "text": "-31/3",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Slope = 1, so y = x + 12. Set y = 0: x = −12/1 = -12.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "algebra",
-      "linear",
-      "intercept",
-      "family:le_intercepts"
-    ],
-    "answer_verification": "x-int=-12"
-  },
-  {
-    "question_id": "sat-math-linear-equations-hard-b0258",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "linear_equations",
-    "lesson_id": "sat-math-linear-equations-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "two_variable",
-    "prompt": "The cost c, in dollars, of a custom order depends linearly on the number of items. After 1 items it is 45 dollars, and after 6 items it is 75 dollars. Which equation gives c in terms of the number of items n?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "c = 30n + 39",
-        "rationale": "Divide the change 30 by the 5 items it took."
-      },
-      {
-        "id": "B",
-        "text": "c = 39n + 6",
-        "rationale": "This swaps the rate and the starting value."
-      },
-      {
-        "id": "C",
-        "text": "c = 6n + 39",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "c = 6n + 45",
-        "rationale": "45 is the value at n = 1, not at n = 0."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "Rate = (75 − 45)/(6 − 1) = 6 per item. Then 45 = 6·1 + b gives b = 39, so c = 6n + 39.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "algebra",
-      "linear",
-      "model",
-      "family:le_model_equation"
-    ],
-    "answer_verification": "model c = 6n + 39"
-  },
-  {
-    "question_id": "sat-math-linear-equations-hard-b0259",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "linear_equations",
-    "lesson_id": "sat-math-linear-equations-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multi_step_math",
-    "subskill": "two_variable",
-    "prompt": "A car travels at a constant speed. After 1 hours it has gone 76 miles, and after 8 hours it has gone 335 miles. How many miles were there at time 0?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "29",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "B",
-        "text": "37",
-        "rationale": "That is the rate, not the starting amount."
-      },
-      {
-        "id": "C",
-        "text": "39",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "76",
-        "rationale": "That is the amount at time 1, not time 0."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "Rate = (335 − 76)/(8 − 1) = 37; starting amount = 76 − 37·1 = 39.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "algebra",
-      "linear",
-      "rate",
-      "word-problem",
-      "family:le_rate_word"
-    ],
-    "answer_verification": "v=37t+39"
-  },
-  {
-    "question_id": "sat-math-linear-equations-hard-b0260",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "algebra",
-    "skill": "linear_equations",
-    "lesson_id": "sat-math-linear-equations-hard",
-    "difficulty": "hard",
-    "version": "1.0.0",
-    "question_type": "multiple_choice",
-    "subskill": "one_variable",
-    "prompt": "What value of x satisfies the equation 0.6x − 3 = −9?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "-10",
-        "rationale": "Correct: substituting back makes both sides equal."
-      },
-      {
-        "id": "B",
-        "text": "-20",
-        "rationale": "Subtract the constant; don't add it."
-      },
-      {
-        "id": "C",
-        "text": "-6",
-        "rationale": "This is 0.6x; divide by 0.6."
-      },
-      {
-        "id": "D",
-        "text": "10",
-        "rationale": "Sign slip when dividing."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "Subtract −3: 0.6x = −6. Divide by 0.6: x = −10.",
-    "estimated_time_seconds": 70,
-    "tags": [
-      "algebra",
-      "linear",
-      "family:le_two_step"
-    ],
-    "answer_verification": "0.6x - 3 = -9 at x=-10"
   }
 ]

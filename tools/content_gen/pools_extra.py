@@ -16,23 +16,23 @@ from __future__ import annotations
 
 # --------------------------------------------------------------------------- #
 # Transitions: (sentence1, sentence2, relation)
-# relation in {contrast, cause, addition, example, sequence, emphasis}
+# relation in {contrast, cause, addition, example, sequence} (nothing keyed emphasis)
 # sentence1 ends with a period; sentence2 is a lowercase clause that follows
 # "<s1> ___, <s2>".
 # --------------------------------------------------------------------------- #
 TRANS2 = [
-    ("Tidal turbines generate power around the clock.", "they run even when the wind is calm and the sky is dark.", "cause"),
+    ("Tidal turbines are driven by the tides rather than the wind.", "they keep running even when the air is perfectly calm.", "cause"),
     ("The mayor pledged to plant a thousand street trees.", "the budget covered only a few dozen of them.", "contrast"),
     ("Octopuses can change color in an instant.", "they can also reshape their skin to mimic rough coral.", "addition"),
-    ("Antarctica holds most of the planet's fresh water.", "it is locked away in a vast sheet of ice.", "cause"),
-    ("The startup ran out of cash by the spring.", "its founders sold the patents to a rival.", "sequence"),
+    ("Antarctica holds most of the planet's fresh water.", "almost none of it is available for people to drink.", "contrast"),
+    ("The startup ran out of cash by the spring.", "its founders sold the patents to a rival.", "cause"),
     ("Honeybees communicate the location of food.", "a scout performs a looping dance on the comb.", "example"),
-    ("The committee debated the proposal for hours.", "it adjourned without reaching a decision.", "sequence"),
+    ("The committee debated the proposal for hours.", "it adjourned without reaching a decision.", "contrast"),
     ("The desert receives almost no rainfall.", "a surprising number of plants flourish there.", "contrast"),
     ("The factory recycles nearly all of its scrap metal.", "it sends very little waste to the landfill.", "cause"),
     ("The novel was rejected by a dozen publishers.", "it went on to win the country's top literary prize.", "contrast"),
     ("Lighthouses once guided ships along the rocky coast.", "many of them now stand empty and automated.", "contrast"),
-    ("The river floods the valley every few years.", "farmers there expect the rich silt it leaves behind.", "cause"),
+    ("The river floods the valley every few years.", "the valley's soil is rich with silt the water leaves behind.", "cause"),
     ("The choir auditioned new singers in the fall.", "it began rehearsing the holiday program in October.", "sequence"),
     ("Sloths move slowly through the rainforest canopy.", "their fur hosts tiny algae that help them blend in.", "addition"),
     ("The clinic offered free screenings on weekends.", "turnout exceeded every projection.", "cause"),
@@ -42,7 +42,7 @@ TRANS2 = [
     ("The new alloy resists rust remarkably well.", "shipbuilders have begun ordering it in bulk.", "cause"),
     ("The lecture was supposed to last an hour.", "it stretched well past lunchtime.", "contrast"),
     ("The archive holds letters from the founding era.", "it preserves diaries, maps, and old ledgers as well.", "addition"),
-    ("The vaccine took years to develop.", "researchers screened thousands of candidate compounds.", "example"),
+    ("Some vaccines take decades to develop.", "the first malaria vaccine was more than thirty years in the making.", "example"),
     ("The drought withered the corn in July.", "yields fell to their lowest level in a decade.", "cause"),
     ("The painting looked dull under the old lights.", "the restored gallery revealed its vivid colors.", "contrast"),
     ("The crew dismantled the old stage on Monday.", "they assembled the new set by Friday.", "sequence"),
@@ -51,14 +51,12 @@ TRANS2 = [
     ("The garden draws bees throughout the summer.", "it shelters frogs and dragonflies near the pond.", "addition"),
     ("The bridge cannot bear heavy trucks anymore.", "freight must now take the longer route around the gorge.", "cause"),
     ("The hikers misread the trail map at noon.", "they ended up on the far side of the ridge by dusk.", "cause"),
-    ("Glaciers carved these valleys long ago.", "they left behind smooth walls and scattered boulders.", "cause"),
-    ("The director cut three scenes from the film.", "the pacing felt far tighter as a result.", "cause"),
-    ("The museum charges no admission fee.", "it asks visitors to leave whatever they can.", "addition"),
+    ("Glaciers carved these valleys long ago.", "the valleys have the broad U shape typical of glacial erosion.", "cause"),
+    ("The director cut three scenes from the film.", "the pacing felt far tighter.", "cause"),
+    ("The museum charges no admission fee.", "its special exhibitions require a paid ticket.", "contrast"),
     ("The orchard suffered a late frost in April.", "only a fraction of the trees bore fruit.", "cause"),
-    ("The report flagged several gaps in the data.", "it recommended a follow-up survey for each one.", "addition"),
-    ("The robot could not climb the steep ramp.", "engineers redesigned its wheels and tried again.", "sequence"),
-    ("Tap water in the town tasted faintly of iron.", "residents had complained about it for years.", "emphasis"),
-    ("The migration covers thousands of miles.", "some birds fly nonstop for days without resting.", "emphasis"),
+    ("The robot could not climb the steep ramp.", "engineers redesigned its wheels and tried again.", "cause"),
+    ("Some migrating birds cover enormous distances without a break.", "the bar-tailed godwit flies more than seven thousand miles nonstop.", "example"),
     ("The print run sold out within a week.", "the publisher rushed a second edition to stores.", "cause"),
     ("The seeds need cold weather to sprout.", "gardeners chill them in a refrigerator first.", "cause"),
 ]

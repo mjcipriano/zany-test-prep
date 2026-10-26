@@ -11,36 +11,37 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "conditional_probability",
-    "prompt": "According to the table of 146 responses, how many responses were “Right-handed” and “Grade 10”?",
+    "prompt": "Based on the table of 94 responses, which statement correctly compares the two “Urban”/“Rural” groups?",
     "choices": [
       {
         "id": "A",
-        "text": "52",
-        "rationale": "That is the row total, not the single cell."
+        "text": "A “Urban” response is more likely to be “Soccer” because the “Urban” column has more responses.",
+        "rationale": "Likelihood depends on the proportion within the group, not the group's size."
       },
       {
         "id": "B",
-        "text": "24",
-        "rationale": "Correct."
+        "text": "The two groups are equally likely to be “Soccer”.",
+        "rationale": "The proportions differ."
       },
       {
         "id": "C",
-        "text": "43",
-        "rationale": "That is the other cell in the column."
+        "text": "A “Urban” response is more likely than a “Rural” response to be “Soccer”.",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "28",
-        "rationale": "That is the other cell in the row."
+        "text": "A “Rural” response is more likely than a “Urban” response to be “Soccer”.",
+        "rationale": "Compare proportions: 31/52 ≈ 0.60 vs 14/42 ≈ 0.33."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "The cell in the “Right-handed” row and “Grade 10” column is 24.",
-    "estimated_time_seconds": 75,
+    "correct_choice": "C",
+    "explanation": "P(Soccer | Urban) = 31/52 ≈ 0.60 and P(Soccer | Rural) = 14/42 ≈ 0.33; the larger is “Urban”.",
+    "estimated_time_seconds": 100,
     "tags": [
       "data",
       "table",
-      "family:tw_count"
+      "compare",
+      "family:tw_compare"
     ],
     "stimulus": {
       "type": "table",
@@ -48,33 +49,33 @@
         "caption": "Survey responses",
         "headers": [
           "",
-          "Grade 9",
-          "Grade 10",
+          "Urban",
+          "Rural",
           "Total"
         ],
         "rows": [
           [
-            "Left-handed",
-            "51",
-            "43",
-            "94"
+            "Soccer",
+            "31",
+            "14",
+            "45"
           ],
           [
-            "Right-handed",
+            "Basketball",
+            "21",
             "28",
-            "24",
-            "52"
+            "49"
           ],
           [
             "Total",
-            "79",
-            "67",
-            "146"
+            "52",
+            "42",
+            "94"
           ]
         ]
       }
     },
-    "answer_verification": "val=24"
+    "answer_verification": "0.596 vs 0.333"
   },
   {
     "question_id": "sat-math-two-way-tables-easy-b0002",
@@ -88,575 +89,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "conditional_probability",
-    "prompt": "The table shows relative frequencies for 200 responses. How many responses were “Fiction” and “Grade 10”?",
+    "prompt": "According to the table of 172 responses, how many responses came from the “Rural” group?",
     "choices": [
       {
         "id": "A",
-        "text": "30",
-        "rationale": "That is the other cell in the row."
-      },
-      {
-        "id": "B",
-        "text": "60",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "82",
-        "rationale": "That is the other cell in the column."
-      },
-      {
-        "id": "D",
-        "text": "90",
-        "rationale": "That is the whole row."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "0.30 × 200 = 60.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "data",
-      "table",
-      "relative-frequency",
-      "family:tw_relative_freq"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Relative frequencies (n = 200)",
-        "headers": [
-          "",
-          "Grade 9",
-          "Grade 10",
-          "Total"
-        ],
-        "rows": [
-          [
-            "Fiction",
-            "0.15",
-            "0.30",
-            "0.45"
-          ],
-          [
-            "Nonfiction",
-            "0.14",
-            "0.41",
-            "0.55"
-          ],
-          [
-            "Total",
-            "0.29",
-            "0.71",
-            "1.00"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "0.15,0.3,0.14,0.41"
-  },
-  {
-    "question_id": "sat-math-two-way-tables-easy-b0003",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "two_way_tables",
-    "lesson_id": "sat-math-two-way-tables-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "conditional_probability",
-    "prompt": "Based on the table of 133 responses, what fraction of the “Bus” responses were “Weekday”?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "3/7",
-        "rationale": "Use the row total as the denominator, not the grand total."
-      },
-      {
-        "id": "B",
-        "text": "28/85",
-        "rationale": "That is the fraction that were “Weekend”."
-      },
-      {
-        "id": "C",
-        "text": "57/85",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "57/82",
-        "rationale": "That is the fraction of the column, not the row."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "57 of the 85 “Bus” responses were “Weekday”: 57/85.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "data",
-      "table",
-      "family:tw_fraction_percent"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Survey responses",
-        "headers": [
-          "",
-          "Weekday",
-          "Weekend",
-          "Total"
-        ],
-        "rows": [
-          [
-            "Bus",
-            "57",
-            "28",
-            "85"
-          ],
-          [
-            "Bike",
-            "25",
-            "23",
-            "48"
-          ],
-          [
-            "Total",
-            "82",
-            "51",
-            "133"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "val=57/85"
-  },
-  {
-    "question_id": "sat-math-two-way-tables-easy-b0004",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "two_way_tables",
-    "lesson_id": "sat-math-two-way-tables-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "conditional_probability",
-    "prompt": "The table shows 158 survey responses. If one response is chosen at random, what is the probability that it is in the “Bus” row?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "19/79",
-        "rationale": "This uses only one cell (38), not the whole row."
-      },
-      {
-        "id": "B",
-        "text": "34/79",
-        "rationale": "This is the probability of the other row."
-      },
-      {
-        "id": "C",
-        "text": "45/34",
-        "rationale": "Divide by the grand total, not the other row."
-      },
-      {
-        "id": "D",
-        "text": "45/79",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "The “Bus” row totals 38 + 52 = 90 of 158: 45/79.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "data",
-      "probability",
-      "table",
-      "family:tw_probability"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Survey responses",
-        "headers": [
-          "",
-          "Grade 9",
-          "Grade 10",
-          "Total"
-        ],
-        "rows": [
-          [
-            "Bus",
-            "38",
-            "52",
-            "90"
-          ],
-          [
-            "Bike",
-            "38",
-            "30",
-            "68"
-          ],
-          [
-            "Total",
-            "76",
-            "82",
-            "158"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "P=45/79"
-  },
-  {
-    "question_id": "sat-math-two-way-tables-easy-b0005",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "two_way_tables",
-    "lesson_id": "sat-math-two-way-tables-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multi_step_math",
-    "subskill": "conditional_probability",
-    "prompt": "Of the 123 seniors and juniors surveyed, 65 were seniors. 58 of the seniors and 28 of the juniors attended the workshop. How many of the juniors did NOT meet the condition (attended the workshop)?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "7",
-        "rationale": "That is the number of seniors who did not."
-      },
-      {
-        "id": "B",
-        "text": "30",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "28",
-        "rationale": "That is the number of juniors who did."
-      },
-      {
-        "id": "D",
-        "text": "58",
-        "rationale": "That is all the juniors."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Juniors: 123 − 65 = 58; of those, 28 did, so 58 − 28 = 30 did not.",
-    "estimated_time_seconds": 100,
-    "tags": [
-      "data",
-      "table",
-      "build",
-      "family:tw_build"
-    ],
-    "answer_verification": "cells 58,7,28,30"
-  },
-  {
-    "question_id": "sat-math-two-way-tables-easy-b0006",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "two_way_tables",
-    "lesson_id": "sat-math-two-way-tables-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "conditional_probability",
-    "prompt": "The table shows relative frequencies for 200 responses. How many responses were “Bus” and “Weekend”?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "48",
-        "rationale": "That is the other cell in the row."
-      },
-      {
-        "id": "B",
-        "text": "12",
-        "rationale": "Multiply by the total 200, not 100."
-      },
-      {
-        "id": "C",
-        "text": "72",
-        "rationale": "That is the whole row."
-      },
-      {
-        "id": "D",
-        "text": "24",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "0.12 × 200 = 24.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "data",
-      "table",
-      "relative-frequency",
-      "family:tw_relative_freq"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Relative frequencies (n = 200)",
-        "headers": [
-          "",
-          "Weekday",
-          "Weekend",
-          "Total"
-        ],
-        "rows": [
-          [
-            "Bus",
-            "0.24",
-            "0.12",
-            "0.36"
-          ],
-          [
-            "Bike",
-            "0.14",
-            "0.50",
-            "0.64"
-          ],
-          [
-            "Total",
-            "0.38",
-            "0.62",
-            "1.00"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "0.24,0.12,0.14,0.5"
-  },
-  {
-    "question_id": "sat-math-two-way-tables-easy-b0007",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "two_way_tables",
-    "lesson_id": "sat-math-two-way-tables-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "conditional_probability",
-    "prompt": "The table shows 102 survey responses. If one response is chosen at random, what is the probability that it is in the “Fiction” row?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "20/51",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "3/17",
-        "rationale": "This uses only one cell (18), not the whole row."
-      },
-      {
-        "id": "C",
-        "text": "20/31",
-        "rationale": "Divide by the grand total, not the other row."
-      },
-      {
-        "id": "D",
-        "text": "31/51",
-        "rationale": "This is the probability of the other row."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "The “Fiction” row totals 18 + 22 = 40 of 102: 20/51.",
-    "estimated_time_seconds": 90,
-    "tags": [
-      "data",
-      "probability",
-      "table",
-      "family:tw_probability"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Survey responses",
-        "headers": [
-          "",
-          "Grade 9",
-          "Grade 10",
-          "Total"
-        ],
-        "rows": [
-          [
-            "Fiction",
-            "18",
-            "22",
-            "40"
-          ],
-          [
-            "Nonfiction",
-            "37",
-            "25",
-            "62"
-          ],
-          [
-            "Total",
-            "55",
-            "47",
-            "102"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "P=20/51"
-  },
-  {
-    "question_id": "sat-math-two-way-tables-easy-b0008",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "two_way_tables",
-    "lesson_id": "sat-math-two-way-tables-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "multi_step_math",
-    "subskill": "conditional_probability",
-    "prompt": "Of the 124 employees and managers surveyed, 64 were employees. 55 of the employees and 41 of the managers attended the workshop. How many of the managers did NOT meet the condition (attended the workshop)?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "19",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "41",
-        "rationale": "That is the number of managers who did."
-      },
-      {
-        "id": "C",
-        "text": "9",
-        "rationale": "That is the number of employees who did not."
-      },
-      {
-        "id": "D",
-        "text": "60",
-        "rationale": "That is all the managers."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "Managers: 124 − 64 = 60; of those, 41 did, so 60 − 41 = 19 did not.",
-    "estimated_time_seconds": 100,
-    "tags": [
-      "data",
-      "table",
-      "build",
-      "family:tw_build"
-    ],
-    "answer_verification": "cells 55,9,41,19"
-  },
-  {
-    "question_id": "sat-math-two-way-tables-easy-b0009",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "two_way_tables",
-    "lesson_id": "sat-math-two-way-tables-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "student_produced",
-    "subskill": "conditional_probability",
-    "prompt": "The table shows 80 survey responses. How many responses were “Soccer” and “Grade 10”?",
-    "answer": {
-      "type": "numeric",
-      "value": 21,
-      "accepted": [
-        "21"
-      ],
-      "tolerance": 0.0
-    },
-    "explanation": "Read the “Soccer” row, “Grade 10” column: 21.",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "data",
-      "table",
-      "grid-in",
-      "family:tw_gridin"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Survey responses",
-        "headers": [
-          "",
-          "Grade 9",
-          "Grade 10",
-          "Total"
-        ],
-        "rows": [
-          [
-            "Soccer",
-            "14",
-            "21",
-            "35"
-          ],
-          [
-            "Basketball",
-            "28",
-            "17",
-            "45"
-          ],
-          [
-            "Total",
-            "42",
-            "38",
-            "80"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "val=21"
-  },
-  {
-    "question_id": "sat-math-two-way-tables-easy-b0010",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "two_way_tables",
-    "lesson_id": "sat-math-two-way-tables-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "conditional_probability",
-    "prompt": "According to the table of 170 responses, how many responses came from the “Evening” group?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "68",
+        "text": "89",
         "rationale": "That is a row total."
       },
       {
         "id": "B",
-        "text": "29",
+        "text": "46",
         "rationale": "That is one cell, not the whole column."
       },
       {
         "id": "C",
-        "text": "88",
+        "text": "72",
         "rationale": "That is the other column."
       },
       {
         "id": "D",
-        "text": "82",
+        "text": "100",
         "rationale": "Correct."
       }
     ],
     "correct_choice": "D",
-    "explanation": "Add down the column: 53 + 29 = 82.",
+    "explanation": "Add down the column: 54 + 46 = 100.",
     "estimated_time_seconds": 75,
     "tags": [
       "data",
@@ -669,36 +126,36 @@
         "caption": "Survey responses",
         "headers": [
           "",
-          "Morning",
-          "Evening",
+          "Urban",
+          "Rural",
           "Total"
         ],
         "rows": [
           [
-            "Fiction",
-            "49",
-            "53",
-            "102"
+            "Left-handed",
+            "29",
+            "54",
+            "83"
           ],
           [
-            "Nonfiction",
-            "39",
-            "29",
-            "68"
+            "Right-handed",
+            "43",
+            "46",
+            "89"
           ],
           [
             "Total",
-            "88",
-            "82",
-            "170"
+            "72",
+            "100",
+            "172"
           ]
         ]
       }
     },
-    "answer_verification": "val=82"
+    "answer_verification": "val=100"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0011",
+    "question_id": "sat-math-two-way-tables-easy-b0003",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -775,7 +232,7 @@
     "answer_verification": "val=1/4"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0012",
+    "question_id": "sat-math-two-way-tables-easy-b0004",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -852,7 +309,7 @@
     "answer_verification": "val=80"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0013",
+    "question_id": "sat-math-two-way-tables-easy-b0005",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -929,7 +386,7 @@
     "answer_verification": "val=54"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0014",
+    "question_id": "sat-math-two-way-tables-easy-b0006",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1007,7 +464,7 @@
     "answer_verification": "P=47/125"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0015",
+    "question_id": "sat-math-two-way-tables-easy-b0007",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1053,7 +510,7 @@
     "answer_verification": "cells 28,42,33,32"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0016",
+    "question_id": "sat-math-two-way-tables-easy-b0008",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1131,7 +588,7 @@
     "answer_verification": "0.12,0.2,0.2,0.48"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0017",
+    "question_id": "sat-math-two-way-tables-easy-b0009",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1209,7 +666,7 @@
     "answer_verification": "0.24,0.2,0.1,0.46"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0018",
+    "question_id": "sat-math-two-way-tables-easy-b0010",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1286,7 +743,7 @@
     "answer_verification": "val=12/37"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0019",
+    "question_id": "sat-math-two-way-tables-easy-b0011",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1363,7 +820,7 @@
     "answer_verification": "val=29"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0020",
+    "question_id": "sat-math-two-way-tables-easy-b0012",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1441,7 +898,7 @@
     "answer_verification": "0.624 vs 0.303"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0021",
+    "question_id": "sat-math-two-way-tables-easy-b0013",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1519,7 +976,7 @@
     "answer_verification": "0.532 vs 0.772"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0022",
+    "question_id": "sat-math-two-way-tables-easy-b0014",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1582,7 +1039,7 @@
     "answer_verification": "val=19"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0023",
+    "question_id": "sat-math-two-way-tables-easy-b0015",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1660,7 +1117,7 @@
     "answer_verification": "P=43/70"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0024",
+    "question_id": "sat-math-two-way-tables-easy-b0016",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1671,31 +1128,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "conditional_probability",
-    "prompt": "The table shows relative frequencies for 250 responses. How many responses were “Soccer” and “Weekend”?",
+    "prompt": "The table shows relative frequencies for 500 responses. How many responses were “Soccer” and “Weekend”?",
     "choices": [
       {
         "id": "A",
-        "text": "62",
+        "text": "125",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "30",
+        "text": "60",
         "rationale": "That is the other cell in the row."
       },
       {
         "id": "C",
-        "text": "92",
+        "text": "185",
         "rationale": "That is the whole row."
       },
       {
         "id": "D",
         "text": "25",
-        "rationale": "Multiply by the total 250, not 100."
+        "rationale": "Multiply by the total 500, not 100."
       }
     ],
     "correct_choice": "A",
-    "explanation": "0.25 × 250 = 62.",
+    "explanation": "0.25 × 500 = 125.",
     "estimated_time_seconds": 90,
     "tags": [
       "data",
@@ -1706,7 +1163,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Relative frequencies (n = 250)",
+        "caption": "Relative frequencies (n = 500)",
         "headers": [
           "",
           "Weekday",
@@ -1738,7 +1195,7 @@
     "answer_verification": "0.12,0.25,0.15,0.48"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0025",
+    "question_id": "sat-math-two-way-tables-easy-b0017",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1816,7 +1273,7 @@
     "answer_verification": "P=39/118"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0026",
+    "question_id": "sat-math-two-way-tables-easy-b0018",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1894,7 +1351,7 @@
     "answer_verification": "0.15,0.15,0.15,0.55"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0027",
+    "question_id": "sat-math-two-way-tables-easy-b0019",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1940,7 +1397,7 @@
     "answer_verification": "cells 35,55,54,39"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0028",
+    "question_id": "sat-math-two-way-tables-easy-b0020",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2017,7 +1474,7 @@
     "answer_verification": "val=56"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0029",
+    "question_id": "sat-math-two-way-tables-easy-b0021",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2080,7 +1537,7 @@
     "answer_verification": "val=59"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0030",
+    "question_id": "sat-math-two-way-tables-easy-b0022",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2158,7 +1615,7 @@
     "answer_verification": "P=48/125"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0031",
+    "question_id": "sat-math-two-way-tables-easy-b0023",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2236,7 +1693,7 @@
     "answer_verification": "0.636 vs 0.392"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0032",
+    "question_id": "sat-math-two-way-tables-easy-b0024",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2299,7 +1756,7 @@
     "answer_verification": "val=58"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0033",
+    "question_id": "sat-math-two-way-tables-easy-b0025",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2377,7 +1834,7 @@
     "answer_verification": "P=16/75"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0034",
+    "question_id": "sat-math-two-way-tables-easy-b0026",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2455,7 +1912,7 @@
     "answer_verification": "P=70/151"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0035",
+    "question_id": "sat-math-two-way-tables-easy-b0027",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2533,7 +1990,7 @@
     "answer_verification": "0.3,0.3,0.1,0.3"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0036",
+    "question_id": "sat-math-two-way-tables-easy-b0028",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2611,7 +2068,7 @@
     "answer_verification": "0.907 vs 0.353"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0037",
+    "question_id": "sat-math-two-way-tables-easy-b0029",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2689,7 +2146,7 @@
     "answer_verification": "0.24,0.15,0.1,0.51"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0038",
+    "question_id": "sat-math-two-way-tables-easy-b0030",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2767,7 +2224,7 @@
     "answer_verification": "0.521 vs 0.692"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0039",
+    "question_id": "sat-math-two-way-tables-easy-b0031",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2845,7 +2302,7 @@
     "answer_verification": "0.463 vs 0.417"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0040",
+    "question_id": "sat-math-two-way-tables-easy-b0032",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2908,7 +2365,7 @@
     "answer_verification": "val=15"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0041",
+    "question_id": "sat-math-two-way-tables-easy-b0033",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2985,7 +2442,7 @@
     "answer_verification": "val=66"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0042",
+    "question_id": "sat-math-two-way-tables-easy-b0034",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3063,7 +2520,7 @@
     "answer_verification": "0.15,0.22,0.15,0.48"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0043",
+    "question_id": "sat-math-two-way-tables-easy-b0035",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3109,7 +2566,7 @@
     "answer_verification": "cells 45,60,11,59"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0044",
+    "question_id": "sat-math-two-way-tables-easy-b0036",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3187,7 +2644,7 @@
     "answer_verification": "0.15,0.22,0.25,0.38"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0045",
+    "question_id": "sat-math-two-way-tables-easy-b0037",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3264,7 +2721,7 @@
     "answer_verification": "val=51"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0046",
+    "question_id": "sat-math-two-way-tables-easy-b0038",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3342,7 +2799,7 @@
     "answer_verification": "P=59/150"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0047",
+    "question_id": "sat-math-two-way-tables-easy-b0039",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3420,7 +2877,7 @@
     "answer_verification": "P=70/109"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0048",
+    "question_id": "sat-math-two-way-tables-easy-b0040",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3483,7 +2940,7 @@
     "answer_verification": "val=17"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0049",
+    "question_id": "sat-math-two-way-tables-easy-b0041",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3560,7 +3017,7 @@
     "answer_verification": "val=78"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0050",
+    "question_id": "sat-math-two-way-tables-easy-b0042",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3637,7 +3094,7 @@
     "answer_verification": "val=30"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0051",
+    "question_id": "sat-math-two-way-tables-easy-b0043",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3715,7 +3172,7 @@
     "answer_verification": "0.230 vs 0.742"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0052",
+    "question_id": "sat-math-two-way-tables-easy-b0044",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3761,7 +3218,7 @@
     "answer_verification": "cells 40,12,47,21"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0053",
+    "question_id": "sat-math-two-way-tables-easy-b0045",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3838,7 +3295,7 @@
     "answer_verification": "val=3/7"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0054",
+    "question_id": "sat-math-two-way-tables-easy-b0046",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3915,7 +3372,7 @@
     "answer_verification": "val=92"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0055",
+    "question_id": "sat-math-two-way-tables-easy-b0047",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3992,7 +3449,7 @@
     "answer_verification": "val=66"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0056",
+    "question_id": "sat-math-two-way-tables-easy-b0048",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4038,7 +3495,7 @@
     "answer_verification": "cells 46,36,19,10"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0057",
+    "question_id": "sat-math-two-way-tables-easy-b0049",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4116,7 +3573,7 @@
     "answer_verification": "P=55/109"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0058",
+    "question_id": "sat-math-two-way-tables-easy-b0050",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4193,7 +3650,7 @@
     "answer_verification": "val=3/16"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0059",
+    "question_id": "sat-math-two-way-tables-easy-b0051",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4271,7 +3728,7 @@
     "answer_verification": "P=103/181"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0060",
+    "question_id": "sat-math-two-way-tables-easy-b0052",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4349,7 +3806,7 @@
     "answer_verification": "P=63/88"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0061",
+    "question_id": "sat-math-two-way-tables-easy-b0053",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4427,7 +3884,7 @@
     "answer_verification": "P=71/113"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0062",
+    "question_id": "sat-math-two-way-tables-easy-b0054",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4505,7 +3962,7 @@
     "answer_verification": "P=49/122"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0063",
+    "question_id": "sat-math-two-way-tables-easy-b0055",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4568,7 +4025,7 @@
     "answer_verification": "val=12"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0064",
+    "question_id": "sat-math-two-way-tables-easy-b0056",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4646,7 +4103,7 @@
     "answer_verification": "0.15,0.15,0.15,0.55"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0065",
+    "question_id": "sat-math-two-way-tables-easy-b0057",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4657,31 +4114,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "conditional_probability",
-    "prompt": "The table shows relative frequencies for 250 responses. How many responses were “Left-handed” and “Weekend”?",
+    "prompt": "The table shows relative frequencies for 500 responses. How many responses were “Left-handed” and “Weekend”?",
     "choices": [
       {
         "id": "A",
         "text": "15",
-        "rationale": "Multiply by the total 250, not 100."
+        "rationale": "Multiply by the total 500, not 100."
       },
       {
         "id": "B",
-        "text": "45",
+        "text": "90",
         "rationale": "That is the other cell in the row."
       },
       {
         "id": "C",
-        "text": "82",
+        "text": "165",
         "rationale": "That is the whole row."
       },
       {
         "id": "D",
-        "text": "38",
+        "text": "75",
         "rationale": "Correct."
       }
     ],
     "correct_choice": "D",
-    "explanation": "0.15 × 250 = 38.",
+    "explanation": "0.15 × 500 = 75.",
     "estimated_time_seconds": 90,
     "tags": [
       "data",
@@ -4692,7 +4149,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Relative frequencies (n = 250)",
+        "caption": "Relative frequencies (n = 500)",
         "headers": [
           "",
           "Weekday",
@@ -4724,7 +4181,7 @@
     "answer_verification": "0.18,0.15,0.14,0.53"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0066",
+    "question_id": "sat-math-two-way-tables-easy-b0058",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4770,7 +4227,7 @@
     "answer_verification": "cells 5,13,18,14"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0067",
+    "question_id": "sat-math-two-way-tables-easy-b0059",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4848,7 +4305,7 @@
     "answer_verification": "P=13/24"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0068",
+    "question_id": "sat-math-two-way-tables-easy-b0060",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4925,7 +4382,7 @@
     "answer_verification": "val=5/28"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0069",
+    "question_id": "sat-math-two-way-tables-easy-b0061",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5003,7 +4460,7 @@
     "answer_verification": "P=55/78"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0070",
+    "question_id": "sat-math-two-way-tables-easy-b0062",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5049,7 +4506,7 @@
     "answer_verification": "cells 18,7,47,5"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0071",
+    "question_id": "sat-math-two-way-tables-easy-b0063",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5126,7 +4583,7 @@
     "answer_verification": "val=22/45"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0072",
+    "question_id": "sat-math-two-way-tables-easy-b0064",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5189,7 +4646,7 @@
     "answer_verification": "val=49"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0073",
+    "question_id": "sat-math-two-way-tables-easy-b0065",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5267,7 +4724,7 @@
     "answer_verification": "0.264 vs 0.375"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0074",
+    "question_id": "sat-math-two-way-tables-easy-b0066",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5345,7 +4802,7 @@
     "answer_verification": "0.538 vs 0.614"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0075",
+    "question_id": "sat-math-two-way-tables-easy-b0067",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5422,7 +4879,7 @@
     "answer_verification": "val=25"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0076",
+    "question_id": "sat-math-two-way-tables-easy-b0068",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5500,7 +4957,7 @@
     "answer_verification": "0.303 vs 0.523"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0077",
+    "question_id": "sat-math-two-way-tables-easy-b0069",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5578,7 +5035,7 @@
     "answer_verification": "0.2,0.3,0.25,0.25"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0078",
+    "question_id": "sat-math-two-way-tables-easy-b0070",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5624,7 +5081,7 @@
     "answer_verification": "cells 54,11,15,59"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0079",
+    "question_id": "sat-math-two-way-tables-easy-b0071",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5670,7 +5127,7 @@
     "answer_verification": "cells 55,54,48,6"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0080",
+    "question_id": "sat-math-two-way-tables-easy-b0072",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5748,7 +5205,7 @@
     "answer_verification": "0.528 vs 0.441"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0081",
+    "question_id": "sat-math-two-way-tables-easy-b0073",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5826,7 +5283,7 @@
     "answer_verification": "0.18,0.3,0.25,0.27"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0082",
+    "question_id": "sat-math-two-way-tables-easy-b0074",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5904,7 +5361,7 @@
     "answer_verification": "P=33/56"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0083",
+    "question_id": "sat-math-two-way-tables-easy-b0075",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5967,7 +5424,7 @@
     "answer_verification": "val=53"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0084",
+    "question_id": "sat-math-two-way-tables-easy-b0076",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6045,7 +5502,7 @@
     "answer_verification": "0.538 vs 0.159"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0085",
+    "question_id": "sat-math-two-way-tables-easy-b0077",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6123,7 +5580,7 @@
     "answer_verification": "0.452 vs 0.889"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0086",
+    "question_id": "sat-math-two-way-tables-easy-b0078",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6201,7 +5658,7 @@
     "answer_verification": "P=98/111"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0087",
+    "question_id": "sat-math-two-way-tables-easy-b0079",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6278,7 +5735,7 @@
     "answer_verification": "val=41/99"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0088",
+    "question_id": "sat-math-two-way-tables-easy-b0080",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6355,7 +5812,7 @@
     "answer_verification": "val=6/17"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0089",
+    "question_id": "sat-math-two-way-tables-easy-b0081",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6433,7 +5890,7 @@
     "answer_verification": "0.821 vs 0.615"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0090",
+    "question_id": "sat-math-two-way-tables-easy-b0082",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6510,7 +5967,7 @@
     "answer_verification": "val=40"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0091",
+    "question_id": "sat-math-two-way-tables-easy-b0083",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6573,7 +6030,7 @@
     "answer_verification": "val=5"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0092",
+    "question_id": "sat-math-two-way-tables-easy-b0084",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6651,7 +6108,7 @@
     "answer_verification": "0.582 vs 0.364"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0093",
+    "question_id": "sat-math-two-way-tables-easy-b0085",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6729,7 +6186,7 @@
     "answer_verification": "0.18,0.22,0.2,0.4"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0094",
+    "question_id": "sat-math-two-way-tables-easy-b0086",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6807,7 +6264,7 @@
     "answer_verification": "P=23/82"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0095",
+    "question_id": "sat-math-two-way-tables-easy-b0087",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6885,7 +6342,7 @@
     "answer_verification": "0.891 vs 0.477"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0096",
+    "question_id": "sat-math-two-way-tables-easy-b0088",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6963,7 +6420,7 @@
     "answer_verification": "0.444 vs 0.800"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0097",
+    "question_id": "sat-math-two-way-tables-easy-b0089",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7040,7 +6497,7 @@
     "answer_verification": "val=58/109"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0098",
+    "question_id": "sat-math-two-way-tables-easy-b0090",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7117,7 +6574,7 @@
     "answer_verification": "val=100"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0099",
+    "question_id": "sat-math-two-way-tables-easy-b0091",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7194,7 +6651,7 @@
     "answer_verification": "val=68"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0100",
+    "question_id": "sat-math-two-way-tables-easy-b0092",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7271,7 +6728,7 @@
     "answer_verification": "val=28/85"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0101",
+    "question_id": "sat-math-two-way-tables-easy-b0093",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7348,7 +6805,7 @@
     "answer_verification": "val=1/5"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0102",
+    "question_id": "sat-math-two-way-tables-easy-b0094",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7425,7 +6882,7 @@
     "answer_verification": "val=112"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0103",
+    "question_id": "sat-math-two-way-tables-easy-b0095",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7488,7 +6945,7 @@
     "answer_verification": "val=41"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0104",
+    "question_id": "sat-math-two-way-tables-easy-b0096",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7566,7 +7023,7 @@
     "answer_verification": "0.3,0.12,0.2,0.38"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0105",
+    "question_id": "sat-math-two-way-tables-easy-b0097",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7643,7 +7100,7 @@
     "answer_verification": "val=9/38"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0106",
+    "question_id": "sat-math-two-way-tables-easy-b0098",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7721,7 +7178,7 @@
     "answer_verification": "P=46/137"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0107",
+    "question_id": "sat-math-two-way-tables-easy-b0099",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7767,7 +7224,7 @@
     "answer_verification": "cells 50,56,7,48"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0108",
+    "question_id": "sat-math-two-way-tables-easy-b0100",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7813,7 +7270,7 @@
     "answer_verification": "cells 29,25,27,49"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0109",
+    "question_id": "sat-math-two-way-tables-easy-b0101",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7859,7 +7316,7 @@
     "answer_verification": "cells 34,30,31,52"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0110",
+    "question_id": "sat-math-two-way-tables-easy-b0102",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7936,7 +7393,7 @@
     "answer_verification": "val=49/71"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0111",
+    "question_id": "sat-math-two-way-tables-easy-b0103",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7999,7 +7456,7 @@
     "answer_verification": "val=60"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0112",
+    "question_id": "sat-math-two-way-tables-easy-b0104",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8062,7 +7519,7 @@
     "answer_verification": "val=39"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0113",
+    "question_id": "sat-math-two-way-tables-easy-b0105",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8140,7 +7597,7 @@
     "answer_verification": "0.303 vs 0.432"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0114",
+    "question_id": "sat-math-two-way-tables-easy-b0106",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8203,7 +7660,7 @@
     "answer_verification": "val=32"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0115",
+    "question_id": "sat-math-two-way-tables-easy-b0107",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8249,7 +7706,7 @@
     "answer_verification": "cells 55,56,37,48"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0116",
+    "question_id": "sat-math-two-way-tables-easy-b0108",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8327,7 +7784,7 @@
     "answer_verification": "0.450 vs 0.237"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0117",
+    "question_id": "sat-math-two-way-tables-easy-b0109",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8390,7 +7847,7 @@
     "answer_verification": "val=13"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0118",
+    "question_id": "sat-math-two-way-tables-easy-b0110",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8436,7 +7893,7 @@
     "answer_verification": "cells 32,16,38,9"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0119",
+    "question_id": "sat-math-two-way-tables-easy-b0111",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8482,7 +7939,7 @@
     "answer_verification": "cells 59,32,17,8"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0120",
+    "question_id": "sat-math-two-way-tables-easy-b0112",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8559,7 +8016,7 @@
     "answer_verification": "val=26/81"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0121",
+    "question_id": "sat-math-two-way-tables-easy-b0113",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8636,7 +8093,7 @@
     "answer_verification": "val=47"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0122",
+    "question_id": "sat-math-two-way-tables-easy-b0114",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8714,7 +8171,7 @@
     "answer_verification": "P=53/150"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0123",
+    "question_id": "sat-math-two-way-tables-easy-b0115",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8792,7 +8249,7 @@
     "answer_verification": "0.2,0.22,0.15,0.43"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0124",
+    "question_id": "sat-math-two-way-tables-easy-b0116",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8869,7 +8326,7 @@
     "answer_verification": "val=12/25"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0125",
+    "question_id": "sat-math-two-way-tables-easy-b0117",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8946,7 +8403,7 @@
     "answer_verification": "val=30/47"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0126",
+    "question_id": "sat-math-two-way-tables-easy-b0118",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9024,7 +8481,7 @@
     "answer_verification": "0.25,0.22,0.15,0.38"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0127",
+    "question_id": "sat-math-two-way-tables-easy-b0119",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9070,7 +8527,7 @@
     "answer_verification": "cells 17,28,45,59"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0128",
+    "question_id": "sat-math-two-way-tables-easy-b0120",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9116,7 +8573,7 @@
     "answer_verification": "cells 39,55,32,23"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0129",
+    "question_id": "sat-math-two-way-tables-easy-b0121",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9193,7 +8650,7 @@
     "answer_verification": "val=51"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0130",
+    "question_id": "sat-math-two-way-tables-easy-b0122",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9271,7 +8728,7 @@
     "answer_verification": "0.537 vs 0.245"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0131",
+    "question_id": "sat-math-two-way-tables-easy-b0123",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9334,7 +8791,7 @@
     "answer_verification": "val=43"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0132",
+    "question_id": "sat-math-two-way-tables-easy-b0124",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9411,7 +8868,7 @@
     "answer_verification": "val=39"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0133",
+    "question_id": "sat-math-two-way-tables-easy-b0125",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9474,7 +8931,7 @@
     "answer_verification": "val=21"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0134",
+    "question_id": "sat-math-two-way-tables-easy-b0126",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9552,7 +9009,7 @@
     "answer_verification": "0.18,0.2,0.15,0.47"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0135",
+    "question_id": "sat-math-two-way-tables-easy-b0127",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9630,7 +9087,7 @@
     "answer_verification": "0.24,0.22,0.2,0.34"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0136",
+    "question_id": "sat-math-two-way-tables-easy-b0128",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9707,7 +9164,7 @@
     "answer_verification": "val=104"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0137",
+    "question_id": "sat-math-two-way-tables-easy-b0129",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9785,7 +9242,7 @@
     "answer_verification": "P=70/127"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0138",
+    "question_id": "sat-math-two-way-tables-easy-b0130",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9863,7 +9320,7 @@
     "answer_verification": "0.15,0.2,0.25,0.4"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0139",
+    "question_id": "sat-math-two-way-tables-easy-b0131",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9909,7 +9366,7 @@
     "answer_verification": "cells 58,16,44,23"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0140",
+    "question_id": "sat-math-two-way-tables-easy-b0132",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9987,7 +9444,7 @@
     "answer_verification": "0.673 vs 0.619"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0141",
+    "question_id": "sat-math-two-way-tables-easy-b0133",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10033,7 +9490,7 @@
     "answer_verification": "cells 38,41,57,25"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0142",
+    "question_id": "sat-math-two-way-tables-easy-b0134",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10111,7 +9568,7 @@
     "answer_verification": "0.333 vs 0.628"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0143",
+    "question_id": "sat-math-two-way-tables-easy-b0135",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10174,7 +9631,7 @@
     "answer_verification": "val=59"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0144",
+    "question_id": "sat-math-two-way-tables-easy-b0136",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10252,7 +9709,7 @@
     "answer_verification": "0.1,0.22,0.15,0.53"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0145",
+    "question_id": "sat-math-two-way-tables-easy-b0137",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10315,7 +9772,7 @@
     "answer_verification": "val=30"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0146",
+    "question_id": "sat-math-two-way-tables-easy-b0138",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10393,7 +9850,7 @@
     "answer_verification": "P=41/136"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0147",
+    "question_id": "sat-math-two-way-tables-easy-b0139",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10470,7 +9927,7 @@
     "answer_verification": "val=3/5"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0148",
+    "question_id": "sat-math-two-way-tables-easy-b0140",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10547,7 +10004,7 @@
     "answer_verification": "val=64"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0149",
+    "question_id": "sat-math-two-way-tables-easy-b0141",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10610,7 +10067,7 @@
     "answer_verification": "val=55"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0150",
+    "question_id": "sat-math-two-way-tables-easy-b0142",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10688,7 +10145,7 @@
     "answer_verification": "P=21/38"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0151",
+    "question_id": "sat-math-two-way-tables-easy-b0143",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10766,7 +10223,7 @@
     "answer_verification": "0.3,0.2,0.15,0.35"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0152",
+    "question_id": "sat-math-two-way-tables-easy-b0144",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10843,7 +10300,7 @@
     "answer_verification": "val=11/34"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0153",
+    "question_id": "sat-math-two-way-tables-easy-b0145",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10921,7 +10378,7 @@
     "answer_verification": "P=51/97"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0154",
+    "question_id": "sat-math-two-way-tables-easy-b0146",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10967,7 +10424,7 @@
     "answer_verification": "cells 49,20,14,55"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0155",
+    "question_id": "sat-math-two-way-tables-easy-b0147",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11013,7 +10470,7 @@
     "answer_verification": "cells 26,49,17,52"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0156",
+    "question_id": "sat-math-two-way-tables-easy-b0148",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11090,7 +10547,7 @@
     "answer_verification": "val=23/35"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0157",
+    "question_id": "sat-math-two-way-tables-easy-b0149",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11153,7 +10610,7 @@
     "answer_verification": "val=17"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0158",
+    "question_id": "sat-math-two-way-tables-easy-b0150",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11230,7 +10687,7 @@
     "answer_verification": "val=57"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0159",
+    "question_id": "sat-math-two-way-tables-easy-b0151",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11293,7 +10750,7 @@
     "answer_verification": "val=28"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0160",
+    "question_id": "sat-math-two-way-tables-easy-b0152",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11371,7 +10828,7 @@
     "answer_verification": "0.12,0.12,0.14,0.62"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0161",
+    "question_id": "sat-math-two-way-tables-easy-b0153",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11449,7 +10906,7 @@
     "answer_verification": "P=9/17"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0162",
+    "question_id": "sat-math-two-way-tables-easy-b0154",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11526,7 +10983,7 @@
     "answer_verification": "val=60"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0163",
+    "question_id": "sat-math-two-way-tables-easy-b0155",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11572,7 +11029,7 @@
     "answer_verification": "cells 46,17,49,29"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0164",
+    "question_id": "sat-math-two-way-tables-easy-b0156",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11635,7 +11092,7 @@
     "answer_verification": "val=44"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0165",
+    "question_id": "sat-math-two-way-tables-easy-b0157",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11712,7 +11169,7 @@
     "answer_verification": "val=38"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0166",
+    "question_id": "sat-math-two-way-tables-easy-b0158",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11789,7 +11246,7 @@
     "answer_verification": "val=26/35"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0167",
+    "question_id": "sat-math-two-way-tables-easy-b0159",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11867,7 +11324,7 @@
     "answer_verification": "0.3,0.12,0.1,0.48"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0168",
+    "question_id": "sat-math-two-way-tables-easy-b0160",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11913,7 +11370,7 @@
     "answer_verification": "cells 32,46,36,6"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0169",
+    "question_id": "sat-math-two-way-tables-easy-b0161",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11990,7 +11447,7 @@
     "answer_verification": "val=81"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0170",
+    "question_id": "sat-math-two-way-tables-easy-b0162",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12068,7 +11525,7 @@
     "answer_verification": "0.169 vs 0.318"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0171",
+    "question_id": "sat-math-two-way-tables-easy-b0163",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12146,7 +11603,7 @@
     "answer_verification": "P=24/49"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0172",
+    "question_id": "sat-math-two-way-tables-easy-b0164",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12224,7 +11681,7 @@
     "answer_verification": "0.12,0.2,0.14,0.54"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0173",
+    "question_id": "sat-math-two-way-tables-easy-b0165",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12301,7 +11758,7 @@
     "answer_verification": "val=79"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0174",
+    "question_id": "sat-math-two-way-tables-easy-b0166",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12364,7 +11821,7 @@
     "answer_verification": "val=34"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0175",
+    "question_id": "sat-math-two-way-tables-easy-b0167",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12410,7 +11867,7 @@
     "answer_verification": "cells 49,24,42,24"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0176",
+    "question_id": "sat-math-two-way-tables-easy-b0168",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12473,7 +11930,7 @@
     "answer_verification": "val=52"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0177",
+    "question_id": "sat-math-two-way-tables-easy-b0169",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12551,7 +12008,7 @@
     "answer_verification": "P=24/41"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0178",
+    "question_id": "sat-math-two-way-tables-easy-b0170",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12628,7 +12085,7 @@
     "answer_verification": "val=29/69"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0179",
+    "question_id": "sat-math-two-way-tables-easy-b0171",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12706,7 +12163,7 @@
     "answer_verification": "P=71/139"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0180",
+    "question_id": "sat-math-two-way-tables-easy-b0172",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12784,7 +12241,7 @@
     "answer_verification": "0.1,0.12,0.1,0.68"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0181",
+    "question_id": "sat-math-two-way-tables-easy-b0173",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12862,7 +12319,7 @@
     "answer_verification": "P=26/51"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0182",
+    "question_id": "sat-math-two-way-tables-easy-b0174",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12873,31 +12330,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "conditional_probability",
-    "prompt": "The table shows relative frequencies for 50 responses. How many responses were “Soccer” and “Grade 10”?",
+    "prompt": "The table shows relative frequencies for 200 responses. How many responses were “Soccer” and “Grade 10”?",
     "choices": [
       {
         "id": "A",
-        "text": "25",
-        "rationale": "Multiply by the total 50, not 100."
-      },
-      {
-        "id": "B",
-        "text": "24",
+        "text": "98",
         "rationale": "That is the whole row."
       },
       {
+        "id": "B",
+        "text": "48",
+        "rationale": "That is the other cell in the row."
+      },
+      {
         "id": "C",
-        "text": "12",
+        "text": "50",
         "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "18",
-        "rationale": "That is the other cell in the column."
+        "text": "25",
+        "rationale": "Multiply by the total 200, not 100."
       }
     ],
     "correct_choice": "C",
-    "explanation": "0.25 × 50 = 12.",
+    "explanation": "0.25 × 200 = 50.",
     "estimated_time_seconds": 90,
     "tags": [
       "data",
@@ -12908,7 +12365,7 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Relative frequencies (n = 50)",
+        "caption": "Relative frequencies (n = 200)",
         "headers": [
           "",
           "Grade 9",
@@ -12940,7 +12397,7 @@
     "answer_verification": "0.24,0.25,0.15,0.36"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0183",
+    "question_id": "sat-math-two-way-tables-easy-b0175",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -13018,7 +12475,7 @@
     "answer_verification": "0.18,0.1,0.15,0.57"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0184",
+    "question_id": "sat-math-two-way-tables-easy-b0176",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -13081,7 +12538,7 @@
     "answer_verification": "val=29"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0185",
+    "question_id": "sat-math-two-way-tables-easy-b0177",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -13158,7 +12615,7 @@
     "answer_verification": "val=14/39"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0186",
+    "question_id": "sat-math-two-way-tables-easy-b0178",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -13236,7 +12693,7 @@
     "answer_verification": "0.250 vs 0.550"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0187",
+    "question_id": "sat-math-two-way-tables-easy-b0179",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -13313,7 +12770,7 @@
     "answer_verification": "val=56/67"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0188",
+    "question_id": "sat-math-two-way-tables-easy-b0180",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -13359,7 +12816,7 @@
     "answer_verification": "cells 32,27,10,52"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0189",
+    "question_id": "sat-math-two-way-tables-easy-b0181",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -13437,7 +12894,7 @@
     "answer_verification": "0.15,0.12,0.2,0.53"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0190",
+    "question_id": "sat-math-two-way-tables-easy-b0182",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -13514,7 +12971,7 @@
     "answer_verification": "val=99"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0191",
+    "question_id": "sat-math-two-way-tables-easy-b0183",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -13592,7 +13049,7 @@
     "answer_verification": "0.25,0.1,0.1,0.55"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0192",
+    "question_id": "sat-math-two-way-tables-easy-b0184",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -13655,7 +13112,7 @@
     "answer_verification": "val=5"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0193",
+    "question_id": "sat-math-two-way-tables-easy-b0185",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -13733,7 +13190,7 @@
     "answer_verification": "0.649 vs 0.650"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0194",
+    "question_id": "sat-math-two-way-tables-easy-b0186",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -13811,7 +13268,7 @@
     "answer_verification": "P=88/161"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0195",
+    "question_id": "sat-math-two-way-tables-easy-b0187",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -13889,7 +13346,7 @@
     "answer_verification": "0.548 vs 0.407"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0196",
+    "question_id": "sat-math-two-way-tables-easy-b0188",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -13966,7 +13423,7 @@
     "answer_verification": "val=29/72"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0197",
+    "question_id": "sat-math-two-way-tables-easy-b0189",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -14044,7 +13501,7 @@
     "answer_verification": "P=54/95"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0198",
+    "question_id": "sat-math-two-way-tables-easy-b0190",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -14122,7 +13579,7 @@
     "answer_verification": "0.145 vs 0.775"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0199",
+    "question_id": "sat-math-two-way-tables-easy-b0191",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -14200,7 +13657,7 @@
     "answer_verification": "P=42/85"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0200",
+    "question_id": "sat-math-two-way-tables-easy-b0192",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -14263,7 +13720,7 @@
     "answer_verification": "val=37"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0201",
+    "question_id": "sat-math-two-way-tables-easy-b0193",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -14341,7 +13798,7 @@
     "answer_verification": "P=33/58"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0202",
+    "question_id": "sat-math-two-way-tables-easy-b0194",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -14419,7 +13876,7 @@
     "answer_verification": "0.421 vs 0.833"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0203",
+    "question_id": "sat-math-two-way-tables-easy-b0195",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -14465,7 +13922,7 @@
     "answer_verification": "cells 8,16,50,19"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0204",
+    "question_id": "sat-math-two-way-tables-easy-b0196",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -14543,7 +14000,7 @@
     "answer_verification": "P=39/71"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0205",
+    "question_id": "sat-math-two-way-tables-easy-b0197",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -14620,7 +14077,7 @@
     "answer_verification": "val=23/42"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0206",
+    "question_id": "sat-math-two-way-tables-easy-b0198",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -14698,7 +14155,7 @@
     "answer_verification": "P=65/133"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0207",
+    "question_id": "sat-math-two-way-tables-easy-b0199",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -14744,7 +14201,7 @@
     "answer_verification": "cells 5,55,5,21"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0208",
+    "question_id": "sat-math-two-way-tables-easy-b0200",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -14821,7 +14278,7 @@
     "answer_verification": "val=68"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0209",
+    "question_id": "sat-math-two-way-tables-easy-b0201",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -14867,7 +14324,7 @@
     "answer_verification": "cells 34,48,10,42"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0210",
+    "question_id": "sat-math-two-way-tables-easy-b0202",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -14930,7 +14387,7 @@
     "answer_verification": "val=13"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0211",
+    "question_id": "sat-math-two-way-tables-easy-b0203",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -15008,7 +14465,7 @@
     "answer_verification": "P=9/44"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0212",
+    "question_id": "sat-math-two-way-tables-easy-b0204",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -15071,7 +14528,7 @@
     "answer_verification": "val=33"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0213",
+    "question_id": "sat-math-two-way-tables-easy-b0205",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -15149,7 +14606,7 @@
     "answer_verification": "P=47/96"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0214",
+    "question_id": "sat-math-two-way-tables-easy-b0206",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -15227,7 +14684,7 @@
     "answer_verification": "0.416 vs 0.411"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0215",
+    "question_id": "sat-math-two-way-tables-easy-b0207",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -15290,7 +14747,7 @@
     "answer_verification": "val=5"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0216",
+    "question_id": "sat-math-two-way-tables-easy-b0208",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -15367,7 +14824,7 @@
     "answer_verification": "val=3/13"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0217",
+    "question_id": "sat-math-two-way-tables-easy-b0209",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -15445,7 +14902,7 @@
     "answer_verification": "0.121 vs 0.546"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0218",
+    "question_id": "sat-math-two-way-tables-easy-b0210",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -15491,7 +14948,7 @@
     "answer_verification": "cells 54,41,58,37"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0219",
+    "question_id": "sat-math-two-way-tables-easy-b0211",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -15568,7 +15025,7 @@
     "answer_verification": "val=30"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0220",
+    "question_id": "sat-math-two-way-tables-easy-b0212",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -15646,7 +15103,7 @@
     "answer_verification": "0.760 vs 0.619"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0221",
+    "question_id": "sat-math-two-way-tables-easy-b0213",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -15723,7 +15180,7 @@
     "answer_verification": "val=42/73"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0222",
+    "question_id": "sat-math-two-way-tables-easy-b0214",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -15801,7 +15258,7 @@
     "answer_verification": "0.638 vs 0.571"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0223",
+    "question_id": "sat-math-two-way-tables-easy-b0215",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -15879,7 +15336,7 @@
     "answer_verification": "0.266 vs 0.353"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0224",
+    "question_id": "sat-math-two-way-tables-easy-b0216",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -15957,7 +15414,7 @@
     "answer_verification": "0.1,0.22,0.14,0.54"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0225",
+    "question_id": "sat-math-two-way-tables-easy-b0217",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -16035,7 +15492,7 @@
     "answer_verification": "0.794 vs 0.273"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0226",
+    "question_id": "sat-math-two-way-tables-easy-b0218",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -16098,7 +15555,7 @@
     "answer_verification": "val=38"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0227",
+    "question_id": "sat-math-two-way-tables-easy-b0219",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -16144,7 +15601,7 @@
     "answer_verification": "cells 45,11,40,55"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0228",
+    "question_id": "sat-math-two-way-tables-easy-b0220",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -16222,7 +15679,7 @@
     "answer_verification": "0.15,0.2,0.2,0.45"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0229",
+    "question_id": "sat-math-two-way-tables-easy-b0221",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -16285,7 +15742,7 @@
     "answer_verification": "val=50"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0230",
+    "question_id": "sat-math-two-way-tables-easy-b0222",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -16363,7 +15820,7 @@
     "answer_verification": "P=47/126"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0231",
+    "question_id": "sat-math-two-way-tables-easy-b0223",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -16440,7 +15897,7 @@
     "answer_verification": "val=44/69"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0232",
+    "question_id": "sat-math-two-way-tables-easy-b0224",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -16517,7 +15974,7 @@
     "answer_verification": "val=25/59"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0233",
+    "question_id": "sat-math-two-way-tables-easy-b0225",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -16594,7 +16051,7 @@
     "answer_verification": "val=5/13"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0234",
+    "question_id": "sat-math-two-way-tables-easy-b0226",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -16672,7 +16129,7 @@
     "answer_verification": "0.3,0.15,0.15,0.4"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0235",
+    "question_id": "sat-math-two-way-tables-easy-b0227",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -16750,7 +16207,7 @@
     "answer_verification": "0.18,0.12,0.14,0.56"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0236",
+    "question_id": "sat-math-two-way-tables-easy-b0228",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -16828,7 +16285,7 @@
     "answer_verification": "P=13/123"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0237",
+    "question_id": "sat-math-two-way-tables-easy-b0229",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -16906,7 +16363,7 @@
     "answer_verification": "0.885 vs 0.186"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0238",
+    "question_id": "sat-math-two-way-tables-easy-b0230",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -16984,7 +16441,7 @@
     "answer_verification": "0.597 vs 0.647"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0239",
+    "question_id": "sat-math-two-way-tables-easy-b0231",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -17061,7 +16518,7 @@
     "answer_verification": "val=6/13"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0240",
+    "question_id": "sat-math-two-way-tables-easy-b0232",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -17139,7 +16596,7 @@
     "answer_verification": "0.344 vs 0.438"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0241",
+    "question_id": "sat-math-two-way-tables-easy-b0233",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -17217,7 +16674,7 @@
     "answer_verification": "0.18,0.12,0.2,0.5"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0242",
+    "question_id": "sat-math-two-way-tables-easy-b0234",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -17295,7 +16752,7 @@
     "answer_verification": "P=61/100"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0243",
+    "question_id": "sat-math-two-way-tables-easy-b0235",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -17373,7 +16830,7 @@
     "answer_verification": "P=26/55"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0244",
+    "question_id": "sat-math-two-way-tables-easy-b0236",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -17451,7 +16908,7 @@
     "answer_verification": "0.1,0.3,0.25,0.35"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0245",
+    "question_id": "sat-math-two-way-tables-easy-b0237",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -17497,7 +16954,7 @@
     "answer_verification": "cells 20,28,22,22"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0246",
+    "question_id": "sat-math-two-way-tables-easy-b0238",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -17574,7 +17031,7 @@
     "answer_verification": "val=49/97"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0247",
+    "question_id": "sat-math-two-way-tables-easy-b0239",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -17637,7 +17094,7 @@
     "answer_verification": "val=56"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0248",
+    "question_id": "sat-math-two-way-tables-easy-b0240",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -17714,7 +17171,7 @@
     "answer_verification": "val=84"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0249",
+    "question_id": "sat-math-two-way-tables-easy-b0241",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -17792,7 +17249,7 @@
     "answer_verification": "P=32/73"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0250",
+    "question_id": "sat-math-two-way-tables-easy-b0242",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -17838,7 +17295,7 @@
     "answer_verification": "cells 43,6,22,16"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0251",
+    "question_id": "sat-math-two-way-tables-easy-b0243",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -17916,7 +17373,7 @@
     "answer_verification": "P=47/90"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0252",
+    "question_id": "sat-math-two-way-tables-easy-b0244",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -17962,7 +17419,7 @@
     "answer_verification": "cells 27,36,26,44"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0253",
+    "question_id": "sat-math-two-way-tables-easy-b0245",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -18040,7 +17497,7 @@
     "answer_verification": "P=20/31"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0254",
+    "question_id": "sat-math-two-way-tables-easy-b0246",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -18118,7 +17575,7 @@
     "answer_verification": "P=1/3"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0255",
+    "question_id": "sat-math-two-way-tables-easy-b0247",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -18181,7 +17638,7 @@
     "answer_verification": "val=44"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0256",
+    "question_id": "sat-math-two-way-tables-easy-b0248",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -18227,7 +17684,7 @@
     "answer_verification": "cells 27,23,55,40"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0257",
+    "question_id": "sat-math-two-way-tables-easy-b0249",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -18305,7 +17762,7 @@
     "answer_verification": "0.12,0.1,0.25,0.53"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0258",
+    "question_id": "sat-math-two-way-tables-easy-b0250",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -18383,7 +17840,7 @@
     "answer_verification": "0.2,0.12,0.2,0.48"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0259",
+    "question_id": "sat-math-two-way-tables-easy-b0251",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -18461,7 +17918,7 @@
     "answer_verification": "0.514 vs 0.505"
   },
   {
-    "question_id": "sat-math-two-way-tables-easy-b0260",
+    "question_id": "sat-math-two-way-tables-easy-b0252",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -18536,5 +17993,566 @@
       }
     },
     "answer_verification": "val=21/65"
+  },
+  {
+    "question_id": "sat-math-two-way-tables-easy-b0253",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "two_way_tables",
+    "lesson_id": "sat-math-two-way-tables-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "conditional_probability",
+    "prompt": "The table shows 173 survey responses. If one response is chosen at random, what is the probability that it is in the “Left-handed” row?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "72/101",
+        "rationale": "Divide by the grand total, not the other row."
+      },
+      {
+        "id": "B",
+        "text": "101/173",
+        "rationale": "This is the probability of the other row."
+      },
+      {
+        "id": "C",
+        "text": "59/173",
+        "rationale": "This uses only one cell (59), not the whole row."
+      },
+      {
+        "id": "D",
+        "text": "72/173",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "The “Left-handed” row totals 59 + 13 = 72 of 173: 72/173.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "data",
+      "probability",
+      "table",
+      "family:tw_probability"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Survey responses",
+        "headers": [
+          "",
+          "Morning",
+          "Evening",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Left-handed",
+            "59",
+            "13",
+            "72"
+          ],
+          [
+            "Right-handed",
+            "45",
+            "56",
+            "101"
+          ],
+          [
+            "Total",
+            "104",
+            "69",
+            "173"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "P=72/173"
+  },
+  {
+    "question_id": "sat-math-two-way-tables-easy-b0254",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "two_way_tables",
+    "lesson_id": "sat-math-two-way-tables-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "conditional_probability",
+    "prompt": "According to the table of 128 responses, how many responses came from the “Rural” group?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "70",
+        "rationale": "That is a row total."
+      },
+      {
+        "id": "B",
+        "text": "85",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "43",
+        "rationale": "That is the other column."
+      },
+      {
+        "id": "D",
+        "text": "51",
+        "rationale": "That is one cell, not the whole column."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "Add down the column: 34 + 51 = 85.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "data",
+      "table",
+      "family:tw_count"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Survey responses",
+        "headers": [
+          "",
+          "Urban",
+          "Rural",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Cats",
+            "24",
+            "34",
+            "58"
+          ],
+          [
+            "Dogs",
+            "19",
+            "51",
+            "70"
+          ],
+          [
+            "Total",
+            "43",
+            "85",
+            "128"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "val=85"
+  },
+  {
+    "question_id": "sat-math-two-way-tables-easy-b0255",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "two_way_tables",
+    "lesson_id": "sat-math-two-way-tables-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "conditional_probability",
+    "prompt": "Based on the table of 121 responses, which statement correctly compares the two “Weekday”/“Weekend” groups?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "A “Weekend” response is more likely than a “Weekday” response to be “Soccer”.",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "The two groups are equally likely to be “Soccer”.",
+        "rationale": "The proportions differ."
+      },
+      {
+        "id": "C",
+        "text": "A “Weekend” response is more likely to be “Soccer” because the “Weekend” column has more responses.",
+        "rationale": "Likelihood depends on the proportion within the group, not the group's size."
+      },
+      {
+        "id": "D",
+        "text": "A “Weekday” response is more likely than a “Weekend” response to be “Soccer”.",
+        "rationale": "Compare proportions: 33/67 ≈ 0.49 vs 49/54 ≈ 0.91."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "P(Soccer | Weekday) = 33/67 ≈ 0.49 and P(Soccer | Weekend) = 49/54 ≈ 0.91; the larger is “Weekend”.",
+    "estimated_time_seconds": 100,
+    "tags": [
+      "data",
+      "table",
+      "compare",
+      "family:tw_compare"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Survey responses",
+        "headers": [
+          "",
+          "Weekday",
+          "Weekend",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Soccer",
+            "33",
+            "49",
+            "82"
+          ],
+          [
+            "Basketball",
+            "34",
+            "5",
+            "39"
+          ],
+          [
+            "Total",
+            "67",
+            "54",
+            "121"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "0.493 vs 0.907"
+  },
+  {
+    "question_id": "sat-math-two-way-tables-easy-b0256",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "two_way_tables",
+    "lesson_id": "sat-math-two-way-tables-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "student_produced",
+    "subskill": "conditional_probability",
+    "prompt": "The table shows 171 survey responses. How many responses were “Left-handed” and “Grade 10”?",
+    "answer": {
+      "type": "numeric",
+      "value": 49,
+      "accepted": [
+        "49"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "Read the “Left-handed” row, “Grade 10” column: 49.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "data",
+      "table",
+      "grid-in",
+      "family:tw_gridin"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Survey responses",
+        "headers": [
+          "",
+          "Grade 9",
+          "Grade 10",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Left-handed",
+            "41",
+            "49",
+            "90"
+          ],
+          [
+            "Right-handed",
+            "30",
+            "51",
+            "81"
+          ],
+          [
+            "Total",
+            "71",
+            "100",
+            "171"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "val=49"
+  },
+  {
+    "question_id": "sat-math-two-way-tables-easy-b0257",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "two_way_tables",
+    "lesson_id": "sat-math-two-way-tables-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "conditional_probability",
+    "prompt": "The table shows relative frequencies for 200 responses. How many responses were “Fiction” and “Grade 10”?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "60",
+        "rationale": "That is the other cell in the column."
+      },
+      {
+        "id": "B",
+        "text": "100",
+        "rationale": "That is the whole row."
+      },
+      {
+        "id": "C",
+        "text": "25",
+        "rationale": "Multiply by the total 200, not 100."
+      },
+      {
+        "id": "D",
+        "text": "50",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "0.25 × 200 = 50.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "data",
+      "table",
+      "relative-frequency",
+      "family:tw_relative_freq"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Relative frequencies (n = 200)",
+        "headers": [
+          "",
+          "Grade 9",
+          "Grade 10",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Fiction",
+            "0.25",
+            "0.25",
+            "0.50"
+          ],
+          [
+            "Nonfiction",
+            "0.20",
+            "0.30",
+            "0.50"
+          ],
+          [
+            "Total",
+            "0.45",
+            "0.55",
+            "1.00"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "0.25,0.25,0.2,0.3"
+  },
+  {
+    "question_id": "sat-math-two-way-tables-easy-b0258",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "two_way_tables",
+    "lesson_id": "sat-math-two-way-tables-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "student_produced",
+    "subskill": "conditional_probability",
+    "prompt": "The table shows 146 survey responses. How many responses were “Soccer” and “Weekend”?",
+    "answer": {
+      "type": "numeric",
+      "value": 43,
+      "accepted": [
+        "43"
+      ],
+      "tolerance": 0.0
+    },
+    "explanation": "Read the “Soccer” row, “Weekend” column: 43.",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "data",
+      "table",
+      "grid-in",
+      "family:tw_gridin"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Survey responses",
+        "headers": [
+          "",
+          "Weekday",
+          "Weekend",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Soccer",
+            "30",
+            "43",
+            "73"
+          ],
+          [
+            "Basketball",
+            "46",
+            "27",
+            "73"
+          ],
+          [
+            "Total",
+            "76",
+            "70",
+            "146"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "val=43"
+  },
+  {
+    "question_id": "sat-math-two-way-tables-easy-b0259",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "two_way_tables",
+    "lesson_id": "sat-math-two-way-tables-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "multi_step_math",
+    "subskill": "conditional_probability",
+    "prompt": "Of the 100 cats and dogs surveyed, 68 were cats. 29 of the cats and 21 of the dogs were adopted. How many of the dogs did NOT meet the condition (were adopted)?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "21",
+        "rationale": "That is the number of dogs who did."
+      },
+      {
+        "id": "B",
+        "text": "39",
+        "rationale": "That is the number of cats who did not."
+      },
+      {
+        "id": "C",
+        "text": "11",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "32",
+        "rationale": "That is all the dogs."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "Dogs: 100 − 68 = 32; of those, 21 did, so 32 − 21 = 11 did not.",
+    "estimated_time_seconds": 100,
+    "tags": [
+      "data",
+      "table",
+      "build",
+      "family:tw_build"
+    ],
+    "answer_verification": "cells 29,39,21,11"
+  },
+  {
+    "question_id": "sat-math-two-way-tables-easy-b0260",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "two_way_tables",
+    "lesson_id": "sat-math-two-way-tables-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "conditional_probability",
+    "prompt": "The table shows relative frequencies for 400 responses. How many responses were “Left-handed” and “Weekend”?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "48",
+        "rationale": "That is the other cell in the row."
+      },
+      {
+        "id": "B",
+        "text": "80",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "128",
+        "rationale": "That is the whole row."
+      },
+      {
+        "id": "D",
+        "text": "20",
+        "rationale": "Multiply by the total 400, not 100."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "0.20 × 400 = 80.",
+    "estimated_time_seconds": 90,
+    "tags": [
+      "data",
+      "table",
+      "relative-frequency",
+      "family:tw_relative_freq"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Relative frequencies (n = 400)",
+        "headers": [
+          "",
+          "Weekday",
+          "Weekend",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Left-handed",
+            "0.12",
+            "0.20",
+            "0.32"
+          ],
+          [
+            "Right-handed",
+            "0.15",
+            "0.53",
+            "0.68"
+          ],
+          [
+            "Total",
+            "0.27",
+            "0.73",
+            "1.00"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "0.12,0.2,0.15,0.53"
   }
 ]

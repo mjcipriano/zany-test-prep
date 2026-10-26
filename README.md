@@ -12,12 +12,18 @@ no network.
 - **Content:** every question is original and generated from a library of
   **question families** — many distinct forms per skill, mixed within each lesson
   so nothing feels like one template with new numbers.
-  - SAT: 117 lessons, 31,177 questions
-    (15,192 Math, 15,985 Reading & Writing).
-  - ACT: 147 lessons, 21,645 questions
-    (6,753 English, 13,032 Math, 360 Reading,
-    1,500 Science), with 5-choice Math and NO CHANGE-style English.
+  - SAT: 117 lessons, 31,172 questions
+    (15,192 Math, 15,980 Reading & Writing).
+  - ACT: 147 lessons, 21,780 questions
+    (6,753 English, 13,032 Math, 495 Reading incl.
+    15 ACT-length passage sets, 1,500 Science), with 5-choice Math and NO CHANGE-style English.
   - No copyrighted College Board or ACT, Inc. material.
+- **Learning:** an optional placement check at onboarding, "Recommended for you"
+  picks and Smart practice that adapts difficulty, per-question lesson resume, an
+  adaptive SAT practice test (module 2 adapts to module 1), and opt-in reminders.
+- **Answer keys are audited** (`tools/audit/`): automated re-solving of every question
+  plus blind independent solving of stratified samples.
+- **Accessible:** screen-reader labels, large-text layouts, WCAG-AA colours, reduce motion.
 - **Stack:** Flutter (stable, 3.35.5), Material 3, Riverpod, GoRouter,
   `shared_preferences` persistence.
 

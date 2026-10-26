@@ -11,71 +11,72 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "The table groups 49 commuters by minutes. How many commuters have a minutes of at least 5?",
+    "prompt": "The table shows centimeters for 4 plants split into online and in store (350 in all). What is the combined total for D?",
     "choices": [
       {
         "id": "A",
-        "text": "35",
+        "text": "94",
         "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "14",
-        "rationale": "That counts the intervals below the cutoff."
+        "text": "38",
+        "rationale": "Add the two columns; don't subtract."
       },
       {
         "id": "C",
-        "text": "2",
-        "rationale": "Include all higher intervals too."
+        "text": "28",
+        "rationale": "That is only the in store value."
       },
       {
         "id": "D",
-        "text": "47",
-        "rationale": "That excludes only one interval."
+        "text": "66",
+        "rationale": "That is only the online value."
       }
     ],
     "correct_choice": "A",
-    "explanation": "Add the frequencies of the intervals from 5–9 upward: 2 + 13 + 10 + 10 = 35.",
-    "estimated_time_seconds": 80,
+    "explanation": "66 + 28 = 94.",
+    "estimated_time_seconds": 70,
     "tags": [
       "data",
       "table",
-      "histogram",
-      "family:da_interval_table"
+      "two-series",
+      "family:da_two_series"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Frequency table",
+        "caption": "Plant heights by online and in store",
         "headers": [
-          "Minutes",
-          "Number of commuters"
+          "Plant",
+          "Online",
+          "In store"
         ],
         "rows": [
           [
-            "0–4",
-            "14"
+            "A",
+            "53",
+            "62"
           ],
           [
-            "5–9",
-            "2"
+            "B",
+            "39",
+            "24"
           ],
           [
-            "10–14",
-            "13"
+            "C",
+            "14",
+            "64"
           ],
           [
-            "15–19",
-            "10"
-          ],
-          [
-            "20–24",
-            "10"
+            "D",
+            "66",
+            "28"
           ]
         ]
       }
     },
-    "answer_verification": "val=35"
+    "answer_verification": "val=94"
   },
   {
     "question_id": "sat-math-data-analysis-easy-b0002",
@@ -88,72 +89,68 @@
     "difficulty": "easy",
     "version": "1.0.0",
     "question_type": "data_interpretation",
-    "subskill": "tables",
-    "prompt": "The table groups 32 commuters by minutes. How many commuters have a minutes of at least 10?",
+    "subskill": "graphs",
+    "prompt": "The table shows a constant rate. What is the rate, in dollars per item?",
     "choices": [
       {
         "id": "A",
-        "text": "4",
-        "rationale": "Include all higher intervals too."
+        "text": "12",
+        "rationale": "Divide by the change in the first column too."
       },
       {
         "id": "B",
-        "text": "30",
-        "rationale": "Correct."
+        "text": "24",
+        "rationale": "That is a value from the table, not the rate."
       },
       {
         "id": "C",
-        "text": "28",
-        "rationale": "That excludes only one interval."
+        "text": "6",
+        "rationale": "Correct."
       },
       {
         "id": "D",
-        "text": "2",
-        "rationale": "That counts the intervals below the cutoff."
+        "text": "1/6",
+        "rationale": "Divide the second column by the first, not the reverse."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Add the frequencies of the intervals from 10–19 upward: 4 + 4 + 11 + 11 = 30.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "C",
+    "explanation": "Divide any row: 24 ÷ 4 = 6 dollars per item.",
+    "estimated_time_seconds": 75,
     "tags": [
       "data",
       "table",
-      "histogram",
-      "family:da_interval_table"
+      "rate",
+      "family:da_rate_table"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Frequency table",
+        "caption": "Recorded values",
         "headers": [
-          "Minutes",
-          "Number of commuters"
+          "Number of items",
+          "Cost (dollars)"
         ],
         "rows": [
           [
-            "0–9",
-            "2"
+            "4",
+            "24"
           ],
           [
-            "10–19",
-            "4"
+            "6",
+            "36"
           ],
           [
-            "20–29",
-            "4"
+            "8",
+            "48"
           ],
           [
-            "30–39",
-            "11"
-          ],
-          [
-            "40–49",
-            "11"
+            "9",
+            "54"
           ]
         ]
       }
     },
-    "answer_verification": "val=30"
+    "answer_verification": "r=6,val=6"
   },
   {
     "question_id": "sat-math-data-analysis-easy-b0003",
@@ -167,67 +164,66 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "The table shows the number of points recorded for 4 teams, 272 in all. Which of the following statements is supported by the data?",
+    "prompt": "Based on the table, how many more bikes does the greatest store have than the least?",
     "choices": [
       {
         "id": "A",
-        "text": "Hawks recorded more points than any other team.",
-        "rationale": "Hawks has the least value, 33."
+        "text": "115",
+        "rationale": "This is the total, not the difference."
       },
       {
         "id": "B",
-        "text": "The total number of points for all 4 teams is 289.",
-        "rationale": "The values sum to 272."
+        "text": "30",
+        "rationale": "Correct."
       },
       {
         "id": "C",
-        "text": "Otters recorded the greatest number of points of any team.",
-        "rationale": "Lynx has 86, more than Otters."
+        "text": "58",
+        "rationale": "Subtract; don't add."
       },
       {
         "id": "D",
-        "text": "Lynx recorded more points than any other team.",
-        "rationale": "Correct."
+        "text": "44",
+        "rationale": "This is only the greatest value."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Lynx has the largest value in the table (86).",
-    "estimated_time_seconds": 85,
+    "correct_choice": "B",
+    "explanation": "Greatest 44 − least 14 = 30.",
+    "estimated_time_seconds": 70,
     "tags": [
       "data",
       "table",
-      "statement",
-      "family:da_statement"
+      "family:da_read"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Points scored",
+        "caption": "Bike sales by store",
         "headers": [
-          "Team",
-          "Points scored"
+          "Store",
+          "Bikes sold"
         ],
         "rows": [
           [
-            "Hawks",
-            "33"
+            "North",
+            "31"
           ],
           [
-            "Bears",
-            "71"
+            "South",
+            "44"
           ],
           [
-            "Otters",
-            "82"
+            "East",
+            "14"
           ],
           [
-            "Lynx",
-            "86"
+            "West",
+            "26"
           ]
         ]
       }
     },
-    "answer_verification": "statement"
+    "answer_verification": "val=30"
   },
   {
     "question_id": "sat-math-data-analysis-easy-b0004",
@@ -241,72 +237,72 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "The table shows the number of centimeters for 4 plants in 2023 and 2024 (a total of 186 in 2023 and 169 in 2024). Which plant had the greatest increase in centimeters from 2023 to 2024?",
+    "prompt": "The table shows tickets for 4 days split into online and in store (435 in all). What is the combined total for Thu?",
     "choices": [
       {
         "id": "A",
-        "text": "D",
-        "rationale": "D changed by −19, which is not the greatest increase."
+        "text": "90",
+        "rationale": "Correct."
       },
       {
         "id": "B",
-        "text": "C",
-        "rationale": "C changed by 2, which is not the greatest increase."
+        "text": "44",
+        "rationale": "Add the two columns; don't subtract."
       },
       {
         "id": "C",
-        "text": "B",
-        "rationale": "B changed by −3, which is not the greatest increase."
+        "text": "23",
+        "rationale": "That is only the online value."
       },
       {
         "id": "D",
-        "text": "A",
-        "rationale": "Correct."
+        "text": "67",
+        "rationale": "That is only the in store value."
       }
     ],
-    "correct_choice": "D",
-    "explanation": "Compute 2024 − 2023 for each row; A increased by 3, the most.",
-    "estimated_time_seconds": 80,
+    "correct_choice": "A",
+    "explanation": "23 + 67 = 90.",
+    "estimated_time_seconds": 70,
     "tags": [
       "data",
       "table",
-      "compare",
-      "family:da_two_year"
+      "two-series",
+      "family:da_two_series"
     ],
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Plant heights, 2023 and 2024",
+        "caption": "Daily ticket sales by online and in store",
         "headers": [
-          "Plant",
-          "2023",
-          "2024"
+          "Day",
+          "Online",
+          "In store"
         ],
         "rows": [
           [
-            "A",
-            "45",
-            "48"
+            "Mon",
+            "31",
+            "61"
           ],
           [
-            "B",
-            "74",
-            "71"
+            "Tue",
+            "54",
+            "68"
           ],
           [
-            "C",
-            "37",
-            "39"
+            "Wed",
+            "66",
+            "65"
           ],
           [
-            "D",
-            "30",
-            "11"
+            "Thu",
+            "23",
+            "67"
           ]
         ]
       }
     },
-    "answer_verification": "A"
+    "answer_verification": "val=90"
   },
   {
     "question_id": "sat-math-data-analysis-easy-b0005",
@@ -320,710 +316,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "The table shows millimeters of rain for 4 months split into girls and boys (355 in all). What is the combined total for Jan?",
+    "prompt": "The table shows the number of tickets for 4 days in 2021 and 2022 (a total of 157 in 2021 and 152 in 2022). Which day had the greatest increase in tickets from 2021 to 2022?",
     "choices": [
       {
         "id": "A",
-        "text": "39",
-        "rationale": "Add the two columns; don't subtract."
+        "text": "Wed",
+        "rationale": "Wed changed by −6, which is not the greatest increase."
       },
       {
         "id": "B",
-        "text": "65",
-        "rationale": "That is only the boys value."
+        "text": "Tue",
+        "rationale": "Tue changed by −2, which is not the greatest increase."
       },
       {
         "id": "C",
-        "text": "91",
-        "rationale": "Correct."
+        "text": "Thu",
+        "rationale": "Thu changed by −14, which is not the greatest increase."
       },
       {
         "id": "D",
-        "text": "26",
-        "rationale": "That is only the girls value."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "26 + 65 = 91.",
-    "estimated_time_seconds": 70,
-    "tags": [
-      "data",
-      "table",
-      "two-series",
-      "family:da_two_series"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Monthly rainfall by girls and boys",
-        "headers": [
-          "Month",
-          "Girls",
-          "Boys"
-        ],
-        "rows": [
-          [
-            "Jan",
-            "26",
-            "65"
-          ],
-          [
-            "Feb",
-            "51",
-            "13"
-          ],
-          [
-            "Mar",
-            "42",
-            "68"
-          ],
-          [
-            "Apr",
-            "42",
-            "48"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "val=91"
-  },
-  {
-    "question_id": "sat-math-data-analysis-easy-b0006",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "data_analysis",
-    "lesson_id": "sat-math-data-analysis-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "tables",
-    "prompt": "The table shows tickets for 4 days split into home and away (384 in all). What is the combined total for Mon?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "63",
-        "rationale": "That is only the home value."
-      },
-      {
-        "id": "B",
-        "text": "77",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "49",
-        "rationale": "Add the two columns; don't subtract."
-      },
-      {
-        "id": "D",
-        "text": "14",
-        "rationale": "That is only the away value."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "63 + 14 = 77.",
-    "estimated_time_seconds": 70,
-    "tags": [
-      "data",
-      "table",
-      "two-series",
-      "family:da_two_series"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Daily ticket sales by home and away",
-        "headers": [
-          "Day",
-          "Home",
-          "Away"
-        ],
-        "rows": [
-          [
-            "Mon",
-            "63",
-            "14"
-          ],
-          [
-            "Tue",
-            "26",
-            "65"
-          ],
-          [
-            "Wed",
-            "63",
-            "71"
-          ],
-          [
-            "Thu",
-            "55",
-            "27"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "val=77"
-  },
-  {
-    "question_id": "sat-math-data-analysis-easy-b0007",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "data_analysis",
-    "lesson_id": "sat-math-data-analysis-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "tables",
-    "prompt": "The table shows the number of millimeters of rain recorded for 4 months, 130 in all. Which of the following statements is supported by the data?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "Apr recorded the greatest number of millimeters of rain of any month.",
-        "rationale": "Mar has 67, more than Apr."
-      },
-      {
-        "id": "B",
-        "text": "Jan recorded more millimeters of rain than any other month.",
-        "rationale": "Jan has the least value, 14."
-      },
-      {
-        "id": "C",
-        "text": "The total number of millimeters of rain for all 4 months is 148.",
-        "rationale": "The values sum to 130."
-      },
-      {
-        "id": "D",
-        "text": "Mar recorded more millimeters of rain than any other month.",
+        "text": "Mon",
         "rationale": "Correct."
       }
     ],
     "correct_choice": "D",
-    "explanation": "Mar has the largest value in the table (67).",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "data",
-      "table",
-      "statement",
-      "family:da_statement"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Monthly rainfall",
-        "headers": [
-          "Month",
-          "Rainfall (mm)"
-        ],
-        "rows": [
-          [
-            "Jan",
-            "14"
-          ],
-          [
-            "Feb",
-            "21"
-          ],
-          [
-            "Mar",
-            "67"
-          ],
-          [
-            "Apr",
-            "28"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "statement"
-  },
-  {
-    "question_id": "sat-math-data-analysis-easy-b0008",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "data_analysis",
-    "lesson_id": "sat-math-data-analysis-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "tables",
-    "prompt": "The table shows the number of tickets recorded for 4 days, 139 in all. Which of the following statements is supported by the data?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "The total number of tickets for all 4 days is 148.",
-        "rationale": "The values sum to 139."
-      },
-      {
-        "id": "B",
-        "text": "Wed recorded more tickets than any other day.",
-        "rationale": "Wed has the least value, 10."
-      },
-      {
-        "id": "C",
-        "text": "Thu recorded the greatest number of tickets of any day.",
-        "rationale": "Tue has 57, more than Thu."
-      },
-      {
-        "id": "D",
-        "text": "Tue recorded more tickets than any other day.",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Tue has the largest value in the table (57).",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "data",
-      "table",
-      "statement",
-      "family:da_statement"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Daily ticket sales",
-        "headers": [
-          "Day",
-          "Tickets sold"
-        ],
-        "rows": [
-          [
-            "Mon",
-            "22"
-          ],
-          [
-            "Tue",
-            "57"
-          ],
-          [
-            "Wed",
-            "10"
-          ],
-          [
-            "Thu",
-            "50"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "statement"
-  },
-  {
-    "question_id": "sat-math-data-analysis-easy-b0009",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "data_analysis",
-    "lesson_id": "sat-math-data-analysis-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "graphs",
-    "prompt": "The table shows a constant rate. What is the rate, in dollars per item?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "18",
-        "rationale": "Divide by the change in the first column too."
-      },
-      {
-        "id": "B",
-        "text": "1/6",
-        "rationale": "Divide the second column by the first, not the reverse."
-      },
-      {
-        "id": "C",
-        "text": "6",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "12",
-        "rationale": "That is a value from the table, not the rate."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "Divide any row: 12 ÷ 2 = 6 dollars per item.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "data",
-      "table",
-      "rate",
-      "family:da_rate_table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Recorded values",
-        "headers": [
-          "Number of items",
-          "Cost (dollars)"
-        ],
-        "rows": [
-          [
-            "2",
-            "12"
-          ],
-          [
-            "5",
-            "30"
-          ],
-          [
-            "6",
-            "36"
-          ],
-          [
-            "9",
-            "54"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "r=6,val=6"
-  },
-  {
-    "question_id": "sat-math-data-analysis-easy-b0010",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "data_analysis",
-    "lesson_id": "sat-math-data-analysis-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "graphs",
-    "prompt": "The table shows a constant rate. What is the rate, in gallons per minute?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "12",
-        "rationale": "Arithmetic slip."
-      },
-      {
-        "id": "B",
-        "text": "33",
-        "rationale": "That is a value from the table, not the rate."
-      },
-      {
-        "id": "C",
-        "text": "1/11",
-        "rationale": "Divide the second column by the first, not the reverse."
-      },
-      {
-        "id": "D",
-        "text": "11",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Divide any row: 33 ÷ 3 = 11 gallons per minute.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "data",
-      "table",
-      "rate",
-      "family:da_rate_table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Recorded values",
-        "headers": [
-          "Minutes",
-          "Gallons pumped"
-        ],
-        "rows": [
-          [
-            "3",
-            "33"
-          ],
-          [
-            "4",
-            "44"
-          ],
-          [
-            "5",
-            "55"
-          ],
-          [
-            "6",
-            "66"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "r=11,val=11"
-  },
-  {
-    "question_id": "sat-math-data-analysis-easy-b0011",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "data_analysis",
-    "lesson_id": "sat-math-data-analysis-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "tables",
-    "prompt": "The table shows tickets for 4 days, but the value for Mon is missing. If the total for all 4 is 173, what is the missing value?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "135",
-        "rationale": "That is the sum of the other rows, not the missing one."
-      },
-      {
-        "id": "B",
-        "text": "43",
-        "rationale": "That is the mean, not necessarily the missing value."
-      },
-      {
-        "id": "C",
-        "text": "38",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "74",
-        "rationale": "Subtract every known row from the total."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "173 − (36 + 48 + 51) = 38.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "data",
-      "table",
-      "family:da_mean_from_table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Daily ticket sales",
-        "headers": [
-          "Day",
-          "Tickets sold"
-        ],
-        "rows": [
-          [
-            "Mon",
-            "?"
-          ],
-          [
-            "Tue",
-            "36"
-          ],
-          [
-            "Wed",
-            "48"
-          ],
-          [
-            "Thu",
-            "51"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "missing=38"
-  },
-  {
-    "question_id": "sat-math-data-analysis-easy-b0012",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "data_analysis",
-    "lesson_id": "sat-math-data-analysis-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "graphs",
-    "prompt": "The table shows a constant rate. What is the rate, in dollars per item?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "39",
-        "rationale": "That is a value from the table, not the rate."
-      },
-      {
-        "id": "B",
-        "text": "1/13",
-        "rationale": "Divide the second column by the first, not the reverse."
-      },
-      {
-        "id": "C",
-        "text": "13",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "14",
-        "rationale": "Arithmetic slip."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "Divide any row: 39 ÷ 3 = 13 dollars per item.",
-    "estimated_time_seconds": 75,
-    "tags": [
-      "data",
-      "table",
-      "rate",
-      "family:da_rate_table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Recorded values",
-        "headers": [
-          "Number of items",
-          "Cost (dollars)"
-        ],
-        "rows": [
-          [
-            "3",
-            "39"
-          ],
-          [
-            "4",
-            "52"
-          ],
-          [
-            "8",
-            "104"
-          ],
-          [
-            "9",
-            "117"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "r=13,val=13"
-  },
-  {
-    "question_id": "sat-math-data-analysis-easy-b0013",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "data_analysis",
-    "lesson_id": "sat-math-data-analysis-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "tables",
-    "prompt": "The table groups 54 items by price (dollars). How many items have a price of at least 30?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "42",
-        "rationale": "That excludes only one interval."
-      },
-      {
-        "id": "B",
-        "text": "50",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "4",
-        "rationale": "That counts the intervals below the cutoff."
-      },
-      {
-        "id": "D",
-        "text": "12",
-        "rationale": "Include all higher intervals too."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Add the frequencies of the intervals from 30–39 upward: 12 + 14 + 10 + 14 = 50.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "data",
-      "table",
-      "histogram",
-      "family:da_interval_table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Frequency table",
-        "headers": [
-          "Price (dollars)",
-          "Number of items"
-        ],
-        "rows": [
-          [
-            "20–29",
-            "4"
-          ],
-          [
-            "30–39",
-            "12"
-          ],
-          [
-            "40–49",
-            "14"
-          ],
-          [
-            "50–59",
-            "10"
-          ],
-          [
-            "60–69",
-            "14"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "val=50"
-  },
-  {
-    "question_id": "sat-math-data-analysis-easy-b0014",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "data_analysis",
-    "lesson_id": "sat-math-data-analysis-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "tables",
-    "prompt": "The table shows the number of bikes for 4 stores in 2021 and 2022 (a total of 287 in 2021 and 242 in 2022). Which store had the greatest increase in bikes from 2021 to 2022?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "West",
-        "rationale": "West changed by −25, which is not the greatest increase."
-      },
-      {
-        "id": "B",
-        "text": "South",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "North",
-        "rationale": "North changed by −15, which is not the greatest increase."
-      },
-      {
-        "id": "D",
-        "text": "East",
-        "rationale": "East changed by −16, which is not the greatest increase."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "Compute 2022 − 2021 for each row; South increased by 11, the most.",
+    "explanation": "Compute 2022 − 2021 for each row; Mon increased by 17, the most.",
     "estimated_time_seconds": 80,
     "tags": [
       "data",
@@ -1034,192 +351,40 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Bike sales by store, 2021 and 2022",
+        "caption": "Daily ticket sales, 2021 and 2022",
         "headers": [
-          "Store",
+          "Day",
           "2021",
           "2022"
         ],
         "rows": [
           [
-            "North",
-            "63",
+            "Mon",
+            "28",
+            "45"
+          ],
+          [
+            "Tue",
+            "31",
+            "29"
+          ],
+          [
+            "Wed",
+            "54",
             "48"
           ],
           [
-            "South",
-            "77",
-            "88"
-          ],
-          [
-            "East",
-            "80",
-            "64"
-          ],
-          [
-            "West",
-            "67",
-            "42"
+            "Thu",
+            "44",
+            "30"
           ]
         ]
       }
     },
-    "answer_verification": "South"
+    "answer_verification": "Mon"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0015",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "data_analysis",
-    "lesson_id": "sat-math-data-analysis-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "tables",
-    "prompt": "The table groups 41 members by age. How many members have a age of at least 90?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "33",
-        "rationale": "That counts the intervals below the cutoff."
-      },
-      {
-        "id": "B",
-        "text": "10",
-        "rationale": "The interval 80–89 is below the cutoff."
-      },
-      {
-        "id": "C",
-        "text": "9",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
-      },
-      {
-        "id": "D",
-        "text": "8",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Add the frequencies of the intervals from 90–99 upward: 8 = 8.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "data",
-      "table",
-      "histogram",
-      "family:da_interval_table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Frequency table",
-        "headers": [
-          "Age",
-          "Number of members"
-        ],
-        "rows": [
-          [
-            "50–59",
-            "8"
-          ],
-          [
-            "60–69",
-            "9"
-          ],
-          [
-            "70–79",
-            "14"
-          ],
-          [
-            "80–89",
-            "2"
-          ],
-          [
-            "90–99",
-            "8"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "val=8"
-  },
-  {
-    "question_id": "sat-math-data-analysis-easy-b0016",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "data_analysis",
-    "lesson_id": "sat-math-data-analysis-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "tables",
-    "prompt": "The table shows the number of points recorded for 4 teams, 169 in all. Which of the following statements is supported by the data?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "The total number of points for all 4 teams is 174.",
-        "rationale": "The values sum to 169."
-      },
-      {
-        "id": "B",
-        "text": "Lynx recorded more points than any other team.",
-        "rationale": "Lynx has the least value, 31."
-      },
-      {
-        "id": "C",
-        "text": "Bears recorded the greatest number of points of any team.",
-        "rationale": "Hawks has 57, more than Bears."
-      },
-      {
-        "id": "D",
-        "text": "Hawks recorded more points than any other team.",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Hawks has the largest value in the table (57).",
-    "estimated_time_seconds": 85,
-    "tags": [
-      "data",
-      "table",
-      "statement",
-      "family:da_statement"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Points scored",
-        "headers": [
-          "Team",
-          "Points scored"
-        ],
-        "rows": [
-          [
-            "Hawks",
-            "57"
-          ],
-          [
-            "Bears",
-            "49"
-          ],
-          [
-            "Otters",
-            "32"
-          ],
-          [
-            "Lynx",
-            "31"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "statement"
-  },
-  {
-    "question_id": "sat-math-data-analysis-easy-b0017",
+    "question_id": "sat-math-data-analysis-easy-b0006",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1298,7 +463,7 @@
     "answer_verification": "Jan"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0018",
+    "question_id": "sat-math-data-analysis-easy-b0007",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1372,7 +537,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0019",
+    "question_id": "sat-math-data-analysis-easy-b0008",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1450,7 +615,7 @@
     "answer_verification": "val=38"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0020",
+    "question_id": "sat-math-data-analysis-easy-b0009",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1523,7 +688,7 @@
     "answer_verification": "val=60"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0021",
+    "question_id": "sat-math-data-analysis-easy-b0010",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1602,7 +767,7 @@
     "answer_verification": "Wed"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0022",
+    "question_id": "sat-math-data-analysis-easy-b0011",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1676,7 +841,7 @@
     "answer_verification": "r=4,val=4"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0023",
+    "question_id": "sat-math-data-analysis-easy-b0012",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1750,7 +915,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0024",
+    "question_id": "sat-math-data-analysis-easy-b0013",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1829,7 +994,7 @@
     "answer_verification": "Lynx"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0025",
+    "question_id": "sat-math-data-analysis-easy-b0014",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1903,7 +1068,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0026",
+    "question_id": "sat-math-data-analysis-easy-b0015",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -1977,7 +1142,7 @@
     "answer_verification": "r=14,val=14"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0027",
+    "question_id": "sat-math-data-analysis-easy-b0016",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2051,7 +1216,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0028",
+    "question_id": "sat-math-data-analysis-easy-b0017",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2124,7 +1289,7 @@
     "answer_verification": "val=32"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0029",
+    "question_id": "sat-math-data-analysis-easy-b0018",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2197,7 +1362,7 @@
     "answer_verification": "missing=41"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0030",
+    "question_id": "sat-math-data-analysis-easy-b0019",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2276,7 +1441,7 @@
     "answer_verification": "D"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0031",
+    "question_id": "sat-math-data-analysis-easy-b0020",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2349,7 +1514,7 @@
     "answer_verification": "val=111"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0032",
+    "question_id": "sat-math-data-analysis-easy-b0021",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2427,7 +1592,7 @@
     "answer_verification": "val=15"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0033",
+    "question_id": "sat-math-data-analysis-easy-b0022",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2501,7 +1666,7 @@
     "answer_verification": "r=2,val=2"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0034",
+    "question_id": "sat-math-data-analysis-easy-b0023",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2580,7 +1745,7 @@
     "answer_verification": "val=79"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0035",
+    "question_id": "sat-math-data-analysis-easy-b0024",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2659,7 +1824,7 @@
     "answer_verification": "val=126"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0036",
+    "question_id": "sat-math-data-analysis-easy-b0025",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2738,7 +1903,7 @@
     "answer_verification": "val=100"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0037",
+    "question_id": "sat-math-data-analysis-easy-b0026",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2812,7 +1977,7 @@
     "answer_verification": "r=9,val=9"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0038",
+    "question_id": "sat-math-data-analysis-easy-b0027",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2890,7 +2055,7 @@
     "answer_verification": "val=42"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0039",
+    "question_id": "sat-math-data-analysis-easy-b0028",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -2964,7 +2129,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0040",
+    "question_id": "sat-math-data-analysis-easy-b0029",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3038,7 +2203,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0041",
+    "question_id": "sat-math-data-analysis-easy-b0030",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3117,7 +2282,7 @@
     "answer_verification": "Apr"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0042",
+    "question_id": "sat-math-data-analysis-easy-b0031",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3195,7 +2360,7 @@
     "answer_verification": "val=19"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0043",
+    "question_id": "sat-math-data-analysis-easy-b0032",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3273,7 +2438,7 @@
     "answer_verification": "val=14"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0044",
+    "question_id": "sat-math-data-analysis-easy-b0033",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3347,7 +2512,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0045",
+    "question_id": "sat-math-data-analysis-easy-b0034",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3420,7 +2585,7 @@
     "answer_verification": "val=177"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0046",
+    "question_id": "sat-math-data-analysis-easy-b0035",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3494,7 +2659,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0047",
+    "question_id": "sat-math-data-analysis-easy-b0036",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3573,7 +2738,7 @@
     "answer_verification": "Jan"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0048",
+    "question_id": "sat-math-data-analysis-easy-b0037",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3647,7 +2812,7 @@
     "answer_verification": "r=4,val=4"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0049",
+    "question_id": "sat-math-data-analysis-easy-b0038",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3720,7 +2885,7 @@
     "answer_verification": "missing=43"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0050",
+    "question_id": "sat-math-data-analysis-easy-b0039",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3799,7 +2964,7 @@
     "answer_verification": "val=133"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0051",
+    "question_id": "sat-math-data-analysis-easy-b0040",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3878,7 +3043,7 @@
     "answer_verification": "A"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0052",
+    "question_id": "sat-math-data-analysis-easy-b0041",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -3957,7 +3122,7 @@
     "answer_verification": "val=47"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0053",
+    "question_id": "sat-math-data-analysis-easy-b0042",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4036,7 +3201,7 @@
     "answer_verification": "Thu"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0054",
+    "question_id": "sat-math-data-analysis-easy-b0043",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4115,7 +3280,7 @@
     "answer_verification": "Feb"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0055",
+    "question_id": "sat-math-data-analysis-easy-b0044",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4189,7 +3354,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0056",
+    "question_id": "sat-math-data-analysis-easy-b0045",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4263,7 +3428,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0057",
+    "question_id": "sat-math-data-analysis-easy-b0046",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4341,7 +3506,7 @@
     "answer_verification": "val=22"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0058",
+    "question_id": "sat-math-data-analysis-easy-b0047",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4420,7 +3585,7 @@
     "answer_verification": "D"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0059",
+    "question_id": "sat-math-data-analysis-easy-b0048",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4494,7 +3659,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0060",
+    "question_id": "sat-math-data-analysis-easy-b0049",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4568,7 +3733,7 @@
     "answer_verification": "r=6,val=6"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0061",
+    "question_id": "sat-math-data-analysis-easy-b0050",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4647,7 +3812,7 @@
     "answer_verification": "val=82"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0062",
+    "question_id": "sat-math-data-analysis-easy-b0051",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4725,7 +3890,7 @@
     "answer_verification": "val=19"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0063",
+    "question_id": "sat-math-data-analysis-easy-b0052",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4799,7 +3964,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0064",
+    "question_id": "sat-math-data-analysis-easy-b0053",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4873,7 +4038,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0065",
+    "question_id": "sat-math-data-analysis-easy-b0054",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -4946,7 +4111,7 @@
     "answer_verification": "missing=21"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0066",
+    "question_id": "sat-math-data-analysis-easy-b0055",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5025,7 +4190,7 @@
     "answer_verification": "South"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0067",
+    "question_id": "sat-math-data-analysis-easy-b0056",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5104,7 +4269,7 @@
     "answer_verification": "val=87"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0068",
+    "question_id": "sat-math-data-analysis-easy-b0057",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5178,7 +4343,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0069",
+    "question_id": "sat-math-data-analysis-easy-b0058",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5256,7 +4421,7 @@
     "answer_verification": "val=18"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0070",
+    "question_id": "sat-math-data-analysis-easy-b0059",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5334,7 +4499,7 @@
     "answer_verification": "val=4"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0071",
+    "question_id": "sat-math-data-analysis-easy-b0060",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5413,7 +4578,7 @@
     "answer_verification": "val=87"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0072",
+    "question_id": "sat-math-data-analysis-easy-b0061",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5487,7 +4652,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0073",
+    "question_id": "sat-math-data-analysis-easy-b0062",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5566,7 +4731,7 @@
     "answer_verification": "val=97"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0074",
+    "question_id": "sat-math-data-analysis-easy-b0063",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5645,7 +4810,7 @@
     "answer_verification": "val=96"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0075",
+    "question_id": "sat-math-data-analysis-easy-b0064",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5724,7 +4889,7 @@
     "answer_verification": "East"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0076",
+    "question_id": "sat-math-data-analysis-easy-b0065",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5798,7 +4963,7 @@
     "answer_verification": "r=9,val=9"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0077",
+    "question_id": "sat-math-data-analysis-easy-b0066",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5872,7 +5037,7 @@
     "answer_verification": "r=11,val=11"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0078",
+    "question_id": "sat-math-data-analysis-easy-b0067",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -5946,7 +5111,7 @@
     "answer_verification": "r=8,val=8"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0079",
+    "question_id": "sat-math-data-analysis-easy-b0068",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6020,7 +5185,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0080",
+    "question_id": "sat-math-data-analysis-easy-b0069",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6094,7 +5259,7 @@
     "answer_verification": "r=9,val=9"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0081",
+    "question_id": "sat-math-data-analysis-easy-b0070",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6167,7 +5332,7 @@
     "answer_verification": "missing=11"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0082",
+    "question_id": "sat-math-data-analysis-easy-b0071",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6246,7 +5411,7 @@
     "answer_verification": "val=106"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0083",
+    "question_id": "sat-math-data-analysis-easy-b0072",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6320,7 +5485,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0084",
+    "question_id": "sat-math-data-analysis-easy-b0073",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6394,7 +5559,7 @@
     "answer_verification": "r=7,val=7"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0085",
+    "question_id": "sat-math-data-analysis-easy-b0074",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6473,7 +5638,7 @@
     "answer_verification": "val=114"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0086",
+    "question_id": "sat-math-data-analysis-easy-b0075",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6551,7 +5716,7 @@
     "answer_verification": "val=26"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0087",
+    "question_id": "sat-math-data-analysis-easy-b0076",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6630,7 +5795,7 @@
     "answer_verification": "val=69"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0088",
+    "question_id": "sat-math-data-analysis-easy-b0077",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6708,7 +5873,7 @@
     "answer_verification": "val=11"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0089",
+    "question_id": "sat-math-data-analysis-easy-b0078",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6782,7 +5947,7 @@
     "answer_verification": "r=11,val=11"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0090",
+    "question_id": "sat-math-data-analysis-easy-b0079",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6855,7 +6020,7 @@
     "answer_verification": "val=68"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0091",
+    "question_id": "sat-math-data-analysis-easy-b0080",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -6929,7 +6094,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0092",
+    "question_id": "sat-math-data-analysis-easy-b0081",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7002,7 +6167,7 @@
     "answer_verification": "missing=42"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0093",
+    "question_id": "sat-math-data-analysis-easy-b0082",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7075,7 +6240,7 @@
     "answer_verification": "missing=44"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0094",
+    "question_id": "sat-math-data-analysis-easy-b0083",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7148,7 +6313,7 @@
     "answer_verification": "missing=57"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0095",
+    "question_id": "sat-math-data-analysis-easy-b0084",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7221,7 +6386,7 @@
     "answer_verification": "val=116"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0096",
+    "question_id": "sat-math-data-analysis-easy-b0085",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7295,7 +6460,7 @@
     "answer_verification": "r=15,val=15"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0097",
+    "question_id": "sat-math-data-analysis-easy-b0086",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7374,7 +6539,7 @@
     "answer_verification": "A"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0098",
+    "question_id": "sat-math-data-analysis-easy-b0087",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7447,7 +6612,7 @@
     "answer_verification": "val=39"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0099",
+    "question_id": "sat-math-data-analysis-easy-b0088",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7526,7 +6691,7 @@
     "answer_verification": "A"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0100",
+    "question_id": "sat-math-data-analysis-easy-b0089",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7605,7 +6770,7 @@
     "answer_verification": "C"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0101",
+    "question_id": "sat-math-data-analysis-easy-b0090",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7684,7 +6849,7 @@
     "answer_verification": "Wed"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0102",
+    "question_id": "sat-math-data-analysis-easy-b0091",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7758,7 +6923,7 @@
     "answer_verification": "r=12,val=12"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0103",
+    "question_id": "sat-math-data-analysis-easy-b0092",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7832,7 +6997,7 @@
     "answer_verification": "r=14,val=14"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0104",
+    "question_id": "sat-math-data-analysis-easy-b0093",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7911,7 +7076,7 @@
     "answer_verification": "A"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0105",
+    "question_id": "sat-math-data-analysis-easy-b0094",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -7985,7 +7150,7 @@
     "answer_verification": "r=9,val=9"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0106",
+    "question_id": "sat-math-data-analysis-easy-b0095",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8058,7 +7223,7 @@
     "answer_verification": "val=43"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0107",
+    "question_id": "sat-math-data-analysis-easy-b0096",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8132,7 +7297,7 @@
     "answer_verification": "r=12,val=12"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0108",
+    "question_id": "sat-math-data-analysis-easy-b0097",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8205,7 +7370,7 @@
     "answer_verification": "missing=34"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0109",
+    "question_id": "sat-math-data-analysis-easy-b0098",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8284,7 +7449,7 @@
     "answer_verification": "val=94"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0110",
+    "question_id": "sat-math-data-analysis-easy-b0099",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8358,7 +7523,7 @@
     "answer_verification": "r=5,val=5"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0111",
+    "question_id": "sat-math-data-analysis-easy-b0100",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8437,7 +7602,7 @@
     "answer_verification": "Otters"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0112",
+    "question_id": "sat-math-data-analysis-easy-b0101",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8510,7 +7675,7 @@
     "answer_verification": "missing=15"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0113",
+    "question_id": "sat-math-data-analysis-easy-b0102",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8583,7 +7748,7 @@
     "answer_verification": "missing=33"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0114",
+    "question_id": "sat-math-data-analysis-easy-b0103",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8656,7 +7821,7 @@
     "answer_verification": "val=39"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0115",
+    "question_id": "sat-math-data-analysis-easy-b0104",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8730,7 +7895,7 @@
     "answer_verification": "r=7,val=7"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0116",
+    "question_id": "sat-math-data-analysis-easy-b0105",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8803,7 +7968,7 @@
     "answer_verification": "val=35"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0117",
+    "question_id": "sat-math-data-analysis-easy-b0106",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8876,7 +8041,7 @@
     "answer_verification": "missing=12"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0118",
+    "question_id": "sat-math-data-analysis-easy-b0107",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -8949,7 +8114,7 @@
     "answer_verification": "val=45"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0119",
+    "question_id": "sat-math-data-analysis-easy-b0108",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9023,7 +8188,7 @@
     "answer_verification": "r=2,val=2"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0120",
+    "question_id": "sat-math-data-analysis-easy-b0109",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9102,7 +8267,7 @@
     "answer_verification": "val=46"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0121",
+    "question_id": "sat-math-data-analysis-easy-b0110",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9181,7 +8346,7 @@
     "answer_verification": "Mar"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0122",
+    "question_id": "sat-math-data-analysis-easy-b0111",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9255,7 +8420,7 @@
     "answer_verification": "r=8,val=8"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0123",
+    "question_id": "sat-math-data-analysis-easy-b0112",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9334,7 +8499,7 @@
     "answer_verification": "South"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0124",
+    "question_id": "sat-math-data-analysis-easy-b0113",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9407,7 +8572,7 @@
     "answer_verification": "missing=26"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0125",
+    "question_id": "sat-math-data-analysis-easy-b0114",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9485,7 +8650,7 @@
     "answer_verification": "val=21"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0126",
+    "question_id": "sat-math-data-analysis-easy-b0115",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9559,7 +8724,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0127",
+    "question_id": "sat-math-data-analysis-easy-b0116",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9638,7 +8803,7 @@
     "answer_verification": "Lynx"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0128",
+    "question_id": "sat-math-data-analysis-easy-b0117",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9712,7 +8877,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0129",
+    "question_id": "sat-math-data-analysis-easy-b0118",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9786,7 +8951,7 @@
     "answer_verification": "r=11,val=11"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0130",
+    "question_id": "sat-math-data-analysis-easy-b0119",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9860,7 +9025,7 @@
     "answer_verification": "r=11,val=11"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0131",
+    "question_id": "sat-math-data-analysis-easy-b0120",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -9933,7 +9098,7 @@
     "answer_verification": "val=54"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0132",
+    "question_id": "sat-math-data-analysis-easy-b0121",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10012,7 +9177,7 @@
     "answer_verification": "val=116"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0133",
+    "question_id": "sat-math-data-analysis-easy-b0122",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10086,7 +9251,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0134",
+    "question_id": "sat-math-data-analysis-easy-b0123",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10165,7 +9330,7 @@
     "answer_verification": "Lynx"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0135",
+    "question_id": "sat-math-data-analysis-easy-b0124",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10239,7 +9404,7 @@
     "answer_verification": "r=7,val=7"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0136",
+    "question_id": "sat-math-data-analysis-easy-b0125",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10313,7 +9478,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0137",
+    "question_id": "sat-math-data-analysis-easy-b0126",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10392,7 +9557,7 @@
     "answer_verification": "West"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0138",
+    "question_id": "sat-math-data-analysis-easy-b0127",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10465,7 +9630,7 @@
     "answer_verification": "val=59"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0139",
+    "question_id": "sat-math-data-analysis-easy-b0128",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10544,7 +9709,7 @@
     "answer_verification": "Jan"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0140",
+    "question_id": "sat-math-data-analysis-easy-b0129",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10617,7 +9782,7 @@
     "answer_verification": "val=60"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0141",
+    "question_id": "sat-math-data-analysis-easy-b0130",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10690,7 +9855,7 @@
     "answer_verification": "missing=42"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0142",
+    "question_id": "sat-math-data-analysis-easy-b0131",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10769,7 +9934,7 @@
     "answer_verification": "val=140"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0143",
+    "question_id": "sat-math-data-analysis-easy-b0132",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10847,7 +10012,7 @@
     "answer_verification": "val=36"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0144",
+    "question_id": "sat-math-data-analysis-easy-b0133",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -10926,7 +10091,7 @@
     "answer_verification": "val=79"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0145",
+    "question_id": "sat-math-data-analysis-easy-b0134",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11004,7 +10169,7 @@
     "answer_verification": "val=21"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0146",
+    "question_id": "sat-math-data-analysis-easy-b0135",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11077,7 +10242,7 @@
     "answer_verification": "missing=58"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0147",
+    "question_id": "sat-math-data-analysis-easy-b0136",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11155,7 +10320,7 @@
     "answer_verification": "val=7"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0148",
+    "question_id": "sat-math-data-analysis-easy-b0137",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11229,7 +10394,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0149",
+    "question_id": "sat-math-data-analysis-easy-b0138",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11303,7 +10468,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0150",
+    "question_id": "sat-math-data-analysis-easy-b0139",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11376,7 +10541,7 @@
     "answer_verification": "missing=52"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0151",
+    "question_id": "sat-math-data-analysis-easy-b0140",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11449,7 +10614,7 @@
     "answer_verification": "val=57"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0152",
+    "question_id": "sat-math-data-analysis-easy-b0141",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11523,7 +10688,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0153",
+    "question_id": "sat-math-data-analysis-easy-b0142",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11596,7 +10761,7 @@
     "answer_verification": "val=12"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0154",
+    "question_id": "sat-math-data-analysis-easy-b0143",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11675,7 +10840,7 @@
     "answer_verification": "South"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0155",
+    "question_id": "sat-math-data-analysis-easy-b0144",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11753,7 +10918,7 @@
     "answer_verification": "val=6"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0156",
+    "question_id": "sat-math-data-analysis-easy-b0145",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11826,7 +10991,7 @@
     "answer_verification": "val=47"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0157",
+    "question_id": "sat-math-data-analysis-easy-b0146",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11904,7 +11069,7 @@
     "answer_verification": "val=35"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0158",
+    "question_id": "sat-math-data-analysis-easy-b0147",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -11977,7 +11142,7 @@
     "answer_verification": "missing=20"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0159",
+    "question_id": "sat-math-data-analysis-easy-b0148",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12051,7 +11216,7 @@
     "answer_verification": "r=12,val=12"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0160",
+    "question_id": "sat-math-data-analysis-easy-b0149",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12125,7 +11290,7 @@
     "answer_verification": "r=9,val=9"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0161",
+    "question_id": "sat-math-data-analysis-easy-b0150",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12204,7 +11369,7 @@
     "answer_verification": "val=82"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0162",
+    "question_id": "sat-math-data-analysis-easy-b0151",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12278,7 +11443,7 @@
     "answer_verification": "r=3,val=3"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0163",
+    "question_id": "sat-math-data-analysis-easy-b0152",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12351,7 +11516,7 @@
     "answer_verification": "missing=28"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0164",
+    "question_id": "sat-math-data-analysis-easy-b0153",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12429,7 +11594,7 @@
     "answer_verification": "val=11"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0165",
+    "question_id": "sat-math-data-analysis-easy-b0154",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12502,7 +11667,7 @@
     "answer_verification": "val=46"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0166",
+    "question_id": "sat-math-data-analysis-easy-b0155",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12581,7 +11746,7 @@
     "answer_verification": "val=124"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0167",
+    "question_id": "sat-math-data-analysis-easy-b0156",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12592,31 +11757,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "graphs",
-    "prompt": "The table shows a constant rate. What is the rate, in gallons per minute?",
+    "prompt": "The table shows a constant rate. What is the rate, in dollars per item?",
     "choices": [
       {
         "id": "A",
-        "text": "39",
-        "rationale": "Divide by the change in the first column too."
-      },
-      {
-        "id": "B",
         "text": "13",
         "rationale": "Correct."
       },
       {
+        "id": "B",
+        "text": "1/13",
+        "rationale": "Divide the second column by the first, not the reverse."
+      },
+      {
         "id": "C",
-        "text": "26",
-        "rationale": "Recheck the division."
+        "text": "39",
+        "rationale": "That is a value from the table, not the rate."
       },
       {
         "id": "D",
-        "text": "1/13",
-        "rationale": "Divide the second column by the first, not the reverse."
+        "text": "14",
+        "rationale": "Arithmetic slip."
       }
     ],
-    "correct_choice": "B",
-    "explanation": "Divide any row: 13 ÷ 1 = 13 gallons per minute.",
+    "correct_choice": "A",
+    "explanation": "Divide any row: 39 ÷ 3 = 13 dollars per item.",
     "estimated_time_seconds": 75,
     "tags": [
       "data",
@@ -12629,25 +11794,25 @@
       "table": {
         "caption": "Recorded values",
         "headers": [
-          "Minutes",
-          "Gallons pumped"
+          "Number of items",
+          "Cost (dollars)"
         ],
         "rows": [
           [
-            "1",
-            "13"
+            "3",
+            "39"
           ],
           [
             "4",
             "52"
           ],
           [
-            "5",
-            "65"
+            "6",
+            "78"
           ],
           [
-            "8",
-            "104"
+            "7",
+            "91"
           ]
         ]
       }
@@ -12655,7 +11820,7 @@
     "answer_verification": "r=13,val=13"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0168",
+    "question_id": "sat-math-data-analysis-easy-b0157",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12666,31 +11831,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "The table groups 42 items by price (dollars). How many items have a price of at least 180?",
+    "prompt": "The table groups 44 commuters by minutes. How many commuters have a minutes of at least 100?",
     "choices": [
       {
         "id": "A",
-        "text": "36",
+        "text": "32",
         "rationale": "That counts the intervals below the cutoff."
       },
       {
         "id": "B",
-        "text": "16",
-        "rationale": "The interval 160–179 is below the cutoff."
+        "text": "22",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
       },
       {
         "id": "C",
-        "text": "6",
-        "rationale": "Correct."
+        "text": "20",
+        "rationale": "The interval 80–99 is below the cutoff."
       },
       {
         "id": "D",
-        "text": "10",
-        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+        "text": "12",
+        "rationale": "Correct."
       }
     ],
-    "correct_choice": "C",
-    "explanation": "Add the frequencies of the intervals from 180–199 upward: 6 = 6.",
+    "correct_choice": "D",
+    "explanation": "Add the frequencies of the intervals from 100–119 upward: 12 = 12.",
     "estimated_time_seconds": 80,
     "tags": [
       "data",
@@ -12703,37 +11868,37 @@
       "table": {
         "caption": "Frequency table",
         "headers": [
-          "Price (dollars)",
-          "Number of items"
+          "Minutes",
+          "Number of commuters"
         ],
         "rows": [
+          [
+            "20–39",
+            "12"
+          ],
+          [
+            "40–59",
+            "9"
+          ],
+          [
+            "60–79",
+            "3"
+          ],
+          [
+            "80–99",
+            "8"
+          ],
           [
             "100–119",
-            "5"
-          ],
-          [
-            "120–139",
-            "7"
-          ],
-          [
-            "140–159",
-            "14"
-          ],
-          [
-            "160–179",
-            "10"
-          ],
-          [
-            "180–199",
-            "6"
+            "12"
           ]
         ]
       }
     },
-    "answer_verification": "val=6"
+    "answer_verification": "val=12"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0169",
+    "question_id": "sat-math-data-analysis-easy-b0158",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -12744,110 +11909,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "The table shows bikes for 4 stores split into online and in store (301 in all). What is the combined total for North?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "83",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "63",
-        "rationale": "Add the two columns; don't subtract."
-      },
-      {
-        "id": "C",
-        "text": "10",
-        "rationale": "That is only the in store value."
-      },
-      {
-        "id": "D",
-        "text": "73",
-        "rationale": "That is only the online value."
-      }
-    ],
-    "correct_choice": "A",
-    "explanation": "73 + 10 = 83.",
-    "estimated_time_seconds": 70,
-    "tags": [
-      "data",
-      "table",
-      "two-series",
-      "family:da_two_series"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Bike sales by store by online and in store",
-        "headers": [
-          "Store",
-          "Online",
-          "In store"
-        ],
-        "rows": [
-          [
-            "North",
-            "73",
-            "10"
-          ],
-          [
-            "South",
-            "55",
-            "22"
-          ],
-          [
-            "East",
-            "66",
-            "27"
-          ],
-          [
-            "West",
-            "37",
-            "11"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "val=83"
-  },
-  {
-    "question_id": "sat-math-data-analysis-easy-b0170",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "data_analysis",
-    "lesson_id": "sat-math-data-analysis-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "tables",
-    "prompt": "The table shows the number of centimeters for 4 plants in 2021 and 2022 (a total of 141 in 2021 and 110 in 2022). Which plant had the greatest increase in centimeters from 2021 to 2022?",
+    "prompt": "The table shows the number of centimeters for 4 plants in 2023 and 2024 (a total of 225 in 2023 and 226 in 2024). Which plant had the greatest increase in centimeters from 2023 to 2024?",
     "choices": [
       {
         "id": "A",
         "text": "D",
-        "rationale": "D changed by −25, which is not the greatest increase."
+        "rationale": "D changed by −16, which is not the greatest increase."
       },
       {
         "id": "B",
-        "text": "B",
-        "rationale": "B changed by −21, which is not the greatest increase."
+        "text": "C",
+        "rationale": "C changed by 3, which is not the greatest increase."
       },
       {
         "id": "C",
-        "text": "C",
-        "rationale": "C changed by −10, which is not the greatest increase."
+        "text": "A",
+        "rationale": "A changed by 4, which is not the greatest increase."
       },
       {
         "id": "D",
-        "text": "A",
+        "text": "B",
         "rationale": "Correct."
       }
     ],
     "correct_choice": "D",
-    "explanation": "Compute 2022 − 2021 for each row; A increased by 25, the most.",
+    "explanation": "Compute 2024 − 2023 for each row; B increased by 10, the most.",
     "estimated_time_seconds": 80,
     "tags": [
       "data",
@@ -12858,277 +11944,40 @@
     "stimulus": {
       "type": "table",
       "table": {
-        "caption": "Plant heights, 2021 and 2022",
+        "caption": "Plant heights, 2023 and 2024",
         "headers": [
           "Plant",
-          "2021",
-          "2022"
+          "2023",
+          "2024"
         ],
         "rows": [
           [
             "A",
-            "33",
-            "58"
+            "37",
+            "41"
           ],
           [
             "B",
-            "31",
-            "10"
-          ],
-          [
-            "C",
-            "41",
-            "31"
-          ],
-          [
-            "D",
-            "36",
-            "11"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "A"
-  },
-  {
-    "question_id": "sat-math-data-analysis-easy-b0171",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "data_analysis",
-    "lesson_id": "sat-math-data-analysis-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "tables",
-    "prompt": "The table shows centimeters for 4 plants split into home and away (426 in all). What is the combined total for C?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "25",
-        "rationale": "That is only the home value."
-      },
-      {
-        "id": "B",
-        "text": "41",
-        "rationale": "Add the two columns; don't subtract."
-      },
-      {
-        "id": "C",
-        "text": "66",
-        "rationale": "That is only the away value."
-      },
-      {
-        "id": "D",
-        "text": "91",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "25 + 66 = 91.",
-    "estimated_time_seconds": 70,
-    "tags": [
-      "data",
-      "table",
-      "two-series",
-      "family:da_two_series"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Plant heights by home and away",
-        "headers": [
-          "Plant",
-          "Home",
-          "Away"
-        ],
-        "rows": [
-          [
-            "A",
-            "29",
-            "58"
-          ],
-          [
-            "B",
-            "67",
-            "30"
-          ],
-          [
-            "C",
-            "25",
-            "66"
-          ],
-          [
-            "D",
-            "80",
-            "71"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "val=91"
-  },
-  {
-    "question_id": "sat-math-data-analysis-easy-b0172",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "data_analysis",
-    "lesson_id": "sat-math-data-analysis-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "tables",
-    "prompt": "The table shows tickets for 4 days split into morning and afternoon (405 in all). What is the combined total for Wed?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "68",
-        "rationale": "That is only the afternoon value."
-      },
-      {
-        "id": "B",
-        "text": "73",
-        "rationale": "That is only the morning value."
-      },
-      {
-        "id": "C",
-        "text": "141",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "5",
-        "rationale": "Add the two columns; don't subtract."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "73 + 68 = 141.",
-    "estimated_time_seconds": 70,
-    "tags": [
-      "data",
-      "table",
-      "two-series",
-      "family:da_two_series"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Daily ticket sales by morning and afternoon",
-        "headers": [
-          "Day",
-          "Morning",
-          "Afternoon"
-        ],
-        "rows": [
-          [
-            "Mon",
-            "51",
-            "66"
-          ],
-          [
-            "Tue",
-            "31",
-            "47"
-          ],
-          [
-            "Wed",
-            "73",
-            "68"
-          ],
-          [
-            "Thu",
-            "50",
-            "19"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "val=141"
-  },
-  {
-    "question_id": "sat-math-data-analysis-easy-b0173",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "data_analysis",
-    "lesson_id": "sat-math-data-analysis-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "tables",
-    "prompt": "The table shows bikes for 4 stores split into online and in store (287 in all). What is the combined total for East?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "17",
-        "rationale": "That is only the in store value."
-      },
-      {
-        "id": "B",
-        "text": "14",
-        "rationale": "That is only the online value."
-      },
-      {
-        "id": "C",
-        "text": "31",
-        "rationale": "Correct."
-      },
-      {
-        "id": "D",
-        "text": "3",
-        "rationale": "Add the two columns; don't subtract."
-      }
-    ],
-    "correct_choice": "C",
-    "explanation": "14 + 17 = 31.",
-    "estimated_time_seconds": 70,
-    "tags": [
-      "data",
-      "table",
-      "two-series",
-      "family:da_two_series"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Bike sales by store by online and in store",
-        "headers": [
-          "Store",
-          "Online",
-          "In store"
-        ],
-        "rows": [
-          [
-            "North",
             "43",
-            "61"
+            "53"
           ],
           [
-            "South",
-            "25",
-            "63"
+            "C",
+            "73",
+            "76"
           ],
           [
-            "East",
-            "14",
-            "17"
-          ],
-          [
-            "West",
-            "24",
-            "40"
+            "D",
+            "72",
+            "56"
           ]
         ]
       }
     },
-    "answer_verification": "val=31"
+    "answer_verification": "B"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0174",
+    "question_id": "sat-math-data-analysis-easy-b0159",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -13139,182 +11988,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "tables",
-    "prompt": "The table groups 45 members by age. How many members have a age of at least 20?",
+    "prompt": "The table shows the number of points for 4 teams in 2021 and 2022 (a total of 195 in 2021 and 160 in 2022). Which team had the greatest increase in points from 2021 to 2022?",
     "choices": [
       {
         "id": "A",
-        "text": "8",
-        "rationale": "Include all higher intervals too."
+        "text": "Otters",
+        "rationale": "Otters changed by −15, which is not the greatest increase."
       },
       {
         "id": "B",
-        "text": "37",
-        "rationale": "That excludes only one interval."
+        "text": "Hawks",
+        "rationale": "Hawks changed by −19, which is not the greatest increase."
       },
       {
         "id": "C",
-        "text": "24",
-        "rationale": "That counts the intervals below the cutoff."
+        "text": "Bears",
+        "rationale": "Bears changed by −17, which is not the greatest increase."
       },
       {
         "id": "D",
-        "text": "21",
-        "rationale": "Correct."
-      }
-    ],
-    "correct_choice": "D",
-    "explanation": "Add the frequencies of the intervals from 20–24 upward: 8 + 2 + 11 = 21.",
-    "estimated_time_seconds": 80,
-    "tags": [
-      "data",
-      "table",
-      "histogram",
-      "family:da_interval_table"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Frequency table",
-        "headers": [
-          "Age",
-          "Number of members"
-        ],
-        "rows": [
-          [
-            "10–14",
-            "13"
-          ],
-          [
-            "15–19",
-            "11"
-          ],
-          [
-            "20–24",
-            "8"
-          ],
-          [
-            "25–29",
-            "2"
-          ],
-          [
-            "30–34",
-            "11"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "val=21"
-  },
-  {
-    "question_id": "sat-math-data-analysis-easy-b0175",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "data_analysis",
-    "lesson_id": "sat-math-data-analysis-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "tables",
-    "prompt": "According to the table, which is the greatest number of millimeters of rain recorded for a single month?",
-    "choices": [
-      {
-        "id": "A",
-        "text": "31",
-        "rationale": "This is the average, not the maximum."
-      },
-      {
-        "id": "B",
-        "text": "42",
-        "rationale": "Correct."
-      },
-      {
-        "id": "C",
-        "text": "19",
-        "rationale": "This is the least value."
-      },
-      {
-        "id": "D",
-        "text": "33",
-        "rationale": "This is the second-largest value."
-      }
-    ],
-    "correct_choice": "B",
-    "explanation": "The largest value in the table is 42 (Apr).",
-    "estimated_time_seconds": 70,
-    "tags": [
-      "data",
-      "table",
-      "family:da_read"
-    ],
-    "stimulus": {
-      "type": "table",
-      "table": {
-        "caption": "Monthly rainfall",
-        "headers": [
-          "Month",
-          "Rainfall (mm)"
-        ],
-        "rows": [
-          [
-            "Jan",
-            "33"
-          ],
-          [
-            "Feb",
-            "19"
-          ],
-          [
-            "Mar",
-            "32"
-          ],
-          [
-            "Apr",
-            "42"
-          ]
-        ]
-      }
-    },
-    "answer_verification": "val=42"
-  },
-  {
-    "question_id": "sat-math-data-analysis-easy-b0176",
-    "exam_id": "sat",
-    "exam_name": "SAT",
-    "domain": "math",
-    "section": "problem_solving_data",
-    "skill": "data_analysis",
-    "lesson_id": "sat-math-data-analysis-easy",
-    "difficulty": "easy",
-    "version": "1.0.0",
-    "question_type": "data_interpretation",
-    "subskill": "tables",
-    "prompt": "The table shows the number of points for 4 teams in 2021 and 2022 (a total of 228 in 2021 and 205 in 2022). Which team had the greatest increase in points from 2021 to 2022?",
-    "choices": [
-      {
-        "id": "A",
         "text": "Lynx",
         "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "Otters",
-        "rationale": "Otters changed by −17, which is not the greatest increase."
-      },
-      {
-        "id": "C",
-        "text": "Hawks",
-        "rationale": "Hawks changed by 9, which is not the greatest increase."
-      },
-      {
-        "id": "D",
-        "text": "Bears",
-        "rationale": "Bears changed by −25, which is not the greatest increase."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Compute 2022 − 2021 for each row; Lynx increased by 10, the most.",
+    "correct_choice": "D",
+    "explanation": "Compute 2022 − 2021 for each row; Lynx increased by 16, the most.",
     "estimated_time_seconds": 80,
     "tags": [
       "data",
@@ -13334,23 +12032,23 @@
         "rows": [
           [
             "Hawks",
-            "54",
-            "63"
+            "33",
+            "14"
           ],
           [
             "Bears",
-            "49",
-            "24"
+            "77",
+            "60"
           ],
           [
             "Otters",
-            "52",
-            "35"
+            "20",
+            "5"
           ],
           [
             "Lynx",
-            "73",
-            "83"
+            "65",
+            "81"
           ]
         ]
       }
@@ -13358,7 +12056,475 @@
     "answer_verification": "Lynx"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0177",
+    "question_id": "sat-math-data-analysis-easy-b0160",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "data_analysis",
+    "lesson_id": "sat-math-data-analysis-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "tables",
+    "prompt": "The table groups 34 items by price (dollars). How many items have a price of at least 70?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "23",
+        "rationale": "That excludes only one interval."
+      },
+      {
+        "id": "B",
+        "text": "11",
+        "rationale": "Include all higher intervals too."
+      },
+      {
+        "id": "C",
+        "text": "27",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "7",
+        "rationale": "That counts the intervals below the cutoff."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "Add the frequencies of the intervals from 70–89 upward: 11 + 5 + 4 + 7 = 27.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "data",
+      "table",
+      "histogram",
+      "family:da_interval_table"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Frequency table",
+        "headers": [
+          "Price (dollars)",
+          "Number of items"
+        ],
+        "rows": [
+          [
+            "50–69",
+            "7"
+          ],
+          [
+            "70–89",
+            "11"
+          ],
+          [
+            "90–109",
+            "5"
+          ],
+          [
+            "110–129",
+            "4"
+          ],
+          [
+            "130–149",
+            "7"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "val=27"
+  },
+  {
+    "question_id": "sat-math-data-analysis-easy-b0161",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "data_analysis",
+    "lesson_id": "sat-math-data-analysis-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "tables",
+    "prompt": "The table shows tickets for 4 days split into year 1 and year 2 (432 in all). What is the combined total for Thu?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "37",
+        "rationale": "Add the two columns; don't subtract."
+      },
+      {
+        "id": "B",
+        "text": "30",
+        "rationale": "That is only the year 2 value."
+      },
+      {
+        "id": "C",
+        "text": "97",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "67",
+        "rationale": "That is only the year 1 value."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "67 + 30 = 97.",
+    "estimated_time_seconds": 70,
+    "tags": [
+      "data",
+      "table",
+      "two-series",
+      "family:da_two_series"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Daily ticket sales by year 1 and year 2",
+        "headers": [
+          "Day",
+          "Year 1",
+          "Year 2"
+        ],
+        "rows": [
+          [
+            "Mon",
+            "79",
+            "25"
+          ],
+          [
+            "Tue",
+            "64",
+            "80"
+          ],
+          [
+            "Wed",
+            "29",
+            "58"
+          ],
+          [
+            "Thu",
+            "67",
+            "30"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "val=97"
+  },
+  {
+    "question_id": "sat-math-data-analysis-easy-b0162",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "data_analysis",
+    "lesson_id": "sat-math-data-analysis-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "tables",
+    "prompt": "The table shows the number of points recorded for 4 teams, 193 in all. Which of the following statements is supported by the data?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Lynx recorded more points than any other team.",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "Hawks recorded more points than any other team.",
+        "rationale": "Hawks has the least value, 23."
+      },
+      {
+        "id": "C",
+        "text": "The total number of points for all 4 teams is 213.",
+        "rationale": "The values sum to 193."
+      },
+      {
+        "id": "D",
+        "text": "Bears recorded the greatest number of points of any team.",
+        "rationale": "Lynx has 88, more than Bears."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Lynx has the largest value in the table (88).",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "data",
+      "table",
+      "statement",
+      "family:da_statement"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Points scored",
+        "headers": [
+          "Team",
+          "Points scored"
+        ],
+        "rows": [
+          [
+            "Hawks",
+            "23"
+          ],
+          [
+            "Bears",
+            "51"
+          ],
+          [
+            "Otters",
+            "31"
+          ],
+          [
+            "Lynx",
+            "88"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "statement"
+  },
+  {
+    "question_id": "sat-math-data-analysis-easy-b0163",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "data_analysis",
+    "lesson_id": "sat-math-data-analysis-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "tables",
+    "prompt": "The table shows the number of points for 4 teams in 2023 and 2024 (a total of 169 in 2023 and 159 in 2024). Which team had the greatest increase in points from 2023 to 2024?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Otters",
+        "rationale": "Otters changed by −17, which is not the greatest increase."
+      },
+      {
+        "id": "B",
+        "text": "Bears",
+        "rationale": "Bears changed by −15, which is not the greatest increase."
+      },
+      {
+        "id": "C",
+        "text": "Hawks",
+        "rationale": "Hawks changed by 7, which is not the greatest increase."
+      },
+      {
+        "id": "D",
+        "text": "Lynx",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Compute 2024 − 2023 for each row; Lynx increased by 15, the most.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "data",
+      "table",
+      "compare",
+      "family:da_two_year"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Points scored, 2023 and 2024",
+        "headers": [
+          "Team",
+          "2023",
+          "2024"
+        ],
+        "rows": [
+          [
+            "Hawks",
+            "24",
+            "31"
+          ],
+          [
+            "Bears",
+            "77",
+            "62"
+          ],
+          [
+            "Otters",
+            "31",
+            "14"
+          ],
+          [
+            "Lynx",
+            "37",
+            "52"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "Lynx"
+  },
+  {
+    "question_id": "sat-math-data-analysis-easy-b0164",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "data_analysis",
+    "lesson_id": "sat-math-data-analysis-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "tables",
+    "prompt": "The table shows tickets for 4 days split into morning and afternoon (287 in all). What is the combined total for Mon?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "3",
+        "rationale": "Add the two columns; don't subtract."
+      },
+      {
+        "id": "B",
+        "text": "17",
+        "rationale": "That is only the afternoon value."
+      },
+      {
+        "id": "C",
+        "text": "14",
+        "rationale": "That is only the morning value."
+      },
+      {
+        "id": "D",
+        "text": "31",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "14 + 17 = 31.",
+    "estimated_time_seconds": 70,
+    "tags": [
+      "data",
+      "table",
+      "two-series",
+      "family:da_two_series"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Daily ticket sales by morning and afternoon",
+        "headers": [
+          "Day",
+          "Morning",
+          "Afternoon"
+        ],
+        "rows": [
+          [
+            "Mon",
+            "14",
+            "17"
+          ],
+          [
+            "Tue",
+            "24",
+            "40"
+          ],
+          [
+            "Wed",
+            "61",
+            "15"
+          ],
+          [
+            "Thu",
+            "63",
+            "53"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "val=31"
+  },
+  {
+    "question_id": "sat-math-data-analysis-easy-b0165",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "data_analysis",
+    "lesson_id": "sat-math-data-analysis-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "tables",
+    "prompt": "The table shows millimeters of rain for 4 months split into morning and afternoon (290 in all). What is the combined total for Mar?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "73",
+        "rationale": "That is only the morning value."
+      },
+      {
+        "id": "B",
+        "text": "89",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "16",
+        "rationale": "That is only the afternoon value."
+      },
+      {
+        "id": "D",
+        "text": "57",
+        "rationale": "Add the two columns; don't subtract."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "73 + 16 = 89.",
+    "estimated_time_seconds": 70,
+    "tags": [
+      "data",
+      "table",
+      "two-series",
+      "family:da_two_series"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Monthly rainfall by morning and afternoon",
+        "headers": [
+          "Month",
+          "Morning",
+          "Afternoon"
+        ],
+        "rows": [
+          [
+            "Jan",
+            "59",
+            "21"
+          ],
+          [
+            "Feb",
+            "17",
+            "54"
+          ],
+          [
+            "Mar",
+            "73",
+            "16"
+          ],
+          [
+            "Apr",
+            "39",
+            "11"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "val=89"
+  },
+  {
+    "question_id": "sat-math-data-analysis-easy-b0166",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -13369,31 +12535,31 @@
     "version": "1.0.0",
     "question_type": "data_interpretation",
     "subskill": "graphs",
-    "prompt": "The table shows a constant rate. What is the rate, in miles per hour?",
+    "prompt": "The table shows a constant rate. What is the rate, in dollars per item?",
     "choices": [
       {
         "id": "A",
-        "text": "2",
-        "rationale": "Correct."
-      },
-      {
-        "id": "B",
-        "text": "1/2",
+        "text": "1/14",
         "rationale": "Divide the second column by the first, not the reverse."
       },
       {
+        "id": "B",
+        "text": "14",
+        "rationale": "Correct."
+      },
+      {
         "id": "C",
-        "text": "3",
-        "rationale": "Arithmetic slip."
+        "text": "42",
+        "rationale": "Divide by the change in the first column too."
       },
       {
         "id": "D",
-        "text": "4",
+        "text": "28",
         "rationale": "Recheck the division."
       }
     ],
-    "correct_choice": "A",
-    "explanation": "Divide any row: 2 ÷ 1 = 2 miles per hour.",
+    "correct_choice": "B",
+    "explanation": "Divide any row: 14 ÷ 1 = 14 dollars per item.",
     "estimated_time_seconds": 75,
     "tags": [
       "data",
@@ -13406,33 +12572,185 @@
       "table": {
         "caption": "Recorded values",
         "headers": [
-          "Time (hours)",
-          "Distance (miles)"
+          "Number of items",
+          "Cost (dollars)"
         ],
         "rows": [
           [
             "1",
-            "2"
+            "14"
           ],
           [
-            "2",
-            "4"
-          ],
-          [
-            "3",
-            "6"
+            "4",
+            "56"
           ],
           [
             "5",
-            "10"
+            "70"
+          ],
+          [
+            "6",
+            "84"
           ]
         ]
       }
     },
-    "answer_verification": "r=2,val=2"
+    "answer_verification": "r=14,val=14"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0178",
+    "question_id": "sat-math-data-analysis-easy-b0167",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "data_analysis",
+    "lesson_id": "sat-math-data-analysis-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "tables",
+    "prompt": "The table shows millimeters of rain for 4 months split into home and away (370 in all). What is the combined total for Apr?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "36",
+        "rationale": "That is only the away value."
+      },
+      {
+        "id": "B",
+        "text": "42",
+        "rationale": "That is only the home value."
+      },
+      {
+        "id": "C",
+        "text": "6",
+        "rationale": "Add the two columns; don't subtract."
+      },
+      {
+        "id": "D",
+        "text": "78",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "42 + 36 = 78.",
+    "estimated_time_seconds": 70,
+    "tags": [
+      "data",
+      "table",
+      "two-series",
+      "family:da_two_series"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Monthly rainfall by home and away",
+        "headers": [
+          "Month",
+          "Home",
+          "Away"
+        ],
+        "rows": [
+          [
+            "Jan",
+            "80",
+            "50"
+          ],
+          [
+            "Feb",
+            "21",
+            "68"
+          ],
+          [
+            "Mar",
+            "42",
+            "31"
+          ],
+          [
+            "Apr",
+            "42",
+            "36"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "val=78"
+  },
+  {
+    "question_id": "sat-math-data-analysis-easy-b0168",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "data_analysis",
+    "lesson_id": "sat-math-data-analysis-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "tables",
+    "prompt": "According to the table, which is the greatest number of millimeters of rain recorded for a single month?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "44",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "10",
+        "rationale": "This is the least value."
+      },
+      {
+        "id": "C",
+        "text": "29",
+        "rationale": "This is the average, not the maximum."
+      },
+      {
+        "id": "D",
+        "text": "42",
+        "rationale": "This is the second-largest value."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "The largest value in the table is 44 (Feb).",
+    "estimated_time_seconds": 70,
+    "tags": [
+      "data",
+      "table",
+      "family:da_read"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Monthly rainfall",
+        "headers": [
+          "Month",
+          "Rainfall (mm)"
+        ],
+        "rows": [
+          [
+            "Jan",
+            "20"
+          ],
+          [
+            "Feb",
+            "44"
+          ],
+          [
+            "Mar",
+            "10"
+          ],
+          [
+            "Apr",
+            "42"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "val=44"
+  },
+  {
+    "question_id": "sat-math-data-analysis-easy-b0169",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -13511,7 +12829,7 @@
     "answer_verification": "val=49"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0179",
+    "question_id": "sat-math-data-analysis-easy-b0170",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -13584,7 +12902,7 @@
     "answer_verification": "missing=43"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0180",
+    "question_id": "sat-math-data-analysis-easy-b0171",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -13658,7 +12976,7 @@
     "answer_verification": "r=2,val=2"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0181",
+    "question_id": "sat-math-data-analysis-easy-b0172",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -13731,7 +13049,7 @@
     "answer_verification": "missing=50"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0182",
+    "question_id": "sat-math-data-analysis-easy-b0173",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -13804,7 +13122,7 @@
     "answer_verification": "missing=51"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0183",
+    "question_id": "sat-math-data-analysis-easy-b0174",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -13878,7 +13196,7 @@
     "answer_verification": "r=11,val=11"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0184",
+    "question_id": "sat-math-data-analysis-easy-b0175",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -13952,7 +13270,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0185",
+    "question_id": "sat-math-data-analysis-easy-b0176",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -14030,7 +13348,7 @@
     "answer_verification": "val=5"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0186",
+    "question_id": "sat-math-data-analysis-easy-b0177",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -14109,7 +13427,7 @@
     "answer_verification": "val=89"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0187",
+    "question_id": "sat-math-data-analysis-easy-b0178",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -14187,7 +13505,7 @@
     "answer_verification": "val=28"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0188",
+    "question_id": "sat-math-data-analysis-easy-b0179",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -14261,7 +13579,7 @@
     "answer_verification": "r=5,val=5"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0189",
+    "question_id": "sat-math-data-analysis-easy-b0180",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -14334,7 +13652,7 @@
     "answer_verification": "missing=42"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0190",
+    "question_id": "sat-math-data-analysis-easy-b0181",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -14412,7 +13730,7 @@
     "answer_verification": "val=20"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0191",
+    "question_id": "sat-math-data-analysis-easy-b0182",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -14485,7 +13803,7 @@
     "answer_verification": "val=43"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0192",
+    "question_id": "sat-math-data-analysis-easy-b0183",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -14559,7 +13877,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0193",
+    "question_id": "sat-math-data-analysis-easy-b0184",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -14638,7 +13956,7 @@
     "answer_verification": "C"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0194",
+    "question_id": "sat-math-data-analysis-easy-b0185",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -14717,7 +14035,7 @@
     "answer_verification": "val=123"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0195",
+    "question_id": "sat-math-data-analysis-easy-b0186",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -14790,7 +14108,7 @@
     "answer_verification": "val=12"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0196",
+    "question_id": "sat-math-data-analysis-easy-b0187",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -14863,7 +14181,7 @@
     "answer_verification": "missing=44"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0197",
+    "question_id": "sat-math-data-analysis-easy-b0188",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -14942,7 +14260,7 @@
     "answer_verification": "val=85"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0198",
+    "question_id": "sat-math-data-analysis-easy-b0189",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -15016,7 +14334,7 @@
     "answer_verification": "r=4,val=4"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0199",
+    "question_id": "sat-math-data-analysis-easy-b0190",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -15095,7 +14413,7 @@
     "answer_verification": "val=84"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0200",
+    "question_id": "sat-math-data-analysis-easy-b0191",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -15174,7 +14492,7 @@
     "answer_verification": "C"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0201",
+    "question_id": "sat-math-data-analysis-easy-b0192",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -15253,7 +14571,7 @@
     "answer_verification": "Hawks"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0202",
+    "question_id": "sat-math-data-analysis-easy-b0193",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -15327,7 +14645,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0203",
+    "question_id": "sat-math-data-analysis-easy-b0194",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -15406,7 +14724,7 @@
     "answer_verification": "West"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0204",
+    "question_id": "sat-math-data-analysis-easy-b0195",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -15485,7 +14803,7 @@
     "answer_verification": "B"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0205",
+    "question_id": "sat-math-data-analysis-easy-b0196",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -15558,7 +14876,7 @@
     "answer_verification": "missing=35"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0206",
+    "question_id": "sat-math-data-analysis-easy-b0197",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -15632,7 +14950,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0207",
+    "question_id": "sat-math-data-analysis-easy-b0198",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -15706,7 +15024,7 @@
     "answer_verification": "r=2,val=2"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0208",
+    "question_id": "sat-math-data-analysis-easy-b0199",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -15780,7 +15098,7 @@
     "answer_verification": "r=5,val=5"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0209",
+    "question_id": "sat-math-data-analysis-easy-b0200",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -15853,7 +15171,7 @@
     "answer_verification": "val=78"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0210",
+    "question_id": "sat-math-data-analysis-easy-b0201",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -15927,7 +15245,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0211",
+    "question_id": "sat-math-data-analysis-easy-b0202",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -16001,7 +15319,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0212",
+    "question_id": "sat-math-data-analysis-easy-b0203",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -16075,7 +15393,7 @@
     "answer_verification": "r=7,val=7"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0213",
+    "question_id": "sat-math-data-analysis-easy-b0204",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -16148,7 +15466,7 @@
     "answer_verification": "val=170"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0214",
+    "question_id": "sat-math-data-analysis-easy-b0205",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -16226,7 +15544,7 @@
     "answer_verification": "val=9"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0215",
+    "question_id": "sat-math-data-analysis-easy-b0206",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -16299,7 +15617,7 @@
     "answer_verification": "val=74"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0216",
+    "question_id": "sat-math-data-analysis-easy-b0207",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -16373,7 +15691,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0217",
+    "question_id": "sat-math-data-analysis-easy-b0208",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -16446,7 +15764,7 @@
     "answer_verification": "missing=48"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0218",
+    "question_id": "sat-math-data-analysis-easy-b0209",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -16520,7 +15838,7 @@
     "answer_verification": "r=14,val=14"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0219",
+    "question_id": "sat-math-data-analysis-easy-b0210",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -16598,7 +15916,7 @@
     "answer_verification": "val=14"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0220",
+    "question_id": "sat-math-data-analysis-easy-b0211",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -16671,7 +15989,7 @@
     "answer_verification": "val=78"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0221",
+    "question_id": "sat-math-data-analysis-easy-b0212",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -16745,7 +16063,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0222",
+    "question_id": "sat-math-data-analysis-easy-b0213",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -16824,7 +16142,7 @@
     "answer_verification": "Bears"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0223",
+    "question_id": "sat-math-data-analysis-easy-b0214",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -16898,7 +16216,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0224",
+    "question_id": "sat-math-data-analysis-easy-b0215",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -16972,7 +16290,7 @@
     "answer_verification": "r=5,val=5"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0225",
+    "question_id": "sat-math-data-analysis-easy-b0216",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -17050,7 +16368,7 @@
     "answer_verification": "val=23"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0226",
+    "question_id": "sat-math-data-analysis-easy-b0217",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -17123,7 +16441,7 @@
     "answer_verification": "missing=25"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0227",
+    "question_id": "sat-math-data-analysis-easy-b0218",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -17196,7 +16514,7 @@
     "answer_verification": "val=27"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0228",
+    "question_id": "sat-math-data-analysis-easy-b0219",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -17275,7 +16593,7 @@
     "answer_verification": "val=69"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0229",
+    "question_id": "sat-math-data-analysis-easy-b0220",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -17349,7 +16667,7 @@
     "answer_verification": "r=14,val=14"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0230",
+    "question_id": "sat-math-data-analysis-easy-b0221",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -17428,7 +16746,7 @@
     "answer_verification": "val=127"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0231",
+    "question_id": "sat-math-data-analysis-easy-b0222",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -17502,7 +16820,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0232",
+    "question_id": "sat-math-data-analysis-easy-b0223",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -17580,7 +16898,7 @@
     "answer_verification": "val=22"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0233",
+    "question_id": "sat-math-data-analysis-easy-b0224",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -17653,7 +16971,7 @@
     "answer_verification": "val=11"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0234",
+    "question_id": "sat-math-data-analysis-easy-b0225",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -17732,7 +17050,7 @@
     "answer_verification": "Lynx"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0235",
+    "question_id": "sat-math-data-analysis-easy-b0226",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -17811,7 +17129,7 @@
     "answer_verification": "Wed"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0236",
+    "question_id": "sat-math-data-analysis-easy-b0227",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -17884,7 +17202,7 @@
     "answer_verification": "missing=13"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0237",
+    "question_id": "sat-math-data-analysis-easy-b0228",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -17958,7 +17276,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0238",
+    "question_id": "sat-math-data-analysis-easy-b0229",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -18031,7 +17349,7 @@
     "answer_verification": "val=46"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0239",
+    "question_id": "sat-math-data-analysis-easy-b0230",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -18110,7 +17428,7 @@
     "answer_verification": "North"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0240",
+    "question_id": "sat-math-data-analysis-easy-b0231",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -18188,7 +17506,7 @@
     "answer_verification": "val=19"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0241",
+    "question_id": "sat-math-data-analysis-easy-b0232",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -18262,7 +17580,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0242",
+    "question_id": "sat-math-data-analysis-easy-b0233",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -18335,7 +17653,7 @@
     "answer_verification": "val=137"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0243",
+    "question_id": "sat-math-data-analysis-easy-b0234",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -18413,7 +17731,7 @@
     "answer_verification": "val=35"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0244",
+    "question_id": "sat-math-data-analysis-easy-b0235",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -18487,7 +17805,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0245",
+    "question_id": "sat-math-data-analysis-easy-b0236",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -18565,7 +17883,7 @@
     "answer_verification": "val=26"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0246",
+    "question_id": "sat-math-data-analysis-easy-b0237",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -18638,7 +17956,7 @@
     "answer_verification": "val=120"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0247",
+    "question_id": "sat-math-data-analysis-easy-b0238",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -18711,7 +18029,7 @@
     "answer_verification": "val=61"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0248",
+    "question_id": "sat-math-data-analysis-easy-b0239",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -18785,7 +18103,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0249",
+    "question_id": "sat-math-data-analysis-easy-b0240",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -18859,7 +18177,7 @@
     "answer_verification": "r=3,val=3"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0250",
+    "question_id": "sat-math-data-analysis-easy-b0241",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -18933,7 +18251,7 @@
     "answer_verification": "r=13,val=13"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0251",
+    "question_id": "sat-math-data-analysis-easy-b0242",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -19007,7 +18325,7 @@
     "answer_verification": "r=10,val=10"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0252",
+    "question_id": "sat-math-data-analysis-easy-b0243",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -19080,7 +18398,7 @@
     "answer_verification": "missing=22"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0253",
+    "question_id": "sat-math-data-analysis-easy-b0244",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -19159,7 +18477,7 @@
     "answer_verification": "val=46"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0254",
+    "question_id": "sat-math-data-analysis-easy-b0245",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -19238,7 +18556,7 @@
     "answer_verification": "A"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0255",
+    "question_id": "sat-math-data-analysis-easy-b0246",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -19311,7 +18629,7 @@
     "answer_verification": "missing=55"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0256",
+    "question_id": "sat-math-data-analysis-easy-b0247",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -19385,7 +18703,7 @@
     "answer_verification": "r=10,val=10"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0257",
+    "question_id": "sat-math-data-analysis-easy-b0248",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -19463,7 +18781,7 @@
     "answer_verification": "val=10"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0258",
+    "question_id": "sat-math-data-analysis-easy-b0249",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -19542,7 +18860,7 @@
     "answer_verification": "val=51"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0259",
+    "question_id": "sat-math-data-analysis-easy-b0250",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -19616,7 +18934,7 @@
     "answer_verification": "statement"
   },
   {
-    "question_id": "sat-math-data-analysis-easy-b0260",
+    "question_id": "sat-math-data-analysis-easy-b0251",
     "exam_id": "sat",
     "exam_name": "SAT",
     "domain": "math",
@@ -19687,5 +19005,687 @@
       }
     },
     "answer_verification": "missing=38"
+  },
+  {
+    "question_id": "sat-math-data-analysis-easy-b0252",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "data_analysis",
+    "lesson_id": "sat-math-data-analysis-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "tables",
+    "prompt": "The table shows points for 4 teams split into morning and afternoon (352 in all). What is the combined total for Otters?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "59",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "44",
+        "rationale": "That is only the afternoon value."
+      },
+      {
+        "id": "C",
+        "text": "29",
+        "rationale": "Add the two columns; don't subtract."
+      },
+      {
+        "id": "D",
+        "text": "15",
+        "rationale": "That is only the morning value."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "15 + 44 = 59.",
+    "estimated_time_seconds": 70,
+    "tags": [
+      "data",
+      "table",
+      "two-series",
+      "family:da_two_series"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Points scored by morning and afternoon",
+        "headers": [
+          "Team",
+          "Morning",
+          "Afternoon"
+        ],
+        "rows": [
+          [
+            "Hawks",
+            "28",
+            "56"
+          ],
+          [
+            "Bears",
+            "68",
+            "63"
+          ],
+          [
+            "Otters",
+            "15",
+            "44"
+          ],
+          [
+            "Lynx",
+            "23",
+            "55"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "val=59"
+  },
+  {
+    "question_id": "sat-math-data-analysis-easy-b0253",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "data_analysis",
+    "lesson_id": "sat-math-data-analysis-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "tables",
+    "prompt": "The table groups 36 commuters by minutes. How many commuters have a minutes of at least 15?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "31",
+        "rationale": "That excludes only one interval."
+      },
+      {
+        "id": "B",
+        "text": "5",
+        "rationale": "Include all higher intervals too."
+      },
+      {
+        "id": "C",
+        "text": "10",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "26",
+        "rationale": "That counts the intervals below the cutoff."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "Add the frequencies of the intervals from 15–19 upward: 5 + 5 = 10.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "data",
+      "table",
+      "histogram",
+      "family:da_interval_table"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Frequency table",
+        "headers": [
+          "Minutes",
+          "Number of commuters"
+        ],
+        "rows": [
+          [
+            "0–4",
+            "10"
+          ],
+          [
+            "5–9",
+            "4"
+          ],
+          [
+            "10–14",
+            "12"
+          ],
+          [
+            "15–19",
+            "5"
+          ],
+          [
+            "20–24",
+            "5"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "val=10"
+  },
+  {
+    "question_id": "sat-math-data-analysis-easy-b0254",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "data_analysis",
+    "lesson_id": "sat-math-data-analysis-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "tables",
+    "prompt": "The table shows the number of bikes recorded for 4 stores, 150 in all. Which of the following statements is supported by the data?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "East recorded more bikes than any other store.",
+        "rationale": "East has the least value, 10."
+      },
+      {
+        "id": "B",
+        "text": "South recorded more bikes than any other store.",
+        "rationale": "Correct."
+      },
+      {
+        "id": "C",
+        "text": "West recorded the greatest number of bikes of any store.",
+        "rationale": "South has 76, more than West."
+      },
+      {
+        "id": "D",
+        "text": "The total number of bikes for all 4 stores is 170.",
+        "rationale": "The values sum to 150."
+      }
+    ],
+    "correct_choice": "B",
+    "explanation": "South has the largest value in the table (76).",
+    "estimated_time_seconds": 85,
+    "tags": [
+      "data",
+      "table",
+      "statement",
+      "family:da_statement"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Bike sales by store",
+        "headers": [
+          "Store",
+          "Bikes sold"
+        ],
+        "rows": [
+          [
+            "North",
+            "18"
+          ],
+          [
+            "South",
+            "76"
+          ],
+          [
+            "East",
+            "10"
+          ],
+          [
+            "West",
+            "46"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "statement"
+  },
+  {
+    "question_id": "sat-math-data-analysis-easy-b0255",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "data_analysis",
+    "lesson_id": "sat-math-data-analysis-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "tables",
+    "prompt": "The table shows tickets for 4 days, but the value for Thu is missing. If the total for all 4 is 175, what is the missing value?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "43",
+        "rationale": "That is the mean, not necessarily the missing value."
+      },
+      {
+        "id": "B",
+        "text": "83",
+        "rationale": "Subtract every known row from the total."
+      },
+      {
+        "id": "C",
+        "text": "46",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "129",
+        "rationale": "That is the sum of the other rows, not the missing one."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "175 − (37 + 44 + 48) = 46.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "data",
+      "table",
+      "family:da_mean_from_table"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Daily ticket sales",
+        "headers": [
+          "Day",
+          "Tickets sold"
+        ],
+        "rows": [
+          [
+            "Mon",
+            "37"
+          ],
+          [
+            "Tue",
+            "44"
+          ],
+          [
+            "Wed",
+            "48"
+          ],
+          [
+            "Thu",
+            "?"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "missing=46"
+  },
+  {
+    "question_id": "sat-math-data-analysis-easy-b0256",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "data_analysis",
+    "lesson_id": "sat-math-data-analysis-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "tables",
+    "prompt": "The table shows centimeters for 4 plants, but the value for A is missing. If the total for all 4 is 139, what is the missing value?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "11",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "34",
+        "rationale": "That is the mean, not necessarily the missing value."
+      },
+      {
+        "id": "C",
+        "text": "128",
+        "rationale": "That is the sum of the other rows, not the missing one."
+      },
+      {
+        "id": "D",
+        "text": "36",
+        "rationale": "Subtract every known row from the total."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "139 − (25 + 50 + 53) = 11.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "data",
+      "table",
+      "family:da_mean_from_table"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Plant heights",
+        "headers": [
+          "Plant",
+          "Height (cm)"
+        ],
+        "rows": [
+          [
+            "A",
+            "?"
+          ],
+          [
+            "B",
+            "25"
+          ],
+          [
+            "C",
+            "50"
+          ],
+          [
+            "D",
+            "53"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "missing=11"
+  },
+  {
+    "question_id": "sat-math-data-analysis-easy-b0257",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "data_analysis",
+    "lesson_id": "sat-math-data-analysis-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "graphs",
+    "prompt": "The table shows a constant rate. What is the rate, in gallons per minute?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "11",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "22",
+        "rationale": "Divide by the change in the first column too."
+      },
+      {
+        "id": "C",
+        "text": "1/11",
+        "rationale": "Divide the second column by the first, not the reverse."
+      },
+      {
+        "id": "D",
+        "text": "14",
+        "rationale": "This comes from a small arithmetic slip; recompute carefully."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Divide any row: 11 ÷ 1 = 11 gallons per minute.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "data",
+      "table",
+      "rate",
+      "family:da_rate_table"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Recorded values",
+        "headers": [
+          "Minutes",
+          "Gallons pumped"
+        ],
+        "rows": [
+          [
+            "1",
+            "11"
+          ],
+          [
+            "3",
+            "33"
+          ],
+          [
+            "5",
+            "55"
+          ],
+          [
+            "9",
+            "99"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "r=11,val=11"
+  },
+  {
+    "question_id": "sat-math-data-analysis-easy-b0258",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "data_analysis",
+    "lesson_id": "sat-math-data-analysis-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "tables",
+    "prompt": "The table shows bikes for 4 stores, but the value for North is missing. If the total for all 4 is 145, what is the missing value?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "36",
+        "rationale": "That is the mean, not necessarily the missing value."
+      },
+      {
+        "id": "B",
+        "text": "132",
+        "rationale": "That is the sum of the other rows, not the missing one."
+      },
+      {
+        "id": "C",
+        "text": "13",
+        "rationale": "Correct."
+      },
+      {
+        "id": "D",
+        "text": "47",
+        "rationale": "Subtract every known row from the total."
+      }
+    ],
+    "correct_choice": "C",
+    "explanation": "145 − (55 + 43 + 34) = 13.",
+    "estimated_time_seconds": 75,
+    "tags": [
+      "data",
+      "table",
+      "family:da_mean_from_table"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Bike sales by store",
+        "headers": [
+          "Store",
+          "Bikes sold"
+        ],
+        "rows": [
+          [
+            "North",
+            "?"
+          ],
+          [
+            "South",
+            "55"
+          ],
+          [
+            "East",
+            "43"
+          ],
+          [
+            "West",
+            "34"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "missing=13"
+  },
+  {
+    "question_id": "sat-math-data-analysis-easy-b0259",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "data_analysis",
+    "lesson_id": "sat-math-data-analysis-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "tables",
+    "prompt": "The table shows the number of tickets for 4 days in 2021 and 2022 (a total of 122 in 2021 and 130 in 2022). Which day had the greatest increase in tickets from 2021 to 2022?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Wed",
+        "rationale": "Wed changed by 11, which is not the greatest increase."
+      },
+      {
+        "id": "B",
+        "text": "Thu",
+        "rationale": "Thu changed by 0, which is not the greatest increase."
+      },
+      {
+        "id": "C",
+        "text": "Tue",
+        "rationale": "Tue changed by −15, which is not the greatest increase."
+      },
+      {
+        "id": "D",
+        "text": "Mon",
+        "rationale": "Correct."
+      }
+    ],
+    "correct_choice": "D",
+    "explanation": "Compute 2022 − 2021 for each row; Mon increased by 12, the most.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "data",
+      "table",
+      "compare",
+      "family:da_two_year"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Daily ticket sales, 2021 and 2022",
+        "headers": [
+          "Day",
+          "2021",
+          "2022"
+        ],
+        "rows": [
+          [
+            "Mon",
+            "41",
+            "53"
+          ],
+          [
+            "Tue",
+            "20",
+            "5"
+          ],
+          [
+            "Wed",
+            "22",
+            "33"
+          ],
+          [
+            "Thu",
+            "39",
+            "39"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "Mon"
+  },
+  {
+    "question_id": "sat-math-data-analysis-easy-b0260",
+    "exam_id": "sat",
+    "exam_name": "SAT",
+    "domain": "math",
+    "section": "problem_solving_data",
+    "skill": "data_analysis",
+    "lesson_id": "sat-math-data-analysis-easy",
+    "difficulty": "easy",
+    "version": "1.0.0",
+    "question_type": "data_interpretation",
+    "subskill": "tables",
+    "prompt": "The table shows the number of points for 4 teams in 2022 and 2023 (a total of 223 in 2022 and 264 in 2023). Which team had the greatest increase in points from 2022 to 2023?",
+    "choices": [
+      {
+        "id": "A",
+        "text": "Bears",
+        "rationale": "Correct."
+      },
+      {
+        "id": "B",
+        "text": "Otters",
+        "rationale": "Otters changed by 12, which is not the greatest increase."
+      },
+      {
+        "id": "C",
+        "text": "Lynx",
+        "rationale": "Lynx changed by −10, which is not the greatest increase."
+      },
+      {
+        "id": "D",
+        "text": "Hawks",
+        "rationale": "Hawks changed by 17, which is not the greatest increase."
+      }
+    ],
+    "correct_choice": "A",
+    "explanation": "Compute 2023 − 2022 for each row; Bears increased by 22, the most.",
+    "estimated_time_seconds": 80,
+    "tags": [
+      "data",
+      "table",
+      "compare",
+      "family:da_two_year"
+    ],
+    "stimulus": {
+      "type": "table",
+      "table": {
+        "caption": "Points scored, 2022 and 2023",
+        "headers": [
+          "Team",
+          "2022",
+          "2023"
+        ],
+        "rows": [
+          [
+            "Hawks",
+            "40",
+            "57"
+          ],
+          [
+            "Bears",
+            "63",
+            "85"
+          ],
+          [
+            "Otters",
+            "45",
+            "57"
+          ],
+          [
+            "Lynx",
+            "75",
+            "65"
+          ]
+        ]
+      }
+    },
+    "answer_verification": "Bears"
   }
 ]
